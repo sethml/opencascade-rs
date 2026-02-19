@@ -13,11 +13,17 @@ pub struct BindingConfig {
     #[serde(default)]
     pub general: GeneralConfig,
 
-    /// Include ALL headers from these OCCT modules.
-    /// Every header matching `{Module}.hxx` and `{Module}_*.hxx` in the
-    /// OCCT include directory will be processed.
+    /// Include headers from these OCCT modules.
+    /// Supports glob patterns: "*" matches all modules, "Geom*" matches
+    /// Geom, GeomAdaptor, GeomAPI, etc.
     #[serde(default)]
     pub modules: Vec<String>,
+
+    /// Exclude entire modules from binding generation.
+    /// Applied after `modules` expansion (including glob matching).
+    /// Supports glob patterns.
+    #[serde(default)]
+    pub exclude_modules: Vec<String>,
 
     /// Exclude specific headers, even if their module is included.
     #[serde(default)]
@@ -63,9 +69,74 @@ pub fn load_config(path: &Path) -> Result<BindingConfig> {
     Ok(config)
 }
 
+/// Check if a module name matches a glob pattern.
+/// Supports `*` (matches any sequence of characters) and `?` (matches exactly one character).
+pub fn module_matches_pattern(module: &str, pattern: &str) -> bool {
+    glob_match(module, pattern)
+}
+
+/// Simple glob matching: `*` matches any sequence, `?` matches one char.
+fn glob_match(text: &str, pattern: &str) -> bool {
+    let text = text.as_bytes();
+    let pattern = pattern.as_bytes();
+    let mut ti = 0;
+    let mut pi = 0;
+    let mut star_pi = usize::MAX;
+    let mut star_ti = 0;
+
+    while ti < text.len() {
+        if pi < pattern.len() && (pattern[pi] == b'?' || pattern[pi] == text[ti]) {
+            ti += 1;
+            pi += 1;
+        } else if pi < pattern.len() && pattern[pi] == b'*' {
+            star_pi = pi;
+            star_ti = ti;
+            pi += 1;
+        } else if star_pi != usize::MAX {
+            pi = star_pi + 1;
+            star_ti += 1;
+            ti = star_ti;
+        } else {
+            return false;
+        }
+    }
+    while pi < pattern.len() && pattern[pi] == b'*' {
+        pi += 1;
+    }
+    pi == pattern.len()
+}
+
+/// Discover all unique module names present in the OCCT include directory.
+/// A module is identified by the filename prefix before the first `_` in `.hxx` files,
+/// or by a bare `{Module}.hxx` file with no underscore.
+fn discover_all_modules(occt_include_dir: &Path) -> Result<Vec<String>> {
+    let mut modules: std::collections::BTreeSet<String> = std::collections::BTreeSet::new();
+    let entries = std::fs::read_dir(occt_include_dir)
+        .with_context(|| format!("Failed to read OCCT include directory: {}", occt_include_dir.display()))?;
+
+    for entry in entries {
+        let entry = entry?;
+        let filename = entry.file_name().to_string_lossy().to_string();
+        if !filename.ends_with(".hxx") {
+            continue;
+        }
+        let stem = filename.trim_end_matches(".hxx");
+        // Module is the part before the first underscore, or the whole stem if no underscore
+        let module = if let Some(pos) = stem.find('_') {
+            &stem[..pos]
+        } else {
+            stem
+        };
+        modules.insert(module.to_string());
+    }
+    Ok(modules.into_iter().collect())
+}
+
 /// Expand the configuration into a list of header file paths.
 ///
-/// - For each module in `modules`, discovers all matching headers in `occt_include_dir`.
+/// - Expands `modules` (with glob support) against discovered OCCT modules.
+/// - Removes modules matching `exclude_modules` patterns.
+/// - For each matched module, discovers all matching headers in `occt_include_dir`.
 /// - Adds all `include_headers`.
 /// - Removes any `exclude_headers`.
 ///
@@ -74,8 +145,41 @@ pub fn expand_headers(config: &BindingConfig, occt_include_dir: &Path) -> Result
     let mut headers: Vec<PathBuf> = Vec::new();
     let mut seen: std::collections::HashSet<String> = std::collections::HashSet::new();
 
-    // 1. Expand modules: find all headers matching {Module}.hxx and {Module}_*.hxx
-    for module in &config.modules {
+    // Discover all modules in the OCCT include directory
+    let all_modules = discover_all_modules(occt_include_dir)?;
+
+    // 1. Expand module patterns: resolve globs against discovered modules
+    let mut matched_modules: Vec<String> = Vec::new();
+    let mut matched_set: std::collections::HashSet<String> = std::collections::HashSet::new();
+    for pattern in &config.modules {
+        let mut found_match = false;
+        for module in &all_modules {
+            if module_matches_pattern(module, pattern) {
+                found_match = true;
+                if matched_set.insert(module.clone()) {
+                    matched_modules.push(module.clone());
+                }
+            }
+        }
+        if !found_match {
+            eprintln!("Warning: Module pattern '{}' did not match any OCCT modules", pattern);
+        }
+    }
+
+    // 2. Apply module exclusions
+    if !config.exclude_modules.is_empty() {
+        let before = matched_modules.len();
+        matched_modules.retain(|module| {
+            !config.exclude_modules.iter().any(|pattern| module_matches_pattern(module, pattern))
+        });
+        let excluded = before - matched_modules.len();
+        if excluded > 0 {
+            println!("  Excluded {} modules via exclude_modules", excluded);
+        }
+    }
+
+    // 3. Collect headers for each matched module
+    for module in &matched_modules {
         let mut module_headers = Vec::new();
 
         // Look for {Module}.hxx
@@ -107,7 +211,7 @@ pub fn expand_headers(config: &BindingConfig, occt_include_dir: &Path) -> Result
         }
     }
 
-    // 2. Add individual headers
+    // 4. Add individual headers
     for header_name in &config.include_headers {
         if seen.insert(header_name.clone()) {
             let path = occt_include_dir.join(header_name);
@@ -119,7 +223,7 @@ pub fn expand_headers(config: &BindingConfig, occt_include_dir: &Path) -> Result
         }
     }
 
-    // 3. Remove excluded headers
+    // 5. Remove excluded headers
     if !config.exclude_headers.is_empty() {
         let exclude_set: std::collections::HashSet<&str> =
             config.exclude_headers.iter().map(|s| s.as_str()).collect();

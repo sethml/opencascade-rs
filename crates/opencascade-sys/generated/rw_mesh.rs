@@ -146,7 +146,7 @@ impl TryFrom<i32> for NameFormat {
 pub use crate::ffi::{
     HandlePolyTriangulation, HandleRWGltfCafReader, HandleRWGltfGltfLatePrimitiveArray,
     HandleRWGltfGltfMaterialMap, HandleRWGltfTriangulationReader, HandleRWObjCafReader,
-    HandleRWObjObjMaterialMap, HandleStandardTransient,
+    HandleRWObjObjMaterialMap, HandleStandardTransient, HandleVrmlAPICafReader,
 };
 
 // ========================
@@ -177,19 +177,6 @@ impl CafReader {
     /// **Source:** `RWMesh_CafReader.hxx`:52 - `RWMesh_CafReader::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::RWMesh_CafReader_dynamic_type(self as *const Self)) }
-    }
-
-    /// **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
-    /// Return target document.
-    pub fn document(&self) -> &crate::ffi::HandleTDocStdDocument {
-        unsafe { &*(crate::ffi::RWMesh_CafReader_document(self as *const Self)) }
-    }
-
-    /// **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
-    /// Set target document.
-    /// Set system length unit according to the units of the document
-    pub fn set_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
-        unsafe { crate::ffi::RWMesh_CafReader_set_document(self as *mut Self, theDoc) }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
@@ -526,13 +513,42 @@ impl HandleRWMeshCafReader {
             Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
+
+    /// Downcast Handle<RWMesh_CafReader> to Handle<VrmlAPI_CafReader>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlAPI_CafReader` (or subclass).
+    pub fn downcast_to_vrml_api_caf_reader(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlAPICafReader>> {
+        let ptr = unsafe {
+            crate::ffi::HandleRWMeshCafReader_downcast_to_HandleVrmlAPICafReader(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
-// ── Skipped symbols for CafReader (3 total) ──
+// ── Skipped symbols for CafReader (5 total) ──
 // SKIPPED: **Source:** `RWMesh_CafReader.hxx`:66 - `RWMesh_CafReader::RWMesh_CafReader`
 //   constructor: Empty constructor.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new() -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document`
+//   method: Return target document.
+//   Reason: return type 'const Handle(TDocStd_Document)&' is unknown
+//   // pub fn document(&self) -> &HandleDocument;
+//
+// SKIPPED: **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument`
+//   method: Set target document.
+//   method: Set system length unit according to the units of the document
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn set_document(&mut self, theDoc: &HandleDocument);
 //
 // SKIPPED: **Source:** `RWMesh_CafReader.hxx`:202 - `RWMesh_CafReader::Perform`
 //   method: Read the data from specified file.
@@ -829,21 +845,17 @@ impl EdgeIterator {
     /// @param[in] theLocation The location of the shape.
     /// @param[in] theToMapColors Flag to indicate if colors should be mapped.
     /// @param[in] theStyle The style of the shape.
-    pub fn new_label_location_bool_style(
+    pub fn new_label_location_bool(
         theLabel: &crate::tdf::Label,
         theLocation: &crate::top_loc::Location,
         theToMapColors: bool,
-        theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::RWMesh_EdgeIterator_ctor_label_location_bool_style(
-                    theLabel,
-                    theLocation,
-                    theToMapColors,
-                    theStyle,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_EdgeIterator_ctor_label_location_bool(
+                theLabel,
+                theLocation,
+                theToMapColors,
+            ))
         }
     }
 
@@ -851,15 +863,21 @@ impl EdgeIterator {
     /// Auxiliary constructor.
     /// @param[in] theShape The shape to iterate.
     /// @param[in] theStyle The style of the shape.
-    pub fn new_shape_style(
-        theShape: &crate::topo_ds::Shape,
-        theStyle: &crate::xcaf_prs::Style,
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWMesh_EdgeIterator_ctor_shape(theShape)) }
+    }
+
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:42 - `RWMesh_EdgeIterator::RWMesh_EdgeIterator()`
+    /// Main constructor.
+    /// @param[in] theLabel The label of the shape.
+    /// @param[in] theLocation The location of the shape.
+    /// @param[in] theToMapColors Flag to indicate if colors should be mapped.
+    /// @param[in] theStyle The style of the shape.
+    pub fn new_label_location(
+        theLabel: &crate::tdf::Label,
+        theLocation: &crate::top_loc::Location,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_EdgeIterator_ctor_shape_style(
-                theShape, theStyle,
-            ))
-        }
+        Self::new_label_location_bool(theLabel, theLocation, false)
     }
 
     /// **Source:** `RWMesh_EdgeIterator.hxx`:54 - `RWMesh_EdgeIterator::More()`
@@ -956,11 +974,6 @@ impl EdgeIterator {
         unsafe { &*(crate::ffi::RWMesh_EdgeIterator_inherited_ExploredShape(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
-    pub fn style(&self) -> &crate::xcaf_prs::Style {
-        unsafe { &*(crate::ffi::RWMesh_EdgeIterator_inherited_Style(self as *const Self)) }
-    }
-
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::HasColor()`
     pub fn has_color(&self) -> bool {
         unsafe { crate::ffi::RWMesh_EdgeIterator_inherited_HasColor(self as *const Self) }
@@ -981,6 +994,22 @@ impl EdgeIterator {
         }
     }
 }
+
+// ── Skipped symbols for EdgeIterator (2 total) ──
+// SKIPPED: **Source:** `RWMesh_EdgeIterator.hxx`:42 - `RWMesh_EdgeIterator::RWMesh_EdgeIterator`
+//   constructor: Main constructor.
+//   constructor: @param[in] theLabel The label of the shape.
+//   constructor: @param[in] theLocation The location of the shape.
+//   Reason: param 'theStyle' uses unknown type 'const XCAFPrs_Style&'
+//   // pub fn new_label_location_bool_style(theLabel: &Label, theLocation: &Location, theToMapColors: bool, theStyle: &Style) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `RWMesh_EdgeIterator.hxx`:50 - `RWMesh_EdgeIterator::RWMesh_EdgeIterator`
+//   constructor: Auxiliary constructor.
+//   constructor: @param[in] theShape The shape to iterate.
+//   constructor: @param[in] theStyle The style of the shape.
+//   Reason: param 'theStyle' uses unknown type 'const XCAFPrs_Style&'
+//   // pub fn new_shape_style(theShape: &Shape, theStyle: &Style) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From RWMesh_FaceIterator.hxx
@@ -1007,21 +1036,17 @@ impl FaceIterator {
     /// @param[in] theLocation Location of the face
     /// @param[in] theToMapColors Flag to indicate if colors should be mapped
     /// @param[in] theStyle Style information for the face
-    pub fn new_label_location_bool_style(
+    pub fn new_label_location_bool(
         theLabel: &crate::tdf::Label,
         theLocation: &crate::top_loc::Location,
         theToMapColors: bool,
-        theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::RWMesh_FaceIterator_ctor_label_location_bool_style(
-                    theLabel,
-                    theLocation,
-                    theToMapColors,
-                    theStyle,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_ctor_label_location_bool(
+                theLabel,
+                theLocation,
+                theToMapColors,
+            ))
         }
     }
 
@@ -1029,15 +1054,21 @@ impl FaceIterator {
     /// Auxiliary constructor.
     /// @param[in] theShape Shape containing the face data
     /// @param[in] theStyle Style information for the face
-    pub fn new_shape_style(
-        theShape: &crate::topo_ds::Shape,
-        theStyle: &crate::xcaf_prs::Style,
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_ctor_shape(theShape)) }
+    }
+
+    /// **Source:** `RWMesh_FaceIterator.hxx`:40 - `RWMesh_FaceIterator::RWMesh_FaceIterator()`
+    /// Main constructor.
+    /// @param[in] theLabel Label containing the face data
+    /// @param[in] theLocation Location of the face
+    /// @param[in] theToMapColors Flag to indicate if colors should be mapped
+    /// @param[in] theStyle Style information for the face
+    pub fn new_label_location(
+        theLabel: &crate::tdf::Label,
+        theLocation: &crate::top_loc::Location,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_ctor_shape_style(
-                theShape, theStyle,
-            ))
-        }
+        Self::new_label_location_bool(theLabel, theLocation, false)
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:52 - `RWMesh_FaceIterator::More()`
@@ -1080,12 +1111,6 @@ impl FaceIterator {
     /// Return true if mesh data is defined.
     pub fn is_empty(&self) -> bool {
         unsafe { crate::ffi::RWMesh_FaceIterator_is_empty(self as *const Self) }
-    }
-
-    /// **Source:** `RWMesh_FaceIterator.hxx`:78 - `RWMesh_FaceIterator::FaceStyle()`
-    /// Return face material.
-    pub fn face_style(&self) -> &crate::xcaf_prs::Style {
-        unsafe { &*(crate::ffi::RWMesh_FaceIterator_face_style(self as *const Self)) }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:81 - `RWMesh_FaceIterator::HasFaceColor()`
@@ -1232,11 +1257,6 @@ impl FaceIterator {
         unsafe { &*(crate::ffi::RWMesh_FaceIterator_inherited_ExploredShape(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
-    pub fn style(&self) -> &crate::xcaf_prs::Style {
-        unsafe { &*(crate::ffi::RWMesh_FaceIterator_inherited_Style(self as *const Self)) }
-    }
-
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::HasColor()`
     pub fn has_color(&self) -> bool {
         unsafe { crate::ffi::RWMesh_FaceIterator_inherited_HasColor(self as *const Self) }
@@ -1257,6 +1277,27 @@ impl FaceIterator {
         }
     }
 }
+
+// ── Skipped symbols for FaceIterator (3 total) ──
+// SKIPPED: **Source:** `RWMesh_FaceIterator.hxx`:40 - `RWMesh_FaceIterator::RWMesh_FaceIterator`
+//   constructor: Main constructor.
+//   constructor: @param[in] theLabel Label containing the face data
+//   constructor: @param[in] theLocation Location of the face
+//   Reason: param 'theStyle' uses unknown type 'const XCAFPrs_Style&'
+//   // pub fn new_label_location_bool_style(theLabel: &Label, theLocation: &Location, theToMapColors: bool, theStyle: &Style) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `RWMesh_FaceIterator.hxx`:48 - `RWMesh_FaceIterator::RWMesh_FaceIterator`
+//   constructor: Auxiliary constructor.
+//   constructor: @param[in] theShape Shape containing the face data
+//   constructor: @param[in] theStyle Style information for the face
+//   Reason: param 'theStyle' uses unknown type 'const XCAFPrs_Style&'
+//   // pub fn new_shape_style(theShape: &Shape, theStyle: &Style) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `RWMesh_FaceIterator.hxx`:78 - `RWMesh_FaceIterator::FaceStyle`
+//   method: Return face material.
+//   Reason: return type 'const XCAFPrs_Style&' is unknown
+//   // pub fn face_style(&self) -> &Style;
+//
 
 // ========================
 // From RWMesh_MaterialMap.hxx
@@ -1280,46 +1321,6 @@ impl MaterialMap {
         unsafe { &*(crate::ffi::RWMesh_MaterialMap_dynamic_type(self as *const Self)) }
     }
 
-    /// **Source:** `RWMesh_MaterialMap.hxx`:35 - `RWMesh_MaterialMap::DefaultStyle()`
-    /// Return default material definition to be used for nodes with only color defined.
-    pub fn default_style(&self) -> &crate::xcaf_prs::Style {
-        unsafe { &*(crate::ffi::RWMesh_MaterialMap_default_style(self as *const Self)) }
-    }
-
-    /// **Source:** `RWMesh_MaterialMap.hxx`:38 - `RWMesh_MaterialMap::SetDefaultStyle()`
-    /// Set default material definition to be used for nodes with only color defined.
-    pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
-        unsafe { crate::ffi::RWMesh_MaterialMap_set_default_style(self as *mut Self, theStyle) }
-    }
-
-    /// **Source:** `RWMesh_MaterialMap.hxx`:41 - `RWMesh_MaterialMap::FindMaterial()`
-    /// Find already registered material
-    pub fn find_material(
-        &self,
-        theStyle: &crate::xcaf_prs::Style,
-    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_MaterialMap_find_material(
-                self as *const Self,
-                theStyle,
-            ))
-        }
-    }
-
-    /// **Source:** `RWMesh_MaterialMap.hxx`:51 - `RWMesh_MaterialMap::AddMaterial()`
-    /// Register material and return its name identifier.
-    pub fn add_material(
-        &mut self,
-        theStyle: &crate::xcaf_prs::Style,
-    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_MaterialMap_add_material(
-                self as *mut Self,
-                theStyle,
-            ))
-        }
-    }
-
     /// **Source:** `RWMesh_MaterialMap.hxx`:57 - `RWMesh_MaterialMap::CreateTextureFolder()`
     /// Create texture folder "modelName/textures"; for example:
     /// MODEL:  Path/ModelName.gltf
@@ -1327,45 +1328,6 @@ impl MaterialMap {
     /// Warning! Output folder is NOT cleared.
     pub fn create_texture_folder(&mut self) -> bool {
         unsafe { crate::ffi::RWMesh_MaterialMap_create_texture_folder(self as *mut Self) }
-    }
-
-    /// **Source:** `RWMesh_MaterialMap.hxx`:63 - `RWMesh_MaterialMap::CopyTexture()`
-    /// Copy and rename texture file to the new location.
-    /// @param[out] theResTexture  result texture file path (relative to the model)
-    /// @param[in] theTexture  original texture
-    /// @param[in] theKey  material key
-    pub fn copy_texture(
-        &mut self,
-        theResTexture: &mut crate::t_collection::AsciiString,
-        theTexture: &crate::ffi::HandleImageTexture,
-        theKey: &crate::t_collection::AsciiString,
-    ) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_MaterialMap_copy_texture(
-                self as *mut Self,
-                theResTexture,
-                theTexture,
-                theKey,
-            )
-        }
-    }
-
-    /// **Source:** `RWMesh_MaterialMap.hxx`:68 - `RWMesh_MaterialMap::DefineMaterial()`
-    /// Virtual method actually defining the material (e.g. export to the file).
-    pub fn define_material(
-        &mut self,
-        theStyle: &crate::xcaf_prs::Style,
-        theKey: &crate::t_collection::AsciiString,
-        theName: &crate::t_collection::AsciiString,
-    ) {
-        unsafe {
-            crate::ffi::RWMesh_MaterialMap_define_material(
-                self as *mut Self,
-                theStyle,
-                theKey,
-                theName,
-            )
-        }
     }
 
     /// **Source:** `RWMesh_MaterialMap.hxx`:73 - `RWMesh_MaterialMap::IsFailed()`
@@ -1496,11 +1458,43 @@ impl HandleRWMeshMaterialMap {
     }
 }
 
-// ── Skipped symbols for MaterialMap (1 total) ──
+// ── Skipped symbols for MaterialMap (7 total) ──
 // SKIPPED: **Source:** `RWMesh_MaterialMap.hxx`:29 - `RWMesh_MaterialMap::RWMesh_MaterialMap`
 //   constructor: Main constructor.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new_asciistring(theFile: &AsciiString) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `RWMesh_MaterialMap.hxx`:35 - `RWMesh_MaterialMap::DefaultStyle`
+//   method: Return default material definition to be used for nodes with only color defined.
+//   Reason: return type 'const XCAFPrs_Style&' is unknown
+//   // pub fn default_style(&self) -> &Style;
+//
+// SKIPPED: **Source:** `RWMesh_MaterialMap.hxx`:38 - `RWMesh_MaterialMap::SetDefaultStyle`
+//   method: Set default material definition to be used for nodes with only color defined.
+//   Reason: param 'theStyle' uses unknown type 'const XCAFPrs_Style&'
+//   // pub fn set_default_style(&mut self, theStyle: &Style);
+//
+// SKIPPED: **Source:** `RWMesh_MaterialMap.hxx`:41 - `RWMesh_MaterialMap::FindMaterial`
+//   method: Find already registered material
+//   Reason: param 'theStyle' uses unknown type 'const XCAFPrs_Style&'
+//   // pub fn find_material(&self, theStyle: &Style) -> OwnedPtr<TCollection_AsciiString>;
+//
+// SKIPPED: **Source:** `RWMesh_MaterialMap.hxx`:51 - `RWMesh_MaterialMap::AddMaterial`
+//   method: Register material and return its name identifier.
+//   Reason: param 'theStyle' uses unknown type 'const XCAFPrs_Style&'
+//   // pub fn add_material(&mut self, theStyle: &Style) -> OwnedPtr<TCollection_AsciiString>;
+//
+// SKIPPED: **Source:** `RWMesh_MaterialMap.hxx`:63 - `RWMesh_MaterialMap::CopyTexture`
+//   method: Copy and rename texture file to the new location.
+//   method: @param[out] theResTexture  result texture file path (relative to the model)
+//   method: @param[in] theTexture  original texture
+//   Reason: param 'theTexture' uses unknown type 'const Handle(Image_Texture)&'
+//   // pub fn copy_texture(&mut self, theResTexture: &mut AsciiString, theTexture: &HandleTexture, theKey: &AsciiString) -> bool;
+//
+// SKIPPED: **Source:** `RWMesh_MaterialMap.hxx`:68 - `RWMesh_MaterialMap::DefineMaterial`
+//   method: Virtual method actually defining the material (e.g. export to the file).
+//   Reason: param 'theStyle' uses unknown type 'const XCAFPrs_Style&'
+//   // pub fn define_material(&mut self, theStyle: &Style, theKey: &AsciiString, theName: &AsciiString);
 //
 
 // ========================
@@ -1573,12 +1567,6 @@ impl ShapeIterator {
         unsafe { crate::ffi::RWMesh_ShapeIterator_is_empty(self as *const Self) }
     }
 
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
-    /// Return shape material.
-    pub fn style(&self) -> &crate::xcaf_prs::Style {
-        unsafe { &*(crate::ffi::RWMesh_ShapeIterator_style(self as *const Self)) }
-    }
-
     /// **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::HasColor()`
     /// Return TRUE if shape color is set.
     pub fn has_color(&self) -> bool {
@@ -1632,6 +1620,13 @@ impl ShapeIterator {
         }
     }
 }
+
+// ── Skipped symbols for ShapeIterator (1 total) ──
+// SKIPPED: **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style`
+//   method: Return shape material.
+//   Reason: return type 'const XCAFPrs_Style&' is unknown
+//   // pub fn style(&self) -> &Style;
+//
 
 // ========================
 // From RWMesh_TriangulationReader.hxx
@@ -2616,21 +2611,17 @@ impl VertexIterator {
     /// @param[in] theLocation The location of the shape.
     /// @param[in] theToMapColors Flag to indicate if colors should be mapped.
     /// @param[in] theStyle The style of the shape.
-    pub fn new_label_location_bool_style(
+    pub fn new_label_location_bool(
         theLabel: &crate::tdf::Label,
         theLocation: &crate::top_loc::Location,
         theToMapColors: bool,
-        theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::RWMesh_VertexIterator_ctor_label_location_bool_style(
-                    theLabel,
-                    theLocation,
-                    theToMapColors,
-                    theStyle,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_VertexIterator_ctor_label_location_bool(
+                theLabel,
+                theLocation,
+                theToMapColors,
+            ))
         }
     }
 
@@ -2638,15 +2629,21 @@ impl VertexIterator {
     /// Auxiliary constructor.
     /// @param[in] theShape The shape to iterate.
     /// @param[in] theStyle The style of the shape.
-    pub fn new_shape_style(
-        theShape: &crate::topo_ds::Shape,
-        theStyle: &crate::xcaf_prs::Style,
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWMesh_VertexIterator_ctor_shape(theShape)) }
+    }
+
+    /// **Source:** `RWMesh_VertexIterator.hxx`:42 - `RWMesh_VertexIterator::RWMesh_VertexIterator()`
+    /// Main constructor.
+    /// @param[in] theLabel The label of the shape.
+    /// @param[in] theLocation The location of the shape.
+    /// @param[in] theToMapColors Flag to indicate if colors should be mapped.
+    /// @param[in] theStyle The style of the shape.
+    pub fn new_label_location(
+        theLabel: &crate::tdf::Label,
+        theLocation: &crate::top_loc::Location,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_VertexIterator_ctor_shape_style(
-                theShape, theStyle,
-            ))
-        }
+        Self::new_label_location_bool(theLabel, theLocation, false)
     }
 
     /// **Source:** `RWMesh_VertexIterator.hxx`:54 - `RWMesh_VertexIterator::More()`
@@ -2747,11 +2744,6 @@ impl VertexIterator {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
-    pub fn style(&self) -> &crate::xcaf_prs::Style {
-        unsafe { &*(crate::ffi::RWMesh_VertexIterator_inherited_Style(self as *const Self)) }
-    }
-
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::HasColor()`
     pub fn has_color(&self) -> bool {
         unsafe { crate::ffi::RWMesh_VertexIterator_inherited_HasColor(self as *const Self) }
@@ -2772,3 +2764,19 @@ impl VertexIterator {
         }
     }
 }
+
+// ── Skipped symbols for VertexIterator (2 total) ──
+// SKIPPED: **Source:** `RWMesh_VertexIterator.hxx`:42 - `RWMesh_VertexIterator::RWMesh_VertexIterator`
+//   constructor: Main constructor.
+//   constructor: @param[in] theLabel The label of the shape.
+//   constructor: @param[in] theLocation The location of the shape.
+//   Reason: param 'theStyle' uses unknown type 'const XCAFPrs_Style&'
+//   // pub fn new_label_location_bool_style(theLabel: &Label, theLocation: &Location, theToMapColors: bool, theStyle: &Style) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `RWMesh_VertexIterator.hxx`:50 - `RWMesh_VertexIterator::RWMesh_VertexIterator`
+//   constructor: Auxiliary constructor.
+//   constructor: @param[in] theShape The shape to iterate.
+//   constructor: @param[in] theStyle The style of the shape.
+//   Reason: param 'theStyle' uses unknown type 'const XCAFPrs_Style&'
+//   // pub fn new_shape_style(theShape: &Shape, theStyle: &Style) -> OwnedPtr<Self>;
+//

@@ -6,36 +6,6 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// C++ enum: `LProp_Status`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum Status {
-    Undecided = 0,
-    Undefined = 1,
-    Defined = 2,
-    Computed = 3,
-}
-
-impl From<Status> for i32 {
-    fn from(value: Status) -> Self {
-        value as i32
-    }
-}
-
-impl TryFrom<i32> for Status {
-    type Error = i32;
-
-    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
-        match value {
-            0 => Ok(Status::Undecided),
-            1 => Ok(Status::Undefined),
-            2 => Ok(Status::Defined),
-            3 => Ok(Status::Computed),
-            _ => Err(value),
-        }
-    }
-}
-
 /// Identifies the type of a particular point on a curve:
 /// - LProp_Inflection: a point of inflection
 /// - LProp_MinCur: a minimum of curvature
@@ -67,6 +37,295 @@ impl TryFrom<i32> for CIType {
         }
     }
 }
+
+/// C++ enum: `LProp_Status`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum Status {
+    Undecided = 0,
+    Undefined = 1,
+    Defined = 2,
+    Computed = 3,
+}
+
+impl From<Status> for i32 {
+    fn from(value: Status) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for Status {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(Status::Undecided),
+            1 => Ok(Status::Undefined),
+            2 => Ok(Status::Defined),
+            3 => Ok(Status::Computed),
+            _ => Err(value),
+        }
+    }
+}
+
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleStandardFailure, HandleStandardTransient};
+
+// ========================
+// From LProp_AnalyticCurInf.hxx
+// ========================
+
+/// **Source:** `LProp_AnalyticCurInf.hxx`:28 - `LProp_AnalyticCurInf`
+/// Computes the locals extremas of curvature of a gp curve
+/// Remark : a gp curve has not inflection.
+pub use crate::ffi::LProp_AnalyticCurInf as AnalyticCurInf;
+
+unsafe impl crate::CppDeletable for AnalyticCurInf {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::LProp_AnalyticCurInf_destructor(ptr);
+    }
+}
+
+impl AnalyticCurInf {
+    /// **Source:** `LProp_AnalyticCurInf.hxx`:33 - `LProp_AnalyticCurInf::LProp_AnalyticCurInf()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::LProp_AnalyticCurInf_ctor()) }
+    }
+
+    /// **Source:** `LProp_AnalyticCurInf.hxx`:35 - `LProp_AnalyticCurInf::Perform()`
+    pub fn perform(
+        &mut self,
+        T: crate::geom_abs::CurveType,
+        UFirst: f64,
+        ULast: f64,
+        Result: &mut CurAndInf,
+    ) {
+        unsafe {
+            crate::ffi::LProp_AnalyticCurInf_perform(
+                self as *mut Self,
+                T.into(),
+                UFirst,
+                ULast,
+                Result,
+            )
+        }
+    }
+}
+
+// ========================
+// From LProp_BadContinuity.hxx
+// ========================
+
+/// **Source:** `LProp_BadContinuity.hxx`:36 - `LProp_BadContinuity`
+pub use crate::ffi::LProp_BadContinuity as BadContinuity;
+
+unsafe impl crate::CppDeletable for BadContinuity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::LProp_BadContinuity_destructor(ptr);
+    }
+}
+
+impl BadContinuity {
+    /// **Source:** `LProp_BadContinuity.hxx`:36 - `LProp_BadContinuity::LProp_BadContinuity()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::LProp_BadContinuity_ctor()) }
+    }
+
+    /// **Source:** `LProp_BadContinuity.hxx`:36 - `LProp_BadContinuity::LProp_BadContinuity()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LProp_BadContinuity_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `LProp_BadContinuity.hxx`:36 - `LProp_BadContinuity::LProp_BadContinuity()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LProp_BadContinuity_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `LProp_BadContinuity.hxx`:36 - `LProp_BadContinuity::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::LProp_BadContinuity_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `LProp_BadContinuity.hxx`:36 - `LProp_BadContinuity::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::LProp_BadContinuity_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `LProp_BadContinuity.hxx`:36 - `LProp_BadContinuity::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleLPropBadContinuity> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LProp_BadContinuity_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `LProp_BadContinuity.hxx`:36 - `LProp_BadContinuity::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleLPropBadContinuity> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LProp_BadContinuity_new_instance_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `LProp_BadContinuity.hxx`:36 - `LProp_BadContinuity::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::LProp_BadContinuity_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `LProp_BadContinuity.hxx`:36 - `LProp_BadContinuity::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::LProp_BadContinuity_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe { &*(crate::ffi::LProp_BadContinuity_as_Standard_Failure(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe {
+            &mut *(crate::ffi::LProp_BadContinuity_as_Standard_Failure_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::LProp_BadContinuity_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::LProp_BadContinuity_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleLPropBadContinuity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LProp_BadContinuity_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::LProp_BadContinuity_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::LProp_BadContinuity_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::LProp_BadContinuity_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::LProp_BadContinuity_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::LProp_BadContinuity_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::LProp_BadContinuity_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::LProp_BadContinuity_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::LProp_BadContinuity_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleLPropBadContinuity;
+
+unsafe impl crate::CppDeletable for HandleLPropBadContinuity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleLPropBadContinuity_destructor(ptr);
+    }
+}
+
+impl HandleLPropBadContinuity {
+    /// Dereference this Handle to access the underlying LProp_BadContinuity
+    pub fn get(&self) -> &crate::ffi::LProp_BadContinuity {
+        unsafe { &*(crate::ffi::HandleLPropBadContinuity_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying LProp_BadContinuity
+    pub fn get_mut(&mut self) -> &mut crate::ffi::LProp_BadContinuity {
+        unsafe { &mut *(crate::ffi::HandleLPropBadContinuity_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<LProp_BadContinuity> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleLPropBadContinuity_to_HandleStandardFailure(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<LProp_BadContinuity> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleLPropBadContinuity_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for BadContinuity (1 total) ──
+// SKIPPED: **Source:** `LProp_BadContinuity.hxx`:36 - `LProp_BadContinuity::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
 
 // ========================
 // From LProp_CurAndInf.hxx
@@ -142,3 +401,208 @@ impl CurAndInf {
         }
     }
 }
+
+// ========================
+// From LProp_NotDefined.hxx
+// ========================
+
+/// **Source:** `LProp_NotDefined.hxx`:36 - `LProp_NotDefined`
+pub use crate::ffi::LProp_NotDefined as NotDefined;
+
+unsafe impl crate::CppDeletable for NotDefined {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::LProp_NotDefined_destructor(ptr);
+    }
+}
+
+impl NotDefined {
+    /// **Source:** `LProp_NotDefined.hxx`:36 - `LProp_NotDefined::LProp_NotDefined()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::LProp_NotDefined_ctor()) }
+    }
+
+    /// **Source:** `LProp_NotDefined.hxx`:36 - `LProp_NotDefined::LProp_NotDefined()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LProp_NotDefined_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `LProp_NotDefined.hxx`:36 - `LProp_NotDefined::LProp_NotDefined()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LProp_NotDefined_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `LProp_NotDefined.hxx`:36 - `LProp_NotDefined::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::LProp_NotDefined_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `LProp_NotDefined.hxx`:36 - `LProp_NotDefined::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::LProp_NotDefined_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `LProp_NotDefined.hxx`:36 - `LProp_NotDefined::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleLPropNotDefined> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LProp_NotDefined_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `LProp_NotDefined.hxx`:36 - `LProp_NotDefined::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleLPropNotDefined> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LProp_NotDefined_new_instance_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `LProp_NotDefined.hxx`:36 - `LProp_NotDefined::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::LProp_NotDefined_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `LProp_NotDefined.hxx`:36 - `LProp_NotDefined::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::LProp_NotDefined_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe { &*(crate::ffi::LProp_NotDefined_as_Standard_Failure(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe { &mut *(crate::ffi::LProp_NotDefined_as_Standard_Failure_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::LProp_NotDefined_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::LProp_NotDefined_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleLPropNotDefined> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::LProp_NotDefined_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::LProp_NotDefined_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::LProp_NotDefined_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::LProp_NotDefined_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::LProp_NotDefined_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::LProp_NotDefined_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::LProp_NotDefined_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::LProp_NotDefined_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::LProp_NotDefined_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleLPropNotDefined;
+
+unsafe impl crate::CppDeletable for HandleLPropNotDefined {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleLPropNotDefined_destructor(ptr);
+    }
+}
+
+impl HandleLPropNotDefined {
+    /// Dereference this Handle to access the underlying LProp_NotDefined
+    pub fn get(&self) -> &crate::ffi::LProp_NotDefined {
+        unsafe { &*(crate::ffi::HandleLPropNotDefined_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying LProp_NotDefined
+    pub fn get_mut(&mut self) -> &mut crate::ffi::LProp_NotDefined {
+        unsafe { &mut *(crate::ffi::HandleLPropNotDefined_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<LProp_NotDefined> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleLPropNotDefined_to_HandleStandardFailure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<LProp_NotDefined> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleLPropNotDefined_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for NotDefined (1 total) ──
+// SKIPPED: **Source:** `LProp_NotDefined.hxx`:36 - `LProp_NotDefined::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//

@@ -6,6 +6,2609 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleApproxSweepFunction, HandleStandardTransient};
+
+// ========================
+// From BRepBlend_AppFunc.hxx
+// ========================
+
+/// **Source:** `BRepBlend_AppFunc.hxx`:35 - `BRepBlend_AppFunc`
+/// Function to approximate by AppSurface
+/// for Surface/Surface contact.
+pub use crate::ffi::BRepBlend_AppFunc as AppFunc;
+
+unsafe impl crate::CppDeletable for AppFunc {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_AppFunc_destructor(ptr);
+    }
+}
+
+impl AppFunc {
+    /// **Source:** `BRepBlend_AppFunc.hxx`:39 - `BRepBlend_AppFunc::BRepBlend_AppFunc()`
+    pub fn new_handlebrepblendline_function_real2(
+        Line: &mut crate::ffi::HandleBRepBlendLine,
+        Func: &mut crate::blend::Function,
+        Tol3d: f64,
+        Tol2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepBlend_AppFunc_ctor_handlebrepblendline_function_real2(
+                    Line, Func, Tol3d, Tol2d,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppFunc.hxx`:51 - `BRepBlend_AppFunc::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepBlend_AppFunc_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppFunc.hxx`:51 - `BRepBlend_AppFunc::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepBlend_AppFunc_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppFunc.hxx`:51 - `BRepBlend_AppFunc::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepBlend_AppFunc_get_type_descriptor()) }
+    }
+
+    /// Upcast to BRepBlend_AppFuncRoot
+    pub fn as_app_func_root(&self) -> &AppFuncRoot {
+        unsafe { &*(crate::ffi::BRepBlend_AppFunc_as_BRepBlend_AppFuncRoot(self as *const Self)) }
+    }
+
+    /// Upcast to BRepBlend_AppFuncRoot (mutable)
+    pub fn as_app_func_root_mut(&mut self) -> &mut AppFuncRoot {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_AppFunc_as_BRepBlend_AppFuncRoot_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Approx_SweepFunction
+    pub fn as_approx_sweep_function(&self) -> &crate::approx::SweepFunction {
+        unsafe { &*(crate::ffi::BRepBlend_AppFunc_as_Approx_SweepFunction(self as *const Self)) }
+    }
+
+    /// Upcast to Approx_SweepFunction (mutable)
+    pub fn as_approx_sweep_function_mut(&mut self) -> &mut crate::approx::SweepFunction {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_AppFunc_as_Approx_SweepFunction_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepBlend_AppFunc_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_AppFunc_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFunc> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_AppFunc_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:47 - `BRepBlend_AppFuncRoot::D0()`
+    pub fn d0(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_AppFunc_inherited_D0(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                Poles2d,
+                Weigths,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:56 - `BRepBlend_AppFuncRoot::D1()`
+    pub fn d1(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_AppFunc_inherited_D1(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                DPoles,
+                Poles2d,
+                DPoles2d,
+                Weigths,
+                DWeigths,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:68 - `BRepBlend_AppFuncRoot::D2()`
+    pub fn d2(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_AppFunc_inherited_D2(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                DPoles,
+                D2Poles,
+                Poles2d,
+                DPoles2d,
+                D2Poles2d,
+                Weigths,
+                DWeigths,
+                D2Weigths,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:82 - `BRepBlend_AppFuncRoot::Nb2dCurves()`
+    pub fn nb2d_curves(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppFunc_inherited_Nb2dCurves(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:85 - `BRepBlend_AppFuncRoot::SectionShape()`
+    pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFunc_inherited_SectionShape(
+                self as *const Self,
+                NbPoles,
+                NbKnots,
+                Degree,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Knots()`
+    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::BRepBlend_AppFunc_inherited_Knots(self as *const Self, TKnots) }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::Mults()`
+    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::BRepBlend_AppFunc_inherited_Mults(self as *const Self, TMults) }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:96 - `BRepBlend_AppFuncRoot::IsRational()`
+    pub fn is_rational(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_AppFunc_inherited_IsRational(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:100 - `BRepBlend_AppFuncRoot::NbIntervals()`
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        unsafe {
+            crate::ffi::BRepBlend_AppFunc_inherited_NbIntervals(self as *const Self, S.into())
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:108 - `BRepBlend_AppFuncRoot::Intervals()`
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFunc_inherited_Intervals(self as *const Self, T, S.into())
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:115 - `BRepBlend_AppFuncRoot::SetInterval()`
+    pub fn set_interval(&mut self, First: f64, Last: f64) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFunc_inherited_SetInterval(self as *mut Self, First, Last)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:121 - `BRepBlend_AppFuncRoot::Resolution()`
+    pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFunc_inherited_Resolution(
+                self as *const Self,
+                Index,
+                Tol,
+                TolU,
+                TolV,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:131 - `BRepBlend_AppFuncRoot::GetTolerance()`
+    pub fn get_tolerance(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFunc_inherited_GetTolerance(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:138 - `BRepBlend_AppFuncRoot::SetTolerance()`
+    pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFunc_inherited_SetTolerance(self as *mut Self, Tol3d, Tol2d)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:144 - `BRepBlend_AppFuncRoot::BarycentreOfSurf()`
+    pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_AppFunc_inherited_BarycentreOfSurf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:149 - `BRepBlend_AppFuncRoot::MaximalSection()`
+    pub fn maximal_section(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_AppFunc_inherited_MaximalSection(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:154 - `BRepBlend_AppFuncRoot::GetMinimalWeight()`
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFunc_inherited_GetMinimalWeight(self as *const Self, Weigths)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepBlend_AppFunc_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepBlend_AppFunc_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppFunc_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepBlend_AppFunc_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppFunc_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepBlend_AppFunc_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleBRepBlendAppFunc;
+
+unsafe impl crate::CppDeletable for HandleBRepBlendAppFunc {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepBlendAppFunc_destructor(ptr);
+    }
+}
+
+impl HandleBRepBlendAppFunc {
+    /// Dereference this Handle to access the underlying BRepBlend_AppFunc
+    pub fn get(&self) -> &crate::ffi::BRepBlend_AppFunc {
+        unsafe { &*(crate::ffi::HandleBRepBlendAppFunc_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepBlend_AppFunc
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepBlend_AppFunc {
+        unsafe { &mut *(crate::ffi::HandleBRepBlendAppFunc_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepBlend_AppFunc> to Handle<BRepBlend_AppFuncRoot>
+    pub fn to_handle_app_func_root(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepBlendAppFunc_to_HandleBRepBlendAppFuncRoot(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRepBlend_AppFunc> to Handle<Approx_SweepFunction>
+    pub fn to_handle_sweep_function(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleApproxSweepFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepBlendAppFunc_to_HandleApproxSweepFunction(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRepBlend_AppFunc> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepBlendAppFunc_to_HandleStandardTransient(self as *const Self),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for AppFunc (2 total) ──
+// SKIPPED: **Source:** `BRepBlend_AppFunc.hxx`:44 - `BRepBlend_AppFunc::Point`
+//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
+//   // pub fn point(&self, Func: &AppFunction, Param: f64, Sol: &Vector, Pnt: &mut Point);
+//
+// SKIPPED: **Source:** `BRepBlend_AppFunc.hxx`:49 - `BRepBlend_AppFunc::Vec`
+//   Reason: param 'Sol' uses unknown type 'math_Vector&'
+//   // pub fn vec(&self, Sol: &mut Vector, Pnt: &Point);
+//
+
+// ========================
+// From BRepBlend_AppFuncRoot.hxx
+// ========================
+
+/// **Source:** `BRepBlend_AppFuncRoot.hxx`:42 - `BRepBlend_AppFuncRoot`
+/// Function to approximate by AppSurface
+pub use crate::ffi::BRepBlend_AppFuncRoot as AppFuncRoot;
+
+unsafe impl crate::CppDeletable for AppFuncRoot {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_AppFuncRoot_destructor(ptr);
+    }
+}
+
+impl AppFuncRoot {
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:47 - `BRepBlend_AppFuncRoot::D0()`
+    /// compute the section for v = param
+    pub fn d0(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRoot_d0(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                Poles2d,
+                Weigths,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:56 - `BRepBlend_AppFuncRoot::D1()`
+    /// compute the first  derivative in v direction  of the
+    /// section for v =  param
+    pub fn d1(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRoot_d1(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                DPoles,
+                Poles2d,
+                DPoles2d,
+                Weigths,
+                DWeigths,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:68 - `BRepBlend_AppFuncRoot::D2()`
+    /// compute the second derivative  in v direction of the
+    /// section  for v = param
+    pub fn d2(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRoot_d2(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                DPoles,
+                D2Poles,
+                Poles2d,
+                DPoles2d,
+                D2Poles2d,
+                Weigths,
+                DWeigths,
+                D2Weigths,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:82 - `BRepBlend_AppFuncRoot::Nb2dCurves()`
+    /// get the number of 2d curves to  approximate.
+    pub fn nb2d_curves(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppFuncRoot_nb2d_curves(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:85 - `BRepBlend_AppFuncRoot::SectionShape()`
+    /// get the format of an  section
+    pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRoot_section_shape(
+                self as *const Self,
+                NbPoles,
+                NbKnots,
+                Degree,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Knots()`
+    /// get the Knots of the section
+    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::BRepBlend_AppFuncRoot_knots(self as *const Self, TKnots) }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::Mults()`
+    /// get the Multplicities of the section
+    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::BRepBlend_AppFuncRoot_mults(self as *const Self, TMults) }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:96 - `BRepBlend_AppFuncRoot::IsRational()`
+    /// Returns if the section is rational or not
+    pub fn is_rational(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_AppFuncRoot_is_rational(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:100 - `BRepBlend_AppFuncRoot::NbIntervals()`
+    /// Returns  the number  of  intervals for  continuity
+    /// <S>. May be one if Continuity(me) >= <S>
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppFuncRoot_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:108 - `BRepBlend_AppFuncRoot::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::BRepBlend_AppFuncRoot_intervals(self as *const Self, T, S.into()) }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:115 - `BRepBlend_AppFuncRoot::SetInterval()`
+    /// Sets the bounds of the parametric interval on
+    /// the fonction
+    /// This determines the derivatives in these values if the
+    /// function is not Cn.
+    pub fn set_interval(&mut self, First: f64, Last: f64) {
+        unsafe { crate::ffi::BRepBlend_AppFuncRoot_set_interval(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:121 - `BRepBlend_AppFuncRoot::Resolution()`
+    /// Returns the resolutions in the  sub-space 2d <Index> --
+    /// This information is usfull to find an good tolerance in
+    /// 2d approximation
+    pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRoot_resolution(
+                self as *const Self,
+                Index,
+                Tol,
+                TolU,
+                TolV,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:131 - `BRepBlend_AppFuncRoot::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to respect
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary (in radian)
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRoot_get_tolerance(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:138 - `BRepBlend_AppFuncRoot::SetTolerance()`
+    /// Is usfull, if (me) have to  be run numerical
+    /// algorithme to perform D0, D1 or D2
+    pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
+        unsafe { crate::ffi::BRepBlend_AppFuncRoot_set_tolerance(self as *mut Self, Tol3d, Tol2d) }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:144 - `BRepBlend_AppFuncRoot::BarycentreOfSurf()`
+    /// Get    the   barycentre of   Surface.   An   very  poor
+    /// estimation is sufficient. This information is useful
+    /// to perform well conditioned rational approximation.
+    pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_AppFuncRoot_barycentre_of_surf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:149 - `BRepBlend_AppFuncRoot::MaximalSection()`
+    /// Returns the   length of the maximum section. This
+    /// information is useful to perform well conditioned rational
+    /// approximation.
+    pub fn maximal_section(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_AppFuncRoot_maximal_section(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:154 - `BRepBlend_AppFuncRoot::GetMinimalWeight()`
+    /// Compute the minimal value of weight for each poles
+    /// of all  sections.  This information is  useful to
+    /// perform well conditioned rational approximation.
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRoot_get_minimal_weight(self as *const Self, Weigths)
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:164 - `BRepBlend_AppFuncRoot::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepBlend_AppFuncRoot_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:164 - `BRepBlend_AppFuncRoot::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepBlend_AppFuncRoot_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:164 - `BRepBlend_AppFuncRoot::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepBlend_AppFuncRoot_get_type_descriptor()) }
+    }
+
+    /// Upcast to Approx_SweepFunction
+    pub fn as_approx_sweep_function(&self) -> &crate::approx::SweepFunction {
+        unsafe {
+            &*(crate::ffi::BRepBlend_AppFuncRoot_as_Approx_SweepFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to Approx_SweepFunction (mutable)
+    pub fn as_approx_sweep_function_mut(&mut self) -> &mut crate::approx::SweepFunction {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_AppFuncRoot_as_Approx_SweepFunction_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepBlend_AppFuncRoot_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_AppFuncRoot_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRoot_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepBlend_AppFuncRoot_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppFuncRoot_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRoot_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRoot_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepBlend_AppFuncRoot_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleBRepBlendAppFuncRoot;
+
+unsafe impl crate::CppDeletable for HandleBRepBlendAppFuncRoot {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepBlendAppFuncRoot_destructor(ptr);
+    }
+}
+
+impl HandleBRepBlendAppFuncRoot {
+    /// Dereference this Handle to access the underlying BRepBlend_AppFuncRoot
+    pub fn get(&self) -> &crate::ffi::BRepBlend_AppFuncRoot {
+        unsafe { &*(crate::ffi::HandleBRepBlendAppFuncRoot_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepBlend_AppFuncRoot
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepBlend_AppFuncRoot {
+        unsafe { &mut *(crate::ffi::HandleBRepBlendAppFuncRoot_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepBlend_AppFuncRoot> to Handle<Approx_SweepFunction>
+    pub fn to_handle_sweep_function(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleApproxSweepFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepBlendAppFuncRoot_to_HandleApproxSweepFunction(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRepBlend_AppFuncRoot> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepBlendAppFuncRoot_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<BRepBlend_AppFuncRoot> to Handle<BRepBlend_AppFunc>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepBlend_AppFunc` (or subclass).
+    pub fn downcast_to_app_func(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFunc>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepBlendAppFuncRoot_downcast_to_HandleBRepBlendAppFunc(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepBlend_AppFuncRoot> to Handle<BRepBlend_AppFuncRst>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepBlend_AppFuncRst` (or subclass).
+    pub fn downcast_to_app_func_rst(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRst>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepBlendAppFuncRoot_downcast_to_HandleBRepBlendAppFuncRst(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepBlend_AppFuncRoot> to Handle<BRepBlend_AppFuncRstRst>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepBlend_AppFuncRstRst` (or subclass).
+    pub fn downcast_to_app_func_rst_rst(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRstRst>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepBlendAppFuncRoot_downcast_to_HandleBRepBlendAppFuncRstRst(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ── Skipped symbols for AppFuncRoot (2 total) ──
+// SKIPPED: **Source:** `BRepBlend_AppFuncRoot.hxx`:157 - `BRepBlend_AppFuncRoot::Point`
+//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
+//   // pub fn point(&self, Func: &AppFunction, Param: f64, Sol: &Vector, Pnt: &mut Point);
+//
+// SKIPPED: **Source:** `BRepBlend_AppFuncRoot.hxx`:162 - `BRepBlend_AppFuncRoot::Vec`
+//   Reason: param 'Sol' uses unknown type 'math_Vector&'
+//   // pub fn vec(&self, Sol: &mut Vector, Pnt: &Point);
+//
+
+// ========================
+// From BRepBlend_AppFuncRst.hxx
+// ========================
+
+/// **Source:** `BRepBlend_AppFuncRst.hxx`:34 - `BRepBlend_AppFuncRst`
+/// Function  to approximate by AppSurface  for Curve/Surface contact.
+pub use crate::ffi::BRepBlend_AppFuncRst as AppFuncRst;
+
+unsafe impl crate::CppDeletable for AppFuncRst {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_AppFuncRst_destructor(ptr);
+    }
+}
+
+impl AppFuncRst {
+    /// **Source:** `BRepBlend_AppFuncRst.hxx`:38 - `BRepBlend_AppFuncRst::BRepBlend_AppFuncRst()`
+    pub fn new_handlebrepblendline_surfrstfunction_real2(
+        Line: &mut crate::ffi::HandleBRepBlendLine,
+        Func: &mut crate::blend::SurfRstFunction,
+        Tol3d: f64,
+        Tol2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepBlend_AppFuncRst_ctor_handlebrepblendline_surfrstfunction_real2(
+                    Line, Func, Tol3d, Tol2d,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRst.hxx`:50 - `BRepBlend_AppFuncRst::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepBlend_AppFuncRst_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRst.hxx`:50 - `BRepBlend_AppFuncRst::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepBlend_AppFuncRst_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRst.hxx`:50 - `BRepBlend_AppFuncRst::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepBlend_AppFuncRst_get_type_descriptor()) }
+    }
+
+    /// Upcast to BRepBlend_AppFuncRoot
+    pub fn as_app_func_root(&self) -> &AppFuncRoot {
+        unsafe {
+            &*(crate::ffi::BRepBlend_AppFuncRst_as_BRepBlend_AppFuncRoot(self as *const Self))
+        }
+    }
+
+    /// Upcast to BRepBlend_AppFuncRoot (mutable)
+    pub fn as_app_func_root_mut(&mut self) -> &mut AppFuncRoot {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_AppFuncRst_as_BRepBlend_AppFuncRoot_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Approx_SweepFunction
+    pub fn as_approx_sweep_function(&self) -> &crate::approx::SweepFunction {
+        unsafe { &*(crate::ffi::BRepBlend_AppFuncRst_as_Approx_SweepFunction(self as *const Self)) }
+    }
+
+    /// Upcast to Approx_SweepFunction (mutable)
+    pub fn as_approx_sweep_function_mut(&mut self) -> &mut crate::approx::SweepFunction {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_AppFuncRst_as_Approx_SweepFunction_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepBlend_AppFuncRst_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_AppFuncRst_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRst> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_AppFuncRst_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:47 - `BRepBlend_AppFuncRoot::D0()`
+    pub fn d0(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRst_inherited_D0(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                Poles2d,
+                Weigths,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:56 - `BRepBlend_AppFuncRoot::D1()`
+    pub fn d1(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRst_inherited_D1(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                DPoles,
+                Poles2d,
+                DPoles2d,
+                Weigths,
+                DWeigths,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:68 - `BRepBlend_AppFuncRoot::D2()`
+    pub fn d2(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRst_inherited_D2(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                DPoles,
+                D2Poles,
+                Poles2d,
+                DPoles2d,
+                D2Poles2d,
+                Weigths,
+                DWeigths,
+                D2Weigths,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:82 - `BRepBlend_AppFuncRoot::Nb2dCurves()`
+    pub fn nb2d_curves(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppFuncRst_inherited_Nb2dCurves(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:85 - `BRepBlend_AppFuncRoot::SectionShape()`
+    pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRst_inherited_SectionShape(
+                self as *const Self,
+                NbPoles,
+                NbKnots,
+                Degree,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Knots()`
+    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::BRepBlend_AppFuncRst_inherited_Knots(self as *const Self, TKnots) }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::Mults()`
+    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::BRepBlend_AppFuncRst_inherited_Mults(self as *const Self, TMults) }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:96 - `BRepBlend_AppFuncRoot::IsRational()`
+    pub fn is_rational(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_AppFuncRst_inherited_IsRational(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:100 - `BRepBlend_AppFuncRoot::NbIntervals()`
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRst_inherited_NbIntervals(self as *const Self, S.into())
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:108 - `BRepBlend_AppFuncRoot::Intervals()`
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRst_inherited_Intervals(self as *const Self, T, S.into())
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:115 - `BRepBlend_AppFuncRoot::SetInterval()`
+    pub fn set_interval(&mut self, First: f64, Last: f64) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRst_inherited_SetInterval(self as *mut Self, First, Last)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:121 - `BRepBlend_AppFuncRoot::Resolution()`
+    pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRst_inherited_Resolution(
+                self as *const Self,
+                Index,
+                Tol,
+                TolU,
+                TolV,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:131 - `BRepBlend_AppFuncRoot::GetTolerance()`
+    pub fn get_tolerance(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRst_inherited_GetTolerance(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:138 - `BRepBlend_AppFuncRoot::SetTolerance()`
+    pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRst_inherited_SetTolerance(self as *mut Self, Tol3d, Tol2d)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:144 - `BRepBlend_AppFuncRoot::BarycentreOfSurf()`
+    pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_AppFuncRst_inherited_BarycentreOfSurf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:149 - `BRepBlend_AppFuncRoot::MaximalSection()`
+    pub fn maximal_section(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_AppFuncRst_inherited_MaximalSection(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:154 - `BRepBlend_AppFuncRoot::GetMinimalWeight()`
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRst_inherited_GetMinimalWeight(
+                self as *const Self,
+                Weigths,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRst_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepBlend_AppFuncRst_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppFuncRst_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepBlend_AppFuncRst_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppFuncRst_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepBlend_AppFuncRst_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleBRepBlendAppFuncRst;
+
+unsafe impl crate::CppDeletable for HandleBRepBlendAppFuncRst {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepBlendAppFuncRst_destructor(ptr);
+    }
+}
+
+impl HandleBRepBlendAppFuncRst {
+    /// Dereference this Handle to access the underlying BRepBlend_AppFuncRst
+    pub fn get(&self) -> &crate::ffi::BRepBlend_AppFuncRst {
+        unsafe { &*(crate::ffi::HandleBRepBlendAppFuncRst_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepBlend_AppFuncRst
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepBlend_AppFuncRst {
+        unsafe { &mut *(crate::ffi::HandleBRepBlendAppFuncRst_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepBlend_AppFuncRst> to Handle<BRepBlend_AppFuncRoot>
+    pub fn to_handle_app_func_root(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepBlendAppFuncRst_to_HandleBRepBlendAppFuncRoot(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRepBlend_AppFuncRst> to Handle<Approx_SweepFunction>
+    pub fn to_handle_sweep_function(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleApproxSweepFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepBlendAppFuncRst_to_HandleApproxSweepFunction(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRepBlend_AppFuncRst> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepBlendAppFuncRst_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for AppFuncRst (2 total) ──
+// SKIPPED: **Source:** `BRepBlend_AppFuncRst.hxx`:43 - `BRepBlend_AppFuncRst::Point`
+//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
+//   // pub fn point(&self, Func: &AppFunction, Param: f64, Sol: &Vector, Pnt: &mut Point);
+//
+// SKIPPED: **Source:** `BRepBlend_AppFuncRst.hxx`:48 - `BRepBlend_AppFuncRst::Vec`
+//   Reason: param 'Sol' uses unknown type 'math_Vector&'
+//   // pub fn vec(&self, Sol: &mut Vector, Pnt: &Point);
+//
+
+// ========================
+// From BRepBlend_AppFuncRstRst.hxx
+// ========================
+
+/// **Source:** `BRepBlend_AppFuncRstRst.hxx`:34 - `BRepBlend_AppFuncRstRst`
+/// Function to approximate by AppSurface for Edge/Face (Curve/Curve contact).
+pub use crate::ffi::BRepBlend_AppFuncRstRst as AppFuncRstRst;
+
+unsafe impl crate::CppDeletable for AppFuncRstRst {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_AppFuncRstRst_destructor(ptr);
+    }
+}
+
+impl AppFuncRstRst {
+    /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:38 - `BRepBlend_AppFuncRstRst::BRepBlend_AppFuncRstRst()`
+    pub fn new_handlebrepblendline_rstrstfunction_real2(
+        Line: &mut crate::ffi::HandleBRepBlendLine,
+        Func: &mut crate::blend::RstRstFunction,
+        Tol3d: f64,
+        Tol2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepBlend_AppFuncRstRst_ctor_handlebrepblendline_rstrstfunction_real2(
+                    Line, Func, Tol3d, Tol2d,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:50 - `BRepBlend_AppFuncRstRst::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepBlend_AppFuncRstRst_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:50 - `BRepBlend_AppFuncRstRst::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepBlend_AppFuncRstRst_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:50 - `BRepBlend_AppFuncRstRst::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepBlend_AppFuncRstRst_get_type_descriptor()) }
+    }
+
+    /// Upcast to BRepBlend_AppFuncRoot
+    pub fn as_app_func_root(&self) -> &AppFuncRoot {
+        unsafe {
+            &*(crate::ffi::BRepBlend_AppFuncRstRst_as_BRepBlend_AppFuncRoot(self as *const Self))
+        }
+    }
+
+    /// Upcast to BRepBlend_AppFuncRoot (mutable)
+    pub fn as_app_func_root_mut(&mut self) -> &mut AppFuncRoot {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_AppFuncRstRst_as_BRepBlend_AppFuncRoot_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Approx_SweepFunction
+    pub fn as_approx_sweep_function(&self) -> &crate::approx::SweepFunction {
+        unsafe {
+            &*(crate::ffi::BRepBlend_AppFuncRstRst_as_Approx_SweepFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to Approx_SweepFunction (mutable)
+    pub fn as_approx_sweep_function_mut(&mut self) -> &mut crate::approx::SweepFunction {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_AppFuncRstRst_as_Approx_SweepFunction_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BRepBlend_AppFuncRstRst_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_AppFuncRstRst_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRstRst> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_AppFuncRstRst_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:47 - `BRepBlend_AppFuncRoot::D0()`
+    pub fn d0(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_inherited_D0(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                Poles2d,
+                Weigths,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:56 - `BRepBlend_AppFuncRoot::D1()`
+    pub fn d1(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_inherited_D1(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                DPoles,
+                Poles2d,
+                DPoles2d,
+                Weigths,
+                DWeigths,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:68 - `BRepBlend_AppFuncRoot::D2()`
+    pub fn d2(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_inherited_D2(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                DPoles,
+                D2Poles,
+                Poles2d,
+                DPoles2d,
+                D2Poles2d,
+                Weigths,
+                DWeigths,
+                D2Weigths,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:82 - `BRepBlend_AppFuncRoot::Nb2dCurves()`
+    pub fn nb2d_curves(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppFuncRstRst_inherited_Nb2dCurves(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:85 - `BRepBlend_AppFuncRoot::SectionShape()`
+    pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_inherited_SectionShape(
+                self as *const Self,
+                NbPoles,
+                NbKnots,
+                Degree,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Knots()`
+    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::BRepBlend_AppFuncRstRst_inherited_Knots(self as *const Self, TKnots) }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::Mults()`
+    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::BRepBlend_AppFuncRstRst_inherited_Mults(self as *const Self, TMults) }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:96 - `BRepBlend_AppFuncRoot::IsRational()`
+    pub fn is_rational(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_AppFuncRstRst_inherited_IsRational(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:100 - `BRepBlend_AppFuncRoot::NbIntervals()`
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_inherited_NbIntervals(self as *const Self, S.into())
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:108 - `BRepBlend_AppFuncRoot::Intervals()`
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_inherited_Intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:115 - `BRepBlend_AppFuncRoot::SetInterval()`
+    pub fn set_interval(&mut self, First: f64, Last: f64) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_inherited_SetInterval(
+                self as *mut Self,
+                First,
+                Last,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:121 - `BRepBlend_AppFuncRoot::Resolution()`
+    pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_inherited_Resolution(
+                self as *const Self,
+                Index,
+                Tol,
+                TolU,
+                TolV,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:131 - `BRepBlend_AppFuncRoot::GetTolerance()`
+    pub fn get_tolerance(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_inherited_GetTolerance(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:138 - `BRepBlend_AppFuncRoot::SetTolerance()`
+    pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_inherited_SetTolerance(
+                self as *mut Self,
+                Tol3d,
+                Tol2d,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:144 - `BRepBlend_AppFuncRoot::BarycentreOfSurf()`
+    pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepBlend_AppFuncRstRst_inherited_BarycentreOfSurf(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:149 - `BRepBlend_AppFuncRoot::MaximalSection()`
+    pub fn maximal_section(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_AppFuncRstRst_inherited_MaximalSection(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:154 - `BRepBlend_AppFuncRoot::GetMinimalWeight()`
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_inherited_GetMinimalWeight(
+                self as *const Self,
+                Weigths,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppFuncRstRst_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepBlend_AppFuncRstRst_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleBRepBlendAppFuncRstRst;
+
+unsafe impl crate::CppDeletable for HandleBRepBlendAppFuncRstRst {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepBlendAppFuncRstRst_destructor(ptr);
+    }
+}
+
+impl HandleBRepBlendAppFuncRstRst {
+    /// Dereference this Handle to access the underlying BRepBlend_AppFuncRstRst
+    pub fn get(&self) -> &crate::ffi::BRepBlend_AppFuncRstRst {
+        unsafe { &*(crate::ffi::HandleBRepBlendAppFuncRstRst_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepBlend_AppFuncRstRst
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepBlend_AppFuncRstRst {
+        unsafe { &mut *(crate::ffi::HandleBRepBlendAppFuncRstRst_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepBlend_AppFuncRstRst> to Handle<BRepBlend_AppFuncRoot>
+    pub fn to_handle_app_func_root(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepBlendAppFuncRstRst_to_HandleBRepBlendAppFuncRoot(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRepBlend_AppFuncRstRst> to Handle<Approx_SweepFunction>
+    pub fn to_handle_sweep_function(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleApproxSweepFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepBlendAppFuncRstRst_to_HandleApproxSweepFunction(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRepBlend_AppFuncRstRst> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepBlendAppFuncRstRst_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for AppFuncRstRst (2 total) ──
+// SKIPPED: **Source:** `BRepBlend_AppFuncRstRst.hxx`:43 - `BRepBlend_AppFuncRstRst::Point`
+//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
+//   // pub fn point(&self, Func: &AppFunction, Param: f64, Sol: &Vector, Pnt: &mut Point);
+//
+// SKIPPED: **Source:** `BRepBlend_AppFuncRstRst.hxx`:48 - `BRepBlend_AppFuncRstRst::Vec`
+//   Reason: param 'Sol' uses unknown type 'math_Vector&'
+//   // pub fn vec(&self, Sol: &mut Vector, Pnt: &Point);
+//
+
+// ========================
+// From BRepBlend_AppSurf.hxx
+// ========================
+
+/// **Source:** `BRepBlend_AppSurf.hxx`:46 - `BRepBlend_AppSurf`
+pub use crate::ffi::BRepBlend_AppSurf as AppSurf;
+
+unsafe impl crate::CppDeletable for AppSurf {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_AppSurf_destructor(ptr);
+    }
+}
+
+impl AppSurf {
+    /// **Source:** `BRepBlend_AppSurf.hxx`:51 - `BRepBlend_AppSurf::BRepBlend_AppSurf()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_AppSurf_ctor()) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:53 - `BRepBlend_AppSurf::BRepBlend_AppSurf()`
+    pub fn new_int2_real2_int_bool(
+        Degmin: i32,
+        Degmax: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+        NbIt: i32,
+        KnownParameters: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_AppSurf_ctor_int2_real2_int_bool(
+                Degmin,
+                Degmax,
+                Tol3d,
+                Tol2d,
+                NbIt,
+                KnownParameters,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:53 - `BRepBlend_AppSurf::BRepBlend_AppSurf()`
+    pub fn new_int2_real2_int(
+        Degmin: i32,
+        Degmax: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+        NbIt: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_int2_real2_int_bool(Degmin, Degmax, Tol3d, Tol2d, NbIt, false)
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:60 - `BRepBlend_AppSurf::Init()`
+    pub fn init(
+        &mut self,
+        Degmin: i32,
+        Degmax: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+        NbIt: i32,
+        KnownParameters: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_AppSurf_init(
+                self as *mut Self,
+                Degmin,
+                Degmax,
+                Tol3d,
+                Tol2d,
+                NbIt,
+                KnownParameters,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:68 - `BRepBlend_AppSurf::SetParType()`
+    /// Define the type of parametrization used in the approximation
+    pub fn set_par_type(&mut self, ParType: crate::approx::ParametrizationType) {
+        unsafe { crate::ffi::BRepBlend_AppSurf_set_par_type(self as *mut Self, ParType.into()) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:71 - `BRepBlend_AppSurf::SetContinuity()`
+    /// Define the Continuity used in the approximation
+    pub fn set_continuity(&mut self, C: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::BRepBlend_AppSurf_set_continuity(self as *mut Self, C.into()) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:77 - `BRepBlend_AppSurf::SetCriteriumWeight()`
+    /// define the Weights  associed to the criterium used in
+    /// the  optimization.
+    ///
+    /// if Wi <= 0
+    pub fn set_criterium_weight(&mut self, W1: f64, W2: f64, W3: f64) {
+        unsafe { crate::ffi::BRepBlend_AppSurf_set_criterium_weight(self as *mut Self, W1, W2, W3) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:82 - `BRepBlend_AppSurf::ParType()`
+    /// returns the type of parametrization used in the approximation
+    pub fn par_type(&self) -> crate::approx::ParametrizationType {
+        unsafe {
+            crate::approx::ParametrizationType::try_from(crate::ffi::BRepBlend_AppSurf_par_type(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:85 - `BRepBlend_AppSurf::Continuity()`
+    /// returns the Continuity used in the approximation
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::BRepBlend_AppSurf_continuity(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:89 - `BRepBlend_AppSurf::CriteriumWeight()`
+    /// returns the Weights (as percent) associed  to the criterium used in
+    /// the  optimization.
+    pub fn criterium_weight(&self, W1: &mut f64, W2: &mut f64, W3: &mut f64) {
+        unsafe { crate::ffi::BRepBlend_AppSurf_criterium_weight(self as *const Self, W1, W2, W3) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:93 - `BRepBlend_AppSurf::Perform()`
+    pub fn perform_handlebrepblendline_appfunction_bool(
+        &mut self,
+        Lin: &crate::ffi::HandleBRepBlendLine,
+        SecGen: &mut crate::blend::AppFunction,
+        SpApprox: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_AppSurf_perform_handlebrepblendline_appfunction_bool(
+                self as *mut Self,
+                Lin,
+                SecGen,
+                SpApprox,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:97 - `BRepBlend_AppSurf::PerformSmoothing()`
+    pub fn perform_smoothing(
+        &mut self,
+        Lin: &crate::ffi::HandleBRepBlendLine,
+        SecGen: &mut crate::blend::AppFunction,
+    ) {
+        unsafe { crate::ffi::BRepBlend_AppSurf_perform_smoothing(self as *mut Self, Lin, SecGen) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:100 - `BRepBlend_AppSurf::Perform()`
+    pub fn perform_handlebrepblendline_appfunction_int(
+        &mut self,
+        Lin: &crate::ffi::HandleBRepBlendLine,
+        SecGen: &mut crate::blend::AppFunction,
+        NbMaxP: i32,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_AppSurf_perform_handlebrepblendline_appfunction_int(
+                self as *mut Self,
+                Lin,
+                SecGen,
+                NbMaxP,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:104 - `BRepBlend_AppSurf::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_AppSurf_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:106 - `BRepBlend_AppSurf::SurfShape()`
+    pub fn surf_shape(
+        &self,
+        UDegree: &mut i32,
+        VDegree: &mut i32,
+        NbUPoles: &mut i32,
+        NbVPoles: &mut i32,
+        NbUKnots: &mut i32,
+        NbVKnots: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_AppSurf_surf_shape(
+                self as *const Self,
+                UDegree,
+                VDegree,
+                NbUPoles,
+                NbVPoles,
+                NbUKnots,
+                NbVKnots,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:113 - `BRepBlend_AppSurf::Surface()`
+    pub fn surface(
+        &self,
+        TPoles: &mut crate::ffi::TColgp_Array2OfPnt,
+        TWeights: &mut crate::ffi::TColStd_Array2OfReal,
+        TUKnots: &mut crate::ffi::TColStd_Array1OfReal,
+        TVKnots: &mut crate::ffi::TColStd_Array1OfReal,
+        TUMults: &mut crate::ffi::TColStd_Array1OfInteger,
+        TVMults: &mut crate::ffi::TColStd_Array1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_AppSurf_surface(
+                self as *const Self,
+                TPoles,
+                TWeights,
+                TUKnots,
+                TVKnots,
+                TUMults,
+                TVMults,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:120 - `BRepBlend_AppSurf::UDegree()`
+    pub fn u_degree(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppSurf_u_degree(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:122 - `BRepBlend_AppSurf::VDegree()`
+    pub fn v_degree(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppSurf_v_degree(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:124 - `BRepBlend_AppSurf::SurfPoles()`
+    pub fn surf_poles(&self) -> &crate::ffi::TColgp_Array2OfPnt {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurf_surf_poles(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:126 - `BRepBlend_AppSurf::SurfWeights()`
+    pub fn surf_weights(&self) -> &crate::ffi::TColStd_Array2OfReal {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurf_surf_weights(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:128 - `BRepBlend_AppSurf::SurfUKnots()`
+    pub fn surf_u_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurf_surf_u_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:130 - `BRepBlend_AppSurf::SurfVKnots()`
+    pub fn surf_v_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurf_surf_v_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:132 - `BRepBlend_AppSurf::SurfUMults()`
+    pub fn surf_u_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurf_surf_u_mults(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:134 - `BRepBlend_AppSurf::SurfVMults()`
+    pub fn surf_v_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurf_surf_v_mults(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:136 - `BRepBlend_AppSurf::NbCurves2d()`
+    pub fn nb_curves2d(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppSurf_nb_curves2d(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:138 - `BRepBlend_AppSurf::Curves2dShape()`
+    pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32) {
+        unsafe {
+            crate::ffi::BRepBlend_AppSurf_curves2d_shape(
+                self as *const Self,
+                Degree,
+                NbPoles,
+                NbKnots,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:142 - `BRepBlend_AppSurf::Curve2d()`
+    pub fn curve2d(
+        &self,
+        Index: i32,
+        TPoles: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        TKnots: &mut crate::ffi::TColStd_Array1OfReal,
+        TMults: &mut crate::ffi::TColStd_Array1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_AppSurf_curve2d(
+                self as *const Self,
+                Index,
+                TPoles,
+                TKnots,
+                TMults,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:147 - `BRepBlend_AppSurf::Curves2dDegree()`
+    pub fn curves2d_degree(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppSurf_curves2d_degree(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:149 - `BRepBlend_AppSurf::Curve2dPoles()`
+    pub fn curve2d_poles(&self, Index: i32) -> &crate::ffi::TColgp_Array1OfPnt2d {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurf_curve2d_poles(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:151 - `BRepBlend_AppSurf::Curves2dKnots()`
+    pub fn curves2d_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurf_curves2d_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:153 - `BRepBlend_AppSurf::Curves2dMults()`
+    pub fn curves2d_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurf_curves2d_mults(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:155 - `BRepBlend_AppSurf::TolReached()`
+    pub fn tol_reached(&self, Tol3d: &mut f64, Tol2d: &mut f64) {
+        unsafe { crate::ffi::BRepBlend_AppSurf_tol_reached(self as *const Self, Tol3d, Tol2d) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurf.hxx`:157 - `BRepBlend_AppSurf::TolCurveOnSurf()`
+    pub fn tol_curve_on_surf(&self, Index: i32) -> f64 {
+        unsafe { crate::ffi::BRepBlend_AppSurf_tol_curve_on_surf(self as *const Self, Index) }
+    }
+
+    /// Upcast to AppBlend_Approx
+    pub fn as_app_blend_approx(&self) -> &crate::app_blend::Approx {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurf_as_AppBlend_Approx(self as *const Self)) }
+    }
+
+    /// Upcast to AppBlend_Approx (mutable)
+    pub fn as_app_blend_approx_mut(&mut self) -> &mut crate::app_blend::Approx {
+        unsafe { &mut *(crate::ffi::BRepBlend_AppSurf_as_AppBlend_Approx_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From BRepBlend_AppSurface.hxx
+// ========================
+
+/// **Source:** `BRepBlend_AppSurface.hxx`:37 - `BRepBlend_AppSurface`
+/// Used to Approximate the blending surfaces.
+pub use crate::ffi::BRepBlend_AppSurface as AppSurface;
+
+unsafe impl crate::CppDeletable for AppSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_AppSurface_destructor(ptr);
+    }
+}
+
+impl AppSurface {
+    /// **Source:** `BRepBlend_AppSurface.hxx`:49 - `BRepBlend_AppSurface::BRepBlend_AppSurface()`
+    /// Approximation     of   the   new  Surface  (and
+    /// eventually the  2d    Curves   on the   support
+    /// surfaces).
+    /// Normally     the  2d    curve are
+    /// approximated  with an  tolerance   given  by   the
+    /// resolution on   support surfaces,  but  if this
+    /// tolerance is too large Tol2d  is used.
+    pub fn new_handleapproxsweepfunction_real5_shape_int2(
+        Funct: &crate::ffi::HandleApproxSweepFunction,
+        First: f64,
+        Last: f64,
+        Tol3d: f64,
+        Tol2d: f64,
+        TolAngular: f64,
+        Continuity: crate::geom_abs::Shape,
+        Degmax: i32,
+        Segmax: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepBlend_AppSurface_ctor_handleapproxsweepfunction_real5_shape_int2(
+                    Funct,
+                    First,
+                    Last,
+                    Tol3d,
+                    Tol2d,
+                    TolAngular,
+                    Continuity.into(),
+                    Degmax,
+                    Segmax,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:49 - `BRepBlend_AppSurface::BRepBlend_AppSurface()`
+    /// Approximation     of   the   new  Surface  (and
+    /// eventually the  2d    Curves   on the   support
+    /// surfaces).
+    /// Normally     the  2d    curve are
+    /// approximated  with an  tolerance   given  by   the
+    /// resolution on   support surfaces,  but  if this
+    /// tolerance is too large Tol2d  is used.
+    pub fn new_handleapproxsweepfunction_real5_shape_int(
+        Funct: &crate::ffi::HandleApproxSweepFunction,
+        First: f64,
+        Last: f64,
+        Tol3d: f64,
+        Tol2d: f64,
+        TolAngular: f64,
+        Continuity: crate::geom_abs::Shape,
+        Degmax: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleapproxsweepfunction_real5_shape_int2(
+            Funct, First, Last, Tol3d, Tol2d, TolAngular, Continuity, Degmax, 50,
+        )
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:49 - `BRepBlend_AppSurface::BRepBlend_AppSurface()`
+    /// Approximation     of   the   new  Surface  (and
+    /// eventually the  2d    Curves   on the   support
+    /// surfaces).
+    /// Normally     the  2d    curve are
+    /// approximated  with an  tolerance   given  by   the
+    /// resolution on   support surfaces,  but  if this
+    /// tolerance is too large Tol2d  is used.
+    pub fn new_handleapproxsweepfunction_real5_shape(
+        Funct: &crate::ffi::HandleApproxSweepFunction,
+        First: f64,
+        Last: f64,
+        Tol3d: f64,
+        Tol2d: f64,
+        TolAngular: f64,
+        Continuity: crate::geom_abs::Shape,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleapproxsweepfunction_real5_shape_int2(
+            Funct, First, Last, Tol3d, Tol2d, TolAngular, Continuity, 11, 50,
+        )
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:59 - `BRepBlend_AppSurface::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_AppSurface_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:61 - `BRepBlend_AppSurface::SurfShape()`
+    pub fn surf_shape(
+        &self,
+        UDegree: &mut i32,
+        VDegree: &mut i32,
+        NbUPoles: &mut i32,
+        NbVPoles: &mut i32,
+        NbUKnots: &mut i32,
+        NbVKnots: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_AppSurface_surf_shape(
+                self as *const Self,
+                UDegree,
+                VDegree,
+                NbUPoles,
+                NbVPoles,
+                NbUKnots,
+                NbVKnots,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:68 - `BRepBlend_AppSurface::Surface()`
+    pub fn surface(
+        &self,
+        TPoles: &mut crate::ffi::TColgp_Array2OfPnt,
+        TWeights: &mut crate::ffi::TColStd_Array2OfReal,
+        TUKnots: &mut crate::ffi::TColStd_Array1OfReal,
+        TVKnots: &mut crate::ffi::TColStd_Array1OfReal,
+        TUMults: &mut crate::ffi::TColStd_Array1OfInteger,
+        TVMults: &mut crate::ffi::TColStd_Array1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_AppSurface_surface(
+                self as *const Self,
+                TPoles,
+                TWeights,
+                TUKnots,
+                TVKnots,
+                TUMults,
+                TVMults,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:75 - `BRepBlend_AppSurface::UDegree()`
+    pub fn u_degree(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppSurface_u_degree(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:77 - `BRepBlend_AppSurface::VDegree()`
+    pub fn v_degree(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppSurface_v_degree(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:79 - `BRepBlend_AppSurface::SurfPoles()`
+    pub fn surf_poles(&self) -> &crate::ffi::TColgp_Array2OfPnt {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurface_surf_poles(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:81 - `BRepBlend_AppSurface::SurfWeights()`
+    pub fn surf_weights(&self) -> &crate::ffi::TColStd_Array2OfReal {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurface_surf_weights(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:83 - `BRepBlend_AppSurface::SurfUKnots()`
+    pub fn surf_u_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurface_surf_u_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:85 - `BRepBlend_AppSurface::SurfVKnots()`
+    pub fn surf_v_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurface_surf_v_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:87 - `BRepBlend_AppSurface::SurfUMults()`
+    pub fn surf_u_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurface_surf_u_mults(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:89 - `BRepBlend_AppSurface::SurfVMults()`
+    pub fn surf_v_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurface_surf_v_mults(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:92 - `BRepBlend_AppSurface::MaxErrorOnSurf()`
+    /// returns the maximum error in the surface approximation.
+    pub fn max_error_on_surf(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_AppSurface_max_error_on_surf(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:94 - `BRepBlend_AppSurface::NbCurves2d()`
+    pub fn nb_curves2d(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppSurface_nb_curves2d(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:96 - `BRepBlend_AppSurface::Curves2dShape()`
+    pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32) {
+        unsafe {
+            crate::ffi::BRepBlend_AppSurface_curves2d_shape(
+                self as *const Self,
+                Degree,
+                NbPoles,
+                NbKnots,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:100 - `BRepBlend_AppSurface::Curve2d()`
+    pub fn curve2d(
+        &self,
+        Index: i32,
+        TPoles: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        TKnots: &mut crate::ffi::TColStd_Array1OfReal,
+        TMults: &mut crate::ffi::TColStd_Array1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_AppSurface_curve2d(
+                self as *const Self,
+                Index,
+                TPoles,
+                TKnots,
+                TMults,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:105 - `BRepBlend_AppSurface::Curves2dDegree()`
+    pub fn curves2d_degree(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_AppSurface_curves2d_degree(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:107 - `BRepBlend_AppSurface::Curve2dPoles()`
+    pub fn curve2d_poles(&self, Index: i32) -> &crate::ffi::TColgp_Array1OfPnt2d {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurface_curve2d_poles(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:109 - `BRepBlend_AppSurface::Curves2dKnots()`
+    pub fn curves2d_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurface_curves2d_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:111 - `BRepBlend_AppSurface::Curves2dMults()`
+    pub fn curves2d_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurface_curves2d_mults(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:113 - `BRepBlend_AppSurface::TolReached()`
+    pub fn tol_reached(&self, Tol3d: &mut f64, Tol2d: &mut f64) {
+        unsafe { crate::ffi::BRepBlend_AppSurface_tol_reached(self as *const Self, Tol3d, Tol2d) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:116 - `BRepBlend_AppSurface::Max2dError()`
+    /// returns the maximum error in the <Index> 2d curve approximation.
+    pub fn max2d_error(&self, Index: i32) -> f64 {
+        unsafe { crate::ffi::BRepBlend_AppSurface_max2d_error(self as *const Self, Index) }
+    }
+
+    /// **Source:** `BRepBlend_AppSurface.hxx`:118 - `BRepBlend_AppSurface::TolCurveOnSurf()`
+    pub fn tol_curve_on_surf(&self, Index: i32) -> f64 {
+        unsafe { crate::ffi::BRepBlend_AppSurface_tol_curve_on_surf(self as *const Self, Index) }
+    }
+
+    /// Upcast to AppBlend_Approx
+    pub fn as_app_blend_approx(&self) -> &crate::app_blend::Approx {
+        unsafe { &*(crate::ffi::BRepBlend_AppSurface_as_AppBlend_Approx(self as *const Self)) }
+    }
+
+    /// Upcast to AppBlend_Approx (mutable)
+    pub fn as_app_blend_approx_mut(&mut self) -> &mut crate::app_blend::Approx {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_AppSurface_as_AppBlend_Approx_mut(self as *mut Self))
+        }
+    }
+}
+
+// ── Skipped symbols for AppSurface (1 total) ──
+// SKIPPED: **Source:** `BRepBlend_AppSurface.hxx`:121 - `BRepBlend_AppSurface::Dump`
+//   method: display information on approximation.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
+// ========================
+// From BRepBlend_BlendTool.hxx
+// ========================
+
+/// **Source:** `BRepBlend_BlendTool.hxx`:26 - `BRepBlend_BlendTool`
+pub use crate::ffi::BRepBlend_BlendTool as BlendTool;
+
+unsafe impl crate::CppDeletable for BlendTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_BlendTool_destructor(ptr);
+    }
+}
+
+impl BlendTool {
+    /// **Source:** `BRepBlend_BlendTool.hxx` - `BRepBlend_BlendTool::BRepBlend_BlendTool()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_BlendTool_ctor()) }
+    }
+
+    /// **Source:** `BRepBlend_BlendTool.hxx`:38 - `BRepBlend_BlendTool::Project()`
+    /// Projects the point P on the arc C.
+    /// If the methods returns Standard_True, the projection is
+    /// successful, and Paramproj is the parameter on the arc
+    /// of the projected point, Dist is the distance between
+    /// P and the curve..
+    /// If the method returns Standard_False, Param proj and Dist
+    /// are not significant.
+    pub fn project(
+        P: &crate::gp::Pnt2d,
+        S: &crate::ffi::HandleAdaptor3dSurface,
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        Paramproj: &mut f64,
+        Dist: &mut f64,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_BlendTool_project(P, S, C, Paramproj, Dist) }
+    }
+
+    /// **Source:** `BRepBlend_BlendTool.hxx`:44 - `BRepBlend_BlendTool::Inters()`
+    pub fn inters(
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
+        S: &crate::ffi::HandleAdaptor3dSurface,
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        Param: &mut f64,
+        Dist: &mut f64,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_BlendTool_inters(P1, P2, S, C, Param, Dist) }
+    }
+
+    /// **Source:** `BRepBlend_BlendTool.hxx`:52 - `BRepBlend_BlendTool::Parameter()`
+    /// Returns the parameter of the vertex V on the edge A.
+    pub fn parameter(
+        V: &crate::ffi::HandleAdaptor3dHVertex,
+        A: &crate::ffi::HandleAdaptor2dCurve2d,
+    ) -> f64 {
+        unsafe { crate::ffi::BRepBlend_BlendTool_parameter(V, A) }
+    }
+
+    /// **Source:** `BRepBlend_BlendTool.hxx`:59 - `BRepBlend_BlendTool::Tolerance()`
+    /// Returns the parametric tolerance on the arc A
+    /// used to consider that the vertex and another point meet,
+    /// i-e if Abs(Parameter(Vertex)-Parameter(OtherPnt))<=
+    /// Tolerance, the points are "merged".
+    pub fn tolerance(
+        V: &crate::ffi::HandleAdaptor3dHVertex,
+        A: &crate::ffi::HandleAdaptor2dCurve2d,
+    ) -> f64 {
+        unsafe { crate::ffi::BRepBlend_BlendTool_tolerance(V, A) }
+    }
+
+    /// **Source:** `BRepBlend_BlendTool.hxx`:62 - `BRepBlend_BlendTool::SingularOnUMin()`
+    pub fn singular_on_u_min(S: &crate::ffi::HandleAdaptor3dSurface) -> bool {
+        unsafe { crate::ffi::BRepBlend_BlendTool_singular_on_u_min(S) }
+    }
+
+    /// **Source:** `BRepBlend_BlendTool.hxx`:64 - `BRepBlend_BlendTool::SingularOnUMax()`
+    pub fn singular_on_u_max(S: &crate::ffi::HandleAdaptor3dSurface) -> bool {
+        unsafe { crate::ffi::BRepBlend_BlendTool_singular_on_u_max(S) }
+    }
+
+    /// **Source:** `BRepBlend_BlendTool.hxx`:66 - `BRepBlend_BlendTool::SingularOnVMin()`
+    pub fn singular_on_v_min(S: &crate::ffi::HandleAdaptor3dSurface) -> bool {
+        unsafe { crate::ffi::BRepBlend_BlendTool_singular_on_v_min(S) }
+    }
+
+    /// **Source:** `BRepBlend_BlendTool.hxx`:68 - `BRepBlend_BlendTool::SingularOnVMax()`
+    pub fn singular_on_v_max(S: &crate::ffi::HandleAdaptor3dSurface) -> bool {
+        unsafe { crate::ffi::BRepBlend_BlendTool_singular_on_v_max(S) }
+    }
+
+    /// **Source:** `BRepBlend_BlendTool.hxx`:70 - `BRepBlend_BlendTool::NbSamplesU()`
+    pub fn nb_samples_u(S: &crate::ffi::HandleAdaptor3dSurface, u1: f64, u2: f64) -> i32 {
+        unsafe { crate::ffi::BRepBlend_BlendTool_nb_samples_u(S, u1, u2) }
+    }
+
+    /// **Source:** `BRepBlend_BlendTool.hxx`:74 - `BRepBlend_BlendTool::NbSamplesV()`
+    pub fn nb_samples_v(S: &crate::ffi::HandleAdaptor3dSurface, v1: f64, v2: f64) -> i32 {
+        unsafe { crate::ffi::BRepBlend_BlendTool_nb_samples_v(S, v1, v2) }
+    }
+
+    /// **Source:** `BRepBlend_BlendTool.hxx`:82 - `BRepBlend_BlendTool::Bounds()`
+    /// Returns the parametric limits on the arc C.
+    /// These limits must be finite : they are either
+    /// the real limits of the arc, for a finite arc,
+    /// or a bounding box for an infinite arc.
+    pub fn bounds(C: &crate::ffi::HandleAdaptor2dCurve2d, Ufirst: &mut f64, Ulast: &mut f64) {
+        unsafe { crate::ffi::BRepBlend_BlendTool_bounds(C, Ufirst, Ulast) }
+    }
+
+    /// **Source:** `BRepBlend_BlendTool.hxx`:86 - `BRepBlend_BlendTool::CurveOnSurf()`
+    pub fn curve_on_surf(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        S: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_BlendTool_curve_on_surf(C, S)) }
+    }
+}
+
+// ========================
+// From BRepBlend_CSWalking.hxx
+// ========================
+
+/// **Source:** `BRepBlend_CSWalking.hxx`:43 - `BRepBlend_CSWalking`
+pub use crate::ffi::BRepBlend_CSWalking as CSWalking;
+
+unsafe impl crate::CppDeletable for CSWalking {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_CSWalking_destructor(ptr);
+    }
+}
+
+impl CSWalking {
+    /// **Source:** `BRepBlend_CSWalking.hxx`:48 - `BRepBlend_CSWalking::BRepBlend_CSWalking()`
+    pub fn new_handleadaptor3dcurve_handleadaptor3dsurface_handleadaptor3dtopoltool(
+        Curv: &crate::ffi::HandleAdaptor3dCurve,
+        Surf: &crate::ffi::HandleAdaptor3dSurface,
+        Domain: &crate::ffi::HandleAdaptor3dTopolTool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_CSWalking_ctor_handleadaptor3dcurve_handleadaptor3dsurface_handleadaptor3dtopoltool(Curv, Surf, Domain))
+        }
+    }
+
+    /// **Source:** `BRepBlend_CSWalking.hxx`:62 - `BRepBlend_CSWalking::Complete()`
+    pub fn complete(&mut self, F: &mut crate::blend::CSFunction, Pmin: f64) -> bool {
+        unsafe { crate::ffi::BRepBlend_CSWalking_complete(self as *mut Self, F, Pmin) }
+    }
+
+    /// **Source:** `BRepBlend_CSWalking.hxx`:64 - `BRepBlend_CSWalking::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_CSWalking_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_CSWalking.hxx`:66 - `BRepBlend_CSWalking::Line()`
+    pub fn line(&self) -> &crate::ffi::HandleBRepBlendLine {
+        unsafe { &*(crate::ffi::BRepBlend_CSWalking_line(self as *const Self)) }
+    }
+}
+
+// ── Skipped symbols for CSWalking (1 total) ──
+// SKIPPED: **Source:** `BRepBlend_CSWalking.hxx`:52 - `BRepBlend_CSWalking::Perform`
+//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, F: &mut CSFunction, Pdep: f64, Pmax: f64, MaxStep: f64, Tol3d: f64, TolGuide: f64, Soldep: &Vector, Fleche: f64, Appro: bool);
+//
+
+// ========================
+// From BRepBlend_CurvPointRadInv.hxx
+// ========================
+
+/// **Source:** `BRepBlend_CurvPointRadInv.hxx`:41 - `BRepBlend_CurvPointRadInv`
+/// Function of reframing between a point and a curve.
+/// valid in cases of constant and progressive radius.
+/// This function  is used  to find a  solution on  a done
+/// point   of   the curve 1 when   using  RstRstConsRad or
+/// CSConstRad...
+/// The vector <X>  used in Value, Values and  Derivatives
+/// methods  has  to   be the  vector   of the  parametric
+/// coordinates w, U where w is  the parameter  on the
+/// guide line, U   are the parametric coordinates of  a
+/// point on the partner curve 2.
+pub use crate::ffi::BRepBlend_CurvPointRadInv as CurvPointRadInv;
+
+unsafe impl crate::CppDeletable for CurvPointRadInv {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_CurvPointRadInv_destructor(ptr);
+    }
+}
+
+impl CurvPointRadInv {
+    /// **Source:** `BRepBlend_CurvPointRadInv.hxx`:46 - `BRepBlend_CurvPointRadInv::BRepBlend_CurvPointRadInv()`
+    pub fn new_handleadaptor3dcurve2(
+        C1: &crate::ffi::HandleAdaptor3dCurve,
+        C2: &crate::ffi::HandleAdaptor3dCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepBlend_CurvPointRadInv_ctor_handleadaptor3dcurve2(C1, C2),
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_CurvPointRadInv.hxx`:49 - `BRepBlend_CurvPointRadInv::Set()`
+    pub fn set_int(&mut self, Choix: i32) {
+        unsafe { crate::ffi::BRepBlend_CurvPointRadInv_set_int(self as *mut Self, Choix) }
+    }
+
+    /// **Source:** `BRepBlend_CurvPointRadInv.hxx`:52 - `BRepBlend_CurvPointRadInv::NbEquations()`
+    /// returns 2.
+    pub fn nb_equations(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_CurvPointRadInv_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_CurvPointRadInv.hxx`:73 - `BRepBlend_CurvPointRadInv::Set()`
+    /// Set the Point on which a solution has to be found.
+    pub fn set_pnt(&mut self, P: &crate::gp::Pnt) {
+        unsafe { crate::ffi::BRepBlend_CurvPointRadInv_set_pnt(self as *mut Self, P) }
+    }
+
+    /// Upcast to Blend_CurvPointFuncInv
+    pub fn as_blend_curv_point_func_inv(&self) -> &crate::blend::CurvPointFuncInv {
+        unsafe {
+            &*(crate::ffi::BRepBlend_CurvPointRadInv_as_Blend_CurvPointFuncInv(self as *const Self))
+        }
+    }
+
+    /// Upcast to Blend_CurvPointFuncInv (mutable)
+    pub fn as_blend_curv_point_func_inv_mut(&mut self) -> &mut crate::blend::CurvPointFuncInv {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_CurvPointRadInv_as_Blend_CurvPointFuncInv_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &*(crate::ffi::BRepBlend_CurvPointRadInv_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_CurvPointRadInv_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe {
+            &*(crate::ffi::BRepBlend_CurvPointRadInv_as_math_FunctionSet(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_CurvPointRadInv_as_math_FunctionSet_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Blend_CurvPointFuncInv.hxx`:45 - `Blend_CurvPointFuncInv::NbVariables()`
+    pub fn nb_variables(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_CurvPointRadInv_inherited_NbVariables(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_CurvPointRadInv_inherited_GetStateNumber(self as *mut Self) }
+    }
+}
+
+// ── Skipped symbols for CurvPointRadInv (6 total) ──
+// SKIPPED: **Source:** `BRepBlend_CurvPointRadInv.hxx`:58 - `BRepBlend_CurvPointRadInv::Value`
+//   method: computes the values <F> of the Functions for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_CurvPointRadInv.hxx`:64 - `BRepBlend_CurvPointRadInv::Derivatives`
+//   method: returns the values <D> of the derivatives for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_CurvPointRadInv.hxx`:70 - `BRepBlend_CurvPointRadInv::Values`
+//   method: returns the values <F> of the functions and the derivatives
+//   method: <D> for the variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_CurvPointRadInv.hxx`:78 - `BRepBlend_CurvPointRadInv::GetTolerance`
+//   method: Returns in the vector Tolerance the parametric tolerance
+//   method: for each of the 3 variables;
+//   method: Tol is the tolerance used in 3d space.
+//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
+//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
+//
+// SKIPPED: **Source:** `BRepBlend_CurvPointRadInv.hxx`:84 - `BRepBlend_CurvPointRadInv::GetBounds`
+//   method: Returns in the vector InfBound the lowest values allowed
+//   method: for each of the 3 variables.
+//   method: Returns in the vector SupBound the greatest values allowed
+//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
+//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
+//
+// SKIPPED: **Source:** `BRepBlend_CurvPointRadInv.hxx`:88 - `BRepBlend_CurvPointRadInv::IsSolution`
+//   method: Returns Standard_True if Sol is a zero of the function.
+//   method: Tol is the tolerance used in 3d space.
+//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
+//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
+//
+
 // ========================
 // From BRepBlend_Extremity.hxx
 // ========================
@@ -232,6 +2835,692 @@ impl Extremity {
 }
 
 // ========================
+// From BRepBlend_HCurve2dTool.hxx
+// ========================
+
+/// **Source:** `BRepBlend_HCurve2dTool.hxx`:32 - `BRepBlend_HCurve2dTool`
+pub use crate::ffi::BRepBlend_HCurve2dTool as HCurve2dTool;
+
+unsafe impl crate::CppDeletable for HCurve2dTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_HCurve2dTool_destructor(ptr);
+    }
+}
+
+impl HCurve2dTool {
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx` - `BRepBlend_HCurve2dTool::BRepBlend_HCurve2dTool()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurve2dTool_ctor()) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:37 - `BRepBlend_HCurve2dTool::FirstParameter()`
+    pub fn first_parameter(C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
+        unsafe { crate::ffi::BRepBlend_HCurve2dTool_first_parameter(C) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:39 - `BRepBlend_HCurve2dTool::LastParameter()`
+    pub fn last_parameter(C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
+        unsafe { crate::ffi::BRepBlend_HCurve2dTool_last_parameter(C) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:41 - `BRepBlend_HCurve2dTool::Continuity()`
+    pub fn continuity(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::geom_abs::Shape {
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::BRepBlend_HCurve2dTool_continuity(C))
+                .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:45 - `BRepBlend_HCurve2dTool::NbIntervals()`
+    /// Returns  the number  of  intervals for  continuity
+    /// <S>. May be one if Continuity(myclass) >= <S>
+    pub fn nb_intervals(C: &crate::ffi::HandleAdaptor2dCurve2d, S: crate::geom_abs::Shape) -> i32 {
+        unsafe { crate::ffi::BRepBlend_HCurve2dTool_nb_intervals(C, S.into()) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:52 - `BRepBlend_HCurve2dTool::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        T: &mut crate::ffi::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
+        unsafe { crate::ffi::BRepBlend_HCurve2dTool_intervals(C, T, S.into()) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:56 - `BRepBlend_HCurve2dTool::IsClosed()`
+    pub fn is_closed(C: &crate::ffi::HandleAdaptor2dCurve2d) -> bool {
+        unsafe { crate::ffi::BRepBlend_HCurve2dTool_is_closed(C) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:58 - `BRepBlend_HCurve2dTool::IsPeriodic()`
+    pub fn is_periodic(C: &crate::ffi::HandleAdaptor2dCurve2d) -> bool {
+        unsafe { crate::ffi::BRepBlend_HCurve2dTool_is_periodic(C) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:60 - `BRepBlend_HCurve2dTool::Period()`
+    pub fn period(C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
+        unsafe { crate::ffi::BRepBlend_HCurve2dTool_period(C) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:63 - `BRepBlend_HCurve2dTool::Value()`
+    /// Computes the point of parameter U on the curve.
+    pub fn value(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        U: f64,
+    ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurve2dTool_value(C, U)) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:66 - `BRepBlend_HCurve2dTool::D0()`
+    /// Computes the point of parameter U on the curve.
+    pub fn d0(C: &crate::ffi::HandleAdaptor2dCurve2d, U: f64, P: &mut crate::gp::Pnt2d) {
+        unsafe { crate::ffi::BRepBlend_HCurve2dTool_d0(C, U, P) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:72 - `BRepBlend_HCurve2dTool::D1()`
+    /// Computes the point of parameter U on the curve with its
+    /// first derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C1.
+    pub fn d1(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        U: f64,
+        P: &mut crate::gp::Pnt2d,
+        V: &mut crate::gp::Vec2d,
+    ) {
+        unsafe { crate::ffi::BRepBlend_HCurve2dTool_d1(C, U, P, V) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:81 - `BRepBlend_HCurve2dTool::D2()`
+    /// Returns the point P of parameter U, the first and second
+    /// derivatives V1 and V2.
+    /// Raised if the continuity of the current interval
+    /// is not C2.
+    pub fn d2(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        U: f64,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
+    ) {
+        unsafe { crate::ffi::BRepBlend_HCurve2dTool_d2(C, U, P, V1, V2) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:91 - `BRepBlend_HCurve2dTool::D3()`
+    /// Returns the point P of parameter U, the first, the second
+    /// and the third derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C3.
+    pub fn d3(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        U: f64,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
+        V3: &mut crate::gp::Vec2d,
+    ) {
+        unsafe { crate::ffi::BRepBlend_HCurve2dTool_d3(C, U, P, V1, V2, V3) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:103 - `BRepBlend_HCurve2dTool::DN()`
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if the continuity of the current interval
+    /// is not CN.
+    /// Raised if N < 1.
+    pub fn dn(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        U: f64,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::gp::Vec2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurve2dTool_dn(C, U, N)) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:109 - `BRepBlend_HCurve2dTool::Resolution()`
+    /// Returns the parametric  resolution corresponding
+    /// to the real space resolution <R3d>.
+    pub fn resolution(C: &crate::ffi::HandleAdaptor2dCurve2d, R3d: f64) -> f64 {
+        unsafe { crate::ffi::BRepBlend_HCurve2dTool_resolution(C, R3d) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:114 - `BRepBlend_HCurve2dTool::GetType()`
+    /// Returns  the  type of the   curve  in the  current
+    /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+    /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
+    pub fn get_type(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::geom_abs::CurveType {
+        unsafe {
+            crate::geom_abs::CurveType::try_from(crate::ffi::BRepBlend_HCurve2dTool_get_type(C))
+                .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:116 - `BRepBlend_HCurve2dTool::Line()`
+    pub fn line(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Lin2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurve2dTool_line(C)) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:118 - `BRepBlend_HCurve2dTool::Circle()`
+    pub fn circle(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Circ2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurve2dTool_circle(C)) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:120 - `BRepBlend_HCurve2dTool::Ellipse()`
+    pub fn ellipse(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Elips2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurve2dTool_ellipse(C)) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:122 - `BRepBlend_HCurve2dTool::Hyperbola()`
+    pub fn hyperbola(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Hypr2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurve2dTool_hyperbola(C)) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:124 - `BRepBlend_HCurve2dTool::Parabola()`
+    pub fn parabola(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Parab2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurve2dTool_parabola(C)) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:126 - `BRepBlend_HCurve2dTool::Bezier()`
+    pub fn bezier(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurve2dTool_bezier(C)) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:128 - `BRepBlend_HCurve2dTool::BSpline()`
+    pub fn b_spline(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurve2dTool_b_spline(C)) }
+    }
+
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:130 - `BRepBlend_HCurve2dTool::NbSamples()`
+    pub fn nb_samples(C: &crate::ffi::HandleAdaptor2dCurve2d, U0: f64, U1: f64) -> i32 {
+        unsafe { crate::ffi::BRepBlend_HCurve2dTool_nb_samples(C, U0, U1) }
+    }
+}
+
+// ========================
+// From BRepBlend_HCurveTool.hxx
+// ========================
+
+/// **Source:** `BRepBlend_HCurveTool.hxx`:32 - `BRepBlend_HCurveTool`
+pub use crate::ffi::BRepBlend_HCurveTool as HCurveTool;
+
+unsafe impl crate::CppDeletable for HCurveTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_HCurveTool_destructor(ptr);
+    }
+}
+
+impl HCurveTool {
+    /// **Source:** `BRepBlend_HCurveTool.hxx` - `BRepBlend_HCurveTool::BRepBlend_HCurveTool()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurveTool_ctor()) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:37 - `BRepBlend_HCurveTool::FirstParameter()`
+    pub fn first_parameter(C: &crate::ffi::HandleAdaptor3dCurve) -> f64 {
+        unsafe { crate::ffi::BRepBlend_HCurveTool_first_parameter(C) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:39 - `BRepBlend_HCurveTool::LastParameter()`
+    pub fn last_parameter(C: &crate::ffi::HandleAdaptor3dCurve) -> f64 {
+        unsafe { crate::ffi::BRepBlend_HCurveTool_last_parameter(C) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:41 - `BRepBlend_HCurveTool::Continuity()`
+    pub fn continuity(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::geom_abs::Shape {
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::BRepBlend_HCurveTool_continuity(C))
+                .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:45 - `BRepBlend_HCurveTool::NbIntervals()`
+    /// Returns  the number  of  intervals for  continuity
+    /// <S>. May be one if Continuity(myclass) >= <S>
+    pub fn nb_intervals(C: &crate::ffi::HandleAdaptor3dCurve, S: crate::geom_abs::Shape) -> i32 {
+        unsafe { crate::ffi::BRepBlend_HCurveTool_nb_intervals(C, S.into()) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:52 - `BRepBlend_HCurveTool::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(
+        C: &crate::ffi::HandleAdaptor3dCurve,
+        T: &mut crate::ffi::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
+        unsafe { crate::ffi::BRepBlend_HCurveTool_intervals(C, T, S.into()) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:56 - `BRepBlend_HCurveTool::IsClosed()`
+    pub fn is_closed(C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
+        unsafe { crate::ffi::BRepBlend_HCurveTool_is_closed(C) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:58 - `BRepBlend_HCurveTool::IsPeriodic()`
+    pub fn is_periodic(C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
+        unsafe { crate::ffi::BRepBlend_HCurveTool_is_periodic(C) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:60 - `BRepBlend_HCurveTool::Period()`
+    pub fn period(C: &crate::ffi::HandleAdaptor3dCurve) -> f64 {
+        unsafe { crate::ffi::BRepBlend_HCurveTool_period(C) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:63 - `BRepBlend_HCurveTool::Value()`
+    /// Computes the point of parameter U on the curve.
+    pub fn value(C: &crate::ffi::HandleAdaptor3dCurve, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurveTool_value(C, U)) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:66 - `BRepBlend_HCurveTool::D0()`
+    /// Computes the point of parameter U on the curve.
+    pub fn d0(C: &crate::ffi::HandleAdaptor3dCurve, U: f64, P: &mut crate::gp::Pnt) {
+        unsafe { crate::ffi::BRepBlend_HCurveTool_d0(C, U, P) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:72 - `BRepBlend_HCurveTool::D1()`
+    /// Computes the point of parameter U on the curve with its
+    /// first derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C1.
+    pub fn d1(
+        C: &crate::ffi::HandleAdaptor3dCurve,
+        U: f64,
+        P: &mut crate::gp::Pnt,
+        V: &mut crate::gp::Vec,
+    ) {
+        unsafe { crate::ffi::BRepBlend_HCurveTool_d1(C, U, P, V) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:78 - `BRepBlend_HCurveTool::D2()`
+    /// Returns the point P of parameter U, the first and second
+    /// derivatives V1 and V2.
+    /// Raised if the continuity of the current interval
+    /// is not C2.
+    pub fn d2(
+        C: &crate::ffi::HandleAdaptor3dCurve,
+        U: f64,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+    ) {
+        unsafe { crate::ffi::BRepBlend_HCurveTool_d2(C, U, P, V1, V2) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:88 - `BRepBlend_HCurveTool::D3()`
+    /// Returns the point P of parameter U, the first, the second
+    /// and the third derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C3.
+    pub fn d3(
+        C: &crate::ffi::HandleAdaptor3dCurve,
+        U: f64,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
+    ) {
+        unsafe { crate::ffi::BRepBlend_HCurveTool_d3(C, U, P, V1, V2, V3) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:100 - `BRepBlend_HCurveTool::DN()`
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if the continuity of the current interval
+    /// is not CN.
+    /// Raised if N < 1.
+    pub fn dn(
+        C: &crate::ffi::HandleAdaptor3dCurve,
+        U: f64,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurveTool_dn(C, U, N)) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:106 - `BRepBlend_HCurveTool::Resolution()`
+    /// Returns the parametric  resolution corresponding
+    /// to the real space resolution <R3d>.
+    pub fn resolution(C: &crate::ffi::HandleAdaptor3dCurve, R3d: f64) -> f64 {
+        unsafe { crate::ffi::BRepBlend_HCurveTool_resolution(C, R3d) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:111 - `BRepBlend_HCurveTool::GetType()`
+    /// Returns  the  type of the   curve  in the  current
+    /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+    /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
+    pub fn get_type(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::geom_abs::CurveType {
+        unsafe {
+            crate::geom_abs::CurveType::try_from(crate::ffi::BRepBlend_HCurveTool_get_type(C))
+                .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:113 - `BRepBlend_HCurveTool::Line()`
+    pub fn line(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Lin> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurveTool_line(C)) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:115 - `BRepBlend_HCurveTool::Circle()`
+    pub fn circle(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Circ> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurveTool_circle(C)) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:117 - `BRepBlend_HCurveTool::Ellipse()`
+    pub fn ellipse(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Elips> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurveTool_ellipse(C)) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:119 - `BRepBlend_HCurveTool::Hyperbola()`
+    pub fn hyperbola(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Hypr> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurveTool_hyperbola(C)) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:121 - `BRepBlend_HCurveTool::Parabola()`
+    pub fn parabola(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Parab> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurveTool_parabola(C)) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:123 - `BRepBlend_HCurveTool::Bezier()`
+    pub fn bezier(
+        C: &crate::ffi::HandleAdaptor3dCurve,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurveTool_bezier(C)) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:125 - `BRepBlend_HCurveTool::BSpline()`
+    pub fn b_spline(
+        C: &crate::ffi::HandleAdaptor3dCurve,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_HCurveTool_b_spline(C)) }
+    }
+
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:127 - `BRepBlend_HCurveTool::NbSamples()`
+    pub fn nb_samples(C: &crate::ffi::HandleAdaptor3dCurve, U0: f64, U1: f64) -> i32 {
+        unsafe { crate::ffi::BRepBlend_HCurveTool_nb_samples(C, U0, U1) }
+    }
+}
+
+// ========================
+// From BRepBlend_Line.hxx
+// ========================
+
+/// **Source:** `BRepBlend_Line.hxx`:30 - `BRepBlend_Line`
+pub use crate::ffi::BRepBlend_Line as Line;
+
+unsafe impl crate::CppDeletable for Line {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_Line_destructor(ptr);
+    }
+}
+
+impl Line {
+    /// **Source:** `BRepBlend_Line.hxx`:34 - `BRepBlend_Line::BRepBlend_Line()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_Line_ctor()) }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:37 - `BRepBlend_Line::Clear()`
+    /// Clears the content of the line.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BRepBlend_Line_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:40 - `BRepBlend_Line::Append()`
+    /// Adds a point in the line.
+    pub fn append(&mut self, P: &crate::blend::Point) {
+        unsafe { crate::ffi::BRepBlend_Line_append(self as *mut Self, P) }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:43 - `BRepBlend_Line::Prepend()`
+    /// Adds a point in the line at the first place.
+    pub fn prepend(&mut self, P: &crate::blend::Point) {
+        unsafe { crate::ffi::BRepBlend_Line_prepend(self as *mut Self, P) }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:46 - `BRepBlend_Line::InsertBefore()`
+    /// Adds a point in the line at the first place.
+    pub fn insert_before(&mut self, Index: i32, P: &crate::blend::Point) {
+        unsafe { crate::ffi::BRepBlend_Line_insert_before(self as *mut Self, Index, P) }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:51 - `BRepBlend_Line::Remove()`
+    /// Removes  from  <me>    all  the  items  of
+    /// positions between <FromIndex> and <ToIndex>.
+    /// Raises an exception if the indices are out of bounds.
+    pub fn remove(&mut self, FromIndex: i32, ToIndex: i32) {
+        unsafe { crate::ffi::BRepBlend_Line_remove(self as *mut Self, FromIndex, ToIndex) }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:55 - `BRepBlend_Line::Set()`
+    /// Sets the value of the transition of the line on S1 and
+    /// the line on S2.
+    pub fn set_typetrans2(
+        &mut self,
+        TranS1: crate::int_surf::TypeTrans,
+        TranS2: crate::int_surf::TypeTrans,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_Line_set_typetrans2(
+                self as *mut Self,
+                TranS1.into(),
+                TranS2.into(),
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:58 - `BRepBlend_Line::Set()`
+    /// Sets the value of the transition of the line on a surface
+    pub fn set_typetrans(&mut self, Trans: crate::int_surf::TypeTrans) {
+        unsafe { crate::ffi::BRepBlend_Line_set_typetrans(self as *mut Self, Trans.into()) }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:61 - `BRepBlend_Line::SetStartPoints()`
+    /// Sets the values of the start points for the line.
+    pub fn set_start_points(&mut self, StartPt1: &Extremity, StartPt2: &Extremity) {
+        unsafe {
+            crate::ffi::BRepBlend_Line_set_start_points(self as *mut Self, StartPt1, StartPt2)
+        }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:64 - `BRepBlend_Line::SetEndPoints()`
+    /// Sets tne values of the end points for the line.
+    pub fn set_end_points(&mut self, EndPt1: &Extremity, EndPt2: &Extremity) {
+        unsafe { crate::ffi::BRepBlend_Line_set_end_points(self as *mut Self, EndPt1, EndPt2) }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:67 - `BRepBlend_Line::NbPoints()`
+    /// Returns the number of points in the line.
+    pub fn nb_points(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_Line_nb_points(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:70 - `BRepBlend_Line::Point()`
+    /// Returns the point of range Index.
+    pub fn point(&self, Index: i32) -> &crate::blend::Point {
+        unsafe { &*(crate::ffi::BRepBlend_Line_point(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:84 - `BRepBlend_Line::TransitionOnS1()`
+    /// Returns the type of the transition of the line defined
+    /// on the first surface. The transition is "constant"
+    /// along the line.
+    /// The transition is IN if the line is oriented in such
+    /// a way that the system of vectors (N,DRac,T) is
+    /// right-handed, where
+    /// N is the normal to the first surface at a point P,
+    /// DRac is a vector tangent to the blending patch,
+    /// oriented towards the valid part of this patch,
+    /// T  is the tangent to the line on S1 at P.
+    /// The transitioon is OUT when the system of vectors is
+    /// left-handed.
+    pub fn transition_on_s1(&self) -> crate::int_surf::TypeTrans {
+        unsafe {
+            crate::int_surf::TypeTrans::try_from(crate::ffi::BRepBlend_Line_transition_on_s1(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:89 - `BRepBlend_Line::TransitionOnS2()`
+    /// Returns the type of the transition of the line defined
+    /// on the second surface. The transition is "constant"
+    /// along the line.
+    pub fn transition_on_s2(&self) -> crate::int_surf::TypeTrans {
+        unsafe {
+            crate::int_surf::TypeTrans::try_from(crate::ffi::BRepBlend_Line_transition_on_s2(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:92 - `BRepBlend_Line::StartPointOnFirst()`
+    /// Returns the start point on S1.
+    pub fn start_point_on_first(&self) -> &Extremity {
+        unsafe { &*(crate::ffi::BRepBlend_Line_start_point_on_first(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:95 - `BRepBlend_Line::StartPointOnSecond()`
+    /// Returns the start point on S2
+    pub fn start_point_on_second(&self) -> &Extremity {
+        unsafe { &*(crate::ffi::BRepBlend_Line_start_point_on_second(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:98 - `BRepBlend_Line::EndPointOnFirst()`
+    /// Returns the end point on S1.
+    pub fn end_point_on_first(&self) -> &Extremity {
+        unsafe { &*(crate::ffi::BRepBlend_Line_end_point_on_first(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:101 - `BRepBlend_Line::EndPointOnSecond()`
+    /// Returns the point on S2.
+    pub fn end_point_on_second(&self) -> &Extremity {
+        unsafe { &*(crate::ffi::BRepBlend_Line_end_point_on_second(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:105 - `BRepBlend_Line::TransitionOnS()`
+    /// Returns the type of the transition of the line defined
+    /// on the surface.
+    pub fn transition_on_s(&self) -> crate::int_surf::TypeTrans {
+        unsafe {
+            crate::int_surf::TypeTrans::try_from(crate::ffi::BRepBlend_Line_transition_on_s(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:107 - `BRepBlend_Line::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepBlend_Line_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:107 - `BRepBlend_Line::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepBlend_Line_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `BRepBlend_Line.hxx`:107 - `BRepBlend_Line::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepBlend_Line_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepBlend_Line_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::BRepBlend_Line_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendLine> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_Line_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepBlend_Line_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepBlend_Line_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_Line_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepBlend_Line_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_Line_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepBlend_Line_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleBRepBlendLine;
+
+unsafe impl crate::CppDeletable for HandleBRepBlendLine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepBlendLine_destructor(ptr);
+    }
+}
+
+impl HandleBRepBlendLine {
+    /// Dereference this Handle to access the underlying BRepBlend_Line
+    pub fn get(&self) -> &crate::ffi::BRepBlend_Line {
+        unsafe { &*(crate::ffi::HandleBRepBlendLine_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepBlend_Line
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepBlend_Line {
+        unsafe { &mut *(crate::ffi::HandleBRepBlendLine_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepBlend_Line> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepBlendLine_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
 // From BRepBlend_PointOnRst.hxx
 // ========================
 
@@ -317,3 +3606,2872 @@ impl PointOnRst {
         unsafe { crate::ffi::BRepBlend_PointOnRst_parameter_on_arc(self as *const Self) }
     }
 }
+
+// ========================
+// From BRepBlend_RstRstConstRad.hxx
+// ========================
+
+/// **Source:** `BRepBlend_RstRstConstRad.hxx`:45 - `BRepBlend_RstRstConstRad`
+/// Copy of CSConstRad with a pcurve on surface
+/// as support.
+pub use crate::ffi::BRepBlend_RstRstConstRad as RstRstConstRad;
+
+unsafe impl crate::CppDeletable for RstRstConstRad {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_RstRstConstRad_destructor(ptr);
+    }
+}
+
+impl RstRstConstRad {
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:50 - `BRepBlend_RstRstConstRad::BRepBlend_RstRstConstRad()`
+    pub fn new_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dcurve(
+        Surf1: &crate::ffi::HandleAdaptor3dSurface,
+        Rst1: &crate::ffi::HandleAdaptor2dCurve2d,
+        Surf2: &crate::ffi::HandleAdaptor3dSurface,
+        Rst2: &crate::ffi::HandleAdaptor2dCurve2d,
+        CGuide: &crate::ffi::HandleAdaptor3dCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_RstRstConstRad_ctor_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dcurve(Surf1, Rst1, Surf2, Rst2, CGuide))
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:57 - `BRepBlend_RstRstConstRad::NbVariables()`
+    /// Returns 2.
+    pub fn nb_variables(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_nb_variables(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:60 - `BRepBlend_RstRstConstRad::NbEquations()`
+    /// Returns 2.
+    pub fn nb_equations(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:83 - `BRepBlend_RstRstConstRad::Set()`
+    pub fn set_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d(
+        &mut self,
+        SurfRef1: &crate::ffi::HandleAdaptor3dSurface,
+        RstRef1: &crate::ffi::HandleAdaptor2dCurve2d,
+        SurfRef2: &crate::ffi::HandleAdaptor3dSurface,
+        RstRef2: &crate::ffi::HandleAdaptor2dCurve2d,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d(self as *mut Self, SurfRef1, RstRef1, SurfRef2, RstRef2)
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:88 - `BRepBlend_RstRstConstRad::Set()`
+    pub fn set_real(&mut self, Param: f64) {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_set_real(self as *mut Self, Param) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:94 - `BRepBlend_RstRstConstRad::Set()`
+    /// Sets the bounds of the parametric interval on
+    /// the guide line.
+    /// This determines the derivatives in these values if the
+    /// function is not Cn.
+    pub fn set_real2(&mut self, First: f64, Last: f64) {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_set_real2(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:107 - `BRepBlend_RstRstConstRad::GetMinimalDistance()`
+    /// Returns   the    minimal  Distance  between   two
+    /// extremities of calculated sections.
+    pub fn get_minimal_distance(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_get_minimal_distance(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:109 - `BRepBlend_RstRstConstRad::PointOnRst1()`
+    pub fn point_on_rst1(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstConstRad_point_on_rst1(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:111 - `BRepBlend_RstRstConstRad::PointOnRst2()`
+    pub fn point_on_rst2(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstConstRad_point_on_rst2(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:114 - `BRepBlend_RstRstConstRad::Pnt2dOnRst1()`
+    /// Returns U,V coordinates of the point on the surface.
+    pub fn pnt2d_on_rst1(&self) -> &crate::gp::Pnt2d {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstConstRad_pnt2d_on_rst1(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:118 - `BRepBlend_RstRstConstRad::Pnt2dOnRst2()`
+    /// Returns  U,V coordinates of the point  on the curve on
+    /// surface.
+    pub fn pnt2d_on_rst2(&self) -> &crate::gp::Pnt2d {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstConstRad_pnt2d_on_rst2(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:121 - `BRepBlend_RstRstConstRad::ParameterOnRst1()`
+    /// Returns parameter of the point on the curve.
+    pub fn parameter_on_rst1(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_parameter_on_rst1(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:124 - `BRepBlend_RstRstConstRad::ParameterOnRst2()`
+    /// Returns parameter of the point on the curve.
+    pub fn parameter_on_rst2(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_parameter_on_rst2(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:126 - `BRepBlend_RstRstConstRad::IsTangencyPoint()`
+    pub fn is_tangency_point(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_is_tangency_point(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:128 - `BRepBlend_RstRstConstRad::TangentOnRst1()`
+    pub fn tangent_on_rst1(&self) -> &crate::gp::Vec {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstConstRad_tangent_on_rst1(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:130 - `BRepBlend_RstRstConstRad::Tangent2dOnRst1()`
+    pub fn tangent2d_on_rst1(&self) -> &crate::gp::Vec2d {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstConstRad_tangent2d_on_rst1(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:132 - `BRepBlend_RstRstConstRad::TangentOnRst2()`
+    pub fn tangent_on_rst2(&self) -> &crate::gp::Vec {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstConstRad_tangent_on_rst2(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:134 - `BRepBlend_RstRstConstRad::Tangent2dOnRst2()`
+    pub fn tangent2d_on_rst2(&self) -> &crate::gp::Vec2d {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstConstRad_tangent2d_on_rst2(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:144 - `BRepBlend_RstRstConstRad::Set()`
+    pub fn set_real_int(&mut self, Radius: f64, Choix: i32) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_set_real_int(self as *mut Self, Radius, Choix)
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:148 - `BRepBlend_RstRstConstRad::Set()`
+    /// Sets  the  type  of   section generation   for the
+    /// approximations.
+    pub fn set_sectionshape(&mut self, TypeSection: crate::blend_func::SectionShape) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_set_sectionshape(
+                self as *mut Self,
+                TypeSection.into(),
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:152 - `BRepBlend_RstRstConstRad::CenterCircleRst1Rst2()`
+    /// Give the center of circle define by PtRst1, PtRst2 and
+    /// radius ray.
+    pub fn center_circle_rst1_rst2(
+        &self,
+        PtRst1: &crate::gp::Pnt,
+        PtRst2: &crate::gp::Pnt,
+        np: &crate::gp::Vec,
+        Center: &mut crate::gp::Pnt,
+        VdMed: &mut crate::gp::Vec,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_center_circle_rst1_rst2(
+                self as *const Self,
+                PtRst1,
+                PtRst2,
+                np,
+                Center,
+                VdMed,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:158 - `BRepBlend_RstRstConstRad::Section()`
+    pub fn section_real5_circ(
+        &mut self,
+        Param: f64,
+        U: f64,
+        V: f64,
+        Pdeb: &mut f64,
+        Pfin: &mut f64,
+        C: &mut crate::gp::Circ,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_section_real5_circ(
+                self as *mut Self,
+                Param,
+                U,
+                V,
+                Pdeb,
+                Pfin,
+                C,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:166 - `BRepBlend_RstRstConstRad::IsRational()`
+    /// Returns  if the section is rational
+    pub fn is_rational(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_is_rational(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:169 - `BRepBlend_RstRstConstRad::GetSectionSize()`
+    /// Returns the length of the maximum section
+    pub fn get_section_size(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_get_section_size(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:173 - `BRepBlend_RstRstConstRad::GetMinimalWeight()`
+    /// Compute the minimal value of weight for each poles
+    /// of all sections.
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_get_minimal_weight(self as *const Self, Weigths)
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:177 - `BRepBlend_RstRstConstRad::NbIntervals()`
+    /// Returns  the number  of  intervals for  continuity
+    /// <S>. May be one if Continuity(me) >= <S>
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:183 - `BRepBlend_RstRstConstRad::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_intervals(self as *const Self, T, S.into()) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:186 - `BRepBlend_RstRstConstRad::GetShape()`
+    pub fn get_shape(
+        &mut self,
+        NbPoles: &mut i32,
+        NbKnots: &mut i32,
+        Degree: &mut i32,
+        NbPoles2d: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_get_shape(
+                self as *mut Self,
+                NbPoles,
+                NbKnots,
+                Degree,
+                NbPoles2d,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:202 - `BRepBlend_RstRstConstRad::Knots()`
+    pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_knots(self as *mut Self, TKnots) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:204 - `BRepBlend_RstRstConstRad::Mults()`
+    pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_mults(self as *mut Self, TMults) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:207 - `BRepBlend_RstRstConstRad::Section()`
+    /// Used for the first and last section
+    pub fn section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+        &mut self,
+        P: &crate::blend::Point,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:215 - `BRepBlend_RstRstConstRad::Section()`
+    pub fn section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+        &mut self,
+        P: &crate::blend::Point,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:223 - `BRepBlend_RstRstConstRad::Section()`
+    /// Used for the first and last section
+    /// The method returns Standard_True if the derivatives
+    /// are computed, otherwise it returns Standard_False.
+    pub fn section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+        &mut self,
+        P: &crate::blend::Point,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:234 - `BRepBlend_RstRstConstRad::Resolution()`
+    pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_resolution(
+                self as *const Self,
+                IC2d,
+                Tol,
+                TolU,
+                TolV,
+            )
+        }
+    }
+
+    /// Upcast to Blend_RstRstFunction
+    pub fn as_blend_rst_rst_function(&self) -> &crate::blend::RstRstFunction {
+        unsafe {
+            &*(crate::ffi::BRepBlend_RstRstConstRad_as_Blend_RstRstFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to Blend_RstRstFunction (mutable)
+    pub fn as_blend_rst_rst_function_mut(&mut self) -> &mut crate::blend::RstRstFunction {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_RstRstConstRad_as_Blend_RstRstFunction_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Blend_AppFunction
+    pub fn as_blend_app_function(&self) -> &crate::blend::AppFunction {
+        unsafe {
+            &*(crate::ffi::BRepBlend_RstRstConstRad_as_Blend_AppFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to Blend_AppFunction (mutable)
+    pub fn as_blend_app_function_mut(&mut self) -> &mut crate::blend::AppFunction {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_RstRstConstRad_as_Blend_AppFunction_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &*(crate::ffi::BRepBlend_RstRstConstRad_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_RstRstConstRad_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstConstRad_as_math_FunctionSet(self as *const Self)) }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_RstRstConstRad_as_math_FunctionSet_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Blend_RstRstFunction.hxx`:112 - `Blend_RstRstFunction::Pnt1()`
+    pub fn pnt1(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstConstRad_inherited_Pnt1(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Blend_RstRstFunction.hxx`:115 - `Blend_RstRstFunction::Pnt2()`
+    pub fn pnt2(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstConstRad_inherited_Pnt2(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    pub fn parameter(&self, P: &crate::blend::Point) -> f64 {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_inherited_Parameter(self as *const Self, P) }
+    }
+
+    /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_inherited_GetStateNumber(self as *mut Self) }
+    }
+}
+
+// ── Skipped symbols for RstRstConstRad (8 total) ──
+// SKIPPED: **Source:** `BRepBlend_RstRstConstRad.hxx`:66 - `BRepBlend_RstRstConstRad::Value`
+//   method: computes the values <F> of the Functions for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_RstRstConstRad.hxx`:72 - `BRepBlend_RstRstConstRad::Derivatives`
+//   method: returns the values <D> of the derivatives for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_RstRstConstRad.hxx`:79 - `BRepBlend_RstRstConstRad::Values`
+//   method: returns the values <F> of the functions and the derivatives
+//   method: <D> for the variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_RstRstConstRad.hxx`:96 - `BRepBlend_RstRstConstRad::GetTolerance`
+//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
+//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
+//
+// SKIPPED: **Source:** `BRepBlend_RstRstConstRad.hxx`:99 - `BRepBlend_RstRstConstRad::GetBounds`
+//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
+//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
+//
+// SKIPPED: **Source:** `BRepBlend_RstRstConstRad.hxx`:102 - `BRepBlend_RstRstConstRad::IsSolution`
+//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
+//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_RstRstConstRad.hxx`:138 - `BRepBlend_RstRstConstRad::Decroch`
+//   method: Permet  d ' implementer   un   critere  de  decrochage
+//   method: specifique a la fonction.
+//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
+//   // pub fn decroch(&self, Sol: &Vector, NRst1: &mut Vec, TgRst1: &mut Vec, NRst2: &mut Vec, TgRst2: &mut Vec) -> OwnedPtr<Blend_DecrochStatus>;
+//
+// SKIPPED: **Source:** `BRepBlend_RstRstConstRad.hxx`:196 - `BRepBlend_RstRstConstRad::GetTolerance`
+//   method: Returns the tolerance to reach in approximation
+//   method: to respect
+//   method: BoundTol error at the Boundary
+//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
+//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
+//
+
+// ========================
+// From BRepBlend_RstRstEvolRad.hxx
+// ========================
+
+/// **Source:** `BRepBlend_RstRstEvolRad.hxx`:46 - `BRepBlend_RstRstEvolRad`
+/// Function  to approximate by AppSurface  for
+/// Edge/Edge  and  evolutif  radius
+pub use crate::ffi::BRepBlend_RstRstEvolRad as RstRstEvolRad;
+
+unsafe impl crate::CppDeletable for RstRstEvolRad {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_RstRstEvolRad_destructor(ptr);
+    }
+}
+
+impl RstRstEvolRad {
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:51 - `BRepBlend_RstRstEvolRad::BRepBlend_RstRstEvolRad()`
+    pub fn new_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dcurve_handlelawfunction(
+        Surf1: &crate::ffi::HandleAdaptor3dSurface,
+        Rst1: &crate::ffi::HandleAdaptor2dCurve2d,
+        Surf2: &crate::ffi::HandleAdaptor3dSurface,
+        Rst2: &crate::ffi::HandleAdaptor2dCurve2d,
+        CGuide: &crate::ffi::HandleAdaptor3dCurve,
+        Evol: &crate::ffi::HandleLawFunction,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_RstRstEvolRad_ctor_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dcurve_handlelawfunction(Surf1, Rst1, Surf2, Rst2, CGuide, Evol))
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:59 - `BRepBlend_RstRstEvolRad::NbVariables()`
+    /// Returns 2.
+    pub fn nb_variables(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_nb_variables(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:62 - `BRepBlend_RstRstEvolRad::NbEquations()`
+    /// Returns 2.
+    pub fn nb_equations(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:85 - `BRepBlend_RstRstEvolRad::Set()`
+    pub fn set_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d(
+        &mut self,
+        SurfRef1: &crate::ffi::HandleAdaptor3dSurface,
+        RstRef1: &crate::ffi::HandleAdaptor2dCurve2d,
+        SurfRef2: &crate::ffi::HandleAdaptor3dSurface,
+        RstRef2: &crate::ffi::HandleAdaptor2dCurve2d,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d(self as *mut Self, SurfRef1, RstRef1, SurfRef2, RstRef2)
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:90 - `BRepBlend_RstRstEvolRad::Set()`
+    pub fn set_real(&mut self, Param: f64) {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_set_real(self as *mut Self, Param) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:96 - `BRepBlend_RstRstEvolRad::Set()`
+    /// Sets the bounds of the parametric interval on
+    /// the guide line.
+    /// This determines the derivatives in these values if the
+    /// function is not Cn.
+    pub fn set_real2(&mut self, First: f64, Last: f64) {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_set_real2(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:109 - `BRepBlend_RstRstEvolRad::GetMinimalDistance()`
+    /// Returns   the    minimal  Distance  between   two
+    /// extremities of calculated sections.
+    pub fn get_minimal_distance(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_get_minimal_distance(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:111 - `BRepBlend_RstRstEvolRad::PointOnRst1()`
+    pub fn point_on_rst1(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstEvolRad_point_on_rst1(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:113 - `BRepBlend_RstRstEvolRad::PointOnRst2()`
+    pub fn point_on_rst2(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstEvolRad_point_on_rst2(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:116 - `BRepBlend_RstRstEvolRad::Pnt2dOnRst1()`
+    /// Returns U,V coordinates of the point on the surface.
+    pub fn pnt2d_on_rst1(&self) -> &crate::gp::Pnt2d {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstEvolRad_pnt2d_on_rst1(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:120 - `BRepBlend_RstRstEvolRad::Pnt2dOnRst2()`
+    /// Returns  U,V coordinates of the point  on the curve on
+    /// surface.
+    pub fn pnt2d_on_rst2(&self) -> &crate::gp::Pnt2d {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstEvolRad_pnt2d_on_rst2(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:123 - `BRepBlend_RstRstEvolRad::ParameterOnRst1()`
+    /// Returns parameter of the point on the curve.
+    pub fn parameter_on_rst1(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_parameter_on_rst1(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:126 - `BRepBlend_RstRstEvolRad::ParameterOnRst2()`
+    /// Returns parameter of the point on the curve.
+    pub fn parameter_on_rst2(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_parameter_on_rst2(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:128 - `BRepBlend_RstRstEvolRad::IsTangencyPoint()`
+    pub fn is_tangency_point(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_is_tangency_point(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:130 - `BRepBlend_RstRstEvolRad::TangentOnRst1()`
+    pub fn tangent_on_rst1(&self) -> &crate::gp::Vec {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstEvolRad_tangent_on_rst1(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:132 - `BRepBlend_RstRstEvolRad::Tangent2dOnRst1()`
+    pub fn tangent2d_on_rst1(&self) -> &crate::gp::Vec2d {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstEvolRad_tangent2d_on_rst1(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:134 - `BRepBlend_RstRstEvolRad::TangentOnRst2()`
+    pub fn tangent_on_rst2(&self) -> &crate::gp::Vec {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstEvolRad_tangent_on_rst2(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:136 - `BRepBlend_RstRstEvolRad::Tangent2dOnRst2()`
+    pub fn tangent2d_on_rst2(&self) -> &crate::gp::Vec2d {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstEvolRad_tangent2d_on_rst2(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:146 - `BRepBlend_RstRstEvolRad::Set()`
+    pub fn set_int(&mut self, Choix: i32) {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_set_int(self as *mut Self, Choix) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:150 - `BRepBlend_RstRstEvolRad::Set()`
+    /// Sets  the  type  of   section generation   for the
+    /// approximations.
+    pub fn set_sectionshape(&mut self, TypeSection: crate::blend_func::SectionShape) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_set_sectionshape(
+                self as *mut Self,
+                TypeSection.into(),
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:154 - `BRepBlend_RstRstEvolRad::CenterCircleRst1Rst2()`
+    /// Gives the center of circle defined   by PtRst1, PtRst2 and
+    /// radius ray.
+    pub fn center_circle_rst1_rst2(
+        &self,
+        PtRst1: &crate::gp::Pnt,
+        PtRst2: &crate::gp::Pnt,
+        np: &crate::gp::Vec,
+        Center: &mut crate::gp::Pnt,
+        VdMed: &mut crate::gp::Vec,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_center_circle_rst1_rst2(
+                self as *const Self,
+                PtRst1,
+                PtRst2,
+                np,
+                Center,
+                VdMed,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:160 - `BRepBlend_RstRstEvolRad::Section()`
+    pub fn section_real5_circ(
+        &mut self,
+        Param: f64,
+        U: f64,
+        V: f64,
+        Pdeb: &mut f64,
+        Pfin: &mut f64,
+        C: &mut crate::gp::Circ,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_section_real5_circ(
+                self as *mut Self,
+                Param,
+                U,
+                V,
+                Pdeb,
+                Pfin,
+                C,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:168 - `BRepBlend_RstRstEvolRad::IsRational()`
+    /// Returns  if the section is rational
+    pub fn is_rational(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_is_rational(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:171 - `BRepBlend_RstRstEvolRad::GetSectionSize()`
+    /// Returns the length of the maximum section
+    pub fn get_section_size(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_get_section_size(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:175 - `BRepBlend_RstRstEvolRad::GetMinimalWeight()`
+    /// Compute the minimal value of weight for each poles
+    /// of all sections.
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_get_minimal_weight(self as *const Self, Weigths)
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:179 - `BRepBlend_RstRstEvolRad::NbIntervals()`
+    /// Returns  the number  of  intervals for  continuity
+    /// <S>. May be one if Continuity(me) >= <S>
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:185 - `BRepBlend_RstRstEvolRad::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_intervals(self as *const Self, T, S.into()) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:188 - `BRepBlend_RstRstEvolRad::GetShape()`
+    pub fn get_shape(
+        &mut self,
+        NbPoles: &mut i32,
+        NbKnots: &mut i32,
+        Degree: &mut i32,
+        NbPoles2d: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_get_shape(
+                self as *mut Self,
+                NbPoles,
+                NbKnots,
+                Degree,
+                NbPoles2d,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:204 - `BRepBlend_RstRstEvolRad::Knots()`
+    pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_knots(self as *mut Self, TKnots) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:206 - `BRepBlend_RstRstEvolRad::Mults()`
+    pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_mults(self as *mut Self, TMults) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:209 - `BRepBlend_RstRstEvolRad::Section()`
+    /// Used for the first and last section
+    pub fn section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+        &mut self,
+        P: &crate::blend::Point,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:217 - `BRepBlend_RstRstEvolRad::Section()`
+    pub fn section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+        &mut self,
+        P: &crate::blend::Point,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+                self as *mut Self,
+                P,
+                Poles,
+                Poles2d,
+                Weigths,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:225 - `BRepBlend_RstRstEvolRad::Section()`
+    /// Used for the first and last section
+    /// The method returns Standard_True if the derivatives
+    /// are computed, otherwise it returns Standard_False.
+    pub fn section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+        &mut self,
+        P: &crate::blend::Point,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:236 - `BRepBlend_RstRstEvolRad::Resolution()`
+    pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_resolution(
+                self as *const Self,
+                IC2d,
+                Tol,
+                TolU,
+                TolV,
+            )
+        }
+    }
+
+    /// Upcast to Blend_RstRstFunction
+    pub fn as_blend_rst_rst_function(&self) -> &crate::blend::RstRstFunction {
+        unsafe {
+            &*(crate::ffi::BRepBlend_RstRstEvolRad_as_Blend_RstRstFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to Blend_RstRstFunction (mutable)
+    pub fn as_blend_rst_rst_function_mut(&mut self) -> &mut crate::blend::RstRstFunction {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_RstRstEvolRad_as_Blend_RstRstFunction_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Blend_AppFunction
+    pub fn as_blend_app_function(&self) -> &crate::blend::AppFunction {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstEvolRad_as_Blend_AppFunction(self as *const Self)) }
+    }
+
+    /// Upcast to Blend_AppFunction (mutable)
+    pub fn as_blend_app_function_mut(&mut self) -> &mut crate::blend::AppFunction {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_RstRstEvolRad_as_Blend_AppFunction_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &*(crate::ffi::BRepBlend_RstRstEvolRad_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_RstRstEvolRad_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstEvolRad_as_math_FunctionSet(self as *const Self)) }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_RstRstEvolRad_as_math_FunctionSet_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Blend_RstRstFunction.hxx`:112 - `Blend_RstRstFunction::Pnt1()`
+    pub fn pnt1(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstEvolRad_inherited_Pnt1(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Blend_RstRstFunction.hxx`:115 - `Blend_RstRstFunction::Pnt2()`
+    pub fn pnt2(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstEvolRad_inherited_Pnt2(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    pub fn parameter(&self, P: &crate::blend::Point) -> f64 {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_inherited_Parameter(self as *const Self, P) }
+    }
+
+    /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_inherited_GetStateNumber(self as *mut Self) }
+    }
+}
+
+// ── Skipped symbols for RstRstEvolRad (8 total) ──
+// SKIPPED: **Source:** `BRepBlend_RstRstEvolRad.hxx`:68 - `BRepBlend_RstRstEvolRad::Value`
+//   method: computes the values <F> of the Functions for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_RstRstEvolRad.hxx`:74 - `BRepBlend_RstRstEvolRad::Derivatives`
+//   method: returns the values <D> of the derivatives for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_RstRstEvolRad.hxx`:81 - `BRepBlend_RstRstEvolRad::Values`
+//   method: returns the values <F> of the functions and the derivatives
+//   method: <D> for the variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_RstRstEvolRad.hxx`:98 - `BRepBlend_RstRstEvolRad::GetTolerance`
+//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
+//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
+//
+// SKIPPED: **Source:** `BRepBlend_RstRstEvolRad.hxx`:101 - `BRepBlend_RstRstEvolRad::GetBounds`
+//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
+//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
+//
+// SKIPPED: **Source:** `BRepBlend_RstRstEvolRad.hxx`:104 - `BRepBlend_RstRstEvolRad::IsSolution`
+//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
+//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_RstRstEvolRad.hxx`:140 - `BRepBlend_RstRstEvolRad::Decroch`
+//   method: Enables  implementation of a criterion  of  decrochage
+//   method: specific to the function.
+//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
+//   // pub fn decroch(&self, Sol: &Vector, NRst1: &mut Vec, TgRst1: &mut Vec, NRst2: &mut Vec, TgRst2: &mut Vec) -> OwnedPtr<Blend_DecrochStatus>;
+//
+// SKIPPED: **Source:** `BRepBlend_RstRstEvolRad.hxx`:198 - `BRepBlend_RstRstEvolRad::GetTolerance`
+//   method: Returns the tolerance to reach in approximation
+//   method: to respect
+//   method: BoundTol error at the Boundary
+//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
+//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
+//
+
+// ========================
+// From BRepBlend_RstRstLineBuilder.hxx
+// ========================
+
+/// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:65 - `BRepBlend_RstRstLineBuilder`
+/// This  class processes the  data  resulting from
+/// Blend_CSWalking  but  it  takes  in  consideration the Surface
+/// supporting  the  curve to detect the  breakpoint.
+///
+/// As  a  result, the  criteria of distribution of
+/// points on  the line become  more flexible  because  it
+/// should  calculate values  approached
+/// by an approximation of continued  functions based on the
+/// Blend_RstRstFunction.
+///
+/// Thus this pseudo path necessitates 3 criteria  of
+/// regrouping :
+///
+/// 1) exit of  the domain of  the  curve
+///
+/// 2) exit of  the domain of  the surface
+///
+/// 3) stall as there  is a solution of problem
+/// surf/surf  within the domain  of the  surface
+/// of support of the restriction.
+///
+/// Construction of a BRepBlend_Line between two pcurves
+/// from an approached starting solution. The output
+/// entries of this builder are of the same nature
+/// as of a traditional walking, but the requirements
+/// to the Line are not the same. If the determination of validity range is always
+/// guaranteed, the criteria of correct repartition of sections
+/// before smoothing are not respected. The resulting Line
+/// is f(t) oriented.
+pub use crate::ffi::BRepBlend_RstRstLineBuilder as RstRstLineBuilder;
+
+unsafe impl crate::CppDeletable for RstRstLineBuilder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_RstRstLineBuilder_destructor(ptr);
+    }
+}
+
+impl RstRstLineBuilder {
+    /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:70 - `BRepBlend_RstRstLineBuilder::BRepBlend_RstRstLineBuilder()`
+    pub fn new_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool(
+        Surf1: &crate::ffi::HandleAdaptor3dSurface,
+        Rst1: &crate::ffi::HandleAdaptor2dCurve2d,
+        Domain1: &crate::ffi::HandleAdaptor3dTopolTool,
+        Surf2: &crate::ffi::HandleAdaptor3dSurface,
+        Rst2: &crate::ffi::HandleAdaptor2dCurve2d,
+        Domain2: &crate::ffi::HandleAdaptor3dTopolTool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_RstRstLineBuilder_ctor_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool(Surf1, Rst1, Domain1, Surf2, Rst2, Domain2))
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:108 - `BRepBlend_RstRstLineBuilder::Complete()`
+    pub fn complete(
+        &mut self,
+        Func: &mut crate::blend::RstRstFunction,
+        Finv1: &mut crate::blend::SurfCurvFuncInv,
+        FinvP1: &mut crate::blend::CurvPointFuncInv,
+        Finv2: &mut crate::blend::SurfCurvFuncInv,
+        FinvP2: &mut crate::blend::CurvPointFuncInv,
+        Pmin: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstLineBuilder_complete(
+                self as *mut Self,
+                Func,
+                Finv1,
+                FinvP1,
+                Finv2,
+                FinvP2,
+                Pmin,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:115 - `BRepBlend_RstRstLineBuilder::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_RstRstLineBuilder_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:117 - `BRepBlend_RstRstLineBuilder::Line()`
+    pub fn line(&self) -> &crate::ffi::HandleBRepBlendLine {
+        unsafe { &*(crate::ffi::BRepBlend_RstRstLineBuilder_line(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:119 - `BRepBlend_RstRstLineBuilder::Decroch1Start()`
+    pub fn decroch1_start(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_RstRstLineBuilder_decroch1_start(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:121 - `BRepBlend_RstRstLineBuilder::Decroch1End()`
+    pub fn decroch1_end(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_RstRstLineBuilder_decroch1_end(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:123 - `BRepBlend_RstRstLineBuilder::Decroch2Start()`
+    pub fn decroch2_start(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_RstRstLineBuilder_decroch2_start(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:125 - `BRepBlend_RstRstLineBuilder::Decroch2End()`
+    pub fn decroch2_end(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_RstRstLineBuilder_decroch2_end(self as *const Self) }
+    }
+}
+
+// ── Skipped symbols for RstRstLineBuilder (2 total) ──
+// SKIPPED: **Source:** `BRepBlend_RstRstLineBuilder.hxx`:77 - `BRepBlend_RstRstLineBuilder::Perform`
+//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, Func: &mut RstRstFunction, Finv1: &mut SurfCurvFuncInv, FinvP1: &mut CurvPointFuncInv, Finv2: &mut SurfCurvFuncInv, FinvP2: &mut CurvPointFuncInv, Pdep: f64, Pmax: f64, MaxStep: f64, Tol3d: f64, TolGuide: f64, Soldep: &Vector, Fleche: f64, Appro: bool);
+//
+// SKIPPED: **Source:** `BRepBlend_RstRstLineBuilder.hxx`:91 - `BRepBlend_RstRstLineBuilder::PerformFirstSection`
+//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
+//   // pub fn perform_first_section(&mut self, Func: &mut RstRstFunction, Finv1: &mut SurfCurvFuncInv, FinvP1: &mut CurvPointFuncInv, Finv2: &mut SurfCurvFuncInv, FinvP2: &mut CurvPointFuncInv, Pdep: f64, Pmax: f64, Soldep: &Vector, Tol3d: f64, TolGuide: f64, RecRst1: bool, RecP1: bool, RecRst2: bool, RecP2: bool, Psol: &mut f64, ParSol: &mut Vector) -> bool;
+//
+
+// ========================
+// From BRepBlend_SurfCurvConstRadInv.hxx
+// ========================
+
+/// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:37 - `BRepBlend_SurfCurvConstRadInv`
+/// Function of reframing between a restriction surface of the
+/// surface and a curve.
+/// Class     used   to   compute  a    solution   of  the
+/// surfRstConstRad  problem  on a done restriction of the
+/// surface.
+/// The vector  <X> used in  Value, Values and Derivatives
+/// methods  has   to  be the   vector  of  the parametric
+/// coordinates  wguide, wcurv, wrst  where  wguide is the
+/// parameter on the guide line, wcurv is the parameter on
+/// the curve, wrst is the parameter on the restriction on
+/// the surface.
+pub use crate::ffi::BRepBlend_SurfCurvConstRadInv as SurfCurvConstRadInv;
+
+unsafe impl crate::CppDeletable for SurfCurvConstRadInv {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_SurfCurvConstRadInv_destructor(ptr);
+    }
+}
+
+impl SurfCurvConstRadInv {
+    /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:42 - `BRepBlend_SurfCurvConstRadInv::BRepBlend_SurfCurvConstRadInv()`
+    pub fn new_handleadaptor3dsurface_handleadaptor3dcurve2(
+        S: &crate::ffi::HandleAdaptor3dSurface,
+        C: &crate::ffi::HandleAdaptor3dCurve,
+        Cg: &crate::ffi::HandleAdaptor3dCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_SurfCurvConstRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve2(S, C, Cg))
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:46 - `BRepBlend_SurfCurvConstRadInv::Set()`
+    pub fn set_real_int(&mut self, R: f64, Choix: i32) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfCurvConstRadInv_set_real_int(self as *mut Self, R, Choix)
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:49 - `BRepBlend_SurfCurvConstRadInv::NbEquations()`
+    /// returns 3.
+    pub fn nb_equations(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_SurfCurvConstRadInv_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:70 - `BRepBlend_SurfCurvConstRadInv::Set()`
+    /// Set the restriction on which a solution has to be found.
+    pub fn set_handleadaptor2dcurve2d(&mut self, Rst: &crate::ffi::HandleAdaptor2dCurve2d) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfCurvConstRadInv_set_handleadaptor2dcurve2d(
+                self as *mut Self,
+                Rst,
+            )
+        }
+    }
+
+    /// Upcast to Blend_SurfCurvFuncInv
+    pub fn as_blend_surf_curv_func_inv(&self) -> &crate::blend::SurfCurvFuncInv {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfCurvConstRadInv_as_Blend_SurfCurvFuncInv(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Blend_SurfCurvFuncInv (mutable)
+    pub fn as_blend_surf_curv_func_inv_mut(&mut self) -> &mut crate::blend::SurfCurvFuncInv {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfCurvConstRadInv_as_Blend_SurfCurvFuncInv_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSet(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSet_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Blend_SurfCurvFuncInv.hxx`:46 - `Blend_SurfCurvFuncInv::NbVariables()`
+    pub fn nb_variables(&self) -> i32 {
+        unsafe {
+            crate::ffi::BRepBlend_SurfCurvConstRadInv_inherited_NbVariables(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BRepBlend_SurfCurvConstRadInv_inherited_GetStateNumber(self as *mut Self)
+        }
+    }
+}
+
+// ── Skipped symbols for SurfCurvConstRadInv (6 total) ──
+// SKIPPED: **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:55 - `BRepBlend_SurfCurvConstRadInv::Value`
+//   method: computes the values <F> of the Functions for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:61 - `BRepBlend_SurfCurvConstRadInv::Derivatives`
+//   method: returns the values <D> of the derivatives for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:67 - `BRepBlend_SurfCurvConstRadInv::Values`
+//   method: returns the values <F> of the functions and the derivatives
+//   method: <D> for the variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:75 - `BRepBlend_SurfCurvConstRadInv::GetTolerance`
+//   method: Returns in the vector Tolerance the parametric tolerance
+//   method: for each of the 3 variables;
+//   method: Tol is the tolerance used in 3d space.
+//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
+//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
+//
+// SKIPPED: **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:81 - `BRepBlend_SurfCurvConstRadInv::GetBounds`
+//   method: Returns in the vector InfBound the lowest values allowed
+//   method: for each of the 3 variables.
+//   method: Returns in the vector SupBound the greatest values allowed
+//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
+//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
+//
+// SKIPPED: **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:85 - `BRepBlend_SurfCurvConstRadInv::IsSolution`
+//   method: Returns Standard_True if Sol is a zero of the function.
+//   method: Tol is the tolerance used in 3d space.
+//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
+//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
+//
+
+// ========================
+// From BRepBlend_SurfCurvEvolRadInv.hxx
+// ========================
+
+/// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:38 - `BRepBlend_SurfCurvEvolRadInv`
+/// Function of reframing between a surface restriction
+/// of the surface and a curve.
+/// Class     used   to   compute  a    solution   of  the
+/// surfRstConstRad  problem  on a done restriction of the
+/// surface.
+/// The vector  <X> used in  Value, Values and Derivatives
+/// methods  has   to  be the   vector  of  the parametric
+/// coordinates  wguide, wcurv, wrst  where  wguide is the
+/// parameter on the guide line, wcurv is the parameter on
+/// the curve, wrst is the parameter on the restriction on
+/// the surface.
+pub use crate::ffi::BRepBlend_SurfCurvEvolRadInv as SurfCurvEvolRadInv;
+
+unsafe impl crate::CppDeletable for SurfCurvEvolRadInv {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_SurfCurvEvolRadInv_destructor(ptr);
+    }
+}
+
+impl SurfCurvEvolRadInv {
+    /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:43 - `BRepBlend_SurfCurvEvolRadInv::BRepBlend_SurfCurvEvolRadInv()`
+    pub fn new_handleadaptor3dsurface_handleadaptor3dcurve2_handlelawfunction(
+        S: &crate::ffi::HandleAdaptor3dSurface,
+        C: &crate::ffi::HandleAdaptor3dCurve,
+        Cg: &crate::ffi::HandleAdaptor3dCurve,
+        Evol: &crate::ffi::HandleLawFunction,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_SurfCurvEvolRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve2_handlelawfunction(S, C, Cg, Evol))
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:48 - `BRepBlend_SurfCurvEvolRadInv::Set()`
+    pub fn set_int(&mut self, Choix: i32) {
+        unsafe { crate::ffi::BRepBlend_SurfCurvEvolRadInv_set_int(self as *mut Self, Choix) }
+    }
+
+    /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:51 - `BRepBlend_SurfCurvEvolRadInv::NbEquations()`
+    /// returns 3.
+    pub fn nb_equations(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_SurfCurvEvolRadInv_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:72 - `BRepBlend_SurfCurvEvolRadInv::Set()`
+    /// Set the restriction on which a solution has to be found.
+    pub fn set_handleadaptor2dcurve2d(&mut self, Rst: &crate::ffi::HandleAdaptor2dCurve2d) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfCurvEvolRadInv_set_handleadaptor2dcurve2d(
+                self as *mut Self,
+                Rst,
+            )
+        }
+    }
+
+    /// Upcast to Blend_SurfCurvFuncInv
+    pub fn as_blend_surf_curv_func_inv(&self) -> &crate::blend::SurfCurvFuncInv {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_Blend_SurfCurvFuncInv(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Blend_SurfCurvFuncInv (mutable)
+    pub fn as_blend_surf_curv_func_inv_mut(&mut self) -> &mut crate::blend::SurfCurvFuncInv {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_Blend_SurfCurvFuncInv_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSet(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSet_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Blend_SurfCurvFuncInv.hxx`:46 - `Blend_SurfCurvFuncInv::NbVariables()`
+    pub fn nb_variables(&self) -> i32 {
+        unsafe {
+            crate::ffi::BRepBlend_SurfCurvEvolRadInv_inherited_NbVariables(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BRepBlend_SurfCurvEvolRadInv_inherited_GetStateNumber(self as *mut Self)
+        }
+    }
+}
+
+// ── Skipped symbols for SurfCurvEvolRadInv (6 total) ──
+// SKIPPED: **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:57 - `BRepBlend_SurfCurvEvolRadInv::Value`
+//   method: computes the values <F> of the Functions for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:63 - `BRepBlend_SurfCurvEvolRadInv::Derivatives`
+//   method: returns the values <D> of the derivatives for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:69 - `BRepBlend_SurfCurvEvolRadInv::Values`
+//   method: returns the values <F> of the functions and the derivatives
+//   method: <D> for the variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:77 - `BRepBlend_SurfCurvEvolRadInv::GetTolerance`
+//   method: Returns in the vector Tolerance the parametric tolerance
+//   method: for each of the 3 variables;
+//   method: Tol is the tolerance used in 3d space.
+//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
+//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
+//
+// SKIPPED: **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:83 - `BRepBlend_SurfCurvEvolRadInv::GetBounds`
+//   method: Returns in the vector InfBound the lowest values allowed
+//   method: for each of the 3 variables.
+//   method: Returns in the vector SupBound the greatest values allowed
+//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
+//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
+//
+// SKIPPED: **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:87 - `BRepBlend_SurfCurvEvolRadInv::IsSolution`
+//   method: Returns Standard_True if Sol is a zero of the function.
+//   method: Tol is the tolerance used in 3d space.
+//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
+//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
+//
+
+// ========================
+// From BRepBlend_SurfPointConstRadInv.hxx
+// ========================
+
+/// **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:36 - `BRepBlend_SurfPointConstRadInv`
+/// Function of reframing between a point and a surface.
+/// This function  is used  to find a  solution on  a done
+/// point   of   the curve when   using  SurfRstConsRad or
+/// CSConstRad...
+/// The vector <X>  used in Value, Values and  Derivatives
+/// methods  has  to   be the  vector   of the  parametric
+/// coordinates w, U,  V where w is  the parameter  on the
+/// guide line, U,V   are the parametric coordinates of  a
+/// point on the partner surface.
+pub use crate::ffi::BRepBlend_SurfPointConstRadInv as SurfPointConstRadInv;
+
+unsafe impl crate::CppDeletable for SurfPointConstRadInv {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_SurfPointConstRadInv_destructor(ptr);
+    }
+}
+
+impl SurfPointConstRadInv {
+    /// **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:41 - `BRepBlend_SurfPointConstRadInv::BRepBlend_SurfPointConstRadInv()`
+    pub fn new_handleadaptor3dsurface_handleadaptor3dcurve(
+        S: &crate::ffi::HandleAdaptor3dSurface,
+        C: &crate::ffi::HandleAdaptor3dCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_SurfPointConstRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve(S, C))
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:44 - `BRepBlend_SurfPointConstRadInv::Set()`
+    pub fn set_real_int(&mut self, R: f64, Choix: i32) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfPointConstRadInv_set_real_int(self as *mut Self, R, Choix)
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:47 - `BRepBlend_SurfPointConstRadInv::NbEquations()`
+    /// returns 3.
+    pub fn nb_equations(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_SurfPointConstRadInv_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:68 - `BRepBlend_SurfPointConstRadInv::Set()`
+    /// Set the Point on which a solution has to be found.
+    pub fn set_pnt(&mut self, P: &crate::gp::Pnt) {
+        unsafe { crate::ffi::BRepBlend_SurfPointConstRadInv_set_pnt(self as *mut Self, P) }
+    }
+
+    /// Upcast to Blend_SurfPointFuncInv
+    pub fn as_blend_surf_point_func_inv(&self) -> &crate::blend::SurfPointFuncInv {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfPointConstRadInv_as_Blend_SurfPointFuncInv(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Blend_SurfPointFuncInv (mutable)
+    pub fn as_blend_surf_point_func_inv_mut(&mut self) -> &mut crate::blend::SurfPointFuncInv {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfPointConstRadInv_as_Blend_SurfPointFuncInv_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfPointConstRadInv_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfPointConstRadInv_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfPointConstRadInv_as_math_FunctionSet(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfPointConstRadInv_as_math_FunctionSet_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Blend_SurfPointFuncInv.hxx`:46 - `Blend_SurfPointFuncInv::NbVariables()`
+    pub fn nb_variables(&self) -> i32 {
+        unsafe {
+            crate::ffi::BRepBlend_SurfPointConstRadInv_inherited_NbVariables(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BRepBlend_SurfPointConstRadInv_inherited_GetStateNumber(self as *mut Self)
+        }
+    }
+}
+
+// ── Skipped symbols for SurfPointConstRadInv (6 total) ──
+// SKIPPED: **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:53 - `BRepBlend_SurfPointConstRadInv::Value`
+//   method: computes the values <F> of the Functions for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:59 - `BRepBlend_SurfPointConstRadInv::Derivatives`
+//   method: returns the values <D> of the derivatives for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:65 - `BRepBlend_SurfPointConstRadInv::Values`
+//   method: returns the values <F> of the functions and the derivatives
+//   method: <D> for the variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:73 - `BRepBlend_SurfPointConstRadInv::GetTolerance`
+//   method: Returns in the vector Tolerance the parametric tolerance
+//   method: for each of the 3 variables;
+//   method: Tol is the tolerance used in 3d space.
+//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
+//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
+//
+// SKIPPED: **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:79 - `BRepBlend_SurfPointConstRadInv::GetBounds`
+//   method: Returns in the vector InfBound the lowest values allowed
+//   method: for each of the 3 variables.
+//   method: Returns in the vector SupBound the greatest values allowed
+//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
+//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
+//
+// SKIPPED: **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:83 - `BRepBlend_SurfPointConstRadInv::IsSolution`
+//   method: Returns Standard_True if Sol is a zero of the function.
+//   method: Tol is the tolerance used in 3d space.
+//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
+//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
+//
+
+// ========================
+// From BRepBlend_SurfPointEvolRadInv.hxx
+// ========================
+
+/// **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:37 - `BRepBlend_SurfPointEvolRadInv`
+/// Function of reframing between a point and a surface.
+/// This function  is used  to find a  solution on  a done
+/// point   of   the curve when   using  SurfRstConsRad or
+/// CSConstRad...
+/// The vector <X>  used in Value, Values and  Derivatives
+/// methods  has  to   be the  vector   of the  parametric
+/// coordinates w, U,  V where w is  the parameter  on the
+/// guide line, U,V   are the parametric coordinates of  a
+/// point on the partner surface.
+pub use crate::ffi::BRepBlend_SurfPointEvolRadInv as SurfPointEvolRadInv;
+
+unsafe impl crate::CppDeletable for SurfPointEvolRadInv {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_SurfPointEvolRadInv_destructor(ptr);
+    }
+}
+
+impl SurfPointEvolRadInv {
+    /// **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:42 - `BRepBlend_SurfPointEvolRadInv::BRepBlend_SurfPointEvolRadInv()`
+    pub fn new_handleadaptor3dsurface_handleadaptor3dcurve_handlelawfunction(
+        S: &crate::ffi::HandleAdaptor3dSurface,
+        C: &crate::ffi::HandleAdaptor3dCurve,
+        Evol: &crate::ffi::HandleLawFunction,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_SurfPointEvolRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve_handlelawfunction(S, C, Evol))
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:46 - `BRepBlend_SurfPointEvolRadInv::Set()`
+    pub fn set_int(&mut self, Choix: i32) {
+        unsafe { crate::ffi::BRepBlend_SurfPointEvolRadInv_set_int(self as *mut Self, Choix) }
+    }
+
+    /// **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:49 - `BRepBlend_SurfPointEvolRadInv::NbEquations()`
+    /// returns 3.
+    pub fn nb_equations(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_SurfPointEvolRadInv_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:70 - `BRepBlend_SurfPointEvolRadInv::Set()`
+    /// Set the Point on which a solution has to be found.
+    pub fn set_pnt(&mut self, P: &crate::gp::Pnt) {
+        unsafe { crate::ffi::BRepBlend_SurfPointEvolRadInv_set_pnt(self as *mut Self, P) }
+    }
+
+    /// Upcast to Blend_SurfPointFuncInv
+    pub fn as_blend_surf_point_func_inv(&self) -> &crate::blend::SurfPointFuncInv {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfPointEvolRadInv_as_Blend_SurfPointFuncInv(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Blend_SurfPointFuncInv (mutable)
+    pub fn as_blend_surf_point_func_inv_mut(&mut self) -> &mut crate::blend::SurfPointFuncInv {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfPointEvolRadInv_as_Blend_SurfPointFuncInv_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSet(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSet_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Blend_SurfPointFuncInv.hxx`:46 - `Blend_SurfPointFuncInv::NbVariables()`
+    pub fn nb_variables(&self) -> i32 {
+        unsafe {
+            crate::ffi::BRepBlend_SurfPointEvolRadInv_inherited_NbVariables(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BRepBlend_SurfPointEvolRadInv_inherited_GetStateNumber(self as *mut Self)
+        }
+    }
+}
+
+// ── Skipped symbols for SurfPointEvolRadInv (6 total) ──
+// SKIPPED: **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:55 - `BRepBlend_SurfPointEvolRadInv::Value`
+//   method: computes the values <F> of the Functions for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:61 - `BRepBlend_SurfPointEvolRadInv::Derivatives`
+//   method: returns the values <D> of the derivatives for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:67 - `BRepBlend_SurfPointEvolRadInv::Values`
+//   method: returns the values <F> of the functions and the derivatives
+//   method: <D> for the variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:75 - `BRepBlend_SurfPointEvolRadInv::GetTolerance`
+//   method: Returns in the vector Tolerance the parametric tolerance
+//   method: for each of the 3 variables;
+//   method: Tol is the tolerance used in 3d space.
+//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
+//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
+//
+// SKIPPED: **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:81 - `BRepBlend_SurfPointEvolRadInv::GetBounds`
+//   method: Returns in the vector InfBound the lowest values allowed
+//   method: for each of the 3 variables.
+//   method: Returns in the vector SupBound the greatest values allowed
+//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
+//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
+//
+// SKIPPED: **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:85 - `BRepBlend_SurfPointEvolRadInv::IsSolution`
+//   method: Returns Standard_True if Sol is a zero of the function.
+//   method: Tol is the tolerance used in 3d space.
+//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
+//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
+//
+
+// ========================
+// From BRepBlend_SurfRstConstRad.hxx
+// ========================
+
+/// **Source:** `BRepBlend_SurfRstConstRad.hxx`:44 - `BRepBlend_SurfRstConstRad`
+/// Copy of CSConstRad with pcurve on surface
+/// as support.
+pub use crate::ffi::BRepBlend_SurfRstConstRad as SurfRstConstRad;
+
+unsafe impl crate::CppDeletable for SurfRstConstRad {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_SurfRstConstRad_destructor(ptr);
+    }
+}
+
+impl SurfRstConstRad {
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:49 - `BRepBlend_SurfRstConstRad::BRepBlend_SurfRstConstRad()`
+    pub fn new_handleadaptor3dsurface2_handleadaptor2dcurve2d_handleadaptor3dcurve(
+        Surf: &crate::ffi::HandleAdaptor3dSurface,
+        SurfRst: &crate::ffi::HandleAdaptor3dSurface,
+        Rst: &crate::ffi::HandleAdaptor2dCurve2d,
+        CGuide: &crate::ffi::HandleAdaptor3dCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_SurfRstConstRad_ctor_handleadaptor3dsurface2_handleadaptor2dcurve2d_handleadaptor3dcurve(Surf, SurfRst, Rst, CGuide))
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:55 - `BRepBlend_SurfRstConstRad::NbVariables()`
+    /// Returns 3.
+    pub fn nb_variables(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_nb_variables(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:58 - `BRepBlend_SurfRstConstRad::NbEquations()`
+    /// Returns 3.
+    pub fn nb_equations(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:81 - `BRepBlend_SurfRstConstRad::Set()`
+    pub fn set_handleadaptor3dsurface_handleadaptor2dcurve2d(
+        &mut self,
+        SurfRef: &crate::ffi::HandleAdaptor3dSurface,
+        RstRef: &crate::ffi::HandleAdaptor2dCurve2d,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d(
+                self as *mut Self,
+                SurfRef,
+                RstRef,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:84 - `BRepBlend_SurfRstConstRad::Set()`
+    pub fn set_real(&mut self, Param: f64) {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_set_real(self as *mut Self, Param) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:90 - `BRepBlend_SurfRstConstRad::Set()`
+    /// Sets the bounds of the parametric interval on
+    /// the guide line.
+    /// This determines the derivatives in these values if the
+    /// function is not Cn.
+    pub fn set_real2(&mut self, First: f64, Last: f64) {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_set_real2(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:103 - `BRepBlend_SurfRstConstRad::GetMinimalDistance()`
+    /// Returns   the    minimal  Distance  between   two
+    /// extremities of calculated sections.
+    pub fn get_minimal_distance(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_get_minimal_distance(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:105 - `BRepBlend_SurfRstConstRad::PointOnS()`
+    pub fn point_on_s(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstConstRad_point_on_s(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:107 - `BRepBlend_SurfRstConstRad::PointOnRst()`
+    pub fn point_on_rst(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstConstRad_point_on_rst(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:110 - `BRepBlend_SurfRstConstRad::Pnt2dOnS()`
+    /// Returns U,V coordinates of the point on the surface.
+    pub fn pnt2d_on_s(&self) -> &crate::gp::Pnt2d {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstConstRad_pnt2d_on_s(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:114 - `BRepBlend_SurfRstConstRad::Pnt2dOnRst()`
+    /// Returns  U,V coordinates of the point  on the curve on
+    /// surface.
+    pub fn pnt2d_on_rst(&self) -> &crate::gp::Pnt2d {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstConstRad_pnt2d_on_rst(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:117 - `BRepBlend_SurfRstConstRad::ParameterOnRst()`
+    /// Returns parameter of the point on the curve.
+    pub fn parameter_on_rst(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_parameter_on_rst(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:119 - `BRepBlend_SurfRstConstRad::IsTangencyPoint()`
+    pub fn is_tangency_point(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_is_tangency_point(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:121 - `BRepBlend_SurfRstConstRad::TangentOnS()`
+    pub fn tangent_on_s(&self) -> &crate::gp::Vec {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstConstRad_tangent_on_s(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:123 - `BRepBlend_SurfRstConstRad::Tangent2dOnS()`
+    pub fn tangent2d_on_s(&self) -> &crate::gp::Vec2d {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstConstRad_tangent2d_on_s(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:125 - `BRepBlend_SurfRstConstRad::TangentOnRst()`
+    pub fn tangent_on_rst(&self) -> &crate::gp::Vec {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstConstRad_tangent_on_rst(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:127 - `BRepBlend_SurfRstConstRad::Tangent2dOnRst()`
+    pub fn tangent2d_on_rst(&self) -> &crate::gp::Vec2d {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstConstRad_tangent2d_on_rst(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:137 - `BRepBlend_SurfRstConstRad::Set()`
+    pub fn set_real_int(&mut self, Radius: f64, Choix: i32) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_set_real_int(self as *mut Self, Radius, Choix)
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:141 - `BRepBlend_SurfRstConstRad::Set()`
+    /// Sets  the  type  of   section generation   for the
+    /// approximations.
+    pub fn set_sectionshape(&mut self, TypeSection: crate::blend_func::SectionShape) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_set_sectionshape(
+                self as *mut Self,
+                TypeSection.into(),
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:143 - `BRepBlend_SurfRstConstRad::Section()`
+    pub fn section_real6_circ(
+        &mut self,
+        Param: f64,
+        U: f64,
+        V: f64,
+        W: f64,
+        Pdeb: &mut f64,
+        Pfin: &mut f64,
+        C: &mut crate::gp::Circ,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_section_real6_circ(
+                self as *mut Self,
+                Param,
+                U,
+                V,
+                W,
+                Pdeb,
+                Pfin,
+                C,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:152 - `BRepBlend_SurfRstConstRad::IsRational()`
+    /// Returns  if the section is rational
+    pub fn is_rational(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_is_rational(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:155 - `BRepBlend_SurfRstConstRad::GetSectionSize()`
+    /// Returns the length of the maximum section
+    pub fn get_section_size(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_get_section_size(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:159 - `BRepBlend_SurfRstConstRad::GetMinimalWeight()`
+    /// Compute the minimal value of weight for each poles
+    /// of all sections.
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_get_minimal_weight(self as *const Self, Weigths)
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:163 - `BRepBlend_SurfRstConstRad::NbIntervals()`
+    /// Returns  the number  of  intervals for  continuity
+    /// <S>. May be one if Continuity(me) >= <S>
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:169 - `BRepBlend_SurfRstConstRad::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_intervals(self as *const Self, T, S.into()) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:172 - `BRepBlend_SurfRstConstRad::GetShape()`
+    pub fn get_shape(
+        &mut self,
+        NbPoles: &mut i32,
+        NbKnots: &mut i32,
+        Degree: &mut i32,
+        NbPoles2d: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_get_shape(
+                self as *mut Self,
+                NbPoles,
+                NbKnots,
+                Degree,
+                NbPoles2d,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:188 - `BRepBlend_SurfRstConstRad::Knots()`
+    pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_knots(self as *mut Self, TKnots) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:190 - `BRepBlend_SurfRstConstRad::Mults()`
+    pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_mults(self as *mut Self, TMults) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:193 - `BRepBlend_SurfRstConstRad::Section()`
+    /// Used for the first and last section
+    pub fn section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+        &mut self,
+        P: &crate::blend::Point,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:204 - `BRepBlend_SurfRstConstRad::Section()`
+    /// Used for the first and last section
+    /// The method returns Standard_True if the derivatives
+    /// are computed, otherwise it returns Standard_False.
+    pub fn section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+        &mut self,
+        P: &crate::blend::Point,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:215 - `BRepBlend_SurfRstConstRad::Section()`
+    pub fn section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+        &mut self,
+        P: &crate::blend::Point,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:220 - `BRepBlend_SurfRstConstRad::Resolution()`
+    pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_resolution(
+                self as *const Self,
+                IC2d,
+                Tol,
+                TolU,
+                TolV,
+            )
+        }
+    }
+
+    /// Upcast to Blend_SurfRstFunction
+    pub fn as_blend_surf_rst_function(&self) -> &crate::blend::SurfRstFunction {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfRstConstRad_as_Blend_SurfRstFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to Blend_SurfRstFunction (mutable)
+    pub fn as_blend_surf_rst_function_mut(&mut self) -> &mut crate::blend::SurfRstFunction {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfRstConstRad_as_Blend_SurfRstFunction_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Blend_AppFunction
+    pub fn as_blend_app_function(&self) -> &crate::blend::AppFunction {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfRstConstRad_as_Blend_AppFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to Blend_AppFunction (mutable)
+    pub fn as_blend_app_function_mut(&mut self) -> &mut crate::blend::AppFunction {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfRstConstRad_as_Blend_AppFunction_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfRstConstRad_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfRstConstRad_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfRstConstRad_as_math_FunctionSet(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfRstConstRad_as_math_FunctionSet_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Blend_SurfRstFunction.hxx`:111 - `Blend_SurfRstFunction::Pnt1()`
+    pub fn pnt1(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstConstRad_inherited_Pnt1(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Blend_SurfRstFunction.hxx`:114 - `Blend_SurfRstFunction::Pnt2()`
+    pub fn pnt2(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstConstRad_inherited_Pnt2(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    pub fn parameter(&self, P: &crate::blend::Point) -> f64 {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_inherited_Parameter(self as *const Self, P) }
+    }
+
+    /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_inherited_GetStateNumber(self as *mut Self) }
+    }
+}
+
+// ── Skipped symbols for SurfRstConstRad (8 total) ──
+// SKIPPED: **Source:** `BRepBlend_SurfRstConstRad.hxx`:64 - `BRepBlend_SurfRstConstRad::Value`
+//   method: computes the values <F> of the Functions for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfRstConstRad.hxx`:70 - `BRepBlend_SurfRstConstRad::Derivatives`
+//   method: returns the values <D> of the derivatives for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfRstConstRad.hxx`:77 - `BRepBlend_SurfRstConstRad::Values`
+//   method: returns the values <F> of the functions and the derivatives
+//   method: <D> for the variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfRstConstRad.hxx`:92 - `BRepBlend_SurfRstConstRad::GetTolerance`
+//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
+//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
+//
+// SKIPPED: **Source:** `BRepBlend_SurfRstConstRad.hxx`:95 - `BRepBlend_SurfRstConstRad::GetBounds`
+//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
+//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
+//
+// SKIPPED: **Source:** `BRepBlend_SurfRstConstRad.hxx`:98 - `BRepBlend_SurfRstConstRad::IsSolution`
+//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
+//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfRstConstRad.hxx`:133 - `BRepBlend_SurfRstConstRad::Decroch`
+//   method: Enables  implementation  of  a criterion of  decrochage
+//   method: specific to  the function.
+//   method: Warning: Can  be  called  without  previous  call  of  issolution
+//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
+//   // pub fn decroch(&self, Sol: &Vector, NS: &mut Vec, TgS: &mut Vec) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfRstConstRad.hxx`:182 - `BRepBlend_SurfRstConstRad::GetTolerance`
+//   method: Returns the tolerance to reach in approximation
+//   method: to respect
+//   method: BoundTol error at the Boundary
+//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
+//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
+//
+
+// ========================
+// From BRepBlend_SurfRstEvolRad.hxx
+// ========================
+
+/// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:45 - `BRepBlend_SurfRstEvolRad`
+/// Function  to approximate by AppSurface  for
+/// Edge/Face  and  evolutif  radius
+pub use crate::ffi::BRepBlend_SurfRstEvolRad as SurfRstEvolRad;
+
+unsafe impl crate::CppDeletable for SurfRstEvolRad {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_SurfRstEvolRad_destructor(ptr);
+    }
+}
+
+impl SurfRstEvolRad {
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:50 - `BRepBlend_SurfRstEvolRad::BRepBlend_SurfRstEvolRad()`
+    pub fn new_handleadaptor3dsurface2_handleadaptor2dcurve2d_handleadaptor3dcurve_handlelawfunction(
+        Surf: &crate::ffi::HandleAdaptor3dSurface,
+        SurfRst: &crate::ffi::HandleAdaptor3dSurface,
+        Rst: &crate::ffi::HandleAdaptor2dCurve2d,
+        CGuide: &crate::ffi::HandleAdaptor3dCurve,
+        Evol: &crate::ffi::HandleLawFunction,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_SurfRstEvolRad_ctor_handleadaptor3dsurface2_handleadaptor2dcurve2d_handleadaptor3dcurve_handlelawfunction(Surf, SurfRst, Rst, CGuide, Evol))
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:57 - `BRepBlend_SurfRstEvolRad::NbVariables()`
+    /// Returns 3.
+    pub fn nb_variables(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_nb_variables(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:60 - `BRepBlend_SurfRstEvolRad::NbEquations()`
+    /// Returns 3.
+    pub fn nb_equations(&self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:83 - `BRepBlend_SurfRstEvolRad::Set()`
+    pub fn set_handleadaptor3dsurface_handleadaptor2dcurve2d(
+        &mut self,
+        SurfRef: &crate::ffi::HandleAdaptor3dSurface,
+        RstRef: &crate::ffi::HandleAdaptor2dCurve2d,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d(
+                self as *mut Self,
+                SurfRef,
+                RstRef,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:86 - `BRepBlend_SurfRstEvolRad::Set()`
+    pub fn set_real(&mut self, Param: f64) {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_set_real(self as *mut Self, Param) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:92 - `BRepBlend_SurfRstEvolRad::Set()`
+    /// Sets the bounds of the parametric interval on
+    /// the guide line.
+    /// This determines the derivatives in these values if the
+    /// function is not Cn.
+    pub fn set_real2(&mut self, First: f64, Last: f64) {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_set_real2(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:105 - `BRepBlend_SurfRstEvolRad::GetMinimalDistance()`
+    /// Returns   the    minimal  Distance  between   two
+    /// extremities of calculated sections.
+    pub fn get_minimal_distance(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_get_minimal_distance(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:107 - `BRepBlend_SurfRstEvolRad::PointOnS()`
+    pub fn point_on_s(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstEvolRad_point_on_s(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:109 - `BRepBlend_SurfRstEvolRad::PointOnRst()`
+    pub fn point_on_rst(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstEvolRad_point_on_rst(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:112 - `BRepBlend_SurfRstEvolRad::Pnt2dOnS()`
+    /// Returns U,V coordinates of the point on the surface.
+    pub fn pnt2d_on_s(&self) -> &crate::gp::Pnt2d {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstEvolRad_pnt2d_on_s(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:116 - `BRepBlend_SurfRstEvolRad::Pnt2dOnRst()`
+    /// Returns  U,V coordinates of the point  on the curve on
+    /// surface.
+    pub fn pnt2d_on_rst(&self) -> &crate::gp::Pnt2d {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstEvolRad_pnt2d_on_rst(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:119 - `BRepBlend_SurfRstEvolRad::ParameterOnRst()`
+    /// Returns parameter of the point on the curve.
+    pub fn parameter_on_rst(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_parameter_on_rst(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:121 - `BRepBlend_SurfRstEvolRad::IsTangencyPoint()`
+    pub fn is_tangency_point(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_is_tangency_point(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:123 - `BRepBlend_SurfRstEvolRad::TangentOnS()`
+    pub fn tangent_on_s(&self) -> &crate::gp::Vec {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstEvolRad_tangent_on_s(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:125 - `BRepBlend_SurfRstEvolRad::Tangent2dOnS()`
+    pub fn tangent2d_on_s(&self) -> &crate::gp::Vec2d {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstEvolRad_tangent2d_on_s(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:127 - `BRepBlend_SurfRstEvolRad::TangentOnRst()`
+    pub fn tangent_on_rst(&self) -> &crate::gp::Vec {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstEvolRad_tangent_on_rst(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:129 - `BRepBlend_SurfRstEvolRad::Tangent2dOnRst()`
+    pub fn tangent2d_on_rst(&self) -> &crate::gp::Vec2d {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstEvolRad_tangent2d_on_rst(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:137 - `BRepBlend_SurfRstEvolRad::Set()`
+    pub fn set_int(&mut self, Choix: i32) {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_set_int(self as *mut Self, Choix) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:141 - `BRepBlend_SurfRstEvolRad::Set()`
+    /// Sets  the  type  of   section generation   for the
+    /// approximations.
+    pub fn set_sectionshape(&mut self, TypeSection: crate::blend_func::SectionShape) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_set_sectionshape(
+                self as *mut Self,
+                TypeSection.into(),
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:143 - `BRepBlend_SurfRstEvolRad::Section()`
+    pub fn section_real6_circ(
+        &mut self,
+        Param: f64,
+        U: f64,
+        V: f64,
+        W: f64,
+        Pdeb: &mut f64,
+        Pfin: &mut f64,
+        C: &mut crate::gp::Circ,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_section_real6_circ(
+                self as *mut Self,
+                Param,
+                U,
+                V,
+                W,
+                Pdeb,
+                Pfin,
+                C,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:152 - `BRepBlend_SurfRstEvolRad::IsRational()`
+    /// Returns  if the section is rational
+    pub fn is_rational(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_is_rational(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:155 - `BRepBlend_SurfRstEvolRad::GetSectionSize()`
+    /// Returns the length of the maximum section
+    pub fn get_section_size(&self) -> f64 {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_get_section_size(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:159 - `BRepBlend_SurfRstEvolRad::GetMinimalWeight()`
+    /// Compute the minimal value of weight for each poles
+    /// of all sections.
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_get_minimal_weight(self as *const Self, Weigths)
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:163 - `BRepBlend_SurfRstEvolRad::NbIntervals()`
+    /// Returns  the number  of  intervals for  continuity
+    /// <S>. May be one if Continuity(me) >= <S>
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:169 - `BRepBlend_SurfRstEvolRad::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_intervals(self as *const Self, T, S.into()) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:172 - `BRepBlend_SurfRstEvolRad::GetShape()`
+    pub fn get_shape(
+        &mut self,
+        NbPoles: &mut i32,
+        NbKnots: &mut i32,
+        Degree: &mut i32,
+        NbPoles2d: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_get_shape(
+                self as *mut Self,
+                NbPoles,
+                NbKnots,
+                Degree,
+                NbPoles2d,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:188 - `BRepBlend_SurfRstEvolRad::Knots()`
+    pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_knots(self as *mut Self, TKnots) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:190 - `BRepBlend_SurfRstEvolRad::Mults()`
+    pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_mults(self as *mut Self, TMults) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:193 - `BRepBlend_SurfRstEvolRad::Section()`
+    /// Used for the first and last section
+    pub fn section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+        &mut self,
+        P: &crate::blend::Point,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:204 - `BRepBlend_SurfRstEvolRad::Section()`
+    /// Used for the first and last section
+    /// The method returns Standard_True if the derivatives
+    /// are computed, otherwise it returns Standard_False.
+    pub fn section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+        &mut self,
+        P: &crate::blend::Point,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:215 - `BRepBlend_SurfRstEvolRad::Section()`
+    pub fn section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+        &mut self,
+        P: &crate::blend::Point,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:220 - `BRepBlend_SurfRstEvolRad::Resolution()`
+    pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_resolution(
+                self as *const Self,
+                IC2d,
+                Tol,
+                TolU,
+                TolV,
+            )
+        }
+    }
+
+    /// Upcast to Blend_SurfRstFunction
+    pub fn as_blend_surf_rst_function(&self) -> &crate::blend::SurfRstFunction {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfRstEvolRad_as_Blend_SurfRstFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to Blend_SurfRstFunction (mutable)
+    pub fn as_blend_surf_rst_function_mut(&mut self) -> &mut crate::blend::SurfRstFunction {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfRstEvolRad_as_Blend_SurfRstFunction_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Blend_AppFunction
+    pub fn as_blend_app_function(&self) -> &crate::blend::AppFunction {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfRstEvolRad_as_Blend_AppFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to Blend_AppFunction (mutable)
+    pub fn as_blend_app_function_mut(&mut self) -> &mut crate::blend::AppFunction {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfRstEvolRad_as_Blend_AppFunction_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &*(crate::ffi::BRepBlend_SurfRstEvolRad_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfRstEvolRad_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstEvolRad_as_math_FunctionSet(self as *const Self)) }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::BRepBlend_SurfRstEvolRad_as_math_FunctionSet_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Blend_SurfRstFunction.hxx`:111 - `Blend_SurfRstFunction::Pnt1()`
+    pub fn pnt1(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstEvolRad_inherited_Pnt1(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Blend_SurfRstFunction.hxx`:114 - `Blend_SurfRstFunction::Pnt2()`
+    pub fn pnt2(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstEvolRad_inherited_Pnt2(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    pub fn parameter(&self, P: &crate::blend::Point) -> f64 {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_inherited_Parameter(self as *const Self, P) }
+    }
+
+    /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_inherited_GetStateNumber(self as *mut Self) }
+    }
+}
+
+// ── Skipped symbols for SurfRstEvolRad (8 total) ──
+// SKIPPED: **Source:** `BRepBlend_SurfRstEvolRad.hxx`:66 - `BRepBlend_SurfRstEvolRad::Value`
+//   method: computes the values <F> of the Functions for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfRstEvolRad.hxx`:72 - `BRepBlend_SurfRstEvolRad::Derivatives`
+//   method: returns the values <D> of the derivatives for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfRstEvolRad.hxx`:79 - `BRepBlend_SurfRstEvolRad::Values`
+//   method: returns the values <F> of the functions and the derivatives
+//   method: <D> for the variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfRstEvolRad.hxx`:94 - `BRepBlend_SurfRstEvolRad::GetTolerance`
+//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
+//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
+//
+// SKIPPED: **Source:** `BRepBlend_SurfRstEvolRad.hxx`:97 - `BRepBlend_SurfRstEvolRad::GetBounds`
+//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
+//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
+//
+// SKIPPED: **Source:** `BRepBlend_SurfRstEvolRad.hxx`:100 - `BRepBlend_SurfRstEvolRad::IsSolution`
+//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
+//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfRstEvolRad.hxx`:133 - `BRepBlend_SurfRstEvolRad::Decroch`
+//   method: Permet  d ' implementer   un   critere  de  decrochage
+//   method: specifique a la fonction.
+//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
+//   // pub fn decroch(&self, Sol: &Vector, NS: &mut Vec, TgS: &mut Vec) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfRstEvolRad.hxx`:182 - `BRepBlend_SurfRstEvolRad::GetTolerance`
+//   method: Returns the tolerance to reach in approximation
+//   method: to respect
+//   method: BoundTol error at the Boundary
+//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
+//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
+//
+
+// ========================
+// From BRepBlend_SurfRstLineBuilder.hxx
+// ========================
+
+/// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:65 - `BRepBlend_SurfRstLineBuilder`
+/// This  class processes data  resulting  from
+/// Blend_CSWalking  taking  in consideration the Surface
+/// supporting  the curve to detect the breakpoint.
+///
+/// The criteria of  distribution  of  points on  the  line are  detailed
+/// because  it  is  to  be  used  in  the  calculatuon of values approached
+/// by an approximation of functions continued  basing on
+/// Blend_SurfRstFunction.
+///
+/// Thus this pseudo path necessitates 3 criteria of regrouping :
+///
+/// 1) exit of the domain of  the curve
+///
+/// 2) exit of the domain of  the  surface
+///
+/// 3)  stall as there  is a solution to  the problem
+/// surf/surf  within  the  domain of  the surface
+/// of  support  of  the   restriction.
+///
+/// Construction of a BRepBlend_Line between a surface and
+/// a pcurve on surface from an approached
+/// starting solution. The output entries of this builder
+/// are of the same nature as of the traditional walking
+/// but the requirements on the Line are not the same
+/// If the determination of validity range is always
+/// guaranteed, the criteria of correct repartition of sections
+/// before smoothing are not respected. The resulting Line
+/// is f(t) oriented.
+pub use crate::ffi::BRepBlend_SurfRstLineBuilder as SurfRstLineBuilder;
+
+unsafe impl crate::CppDeletable for SurfRstLineBuilder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_SurfRstLineBuilder_destructor(ptr);
+    }
+}
+
+impl SurfRstLineBuilder {
+    /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:70 - `BRepBlend_SurfRstLineBuilder::BRepBlend_SurfRstLineBuilder()`
+    pub fn new_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool(
+        Surf1: &crate::ffi::HandleAdaptor3dSurface,
+        Domain1: &crate::ffi::HandleAdaptor3dTopolTool,
+        Surf2: &crate::ffi::HandleAdaptor3dSurface,
+        Rst: &crate::ffi::HandleAdaptor2dCurve2d,
+        Domain2: &crate::ffi::HandleAdaptor3dTopolTool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_SurfRstLineBuilder_ctor_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool(Surf1, Domain1, Surf2, Rst, Domain2))
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:106 - `BRepBlend_SurfRstLineBuilder::Complete()`
+    pub fn complete(
+        &mut self,
+        Func: &mut crate::blend::SurfRstFunction,
+        Finv: &mut crate::blend::FuncInv,
+        FinvP: &mut crate::blend::SurfPointFuncInv,
+        FinvC: &mut crate::blend::SurfCurvFuncInv,
+        Pmin: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstLineBuilder_complete(
+                self as *mut Self,
+                Func,
+                Finv,
+                FinvP,
+                FinvC,
+                Pmin,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:118 - `BRepBlend_SurfRstLineBuilder::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfRstLineBuilder_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:120 - `BRepBlend_SurfRstLineBuilder::Line()`
+    pub fn line(&self) -> &crate::ffi::HandleBRepBlendLine {
+        unsafe { &*(crate::ffi::BRepBlend_SurfRstLineBuilder_line(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:122 - `BRepBlend_SurfRstLineBuilder::DecrochStart()`
+    pub fn decroch_start(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfRstLineBuilder_decroch_start(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:124 - `BRepBlend_SurfRstLineBuilder::DecrochEnd()`
+    pub fn decroch_end(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfRstLineBuilder_decroch_end(self as *const Self) }
+    }
+}
+
+// ── Skipped symbols for SurfRstLineBuilder (3 total) ──
+// SKIPPED: **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:76 - `BRepBlend_SurfRstLineBuilder::Perform`
+//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, Func: &mut SurfRstFunction, Finv: &mut FuncInv, FinvP: &mut SurfPointFuncInv, FinvC: &mut SurfCurvFuncInv, Pdep: f64, Pmax: f64, MaxStep: f64, Tol3d: f64, Tol2d: f64, TolGuide: f64, Soldep: &Vector, Fleche: f64, Appro: bool);
+//
+// SKIPPED: **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:90 - `BRepBlend_SurfRstLineBuilder::PerformFirstSection`
+//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
+//   // pub fn perform_first_section(&mut self, Func: &mut SurfRstFunction, Finv: &mut FuncInv, FinvP: &mut SurfPointFuncInv, FinvC: &mut SurfCurvFuncInv, Pdep: f64, Pmax: f64, Soldep: &Vector, Tol3d: f64, Tol2d: f64, TolGuide: f64, RecRst: bool, RecP: bool, RecS: bool, Psol: &mut f64, ParSol: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:112 - `BRepBlend_SurfRstLineBuilder::ArcToRecadre`
+//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
+//   // pub fn arc_to_recadre(&mut self, Sol: &Vector, PrevIndex: i32, pt2d: &mut Pnt2d, lastpt2d: &mut Pnt2d, ponarc: &mut f64) -> i32;
+//
+
+// ========================
+// From BRepBlend_Walking.hxx
+// ========================
+
+/// **Source:** `BRepBlend_Walking.hxx`:45 - `BRepBlend_Walking`
+pub use crate::ffi::BRepBlend_Walking as Walking;
+
+unsafe impl crate::CppDeletable for Walking {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepBlend_Walking_destructor(ptr);
+    }
+}
+
+impl Walking {
+    /// **Source:** `BRepBlend_Walking.hxx`:50 - `BRepBlend_Walking::BRepBlend_Walking()`
+    pub fn new_handleadaptor3dsurface2_handleadaptor3dtopoltool2_handlechfidselspine(
+        Surf1: &crate::ffi::HandleAdaptor3dSurface,
+        Surf2: &crate::ffi::HandleAdaptor3dSurface,
+        Domain1: &crate::ffi::HandleAdaptor3dTopolTool,
+        Domain2: &crate::ffi::HandleAdaptor3dTopolTool,
+        HGuide: &crate::ffi::HandleChFiDSElSpine,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepBlend_Walking_ctor_handleadaptor3dsurface2_handleadaptor3dtopoltool2_handlechfidselspine(Surf1, Surf2, Domain1, Domain2, HGuide))
+        }
+    }
+
+    /// **Source:** `BRepBlend_Walking.hxx`:57 - `BRepBlend_Walking::SetDomainsToRecadre()`
+    /// To define different domains for control and clipping.
+    pub fn set_domains_to_recadre(
+        &mut self,
+        RecDomain1: &crate::ffi::HandleAdaptor3dTopolTool,
+        RecDomain2: &crate::ffi::HandleAdaptor3dTopolTool,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_Walking_set_domains_to_recadre(
+                self as *mut Self,
+                RecDomain1,
+                RecDomain2,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_Walking.hxx`:61 - `BRepBlend_Walking::AddSingularPoint()`
+    /// To define singular points computed before walking.
+    pub fn add_singular_point(&mut self, P: &crate::blend::Point) {
+        unsafe { crate::ffi::BRepBlend_Walking_add_singular_point(self as *mut Self, P) }
+    }
+
+    /// **Source:** `BRepBlend_Walking.hxx`:94 - `BRepBlend_Walking::Continu()`
+    pub fn continu_function_funcinv_real(
+        &mut self,
+        F: &mut crate::blend::Function,
+        FInv: &mut crate::blend::FuncInv,
+        P: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_Walking_continu_function_funcinv_real(
+                self as *mut Self,
+                F,
+                FInv,
+                P,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_Walking.hxx`:98 - `BRepBlend_Walking::Continu()`
+    pub fn continu_function_funcinv_real_bool(
+        &mut self,
+        F: &mut crate::blend::Function,
+        FInv: &mut crate::blend::FuncInv,
+        P: f64,
+        OnS1: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_Walking_continu_function_funcinv_real_bool(
+                self as *mut Self,
+                F,
+                FInv,
+                P,
+                OnS1,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_Walking.hxx`:103 - `BRepBlend_Walking::Complete()`
+    pub fn complete(
+        &mut self,
+        F: &mut crate::blend::Function,
+        FInv: &mut crate::blend::FuncInv,
+        Pmin: f64,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_Walking_complete(self as *mut Self, F, FInv, Pmin) }
+    }
+
+    /// **Source:** `BRepBlend_Walking.hxx`:107 - `BRepBlend_Walking::ClassificationOnS1()`
+    pub fn classification_on_s1(&mut self, C: bool) {
+        unsafe { crate::ffi::BRepBlend_Walking_classification_on_s1(self as *mut Self, C) }
+    }
+
+    /// **Source:** `BRepBlend_Walking.hxx`:109 - `BRepBlend_Walking::ClassificationOnS2()`
+    pub fn classification_on_s2(&mut self, C: bool) {
+        unsafe { crate::ffi::BRepBlend_Walking_classification_on_s2(self as *mut Self, C) }
+    }
+
+    /// **Source:** `BRepBlend_Walking.hxx`:111 - `BRepBlend_Walking::Check2d()`
+    pub fn check2d(&mut self, C: bool) {
+        unsafe { crate::ffi::BRepBlend_Walking_check2d(self as *mut Self, C) }
+    }
+
+    /// **Source:** `BRepBlend_Walking.hxx`:113 - `BRepBlend_Walking::Check()`
+    pub fn check(&mut self, C: bool) {
+        unsafe { crate::ffi::BRepBlend_Walking_check(self as *mut Self, C) }
+    }
+
+    /// **Source:** `BRepBlend_Walking.hxx`:115 - `BRepBlend_Walking::TwistOnS1()`
+    pub fn twist_on_s1(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_Walking_twist_on_s1(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_Walking.hxx`:117 - `BRepBlend_Walking::TwistOnS2()`
+    pub fn twist_on_s2(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_Walking_twist_on_s2(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_Walking.hxx`:119 - `BRepBlend_Walking::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepBlend_Walking_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `BRepBlend_Walking.hxx`:121 - `BRepBlend_Walking::Line()`
+    pub fn line(&self) -> &crate::ffi::HandleBRepBlendLine {
+        unsafe { &*(crate::ffi::BRepBlend_Walking_line(self as *const Self)) }
+    }
+}
+
+// ── Skipped symbols for Walking (3 total) ──
+// SKIPPED: **Source:** `BRepBlend_Walking.hxx`:63 - `BRepBlend_Walking::Perform`
+//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, F: &mut Function, FInv: &mut FuncInv, Pdep: f64, Pmax: f64, MaxStep: f64, Tol3d: f64, TolGuide: f64, Soldep: &Vector, Fleche: f64, Appro: bool);
+//
+// SKIPPED: **Source:** `BRepBlend_Walking.hxx`:74 - `BRepBlend_Walking::PerformFirstSection`
+//   Reason: param 'ParDep' uses unknown type 'math_Vector&'
+//   // pub fn perform_first_section(&mut self, F: &mut Function, Pdep: f64, ParDep: &mut Vector, Tol3d: f64, TolGuide: f64, Pos1: &mut State, Pos2: &mut State) -> bool;
+//
+// SKIPPED: **Source:** `BRepBlend_Walking.hxx`:82 - `BRepBlend_Walking::PerformFirstSection`
+//   Reason: param 'ParDep' uses unknown type 'const math_Vector&'
+//   // pub fn perform_first_section(&mut self, F: &mut Function, FInv: &mut FuncInv, Pdep: f64, Pmax: f64, ParDep: &Vector, Tol3d: f64, TolGuide: f64, RecOnS1: bool, RecOnS2: bool, Psol: &mut f64, ParSol: &mut Vector) -> bool;
+//

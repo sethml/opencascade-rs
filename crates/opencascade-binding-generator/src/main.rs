@@ -93,7 +93,7 @@ fn main() -> Result<()> {
     }
 
     // Determine explicit headers from config file or CLI arguments
-    let (explicit_headers, resolve_deps, exclude_set, exclude_methods) = if let Some(ref config_path) = args.config {
+    let (explicit_headers, resolve_deps, exclude_set, exclude_modules, exclude_methods) = if let Some(ref config_path) = args.config {
         let cfg = config::load_config(config_path)?;
         let resolve = cfg.general.resolve_deps;
 
@@ -107,14 +107,15 @@ fn main() -> Result<()> {
         if args.verbose {
             println!("Config file: {:?}", config_path);
             println!("  Modules: {:?}", cfg.modules);
+            println!("  Exclude modules: {:?}", cfg.exclude_modules);
             println!("  Include headers: {} entries", cfg.include_headers.len());
             println!("  Exclude headers: {} entries", cfg.exclude_headers.len());
             println!("  Exclude methods: {} entries", cfg.exclude_methods.len());
             println!("  Expanded to {} headers", headers.len());
         }
 
-        println!("Loaded config: {} modules, {} individual headers, {} exclusions -> {} headers",
-            cfg.modules.len(), cfg.include_headers.len(), cfg.exclude_headers.len(), headers.len());
+        println!("Loaded config: {} module patterns, {} exclude module patterns, {} individual headers, {} header exclusions -> {} headers",
+            cfg.modules.len(), cfg.exclude_modules.len(), cfg.include_headers.len(), cfg.exclude_headers.len(), headers.len());
 
         // Parse exclude_methods into (ClassName, MethodName) pairs.
         // Uses rsplit to support nested classes: "Outer::Inner::Method" splits
@@ -134,9 +135,10 @@ fn main() -> Result<()> {
             .collect();
 
         let excludes: std::collections::HashSet<String> = cfg.exclude_headers.into_iter().collect();
-        (headers, resolve, excludes, method_exclusions)
+        let exclude_mods: Vec<String> = cfg.exclude_modules;
+        (headers, resolve, excludes, exclude_mods, method_exclusions)
     } else if !args.headers.is_empty() {
-        (args.headers.clone(), args.resolve_deps, std::collections::HashSet::new(), HashSet::new())
+        (args.headers.clone(), args.resolve_deps, std::collections::HashSet::new(), Vec::new(), HashSet::new())
     } else {
         anyhow::bail!("Either --config <file.toml> or positional header arguments are required");
     };
@@ -169,21 +171,35 @@ fn main() -> Result<()> {
     };
 
     // Apply exclusions to resolved headers (exclusions apply after dep resolution too)
-    let headers_to_process = if !exclude_set.is_empty() {
+    let headers_to_process = {
         let before = headers_to_process.len();
         let filtered: Vec<_> = headers_to_process
             .into_iter()
             .filter(|path| {
                 let filename = path.file_name().and_then(|f| f.to_str()).unwrap_or("");
-                !exclude_set.contains(filename)
+                // Check specific header exclusions
+                if !exclude_set.is_empty() && exclude_set.contains(filename) {
+                    return false;
+                }
+                // Check module-level exclusions: extract module prefix from filename
+                if !exclude_modules.is_empty() {
+                    let stem = filename.trim_end_matches(".hxx");
+                    let module = if let Some(pos) = stem.find('_') {
+                        &stem[..pos]
+                    } else {
+                        stem
+                    };
+                    if exclude_modules.iter().any(|pattern| config::module_matches_pattern(module, pattern)) {
+                        return false;
+                    }
+                }
+                true
             })
             .collect();
         if filtered.len() < before {
-            println!("  Excluded {} dependency headers after resolution", before - filtered.len());
+            println!("  Excluded {} headers after dependency resolution", before - filtered.len());
         }
         filtered
-    } else {
-        headers_to_process
     };
 
     println!("Parsing {} headers...", headers_to_process.len());

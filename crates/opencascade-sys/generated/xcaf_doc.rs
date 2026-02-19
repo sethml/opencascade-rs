@@ -615,20 +615,6 @@ unsafe impl crate::CppDeletable for AssemblyGraph {
 }
 
 impl AssemblyGraph {
-    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:83 - `XCAFDoc_AssemblyGraph::XCAFDoc_AssemblyGraph()`
-    /// \brief Constructs graph from XCAF document.
-    /// Construction of a formal graph will be done immediately.
-    /// \param[in]  theDoc - document to iterate.
-    pub fn new_handletdocstddocument(
-        theDoc: &crate::ffi::HandleTDocStdDocument,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyGraph_ctor_handletdocstddocument(
-                theDoc,
-            ))
-        }
-    }
-
     /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:90 - `XCAFDoc_AssemblyGraph::XCAFDoc_AssemblyGraph()`
     /// \brief Constructs graph from XCAF label.
     /// Construction of a formal graph will be done immediately. The specified
@@ -837,6 +823,15 @@ impl HandleXCAFDocAssemblyGraph {
         }
     }
 }
+
+// ── Skipped symbols for AssemblyGraph (1 total) ──
+// SKIPPED: **Source:** `XCAFDoc_AssemblyGraph.hxx`:83 - `XCAFDoc_AssemblyGraph::XCAFDoc_AssemblyGraph`
+//   constructor: \brief Constructs graph from XCAF document.
+//   constructor: Construction of a formal graph will be done immediately.
+//   constructor: \param[in]  theDoc - document to iterate.
+//   Reason: param 'theDoc' uses unknown Handle type
+//   // pub fn new_handletdocstddocument(theDoc: &HandleDocument) -> OwnedPtr<Self>;
+//
 
 /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:54 - `XCAFDoc_AssemblyGraph_Iterator`
 /// \brief Graph iterator.
@@ -1638,42 +1633,6 @@ unsafe impl crate::CppDeletable for AssemblyIterator {
 }
 
 impl AssemblyIterator {
-    /// **Source:** `XCAFDoc_AssemblyIterator.hxx`:32 - `XCAFDoc_AssemblyIterator::XCAFDoc_AssemblyIterator()`
-    /// Constructs iterator starting from assembly roots.
-    /// \param[in]       theDoc   - document to iterate.
-    /// \param [in, opt] theLevel - max level of hierarchy to reach (INT_MAX is for no limit).
-    pub fn new_handletdocstddocument_int(
-        theDoc: &crate::ffi::HandleTDocStdDocument,
-        theLevel: i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::XCAFDoc_AssemblyIterator_ctor_handletdocstddocument_int(
-                    theDoc, theLevel,
-                ),
-            )
-        }
-    }
-
-    /// **Source:** `XCAFDoc_AssemblyIterator.hxx`:39 - `XCAFDoc_AssemblyIterator::XCAFDoc_AssemblyIterator()`
-    /// Constructs iterator starting from the specified position in the assembly tree.
-    /// \param[in]       theDoc   - document to iterate.
-    /// \param[in]       theRoot  - assembly item to start iterating from.
-    /// \param [in, opt] theLevel - max level of hierarchy to reach (INT_MAX is for no limit).
-    pub fn new_handletdocstddocument_assemblyitemid_int(
-        theDoc: &crate::ffi::HandleTDocStdDocument,
-        theRoot: &AssemblyItemId,
-        theLevel: i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::XCAFDoc_AssemblyIterator_ctor_handletdocstddocument_assemblyitemid_int(
-                    theDoc, theRoot, theLevel,
-                ),
-            )
-        }
-    }
-
     /// **Source:** `XCAFDoc_AssemblyIterator.hxx`:44 - `XCAFDoc_AssemblyIterator::More()`
     /// \return true if there is still something to iterate, false -- otherwise.
     pub fn more(&self) -> bool {
@@ -1696,6 +1655,22 @@ impl AssemblyIterator {
         }
     }
 }
+
+// ── Skipped symbols for AssemblyIterator (2 total) ──
+// SKIPPED: **Source:** `XCAFDoc_AssemblyIterator.hxx`:32 - `XCAFDoc_AssemblyIterator::XCAFDoc_AssemblyIterator`
+//   constructor: Constructs iterator starting from assembly roots.
+//   constructor: \param[in]       theDoc   - document to iterate.
+//   constructor: \param [in, opt] theLevel - max level of hierarchy to reach (INT_MAX is for no limit).
+//   Reason: param 'theDoc' uses unknown Handle type
+//   // pub fn new_handletdocstddocument_int(theDoc: &HandleDocument, theLevel: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `XCAFDoc_AssemblyIterator.hxx`:39 - `XCAFDoc_AssemblyIterator::XCAFDoc_AssemblyIterator`
+//   constructor: Constructs iterator starting from the specified position in the assembly tree.
+//   constructor: \param[in]       theDoc   - document to iterate.
+//   constructor: \param[in]       theRoot  - assembly item to start iterating from.
+//   Reason: param 'theDoc' uses unknown Handle type
+//   // pub fn new_handletdocstddocument_assemblyitemid_int(theDoc: &HandleDocument, theRoot: &AssemblyItemId, theLevel: i32) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From XCAFDoc_Centroid.hxx
@@ -6656,11 +6631,6 @@ impl DocumentTool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_set(L, IsAcces)) }
     }
 
-    /// **Source:** `XCAFDoc_DocumentTool.hxx`:62 - `XCAFDoc_DocumentTool::IsXCAFDocument()`
-    pub fn is_xcaf_document(Doc: &crate::ffi::HandleTDocStdDocument) -> bool {
-        unsafe { crate::ffi::XCAFDoc_DocumentTool_is_xcaf_document(Doc) }
-    }
-
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:66 - `XCAFDoc_DocumentTool::DocLabel()`
     /// Returns label where the DocumentTool attribute is or
     /// 0.1 if DocumentTool is not yet set.
@@ -6866,67 +6836,6 @@ impl DocumentTool {
     /// Returns TRUE if Tool exists, ELSE if it has not been created
     pub fn check_notes_tool(theAcces: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_notes_tool(theAcces) }
-    }
-
-    /// **Source:** `XCAFDoc_DocumentTool.hxx`:162 - `XCAFDoc_DocumentTool::GetLengthUnit()`
-    /// Returns value of current internal unit for the document
-    /// converted to base unit type.
-    pub fn get_length_unit_handletdocstddocument_real_lengthunit(
-        theDoc: &crate::ffi::HandleTDocStdDocument,
-        theResut: &mut f64,
-        theBaseUnit: crate::units_methods::LengthUnit,
-    ) -> bool {
-        unsafe {
-            crate::ffi::XCAFDoc_DocumentTool_get_length_unit_handletdocstddocument_real_lengthunit(
-                theDoc,
-                theResut,
-                theBaseUnit.into(),
-            )
-        }
-    }
-
-    /// **Source:** `XCAFDoc_DocumentTool.hxx`:167 - `XCAFDoc_DocumentTool::GetLengthUnit()`
-    /// Returns value of current internal unit for the document in meter
-    pub fn get_length_unit_handletdocstddocument_real(
-        theDoc: &crate::ffi::HandleTDocStdDocument,
-        theResut: &mut f64,
-    ) -> bool {
-        unsafe {
-            crate::ffi::XCAFDoc_DocumentTool_get_length_unit_handletdocstddocument_real(
-                theDoc, theResut,
-            )
-        }
-    }
-
-    /// **Source:** `XCAFDoc_DocumentTool.hxx`:171 - `XCAFDoc_DocumentTool::SetLengthUnit()`
-    /// Sets value of current internal unit to the document in meter
-    pub fn set_length_unit_handletdocstddocument_real(
-        theDoc: &crate::ffi::HandleTDocStdDocument,
-        theUnitValue: f64,
-    ) {
-        unsafe {
-            crate::ffi::XCAFDoc_DocumentTool_set_length_unit_handletdocstddocument_real(
-                theDoc,
-                theUnitValue,
-            )
-        }
-    }
-
-    /// **Source:** `XCAFDoc_DocumentTool.hxx`:176 - `XCAFDoc_DocumentTool::SetLengthUnit()`
-    /// Sets value of current internal unit to the document
-    /// @param theUnitValue must be represented in the base unit type
-    pub fn set_length_unit_handletdocstddocument_real_lengthunit(
-        theDoc: &crate::ffi::HandleTDocStdDocument,
-        theUnitValue: f64,
-        theBaseUnit: crate::units_methods::LengthUnit,
-    ) {
-        unsafe {
-            crate::ffi::XCAFDoc_DocumentTool_set_length_unit_handletdocstddocument_real_lengthunit(
-                theDoc,
-                theUnitValue,
-                theBaseUnit.into(),
-            )
-        }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:192 - `XCAFDoc_DocumentTool::get_type_name()`
@@ -7311,6 +7220,34 @@ impl HandleXCAFDocDocumentTool {
         }
     }
 }
+
+// ── Skipped symbols for DocumentTool (5 total) ──
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:62 - `XCAFDoc_DocumentTool::IsXCAFDocument`
+//   Reason: param 'Doc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn is_xcaf_document(Doc: &HandleDocument) -> bool;
+//
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:162 - `XCAFDoc_DocumentTool::GetLengthUnit`
+//   static_method: Returns value of current internal unit for the document
+//   static_method: converted to base unit type.
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn get_length_unit(theDoc: &HandleDocument, theResut: &mut f64, theBaseUnit: LengthUnit) -> bool;
+//
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:167 - `XCAFDoc_DocumentTool::GetLengthUnit`
+//   static_method: Returns value of current internal unit for the document in meter
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn get_length_unit(theDoc: &HandleDocument, theResut: &mut f64) -> bool;
+//
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:171 - `XCAFDoc_DocumentTool::SetLengthUnit`
+//   static_method: Sets value of current internal unit to the document in meter
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn set_length_unit(theDoc: &HandleDocument, theUnitValue: f64);
+//
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:176 - `XCAFDoc_DocumentTool::SetLengthUnit`
+//   static_method: Sets value of current internal unit to the document
+//   static_method: @param theUnitValue must be represented in the base unit type
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn set_length_unit(theDoc: &HandleDocument, theUnitValue: f64, theBaseUnit: LengthUnit);
+//
 
 // ========================
 // From XCAFDoc_Editor.hxx
@@ -16469,6 +16406,21 @@ impl View {
         unsafe { &*(crate::ffi::XCAFDoc_View_id(self as *const Self)) }
     }
 
+    /// **Source:** `XCAFDoc_View.hxx`:50 - `XCAFDoc_View::SetObject()`
+    /// Updates parent's label and its sub-labels with data taken from theViewObject.
+    /// Old data associated with the label will be lost.
+    pub fn set_object(&mut self, theViewObject: &crate::ffi::HandleXCAFViewObject) {
+        unsafe { crate::ffi::XCAFDoc_View_set_object(self as *mut Self, theViewObject) }
+    }
+
+    /// **Source:** `XCAFDoc_View.hxx`:53 - `XCAFDoc_View::GetObject()`
+    /// Returns view object data taken from the paren's label and its sub-labels.
+    pub fn get_object(&self) -> crate::OwnedPtr<crate::ffi::HandleXCAFViewObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_View_get_object(self as *const Self))
+        }
+    }
+
     /// **Source:** `XCAFDoc_View.hxx`:55 - `XCAFDoc_View::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::XCAFDoc_View_dynamic_type(self as *const Self)) }
@@ -16836,19 +16788,6 @@ impl HandleXCAFDocView {
         }
     }
 }
-
-// ── Skipped symbols for View (2 total) ──
-// SKIPPED: **Source:** `XCAFDoc_View.hxx`:50 - `XCAFDoc_View::SetObject`
-//   method: Updates parent's label and its sub-labels with data taken from theViewObject.
-//   method: Old data associated with the label will be lost.
-//   Reason: param 'theViewObject' uses unknown type 'const Handle(XCAFView_Object)&'
-//   // pub fn set_object(&mut self, theViewObject: &HandleObject);
-//
-// SKIPPED: **Source:** `XCAFDoc_View.hxx`:53 - `XCAFDoc_View::GetObject`
-//   method: Returns view object data taken from the paren's label and its sub-labels.
-//   Reason: return type 'Handle(XCAFView_Object)' is unknown
-//   // pub fn get_object(&self) -> OwnedPtr<Handle<XCAFView_Object>>;
-//
 
 // ========================
 // From XCAFDoc_ViewTool.hxx
@@ -17688,56 +17627,10 @@ impl VisMaterial {
         }
     }
 
-    /// **Source:** `XCAFDoc_VisMaterial.hxx`:118 - `XCAFDoc_VisMaterial::AlphaMode()`
-    /// Return alpha mode; Graphic3d_AlphaMode_BlendAuto by default.
-    pub fn alpha_mode(&self) -> crate::graphic3d::AlphaMode {
-        unsafe {
-            crate::graphic3d::AlphaMode::try_from(crate::ffi::XCAFDoc_VisMaterial_alpha_mode(
-                self as *const Self,
-            ))
-            .unwrap()
-        }
-    }
-
     /// **Source:** `XCAFDoc_VisMaterial.hxx`:121 - `XCAFDoc_VisMaterial::AlphaCutOff()`
     /// Return alpha cutoff value; 0.5 by default.
     pub fn alpha_cut_off(&self) -> f32 {
         unsafe { crate::ffi::XCAFDoc_VisMaterial_alpha_cut_off(self as *const Self) }
-    }
-
-    /// **Source:** `XCAFDoc_VisMaterial.hxx`:124 - `XCAFDoc_VisMaterial::SetAlphaMode()`
-    /// Set alpha mode.
-    pub fn set_alpha_mode(&mut self, theMode: crate::graphic3d::AlphaMode, theCutOff: f32) {
-        unsafe {
-            crate::ffi::XCAFDoc_VisMaterial_set_alpha_mode(
-                self as *mut Self,
-                theMode.into(),
-                theCutOff,
-            )
-        }
-    }
-
-    /// **Source:** `XCAFDoc_VisMaterial.hxx`:129 - `XCAFDoc_VisMaterial::FaceCulling()`
-    /// Returns if the material is double or single sided; Graphic3d_TypeOfBackfacingModel_Auto by
-    /// default.
-    pub fn face_culling(&self) -> crate::graphic3d::TypeOfBackfacingModel {
-        unsafe {
-            crate::graphic3d::TypeOfBackfacingModel::try_from(
-                crate::ffi::XCAFDoc_VisMaterial_face_culling(self as *const Self),
-            )
-            .unwrap()
-        }
-    }
-
-    /// **Source:** `XCAFDoc_VisMaterial.hxx`:132 - `XCAFDoc_VisMaterial::SetFaceCulling()`
-    /// Specifies whether the material is double or single sided.
-    pub fn set_face_culling(&mut self, theFaceCulling: crate::graphic3d::TypeOfBackfacingModel) {
-        unsafe {
-            crate::ffi::XCAFDoc_VisMaterial_set_face_culling(
-                self as *mut Self,
-                theFaceCulling.into(),
-            )
-        }
     }
 
     /// **Source:** `XCAFDoc_VisMaterial.hxx`:151 - `XCAFDoc_VisMaterial::RawName()`
@@ -18168,7 +18061,7 @@ impl HandleXCAFDocVisMaterial {
     }
 }
 
-// ── Skipped symbols for VisMaterial (2 total) ──
+// ── Skipped symbols for VisMaterial (6 total) ──
 // SKIPPED: **Source:** `XCAFDoc_VisMaterial.hxx`:71 - `XCAFDoc_VisMaterial::FillMaterialAspect`
 //   method: Fill in material aspect.
 //   Reason: param 'theAspect' uses unknown type 'Graphic3d_MaterialAspect&'
@@ -18178,6 +18071,27 @@ impl HandleXCAFDocVisMaterial {
 //   method: Fill in graphic aspects.
 //   Reason: param 'theAspect' uses unknown type 'const Handle(Graphic3d_Aspects)&'
 //   // pub fn fill_aspect(&self, theAspect: &HandleAspects);
+//
+// SKIPPED: **Source:** `XCAFDoc_VisMaterial.hxx`:118 - `XCAFDoc_VisMaterial::AlphaMode`
+//   method: Return alpha mode; Graphic3d_AlphaMode_BlendAuto by default.
+//   Reason: return type 'Graphic3d_AlphaMode' is unknown
+//   // pub fn alpha_mode(&self) -> OwnedPtr<Graphic3d_AlphaMode>;
+//
+// SKIPPED: **Source:** `XCAFDoc_VisMaterial.hxx`:124 - `XCAFDoc_VisMaterial::SetAlphaMode`
+//   method: Set alpha mode.
+//   Reason: param 'theMode' uses unknown type 'Graphic3d_AlphaMode'
+//   // pub fn set_alpha_mode(&mut self, theMode: AlphaMode, theCutOff: f32);
+//
+// SKIPPED: **Source:** `XCAFDoc_VisMaterial.hxx`:129 - `XCAFDoc_VisMaterial::FaceCulling`
+//   method: Returns if the material is double or single sided; Graphic3d_TypeOfBackfacingModel_Auto by
+//   method: default.
+//   Reason: return type 'Graphic3d_TypeOfBackfacingModel' is unknown
+//   // pub fn face_culling(&self) -> OwnedPtr<Graphic3d_TypeOfBackfacingModel>;
+//
+// SKIPPED: **Source:** `XCAFDoc_VisMaterial.hxx`:132 - `XCAFDoc_VisMaterial::SetFaceCulling`
+//   method: Specifies whether the material is double or single sided.
+//   Reason: param 'theFaceCulling' uses unknown type 'Graphic3d_TypeOfBackfacingModel'
+//   // pub fn set_face_culling(&mut self, theFaceCulling: TypeOfBackfacingModel);
 //
 
 // ========================

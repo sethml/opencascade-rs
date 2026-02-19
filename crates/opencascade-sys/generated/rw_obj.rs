@@ -145,16 +145,6 @@ impl CafReader {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWObj_CafReader_to_handle(obj.into_raw())) }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
-    pub fn document(&self) -> &crate::ffi::HandleTDocStdDocument {
-        unsafe { &*(crate::ffi::RWObj_CafReader_inherited_Document(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
-    pub fn set_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
-        unsafe { crate::ffi::RWObj_CafReader_inherited_SetDocument(self as *mut Self, theDoc) }
-    }
-
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
     pub fn root_prefix(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::RWObj_CafReader_inherited_RootPrefix(self as *const Self)) }
@@ -463,41 +453,6 @@ impl CafWriter {
         }
     }
 
-    /// **Source:** `RWObj_CafWriter.hxx`:59 - `RWObj_CafWriter::DefaultStyle()`
-    /// Return default material definition to be used for nodes with only color defined.
-    pub fn default_style(&self) -> &crate::xcaf_prs::Style {
-        unsafe { &*(crate::ffi::RWObj_CafWriter_default_style(self as *const Self)) }
-    }
-
-    /// **Source:** `RWObj_CafWriter.hxx`:62 - `RWObj_CafWriter::SetDefaultStyle()`
-    /// Set default material definition to be used for nodes with only color defined.
-    pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
-        unsafe { crate::ffi::RWObj_CafWriter_set_default_style(self as *mut Self, theStyle) }
-    }
-
-    /// **Source:** `RWObj_CafWriter.hxx`:88 - `RWObj_CafWriter::Perform()`
-    /// Write OBJ file and associated MTL material file.
-    /// Triangulation data should be precomputed within shapes!
-    /// @param[in] theDocument     input document
-    /// @param[in] theFileInfo     map with file metadata to put into glTF header section
-    /// @param[in] theProgress     optional progress indicator
-    /// @return FALSE on file writing failure
-    pub fn perform(
-        &mut self,
-        theDocument: &crate::ffi::HandleTDocStdDocument,
-        theFileInfo: &crate::ffi::TColStd_IndexedDataMapOfStringString,
-        theProgress: &crate::message::ProgressRange,
-    ) -> bool {
-        unsafe {
-            crate::ffi::RWObj_CafWriter_perform(
-                self as *mut Self,
-                theDocument,
-                theFileInfo,
-                theProgress,
-            )
-        }
-    }
-
     /// **Source:** `RWObj_CafWriter.hxx`:37 - `RWObj_CafWriter::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -589,13 +544,30 @@ impl HandleRWObjCafWriter {
     }
 }
 
-// ── Skipped symbols for CafWriter (1 total) ──
+// ── Skipped symbols for CafWriter (4 total) ──
+// SKIPPED: **Source:** `RWObj_CafWriter.hxx`:59 - `RWObj_CafWriter::DefaultStyle`
+//   method: Return default material definition to be used for nodes with only color defined.
+//   Reason: return type 'const XCAFPrs_Style&' is unknown
+//   // pub fn default_style(&self) -> &Style;
+//
+// SKIPPED: **Source:** `RWObj_CafWriter.hxx`:62 - `RWObj_CafWriter::SetDefaultStyle`
+//   method: Set default material definition to be used for nodes with only color defined.
+//   Reason: param 'theStyle' uses unknown type 'const XCAFPrs_Style&'
+//   // pub fn set_default_style(&mut self, theStyle: &Style);
+//
 // SKIPPED: **Source:** `RWObj_CafWriter.hxx`:76 - `RWObj_CafWriter::Perform`
 //   method: Write OBJ file and associated MTL material file.
 //   method: Triangulation data should be precomputed within shapes!
 //   method: @param[in] theDocument     input document
 //   Reason: has unbindable types: param 'theLabelFilter': raw pointer (const TColStd_MapOfAsciiString*)
 //   // pub fn perform(&mut self, theDocument: &HandleDocument, theRootLabels: &LabelSequence, theLabelFilter: /* const TColStd_MapOfAsciiString* */, theFileInfo: &IndexedDataMapOfStringString, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `RWObj_CafWriter.hxx`:88 - `RWObj_CafWriter::Perform`
+//   method: Write OBJ file and associated MTL material file.
+//   method: Triangulation data should be precomputed within shapes!
+//   method: @param[in] theDocument     input document
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn perform(&mut self, theDocument: &HandleDocument, theFileInfo: &IndexedDataMapOfStringString, theProgress: &ProgressRange) -> bool;
 //
 
 // ========================
@@ -647,38 +619,6 @@ impl ObjMaterialMap {
         unsafe { &*(crate::ffi::RWObj_ObjMaterialMap_dynamic_type(self as *const Self)) }
     }
 
-    /// **Source:** `RWObj_ObjMaterialMap.hxx`:32 - `RWObj_ObjMaterialMap::AddMaterial()`
-    /// Add material
-    pub fn add_material(
-        &mut self,
-        theStyle: &crate::xcaf_prs::Style,
-    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWObj_ObjMaterialMap_add_material(
-                self as *mut Self,
-                theStyle,
-            ))
-        }
-    }
-
-    /// **Source:** `RWObj_ObjMaterialMap.hxx`:36 - `RWObj_ObjMaterialMap::DefineMaterial()`
-    /// Virtual method actually defining the material (e.g. export to the file).
-    pub fn define_material(
-        &mut self,
-        theStyle: &crate::xcaf_prs::Style,
-        theKey: &crate::t_collection::AsciiString,
-        theName: &crate::t_collection::AsciiString,
-    ) {
-        unsafe {
-            crate::ffi::RWObj_ObjMaterialMap_define_material(
-                self as *mut Self,
-                theStyle,
-                theKey,
-                theName,
-            )
-        }
-    }
-
     /// **Source:** `RWObj_ObjMaterialMap.hxx`:23 - `RWObj_ObjMaterialMap::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -726,51 +666,9 @@ impl ObjMaterialMap {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:35 - `RWMesh_MaterialMap::DefaultStyle()`
-    pub fn default_style(&self) -> &crate::xcaf_prs::Style {
-        unsafe { &*(crate::ffi::RWObj_ObjMaterialMap_inherited_DefaultStyle(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:38 - `RWMesh_MaterialMap::SetDefaultStyle()`
-    pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
-        unsafe {
-            crate::ffi::RWObj_ObjMaterialMap_inherited_SetDefaultStyle(self as *mut Self, theStyle)
-        }
-    }
-
-    /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:41 - `RWMesh_MaterialMap::FindMaterial()`
-    pub fn find_material(
-        &self,
-        theStyle: &crate::xcaf_prs::Style,
-    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWObj_ObjMaterialMap_inherited_FindMaterial(
-                self as *const Self,
-                theStyle,
-            ))
-        }
-    }
-
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:57 - `RWMesh_MaterialMap::CreateTextureFolder()`
     pub fn create_texture_folder(&mut self) -> bool {
         unsafe { crate::ffi::RWObj_ObjMaterialMap_inherited_CreateTextureFolder(self as *mut Self) }
-    }
-
-    /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:63 - `RWMesh_MaterialMap::CopyTexture()`
-    pub fn copy_texture(
-        &mut self,
-        theResTexture: &mut crate::t_collection::AsciiString,
-        theTexture: &crate::ffi::HandleImageTexture,
-        theKey: &crate::t_collection::AsciiString,
-    ) -> bool {
-        unsafe {
-            crate::ffi::RWObj_ObjMaterialMap_inherited_CopyTexture(
-                self as *mut Self,
-                theResTexture,
-                theTexture,
-                theKey,
-            )
-        }
     }
 
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:73 - `RWMesh_MaterialMap::IsFailed()`
@@ -852,6 +750,18 @@ impl HandleRWObjObjMaterialMap {
         }
     }
 }
+
+// ── Skipped symbols for ObjMaterialMap (2 total) ──
+// SKIPPED: **Source:** `RWObj_ObjMaterialMap.hxx`:32 - `RWObj_ObjMaterialMap::AddMaterial`
+//   method: Add material
+//   Reason: param 'theStyle' uses unknown type 'const XCAFPrs_Style&'
+//   // pub fn add_material(&mut self, theStyle: &Style) -> OwnedPtr<TCollection_AsciiString>;
+//
+// SKIPPED: **Source:** `RWObj_ObjMaterialMap.hxx`:36 - `RWObj_ObjMaterialMap::DefineMaterial`
+//   method: Virtual method actually defining the material (e.g. export to the file).
+//   Reason: param 'theStyle' uses unknown type 'const XCAFPrs_Style&'
+//   // pub fn define_material(&mut self, theStyle: &Style, theKey: &AsciiString, theName: &AsciiString);
+//
 
 // ========================
 // From RWObj_ObjWriterContext.hxx

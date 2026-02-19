@@ -20,11 +20,16 @@ pub fn make_curve_curve(
 /// Build a Geom_Surface using the information from the Surface from Adaptor3d
 /// @param theS - Surface adaptor to convert.
 /// @param theTrimFlag - True if perform trim surface values by adaptor and false otherwise.
-pub fn make_surface(
+pub fn make_surface_surface_bool(
     theS: &crate::adaptor3d::Surface,
     theTrimFlag: bool,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_make_surface(theS, theTrimFlag)) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_make_surface_surface_bool(
+            theS,
+            theTrimFlag,
+        ))
+    }
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)

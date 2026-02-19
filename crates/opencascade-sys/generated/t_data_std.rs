@@ -17874,5 +17874,6 @@ pub use crate::ffi::{
     TDataStd_DataMapOfStringHArray1OfReal as DataMapOfStringHArray1OfReal,
     TDataStd_DataMapOfStringReal as DataMapOfStringReal,
     TDataStd_DataMapOfStringString as DataMapOfStringString, TDataStd_LabelArray1 as LabelArray1,
+    TDataStd_ListIteratorOfListOfExtendedString as ListIteratorOfListOfExtendedString,
     TDataStd_ListOfByte as ListOfByte, TDataStd_ListOfExtendedString as ListOfExtendedString,
 };

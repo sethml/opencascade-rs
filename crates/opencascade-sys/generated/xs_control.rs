@@ -28,7 +28,8 @@ pub use crate::ffi::{
     HandleIFSelectSelectDeduct, HandleIFSelectSelectExplore, HandleIFSelectSelectExtract,
     HandleIFSelectSelection, HandleIFSelectSignature, HandleIFSelectWorkSession,
     HandleIGESControlController, HandleInterfaceSignType, HandleMoniToolSignText,
-    HandleSTEPCAFControlController, HandleSTEPControlController, HandleStandardTransient,
+    HandleSTEPCAFControlController, HandleSTEPControlController,
+    HandleSTEPSelectionsSelectForTransfer, HandleStandardTransient,
 };
 
 // ========================
@@ -771,7 +772,7 @@ impl Controller {
     }
 
     /// **Source:** `XSControl_Controller.hxx`:213 - `XSControl_Controller::AdaptorSession()`
-    pub fn adaptor_session(&self) -> &crate::ffi::XSControl_WorkSessionMap {
+    pub fn adaptor_session(&self) -> &crate::ffi::STEPConstruct_DataMapOfAsciiStringTransient {
         unsafe { &*(crate::ffi::XSControl_Controller_adaptor_session(self as *const Self)) }
     }
 
@@ -2003,6 +2004,22 @@ impl HandleXSControlSelectForTransfer {
             )
         }
     }
+
+    /// Downcast Handle<XSControl_SelectForTransfer> to Handle<STEPSelections_SelectForTransfer>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectForTransfer` (or subclass).
+    pub fn downcast_to_select_for_transfer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectForTransfer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleXSControlSelectForTransfer_downcast_to_HandleSTEPSelectionsSelectForTransfer(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -2531,7 +2548,7 @@ impl TransferReader {
     /// **Source:** `XSControl_TransferReader.hxx`:105 - `XSControl_TransferReader::Context()`
     /// Returns (modifiable) the whole definition of Context
     /// Rather for internal use (ex.: preparing and setting in once)
-    pub fn context(&mut self) -> &mut crate::ffi::XSControl_WorkSessionMap {
+    pub fn context(&mut self) -> &mut crate::ffi::STEPConstruct_DataMapOfAsciiStringTransient {
         unsafe { &mut *(crate::ffi::XSControl_TransferReader_context(self as *mut Self)) }
     }
 
@@ -4207,20 +4224,6 @@ impl WorkSession {
         unsafe { &*(crate::ffi::XSControl_WorkSession_norm_adaptor(self as *const Self)) }
     }
 
-    /// **Source:** `XSControl_WorkSession.hxx`:85 - `XSControl_WorkSession::Context()`
-    /// Returns the current Context List, Null if not defined
-    /// The Context is given to the TransientProcess for TransferRead
-    pub fn context(&self) -> &crate::ffi::XSControl_WorkSessionMap {
-        unsafe { &*(crate::ffi::XSControl_WorkSession_context(self as *const Self)) }
-    }
-
-    /// **Source:** `XSControl_WorkSession.hxx`:89 - `XSControl_WorkSession::SetAllContext()`
-    /// Sets the current Context List, as a whole
-    /// Sets it to the TransferReader
-    pub fn set_all_context(&mut self, theContext: &crate::ffi::XSControl_WorkSessionMap) {
-        unsafe { crate::ffi::XSControl_WorkSession_set_all_context(self as *mut Self, theContext) }
-    }
-
     /// **Source:** `XSControl_WorkSession.hxx`:92 - `XSControl_WorkSession::ClearContext()`
     /// Clears the whole current Context (nullifies it)
     pub fn clear_context(&mut self) {
@@ -5694,7 +5697,19 @@ impl HandleXSControlWorkSession {
     }
 }
 
-// ── Skipped symbols for WorkSession (1 total) ──
+// ── Skipped symbols for WorkSession (3 total) ──
+// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:85 - `XSControl_WorkSession::Context`
+//   method: Returns the current Context List, Null if not defined
+//   method: The Context is given to the TransientProcess for TransferRead
+//   Reason: return type 'const XSControl_WorkSessionMap&' is unknown
+//   // pub fn context(&self) -> &WorkSessionMap;
+//
+// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:89 - `XSControl_WorkSession::SetAllContext`
+//   method: Sets the current Context List, as a whole
+//   method: Sets it to the TransferReader
+//   Reason: param 'theContext' uses unknown type 'const XSControl_WorkSessionMap&'
+//   // pub fn set_all_context(&mut self, theContext: &WorkSessionMap);
+//
 // SKIPPED: **Source:** `XSControl_WorkSession.hxx`:98 - `XSControl_WorkSession::PrintTransferStatus`
 //   method: Prints the transfer status of a transferred item, as being
 //   method: the Mapped n0 <num>, from MapWriter if <wri> is True, or

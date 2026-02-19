@@ -6,6 +6,638 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `GeomInt.hxx`:35 - `GeomInt::AdjustPeriodic`
+/// Adjusts the parameter <thePar> to the range [theParMin,  theParMax]
+pub fn adjust_periodic_real7(
+    thePar: f64,
+    theParMin: f64,
+    theParMax: f64,
+    thePeriod: f64,
+    theNewPar: &mut f64,
+    theOffset: &mut f64,
+    theEps: f64,
+) -> bool {
+    unsafe {
+        crate::ffi::GeomInt_adjust_periodic_real7(
+            thePar, theParMin, theParMax, thePeriod, theNewPar, theOffset, theEps,
+        )
+    }
+}
+
+// ========================
+// From GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:33 - `GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox`
+pub use crate::ffi::GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox as BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox;
+
+unsafe impl crate::CppDeletable for BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox_destructor(
+            ptr,
+        );
+    }
+}
+
+impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox {
+    /// **Source:** `GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:46 - `GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox::IsSolutionReached()`
+    pub fn is_solution_reached(
+        &self,
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox_is_solution_reached(self as *const Self, F)
+        }
+    }
+
+    /// Upcast to math_BFGS
+    pub fn as_math_bfgs(&self) -> &crate::math::BFGS {
+        unsafe {
+            &*(crate::ffi::GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox_as_math_BFGS(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_BFGS (mutable)
+    pub fn as_math_bfgs_mut(&mut self) -> &mut crate::math::BFGS {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox_as_math_BFGS_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox_inherited_IsDone(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
+    pub fn minimum(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox_inherited_Minimum(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
+    pub fn nb_iterations(&self) -> i32 {
+        unsafe {
+            crate::ffi::GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox_inherited_NbIterations(self as *const Self)
+        }
+    }
+}
+
+// ── Skipped symbols for BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox (1 total) ──
+// SKIPPED: **Source:** `GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:38 - `GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox::GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox`
+//   Reason: param 'StartingPoint' uses unknown type 'const math_Vector&'
+//   // pub fn new_multiplevarfunctionwithgradient_vector_real3_int(F: &mut MultipleVarFunctionWithGradient, StartingPoint: &Vector, Tolerance3d: f64, Tolerance2d: f64, Eps: f64, NbIterations: i32) -> OwnedPtr<Self>;
+//
+
+// ========================
+// From GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:41 - `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox`
+pub use crate::ffi::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox as BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox;
+
+unsafe impl crate::CppDeletable for BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_destructor(
+            ptr,
+        );
+    }
+}
+
+impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox {
+    /// **Source:** `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:61 - `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::NbVariables()`
+    /// returns the number of variables of the function. It
+    /// corresponds to the number of MultiPoints.
+    pub fn nb_variables(&self) -> i32 {
+        unsafe {
+            crate::ffi::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_nb_variables(self as *const Self)
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:82 - `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::CurveValue()`
+    /// returns the MultiBSpCurve approximating the set after
+    /// computing the value F or Grad(F).
+    pub fn curve_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiBSpCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_curve_value(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:86 - `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::Error()`
+    /// returns the distance between the MultiPoint of range
+    /// IPoint and the curve CurveIndex.
+    pub fn error(&mut self, IPoint: i32, CurveIndex: i32) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_error(
+                self as *mut Self,
+                IPoint,
+                CurveIndex,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:91 - `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::MaxError3d()`
+    /// returns the maximum distance between the points
+    /// and the MultiBSpCurve.
+    pub fn max_error3d(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_max_error3d(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:95 - `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::MaxError2d()`
+    /// returns the maximum distance between the points
+    /// and the MultiBSpCurve.
+    pub fn max_error2d(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_max_error2d(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:99 - `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::FunctionMatrix()`
+    /// returns the function matrix used to approximate the
+    /// multiline.
+    pub fn function_matrix(&self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_function_matrix(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:103 - `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::DerivativeFunctionMatrix()`
+    /// returns the derivative function matrix used to approximate the
+    /// multiline.
+    pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_derivative_function_matrix(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:112 - `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::FirstConstraint()`
+    pub fn first_constraint(
+        &self,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        FirstPoint: i32,
+    ) -> crate::app_par_curves::Constraint {
+        unsafe {
+            crate::app_par_curves::Constraint::try_from(crate::ffi::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_first_constraint(self as *const Self, TheConstraints, FirstPoint)).unwrap()
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:116 - `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::LastConstraint()`
+    pub fn last_constraint(
+        &self,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        LastPoint: i32,
+    ) -> crate::app_par_curves::Constraint {
+        unsafe {
+            crate::app_par_curves::Constraint::try_from(crate::ffi::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_last_constraint(self as *const Self, TheConstraints, LastPoint)).unwrap()
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:119 - `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::SetFirstLambda()`
+    pub fn set_first_lambda(&mut self, l1: f64) {
+        unsafe {
+            crate::ffi::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_set_first_lambda(self as *mut Self, l1)
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:121 - `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::SetLastLambda()`
+    pub fn set_last_lambda(&mut self, l2: f64) {
+        unsafe {
+            crate::ffi::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_set_last_lambda(self as *mut Self, l2)
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient
+    pub fn as_math_multiple_var_function_with_gradient(
+        &self,
+    ) -> &crate::math::MultipleVarFunctionWithGradient {
+        unsafe {
+            &*(crate::ffi::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_as_math_MultipleVarFunctionWithGradient(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
+    pub fn as_math_multiple_var_function_with_gradient_mut(
+        &mut self,
+    ) -> &mut crate::math::MultipleVarFunctionWithGradient {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        unsafe {
+            &*(crate::ffi::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_as_math_MultipleVarFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_as_math_MultipleVarFunction_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_inherited_GetStateNumber(self as *mut Self)
+        }
+    }
+}
+
+// ── Skipped symbols for BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox (6 total) ──
+// SKIPPED: **Source:** `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:49 - `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox`
+//   constructor: initializes the fields of the function. The approximating
+//   constructor: curve has <NbPol> control points.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn new_themultilineofwlapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int(SSP: &TheMultiLineOfWLApprox, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &Vector, Knots: &Array1OfReal, Mults: &Array1OfInteger, NbPol: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:67 - `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::Value`
+//   method: this method computes the new approximation of the
+//   method: MultiLine
+//   method: SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
+//
+// SKIPPED: **Source:** `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:71 - `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::Gradient`
+//   method: returns the gradient G of the sum above for the
+//   method: parameters Xi.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:75 - `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::Values`
+//   method: returns the value F=sum(||Pui - Bi*Pi||)2.
+//   method: returns the value G = grad(F) for the parameters Xi.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:78 - `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::NewParameters`
+//   method: returns the new parameters of the MultiLine.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn new_parameters(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:109 - `GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::Index`
+//   method: Returns the indexes of the first non null values of
+//   method: A and DA.
+//   method: The values are non null from Index(ieme point) +1
+//   Reason: return type 'const math_IntegerVector&' is unknown
+//   // pub fn index(&self) -> &IntegerVector;
+//
+
+// ========================
+// From GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:45 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox`
+pub use crate::ffi::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox as BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox;
+
+unsafe impl crate::CppDeletable for BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_destructor(
+            ptr,
+        );
+    }
+}
+
+impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
+    /// **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:76 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox()`
+    /// Initializes the fields of the object.
+    pub fn new_themultilineofwlapprox_int2_constraint2_int(
+        SSP: &TheMultiLineOfWLApprox,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:111 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox()`
+    /// Initializes the fields of the object.
+    pub fn new_themultilineofwlapprox_array1ofreal_array1ofinteger_int2_constraint2_int(
+        SSP: &TheMultiLineOfWLApprox,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:153 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::IsDone()`
+    /// returns True if all has been correctly done.
+    pub fn is_done(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_is_done(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:158 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::BezierValue()`
+    /// returns the result of the approximation, i.e. all the
+    /// Curves.
+    /// An exception is raised if NotDone.
+    pub fn bezier_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_bezier_value(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:163 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::BSplineValue()`
+    /// returns the result of the approximation, i.e. all the
+    /// Curves.
+    /// An exception is raised if NotDone.
+    pub fn b_spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
+        unsafe {
+            &*(crate::ffi::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_b_spline_value(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:167 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::FunctionMatrix()`
+    /// returns the function matrix used to approximate the
+    /// set.
+    pub fn function_matrix(&self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_function_matrix(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:171 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::DerivativeFunctionMatrix()`
+    /// returns the derivative function matrix used
+    /// to approximate the set.
+    pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_derivative_function_matrix(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:184 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::Distance()`
+    /// returns the distances between the points of the
+    /// multiline and the approximation curves.
+    pub fn distance(&mut self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_distance(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:189 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::Error()`
+    /// returns the maximum errors between the MultiLine
+    /// and the approximation curves. F is the sum of the square
+    /// distances.
+    pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
+        unsafe {
+            crate::ffi::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_error(
+                self as *mut Self,
+                F,
+                MaxE3d,
+                MaxE2d,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:193 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::FirstLambda()`
+    /// returns the value (P2 - P1)/ V1 if the first point
+    /// was a tangency point.
+    pub fn first_lambda(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_first_lambda(self as *const Self)
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:197 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::LastLambda()`
+    /// returns the value (PN - PN-1)/ VN if the last point
+    /// was a tangency point.
+    pub fn last_lambda(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_last_lambda(self as *const Self)
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:200 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::Points()`
+    /// returns the matrix of points value.
+    pub fn points(&self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_points(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:203 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::Poles()`
+    /// returns the matrix of resulting control points value.
+    pub fn poles(&self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_poles(self as *const Self))
+        }
+    }
+}
+
+// ── Skipped symbols for BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox (8 total) ──
+// SKIPPED: **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:66 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox`
+//   constructor: given a MultiLine, this algorithm computes the least
+//   constructor: square resolution using the Householder-QR method.
+//   constructor: If the first and/or the last point is a constraint
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn new_themultilineofwlapprox_int2_constraint2_vector_int(SSP: &TheMultiLineOfWLApprox, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:99 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox`
+//   constructor: given a MultiLine, this algorithm computes the least
+//   constructor: square resolution using the Householder-QR method.
+//   constructor: If the first and/or the last point is a constraint
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn new_themultilineofwlapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP: &TheMultiLineOfWLApprox, Knots: &Array1OfReal, Mults: &Array1OfInteger, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:123 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::Perform`
+//   method: Is used after having initialized the fields.
+//   method: The case "CurvaturePoint" is not treated in this method.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, Parameters: &Vector);
+//
+// SKIPPED: **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:126 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::Perform`
+//   method: Is used after having initialized the fields.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, Parameters: &Vector, l1: f64, l2: f64);
+//
+// SKIPPED: **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:133 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::Perform`
+//   method: Is used after having initialized the fields.
+//   method: <V1t> is the tangent vector at the first point.
+//   method: <V2t> is the tangent vector at the last point.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, l1: f64, l2: f64);
+//
+// SKIPPED: **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:144 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::Perform`
+//   method: Is used after having initialized the fields.
+//   method: <V1t> is the tangent vector at the first point.
+//   method: <V2t> is the tangent vector at the last point.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, V1c: &Vector, V2c: &Vector, l1: f64, l2: f64);
+//
+// SKIPPED: **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:177 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::ErrorGradient`
+//   method: returns the maximum errors between the MultiLine
+//   method: and the approximation curves. F is the sum of the square
+//   method: distances. Grad is the derivative vector of the
+//   Reason: param 'Grad' uses unknown type 'math_Vector&'
+//   // pub fn error_gradient(&mut self, Grad: &mut Vector, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64);
+//
+// SKIPPED: **Source:** `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx`:209 - `GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::KIndex`
+//   method: Returns the indexes of the first non null values of
+//   method: A and DA.
+//   method: The values are non null from Index(ieme point) +1
+//   Reason: return type 'const math_IntegerVector&' is unknown
+//   // pub fn k_index(&self) -> &IntegerVector;
+//
+
+// ========================
+// From GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:34 - `GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox`
+pub use crate::ffi::GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox as Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox;
+
+unsafe impl crate::CppDeletable for Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox_destructor(
+            ptr,
+        );
+    }
+}
+
+impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox {
+    /// **Source:** `GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:47 - `GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox::IsSolutionReached()`
+    pub fn is_solution_reached(
+        &self,
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox_is_solution_reached(self as *const Self, F)
+        }
+    }
+
+    /// Upcast to math_BFGS
+    pub fn as_math_bfgs(&self) -> &crate::math::BFGS {
+        unsafe {
+            &*(crate::ffi::GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox_as_math_BFGS(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_BFGS (mutable)
+    pub fn as_math_bfgs_mut(&mut self) -> &mut crate::math::BFGS {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox_as_math_BFGS_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox_inherited_IsDone(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
+    pub fn minimum(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox_inherited_Minimum(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
+    pub fn nb_iterations(&self) -> i32 {
+        unsafe {
+            crate::ffi::GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox_inherited_NbIterations(self as *const Self)
+        }
+    }
+}
+
+// ── Skipped symbols for Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox (1 total) ──
+// SKIPPED: **Source:** `GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:39 - `GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox::GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox`
+//   Reason: param 'StartingPoint' uses unknown type 'const math_Vector&'
+//   // pub fn new_multiplevarfunctionwithgradient_vector_real3_int(F: &mut MultipleVarFunctionWithGradient, StartingPoint: &Vector, Tolerance3d: f64, Tolerance2d: f64, Eps: f64, NbIterations: i32) -> OwnedPtr<Self>;
+//
+
+// ========================
+// From GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:34 - `GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox`
+pub use crate::ffi::GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox as Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox;
+
+unsafe impl crate::CppDeletable for Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox_destructor(ptr);
+    }
+}
+
+impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox {
+    /// **Source:** `GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:47 - `GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox::IsSolutionReached()`
+    pub fn is_solution_reached(
+        &self,
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox_is_solution_reached(self as *const Self, F)
+        }
+    }
+
+    /// Upcast to math_BFGS
+    pub fn as_math_bfgs(&self) -> &crate::math::BFGS {
+        unsafe {
+            &*(crate::ffi::GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox_as_math_BFGS(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_BFGS (mutable)
+    pub fn as_math_bfgs_mut(&mut self) -> &mut crate::math::BFGS {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox_as_math_BFGS_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox_inherited_IsDone(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
+    pub fn minimum(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox_inherited_Minimum(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
+    pub fn nb_iterations(&self) -> i32 {
+        unsafe {
+            crate::ffi::GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox_inherited_NbIterations(self as *const Self)
+        }
+    }
+}
+
+// ── Skipped symbols for Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox (1 total) ──
+// SKIPPED: **Source:** `GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:39 - `GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox::GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox`
+//   Reason: param 'StartingPoint' uses unknown type 'const math_Vector&'
+//   // pub fn new_multiplevarfunctionwithgradient_vector_real3_int(F: &mut MultipleVarFunctionWithGradient, StartingPoint: &Vector, Tolerance3d: f64, Tolerance2d: f64, Eps: f64, NbIterations: i32) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From GeomInt_IntSS.hxx
 // ========================
@@ -283,6 +915,30 @@ impl IntSS {
         }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:127 - `GeomInt_IntSS::TreatRLine()`
+    /// converts RLine to Geom(2d)_Curve.
+    pub fn treat_r_line(
+        theRL: &crate::ffi::HandleIntPatchRLine,
+        theHS1: &crate::ffi::HandleGeomAdaptorSurface,
+        theHS2: &crate::ffi::HandleGeomAdaptorSurface,
+        theC3d: &mut crate::ffi::HandleGeomCurve,
+        theC2d1: &mut crate::ffi::HandleGeom2dCurve,
+        theC2d2: &mut crate::ffi::HandleGeom2dCurve,
+        theTolReached: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_IntSS_treat_r_line(
+                theRL,
+                theHS1,
+                theHS2,
+                theC3d,
+                theC2d1,
+                theC2d2,
+                theTolReached,
+            )
+        }
+    }
+
     /// **Source:** `GeomInt_IntSS.hxx`:136 - `GeomInt_IntSS::BuildPCurves()`
     /// creates 2D-curve on given surface from given 3D-curve
     pub fn build_p_curves_real7_handlegeomsurface_handlegeomcurve_handlegeom2dcurve(
@@ -365,13 +1021,6 @@ impl IntSS {
     }
 }
 
-// ── Skipped symbols for IntSS (1 total) ──
-// SKIPPED: **Source:** `GeomInt_IntSS.hxx`:127 - `GeomInt_IntSS::TreatRLine`
-//   static_method: converts RLine to Geom(2d)_Curve.
-//   Reason: param 'theRL' uses unknown type 'const Handle(IntPatch_RLine)&'
-//   // pub fn treat_r_line(theRL: &HandleRLine, theHS1: &HandleSurface, theHS2: &HandleSurface, theC3d: &mut HandleCurve, theC2d1: &mut HandleCurve, theC2d2: &mut HandleCurve, theTolReached: &mut f64);
-//
-
 // ========================
 // From GeomInt_LineConstructor.hxx
 // ========================
@@ -431,6 +1080,3592 @@ impl LineConstructor {
         unsafe { crate::ffi::GeomInt_LineConstructor_part(self as *const Self, I, WFirst, WLast) }
     }
 }
+
+// ========================
+// From GeomInt_LineTool.hxx
+// ========================
+
+/// **Source:** `GeomInt_LineTool.hxx`:27 - `GeomInt_LineTool`
+pub use crate::ffi::GeomInt_LineTool as LineTool;
+
+unsafe impl crate::CppDeletable for LineTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_LineTool_destructor(ptr);
+    }
+}
+
+impl LineTool {
+    /// **Source:** `GeomInt_LineTool.hxx` - `GeomInt_LineTool::GeomInt_LineTool()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomInt_LineTool_ctor()) }
+    }
+
+    /// **Source:** `GeomInt_LineTool.hxx`:32 - `GeomInt_LineTool::NbVertex()`
+    pub fn nb_vertex(L: &crate::ffi::HandleIntPatchLine) -> i32 {
+        unsafe { crate::ffi::GeomInt_LineTool_nb_vertex(L) }
+    }
+
+    /// **Source:** `GeomInt_LineTool.hxx`:34 - `GeomInt_LineTool::Vertex()`
+    pub fn vertex(L: &crate::ffi::HandleIntPatchLine, I: i32) -> &'static crate::int_patch::Point {
+        unsafe { &*(crate::ffi::GeomInt_LineTool_vertex(L, I)) }
+    }
+
+    /// **Source:** `GeomInt_LineTool.hxx`:37 - `GeomInt_LineTool::FirstParameter()`
+    pub fn first_parameter(L: &crate::ffi::HandleIntPatchLine) -> f64 {
+        unsafe { crate::ffi::GeomInt_LineTool_first_parameter(L) }
+    }
+
+    /// **Source:** `GeomInt_LineTool.hxx`:39 - `GeomInt_LineTool::LastParameter()`
+    pub fn last_parameter(L: &crate::ffi::HandleIntPatchLine) -> f64 {
+        unsafe { crate::ffi::GeomInt_LineTool_last_parameter(L) }
+    }
+
+    /// **Source:** `GeomInt_LineTool.hxx`:41 - `GeomInt_LineTool::DecompositionOfWLine()`
+    pub fn decomposition_of_w_line(
+        theWLine: &crate::ffi::HandleIntPatchWLine,
+        theSurface1: &crate::ffi::HandleGeomAdaptorSurface,
+        theSurface2: &crate::ffi::HandleGeomAdaptorSurface,
+        aTolSum: f64,
+        theLConstructor: &LineConstructor,
+        theNewLines: &mut crate::ffi::IntPatch_SequenceOfLine,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_LineTool_decomposition_of_w_line(
+                theWLine,
+                theSurface1,
+                theSurface2,
+                aTolSum,
+                theLConstructor,
+                theNewLines,
+            )
+        }
+    }
+}
+
+// ========================
+// From GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox.hxx`:40 - `GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox`
+pub use crate::ffi::GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox as MyBSplGradientOfTheComputeLineOfWLApprox;
+
+unsafe impl crate::CppDeletable for MyBSplGradientOfTheComputeLineOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_destructor(ptr);
+    }
+}
+
+impl MyBSplGradientOfTheComputeLineOfWLApprox {
+    /// **Source:** `GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox.hxx`:86 - `GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox::IsDone()`
+    /// returns True if all has been correctly done.
+    pub fn is_done(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_is_done(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox.hxx`:90 - `GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox::Value()`
+    /// returns all the BSpline curves approximating the
+    /// MultiLine SSP after minimization of the parameter.
+    pub fn value(&self) -> crate::OwnedPtr<crate::app_par_curves::MultiBSpCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_value(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox.hxx`:96 - `GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox::Error()`
+    /// returns the difference between the old and the new
+    /// approximation.
+    /// An exception is raised if NotDone.
+    /// An exception is raised if Index<1 or Index>NbParameters.
+    pub fn error(&self, Index: i32) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_error(
+                self as *const Self,
+                Index,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox.hxx`:100 - `GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox::MaxError3d()`
+    /// returns the maximum difference between the old and the
+    /// new approximation.
+    pub fn max_error3d(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_max_error3d(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox.hxx`:104 - `GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox::MaxError2d()`
+    /// returns the maximum difference between the old and the
+    /// new approximation.
+    pub fn max_error2d(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_max_error2d(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox.hxx`:108 - `GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox::AverageError()`
+    /// returns the average error between the old and the
+    /// new approximation.
+    pub fn average_error(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_average_error(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for MyBSplGradientOfTheComputeLineOfWLApprox (2 total) ──
+// SKIPPED: **Source:** `GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox.hxx`:51 - `GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox::GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox`
+//   constructor: Tries to minimize the sum (square(||Qui - Bi*Pi||))
+//   constructor: where Pui describe the approximating BSpline curves'Poles
+//   constructor: and Qi the MultiLine points with a parameter ui.
+//   Reason: param 'Parameters' uses unknown type 'math_Vector&'
+//   // pub fn new_themultilineofwlapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int(SSP: &TheMultiLineOfWLApprox, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &mut Vector, Knots: &Array1OfReal, Mults: &Array1OfInteger, Deg: i32, Tol3d: f64, Tol2d: f64, NbIterations: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox.hxx`:70 - `GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox::GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox`
+//   constructor: Tries to minimize the sum (square(||Qui - Bi*Pi||))
+//   constructor: where Pui describe the approximating BSpline curves'Poles
+//   constructor: and Qi the MultiLine points with a parameter ui.
+//   Reason: param 'Parameters' uses unknown type 'math_Vector&'
+//   // pub fn new_themultilineofwlapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int_real2(SSP: &TheMultiLineOfWLApprox, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &mut Vector, Knots: &Array1OfReal, Mults: &Array1OfInteger, Deg: i32, Tol3d: f64, Tol2d: f64, NbIterations: i32, lambda1: f64, lambda2: f64) -> OwnedPtr<Self>;
+//
+
+// ========================
+// From GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox.hxx`:39 - `GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox`
+pub use crate::ffi::GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox as MyGradientOfTheComputeLineBezierOfWLApprox;
+
+unsafe impl crate::CppDeletable for MyGradientOfTheComputeLineBezierOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox_destructor(ptr);
+    }
+}
+
+impl MyGradientOfTheComputeLineBezierOfWLApprox {
+    /// **Source:** `GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox.hxx`:62 - `GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox::IsDone()`
+    /// returns True if all has been correctly done.
+    pub fn is_done(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox_is_done(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox.hxx`:66 - `GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox::Value()`
+    /// returns all the Bezier curves approximating the
+    /// MultiLine SSP after minimization of the parameter.
+    pub fn value(&self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox_value(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox.hxx`:72 - `GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox::Error()`
+    /// returns the difference between the old and the new
+    /// approximation.
+    /// An exception is raised if NotDone.
+    /// An exception is raised if Index<1 or Index>NbParameters.
+    pub fn error(&self, Index: i32) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox_error(
+                self as *const Self,
+                Index,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox.hxx`:76 - `GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox::MaxError3d()`
+    /// returns the maximum difference between the old and the
+    /// new approximation.
+    pub fn max_error3d(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox_max_error3d(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox.hxx`:80 - `GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox::MaxError2d()`
+    /// returns the maximum difference between the old and the
+    /// new approximation.
+    pub fn max_error2d(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox_max_error2d(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox.hxx`:84 - `GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox::AverageError()`
+    /// returns the average error between the old and the
+    /// new approximation.
+    pub fn average_error(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox_average_error(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for MyGradientOfTheComputeLineBezierOfWLApprox (1 total) ──
+// SKIPPED: **Source:** `GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox.hxx`:50 - `GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox::GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox`
+//   constructor: Tries to minimize the sum (square(||Qui - Bi*Pi||))
+//   constructor: where Pui describe the approximating Bezier curves'Poles
+//   constructor: and Qi the MultiLine points with a parameter ui.
+//   Reason: param 'Parameters' uses unknown type 'math_Vector&'
+//   // pub fn new_themultilineofwlapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP: &TheMultiLineOfWLApprox, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &mut Vector, Deg: i32, Tol3d: f64, Tol2d: f64, NbIterations: i32) -> OwnedPtr<Self>;
+//
+
+// ========================
+// From GeomInt_MyGradientbisOfTheComputeLineOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_MyGradientbisOfTheComputeLineOfWLApprox.hxx`:39 - `GeomInt_MyGradientbisOfTheComputeLineOfWLApprox`
+pub use crate::ffi::GeomInt_MyGradientbisOfTheComputeLineOfWLApprox as MyGradientbisOfTheComputeLineOfWLApprox;
+
+unsafe impl crate::CppDeletable for MyGradientbisOfTheComputeLineOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_MyGradientbisOfTheComputeLineOfWLApprox_destructor(ptr);
+    }
+}
+
+impl MyGradientbisOfTheComputeLineOfWLApprox {
+    /// **Source:** `GeomInt_MyGradientbisOfTheComputeLineOfWLApprox.hxx`:62 - `GeomInt_MyGradientbisOfTheComputeLineOfWLApprox::IsDone()`
+    /// returns True if all has been correctly done.
+    pub fn is_done(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_MyGradientbisOfTheComputeLineOfWLApprox_is_done(self as *const Self)
+        }
+    }
+
+    /// **Source:** `GeomInt_MyGradientbisOfTheComputeLineOfWLApprox.hxx`:66 - `GeomInt_MyGradientbisOfTheComputeLineOfWLApprox::Value()`
+    /// returns all the Bezier curves approximating the
+    /// MultiLine SSP after minimization of the parameter.
+    pub fn value(&self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomInt_MyGradientbisOfTheComputeLineOfWLApprox_value(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_MyGradientbisOfTheComputeLineOfWLApprox.hxx`:72 - `GeomInt_MyGradientbisOfTheComputeLineOfWLApprox::Error()`
+    /// returns the difference between the old and the new
+    /// approximation.
+    /// An exception is raised if NotDone.
+    /// An exception is raised if Index<1 or Index>NbParameters.
+    pub fn error(&self, Index: i32) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_MyGradientbisOfTheComputeLineOfWLApprox_error(
+                self as *const Self,
+                Index,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_MyGradientbisOfTheComputeLineOfWLApprox.hxx`:76 - `GeomInt_MyGradientbisOfTheComputeLineOfWLApprox::MaxError3d()`
+    /// returns the maximum difference between the old and the
+    /// new approximation.
+    pub fn max_error3d(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_MyGradientbisOfTheComputeLineOfWLApprox_max_error3d(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_MyGradientbisOfTheComputeLineOfWLApprox.hxx`:80 - `GeomInt_MyGradientbisOfTheComputeLineOfWLApprox::MaxError2d()`
+    /// returns the maximum difference between the old and the
+    /// new approximation.
+    pub fn max_error2d(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_MyGradientbisOfTheComputeLineOfWLApprox_max_error2d(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_MyGradientbisOfTheComputeLineOfWLApprox.hxx`:84 - `GeomInt_MyGradientbisOfTheComputeLineOfWLApprox::AverageError()`
+    /// returns the average error between the old and the
+    /// new approximation.
+    pub fn average_error(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_MyGradientbisOfTheComputeLineOfWLApprox_average_error(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for MyGradientbisOfTheComputeLineOfWLApprox (1 total) ──
+// SKIPPED: **Source:** `GeomInt_MyGradientbisOfTheComputeLineOfWLApprox.hxx`:50 - `GeomInt_MyGradientbisOfTheComputeLineOfWLApprox::GeomInt_MyGradientbisOfTheComputeLineOfWLApprox`
+//   constructor: Tries to minimize the sum (square(||Qui - Bi*Pi||))
+//   constructor: where Pui describe the approximating Bezier curves'Poles
+//   constructor: and Qi the MultiLine points with a parameter ui.
+//   Reason: param 'Parameters' uses unknown type 'math_Vector&'
+//   // pub fn new_themultilineofwlapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP: &TheMultiLineOfWLApprox, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &mut Vector, Deg: i32, Tol3d: f64, Tol2d: f64, NbIterations: i32) -> OwnedPtr<Self>;
+//
+
+// ========================
+// From GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:38 - `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox`
+pub use crate::ffi::GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox as ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox;
+
+unsafe impl crate::CppDeletable for ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_destructor(ptr);
+    }
+}
+
+impl ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox {
+    /// **Source:** `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:56 - `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox::NbVariables()`
+    /// returns the number of variables of the function. It
+    /// corresponds to the number of MultiPoints.
+    pub fn nb_variables(&self) -> i32 {
+        unsafe {
+            crate::ffi::GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_nb_variables(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:77 - `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox::CurveValue()`
+    /// returns the MultiCurve approximating the set after
+    /// computing the value F or Grad(F).
+    pub fn curve_value(&mut self) -> &crate::app_par_curves::MultiCurve {
+        unsafe {
+            &*(crate::ffi::GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_curve_value(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:81 - `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox::Error()`
+    /// returns the distance between the MultiPoint of range
+    /// IPoint and the curve CurveIndex.
+    pub fn error(&self, IPoint: i32, CurveIndex: i32) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_error(
+                self as *const Self,
+                IPoint,
+                CurveIndex,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:86 - `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox::MaxError3d()`
+    /// returns the maximum distance between the points
+    /// and the MultiCurve.
+    pub fn max_error3d(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_max_error3d(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:90 - `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox::MaxError2d()`
+    /// returns the maximum distance between the points
+    /// and the MultiCurve.
+    pub fn max_error2d(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_max_error2d(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:93 - `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox::FirstConstraint()`
+    pub fn first_constraint(
+        &self,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        FirstPoint: i32,
+    ) -> crate::app_par_curves::Constraint {
+        unsafe {
+            crate::app_par_curves::Constraint::try_from(crate::ffi::GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_first_constraint(self as *const Self, TheConstraints, FirstPoint)).unwrap()
+        }
+    }
+
+    /// **Source:** `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:97 - `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox::LastConstraint()`
+    pub fn last_constraint(
+        &self,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        LastPoint: i32,
+    ) -> crate::app_par_curves::Constraint {
+        unsafe {
+            crate::app_par_curves::Constraint::try_from(crate::ffi::GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_last_constraint(self as *const Self, TheConstraints, LastPoint)).unwrap()
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient
+    pub fn as_math_multiple_var_function_with_gradient(
+        &self,
+    ) -> &crate::math::MultipleVarFunctionWithGradient {
+        unsafe {
+            &*(crate::ffi::GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_as_math_MultipleVarFunctionWithGradient(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
+    pub fn as_math_multiple_var_function_with_gradient_mut(
+        &mut self,
+    ) -> &mut crate::math::MultipleVarFunctionWithGradient {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        unsafe {
+            &*(crate::ffi::GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_as_math_MultipleVarFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_as_math_MultipleVarFunction_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_inherited_GetStateNumber(self as *mut Self)
+        }
+    }
+}
+
+// ── Skipped symbols for ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox (5 total) ──
+// SKIPPED: **Source:** `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:46 - `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox::GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox`
+//   constructor: initializes the fields of the function. The approximating
+//   constructor: curve has the desired degree Deg.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn new_themultilineofwlapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP: &TheMultiLineOfWLApprox, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &Vector, Deg: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:62 - `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox::Value`
+//   method: this method computes the new approximation of the
+//   method: MultiLine
+//   method: SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
+//
+// SKIPPED: **Source:** `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:66 - `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox::Gradient`
+//   method: returns the gradient G of the sum above for the
+//   method: parameters Xi.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:70 - `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox::Values`
+//   method: returns the value F=sum(||Pui - Bi*Pi||)2.
+//   method: returns the value G = grad(F) for the parameters Xi.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:73 - `GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox::NewParameters`
+//   method: returns the new parameters of the MultiLine.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn new_parameters(&self) -> &Vector;
+//
+
+// ========================
+// From GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:38 - `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox`
+pub use crate::ffi::GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox as ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox;
+
+unsafe impl crate::CppDeletable for ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_destructor(ptr);
+    }
+}
+
+impl ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox {
+    /// **Source:** `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:56 - `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox::NbVariables()`
+    /// returns the number of variables of the function. It
+    /// corresponds to the number of MultiPoints.
+    pub fn nb_variables(&self) -> i32 {
+        unsafe {
+            crate::ffi::GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_nb_variables(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:77 - `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox::CurveValue()`
+    /// returns the MultiCurve approximating the set after
+    /// computing the value F or Grad(F).
+    pub fn curve_value(&mut self) -> &crate::app_par_curves::MultiCurve {
+        unsafe {
+            &*(crate::ffi::GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_curve_value(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:81 - `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox::Error()`
+    /// returns the distance between the MultiPoint of range
+    /// IPoint and the curve CurveIndex.
+    pub fn error(&self, IPoint: i32, CurveIndex: i32) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_error(
+                self as *const Self,
+                IPoint,
+                CurveIndex,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:86 - `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox::MaxError3d()`
+    /// returns the maximum distance between the points
+    /// and the MultiCurve.
+    pub fn max_error3d(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_max_error3d(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:90 - `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox::MaxError2d()`
+    /// returns the maximum distance between the points
+    /// and the MultiCurve.
+    pub fn max_error2d(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_max_error2d(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:93 - `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox::FirstConstraint()`
+    pub fn first_constraint(
+        &self,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        FirstPoint: i32,
+    ) -> crate::app_par_curves::Constraint {
+        unsafe {
+            crate::app_par_curves::Constraint::try_from(crate::ffi::GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_first_constraint(self as *const Self, TheConstraints, FirstPoint)).unwrap()
+        }
+    }
+
+    /// **Source:** `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:97 - `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox::LastConstraint()`
+    pub fn last_constraint(
+        &self,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        LastPoint: i32,
+    ) -> crate::app_par_curves::Constraint {
+        unsafe {
+            crate::app_par_curves::Constraint::try_from(crate::ffi::GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_last_constraint(self as *const Self, TheConstraints, LastPoint)).unwrap()
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient
+    pub fn as_math_multiple_var_function_with_gradient(
+        &self,
+    ) -> &crate::math::MultipleVarFunctionWithGradient {
+        unsafe {
+            &*(crate::ffi::GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_as_math_MultipleVarFunctionWithGradient(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
+    pub fn as_math_multiple_var_function_with_gradient_mut(
+        &mut self,
+    ) -> &mut crate::math::MultipleVarFunctionWithGradient {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        unsafe {
+            &*(crate::ffi::GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_as_math_MultipleVarFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_as_math_MultipleVarFunction_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_inherited_GetStateNumber(self as *mut Self)
+        }
+    }
+}
+
+// ── Skipped symbols for ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox (5 total) ──
+// SKIPPED: **Source:** `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:46 - `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox::GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox`
+//   constructor: initializes the fields of the function. The approximating
+//   constructor: curve has the desired degree Deg.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn new_themultilineofwlapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP: &TheMultiLineOfWLApprox, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &Vector, Deg: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:62 - `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox::Value`
+//   method: this method computes the new approximation of the
+//   method: MultiLine
+//   method: SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
+//
+// SKIPPED: **Source:** `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:66 - `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox::Gradient`
+//   method: returns the gradient G of the sum above for the
+//   method: parameters Xi.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:70 - `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox::Values`
+//   method: returns the value F=sum(||Pui - Bi*Pi||)2.
+//   method: returns the value G = grad(F) for the parameters Xi.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:73 - `GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox::NewParameters`
+//   method: returns the new parameters of the MultiLine.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn new_parameters(&self) -> &Vector;
+//
+
+// ========================
+// From GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:45 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox`
+pub use crate::ffi::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox as ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox;
+
+unsafe impl crate::CppDeletable for ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_destructor(
+            ptr,
+        );
+    }
+}
+
+impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:76 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox()`
+    /// Initializes the fields of the object.
+    pub fn new_themultilineofwlapprox_int2_constraint2_int(
+        SSP: &TheMultiLineOfWLApprox,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_ctor_themultilineofwlapprox_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:111 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox()`
+    /// Initializes the fields of the object.
+    pub fn new_themultilineofwlapprox_array1ofreal_array1ofinteger_int2_constraint2_int(
+        SSP: &TheMultiLineOfWLApprox,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_ctor_themultilineofwlapprox_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:153 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::IsDone()`
+    /// returns True if all has been correctly done.
+    pub fn is_done(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_is_done(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:158 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::BezierValue()`
+    /// returns the result of the approximation, i.e. all the
+    /// Curves.
+    /// An exception is raised if NotDone.
+    pub fn bezier_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_bezier_value(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:163 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::BSplineValue()`
+    /// returns the result of the approximation, i.e. all the
+    /// Curves.
+    /// An exception is raised if NotDone.
+    pub fn b_spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
+        unsafe {
+            &*(crate::ffi::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_b_spline_value(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:167 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::FunctionMatrix()`
+    /// returns the function matrix used to approximate the
+    /// set.
+    pub fn function_matrix(&self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_function_matrix(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:171 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::DerivativeFunctionMatrix()`
+    /// returns the derivative function matrix used
+    /// to approximate the set.
+    pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_derivative_function_matrix(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:184 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::Distance()`
+    /// returns the distances between the points of the
+    /// multiline and the approximation curves.
+    pub fn distance(&mut self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_distance(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:189 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::Error()`
+    /// returns the maximum errors between the MultiLine
+    /// and the approximation curves. F is the sum of the square
+    /// distances.
+    pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
+        unsafe {
+            crate::ffi::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_error(
+                self as *mut Self,
+                F,
+                MaxE3d,
+                MaxE2d,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:193 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::FirstLambda()`
+    /// returns the value (P2 - P1)/ V1 if the first point
+    /// was a tangency point.
+    pub fn first_lambda(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_first_lambda(self as *const Self)
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:197 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::LastLambda()`
+    /// returns the value (PN - PN-1)/ VN if the last point
+    /// was a tangency point.
+    pub fn last_lambda(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_last_lambda(self as *const Self)
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:200 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::Points()`
+    /// returns the matrix of points value.
+    pub fn points(&self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_points(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:203 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::Poles()`
+    /// returns the matrix of resulting control points value.
+    pub fn poles(&self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_poles(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox (8 total) ──
+// SKIPPED: **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:66 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox`
+//   constructor: given a MultiLine, this algorithm computes the least
+//   constructor: square resolution using the Householder-QR method.
+//   constructor: If the first and/or the last point is a constraint
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn new_themultilineofwlapprox_int2_constraint2_vector_int(SSP: &TheMultiLineOfWLApprox, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:99 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox`
+//   constructor: given a MultiLine, this algorithm computes the least
+//   constructor: square resolution using the Householder-QR method.
+//   constructor: If the first and/or the last point is a constraint
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn new_themultilineofwlapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP: &TheMultiLineOfWLApprox, Knots: &Array1OfReal, Mults: &Array1OfInteger, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:123 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::Perform`
+//   method: Is used after having initialized the fields.
+//   method: The case "CurvaturePoint" is not treated in this method.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, Parameters: &Vector);
+//
+// SKIPPED: **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:126 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::Perform`
+//   method: Is used after having initialized the fields.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, Parameters: &Vector, l1: f64, l2: f64);
+//
+// SKIPPED: **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:133 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::Perform`
+//   method: Is used after having initialized the fields.
+//   method: <V1t> is the tangent vector at the first point.
+//   method: <V2t> is the tangent vector at the last point.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, l1: f64, l2: f64);
+//
+// SKIPPED: **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:144 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::Perform`
+//   method: Is used after having initialized the fields.
+//   method: <V1t> is the tangent vector at the first point.
+//   method: <V2t> is the tangent vector at the last point.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, V1c: &Vector, V2c: &Vector, l1: f64, l2: f64);
+//
+// SKIPPED: **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:177 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::ErrorGradient`
+//   method: returns the maximum errors between the MultiLine
+//   method: and the approximation curves. F is the sum of the square
+//   method: distances. Grad is the derivative vector of the
+//   Reason: param 'Grad' uses unknown type 'math_Vector&'
+//   // pub fn error_gradient(&mut self, Grad: &mut Vector, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64);
+//
+// SKIPPED: **Source:** `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:209 - `GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::KIndex`
+//   method: Returns the indexes of the first non null values of
+//   method: A and DA.
+//   method: The values are non null from Index(ieme point) +1
+//   Reason: return type 'const math_IntegerVector&' is unknown
+//   // pub fn k_index(&self) -> &IntegerVector;
+//
+
+// ========================
+// From GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:45 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox`
+pub use crate::ffi::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox as ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox;
+
+unsafe impl crate::CppDeletable for ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_destructor(ptr);
+    }
+}
+
+impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:76 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox()`
+    /// Initializes the fields of the object.
+    pub fn new_themultilineofwlapprox_int2_constraint2_int(
+        SSP: &TheMultiLineOfWLApprox,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:111 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox()`
+    /// Initializes the fields of the object.
+    pub fn new_themultilineofwlapprox_array1ofreal_array1ofinteger_int2_constraint2_int(
+        SSP: &TheMultiLineOfWLApprox,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:153 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::IsDone()`
+    /// returns True if all has been correctly done.
+    pub fn is_done(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_is_done(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:158 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::BezierValue()`
+    /// returns the result of the approximation, i.e. all the
+    /// Curves.
+    /// An exception is raised if NotDone.
+    pub fn bezier_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_bezier_value(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:163 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::BSplineValue()`
+    /// returns the result of the approximation, i.e. all the
+    /// Curves.
+    /// An exception is raised if NotDone.
+    pub fn b_spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
+        unsafe {
+            &*(crate::ffi::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_b_spline_value(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:167 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::FunctionMatrix()`
+    /// returns the function matrix used to approximate the
+    /// set.
+    pub fn function_matrix(&self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_function_matrix(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:171 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::DerivativeFunctionMatrix()`
+    /// returns the derivative function matrix used
+    /// to approximate the set.
+    pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_derivative_function_matrix(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:184 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::Distance()`
+    /// returns the distances between the points of the
+    /// multiline and the approximation curves.
+    pub fn distance(&mut self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_distance(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:189 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::Error()`
+    /// returns the maximum errors between the MultiLine
+    /// and the approximation curves. F is the sum of the square
+    /// distances.
+    pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
+        unsafe {
+            crate::ffi::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_error(
+                self as *mut Self,
+                F,
+                MaxE3d,
+                MaxE2d,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:193 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::FirstLambda()`
+    /// returns the value (P2 - P1)/ V1 if the first point
+    /// was a tangency point.
+    pub fn first_lambda(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_first_lambda(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:197 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::LastLambda()`
+    /// returns the value (PN - PN-1)/ VN if the last point
+    /// was a tangency point.
+    pub fn last_lambda(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_last_lambda(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:200 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::Points()`
+    /// returns the matrix of points value.
+    pub fn points(&self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_points(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:203 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::Poles()`
+    /// returns the matrix of resulting control points value.
+    pub fn poles(&self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_poles(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox (8 total) ──
+// SKIPPED: **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:66 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox`
+//   constructor: given a MultiLine, this algorithm computes the least
+//   constructor: square resolution using the Householder-QR method.
+//   constructor: If the first and/or the last point is a constraint
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn new_themultilineofwlapprox_int2_constraint2_vector_int(SSP: &TheMultiLineOfWLApprox, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:99 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox`
+//   constructor: given a MultiLine, this algorithm computes the least
+//   constructor: square resolution using the Householder-QR method.
+//   constructor: If the first and/or the last point is a constraint
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn new_themultilineofwlapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP: &TheMultiLineOfWLApprox, Knots: &Array1OfReal, Mults: &Array1OfInteger, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:123 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::Perform`
+//   method: Is used after having initialized the fields.
+//   method: The case "CurvaturePoint" is not treated in this method.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, Parameters: &Vector);
+//
+// SKIPPED: **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:126 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::Perform`
+//   method: Is used after having initialized the fields.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, Parameters: &Vector, l1: f64, l2: f64);
+//
+// SKIPPED: **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:133 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::Perform`
+//   method: Is used after having initialized the fields.
+//   method: <V1t> is the tangent vector at the first point.
+//   method: <V2t> is the tangent vector at the last point.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, l1: f64, l2: f64);
+//
+// SKIPPED: **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:144 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::Perform`
+//   method: Is used after having initialized the fields.
+//   method: <V1t> is the tangent vector at the first point.
+//   method: <V2t> is the tangent vector at the last point.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, V1c: &Vector, V2c: &Vector, l1: f64, l2: f64);
+//
+// SKIPPED: **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:177 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::ErrorGradient`
+//   method: returns the maximum errors between the MultiLine
+//   method: and the approximation curves. F is the sum of the square
+//   method: distances. Grad is the derivative vector of the
+//   Reason: param 'Grad' uses unknown type 'math_Vector&'
+//   // pub fn error_gradient(&mut self, Grad: &mut Vector, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64);
+//
+// SKIPPED: **Source:** `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:209 - `GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::KIndex`
+//   method: Returns the indexes of the first non null values of
+//   method: A and DA.
+//   method: The values are non null from Index(ieme point) +1
+//   Reason: return type 'const math_IntegerVector&' is unknown
+//   // pub fn k_index(&self) -> &IntegerVector;
+//
+
+// ========================
+// From GeomInt_ParameterAndOrientation.hxx
+// ========================
+
+/// **Source:** `GeomInt_ParameterAndOrientation.hxx`:27 - `GeomInt_ParameterAndOrientation`
+pub use crate::ffi::GeomInt_ParameterAndOrientation as ParameterAndOrientation;
+
+unsafe impl crate::CppDeletable for ParameterAndOrientation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_ParameterAndOrientation_destructor(ptr);
+    }
+}
+
+impl ParameterAndOrientation {
+    /// **Source:** `GeomInt_ParameterAndOrientation.hxx`:32 - `GeomInt_ParameterAndOrientation::GeomInt_ParameterAndOrientation()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomInt_ParameterAndOrientation_ctor()) }
+    }
+
+    /// **Source:** `GeomInt_ParameterAndOrientation.hxx`:34 - `GeomInt_ParameterAndOrientation::GeomInt_ParameterAndOrientation()`
+    pub fn new_real_orientation2(
+        P: f64,
+        Or1: crate::top_abs::Orientation,
+        Or2: crate::top_abs::Orientation,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomInt_ParameterAndOrientation_ctor_real_orientation2(
+                    P,
+                    Or1.into(),
+                    Or2.into(),
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ParameterAndOrientation.hxx`:38 - `GeomInt_ParameterAndOrientation::SetOrientation1()`
+    pub fn set_orientation1(&mut self, Or: crate::top_abs::Orientation) {
+        unsafe {
+            crate::ffi::GeomInt_ParameterAndOrientation_set_orientation1(
+                self as *mut Self,
+                Or.into(),
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ParameterAndOrientation.hxx`:40 - `GeomInt_ParameterAndOrientation::SetOrientation2()`
+    pub fn set_orientation2(&mut self, Or: crate::top_abs::Orientation) {
+        unsafe {
+            crate::ffi::GeomInt_ParameterAndOrientation_set_orientation2(
+                self as *mut Self,
+                Or.into(),
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ParameterAndOrientation.hxx`:42 - `GeomInt_ParameterAndOrientation::Parameter()`
+    pub fn parameter(&self) -> f64 {
+        unsafe { crate::ffi::GeomInt_ParameterAndOrientation_parameter(self as *const Self) }
+    }
+
+    /// **Source:** `GeomInt_ParameterAndOrientation.hxx`:44 - `GeomInt_ParameterAndOrientation::Orientation1()`
+    pub fn orientation1(&self) -> crate::top_abs::Orientation {
+        unsafe {
+            crate::top_abs::Orientation::try_from(
+                crate::ffi::GeomInt_ParameterAndOrientation_orientation1(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `GeomInt_ParameterAndOrientation.hxx`:46 - `GeomInt_ParameterAndOrientation::Orientation2()`
+    pub fn orientation2(&self) -> crate::top_abs::Orientation {
+        unsafe {
+            crate::top_abs::Orientation::try_from(
+                crate::ffi::GeomInt_ParameterAndOrientation_orientation2(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+}
+
+// ========================
+// From GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:36 - `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox`
+pub use crate::ffi::GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox as ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox;
+
+unsafe impl crate::CppDeletable for ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox_destructor(
+            ptr,
+        );
+    }
+}
+
+impl ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox {
+    /// **Source:** `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:51 - `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox::GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox()`
+    /// Given a MultiLine SSP with constraints points, this
+    /// algorithm finds the best curve solution to approximate it.
+    /// The poles from SCurv issued for example from the least
+    /// squares are used as a guess solution for the uzawa
+    /// algorithm. The tolerance used in the Uzawa algorithms
+    /// is Tolerance.
+    /// A is the Bernstein matrix associated to the MultiLine
+    /// and DA is the derivative bernstein matrix.(They can come
+    /// from an approximation with ParLeastSquare.)
+    /// The MultiCurve is modified. New MultiPoles are given.
+    pub fn new_themultilineofwlapprox_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(
+        SSP: &TheMultiLineOfWLApprox,
+        SCurv: &mut crate::app_par_curves::MultiCurve,
+        FirstPoint: i32,
+        LastPoint: i32,
+        Constraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Bern: &crate::math::Matrix,
+        DerivativeBern: &crate::math::Matrix,
+        Tolerance: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox_ctor_themultilineofwlapprox_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance))
+        }
+    }
+
+    /// **Source:** `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:51 - `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox::GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox()`
+    /// Given a MultiLine SSP with constraints points, this
+    /// algorithm finds the best curve solution to approximate it.
+    /// The poles from SCurv issued for example from the least
+    /// squares are used as a guess solution for the uzawa
+    /// algorithm. The tolerance used in the Uzawa algorithms
+    /// is Tolerance.
+    /// A is the Bernstein matrix associated to the MultiLine
+    /// and DA is the derivative bernstein matrix.(They can come
+    /// from an approximation with ParLeastSquare.)
+    /// The MultiCurve is modified. New MultiPoles are given.
+    pub fn new_themultilineofwlapprox_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2(
+        SSP: &TheMultiLineOfWLApprox,
+        SCurv: &mut crate::app_par_curves::MultiCurve,
+        FirstPoint: i32,
+        LastPoint: i32,
+        Constraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Bern: &crate::math::Matrix,
+        DerivativeBern: &crate::math::Matrix,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofwlapprox_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, 1.0e-10)
+    }
+
+    /// **Source:** `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:62 - `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox::IsDone()`
+    /// returns True if all has been correctly done.
+    pub fn is_done(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox_is_done(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:66 - `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox::Error()`
+    /// returns the maximum difference value between the curve
+    /// and the given points.
+    pub fn error(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox_error(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:68 - `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox::ConstraintMatrix()`
+    pub fn constraint_matrix(&self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox_constraint_matrix(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:81 - `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox::InverseMatrix()`
+    /// returns the Inverse of Cont*Transposed(Cont), where
+    /// Cont is the constraint matrix for the algorithm.
+    pub fn inverse_matrix(&self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox_inverse_matrix(self as *const Self))
+        }
+    }
+}
+
+// ── Skipped symbols for ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox (2 total) ──
+// SKIPPED: **Source:** `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:71 - `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox::Duale`
+//   method: returns the duale variables of the system.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn duale(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:74 - `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox::ConstraintDerivative`
+//   method: Returns the derivative of the constraint matrix.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn constraint_derivative(&mut self, SSP: &TheMultiLineOfWLApprox, Parameters: &Vector, Deg: i32, DA: &Matrix) -> &Matrix;
+//
+
+// ========================
+// From GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:36 - `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox`
+pub use crate::ffi::GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox as ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox;
+
+unsafe impl crate::CppDeletable for ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox_destructor(ptr);
+    }
+}
+
+impl ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox {
+    /// **Source:** `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:51 - `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox::GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox()`
+    /// Given a MultiLine SSP with constraints points, this
+    /// algorithm finds the best curve solution to approximate it.
+    /// The poles from SCurv issued for example from the least
+    /// squares are used as a guess solution for the uzawa
+    /// algorithm. The tolerance used in the Uzawa algorithms
+    /// is Tolerance.
+    /// A is the Bernstein matrix associated to the MultiLine
+    /// and DA is the derivative bernstein matrix.(They can come
+    /// from an approximation with ParLeastSquare.)
+    /// The MultiCurve is modified. New MultiPoles are given.
+    pub fn new_themultilineofwlapprox_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(
+        SSP: &TheMultiLineOfWLApprox,
+        SCurv: &mut crate::app_par_curves::MultiCurve,
+        FirstPoint: i32,
+        LastPoint: i32,
+        Constraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Bern: &crate::math::Matrix,
+        DerivativeBern: &crate::math::Matrix,
+        Tolerance: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance))
+        }
+    }
+
+    /// **Source:** `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:51 - `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox::GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox()`
+    /// Given a MultiLine SSP with constraints points, this
+    /// algorithm finds the best curve solution to approximate it.
+    /// The poles from SCurv issued for example from the least
+    /// squares are used as a guess solution for the uzawa
+    /// algorithm. The tolerance used in the Uzawa algorithms
+    /// is Tolerance.
+    /// A is the Bernstein matrix associated to the MultiLine
+    /// and DA is the derivative bernstein matrix.(They can come
+    /// from an approximation with ParLeastSquare.)
+    /// The MultiCurve is modified. New MultiPoles are given.
+    pub fn new_themultilineofwlapprox_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2(
+        SSP: &TheMultiLineOfWLApprox,
+        SCurv: &mut crate::app_par_curves::MultiCurve,
+        FirstPoint: i32,
+        LastPoint: i32,
+        Constraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Bern: &crate::math::Matrix,
+        DerivativeBern: &crate::math::Matrix,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofwlapprox_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, 1.0e-10)
+    }
+
+    /// **Source:** `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:62 - `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox::IsDone()`
+    /// returns True if all has been correctly done.
+    pub fn is_done(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox_is_done(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:66 - `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox::Error()`
+    /// returns the maximum difference value between the curve
+    /// and the given points.
+    pub fn error(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox_error(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:68 - `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox::ConstraintMatrix()`
+    pub fn constraint_matrix(&self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox_constraint_matrix(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:81 - `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox::InverseMatrix()`
+    /// returns the Inverse of Cont*Transposed(Cont), where
+    /// Cont is the constraint matrix for the algorithm.
+    pub fn inverse_matrix(&self) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox_inverse_matrix(self as *const Self))
+        }
+    }
+}
+
+// ── Skipped symbols for ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox (2 total) ──
+// SKIPPED: **Source:** `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:71 - `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox::Duale`
+//   method: returns the duale variables of the system.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn duale(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:74 - `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox::ConstraintDerivative`
+//   method: Returns the derivative of the constraint matrix.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn constraint_derivative(&mut self, SSP: &TheMultiLineOfWLApprox, Parameters: &Vector, Deg: i32, DA: &Matrix) -> &Matrix;
+//
+
+// ========================
+// From GeomInt_TheComputeLineBezierOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:46 - `GeomInt_TheComputeLineBezierOfWLApprox`
+pub use crate::ffi::GeomInt_TheComputeLineBezierOfWLApprox as TheComputeLineBezierOfWLApprox;
+
+unsafe impl crate::CppDeletable for TheComputeLineBezierOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_TheComputeLineBezierOfWLApprox_destructor(ptr);
+    }
+}
+
+impl TheComputeLineBezierOfWLApprox {
+    /// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:57 - `GeomInt_TheComputeLineBezierOfWLApprox::GeomInt_TheComputeLineBezierOfWLApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_themultilineofwlapprox_int2_real2_int_bool_parametrizationtype_bool(
+        Line: &TheMultiLineOfWLApprox,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+        parametrization: crate::approx::ParametrizationType,
+        Squares: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_TheComputeLineBezierOfWLApprox_ctor_themultilineofwlapprox_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:97 - `GeomInt_TheComputeLineBezierOfWLApprox::GeomInt_TheComputeLineBezierOfWLApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_int2_real2_int_bool_parametrizationtype_bool(
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+        parametrization: crate::approx::ParametrizationType,
+        Squares: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_TheComputeLineBezierOfWLApprox_ctor_int2_real2_int_bool_parametrizationtype_bool(degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:57 - `GeomInt_TheComputeLineBezierOfWLApprox::GeomInt_TheComputeLineBezierOfWLApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_themultilineofwlapprox_int2_real2_int_bool_parametrizationtype(
+        Line: &TheMultiLineOfWLApprox,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+        parametrization: crate::approx::ParametrizationType,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofwlapprox_int2_real2_int_bool_parametrizationtype_bool(
+            Line,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            cutting,
+            parametrization,
+            false,
+        )
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:97 - `GeomInt_TheComputeLineBezierOfWLApprox::GeomInt_TheComputeLineBezierOfWLApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_int2_real2_int_bool_parametrizationtype(
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+        parametrization: crate::approx::ParametrizationType,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_int2_real2_int_bool_parametrizationtype_bool(
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            cutting,
+            parametrization,
+            false,
+        )
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:108 - `GeomInt_TheComputeLineBezierOfWLApprox::Init()`
+    /// Initializes the fields of the algorithm.
+    pub fn init(
+        &mut self,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+        parametrization: crate::approx::ParametrizationType,
+        Squares: bool,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_TheComputeLineBezierOfWLApprox_init(
+                self as *mut Self,
+                degreemin,
+                degreemax,
+                Tolerance3d,
+                Tolerance2d,
+                NbIterations,
+                cutting,
+                parametrization.into(),
+                Squares,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:118 - `GeomInt_TheComputeLineBezierOfWLApprox::Perform()`
+    /// runs the algorithm after having initialized the fields.
+    pub fn perform(&mut self, Line: &TheMultiLineOfWLApprox) {
+        unsafe {
+            crate::ffi::GeomInt_TheComputeLineBezierOfWLApprox_perform(self as *mut Self, Line)
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:121 - `GeomInt_TheComputeLineBezierOfWLApprox::SetDegrees()`
+    /// changes the degrees of the approximation.
+    pub fn set_degrees(&mut self, degreemin: i32, degreemax: i32) {
+        unsafe {
+            crate::ffi::GeomInt_TheComputeLineBezierOfWLApprox_set_degrees(
+                self as *mut Self,
+                degreemin,
+                degreemax,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:125 - `GeomInt_TheComputeLineBezierOfWLApprox::SetTolerances()`
+    /// Changes the tolerances of the approximation.
+    pub fn set_tolerances(&mut self, Tolerance3d: f64, Tolerance2d: f64) {
+        unsafe {
+            crate::ffi::GeomInt_TheComputeLineBezierOfWLApprox_set_tolerances(
+                self as *mut Self,
+                Tolerance3d,
+                Tolerance2d,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:129 - `GeomInt_TheComputeLineBezierOfWLApprox::SetConstraints()`
+    /// changes the first and the last constraint points.
+    pub fn set_constraints(
+        &mut self,
+        firstC: crate::app_par_curves::Constraint,
+        lastC: crate::app_par_curves::Constraint,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_TheComputeLineBezierOfWLApprox_set_constraints(
+                self as *mut Self,
+                firstC.into(),
+                lastC.into(),
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:135 - `GeomInt_TheComputeLineBezierOfWLApprox::IsAllApproximated()`
+    /// returns False if at a moment of the approximation,
+    /// the status NoApproximation has been sent by the user
+    /// when more points were needed.
+    pub fn is_all_approximated(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheComputeLineBezierOfWLApprox_is_all_approximated(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:138 - `GeomInt_TheComputeLineBezierOfWLApprox::IsToleranceReached()`
+    /// returns False if the status NoPointsAdded has been sent.
+    pub fn is_tolerance_reached(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheComputeLineBezierOfWLApprox_is_tolerance_reached(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:141 - `GeomInt_TheComputeLineBezierOfWLApprox::Error()`
+    /// returns the tolerances 2d and 3d of the <Index> MultiCurve.
+    pub fn error(&self, Index: i32, tol3d: &mut f64, tol2d: &mut f64) {
+        unsafe {
+            crate::ffi::GeomInt_TheComputeLineBezierOfWLApprox_error(
+                self as *const Self,
+                Index,
+                tol3d,
+                tol2d,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:147 - `GeomInt_TheComputeLineBezierOfWLApprox::NbMultiCurves()`
+    /// Returns the number of MultiCurve doing the approximation
+    /// of the MultiLine.
+    pub fn nb_multi_curves(&self) -> i32 {
+        unsafe {
+            crate::ffi::GeomInt_TheComputeLineBezierOfWLApprox_nb_multi_curves(self as *const Self)
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:150 - `GeomInt_TheComputeLineBezierOfWLApprox::Value()`
+    /// returns the result of the approximation.
+    pub fn value(&self, Index: i32) -> &crate::app_par_curves::MultiCurve {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheComputeLineBezierOfWLApprox_value(self as *const Self, Index))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:153 - `GeomInt_TheComputeLineBezierOfWLApprox::ChangeValue()`
+    /// returns the result of the approximation.
+    pub fn change_value(&mut self, Index: i32) -> &mut crate::app_par_curves::MultiCurve {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_TheComputeLineBezierOfWLApprox_change_value(
+                self as *mut Self,
+                Index,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:156 - `GeomInt_TheComputeLineBezierOfWLApprox::SplineValue()`
+    /// returns the result of the approximation.
+    pub fn spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheComputeLineBezierOfWLApprox_spline_value(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:159 - `GeomInt_TheComputeLineBezierOfWLApprox::Parametrization()`
+    /// returns the type  of  parametrization
+    pub fn parametrization(&self) -> crate::approx::ParametrizationType {
+        unsafe {
+            crate::approx::ParametrizationType::try_from(
+                crate::ffi::GeomInt_TheComputeLineBezierOfWLApprox_parametrization(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:163 - `GeomInt_TheComputeLineBezierOfWLApprox::Parameters()`
+    /// returns the new parameters of the approximation
+    /// corresponding to the points of the multicurve <Index>.
+    pub fn parameters(&self, Index: i32) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheComputeLineBezierOfWLApprox_parameters(
+                self as *const Self,
+                Index,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for TheComputeLineBezierOfWLApprox (2 total) ──
+// SKIPPED: **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:74 - `GeomInt_TheComputeLineBezierOfWLApprox::GeomInt_TheComputeLineBezierOfWLApprox`
+//   constructor: The MultiLine <Line> will be approximated until tolerances
+//   constructor: will be reached.
+//   constructor: The approximation will be done from degreemin to degreemax
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn new_themultilineofwlapprox_vector_int2_real2_int_bool2(Line: &TheMultiLineOfWLApprox, Parameters: &Vector, degreemin: i32, degreemax: i32, Tolerance3d: f64, Tolerance2d: f64, NbIterations: i32, cutting: bool, Squares: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `GeomInt_TheComputeLineBezierOfWLApprox.hxx`:86 - `GeomInt_TheComputeLineBezierOfWLApprox::GeomInt_TheComputeLineBezierOfWLApprox`
+//   constructor: Initializes the fields of the algorithm.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn new_vector_int2_real2_int_bool2(Parameters: &Vector, degreemin: i32, degreemax: i32, Tolerance3d: f64, Tolerance2d: f64, NbIterations: i32, cutting: bool, Squares: bool) -> OwnedPtr<Self>;
+//
+
+// ========================
+// From GeomInt_TheComputeLineOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:48 - `GeomInt_TheComputeLineOfWLApprox`
+pub use crate::ffi::GeomInt_TheComputeLineOfWLApprox as TheComputeLineOfWLApprox;
+
+unsafe impl crate::CppDeletable for TheComputeLineOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_TheComputeLineOfWLApprox_destructor(ptr);
+    }
+}
+
+impl TheComputeLineOfWLApprox {
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:62 - `GeomInt_TheComputeLineOfWLApprox::GeomInt_TheComputeLineOfWLApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    ///
+    /// The multiplicities of the internal knots is set by
+    /// default.
+    pub fn new_themultilineofwlapprox_int2_real2_int_bool_parametrizationtype_bool(
+        Line: &TheMultiLineOfWLApprox,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+        parametrization: crate::approx::ParametrizationType,
+        Squares: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_TheComputeLineOfWLApprox_ctor_themultilineofwlapprox_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:100 - `GeomInt_TheComputeLineOfWLApprox::GeomInt_TheComputeLineOfWLApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_int2_real2_int_bool_parametrizationtype_bool(
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+        parametrization: crate::approx::ParametrizationType,
+        Squares: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_TheComputeLineOfWLApprox_ctor_int2_real2_int_bool_parametrizationtype_bool(degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:62 - `GeomInt_TheComputeLineOfWLApprox::GeomInt_TheComputeLineOfWLApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    ///
+    /// The multiplicities of the internal knots is set by
+    /// default.
+    pub fn new_themultilineofwlapprox_int2_real2_int_bool_parametrizationtype(
+        Line: &TheMultiLineOfWLApprox,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+        parametrization: crate::approx::ParametrizationType,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofwlapprox_int2_real2_int_bool_parametrizationtype_bool(
+            Line,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            cutting,
+            parametrization,
+            false,
+        )
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:100 - `GeomInt_TheComputeLineOfWLApprox::GeomInt_TheComputeLineOfWLApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_int2_real2_int_bool_parametrizationtype(
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+        parametrization: crate::approx::ParametrizationType,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_int2_real2_int_bool_parametrizationtype_bool(
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            cutting,
+            parametrization,
+            false,
+        )
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:112 - `GeomInt_TheComputeLineOfWLApprox::Interpol()`
+    /// Constructs an interpolation of the MultiLine <Line>
+    /// The result will be a C2 curve of degree 3.
+    pub fn interpol(&mut self, Line: &TheMultiLineOfWLApprox) {
+        unsafe { crate::ffi::GeomInt_TheComputeLineOfWLApprox_interpol(self as *mut Self, Line) }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:115 - `GeomInt_TheComputeLineOfWLApprox::Init()`
+    /// Initializes the fields of the algorithm.
+    pub fn init(
+        &mut self,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+        parametrization: crate::approx::ParametrizationType,
+        Squares: bool,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_TheComputeLineOfWLApprox_init(
+                self as *mut Self,
+                degreemin,
+                degreemax,
+                Tolerance3d,
+                Tolerance2d,
+                NbIterations,
+                cutting,
+                parametrization.into(),
+                Squares,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:125 - `GeomInt_TheComputeLineOfWLApprox::Perform()`
+    /// runs the algorithm after having initialized the fields.
+    pub fn perform(&mut self, Line: &TheMultiLineOfWLApprox) {
+        unsafe { crate::ffi::GeomInt_TheComputeLineOfWLApprox_perform(self as *mut Self, Line) }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:134 - `GeomInt_TheComputeLineOfWLApprox::SetKnots()`
+    /// The approximation will be done with the
+    /// set of knots <Knots>. The multiplicities will be set
+    /// with the degree and the desired continuity.
+    pub fn set_knots(&mut self, Knots: &crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::GeomInt_TheComputeLineOfWLApprox_set_knots(self as *mut Self, Knots) }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:138 - `GeomInt_TheComputeLineOfWLApprox::SetKnotsAndMultiplicities()`
+    /// The approximation will be done with the
+    /// set of knots <Knots> and the multiplicities <Mults>.
+    pub fn set_knots_and_multiplicities(
+        &mut self,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_TheComputeLineOfWLApprox_set_knots_and_multiplicities(
+                self as *mut Self,
+                Knots,
+                Mults,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:142 - `GeomInt_TheComputeLineOfWLApprox::SetDegrees()`
+    /// changes the degrees of the approximation.
+    pub fn set_degrees(&mut self, degreemin: i32, degreemax: i32) {
+        unsafe {
+            crate::ffi::GeomInt_TheComputeLineOfWLApprox_set_degrees(
+                self as *mut Self,
+                degreemin,
+                degreemax,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:146 - `GeomInt_TheComputeLineOfWLApprox::SetTolerances()`
+    /// Changes the tolerances of the approximation.
+    pub fn set_tolerances(&mut self, Tolerance3d: f64, Tolerance2d: f64) {
+        unsafe {
+            crate::ffi::GeomInt_TheComputeLineOfWLApprox_set_tolerances(
+                self as *mut Self,
+                Tolerance3d,
+                Tolerance2d,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:151 - `GeomInt_TheComputeLineOfWLApprox::SetContinuity()`
+    /// sets the continuity of the spline.
+    /// if C = 2, the spline will be C2.
+    pub fn set_continuity(&mut self, C: i32) {
+        unsafe { crate::ffi::GeomInt_TheComputeLineOfWLApprox_set_continuity(self as *mut Self, C) }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:154 - `GeomInt_TheComputeLineOfWLApprox::SetConstraints()`
+    /// changes the first and the last constraint points.
+    pub fn set_constraints(
+        &mut self,
+        firstC: crate::app_par_curves::Constraint,
+        lastC: crate::app_par_curves::Constraint,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_TheComputeLineOfWLApprox_set_constraints(
+                self as *mut Self,
+                firstC.into(),
+                lastC.into(),
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:161 - `GeomInt_TheComputeLineOfWLApprox::SetPeriodic()`
+    /// Sets periodic flag.
+    /// If thePeriodic = Standard_True, algorithm tries to build periodic
+    /// multicurve using corresponding C1 boundary condition for first and last multipoints.
+    /// Multiline must be closed.
+    pub fn set_periodic(&mut self, thePeriodic: bool) {
+        unsafe {
+            crate::ffi::GeomInt_TheComputeLineOfWLApprox_set_periodic(
+                self as *mut Self,
+                thePeriodic,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:166 - `GeomInt_TheComputeLineOfWLApprox::IsAllApproximated()`
+    /// returns False if at a moment of the approximation,
+    /// the status NoApproximation has been sent by the user
+    /// when more points were needed.
+    pub fn is_all_approximated(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheComputeLineOfWLApprox_is_all_approximated(self as *const Self)
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:169 - `GeomInt_TheComputeLineOfWLApprox::IsToleranceReached()`
+    /// returns False if the status NoPointsAdded has been sent.
+    pub fn is_tolerance_reached(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheComputeLineOfWLApprox_is_tolerance_reached(self as *const Self)
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:172 - `GeomInt_TheComputeLineOfWLApprox::Error()`
+    /// returns the tolerances 2d and 3d of the MultiBSpCurve.
+    pub fn error(&self, tol3d: &mut f64, tol2d: &mut f64) {
+        unsafe {
+            crate::ffi::GeomInt_TheComputeLineOfWLApprox_error(self as *const Self, tol3d, tol2d)
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:175 - `GeomInt_TheComputeLineOfWLApprox::Value()`
+    /// returns the result of the approximation.
+    pub fn value(&self) -> &crate::app_par_curves::MultiBSpCurve {
+        unsafe { &*(crate::ffi::GeomInt_TheComputeLineOfWLApprox_value(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:178 - `GeomInt_TheComputeLineOfWLApprox::ChangeValue()`
+    /// returns the result of the approximation.
+    pub fn change_value(&mut self) -> &mut crate::app_par_curves::MultiBSpCurve {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_TheComputeLineOfWLApprox_change_value(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:182 - `GeomInt_TheComputeLineOfWLApprox::Parameters()`
+    /// returns the new parameters of the approximation
+    /// corresponding to the points of the MultiBSpCurve.
+    pub fn parameters(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::GeomInt_TheComputeLineOfWLApprox_parameters(self as *const Self)) }
+    }
+}
+
+// ── Skipped symbols for TheComputeLineOfWLApprox (3 total) ──
+// SKIPPED: **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:79 - `GeomInt_TheComputeLineOfWLApprox::GeomInt_TheComputeLineOfWLApprox`
+//   constructor: The MultiLine <Line> will be approximated until tolerances
+//   constructor: will be reached.
+//   constructor: The approximation will be done from degreemin to degreemax
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn new_themultilineofwlapprox_vector_int2_real2_int_bool2(Line: &TheMultiLineOfWLApprox, Parameters: &Vector, degreemin: i32, degreemax: i32, Tolerance3d: f64, Tolerance2d: f64, NbIterations: i32, cutting: bool, Squares: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:90 - `GeomInt_TheComputeLineOfWLApprox::GeomInt_TheComputeLineOfWLApprox`
+//   constructor: Initializes the fields of the algorithm.
+//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
+//   // pub fn new_vector_int2_real2_int_bool2(Parameters: &Vector, degreemin: i32, degreemax: i32, Tolerance3d: f64, Tolerance2d: f64, NbIterations: i32, cutting: bool, Squares: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `GeomInt_TheComputeLineOfWLApprox.hxx`:129 - `GeomInt_TheComputeLineOfWLApprox::SetParameters`
+//   method: The approximation will begin with the
+//   method: set of  parameters <ThePar>.
+//   Reason: param 'ThePar' uses unknown type 'const math_Vector&'
+//   // pub fn set_parameters(&mut self, ThePar: &Vector);
+//
+
+// ========================
+// From GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:33 - `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox`
+pub use crate::ffi::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox as TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
+
+unsafe impl crate::CppDeletable for TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_destructor(ptr);
+    }
+}
+
+impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
+    /// **Source:** `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:39 - `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox()`
+    pub fn new_handleadaptor3dsurface2(
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_ctor_handleadaptor3dsurface2(S1, S2))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:43 - `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox::NbVariables()`
+    pub fn nb_variables(&self) -> i32 {
+        unsafe {
+            crate::ffi::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_nb_variables(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:45 - `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox::NbEquations()`
+    pub fn nb_equations(&self) -> i32 {
+        unsafe {
+            crate::ffi::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_nb_equations(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:61 - `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox::Root()`
+    /// returns somme des fi*fi
+    pub fn root(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_root(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:63 - `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox::Point()`
+    pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_point(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:69 - `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox::Direction()`
+    pub fn direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_direction(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:71 - `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox::DirectionOnS1()`
+    pub fn direction_on_s1(&self) -> crate::OwnedPtr<crate::gp::Dir2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_direction_on_s1(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:73 - `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox::DirectionOnS2()`
+    pub fn direction_on_s2(&self) -> crate::OwnedPtr<crate::gp::Dir2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_direction_on_s2(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:75 - `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox::AuxillarSurface1()`
+    pub fn auxillar_surface1(&self) -> &crate::ffi::HandleAdaptor3dSurface {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_auxillar_surface1(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:77 - `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox::AuxillarSurface2()`
+    pub fn auxillar_surface2(&self) -> &crate::ffi::HandleAdaptor3dSurface {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_auxillar_surface2(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_as_math_FunctionSetWithDerivatives(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_as_math_FunctionSet(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_as_math_FunctionSet_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_inherited_GetStateNumber(self as *mut Self)
+        }
+    }
+}
+
+// ── Skipped symbols for TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox (5 total) ──
+// SKIPPED: **Source:** `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:47 - `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox::Value`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:49 - `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox::Derivatives`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:51 - `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox::Values`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:53 - `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox::ComputeParameters`
+//   Reason: param 'UVap' uses unknown type 'math_Vector&'
+//   // pub fn compute_parameters(&mut self, ChoixIso: ConstIsoparametric, Param: &Array1OfReal, UVap: &mut Vector, BornInf: &mut Vector, BornSup: &mut Vector, Tolerance: &mut Vector);
+//
+// SKIPPED: **Source:** `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:65 - `GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox::IsTangent`
+//   Reason: param 'UVap' uses unknown type 'const math_Vector&'
+//   // pub fn is_tangent(&mut self, UVap: &Vector, Param: &mut Array1OfReal, BestChoix: &mut ConstIsoparametric) -> bool;
+//
+
+// ========================
+// From GeomInt_TheImpPrmSvSurfacesOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_TheImpPrmSvSurfacesOfWLApprox.hxx`:34 - `GeomInt_TheImpPrmSvSurfacesOfWLApprox`
+pub use crate::ffi::GeomInt_TheImpPrmSvSurfacesOfWLApprox as TheImpPrmSvSurfacesOfWLApprox;
+
+unsafe impl crate::CppDeletable for TheImpPrmSvSurfacesOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_TheImpPrmSvSurfacesOfWLApprox_destructor(ptr);
+    }
+}
+
+impl TheImpPrmSvSurfacesOfWLApprox {
+    /// **Source:** `GeomInt_TheImpPrmSvSurfacesOfWLApprox.hxx`:39 - `GeomInt_TheImpPrmSvSurfacesOfWLApprox::GeomInt_TheImpPrmSvSurfacesOfWLApprox()`
+    pub fn new_handleadaptor3dsurface_quadric(
+        Surf1: &crate::ffi::HandleAdaptor3dSurface,
+        Surf2: &crate::int_surf::Quadric,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_TheImpPrmSvSurfacesOfWLApprox_ctor_handleadaptor3dsurface_quadric(Surf1, Surf2))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheImpPrmSvSurfacesOfWLApprox.hxx`:42 - `GeomInt_TheImpPrmSvSurfacesOfWLApprox::GeomInt_TheImpPrmSvSurfacesOfWLApprox()`
+    pub fn new_quadric_handleadaptor3dsurface(
+        Surf1: &crate::int_surf::Quadric,
+        Surf2: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_TheImpPrmSvSurfacesOfWLApprox_ctor_quadric_handleadaptor3dsurface(Surf1, Surf2))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheImpPrmSvSurfacesOfWLApprox.hxx`:46 - `GeomInt_TheImpPrmSvSurfacesOfWLApprox::Compute()`
+    /// returns True if Tg,Tguv1 Tguv2 can be computed.
+    pub fn compute(
+        &mut self,
+        u1: &mut f64,
+        v1: &mut f64,
+        u2: &mut f64,
+        v2: &mut f64,
+        Pt: &mut crate::gp::Pnt,
+        Tg: &mut crate::gp::Vec,
+        Tguv1: &mut crate::gp::Vec2d,
+        Tguv2: &mut crate::gp::Vec2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheImpPrmSvSurfacesOfWLApprox_compute(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                Pt,
+                Tg,
+                Tguv1,
+                Tguv2,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheImpPrmSvSurfacesOfWLApprox.hxx`:55 - `GeomInt_TheImpPrmSvSurfacesOfWLApprox::Pnt()`
+    pub fn pnt(&mut self, u1: f64, v1: f64, u2: f64, v2: f64, P: &mut crate::gp::Pnt) {
+        unsafe {
+            crate::ffi::GeomInt_TheImpPrmSvSurfacesOfWLApprox_pnt(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                P,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheImpPrmSvSurfacesOfWLApprox.hxx`:61 - `GeomInt_TheImpPrmSvSurfacesOfWLApprox::SeekPoint()`
+    pub fn seek_point(
+        &mut self,
+        u1: f64,
+        v1: f64,
+        u2: f64,
+        v2: f64,
+        Point: &mut crate::int_surf::PntOn2S,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheImpPrmSvSurfacesOfWLApprox_seek_point(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                Point,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheImpPrmSvSurfacesOfWLApprox.hxx`:67 - `GeomInt_TheImpPrmSvSurfacesOfWLApprox::Tangency()`
+    pub fn tangency(
+        &mut self,
+        u1: f64,
+        v1: f64,
+        u2: f64,
+        v2: f64,
+        Tg: &mut crate::gp::Vec,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheImpPrmSvSurfacesOfWLApprox_tangency(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                Tg,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheImpPrmSvSurfacesOfWLApprox.hxx`:73 - `GeomInt_TheImpPrmSvSurfacesOfWLApprox::TangencyOnSurf1()`
+    pub fn tangency_on_surf1(
+        &mut self,
+        u1: f64,
+        v1: f64,
+        u2: f64,
+        v2: f64,
+        Tg: &mut crate::gp::Vec2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheImpPrmSvSurfacesOfWLApprox_tangency_on_surf1(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                Tg,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheImpPrmSvSurfacesOfWLApprox.hxx`:79 - `GeomInt_TheImpPrmSvSurfacesOfWLApprox::TangencyOnSurf2()`
+    pub fn tangency_on_surf2(
+        &mut self,
+        u1: f64,
+        v1: f64,
+        u2: f64,
+        v2: f64,
+        Tg: &mut crate::gp::Vec2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheImpPrmSvSurfacesOfWLApprox_tangency_on_surf2(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                Tg,
+            )
+        }
+    }
+
+    /// Upcast to ApproxInt_SvSurfaces
+    pub fn as_approx_int_sv_surfaces(&self) -> &crate::approx_int::SvSurfaces {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheImpPrmSvSurfacesOfWLApprox_as_ApproxInt_SvSurfaces(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to ApproxInt_SvSurfaces (mutable)
+    pub fn as_approx_int_sv_surfaces_mut(&mut self) -> &mut crate::approx_int::SvSurfaces {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_TheImpPrmSvSurfacesOfWLApprox_as_ApproxInt_SvSurfaces_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ApproxInt_SvSurfaces.hxx`:93 - `ApproxInt_SvSurfaces::SetUseSolver()`
+    pub fn set_use_solver(&mut self, theUseSol: bool) {
+        unsafe {
+            crate::ffi::GeomInt_TheImpPrmSvSurfacesOfWLApprox_inherited_SetUseSolver(
+                self as *mut Self,
+                theUseSol,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ApproxInt_SvSurfaces.hxx`:95 - `ApproxInt_SvSurfaces::GetUseSolver()`
+    pub fn get_use_solver(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheImpPrmSvSurfacesOfWLApprox_inherited_GetUseSolver(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for TheImpPrmSvSurfacesOfWLApprox (1 total) ──
+// SKIPPED: **Source:** `GeomInt_TheImpPrmSvSurfacesOfWLApprox.hxx`:85 - `GeomInt_TheImpPrmSvSurfacesOfWLApprox::FillInitialVectorOfSolution`
+//   Reason: param 'X' uses unknown type 'math_Vector&'
+//   // pub fn fill_initial_vector_of_solution(&mut self, u1: f64, v1: f64, u2: f64, v2: f64, binfu: f64, bsupu: f64, binfv: f64, bsupv: f64, X: &mut Vector, TranslationU: &mut f64, TranslationV: &mut f64) -> bool;
+//
+
+// ========================
+// From GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:33 - `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox`
+pub use crate::ffi::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox as TheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
+
+unsafe impl crate::CppDeletable for TheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_destructor(ptr);
+    }
+}
+
+impl TheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
+    /// **Source:** `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:39 - `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox()`
+    /// compute the solution point with the close point
+    pub fn new_array1ofreal_handleadaptor3dsurface2_real(
+        Param: &crate::ffi::TColStd_Array1OfReal,
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+        TolTangency: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_ctor_array1ofreal_handleadaptor3dsurface2_real(Param, S1, S2, TolTangency))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:55 - `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox()`
+    /// initialize the parameters to compute the solution point
+    /// it 's possible to write to optimize:
+    /// IntImp_Int2S inter(S1,S2,Func,TolTangency);
+    /// math_FunctionSetRoot rsnld(inter.Function());
+    /// while ...{
+    /// Param(1)=...
+    /// Param(2)=...
+    /// param(3)=...
+    /// inter.Perform(Param,rsnld);
+    /// }
+    pub fn new_handleadaptor3dsurface2_real(
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+        TolTangency: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_ctor_handleadaptor3dsurface2_real(S1, S2, TolTangency))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:65 - `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::Perform()`
+    /// returns the best constant isoparametric to find
+    /// the next intersection's point +stores the solution
+    /// point (the solution point is found with the close point
+    /// to intersect the isoparametric with the other patch;
+    /// the choice of the isoparametic is calculated)
+    pub fn perform_array1ofreal_functionsetroot(
+        &mut self,
+        Param: &crate::ffi::TColStd_Array1OfReal,
+        Rsnld: &mut crate::math::FunctionSetRoot,
+    ) -> crate::int_imp::ConstIsoparametric {
+        unsafe {
+            crate::int_imp::ConstIsoparametric::try_from(crate::ffi::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_perform_array1ofreal_functionsetroot(self as *mut Self, Param, Rsnld)).unwrap()
+        }
+    }
+
+    /// **Source:** `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:73 - `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::Perform()`
+    /// returns the best constant isoparametric to find
+    /// the next intersection's point +stores the solution
+    /// point (the solution point is found with the close point
+    /// to intersect the isoparametric with the other patch;
+    /// the choice of the isoparametic is given by ChoixIso)
+    pub fn perform_array1ofreal_functionsetroot_constisoparametric(
+        &mut self,
+        Param: &crate::ffi::TColStd_Array1OfReal,
+        Rsnld: &mut crate::math::FunctionSetRoot,
+        ChoixIso: crate::int_imp::ConstIsoparametric,
+    ) -> crate::int_imp::ConstIsoparametric {
+        unsafe {
+            crate::int_imp::ConstIsoparametric::try_from(crate::ffi::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_perform_array1ofreal_functionsetroot_constisoparametric(self as *mut Self, Param, Rsnld, ChoixIso.into())).unwrap()
+        }
+    }
+
+    /// **Source:** `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:78 - `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::IsDone()`
+    /// Returns TRUE if the creation completed without failure.
+    pub fn is_done(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_is_done(self as *const Self)
+        }
+    }
+
+    /// **Source:** `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:81 - `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::IsEmpty()`
+    /// Returns TRUE when there is no solution to the problem.
+    pub fn is_empty(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_is_empty(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:84 - `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::Point()`
+    /// Returns the intersection point.
+    pub fn point(&self) -> &crate::int_surf::PntOn2S {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_point(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:88 - `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::IsTangent()`
+    /// Returns True if the surfaces are tangent at the
+    /// intersection point.
+    pub fn is_tangent(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_is_tangent(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:91 - `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::Direction()`
+    /// Returns the tangent at the intersection line.
+    pub fn direction(&self) -> &crate::gp::Dir {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_direction(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:95 - `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::DirectionOnS1()`
+    /// Returns the tangent at the intersection line in the
+    /// parametric space of the first surface.
+    pub fn direction_on_s1(&self) -> &crate::gp::Dir2d {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_direction_on_s1(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:99 - `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::DirectionOnS2()`
+    /// Returns the tangent at the intersection line in the
+    /// parametric space of the second surface.
+    pub fn direction_on_s2(&self) -> &crate::gp::Dir2d {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_direction_on_s2(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:103 - `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::Function()`
+    /// return the math function which
+    /// is used to compute the intersection
+    pub fn function(&mut self) -> &mut TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_function(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx`:107 - `GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::ChangePoint()`
+    /// return the intersection point which is
+    /// enable for changing.
+    pub fn change_point(&mut self) -> &mut crate::int_surf::PntOn2S {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_change_point(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From GeomInt_TheMultiLineOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:35 - `GeomInt_TheMultiLineOfWLApprox`
+pub use crate::ffi::GeomInt_TheMultiLineOfWLApprox as TheMultiLineOfWLApprox;
+
+unsafe impl crate::CppDeletable for TheMultiLineOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_TheMultiLineOfWLApprox_destructor(ptr);
+    }
+}
+
+impl TheMultiLineOfWLApprox {
+    /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:40 - `GeomInt_TheMultiLineOfWLApprox::GeomInt_TheMultiLineOfWLApprox()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomInt_TheMultiLineOfWLApprox_ctor()) }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:66 - `GeomInt_TheMultiLineOfWLApprox::GeomInt_TheMultiLineOfWLApprox()`
+    /// No Extra points will be added on the current line
+    pub fn new_handleintpatchwline_int2_bool2_real7_bool_int2(
+        line: &crate::ffi::HandleIntPatchWLine,
+        NbP3d: i32,
+        NbP2d: i32,
+        ApproxU1V1: bool,
+        ApproxU2V2: bool,
+        xo: f64,
+        yo: f64,
+        zo: f64,
+        u1o: f64,
+        v1o: f64,
+        u2o: f64,
+        v2o: f64,
+        P2DOnFirst: bool,
+        IndMin: i32,
+        IndMax: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_TheMultiLineOfWLApprox_ctor_handleintpatchwline_int2_bool2_real7_bool_int2(line, NbP3d, NbP2d, ApproxU1V1, ApproxU2V2, xo, yo, zo, u1o, v1o, u2o, v2o, P2DOnFirst, IndMin, IndMax))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:66 - `GeomInt_TheMultiLineOfWLApprox::GeomInt_TheMultiLineOfWLApprox()`
+    /// No Extra points will be added on the current line
+    pub fn new_handleintpatchwline_int2_bool2_real7_bool_int(
+        line: &crate::ffi::HandleIntPatchWLine,
+        NbP3d: i32,
+        NbP2d: i32,
+        ApproxU1V1: bool,
+        ApproxU2V2: bool,
+        xo: f64,
+        yo: f64,
+        zo: f64,
+        u1o: f64,
+        v1o: f64,
+        u2o: f64,
+        v2o: f64,
+        P2DOnFirst: bool,
+        IndMin: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleintpatchwline_int2_bool2_real7_bool_int2(
+            line, NbP3d, NbP2d, ApproxU1V1, ApproxU2V2, xo, yo, zo, u1o, v1o, u2o, v2o, P2DOnFirst,
+            IndMin, 0,
+        )
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:66 - `GeomInt_TheMultiLineOfWLApprox::GeomInt_TheMultiLineOfWLApprox()`
+    /// No Extra points will be added on the current line
+    pub fn new_handleintpatchwline_int2_bool2_real7_bool(
+        line: &crate::ffi::HandleIntPatchWLine,
+        NbP3d: i32,
+        NbP2d: i32,
+        ApproxU1V1: bool,
+        ApproxU2V2: bool,
+        xo: f64,
+        yo: f64,
+        zo: f64,
+        u1o: f64,
+        v1o: f64,
+        u2o: f64,
+        v2o: f64,
+        P2DOnFirst: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleintpatchwline_int2_bool2_real7_bool_int2(
+            line, NbP3d, NbP2d, ApproxU1V1, ApproxU2V2, xo, yo, zo, u1o, v1o, u2o, v2o, P2DOnFirst,
+            0, 0,
+        )
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:82 - `GeomInt_TheMultiLineOfWLApprox::FirstPoint()`
+    pub fn first_point(&self) -> i32 {
+        unsafe { crate::ffi::GeomInt_TheMultiLineOfWLApprox_first_point(self as *const Self) }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:84 - `GeomInt_TheMultiLineOfWLApprox::LastPoint()`
+    pub fn last_point(&self) -> i32 {
+        unsafe { crate::ffi::GeomInt_TheMultiLineOfWLApprox_last_point(self as *const Self) }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:87 - `GeomInt_TheMultiLineOfWLApprox::NbP2d()`
+    /// Returns the number of 2d points of a TheLine.
+    pub fn nb_p2d(&self) -> i32 {
+        unsafe { crate::ffi::GeomInt_TheMultiLineOfWLApprox_nb_p2d(self as *const Self) }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:90 - `GeomInt_TheMultiLineOfWLApprox::NbP3d()`
+    /// Returns the number of 3d points of a TheLine.
+    pub fn nb_p3d(&self) -> i32 {
+        unsafe { crate::ffi::GeomInt_TheMultiLineOfWLApprox_nb_p3d(self as *const Self) }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:92 - `GeomInt_TheMultiLineOfWLApprox::WhatStatus()`
+    pub fn what_status(&self) -> crate::approx::Status {
+        unsafe {
+            crate::approx::Status::try_from(crate::ffi::GeomInt_TheMultiLineOfWLApprox_what_status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:95 - `GeomInt_TheMultiLineOfWLApprox::Value()`
+    /// Returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
+    pub fn value_int_array1ofpnt(
+        &self,
+        MPointIndex: i32,
+        tabPt: &mut crate::ffi::TColgp_Array1OfPnt,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_TheMultiLineOfWLApprox_value_int_array1ofpnt(
+                self as *const Self,
+                MPointIndex,
+                tabPt,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:98 - `GeomInt_TheMultiLineOfWLApprox::Value()`
+    /// Returns the 2d points of the multipoint <MPointIndex> when only 2d points exist.
+    pub fn value_int_array1ofpnt2d(
+        &self,
+        MPointIndex: i32,
+        tabPt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_TheMultiLineOfWLApprox_value_int_array1ofpnt2d(
+                self as *const Self,
+                MPointIndex,
+                tabPt2d,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:102 - `GeomInt_TheMultiLineOfWLApprox::Value()`
+    /// returns the 3d and 2d points of the multipoint <MPointIndex>.
+    pub fn value_int_array1ofpnt_array1ofpnt2d(
+        &self,
+        MPointIndex: i32,
+        tabPt: &mut crate::ffi::TColgp_Array1OfPnt,
+        tabPt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_TheMultiLineOfWLApprox_value_int_array1ofpnt_array1ofpnt2d(
+                self as *const Self,
+                MPointIndex,
+                tabPt,
+                tabPt2d,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:108 - `GeomInt_TheMultiLineOfWLApprox::Tangency()`
+    /// Returns the 3d tangency points of the multipoint <MPointIndex> only
+    /// when 3d points exist.
+    pub fn tangency_int_array1ofvec(
+        &self,
+        MPointIndex: i32,
+        tabV: &mut crate::ffi::TColgp_Array1OfVec,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheMultiLineOfWLApprox_tangency_int_array1ofvec(
+                self as *const Self,
+                MPointIndex,
+                tabV,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:113 - `GeomInt_TheMultiLineOfWLApprox::Tangency()`
+    /// Returns the 2d tangency points of the multipoint <MPointIndex> only
+    /// when 2d points exist.
+    pub fn tangency_int_array1ofvec2d(
+        &self,
+        MPointIndex: i32,
+        tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheMultiLineOfWLApprox_tangency_int_array1ofvec2d(
+                self as *const Self,
+                MPointIndex,
+                tabV2d,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:117 - `GeomInt_TheMultiLineOfWLApprox::Tangency()`
+    /// Returns the 3d and 2d points of the multipoint <MPointIndex>.
+    pub fn tangency_int_array1ofvec_array1ofvec2d(
+        &self,
+        MPointIndex: i32,
+        tabV: &mut crate::ffi::TColgp_Array1OfVec,
+        tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheMultiLineOfWLApprox_tangency_int_array1ofvec_array1ofvec2d(
+                self as *const Self,
+                MPointIndex,
+                tabV,
+                tabV2d,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:124 - `GeomInt_TheMultiLineOfWLApprox::MakeMLBetween()`
+    /// Tries to make a sub-line between <Low> and <High> points of this line
+    /// by adding <NbPointsToInsert> new points
+    pub fn make_ml_between(
+        &self,
+        Low: i32,
+        High: i32,
+        NbPointsToInsert: i32,
+    ) -> crate::OwnedPtr<TheMultiLineOfWLApprox> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_TheMultiLineOfWLApprox_make_ml_between(
+                self as *const Self,
+                Low,
+                High,
+                NbPointsToInsert,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:131 - `GeomInt_TheMultiLineOfWLApprox::MakeMLOneMorePoint()`
+    /// Tries to make a sub-line between <Low> and <High> points of this line
+    /// by adding one more point between (indbad-1)-th and indbad-th points
+    pub fn make_ml_one_more_point(
+        &self,
+        Low: i32,
+        High: i32,
+        indbad: i32,
+        OtherLine: &mut TheMultiLineOfWLApprox,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheMultiLineOfWLApprox_make_ml_one_more_point(
+                self as *const Self,
+                Low,
+                High,
+                indbad,
+                OtherLine,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:137 - `GeomInt_TheMultiLineOfWLApprox::Dump()`
+    /// Dump of the current multi-line.
+    pub fn dump(&self) {
+        unsafe { crate::ffi::GeomInt_TheMultiLineOfWLApprox_dump(self as *const Self) }
+    }
+}
+
+// ── Skipped symbols for TheMultiLineOfWLApprox (1 total) ──
+// SKIPPED: **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:48 - `GeomInt_TheMultiLineOfWLApprox::GeomInt_TheMultiLineOfWLApprox`
+//   constructor: The class SvSurfaces is used when the approximation algorithm
+//   constructor: needs some extra points on the line <line>.
+//   constructor: A New line  is then created which shares the same surfaces and functions.
+//   Reason: has unbindable types: param 'PtrSvSurfaces': void pointer (Standard_Address)
+//   // pub fn new_handleintpatchwline_address_int2_bool2_real7_bool_int2(line: &HandleWLine, PtrSvSurfaces: /* Standard_Address */, NbP3d: i32, NbP2d: i32, ApproxU1V1: bool, ApproxU2V2: bool, xo: f64, yo: f64, zo: f64, u1o: f64, v1o: f64, u2o: f64, v2o: f64, P2DOnFirst: bool, IndMin: i32, IndMax: i32) -> OwnedPtr<Self>;
+//
+
+// ========================
+// From GeomInt_TheMultiLineToolOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx`:29 - `GeomInt_TheMultiLineToolOfWLApprox`
+pub use crate::ffi::GeomInt_TheMultiLineToolOfWLApprox as TheMultiLineToolOfWLApprox;
+
+unsafe impl crate::CppDeletable for TheMultiLineToolOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_destructor(ptr);
+    }
+}
+
+impl TheMultiLineToolOfWLApprox {
+    /// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx` - `GeomInt_TheMultiLineToolOfWLApprox::GeomInt_TheMultiLineToolOfWLApprox()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_ctor()) }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx`:35 - `GeomInt_TheMultiLineToolOfWLApprox::FirstPoint()`
+    /// Returns the number of multipoints of the TheMultiLine.
+    pub fn first_point(ML: &TheMultiLineOfWLApprox) -> i32 {
+        unsafe { crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_first_point(ML) }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx`:38 - `GeomInt_TheMultiLineToolOfWLApprox::LastPoint()`
+    /// Returns the number of multipoints of the TheMultiLine.
+    pub fn last_point(ML: &TheMultiLineOfWLApprox) -> i32 {
+        unsafe { crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_last_point(ML) }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx`:41 - `GeomInt_TheMultiLineToolOfWLApprox::NbP2d()`
+    /// Returns the number of 2d points of a TheMultiLine.
+    pub fn nb_p2d(ML: &TheMultiLineOfWLApprox) -> i32 {
+        unsafe { crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_nb_p2d(ML) }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx`:44 - `GeomInt_TheMultiLineToolOfWLApprox::NbP3d()`
+    /// Returns the number of 3d points of a TheMultiLine.
+    pub fn nb_p3d(ML: &TheMultiLineOfWLApprox) -> i32 {
+        unsafe { crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_nb_p3d(ML) }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx`:48 - `GeomInt_TheMultiLineToolOfWLApprox::Value()`
+    /// returns the 3d points of the multipoint <MPointIndex>
+    /// when only 3d points exist.
+    pub fn value_themultilineofwlapprox_int_array1ofpnt(
+        ML: &TheMultiLineOfWLApprox,
+        MPointIndex: i32,
+        tabPt: &mut crate::ffi::TColgp_Array1OfPnt,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_value_themultilineofwlapprox_int_array1ofpnt(ML, MPointIndex, tabPt)
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx`:54 - `GeomInt_TheMultiLineToolOfWLApprox::Value()`
+    /// returns the 2d points of the multipoint <MPointIndex>
+    /// when only 2d points exist.
+    pub fn value_themultilineofwlapprox_int_array1ofpnt2d(
+        ML: &TheMultiLineOfWLApprox,
+        MPointIndex: i32,
+        tabPt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_value_themultilineofwlapprox_int_array1ofpnt2d(ML, MPointIndex, tabPt2d)
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx`:60 - `GeomInt_TheMultiLineToolOfWLApprox::Value()`
+    /// returns the 3d and 2d points of the multipoint
+    /// <MPointIndex>.
+    pub fn value_themultilineofwlapprox_int_array1ofpnt_array1ofpnt2d(
+        ML: &TheMultiLineOfWLApprox,
+        MPointIndex: i32,
+        tabPt: &mut crate::ffi::TColgp_Array1OfPnt,
+        tabPt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_value_themultilineofwlapprox_int_array1ofpnt_array1ofpnt2d(ML, MPointIndex, tabPt, tabPt2d)
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx`:67 - `GeomInt_TheMultiLineToolOfWLApprox::Tangency()`
+    /// returns the 3d points of the multipoint <MPointIndex>
+    /// when only 3d points exist.
+    pub fn tangency_themultilineofwlapprox_int_array1ofvec(
+        ML: &TheMultiLineOfWLApprox,
+        MPointIndex: i32,
+        tabV: &mut crate::ffi::TColgp_Array1OfVec,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_tangency_themultilineofwlapprox_int_array1ofvec(ML, MPointIndex, tabV)
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx`:73 - `GeomInt_TheMultiLineToolOfWLApprox::Tangency()`
+    /// returns the 2d tangency points of the multipoint
+    /// <MPointIndex> only when 2d points exist.
+    pub fn tangency_themultilineofwlapprox_int_array1ofvec2d(
+        ML: &TheMultiLineOfWLApprox,
+        MPointIndex: i32,
+        tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_tangency_themultilineofwlapprox_int_array1ofvec2d(ML, MPointIndex, tabV2d)
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx`:79 - `GeomInt_TheMultiLineToolOfWLApprox::Tangency()`
+    /// returns the 3d and 2d points of the multipoint
+    /// <MPointIndex>.
+    pub fn tangency_themultilineofwlapprox_int_array1ofvec_array1ofvec2d(
+        ML: &TheMultiLineOfWLApprox,
+        MPointIndex: i32,
+        tabV: &mut crate::ffi::TColgp_Array1OfVec,
+        tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_tangency_themultilineofwlapprox_int_array1ofvec_array1ofvec2d(ML, MPointIndex, tabV, tabV2d)
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx`:86 - `GeomInt_TheMultiLineToolOfWLApprox::Curvature()`
+    /// returns the 3d curvature of the multipoint <MPointIndex>
+    /// when only 3d points exist.
+    pub fn curvature_themultilineofwlapprox_int_array1ofvec(
+        ML: &TheMultiLineOfWLApprox,
+        MPointIndex: i32,
+        tabV: &mut crate::ffi::TColgp_Array1OfVec,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_curvature_themultilineofwlapprox_int_array1ofvec(ML, MPointIndex, tabV)
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx`:92 - `GeomInt_TheMultiLineToolOfWLApprox::Curvature()`
+    /// returns the 2d curvature points of the multipoint
+    /// <MPointIndex> only when 2d points exist.
+    pub fn curvature_themultilineofwlapprox_int_array1ofvec2d(
+        ML: &TheMultiLineOfWLApprox,
+        MPointIndex: i32,
+        tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_curvature_themultilineofwlapprox_int_array1ofvec2d(ML, MPointIndex, tabV2d)
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx`:98 - `GeomInt_TheMultiLineToolOfWLApprox::Curvature()`
+    /// returns the 3d and 2d curvature of the multipoint
+    /// <MPointIndex>.
+    pub fn curvature_themultilineofwlapprox_int_array1ofvec_array1ofvec2d(
+        ML: &TheMultiLineOfWLApprox,
+        MPointIndex: i32,
+        tabV: &mut crate::ffi::TColgp_Array1OfVec,
+        tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_curvature_themultilineofwlapprox_int_array1ofvec_array1ofvec2d(ML, MPointIndex, tabV, tabV2d)
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx`:104 - `GeomInt_TheMultiLineToolOfWLApprox::MakeMLBetween()`
+    /// Is called if WhatStatus returned "PointsAdded".
+    pub fn make_ml_between(
+        ML: &TheMultiLineOfWLApprox,
+        I1: i32,
+        I2: i32,
+        NbPMin: i32,
+    ) -> crate::OwnedPtr<TheMultiLineOfWLApprox> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_make_ml_between(ML, I1, I2, NbPMin),
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx`:110 - `GeomInt_TheMultiLineToolOfWLApprox::MakeMLOneMorePoint()`
+    /// Is called when the Bezier curve contains a loop
+    pub fn make_ml_one_more_point(
+        ML: &TheMultiLineOfWLApprox,
+        I1: i32,
+        I2: i32,
+        indbad: i32,
+        OtherLine: &mut TheMultiLineOfWLApprox,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_make_ml_one_more_point(
+                ML, I1, I2, indbad, OtherLine,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx`:116 - `GeomInt_TheMultiLineToolOfWLApprox::WhatStatus()`
+    pub fn what_status(ML: &TheMultiLineOfWLApprox, I1: i32, I2: i32) -> crate::approx::Status {
+        unsafe {
+            crate::approx::Status::try_from(
+                crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_what_status(ML, I1, I2),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `GeomInt_TheMultiLineToolOfWLApprox.hxx`:121 - `GeomInt_TheMultiLineToolOfWLApprox::Dump()`
+    /// Dump of the current multi-line.
+    pub fn dump(ML: &TheMultiLineOfWLApprox) {
+        unsafe { crate::ffi::GeomInt_TheMultiLineToolOfWLApprox_dump(ML) }
+    }
+}
+
+// ========================
+// From GeomInt_ThePrmPrmSvSurfacesOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_ThePrmPrmSvSurfacesOfWLApprox.hxx`:33 - `GeomInt_ThePrmPrmSvSurfacesOfWLApprox`
+pub use crate::ffi::GeomInt_ThePrmPrmSvSurfacesOfWLApprox as ThePrmPrmSvSurfacesOfWLApprox;
+
+unsafe impl crate::CppDeletable for ThePrmPrmSvSurfacesOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_ThePrmPrmSvSurfacesOfWLApprox_destructor(ptr);
+    }
+}
+
+impl ThePrmPrmSvSurfacesOfWLApprox {
+    /// **Source:** `GeomInt_ThePrmPrmSvSurfacesOfWLApprox.hxx`:38 - `GeomInt_ThePrmPrmSvSurfacesOfWLApprox::GeomInt_ThePrmPrmSvSurfacesOfWLApprox()`
+    pub fn new_handleadaptor3dsurface2(
+        Surf1: &crate::ffi::HandleAdaptor3dSurface,
+        Surf2: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomInt_ThePrmPrmSvSurfacesOfWLApprox_ctor_handleadaptor3dsurface2(
+                    Surf1, Surf2,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ThePrmPrmSvSurfacesOfWLApprox.hxx`:42 - `GeomInt_ThePrmPrmSvSurfacesOfWLApprox::Compute()`
+    /// returns True if Tg,Tguv1 Tguv2 can be computed.
+    pub fn compute(
+        &mut self,
+        u1: &mut f64,
+        v1: &mut f64,
+        u2: &mut f64,
+        v2: &mut f64,
+        Pt: &mut crate::gp::Pnt,
+        Tg: &mut crate::gp::Vec,
+        Tguv1: &mut crate::gp::Vec2d,
+        Tguv2: &mut crate::gp::Vec2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_ThePrmPrmSvSurfacesOfWLApprox_compute(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                Pt,
+                Tg,
+                Tguv1,
+                Tguv2,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ThePrmPrmSvSurfacesOfWLApprox.hxx`:51 - `GeomInt_ThePrmPrmSvSurfacesOfWLApprox::Pnt()`
+    pub fn pnt(&mut self, u1: f64, v1: f64, u2: f64, v2: f64, P: &mut crate::gp::Pnt) {
+        unsafe {
+            crate::ffi::GeomInt_ThePrmPrmSvSurfacesOfWLApprox_pnt(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                P,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ThePrmPrmSvSurfacesOfWLApprox.hxx`:57 - `GeomInt_ThePrmPrmSvSurfacesOfWLApprox::SeekPoint()`
+    pub fn seek_point(
+        &mut self,
+        u1: f64,
+        v1: f64,
+        u2: f64,
+        v2: f64,
+        Point: &mut crate::int_surf::PntOn2S,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_ThePrmPrmSvSurfacesOfWLApprox_seek_point(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                Point,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ThePrmPrmSvSurfacesOfWLApprox.hxx`:63 - `GeomInt_ThePrmPrmSvSurfacesOfWLApprox::Tangency()`
+    pub fn tangency(
+        &mut self,
+        u1: f64,
+        v1: f64,
+        u2: f64,
+        v2: f64,
+        Tg: &mut crate::gp::Vec,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_ThePrmPrmSvSurfacesOfWLApprox_tangency(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                Tg,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ThePrmPrmSvSurfacesOfWLApprox.hxx`:69 - `GeomInt_ThePrmPrmSvSurfacesOfWLApprox::TangencyOnSurf1()`
+    pub fn tangency_on_surf1(
+        &mut self,
+        u1: f64,
+        v1: f64,
+        u2: f64,
+        v2: f64,
+        Tg: &mut crate::gp::Vec2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_ThePrmPrmSvSurfacesOfWLApprox_tangency_on_surf1(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                Tg,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_ThePrmPrmSvSurfacesOfWLApprox.hxx`:75 - `GeomInt_ThePrmPrmSvSurfacesOfWLApprox::TangencyOnSurf2()`
+    pub fn tangency_on_surf2(
+        &mut self,
+        u1: f64,
+        v1: f64,
+        u2: f64,
+        v2: f64,
+        Tg: &mut crate::gp::Vec2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_ThePrmPrmSvSurfacesOfWLApprox_tangency_on_surf2(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                Tg,
+            )
+        }
+    }
+
+    /// Upcast to ApproxInt_SvSurfaces
+    pub fn as_approx_int_sv_surfaces(&self) -> &crate::approx_int::SvSurfaces {
+        unsafe {
+            &*(crate::ffi::GeomInt_ThePrmPrmSvSurfacesOfWLApprox_as_ApproxInt_SvSurfaces(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to ApproxInt_SvSurfaces (mutable)
+    pub fn as_approx_int_sv_surfaces_mut(&mut self) -> &mut crate::approx_int::SvSurfaces {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_ThePrmPrmSvSurfacesOfWLApprox_as_ApproxInt_SvSurfaces_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ApproxInt_SvSurfaces.hxx`:93 - `ApproxInt_SvSurfaces::SetUseSolver()`
+    pub fn set_use_solver(&mut self, theUseSol: bool) {
+        unsafe {
+            crate::ffi::GeomInt_ThePrmPrmSvSurfacesOfWLApprox_inherited_SetUseSolver(
+                self as *mut Self,
+                theUseSol,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ApproxInt_SvSurfaces.hxx`:95 - `ApproxInt_SvSurfaces::GetUseSolver()`
+    pub fn get_use_solver(&self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_ThePrmPrmSvSurfacesOfWLApprox_inherited_GetUseSolver(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+// ========================
+// From GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:32 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox`
+pub use crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox as TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox;
+
+unsafe impl crate::CppDeletable for TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_destructor(ptr);
+    }
+}
+
+impl TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox {
+    /// **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:37 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_ctor(),
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:39 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox()`
+    pub fn new_handleadaptor3dsurface_quadric(
+        PS: &crate::ffi::HandleAdaptor3dSurface,
+        IS: &crate::int_surf::Quadric,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_ctor_handleadaptor3dsurface_quadric(PS, IS))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:43 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox()`
+    pub fn new_quadric(IS: &crate::int_surf::Quadric) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_ctor_quadric(IS),
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:45 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::Set()`
+    pub fn set_handleadaptor3dsurface(&mut self, PS: &crate::ffi::HandleAdaptor3dSurface) {
+        unsafe {
+            crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_set_handleadaptor3dsurface(self as *mut Self, PS)
+        }
+    }
+
+    /// **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:47 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::SetImplicitSurface()`
+    pub fn set_implicit_surface(&mut self, IS: &crate::int_surf::Quadric) {
+        unsafe {
+            crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_set_implicit_surface(
+                self as *mut Self,
+                IS,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:49 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::Set()`
+    pub fn set_real(&mut self, Tolerance: f64) {
+        unsafe {
+            crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_set_real(
+                self as *mut Self,
+                Tolerance,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:51 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::NbVariables()`
+    pub fn nb_variables(&self) -> i32 {
+        unsafe {
+            crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_nb_variables(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:53 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::NbEquations()`
+    pub fn nb_equations(&self) -> i32 {
+        unsafe {
+            crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_nb_equations(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:61 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::Root()`
+    pub fn root(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_root(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:65 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::Tolerance()`
+    /// Returns the value Tol so that if Abs(Func.Root())<Tol
+    /// the function is considered null.
+    pub fn tolerance(&self) -> f64 {
+        unsafe {
+            crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_tolerance(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:67 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::Point()`
+    pub fn point(&self) -> &crate::gp::Pnt {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_point(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:69 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::IsTangent()`
+    pub fn is_tangent(&mut self) -> bool {
+        unsafe {
+            crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_is_tangent(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:71 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::Direction3d()`
+    pub fn direction3d(&mut self) -> &crate::gp::Vec {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_direction3d(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:73 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::Direction2d()`
+    pub fn direction2d(&mut self) -> &crate::gp::Dir2d {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_direction2d(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:75 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::PSurface()`
+    pub fn p_surface(&self) -> &crate::ffi::HandleAdaptor3dSurface {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_p_surface(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:77 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::ISurface()`
+    pub fn i_surface(&self) -> &crate::int_surf::Quadric {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_i_surface(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_as_math_FunctionSetWithDerivatives(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe {
+            &*(crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_as_math_FunctionSet(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_as_math_FunctionSet_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_inherited_GetStateNumber(self as *mut Self)
+        }
+    }
+}
+
+// ── Skipped symbols for TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox (3 total) ──
+// SKIPPED: **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:55 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::Value`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:57 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::Derivatives`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx`:59 - `GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::Values`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
+
+// ========================
+// From GeomInt_WLApprox.hxx
+// ========================
+
+/// **Source:** `GeomInt_WLApprox.hxx`:44 - `GeomInt_WLApprox`
+pub use crate::ffi::GeomInt_WLApprox as WLApprox;
+
+unsafe impl crate::CppDeletable for WLApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_WLApprox_destructor(ptr);
+    }
+}
+
+impl WLApprox {
+    /// **Source:** `GeomInt_WLApprox.hxx`:78 - `GeomInt_WLApprox::GeomInt_WLApprox()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomInt_WLApprox_ctor()) }
+    }
+
+    /// **Source:** `GeomInt_WLApprox.hxx`:80 - `GeomInt_WLApprox::Perform()`
+    pub fn perform_handleadaptor3dsurface2_handleintpatchwline_bool3_int2(
+        &mut self,
+        Surf1: &crate::ffi::HandleAdaptor3dSurface,
+        Surf2: &crate::ffi::HandleAdaptor3dSurface,
+        aLine: &crate::ffi::HandleIntPatchWLine,
+        ApproxXYZ: bool,
+        ApproxU1V1: bool,
+        ApproxU2V2: bool,
+        indicemin: i32,
+        indicemax: i32,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_WLApprox_perform_handleadaptor3dsurface2_handleintpatchwline_bool3_int2(self as *mut Self, Surf1, Surf2, aLine, ApproxXYZ, ApproxU1V1, ApproxU2V2, indicemin, indicemax)
+        }
+    }
+
+    /// **Source:** `GeomInt_WLApprox.hxx`:89 - `GeomInt_WLApprox::Perform()`
+    pub fn perform_handleintpatchwline_bool3_int2(
+        &mut self,
+        aLine: &crate::ffi::HandleIntPatchWLine,
+        ApproxXYZ: bool,
+        ApproxU1V1: bool,
+        ApproxU2V2: bool,
+        indicemin: i32,
+        indicemax: i32,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_WLApprox_perform_handleintpatchwline_bool3_int2(
+                self as *mut Self,
+                aLine,
+                ApproxXYZ,
+                ApproxU1V1,
+                ApproxU2V2,
+                indicemin,
+                indicemax,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_WLApprox.hxx`:96 - `GeomInt_WLApprox::SetParameters()`
+    pub fn set_parameters(
+        &mut self,
+        Tol3d: f64,
+        Tol2d: f64,
+        DegMin: i32,
+        DegMax: i32,
+        NbIterMax: i32,
+        NbPntMax: i32,
+        ApproxWithTangency: bool,
+        Parametrization: crate::approx::ParametrizationType,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_WLApprox_set_parameters(
+                self as *mut Self,
+                Tol3d,
+                Tol2d,
+                DegMin,
+                DegMax,
+                NbIterMax,
+                NbPntMax,
+                ApproxWithTangency,
+                Parametrization.into(),
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_WLApprox.hxx`:105 - `GeomInt_WLApprox::Perform()`
+    pub fn perform(&mut self) {
+        unsafe { crate::ffi::GeomInt_WLApprox_perform(self as *mut Self) }
+    }
+
+    /// **Source:** `GeomInt_WLApprox.hxx`:107 - `GeomInt_WLApprox::TolReached3d()`
+    pub fn tol_reached3d(&self) -> f64 {
+        unsafe { crate::ffi::GeomInt_WLApprox_tol_reached3d(self as *const Self) }
+    }
+
+    /// **Source:** `GeomInt_WLApprox.hxx`:109 - `GeomInt_WLApprox::TolReached2d()`
+    pub fn tol_reached2d(&self) -> f64 {
+        unsafe { crate::ffi::GeomInt_WLApprox_tol_reached2d(self as *const Self) }
+    }
+
+    /// **Source:** `GeomInt_WLApprox.hxx`:111 - `GeomInt_WLApprox::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::GeomInt_WLApprox_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `GeomInt_WLApprox.hxx`:113 - `GeomInt_WLApprox::NbMultiCurves()`
+    pub fn nb_multi_curves(&self) -> i32 {
+        unsafe { crate::ffi::GeomInt_WLApprox_nb_multi_curves(self as *const Self) }
+    }
+
+    /// **Source:** `GeomInt_WLApprox.hxx`:115 - `GeomInt_WLApprox::Value()`
+    pub fn value(&self, Index: i32) -> &crate::app_par_curves::MultiBSpCurve {
+        unsafe { &*(crate::ffi::GeomInt_WLApprox_value(self as *const Self, Index)) }
+    }
+}
+
+// ── Skipped symbols for WLApprox (1 total) ──
+// SKIPPED: **Source:** `GeomInt_WLApprox.hxx`:117 - `GeomInt_WLApprox::Parameters`
+//   Reason: param 'TheParameters' uses unknown type 'math_Vector&'
+//   // pub fn parameters(Line: &TheMultiLineOfWLApprox, firstP: i32, lastP: i32, Par: ParametrizationType, TheParameters: &mut Vector);
+//
 
 // ========================
 // Additional type re-exports

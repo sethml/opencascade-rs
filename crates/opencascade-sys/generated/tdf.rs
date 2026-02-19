@@ -3358,43 +3358,6 @@ impl Data {
         unsafe { crate::ffi::TDF_Data_register_label(self as *mut Self, aLabel) }
     }
 
-    /// **Source:** `TDF_Data.hxx`:147 - `TDF_Data::LabelNodeAllocator()`
-    /// Returns TDF_HAllocator, which is an
-    /// incremental allocator used by
-    /// TDF_LabelNode.
-    /// This allocator is used to
-    /// manage TDF_LabelNode objects,
-    /// but it can also be used for
-    /// allocating memory to
-    /// application-specific data (be
-    /// careful because this
-    /// allocator does not release
-    /// the memory).
-    /// The benefits of this
-    /// allocation scheme are
-    /// noticeable when dealing with
-    /// large OCAF documents, due to:
-    /// 1.    Very quick allocation of
-    /// objects (memory heap is not
-    /// used, the algorithm that
-    /// replaces it is very simple).
-    /// 2.    Very quick destruction of
-    /// objects (memory is released not
-    /// by destructors of TDF_LabelNode,
-    /// but rather by the destructor of
-    /// TDF_Data).
-    /// 3.  TDF_LabelNode objects do not
-    /// fragmentize the memory; they are
-    /// kept compactly in a number of
-    /// arrays of 16K each.
-    /// 4.    Swapping is reduced on large
-    /// data, because each document now
-    /// occupies a smaller number of
-    /// memory pages.
-    pub fn label_node_allocator(&self) -> &crate::ffi::TDF_HAllocator {
-        unsafe { &*(crate::ffi::TDF_Data_label_node_allocator(self as *const Self)) }
-    }
-
     /// **Source:** `TDF_Data.hxx`:155 - `TDF_Data::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDF_Data_dynamic_type(self as *const Self)) }
@@ -3489,11 +3452,18 @@ impl HandleTDFData {
     }
 }
 
-// ── Skipped symbols for Data (1 total) ──
+// ── Skipped symbols for Data (2 total) ──
 // SKIPPED: **Source:** `TDF_Data.hxx`:81 - `TDF_Data::Dump`
 //   method: Dumps the Data on <aStream>.
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDF_Data.hxx`:147 - `TDF_Data::LabelNodeAllocator`
+//   method: Returns TDF_HAllocator, which is an
+//   method: incremental allocator used by
+//   method: TDF_LabelNode.
+//   Reason: return type 'const TDF_HAllocator&' is unknown
+//   // pub fn label_node_allocator(&self) -> &HAllocator;
 //
 
 // ========================

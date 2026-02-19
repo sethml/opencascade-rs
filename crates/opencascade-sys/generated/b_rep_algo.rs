@@ -6,6 +6,390 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `BRepAlgo.hxx`:37 - `BRepAlgo::ConcatenateWire`
+/// this method makes a wire whose edges are C1 from
+/// a Wire whose edges could be G1. It removes a vertex
+/// between G1 edges.
+/// Option can be G1 or C1.
+pub fn concatenate_wire(
+    Wire: &crate::topo_ds::Wire,
+    Option: crate::geom_abs::Shape,
+    AngularTolerance: f64,
+) -> crate::OwnedPtr<crate::topo_ds::Wire> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::BRepAlgo_concatenate_wire(
+            Wire,
+            Option.into(),
+            AngularTolerance,
+        ))
+    }
+}
+/// **Source:** `BRepAlgo.hxx`:44 - `BRepAlgo::ConcatenateWireC0`
+/// this method makes an edge from a wire.
+/// Junction points between edges of wire may be sharp,
+/// resulting curve of the resulting edge may be C0.
+pub fn concatenate_wire_c0(Wire: &crate::topo_ds::Wire) -> crate::OwnedPtr<crate::topo_ds::Edge> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgo_concatenate_wire_c0(Wire)) }
+}
+/// **Source:** `BRepAlgo.hxx`:57 - `BRepAlgo::ConvertWire`
+/// Method of wire conversion, calls BRepAlgo_Approx internally.
+/// @param theWire
+/// Input Wire object.
+/// @param theAngleTolerance
+/// Angle (in radians) defining the continuity of the wire: if two vectors
+/// differ by less than this angle, the result will be smooth (zero angle of
+/// tangent lines between curve elements).
+/// @return
+/// The new TopoDS_Wire object consisting of edges each representing an arc
+/// of circle or a linear segment. The accuracy of conversion is defined
+/// as the maximal tolerance of edges in theWire.
+pub fn convert_wire(
+    theWire: &crate::topo_ds::Wire,
+    theAngleTolerance: f64,
+    theFace: &crate::topo_ds::Face,
+) -> crate::OwnedPtr<crate::topo_ds::Wire> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::BRepAlgo_convert_wire(
+            theWire,
+            theAngleTolerance,
+            theFace,
+        ))
+    }
+}
+/// **Source:** `BRepAlgo.hxx`:63 - `BRepAlgo::ConvertFace`
+/// Method of face conversion. The API corresponds to the method ConvertWire.
+/// This is a shortcut for calling ConvertWire() for each wire in theFace.
+pub fn convert_face(
+    theFace: &crate::topo_ds::Face,
+    theAngleTolerance: f64,
+) -> crate::OwnedPtr<crate::topo_ds::Face> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::BRepAlgo_convert_face(theFace, theAngleTolerance))
+    }
+}
+/// **Source:** `BRepAlgo.hxx`:68 - `BRepAlgo::IsValid`
+/// Checks if the  shape is "correct". If not, returns
+/// <Standard_False>, else returns <Standard_True>.
+pub fn is_valid_shape(S: &crate::topo_ds::Shape) -> bool {
+    unsafe { crate::ffi::BRepAlgo_is_valid_shape(S) }
+}
+/// **Source:** `BRepAlgo.hxx`:78 - `BRepAlgo::IsValid`
+/// Checks if  the  Generated and Modified Faces  from
+/// the shapes <arguments> in  the shape <result>  are
+/// "correct". The args   may be empty, then all faces
+/// will be checked.
+/// If <Closed> is True,  only  closed shape are valid.
+/// If <GeomCtrl>  is    False the geometry  of   new
+/// vertices and edges   are   not verified and  the
+/// auto-intersection of new wires are not searched.
+pub fn is_valid_listofshape_shape_bool2(
+    theArgs: &crate::ffi::TopTools_ListOfShape,
+    theResult: &crate::topo_ds::Shape,
+    closedSolid: bool,
+    GeomCtrl: bool,
+) -> bool {
+    unsafe {
+        crate::ffi::BRepAlgo_is_valid_listofshape_shape_bool2(
+            theArgs,
+            theResult,
+            closedSolid,
+            GeomCtrl,
+        )
+    }
+}
+/// **Source:** `BRepAlgo.hxx`:88 - `BRepAlgo::IsTopologicallyValid`
+/// Checks if the shape is "correct".
+/// If not, returns FALSE, else returns TRUE.
+/// This method differs from the previous one in the fact that no geometric controls
+/// (intersection of wires, pcurve validity) are performed.
+pub fn is_topologically_valid(S: &crate::topo_ds::Shape) -> bool {
+    unsafe { crate::ffi::BRepAlgo_is_topologically_valid(S) }
+}
+
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleStandardTransient;
+
+// ========================
+// From BRepAlgo_AsDes.hxx
+// ========================
+
+/// **Source:** `BRepAlgo_AsDes.hxx`:31 - `BRepAlgo_AsDes`
+/// SD to store descendants and ascendants of Shapes.
+pub use crate::ffi::BRepAlgo_AsDes as AsDes;
+
+unsafe impl crate::CppDeletable for AsDes {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepAlgo_AsDes_destructor(ptr);
+    }
+}
+
+impl AsDes {
+    /// **Source:** `BRepAlgo_AsDes.hxx`:36 - `BRepAlgo_AsDes::BRepAlgo_AsDes()`
+    /// Creates an empty AsDes.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgo_AsDes_ctor()) }
+    }
+
+    /// **Source:** `BRepAlgo_AsDes.hxx`:38 - `BRepAlgo_AsDes::Clear()`
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BRepAlgo_AsDes_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepAlgo_AsDes.hxx`:41 - `BRepAlgo_AsDes::Add()`
+    /// Stores <SS> as a futur subshape of <S>.
+    pub fn add_shape2(&mut self, S: &crate::topo_ds::Shape, SS: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepAlgo_AsDes_add_shape2(self as *mut Self, S, SS) }
+    }
+
+    /// **Source:** `BRepAlgo_AsDes.hxx`:44 - `BRepAlgo_AsDes::Add()`
+    /// Stores <SS> as futurs SubShapes of <S>.
+    pub fn add_shape_listofshape(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+        SS: &crate::ffi::TopTools_ListOfShape,
+    ) {
+        unsafe { crate::ffi::BRepAlgo_AsDes_add_shape_listofshape(self as *mut Self, S, SS) }
+    }
+
+    /// **Source:** `BRepAlgo_AsDes.hxx`:46 - `BRepAlgo_AsDes::HasAscendant()`
+    pub fn has_ascendant(&self, S: &crate::topo_ds::Shape) -> bool {
+        unsafe { crate::ffi::BRepAlgo_AsDes_has_ascendant(self as *const Self, S) }
+    }
+
+    /// **Source:** `BRepAlgo_AsDes.hxx`:48 - `BRepAlgo_AsDes::HasDescendant()`
+    pub fn has_descendant(&self, S: &crate::topo_ds::Shape) -> bool {
+        unsafe { crate::ffi::BRepAlgo_AsDes_has_descendant(self as *const Self, S) }
+    }
+
+    /// **Source:** `BRepAlgo_AsDes.hxx`:51 - `BRepAlgo_AsDes::Ascendant()`
+    /// Returns the Shape containing <S>.
+    pub fn ascendant(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepAlgo_AsDes_ascendant(self as *const Self, S)) }
+    }
+
+    /// **Source:** `BRepAlgo_AsDes.hxx`:54 - `BRepAlgo_AsDes::Descendant()`
+    /// Returns futur subhapes of <S>.
+    pub fn descendant(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepAlgo_AsDes_descendant(self as *const Self, S)) }
+    }
+
+    /// **Source:** `BRepAlgo_AsDes.hxx`:61 - `BRepAlgo_AsDes::Replace()`
+    /// Replace theOldS by theNewS.
+    /// theOldS disappear from this.
+    pub fn replace(&mut self, theOldS: &crate::topo_ds::Shape, theNewS: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepAlgo_AsDes_replace(self as *mut Self, theOldS, theNewS) }
+    }
+
+    /// **Source:** `BRepAlgo_AsDes.hxx`:64 - `BRepAlgo_AsDes::Remove()`
+    /// Remove theS from me.
+    pub fn remove(&mut self, theS: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepAlgo_AsDes_remove(self as *mut Self, theS) }
+    }
+
+    /// **Source:** `BRepAlgo_AsDes.hxx`:68 - `BRepAlgo_AsDes::HasCommonDescendant()`
+    /// Returns  True if (S1> and <S2>  has  common
+    /// Descendants.  Stores in <LC> the Commons Descendants.
+    pub fn has_common_descendant(
+        &self,
+        S1: &crate::topo_ds::Shape,
+        S2: &crate::topo_ds::Shape,
+        LC: &mut crate::ffi::TopTools_ListOfShape,
+    ) -> bool {
+        unsafe { crate::ffi::BRepAlgo_AsDes_has_common_descendant(self as *const Self, S1, S2, LC) }
+    }
+
+    /// **Source:** `BRepAlgo_AsDes.hxx`:72 - `BRepAlgo_AsDes::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepAlgo_AsDes_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepAlgo_AsDes.hxx`:72 - `BRepAlgo_AsDes::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepAlgo_AsDes_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `BRepAlgo_AsDes.hxx`:72 - `BRepAlgo_AsDes::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepAlgo_AsDes_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepAlgo_AsDes_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::BRepAlgo_AsDes_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepAlgoAsDes> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgo_AsDes_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepAlgo_AsDes_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepAlgo_AsDes_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepAlgo_AsDes_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepAlgo_AsDes_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepAlgo_AsDes_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepAlgo_AsDes_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleBRepAlgoAsDes;
+
+unsafe impl crate::CppDeletable for HandleBRepAlgoAsDes {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepAlgoAsDes_destructor(ptr);
+    }
+}
+
+impl HandleBRepAlgoAsDes {
+    /// Dereference this Handle to access the underlying BRepAlgo_AsDes
+    pub fn get(&self) -> &crate::ffi::BRepAlgo_AsDes {
+        unsafe { &*(crate::ffi::HandleBRepAlgoAsDes_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepAlgo_AsDes
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepAlgo_AsDes {
+        unsafe { &mut *(crate::ffi::HandleBRepAlgoAsDes_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepAlgo_AsDes> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepAlgoAsDes_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for AsDes (1 total) ──
+// SKIPPED: **Source:** `BRepAlgo_AsDes.hxx`:57 - `BRepAlgo_AsDes::ChangeDescendant`
+//   method: Returns futur subhapes of <S>.
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn change_descendant(&mut self, S: &Shape) -> &mut ListOfShape;
+//
+
+// ========================
+// From BRepAlgo_FaceRestrictor.hxx
+// ========================
+
+/// **Source:** `BRepAlgo_FaceRestrictor.hxx`:33 - `BRepAlgo_FaceRestrictor`
+/// Builds all  the faces  limited  with a set of non
+/// jointing   and     planars     wires.    if
+/// <ControlOrientation> is false  The Wires must have
+/// correct orientations.  Sinon orientation des wires
+/// de telle sorte que les faces ne soient pas infinies
+/// et qu'elles soient disjointes.
+pub use crate::ffi::BRepAlgo_FaceRestrictor as FaceRestrictor;
+
+unsafe impl crate::CppDeletable for FaceRestrictor {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepAlgo_FaceRestrictor_destructor(ptr);
+    }
+}
+
+impl FaceRestrictor {
+    /// **Source:** `BRepAlgo_FaceRestrictor.hxx`:38 - `BRepAlgo_FaceRestrictor::BRepAlgo_FaceRestrictor()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgo_FaceRestrictor_ctor()) }
+    }
+
+    /// **Source:** `BRepAlgo_FaceRestrictor.hxx`:44 - `BRepAlgo_FaceRestrictor::Init()`
+    /// the surface of <F> will be the surface of each new
+    /// faces built.
+    /// <Proj> is used to update pcurves on edges if necessary.
+    /// See Add().
+    pub fn init(&mut self, F: &crate::topo_ds::Face, Proj: bool, ControlOrientation: bool) {
+        unsafe {
+            crate::ffi::BRepAlgo_FaceRestrictor_init(self as *mut Self, F, Proj, ControlOrientation)
+        }
+    }
+
+    /// **Source:** `BRepAlgo_FaceRestrictor.hxx`:59 - `BRepAlgo_FaceRestrictor::Add()`
+    /// Add the wire <W> to the set of wires.
+    ///
+    /// Warning:
+    /// The Wires must be closed.
+    ///
+    /// The edges of <W> can be modified if they don't have
+    /// pcurves on the surface <S> of <F>. In this case
+    /// if <Proj> is false the first pcurve of the edge
+    /// is positioned on <S>.
+    /// if <Proj> is True, the Pcurve On <S> is the
+    /// projection of the curve 3d on <F>.
+    pub fn add(&mut self, W: &mut crate::topo_ds::Wire) {
+        unsafe { crate::ffi::BRepAlgo_FaceRestrictor_add(self as *mut Self, W) }
+    }
+
+    /// **Source:** `BRepAlgo_FaceRestrictor.hxx`:62 - `BRepAlgo_FaceRestrictor::Clear()`
+    /// Removes all the Wires
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BRepAlgo_FaceRestrictor_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepAlgo_FaceRestrictor.hxx`:65 - `BRepAlgo_FaceRestrictor::Perform()`
+    /// Evaluate all the faces limited by the set of Wires.
+    pub fn perform(&mut self) {
+        unsafe { crate::ffi::BRepAlgo_FaceRestrictor_perform(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepAlgo_FaceRestrictor.hxx`:67 - `BRepAlgo_FaceRestrictor::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepAlgo_FaceRestrictor_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `BRepAlgo_FaceRestrictor.hxx`:69 - `BRepAlgo_FaceRestrictor::More()`
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::BRepAlgo_FaceRestrictor_more(self as *const Self) }
+    }
+
+    /// **Source:** `BRepAlgo_FaceRestrictor.hxx`:71 - `BRepAlgo_FaceRestrictor::Next()`
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::BRepAlgo_FaceRestrictor_next(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepAlgo_FaceRestrictor.hxx`:73 - `BRepAlgo_FaceRestrictor::Current()`
+    pub fn current(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAlgo_FaceRestrictor_current(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
 // ========================
 // From BRepAlgo_Image.hxx
 // ========================
@@ -146,6 +530,149 @@ impl Image {
     /// Warning:  Compact() must be call before.
     pub fn filter(&mut self, S: &crate::topo_ds::Shape, ShapeType: crate::top_abs::ShapeEnum) {
         unsafe { crate::ffi::BRepAlgo_Image_filter(self as *mut Self, S, ShapeType.into()) }
+    }
+}
+
+// ========================
+// From BRepAlgo_Loop.hxx
+// ========================
+
+/// **Source:** `BRepAlgo_Loop.hxx`:31 - `BRepAlgo_Loop`
+/// Builds the loops from a set of edges on a face.
+pub use crate::ffi::BRepAlgo_Loop as Loop;
+
+unsafe impl crate::CppDeletable for Loop {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepAlgo_Loop_destructor(ptr);
+    }
+}
+
+impl Loop {
+    /// **Source:** `BRepAlgo_Loop.hxx`:36 - `BRepAlgo_Loop::BRepAlgo_Loop()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgo_Loop_ctor()) }
+    }
+
+    /// **Source:** `BRepAlgo_Loop.hxx`:40 - `BRepAlgo_Loop::Init()`
+    /// Init with <F> the set of edges must have
+    /// pcurves on <F>.
+    pub fn init(&mut self, F: &crate::topo_ds::Face) {
+        unsafe { crate::ffi::BRepAlgo_Loop_init(self as *mut Self, F) }
+    }
+
+    /// **Source:** `BRepAlgo_Loop.hxx`:44 - `BRepAlgo_Loop::AddEdge()`
+    /// Add E with <LV>. <E> will be copied and trim
+    /// by vertices in <LV>.
+    pub fn add_edge(
+        &mut self,
+        E: &mut crate::topo_ds::Edge,
+        LV: &crate::ffi::TopTools_ListOfShape,
+    ) {
+        unsafe { crate::ffi::BRepAlgo_Loop_add_edge(self as *mut Self, E, LV) }
+    }
+
+    /// **Source:** `BRepAlgo_Loop.hxx`:47 - `BRepAlgo_Loop::AddConstEdge()`
+    /// Add <E> as const edge, E can be in the result.
+    pub fn add_const_edge(&mut self, E: &crate::topo_ds::Edge) {
+        unsafe { crate::ffi::BRepAlgo_Loop_add_const_edge(self as *mut Self, E) }
+    }
+
+    /// **Source:** `BRepAlgo_Loop.hxx`:50 - `BRepAlgo_Loop::AddConstEdges()`
+    /// Add <LE> as a set of const edges.
+    pub fn add_const_edges(&mut self, LE: &crate::ffi::TopTools_ListOfShape) {
+        unsafe { crate::ffi::BRepAlgo_Loop_add_const_edges(self as *mut Self, LE) }
+    }
+
+    /// **Source:** `BRepAlgo_Loop.hxx`:53 - `BRepAlgo_Loop::SetImageVV()`
+    /// Sets the Image Vertex - Vertex
+    pub fn set_image_vv(&mut self, theImageVV: &Image) {
+        unsafe { crate::ffi::BRepAlgo_Loop_set_image_vv(self as *mut Self, theImageVV) }
+    }
+
+    /// **Source:** `BRepAlgo_Loop.hxx`:56 - `BRepAlgo_Loop::Perform()`
+    /// Make loops.
+    pub fn perform(&mut self) {
+        unsafe { crate::ffi::BRepAlgo_Loop_perform(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepAlgo_Loop.hxx`:59 - `BRepAlgo_Loop::UpdateVEmap()`
+    /// Update VE map according to Image Vertex - Vertex
+    pub fn update_v_emap(
+        &mut self,
+        theVEmap: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
+    ) {
+        unsafe { crate::ffi::BRepAlgo_Loop_update_v_emap(self as *mut Self, theVEmap) }
+    }
+
+    /// **Source:** `BRepAlgo_Loop.hxx`:63 - `BRepAlgo_Loop::CutEdge()`
+    /// Cut the  edge <E>  in  several edges  <NE> on the
+    /// vertices<VonE>.
+    pub fn cut_edge(
+        &self,
+        E: &crate::topo_ds::Edge,
+        VonE: &crate::ffi::TopTools_ListOfShape,
+        NE: &mut crate::ffi::TopTools_ListOfShape,
+    ) {
+        unsafe { crate::ffi::BRepAlgo_Loop_cut_edge(self as *const Self, E, VonE, NE) }
+    }
+
+    /// **Source:** `BRepAlgo_Loop.hxx`:69 - `BRepAlgo_Loop::NewWires()`
+    /// Returns the list of wires performed.
+    /// can be an empty list.
+    pub fn new_wires(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepAlgo_Loop_new_wires(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepAlgo_Loop.hxx`:72 - `BRepAlgo_Loop::WiresToFaces()`
+    /// Build faces from the wires result.
+    pub fn wires_to_faces(&mut self) {
+        unsafe { crate::ffi::BRepAlgo_Loop_wires_to_faces(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepAlgo_Loop.hxx`:77 - `BRepAlgo_Loop::NewFaces()`
+    /// Returns the list of faces.
+    /// Warning: The method <WiresToFaces> as to be called before.
+    /// can be an empty list.
+    pub fn new_faces(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepAlgo_Loop_new_faces(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepAlgo_Loop.hxx`:81 - `BRepAlgo_Loop::NewEdges()`
+    /// Returns the list of new edges built from an edge <E>
+    /// it can be an empty list.
+    pub fn new_edges(&self, E: &crate::topo_ds::Edge) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepAlgo_Loop_new_edges(self as *const Self, E)) }
+    }
+
+    /// **Source:** `BRepAlgo_Loop.hxx`:84 - `BRepAlgo_Loop::GetVerticesForSubstitute()`
+    /// Returns the datamap of vertices with their substitutes.
+    pub fn get_vertices_for_substitute(
+        &self,
+        VerVerMap: &mut crate::ffi::TopTools_DataMapOfShapeShape,
+    ) {
+        unsafe {
+            crate::ffi::BRepAlgo_Loop_get_vertices_for_substitute(self as *const Self, VerVerMap)
+        }
+    }
+
+    /// **Source:** `BRepAlgo_Loop.hxx`:86 - `BRepAlgo_Loop::VerticesForSubstitute()`
+    pub fn vertices_for_substitute(
+        &mut self,
+        VerVerMap: &mut crate::ffi::TopTools_DataMapOfShapeShape,
+    ) {
+        unsafe { crate::ffi::BRepAlgo_Loop_vertices_for_substitute(self as *mut Self, VerVerMap) }
+    }
+
+    /// **Source:** `BRepAlgo_Loop.hxx`:89 - `BRepAlgo_Loop::SetTolConf()`
+    /// Set maximal tolerance used for comparing distances between vertices.
+    pub fn set_tol_conf(&mut self, theTolConf: f64) {
+        unsafe { crate::ffi::BRepAlgo_Loop_set_tol_conf(self as *mut Self, theTolConf) }
+    }
+
+    /// **Source:** `BRepAlgo_Loop.hxx`:92 - `BRepAlgo_Loop::GetTolConf()`
+    /// Get maximal tolerance used for comparing distances between vertices.
+    pub fn get_tol_conf(&self) -> f64 {
+        unsafe { crate::ffi::BRepAlgo_Loop_get_tol_conf(self as *const Self) }
     }
 }
 
@@ -295,9 +822,3 @@ impl NormalProjection {
         unsafe { crate::ffi::BRepAlgo_NormalProjection_build_wire(self as *const Self, Liste) }
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi::BRepAlgo_AsDes as AsDes;

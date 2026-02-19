@@ -4468,6 +4468,7 @@ pub use crate::ffi::{
     TColStd_IndexedDataMapOfStringString as IndexedDataMapOfStringString,
     TColStd_IndexedDataMapOfTransientTransient as IndexedDataMapOfTransientTransient,
     TColStd_IndexedMapOfTransient as IndexedMapOfTransient,
+    TColStd_ListIteratorOfListOfInteger as ListIteratorOfListOfInteger,
     TColStd_ListOfAsciiString as ListOfAsciiString, TColStd_ListOfInteger as ListOfInteger,
     TColStd_ListOfReal as ListOfReal, TColStd_MapOfAsciiString as MapOfAsciiString,
     TColStd_MapOfInteger as MapOfInteger, TColStd_SequenceOfAsciiString as SequenceOfAsciiString,

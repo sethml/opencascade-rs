@@ -218,6 +218,16 @@ impl Algo {
         unsafe { crate::ffi::HLRBRep_Algo_inherited_Update(self as *mut Self) }
     }
 
+    /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:53 - `HLRBRep_InternalAlgo::Load()`
+    pub fn load(
+        &mut self,
+        S: &crate::ffi::HandleHLRTopoBRepOutLiner,
+        SData: &crate::ffi::HandleStandardTransient,
+        nbIso: i32,
+    ) {
+        unsafe { crate::ffi::HLRBRep_Algo_inherited_Load(self as *mut Self, S, SData, nbIso) }
+    }
+
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:66 - `HLRBRep_InternalAlgo::Remove()`
     pub fn remove(&mut self, I: i32) {
         unsafe { crate::ffi::HLRBRep_Algo_inherited_Remove(self as *mut Self, I) }
@@ -4422,6 +4432,42 @@ impl InternalAlgo {
         unsafe { crate::ffi::HLRBRep_InternalAlgo_update(self as *mut Self) }
     }
 
+    /// **Source:** `HLRBRep_InternalAlgo.hxx`:53 - `HLRBRep_InternalAlgo::Load()`
+    /// add the shape <S>.
+    pub fn load_handlehlrtopobrepoutliner_handlestandardtransient_int(
+        &mut self,
+        S: &crate::ffi::HandleHLRTopoBRepOutLiner,
+        SData: &crate::ffi::HandleStandardTransient,
+        nbIso: i32,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_load_handlehlrtopobrepoutliner_handlestandardtransient_int(self as *mut Self, S, SData, nbIso)
+        }
+    }
+
+    /// **Source:** `HLRBRep_InternalAlgo.hxx`:58 - `HLRBRep_InternalAlgo::Load()`
+    /// add the shape <S>.
+    pub fn load_handlehlrtopobrepoutliner_int(
+        &mut self,
+        S: &crate::ffi::HandleHLRTopoBRepOutLiner,
+        nbIso: i32,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_InternalAlgo_load_handlehlrtopobrepoutliner_int(
+                self as *mut Self,
+                S,
+                nbIso,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_InternalAlgo.hxx`:63 - `HLRBRep_InternalAlgo::Index()`
+    /// return the index of the Shape <S> and  return 0 if
+    /// the Shape <S> is not found.
+    pub fn index(&self, S: &crate::ffi::HandleHLRTopoBRepOutLiner) -> i32 {
+        unsafe { crate::ffi::HLRBRep_InternalAlgo_index(self as *const Self, S) }
+    }
+
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:66 - `HLRBRep_InternalAlgo::Remove()`
     /// remove the Shape of Index <I>.
     pub fn remove(&mut self, I: i32) {
@@ -4665,24 +4711,6 @@ impl HandleHLRBRepInternalAlgo {
         }
     }
 }
-
-// ── Skipped symbols for InternalAlgo (3 total) ──
-// SKIPPED: **Source:** `HLRBRep_InternalAlgo.hxx`:53 - `HLRBRep_InternalAlgo::Load`
-//   method: add the shape <S>.
-//   Reason: param 'S' uses unknown type 'const Handle(HLRTopoBRep_OutLiner)&'
-//   // pub fn load(&mut self, S: &HandleOutLiner, SData: &HandleTransient, nbIso: i32);
-//
-// SKIPPED: **Source:** `HLRBRep_InternalAlgo.hxx`:58 - `HLRBRep_InternalAlgo::Load`
-//   method: add the shape <S>.
-//   Reason: param 'S' uses unknown type 'const Handle(HLRTopoBRep_OutLiner)&'
-//   // pub fn load(&mut self, S: &HandleOutLiner, nbIso: i32);
-//
-// SKIPPED: **Source:** `HLRBRep_InternalAlgo.hxx`:63 - `HLRBRep_InternalAlgo::Index`
-//   method: return the index of the Shape <S> and  return 0 if
-//   method: the Shape <S> is not found.
-//   Reason: param 'S' uses unknown type 'const Handle(HLRTopoBRep_OutLiner)&'
-//   // pub fn index(&self, S: &HandleOutLiner) -> i32;
-//
 
 // ========================
 // From HLRBRep_Intersector.hxx
@@ -6162,9 +6190,58 @@ impl ShapeBounds {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_ShapeBounds_ctor()) }
     }
 
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:38 - `HLRBRep_ShapeBounds::HLRBRep_ShapeBounds()`
+    pub fn new_handlehlrtopobrepoutliner_handlestandardtransient_int7(
+        S: &crate::ffi::HandleHLRTopoBRepOutLiner,
+        SData: &crate::ffi::HandleStandardTransient,
+        nbIso: i32,
+        V1: i32,
+        V2: i32,
+        E1: i32,
+        E2: i32,
+        F1: i32,
+        F2: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_ShapeBounds_ctor_handlehlrtopobrepoutliner_handlestandardtransient_int7(S, SData, nbIso, V1, V2, E1, E2, F1, F2))
+        }
+    }
+
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:48 - `HLRBRep_ShapeBounds::HLRBRep_ShapeBounds()`
+    pub fn new_handlehlrtopobrepoutliner_int7(
+        S: &crate::ffi::HandleHLRTopoBRepOutLiner,
+        nbIso: i32,
+        V1: i32,
+        V2: i32,
+        E1: i32,
+        E2: i32,
+        F1: i32,
+        F2: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRBRep_ShapeBounds_ctor_handlehlrtopobrepoutliner_int7(
+                    S, nbIso, V1, V2, E1, E2, F1, F2,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:57 - `HLRBRep_ShapeBounds::Translate()`
     pub fn translate(&mut self, NV: i32, NE: i32, NF: i32) {
         unsafe { crate::ffi::HLRBRep_ShapeBounds_translate(self as *mut Self, NV, NE, NF) }
+    }
+
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:61 - `HLRBRep_ShapeBounds::Shape()`
+    pub fn shape_handlehlrtopobrepoutliner(&mut self, S: &crate::ffi::HandleHLRTopoBRepOutLiner) {
+        unsafe {
+            crate::ffi::HLRBRep_ShapeBounds_shape_handlehlrtopobrepoutliner(self as *mut Self, S)
+        }
+    }
+
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:63 - `HLRBRep_ShapeBounds::Shape()`
+    pub fn shape(&self) -> &crate::ffi::HandleHLRTopoBRepOutLiner {
+        unsafe { &*(crate::ffi::HLRBRep_ShapeBounds_shape(self as *const Self)) }
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:65 - `HLRBRep_ShapeBounds::ShapeData()`
@@ -6223,24 +6300,6 @@ impl ShapeBounds {
     }
 }
 
-// ── Skipped symbols for ShapeBounds (4 total) ──
-// SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:38 - `HLRBRep_ShapeBounds::HLRBRep_ShapeBounds`
-//   Reason: param 'S' uses unknown Handle type
-//   // pub fn new_handlehlrtopobrepoutliner_handlestandardtransient_int7(S: &HandleOutLiner, SData: &HandleTransient, nbIso: i32, V1: i32, V2: i32, E1: i32, E2: i32, F1: i32, F2: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:48 - `HLRBRep_ShapeBounds::HLRBRep_ShapeBounds`
-//   Reason: param 'S' uses unknown Handle type
-//   // pub fn new_handlehlrtopobrepoutliner_int7(S: &HandleOutLiner, nbIso: i32, V1: i32, V2: i32, E1: i32, E2: i32, F1: i32, F2: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:61 - `HLRBRep_ShapeBounds::Shape`
-//   Reason: param 'S' uses unknown type 'const Handle(HLRTopoBRep_OutLiner)&'
-//   // pub fn shape(&mut self, S: &HandleOutLiner);
-//
-// SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:63 - `HLRBRep_ShapeBounds::Shape`
-//   Reason: return type 'const Handle(HLRTopoBRep_OutLiner)&' is unknown
-//   // pub fn shape(&self) -> &HandleOutLiner;
-//
-
 // ========================
 // From HLRBRep_ShapeToHLR.hxx
 // ========================
@@ -6263,15 +6322,19 @@ impl ShapeToHLR {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_ShapeToHLR_ctor()) }
     }
-}
 
-// ── Skipped symbols for ShapeToHLR (1 total) ──
-// SKIPPED: **Source:** `HLRBRep_ShapeToHLR.hxx`:42 - `HLRBRep_ShapeToHLR::Load`
-//   static_method: Creates  a DataStructure   containing the OutLiner
-//   static_method: <S> depending on the projector <P> and nbIso.
-//   Reason: param 'S' uses unknown type 'const Handle(HLRTopoBRep_OutLiner)&'
-//   // pub fn load(S: &HandleOutLiner, P: &Projector, MST: &mut MapOfShapeTool, nbIso: i32) -> OwnedPtr<Handle<HLRBRep_Data>>;
-//
+    /// **Source:** `HLRBRep_ShapeToHLR.hxx`:42 - `HLRBRep_ShapeToHLR::Load()`
+    /// Creates  a DataStructure   containing the OutLiner
+    /// <S> depending on the projector <P> and nbIso.
+    pub fn load(
+        S: &crate::ffi::HandleHLRTopoBRepOutLiner,
+        P: &crate::hlr_algo::Projector,
+        MST: &mut crate::ffi::BRepTopAdaptor_MapOfShapeTool,
+        nbIso: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepData> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_ShapeToHLR_load(S, P, MST, nbIso)) }
+    }
+}
 
 // ========================
 // From HLRBRep_Surface.hxx

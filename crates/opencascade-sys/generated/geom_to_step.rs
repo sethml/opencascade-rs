@@ -80,6 +80,11 @@ impl MakeAxis1Placement {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeAxis1Placement.hxx`:58 - `GeomToStep_MakeAxis1Placement::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomAxis1Placement {
+        unsafe { &*(crate::ffi::GeomToStep_MakeAxis1Placement_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
@@ -101,12 +106,6 @@ impl MakeAxis1Placement {
         unsafe { crate::ffi::GeomToStep_MakeAxis1Placement_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeAxis1Placement (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeAxis1Placement.hxx`:58 - `GeomToStep_MakeAxis1Placement::Value`
-//   Reason: return type 'const Handle(StepGeom_Axis1Placement)&' is unknown
-//   // pub fn value(&self) -> &HandleAxis1Placement;
-//
 
 // ========================
 // From GeomToStep_MakeAxis2Placement2d.hxx
@@ -151,6 +150,11 @@ impl MakeAxis2Placement2d {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeAxis2Placement2d.hxx`:47 - `GeomToStep_MakeAxis2Placement2d::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomAxis2Placement2d {
+        unsafe { &*(crate::ffi::GeomToStep_MakeAxis2Placement2d_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
@@ -172,12 +176,6 @@ impl MakeAxis2Placement2d {
         unsafe { crate::ffi::GeomToStep_MakeAxis2Placement2d_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeAxis2Placement2d (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeAxis2Placement2d.hxx`:47 - `GeomToStep_MakeAxis2Placement2d::Value`
-//   Reason: return type 'const Handle(StepGeom_Axis2Placement2d)&' is unknown
-//   // pub fn value(&self) -> &HandleAxis2Placement2d;
-//
 
 // ========================
 // From GeomToStep_MakeAxis2Placement3d.hxx
@@ -259,6 +257,11 @@ impl MakeAxis2Placement3d {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeAxis2Placement3d.hxx`:60 - `GeomToStep_MakeAxis2Placement3d::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomAxis2Placement3d {
+        unsafe { &*(crate::ffi::GeomToStep_MakeAxis2Placement3d_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
@@ -280,12 +283,6 @@ impl MakeAxis2Placement3d {
         unsafe { crate::ffi::GeomToStep_MakeAxis2Placement3d_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeAxis2Placement3d (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeAxis2Placement3d.hxx`:60 - `GeomToStep_MakeAxis2Placement3d::Value`
-//   Reason: return type 'const Handle(StepGeom_Axis2Placement3d)&' is unknown
-//   // pub fn value(&self) -> &HandleAxis2Placement3d;
-//
 
 // ========================
 // From GeomToStep_MakeBSplineCurveWithKnots.hxx
@@ -326,6 +323,11 @@ impl MakeBSplineCurveWithKnots {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeBSplineCurveWithKnots.hxx`:47 - `GeomToStep_MakeBSplineCurveWithKnots::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomBSplineCurveWithKnots {
+        unsafe { &*(crate::ffi::GeomToStep_MakeBSplineCurveWithKnots_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
@@ -351,12 +353,6 @@ impl MakeBSplineCurveWithKnots {
         }
     }
 }
-
-// ── Skipped symbols for MakeBSplineCurveWithKnots (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeBSplineCurveWithKnots.hxx`:47 - `GeomToStep_MakeBSplineCurveWithKnots::Value`
-//   Reason: return type 'const Handle(StepGeom_BSplineCurveWithKnots)&' is unknown
-//   // pub fn value(&self) -> &HandleBSplineCurveWithKnots;
-//
 
 // ========================
 // From GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve.hxx
@@ -397,6 +393,15 @@ impl MakeBSplineCurveWithKnotsAndRationalBSplineCurve {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve.hxx`:48 - `GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve {
+        unsafe {
+            &*(crate::ffi::GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve_value(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
@@ -420,12 +425,6 @@ impl MakeBSplineCurveWithKnotsAndRationalBSplineCurve {
         }
     }
 }
-
-// ── Skipped symbols for MakeBSplineCurveWithKnotsAndRationalBSplineCurve (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve.hxx`:48 - `GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve::Value`
-//   Reason: return type 'const Handle(StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve)&' is unknown
-//   // pub fn value(&self) -> &HandleBSplineCurveWithKnotsAndRationalBSplineCurve;
-//
 
 // ========================
 // From GeomToStep_MakeBSplineSurfaceWithKnots.hxx
@@ -456,6 +455,11 @@ impl MakeBSplineSurfaceWithKnots {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeBSplineSurfaceWithKnots.hxx`:42 - `GeomToStep_MakeBSplineSurfaceWithKnots::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomBSplineSurfaceWithKnots {
+        unsafe { &*(crate::ffi::GeomToStep_MakeBSplineSurfaceWithKnots_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
@@ -481,12 +485,6 @@ impl MakeBSplineSurfaceWithKnots {
         }
     }
 }
-
-// ── Skipped symbols for MakeBSplineSurfaceWithKnots (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeBSplineSurfaceWithKnots.hxx`:42 - `GeomToStep_MakeBSplineSurfaceWithKnots::Value`
-//   Reason: return type 'const Handle(StepGeom_BSplineSurfaceWithKnots)&' is unknown
-//   // pub fn value(&self) -> &HandleBSplineSurfaceWithKnots;
-//
 
 // ========================
 // From GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface.hxx
@@ -517,6 +515,17 @@ impl MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface.hxx`:43 - `GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface::Value()`
+    pub fn value(
+        &self,
+    ) -> &crate::ffi::HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface {
+        unsafe {
+            &*(crate::ffi::GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface_value(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
@@ -538,12 +547,6 @@ impl MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface {
         }
     }
 }
-
-// ── Skipped symbols for MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface.hxx`:43 - `GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface::Value`
-//   Reason: return type 'const Handle(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface)&' is unknown
-//   // pub fn value(&self) -> &HandleBSplineSurfaceWithKnotsAndRationalBSplineSurface;
-//
 
 // ========================
 // From GeomToStep_MakeBoundedCurve.hxx
@@ -594,6 +597,11 @@ impl MakeBoundedCurve {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeBoundedCurve.hxx`:48 - `GeomToStep_MakeBoundedCurve::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomBoundedCurve {
+        unsafe { &*(crate::ffi::GeomToStep_MakeBoundedCurve_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
@@ -615,12 +623,6 @@ impl MakeBoundedCurve {
         unsafe { crate::ffi::GeomToStep_MakeBoundedCurve_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeBoundedCurve (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeBoundedCurve.hxx`:48 - `GeomToStep_MakeBoundedCurve::Value`
-//   Reason: return type 'const Handle(StepGeom_BoundedCurve)&' is unknown
-//   // pub fn value(&self) -> &HandleBoundedCurve;
-//
 
 // ========================
 // From GeomToStep_MakeBoundedSurface.hxx
@@ -656,6 +658,11 @@ impl MakeBoundedSurface {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeBoundedSurface.hxx`:43 - `GeomToStep_MakeBoundedSurface::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomBoundedSurface {
+        unsafe { &*(crate::ffi::GeomToStep_MakeBoundedSurface_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
@@ -677,12 +684,6 @@ impl MakeBoundedSurface {
         unsafe { crate::ffi::GeomToStep_MakeBoundedSurface_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeBoundedSurface (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeBoundedSurface.hxx`:43 - `GeomToStep_MakeBoundedSurface::Value`
-//   Reason: return type 'const Handle(StepGeom_BoundedSurface)&' is unknown
-//   // pub fn value(&self) -> &HandleBoundedSurface;
-//
 
 // ========================
 // From GeomToStep_MakeCartesianPoint.hxx
@@ -745,6 +746,11 @@ impl MakeCartesianPoint {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeCartesianPoint.hxx`:50 - `GeomToStep_MakeCartesianPoint::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomCartesianPoint {
+        unsafe { &*(crate::ffi::GeomToStep_MakeCartesianPoint_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
@@ -766,12 +772,6 @@ impl MakeCartesianPoint {
         unsafe { crate::ffi::GeomToStep_MakeCartesianPoint_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeCartesianPoint (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeCartesianPoint.hxx`:50 - `GeomToStep_MakeCartesianPoint::Value`
-//   Reason: return type 'const Handle(StepGeom_CartesianPoint)&' is unknown
-//   // pub fn value(&self) -> &HandleCartesianPoint;
-//
 
 // ========================
 // From GeomToStep_MakeCircle.hxx
@@ -831,6 +831,11 @@ impl MakeCircle {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeCircle.hxx`:52 - `GeomToStep_MakeCircle::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomCircle {
+        unsafe { &*(crate::ffi::GeomToStep_MakeCircle_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe { &*(crate::ffi::GeomToStep_MakeCircle_as_GeomToStep_Root(self as *const Self)) }
@@ -848,12 +853,6 @@ impl MakeCircle {
         unsafe { crate::ffi::GeomToStep_MakeCircle_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeCircle (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeCircle.hxx`:52 - `GeomToStep_MakeCircle::Value`
-//   Reason: return type 'const Handle(StepGeom_Circle)&' is unknown
-//   // pub fn value(&self) -> &HandleCircle;
-//
 
 // ========================
 // From GeomToStep_MakeConic.hxx
@@ -897,6 +896,11 @@ impl MakeConic {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeConic.hxx`:46 - `GeomToStep_MakeConic::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomConic {
+        unsafe { &*(crate::ffi::GeomToStep_MakeConic_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe { &*(crate::ffi::GeomToStep_MakeConic_as_GeomToStep_Root(self as *const Self)) }
@@ -914,12 +918,6 @@ impl MakeConic {
         unsafe { crate::ffi::GeomToStep_MakeConic_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeConic (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeConic.hxx`:46 - `GeomToStep_MakeConic::Value`
-//   Reason: return type 'const Handle(StepGeom_Conic)&' is unknown
-//   // pub fn value(&self) -> &HandleConic;
-//
 
 // ========================
 // From GeomToStep_MakeConicalSurface.hxx
@@ -954,6 +952,11 @@ impl MakeConicalSurface {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeConicalSurface.hxx`:41 - `GeomToStep_MakeConicalSurface::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomConicalSurface {
+        unsafe { &*(crate::ffi::GeomToStep_MakeConicalSurface_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
@@ -975,12 +978,6 @@ impl MakeConicalSurface {
         unsafe { crate::ffi::GeomToStep_MakeConicalSurface_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeConicalSurface (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeConicalSurface.hxx`:41 - `GeomToStep_MakeConicalSurface::Value`
-//   Reason: return type 'const Handle(StepGeom_ConicalSurface)&' is unknown
-//   // pub fn value(&self) -> &HandleConicalSurface;
-//
 
 // ========================
 // From GeomToStep_MakeCurve.hxx
@@ -1024,6 +1021,11 @@ impl MakeCurve {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeCurve.hxx`:46 - `GeomToStep_MakeCurve::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomCurve {
+        unsafe { &*(crate::ffi::GeomToStep_MakeCurve_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe { &*(crate::ffi::GeomToStep_MakeCurve_as_GeomToStep_Root(self as *const Self)) }
@@ -1041,12 +1043,6 @@ impl MakeCurve {
         unsafe { crate::ffi::GeomToStep_MakeCurve_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeCurve (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeCurve.hxx`:46 - `GeomToStep_MakeCurve::Value`
-//   Reason: return type 'const Handle(StepGeom_Curve)&' is unknown
-//   // pub fn value(&self) -> &HandleCurve;
-//
 
 // ========================
 // From GeomToStep_MakeCylindricalSurface.hxx
@@ -1076,6 +1072,11 @@ impl MakeCylindricalSurface {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeCylindricalSurface.hxx`:41 - `GeomToStep_MakeCylindricalSurface::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomCylindricalSurface {
+        unsafe { &*(crate::ffi::GeomToStep_MakeCylindricalSurface_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
@@ -1101,12 +1102,6 @@ impl MakeCylindricalSurface {
         }
     }
 }
-
-// ── Skipped symbols for MakeCylindricalSurface (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeCylindricalSurface.hxx`:41 - `GeomToStep_MakeCylindricalSurface::Value`
-//   Reason: return type 'const Handle(StepGeom_CylindricalSurface)&' is unknown
-//   // pub fn value(&self) -> &HandleCylindricalSurface;
-//
 
 // ========================
 // From GeomToStep_MakeDirection.hxx
@@ -1156,6 +1151,11 @@ impl MakeDirection {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeDirection.hxx`:48 - `GeomToStep_MakeDirection::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomDirection {
+        unsafe { &*(crate::ffi::GeomToStep_MakeDirection_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe { &*(crate::ffi::GeomToStep_MakeDirection_as_GeomToStep_Root(self as *const Self)) }
@@ -1173,12 +1173,6 @@ impl MakeDirection {
         unsafe { crate::ffi::GeomToStep_MakeDirection_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeDirection (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeDirection.hxx`:48 - `GeomToStep_MakeDirection::Value`
-//   Reason: return type 'const Handle(StepGeom_Direction)&' is unknown
-//   // pub fn value(&self) -> &HandleDirection;
-//
 
 // ========================
 // From GeomToStep_MakeElementarySurface.hxx
@@ -1209,6 +1203,11 @@ impl MakeElementarySurface {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeElementarySurface.hxx`:43 - `GeomToStep_MakeElementarySurface::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomElementarySurface {
+        unsafe { &*(crate::ffi::GeomToStep_MakeElementarySurface_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
@@ -1232,12 +1231,6 @@ impl MakeElementarySurface {
         }
     }
 }
-
-// ── Skipped symbols for MakeElementarySurface (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeElementarySurface.hxx`:43 - `GeomToStep_MakeElementarySurface::Value`
-//   Reason: return type 'const Handle(StepGeom_ElementarySurface)&' is unknown
-//   // pub fn value(&self) -> &HandleElementarySurface;
-//
 
 // ========================
 // From GeomToStep_MakeEllipse.hxx
@@ -1300,6 +1293,11 @@ impl MakeEllipse {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeEllipse.hxx`:52 - `GeomToStep_MakeEllipse::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomEllipse {
+        unsafe { &*(crate::ffi::GeomToStep_MakeEllipse_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe { &*(crate::ffi::GeomToStep_MakeEllipse_as_GeomToStep_Root(self as *const Self)) }
@@ -1317,12 +1315,6 @@ impl MakeEllipse {
         unsafe { crate::ffi::GeomToStep_MakeEllipse_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeEllipse (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeEllipse.hxx`:52 - `GeomToStep_MakeEllipse::Value`
-//   Reason: return type 'const Handle(StepGeom_Ellipse)&' is unknown
-//   // pub fn value(&self) -> &HandleEllipse;
-//
 
 // ========================
 // From GeomToStep_MakeHyperbola.hxx
@@ -1371,6 +1363,11 @@ impl MakeHyperbola {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeHyperbola.hxx`:45 - `GeomToStep_MakeHyperbola::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomHyperbola {
+        unsafe { &*(crate::ffi::GeomToStep_MakeHyperbola_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe { &*(crate::ffi::GeomToStep_MakeHyperbola_as_GeomToStep_Root(self as *const Self)) }
@@ -1388,12 +1385,6 @@ impl MakeHyperbola {
         unsafe { crate::ffi::GeomToStep_MakeHyperbola_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeHyperbola (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeHyperbola.hxx`:45 - `GeomToStep_MakeHyperbola::Value`
-//   Reason: return type 'const Handle(StepGeom_Hyperbola)&' is unknown
-//   // pub fn value(&self) -> &HandleHyperbola;
-//
 
 // ========================
 // From GeomToStep_MakeLine.hxx
@@ -1464,6 +1455,11 @@ impl MakeLine {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeLine.hxx`:52 - `GeomToStep_MakeLine::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomLine {
+        unsafe { &*(crate::ffi::GeomToStep_MakeLine_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe { &*(crate::ffi::GeomToStep_MakeLine_as_GeomToStep_Root(self as *const Self)) }
@@ -1479,12 +1475,6 @@ impl MakeLine {
         unsafe { crate::ffi::GeomToStep_MakeLine_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeLine (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeLine.hxx`:52 - `GeomToStep_MakeLine::Value`
-//   Reason: return type 'const Handle(StepGeom_Line)&' is unknown
-//   // pub fn value(&self) -> &HandleLine;
-//
 
 // ========================
 // From GeomToStep_MakeParabola.hxx
@@ -1533,6 +1523,11 @@ impl MakeParabola {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeParabola.hxx`:45 - `GeomToStep_MakeParabola::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomParabola {
+        unsafe { &*(crate::ffi::GeomToStep_MakeParabola_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe { &*(crate::ffi::GeomToStep_MakeParabola_as_GeomToStep_Root(self as *const Self)) }
@@ -1550,12 +1545,6 @@ impl MakeParabola {
         unsafe { crate::ffi::GeomToStep_MakeParabola_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeParabola (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeParabola.hxx`:45 - `GeomToStep_MakeParabola::Value`
-//   Reason: return type 'const Handle(StepGeom_Parabola)&' is unknown
-//   // pub fn value(&self) -> &HandleParabola;
-//
 
 // ========================
 // From GeomToStep_MakePlane.hxx
@@ -1600,6 +1589,11 @@ impl MakePlane {
         }
     }
 
+    /// **Source:** `GeomToStep_MakePlane.hxx`:46 - `GeomToStep_MakePlane::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomPlane {
+        unsafe { &*(crate::ffi::GeomToStep_MakePlane_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe { &*(crate::ffi::GeomToStep_MakePlane_as_GeomToStep_Root(self as *const Self)) }
@@ -1617,12 +1611,6 @@ impl MakePlane {
         unsafe { crate::ffi::GeomToStep_MakePlane_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakePlane (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakePlane.hxx`:46 - `GeomToStep_MakePlane::Value`
-//   Reason: return type 'const Handle(StepGeom_Plane)&' is unknown
-//   // pub fn value(&self) -> &HandlePlane;
-//
 
 // ========================
 // From GeomToStep_MakePolyline.hxx
@@ -1665,6 +1653,11 @@ impl MakePolyline {
         }
     }
 
+    /// **Source:** `GeomToStep_MakePolyline.hxx`:45 - `GeomToStep_MakePolyline::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomPolyline {
+        unsafe { &*(crate::ffi::GeomToStep_MakePolyline_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe { &*(crate::ffi::GeomToStep_MakePolyline_as_GeomToStep_Root(self as *const Self)) }
@@ -1682,12 +1675,6 @@ impl MakePolyline {
         unsafe { crate::ffi::GeomToStep_MakePolyline_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakePolyline (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakePolyline.hxx`:45 - `GeomToStep_MakePolyline::Value`
-//   Reason: return type 'const Handle(StepGeom_Polyline)&' is unknown
-//   // pub fn value(&self) -> &HandlePolyline;
-//
 
 // ========================
 // From GeomToStep_MakeRectangularTrimmedSurface.hxx
@@ -1718,6 +1705,13 @@ impl MakeRectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeRectangularTrimmedSurface.hxx`:43 - `GeomToStep_MakeRectangularTrimmedSurface::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomRectangularTrimmedSurface {
+        unsafe {
+            &*(crate::ffi::GeomToStep_MakeRectangularTrimmedSurface_value(self as *const Self))
+        }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
@@ -1745,12 +1739,6 @@ impl MakeRectangularTrimmedSurface {
         }
     }
 }
-
-// ── Skipped symbols for MakeRectangularTrimmedSurface (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeRectangularTrimmedSurface.hxx`:43 - `GeomToStep_MakeRectangularTrimmedSurface::Value`
-//   Reason: return type 'const Handle(StepGeom_RectangularTrimmedSurface)&' is unknown
-//   // pub fn value(&self) -> &HandleRectangularTrimmedSurface;
-//
 
 // ========================
 // From GeomToStep_MakeSphericalSurface.hxx
@@ -1785,6 +1773,11 @@ impl MakeSphericalSurface {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeSphericalSurface.hxx`:42 - `GeomToStep_MakeSphericalSurface::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomSphericalSurface {
+        unsafe { &*(crate::ffi::GeomToStep_MakeSphericalSurface_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
@@ -1806,12 +1799,6 @@ impl MakeSphericalSurface {
         unsafe { crate::ffi::GeomToStep_MakeSphericalSurface_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeSphericalSurface (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeSphericalSurface.hxx`:42 - `GeomToStep_MakeSphericalSurface::Value`
-//   Reason: return type 'const Handle(StepGeom_SphericalSurface)&' is unknown
-//   // pub fn value(&self) -> &HandleSphericalSurface;
-//
 
 // ========================
 // From GeomToStep_MakeSurface.hxx
@@ -1846,6 +1833,11 @@ impl MakeSurface {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeSurface.hxx`:42 - `GeomToStep_MakeSurface::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomSurface {
+        unsafe { &*(crate::ffi::GeomToStep_MakeSurface_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe { &*(crate::ffi::GeomToStep_MakeSurface_as_GeomToStep_Root(self as *const Self)) }
@@ -1863,12 +1855,6 @@ impl MakeSurface {
         unsafe { crate::ffi::GeomToStep_MakeSurface_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeSurface (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeSurface.hxx`:42 - `GeomToStep_MakeSurface::Value`
-//   Reason: return type 'const Handle(StepGeom_Surface)&' is unknown
-//   // pub fn value(&self) -> &HandleSurface;
-//
 
 // ========================
 // From GeomToStep_MakeSurfaceOfLinearExtrusion.hxx
@@ -1895,6 +1881,13 @@ impl MakeSurfaceOfLinearExtrusion {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomToStep_MakeSurfaceOfLinearExtrusion_ctor_handlegeomsurfaceoflinearextrusion_factors(CSurf, theLocalFactors))
+        }
+    }
+
+    /// **Source:** `GeomToStep_MakeSurfaceOfLinearExtrusion.hxx`:42 - `GeomToStep_MakeSurfaceOfLinearExtrusion::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomSurfaceOfLinearExtrusion {
+        unsafe {
+            &*(crate::ffi::GeomToStep_MakeSurfaceOfLinearExtrusion_value(self as *const Self))
         }
     }
 
@@ -1926,12 +1919,6 @@ impl MakeSurfaceOfLinearExtrusion {
     }
 }
 
-// ── Skipped symbols for MakeSurfaceOfLinearExtrusion (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeSurfaceOfLinearExtrusion.hxx`:42 - `GeomToStep_MakeSurfaceOfLinearExtrusion::Value`
-//   Reason: return type 'const Handle(StepGeom_SurfaceOfLinearExtrusion)&' is unknown
-//   // pub fn value(&self) -> &HandleSurfaceOfLinearExtrusion;
-//
-
 // ========================
 // From GeomToStep_MakeSurfaceOfRevolution.hxx
 // ========================
@@ -1960,6 +1947,11 @@ impl MakeSurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeSurfaceOfRevolution.hxx`:42 - `GeomToStep_MakeSurfaceOfRevolution::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomSurfaceOfRevolution {
+        unsafe { &*(crate::ffi::GeomToStep_MakeSurfaceOfRevolution_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
@@ -1985,12 +1977,6 @@ impl MakeSurfaceOfRevolution {
         }
     }
 }
-
-// ── Skipped symbols for MakeSurfaceOfRevolution (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeSurfaceOfRevolution.hxx`:42 - `GeomToStep_MakeSurfaceOfRevolution::Value`
-//   Reason: return type 'const Handle(StepGeom_SurfaceOfRevolution)&' is unknown
-//   // pub fn value(&self) -> &HandleSurfaceOfRevolution;
-//
 
 // ========================
 // From GeomToStep_MakeSweptSurface.hxx
@@ -2026,6 +2012,11 @@ impl MakeSweptSurface {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeSweptSurface.hxx`:43 - `GeomToStep_MakeSweptSurface::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomSweptSurface {
+        unsafe { &*(crate::ffi::GeomToStep_MakeSweptSurface_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
@@ -2047,12 +2038,6 @@ impl MakeSweptSurface {
         unsafe { crate::ffi::GeomToStep_MakeSweptSurface_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeSweptSurface (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeSweptSurface.hxx`:43 - `GeomToStep_MakeSweptSurface::Value`
-//   Reason: return type 'const Handle(StepGeom_SweptSurface)&' is unknown
-//   // pub fn value(&self) -> &HandleSweptSurface;
-//
 
 // ========================
 // From GeomToStep_MakeToroidalSurface.hxx
@@ -2087,6 +2072,11 @@ impl MakeToroidalSurface {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeToroidalSurface.hxx`:42 - `GeomToStep_MakeToroidalSurface::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomToroidalSurface {
+        unsafe { &*(crate::ffi::GeomToStep_MakeToroidalSurface_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
@@ -2108,12 +2098,6 @@ impl MakeToroidalSurface {
         unsafe { crate::ffi::GeomToStep_MakeToroidalSurface_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeToroidalSurface (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeToroidalSurface.hxx`:42 - `GeomToStep_MakeToroidalSurface::Value`
-//   Reason: return type 'const Handle(StepGeom_ToroidalSurface)&' is unknown
-//   // pub fn value(&self) -> &HandleToroidalSurface;
-//
 
 // ========================
 // From GeomToStep_MakeVector.hxx
@@ -2186,6 +2170,11 @@ impl MakeVector {
         }
     }
 
+    /// **Source:** `GeomToStep_MakeVector.hxx`:57 - `GeomToStep_MakeVector::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStepGeomVector {
+        unsafe { &*(crate::ffi::GeomToStep_MakeVector_value(self as *const Self)) }
+    }
+
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
         unsafe { &*(crate::ffi::GeomToStep_MakeVector_as_GeomToStep_Root(self as *const Self)) }
@@ -2203,12 +2192,6 @@ impl MakeVector {
         unsafe { crate::ffi::GeomToStep_MakeVector_inherited_IsDone(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeVector (1 total) ──
-// SKIPPED: **Source:** `GeomToStep_MakeVector.hxx`:57 - `GeomToStep_MakeVector::Value`
-//   Reason: return type 'const Handle(StepGeom_Vector)&' is unknown
-//   // pub fn value(&self) -> &HandleVector;
-//
 
 // ========================
 // From GeomToStep_Root.hxx

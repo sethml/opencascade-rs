@@ -941,88 +941,6 @@ impl Provider {
         unsafe { &*(crate::ffi::DE_Provider_dynamic_type(self as *const Self)) }
     }
 
-    /// **Source:** `DE_Provider.hxx`:62 - `DE_Provider::Read()`
-    /// Reads a CAD file, according internal configuration
-    /// @param[in] thePath path to the import CAD file
-    /// @param[out] theDocument document to save result
-    /// @param[in] theWS current work session
-    /// @param[in] theProgress progress indicator
-    /// @return True if Read was successful
-    pub fn read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
-        &mut self,
-        thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi::HandleTDocStdDocument,
-        theWS: &mut crate::ffi::HandleXSControlWorkSession,
-        theProgress: &crate::message::ProgressRange,
-    ) -> bool {
-        unsafe {
-            crate::ffi::DE_Provider_read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
-        }
-    }
-
-    /// **Source:** `DE_Provider.hxx`:74 - `DE_Provider::Write()`
-    /// Writes a CAD file, according internal configuration
-    /// @param[in] thePath path to the export CAD file
-    /// @param[out] theDocument document to export
-    /// @param[in] theWS current work session
-    /// @param[in] theProgress progress indicator
-    /// @return True if Write was successful
-    pub fn write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
-        &mut self,
-        thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi::HandleTDocStdDocument,
-        theWS: &mut crate::ffi::HandleXSControlWorkSession,
-        theProgress: &crate::message::ProgressRange,
-    ) -> bool {
-        unsafe {
-            crate::ffi::DE_Provider_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
-        }
-    }
-
-    /// **Source:** `DE_Provider.hxx`:85 - `DE_Provider::Read()`
-    /// Reads a CAD file, according internal configuration
-    /// @param[in] thePath path to the import CAD file
-    /// @param[out] theDocument document to save result
-    /// @param[in] theProgress progress indicator
-    /// @return True if Read was successful
-    pub fn read_asciistring_handletdocstddocument_progressrange(
-        &mut self,
-        thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi::HandleTDocStdDocument,
-        theProgress: &crate::message::ProgressRange,
-    ) -> bool {
-        unsafe {
-            crate::ffi::DE_Provider_read_asciistring_handletdocstddocument_progressrange(
-                self as *mut Self,
-                thePath,
-                theDocument,
-                theProgress,
-            )
-        }
-    }
-
-    /// **Source:** `DE_Provider.hxx`:95 - `DE_Provider::Write()`
-    /// Writes a CAD file, according internal configuration
-    /// @param[in] thePath path to the export CAD file
-    /// @param[out] theDocument document to export
-    /// @param[in] theProgress progress indicator
-    /// @return True if Write was successful
-    pub fn write_asciistring_handletdocstddocument_progressrange(
-        &mut self,
-        thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi::HandleTDocStdDocument,
-        theProgress: &crate::message::ProgressRange,
-    ) -> bool {
-        unsafe {
-            crate::ffi::DE_Provider_write_asciistring_handletdocstddocument_progressrange(
-                self as *mut Self,
-                thePath,
-                theDocument,
-                theProgress,
-            )
-        }
-    }
-
     /// **Source:** `DE_Provider.hxx`:106 - `DE_Provider::Read()`
     /// Reads a CAD file, according internal configuration
     /// @param[in] thePath path to the import CAD file
@@ -1377,7 +1295,7 @@ impl HandleDEProvider {
     }
 }
 
-// ── Skipped symbols for Provider (2 total) ──
+// ── Skipped symbols for Provider (6 total) ──
 // SKIPPED: **Source:** `DE_Provider.hxx`:49 - `DE_Provider::DE_Provider`
 //   constructor: Default constructor
 //   constructor: Configure translation process with global configuration
@@ -1389,6 +1307,34 @@ impl HandleDEProvider {
 //   constructor: @param[in] theNode object to copy
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new_handledeconfigurationnode(theNode: &HandleConfigurationNode) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `DE_Provider.hxx`:62 - `DE_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theDocument document to save result
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DE_Provider.hxx`:74 - `DE_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theDocument document to export
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DE_Provider.hxx`:85 - `DE_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theDocument document to save result
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DE_Provider.hxx`:95 - `DE_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theDocument document to export
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
 //
 
 // ========================
@@ -1806,88 +1752,6 @@ impl Wrapper {
         unsafe { &*(crate::ffi::DE_Wrapper_dynamic_type(self as *const Self)) }
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:85 - `DE_Wrapper::Read()`
-    /// Reads a CAD file, according internal configuration
-    /// @param[in] thePath path to the import CAD file
-    /// @param[out] theDocument document to save result
-    /// @param[in] theWS current work session
-    /// @param[in] theProgress progress indicator
-    /// @return true if Read operation has ended correctly
-    pub fn read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
-        &mut self,
-        thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi::HandleTDocStdDocument,
-        theWS: &mut crate::ffi::HandleXSControlWorkSession,
-        theProgress: &crate::message::ProgressRange,
-    ) -> bool {
-        unsafe {
-            crate::ffi::DE_Wrapper_read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
-        }
-    }
-
-    /// **Source:** `DE_Wrapper.hxx`:97 - `DE_Wrapper::Write()`
-    /// Writes a CAD file, according internal configuration
-    /// @param[in] thePath path to the export CAD file
-    /// @param[out] theDocument document to export
-    /// @param[in] theWS current work session
-    /// @param[in] theProgress progress indicator
-    /// @return true if Write operation has ended correctly
-    pub fn write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
-        &mut self,
-        thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi::HandleTDocStdDocument,
-        theWS: &mut crate::ffi::HandleXSControlWorkSession,
-        theProgress: &crate::message::ProgressRange,
-    ) -> bool {
-        unsafe {
-            crate::ffi::DE_Wrapper_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
-        }
-    }
-
-    /// **Source:** `DE_Wrapper.hxx`:108 - `DE_Wrapper::Read()`
-    /// Reads a CAD file, according internal configuration
-    /// @param[in] thePath path to the import CAD file
-    /// @param[out] theDocument document to save result
-    /// @param[in] theProgress progress indicator
-    /// @return true if Read operation has ended correctly
-    pub fn read_asciistring_handletdocstddocument_progressrange(
-        &mut self,
-        thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi::HandleTDocStdDocument,
-        theProgress: &crate::message::ProgressRange,
-    ) -> bool {
-        unsafe {
-            crate::ffi::DE_Wrapper_read_asciistring_handletdocstddocument_progressrange(
-                self as *mut Self,
-                thePath,
-                theDocument,
-                theProgress,
-            )
-        }
-    }
-
-    /// **Source:** `DE_Wrapper.hxx`:118 - `DE_Wrapper::Write()`
-    /// Writes a CAD file, according internal configuration
-    /// @param[in] thePath path to the export CAD file
-    /// @param[out] theDocument document to export
-    /// @param[in] theProgress progress indicator
-    /// @return true if Write operation has ended correctly
-    pub fn write_asciistring_handletdocstddocument_progressrange(
-        &mut self,
-        thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi::HandleTDocStdDocument,
-        theProgress: &crate::message::ProgressRange,
-    ) -> bool {
-        unsafe {
-            crate::ffi::DE_Wrapper_write_asciistring_handletdocstddocument_progressrange(
-                self as *mut Self,
-                thePath,
-                theDocument,
-                theProgress,
-            )
-        }
-    }
-
     /// **Source:** `DE_Wrapper.hxx`:129 - `DE_Wrapper::Read()`
     /// Reads a CAD file, according internal configuration
     /// @param[in] thePath path to the import CAD file
@@ -2302,6 +2166,36 @@ impl HandleDEWrapper {
         }
     }
 }
+
+// ── Skipped symbols for Wrapper (4 total) ──
+// SKIPPED: **Source:** `DE_Wrapper.hxx`:85 - `DE_Wrapper::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theDocument document to save result
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DE_Wrapper.hxx`:97 - `DE_Wrapper::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theDocument document to export
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DE_Wrapper.hxx`:108 - `DE_Wrapper::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theDocument document to save result
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DE_Wrapper.hxx`:118 - `DE_Wrapper::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theDocument document to export
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
 
 // ========================
 // Additional type re-exports

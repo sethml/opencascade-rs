@@ -603,6 +603,16 @@ impl MakeChamfer {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_reset(self as *mut Self) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:279 - `BRepFilletAPI_MakeChamfer::Builder()`
+    /// Returns the internal filleting algorithm.
+    pub fn builder(&self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepBuildHBuilder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeChamfer_builder(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:283 - `BRepFilletAPI_MakeChamfer::Generated()`
     /// Returns the  list   of shapes generated   from the
     /// shape <EorV>.
@@ -712,13 +722,6 @@ impl MakeChamfer {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_inherited_Check(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeChamfer (1 total) ──
-// SKIPPED: **Source:** `BRepFilletAPI_MakeChamfer.hxx`:279 - `BRepFilletAPI_MakeChamfer::Builder`
-//   method: Returns the internal filleting algorithm.
-//   Reason: return type 'Handle(TopOpeBRepBuild_HBuilder)' is unknown
-//   // pub fn builder(&self) -> OwnedPtr<Handle<TopOpeBRepBuild_HBuilder>>;
-//
 
 // ========================
 // From BRepFilletAPI_MakeFillet.hxx
@@ -1241,6 +1244,16 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_reset(self as *mut Self) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:328 - `BRepFilletAPI_MakeFillet::Builder()`
+    /// Returns the internal topology building algorithm.
+    pub fn builder(&self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepBuildHBuilder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeFillet_builder(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:332 - `BRepFilletAPI_MakeFillet::Generated()`
     /// Returns the  list   of shapes generated   from the
     /// shape <EorV>.
@@ -1456,13 +1469,6 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_inherited_Check(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeFillet (1 total) ──
-// SKIPPED: **Source:** `BRepFilletAPI_MakeFillet.hxx`:328 - `BRepFilletAPI_MakeFillet::Builder`
-//   method: Returns the internal topology building algorithm.
-//   Reason: return type 'Handle(TopOpeBRepBuild_HBuilder)' is unknown
-//   // pub fn builder(&self) -> OwnedPtr<Handle<TopOpeBRepBuild_HBuilder>>;
-//
 
 // ========================
 // From BRepFilletAPI_MakeFillet2d.hxx

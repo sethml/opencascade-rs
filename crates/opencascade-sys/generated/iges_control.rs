@@ -808,7 +808,7 @@ impl Controller {
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:213 - `XSControl_Controller::AdaptorSession()`
-    pub fn adaptor_session(&self) -> &crate::ffi::XSControl_WorkSessionMap {
+    pub fn adaptor_session(&self) -> &crate::ffi::STEPConstruct_DataMapOfAsciiStringTransient {
         unsafe {
             &*(crate::ffi::IGESControl_Controller_inherited_AdaptorSession(self as *const Self))
         }
@@ -1232,6 +1232,17 @@ impl Reader {
         unsafe { crate::ffi::IGESControl_Reader_get_read_visible(self as *const Self) }
     }
 
+    /// **Source:** `IGESControl_Reader.hxx`:85 - `IGESControl_Reader::IGESModel()`
+    /// Returns the model as a IGESModel.
+    /// It can then be consulted (header, product)
+    pub fn iges_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Reader_iges_model(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `IGESControl_Reader.hxx`:90 - `IGESControl_Reader::NbRootsForTransfer()`
     /// Determines the list of root entities from Model which are candidate for
     /// a transfer to a Shape (type of entities is PRODUCT)
@@ -1474,14 +1485,6 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (1 total) ──
-// SKIPPED: **Source:** `IGESControl_Reader.hxx`:85 - `IGESControl_Reader::IGESModel`
-//   method: Returns the model as a IGESModel.
-//   method: It can then be consulted (header, product)
-//   Reason: return type 'Handle(IGESData_IGESModel)' is unknown
-//   // pub fn iges_model(&self) -> OwnedPtr<Handle<IGESData_IGESModel>>;
-//
-
 // ========================
 // From IGESControl_ToolContainer.hxx
 // ========================
@@ -1712,6 +1715,25 @@ impl Writer {
         }
     }
 
+    /// **Source:** `IGESControl_Writer.hxx`:75 - `IGESControl_Writer::IGESControl_Writer()`
+    /// Creates a writer object with the
+    /// prepared IGES model theModel in write mode.
+    /// theModecr defines the write mode and may be:
+    /// - 0: Faces (default)
+    /// - 1: BRep.
+    pub fn new_handleigesdataigesmodel_int(
+        theModel: &crate::ffi::HandleIGESDataIGESModel,
+        theModecr: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESControl_Writer_ctor_handleigesdataigesmodel_int(
+                    theModel, theModecr,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `IGESControl_Writer.hxx`:67 - `IGESControl_Writer::IGESControl_Writer()`
     /// Creates a writer with given
     /// values for units and for write mode.
@@ -1722,6 +1744,24 @@ impl Writer {
     /// - 1: BRep.
     pub fn new_charptr(theUnit: &str) -> crate::OwnedPtr<Self> {
         Self::new_charptr_int(theUnit, 0)
+    }
+
+    /// **Source:** `IGESControl_Writer.hxx`:75 - `IGESControl_Writer::IGESControl_Writer()`
+    /// Creates a writer object with the
+    /// prepared IGES model theModel in write mode.
+    /// theModecr defines the write mode and may be:
+    /// - 0: Faces (default)
+    /// - 1: BRep.
+    pub fn new_handleigesdataigesmodel(
+        theModel: &crate::ffi::HandleIGESDataIGESModel,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleigesdataigesmodel_int(theModel, 0)
+    }
+
+    /// **Source:** `IGESControl_Writer.hxx`:79 - `IGESControl_Writer::Model()`
+    /// Returns the IGES model to be written in output.
+    pub fn model(&self) -> &crate::ffi::HandleIGESDataIGESModel {
+        unsafe { &*(crate::ffi::IGESControl_Writer_model(self as *const Self)) }
     }
 
     /// **Source:** `IGESControl_Writer.hxx`:81 - `IGESControl_Writer::TransferProcess()`
@@ -1825,19 +1865,7 @@ impl Writer {
     }
 }
 
-// ── Skipped symbols for Writer (6 total) ──
-// SKIPPED: **Source:** `IGESControl_Writer.hxx`:75 - `IGESControl_Writer::IGESControl_Writer`
-//   constructor: Creates a writer object with the
-//   constructor: prepared IGES model theModel in write mode.
-//   constructor: theModecr defines the write mode and may be:
-//   Reason: param 'theModel' uses unknown Handle type
-//   // pub fn new_handleigesdataigesmodel_int(theModel: &HandleIGESModel, theModecr: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `IGESControl_Writer.hxx`:79 - `IGESControl_Writer::Model`
-//   method: Returns the IGES model to be written in output.
-//   Reason: return type 'const Handle(IGESData_IGESModel)&' is unknown
-//   // pub fn model(&self) -> &HandleIGESModel;
-//
+// ── Skipped symbols for Writer (4 total) ──
 // SKIPPED: **Source:** `IGESControl_Writer.hxx`:109 - `IGESControl_Writer::Write`
 //   method: Computes then writes the model to an OStream
 //   method: Returns True when done, false in case of error

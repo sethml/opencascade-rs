@@ -59,6 +59,31 @@ impl BisectingLocus {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMAT2d_BisectingLocus_ctor()) }
     }
 
+    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:84 - `BRepMAT2d_BisectingLocus::Compute()`
+    /// Computation of the Bisector_Locus in a set of Lines
+    /// defined in <anExplo>.
+    /// The bisecting locus are computed on the side <aSide>
+    /// from the line <LineIndex> in <anExplo>.
+    pub fn compute(
+        &mut self,
+        anExplo: &mut Explorer,
+        LineIndex: i32,
+        aSide: crate::mat::Side,
+        aJoinType: crate::geom_abs::JoinType,
+        IsOpenResult: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepMAT2d_BisectingLocus_compute(
+                self as *mut Self,
+                anExplo,
+                LineIndex,
+                aSide.into(),
+                aJoinType.into(),
+                IsOpenResult,
+            )
+        }
+    }
+
     /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:91 - `BRepMAT2d_BisectingLocus::IsDone()`
     /// Returns True if Compute has succeeded.
     pub fn is_done(&self) -> bool {
@@ -171,14 +196,122 @@ impl BisectingLocus {
     }
 }
 
-// ── Skipped symbols for BisectingLocus (1 total) ──
-// SKIPPED: **Source:** `BRepMAT2d_BisectingLocus.hxx`:84 - `BRepMAT2d_BisectingLocus::Compute`
-//   method: Computation of the Bisector_Locus in a set of Lines
-//   method: defined in <anExplo>.
-//   method: The bisecting locus are computed on the side <aSide>
-//   Reason: param 'anExplo' uses unknown type 'BRepMAT2d_Explorer&'
-//   // pub fn compute(&mut self, anExplo: &mut Explorer, LineIndex: i32, aSide: Side, aJoinType: JoinType, IsOpenResult: bool);
-//
+// ========================
+// From BRepMAT2d_Explorer.hxx
+// ========================
+
+/// **Source:** `BRepMAT2d_Explorer.hxx`:36 - `BRepMAT2d_Explorer`
+/// Construct an explorer from wires, face, set of curves
+/// from Geom2d to compute the bisecting Locus.
+pub use crate::ffi::BRepMAT2d_Explorer as Explorer;
+
+unsafe impl crate::CppDeletable for Explorer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMAT2d_Explorer_destructor(ptr);
+    }
+}
+
+impl Explorer {
+    /// **Source:** `BRepMAT2d_Explorer.hxx`:41 - `BRepMAT2d_Explorer::BRepMAT2d_Explorer()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMAT2d_Explorer_ctor()) }
+    }
+
+    /// **Source:** `BRepMAT2d_Explorer.hxx`:43 - `BRepMAT2d_Explorer::BRepMAT2d_Explorer()`
+    pub fn new_face(aFace: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMAT2d_Explorer_ctor_face(aFace)) }
+    }
+
+    /// **Source:** `BRepMAT2d_Explorer.hxx`:46 - `BRepMAT2d_Explorer::Clear()`
+    /// Clear the contents of <me>.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BRepMAT2d_Explorer_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepMAT2d_Explorer.hxx`:48 - `BRepMAT2d_Explorer::Perform()`
+    pub fn perform(&mut self, aFace: &crate::topo_ds::Face) {
+        unsafe { crate::ffi::BRepMAT2d_Explorer_perform(self as *mut Self, aFace) }
+    }
+
+    /// **Source:** `BRepMAT2d_Explorer.hxx`:51 - `BRepMAT2d_Explorer::NumberOfContours()`
+    /// Returns the Number of contours.
+    pub fn number_of_contours(&self) -> i32 {
+        unsafe { crate::ffi::BRepMAT2d_Explorer_number_of_contours(self as *const Self) }
+    }
+
+    /// **Source:** `BRepMAT2d_Explorer.hxx`:55 - `BRepMAT2d_Explorer::NumberOfCurves()`
+    /// Returns the Number of Curves in the Contour  number
+    /// <IndexContour>.
+    pub fn number_of_curves(&self, IndexContour: i32) -> i32 {
+        unsafe {
+            crate::ffi::BRepMAT2d_Explorer_number_of_curves(self as *const Self, IndexContour)
+        }
+    }
+
+    /// **Source:** `BRepMAT2d_Explorer.hxx`:59 - `BRepMAT2d_Explorer::Init()`
+    /// Initialisation of  an Iterator on  the curves of
+    /// the Contour number <IndexContour>.
+    pub fn init(&mut self, IndexContour: i32) {
+        unsafe { crate::ffi::BRepMAT2d_Explorer_init(self as *mut Self, IndexContour) }
+    }
+
+    /// **Source:** `BRepMAT2d_Explorer.hxx`:63 - `BRepMAT2d_Explorer::More()`
+    /// Return False if there is no more curves on the Contour
+    /// initialised by the method Init.
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::BRepMAT2d_Explorer_more(self as *const Self) }
+    }
+
+    /// **Source:** `BRepMAT2d_Explorer.hxx`:66 - `BRepMAT2d_Explorer::Next()`
+    /// Move to the next curve of the current Contour.
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::BRepMAT2d_Explorer_next(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepMAT2d_Explorer.hxx`:69 - `BRepMAT2d_Explorer::Value()`
+    /// Returns the current curve on the current Contour.
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMAT2d_Explorer_value(self as *const Self))
+        }
+    }
+
+    /// **Source:** `BRepMAT2d_Explorer.hxx`:71 - `BRepMAT2d_Explorer::Shape()`
+    pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMAT2d_Explorer_shape(self as *const Self))
+        }
+    }
+
+    /// **Source:** `BRepMAT2d_Explorer.hxx`:73 - `BRepMAT2d_Explorer::Contour()`
+    pub fn contour(&self, IndexContour: i32) -> &crate::ffi::TColGeom2d_SequenceOfCurve {
+        unsafe { &*(crate::ffi::BRepMAT2d_Explorer_contour(self as *const Self, IndexContour)) }
+    }
+
+    /// **Source:** `BRepMAT2d_Explorer.hxx`:76 - `BRepMAT2d_Explorer::IsModified()`
+    pub fn is_modified(&self, aShape: &crate::topo_ds::Shape) -> bool {
+        unsafe { crate::ffi::BRepMAT2d_Explorer_is_modified(self as *const Self, aShape) }
+    }
+
+    /// **Source:** `BRepMAT2d_Explorer.hxx`:79 - `BRepMAT2d_Explorer::ModifiedShape()`
+    /// If the shape is not modified, returns the shape itself.
+    pub fn modified_shape(
+        &self,
+        aShape: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMAT2d_Explorer_modified_shape(
+                self as *const Self,
+                aShape,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepMAT2d_Explorer.hxx`:81 - `BRepMAT2d_Explorer::GetIsClosed()`
+    pub fn get_is_closed(&self) -> &crate::ffi::TColStd_SequenceOfBoolean {
+        unsafe { &*(crate::ffi::BRepMAT2d_Explorer_get_is_closed(self as *const Self)) }
+    }
+}
 
 // ========================
 // From BRepMAT2d_LinkTopoBilo.hxx
@@ -199,6 +332,29 @@ impl LinkTopoBilo {
     /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:40 - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMAT2d_LinkTopoBilo_ctor()) }
+    }
+
+    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:45 - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
+    /// Constructs the links Between S and BiLo.
+    ///
+    /// raises if <S> is not a face.
+    pub fn new_explorer_bisectinglocus(
+        Explo: &Explorer,
+        BiLo: &BisectingLocus,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMAT2d_LinkTopoBilo_ctor_explorer_bisectinglocus(Explo, BiLo),
+            )
+        }
+    }
+
+    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:51 - `BRepMAT2d_LinkTopoBilo::Perform()`
+    /// Constructs the links Between S and BiLo.
+    ///
+    /// raises if <S> is not a face or a wire.
+    pub fn perform(&mut self, Explo: &Explorer, BiLo: &BisectingLocus) {
+        unsafe { crate::ffi::BRepMAT2d_LinkTopoBilo_perform(self as *mut Self, Explo, BiLo) }
     }
 
     /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:58 - `BRepMAT2d_LinkTopoBilo::Init()`
@@ -244,23 +400,3 @@ impl LinkTopoBilo {
         }
     }
 }
-
-// ── Skipped symbols for LinkTopoBilo (2 total) ──
-// SKIPPED: **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:45 - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo`
-//   constructor: Constructs the links Between S and BiLo.
-//   constructor: raises if <S> is not a face.
-//   Reason: param 'Explo' uses unknown type 'const BRepMAT2d_Explorer&'
-//   // pub fn new_explorer_bisectinglocus(Explo: &Explorer, BiLo: &BisectingLocus) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:51 - `BRepMAT2d_LinkTopoBilo::Perform`
-//   method: Constructs the links Between S and BiLo.
-//   method: raises if <S> is not a face or a wire.
-//   Reason: param 'Explo' uses unknown type 'const BRepMAT2d_Explorer&'
-//   // pub fn perform(&mut self, Explo: &Explorer, BiLo: &BisectingLocus);
-//
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi::BRepMAT2d_Explorer as Explorer;

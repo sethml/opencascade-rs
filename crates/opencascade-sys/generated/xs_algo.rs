@@ -6,6 +6,252 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `XSAlgo.hxx`:33 - `XSAlgo::Init`
+/// Provides initerface to the algorithms from Shape Healing
+/// and others for XSTEP processors.
+/// Creates and initializes default AlgoContainer.
+pub fn init() {
+    unsafe { crate::ffi::XSAlgo_init() }
+}
+/// **Source:** `XSAlgo.hxx`:36 - `XSAlgo::SetAlgoContainer`
+/// Sets default AlgoContainer
+pub fn set_algo_container_handlexsalgoalgocontainer(
+    aContainer: &crate::ffi::HandleXSAlgoAlgoContainer,
+) {
+    unsafe { crate::ffi::XSAlgo_set_algo_container_handlexsalgoalgocontainer(aContainer) }
+}
+/// **Source:** `XSAlgo.hxx`:39 - `XSAlgo::AlgoContainer`
+/// Returns default AlgoContainer
+pub fn algo_container() -> crate::OwnedPtr<crate::ffi::HandleXSAlgoAlgoContainer> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSAlgo_algo_container()) }
+}
+
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleStandardTransient;
+
+// ========================
+// From XSAlgo_AlgoContainer.hxx
+// ========================
+
+/// **Source:** `XSAlgo_AlgoContainer.hxx`:37 - `XSAlgo_AlgoContainer`
+pub use crate::ffi::XSAlgo_AlgoContainer as AlgoContainer;
+
+unsafe impl crate::CppDeletable for AlgoContainer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XSAlgo_AlgoContainer_destructor(ptr);
+    }
+}
+
+impl AlgoContainer {
+    /// **Source:** `XSAlgo_AlgoContainer.hxx`:41 - `XSAlgo_AlgoContainer::XSAlgo_AlgoContainer()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSAlgo_AlgoContainer_ctor()) }
+    }
+
+    /// **Source:** `XSAlgo_AlgoContainer.hxx`:45 - `XSAlgo_AlgoContainer::PrepareForTransfer()`
+    /// Performs actions necessary for preparing environment
+    /// for transfer. Empty in Open version.
+    pub fn prepare_for_transfer(&self) {
+        unsafe { crate::ffi::XSAlgo_AlgoContainer_prepare_for_transfer(self as *const Self) }
+    }
+
+    /// **Source:** `XSAlgo_AlgoContainer.hxx`:59 - `XSAlgo_AlgoContainer::ProcessShape()`
+    /// Does shape processing with specified tolerances
+    /// @param[in] theShape shape to process
+    /// @param[in] thePrec basic precision and tolerance
+    /// @param[in] theMaxTol maximum allowed tolerance
+    /// @param[in] thePrscfile name of the resource file
+    /// @param[in] thePseq name of the sequence of operators defined in the resource file for Shape
+    /// Processing
+    /// @param[out] theInfo information to be recorded in the translation map
+    /// @param[in] theProgress progress indicator
+    /// @param[in] theNonManifold flag to proceed with non-manifold topology
+    /// @param[in] theDetailingLevel the lowest shape type to be processed, lower shapes are ignored
+    /// @return the processed shape
+    pub fn process_shape(
+        &self,
+        theShape: &crate::topo_ds::Shape,
+        thePrec: f64,
+        theMaxTol: f64,
+        thePrscfile: &str,
+        thePseq: &str,
+        theInfo: &mut crate::ffi::HandleStandardTransient,
+        theProgress: &crate::message::ProgressRange,
+        theNonManifold: bool,
+        theDetailingLevel: crate::top_abs::ShapeEnum,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        let c_thePrscfile = std::ffi::CString::new(thePrscfile).unwrap();
+        let c_thePseq = std::ffi::CString::new(thePseq).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSAlgo_AlgoContainer_process_shape(
+                self as *const Self,
+                theShape,
+                thePrec,
+                theMaxTol,
+                c_thePrscfile.as_ptr(),
+                c_thePseq.as_ptr(),
+                theInfo,
+                theProgress,
+                theNonManifold,
+                theDetailingLevel.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `XSAlgo_AlgoContainer.hxx`:72 - `XSAlgo_AlgoContainer::CheckPCurve()`
+    /// Checks quality of pcurve of the edge on the given face,
+    /// and corrects it if necessary.
+    pub fn check_p_curve(
+        &self,
+        theEdge: &crate::topo_ds::Edge,
+        theFace: &crate::topo_ds::Face,
+        thePrecision: f64,
+        theIsSeam: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XSAlgo_AlgoContainer_check_p_curve(
+                self as *const Self,
+                theEdge,
+                theFace,
+                thePrecision,
+                theIsSeam,
+            )
+        }
+    }
+
+    /// **Source:** `XSAlgo_AlgoContainer.hxx`:77 - `XSAlgo_AlgoContainer::MergeTransferInfo()`
+    pub fn merge_transfer_info_handletransfertransientprocess_handlestandardtransient_int(
+        &self,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        info: &crate::ffi::HandleStandardTransient,
+        startTPitem: i32,
+    ) {
+        unsafe {
+            crate::ffi::XSAlgo_AlgoContainer_merge_transfer_info_handletransfertransientprocess_handlestandardtransient_int(self as *const Self, TP, info, startTPitem)
+        }
+    }
+
+    /// **Source:** `XSAlgo_AlgoContainer.hxx`:86 - `XSAlgo_AlgoContainer::MergeTransferInfo()`
+    /// Updates translation map (TP or FP) with information
+    /// resulting from ShapeProcessing
+    /// Parameter startTPitem can be used for optimisation, to
+    /// restrict modifications to entities stored in TP starting
+    /// from item startTPitem
+    pub fn merge_transfer_info_handletransferfinderprocess_handlestandardtransient(
+        &self,
+        FP: &crate::ffi::HandleTransferFinderProcess,
+        info: &crate::ffi::HandleStandardTransient,
+    ) {
+        unsafe {
+            crate::ffi::XSAlgo_AlgoContainer_merge_transfer_info_handletransferfinderprocess_handlestandardtransient(self as *const Self, FP, info)
+        }
+    }
+
+    /// **Source:** `XSAlgo_AlgoContainer.hxx`:89 - `XSAlgo_AlgoContainer::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XSAlgo_AlgoContainer_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `XSAlgo_AlgoContainer.hxx`:89 - `XSAlgo_AlgoContainer::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::XSAlgo_AlgoContainer_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `XSAlgo_AlgoContainer.hxx`:89 - `XSAlgo_AlgoContainer::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XSAlgo_AlgoContainer_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XSAlgo_AlgoContainer_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XSAlgo_AlgoContainer_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXSAlgoAlgoContainer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSAlgo_AlgoContainer_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::XSAlgo_AlgoContainer_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XSAlgo_AlgoContainer_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XSAlgo_AlgoContainer_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XSAlgo_AlgoContainer_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XSAlgo_AlgoContainer_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XSAlgo_AlgoContainer_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleXSAlgoAlgoContainer;
+
+unsafe impl crate::CppDeletable for HandleXSAlgoAlgoContainer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXSAlgoAlgoContainer_destructor(ptr);
+    }
+}
+
+impl HandleXSAlgoAlgoContainer {
+    /// Dereference this Handle to access the underlying XSAlgo_AlgoContainer
+    pub fn get(&self) -> &crate::ffi::XSAlgo_AlgoContainer {
+        unsafe { &*(crate::ffi::HandleXSAlgoAlgoContainer_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XSAlgo_AlgoContainer
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XSAlgo_AlgoContainer {
+        unsafe { &mut *(crate::ffi::HandleXSAlgoAlgoContainer_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XSAlgo_AlgoContainer> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXSAlgoAlgoContainer_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
 // ========================
 // From XSAlgo_ShapeProcessor.hxx
 // ========================

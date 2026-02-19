@@ -24,8 +24,8 @@ pub fn in_period(U: f64, UFirst: f64, ULast: f64) -> f64 {
 /// -   sets U2 in the range [ U1, U1 + period ] by
 /// adding/removing the period to/from the value U2.
 /// Precision is used to test the equalities.
-pub fn adjust_periodic(UFirst: f64, ULast: f64, Precision: f64, U1: &mut f64, U2: &mut f64) {
-    unsafe { crate::ffi::ElCLib_adjust_periodic(UFirst, ULast, Precision, U1, U2) }
+pub fn adjust_periodic_real5(UFirst: f64, ULast: f64, Precision: f64, U1: &mut f64, U2: &mut f64) {
+    unsafe { crate::ffi::ElCLib_adjust_periodic_real5(UFirst, ULast, Precision, U1, U2) }
 }
 /// **Source:** `ElCLib.hxx`:101 - `ElCLib::Value`
 /// For elementary curves (lines, circles and conics) from

@@ -101,3 +101,67 @@ impl Function {
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new() -> OwnedPtr<Self>;
 //
+
+// ========================
+// From AppCont_LeastSquare.hxx
+// ========================
+
+/// **Source:** `AppCont_LeastSquare.hxx`:27 - `PeriodicityInfo`
+pub use crate::ffi::PeriodicityInfo;
+
+unsafe impl crate::CppDeletable for PeriodicityInfo {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::PeriodicityInfo_destructor(ptr);
+    }
+}
+
+/// **Source:** `AppCont_LeastSquare.hxx`:33 - `AppCont_LeastSquare`
+pub use crate::ffi::AppCont_LeastSquare as LeastSquare;
+
+unsafe impl crate::CppDeletable for LeastSquare {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::AppCont_LeastSquare_destructor(ptr);
+    }
+}
+
+impl LeastSquare {
+    /// **Source:** `AppCont_LeastSquare.hxx`:36 - `AppCont_LeastSquare::AppCont_LeastSquare()`
+    pub fn new_function_real2_constraint2_int2(
+        SSP: &Function,
+        U0: f64,
+        U1: f64,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        Deg: i32,
+        NbPoints: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::AppCont_LeastSquare_ctor_function_real2_constraint2_int2(
+                    SSP,
+                    U0,
+                    U1,
+                    FirstCons.into(),
+                    LastCons.into(),
+                    Deg,
+                    NbPoints,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `AppCont_LeastSquare.hxx`:44 - `AppCont_LeastSquare::Value()`
+    pub fn value(&mut self) -> &crate::app_par_curves::MultiCurve {
+        unsafe { &*(crate::ffi::AppCont_LeastSquare_value(self as *mut Self)) }
+    }
+
+    /// **Source:** `AppCont_LeastSquare.hxx`:46 - `AppCont_LeastSquare::Error()`
+    pub fn error(&self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
+        unsafe { crate::ffi::AppCont_LeastSquare_error(self as *const Self, F, MaxE3d, MaxE2d) }
+    }
+
+    /// **Source:** `AppCont_LeastSquare.hxx`:48 - `AppCont_LeastSquare::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::AppCont_LeastSquare_is_done(self as *const Self) }
+    }
+}

@@ -190,6 +190,64 @@ impl NumShape {
 }
 
 // ========================
+// From Sweep_NumShapeIterator.hxx
+// ========================
+
+/// **Source:** `Sweep_NumShapeIterator.hxx`:30 - `Sweep_NumShapeIterator`
+/// This class provides iteration services required by
+/// the   Swept Primitives  for   a Directing NumShape
+/// Line.
+pub use crate::ffi::Sweep_NumShapeIterator as NumShapeIterator;
+
+unsafe impl crate::CppDeletable for NumShapeIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Sweep_NumShapeIterator_destructor(ptr);
+    }
+}
+
+impl NumShapeIterator {
+    /// **Source:** `Sweep_NumShapeIterator.hxx`:35 - `Sweep_NumShapeIterator::Sweep_NumShapeIterator()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Sweep_NumShapeIterator_ctor()) }
+    }
+
+    /// **Source:** `Sweep_NumShapeIterator.hxx`:38 - `Sweep_NumShapeIterator::Init()`
+    /// Reset the NumShapeIterator on sub-shapes of <aShape>.
+    pub fn init(&mut self, aShape: &NumShape) {
+        unsafe { crate::ffi::Sweep_NumShapeIterator_init(self as *mut Self, aShape) }
+    }
+
+    /// **Source:** `Sweep_NumShapeIterator.hxx`:41 - `Sweep_NumShapeIterator::More()`
+    /// Returns True if there is a current sub-shape.
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::Sweep_NumShapeIterator_more(self as *const Self) }
+    }
+
+    /// **Source:** `Sweep_NumShapeIterator.hxx`:44 - `Sweep_NumShapeIterator::Next()`
+    /// Moves to the next sub-shape.
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::Sweep_NumShapeIterator_next(self as *mut Self) }
+    }
+
+    /// **Source:** `Sweep_NumShapeIterator.hxx`:47 - `Sweep_NumShapeIterator::Value()`
+    /// Returns the current sub-shape.
+    pub fn value(&self) -> &NumShape {
+        unsafe { &*(crate::ffi::Sweep_NumShapeIterator_value(self as *const Self)) }
+    }
+
+    /// **Source:** `Sweep_NumShapeIterator.hxx`:50 - `Sweep_NumShapeIterator::Orientation()`
+    /// Returns the orientation of the current sub-shape.
+    pub fn orientation(&self) -> crate::top_abs::Orientation {
+        unsafe {
+            crate::top_abs::Orientation::try_from(crate::ffi::Sweep_NumShapeIterator_orientation(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+}
+
+// ========================
 // From Sweep_NumShapeTool.hxx
 // ========================
 

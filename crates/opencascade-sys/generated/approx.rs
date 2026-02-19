@@ -69,6 +69,7 @@ impl TryFrom<i32> for Status {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
+    HandleBRepBlendAppFunc, HandleBRepBlendAppFuncRst, HandleBRepBlendAppFuncRstRst,
     HandleGeomFillCircularBlendFunc, HandleGeomFillSweepFunction, HandleStandardTransient,
 };
 
@@ -2290,6 +2291,60 @@ impl HandleApproxSweepFunction {
                     self as *const Self,
                 ),
             )
+        }
+    }
+
+    /// Downcast Handle<Approx_SweepFunction> to Handle<BRepBlend_AppFunc>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepBlend_AppFunc` (or subclass).
+    pub fn downcast_to_app_func(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFunc>> {
+        let ptr = unsafe {
+            crate::ffi::HandleApproxSweepFunction_downcast_to_HandleBRepBlendAppFunc(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Approx_SweepFunction> to Handle<BRepBlend_AppFuncRst>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepBlend_AppFuncRst` (or subclass).
+    pub fn downcast_to_app_func_rst(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRst>> {
+        let ptr = unsafe {
+            crate::ffi::HandleApproxSweepFunction_downcast_to_HandleBRepBlendAppFuncRst(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Approx_SweepFunction> to Handle<BRepBlend_AppFuncRstRst>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepBlend_AppFuncRstRst` (or subclass).
+    pub fn downcast_to_app_func_rst_rst(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRstRst>> {
+        let ptr = unsafe {
+            crate::ffi::HandleApproxSweepFunction_downcast_to_HandleBRepBlendAppFuncRstRst(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 

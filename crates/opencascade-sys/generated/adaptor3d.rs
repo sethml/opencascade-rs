@@ -9,8 +9,9 @@
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
     HandleBRepAdaptorCompCurve, HandleBRepAdaptorCurve, HandleBRepAdaptorSurface,
-    HandleBiTgteCurveOnEdge, HandleBiTgteCurveOnVertex, HandleChFiDSElSpine,
-    HandleGeomAdaptorCurve, HandleGeomAdaptorSurface, HandleGeomAdaptorSurfaceOfLinearExtrusion,
+    HandleBRepTopAdaptorHVertex, HandleBRepTopAdaptorTopolTool, HandleBiTgteCurveOnEdge,
+    HandleBiTgteCurveOnVertex, HandleChFiDSElSpine, HandleGeomAdaptorCurve,
+    HandleGeomAdaptorSurface, HandleGeomAdaptorSurfaceOfLinearExtrusion,
     HandleGeomAdaptorSurfaceOfRevolution, HandleGeomFillSnglrFunc, HandleIntToolsTopolTool,
     HandleProjLibProjectOnPlane, HandleStandardTransient,
 };
@@ -1599,6 +1600,24 @@ impl HandleAdaptor3dHVertex {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleAdaptor3dHVertex_to_HandleStandardTransient(self as *const Self),
             )
+        }
+    }
+
+    /// Downcast Handle<Adaptor3d_HVertex> to Handle<BRepTopAdaptor_HVertex>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepTopAdaptor_HVertex` (or subclass).
+    pub fn downcast_to_h_vertex(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepTopAdaptorHVertex>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor3dHVertex_downcast_to_HandleBRepTopAdaptorHVertex(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -3257,10 +3276,28 @@ impl HandleAdaptor3dTopolTool {
         }
     }
 
+    /// Downcast Handle<Adaptor3d_TopolTool> to Handle<BRepTopAdaptor_TopolTool>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepTopAdaptor_TopolTool` (or subclass).
+    pub fn downcast_to_b_rep_top_adaptor_topol_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepTopAdaptorTopolTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor3dTopolTool_downcast_to_HandleBRepTopAdaptorTopolTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Adaptor3d_TopolTool> to Handle<IntTools_TopolTool>
     ///
     /// Returns `None` if the handle does not point to a `IntTools_TopolTool` (or subclass).
-    pub fn downcast_to_topol_tool(
+    pub fn downcast_to_int_tools_topol_tool(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIntToolsTopolTool>> {
         let ptr = unsafe {

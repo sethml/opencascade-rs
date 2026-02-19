@@ -877,6 +877,28 @@ impl IntConicConic {
 }
 
 // ========================
+// From IntCurve_IntConicConic_Tool.hxx
+// ========================
+
+/// **Source:** `IntCurve_IntConicConic_Tool.hxx`:47 - `Interval`
+pub use crate::ffi::Interval;
+
+unsafe impl crate::CppDeletable for Interval {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Interval_destructor(ptr);
+    }
+}
+
+/// **Source:** `IntCurve_IntConicConic_Tool.hxx`:70 - `PeriodicInterval`
+pub use crate::ffi::PeriodicInterval;
+
+unsafe impl crate::CppDeletable for PeriodicInterval {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::PeriodicInterval_destructor(ptr);
+    }
+}
+
+// ========================
 // From IntCurve_IntImpConicParConic.hxx
 // ========================
 
@@ -894,6 +916,134 @@ impl IntImpConicParConic {
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_IntImpConicParConic_ctor()) }
+    }
+
+    /// **Source:** `IntCurve_IntImpConicParConic.hxx`:48 - `IntCurve_IntImpConicParConic::IntCurve_IntImpConicParConic()`
+    /// Intersection between an implicit curve and
+    /// a parametrised curve.
+    /// The exception ConstructionError is raised if the domain
+    /// of the parametrised curve does not verify HasFirstPoint
+    /// and HasLastPoint return True.
+    pub fn new_iconictool_domain_pconic_domain_real2(
+        ITool: &IConicTool,
+        Dom1: &crate::int_res2d::Domain,
+        PCurve: &PConic,
+        Dom2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IntCurve_IntImpConicParConic_ctor_iconictool_domain_pconic_domain_real2(
+                    ITool, Dom1, PCurve, Dom2, TolConf, Tol,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IntCurve_IntImpConicParConic.hxx`:60 - `IntCurve_IntImpConicParConic::Perform()`
+    /// Intersection between an implicit curve and
+    /// a parametrised curve.
+    /// The exception ConstructionError is raised if the domain
+    /// of the parametrised curve does not verify HasFirstPoint
+    /// and HasLastPoint return True.
+    pub fn perform(
+        &mut self,
+        ITool: &IConicTool,
+        Dom1: &crate::int_res2d::Domain,
+        PCurve: &PConic,
+        Dom2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntCurve_IntImpConicParConic_perform(
+                self as *mut Self,
+                ITool,
+                Dom1,
+                PCurve,
+                Dom2,
+                TolConf,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `IntCurve_IntImpConicParConic.hxx`:67 - `IntCurve_IntImpConicParConic::FindU()`
+    pub fn find_u(
+        &self,
+        parameter: f64,
+        point: &mut crate::gp::Pnt2d,
+        TheParCurev: &PConic,
+        TheImpTool: &IConicTool,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::IntCurve_IntImpConicParConic_find_u(
+                self as *const Self,
+                parameter,
+                point,
+                TheParCurev,
+                TheImpTool,
+            )
+        }
+    }
+
+    /// **Source:** `IntCurve_IntImpConicParConic.hxx`:72 - `IntCurve_IntImpConicParConic::FindV()`
+    pub fn find_v(
+        &self,
+        parameter: f64,
+        point: &mut crate::gp::Pnt2d,
+        TheImpTool: &IConicTool,
+        ParCurve: &PConic,
+        TheParCurveDomain: &crate::int_res2d::Domain,
+        V0: f64,
+        V1: f64,
+        Tolerance: f64,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::IntCurve_IntImpConicParConic_find_v(
+                self as *const Self,
+                parameter,
+                point,
+                TheImpTool,
+                ParCurve,
+                TheParCurveDomain,
+                V0,
+                V1,
+                Tolerance,
+            )
+        }
+    }
+
+    /// **Source:** `IntCurve_IntImpConicParConic.hxx`:81 - `IntCurve_IntImpConicParConic::And_Domaine_Objet1_Intersections()`
+    pub fn and_domaine_objet1_intersections(
+        &self,
+        TheImpTool: &IConicTool,
+        TheParCurve: &PConic,
+        TheImpCurveDomain: &crate::int_res2d::Domain,
+        TheParCurveDomain: &crate::int_res2d::Domain,
+        NbResultats: &mut i32,
+        Inter2_And_Domain2: &mut crate::ffi::TColStd_Array1OfReal,
+        Inter1: &mut crate::ffi::TColStd_Array1OfReal,
+        Resultat1: &mut crate::ffi::TColStd_Array1OfReal,
+        Resultat2: &mut crate::ffi::TColStd_Array1OfReal,
+        EpsNul: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntCurve_IntImpConicParConic_and_domaine_objet1_intersections(
+                self as *const Self,
+                TheImpTool,
+                TheParCurve,
+                TheImpCurveDomain,
+                TheParCurveDomain,
+                NbResultats,
+                Inter2_And_Domain2,
+                Inter1,
+                Resultat1,
+                Resultat2,
+                EpsNul,
+            )
+        }
     }
 
     /// Upcast to IntRes2d_Intersection
@@ -961,36 +1111,345 @@ impl IntImpConicParConic {
     }
 }
 
-// ── Skipped symbols for IntImpConicParConic (5 total) ──
-// SKIPPED: **Source:** `IntCurve_IntImpConicParConic.hxx`:48 - `IntCurve_IntImpConicParConic::IntCurve_IntImpConicParConic`
-//   constructor: Intersection between an implicit curve and
-//   constructor: a parametrised curve.
-//   constructor: The exception ConstructionError is raised if the domain
-//   Reason: param 'PCurve' uses unknown type 'const IntCurve_PConic&'
-//   // pub fn new_iconictool_domain_pconic_domain_real2(ITool: &IConicTool, Dom1: &Domain, PCurve: &PConic, Dom2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `IntCurve_IntImpConicParConic.hxx`:60 - `IntCurve_IntImpConicParConic::Perform`
-//   method: Intersection between an implicit curve and
-//   method: a parametrised curve.
-//   method: The exception ConstructionError is raised if the domain
-//   Reason: param 'PCurve' uses unknown type 'const IntCurve_PConic&'
-//   // pub fn perform(&mut self, ITool: &IConicTool, Dom1: &Domain, PCurve: &PConic, Dom2: &Domain, TolConf: f64, Tol: f64);
-//
-// SKIPPED: **Source:** `IntCurve_IntImpConicParConic.hxx`:67 - `IntCurve_IntImpConicParConic::FindU`
-//   Reason: param 'TheParCurev' uses unknown type 'const IntCurve_PConic&'
-//   // pub fn find_u(&self, parameter: f64, point: &mut Pnt2d, TheParCurev: &PConic, TheImpTool: &IConicTool) -> f64;
-//
-// SKIPPED: **Source:** `IntCurve_IntImpConicParConic.hxx`:72 - `IntCurve_IntImpConicParConic::FindV`
-//   Reason: param 'ParCurve' uses unknown type 'const IntCurve_PConic&'
-//   // pub fn find_v(&self, parameter: f64, point: &mut Pnt2d, TheImpTool: &IConicTool, ParCurve: &PConic, TheParCurveDomain: &Domain, V0: f64, V1: f64, Tolerance: f64) -> f64;
-//
-// SKIPPED: **Source:** `IntCurve_IntImpConicParConic.hxx`:81 - `IntCurve_IntImpConicParConic::And_Domaine_Objet1_Intersections`
-//   Reason: param 'TheParCurve' uses unknown type 'const IntCurve_PConic&'
-//   // pub fn and_domaine_objet1_intersections(&self, TheImpTool: &IConicTool, TheParCurve: &PConic, TheImpCurveDomain: &Domain, TheParCurveDomain: &Domain, NbResultats: &mut i32, Inter2_And_Domain2: &mut Array1OfReal, Inter1: &mut Array1OfReal, Resultat1: &mut Array1OfReal, Resultat2: &mut Array1OfReal, EpsNul: f64);
-//
-
 // ========================
-// Additional type re-exports
+// From IntCurve_MyImpParToolOfIntImpConicParConic.hxx
 // ========================
 
+/// **Source:** `IntCurve_MyImpParToolOfIntImpConicParConic.hxx`:31 - `IntCurve_MyImpParToolOfIntImpConicParConic`
+pub use crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic as MyImpParToolOfIntImpConicParConic;
+
+unsafe impl crate::CppDeletable for MyImpParToolOfIntImpConicParConic {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_destructor(ptr);
+    }
+}
+
+impl MyImpParToolOfIntImpConicParConic {
+    /// **Source:** `IntCurve_MyImpParToolOfIntImpConicParConic.hxx`:37 - `IntCurve_MyImpParToolOfIntImpConicParConic::IntCurve_MyImpParToolOfIntImpConicParConic()`
+    /// Constructor of the class.
+    pub fn new_iconictool_pconic(IT: &IConicTool, PC: &PConic) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_ctor_iconictool_pconic(
+                    IT, PC,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IntCurve_MyImpParToolOfIntImpConicParConic.hxx`:43 - `IntCurve_MyImpParToolOfIntImpConicParConic::Value()`
+    /// Computes the value of the signed distance between
+    /// the implicit curve and the point at parameter Param
+    /// on the parametrised curve.
+    pub fn value(&mut self, Param: f64, F: &mut f64) -> bool {
+        unsafe {
+            crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_value(
+                self as *mut Self,
+                Param,
+                F,
+            )
+        }
+    }
+
+    /// **Source:** `IntCurve_MyImpParToolOfIntImpConicParConic.hxx`:48 - `IntCurve_MyImpParToolOfIntImpConicParConic::Derivative()`
+    /// Computes the derivative of the previous function at
+    /// parameter Param.
+    pub fn derivative(&mut self, Param: f64, D: &mut f64) -> bool {
+        unsafe {
+            crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_derivative(
+                self as *mut Self,
+                Param,
+                D,
+            )
+        }
+    }
+
+    /// **Source:** `IntCurve_MyImpParToolOfIntImpConicParConic.hxx`:52 - `IntCurve_MyImpParToolOfIntImpConicParConic::Values()`
+    /// Computes the value and the derivative of the function.
+    pub fn values(&mut self, Param: f64, F: &mut f64, D: &mut f64) -> bool {
+        unsafe {
+            crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_values(
+                self as *mut Self,
+                Param,
+                F,
+                D,
+            )
+        }
+    }
+
+    /// Upcast to math_FunctionWithDerivative
+    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
+        unsafe {
+            &*(crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_FunctionWithDerivative(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_FunctionWithDerivative (mutable)
+    pub fn as_math_function_with_derivative_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionWithDerivative {
+        unsafe {
+            &mut *(crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_FunctionWithDerivative_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe {
+            &*(crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_Function(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe {
+            &mut *(crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_Function_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_inherited_GetStateNumber(
+                self as *mut Self,
+            )
+        }
+    }
+}
+
+// ========================
+// From IntCurve_PConic.hxx
+// ========================
+
+/// **Source:** `IntCurve_PConic.hxx`:35 - `IntCurve_PConic`
+/// This class represents a conic from gp as a
+/// parametric curve ( in order to be used by the
+/// class PConicTool from IntCurve).
 pub use crate::ffi::IntCurve_PConic as PConic;
+
+unsafe impl crate::CppDeletable for PConic {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntCurve_PConic_destructor(ptr);
+    }
+}
+
+impl PConic {
+    /// **Source:** `IntCurve_PConic.hxx`:42 - `IntCurve_PConic::IntCurve_PConic()`
+    pub fn new_elips2d(E: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_PConic_ctor_elips2d(E)) }
+    }
+
+    /// **Source:** `IntCurve_PConic.hxx`:44 - `IntCurve_PConic::IntCurve_PConic()`
+    pub fn new_circ2d(C: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_PConic_ctor_circ2d(C)) }
+    }
+
+    /// **Source:** `IntCurve_PConic.hxx`:46 - `IntCurve_PConic::IntCurve_PConic()`
+    pub fn new_parab2d(P: &crate::gp::Parab2d) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_PConic_ctor_parab2d(P)) }
+    }
+
+    /// **Source:** `IntCurve_PConic.hxx`:48 - `IntCurve_PConic::IntCurve_PConic()`
+    pub fn new_hypr2d(H: &crate::gp::Hypr2d) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_PConic_ctor_hypr2d(H)) }
+    }
+
+    /// **Source:** `IntCurve_PConic.hxx`:50 - `IntCurve_PConic::IntCurve_PConic()`
+    pub fn new_lin2d(L: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_PConic_ctor_lin2d(L)) }
+    }
+
+    /// **Source:** `IntCurve_PConic.hxx`:55 - `IntCurve_PConic::SetEpsX()`
+    /// EpsX is a internal tolerance used in math
+    /// algorithms, usually about 1e-10
+    /// (See FunctionAllRoots for more details)
+    pub fn set_eps_x(&mut self, EpsDist: f64) {
+        unsafe { crate::ffi::IntCurve_PConic_set_eps_x(self as *mut Self, EpsDist) }
+    }
+
+    /// **Source:** `IntCurve_PConic.hxx`:59 - `IntCurve_PConic::SetAccuracy()`
+    /// Accuracy is the number of samples used to
+    /// approximate the parametric curve on its domain.
+    pub fn set_accuracy(&mut self, Nb: i32) {
+        unsafe { crate::ffi::IntCurve_PConic_set_accuracy(self as *mut Self, Nb) }
+    }
+
+    /// **Source:** `IntCurve_PConic.hxx`:61 - `IntCurve_PConic::Accuracy()`
+    pub fn accuracy(&self) -> i32 {
+        unsafe { crate::ffi::IntCurve_PConic_accuracy(self as *const Self) }
+    }
+
+    /// **Source:** `IntCurve_PConic.hxx`:63 - `IntCurve_PConic::EpsX()`
+    pub fn eps_x(&self) -> f64 {
+        unsafe { crate::ffi::IntCurve_PConic_eps_x(self as *const Self) }
+    }
+
+    /// **Source:** `IntCurve_PConic.hxx`:68 - `IntCurve_PConic::TypeCurve()`
+    /// The Conics are manipulated as objects which only
+    /// depend on three parameters : Axis and two Real from Standards.
+    /// Type Curve is used to select the correct Conic.
+    pub fn type_curve(&self) -> crate::geom_abs::CurveType {
+        unsafe {
+            crate::geom_abs::CurveType::try_from(crate::ffi::IntCurve_PConic_type_curve(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `IntCurve_PConic.hxx`:70 - `IntCurve_PConic::Axis2()`
+    pub fn axis2(&self) -> &crate::gp::Ax22d {
+        unsafe { &*(crate::ffi::IntCurve_PConic_axis2(self as *const Self)) }
+    }
+
+    /// **Source:** `IntCurve_PConic.hxx`:72 - `IntCurve_PConic::Param1()`
+    pub fn param1(&self) -> f64 {
+        unsafe { crate::ffi::IntCurve_PConic_param1(self as *const Self) }
+    }
+
+    /// **Source:** `IntCurve_PConic.hxx`:74 - `IntCurve_PConic::Param2()`
+    pub fn param2(&self) -> f64 {
+        unsafe { crate::ffi::IntCurve_PConic_param2(self as *const Self) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntCurve_PConic_to_owned(self as *const Self))
+        }
+    }
+}
+
+// ========================
+// From IntCurve_PConicTool.hxx
+// ========================
+
+/// **Source:** `IntCurve_PConicTool.hxx`:30 - `IntCurve_PConicTool`
+/// Implementation of the ParTool from IntImpParGen
+/// for conics of gp, using the class PConic from IntCurve.
+pub use crate::ffi::IntCurve_PConicTool as PConicTool;
+
+unsafe impl crate::CppDeletable for PConicTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntCurve_PConicTool_destructor(ptr);
+    }
+}
+
+impl PConicTool {
+    /// **Source:** `IntCurve_PConicTool.hxx` - `IntCurve_PConicTool::IntCurve_PConicTool()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_PConicTool_ctor()) }
+    }
+
+    /// **Source:** `IntCurve_PConicTool.hxx`:35 - `IntCurve_PConicTool::EpsX()`
+    pub fn eps_x(C: &PConic) -> f64 {
+        unsafe { crate::ffi::IntCurve_PConicTool_eps_x(C) }
+    }
+
+    /// **Source:** `IntCurve_PConicTool.hxx`:37 - `IntCurve_PConicTool::NbSamples()`
+    pub fn nb_samples_pconic(C: &PConic) -> i32 {
+        unsafe { crate::ffi::IntCurve_PConicTool_nb_samples_pconic(C) }
+    }
+
+    /// **Source:** `IntCurve_PConicTool.hxx`:39 - `IntCurve_PConicTool::NbSamples()`
+    pub fn nb_samples_pconic_real2(C: &PConic, U0: f64, U1: f64) -> i32 {
+        unsafe { crate::ffi::IntCurve_PConicTool_nb_samples_pconic_real2(C, U0, U1) }
+    }
+
+    /// **Source:** `IntCurve_PConicTool.hxx`:43 - `IntCurve_PConicTool::Value()`
+    pub fn value(C: &PConic, X: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_PConicTool_value(C, X)) }
+    }
+
+    /// **Source:** `IntCurve_PConicTool.hxx`:45 - `IntCurve_PConicTool::D1()`
+    pub fn d1(C: &PConic, U: f64, P: &mut crate::gp::Pnt2d, T: &mut crate::gp::Vec2d) {
+        unsafe { crate::ffi::IntCurve_PConicTool_d1(C, U, P, T) }
+    }
+
+    /// **Source:** `IntCurve_PConicTool.hxx`:50 - `IntCurve_PConicTool::D2()`
+    pub fn d2(
+        C: &PConic,
+        U: f64,
+        P: &mut crate::gp::Pnt2d,
+        T: &mut crate::gp::Vec2d,
+        N: &mut crate::gp::Vec2d,
+    ) {
+        unsafe { crate::ffi::IntCurve_PConicTool_d2(C, U, P, T, N) }
+    }
+}
+
+// ========================
+// From IntCurve_ProjectOnPConicTool.hxx
+// ========================
+
+/// **Source:** `IntCurve_ProjectOnPConicTool.hxx`:28 - `IntCurve_ProjectOnPConicTool`
+/// This class provides a tool which computes the parameter
+/// of a point near a parametric conic.
+pub use crate::ffi::IntCurve_ProjectOnPConicTool as ProjectOnPConicTool;
+
+unsafe impl crate::CppDeletable for ProjectOnPConicTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntCurve_ProjectOnPConicTool_destructor(ptr);
+    }
+}
+
+impl ProjectOnPConicTool {
+    /// **Source:** `IntCurve_ProjectOnPConicTool.hxx` - `IntCurve_ProjectOnPConicTool::IntCurve_ProjectOnPConicTool()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_ProjectOnPConicTool_ctor()) }
+    }
+
+    /// **Source:** `IntCurve_ProjectOnPConicTool.hxx`:43 - `IntCurve_ProjectOnPConicTool::FindParameter()`
+    /// Returns  the parameter V  of the  point   on the
+    /// parametric  curve corresponding to  the  Point  Pnt.   The
+    /// Correspondence between  Pnt  and the  point   P(V) on  the
+    /// parametric    curve  must  be  coherent with    the way of
+    /// determination  of the signed  distance between a point and
+    /// the implicit curve.  Tol is the tolerance on  the distance
+    /// between a point and the parametrised curve.  In that case,
+    /// no bounds are given.  The research  of the right parameter
+    /// has to  be  made  on the natural  parametric domain of the
+    /// curve.
+    pub fn find_parameter_pconic_pnt2d_real(C: &PConic, Pnt: &crate::gp::Pnt2d, Tol: f64) -> f64 {
+        unsafe {
+            crate::ffi::IntCurve_ProjectOnPConicTool_find_parameter_pconic_pnt2d_real(C, Pnt, Tol)
+        }
+    }
+
+    /// **Source:** `IntCurve_ProjectOnPConicTool.hxx`:59 - `IntCurve_ProjectOnPConicTool::FindParameter()`
+    /// Returns the  parameter  V of the   point  on the
+    /// parametric  curve corresponding  to  the   Point Pnt.  The
+    /// Correspondence  between Pnt and  the   point  P(V) on  the
+    /// parametric  curve  must  be  coherent   with the  way   of
+    /// determination of the  signed distance between  a point and
+    /// the implicit curve.  Tol  is the tolerance on the distance
+    /// between a point and the  parametrised curve.  LowParameter
+    /// and HighParameter give the  boundaries of the interval  in
+    /// which the parameter certainly  lies.  These parameters are
+    /// given to implement a  more efficient  algorithm. So,  it is
+    /// not necessary to check   that the returned value  verifies
+    /// LowParameter <= Value <= HighParameter.
+    pub fn find_parameter_pconic_pnt2d_real3(
+        C: &PConic,
+        Pnt: &crate::gp::Pnt2d,
+        LowParameter: f64,
+        HighParameter: f64,
+        Tol: f64,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::IntCurve_ProjectOnPConicTool_find_parameter_pconic_pnt2d_real3(
+                C,
+                Pnt,
+                LowParameter,
+                HighParameter,
+                Tol,
+            )
+        }
+    }
+}

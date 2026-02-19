@@ -2,243 +2,128 @@
 #
 # This file configures which OCCT headers are processed by the binding generator.
 #
-# - `modules`: Include ALL headers from these OCCT modules. Every header matching
-#   "{Module}.hxx" and "{Module}_*.hxx" in the OCCT include directory is processed.
+# - `modules`: Include ALL headers from these OCCT modules. Supports glob patterns:
+#   "*" matches all modules, "Geom*" matches Geom, GeomAdaptor, GeomAPI, etc.
 #
-# - `exclude_headers`: Exclude specific headers, even if their module is listed above.
+# - `exclude_modules`: Exclude entire modules (applied after `modules` expansion).
+#   Supports glob patterns.
+#
+# - `exclude_headers`: Exclude specific headers, even if their module is included.
 #
 # - `include_headers`: Include specific individual headers from modules not listed
 #   in `modules`. Use this for selective inclusion from large modules.
 
-# Include ALL headers from these modules.
-modules = [
-    # === Core / Infrastructure ===
-    "Standard",            # Core types
-    "NCollection",         # Essential collections
-    "TCollection",         # String types
-    "TColStd",             # Typed collections
-    "TShort",              # Short integer array collections
-    "OSD",                 # OS utilities: file paths, timing, env, threads
-    "Resource",            # Resource management, Unicode conversion
-    "Quantity",            # Physical quantities: Color, length, angle types
-    "Units",               # Units of measurement system
-    "UnitsAPI",            # Units conversion API (mm<->inch, radian<->degree)
-    "UnitsMethods",        # Units conversion methods
-    "Message",             # Progress reporting
-    "StdFail",             # Standard failure/exception classes
-    "Precision",           # Precision utilities
+# Include all OCCT modules by default, with exclusions below.
+modules = ["*"]
 
-    # === Math / Geometry Primitives ===
-    "gp",                  # Geometric primitives (Pnt, Vec, Dir, Trsf, etc.)
-    "GProp",               # Global properties
-    "GeomAbs",             # Geometry enums
-    "TopAbs",              # Topology enums
-    "math",                # Numerical methods
-    "PLib",                # Polynomial evaluation library
-    "ElCLib",              # Elementary curve library: analytical 2D/3D curve evaluation
-    "ElSLib",              # Elementary surface library: analytical surface evaluation
-    "BSplCLib",            # B-spline curve evaluation library
-    "BSplSLib",            # B-spline surface evaluation library
-    "CSLib",               # Curve/surface analysis library (normals, curvature)
-    "Expr",                # Mathematical expression trees
-    "ExprIntrp",           # Expression interpreter/parser
-    "BVH",                 # Bounding Volume Hierarchy (spatial indexing)
+# Exclude entire module categories that are not relevant to CAD modeling bindings.
+exclude_modules = [
+    # === Platform-specific GUI ===
+    "Cocoa",               # macOS Cocoa bindings
+    "WNT",                 # Windows native types
+    "Wasm",                # WebAssembly bindings
+    "Xw",                  # X Window system bindings
 
-    # === Collections ===
-    "TColgp",              # Collections of geometric primitives
-    "TColGeom",            # Collections of Geom objects
-    "TColGeom2d",          # Collections of Geom2d objects
+    # === Visualization / Rendering ===
+    "AIS",                 # Application Interactive Services (3D viewer)
+    "Aspect",              # Window/display aspect management
+    "D3DHost",             # Direct3D host
+    "DsgPrs",              # Dimension/constraint presentation
+    "Graphic3d",           # 3D graphics primitives
+    "MeshVS",              # Mesh visualization
+    "OpenGl",              # OpenGL rendering
+    "Prs3d",               # 3D presentation
+    "PrsDim",              # Dimension presentation
+    "PrsMgr",              # Presentation manager
+    "Select3D",            # 3D selection primitives
+    "SelectBasics",        # Selection basics
+    "SelectMgr",           # Selection manager
+    "StdPrs",              # Standard presentations
+    "StdSelect",           # Standard selection
+    "TPrsStd",             # Standard presentation attributes
+    "V3d",                 # 3D viewer
+    "XCAFPrs",             # XCAF presentation
 
-    # === 3D Geometry ===
-    "Geom",                # 3D geometry
-    "GeomAdaptor",         # Adaptor for Geom curves/surfaces
-    "GeomAPI",             # Geometry utilities
-    "GeomConvert",         # Convert between Geom types
-    "GeomFill",            # Surface filling by sweeping/skinning curves
-    "GeomLib",             # Geometry utility library
-    "GeomLProp",           # Local properties on Geom curves/surfaces
-    "GeomPlate",           # Plate surface construction
-    "GeomProjLib",         # Projection of curves onto surfaces
-    "GeomTools",           # Debug I/O and utilities for Geom objects
-    "Adaptor3d",           # 3D curve/surface adaptors
-    "GC",                  # Geometry construction
-    "GCPnts",              # Geometry points
-    "Convert",             # Conversion between B-spline representations
-    "CPnts",               # Computation of points on curves
-    "FairCurve",           # Fair curve construction (minimum energy)
-    "Approx",              # Curve/surface approximation
-    "ProjLib",             # Projection of curves onto surfaces (parametric)
-    "Extrema",             # Distance calculations
-    "Plate",               # Plate surface (thin-plate-spline)
-    "NLPlate",             # Non-linear plate surface construction
-    "Law",                 # Functions
+    # === Font / Image handling ===
+    "Font",                # Font management
+    "Image",               # Image processing
+    "Media",               # Media playback
 
-    # === 2D Geometry ===
-    "Geom2d",              # 2D geometry
-    "Geom2dAdaptor",       # Adaptor for Geom2d curves
-    "Geom2dAPI",           # High-level 2D geometry construction API
-    "Geom2dConvert",       # Convert between Geom2d types
-    "Geom2dGcc",           # 2D geometric constraint solver
-    "Geom2dLProp",         # Local properties on Geom2d curves
-    "Geom2dHatch",         # 2D hatching on Geom2d curves
-    "Adaptor2d",           # 2D curve adaptors
-    "GCE2d",               # 2D geometry construction
-    "gce",                 # Geometry construction error types
-    "GccAna",              # Analytical solutions for 2D geometric constraints
-    "GccEnt",              # Qualified entities for geometric constraints
-    "GccInt",              # Internal result types for Gcc
-    "Hatch",               # 2D hatching algorithm
+    # === Persistence / Storage / Serialization ===
+    # These handle document persistence via binary/XML formats.
+    # Not needed for CAD modeling operations.
+    "BinDrivers",          # Binary persistence drivers
+    "BinLDrivers",         # Binary persistence lite drivers
+    "BinMDF",              # Binary MDF persistence
+    "BinMDataStd",         # Binary MDataStd persistence
+    "BinMDataXtd",         # Binary MDataXtd persistence
+    "BinMDocStd",          # Binary MDocStd persistence
+    "BinMFunction",        # Binary MFunction persistence
+    "BinMNaming",          # Binary MNaming persistence
+    "BinMXCAFDoc",         # Binary MXCAFDoc persistence
+    "BinObjMgt",           # Binary object management
+    "BinTObjDrivers",      # Binary TObj drivers
+    "BinTools",            # Binary tools
+    "BinXCAFDrivers",      # Binary XCAF drivers
+    "CDF",                 # Component Document Framework
+    "CDM",                 # Component Document Manager
+    "FSD",                 # File storage/retrieval
+    "PCDM",                # Persistent CDM
+    "Plugin",              # Plugin management
+    "ShapePersistent",     # Shape persistence
+    "StdDrivers",          # Standard persistence drivers
+    "StdLDrivers",         # Standard lite persistence drivers
+    "StdLPersistent",      # Standard lite persistent objects
+    "StdObjMgt",           # Standard object management
+    "StdObject",           # Standard persistent objects
+    "StdPersistent",       # Standard persistent
+    "StdStorage",          # Standard storage
+    "Storage",             # Storage base
+    "UTL",                 # Utility library
+    "XmlDrivers",          # XML persistence drivers
+    "XmlLDrivers",         # XML persistence lite drivers
+    "XmlMDF",              # XML MDF persistence
+    "XmlMDataStd",         # XML MDataStd persistence
+    "XmlMDataXtd",         # XML MDataXtd persistence
+    "XmlMDocStd",          # XML MDocStd persistence
+    "XmlMFunction",        # XML MFunction persistence
+    "XmlMNaming",          # XML MNaming persistence
+    "XmlMXCAFDoc",         # XML MXCAFDoc persistence
+    "XmlObjMgt",           # XML object management
+    "XmlTObjDrivers",      # XML TObj drivers
+    "XmlXCAFDrivers",      # XML XCAF drivers
 
-    # === Intersections ===
-    "IntAna",              # Analytical intersection of quadrics
-    "IntAna2d",            # Analytical intersection of 2D conics
-    "IntCurveSurface",     # Intersection of curve with surface
-    "IntCurvesFace",       # Intersection of curve with topological face
-    "IntRes2d",            # 2D intersection result types
-    "Intf",                # Interference/clash detection
-    "IntTools",            # Intersection tools for edges, faces
+    # === Draw test harness ===
+    # (no Draw* modules in OCCT include)
 
-    # === Bounding ===
-    "Bnd",                 # Bounding boxes
-    "BndLib",              # Bounding box computation utilities
+    # === LDOM / XML core ===
+    "LDOM",                # Lightweight DOM
+    "LDOMBasicString",     # LDOM string
+    "LDOMParser",          # LDOM parser
+    "LDOMString",          # LDOM string
 
-    # === Topology ===
-    "TopoDS",              # Shape types
-    "TopExp",              # Topology exploration
-    "TopLoc",              # Locations
-    "TopTools",            # Topology tools
+    # === Precompiled header stubs (not real modules) ===
+    "TKBRep",              # PCH stub
+    "TKDEIGES",            # PCH stub
+    "TKDESTEP",            # PCH stub
+    "TKMath",              # PCH stub
+    "TKMesh",              # PCH stub
+    "TKV3d",               # PCH stub
+    "TKXSBase",            # PCH stub
+    "TKernel",             # PCH stub
 
-    # === BRep (Boundary Representation) ===
-    "BRep",                # Boundary representation utilities
-    "BRepAdaptor",         # BRep curve/surface adaptors
-    "BRepAlgoAPI",         # Boolean operations
-    "BRepBndLib",          # Bounding box utilities
-    "BRepBuilderAPI",      # Shape construction
-    "BRepCheck",           # BRep shape validity checking
-    "BRepClass",           # 2D point classification relative to a face
-    "BRepClass3d",         # 3D point classification (inside/outside solid)
-    "BRepExtrema",         # BRep distance computation
-    "BRepFeat",            # Feature operations
-    "BRepFill",            # BRep filling, pipe, multi-section sweep
-    "BRepFilletAPI",       # Fillets and chamfers
-    "BRepGProp",           # Global properties
-    "BRepIntCurveSurface", # Intersection
-    "BRepLib",             # Topology building utilities
-    "BRepMesh",            # Meshing
-    "IMeshData",            # Mesh data model (edges, faces, curves for meshing)
-    "IMeshTools",           # Mesh algorithm interfaces (tessellators, builders)
-    "BRepOffset",          # BRep offset/shelling implementation
-    "BRepOffsetAPI",       # Offsets, sweeps, thick solids, lofts
-    "BRepPreviewAPI",      # Preview of sweep operations
-    "BRepPrim",            # BRep primitive construction internals
-    "BRepPrimAPI",         # Primitive shapes
-    "BRepProj",            # Wire projection onto a shape
-    "BRepTools",           # Shape I/O and utilities
+    # === Parser table files (not real modules) ===
+    "exptocas",            # Expression parser tables
+    "step",                # STEP parser tables
 
-    # === Boolean Operations ===
-    "BOPAlgo",             # Boolean operation algorithms
-    "BOPDS",               # Boolean operation data structures
-    "BOPTools",            # Boolean operation utilities
+    # === Internal mesh data (protected operator new, not heap-allocatable) ===
+    "BRepMeshData",        # Internal mesh data model (protected new/delete)
 
-    # === Fillet / Chamfer ===
-    "BiTgte",              # Bi-tangent (rolling ball) fillet
-    "ChFi2d",              # 2D chamfer and fillet operations
-    "ChFi3d",              # 3D chamfer and fillet algorithm
-    "FilletSurf",          # Fillet surface construction
+    # === Fortran common blocks produce invalid Rust identifiers ===
+    "AdvApp2Var",          # Advanced 2-var approximation (Fortran common blocks)
 
-    # === Modeling Operations ===
-    "Draft",               # Draft angle modification
-    "LocalAnalysis",       # Local analysis of surface continuity
-    "LocOpe",              # Local topological operations
-    "MAT",                 # Medial Axis Transform
-    "MAT2d",               # 2D Medial Axis Transform
-
-    # === Shape Healing ===
-    "ShapeAnalysis",       # Shape analysis tools
-    "ShapeBuild",          # Shape building utilities
-    "ShapeConstruct",      # Shape construction utilities
-    "ShapeCustom",         # Shape customization
-    "ShapeExtend",         # Shape extension base classes
-    "ShapeFix",            # Shape healing/fixing (wire, face, shell, solid)
-    "ShapeProcess",        # Shape processing pipeline
-    "ShapeProcessAPI",     # Shape processing high-level API
-    "ShapeUpgrade",        # Shape healing
-
-    # === Triangulation / Poly ===
-    "Poly",                # Triangulation
-
-    # === Hidden Line Removal ===
-    "HLRAlgo",             # Hidden Line Removal data structures
-    "HLRBRep",             # Hidden Line Removal on BRep shapes
-
-    # === Data Exchange: Core ===
-    "DE",                  # Data Exchange plugin framework (modern API)
-    "DEBREP",              # Data Exchange BRep provider
-    "DEBRepCascade",       # Data Exchange BRep Cascade impl
-    "DEGLTF",              # Data Exchange glTF provider
-    "DEIGES",              # Data Exchange IGES provider
-    "DEOBJ",               # Data Exchange OBJ provider
-    "DEPLY",               # Data Exchange PLY provider
-    "DESTEP",              # Data Exchange STEP provider
-    "DESTL",               # Data Exchange STL provider
-    "DEVRML",              # Data Exchange VRML provider
-    "DEXCAF",              # Data Exchange XCAF base
-    "DEXCAFCascade",       # Data Exchange XCAF Cascade impl
-    "IFSelect",            # Interface select enums
-    "Interface",           # Interface data model framework (entities, protocols, graphs)
-    "Transfer",            # Transfer process framework (transient/finder mapping)
-    "XSControl",           # Translation control framework
-
-    # === Data Exchange: IGES ===
-    "IGESControl",         # IGES I/O
-    "IGESCAFControl",      # IGES with XCAF (colors, layers, names)
-    "IGESToBRep",          # IGES to BRep conversion
-    "BRepToIGES",          # BRep to IGES conversion
-    "BRepToIGESBRep",      # BRep to IGES BRep conversion
-    "Geom2dToIGES",        # Geom2d to IGES conversion
-    "GeomToIGES",          # Geom to IGES conversion
-    "GeomToStep",          # Geom to STEP conversion
-
-    # === Data Exchange: STEP ===
-    "STEPControl",         # STEP I/O
-    "STEPCAFControl",      # STEP with XCAF (colors, layers, names)
-
-    # === Data Exchange: Mesh Formats ===
-    "StlAPI",              # STL I/O
-    "RWGltf",              # Read/Write glTF files
-    "RWMesh",              # Read/Write mesh-based formats
-    "RWObj",               # Read/Write OBJ files
-    "RWPly",               # Read/Write PLY files
-    "RWStl",               # Read/Write STL files (low level)
-
-    # === OCAF / Application Framework ===
-    "TDF",                 # Data Framework: label/attribute tree
-    "TDataStd",            # Standard data attributes
-    "TDataXtd",            # Extended data attributes
-    "TDocStd",             # Document management (open, save, undo/redo)
-    "TFunction",           # Function mechanism for parametric deps
-    "TNaming",             # Topological naming / shape history tracking
-    "TObj",                # TObj model object framework
-    "XCAFApp",             # XCAF Application entry point
-    "XCAFDimTolObjects",   # Dimensional tolerance (GD&T/PMI) data
-    "XCAFDoc",             # XCAF document attributes (shape, color, material)
-    "XCAFNoteObjects",     # Note/annotation data objects
-
-    #    Modules Not Included (Intentionally Excluded)
-    #    ─────────────────────────────────────────────
-    #    The following module categories are not included because they are either
-    #    platform-specific, visualization-only, or not relevant to CAD modeling:
-    #
-    #    - Platform-specific GUI: Cocoa, WNT, Wasm, Xw, D3DHost, OpenGl
-    #    - Visualization/rendering: AIS, V3d, Graphic3d, Prs3d, PrsMgr, Select3D,
-    #      SelectMgr, StdPrs, StdSelect, MeshVS, XSDRAW*
-    #    - Font/image handling: Font, Image
-    #    - Persistence/Storage: FSD, Storage, StdStorage, ShapeSchema, PCDM,
-    #      CDM, CDF, BinDrivers, XmlDrivers
-    #    - Draw test harness: Draw, DBRep, BRepTest, *Draw*
-    #    - VRML: Vrml*
-    #    - LDOM/XML core: LDOM, XmlObjMgt
-    #    - Other unused: Media, TKernel-internal headers
+    # === EXPRESS schema parser (internal codegen tool, not user-facing) ===
+    "Express",             # EXPRESS schema parser (String type conflicts with Rust String)
 ]
 
 # Exclude specific headers (even if their module is in `modules` above).

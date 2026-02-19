@@ -361,6 +361,14 @@ impl Builder {
         unsafe { crate::ffi::ChFi3d_Builder_reset(self as *mut Self) }
     }
 
+    /// **Source:** `ChFi3d_Builder.hxx`:181 - `ChFi3d_Builder::Builder()`
+    /// Returns the Builder of  topologic operations.
+    pub fn builder(&self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepBuildHBuilder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_Builder_builder(self as *const Self))
+        }
+    }
+
     /// **Source:** `ChFi3d_Builder.hxx`:186 - `ChFi3d_Builder::SplitKPart()`
     /// Method, implemented in the inheritants, calculates
     /// the elements of construction of the surface (fillet or
@@ -400,13 +408,6 @@ impl Builder {
         unsafe { crate::ffi::ChFi3d_Builder_perform_two_cornerby_inter(self as *mut Self, Index) }
     }
 }
-
-// ── Skipped symbols for Builder (1 total) ──
-// SKIPPED: **Source:** `ChFi3d_Builder.hxx`:181 - `ChFi3d_Builder::Builder`
-//   method: Returns the Builder of  topologic operations.
-//   Reason: return type 'Handle(TopOpeBRepBuild_HBuilder)' is unknown
-//   // pub fn builder(&self) -> OwnedPtr<Handle<TopOpeBRepBuild_HBuilder>>;
-//
 
 // ========================
 // From ChFi3d_ChBuilder.hxx
@@ -810,6 +811,15 @@ impl ChBuilder {
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
     pub fn reset(&mut self) {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Reset(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:181 - `ChFi3d_Builder::Builder()`
+    pub fn builder(&self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepBuildHBuilder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_inherited_Builder(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:186 - `ChFi3d_Builder::SplitKPart()`
@@ -1337,6 +1347,15 @@ impl FilBuilder {
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
     pub fn reset(&mut self) {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Reset(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:181 - `ChFi3d_Builder::Builder()`
+    pub fn builder(&self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepBuildHBuilder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_inherited_Builder(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:186 - `ChFi3d_Builder::SplitKPart()`

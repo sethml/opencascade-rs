@@ -6,6 +6,791 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `StepToTopoDS.hxx`:43 - `StepToTopoDS::DecodeBuilderError`
+pub fn decode_builder_error_buildererror(
+    Error: crate::step_to_topo_ds::BuilderError,
+) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_decode_builder_error_buildererror(
+            Error.into(),
+        ))
+    }
+}
+/// **Source:** `StepToTopoDS.hxx`:46 - `StepToTopoDS::DecodeShellError`
+pub fn decode_shell_error(
+    Error: crate::step_to_topo_ds::TranslateShellError,
+) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_decode_shell_error(Error.into())) }
+}
+/// **Source:** `StepToTopoDS.hxx`:49 - `StepToTopoDS::DecodeFaceError`
+pub fn decode_face_error_translatefaceerror(
+    Error: crate::step_to_topo_ds::TranslateFaceError,
+) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_decode_face_error_translatefaceerror(
+            Error.into(),
+        ))
+    }
+}
+/// **Source:** `StepToTopoDS.hxx`:52 - `StepToTopoDS::DecodeEdgeError`
+pub fn decode_edge_error_translateedgeerror(
+    Error: crate::step_to_topo_ds::TranslateEdgeError,
+) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_decode_edge_error_translateedgeerror(
+            Error.into(),
+        ))
+    }
+}
+/// **Source:** `StepToTopoDS.hxx`:55 - `StepToTopoDS::DecodeVertexError`
+pub fn decode_vertex_error_translatevertexerror(
+    Error: crate::step_to_topo_ds::TranslateVertexError,
+) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    unsafe {
+        crate::OwnedPtr::from_raw(
+            crate::ffi::StepToTopoDS_decode_vertex_error_translatevertexerror(Error.into()),
+        )
+    }
+}
+/// **Source:** `StepToTopoDS.hxx`:58 - `StepToTopoDS::DecodeVertexLoopError`
+pub fn decode_vertex_loop_error(
+    Error: crate::step_to_topo_ds::TranslateVertexLoopError,
+) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_decode_vertex_loop_error(Error.into()))
+    }
+}
+/// **Source:** `StepToTopoDS.hxx`:61 - `StepToTopoDS::DecodePolyLoopError`
+pub fn decode_poly_loop_error(
+    Error: crate::step_to_topo_ds::TranslatePolyLoopError,
+) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_decode_poly_loop_error(Error.into()))
+    }
+}
+/// **Source:** `StepToTopoDS.hxx`:64 - `StepToTopoDS::DecodeGeometricToolError`
+pub fn decode_geometric_tool_error(Error: crate::step_to_topo_ds::GeometricToolError) -> String {
+    unsafe {
+        std::ffi::CStr::from_ptr(crate::ffi::StepToTopoDS_decode_geometric_tool_error(Error.into()))
+            .to_string_lossy()
+            .into_owned()
+    }
+}
+
+/// C++ enum: `StepToTopoDS_BuilderError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum BuilderError {
+    Builderdone = 0,
+    Builderother = 1,
+}
+
+impl From<BuilderError> for i32 {
+    fn from(value: BuilderError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for BuilderError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(BuilderError::Builderdone),
+            1 => Ok(BuilderError::Builderother),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `StepToTopoDS_GeometricToolError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum GeometricToolError {
+    Geometrictooldone = 0,
+    Geometrictoolisdegenerated = 1,
+    Geometrictoolhasnopcurve = 2,
+    Geometrictoolwrong3dparameters = 3,
+    Geometrictoolnoprojectioncurve = 4,
+    Geometrictoolother = 5,
+}
+
+impl From<GeometricToolError> for i32 {
+    fn from(value: GeometricToolError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for GeometricToolError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(GeometricToolError::Geometrictooldone),
+            1 => Ok(GeometricToolError::Geometrictoolisdegenerated),
+            2 => Ok(GeometricToolError::Geometrictoolhasnopcurve),
+            3 => Ok(GeometricToolError::Geometrictoolwrong3dparameters),
+            4 => Ok(GeometricToolError::Geometrictoolnoprojectioncurve),
+            5 => Ok(GeometricToolError::Geometrictoolother),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `StepToTopoDS_TranslateEdgeError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum TranslateEdgeError {
+    Translateedgedone = 0,
+    Translateedgeother = 1,
+}
+
+impl From<TranslateEdgeError> for i32 {
+    fn from(value: TranslateEdgeError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for TranslateEdgeError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(TranslateEdgeError::Translateedgedone),
+            1 => Ok(TranslateEdgeError::Translateedgeother),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `StepToTopoDS_TranslateEdgeLoopError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum TranslateEdgeLoopError {
+    Translateedgeloopdone = 0,
+    Translateedgeloopother = 1,
+}
+
+impl From<TranslateEdgeLoopError> for i32 {
+    fn from(value: TranslateEdgeLoopError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for TranslateEdgeLoopError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(TranslateEdgeLoopError::Translateedgeloopdone),
+            1 => Ok(TranslateEdgeLoopError::Translateedgeloopother),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `StepToTopoDS_TranslateFaceError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum TranslateFaceError {
+    Translatefacedone = 0,
+    Translatefaceother = 1,
+}
+
+impl From<TranslateFaceError> for i32 {
+    fn from(value: TranslateFaceError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for TranslateFaceError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(TranslateFaceError::Translatefacedone),
+            1 => Ok(TranslateFaceError::Translatefaceother),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `StepToTopoDS_TranslatePolyLoopError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum TranslatePolyLoopError {
+    Translatepolyloopdone = 0,
+    Translatepolyloopother = 1,
+}
+
+impl From<TranslatePolyLoopError> for i32 {
+    fn from(value: TranslatePolyLoopError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for TranslatePolyLoopError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(TranslatePolyLoopError::Translatepolyloopdone),
+            1 => Ok(TranslatePolyLoopError::Translatepolyloopother),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `StepToTopoDS_TranslateShellError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum TranslateShellError {
+    Translateshelldone = 0,
+    Translateshellother = 1,
+}
+
+impl From<TranslateShellError> for i32 {
+    fn from(value: TranslateShellError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for TranslateShellError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(TranslateShellError::Translateshelldone),
+            1 => Ok(TranslateShellError::Translateshellother),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `StepToTopoDS_TranslateSolidError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum TranslateSolidError {
+    Translatesoliddone = 0,
+    Translatesolidother = 1,
+}
+
+impl From<TranslateSolidError> for i32 {
+    fn from(value: TranslateSolidError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for TranslateSolidError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(TranslateSolidError::Translatesoliddone),
+            1 => Ok(TranslateSolidError::Translatesolidother),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `StepToTopoDS_TranslateVertexError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum TranslateVertexError {
+    Translatevertexdone = 0,
+    Translatevertexother = 1,
+}
+
+impl From<TranslateVertexError> for i32 {
+    fn from(value: TranslateVertexError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for TranslateVertexError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(TranslateVertexError::Translatevertexdone),
+            1 => Ok(TranslateVertexError::Translatevertexother),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `StepToTopoDS_TranslateVertexLoopError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum TranslateVertexLoopError {
+    Translatevertexloopdone = 0,
+    Translatevertexloopother = 1,
+}
+
+impl From<TranslateVertexLoopError> for i32 {
+    fn from(value: TranslateVertexLoopError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for TranslateVertexLoopError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(TranslateVertexLoopError::Translatevertexloopdone),
+            1 => Ok(TranslateVertexLoopError::Translatevertexloopother),
+            _ => Err(value),
+        }
+    }
+}
+
+// ========================
+// From StepToTopoDS_Builder.hxx
+// ========================
+
+/// **Source:** `StepToTopoDS_Builder.hxx`:45 - `StepToTopoDS_Builder`
+pub use crate::ffi::StepToTopoDS_Builder as Builder;
+
+unsafe impl crate::CppDeletable for Builder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepToTopoDS_Builder_destructor(ptr);
+    }
+}
+
+impl Builder {
+    /// **Source:** `StepToTopoDS_Builder.hxx`:50 - `StepToTopoDS_Builder::StepToTopoDS_Builder()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_Builder_ctor()) }
+    }
+
+    /// **Source:** `StepToTopoDS_Builder.hxx`:52 - `StepToTopoDS_Builder::Init()`
+    pub fn init_handlestepshapemanifoldsolidbrep_handletransfertransientprocess_factors_progressrange(
+        &mut self,
+        theManifoldSolid: &crate::ffi::HandleStepShapeManifoldSolidBrep,
+        theTP: &crate::ffi::HandleTransferTransientProcess,
+        theLocalFactors: &crate::step_data::Factors,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepshapemanifoldsolidbrep_handletransfertransientprocess_factors_progressrange(self as *mut Self, theManifoldSolid, theTP, theLocalFactors, theProgress)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_Builder.hxx`:57 - `StepToTopoDS_Builder::Init()`
+    pub fn init_handlestepshapebrepwithvoids_handletransfertransientprocess_factors_progressrange(
+        &mut self,
+        theBRepWithVoids: &crate::ffi::HandleStepShapeBrepWithVoids,
+        theTP: &crate::ffi::HandleTransferTransientProcess,
+        theLocalFactors: &crate::step_data::Factors,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepshapebrepwithvoids_handletransfertransientprocess_factors_progressrange(self as *mut Self, theBRepWithVoids, theTP, theLocalFactors, theProgress)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_Builder.hxx`:62 - `StepToTopoDS_Builder::Init()`
+    pub fn init_handlestepshapefacetedbrep_handletransfertransientprocess_factors_progressrange(
+        &mut self,
+        theFB: &crate::ffi::HandleStepShapeFacetedBrep,
+        theTP: &crate::ffi::HandleTransferTransientProcess,
+        theLocalFactors: &crate::step_data::Factors,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepshapefacetedbrep_handletransfertransientprocess_factors_progressrange(self as *mut Self, theFB, theTP, theLocalFactors, theProgress)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_Builder.hxx`:67 - `StepToTopoDS_Builder::Init()`
+    pub fn init_handlestepshapefacetedbrepandbrepwithvoids_handletransfertransientprocess_factors_progressrange(
+        &mut self,
+        theFBABWV: &crate::ffi::HandleStepShapeFacetedBrepAndBrepWithVoids,
+        theTP: &crate::ffi::HandleTransferTransientProcess,
+        theLocalFactors: &crate::step_data::Factors,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepshapefacetedbrepandbrepwithvoids_handletransfertransientprocess_factors_progressrange(self as *mut Self, theFBABWV, theTP, theLocalFactors, theProgress)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_Builder.hxx`:72 - `StepToTopoDS_Builder::Init()`
+    pub fn init_handlestepshapeshellbasedsurfacemodel_handletransfertransientprocess_nmtool_factors_progressrange(
+        &mut self,
+        S: &crate::ffi::HandleStepShapeShellBasedSurfaceModel,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        NMTool: &mut NMTool,
+        theLocalFactors: &crate::step_data::Factors,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepshapeshellbasedsurfacemodel_handletransfertransientprocess_nmtool_factors_progressrange(self as *mut Self, S, TP, NMTool, theLocalFactors, theProgress)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_Builder.hxx`:78 - `StepToTopoDS_Builder::Init()`
+    pub fn init_handlestepshapeedgebasedwireframemodel_handletransfertransientprocess_factors(
+        &mut self,
+        S: &crate::ffi::HandleStepShapeEdgeBasedWireframeModel,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        theLocalFactors: &crate::step_data::Factors,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepshapeedgebasedwireframemodel_handletransfertransientprocess_factors(self as *mut Self, S, TP, theLocalFactors)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_Builder.hxx`:82 - `StepToTopoDS_Builder::Init()`
+    pub fn init_handlestepshapefacebasedsurfacemodel_handletransfertransientprocess_factors(
+        &mut self,
+        S: &crate::ffi::HandleStepShapeFaceBasedSurfaceModel,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        theLocalFactors: &crate::step_data::Factors,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepshapefacebasedsurfacemodel_handletransfertransientprocess_factors(self as *mut Self, S, TP, theLocalFactors)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_Builder.hxx`:86 - `StepToTopoDS_Builder::Init()`
+    pub fn init_handlestepshapegeometricset_handletransfertransientprocess_factors_handletransferactoroftransientprocess_bool_progressrange(
+        &mut self,
+        S: &crate::ffi::HandleStepShapeGeometricSet,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        theLocalFactors: &crate::step_data::Factors,
+        RA: &crate::ffi::HandleTransferActorOfTransientProcess,
+        isManifold: bool,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepshapegeometricset_handletransfertransientprocess_factors_handletransferactoroftransientprocess_bool_progressrange(self as *mut Self, S, TP, theLocalFactors, RA, isManifold, theProgress)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_Builder.hxx`:93 - `StepToTopoDS_Builder::Init()`
+    pub fn init_handlestepvisualtessellatedsolid_handletransfertransientprocess_bool2_factors_progressrange(
+        &mut self,
+        theTSo: &crate::ffi::HandleStepVisualTessellatedSolid,
+        theTP: &crate::ffi::HandleTransferTransientProcess,
+        theReadTessellatedWhenNoBRepOnly: bool,
+        theHasGeom: &mut bool,
+        theLocalFactors: &crate::step_data::Factors,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepvisualtessellatedsolid_handletransfertransientprocess_bool2_factors_progressrange(self as *mut Self, theTSo, theTP, theReadTessellatedWhenNoBRepOnly, theHasGeom, theLocalFactors, theProgress)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_Builder.hxx`:100 - `StepToTopoDS_Builder::Init()`
+    pub fn init_handlestepvisualtessellatedshell_handletransfertransientprocess_bool2_factors_progressrange(
+        &mut self,
+        theTSh: &crate::ffi::HandleStepVisualTessellatedShell,
+        theTP: &crate::ffi::HandleTransferTransientProcess,
+        theReadTessellatedWhenNoBRepOnly: bool,
+        theHasGeom: &mut bool,
+        theLocalFactors: &crate::step_data::Factors,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepvisualtessellatedshell_handletransfertransientprocess_bool2_factors_progressrange(self as *mut Self, theTSh, theTP, theReadTessellatedWhenNoBRepOnly, theHasGeom, theLocalFactors, theProgress)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_Builder.hxx`:107 - `StepToTopoDS_Builder::Init()`
+    pub fn init_handlestepvisualtessellatedface_handletransfertransientprocess_bool2_factors(
+        &mut self,
+        theTF: &crate::ffi::HandleStepVisualTessellatedFace,
+        theTP: &crate::ffi::HandleTransferTransientProcess,
+        theReadTessellatedWhenNoBRepOnly: bool,
+        theHasGeom: &mut bool,
+        theLocalFactors: &crate::step_data::Factors,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepvisualtessellatedface_handletransfertransientprocess_bool2_factors(self as *mut Self, theTF, theTP, theReadTessellatedWhenNoBRepOnly, theHasGeom, theLocalFactors)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_Builder.hxx`:113 - `StepToTopoDS_Builder::Init()`
+    pub fn init_handlestepvisualtessellatedsurfaceset_handletransfertransientprocess_bool_factors(
+        &mut self,
+        theTSS: &crate::ffi::HandleStepVisualTessellatedSurfaceSet,
+        theTP: &crate::ffi::HandleTransferTransientProcess,
+        theHasGeom: &mut bool,
+        theLocalFactors: &crate::step_data::Factors,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_Builder_init_handlestepvisualtessellatedsurfaceset_handletransfertransientprocess_bool_factors(self as *mut Self, theTSS, theTP, theHasGeom, theLocalFactors)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_Builder.hxx`:118 - `StepToTopoDS_Builder::Value()`
+    pub fn value(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::StepToTopoDS_Builder_value(self as *const Self)) }
+    }
+
+    /// **Source:** `StepToTopoDS_Builder.hxx`:120 - `StepToTopoDS_Builder::Error()`
+    pub fn error(&self) -> crate::step_to_topo_ds::BuilderError {
+        unsafe {
+            crate::step_to_topo_ds::BuilderError::try_from(crate::ffi::StepToTopoDS_Builder_error(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe { &*(crate::ffi::StepToTopoDS_Builder_as_StepToTopoDS_Root(self as *const Self)) }
+    }
+
+    /// Upcast to StepToTopoDS_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *(crate::ffi::StepToTopoDS_Builder_as_StepToTopoDS_Root_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_Builder_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
+    pub fn precision(&self) -> f64 {
+        unsafe { crate::ffi::StepToTopoDS_Builder_inherited_Precision(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
+    pub fn set_precision(&mut self, preci: f64) {
+        unsafe { crate::ffi::StepToTopoDS_Builder_inherited_SetPrecision(self as *mut Self, preci) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
+    pub fn max_tol(&self) -> f64 {
+        unsafe { crate::ffi::StepToTopoDS_Builder_inherited_MaxTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
+    pub fn set_max_tol(&mut self, maxpreci: f64) {
+        unsafe { crate::ffi::StepToTopoDS_Builder_inherited_SetMaxTol(self as *mut Self, maxpreci) }
+    }
+}
+
+// ========================
+// From StepToTopoDS_GeometricTool.hxx
+// ========================
+
+/// **Source:** `StepToTopoDS_GeometricTool.hxx`:34 - `StepToTopoDS_GeometricTool`
+/// This class contains some algorithmic services
+/// specific to the mapping STEP to CAS.CADE
+pub use crate::ffi::StepToTopoDS_GeometricTool as GeometricTool;
+
+unsafe impl crate::CppDeletable for GeometricTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepToTopoDS_GeometricTool_destructor(ptr);
+    }
+}
+
+impl GeometricTool {
+    /// **Source:** `StepToTopoDS_GeometricTool.hxx` - `StepToTopoDS_GeometricTool::StepToTopoDS_GeometricTool()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_GeometricTool_ctor()) }
+    }
+
+    /// **Source:** `StepToTopoDS_GeometricTool.hxx`:39 - `StepToTopoDS_GeometricTool::PCurve()`
+    pub fn p_curve(
+        SC: &crate::ffi::HandleStepGeomSurfaceCurve,
+        S: &crate::ffi::HandleStepGeomSurface,
+        PC: &mut crate::ffi::HandleStepGeomPcurve,
+        last: i32,
+    ) -> i32 {
+        unsafe { crate::ffi::StepToTopoDS_GeometricTool_p_curve(SC, S, PC, last) }
+    }
+
+    /// **Source:** `StepToTopoDS_GeometricTool.hxx`:44 - `StepToTopoDS_GeometricTool::IsSeamCurve()`
+    pub fn is_seam_curve(
+        SC: &crate::ffi::HandleStepGeomSurfaceCurve,
+        S: &crate::ffi::HandleStepGeomSurface,
+        E: &crate::ffi::HandleStepShapeEdge,
+        EL: &crate::ffi::HandleStepShapeEdgeLoop,
+    ) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_GeometricTool_is_seam_curve(SC, S, E, EL) }
+    }
+
+    /// **Source:** `StepToTopoDS_GeometricTool.hxx`:49 - `StepToTopoDS_GeometricTool::IsLikeSeam()`
+    pub fn is_like_seam(
+        SC: &crate::ffi::HandleStepGeomSurfaceCurve,
+        S: &crate::ffi::HandleStepGeomSurface,
+        E: &crate::ffi::HandleStepShapeEdge,
+        EL: &crate::ffi::HandleStepShapeEdgeLoop,
+    ) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_GeometricTool_is_like_seam(SC, S, E, EL) }
+    }
+
+    /// **Source:** `StepToTopoDS_GeometricTool.hxx`:54 - `StepToTopoDS_GeometricTool::UpdateParam3d()`
+    pub fn update_param3d(
+        C: &crate::ffi::HandleGeomCurve,
+        w1: &mut f64,
+        w2: &mut f64,
+        preci: f64,
+    ) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_GeometricTool_update_param3d(C, w1, w2, preci) }
+    }
+}
+
+// ========================
+// From StepToTopoDS_MakeTransformed.hxx
+// ========================
+
+/// **Source:** `StepToTopoDS_MakeTransformed.hxx`:35 - `StepToTopoDS_MakeTransformed`
+/// Produces instances by Transformation of a basic item
+pub use crate::ffi::StepToTopoDS_MakeTransformed as MakeTransformed;
+
+unsafe impl crate::CppDeletable for MakeTransformed {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepToTopoDS_MakeTransformed_destructor(ptr);
+    }
+}
+
+impl MakeTransformed {
+    /// **Source:** `StepToTopoDS_MakeTransformed.hxx`:40 - `StepToTopoDS_MakeTransformed::StepToTopoDS_MakeTransformed()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_MakeTransformed_ctor()) }
+    }
+
+    /// **Source:** `StepToTopoDS_MakeTransformed.hxx`:46 - `StepToTopoDS_MakeTransformed::Compute()`
+    /// Computes a transformation to pass from an Origin placement to
+    /// a Target placement. Returns True when done
+    /// If not done, the transformation will by Identity
+    pub fn compute_handlestepgeomaxis2placement3d2_factors(
+        &mut self,
+        Origin: &crate::ffi::HandleStepGeomAxis2Placement3d,
+        Target: &crate::ffi::HandleStepGeomAxis2Placement3d,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> bool {
+        unsafe {
+            crate::ffi::StepToTopoDS_MakeTransformed_compute_handlestepgeomaxis2placement3d2_factors(
+                self as *mut Self,
+                Origin,
+                Target,
+                theLocalFactors,
+            )
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_MakeTransformed.hxx`:52 - `StepToTopoDS_MakeTransformed::Compute()`
+    /// Computes a transformation defined by an operator 3D
+    pub fn compute_handlestepgeomcartesiantransformationoperator3d_factors(
+        &mut self,
+        Operator: &crate::ffi::HandleStepGeomCartesianTransformationOperator3d,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> bool {
+        unsafe {
+            crate::ffi::StepToTopoDS_MakeTransformed_compute_handlestepgeomcartesiantransformationoperator3d_factors(self as *mut Self, Operator, theLocalFactors)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_MakeTransformed.hxx`:57 - `StepToTopoDS_MakeTransformed::Transformation()`
+    /// Returns the computed transformation (Identity if not yet or
+    /// if failed)
+    pub fn transformation(&self) -> &crate::gp::Trsf {
+        unsafe { &*(crate::ffi::StepToTopoDS_MakeTransformed_transformation(self as *const Self)) }
+    }
+
+    /// **Source:** `StepToTopoDS_MakeTransformed.hxx`:61 - `StepToTopoDS_MakeTransformed::Transform()`
+    /// Applies the computed transformation to a shape
+    /// Returns False if the transformation is Identity
+    pub fn transform(&self, shape: &mut crate::topo_ds::Shape) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_MakeTransformed_transform(self as *const Self, shape) }
+    }
+
+    /// **Source:** `StepToTopoDS_MakeTransformed.hxx`:74 - `StepToTopoDS_MakeTransformed::TranslateMappedItem()`
+    /// Translates a MappedItem. More precisely
+    /// A MappedItem has a MappingSource and a MappingTarget
+    /// MappingSource has a MappedRepresentation and a MappingOrigin
+    /// MappedRepresentation is the basic item to be instanced
+    /// MappingOrigin is the starting placement
+    /// MappingTarget is the final placement
+    ///
+    /// Hence, the transformation from MappingOrigin and MappingTarget
+    /// is computed, the MappedRepr. is converted to a Shape, then
+    /// transformed as an instance of this Shape
+    pub fn translate_mapped_item(
+        &mut self,
+        mapit: &crate::ffi::HandleStepReprMappedItem,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        theLocalFactors: &crate::step_data::Factors,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepToTopoDS_MakeTransformed_translate_mapped_item(
+                    self as *mut Self,
+                    mapit,
+                    TP,
+                    theLocalFactors,
+                    theProgress,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*(crate::ffi::StepToTopoDS_MakeTransformed_as_StepToTopoDS_Root(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *(crate::ffi::StepToTopoDS_MakeTransformed_as_StepToTopoDS_Root_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_MakeTransformed_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
+    pub fn precision(&self) -> f64 {
+        unsafe { crate::ffi::StepToTopoDS_MakeTransformed_inherited_Precision(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
+    pub fn set_precision(&mut self, preci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_MakeTransformed_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
+    pub fn max_tol(&self) -> f64 {
+        unsafe { crate::ffi::StepToTopoDS_MakeTransformed_inherited_MaxTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
+    pub fn set_max_tol(&mut self, maxpreci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_MakeTransformed_inherited_SetMaxTol(
+                self as *mut Self,
+                maxpreci,
+            )
+        }
+    }
+}
+
 // ========================
 // From StepToTopoDS_NMTool.hxx
 // ========================
@@ -168,9 +953,1631 @@ impl NMTool {
 }
 
 // ========================
+// From StepToTopoDS_PointPair.hxx
+// ========================
+
+/// **Source:** `StepToTopoDS_PointPair.hxx`:27 - `StepToTopoDS_PointPair`
+/// Stores a pair of Points from step
+pub use crate::ffi::StepToTopoDS_PointPair as PointPair;
+
+unsafe impl crate::CppDeletable for PointPair {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepToTopoDS_PointPair_destructor(ptr);
+    }
+}
+
+impl PointPair {
+    /// **Source:** `StepToTopoDS_PointPair.hxx`:32 - `StepToTopoDS_PointPair::StepToTopoDS_PointPair()`
+    pub fn new_handlestepgeomcartesianpoint2(
+        P1: &crate::ffi::HandleStepGeomCartesianPoint,
+        P2: &crate::ffi::HandleStepGeomCartesianPoint,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepToTopoDS_PointPair_ctor_handlestepgeomcartesianpoint2(P1, P2),
+            )
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_PointPair.hxx`:35 - `StepToTopoDS_PointPair::GetPoint1()`
+    pub fn get_point1(&self) -> &crate::ffi::HandleStepGeomCartesianPoint {
+        unsafe { &*(crate::ffi::StepToTopoDS_PointPair_get_point1(self as *const Self)) }
+    }
+
+    /// **Source:** `StepToTopoDS_PointPair.hxx`:37 - `StepToTopoDS_PointPair::GetPoint2()`
+    pub fn get_point2(&self) -> &crate::ffi::HandleStepGeomCartesianPoint {
+        unsafe { &*(crate::ffi::StepToTopoDS_PointPair_get_point2(self as *const Self)) }
+    }
+}
+
+// ========================
+// From StepToTopoDS_Root.hxx
+// ========================
+
+/// **Source:** `StepToTopoDS_Root.hxx`:27 - `StepToTopoDS_Root`
+/// This class implements the common services for
+/// all classes of StepToTopoDS which report error
+/// and sets and returns precision.
+pub use crate::ffi::StepToTopoDS_Root as Root;
+
+unsafe impl crate::CppDeletable for Root {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepToTopoDS_Root_destructor(ptr);
+    }
+}
+
+impl Root {
+    /// **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_Root_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
+    /// Returns the value of "MyPrecision"
+    pub fn precision(&self) -> f64 {
+        unsafe { crate::ffi::StepToTopoDS_Root_precision(self as *const Self) }
+    }
+
+    /// **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
+    /// Sets the value of "MyPrecision"
+    pub fn set_precision(&mut self, preci: f64) {
+        unsafe { crate::ffi::StepToTopoDS_Root_set_precision(self as *mut Self, preci) }
+    }
+
+    /// **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
+    /// Returns the value of "MaxTol"
+    pub fn max_tol(&self) -> f64 {
+        unsafe { crate::ffi::StepToTopoDS_Root_max_tol(self as *const Self) }
+    }
+
+    /// **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
+    /// Sets the value of MaxTol
+    pub fn set_max_tol(&mut self, maxpreci: f64) {
+        unsafe { crate::ffi::StepToTopoDS_Root_set_max_tol(self as *mut Self, maxpreci) }
+    }
+}
+
+// ========================
+// From StepToTopoDS_Tool.hxx
+// ========================
+
+/// **Source:** `StepToTopoDS_Tool.hxx`:41 - `StepToTopoDS_Tool`
+/// This Tool Class provides Information to build
+/// a Cas.Cad BRep from a ProSTEP Shape model.
+pub use crate::ffi::StepToTopoDS_Tool as Tool;
+
+unsafe impl crate::CppDeletable for Tool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepToTopoDS_Tool_destructor(ptr);
+    }
+}
+
+impl Tool {
+    /// **Source:** `StepToTopoDS_Tool.hxx`:46 - `StepToTopoDS_Tool::StepToTopoDS_Tool()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_Tool_ctor()) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:48 - `StepToTopoDS_Tool::StepToTopoDS_Tool()`
+    pub fn new_datamapoftri_handletransfertransientprocess(
+        Map: &crate::ffi::StepToTopoDS_DataMapOfTRI,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepToTopoDS_Tool_ctor_datamapoftri_handletransfertransientprocess(
+                    Map, TP,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:51 - `StepToTopoDS_Tool::Init()`
+    pub fn init(
+        &mut self,
+        Map: &crate::ffi::StepToTopoDS_DataMapOfTRI,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+    ) {
+        unsafe { crate::ffi::StepToTopoDS_Tool_init(self as *mut Self, Map, TP) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:55 - `StepToTopoDS_Tool::IsBound()`
+    pub fn is_bound(
+        &mut self,
+        TRI: &crate::ffi::HandleStepShapeTopologicalRepresentationItem,
+    ) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_Tool_is_bound(self as *mut Self, TRI) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:57 - `StepToTopoDS_Tool::Bind()`
+    pub fn bind(
+        &mut self,
+        TRI: &crate::ffi::HandleStepShapeTopologicalRepresentationItem,
+        S: &crate::topo_ds::Shape,
+    ) {
+        unsafe { crate::ffi::StepToTopoDS_Tool_bind(self as *mut Self, TRI, S) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:60 - `StepToTopoDS_Tool::Find()`
+    pub fn find(
+        &mut self,
+        TRI: &crate::ffi::HandleStepShapeTopologicalRepresentationItem,
+    ) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::StepToTopoDS_Tool_find(self as *mut Self, TRI)) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:63 - `StepToTopoDS_Tool::ClearEdgeMap()`
+    pub fn clear_edge_map(&mut self) {
+        unsafe { crate::ffi::StepToTopoDS_Tool_clear_edge_map(self as *mut Self) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:65 - `StepToTopoDS_Tool::IsEdgeBound()`
+    pub fn is_edge_bound(&mut self, PP: &PointPair) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_Tool_is_edge_bound(self as *mut Self, PP) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:67 - `StepToTopoDS_Tool::BindEdge()`
+    pub fn bind_edge(&mut self, PP: &PointPair, E: &crate::topo_ds::Edge) {
+        unsafe { crate::ffi::StepToTopoDS_Tool_bind_edge(self as *mut Self, PP, E) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:69 - `StepToTopoDS_Tool::FindEdge()`
+    pub fn find_edge(&mut self, PP: &PointPair) -> &crate::topo_ds::Edge {
+        unsafe { &*(crate::ffi::StepToTopoDS_Tool_find_edge(self as *mut Self, PP)) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:71 - `StepToTopoDS_Tool::ClearVertexMap()`
+    pub fn clear_vertex_map(&mut self) {
+        unsafe { crate::ffi::StepToTopoDS_Tool_clear_vertex_map(self as *mut Self) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:73 - `StepToTopoDS_Tool::IsVertexBound()`
+    pub fn is_vertex_bound(&mut self, PG: &crate::ffi::HandleStepGeomCartesianPoint) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_Tool_is_vertex_bound(self as *mut Self, PG) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:75 - `StepToTopoDS_Tool::BindVertex()`
+    pub fn bind_vertex(
+        &mut self,
+        P: &crate::ffi::HandleStepGeomCartesianPoint,
+        V: &crate::topo_ds::Vertex,
+    ) {
+        unsafe { crate::ffi::StepToTopoDS_Tool_bind_vertex(self as *mut Self, P, V) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:77 - `StepToTopoDS_Tool::FindVertex()`
+    pub fn find_vertex(
+        &mut self,
+        P: &crate::ffi::HandleStepGeomCartesianPoint,
+    ) -> &crate::topo_ds::Vertex {
+        unsafe { &*(crate::ffi::StepToTopoDS_Tool_find_vertex(self as *mut Self, P)) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:79 - `StepToTopoDS_Tool::ComputePCurve()`
+    pub fn compute_p_curve_bool(&mut self, B: bool) {
+        unsafe { crate::ffi::StepToTopoDS_Tool_compute_p_curve_bool(self as *mut Self, B) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:81 - `StepToTopoDS_Tool::ComputePCurve()`
+    pub fn compute_p_curve(&self) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_Tool_compute_p_curve(self as *const Self) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:83 - `StepToTopoDS_Tool::TransientProcess()`
+    pub fn transient_process(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_Tool_transient_process(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:85 - `StepToTopoDS_Tool::AddContinuity()`
+    pub fn add_continuity_handlegeomsurface(&mut self, GeomSurf: &crate::ffi::HandleGeomSurface) {
+        unsafe {
+            crate::ffi::StepToTopoDS_Tool_add_continuity_handlegeomsurface(
+                self as *mut Self,
+                GeomSurf,
+            )
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:87 - `StepToTopoDS_Tool::AddContinuity()`
+    pub fn add_continuity_handlegeomcurve(&mut self, GeomCurve: &crate::ffi::HandleGeomCurve) {
+        unsafe {
+            crate::ffi::StepToTopoDS_Tool_add_continuity_handlegeomcurve(
+                self as *mut Self,
+                GeomCurve,
+            )
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:89 - `StepToTopoDS_Tool::AddContinuity()`
+    pub fn add_continuity_handlegeom2dcurve(&mut self, GeomCur2d: &crate::ffi::HandleGeom2dCurve) {
+        unsafe {
+            crate::ffi::StepToTopoDS_Tool_add_continuity_handlegeom2dcurve(
+                self as *mut Self,
+                GeomCur2d,
+            )
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:91 - `StepToTopoDS_Tool::C0Surf()`
+    pub fn c0_surf(&self) -> i32 {
+        unsafe { crate::ffi::StepToTopoDS_Tool_c0_surf(self as *const Self) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:93 - `StepToTopoDS_Tool::C1Surf()`
+    pub fn c1_surf(&self) -> i32 {
+        unsafe { crate::ffi::StepToTopoDS_Tool_c1_surf(self as *const Self) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:95 - `StepToTopoDS_Tool::C2Surf()`
+    pub fn c2_surf(&self) -> i32 {
+        unsafe { crate::ffi::StepToTopoDS_Tool_c2_surf(self as *const Self) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:97 - `StepToTopoDS_Tool::C0Cur2()`
+    pub fn c0_cur2(&self) -> i32 {
+        unsafe { crate::ffi::StepToTopoDS_Tool_c0_cur2(self as *const Self) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:99 - `StepToTopoDS_Tool::C1Cur2()`
+    pub fn c1_cur2(&self) -> i32 {
+        unsafe { crate::ffi::StepToTopoDS_Tool_c1_cur2(self as *const Self) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:101 - `StepToTopoDS_Tool::C2Cur2()`
+    pub fn c2_cur2(&self) -> i32 {
+        unsafe { crate::ffi::StepToTopoDS_Tool_c2_cur2(self as *const Self) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:103 - `StepToTopoDS_Tool::C0Cur3()`
+    pub fn c0_cur3(&self) -> i32 {
+        unsafe { crate::ffi::StepToTopoDS_Tool_c0_cur3(self as *const Self) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:105 - `StepToTopoDS_Tool::C1Cur3()`
+    pub fn c1_cur3(&self) -> i32 {
+        unsafe { crate::ffi::StepToTopoDS_Tool_c1_cur3(self as *const Self) }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:107 - `StepToTopoDS_Tool::C2Cur3()`
+    pub fn c2_cur3(&self) -> i32 {
+        unsafe { crate::ffi::StepToTopoDS_Tool_c2_cur3(self as *const Self) }
+    }
+}
+
+// ========================
+// From StepToTopoDS_TranslateCompositeCurve.hxx
+// ========================
+
+/// **Source:** `StepToTopoDS_TranslateCompositeCurve.hxx`:38 - `StepToTopoDS_TranslateCompositeCurve`
+/// Translate STEP entity composite_curve to TopoDS_Wire
+/// If surface is given, the curve is assumed to lie on that
+/// surface and in case if any segment of it is a
+/// curve_on_surface, the pcurve for that segment will be taken.
+/// Note: a segment of composite_curve may be itself
+/// composite_curve. Only one-level protection against
+/// cyclic references is implemented.
+pub use crate::ffi::StepToTopoDS_TranslateCompositeCurve as TranslateCompositeCurve;
+
+unsafe impl crate::CppDeletable for TranslateCompositeCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepToTopoDS_TranslateCompositeCurve_destructor(ptr);
+    }
+}
+
+impl TranslateCompositeCurve {
+    /// **Source:** `StepToTopoDS_TranslateCompositeCurve.hxx`:44 - `StepToTopoDS_TranslateCompositeCurve::StepToTopoDS_TranslateCompositeCurve()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateCompositeCurve_ctor())
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateCompositeCurve.hxx`:47 - `StepToTopoDS_TranslateCompositeCurve::StepToTopoDS_TranslateCompositeCurve()`
+    /// Translates standalone composite_curve
+    pub fn new_handlestepgeomcompositecurve_handletransfertransientprocess_factors(
+        CC: &crate::ffi::HandleStepGeomCompositeCurve,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateCompositeCurve_ctor_handlestepgeomcompositecurve_handletransfertransientprocess_factors(CC, TP, theLocalFactors))
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateCompositeCurve.hxx`:53 - `StepToTopoDS_TranslateCompositeCurve::StepToTopoDS_TranslateCompositeCurve()`
+    /// Translates composite_curve lying on surface
+    pub fn new_handlestepgeomcompositecurve_handletransfertransientprocess_handlestepgeomsurface_handlegeomsurface_factors(
+        CC: &crate::ffi::HandleStepGeomCompositeCurve,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        S: &crate::ffi::HandleStepGeomSurface,
+        Surf: &crate::ffi::HandleGeomSurface,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateCompositeCurve_ctor_handlestepgeomcompositecurve_handletransfertransientprocess_handlestepgeomsurface_handlegeomsurface_factors(CC, TP, S, Surf, theLocalFactors))
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateCompositeCurve.hxx`:62 - `StepToTopoDS_TranslateCompositeCurve::Init()`
+    /// Translates standalone composite_curve
+    pub fn init_handlestepgeomcompositecurve_handletransfertransientprocess_factors(
+        &mut self,
+        CC: &crate::ffi::HandleStepGeomCompositeCurve,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> bool {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateCompositeCurve_init_handlestepgeomcompositecurve_handletransfertransientprocess_factors(self as *mut Self, CC, TP, theLocalFactors)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateCompositeCurve.hxx`:68 - `StepToTopoDS_TranslateCompositeCurve::Init()`
+    /// Translates composite_curve lying on surface
+    pub fn init_handlestepgeomcompositecurve_handletransfertransientprocess_handlestepgeomsurface_handlegeomsurface_factors(
+        &mut self,
+        CC: &crate::ffi::HandleStepGeomCompositeCurve,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        S: &crate::ffi::HandleStepGeomSurface,
+        Surf: &crate::ffi::HandleGeomSurface,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> bool {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateCompositeCurve_init_handlestepgeomcompositecurve_handletransfertransientprocess_handlestepgeomsurface_handlegeomsurface_factors(self as *mut Self, CC, TP, S, Surf, theLocalFactors)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateCompositeCurve.hxx`:75 - `StepToTopoDS_TranslateCompositeCurve::Value()`
+    /// Returns result of last translation or null wire if failed.
+    pub fn value(&self) -> &crate::topo_ds::Wire {
+        unsafe { &*(crate::ffi::StepToTopoDS_TranslateCompositeCurve_value(self as *const Self)) }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateCompositeCurve.hxx`:78 - `StepToTopoDS_TranslateCompositeCurve::IsInfiniteSegment()`
+    /// Returns True if composite_curve contains a segment with infinite parameters.
+    pub fn is_infinite_segment(&self) -> bool {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateCompositeCurve_is_infinite_segment(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*(crate::ffi::StepToTopoDS_TranslateCompositeCurve_as_StepToTopoDS_Root(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *(crate::ffi::StepToTopoDS_TranslateCompositeCurve_as_StepToTopoDS_Root_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateCompositeCurve_inherited_IsDone(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
+    pub fn precision(&self) -> f64 {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateCompositeCurve_inherited_Precision(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
+    pub fn set_precision(&mut self, preci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateCompositeCurve_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
+    pub fn max_tol(&self) -> f64 {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateCompositeCurve_inherited_MaxTol(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
+    pub fn set_max_tol(&mut self, maxpreci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateCompositeCurve_inherited_SetMaxTol(
+                self as *mut Self,
+                maxpreci,
+            )
+        }
+    }
+}
+
+// ========================
+// From StepToTopoDS_TranslateCurveBoundedSurface.hxx
+// ========================
+
+/// **Source:** `StepToTopoDS_TranslateCurveBoundedSurface.hxx`:30 - `StepToTopoDS_TranslateCurveBoundedSurface`
+/// Translate curve_bounded_surface into TopoDS_Face
+pub use crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface as TranslateCurveBoundedSurface;
+
+unsafe impl crate::CppDeletable for TranslateCurveBoundedSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_destructor(ptr);
+    }
+}
+
+impl TranslateCurveBoundedSurface {
+    /// **Source:** `StepToTopoDS_TranslateCurveBoundedSurface.hxx`:36 - `StepToTopoDS_TranslateCurveBoundedSurface::StepToTopoDS_TranslateCurveBoundedSurface()`
+    /// Create empty tool
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_ctor())
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateCurveBoundedSurface.hxx`:39 - `StepToTopoDS_TranslateCurveBoundedSurface::StepToTopoDS_TranslateCurveBoundedSurface()`
+    /// Translate surface
+    pub fn new_handlestepgeomcurveboundedsurface_handletransfertransientprocess_factors(
+        CBS: &crate::ffi::HandleStepGeomCurveBoundedSurface,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_ctor_handlestepgeomcurveboundedsurface_handletransfertransientprocess_factors(CBS, TP, theLocalFactors))
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateCurveBoundedSurface.hxx`:46 - `StepToTopoDS_TranslateCurveBoundedSurface::Init()`
+    /// Translate surface
+    pub fn init(
+        &mut self,
+        CBS: &crate::ffi::HandleStepGeomCurveBoundedSurface,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> bool {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_init(
+                self as *mut Self,
+                CBS,
+                TP,
+                theLocalFactors,
+            )
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateCurveBoundedSurface.hxx`:51 - `StepToTopoDS_TranslateCurveBoundedSurface::Value()`
+    /// Returns result of last translation or null wire if failed.
+    pub fn value(&self) -> &crate::topo_ds::Face {
+        unsafe {
+            &*(crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_value(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*(crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_as_StepToTopoDS_Root(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *(crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_as_StepToTopoDS_Root_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_inherited_IsDone(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
+    pub fn precision(&self) -> f64 {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_inherited_Precision(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
+    pub fn set_precision(&mut self, preci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
+    pub fn max_tol(&self) -> f64 {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_inherited_MaxTol(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
+    pub fn set_max_tol(&mut self, maxpreci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateCurveBoundedSurface_inherited_SetMaxTol(
+                self as *mut Self,
+                maxpreci,
+            )
+        }
+    }
+}
+
+// ========================
+// From StepToTopoDS_TranslateEdge.hxx
+// ========================
+
+/// **Source:** `StepToTopoDS_TranslateEdge.hxx`:39 - `StepToTopoDS_TranslateEdge`
+pub use crate::ffi::StepToTopoDS_TranslateEdge as TranslateEdge;
+
+unsafe impl crate::CppDeletable for TranslateEdge {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepToTopoDS_TranslateEdge_destructor(ptr);
+    }
+}
+
+impl TranslateEdge {
+    /// **Source:** `StepToTopoDS_TranslateEdge.hxx`:44 - `StepToTopoDS_TranslateEdge::StepToTopoDS_TranslateEdge()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateEdge_ctor()) }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateEdge.hxx`:46 - `StepToTopoDS_TranslateEdge::StepToTopoDS_TranslateEdge()`
+    pub fn new_handlestepshapeedge_tool_nmtool_factors(
+        E: &crate::ffi::HandleStepShapeEdge,
+        T: &mut Tool,
+        NMTool: &mut NMTool,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepToTopoDS_TranslateEdge_ctor_handlestepshapeedge_tool_nmtool_factors(
+                    E,
+                    T,
+                    NMTool,
+                    theLocalFactors,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateEdge.hxx`:52 - `StepToTopoDS_TranslateEdge::Init()`
+    pub fn init(
+        &mut self,
+        E: &crate::ffi::HandleStepShapeEdge,
+        T: &mut Tool,
+        NMTool: &mut NMTool,
+        theLocalFactors: &crate::step_data::Factors,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdge_init(
+                self as *mut Self,
+                E,
+                T,
+                NMTool,
+                theLocalFactors,
+            )
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateEdge.hxx`:59 - `StepToTopoDS_TranslateEdge::MakeFromCurve3D()`
+    /// Warning! C3D is assumed to be a Curve 3D ...
+    /// other cases to checked before calling this
+    pub fn make_from_curve3_d(
+        &mut self,
+        C3D: &crate::ffi::HandleStepGeomCurve,
+        EC: &crate::ffi::HandleStepShapeEdgeCurve,
+        Vend: &crate::ffi::HandleStepShapeVertex,
+        preci: f64,
+        E: &mut crate::topo_ds::Edge,
+        V1: &mut crate::topo_ds::Vertex,
+        V2: &mut crate::topo_ds::Vertex,
+        T: &mut Tool,
+        theLocalFactors: &crate::step_data::Factors,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdge_make_from_curve3_d(
+                self as *mut Self,
+                C3D,
+                EC,
+                Vend,
+                preci,
+                E,
+                V1,
+                V2,
+                T,
+                theLocalFactors,
+            )
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateEdge.hxx`:70 - `StepToTopoDS_TranslateEdge::MakePCurve()`
+    pub fn make_p_curve(
+        &self,
+        PCU: &crate::ffi::HandleStepGeomPcurve,
+        ConvSurf: &crate::ffi::HandleGeomSurface,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateEdge_make_p_curve(
+                self as *const Self,
+                PCU,
+                ConvSurf,
+                theLocalFactors,
+            ))
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateEdge.hxx`:75 - `StepToTopoDS_TranslateEdge::Value()`
+    pub fn value(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::StepToTopoDS_TranslateEdge_value(self as *const Self)) }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateEdge.hxx`:77 - `StepToTopoDS_TranslateEdge::Error()`
+    pub fn error(&self) -> crate::step_to_topo_ds::TranslateEdgeError {
+        unsafe {
+            crate::step_to_topo_ds::TranslateEdgeError::try_from(
+                crate::ffi::StepToTopoDS_TranslateEdge_error(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*(crate::ffi::StepToTopoDS_TranslateEdge_as_StepToTopoDS_Root(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *(crate::ffi::StepToTopoDS_TranslateEdge_as_StepToTopoDS_Root_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_TranslateEdge_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
+    pub fn precision(&self) -> f64 {
+        unsafe { crate::ffi::StepToTopoDS_TranslateEdge_inherited_Precision(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
+    pub fn set_precision(&mut self, preci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdge_inherited_SetPrecision(self as *mut Self, preci)
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
+    pub fn max_tol(&self) -> f64 {
+        unsafe { crate::ffi::StepToTopoDS_TranslateEdge_inherited_MaxTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
+    pub fn set_max_tol(&mut self, maxpreci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdge_inherited_SetMaxTol(self as *mut Self, maxpreci)
+        }
+    }
+}
+
+// ========================
+// From StepToTopoDS_TranslateEdgeLoop.hxx
+// ========================
+
+/// **Source:** `StepToTopoDS_TranslateEdgeLoop.hxx`:34 - `StepToTopoDS_TranslateEdgeLoop`
+pub use crate::ffi::StepToTopoDS_TranslateEdgeLoop as TranslateEdgeLoop;
+
+unsafe impl crate::CppDeletable for TranslateEdgeLoop {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepToTopoDS_TranslateEdgeLoop_destructor(ptr);
+    }
+}
+
+impl TranslateEdgeLoop {
+    /// **Source:** `StepToTopoDS_TranslateEdgeLoop.hxx`:39 - `StepToTopoDS_TranslateEdgeLoop::StepToTopoDS_TranslateEdgeLoop()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateEdgeLoop_ctor()) }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateEdgeLoop.hxx`:41 - `StepToTopoDS_TranslateEdgeLoop::StepToTopoDS_TranslateEdgeLoop()`
+    pub fn new_handlestepshapefacebound_face_handlegeomsurface_handlestepgeomsurface_bool_tool_nmtool_factors(
+        FB: &crate::ffi::HandleStepShapeFaceBound,
+        F: &crate::topo_ds::Face,
+        S: &crate::ffi::HandleGeomSurface,
+        SS: &crate::ffi::HandleStepGeomSurface,
+        ss: bool,
+        T: &mut Tool,
+        NMTool: &mut NMTool,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateEdgeLoop_ctor_handlestepshapefacebound_face_handlegeomsurface_handlestepgeomsurface_bool_tool_nmtool_factors(FB, F, S, SS, ss, T, NMTool, theLocalFactors))
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateEdgeLoop.hxx`:51 - `StepToTopoDS_TranslateEdgeLoop::Init()`
+    pub fn init(
+        &mut self,
+        FB: &crate::ffi::HandleStepShapeFaceBound,
+        F: &crate::topo_ds::Face,
+        S: &crate::ffi::HandleGeomSurface,
+        SS: &crate::ffi::HandleStepGeomSurface,
+        ss: bool,
+        T: &mut Tool,
+        NMTool: &mut NMTool,
+        theLocalFactors: &crate::step_data::Factors,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdgeLoop_init(
+                self as *mut Self,
+                FB,
+                F,
+                S,
+                SS,
+                ss,
+                T,
+                NMTool,
+                theLocalFactors,
+            )
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateEdgeLoop.hxx`:60 - `StepToTopoDS_TranslateEdgeLoop::Value()`
+    pub fn value(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::StepToTopoDS_TranslateEdgeLoop_value(self as *const Self)) }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateEdgeLoop.hxx`:62 - `StepToTopoDS_TranslateEdgeLoop::Error()`
+    pub fn error(&self) -> crate::step_to_topo_ds::TranslateEdgeLoopError {
+        unsafe {
+            crate::step_to_topo_ds::TranslateEdgeLoopError::try_from(
+                crate::ffi::StepToTopoDS_TranslateEdgeLoop_error(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*(crate::ffi::StepToTopoDS_TranslateEdgeLoop_as_StepToTopoDS_Root(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *(crate::ffi::StepToTopoDS_TranslateEdgeLoop_as_StepToTopoDS_Root_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_TranslateEdgeLoop_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
+    pub fn precision(&self) -> f64 {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdgeLoop_inherited_Precision(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
+    pub fn set_precision(&mut self, preci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdgeLoop_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
+    pub fn max_tol(&self) -> f64 {
+        unsafe { crate::ffi::StepToTopoDS_TranslateEdgeLoop_inherited_MaxTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
+    pub fn set_max_tol(&mut self, maxpreci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateEdgeLoop_inherited_SetMaxTol(
+                self as *mut Self,
+                maxpreci,
+            )
+        }
+    }
+}
+
+// ========================
+// From StepToTopoDS_TranslateFace.hxx
+// ========================
+
+/// **Source:** `StepToTopoDS_TranslateFace.hxx`:37 - `StepToTopoDS_TranslateFace`
+pub use crate::ffi::StepToTopoDS_TranslateFace as TranslateFace;
+
+unsafe impl crate::CppDeletable for TranslateFace {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepToTopoDS_TranslateFace_destructor(ptr);
+    }
+}
+
+impl TranslateFace {
+    /// **Source:** `StepToTopoDS_TranslateFace.hxx`:42 - `StepToTopoDS_TranslateFace::StepToTopoDS_TranslateFace()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateFace_ctor()) }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateFace.hxx`:44 - `StepToTopoDS_TranslateFace::StepToTopoDS_TranslateFace()`
+    pub fn new_handlestepshapefacesurface_tool_nmtool_factors(
+        FS: &crate::ffi::HandleStepShapeFaceSurface,
+        T: &mut Tool,
+        NMTool: &mut NMTool,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateFace_ctor_handlestepshapefacesurface_tool_nmtool_factors(FS, T, NMTool, theLocalFactors))
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateFace.hxx`:50 - `StepToTopoDS_TranslateFace::StepToTopoDS_TranslateFace()`
+    pub fn new_handlestepvisualtessellatedface_tool_nmtool_bool2_factors(
+        theTF: &crate::ffi::HandleStepVisualTessellatedFace,
+        theTool: &mut Tool,
+        theNMTool: &mut NMTool,
+        theReadTessellatedWhenNoBRepOnly: bool,
+        theHasGeom: &mut bool,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateFace_ctor_handlestepvisualtessellatedface_tool_nmtool_bool2_factors(theTF, theTool, theNMTool, theReadTessellatedWhenNoBRepOnly, theHasGeom, theLocalFactors))
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateFace.hxx`:58 - `StepToTopoDS_TranslateFace::StepToTopoDS_TranslateFace()`
+    pub fn new_handlestepvisualtessellatedsurfaceset_tool_nmtool_factors(
+        theTSS: &crate::ffi::HandleStepVisualTessellatedSurfaceSet,
+        theTool: &mut Tool,
+        theNMTool: &mut NMTool,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateFace_ctor_handlestepvisualtessellatedsurfaceset_tool_nmtool_factors(theTSS, theTool, theNMTool, theLocalFactors))
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateFace.hxx`:64 - `StepToTopoDS_TranslateFace::Init()`
+    pub fn init_handlestepshapefacesurface_tool_nmtool_factors(
+        &mut self,
+        theFaceSurface: &crate::ffi::HandleStepShapeFaceSurface,
+        theTopoDSTool: &mut Tool,
+        theTopoDSToolNM: &mut NMTool,
+        theLocalFactors: &crate::step_data::Factors,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateFace_init_handlestepshapefacesurface_tool_nmtool_factors(self as *mut Self, theFaceSurface, theTopoDSTool, theTopoDSToolNM, theLocalFactors)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateFace.hxx`:69 - `StepToTopoDS_TranslateFace::Init()`
+    pub fn init_handlestepvisualtessellatedface_tool_nmtool_bool2_factors(
+        &mut self,
+        theTF: &crate::ffi::HandleStepVisualTessellatedFace,
+        theTool: &mut Tool,
+        theNMTool: &mut NMTool,
+        theReadTessellatedWhenNoBRepOnly: bool,
+        theHasGeom: &mut bool,
+        theLocalFactors: &crate::step_data::Factors,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateFace_init_handlestepvisualtessellatedface_tool_nmtool_bool2_factors(self as *mut Self, theTF, theTool, theNMTool, theReadTessellatedWhenNoBRepOnly, theHasGeom, theLocalFactors)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateFace.hxx`:76 - `StepToTopoDS_TranslateFace::Init()`
+    pub fn init_handlestepvisualtessellatedsurfaceset_tool_nmtool_factors(
+        &mut self,
+        theTSS: &crate::ffi::HandleStepVisualTessellatedSurfaceSet,
+        theTool: &mut Tool,
+        theNMTool: &mut NMTool,
+        theLocalFactors: &crate::step_data::Factors,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateFace_init_handlestepvisualtessellatedsurfaceset_tool_nmtool_factors(self as *mut Self, theTSS, theTool, theNMTool, theLocalFactors)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateFace.hxx`:81 - `StepToTopoDS_TranslateFace::Value()`
+    pub fn value(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::StepToTopoDS_TranslateFace_value(self as *const Self)) }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateFace.hxx`:83 - `StepToTopoDS_TranslateFace::Error()`
+    pub fn error(&self) -> crate::step_to_topo_ds::TranslateFaceError {
+        unsafe {
+            crate::step_to_topo_ds::TranslateFaceError::try_from(
+                crate::ffi::StepToTopoDS_TranslateFace_error(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*(crate::ffi::StepToTopoDS_TranslateFace_as_StepToTopoDS_Root(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *(crate::ffi::StepToTopoDS_TranslateFace_as_StepToTopoDS_Root_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_TranslateFace_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
+    pub fn precision(&self) -> f64 {
+        unsafe { crate::ffi::StepToTopoDS_TranslateFace_inherited_Precision(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
+    pub fn set_precision(&mut self, preci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateFace_inherited_SetPrecision(self as *mut Self, preci)
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
+    pub fn max_tol(&self) -> f64 {
+        unsafe { crate::ffi::StepToTopoDS_TranslateFace_inherited_MaxTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
+    pub fn set_max_tol(&mut self, maxpreci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateFace_inherited_SetMaxTol(self as *mut Self, maxpreci)
+        }
+    }
+}
+
+// ========================
+// From StepToTopoDS_TranslatePolyLoop.hxx
+// ========================
+
+/// **Source:** `StepToTopoDS_TranslatePolyLoop.hxx`:32 - `StepToTopoDS_TranslatePolyLoop`
+pub use crate::ffi::StepToTopoDS_TranslatePolyLoop as TranslatePolyLoop;
+
+unsafe impl crate::CppDeletable for TranslatePolyLoop {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepToTopoDS_TranslatePolyLoop_destructor(ptr);
+    }
+}
+
+impl TranslatePolyLoop {
+    /// **Source:** `StepToTopoDS_TranslatePolyLoop.hxx`:37 - `StepToTopoDS_TranslatePolyLoop::StepToTopoDS_TranslatePolyLoop()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslatePolyLoop_ctor()) }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslatePolyLoop.hxx`:39 - `StepToTopoDS_TranslatePolyLoop::StepToTopoDS_TranslatePolyLoop()`
+    pub fn new_handlestepshapepolyloop_tool_handlegeomsurface_face_factors(
+        PL: &crate::ffi::HandleStepShapePolyLoop,
+        T: &mut Tool,
+        S: &crate::ffi::HandleGeomSurface,
+        F: &crate::topo_ds::Face,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslatePolyLoop_ctor_handlestepshapepolyloop_tool_handlegeomsurface_face_factors(PL, T, S, F, theLocalFactors))
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslatePolyLoop.hxx`:46 - `StepToTopoDS_TranslatePolyLoop::Init()`
+    pub fn init(
+        &mut self,
+        PL: &crate::ffi::HandleStepShapePolyLoop,
+        T: &mut Tool,
+        S: &crate::ffi::HandleGeomSurface,
+        F: &crate::topo_ds::Face,
+        theLocalFactors: &crate::step_data::Factors,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslatePolyLoop_init(
+                self as *mut Self,
+                PL,
+                T,
+                S,
+                F,
+                theLocalFactors,
+            )
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslatePolyLoop.hxx`:52 - `StepToTopoDS_TranslatePolyLoop::Value()`
+    pub fn value(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::StepToTopoDS_TranslatePolyLoop_value(self as *const Self)) }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslatePolyLoop.hxx`:54 - `StepToTopoDS_TranslatePolyLoop::Error()`
+    pub fn error(&self) -> crate::step_to_topo_ds::TranslatePolyLoopError {
+        unsafe {
+            crate::step_to_topo_ds::TranslatePolyLoopError::try_from(
+                crate::ffi::StepToTopoDS_TranslatePolyLoop_error(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*(crate::ffi::StepToTopoDS_TranslatePolyLoop_as_StepToTopoDS_Root(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *(crate::ffi::StepToTopoDS_TranslatePolyLoop_as_StepToTopoDS_Root_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_TranslatePolyLoop_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
+    pub fn precision(&self) -> f64 {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslatePolyLoop_inherited_Precision(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
+    pub fn set_precision(&mut self, preci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslatePolyLoop_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
+    pub fn max_tol(&self) -> f64 {
+        unsafe { crate::ffi::StepToTopoDS_TranslatePolyLoop_inherited_MaxTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
+    pub fn set_max_tol(&mut self, maxpreci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslatePolyLoop_inherited_SetMaxTol(
+                self as *mut Self,
+                maxpreci,
+            )
+        }
+    }
+}
+
+// ========================
+// From StepToTopoDS_TranslateShell.hxx
+// ========================
+
+/// **Source:** `StepToTopoDS_TranslateShell.hxx`:34 - `StepToTopoDS_TranslateShell`
+pub use crate::ffi::StepToTopoDS_TranslateShell as TranslateShell;
+
+unsafe impl crate::CppDeletable for TranslateShell {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepToTopoDS_TranslateShell_destructor(ptr);
+    }
+}
+
+impl TranslateShell {
+    /// **Source:** `StepToTopoDS_TranslateShell.hxx`:39 - `StepToTopoDS_TranslateShell::StepToTopoDS_TranslateShell()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateShell_ctor()) }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateShell.hxx`:41 - `StepToTopoDS_TranslateShell::Init()`
+    pub fn init_handlestepshapeconnectedfaceset_tool_nmtool_factors_progressrange(
+        &mut self,
+        CFS: &crate::ffi::HandleStepShapeConnectedFaceSet,
+        T: &mut Tool,
+        NMTool: &mut NMTool,
+        theLocalFactors: &crate::step_data::Factors,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateShell_init_handlestepshapeconnectedfaceset_tool_nmtool_factors_progressrange(self as *mut Self, CFS, T, NMTool, theLocalFactors, theProgress)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateShell.hxx`:47 - `StepToTopoDS_TranslateShell::Init()`
+    pub fn init_handlestepvisualtessellatedshell_tool_nmtool_bool2_factors_progressrange(
+        &mut self,
+        theTSh: &crate::ffi::HandleStepVisualTessellatedShell,
+        theTool: &mut Tool,
+        theNMTool: &mut NMTool,
+        theReadTessellatedWhenNoBRepOnly: bool,
+        theHasGeom: &mut bool,
+        theLocalFactors: &crate::step_data::Factors,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateShell_init_handlestepvisualtessellatedshell_tool_nmtool_bool2_factors_progressrange(self as *mut Self, theTSh, theTool, theNMTool, theReadTessellatedWhenNoBRepOnly, theHasGeom, theLocalFactors, theProgress)
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateShell.hxx`:55 - `StepToTopoDS_TranslateShell::Value()`
+    pub fn value(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::StepToTopoDS_TranslateShell_value(self as *const Self)) }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateShell.hxx`:57 - `StepToTopoDS_TranslateShell::Error()`
+    pub fn error(&self) -> crate::step_to_topo_ds::TranslateShellError {
+        unsafe {
+            crate::step_to_topo_ds::TranslateShellError::try_from(
+                crate::ffi::StepToTopoDS_TranslateShell_error(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*(crate::ffi::StepToTopoDS_TranslateShell_as_StepToTopoDS_Root(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *(crate::ffi::StepToTopoDS_TranslateShell_as_StepToTopoDS_Root_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_TranslateShell_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
+    pub fn precision(&self) -> f64 {
+        unsafe { crate::ffi::StepToTopoDS_TranslateShell_inherited_Precision(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
+    pub fn set_precision(&mut self, preci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateShell_inherited_SetPrecision(self as *mut Self, preci)
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
+    pub fn max_tol(&self) -> f64 {
+        unsafe { crate::ffi::StepToTopoDS_TranslateShell_inherited_MaxTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
+    pub fn set_max_tol(&mut self, maxpreci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateShell_inherited_SetMaxTol(self as *mut Self, maxpreci)
+        }
+    }
+}
+
+// ========================
+// From StepToTopoDS_TranslateSolid.hxx
+// ========================
+
+/// **Source:** `StepToTopoDS_TranslateSolid.hxx`:32 - `StepToTopoDS_TranslateSolid`
+pub use crate::ffi::StepToTopoDS_TranslateSolid as TranslateSolid;
+
+unsafe impl crate::CppDeletable for TranslateSolid {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepToTopoDS_TranslateSolid_destructor(ptr);
+    }
+}
+
+impl TranslateSolid {
+    /// **Source:** `StepToTopoDS_TranslateSolid.hxx`:37 - `StepToTopoDS_TranslateSolid::StepToTopoDS_TranslateSolid()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateSolid_ctor()) }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateSolid.hxx`:39 - `StepToTopoDS_TranslateSolid::Init()`
+    pub fn init(
+        &mut self,
+        theTSo: &crate::ffi::HandleStepVisualTessellatedSolid,
+        theTP: &crate::ffi::HandleTransferTransientProcess,
+        theTool: &mut Tool,
+        theNMTool: &mut NMTool,
+        theReadTessellatedWhenNoBRepOnly: bool,
+        theHasGeom: &mut bool,
+        theLocalFactors: &crate::step_data::Factors,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateSolid_init(
+                self as *mut Self,
+                theTSo,
+                theTP,
+                theTool,
+                theNMTool,
+                theReadTessellatedWhenNoBRepOnly,
+                theHasGeom,
+                theLocalFactors,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateSolid.hxx`:48 - `StepToTopoDS_TranslateSolid::Value()`
+    pub fn value(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::StepToTopoDS_TranslateSolid_value(self as *const Self)) }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateSolid.hxx`:50 - `StepToTopoDS_TranslateSolid::Error()`
+    pub fn error(&self) -> crate::step_to_topo_ds::TranslateSolidError {
+        unsafe {
+            crate::step_to_topo_ds::TranslateSolidError::try_from(
+                crate::ffi::StepToTopoDS_TranslateSolid_error(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*(crate::ffi::StepToTopoDS_TranslateSolid_as_StepToTopoDS_Root(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *(crate::ffi::StepToTopoDS_TranslateSolid_as_StepToTopoDS_Root_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_TranslateSolid_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
+    pub fn precision(&self) -> f64 {
+        unsafe { crate::ffi::StepToTopoDS_TranslateSolid_inherited_Precision(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
+    pub fn set_precision(&mut self, preci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateSolid_inherited_SetPrecision(self as *mut Self, preci)
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
+    pub fn max_tol(&self) -> f64 {
+        unsafe { crate::ffi::StepToTopoDS_TranslateSolid_inherited_MaxTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
+    pub fn set_max_tol(&mut self, maxpreci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateSolid_inherited_SetMaxTol(self as *mut Self, maxpreci)
+        }
+    }
+}
+
+// ========================
+// From StepToTopoDS_TranslateVertex.hxx
+// ========================
+
+/// **Source:** `StepToTopoDS_TranslateVertex.hxx`:31 - `StepToTopoDS_TranslateVertex`
+pub use crate::ffi::StepToTopoDS_TranslateVertex as TranslateVertex;
+
+unsafe impl crate::CppDeletable for TranslateVertex {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepToTopoDS_TranslateVertex_destructor(ptr);
+    }
+}
+
+impl TranslateVertex {
+    /// **Source:** `StepToTopoDS_TranslateVertex.hxx`:36 - `StepToTopoDS_TranslateVertex::StepToTopoDS_TranslateVertex()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateVertex_ctor()) }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateVertex.hxx`:38 - `StepToTopoDS_TranslateVertex::StepToTopoDS_TranslateVertex()`
+    pub fn new_handlestepshapevertex_tool_nmtool_factors(
+        V: &crate::ffi::HandleStepShapeVertex,
+        T: &mut Tool,
+        NMTool: &mut NMTool,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateVertex_ctor_handlestepshapevertex_tool_nmtool_factors(V, T, NMTool, theLocalFactors))
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateVertex.hxx`:44 - `StepToTopoDS_TranslateVertex::Init()`
+    pub fn init(
+        &mut self,
+        V: &crate::ffi::HandleStepShapeVertex,
+        T: &mut Tool,
+        NMTool: &mut NMTool,
+        theLocalFactors: &crate::step_data::Factors,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertex_init(
+                self as *mut Self,
+                V,
+                T,
+                NMTool,
+                theLocalFactors,
+            )
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateVertex.hxx`:49 - `StepToTopoDS_TranslateVertex::Value()`
+    pub fn value(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::StepToTopoDS_TranslateVertex_value(self as *const Self)) }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateVertex.hxx`:51 - `StepToTopoDS_TranslateVertex::Error()`
+    pub fn error(&self) -> crate::step_to_topo_ds::TranslateVertexError {
+        unsafe {
+            crate::step_to_topo_ds::TranslateVertexError::try_from(
+                crate::ffi::StepToTopoDS_TranslateVertex_error(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*(crate::ffi::StepToTopoDS_TranslateVertex_as_StepToTopoDS_Root(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *(crate::ffi::StepToTopoDS_TranslateVertex_as_StepToTopoDS_Root_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_TranslateVertex_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
+    pub fn precision(&self) -> f64 {
+        unsafe { crate::ffi::StepToTopoDS_TranslateVertex_inherited_Precision(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
+    pub fn set_precision(&mut self, preci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertex_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
+    pub fn max_tol(&self) -> f64 {
+        unsafe { crate::ffi::StepToTopoDS_TranslateVertex_inherited_MaxTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
+    pub fn set_max_tol(&mut self, maxpreci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertex_inherited_SetMaxTol(
+                self as *mut Self,
+                maxpreci,
+            )
+        }
+    }
+}
+
+// ========================
+// From StepToTopoDS_TranslateVertexLoop.hxx
+// ========================
+
+/// **Source:** `StepToTopoDS_TranslateVertexLoop.hxx`:31 - `StepToTopoDS_TranslateVertexLoop`
+pub use crate::ffi::StepToTopoDS_TranslateVertexLoop as TranslateVertexLoop;
+
+unsafe impl crate::CppDeletable for TranslateVertexLoop {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepToTopoDS_TranslateVertexLoop_destructor(ptr);
+    }
+}
+
+impl TranslateVertexLoop {
+    /// **Source:** `StepToTopoDS_TranslateVertexLoop.hxx`:36 - `StepToTopoDS_TranslateVertexLoop::StepToTopoDS_TranslateVertexLoop()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateVertexLoop_ctor()) }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateVertexLoop.hxx`:38 - `StepToTopoDS_TranslateVertexLoop::StepToTopoDS_TranslateVertexLoop()`
+    pub fn new_handlestepshapevertexloop_tool_nmtool_factors(
+        VL: &crate::ffi::HandleStepShapeVertexLoop,
+        T: &mut Tool,
+        NMTool: &mut NMTool,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_TranslateVertexLoop_ctor_handlestepshapevertexloop_tool_nmtool_factors(VL, T, NMTool, theLocalFactors))
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateVertexLoop.hxx`:44 - `StepToTopoDS_TranslateVertexLoop::Init()`
+    pub fn init(
+        &mut self,
+        VL: &crate::ffi::HandleStepShapeVertexLoop,
+        T: &mut Tool,
+        NMTool: &mut NMTool,
+        theLocalFactors: &crate::step_data::Factors,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertexLoop_init(
+                self as *mut Self,
+                VL,
+                T,
+                NMTool,
+                theLocalFactors,
+            )
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateVertexLoop.hxx`:49 - `StepToTopoDS_TranslateVertexLoop::Value()`
+    pub fn value(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::StepToTopoDS_TranslateVertexLoop_value(self as *const Self)) }
+    }
+
+    /// **Source:** `StepToTopoDS_TranslateVertexLoop.hxx`:51 - `StepToTopoDS_TranslateVertexLoop::Error()`
+    pub fn error(&self) -> crate::step_to_topo_ds::TranslateVertexLoopError {
+        unsafe {
+            crate::step_to_topo_ds::TranslateVertexLoopError::try_from(
+                crate::ffi::StepToTopoDS_TranslateVertexLoop_error(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*(crate::ffi::StepToTopoDS_TranslateVertexLoop_as_StepToTopoDS_Root(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepToTopoDS_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *(crate::ffi::StepToTopoDS_TranslateVertexLoop_as_StepToTopoDS_Root_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:32 - `StepToTopoDS_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertexLoop_inherited_IsDone(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:35 - `StepToTopoDS_Root::Precision()`
+    pub fn precision(&self) -> f64 {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertexLoop_inherited_Precision(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:38 - `StepToTopoDS_Root::SetPrecision()`
+    pub fn set_precision(&mut self, preci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertexLoop_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:41 - `StepToTopoDS_Root::MaxTol()`
+    pub fn max_tol(&self) -> f64 {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertexLoop_inherited_MaxTol(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepToTopoDS_Root.hxx`:44 - `StepToTopoDS_Root::SetMaxTol()`
+    pub fn set_max_tol(&mut self, maxpreci: f64) {
+        unsafe {
+            crate::ffi::StepToTopoDS_TranslateVertexLoop_inherited_SetMaxTol(
+                self as *mut Self,
+                maxpreci,
+            )
+        }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
     StepToTopoDS_DataMapOfRI as DataMapOfRI, StepToTopoDS_DataMapOfRINames as DataMapOfRINames,
+    StepToTopoDS_DataMapOfTRI as DataMapOfTRI,
 };

@@ -34,6 +34,13 @@ pub fn parametric_min_max(
 pub fn is_inside(F1: &crate::topo_ds::Face, F2: &crate::topo_ds::Face) -> bool {
     unsafe { crate::ffi::BRepFeat_is_inside(F1, F2) }
 }
+/// **Source:** `BRepFeat.hxx`:105 - `BRepFeat::IsInOut`
+pub fn is_in_out(
+    FC: &crate::b_rep_top_adaptor::FClass2d,
+    AC: &crate::geom2d_adaptor::Curve,
+) -> bool {
+    unsafe { crate::ffi::BRepFeat_is_in_out(FC, AC) }
+}
 /// **Source:** `BRepFeat.hxx`:108 - `BRepFeat::FaceUntil`
 pub fn face_until(S: &crate::topo_ds::Shape, F: &mut crate::topo_ds::Face) {
     unsafe { crate::ffi::BRepFeat_face_until(S, F) }

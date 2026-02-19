@@ -2317,25 +2317,6 @@ unsafe impl crate::CppDeletable for MakeApprox {
 }
 
 impl MakeApprox {
-    /// **Source:** `GeomPlate_MakeApprox.hxx`:40 - `GeomPlate_MakeApprox::GeomPlate_MakeApprox()`
-    /// Converts SurfPlate into a Geom_BSplineSurface with
-    /// n Bezier pieces (n<=Nbmax) of degree <= dgmax
-    /// and an approximation error < Tol3d if possible
-    /// the criterion CritPlate is satisfied if possible
-    pub fn new_handlegeomplatesurface_criterion_real_int2_shape_real(
-        SurfPlate: &crate::ffi::HandleGeomPlateSurface,
-        PlateCrit: &crate::adv_app2_var::Criterion,
-        Tol3d: f64,
-        Nbmax: i32,
-        dgmax: i32,
-        Continuity: crate::geom_abs::Shape,
-        EnlargeCoeff: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_MakeApprox_ctor_handlegeomplatesurface_criterion_real_int2_shape_real(SurfPlate, PlateCrit, Tol3d, Nbmax, dgmax, Continuity.into(), EnlargeCoeff))
-        }
-    }
-
     /// **Source:** `GeomPlate_MakeApprox.hxx`:56 - `GeomPlate_MakeApprox::GeomPlate_MakeApprox()`
     /// Converts SurfPlate into a Geom_BSplineSurface with
     /// n Bezier pieces (n<=Nbmax) of degree <= dgmax
@@ -2358,24 +2339,6 @@ impl MakeApprox {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_MakeApprox_ctor_handlegeomplatesurface_real_int2_real_int_shape_real(SurfPlate, Tol3d, Nbmax, dgmax, dmax, CritOrder, Continuity.into(), EnlargeCoeff))
         }
-    }
-
-    /// **Source:** `GeomPlate_MakeApprox.hxx`:40 - `GeomPlate_MakeApprox::GeomPlate_MakeApprox()`
-    /// Converts SurfPlate into a Geom_BSplineSurface with
-    /// n Bezier pieces (n<=Nbmax) of degree <= dgmax
-    /// and an approximation error < Tol3d if possible
-    /// the criterion CritPlate is satisfied if possible
-    pub fn new_handlegeomplatesurface_criterion_real_int2_shape(
-        SurfPlate: &crate::ffi::HandleGeomPlateSurface,
-        PlateCrit: &crate::adv_app2_var::Criterion,
-        Tol3d: f64,
-        Nbmax: i32,
-        dgmax: i32,
-        Continuity: crate::geom_abs::Shape,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_handlegeomplatesurface_criterion_real_int2_shape_real(
-            SurfPlate, PlateCrit, Tol3d, Nbmax, dgmax, Continuity, 1.1,
-        )
     }
 
     /// **Source:** `GeomPlate_MakeApprox.hxx`:56 - `GeomPlate_MakeApprox::GeomPlate_MakeApprox()`
@@ -2428,6 +2391,15 @@ impl MakeApprox {
     }
 }
 
+// ── Skipped symbols for MakeApprox (1 total) ──
+// SKIPPED: **Source:** `GeomPlate_MakeApprox.hxx`:40 - `GeomPlate_MakeApprox::GeomPlate_MakeApprox`
+//   constructor: Converts SurfPlate into a Geom_BSplineSurface with
+//   constructor: n Bezier pieces (n<=Nbmax) of degree <= dgmax
+//   constructor: and an approximation error < Tol3d if possible
+//   Reason: param 'PlateCrit' uses unknown type 'const AdvApp2Var_Criterion&'
+//   // pub fn new_handlegeomplatesurface_criterion_real_int2_shape_real(SurfPlate: &HandleSurface, PlateCrit: &Criterion, Tol3d: f64, Nbmax: i32, dgmax: i32, Continuity: Shape, EnlargeCoeff: f64) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From GeomPlate_PlateG0Criterion.hxx
 // ========================
@@ -2444,61 +2416,26 @@ unsafe impl crate::CppDeletable for PlateG0Criterion {
 
 impl PlateG0Criterion {
     /// **Source:** `GeomPlate_PlateG0Criterion.hxx`:37 - `GeomPlate_PlateG0Criterion::GeomPlate_PlateG0Criterion()`
-    pub fn new_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(
+    pub fn new_sequenceofxy_sequenceofxyz_real(
         Data: &crate::ffi::TColgp_SequenceOfXY,
         G0Data: &crate::ffi::TColgp_SequenceOfXYZ,
         Maximum: f64,
-        Type: crate::adv_app2_var::CriterionType,
-        Repart: crate::adv_app2_var::CriterionRepartition,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_PlateG0Criterion_ctor_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(Data, G0Data, Maximum, Type.into(), Repart.into()))
-        }
-    }
-
-    /// Upcast to AdvApp2Var_Criterion
-    pub fn as_adv_app2_var_criterion(&self) -> &crate::adv_app2_var::Criterion {
-        unsafe {
-            &*(crate::ffi::GeomPlate_PlateG0Criterion_as_AdvApp2Var_Criterion(self as *const Self))
-        }
-    }
-
-    /// Upcast to AdvApp2Var_Criterion (mutable)
-    pub fn as_adv_app2_var_criterion_mut(&mut self) -> &mut crate::adv_app2_var::Criterion {
-        unsafe {
-            &mut *(crate::ffi::GeomPlate_PlateG0Criterion_as_AdvApp2Var_Criterion_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `AdvApp2Var_Criterion.hxx`:43 - `AdvApp2Var_Criterion::MaxValue()`
-    pub fn max_value(&self) -> f64 {
-        unsafe { crate::ffi::GeomPlate_PlateG0Criterion_inherited_MaxValue(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `AdvApp2Var_Criterion.hxx`:45 - `AdvApp2Var_Criterion::Type()`
-    pub fn type_(&self) -> crate::adv_app2_var::CriterionType {
-        unsafe {
-            crate::adv_app2_var::CriterionType::try_from(
-                crate::ffi::GeomPlate_PlateG0Criterion_inherited_Type(self as *const Self),
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomPlate_PlateG0Criterion_ctor_sequenceofxy_sequenceofxyz_real(
+                    Data, G0Data, Maximum,
+                ),
             )
-            .unwrap()
-        }
-    }
-
-    /// Inherited: **Source:** `AdvApp2Var_Criterion.hxx`:47 - `AdvApp2Var_Criterion::Repartition()`
-    pub fn repartition(&self) -> crate::adv_app2_var::CriterionRepartition {
-        unsafe {
-            crate::adv_app2_var::CriterionRepartition::try_from(
-                crate::ffi::GeomPlate_PlateG0Criterion_inherited_Repartition(self as *const Self),
-            )
-            .unwrap()
         }
     }
 }
 
-// ── Skipped symbols for PlateG0Criterion (2 total) ──
+// ── Skipped symbols for PlateG0Criterion (3 total) ──
+// SKIPPED: **Source:** `GeomPlate_PlateG0Criterion.hxx`:37 - `GeomPlate_PlateG0Criterion::GeomPlate_PlateG0Criterion`
+//   Reason: param 'Type' uses unknown type 'AdvApp2Var_CriterionType'
+//   // pub fn new_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(Data: &SequenceOfXY, G0Data: &SequenceOfXYZ, Maximum: f64, Type: CriterionType, Repart: CriterionRepartition) -> OwnedPtr<Self>;
+//
 // SKIPPED: **Source:** `GeomPlate_PlateG0Criterion.hxx`:44 - `GeomPlate_PlateG0Criterion::Value`
 //   Reason: param 'P' uses unknown type 'AdvApp2Var_Patch&'
 //   // pub fn value(&self, P: &mut Patch, C: &Context);
@@ -2524,61 +2461,26 @@ unsafe impl crate::CppDeletable for PlateG1Criterion {
 
 impl PlateG1Criterion {
     /// **Source:** `GeomPlate_PlateG1Criterion.hxx`:37 - `GeomPlate_PlateG1Criterion::GeomPlate_PlateG1Criterion()`
-    pub fn new_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(
+    pub fn new_sequenceofxy_sequenceofxyz_real(
         Data: &crate::ffi::TColgp_SequenceOfXY,
         G1Data: &crate::ffi::TColgp_SequenceOfXYZ,
         Maximum: f64,
-        Type: crate::adv_app2_var::CriterionType,
-        Repart: crate::adv_app2_var::CriterionRepartition,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_PlateG1Criterion_ctor_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(Data, G1Data, Maximum, Type.into(), Repart.into()))
-        }
-    }
-
-    /// Upcast to AdvApp2Var_Criterion
-    pub fn as_adv_app2_var_criterion(&self) -> &crate::adv_app2_var::Criterion {
-        unsafe {
-            &*(crate::ffi::GeomPlate_PlateG1Criterion_as_AdvApp2Var_Criterion(self as *const Self))
-        }
-    }
-
-    /// Upcast to AdvApp2Var_Criterion (mutable)
-    pub fn as_adv_app2_var_criterion_mut(&mut self) -> &mut crate::adv_app2_var::Criterion {
-        unsafe {
-            &mut *(crate::ffi::GeomPlate_PlateG1Criterion_as_AdvApp2Var_Criterion_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `AdvApp2Var_Criterion.hxx`:43 - `AdvApp2Var_Criterion::MaxValue()`
-    pub fn max_value(&self) -> f64 {
-        unsafe { crate::ffi::GeomPlate_PlateG1Criterion_inherited_MaxValue(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `AdvApp2Var_Criterion.hxx`:45 - `AdvApp2Var_Criterion::Type()`
-    pub fn type_(&self) -> crate::adv_app2_var::CriterionType {
-        unsafe {
-            crate::adv_app2_var::CriterionType::try_from(
-                crate::ffi::GeomPlate_PlateG1Criterion_inherited_Type(self as *const Self),
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomPlate_PlateG1Criterion_ctor_sequenceofxy_sequenceofxyz_real(
+                    Data, G1Data, Maximum,
+                ),
             )
-            .unwrap()
-        }
-    }
-
-    /// Inherited: **Source:** `AdvApp2Var_Criterion.hxx`:47 - `AdvApp2Var_Criterion::Repartition()`
-    pub fn repartition(&self) -> crate::adv_app2_var::CriterionRepartition {
-        unsafe {
-            crate::adv_app2_var::CriterionRepartition::try_from(
-                crate::ffi::GeomPlate_PlateG1Criterion_inherited_Repartition(self as *const Self),
-            )
-            .unwrap()
         }
     }
 }
 
-// ── Skipped symbols for PlateG1Criterion (2 total) ──
+// ── Skipped symbols for PlateG1Criterion (3 total) ──
+// SKIPPED: **Source:** `GeomPlate_PlateG1Criterion.hxx`:37 - `GeomPlate_PlateG1Criterion::GeomPlate_PlateG1Criterion`
+//   Reason: param 'Type' uses unknown type 'AdvApp2Var_CriterionType'
+//   // pub fn new_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(Data: &SequenceOfXY, G1Data: &SequenceOfXYZ, Maximum: f64, Type: CriterionType, Repart: CriterionRepartition) -> OwnedPtr<Self>;
+//
 // SKIPPED: **Source:** `GeomPlate_PlateG1Criterion.hxx`:44 - `GeomPlate_PlateG1Criterion::Value`
 //   Reason: param 'P' uses unknown type 'AdvApp2Var_Patch&'
 //   // pub fn value(&self, P: &mut Patch, C: &Context);

@@ -89,6 +89,65 @@ impl Builder {
 }
 
 // ========================
+// From BRepSweep_Iterator.hxx
+// ========================
+
+/// **Source:** `BRepSweep_Iterator.hxx`:33 - `BRepSweep_Iterator`
+/// This class provides iteration services required by
+/// the Generating Line (TopoDS Shape) of a BRepSweep.
+/// This   tool is  used  to   iterate  on the  direct
+/// sub-shapes of a Shape.
+pub use crate::ffi::BRepSweep_Iterator as Iterator;
+
+unsafe impl crate::CppDeletable for Iterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepSweep_Iterator_destructor(ptr);
+    }
+}
+
+impl Iterator {
+    /// **Source:** `BRepSweep_Iterator.hxx`:38 - `BRepSweep_Iterator::BRepSweep_Iterator()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Iterator_ctor()) }
+    }
+
+    /// **Source:** `BRepSweep_Iterator.hxx`:41 - `BRepSweep_Iterator::Init()`
+    /// Reset the Iterator on sub-shapes of <aShape>.
+    pub fn init(&mut self, aShape: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepSweep_Iterator_init(self as *mut Self, aShape) }
+    }
+
+    /// **Source:** `BRepSweep_Iterator.hxx`:44 - `BRepSweep_Iterator::More()`
+    /// Returns True if there is a current sub-shape.
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::BRepSweep_Iterator_more(self as *const Self) }
+    }
+
+    /// **Source:** `BRepSweep_Iterator.hxx`:47 - `BRepSweep_Iterator::Next()`
+    /// Moves to the next sub-shape.
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::BRepSweep_Iterator_next(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepSweep_Iterator.hxx`:50 - `BRepSweep_Iterator::Value()`
+    /// Returns the current sub-shape.
+    pub fn value(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::BRepSweep_Iterator_value(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepSweep_Iterator.hxx`:53 - `BRepSweep_Iterator::Orientation()`
+    /// Returns the orientation of the current sub-shape.
+    pub fn orientation(&self) -> crate::top_abs::Orientation {
+        unsafe {
+            crate::top_abs::Orientation::try_from(crate::ffi::BRepSweep_Iterator_orientation(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+}
+
+// ========================
 // From BRepSweep_NumLinearRegularSweep.hxx
 // ========================
 

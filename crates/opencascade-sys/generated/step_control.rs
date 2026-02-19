@@ -182,6 +182,56 @@ impl ActorRead {
         unsafe { crate::ffi::STEPControl_ActorRead_set_model(self as *mut Self, theModel) }
     }
 
+    /// **Source:** `STEPControl_ActorRead.hxx`:104 - `STEPControl_ActorRead::ComputeTransformation()`
+    /// Computes transformation defined by two axis placements (in MAPPED_ITEM
+    /// or ITEM_DEFINED_TRANSFORMATION) taking into account their
+    /// representation contexts (i.e. units, which may be different)
+    /// Returns True if transformation is computed and is not an identity.
+    pub fn compute_transformation(
+        &mut self,
+        Origin: &crate::ffi::HandleStepGeomAxis2Placement3d,
+        Target: &crate::ffi::HandleStepGeomAxis2Placement3d,
+        OrigContext: &crate::ffi::HandleStepReprRepresentation,
+        TargContext: &crate::ffi::HandleStepReprRepresentation,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        Trsf: &mut crate::gp::Trsf,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> bool {
+        unsafe {
+            crate::ffi::STEPControl_ActorRead_compute_transformation(
+                self as *mut Self,
+                Origin,
+                Target,
+                OrigContext,
+                TargContext,
+                TP,
+                Trsf,
+                theLocalFactors,
+            )
+        }
+    }
+
+    /// **Source:** `STEPControl_ActorRead.hxx`:115 - `STEPControl_ActorRead::ComputeSRRWT()`
+    /// Computes transformation defined by given
+    /// REPRESENTATION_RELATIONSHIP_WITH_TRANSFORMATION
+    pub fn compute_srrwt(
+        &mut self,
+        SRR: &crate::ffi::HandleStepReprRepresentationRelationship,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        Trsf: &mut crate::gp::Trsf,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> bool {
+        unsafe {
+            crate::ffi::STEPControl_ActorRead_compute_srrwt(
+                self as *mut Self,
+                SRR,
+                TP,
+                Trsf,
+                theLocalFactors,
+            )
+        }
+    }
+
     /// **Source:** `STEPControl_ActorRead.hxx`:120 - `STEPControl_ActorRead::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::STEPControl_ActorRead_dynamic_type(self as *const Self)) }
@@ -471,21 +521,6 @@ impl HandleSTEPControlActorRead {
     }
 }
 
-// ── Skipped symbols for ActorRead (2 total) ──
-// SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:104 - `STEPControl_ActorRead::ComputeTransformation`
-//   method: Computes transformation defined by two axis placements (in MAPPED_ITEM
-//   method: or ITEM_DEFINED_TRANSFORMATION) taking into account their
-//   method: representation contexts (i.e. units, which may be different)
-//   Reason: param 'Origin' uses unknown type 'const Handle(StepGeom_Axis2Placement3d)&'
-//   // pub fn compute_transformation(&mut self, Origin: &HandleAxis2Placement3d, Target: &HandleAxis2Placement3d, OrigContext: &HandleRepresentation, TargContext: &HandleRepresentation, TP: &HandleTransientProcess, Trsf: &mut Trsf, theLocalFactors: &Factors) -> bool;
-//
-// SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:115 - `STEPControl_ActorRead::ComputeSRRWT`
-//   method: Computes transformation defined by given
-//   method: REPRESENTATION_RELATIONSHIP_WITH_TRANSFORMATION
-//   Reason: param 'SRR' uses unknown type 'const Handle(StepRepr_RepresentationRelationship)&'
-//   // pub fn compute_srrwt(&mut self, SRR: &HandleRepresentationRelationship, TP: &HandleTransientProcess, Trsf: &mut Trsf, theLocalFactors: &Factors) -> bool;
-//
-
 // ========================
 // From STEPControl_ActorWrite.hxx
 // ========================
@@ -524,6 +559,33 @@ impl ActorWrite {
                 self as *mut Self,
                 start,
                 FP,
+                theProgress,
+            ))
+        }
+    }
+
+    /// **Source:** `STEPControl_ActorWrite.hxx`:55 - `STEPControl_ActorWrite::TransferSubShape()`
+    pub fn transfer_sub_shape(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        SDR: &crate::ffi::HandleStepShapeShapeDefinitionRepresentation,
+        AX1: &mut crate::ffi::HandleStepGeomAxis2Placement3d,
+        FP: &crate::ffi::HandleTransferFinderProcess,
+        theLocalFactors: &crate::step_data::Factors,
+        shapeGroup: &crate::ffi::HandleTopToolsHSequenceOfShape,
+        isManifold: bool,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorWrite_transfer_sub_shape(
+                self as *mut Self,
+                start,
+                SDR,
+                AX1,
+                FP,
+                theLocalFactors,
+                shapeGroup,
+                isManifold,
                 theProgress,
             ))
         }
@@ -931,12 +993,6 @@ impl HandleSTEPControlActorWrite {
     }
 }
 
-// ── Skipped symbols for ActorWrite (1 total) ──
-// SKIPPED: **Source:** `STEPControl_ActorWrite.hxx`:55 - `STEPControl_ActorWrite::TransferSubShape`
-//   Reason: param 'AX1' uses unknown type 'Handle(StepGeom_Axis2Placement3d)&'
-//   // pub fn transfer_sub_shape(&mut self, start: &HandleFinder, SDR: &HandleShapeDefinitionRepresentation, AX1: &mut HandleAxis2Placement3d, FP: &HandleFinderProcess, theLocalFactors: &Factors, shapeGroup: &HandleHSequenceOfShape, isManifold: bool, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
-//
-
 // ========================
 // From STEPControl_Controller.hxx
 // ========================
@@ -1193,7 +1249,7 @@ impl Controller {
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:213 - `XSControl_Controller::AdaptorSession()`
-    pub fn adaptor_session(&self) -> &crate::ffi::XSControl_WorkSessionMap {
+    pub fn adaptor_session(&self) -> &crate::ffi::STEPConstruct_DataMapOfAsciiStringTransient {
         unsafe {
             &*(crate::ffi::STEPControl_Controller_inherited_AdaptorSession(self as *const Self))
         }

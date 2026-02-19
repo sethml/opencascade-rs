@@ -6,21 +6,22222 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `IGESGeom.hxx`:33 - `IGESGeom::Init`
+/// Prepares dynamic data (Protocol, Modules) for this package
+pub fn init() {
+    unsafe { crate::ffi::IGESGeom_init() }
+}
+/// **Source:** `IGESGeom.hxx`:36 - `IGESGeom::Protocol`
+/// Returns the Protocol for this Package
+pub fn protocol() -> crate::OwnedPtr<crate::ffi::HandleIGESGeomProtocol> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_protocol()) }
+}
+
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleIGESDataGeneralModule, HandleIGESDataIGESEntity, HandleIGESDataProtocol,
+    HandleIGESDataReadWriteModule, HandleIGESDataSpecificModule, HandleIGESDataTransfEntity,
+    HandleInterfaceGeneralModule, HandleInterfaceProtocol, HandleInterfaceReaderModule,
+    HandleStandardTransient,
+};
+
+// ========================
+// From IGESGeom_BSplineCurve.hxx
+// ========================
+
+/// **Source:** `IGESGeom_BSplineCurve.hxx`:38 - `IGESGeom_BSplineCurve`
+/// defines IGESBSplineCurve, Type <126> Form <0-5>
+/// in package IGESGeom
+/// A parametric equation obtained by dividing two summations
+/// involving weights (which are real numbers), the control
+/// points, and B-Spline basis functions
+pub use crate::ffi::IGESGeom_BSplineCurve as BSplineCurve;
+
+unsafe impl crate::CppDeletable for BSplineCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_BSplineCurve_destructor(ptr);
+    }
+}
+
+impl BSplineCurve {
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:42 - `IGESGeom_BSplineCurve::IGESGeom_BSplineCurve()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:59 - `IGESGeom_BSplineCurve::Init()`
+    /// This method is used to set the fields of the class
+    /// BSplineCurve. Beware about indexation of arrays
+    /// - anIndex      : Upper index of the sum
+    /// - aDegree      : Degree of basis functions
+    /// - aPlanar      : 0 = nonplanar curve, 1 = planar curve
+    /// - aClosed      : 0 = open curve, 1 = closed curve
+    /// - aPolynom     : 0 = rational, 1 = polynomial
+    /// - aPeriodic    : 0 = nonperiodic, 1 = periodic
+    /// - allKnots     : Knot sequence values [-Degree,Index+1]
+    /// - allWeights   : Array of weights     [0,Index]
+    /// - allPoles     : X, Y, Z coordinates of all control points
+    /// [0,Index]
+    /// - aUmin, aUmax : Starting and ending parameter values
+    /// - aNorm        : Unit normal (if the curve is planar)
+    /// raises exception if allWeights & allPoles are not of same size.
+    pub fn init(
+        &mut self,
+        anIndex: i32,
+        aDegree: i32,
+        aPlanar: bool,
+        aClosed: bool,
+        aPolynom: bool,
+        aPeriodic: bool,
+        allKnots: &crate::ffi::HandleTColStdHArray1OfReal,
+        allWeights: &crate::ffi::HandleTColStdHArray1OfReal,
+        allPoles: &crate::ffi::HandleTColgpHArray1OfXYZ,
+        aUmin: f64,
+        aUmax: f64,
+        aNorm: &crate::gp::XYZ,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_init(
+                self as *mut Self,
+                anIndex,
+                aDegree,
+                aPlanar,
+                aClosed,
+                aPolynom,
+                aPeriodic,
+                allKnots,
+                allWeights,
+                allPoles,
+                aUmin,
+                aUmax,
+                aNorm,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:74 - `IGESGeom_BSplineCurve::SetFormNumber()`
+    /// Changes FormNumber (indicates the Shape of the Curve)
+    /// Error if not in range [0-5]
+    pub fn set_form_number(&mut self, form: i32) {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_set_form_number(self as *mut Self, form) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:77 - `IGESGeom_BSplineCurve::UpperIndex()`
+    /// returns the upper index of the sum (see Knots,Poles)
+    pub fn upper_index(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_upper_index(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:80 - `IGESGeom_BSplineCurve::Degree()`
+    /// returns the degree of basis functions
+    pub fn degree(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_degree(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:83 - `IGESGeom_BSplineCurve::IsPlanar()`
+    /// returns True if the curve is Planar, False if non-planar
+    pub fn is_planar(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_is_planar(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:86 - `IGESGeom_BSplineCurve::IsClosed()`
+    /// returns True if the curve is closed, False if open
+    pub fn is_closed(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_is_closed(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:92 - `IGESGeom_BSplineCurve::IsPolynomial()`
+    /// returns True if the curve is polynomial, False if rational
+    /// <flag> False (D) : computed from the list of weights
+    /// (all must be equal)
+    /// <flag> True : as recorded
+    pub fn is_polynomial(&self, flag: bool) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_is_polynomial(self as *const Self, flag) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:95 - `IGESGeom_BSplineCurve::IsPeriodic()`
+    /// returns True if the curve is periodic, False otherwise
+    pub fn is_periodic(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_is_periodic(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:98 - `IGESGeom_BSplineCurve::NbKnots()`
+    /// returns the number of knots (i.e. Degree + UpperIndex + 2)
+    pub fn nb_knots(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_nb_knots(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:105 - `IGESGeom_BSplineCurve::Knot()`
+    /// returns the knot referred to by anIndex,
+    /// inside the range [-Degree,UpperIndex+1]
+    /// raises exception if
+    /// anIndex < -Degree() or anIndex > (NbKnots() - Degree())
+    /// Note : Knots are numbered from -Degree (not from 1)
+    pub fn knot(&self, anIndex: i32) -> f64 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_knot(self as *const Self, anIndex) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:108 - `IGESGeom_BSplineCurve::NbPoles()`
+    /// returns number of poles (i.e. UpperIndex + 1)
+    pub fn nb_poles(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_nb_poles(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:112 - `IGESGeom_BSplineCurve::Weight()`
+    /// returns the weight referred to by anIndex, in [0,UpperIndex]
+    /// raises exception if anIndex < 0 or anIndex > UpperIndex()
+    pub fn weight(&self, anIndex: i32) -> f64 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_weight(self as *const Self, anIndex) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:116 - `IGESGeom_BSplineCurve::Pole()`
+    /// returns the pole referred to by anIndex, in [0,UpperIndex]
+    /// raises exception if anIndex < 0 or anIndex > UpperIndex()
+    pub fn pole(&self, anIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_pole(
+                self as *const Self,
+                anIndex,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:120 - `IGESGeom_BSplineCurve::TransformedPole()`
+    /// returns the anIndex'th pole after applying Transf. Matrix
+    /// raises exception if an Index < 0 or an Index > UpperIndex()
+    pub fn transformed_pole(&self, anIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_transformed_pole(
+                self as *const Self,
+                anIndex,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:123 - `IGESGeom_BSplineCurve::UMin()`
+    /// returns starting parameter value
+    pub fn u_min(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_u_min(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:126 - `IGESGeom_BSplineCurve::UMax()`
+    /// returns ending parameter value
+    pub fn u_max(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_u_max(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:129 - `IGESGeom_BSplineCurve::Normal()`
+    /// if the curve is nonplanar then (0, 0, 0) is returned
+    pub fn normal(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_normal(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:131 - `IGESGeom_BSplineCurve::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_BSplineCurve_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:131 - `IGESGeom_BSplineCurve::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_BSplineCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_BSplineCurve.hxx`:131 - `IGESGeom_BSplineCurve::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_BSplineCurve_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe { &*(crate::ffi::IGESGeom_BSplineCurve_as_IGESData_IGESEntity(self as *const Self)) }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_BSplineCurve_as_IGESData_IGESEntity_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESGeom_BSplineCurve_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_BSplineCurve_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomBSplineCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_BSplineCurve_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_BSplineCurve_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_BSplineCurve_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_HasLabelDisplay(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_SubordinateStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_HierarchyStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_LineWeightNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_BSplineCurve_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_SubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_InitLevel(self as *mut Self, ent, val)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_CompoundLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_NbAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_Associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_BSplineCurve_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_Dissociate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineCurve_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_RemoveProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineCurve_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_BSplineCurve_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomBSplineCurve;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomBSplineCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomBSplineCurve_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomBSplineCurve {
+    /// Dereference this Handle to access the underlying IGESGeom_BSplineCurve
+    pub fn get(&self) -> &crate::ffi::IGESGeom_BSplineCurve {
+        unsafe { &*(crate::ffi::HandleIGESGeomBSplineCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_BSplineCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_BSplineCurve {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomBSplineCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_BSplineCurve> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomBSplineCurve_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_BSplineCurve> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomBSplineCurve_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_BSplineSurface.hxx
+// ========================
+
+/// **Source:** `IGESGeom_BSplineSurface.hxx`:38 - `IGESGeom_BSplineSurface`
+/// defines IGESBSplineSurface, Type <128> Form <0-9>
+/// in package IGESGeom
+/// A parametric equation obtained by dividing two summations
+/// involving weights (which are real numbers), the control
+/// points, and B-Spline basis functions
+pub use crate::ffi::IGESGeom_BSplineSurface as BSplineSurface;
+
+unsafe impl crate::CppDeletable for BSplineSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_BSplineSurface_destructor(ptr);
+    }
+}
+
+impl BSplineSurface {
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:42 - `IGESGeom_BSplineSurface::IGESGeom_BSplineSurface()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:63 - `IGESGeom_BSplineSurface::Init()`
+    /// This method is used to set the fields of the class
+    /// BSplineSurface
+    /// - anIndexU             : Upper index of first sum
+    /// - anIndexV             : Upper index of second sum
+    /// - aDegU, aDegV         : Degrees of first and second sets
+    /// of basis functions
+    /// - aCloseU, aCloseV     : 1 = Closed in U, V directions
+    /// 0 = open in U, V directions
+    /// - aPolynom             : 0 = Rational, 1 = polynomial
+    /// - aPeriodU, aPeriodV   : 0 = Non periodic in U or V direction
+    /// 1 = Periodic in U or V direction
+    /// - allKnotsU, allKnotsV : Knots in U and V directions
+    /// - allWeights           : Array of weights
+    /// - allPoles             : XYZ coordinates of all control points
+    /// - aUmin                : Starting value of U direction
+    /// - aUmax                : Ending value of U direction
+    /// - aVmin                : Starting value of V direction
+    /// - aVmax                : Ending value of V direction
+    /// raises exception if allWeights & allPoles are not of same size.
+    pub fn init(
+        &mut self,
+        anIndexU: i32,
+        anIndexV: i32,
+        aDegU: i32,
+        aDegV: i32,
+        aCloseU: bool,
+        aCloseV: bool,
+        aPolynom: bool,
+        aPeriodU: bool,
+        aPeriodV: bool,
+        allKnotsU: &crate::ffi::HandleTColStdHArray1OfReal,
+        allKnotsV: &crate::ffi::HandleTColStdHArray1OfReal,
+        allWeights: &crate::ffi::HandleTColStdHArray2OfReal,
+        allPoles: &crate::ffi::HandleTColgpHArray2OfXYZ,
+        aUmin: f64,
+        aUmax: f64,
+        aVmin: f64,
+        aVmax: f64,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_init(
+                self as *mut Self,
+                anIndexU,
+                anIndexV,
+                aDegU,
+                aDegV,
+                aCloseU,
+                aCloseV,
+                aPolynom,
+                aPeriodU,
+                aPeriodV,
+                allKnotsU,
+                allKnotsV,
+                allWeights,
+                allPoles,
+                aUmin,
+                aUmax,
+                aVmin,
+                aVmax,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:83 - `IGESGeom_BSplineSurface::SetFormNumber()`
+    /// Changes FormNumber (indicates the Shape of the Surface)
+    /// Error if not in range [0-9]
+    pub fn set_form_number(&mut self, form: i32) {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_set_form_number(self as *mut Self, form) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:86 - `IGESGeom_BSplineSurface::UpperIndexU()`
+    /// returns the upper index of the first sum (U)
+    pub fn upper_index_u(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_upper_index_u(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:89 - `IGESGeom_BSplineSurface::UpperIndexV()`
+    /// returns the upper index of the second sum (V)
+    pub fn upper_index_v(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_upper_index_v(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:92 - `IGESGeom_BSplineSurface::DegreeU()`
+    /// returns degree of first set of basis functions
+    pub fn degree_u(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_degree_u(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:95 - `IGESGeom_BSplineSurface::DegreeV()`
+    /// returns degree of second set of basis functions
+    pub fn degree_v(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_degree_v(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:98 - `IGESGeom_BSplineSurface::IsClosedU()`
+    /// True if closed in U direction else False
+    pub fn is_closed_u(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_is_closed_u(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:101 - `IGESGeom_BSplineSurface::IsClosedV()`
+    /// True if closed in V direction else False
+    pub fn is_closed_v(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_is_closed_v(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:106 - `IGESGeom_BSplineSurface::IsPolynomial()`
+    /// True if polynomial, False if rational
+    /// <flag> False (D) : computed from Weights
+    /// <flag> True : recorded
+    pub fn is_polynomial(&self, flag: bool) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_is_polynomial(self as *const Self, flag) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:109 - `IGESGeom_BSplineSurface::IsPeriodicU()`
+    /// True if periodic in U direction else False
+    pub fn is_periodic_u(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_is_periodic_u(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:112 - `IGESGeom_BSplineSurface::IsPeriodicV()`
+    /// True if periodic in V direction else False
+    pub fn is_periodic_v(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_is_periodic_v(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:116 - `IGESGeom_BSplineSurface::NbKnotsU()`
+    /// returns number of knots in U direction
+    /// KnotsU are numbered from -DegreeU
+    pub fn nb_knots_u(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_nb_knots_u(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:120 - `IGESGeom_BSplineSurface::NbKnotsV()`
+    /// returns number of knots in V direction
+    /// KnotsV are numbered from -DegreeV
+    pub fn nb_knots_v(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_nb_knots_v(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:125 - `IGESGeom_BSplineSurface::KnotU()`
+    /// returns the value of knot referred to by anIndex in U direction
+    /// raises exception if
+    /// anIndex < -DegreeU() or anIndex > (NbKnotsU() - DegreeU())
+    pub fn knot_u(&self, anIndex: i32) -> f64 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_knot_u(self as *const Self, anIndex) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:130 - `IGESGeom_BSplineSurface::KnotV()`
+    /// returns the value of knot referred to by anIndex in V direction
+    /// raises exception if
+    /// anIndex < -DegreeV() or anIndex > (NbKnotsV() - DegreeV())
+    pub fn knot_v(&self, anIndex: i32) -> f64 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_knot_v(self as *const Self, anIndex) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:133 - `IGESGeom_BSplineSurface::NbPolesU()`
+    /// returns number of poles in U direction
+    pub fn nb_poles_u(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_nb_poles_u(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:136 - `IGESGeom_BSplineSurface::NbPolesV()`
+    /// returns number of poles in V direction
+    pub fn nb_poles_v(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_nb_poles_v(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:141 - `IGESGeom_BSplineSurface::Weight()`
+    /// returns the weight referred to by anIndex1, anIndex2
+    /// raises exception if anIndex1 <= 0 or anIndex1 > NbPolesU()
+    /// or if anIndex2 <= 0 or anIndex2 > NbPolesV()
+    pub fn weight(&self, anIndex1: i32, anIndex2: i32) -> f64 {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_weight(self as *const Self, anIndex1, anIndex2)
+        }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:147 - `IGESGeom_BSplineSurface::Pole()`
+    /// returns the control point referenced by anIndex1, anIndex2
+    /// raises exception if anIndex1 <= 0 or anIndex1 > NbPolesU()
+    /// or if anIndex2 <= 0 or anIndex2 > NbPolesV()
+    pub fn pole(&self, anIndex1: i32, anIndex2: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_pole(
+                self as *const Self,
+                anIndex1,
+                anIndex2,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:154 - `IGESGeom_BSplineSurface::TransformedPole()`
+    /// returns the control point referenced by anIndex1, anIndex2
+    /// after applying the Transf.Matrix
+    /// raises exception if anIndex1 <= 0 or anIndex1 > NbPolesU()
+    /// or if anIndex2 <= 0 or anIndex2 > NbPolesV()
+    pub fn transformed_pole(
+        &self,
+        anIndex1: i32,
+        anIndex2: i32,
+    ) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_transformed_pole(
+                self as *const Self,
+                anIndex1,
+                anIndex2,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:158 - `IGESGeom_BSplineSurface::UMin()`
+    /// returns starting value in the U direction
+    pub fn u_min(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_u_min(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:161 - `IGESGeom_BSplineSurface::UMax()`
+    /// returns ending value in the U direction
+    pub fn u_max(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_u_max(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:164 - `IGESGeom_BSplineSurface::VMin()`
+    /// returns starting value in the V direction
+    pub fn v_min(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_v_min(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:167 - `IGESGeom_BSplineSurface::VMax()`
+    /// returns ending value in the V direction
+    pub fn v_max(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_v_max(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:169 - `IGESGeom_BSplineSurface::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_BSplineSurface_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:169 - `IGESGeom_BSplineSurface::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_BSplineSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_BSplineSurface.hxx`:169 - `IGESGeom_BSplineSurface::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_BSplineSurface_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe {
+            &*(crate::ffi::IGESGeom_BSplineSurface_as_IGESData_IGESEntity(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_BSplineSurface_as_IGESData_IGESEntity_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESGeom_BSplineSurface_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_BSplineSurface_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomBSplineSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_BSplineSurface_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_BSplineSurface_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_BSplineSurface_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_HasLabelDisplay(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_SubordinateStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_HierarchyStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_LineWeightNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_BSplineSurface_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_SubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_InitLevel(self as *mut Self, ent, val)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_BSplineSurface_inherited_CompoundLocation(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_NbAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_BSplineSurface_inherited_Associativities(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_BSplineSurface_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_Dissociate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BSplineSurface_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_RemoveProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BSplineSurface_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_BSplineSurface_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomBSplineSurface;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomBSplineSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomBSplineSurface_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomBSplineSurface {
+    /// Dereference this Handle to access the underlying IGESGeom_BSplineSurface
+    pub fn get(&self) -> &crate::ffi::IGESGeom_BSplineSurface {
+        unsafe { &*(crate::ffi::HandleIGESGeomBSplineSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_BSplineSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_BSplineSurface {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomBSplineSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_BSplineSurface> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomBSplineSurface_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_BSplineSurface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomBSplineSurface_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_Boundary.hxx
+// ========================
+
+/// **Source:** `IGESGeom_Boundary.hxx`:36 - `IGESGeom_Boundary`
+/// defines IGESBoundary, Type <141> Form <0>
+/// in package IGESGeom
+/// A boundary entity identifies a surface boundary consisting
+/// of a set of curves lying on the surface
+pub use crate::ffi::IGESGeom_Boundary as Boundary;
+
+unsafe impl crate::CppDeletable for Boundary {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_Boundary_destructor(ptr);
+    }
+}
+
+impl Boundary {
+    /// **Source:** `IGESGeom_Boundary.hxx`:40 - `IGESGeom_Boundary::IGESGeom_Boundary()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_Boundary.hxx`:54 - `IGESGeom_Boundary::Init()`
+    /// This method is used to set the fields of the class
+    /// Boundary
+    /// - aType              : Type of bounded surface representation
+    /// - aPreference        : Preferred representation of
+    /// Trimming Curve
+    /// - aSurface           : Untrimmed surface to be bounded
+    /// - allModelCurves     : Model Space Curves
+    /// - allSenses          : Orientation flags of all Model Space
+    /// Curves
+    /// - allParameterCurves : Parameter Space Curves
+    /// raises exception if allSenses, allModelCurves and
+    /// allParameterCurves do not have same dimensions
+    pub fn init(
+        &mut self,
+        aType: i32,
+        aPreference: i32,
+        aSurface: &crate::ffi::HandleIGESDataIGESEntity,
+        allModelCurves: &crate::ffi::HandleIGESDataHArray1OfIGESEntity,
+        allSenses: &crate::ffi::HandleTColStdHArray1OfInteger,
+        allParameterCurves: &crate::ffi::HandleIGESBasicHArray1OfHArray1OfIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_Boundary_init(
+                self as *mut Self,
+                aType,
+                aPreference,
+                aSurface,
+                allModelCurves,
+                allSenses,
+                allParameterCurves,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_Boundary.hxx`:68 - `IGESGeom_Boundary::BoundaryType()`
+    /// returns type of bounded surface representation
+    /// 0 = Boundary entities may only reference model space trimming
+    /// curves. Associated surface representation may be parametric
+    /// 1 = Boundary entities must reference model space curves and
+    /// associated parameter space curve collections. Associated
+    /// surface must be a parametric representation
+    pub fn boundary_type(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_boundary_type(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_Boundary.hxx`:75 - `IGESGeom_Boundary::PreferenceType()`
+    /// returns preferred representation of trimming curves
+    /// 0 = Unspecified
+    /// 1 = Model space
+    /// 2 = Parameter space
+    /// 3 = Representations are of equal preference
+    pub fn preference_type(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_preference_type(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_Boundary.hxx`:78 - `IGESGeom_Boundary::Surface()`
+    /// returns the surface to be bounded
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_surface(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Boundary.hxx`:81 - `IGESGeom_Boundary::NbModelSpaceCurves()`
+    /// returns the number of model space curves
+    pub fn nb_model_space_curves(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_nb_model_space_curves(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_Boundary.hxx`:85 - `IGESGeom_Boundary::ModelSpaceCurve()`
+    /// returns Model Space Curve
+    /// raises exception if Index <= 0 or Index > NbModelSpaceCurves()
+    pub fn model_space_curve(
+        &self,
+        Index: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_model_space_curve(
+                self as *const Self,
+                Index,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Boundary.hxx`:91 - `IGESGeom_Boundary::Sense()`
+    /// returns the sense of a particular model space curve
+    /// 1 = model curve direction does not need reversal
+    /// 2 = model curve direction needs to be reversed
+    /// raises exception if Index <= 0 or Index > NbModelSpaceCurves()
+    pub fn sense(&self, Index: i32) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_sense(self as *const Self, Index) }
+    }
+
+    /// **Source:** `IGESGeom_Boundary.hxx`:96 - `IGESGeom_Boundary::NbParameterCurves()`
+    /// returns the number of parameter curves associated with one
+    /// model space curve referred to by Index
+    /// raises exception if Index <= 0 or Index > NbModelSpaceCurves()
+    pub fn nb_parameter_curves(&self, Index: i32) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_nb_parameter_curves(self as *const Self, Index) }
+    }
+
+    /// **Source:** `IGESGeom_Boundary.hxx`:101 - `IGESGeom_Boundary::ParameterCurves()`
+    /// returns an array of parameter space curves associated with
+    /// a model space curve referred to by the Index
+    /// raises exception if Index <= 0 or Index > NbModelSpaceCurves()
+    pub fn parameter_curves(
+        &self,
+        Index: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataHArray1OfIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_parameter_curves(
+                self as *const Self,
+                Index,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Boundary.hxx`:106 - `IGESGeom_Boundary::ParameterCurve()`
+    /// returns an individual parameter curve
+    /// raises exception if Index or Num is out of range
+    pub fn parameter_curve(
+        &self,
+        Index: i32,
+        Num: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_parameter_curve(
+                self as *const Self,
+                Index,
+                Num,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Boundary.hxx`:109 - `IGESGeom_Boundary::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_Boundary_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_Boundary.hxx`:109 - `IGESGeom_Boundary::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_Boundary_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_Boundary.hxx`:109 - `IGESGeom_Boundary::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_Boundary_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe { &*(crate::ffi::IGESGeom_Boundary_as_IGESData_IGESEntity(self as *const Self)) }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_Boundary_as_IGESData_IGESEntity_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESGeom_Boundary_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_Boundary_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomBoundary> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_Boundary_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESGeom_Boundary_inherited_DefLevel(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESGeom_Boundary_inherited_DefView(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_HasLabelDisplay(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_SubordinateStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_HierarchyStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_LineWeightNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(crate::ffi::IGESGeom_Boundary_inherited_DefColor(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_HasSubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_SubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_Boundary_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_Boundary_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_InitLevel(self as *mut Self, ent, val) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_InitColor(self as *mut Self, ent, rank) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_Boundary_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_SetLabel(self as *mut Self, label, sub) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_Boundary_inherited_InitMisc(self as *mut Self, str, lab, weightnum)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_CompoundLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_Boundary_inherited_ArePresentAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_NbAssociativities(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_Associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_Boundary_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_TypedAssociativity(
+                self as *const Self,
+                atype,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_Dissociate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_ArePresentProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_Boundary_inherited_NbTypedProperties(self as *const Self, atype)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Boundary_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_RemoveProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_Boundary_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_Boundary_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomBoundary;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomBoundary {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomBoundary_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomBoundary {
+    /// Dereference this Handle to access the underlying IGESGeom_Boundary
+    pub fn get(&self) -> &crate::ffi::IGESGeom_Boundary {
+        unsafe { &*(crate::ffi::HandleIGESGeomBoundary_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_Boundary
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_Boundary {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomBoundary_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_Boundary> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomBoundary_to_HandleIGESDataIGESEntity(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_Boundary> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomBoundary_to_HandleStandardTransient(self as *const Self),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_BoundedSurface.hxx
+// ========================
+
+/// **Source:** `IGESGeom_BoundedSurface.hxx`:35 - `IGESGeom_BoundedSurface`
+/// defines BoundedSurface, Type <143> Form <0>
+/// in package IGESGeom
+/// A bounded surface is used to communicate trimmed
+/// surfaces. The surface and trimming curves are assumed
+/// to be represented parametrically.
+pub use crate::ffi::IGESGeom_BoundedSurface as BoundedSurface;
+
+unsafe impl crate::CppDeletable for BoundedSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_BoundedSurface_destructor(ptr);
+    }
+}
+
+impl BoundedSurface {
+    /// **Source:** `IGESGeom_BoundedSurface.hxx`:39 - `IGESGeom_BoundedSurface::IGESGeom_BoundedSurface()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_BoundedSurface.hxx`:46 - `IGESGeom_BoundedSurface::Init()`
+    /// This method is used to set the fields of the class
+    /// BoundedSurface
+    /// - aType     : Type of bounded surface representation
+    /// - aSurface  : Surface entity to be bounded
+    /// - allBounds : Array of boundary entities
+    pub fn init(
+        &mut self,
+        aType: i32,
+        aSurface: &crate::ffi::HandleIGESDataIGESEntity,
+        allBounds: &crate::ffi::HandleIGESGeomHArray1OfBoundary,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_init(self as *mut Self, aType, aSurface, allBounds)
+        }
+    }
+
+    /// **Source:** `IGESGeom_BoundedSurface.hxx`:54 - `IGESGeom_BoundedSurface::RepresentationType()`
+    /// returns the type of Bounded surface representation
+    /// 0 = The boundary entities may only reference model space curves
+    /// 1 = The boundary entities may reference both model space curves
+    /// and associated parameter space curve representations
+    pub fn representation_type(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_representation_type(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BoundedSurface.hxx`:57 - `IGESGeom_BoundedSurface::Surface()`
+    /// returns the bounded surface
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_surface(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_BoundedSurface.hxx`:60 - `IGESGeom_BoundedSurface::NbBoundaries()`
+    /// returns the number of boundaries
+    pub fn nb_boundaries(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_nb_boundaries(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_BoundedSurface.hxx`:64 - `IGESGeom_BoundedSurface::Boundary()`
+    /// returns boundary entity
+    /// raises exception if Index <= 0 or Index > NbBoundaries()
+    pub fn boundary(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomBoundary> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_boundary(
+                self as *const Self,
+                Index,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_BoundedSurface.hxx`:66 - `IGESGeom_BoundedSurface::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_BoundedSurface_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_BoundedSurface.hxx`:66 - `IGESGeom_BoundedSurface::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_BoundedSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_BoundedSurface.hxx`:66 - `IGESGeom_BoundedSurface::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_BoundedSurface_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe {
+            &*(crate::ffi::IGESGeom_BoundedSurface_as_IGESData_IGESEntity(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_BoundedSurface_as_IGESData_IGESEntity_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESGeom_BoundedSurface_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_BoundedSurface_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomBoundedSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_BoundedSurface_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_BoundedSurface_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_BoundedSurface_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_HasLabelDisplay(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_SubordinateStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_HierarchyStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_LineWeightNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_BoundedSurface_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_SubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_InitLevel(self as *mut Self, ent, val)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_BoundedSurface_inherited_CompoundLocation(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_NbAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_BoundedSurface_inherited_Associativities(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_BoundedSurface_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_Dissociate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_BoundedSurface_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_RemoveProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_BoundedSurface_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_BoundedSurface_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomBoundedSurface;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomBoundedSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomBoundedSurface_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomBoundedSurface {
+    /// Dereference this Handle to access the underlying IGESGeom_BoundedSurface
+    pub fn get(&self) -> &crate::ffi::IGESGeom_BoundedSurface {
+        unsafe { &*(crate::ffi::HandleIGESGeomBoundedSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_BoundedSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_BoundedSurface {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomBoundedSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_BoundedSurface> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomBoundedSurface_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_BoundedSurface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomBoundedSurface_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_CircularArc.hxx
+// ========================
+
+/// **Source:** `IGESGeom_CircularArc.hxx`:39 - `IGESGeom_CircularArc`
+/// defines IGESCircularArc, Type <100> Form <0>
+/// in package IGESGeom
+/// A circular arc is a connected portion of a parent circle
+/// which consists of more than one point. The definition space
+/// coordinate system is always chosen so that the circular arc
+/// remains in a plane either coincident with or parallel to
+/// the XT, YT plane.
+pub use crate::ffi::IGESGeom_CircularArc as CircularArc;
+
+unsafe impl crate::CppDeletable for CircularArc {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_CircularArc_destructor(ptr);
+    }
+}
+
+impl CircularArc {
+    /// **Source:** `IGESGeom_CircularArc.hxx`:43 - `IGESGeom_CircularArc::IGESGeom_CircularArc()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_CircularArc.hxx`:51 - `IGESGeom_CircularArc::Init()`
+    /// This method is used to set the fields of the class
+    /// CircularArc
+    /// - aZT     : Shift above the Z plane
+    /// - aCenter : Center of the circle of which the arc forms a part
+    /// - aStart  : Starting point of the circular arc
+    /// - anEnd   : Ending point of the circular arc
+    pub fn init(
+        &mut self,
+        aZT: f64,
+        aCenter: &crate::gp::XY,
+        aStart: &crate::gp::XY,
+        anEnd: &crate::gp::XY,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_CircularArc_init(self as *mut Self, aZT, aCenter, aStart, anEnd)
+        }
+    }
+
+    /// **Source:** `IGESGeom_CircularArc.hxx`:57 - `IGESGeom_CircularArc::Center()`
+    /// returns the center of the circle of which arc forms a part
+    pub fn center(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_center(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESGeom_CircularArc.hxx`:61 - `IGESGeom_CircularArc::TransformedCenter()`
+    /// returns the center of the circle of which arc forms a part
+    /// after applying Transf. Matrix
+    pub fn transformed_center(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_transformed_center(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_CircularArc.hxx`:64 - `IGESGeom_CircularArc::StartPoint()`
+    /// returns the start point of the arc
+    pub fn start_point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_start_point(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_CircularArc.hxx`:67 - `IGESGeom_CircularArc::TransformedStartPoint()`
+    /// returns the start point of the arc after applying Transf. Matrix
+    pub fn transformed_start_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_transformed_start_point(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_CircularArc.hxx`:71 - `IGESGeom_CircularArc::ZPlane()`
+    /// returns the parallel displacement of the plane containing the
+    /// arc from the XT, YT plane
+    pub fn z_plane(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_z_plane(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_CircularArc.hxx`:74 - `IGESGeom_CircularArc::EndPoint()`
+    /// returns the end point of the arc
+    pub fn end_point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_end_point(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_CircularArc.hxx`:77 - `IGESGeom_CircularArc::TransformedEndPoint()`
+    /// returns the end point of the arc after applying Transf. Matrix
+    pub fn transformed_end_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_transformed_end_point(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_CircularArc.hxx`:80 - `IGESGeom_CircularArc::Radius()`
+    /// returns the radius of the circle of which arc forms a part
+    pub fn radius(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_radius(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_CircularArc.hxx`:83 - `IGESGeom_CircularArc::Angle()`
+    /// returns the angle subtended by the arc at the center in radians
+    pub fn angle(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_angle(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_CircularArc.hxx`:86 - `IGESGeom_CircularArc::Axis()`
+    /// Z-Axis of circle (i.e. [0,0,1])
+    pub fn axis(&self) -> crate::OwnedPtr<crate::gp::Dir> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_axis(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESGeom_CircularArc.hxx`:89 - `IGESGeom_CircularArc::TransformedAxis()`
+    /// Z-Axis after applying Trans. Matrix
+    pub fn transformed_axis(&self) -> crate::OwnedPtr<crate::gp::Dir> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_transformed_axis(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_CircularArc.hxx`:92 - `IGESGeom_CircularArc::IsClosed()`
+    /// True if StartPoint = EndPoint
+    pub fn is_closed(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CircularArc_is_closed(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_CircularArc.hxx`:94 - `IGESGeom_CircularArc::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_CircularArc_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_CircularArc.hxx`:94 - `IGESGeom_CircularArc::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_CircularArc_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_CircularArc.hxx`:94 - `IGESGeom_CircularArc::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_CircularArc_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe { &*(crate::ffi::IGESGeom_CircularArc_as_IGESData_IGESEntity(self as *const Self)) }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_CircularArc_as_IGESData_IGESEntity_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESGeom_CircularArc_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_CircularArc_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomCircularArc> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_CircularArc_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_CircularArc_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESGeom_CircularArc_inherited_DefView(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_HasLabelDisplay(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_SubordinateStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_HierarchyStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_LineWeightNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_CircularArc_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CircularArc_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_SubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_CircularArc_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CircularArc_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_InitLevel(self as *mut Self, ent, val) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CircularArc_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CircularArc_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CircularArc_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_CircularArc_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_CompoundLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CircularArc_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_NbAssociativities(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_Associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CircularArc_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_CircularArc_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_Dissociate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CircularArc_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CircularArc_inherited_NbTypedProperties(self as *const Self, atype)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CircularArc_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_RemoveProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CircularArc_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CircularArc_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_CircularArc_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomCircularArc;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomCircularArc {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomCircularArc_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomCircularArc {
+    /// Dereference this Handle to access the underlying IGESGeom_CircularArc
+    pub fn get(&self) -> &crate::ffi::IGESGeom_CircularArc {
+        unsafe { &*(crate::ffi::HandleIGESGeomCircularArc_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_CircularArc
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_CircularArc {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomCircularArc_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_CircularArc> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomCircularArc_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_CircularArc> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomCircularArc_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_CompositeCurve.hxx
+// ========================
+
+/// **Source:** `IGESGeom_CompositeCurve.hxx`:34 - `IGESGeom_CompositeCurve`
+/// defines IGESCompositeCurve, Type <102> Form <0>
+/// in package IGESGeom
+/// A composite curve is defined as an ordered list of entities
+/// consisting of a point, connect point and parametrised curve
+/// entities (excluding the CompositeCurve entity).
+pub use crate::ffi::IGESGeom_CompositeCurve as CompositeCurve;
+
+unsafe impl crate::CppDeletable for CompositeCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_CompositeCurve_destructor(ptr);
+    }
+}
+
+impl CompositeCurve {
+    /// **Source:** `IGESGeom_CompositeCurve.hxx`:38 - `IGESGeom_CompositeCurve::IGESGeom_CompositeCurve()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_CompositeCurve.hxx`:43 - `IGESGeom_CompositeCurve::Init()`
+    /// This method is used to set the fields of the class
+    /// CompositeCurve
+    /// - allEntities : Constituent Entities of the composite curve
+    pub fn init(&mut self, allEntities: &crate::ffi::HandleIGESDataHArray1OfIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_init(self as *mut Self, allEntities) }
+    }
+
+    /// **Source:** `IGESGeom_CompositeCurve.hxx`:46 - `IGESGeom_CompositeCurve::NbCurves()`
+    /// returns the number of curves contained in the CompositeCurve
+    pub fn nb_curves(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_nb_curves(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_CompositeCurve.hxx`:50 - `IGESGeom_CompositeCurve::Curve()`
+    /// returns Component of the CompositeCurve (a curve or a point)
+    /// raises exception if Index <= 0 or Index > NbCurves()
+    pub fn curve(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_curve(
+                self as *const Self,
+                Index,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_CompositeCurve.hxx`:52 - `IGESGeom_CompositeCurve::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_CompositeCurve_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_CompositeCurve.hxx`:52 - `IGESGeom_CompositeCurve::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_CompositeCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_CompositeCurve.hxx`:52 - `IGESGeom_CompositeCurve::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_CompositeCurve_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe {
+            &*(crate::ffi::IGESGeom_CompositeCurve_as_IGESData_IGESEntity(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_CompositeCurve_as_IGESData_IGESEntity_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESGeom_CompositeCurve_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_CompositeCurve_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomCompositeCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_CompositeCurve_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_CompositeCurve_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_CompositeCurve_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_HasLabelDisplay(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_SubordinateStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_HierarchyStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_LineWeightNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_CompositeCurve_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_SubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_InitLevel(self as *mut Self, ent, val)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_CompositeCurve_inherited_CompoundLocation(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_NbAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_CompositeCurve_inherited_Associativities(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_CompositeCurve_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_Dissociate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CompositeCurve_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_RemoveProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CompositeCurve_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_CompositeCurve_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomCompositeCurve;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomCompositeCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomCompositeCurve_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomCompositeCurve {
+    /// Dereference this Handle to access the underlying IGESGeom_CompositeCurve
+    pub fn get(&self) -> &crate::ffi::IGESGeom_CompositeCurve {
+        unsafe { &*(crate::ffi::HandleIGESGeomCompositeCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_CompositeCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_CompositeCurve {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomCompositeCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_CompositeCurve> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomCompositeCurve_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_CompositeCurve> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomCompositeCurve_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_ConicArc.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ConicArc.hxx`:43 - `IGESGeom_ConicArc`
+/// defines IGESConicArc, Type <104> Form <0-3>  in package IGESGeom
+/// A conic arc is a bounded connected portion of a parent
+/// conic curve which consists of more than one point. The
+/// parent conic curve is either an ellipse, a parabola, or
+/// a hyperbola. The definition space coordinate system is
+/// always chosen so that the conic arc lies in a plane either
+/// coincident with or parallel to XT, YT plane. Within such
+/// a plane a conic is defined by the six coefficients in the
+/// following equation.
+/// A*XT^2 + B*XT*YT + C*YT^2 + D*XT + E*YT + F = 0
+pub use crate::ffi::IGESGeom_ConicArc as ConicArc;
+
+unsafe impl crate::CppDeletable for ConicArc {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ConicArc_destructor(ptr);
+    }
+}
+
+impl ConicArc {
+    /// **Source:** `IGESGeom_ConicArc.hxx`:47 - `IGESGeom_ConicArc::IGESGeom_ConicArc()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:57 - `IGESGeom_ConicArc::Init()`
+    /// This method is used to set the fields of the class
+    /// ConicalArc
+    /// - A, B, C, D, E, F : Coefficients of the equation
+    /// defining conic arc
+    /// - ZT               : Parallel ZT displacement of the arc
+    /// from XT, YT plane.
+    /// - aStart           : Starting point of the conic arc
+    /// - anEnd            : End point of the conic arc
+    pub fn init(
+        &mut self,
+        A: f64,
+        B: f64,
+        C: f64,
+        D: f64,
+        E: f64,
+        F: f64,
+        ZT: f64,
+        aStart: &crate::gp::XY,
+        anEnd: &crate::gp::XY,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ConicArc_init(
+                self as *mut Self,
+                A,
+                B,
+                C,
+                D,
+                E,
+                F,
+                ZT,
+                aStart,
+                anEnd,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:69 - `IGESGeom_ConicArc::OwnCorrect()`
+    /// sets the Form Number equal to ComputedFormNumber,
+    /// returns True if changed
+    pub fn own_correct(&mut self) -> bool {
+        unsafe { crate::ffi::IGESGeom_ConicArc_own_correct(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:73 - `IGESGeom_ConicArc::ComputedFormNumber()`
+    /// Computes the Form Number according to the equation
+    /// 1 for Ellipse, 2 for Hyperbola, 3 for Parabola
+    pub fn computed_form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_ConicArc_computed_form_number(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:75 - `IGESGeom_ConicArc::Equation()`
+    pub fn equation(
+        &self,
+        A: &mut f64,
+        B: &mut f64,
+        C: &mut f64,
+        D: &mut f64,
+        E: &mut f64,
+        F: &mut f64,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ConicArc_equation(self as *const Self, A, B, C, D, E, F) }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:83 - `IGESGeom_ConicArc::ZPlane()`
+    /// returns the Z displacement of the arc from XT, YT plane
+    pub fn z_plane(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_ConicArc_z_plane(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:86 - `IGESGeom_ConicArc::StartPoint()`
+    /// returns the starting point of the arc
+    pub fn start_point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_start_point(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:90 - `IGESGeom_ConicArc::TransformedStartPoint()`
+    /// returns the starting point of the arc after applying
+    /// Transf. Matrix
+    pub fn transformed_start_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_transformed_start_point(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:93 - `IGESGeom_ConicArc::EndPoint()`
+    /// returns the end point of the arc
+    pub fn end_point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_end_point(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:97 - `IGESGeom_ConicArc::TransformedEndPoint()`
+    /// returns the end point of the arc after applying
+    /// Transf. Matrix
+    pub fn transformed_end_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_transformed_end_point(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:100 - `IGESGeom_ConicArc::IsFromEllipse()`
+    /// returns True if parent conic curve is an ellipse
+    pub fn is_from_ellipse(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_ConicArc_is_from_ellipse(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:103 - `IGESGeom_ConicArc::IsFromParabola()`
+    /// returns True if parent conic curve is a parabola
+    pub fn is_from_parabola(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_ConicArc_is_from_parabola(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:106 - `IGESGeom_ConicArc::IsFromHyperbola()`
+    /// returns True if parent conic curve is a hyperbola
+    pub fn is_from_hyperbola(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_ConicArc_is_from_hyperbola(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:109 - `IGESGeom_ConicArc::IsClosed()`
+    /// returns True if StartPoint = EndPoint
+    pub fn is_closed(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_ConicArc_is_closed(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:112 - `IGESGeom_ConicArc::Axis()`
+    /// Z-Axis of conic (i.e. [0,0,1])
+    pub fn axis(&self) -> crate::OwnedPtr<crate::gp::Dir> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_axis(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:115 - `IGESGeom_ConicArc::TransformedAxis()`
+    /// Z-Axis after applying Trans. Matrix
+    pub fn transformed_axis(&self) -> crate::OwnedPtr<crate::gp::Dir> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_transformed_axis(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:127 - `IGESGeom_ConicArc::Definition()`
+    /// Returns a Definition computed from equation, easier to use
+    /// <Center> : the center of the conic (meaningless for
+    /// a parabola) (defined with Z displacement)
+    /// <MainAxis> : the Main Axis of the conic (for a Circle,
+    /// arbitrary the X Axis)
+    /// <Rmin,Rmax> : Minor and Major Radii of the conic
+    /// For a Circle, Rmin = Rmax,
+    /// For a Parabola, Rmin = Rmax = the Focal
+    /// Warning : the basic definition (by equation) is not very stable,
+    /// limit cases may be approximative
+    pub fn definition(
+        &self,
+        Center: &mut crate::gp::Pnt,
+        MainAxis: &mut crate::gp::Dir,
+        rmin: &mut f64,
+        rmax: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ConicArc_definition(
+                self as *const Self,
+                Center,
+                MainAxis,
+                rmin,
+                rmax,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:134 - `IGESGeom_ConicArc::TransformedDefinition()`
+    /// Same as Definition, but the Location is applied on the
+    /// Center and the MainAxis
+    pub fn transformed_definition(
+        &self,
+        Center: &mut crate::gp::Pnt,
+        MainAxis: &mut crate::gp::Dir,
+        rmin: &mut f64,
+        rmax: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ConicArc_transformed_definition(
+                self as *const Self,
+                Center,
+                MainAxis,
+                rmin,
+                rmax,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:142 - `IGESGeom_ConicArc::ComputedDefinition()`
+    /// Computes and returns the coordinates of the definition of
+    /// a comic from its equation. Used by Definition &
+    /// TransformedDefinition, or may be called directly if needed
+    pub fn computed_definition(
+        &self,
+        Xcen: &mut f64,
+        Ycen: &mut f64,
+        Xax: &mut f64,
+        Yax: &mut f64,
+        Rmin: &mut f64,
+        Rmax: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ConicArc_computed_definition(
+                self as *const Self,
+                Xcen,
+                Ycen,
+                Xax,
+                Yax,
+                Rmin,
+                Rmax,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:149 - `IGESGeom_ConicArc::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_ConicArc_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:149 - `IGESGeom_ConicArc::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_ConicArc_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_ConicArc.hxx`:149 - `IGESGeom_ConicArc::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_ConicArc_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe { &*(crate::ffi::IGESGeom_ConicArc_as_IGESData_IGESEntity(self as *const Self)) }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_ConicArc_as_IGESData_IGESEntity_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESGeom_ConicArc_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_ConicArc_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomConicArc> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_ConicArc_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESGeom_ConicArc_inherited_DefLevel(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESGeom_ConicArc_inherited_DefView(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_HasLabelDisplay(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_SubordinateStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_HierarchyStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_LineWeightNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(crate::ffi::IGESGeom_ConicArc_inherited_DefColor(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_HasSubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_SubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ConicArc_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_ConicArc_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_InitLevel(self as *mut Self, ent, val) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_InitColor(self as *mut Self, ent, rank) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_ConicArc_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_SetLabel(self as *mut Self, label, sub) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ConicArc_inherited_InitMisc(self as *mut Self, str, lab, weightnum)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_CompoundLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_ConicArc_inherited_ArePresentAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_NbAssociativities(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_Associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_ConicArc_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_TypedAssociativity(
+                self as *const Self,
+                atype,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_Dissociate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_ArePresentProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_ConicArc_inherited_NbTypedProperties(self as *const Self, atype)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ConicArc_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_RemoveProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_ConicArc_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_ConicArc_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomConicArc;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomConicArc {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomConicArc_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomConicArc {
+    /// Dereference this Handle to access the underlying IGESGeom_ConicArc
+    pub fn get(&self) -> &crate::ffi::IGESGeom_ConicArc {
+        unsafe { &*(crate::ffi::HandleIGESGeomConicArc_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_ConicArc
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_ConicArc {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomConicArc_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_ConicArc> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomConicArc_to_HandleIGESDataIGESEntity(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_ConicArc> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomConicArc_to_HandleStandardTransient(self as *const Self),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_CopiousData.hxx
+// ========================
+
+/// **Source:** `IGESGeom_CopiousData.hxx`:37 - `IGESGeom_CopiousData`
+/// defines IGESCopiousData, Type <106> Form <1-3,11-13,63>
+/// in package IGESGeom
+/// This entity stores data points in the form of pairs,
+/// triples, or sextuples. An interpretation flag value
+/// signifies which of these forms is being used.
+pub use crate::ffi::IGESGeom_CopiousData as CopiousData;
+
+unsafe impl crate::CppDeletable for CopiousData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_CopiousData_destructor(ptr);
+    }
+}
+
+impl CopiousData {
+    /// **Source:** `IGESGeom_CopiousData.hxx`:41 - `IGESGeom_CopiousData::IGESGeom_CopiousData()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_CopiousData.hxx`:49 - `IGESGeom_CopiousData::Init()`
+    /// This method is used to set the fields of the class
+    /// CopiousData
+    /// - aDataType : Specifies whether data is a pair or a triple
+    /// or a sextuple.
+    /// - aZPlane   : Common Z value for all points if datatype = 1
+    /// - allData   : Data to be read in groups of 2, 3 or 6
+    pub fn init(
+        &mut self,
+        aDataType: i32,
+        aZPlane: f64,
+        allData: &crate::ffi::HandleTColStdHArray1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_CopiousData_init(self as *mut Self, aDataType, aZPlane, allData)
+        }
+    }
+
+    /// **Source:** `IGESGeom_CopiousData.hxx`:55 - `IGESGeom_CopiousData::SetPolyline()`
+    /// Sets Copious Data to be a Polyline if <mode> is True
+    /// (Form = 11-12-13) or a Set of Points else (Form 1-2-3)
+    pub fn set_polyline(&mut self, mode: bool) {
+        unsafe { crate::ffi::IGESGeom_CopiousData_set_polyline(self as *mut Self, mode) }
+    }
+
+    /// **Source:** `IGESGeom_CopiousData.hxx`:59 - `IGESGeom_CopiousData::SetClosedPath2D()`
+    /// Sets Copious Data to be a Closed Path 2D (Form 63)
+    /// Warning : DataType is not checked and must be set to ONE by Init
+    pub fn set_closed_path2_d(&mut self) {
+        unsafe { crate::ffi::IGESGeom_CopiousData_set_closed_path2_d(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESGeom_CopiousData.hxx`:62 - `IGESGeom_CopiousData::IsPointSet()`
+    /// Returns True if <me> is a Set of Points (Form 1-2-3)
+    pub fn is_point_set(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CopiousData_is_point_set(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_CopiousData.hxx`:65 - `IGESGeom_CopiousData::IsPolyline()`
+    /// Returns True if <me> is a Polyline (Form 11-12-13)
+    pub fn is_polyline(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CopiousData_is_polyline(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_CopiousData.hxx`:68 - `IGESGeom_CopiousData::IsClosedPath2D()`
+    /// Returns True if <me> is a Closed Path 2D (Form 63)
+    pub fn is_closed_path2_d(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CopiousData_is_closed_path2_d(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_CopiousData.hxx`:74 - `IGESGeom_CopiousData::DataType()`
+    /// returns data type
+    /// 1 = XY ( with common Z given by plane)
+    /// 2 = XYZ ( point)
+    /// 3 = XYZ + Vec(XYZ) (point + normal vector)
+    pub fn data_type(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_data_type(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_CopiousData.hxx`:77 - `IGESGeom_CopiousData::NbPoints()`
+    /// returns the number of tuples
+    pub fn nb_points(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_nb_points(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_CopiousData.hxx`:81 - `IGESGeom_CopiousData::Data()`
+    /// Returns an individual Data, given the N0 of the Point
+    /// and the B0 of the Coordinate (according DataType)
+    pub fn data(&self, NumPoint: i32, NumData: i32) -> f64 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_data(self as *const Self, NumPoint, NumData) }
+    }
+
+    /// **Source:** `IGESGeom_CopiousData.hxx`:86 - `IGESGeom_CopiousData::ZPlane()`
+    /// If datatype = 1, then returns common z value for all data
+    /// else returns 0
+    pub fn z_plane(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_z_plane(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_CopiousData.hxx`:90 - `IGESGeom_CopiousData::Point()`
+    /// returns the coordinates of the point specified by the anIndex
+    /// raises exception if anIndex <= 0 or anIndex > NbPoints()
+    pub fn point(&self, anIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_point(
+                self as *const Self,
+                anIndex,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_CopiousData.hxx`:95 - `IGESGeom_CopiousData::TransformedPoint()`
+    /// returns the coordinates of the point specified by the anIndex
+    /// after applying Transf. Matrix
+    /// raises exception if anIndex <= 0 or anIndex > NbPoints()
+    pub fn transformed_point(&self, anIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_transformed_point(
+                self as *const Self,
+                anIndex,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_CopiousData.hxx`:99 - `IGESGeom_CopiousData::Vector()`
+    /// returns i, j, k values if 3-tuple else returns (0, 0, 0)
+    /// raises exception if anIndex <= 0 or anIndex > NbPoints()
+    pub fn vector(&self, anIndex: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_vector(
+                self as *const Self,
+                anIndex,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_CopiousData.hxx`:103 - `IGESGeom_CopiousData::TransformedVector()`
+    /// returns transformed vector if 3-tuple else returns (0, 0, 0)
+    /// raises exception if anIndex <= 0 or anIndex > NbPoints()
+    pub fn transformed_vector(&self, anIndex: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_transformed_vector(
+                self as *const Self,
+                anIndex,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_CopiousData.hxx`:105 - `IGESGeom_CopiousData::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_CopiousData_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_CopiousData.hxx`:105 - `IGESGeom_CopiousData::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_CopiousData_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_CopiousData.hxx`:105 - `IGESGeom_CopiousData::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_CopiousData_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe { &*(crate::ffi::IGESGeom_CopiousData_as_IGESData_IGESEntity(self as *const Self)) }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_CopiousData_as_IGESData_IGESEntity_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESGeom_CopiousData_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_CopiousData_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomCopiousData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_CopiousData_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_CopiousData_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESGeom_CopiousData_inherited_DefView(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_HasLabelDisplay(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_SubordinateStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_HierarchyStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_LineWeightNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_CopiousData_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CopiousData_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_SubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_CopiousData_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CopiousData_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_InitLevel(self as *mut Self, ent, val) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CopiousData_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CopiousData_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CopiousData_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_CopiousData_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_CompoundLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CopiousData_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_NbAssociativities(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_Associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CopiousData_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_CopiousData_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_Dissociate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CopiousData_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CopiousData_inherited_NbTypedProperties(self as *const Self, atype)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CopiousData_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_RemoveProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CopiousData_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CopiousData_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_CopiousData_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomCopiousData;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomCopiousData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomCopiousData_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomCopiousData {
+    /// Dereference this Handle to access the underlying IGESGeom_CopiousData
+    pub fn get(&self) -> &crate::ffi::IGESGeom_CopiousData {
+        unsafe { &*(crate::ffi::HandleIGESGeomCopiousData_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_CopiousData
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_CopiousData {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomCopiousData_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_CopiousData> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomCopiousData_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_CopiousData> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomCopiousData_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_CurveOnSurface.hxx
+// ========================
+
+/// **Source:** `IGESGeom_CurveOnSurface.hxx`:33 - `IGESGeom_CurveOnSurface`
+/// defines IGESCurveOnSurface, Type <142> Form <0>
+/// in package IGESGeom
+/// A curve on a parametric surface entity associates a given
+/// curve with a surface and identifies the curve as lying on
+/// the surface.
+pub use crate::ffi::IGESGeom_CurveOnSurface as CurveOnSurface;
+
+unsafe impl crate::CppDeletable for CurveOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_CurveOnSurface_destructor(ptr);
+    }
+}
+
+impl CurveOnSurface {
+    /// **Source:** `IGESGeom_CurveOnSurface.hxx`:37 - `IGESGeom_CurveOnSurface::IGESGeom_CurveOnSurface()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_CurveOnSurface.hxx`:49 - `IGESGeom_CurveOnSurface::Init()`
+    /// This method is used to set the fields of the class
+    /// CurveOnSurface
+    /// - aMode       : Way the curve on the surface has been created
+    /// - aSurface    : Surface on which the curve lies
+    /// - aCurveUV    : Curve S (UV)
+    /// - aCurve3D    : Curve C (3D)
+    /// - aPreference : 0 = Unspecified
+    /// 1 = S o B is preferred
+    /// 2 = C is preferred
+    /// 3 = C and S o B are equally preferred
+    pub fn init(
+        &mut self,
+        aMode: i32,
+        aSurface: &crate::ffi::HandleIGESDataIGESEntity,
+        aCurveUV: &crate::ffi::HandleIGESDataIGESEntity,
+        aCurve3D: &crate::ffi::HandleIGESDataIGESEntity,
+        aPreference: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_init(
+                self as *mut Self,
+                aMode,
+                aSurface,
+                aCurveUV,
+                aCurve3D,
+                aPreference,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_CurveOnSurface.hxx`:61 - `IGESGeom_CurveOnSurface::CreationMode()`
+    /// returns the mode in which the curve is created on the surface
+    /// 0 = Unspecified
+    /// 1 = Projection of a given curve on the surface
+    /// 2 = Intersection of two surfaces
+    /// 3 = Isoparametric curve, i.e:- either a `u` parametric
+    /// or a `v` parametric curve
+    pub fn creation_mode(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_creation_mode(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_CurveOnSurface.hxx`:64 - `IGESGeom_CurveOnSurface::Surface()`
+    /// returns the surface on which the curve lies
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_surface(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_CurveOnSurface.hxx`:67 - `IGESGeom_CurveOnSurface::CurveUV()`
+    /// returns curve S
+    pub fn curve_uv(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_curve_uv(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_CurveOnSurface.hxx`:70 - `IGESGeom_CurveOnSurface::Curve3D()`
+    /// returns curve C
+    pub fn curve3_d(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_curve3_d(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_CurveOnSurface.hxx`:77 - `IGESGeom_CurveOnSurface::PreferenceMode()`
+    /// returns preference mode
+    /// 0 = Unspecified
+    /// 1 = S o B is preferred
+    /// 2 = C is preferred
+    /// 3 = C and S o B are equally preferred
+    pub fn preference_mode(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_preference_mode(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_CurveOnSurface.hxx`:79 - `IGESGeom_CurveOnSurface::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_CurveOnSurface_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_CurveOnSurface.hxx`:79 - `IGESGeom_CurveOnSurface::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_CurveOnSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_CurveOnSurface.hxx`:79 - `IGESGeom_CurveOnSurface::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_CurveOnSurface_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe {
+            &*(crate::ffi::IGESGeom_CurveOnSurface_as_IGESData_IGESEntity(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_CurveOnSurface_as_IGESData_IGESEntity_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESGeom_CurveOnSurface_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_CurveOnSurface_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomCurveOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_CurveOnSurface_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_CurveOnSurface_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_CurveOnSurface_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_HasLabelDisplay(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_SubordinateStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_HierarchyStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_LineWeightNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_CurveOnSurface_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_SubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_InitLevel(self as *mut Self, ent, val)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_CurveOnSurface_inherited_CompoundLocation(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_NbAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_CurveOnSurface_inherited_Associativities(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_CurveOnSurface_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_Dissociate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_CurveOnSurface_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_RemoveProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_CurveOnSurface_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_CurveOnSurface_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomCurveOnSurface;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomCurveOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomCurveOnSurface_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomCurveOnSurface {
+    /// Dereference this Handle to access the underlying IGESGeom_CurveOnSurface
+    pub fn get(&self) -> &crate::ffi::IGESGeom_CurveOnSurface {
+        unsafe { &*(crate::ffi::HandleIGESGeomCurveOnSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_CurveOnSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_CurveOnSurface {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomCurveOnSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_CurveOnSurface> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomCurveOnSurface_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_CurveOnSurface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomCurveOnSurface_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_Direction.hxx
+// ========================
+
+/// **Source:** `IGESGeom_Direction.hxx`:36 - `IGESGeom_Direction`
+/// defines IGESDirection, Type <123> Form <0>
+/// in package IGESGeom
+/// A direction entity is a non-zero vector in Euclidean 3-space
+/// that is defined by its three components (direction ratios)
+/// with respect to the coordinate axes. If x, y, z are the
+/// direction ratios then (x^2 + y^2 + z^2) > 0
+pub use crate::ffi::IGESGeom_Direction as Direction;
+
+unsafe impl crate::CppDeletable for Direction {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_Direction_destructor(ptr);
+    }
+}
+
+impl Direction {
+    /// **Source:** `IGESGeom_Direction.hxx`:40 - `IGESGeom_Direction::IGESGeom_Direction()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_Direction.hxx`:45 - `IGESGeom_Direction::Init()`
+    /// This method is used to set the fields of the class
+    /// Direction
+    /// - aDirection : Direction ratios, Z is 0 by default
+    pub fn init(&mut self, aDirection: &crate::gp::XYZ) {
+        unsafe { crate::ffi::IGESGeom_Direction_init(self as *mut Self, aDirection) }
+    }
+
+    /// **Source:** `IGESGeom_Direction.hxx`:47 - `IGESGeom_Direction::Value()`
+    pub fn value(&self) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_value(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Direction.hxx`:50 - `IGESGeom_Direction::TransformedValue()`
+    /// returns the Direction value after applying Transformation matrix
+    pub fn transformed_value(&self) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_transformed_value(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Direction.hxx`:52 - `IGESGeom_Direction::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_Direction_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_Direction.hxx`:52 - `IGESGeom_Direction::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_Direction_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_Direction.hxx`:52 - `IGESGeom_Direction::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_Direction_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe { &*(crate::ffi::IGESGeom_Direction_as_IGESData_IGESEntity(self as *const Self)) }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_Direction_as_IGESData_IGESEntity_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESGeom_Direction_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_Direction_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomDirection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_Direction_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESGeom_Direction_inherited_DefLevel(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESGeom_Direction_inherited_DefView(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_HasLabelDisplay(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_SubordinateStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_HierarchyStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_LineWeightNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(crate::ffi::IGESGeom_Direction_inherited_DefColor(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_HasSubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_SubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_Direction_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_Direction_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_InitLevel(self as *mut Self, ent, val) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_InitColor(self as *mut Self, ent, rank) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_Direction_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_SetLabel(self as *mut Self, label, sub) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_Direction_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_CompoundLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_Direction_inherited_ArePresentAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_NbAssociativities(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_Associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_Direction_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_TypedAssociativity(
+                self as *const Self,
+                atype,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_Dissociate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_Direction_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_Direction_inherited_NbTypedProperties(self as *const Self, atype)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Direction_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_RemoveProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_Direction_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_Direction_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomDirection;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomDirection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomDirection_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomDirection {
+    /// Dereference this Handle to access the underlying IGESGeom_Direction
+    pub fn get(&self) -> &crate::ffi::IGESGeom_Direction {
+        unsafe { &*(crate::ffi::HandleIGESGeomDirection_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_Direction
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_Direction {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomDirection_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_Direction> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomDirection_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_Direction> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomDirection_to_HandleStandardTransient(self as *const Self),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_Flash.hxx
+// ========================
+
+/// **Source:** `IGESGeom_Flash.hxx`:41 - `IGESGeom_Flash`
+/// defines IGESFlash, Type <125> Form <0 - 4>
+/// in package IGESGeom
+/// A flash entity is a point in the ZT=0 plane that locates
+/// a particular closed area. That closed area can be defined
+/// in one of two ways. First, it can be an arbitrary closed
+/// area defined by any entity capable of defining a closed
+/// area. The points of this entity must all lie in the ZT=0
+/// plane. Second, it can be a member of a predefined set of
+/// flash shapes.
+pub use crate::ffi::IGESGeom_Flash as Flash;
+
+unsafe impl crate::CppDeletable for Flash {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_Flash_destructor(ptr);
+    }
+}
+
+impl Flash {
+    /// **Source:** `IGESGeom_Flash.hxx`:45 - `IGESGeom_Flash::IGESGeom_Flash()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_Flash.hxx`:54 - `IGESGeom_Flash::Init()`
+    /// This method is used to set the fields of the class Flash
+    /// - aPoint     : Reference of flash
+    /// - aDim       : First flash sizing parameter
+    /// - anotherDim : Second flash sizing parameter
+    /// - aRotation  : Rotation of flash about reference point
+    /// in radians
+    /// - aReference : Pointer to the referenced entity or Null
+    pub fn init(
+        &mut self,
+        aPoint: &crate::gp::XY,
+        aDim: f64,
+        anotherDim: f64,
+        aRotation: f64,
+        aReference: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_Flash_init(
+                self as *mut Self,
+                aPoint,
+                aDim,
+                anotherDim,
+                aRotation,
+                aReference,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_Flash.hxx`:64 - `IGESGeom_Flash::SetFormNumber()`
+    /// Changes FormNumber (indicates the Nature of the Flash :
+    /// 0 Unspecified, then given by Reference, 1->4 various
+    /// Specialisations (Circle,Rectangle, etc...) )
+    /// Error if not in range [0-4]
+    pub fn set_form_number(&mut self, form: i32) {
+        unsafe { crate::ffi::IGESGeom_Flash_set_form_number(self as *mut Self, form) }
+    }
+
+    /// **Source:** `IGESGeom_Flash.hxx`:67 - `IGESGeom_Flash::ReferencePoint()`
+    /// returns the referenced point, Z = 0 always
+    pub fn reference_point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_reference_point(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Flash.hxx`:70 - `IGESGeom_Flash::TransformedReferencePoint()`
+    /// returns the referenced point after applying Transf. Matrix
+    pub fn transformed_reference_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_transformed_reference_point(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Flash.hxx`:73 - `IGESGeom_Flash::Dimension1()`
+    /// returns first flash sizing parameter
+    pub fn dimension1(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_Flash_dimension1(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_Flash.hxx`:76 - `IGESGeom_Flash::Dimension2()`
+    /// returns second flash sizing parameter
+    pub fn dimension2(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_Flash_dimension2(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_Flash.hxx`:80 - `IGESGeom_Flash::Rotation()`
+    /// returns the angle in radians of the rotation of flash about the
+    /// reference point
+    pub fn rotation(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_Flash_rotation(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_Flash.hxx`:83 - `IGESGeom_Flash::ReferenceEntity()`
+    /// returns the referenced entity or Null handle.
+    pub fn reference_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_reference_entity(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Flash.hxx`:86 - `IGESGeom_Flash::HasReferenceEntity()`
+    /// returns True if referenced entity is present.
+    pub fn has_reference_entity(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Flash_has_reference_entity(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_Flash.hxx`:88 - `IGESGeom_Flash::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_Flash_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_Flash.hxx`:88 - `IGESGeom_Flash::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_Flash_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_Flash.hxx`:88 - `IGESGeom_Flash::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_Flash_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe { &*(crate::ffi::IGESGeom_Flash_as_IGESData_IGESEntity(self as *const Self)) }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe { &mut *(crate::ffi::IGESGeom_Flash_as_IGESData_IGESEntity_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESGeom_Flash_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::IGESGeom_Flash_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomFlash> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(crate::ffi::IGESGeom_Flash_inherited_DefLineFont(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESGeom_Flash_inherited_DefLevel(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESGeom_Flash_inherited_DefView(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_HasLabelDisplay(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_SubordinateStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_HierarchyStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_LineWeightNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(crate::ffi::IGESGeom_Flash_inherited_DefColor(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_HasSubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_SubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_Flash_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_InitLineFont(self as *mut Self, ent, rank) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_InitLevel(self as *mut Self, ent, val) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_InitColor(self as *mut Self, ent, rank) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_Flash_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_SetLabel(self as *mut Self, label, sub) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_Flash_inherited_InitMisc(self as *mut Self, str, lab, weightnum)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_CompoundLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_Flash_inherited_ArePresentAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_NbAssociativities(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_Associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_Flash_inherited_NbTypedAssociativities(self as *const Self, atype)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_TypedAssociativity(
+                self as *const Self,
+                atype,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_Dissociate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_ArePresentProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_Flash_inherited_NbTypedProperties(self as *const Self, atype)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Flash_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_RemoveProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_Flash_inherited_SetLineWeight(self as *mut Self, defw, maxw, gradw)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_Flash_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomFlash;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomFlash {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomFlash_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomFlash {
+    /// Dereference this Handle to access the underlying IGESGeom_Flash
+    pub fn get(&self) -> &crate::ffi::IGESGeom_Flash {
+        unsafe { &*(crate::ffi::HandleIGESGeomFlash_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_Flash
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_Flash {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomFlash_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_Flash> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIGESGeomFlash_to_HandleIGESDataIGESEntity(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_Flash> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIGESGeomFlash_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_GeneralModule.hxx
+// ========================
+
+/// **Source:** `IGESGeom_GeneralModule.hxx`:38 - `IGESGeom_GeneralModule`
+/// Definition of General Services for IGESGeom (specific part)
+/// This Services comprise : Shared & Implied Lists, Copy, Check
+pub use crate::ffi::IGESGeom_GeneralModule as GeneralModule;
+
+unsafe impl crate::CppDeletable for GeneralModule {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_GeneralModule_destructor(ptr);
+    }
+}
+
+impl GeneralModule {
+    /// **Source:** `IGESGeom_GeneralModule.hxx`:43 - `IGESGeom_GeneralModule::IGESGeom_GeneralModule()`
+    /// Creates a GeneralModule from IGESGeom and puts it into GeneralLib
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_GeneralModule_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_GeneralModule.hxx`:47 - `IGESGeom_GeneralModule::OwnSharedCase()`
+    /// Lists the Entities shared by a given IGESEntity <ent>, from
+    /// its specific parameters : specific for each type
+    pub fn own_shared_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_own_shared_case(self as *const Self, CN, ent, iter)
+        }
+    }
+
+    /// **Source:** `IGESGeom_GeneralModule.hxx`:55 - `IGESGeom_GeneralModule::DirChecker()`
+    /// Returns a DirChecker, specific for each type of Entity
+    /// (identified by its Case Number) : this DirChecker defines
+    /// constraints which must be respected by the DirectoryPart
+    pub fn dir_checker(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_GeneralModule_dir_checker(
+                self as *const Self,
+                CN,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_GeneralModule.hxx`:59 - `IGESGeom_GeneralModule::OwnCheckCase()`
+    /// Performs Specific Semantic Check for each type of Entity
+    pub fn own_check_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_own_check_case(
+                self as *const Self,
+                CN,
+                ent,
+                shares,
+                ach,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_GeneralModule.hxx`:66 - `IGESGeom_GeneralModule::NewVoid()`
+    /// Specific creation of a new void entity
+    pub fn new_void(&self, CN: i32, entto: &mut crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IGESGeom_GeneralModule_new_void(self as *const Self, CN, entto) }
+    }
+
+    /// **Source:** `IGESGeom_GeneralModule.hxx`:69 - `IGESGeom_GeneralModule::OwnCopyCase()`
+    /// Copies parameters which are specific of each Type of Entity
+    pub fn own_copy_case(
+        &self,
+        CN: i32,
+        entfrom: &crate::ffi::HandleIGESDataIGESEntity,
+        entto: &crate::ffi::HandleIGESDataIGESEntity,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_own_copy_case(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_GeneralModule.hxx`:77 - `IGESGeom_GeneralModule::CategoryNumber()`
+    /// Returns a category number which characterizes an entity
+    /// Shape for all, but Drawing for :
+    /// Flash;  Point with a symbol;  Plane with a symbol
+    pub fn category_number(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        shares: &crate::interface::ShareTool,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_category_number(self as *const Self, CN, ent, shares)
+        }
+    }
+
+    /// **Source:** `IGESGeom_GeneralModule.hxx`:82 - `IGESGeom_GeneralModule::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_GeneralModule_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_GeneralModule.hxx`:82 - `IGESGeom_GeneralModule::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_GeneralModule_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_GeneralModule.hxx`:82 - `IGESGeom_GeneralModule::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_GeneralModule_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_GeneralModule
+    pub fn as_iges_data_general_module(&self) -> &crate::iges_data::GeneralModule {
+        unsafe {
+            &*(crate::ffi::IGESGeom_GeneralModule_as_IGESData_GeneralModule(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_GeneralModule (mutable)
+    pub fn as_iges_data_general_module_mut(&mut self) -> &mut crate::iges_data::GeneralModule {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_GeneralModule_as_IGESData_GeneralModule_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Interface_GeneralModule
+    pub fn as_interface_general_module(&self) -> &crate::interface::GeneralModule {
+        unsafe {
+            &*(crate::ffi::IGESGeom_GeneralModule_as_Interface_GeneralModule(self as *const Self))
+        }
+    }
+
+    /// Upcast to Interface_GeneralModule (mutable)
+    pub fn as_interface_general_module_mut(&mut self) -> &mut crate::interface::GeneralModule {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_GeneralModule_as_Interface_GeneralModule_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESGeom_GeneralModule_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_GeneralModule_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomGeneralModule> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_GeneralModule_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:50 - `IGESData_GeneralModule::FillSharedCase()`
+    pub fn fill_shared_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_inherited_FillSharedCase(
+                self as *const Self,
+                CN,
+                ent,
+                iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:62 - `IGESData_GeneralModule::ListImpliedCase()`
+    pub fn list_implied_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_inherited_ListImpliedCase(
+                self as *const Self,
+                CN,
+                ent,
+                iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:70 - `IGESData_GeneralModule::OwnImpliedCase()`
+    pub fn own_implied_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_inherited_OwnImpliedCase(
+                self as *const Self,
+                CN,
+                ent,
+                iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:77 - `IGESData_GeneralModule::CheckCase()`
+    pub fn check_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_inherited_CheckCase(
+                self as *const Self,
+                CN,
+                ent,
+                shares,
+                ach,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:97 - `IGESData_GeneralModule::CanCopy()`
+    pub fn can_copy(&self, CN: i32, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_inherited_CanCopy(self as *const Self, CN, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:110 - `IGESData_GeneralModule::CopyCase()`
+    pub fn copy_case(
+        &self,
+        CN: i32,
+        entfrom: &crate::ffi::HandleStandardTransient,
+        entto: &crate::ffi::HandleStandardTransient,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_inherited_CopyCase(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:124 - `IGESData_GeneralModule::RenewImpliedCase()`
+    pub fn renew_implied_case(
+        &self,
+        CN: i32,
+        entfrom: &crate::ffi::HandleStandardTransient,
+        entto: &crate::ffi::HandleStandardTransient,
+        TC: &crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_inherited_RenewImpliedCase(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:133 - `IGESData_GeneralModule::OwnRenewCase()`
+    pub fn own_renew_case(
+        &self,
+        CN: i32,
+        entfrom: &crate::ffi::HandleIGESDataIGESEntity,
+        entto: &crate::ffi::HandleIGESDataIGESEntity,
+        TC: &crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_inherited_OwnRenewCase(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:142 - `IGESData_GeneralModule::WhenDeleteCase()`
+    pub fn when_delete_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        dispatched: bool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_inherited_WhenDeleteCase(
+                self as *const Self,
+                CN,
+                ent,
+                dispatched,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:149 - `IGESData_GeneralModule::OwnDeleteCase()`
+    pub fn own_delete_case(&self, CN: i32, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_inherited_OwnDeleteCase(self as *const Self, CN, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:154 - `IGESData_GeneralModule::Name()`
+    pub fn name(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        shares: &crate::interface::ShareTool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_GeneralModule_inherited_Name(
+                self as *const Self,
+                CN,
+                ent,
+                shares,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_GeneralModule.hxx`:52 - `Interface_GeneralModule::FillShared()`
+    pub fn fill_shared(
+        &self,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_inherited_FillShared(
+                self as *const Self,
+                model,
+                CN,
+                ent,
+                iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_GeneralModule.hxx`:65 - `Interface_GeneralModule::Share()`
+    pub fn share(
+        &self,
+        iter: &mut crate::interface::EntityIterator,
+        shared: &crate::ffi::HandleStandardTransient,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_inherited_Share(self as *const Self, iter, shared)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_GeneralModule.hxx`:76 - `Interface_GeneralModule::ListImplied()`
+    pub fn list_implied(
+        &self,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_inherited_ListImplied(
+                self as *const Self,
+                model,
+                CN,
+                ent,
+                iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_GeneralModule.hxx`:126 - `Interface_GeneralModule::Dispatch()`
+    pub fn dispatch(
+        &self,
+        CN: i32,
+        entfrom: &crate::ffi::HandleStandardTransient,
+        entto: &mut crate::ffi::HandleStandardTransient,
+        TC: &mut crate::interface::CopyTool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_inherited_Dispatch(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_GeneralModule.hxx`:152 - `Interface_GeneralModule::NewCopiedCase()`
+    pub fn new_copied_case(
+        &self,
+        CN: i32,
+        entfrom: &crate::ffi::HandleStandardTransient,
+        entto: &mut crate::ffi::HandleStandardTransient,
+        TC: &mut crate::interface::CopyTool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_inherited_NewCopiedCase(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_GeneralModule_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_GeneralModule_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_GeneralModule_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_GeneralModule_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomGeneralModule;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomGeneralModule {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomGeneralModule_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomGeneralModule {
+    /// Dereference this Handle to access the underlying IGESGeom_GeneralModule
+    pub fn get(&self) -> &crate::ffi::IGESGeom_GeneralModule {
+        unsafe { &*(crate::ffi::HandleIGESGeomGeneralModule_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_GeneralModule
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_GeneralModule {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomGeneralModule_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_GeneralModule> to Handle<IGESData_GeneralModule>
+    pub fn to_handle_iges_data_general_module(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataGeneralModule> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomGeneralModule_to_HandleIGESDataGeneralModule(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_GeneralModule> to Handle<Interface_GeneralModule>
+    pub fn to_handle_interface_general_module(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceGeneralModule> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomGeneralModule_to_HandleInterfaceGeneralModule(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_GeneralModule> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomGeneralModule_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_HArray1OfBoundary.hxx
+// ========================
+
+/// **Source:** `IGESGeom_HArray1OfBoundary.hxx`:23 - `IGESGeom_HArray1OfBoundary`
+pub use crate::ffi::IGESGeom_HArray1OfBoundary as HArray1OfBoundary;
+
+unsafe impl crate::CppDeletable for HArray1OfBoundary {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_HArray1OfBoundary_destructor(ptr);
+    }
+}
+
+impl HArray1OfBoundary {
+    /// **Source:** `IGESGeom_HArray1OfBoundary.hxx`:23 - `IGESGeom_HArray1OfBoundary::IGESGeom_HArray1OfBoundary()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfBoundary_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfBoundary.hxx`:23 - `IGESGeom_HArray1OfBoundary::IGESGeom_HArray1OfBoundary()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfBoundary_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfBoundary.hxx`:23 - `IGESGeom_HArray1OfBoundary::IGESGeom_HArray1OfBoundary()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::IGESGeom_Array1OfBoundary_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfBoundary_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfBoundary.hxx`:23 - `IGESGeom_HArray1OfBoundary::IGESGeom_HArray1OfBoundary()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::IGESGeom_Array1OfBoundary_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfBoundary_ctor_type_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfBoundary.hxx`:23 - `IGESGeom_HArray1OfBoundary::IGESGeom_HArray1OfBoundary()`
+    pub fn new_array1ofboundary(
+        theOther: &crate::ffi::IGESGeom_Array1OfBoundary,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfBoundary_ctor_array1ofboundary(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfBoundary.hxx`:23 - `IGESGeom_HArray1OfBoundary::Array1()`
+    pub fn array1(&self) -> &crate::ffi::IGESGeom_Array1OfBoundary {
+        unsafe { &*(crate::ffi::IGESGeom_HArray1OfBoundary_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfBoundary.hxx`:23 - `IGESGeom_HArray1OfBoundary::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::IGESGeom_Array1OfBoundary {
+        unsafe { &mut *(crate::ffi::IGESGeom_HArray1OfBoundary_change_array1(self as *mut Self)) }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfBoundary.hxx`:23 - `IGESGeom_HArray1OfBoundary::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_HArray1OfBoundary_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfBoundary.hxx`:23 - `IGESGeom_HArray1OfBoundary::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_HArray1OfBoundary_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfBoundary.hxx`:23 - `IGESGeom_HArray1OfBoundary::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_HArray1OfBoundary_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESGeom_HArray1OfBoundary_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_HArray1OfBoundary_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomHArray1OfBoundary> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfBoundary_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_HArray1OfBoundary_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_HArray1OfBoundary_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_HArray1OfBoundary_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESGeom_HArray1OfBoundary_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_HArray1OfBoundary_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_HArray1OfBoundary_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomHArray1OfBoundary;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomHArray1OfBoundary {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomHArray1OfBoundary_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomHArray1OfBoundary {
+    /// Dereference this Handle to access the underlying IGESGeom_HArray1OfBoundary
+    pub fn get(&self) -> &crate::ffi::IGESGeom_HArray1OfBoundary {
+        unsafe { &*(crate::ffi::HandleIGESGeomHArray1OfBoundary_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_HArray1OfBoundary
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_HArray1OfBoundary {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomHArray1OfBoundary_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_HArray1OfBoundary> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomHArray1OfBoundary_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_HArray1OfCurveOnSurface.hxx
+// ========================
+
+/// **Source:** `IGESGeom_HArray1OfCurveOnSurface.hxx`:23 - `IGESGeom_HArray1OfCurveOnSurface`
+pub use crate::ffi::IGESGeom_HArray1OfCurveOnSurface as HArray1OfCurveOnSurface;
+
+unsafe impl crate::CppDeletable for HArray1OfCurveOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_HArray1OfCurveOnSurface_destructor(ptr);
+    }
+}
+
+impl HArray1OfCurveOnSurface {
+    /// **Source:** `IGESGeom_HArray1OfCurveOnSurface.hxx`:23 - `IGESGeom_HArray1OfCurveOnSurface::IGESGeom_HArray1OfCurveOnSurface()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfCurveOnSurface_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfCurveOnSurface.hxx`:23 - `IGESGeom_HArray1OfCurveOnSurface::IGESGeom_HArray1OfCurveOnSurface()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfCurveOnSurface_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfCurveOnSurface.hxx`:23 - `IGESGeom_HArray1OfCurveOnSurface::IGESGeom_HArray1OfCurveOnSurface()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::IGESGeom_Array1OfCurveOnSurface_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfCurveOnSurface_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfCurveOnSurface.hxx`:23 - `IGESGeom_HArray1OfCurveOnSurface::IGESGeom_HArray1OfCurveOnSurface()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::IGESGeom_Array1OfCurveOnSurface_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_HArray1OfCurveOnSurface_ctor_type_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfCurveOnSurface.hxx`:23 - `IGESGeom_HArray1OfCurveOnSurface::IGESGeom_HArray1OfCurveOnSurface()`
+    pub fn new_array1ofcurveonsurface(
+        theOther: &crate::ffi::IGESGeom_Array1OfCurveOnSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_HArray1OfCurveOnSurface_ctor_array1ofcurveonsurface(theOther),
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfCurveOnSurface.hxx`:23 - `IGESGeom_HArray1OfCurveOnSurface::Array1()`
+    pub fn array1(&self) -> &crate::ffi::IGESGeom_Array1OfCurveOnSurface {
+        unsafe { &*(crate::ffi::IGESGeom_HArray1OfCurveOnSurface_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfCurveOnSurface.hxx`:23 - `IGESGeom_HArray1OfCurveOnSurface::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::IGESGeom_Array1OfCurveOnSurface {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_HArray1OfCurveOnSurface_change_array1(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfCurveOnSurface.hxx`:23 - `IGESGeom_HArray1OfCurveOnSurface::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::IGESGeom_HArray1OfCurveOnSurface_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfCurveOnSurface.hxx`:23 - `IGESGeom_HArray1OfCurveOnSurface::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_HArray1OfCurveOnSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfCurveOnSurface.hxx`:23 - `IGESGeom_HArray1OfCurveOnSurface::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_HArray1OfCurveOnSurface_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESGeom_HArray1OfCurveOnSurface_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_HArray1OfCurveOnSurface_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomHArray1OfCurveOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfCurveOnSurface_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_HArray1OfCurveOnSurface_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_HArray1OfCurveOnSurface_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_HArray1OfCurveOnSurface_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESGeom_HArray1OfCurveOnSurface_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_HArray1OfCurveOnSurface_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::IGESGeom_HArray1OfCurveOnSurface_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomHArray1OfCurveOnSurface;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomHArray1OfCurveOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomHArray1OfCurveOnSurface_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomHArray1OfCurveOnSurface {
+    /// Dereference this Handle to access the underlying IGESGeom_HArray1OfCurveOnSurface
+    pub fn get(&self) -> &crate::ffi::IGESGeom_HArray1OfCurveOnSurface {
+        unsafe { &*(crate::ffi::HandleIGESGeomHArray1OfCurveOnSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_HArray1OfCurveOnSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_HArray1OfCurveOnSurface {
+        unsafe {
+            &mut *(crate::ffi::HandleIGESGeomHArray1OfCurveOnSurface_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_HArray1OfCurveOnSurface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomHArray1OfCurveOnSurface_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_HArray1OfTransformationMatrix.hxx
+// ========================
+
+/// **Source:** `IGESGeom_HArray1OfTransformationMatrix.hxx`:23 - `IGESGeom_HArray1OfTransformationMatrix`
+pub use crate::ffi::IGESGeom_HArray1OfTransformationMatrix as HArray1OfTransformationMatrix;
+
+unsafe impl crate::CppDeletable for HArray1OfTransformationMatrix {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_HArray1OfTransformationMatrix_destructor(ptr);
+    }
+}
+
+impl HArray1OfTransformationMatrix {
+    /// **Source:** `IGESGeom_HArray1OfTransformationMatrix.hxx`:23 - `IGESGeom_HArray1OfTransformationMatrix::IGESGeom_HArray1OfTransformationMatrix()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfTransformationMatrix_ctor())
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfTransformationMatrix.hxx`:23 - `IGESGeom_HArray1OfTransformationMatrix::IGESGeom_HArray1OfTransformationMatrix()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfTransformationMatrix_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfTransformationMatrix.hxx`:23 - `IGESGeom_HArray1OfTransformationMatrix::IGESGeom_HArray1OfTransformationMatrix()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::IGESGeom_Array1OfTransformationMatrix_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_HArray1OfTransformationMatrix_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfTransformationMatrix.hxx`:23 - `IGESGeom_HArray1OfTransformationMatrix::IGESGeom_HArray1OfTransformationMatrix()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::IGESGeom_Array1OfTransformationMatrix_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_HArray1OfTransformationMatrix_ctor_type_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfTransformationMatrix.hxx`:23 - `IGESGeom_HArray1OfTransformationMatrix::IGESGeom_HArray1OfTransformationMatrix()`
+    pub fn new_array1oftransformationmatrix(
+        theOther: &crate::ffi::IGESGeom_Array1OfTransformationMatrix,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfTransformationMatrix_ctor_array1oftransformationmatrix(theOther))
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfTransformationMatrix.hxx`:23 - `IGESGeom_HArray1OfTransformationMatrix::Array1()`
+    pub fn array1(&self) -> &crate::ffi::IGESGeom_Array1OfTransformationMatrix {
+        unsafe {
+            &*(crate::ffi::IGESGeom_HArray1OfTransformationMatrix_array1(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfTransformationMatrix.hxx`:23 - `IGESGeom_HArray1OfTransformationMatrix::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::IGESGeom_Array1OfTransformationMatrix {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_HArray1OfTransformationMatrix_change_array1(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfTransformationMatrix.hxx`:23 - `IGESGeom_HArray1OfTransformationMatrix::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::IGESGeom_HArray1OfTransformationMatrix_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfTransformationMatrix.hxx`:23 - `IGESGeom_HArray1OfTransformationMatrix::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::IGESGeom_HArray1OfTransformationMatrix_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_HArray1OfTransformationMatrix.hxx`:23 - `IGESGeom_HArray1OfTransformationMatrix::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_HArray1OfTransformationMatrix_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESGeom_HArray1OfTransformationMatrix_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_HArray1OfTransformationMatrix_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomHArray1OfTransformationMatrix> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfTransformationMatrix_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_HArray1OfTransformationMatrix_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_HArray1OfTransformationMatrix_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_HArray1OfTransformationMatrix_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESGeom_HArray1OfTransformationMatrix_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_HArray1OfTransformationMatrix_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::IGESGeom_HArray1OfTransformationMatrix_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomHArray1OfTransformationMatrix;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomHArray1OfTransformationMatrix {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomHArray1OfTransformationMatrix_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomHArray1OfTransformationMatrix {
+    /// Dereference this Handle to access the underlying IGESGeom_HArray1OfTransformationMatrix
+    pub fn get(&self) -> &crate::ffi::IGESGeom_HArray1OfTransformationMatrix {
+        unsafe {
+            &*(crate::ffi::HandleIGESGeomHArray1OfTransformationMatrix_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_HArray1OfTransformationMatrix
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_HArray1OfTransformationMatrix {
+        unsafe {
+            &mut *(crate::ffi::HandleIGESGeomHArray1OfTransformationMatrix_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_HArray1OfTransformationMatrix> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomHArray1OfTransformationMatrix_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_Line.hxx
+// ========================
+
+/// **Source:** `IGESGeom_Line.hxx`:41 - `IGESGeom_Line`
+/// defines IGESLine, Type <110> Form <0>
+/// in package IGESGeom
+/// A line is a bounded, connected portion of a parent straight
+/// line which consists of more than one point. A line is
+/// defined by its end points.
+///
+/// From IGES-5.3, two other Forms are admitted (same params) :
+/// 0 remains for standard limited line (the default)
+/// 1 for semi-infinite line (End is just a passing point)
+/// 2 for full infinite Line (both Start and End are arbitrary)
+pub use crate::ffi::IGESGeom_Line as Line;
+
+unsafe impl crate::CppDeletable for Line {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_Line_destructor(ptr);
+    }
+}
+
+impl Line {
+    /// **Source:** `IGESGeom_Line.hxx`:45 - `IGESGeom_Line::IGESGeom_Line()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_Line.hxx`:50 - `IGESGeom_Line::Init()`
+    /// This method is used to set the fields of the class Line
+    /// - aStart : Start point of the line
+    /// - anEnd  : End point of the line
+    pub fn init(&mut self, aStart: &crate::gp::XYZ, anEnd: &crate::gp::XYZ) {
+        unsafe { crate::ffi::IGESGeom_Line_init(self as *mut Self, aStart, anEnd) }
+    }
+
+    /// **Source:** `IGESGeom_Line.hxx`:53 - `IGESGeom_Line::Infinite()`
+    /// Returns the Infinite status i.e. the Form Number : 0 1 2
+    pub fn infinite(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Line_infinite(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_Line.hxx`:57 - `IGESGeom_Line::SetInfinite()`
+    /// Sets the Infinite status
+    /// Does nothing if <status> is not 0 1 or 2
+    pub fn set_infinite(&mut self, status: i32) {
+        unsafe { crate::ffi::IGESGeom_Line_set_infinite(self as *mut Self, status) }
+    }
+
+    /// **Source:** `IGESGeom_Line.hxx`:60 - `IGESGeom_Line::StartPoint()`
+    /// returns the start point of the line
+    pub fn start_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_start_point(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Line.hxx`:63 - `IGESGeom_Line::TransformedStartPoint()`
+    /// returns the start point of the line after applying Transf. Matrix
+    pub fn transformed_start_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_transformed_start_point(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Line.hxx`:66 - `IGESGeom_Line::EndPoint()`
+    /// returns the end point of the line
+    pub fn end_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_end_point(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Line.hxx`:69 - `IGESGeom_Line::TransformedEndPoint()`
+    /// returns the end point of the line after applying Transf. Matrix
+    pub fn transformed_end_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_transformed_end_point(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Line.hxx`:71 - `IGESGeom_Line::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_Line_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_Line.hxx`:71 - `IGESGeom_Line::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_Line_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_Line.hxx`:71 - `IGESGeom_Line::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_Line_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe { &*(crate::ffi::IGESGeom_Line_as_IGESData_IGESEntity(self as *const Self)) }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe { &mut *(crate::ffi::IGESGeom_Line_as_IGESData_IGESEntity_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESGeom_Line_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::IGESGeom_Line_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomLine> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(crate::ffi::IGESGeom_Line_inherited_DefLineFont(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESGeom_Line_inherited_DefLevel(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESGeom_Line_inherited_DefView(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_View(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_HasLabelDisplay(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_SubordinateStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_HierarchyStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_LineWeightNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(crate::ffi::IGESGeom_Line_inherited_DefColor(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_HasSubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_SubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_Line_inherited_InitDirFieldEntity(self as *mut Self, fieldnum, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_InitLineFont(self as *mut Self, ent, rank) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_InitLevel(self as *mut Self, ent, val) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_InitColor(self as *mut Self, ent, rank) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_Line_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_SetLabel(self as *mut Self, label, sub) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_Line_inherited_InitMisc(self as *mut Self, str, lab, weightnum)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_CompoundLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_Line_inherited_ArePresentAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_NbAssociativities(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_Associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_Line_inherited_NbTypedAssociativities(self as *const Self, atype)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_TypedAssociativity(
+                self as *const Self,
+                atype,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_Dissociate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_ArePresentProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_NbTypedProperties(self as *const Self, atype) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Line_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_RemoveProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_Line_inherited_SetLineWeight(self as *mut Self, defw, maxw, gradw)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_Line_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomLine;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomLine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomLine_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomLine {
+    /// Dereference this Handle to access the underlying IGESGeom_Line
+    pub fn get(&self) -> &crate::ffi::IGESGeom_Line {
+        unsafe { &*(crate::ffi::HandleIGESGeomLine_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_Line
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_Line {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomLine_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_Line> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIGESGeomLine_to_HandleIGESDataIGESEntity(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_Line> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIGESGeomLine_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_OffsetCurve.hxx
+// ========================
+
+/// **Source:** `IGESGeom_OffsetCurve.hxx`:37 - `IGESGeom_OffsetCurve`
+/// defines IGESOffsetCurve, Type <130> Form <0>
+/// in package IGESGeom
+/// An OffsetCurve entity contains the data necessary to
+/// determine the offset of a given curve C. This entity
+/// points to the base curve to be offset and contains
+/// offset distance and other pertinent information.
+pub use crate::ffi::IGESGeom_OffsetCurve as OffsetCurve;
+
+unsafe impl crate::CppDeletable for OffsetCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_OffsetCurve_destructor(ptr);
+    }
+}
+
+impl OffsetCurve {
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:41 - `IGESGeom_OffsetCurve::IGESGeom_OffsetCurve()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:73 - `IGESGeom_OffsetCurve::Init()`
+    /// This method is used to set the fields of the class
+    /// OffsetCurve
+    /// - aBaseCurve         : The curve entity to be offset
+    /// - anOffsetType       : Offset distance flag
+    /// 1 = Single value, uniform distance
+    /// 2 = Varying linearly
+    /// 3 = As a specified function
+    /// - aFunction          : Curve entity, one coordinate of which
+    /// describes offset as a function of its
+    /// parameter (0 unless OffsetType = 3)
+    /// - aFunctionCoord     : Particular coordinate of curve
+    /// describing offset as function of its
+    /// parameters. (used if OffsetType = 3)
+    /// - aTaperedOffsetType : Tapered offset type flag
+    /// 1 = Function of arc length
+    /// 2 = Function of parameter
+    /// (Only used if OffsetType = 2 or 3)
+    /// - offDistance1       : First offset distance
+    /// (Only used if OffsetType = 1 or 2)
+    /// - arcLength1         : Arc length or parameter value of
+    /// first offset distance
+    /// (Only used if OffsetType = 2)
+    /// - offDistance2       : Second offset distance
+    /// - arcLength2         : Arc length or parameter value of
+    /// second offset distance
+    /// (Only used if OffsetType = 2)
+    /// - aNormalVec         : Unit vector normal to plane containing
+    /// curve to be offset
+    /// - anOffsetParam      : Start parameter value of offset curve
+    /// - anotherOffsetParam : End parameter value of offset curve
+    pub fn init(
+        &mut self,
+        aBaseCurve: &crate::ffi::HandleIGESDataIGESEntity,
+        anOffsetType: i32,
+        aFunction: &crate::ffi::HandleIGESDataIGESEntity,
+        aFunctionCoord: i32,
+        aTaperedOffsetType: i32,
+        offDistance1: f64,
+        arcLength1: f64,
+        offDistance2: f64,
+        arcLength2: f64,
+        aNormalVec: &crate::gp::XYZ,
+        anOffsetParam: f64,
+        anotherOffsetParam: f64,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetCurve_init(
+                self as *mut Self,
+                aBaseCurve,
+                anOffsetType,
+                aFunction,
+                aFunctionCoord,
+                aTaperedOffsetType,
+                offDistance1,
+                arcLength1,
+                offDistance2,
+                arcLength2,
+                aNormalVec,
+                anOffsetParam,
+                anotherOffsetParam,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:87 - `IGESGeom_OffsetCurve::BaseCurve()`
+    /// returns the curve to be offset
+    pub fn base_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_base_curve(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:93 - `IGESGeom_OffsetCurve::OffsetType()`
+    /// returns the offset distance flag
+    /// 1 = Single value offset (uniform distance)
+    /// 2 = Offset distance varying linearly
+    /// 3 = Offset distance specified as a function
+    pub fn offset_type(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_offset_type(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:97 - `IGESGeom_OffsetCurve::Function()`
+    /// returns the function defining the offset if at all the offset
+    /// is described as a function or Null Handle.
+    pub fn function(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_function(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:100 - `IGESGeom_OffsetCurve::HasFunction()`
+    /// returns True if function defining the offset is present.
+    pub fn has_function(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_has_function(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:104 - `IGESGeom_OffsetCurve::FunctionParameter()`
+    /// returns particular coordinate of the curve which describes offset
+    /// as a function of its parameters. (only used if OffsetType() = 3)
+    pub fn function_parameter(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_function_parameter(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:109 - `IGESGeom_OffsetCurve::TaperedOffsetType()`
+    /// returns tapered offset type flag (only used if OffsetType() = 2 or 3)
+    /// 1 = Function of arc length
+    /// 2 = Function of parameter
+    pub fn tapered_offset_type(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_tapered_offset_type(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:112 - `IGESGeom_OffsetCurve::FirstOffsetDistance()`
+    /// returns first offset distance (only used if OffsetType() = 1 or 2)
+    pub fn first_offset_distance(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_first_offset_distance(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:117 - `IGESGeom_OffsetCurve::ArcLength1()`
+    /// returns arc length or parameter value (depending on value of
+    /// offset distance flag) of first offset distance
+    /// (only used if OffsetType() = 2)
+    pub fn arc_length1(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_arc_length1(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:120 - `IGESGeom_OffsetCurve::SecondOffsetDistance()`
+    /// returns the second offset distance
+    pub fn second_offset_distance(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_second_offset_distance(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:125 - `IGESGeom_OffsetCurve::ArcLength2()`
+    /// returns arc length or parameter value (depending on value of
+    /// offset distance flag) of second offset distance
+    /// (only used if OffsetType() = 2)
+    pub fn arc_length2(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_arc_length2(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:128 - `IGESGeom_OffsetCurve::NormalVector()`
+    /// returns unit vector normal to plane containing curve to be offset
+    pub fn normal_vector(&self) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_normal_vector(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:132 - `IGESGeom_OffsetCurve::TransformedNormalVector()`
+    /// returns unit vector normal to plane containing curve to be offset
+    /// after applying Transf. Matrix
+    pub fn transformed_normal_vector(&self) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_transformed_normal_vector(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:134 - `IGESGeom_OffsetCurve::Parameters()`
+    pub fn parameters(&self, StartParam: &mut f64, EndParam: &mut f64) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetCurve_parameters(self as *const Self, StartParam, EndParam)
+        }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:137 - `IGESGeom_OffsetCurve::StartParameter()`
+    /// returns Start Parameter value of the offset curve
+    pub fn start_parameter(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_start_parameter(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:140 - `IGESGeom_OffsetCurve::EndParameter()`
+    /// returns End   Parameter value of the offset curve
+    pub fn end_parameter(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_end_parameter(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:142 - `IGESGeom_OffsetCurve::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_OffsetCurve_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:142 - `IGESGeom_OffsetCurve::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_OffsetCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_OffsetCurve.hxx`:142 - `IGESGeom_OffsetCurve::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_OffsetCurve_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe { &*(crate::ffi::IGESGeom_OffsetCurve_as_IGESData_IGESEntity(self as *const Self)) }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_OffsetCurve_as_IGESData_IGESEntity_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESGeom_OffsetCurve_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_OffsetCurve_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomOffsetCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_OffsetCurve_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_OffsetCurve_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESGeom_OffsetCurve_inherited_DefView(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_HasLabelDisplay(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_SubordinateStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_HierarchyStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_LineWeightNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_OffsetCurve_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetCurve_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_SubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetCurve_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetCurve_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_InitLevel(self as *mut Self, ent, val) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetCurve_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetCurve_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetCurve_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetCurve_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_CompoundLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetCurve_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_NbAssociativities(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_Associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetCurve_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_OffsetCurve_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_Dissociate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetCurve_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetCurve_inherited_NbTypedProperties(self as *const Self, atype)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetCurve_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_RemoveProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetCurve_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetCurve_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_OffsetCurve_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomOffsetCurve;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomOffsetCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomOffsetCurve_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomOffsetCurve {
+    /// Dereference this Handle to access the underlying IGESGeom_OffsetCurve
+    pub fn get(&self) -> &crate::ffi::IGESGeom_OffsetCurve {
+        unsafe { &*(crate::ffi::HandleIGESGeomOffsetCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_OffsetCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_OffsetCurve {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomOffsetCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_OffsetCurve> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomOffsetCurve_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_OffsetCurve> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomOffsetCurve_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_OffsetSurface.hxx
+// ========================
+
+/// **Source:** `IGESGeom_OffsetSurface.hxx`:40 - `IGESGeom_OffsetSurface`
+/// defines IGESOffsetSurface, Type <140> Form <0>
+/// in package IGESGeom
+/// An offset surface is a surface defined in terms of an
+/// already existing surface.If S(u, v) is a parametrised
+/// regular surface and N(u, v) is a differential field of
+/// unit normal vectors defined on the whole surface, and
+/// "d" a fixed non zero real number, then offset surface
+/// to S is a parametrised surface S(u, v) given by
+/// O(u, v) = S(u, v) + d * N(u, v);
+/// u1 <= u <= u2; v1 <= v <= v2;
+pub use crate::ffi::IGESGeom_OffsetSurface as OffsetSurface;
+
+unsafe impl crate::CppDeletable for OffsetSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_OffsetSurface_destructor(ptr);
+    }
+}
+
+impl OffsetSurface {
+    /// **Source:** `IGESGeom_OffsetSurface.hxx`:44 - `IGESGeom_OffsetSurface::IGESGeom_OffsetSurface()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_OffsetSurface.hxx`:51 - `IGESGeom_OffsetSurface::Init()`
+    /// This method is used to set the fields of the class
+    /// OffsetSurface
+    /// - anIndicator : Offset indicator
+    /// - aDistance   : Offset distance
+    /// - aSurface    : Surface that is offset
+    pub fn init(
+        &mut self,
+        anIndicatoR: &crate::gp::XYZ,
+        aDistance: f64,
+        aSurface: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_init(
+                self as *mut Self,
+                anIndicatoR,
+                aDistance,
+                aSurface,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_OffsetSurface.hxx`:56 - `IGESGeom_OffsetSurface::OffsetIndicator()`
+    /// returns the offset indicator
+    pub fn offset_indicator(&self) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_offset_indicator(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_OffsetSurface.hxx`:59 - `IGESGeom_OffsetSurface::TransformedOffsetIndicator()`
+    /// returns the offset indicator after applying Transf. Matrix
+    pub fn transformed_offset_indicator(&self) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_OffsetSurface_transformed_offset_indicator(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_OffsetSurface.hxx`:62 - `IGESGeom_OffsetSurface::Distance()`
+    /// returns the distance by which surface is offset
+    pub fn distance(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_distance(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_OffsetSurface.hxx`:65 - `IGESGeom_OffsetSurface::Surface()`
+    /// returns the surface that has been offset
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_surface(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_OffsetSurface.hxx`:67 - `IGESGeom_OffsetSurface::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_OffsetSurface_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_OffsetSurface.hxx`:67 - `IGESGeom_OffsetSurface::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_OffsetSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_OffsetSurface.hxx`:67 - `IGESGeom_OffsetSurface::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_OffsetSurface_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe {
+            &*(crate::ffi::IGESGeom_OffsetSurface_as_IGESData_IGESEntity(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_OffsetSurface_as_IGESData_IGESEntity_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESGeom_OffsetSurface_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_OffsetSurface_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomOffsetSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_OffsetSurface_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_OffsetSurface_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_OffsetSurface_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_HasLabelDisplay(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_SubordinateStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_HierarchyStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_LineWeightNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_OffsetSurface_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_SubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_InitLevel(self as *mut Self, ent, val)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_OffsetSurface_inherited_CompoundLocation(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_NbAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_Associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_OffsetSurface_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_Dissociate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_OffsetSurface_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_RemoveProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_OffsetSurface_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_OffsetSurface_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomOffsetSurface;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomOffsetSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomOffsetSurface_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomOffsetSurface {
+    /// Dereference this Handle to access the underlying IGESGeom_OffsetSurface
+    pub fn get(&self) -> &crate::ffi::IGESGeom_OffsetSurface {
+        unsafe { &*(crate::ffi::HandleIGESGeomOffsetSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_OffsetSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_OffsetSurface {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomOffsetSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_OffsetSurface> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomOffsetSurface_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_OffsetSurface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomOffsetSurface_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_Plane.hxx
+// ========================
+
+/// **Source:** `IGESGeom_Plane.hxx`:38 - `IGESGeom_Plane`
+/// defines IGESPlane, Type <108> Form <-1,0,1>
+/// in package IGESGeom
+/// A plane entity can be used to represent unbounded plane,
+/// as well as bounded portion of a plane. In either of the
+/// above cases the plane is defined within definition space
+/// by means of coefficients A, B, C, D where at least one of
+/// A, B, C is non-zero and  A * XT + B * YT + C * ZT = D
+pub use crate::ffi::IGESGeom_Plane as Plane;
+
+unsafe impl crate::CppDeletable for Plane {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_Plane_destructor(ptr);
+    }
+}
+
+impl Plane {
+    /// **Source:** `IGESGeom_Plane.hxx`:42 - `IGESGeom_Plane::IGESGeom_Plane()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_Plane.hxx`:44 - `IGESGeom_Plane::Init()`
+    pub fn init(
+        &mut self,
+        A: f64,
+        B: f64,
+        C: f64,
+        D: f64,
+        aCurve: &crate::ffi::HandleIGESDataIGESEntity,
+        attach: &crate::gp::XYZ,
+        aSize: f64,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_Plane_init(self as *mut Self, A, B, C, D, aCurve, attach, aSize)
+        }
+    }
+
+    /// **Source:** `IGESGeom_Plane.hxx`:57 - `IGESGeom_Plane::SetFormNumber()`
+    /// Changes FormNumber (indicates the Type of Bound :
+    /// 0 no Bound, 1 (External) Bound, -1 Hole)
+    /// Remark that Init keeps this Value and must be consistent :
+    /// aCurve Null if FormNumber = 0, Non-Null else
+    /// Error if not in ranges [0-1] or [10-12]
+    pub fn set_form_number(&mut self, form: i32) {
+        unsafe { crate::ffi::IGESGeom_Plane_set_form_number(self as *mut Self, form) }
+    }
+
+    /// **Source:** `IGESGeom_Plane.hxx`:59 - `IGESGeom_Plane::Equation()`
+    pub fn equation(&self, A: &mut f64, B: &mut f64, C: &mut f64, D: &mut f64) {
+        unsafe { crate::ffi::IGESGeom_Plane_equation(self as *const Self, A, B, C, D) }
+    }
+
+    /// **Source:** `IGESGeom_Plane.hxx`:64 - `IGESGeom_Plane::TransformedEquation()`
+    pub fn transformed_equation(&self, A: &mut f64, B: &mut f64, C: &mut f64, D: &mut f64) {
+        unsafe { crate::ffi::IGESGeom_Plane_transformed_equation(self as *const Self, A, B, C, D) }
+    }
+
+    /// **Source:** `IGESGeom_Plane.hxx`:70 - `IGESGeom_Plane::HasBoundingCurve()`
+    /// returns True if there exists a bounding curve
+    pub fn has_bounding_curve(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Plane_has_bounding_curve(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_Plane.hxx`:73 - `IGESGeom_Plane::HasBoundingCurveHole()`
+    /// returns True if bounding curve exists and bounded portion is negative
+    pub fn has_bounding_curve_hole(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Plane_has_bounding_curve_hole(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_Plane.hxx`:77 - `IGESGeom_Plane::BoundingCurve()`
+    /// returns Optional Bounding Curve, can be positive (normal clipping)
+    /// or negative (hole) according to Form Number
+    pub fn bounding_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_bounding_curve(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Plane.hxx`:80 - `IGESGeom_Plane::HasSymbolAttach()`
+    /// returns True if SymbolSize() > 0, False if SymbolSize() = 0
+    pub fn has_symbol_attach(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Plane_has_symbol_attach(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_Plane.hxx`:83 - `IGESGeom_Plane::SymbolAttach()`
+    /// returns (X, Y, Z) if symbol exists else returns (0, 0, 0)
+    pub fn symbol_attach(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_symbol_attach(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Plane.hxx`:87 - `IGESGeom_Plane::TransformedSymbolAttach()`
+    /// returns (X, Y, Z) if symbol exists after applying Transf. Matrix
+    /// else returns (0, 0, 0)
+    pub fn transformed_symbol_attach(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_transformed_symbol_attach(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Plane.hxx`:90 - `IGESGeom_Plane::SymbolSize()`
+    /// Size of optional display symbol
+    pub fn symbol_size(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_Plane_symbol_size(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_Plane.hxx`:92 - `IGESGeom_Plane::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_Plane_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_Plane.hxx`:92 - `IGESGeom_Plane::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_Plane_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_Plane.hxx`:92 - `IGESGeom_Plane::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_Plane_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe { &*(crate::ffi::IGESGeom_Plane_as_IGESData_IGESEntity(self as *const Self)) }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe { &mut *(crate::ffi::IGESGeom_Plane_as_IGESData_IGESEntity_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESGeom_Plane_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::IGESGeom_Plane_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomPlane> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(crate::ffi::IGESGeom_Plane_inherited_DefLineFont(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESGeom_Plane_inherited_DefLevel(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESGeom_Plane_inherited_DefView(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_HasLabelDisplay(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_SubordinateStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_HierarchyStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_LineWeightNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(crate::ffi::IGESGeom_Plane_inherited_DefColor(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_HasSubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_SubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_Plane_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_InitLineFont(self as *mut Self, ent, rank) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_InitLevel(self as *mut Self, ent, val) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_InitColor(self as *mut Self, ent, rank) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_Plane_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_SetLabel(self as *mut Self, label, sub) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_Plane_inherited_InitMisc(self as *mut Self, str, lab, weightnum)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_CompoundLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_Plane_inherited_ArePresentAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_NbAssociativities(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_Associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_Plane_inherited_NbTypedAssociativities(self as *const Self, atype)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_TypedAssociativity(
+                self as *const Self,
+                atype,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_Dissociate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_ArePresentProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_Plane_inherited_NbTypedProperties(self as *const Self, atype)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Plane_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_RemoveProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_Plane_inherited_SetLineWeight(self as *mut Self, defw, maxw, gradw)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_Plane_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomPlane;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomPlane {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomPlane_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomPlane {
+    /// Dereference this Handle to access the underlying IGESGeom_Plane
+    pub fn get(&self) -> &crate::ffi::IGESGeom_Plane {
+        unsafe { &*(crate::ffi::HandleIGESGeomPlane_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_Plane
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_Plane {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomPlane_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_Plane> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIGESGeomPlane_to_HandleIGESDataIGESEntity(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_Plane> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIGESGeomPlane_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_Point.hxx
+// ========================
+
+/// **Source:** `IGESGeom_Point.hxx`:33 - `IGESGeom_Point`
+/// defines IGESPoint, Type <116> Form <0>
+/// in package IGESGeom
+pub use crate::ffi::IGESGeom_Point as Point;
+
+unsafe impl crate::CppDeletable for Point {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_Point_destructor(ptr);
+    }
+}
+
+impl Point {
+    /// **Source:** `IGESGeom_Point.hxx`:37 - `IGESGeom_Point::IGESGeom_Point()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_Point.hxx`:43 - `IGESGeom_Point::Init()`
+    /// This method is used to set the fields of the class Point
+    /// - aPoint  : Coordinates of point
+    /// - aSymbol : SubfigureDefinition entity specifying the
+    /// display symbol if there exists one, or zero
+    pub fn init(
+        &mut self,
+        aPoint: &crate::gp::XYZ,
+        aSymbol: &crate::ffi::HandleIGESBasicSubfigureDef,
+    ) {
+        unsafe { crate::ffi::IGESGeom_Point_init(self as *mut Self, aPoint, aSymbol) }
+    }
+
+    /// **Source:** `IGESGeom_Point.hxx`:46 - `IGESGeom_Point::Value()`
+    /// returns coordinates of the point
+    pub fn value(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_value(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_Point.hxx`:49 - `IGESGeom_Point::TransformedValue()`
+    /// returns coordinates of the point after applying Transf. Matrix
+    pub fn transformed_value(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_transformed_value(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Point.hxx`:52 - `IGESGeom_Point::HasDisplaySymbol()`
+    /// returns True if symbol exists
+    pub fn has_display_symbol(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Point_has_display_symbol(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_Point.hxx`:55 - `IGESGeom_Point::DisplaySymbol()`
+    /// returns display symbol entity if it exists
+    pub fn display_symbol(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESBasicSubfigureDef> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_display_symbol(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Point.hxx`:57 - `IGESGeom_Point::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_Point_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_Point.hxx`:57 - `IGESGeom_Point::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_Point_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_Point.hxx`:57 - `IGESGeom_Point::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_Point_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe { &*(crate::ffi::IGESGeom_Point_as_IGESData_IGESEntity(self as *const Self)) }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe { &mut *(crate::ffi::IGESGeom_Point_as_IGESData_IGESEntity_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESGeom_Point_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::IGESGeom_Point_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomPoint> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(crate::ffi::IGESGeom_Point_inherited_DefLineFont(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESGeom_Point_inherited_DefLevel(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESGeom_Point_inherited_DefView(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_HasLabelDisplay(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_SubordinateStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_HierarchyStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_LineWeightNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(crate::ffi::IGESGeom_Point_inherited_DefColor(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_HasSubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_SubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_Point_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_InitLineFont(self as *mut Self, ent, rank) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_InitLevel(self as *mut Self, ent, val) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_InitColor(self as *mut Self, ent, rank) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_Point_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_SetLabel(self as *mut Self, label, sub) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_Point_inherited_InitMisc(self as *mut Self, str, lab, weightnum)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_CompoundLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_Point_inherited_ArePresentAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_NbAssociativities(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_Associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_Point_inherited_NbTypedAssociativities(self as *const Self, atype)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_TypedAssociativity(
+                self as *const Self,
+                atype,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_Dissociate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_ArePresentProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_Point_inherited_NbTypedProperties(self as *const Self, atype)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Point_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_RemoveProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_Point_inherited_SetLineWeight(self as *mut Self, defw, maxw, gradw)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_Point_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomPoint;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomPoint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomPoint_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomPoint {
+    /// Dereference this Handle to access the underlying IGESGeom_Point
+    pub fn get(&self) -> &crate::ffi::IGESGeom_Point {
+        unsafe { &*(crate::ffi::HandleIGESGeomPoint_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_Point
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_Point {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomPoint_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_Point> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIGESGeomPoint_to_HandleIGESDataIGESEntity(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_Point> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIGESGeomPoint_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_Protocol.hxx
+// ========================
+
+/// **Source:** `IGESGeom_Protocol.hxx`:31 - `IGESGeom_Protocol`
+/// Description of Protocol for IGESGeom
+pub use crate::ffi::IGESGeom_Protocol as Protocol;
+
+unsafe impl crate::CppDeletable for Protocol {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_Protocol_destructor(ptr);
+    }
+}
+
+impl Protocol {
+    /// **Source:** `IGESGeom_Protocol.hxx`:35 - `IGESGeom_Protocol::IGESGeom_Protocol()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Protocol_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_Protocol.hxx`:39 - `IGESGeom_Protocol::NbResources()`
+    /// Gives the count of Resource Protocol. Here, one
+    /// (Protocol from IGESBasic)
+    pub fn nb_resources(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Protocol_nb_resources(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_Protocol.hxx`:42 - `IGESGeom_Protocol::Resource()`
+    /// Returns a Resource, given a rank.
+    pub fn resource(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Protocol_resource(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_Protocol.hxx`:50 - `IGESGeom_Protocol::TypeNumber()`
+    /// Returns a Case Number, specific of each recognized Type
+    /// This Case Number is then used in Libraries : the various
+    /// Modules attached to this class of Protocol must use them
+    /// in accordance (for a given value of TypeNumber, they must
+    /// consider the same Type as the Protocol defines)
+    pub fn type_number(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Protocol_type_number(self as *const Self, atype) }
+    }
+
+    /// **Source:** `IGESGeom_Protocol.hxx`:53 - `IGESGeom_Protocol::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_Protocol_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_Protocol.hxx`:53 - `IGESGeom_Protocol::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_Protocol_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_Protocol.hxx`:53 - `IGESGeom_Protocol::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_Protocol_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_Protocol
+    pub fn as_iges_data_protocol(&self) -> &crate::iges_data::Protocol {
+        unsafe { &*(crate::ffi::IGESGeom_Protocol_as_IGESData_Protocol(self as *const Self)) }
+    }
+
+    /// Upcast to IGESData_Protocol (mutable)
+    pub fn as_iges_data_protocol_mut(&mut self) -> &mut crate::iges_data::Protocol {
+        unsafe { &mut *(crate::ffi::IGESGeom_Protocol_as_IGESData_Protocol_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Interface_Protocol
+    pub fn as_interface_protocol(&self) -> &crate::interface::Protocol {
+        unsafe { &*(crate::ffi::IGESGeom_Protocol_as_Interface_Protocol(self as *const Self)) }
+    }
+
+    /// Upcast to Interface_Protocol (mutable)
+    pub fn as_interface_protocol_mut(&mut self) -> &mut crate::interface::Protocol {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_Protocol_as_Interface_Protocol_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESGeom_Protocol_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_Protocol_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomProtocol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Protocol_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_Protocol.hxx`:53 - `IGESData_Protocol::NewModel()`
+    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Protocol_inherited_NewModel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_Protocol.hxx`:57 - `IGESData_Protocol::IsSuitableModel()`
+    pub fn is_suitable_model(&self, model: &crate::ffi::HandleInterfaceInterfaceModel) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_Protocol_inherited_IsSuitableModel(self as *const Self, model)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_Protocol.hxx`:60 - `IGESData_Protocol::UnknownEntity()`
+    pub fn unknown_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Protocol_inherited_UnknownEntity(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_Protocol.hxx`:65 - `IGESData_Protocol::IsUnknownEntity()`
+    pub fn is_unknown_entity(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IGESGeom_Protocol_inherited_IsUnknownEntity(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `Interface_Protocol.hxx`:64 - `Interface_Protocol::CaseNumber()`
+    pub fn case_number(&self, obj: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Protocol_inherited_CaseNumber(self as *const Self, obj) }
+    }
+
+    /// Inherited: **Source:** `Interface_Protocol.hxx`:68 - `Interface_Protocol::IsDynamicType()`
+    pub fn is_dynamic_type(&self, obj: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IGESGeom_Protocol_inherited_IsDynamicType(self as *const Self, obj) }
+    }
+
+    /// Inherited: **Source:** `Interface_Protocol.hxx`:75 - `Interface_Protocol::NbTypes()`
+    pub fn nb_types(&self, obj: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Protocol_inherited_NbTypes(self as *const Self, obj) }
+    }
+
+    /// Inherited: **Source:** `Interface_Protocol.hxx`:81 - `Interface_Protocol::Type()`
+    pub fn type_(
+        &self,
+        obj: &crate::ffi::HandleStandardTransient,
+        nt: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_Protocol_inherited_Type(
+                self as *const Self,
+                obj,
+                nt,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_Protocol.hxx`:96 - `Interface_Protocol::GlobalCheck()`
+    pub fn global_check(
+        &self,
+        G: &crate::interface::Graph,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) -> bool {
+        unsafe { crate::ffi::IGESGeom_Protocol_inherited_GlobalCheck(self as *const Self, G, ach) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_Protocol_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_Protocol_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Protocol_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IGESGeom_Protocol_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_Protocol_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_Protocol_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomProtocol;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomProtocol {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomProtocol_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomProtocol {
+    /// Dereference this Handle to access the underlying IGESGeom_Protocol
+    pub fn get(&self) -> &crate::ffi::IGESGeom_Protocol {
+        unsafe { &*(crate::ffi::HandleIGESGeomProtocol_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_Protocol
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_Protocol {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomProtocol_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_Protocol> to Handle<IGESData_Protocol>
+    pub fn to_handle_iges_data_protocol(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataProtocol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIGESGeomProtocol_to_HandleIGESDataProtocol(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_Protocol> to Handle<Interface_Protocol>
+    pub fn to_handle_interface_protocol(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomProtocol_to_HandleInterfaceProtocol(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_Protocol> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomProtocol_to_HandleStandardTransient(self as *const Self),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_ReadWriteModule.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ReadWriteModule.hxx`:36 - `IGESGeom_ReadWriteModule`
+/// Defines Geom File Access Module for IGESGeom (specific parts)
+/// Specific actions concern : Read and Write Own Parameters of
+/// an IGESEntity.
+pub use crate::ffi::IGESGeom_ReadWriteModule as ReadWriteModule;
+
+unsafe impl crate::CppDeletable for ReadWriteModule {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ReadWriteModule_destructor(ptr);
+    }
+}
+
+impl ReadWriteModule {
+    /// **Source:** `IGESGeom_ReadWriteModule.hxx`:41 - `IGESGeom_ReadWriteModule::IGESGeom_ReadWriteModule()`
+    /// Creates a ReadWriteModule & puts it into ReaderLib & WriterLib
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ReadWriteModule_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ReadWriteModule.hxx`:44 - `IGESGeom_ReadWriteModule::CaseIGES()`
+    /// Defines Case Numbers for Entities of IGESGeom
+    pub fn case_iges(&self, typenum: i32, formnum: i32) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_ReadWriteModule_case_iges(self as *const Self, typenum, formnum)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ReadWriteModule.hxx`:48 - `IGESGeom_ReadWriteModule::ReadOwnParams()`
+    /// Reads own parameters from file for an Entity of IGESGeom
+    pub fn read_own_params(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ReadWriteModule_read_own_params(
+                self as *const Self,
+                CN,
+                ent,
+                IR,
+                PR,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ReadWriteModule.hxx`:54 - `IGESGeom_ReadWriteModule::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ReadWriteModule_write_own_params(self as *const Self, CN, ent, IW)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ReadWriteModule.hxx`:58 - `IGESGeom_ReadWriteModule::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_ReadWriteModule_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_ReadWriteModule.hxx`:58 - `IGESGeom_ReadWriteModule::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_ReadWriteModule_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_ReadWriteModule.hxx`:58 - `IGESGeom_ReadWriteModule::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_ReadWriteModule_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_ReadWriteModule
+    pub fn as_iges_data_read_write_module(&self) -> &crate::iges_data::ReadWriteModule {
+        unsafe {
+            &*(crate::ffi::IGESGeom_ReadWriteModule_as_IGESData_ReadWriteModule(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IGESData_ReadWriteModule (mutable)
+    pub fn as_iges_data_read_write_module_mut(&mut self) -> &mut crate::iges_data::ReadWriteModule {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_ReadWriteModule_as_IGESData_ReadWriteModule_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Interface_ReaderModule
+    pub fn as_interface_reader_module(&self) -> &crate::interface::ReaderModule {
+        unsafe {
+            &*(crate::ffi::IGESGeom_ReadWriteModule_as_Interface_ReaderModule(self as *const Self))
+        }
+    }
+
+    /// Upcast to Interface_ReaderModule (mutable)
+    pub fn as_interface_reader_module_mut(&mut self) -> &mut crate::interface::ReaderModule {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_ReadWriteModule_as_Interface_ReaderModule_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESGeom_ReadWriteModule_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_ReadWriteModule_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomReadWriteModule> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ReadWriteModule_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_ReadWriteModule.hxx`:62 - `IGESData_ReadWriteModule::CaseNum()`
+    pub fn case_num(&self, data: &crate::ffi::HandleInterfaceFileReaderData, num: i32) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_ReadWriteModule_inherited_CaseNum(self as *const Self, data, num)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_ReadWriteModule.hxx`:74 - `IGESData_ReadWriteModule::Read()`
+    pub fn read(
+        &self,
+        CN: i32,
+        data: &crate::ffi::HandleInterfaceFileReaderData,
+        num: i32,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ReadWriteModule_inherited_Read(
+                self as *const Self,
+                CN,
+                data,
+                num,
+                ach,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_ReaderModule.hxx`:69 - `Interface_ReaderModule::NewRead()`
+    pub fn new_read(
+        &self,
+        casenum: i32,
+        data: &crate::ffi::HandleInterfaceFileReaderData,
+        num: i32,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ent: &mut crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_ReadWriteModule_inherited_NewRead(
+                self as *const Self,
+                casenum,
+                data,
+                num,
+                ach,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_ReadWriteModule_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_ReadWriteModule_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_ReadWriteModule_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESGeom_ReadWriteModule_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_ReadWriteModule_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_ReadWriteModule_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomReadWriteModule;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomReadWriteModule {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomReadWriteModule_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomReadWriteModule {
+    /// Dereference this Handle to access the underlying IGESGeom_ReadWriteModule
+    pub fn get(&self) -> &crate::ffi::IGESGeom_ReadWriteModule {
+        unsafe { &*(crate::ffi::HandleIGESGeomReadWriteModule_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_ReadWriteModule
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_ReadWriteModule {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomReadWriteModule_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_ReadWriteModule> to Handle<IGESData_ReadWriteModule>
+    pub fn to_handle_read_write_module(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataReadWriteModule> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomReadWriteModule_to_HandleIGESDataReadWriteModule(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_ReadWriteModule> to Handle<Interface_ReaderModule>
+    pub fn to_handle_reader_module(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceReaderModule> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomReadWriteModule_to_HandleInterfaceReaderModule(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_ReadWriteModule> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomReadWriteModule_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_RuledSurface.hxx
+// ========================
+
+/// **Source:** `IGESGeom_RuledSurface.hxx`:37 - `IGESGeom_RuledSurface`
+/// defines IGESRuledSurface, Type <118> Form <0-1>
+/// in package IGESGeom
+/// A ruled surface is formed by moving a line connecting points
+/// of equal relative arc length or equal relative parametric
+/// value on two parametric curves from a start point to a
+/// terminate point on the curves. The parametric curves may be
+/// points, lines, circles, conics, rational B-splines,
+/// parametric splines or any parametric curve defined in
+/// the IGES specification.
+pub use crate::ffi::IGESGeom_RuledSurface as RuledSurface;
+
+unsafe impl crate::CppDeletable for RuledSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_RuledSurface_destructor(ptr);
+    }
+}
+
+impl RuledSurface {
+    /// **Source:** `IGESGeom_RuledSurface.hxx`:41 - `IGESGeom_RuledSurface::IGESGeom_RuledSurface()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_RuledSurface.hxx`:53 - `IGESGeom_RuledSurface::Init()`
+    /// This method is used to set the fields of the class
+    /// RuledSurface
+    /// - aCurve       : First parametric curve
+    /// - anotherCurve : Second parametric curve
+    /// - aDirFlag     : Direction Flag
+    /// 0 = Join first to first, last to last
+    /// 1 = Join first to last, last to first
+    /// - aDevFlag     : Developable Surface Flag
+    /// 1 = Developable
+    /// 0 = Possibly not
+    pub fn init(
+        &mut self,
+        aCurve: &crate::ffi::HandleIGESDataIGESEntity,
+        anotherCurve: &crate::ffi::HandleIGESDataIGESEntity,
+        aDirFlag: i32,
+        aDevFlag: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_init(
+                self as *mut Self,
+                aCurve,
+                anotherCurve,
+                aDirFlag,
+                aDevFlag,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_RuledSurface.hxx`:60 - `IGESGeom_RuledSurface::SetRuledByParameter()`
+    /// Sets <me> to be Ruled by Parameter (Form 1) if <mode> is
+    /// True, or Ruled by Length (Form 0) else
+    pub fn set_ruled_by_parameter(&mut self, mode: bool) {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_set_ruled_by_parameter(self as *mut Self, mode) }
+    }
+
+    /// **Source:** `IGESGeom_RuledSurface.hxx`:63 - `IGESGeom_RuledSurface::IsRuledByParameter()`
+    /// Returns True if Form is 1
+    pub fn is_ruled_by_parameter(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_is_ruled_by_parameter(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_RuledSurface.hxx`:66 - `IGESGeom_RuledSurface::FirstCurve()`
+    /// returns the first curve
+    pub fn first_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_first_curve(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_RuledSurface.hxx`:69 - `IGESGeom_RuledSurface::SecondCurve()`
+    /// returns the second curve
+    pub fn second_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_second_curve(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_RuledSurface.hxx`:74 - `IGESGeom_RuledSurface::DirectionFlag()`
+    /// return the sense of direction
+    /// 0 = Join first to first, last to last
+    /// 1 = Join first to last, last to first
+    pub fn direction_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_direction_flag(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_RuledSurface.hxx`:77 - `IGESGeom_RuledSurface::IsDevelopable()`
+    /// returns True if developable else False
+    pub fn is_developable(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_is_developable(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_RuledSurface.hxx`:79 - `IGESGeom_RuledSurface::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_RuledSurface_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_RuledSurface.hxx`:79 - `IGESGeom_RuledSurface::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_RuledSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_RuledSurface.hxx`:79 - `IGESGeom_RuledSurface::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_RuledSurface_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe { &*(crate::ffi::IGESGeom_RuledSurface_as_IGESData_IGESEntity(self as *const Self)) }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_RuledSurface_as_IGESData_IGESEntity_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESGeom_RuledSurface_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_RuledSurface_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomRuledSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_RuledSurface_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_RuledSurface_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_RuledSurface_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_HasLabelDisplay(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_SubordinateStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_HierarchyStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_LineWeightNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_RuledSurface_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_SubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_InitLevel(self as *mut Self, ent, val)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_CompoundLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_NbAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_Associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_RuledSurface_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_Dissociate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_RuledSurface_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_RemoveProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_RuledSurface_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_RuledSurface_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomRuledSurface;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomRuledSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomRuledSurface_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomRuledSurface {
+    /// Dereference this Handle to access the underlying IGESGeom_RuledSurface
+    pub fn get(&self) -> &crate::ffi::IGESGeom_RuledSurface {
+        unsafe { &*(crate::ffi::HandleIGESGeomRuledSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_RuledSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_RuledSurface {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomRuledSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_RuledSurface> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomRuledSurface_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_RuledSurface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomRuledSurface_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_SpecificModule.hxx
+// ========================
+
+/// **Source:** `IGESGeom_SpecificModule.hxx`:33 - `IGESGeom_SpecificModule`
+/// Defines Services attached to IGES Entities :
+/// Dump & OwnCorrect, for IGESGeom
+pub use crate::ffi::IGESGeom_SpecificModule as SpecificModule;
+
+unsafe impl crate::CppDeletable for SpecificModule {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_SpecificModule_destructor(ptr);
+    }
+}
+
+impl SpecificModule {
+    /// **Source:** `IGESGeom_SpecificModule.hxx`:38 - `IGESGeom_SpecificModule::IGESGeom_SpecificModule()`
+    /// Creates a SpecificModule from IGESGeom & puts it into SpecificLib
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SpecificModule_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_SpecificModule.hxx`:49 - `IGESGeom_SpecificModule::OwnCorrect()`
+    /// Performs non-ambiguous Correction on Entities which support
+    /// them (Boundary,ConicArc,Flash,OffsetCurve,TransformationMatrix)
+    pub fn own_correct(&self, CN: i32, ent: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+        unsafe { crate::ffi::IGESGeom_SpecificModule_own_correct(self as *const Self, CN, ent) }
+    }
+
+    /// **Source:** `IGESGeom_SpecificModule.hxx`:53 - `IGESGeom_SpecificModule::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_SpecificModule_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_SpecificModule.hxx`:53 - `IGESGeom_SpecificModule::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_SpecificModule_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_SpecificModule.hxx`:53 - `IGESGeom_SpecificModule::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_SpecificModule_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_SpecificModule
+    pub fn as_iges_data_specific_module(&self) -> &crate::iges_data::SpecificModule {
+        unsafe {
+            &*(crate::ffi::IGESGeom_SpecificModule_as_IGESData_SpecificModule(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_SpecificModule (mutable)
+    pub fn as_iges_data_specific_module_mut(&mut self) -> &mut crate::iges_data::SpecificModule {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_SpecificModule_as_IGESData_SpecificModule_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESGeom_SpecificModule_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_SpecificModule_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomSpecificModule> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SpecificModule_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SpecificModule_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SpecificModule_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SpecificModule_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESGeom_SpecificModule_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SpecificModule_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_SpecificModule_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomSpecificModule;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomSpecificModule {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomSpecificModule_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomSpecificModule {
+    /// Dereference this Handle to access the underlying IGESGeom_SpecificModule
+    pub fn get(&self) -> &crate::ffi::IGESGeom_SpecificModule {
+        unsafe { &*(crate::ffi::HandleIGESGeomSpecificModule_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_SpecificModule
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_SpecificModule {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomSpecificModule_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_SpecificModule> to Handle<IGESData_SpecificModule>
+    pub fn to_handle_specific_module(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataSpecificModule> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomSpecificModule_to_HandleIGESDataSpecificModule(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_SpecificModule> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomSpecificModule_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for SpecificModule (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_SpecificModule.hxx`:41 - `IGESGeom_SpecificModule::OwnDump`
+//   method: Specific Dump (own parameters) for IGESGeom
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, CN: i32, ent: &HandleIGESEntity, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_SplineCurve.hxx
+// ========================
+
+/// **Source:** `IGESGeom_SplineCurve.hxx`:39 - `IGESGeom_SplineCurve`
+/// Defines IGESSplineCurve, Type <112> Form <0>
+/// in package IGESGeom
+/// The parametric spline is a sequence of parametric
+/// polynomial segments. The curve could be of the type
+/// Linear, Quadratic, Cubic, Wilson-Fowler, Modified
+/// Wilson-Fowler, B-Spline. The N polynomial segments
+/// are delimited by the break points  T(1), T(2), T(3),
+/// ..., T(N+1).
+pub use crate::ffi::IGESGeom_SplineCurve as SplineCurve;
+
+unsafe impl crate::CppDeletable for SplineCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_SplineCurve_destructor(ptr);
+    }
+}
+
+impl SplineCurve {
+    /// **Source:** `IGESGeom_SplineCurve.hxx`:43 - `IGESGeom_SplineCurve::IGESGeom_SplineCurve()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_SplineCurve.hxx`:74 - `IGESGeom_SplineCurve::Init()`
+    /// This method is used to set the fields of the class
+    /// SplineCurve
+    /// - aType           : Spline Type
+    /// 1 = Linear
+    /// 2 = Quadratic
+    /// 3 = Cubic
+    /// 4 = Wilson-Fowler
+    /// 5 = Modified Wilson-Fowler
+    /// 6 = B Spline
+    /// - aDegree         : Degree of continuity w.r.t. arc length
+    /// - nbDimensions    : Number of dimensions
+    /// 2 = Planar
+    /// 3 = Non-planar
+    /// - allBreakPoints  : Array of break points
+    /// - allXPolynomials : X coordinate polynomials of segments
+    /// - allYPolynomials : Y coordinate polynomials of segments
+    /// - allZPolynomials : Z coordinate polynomials of segments
+    /// - allXValues      : Values of 1st, 2nd, 3rd derivatives of
+    /// X polynomials at the terminate point
+    /// and values of X at terminate point
+    /// - allYValues      : Values of 1st, 2nd, 3rd derivatives of
+    /// Y polynomials at the terminate point
+    /// and values of Y at terminate point
+    /// - allZvalues      : Values of 1st, 2nd, 3rd derivatives of
+    /// Z polynomials at the terminate point
+    /// and values of Z at terminate point
+    /// raises exception if allXPolynomials, allYPolynomials
+    /// & allZPolynomials are not of same size OR allXValues, allYValues
+    /// & allZValues are not of size 4
+    pub fn init(
+        &mut self,
+        aType: i32,
+        aDegree: i32,
+        nbDimensions: i32,
+        allBreakPoints: &crate::ffi::HandleTColStdHArray1OfReal,
+        allXPolynomials: &crate::ffi::HandleTColStdHArray2OfReal,
+        allYPolynomials: &crate::ffi::HandleTColStdHArray2OfReal,
+        allZPolynomials: &crate::ffi::HandleTColStdHArray2OfReal,
+        allXvalues: &crate::ffi::HandleTColStdHArray1OfReal,
+        allYvalues: &crate::ffi::HandleTColStdHArray1OfReal,
+        allZvalues: &crate::ffi::HandleTColStdHArray1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_init(
+                self as *mut Self,
+                aType,
+                aDegree,
+                nbDimensions,
+                allBreakPoints,
+                allXPolynomials,
+                allYPolynomials,
+                allZPolynomials,
+                allXvalues,
+                allYvalues,
+                allZvalues,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_SplineCurve.hxx`:86 - `IGESGeom_SplineCurve::SplineType()`
+    /// returns the type of Spline curve
+    pub fn spline_type(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_spline_type(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_SplineCurve.hxx`:89 - `IGESGeom_SplineCurve::Degree()`
+    /// returns the degree of the curve
+    pub fn degree(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_degree(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_SplineCurve.hxx`:94 - `IGESGeom_SplineCurve::NbDimensions()`
+    /// returns the number of dimensions
+    /// 2 = Planar
+    /// 3 = Non-planar
+    pub fn nb_dimensions(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_nb_dimensions(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_SplineCurve.hxx`:97 - `IGESGeom_SplineCurve::NbSegments()`
+    /// returns the number of segments
+    pub fn nb_segments(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_nb_segments(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_SplineCurve.hxx`:101 - `IGESGeom_SplineCurve::BreakPoint()`
+    /// returns breakpoint of piecewise polynomial
+    /// raises exception if Index <= 0 or Index > NbSegments() + 1
+    pub fn break_point(&self, Index: i32) -> f64 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_break_point(self as *const Self, Index) }
+    }
+
+    /// **Source:** `IGESGeom_SplineCurve.hxx`:105 - `IGESGeom_SplineCurve::XCoordPolynomial()`
+    /// returns X coordinate polynomial for segment referred to by Index
+    /// raises exception if Index <= 0 or Index > NbSegments()
+    pub fn x_coord_polynomial(
+        &self,
+        Index: i32,
+        AX: &mut f64,
+        BX: &mut f64,
+        CX: &mut f64,
+        DX: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_x_coord_polynomial(
+                self as *const Self,
+                Index,
+                AX,
+                BX,
+                CX,
+                DX,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_SplineCurve.hxx`:113 - `IGESGeom_SplineCurve::YCoordPolynomial()`
+    /// returns Y coordinate polynomial for segment referred to by Index
+    /// raises exception if Index <= 0 or Index > NbSegments()
+    pub fn y_coord_polynomial(
+        &self,
+        Index: i32,
+        AY: &mut f64,
+        BY: &mut f64,
+        CY: &mut f64,
+        DY: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_y_coord_polynomial(
+                self as *const Self,
+                Index,
+                AY,
+                BY,
+                CY,
+                DY,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_SplineCurve.hxx`:121 - `IGESGeom_SplineCurve::ZCoordPolynomial()`
+    /// returns Z coordinate polynomial for segment referred to by Index
+    /// raises exception if Index <= 0 or Index > NbSegments()
+    pub fn z_coord_polynomial(
+        &self,
+        Index: i32,
+        AZ: &mut f64,
+        BZ: &mut f64,
+        CZ: &mut f64,
+        DZ: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_z_coord_polynomial(
+                self as *const Self,
+                Index,
+                AZ,
+                BZ,
+                CZ,
+                DZ,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_SplineCurve.hxx`:129 - `IGESGeom_SplineCurve::XValues()`
+    /// returns the value of X polynomial, the values of 1st, 2nd and
+    /// 3rd derivatives of the X polynomial at the terminate point
+    pub fn x_values(&self, TPX0: &mut f64, TPX1: &mut f64, TPX2: &mut f64, TPX3: &mut f64) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_x_values(self as *const Self, TPX0, TPX1, TPX2, TPX3)
+        }
+    }
+
+    /// **Source:** `IGESGeom_SplineCurve.hxx`:136 - `IGESGeom_SplineCurve::YValues()`
+    /// returns the value of Y polynomial, the values of 1st, 2nd and
+    /// 3rd derivatives of the Y polynomial at the termminate point
+    pub fn y_values(&self, TPY0: &mut f64, TPY1: &mut f64, TPY2: &mut f64, TPY3: &mut f64) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_y_values(self as *const Self, TPY0, TPY1, TPY2, TPY3)
+        }
+    }
+
+    /// **Source:** `IGESGeom_SplineCurve.hxx`:143 - `IGESGeom_SplineCurve::ZValues()`
+    /// returns the value of Z polynomial, the values of 1st, 2nd and
+    /// 3rd derivatives of the Z polynomial at the termminate point
+    pub fn z_values(&self, TPZ0: &mut f64, TPZ1: &mut f64, TPZ2: &mut f64, TPZ3: &mut f64) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_z_values(self as *const Self, TPZ0, TPZ1, TPZ2, TPZ3)
+        }
+    }
+
+    /// **Source:** `IGESGeom_SplineCurve.hxx`:148 - `IGESGeom_SplineCurve::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_SplineCurve_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_SplineCurve.hxx`:148 - `IGESGeom_SplineCurve::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_SplineCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_SplineCurve.hxx`:148 - `IGESGeom_SplineCurve::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_SplineCurve_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe { &*(crate::ffi::IGESGeom_SplineCurve_as_IGESData_IGESEntity(self as *const Self)) }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_SplineCurve_as_IGESData_IGESEntity_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESGeom_SplineCurve_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_SplineCurve_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomSplineCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_SplineCurve_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_SplineCurve_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESGeom_SplineCurve_inherited_DefView(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_HasLabelDisplay(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_SubordinateStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_HierarchyStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_LineWeightNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_SplineCurve_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_SubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_InitLevel(self as *mut Self, ent, val) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_CompoundLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_NbAssociativities(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_Associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_SplineCurve_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_Dissociate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_inherited_NbTypedProperties(self as *const Self, atype)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineCurve_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_RemoveProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SplineCurve_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_SplineCurve_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomSplineCurve;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomSplineCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomSplineCurve_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomSplineCurve {
+    /// Dereference this Handle to access the underlying IGESGeom_SplineCurve
+    pub fn get(&self) -> &crate::ffi::IGESGeom_SplineCurve {
+        unsafe { &*(crate::ffi::HandleIGESGeomSplineCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_SplineCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_SplineCurve {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomSplineCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_SplineCurve> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomSplineCurve_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_SplineCurve> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomSplineCurve_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_SplineSurface.hxx
+// ========================
+
+/// **Source:** `IGESGeom_SplineSurface.hxx`:38 - `IGESGeom_SplineSurface`
+/// defines IGESSplineSurface, Type <114> Form <0>
+/// in package IGESGeom
+/// A parametric spline surface is a grid of polynomial
+/// patches. Patch could be of the type Linear, Quadratic,
+/// Cubic, Wilson-Fowler, Modified Wilson-Fowler, B-Spline
+/// The M * N grid of patches is defined by the 'u' break
+/// points TU(1), TU(2), ..., TU(M+1) and the 'v' break
+/// points TV(1), TV(2), TV(3) ..., TV(N+1).
+pub use crate::ffi::IGESGeom_SplineSurface as SplineSurface;
+
+unsafe impl crate::CppDeletable for SplineSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_SplineSurface_destructor(ptr);
+    }
+}
+
+impl SplineSurface {
+    /// **Source:** `IGESGeom_SplineSurface.hxx`:42 - `IGESGeom_SplineSurface::IGESGeom_SplineSurface()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_SplineSurface.hxx`:64 - `IGESGeom_SplineSurface::Init()`
+    /// This method is used to set the fields of the class
+    /// SplineSurface
+    /// - aBoundaryType   : Type of Spline boundary
+    /// 1 = Linear
+    /// 2 = Quadratic
+    /// 3 = Cubic
+    /// 4 = Wilson-Fowler
+    /// 5 = Modified Wilson-Fowler
+    /// 6 = B-spline
+    /// - aPatchType      : Type of patch contained in the grid
+    /// 1 = Cartesian Product
+    /// 0 = Unspecified
+    /// - allUBreakpoints : u values of grid lines
+    /// - allVBreakpoints : v values of grid lines
+    /// - allXCoeffs      : X coefficients of M x N patches
+    /// - allYCoeffs      : Y coefficients of M x N patches
+    /// - allZCoeffs      : Z coefficients of M x N patches
+    /// raises exception if allXCoeffs, allYCoeffs & allZCoeffs are not
+    /// of the same size.
+    /// or if the size of each element of the double array is not 16
+    pub fn init(
+        &mut self,
+        aBoundaryType: i32,
+        aPatchType: i32,
+        allUBreakpoints: &crate::ffi::HandleTColStdHArray1OfReal,
+        allVBreakpoints: &crate::ffi::HandleTColStdHArray1OfReal,
+        allXCoeffs: &crate::ffi::HandleIGESBasicHArray2OfHArray1OfReal,
+        allYCoeffs: &crate::ffi::HandleIGESBasicHArray2OfHArray1OfReal,
+        allZCoeffs: &crate::ffi::HandleIGESBasicHArray2OfHArray1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_init(
+                self as *mut Self,
+                aBoundaryType,
+                aPatchType,
+                allUBreakpoints,
+                allVBreakpoints,
+                allXCoeffs,
+                allYCoeffs,
+                allZCoeffs,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_SplineSurface.hxx`:73 - `IGESGeom_SplineSurface::NbUSegments()`
+    /// returns the number of U segments
+    pub fn nb_u_segments(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_nb_u_segments(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_SplineSurface.hxx`:76 - `IGESGeom_SplineSurface::NbVSegments()`
+    /// returns the number of V segments
+    pub fn nb_v_segments(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_nb_v_segments(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_SplineSurface.hxx`:79 - `IGESGeom_SplineSurface::BoundaryType()`
+    /// returns boundary type
+    pub fn boundary_type(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_boundary_type(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_SplineSurface.hxx`:82 - `IGESGeom_SplineSurface::PatchType()`
+    /// returns patch type
+    pub fn patch_type(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_patch_type(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_SplineSurface.hxx`:86 - `IGESGeom_SplineSurface::UBreakPoint()`
+    /// returns U break point of the grid line referred to by anIndex
+    /// raises exception if anIndex <= 0 or anIndex > NbUSegments() + 1
+    pub fn u_break_point(&self, anIndex: i32) -> f64 {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_u_break_point(self as *const Self, anIndex) }
+    }
+
+    /// **Source:** `IGESGeom_SplineSurface.hxx`:90 - `IGESGeom_SplineSurface::VBreakPoint()`
+    /// returns V break point of the grid line referred to by anIndex
+    /// raises exception if anIndex <= 0 or anIndex > NbVSegments() + 1
+    pub fn v_break_point(&self, anIndex: i32) -> f64 {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_v_break_point(self as *const Self, anIndex) }
+    }
+
+    /// **Source:** `IGESGeom_SplineSurface.hxx`:95 - `IGESGeom_SplineSurface::XPolynomial()`
+    /// returns X polynomial of patch referred to by anIndex1, anIndex2
+    /// raises exception if anIndex1 <= 0 or anIndex1 > NbUSegments()
+    /// or anIndex2 <= 0 or anIndex2 > NbVSegments()
+    pub fn x_polynomial(
+        &self,
+        anIndex1: i32,
+        anIndex2: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_x_polynomial(
+                self as *const Self,
+                anIndex1,
+                anIndex2,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_SplineSurface.hxx`:101 - `IGESGeom_SplineSurface::YPolynomial()`
+    /// returns Y polynomial of patch referred to by anIndex1, anIndex2
+    /// raises exception if anIndex1 <= 0 or anIndex1 > NbUSegments()
+    /// or anIndex2 <= 0 or anIndex2 > NbVSegments()
+    pub fn y_polynomial(
+        &self,
+        anIndex1: i32,
+        anIndex2: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_y_polynomial(
+                self as *const Self,
+                anIndex1,
+                anIndex2,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_SplineSurface.hxx`:107 - `IGESGeom_SplineSurface::ZPolynomial()`
+    /// returns Z polynomial of patch referred to by anIndex1, anIndex2
+    /// raises exception if anIndex1 <= 0 or anIndex1 > NbUSegments()
+    /// or anIndex2 <= 0 or anIndex2 > NbVSegments()
+    pub fn z_polynomial(
+        &self,
+        anIndex1: i32,
+        anIndex2: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_z_polynomial(
+                self as *const Self,
+                anIndex1,
+                anIndex2,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_SplineSurface.hxx`:112 - `IGESGeom_SplineSurface::Polynomials()`
+    /// returns in one all the polynomial values "in bulk"
+    /// useful for massive treatments
+    pub fn polynomials(
+        &self,
+        XCoef: &mut crate::ffi::HandleIGESBasicHArray2OfHArray1OfReal,
+        YCoef: &mut crate::ffi::HandleIGESBasicHArray2OfHArray1OfReal,
+        ZCoef: &mut crate::ffi::HandleIGESBasicHArray2OfHArray1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_polynomials(self as *const Self, XCoef, YCoef, ZCoef)
+        }
+    }
+
+    /// **Source:** `IGESGeom_SplineSurface.hxx`:116 - `IGESGeom_SplineSurface::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_SplineSurface_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_SplineSurface.hxx`:116 - `IGESGeom_SplineSurface::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_SplineSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_SplineSurface.hxx`:116 - `IGESGeom_SplineSurface::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_SplineSurface_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe {
+            &*(crate::ffi::IGESGeom_SplineSurface_as_IGESData_IGESEntity(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_SplineSurface_as_IGESData_IGESEntity_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESGeom_SplineSurface_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_SplineSurface_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomSplineSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_SplineSurface_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_SplineSurface_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_SplineSurface_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_HasLabelDisplay(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_SubordinateStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_HierarchyStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_LineWeightNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_SplineSurface_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_SubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_InitLevel(self as *mut Self, ent, val)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_SplineSurface_inherited_CompoundLocation(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_NbAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_Associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_SplineSurface_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_Dissociate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SplineSurface_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_RemoveProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SplineSurface_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_SplineSurface_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomSplineSurface;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomSplineSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomSplineSurface_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomSplineSurface {
+    /// Dereference this Handle to access the underlying IGESGeom_SplineSurface
+    pub fn get(&self) -> &crate::ffi::IGESGeom_SplineSurface {
+        unsafe { &*(crate::ffi::HandleIGESGeomSplineSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_SplineSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_SplineSurface {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomSplineSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_SplineSurface> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomSplineSurface_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_SplineSurface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomSplineSurface_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_SurfaceOfRevolution.hxx
+// ========================
+
+/// **Source:** `IGESGeom_SurfaceOfRevolution.hxx`:35 - `IGESGeom_SurfaceOfRevolution`
+/// defines IGESSurfaceOfRevolution, Type <120> Form <0>
+/// in package IGESGeom
+/// A surface of revolution is defined by an axis of rotation
+/// a generatrix, and start and terminate rotation angles. The
+/// surface is created by rotating the generatrix about the axis
+/// of rotation through the start and terminate rotation angles.
+pub use crate::ffi::IGESGeom_SurfaceOfRevolution as SurfaceOfRevolution;
+
+unsafe impl crate::CppDeletable for SurfaceOfRevolution {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_SurfaceOfRevolution_destructor(ptr);
+    }
+}
+
+impl SurfaceOfRevolution {
+    /// **Source:** `IGESGeom_SurfaceOfRevolution.hxx`:39 - `IGESGeom_SurfaceOfRevolution::IGESGeom_SurfaceOfRevolution()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SurfaceOfRevolution_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_SurfaceOfRevolution.hxx`:46 - `IGESGeom_SurfaceOfRevolution::Init()`
+    /// This method is used to set the fields of the class Line
+    /// - anAxis      : Axis of revolution
+    /// - aGeneratrix : The curve which is revolved about the axis
+    /// - aStartAngle : Start angle of the surface of revolution
+    /// - anEndAngle  : End angle of the surface of revolution
+    pub fn init(
+        &mut self,
+        anAxis: &crate::ffi::HandleIGESGeomLine,
+        aGeneratrix: &crate::ffi::HandleIGESDataIGESEntity,
+        aStartAngle: f64,
+        anEndAngle: f64,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_init(
+                self as *mut Self,
+                anAxis,
+                aGeneratrix,
+                aStartAngle,
+                anEndAngle,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_SurfaceOfRevolution.hxx`:52 - `IGESGeom_SurfaceOfRevolution::AxisOfRevolution()`
+    /// returns the axis of revolution
+    pub fn axis_of_revolution(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomLine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SurfaceOfRevolution_axis_of_revolution(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_SurfaceOfRevolution.hxx`:55 - `IGESGeom_SurfaceOfRevolution::Generatrix()`
+    /// returns the curve which is revolved about the axis
+    pub fn generatrix(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SurfaceOfRevolution_generatrix(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_SurfaceOfRevolution.hxx`:58 - `IGESGeom_SurfaceOfRevolution::StartAngle()`
+    /// returns start angle of revolution
+    pub fn start_angle(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_SurfaceOfRevolution_start_angle(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_SurfaceOfRevolution.hxx`:61 - `IGESGeom_SurfaceOfRevolution::EndAngle()`
+    /// returns end angle of revolution
+    pub fn end_angle(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_SurfaceOfRevolution_end_angle(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_SurfaceOfRevolution.hxx`:63 - `IGESGeom_SurfaceOfRevolution::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_SurfaceOfRevolution_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_SurfaceOfRevolution.hxx`:63 - `IGESGeom_SurfaceOfRevolution::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_SurfaceOfRevolution_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_SurfaceOfRevolution.hxx`:63 - `IGESGeom_SurfaceOfRevolution::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_SurfaceOfRevolution_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe {
+            &*(crate::ffi::IGESGeom_SurfaceOfRevolution_as_IGESData_IGESEntity(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_SurfaceOfRevolution_as_IGESData_IGESEntity_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESGeom_SurfaceOfRevolution_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_SurfaceOfRevolution_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomSurfaceOfRevolution> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SurfaceOfRevolution_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_TypeNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_FormNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_DirFieldEntity(
+                    self as *const Self,
+                    fieldnum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_HasStructure(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_RankLineFont(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_SingleView(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_HasLabelDisplay(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_LabelDisplay(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_BlankStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_SubordinateStatus(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_HierarchyStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_LineWeightNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_LineWeight(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_HasShortLabel(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_ShortLabel(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_HasSubScriptNumber(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_SubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_InitTransf(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_InitView(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_InitLineFont(
+                self as *mut Self,
+                ent,
+                rank,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_InitLevel(
+                self as *mut Self,
+                ent,
+                val,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_InitColor(
+                self as *mut Self,
+                ent,
+                rank,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_SetLabel(
+                self as *mut Self,
+                label,
+                sub,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_HasOneParent(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_UniqueParent(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_VectorLocation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_CompoundLocation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_NbAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_Associativities(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_Associate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_Dissociate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_ArePresentProperties(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_NbProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_Properties(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_TypedProperty(
+                    self as *const Self,
+                    atype,
+                    anum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_AddProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_RemoveProperty(
+                self as *mut Self,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_SurfaceOfRevolution_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomSurfaceOfRevolution;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomSurfaceOfRevolution {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomSurfaceOfRevolution_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomSurfaceOfRevolution {
+    /// Dereference this Handle to access the underlying IGESGeom_SurfaceOfRevolution
+    pub fn get(&self) -> &crate::ffi::IGESGeom_SurfaceOfRevolution {
+        unsafe { &*(crate::ffi::HandleIGESGeomSurfaceOfRevolution_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_SurfaceOfRevolution
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_SurfaceOfRevolution {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomSurfaceOfRevolution_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_SurfaceOfRevolution> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomSurfaceOfRevolution_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_SurfaceOfRevolution> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomSurfaceOfRevolution_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_TabulatedCylinder.hxx
+// ========================
+
+/// **Source:** `IGESGeom_TabulatedCylinder.hxx`:37 - `IGESGeom_TabulatedCylinder`
+/// defines IGESTabulatedCylinder, Type <122> Form <0>
+/// in package IGESGeom
+/// A tabulated cylinder is a surface formed by moving a line
+/// segment called generatrix parallel to itself along a curve
+/// called directrix. The curve may be a line, circular arc,
+/// conic arc, parametric spline curve, rational B-spline
+/// curve or composite curve.
+pub use crate::ffi::IGESGeom_TabulatedCylinder as TabulatedCylinder;
+
+unsafe impl crate::CppDeletable for TabulatedCylinder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_TabulatedCylinder_destructor(ptr);
+    }
+}
+
+impl TabulatedCylinder {
+    /// **Source:** `IGESGeom_TabulatedCylinder.hxx`:41 - `IGESGeom_TabulatedCylinder::IGESGeom_TabulatedCylinder()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TabulatedCylinder_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_TabulatedCylinder.hxx`:50 - `IGESGeom_TabulatedCylinder::Init()`
+    /// This method is used to set the fields of the class
+    /// TabulatedCylinder
+    /// - aDirectrix : Directrix Curve of the tabulated cylinder
+    /// - anEnd      : Coordinates of the terminate point of the
+    /// generatrix
+    /// The start point of the directrix is identical to the start
+    /// point of the generatrix
+    pub fn init(
+        &mut self,
+        aDirectrix: &crate::ffi::HandleIGESDataIGESEntity,
+        anEnd: &crate::gp::XYZ,
+    ) {
+        unsafe { crate::ffi::IGESGeom_TabulatedCylinder_init(self as *mut Self, aDirectrix, anEnd) }
+    }
+
+    /// **Source:** `IGESGeom_TabulatedCylinder.hxx`:53 - `IGESGeom_TabulatedCylinder::Directrix()`
+    /// returns the directrix curve of the tabulated cylinder
+    pub fn directrix(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TabulatedCylinder_directrix(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_TabulatedCylinder.hxx`:56 - `IGESGeom_TabulatedCylinder::EndPoint()`
+    /// returns end point of generatrix of the tabulated cylinder
+    pub fn end_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TabulatedCylinder_end_point(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_TabulatedCylinder.hxx`:60 - `IGESGeom_TabulatedCylinder::TransformedEndPoint()`
+    /// returns end point of generatrix of the tabulated cylinder
+    /// after applying Transf. Matrix
+    pub fn transformed_end_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TabulatedCylinder_transformed_end_point(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_TabulatedCylinder.hxx`:62 - `IGESGeom_TabulatedCylinder::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_TabulatedCylinder_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_TabulatedCylinder.hxx`:62 - `IGESGeom_TabulatedCylinder::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_TabulatedCylinder_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_TabulatedCylinder.hxx`:62 - `IGESGeom_TabulatedCylinder::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_TabulatedCylinder_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe {
+            &*(crate::ffi::IGESGeom_TabulatedCylinder_as_IGESData_IGESEntity(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_TabulatedCylinder_as_IGESData_IGESEntity_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESGeom_TabulatedCylinder_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_TabulatedCylinder_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomTabulatedCylinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TabulatedCylinder_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TabulatedCylinder_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TabulatedCylinder_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TabulatedCylinder_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TabulatedCylinder_inherited_DirFieldEntity(
+                    self as *const Self,
+                    fieldnum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_HasStructure(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TabulatedCylinder_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_TabulatedCylinder_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_RankLineFont(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TabulatedCylinder_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_TabulatedCylinder_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TabulatedCylinder_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TabulatedCylinder_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_TabulatedCylinder_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TabulatedCylinder_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TabulatedCylinder_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TabulatedCylinder_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_TabulatedCylinder_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TabulatedCylinder_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_HasLabelDisplay(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TabulatedCylinder_inherited_LabelDisplay(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TabulatedCylinder_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_SubordinateStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TabulatedCylinder_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_HierarchyStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_LineWeightNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_TabulatedCylinder_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_TabulatedCylinder_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TabulatedCylinder_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TabulatedCylinder_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_HasShortLabel(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TabulatedCylinder_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_SubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_InitTransf(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_TabulatedCylinder_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_InitLineFont(
+                self as *mut Self,
+                ent,
+                rank,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_InitLevel(self as *mut Self, ent, val)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_HasOneParent(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TabulatedCylinder_inherited_UniqueParent(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TabulatedCylinder_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TabulatedCylinder_inherited_VectorLocation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TabulatedCylinder_inherited_CompoundLocation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_TabulatedCylinder_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TabulatedCylinder_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_NbAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TabulatedCylinder_inherited_Associativities(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TabulatedCylinder_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_Associate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_Dissociate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_ArePresentProperties(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_NbProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TabulatedCylinder_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TabulatedCylinder_inherited_TypedProperty(
+                    self as *const Self,
+                    atype,
+                    anum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_AddProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_RemoveProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TabulatedCylinder_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TabulatedCylinder_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_TabulatedCylinder_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomTabulatedCylinder;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomTabulatedCylinder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomTabulatedCylinder_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomTabulatedCylinder {
+    /// Dereference this Handle to access the underlying IGESGeom_TabulatedCylinder
+    pub fn get(&self) -> &crate::ffi::IGESGeom_TabulatedCylinder {
+        unsafe { &*(crate::ffi::HandleIGESGeomTabulatedCylinder_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_TabulatedCylinder
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_TabulatedCylinder {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomTabulatedCylinder_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_TabulatedCylinder> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomTabulatedCylinder_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_TabulatedCylinder> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomTabulatedCylinder_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_ToolBSplineCurve.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolBSplineCurve.hxx`:38 - `IGESGeom_ToolBSplineCurve`
+/// Tool to work on a BSplineCurve. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolBSplineCurve as ToolBSplineCurve;
+
+unsafe impl crate::CppDeletable for ToolBSplineCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolBSplineCurve_destructor(ptr);
+    }
+}
+
+impl ToolBSplineCurve {
+    /// **Source:** `IGESGeom_ToolBSplineCurve.hxx`:44 - `IGESGeom_ToolBSplineCurve::IGESGeom_ToolBSplineCurve()`
+    /// Returns a ToolBSplineCurve, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolBSplineCurve_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolBSplineCurve.hxx`:48 - `IGESGeom_ToolBSplineCurve::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBSplineCurve,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBSplineCurve_read_own_params(self as *const Self, ent, IR, PR)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolBSplineCurve.hxx`:53 - `IGESGeom_ToolBSplineCurve::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBSplineCurve,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBSplineCurve_write_own_params(self as *const Self, ent, IW)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolBSplineCurve.hxx`:58 - `IGESGeom_ToolBSplineCurve::OwnShared()`
+    /// Lists the Entities shared by a BSplineCurve <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBSplineCurve,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolBSplineCurve_own_shared(self as *const Self, ent, iter) }
+    }
+
+    /// **Source:** `IGESGeom_ToolBSplineCurve.hxx`:62 - `IGESGeom_ToolBSplineCurve::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBSplineCurve,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolBSplineCurve_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolBSplineCurve.hxx`:65 - `IGESGeom_ToolBSplineCurve::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBSplineCurve,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBSplineCurve_own_check(self as *const Self, ent, shares, ach)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolBSplineCurve.hxx`:70 - `IGESGeom_ToolBSplineCurve::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomBSplineCurve,
+        entto: &crate::ffi::HandleIGESGeomBSplineCurve,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBSplineCurve_own_copy(self as *const Self, entfrom, entto, TC)
+        }
+    }
+}
+
+// ── Skipped symbols for ToolBSplineCurve (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolBSplineCurve.hxx`:75 - `IGESGeom_ToolBSplineCurve::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleBSplineCurve, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolBSplineSurface.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolBSplineSurface.hxx`:38 - `IGESGeom_ToolBSplineSurface`
+/// Tool to work on a BSplineSurface. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolBSplineSurface as ToolBSplineSurface;
+
+unsafe impl crate::CppDeletable for ToolBSplineSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolBSplineSurface_destructor(ptr);
+    }
+}
+
+impl ToolBSplineSurface {
+    /// **Source:** `IGESGeom_ToolBSplineSurface.hxx`:44 - `IGESGeom_ToolBSplineSurface::IGESGeom_ToolBSplineSurface()`
+    /// Returns a ToolBSplineSurface, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolBSplineSurface_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolBSplineSurface.hxx`:48 - `IGESGeom_ToolBSplineSurface::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBSplineSurface,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBSplineSurface_read_own_params(
+                self as *const Self,
+                ent,
+                IR,
+                PR,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolBSplineSurface.hxx`:53 - `IGESGeom_ToolBSplineSurface::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBSplineSurface,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBSplineSurface_write_own_params(self as *const Self, ent, IW)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolBSplineSurface.hxx`:58 - `IGESGeom_ToolBSplineSurface::OwnShared()`
+    /// Lists the Entities shared by a BSplineSurface <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBSplineSurface,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBSplineSurface_own_shared(self as *const Self, ent, iter)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolBSplineSurface.hxx`:62 - `IGESGeom_ToolBSplineSurface::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBSplineSurface,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolBSplineSurface_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolBSplineSurface.hxx`:65 - `IGESGeom_ToolBSplineSurface::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBSplineSurface,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBSplineSurface_own_check(self as *const Self, ent, shares, ach)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolBSplineSurface.hxx`:70 - `IGESGeom_ToolBSplineSurface::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomBSplineSurface,
+        entto: &crate::ffi::HandleIGESGeomBSplineSurface,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBSplineSurface_own_copy(
+                self as *const Self,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for ToolBSplineSurface (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolBSplineSurface.hxx`:75 - `IGESGeom_ToolBSplineSurface::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleBSplineSurface, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolBoundary.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolBoundary.hxx`:38 - `IGESGeom_ToolBoundary`
+/// Tool to work on a Boundary. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolBoundary as ToolBoundary;
+
+unsafe impl crate::CppDeletable for ToolBoundary {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolBoundary_destructor(ptr);
+    }
+}
+
+impl ToolBoundary {
+    /// **Source:** `IGESGeom_ToolBoundary.hxx`:44 - `IGESGeom_ToolBoundary::IGESGeom_ToolBoundary()`
+    /// Returns a ToolBoundary, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolBoundary_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolBoundary.hxx`:48 - `IGESGeom_ToolBoundary::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBoundary,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBoundary_read_own_params(self as *const Self, ent, IR, PR)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolBoundary.hxx`:53 - `IGESGeom_ToolBoundary::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBoundary,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolBoundary_write_own_params(self as *const Self, ent, IW) }
+    }
+
+    /// **Source:** `IGESGeom_ToolBoundary.hxx`:58 - `IGESGeom_ToolBoundary::OwnShared()`
+    /// Lists the Entities shared by a Boundary <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBoundary,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolBoundary_own_shared(self as *const Self, ent, iter) }
+    }
+
+    /// **Source:** `IGESGeom_ToolBoundary.hxx`:63 - `IGESGeom_ToolBoundary::OwnCorrect()`
+    /// Sets automatic unambiguous Correction on a Boundary
+    /// (if BoundaryType = 0, Nullify all ParameterCurves)
+    pub fn own_correct(&self, ent: &crate::ffi::HandleIGESGeomBoundary) -> bool {
+        unsafe { crate::ffi::IGESGeom_ToolBoundary_own_correct(self as *const Self, ent) }
+    }
+
+    /// **Source:** `IGESGeom_ToolBoundary.hxx`:66 - `IGESGeom_ToolBoundary::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBoundary,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolBoundary_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolBoundary.hxx`:69 - `IGESGeom_ToolBoundary::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBoundary,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBoundary_own_check(self as *const Self, ent, shares, ach)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolBoundary.hxx`:74 - `IGESGeom_ToolBoundary::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomBoundary,
+        entto: &crate::ffi::HandleIGESGeomBoundary,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBoundary_own_copy(self as *const Self, entfrom, entto, TC)
+        }
+    }
+}
+
+// ── Skipped symbols for ToolBoundary (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolBoundary.hxx`:79 - `IGESGeom_ToolBoundary::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleBoundary, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolBoundedSurface.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolBoundedSurface.hxx`:38 - `IGESGeom_ToolBoundedSurface`
+/// Tool to work on a BoundedSurface. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolBoundedSurface as ToolBoundedSurface;
+
+unsafe impl crate::CppDeletable for ToolBoundedSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolBoundedSurface_destructor(ptr);
+    }
+}
+
+impl ToolBoundedSurface {
+    /// **Source:** `IGESGeom_ToolBoundedSurface.hxx`:44 - `IGESGeom_ToolBoundedSurface::IGESGeom_ToolBoundedSurface()`
+    /// Returns a ToolBoundedSurface, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolBoundedSurface_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolBoundedSurface.hxx`:48 - `IGESGeom_ToolBoundedSurface::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBoundedSurface,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBoundedSurface_read_own_params(
+                self as *const Self,
+                ent,
+                IR,
+                PR,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolBoundedSurface.hxx`:53 - `IGESGeom_ToolBoundedSurface::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBoundedSurface,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBoundedSurface_write_own_params(self as *const Self, ent, IW)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolBoundedSurface.hxx`:58 - `IGESGeom_ToolBoundedSurface::OwnShared()`
+    /// Lists the Entities shared by a BoundedSurface <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBoundedSurface,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBoundedSurface_own_shared(self as *const Self, ent, iter)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolBoundedSurface.hxx`:62 - `IGESGeom_ToolBoundedSurface::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBoundedSurface,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolBoundedSurface_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolBoundedSurface.hxx`:65 - `IGESGeom_ToolBoundedSurface::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBoundedSurface,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBoundedSurface_own_check(self as *const Self, ent, shares, ach)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolBoundedSurface.hxx`:70 - `IGESGeom_ToolBoundedSurface::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomBoundedSurface,
+        entto: &crate::ffi::HandleIGESGeomBoundedSurface,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBoundedSurface_own_copy(
+                self as *const Self,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for ToolBoundedSurface (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolBoundedSurface.hxx`:75 - `IGESGeom_ToolBoundedSurface::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleBoundedSurface, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolCircularArc.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolCircularArc.hxx`:38 - `IGESGeom_ToolCircularArc`
+/// Tool to work on a CircularArc. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolCircularArc as ToolCircularArc;
+
+unsafe impl crate::CppDeletable for ToolCircularArc {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolCircularArc_destructor(ptr);
+    }
+}
+
+impl ToolCircularArc {
+    /// **Source:** `IGESGeom_ToolCircularArc.hxx`:44 - `IGESGeom_ToolCircularArc::IGESGeom_ToolCircularArc()`
+    /// Returns a ToolCircularArc, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolCircularArc_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolCircularArc.hxx`:48 - `IGESGeom_ToolCircularArc::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCircularArc,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCircularArc_read_own_params(self as *const Self, ent, IR, PR)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolCircularArc.hxx`:53 - `IGESGeom_ToolCircularArc::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCircularArc,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCircularArc_write_own_params(self as *const Self, ent, IW)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolCircularArc.hxx`:58 - `IGESGeom_ToolCircularArc::OwnShared()`
+    /// Lists the Entities shared by a CircularArc <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCircularArc,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolCircularArc_own_shared(self as *const Self, ent, iter) }
+    }
+
+    /// **Source:** `IGESGeom_ToolCircularArc.hxx`:62 - `IGESGeom_ToolCircularArc::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCircularArc,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolCircularArc_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolCircularArc.hxx`:65 - `IGESGeom_ToolCircularArc::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCircularArc,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCircularArc_own_check(self as *const Self, ent, shares, ach)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolCircularArc.hxx`:70 - `IGESGeom_ToolCircularArc::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomCircularArc,
+        entto: &crate::ffi::HandleIGESGeomCircularArc,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCircularArc_own_copy(self as *const Self, entfrom, entto, TC)
+        }
+    }
+}
+
+// ── Skipped symbols for ToolCircularArc (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolCircularArc.hxx`:75 - `IGESGeom_ToolCircularArc::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleCircularArc, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolCompositeCurve.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolCompositeCurve.hxx`:38 - `IGESGeom_ToolCompositeCurve`
+/// Tool to work on a CompositeCurve. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolCompositeCurve as ToolCompositeCurve;
+
+unsafe impl crate::CppDeletable for ToolCompositeCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolCompositeCurve_destructor(ptr);
+    }
+}
+
+impl ToolCompositeCurve {
+    /// **Source:** `IGESGeom_ToolCompositeCurve.hxx`:44 - `IGESGeom_ToolCompositeCurve::IGESGeom_ToolCompositeCurve()`
+    /// Returns a ToolCompositeCurve, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolCompositeCurve_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolCompositeCurve.hxx`:48 - `IGESGeom_ToolCompositeCurve::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCompositeCurve,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCompositeCurve_read_own_params(
+                self as *const Self,
+                ent,
+                IR,
+                PR,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolCompositeCurve.hxx`:53 - `IGESGeom_ToolCompositeCurve::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCompositeCurve,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCompositeCurve_write_own_params(self as *const Self, ent, IW)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolCompositeCurve.hxx`:58 - `IGESGeom_ToolCompositeCurve::OwnShared()`
+    /// Lists the Entities shared by a CompositeCurve <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCompositeCurve,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCompositeCurve_own_shared(self as *const Self, ent, iter)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolCompositeCurve.hxx`:62 - `IGESGeom_ToolCompositeCurve::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCompositeCurve,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolCompositeCurve_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolCompositeCurve.hxx`:65 - `IGESGeom_ToolCompositeCurve::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCompositeCurve,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCompositeCurve_own_check(self as *const Self, ent, shares, ach)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolCompositeCurve.hxx`:70 - `IGESGeom_ToolCompositeCurve::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomCompositeCurve,
+        entto: &crate::ffi::HandleIGESGeomCompositeCurve,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCompositeCurve_own_copy(
+                self as *const Self,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for ToolCompositeCurve (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolCompositeCurve.hxx`:75 - `IGESGeom_ToolCompositeCurve::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleCompositeCurve, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolConicArc.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolConicArc.hxx`:38 - `IGESGeom_ToolConicArc`
+/// Tool to work on a ConicArc. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolConicArc as ToolConicArc;
+
+unsafe impl crate::CppDeletable for ToolConicArc {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolConicArc_destructor(ptr);
+    }
+}
+
+impl ToolConicArc {
+    /// **Source:** `IGESGeom_ToolConicArc.hxx`:44 - `IGESGeom_ToolConicArc::IGESGeom_ToolConicArc()`
+    /// Returns a ToolConicArc, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolConicArc_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolConicArc.hxx`:48 - `IGESGeom_ToolConicArc::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomConicArc,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolConicArc_read_own_params(self as *const Self, ent, IR, PR)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolConicArc.hxx`:53 - `IGESGeom_ToolConicArc::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomConicArc,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolConicArc_write_own_params(self as *const Self, ent, IW) }
+    }
+
+    /// **Source:** `IGESGeom_ToolConicArc.hxx`:58 - `IGESGeom_ToolConicArc::OwnShared()`
+    /// Lists the Entities shared by a ConicArc <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomConicArc,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolConicArc_own_shared(self as *const Self, ent, iter) }
+    }
+
+    /// **Source:** `IGESGeom_ToolConicArc.hxx`:63 - `IGESGeom_ToolConicArc::OwnCorrect()`
+    /// Sets automatic unambiguous Correction on a ConicArc
+    /// (FormNumber recomputed according case Ellips-Parab-Hyperb)
+    pub fn own_correct(&self, ent: &crate::ffi::HandleIGESGeomConicArc) -> bool {
+        unsafe { crate::ffi::IGESGeom_ToolConicArc_own_correct(self as *const Self, ent) }
+    }
+
+    /// **Source:** `IGESGeom_ToolConicArc.hxx`:66 - `IGESGeom_ToolConicArc::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomConicArc,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolConicArc_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolConicArc.hxx`:69 - `IGESGeom_ToolConicArc::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomConicArc,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolConicArc_own_check(self as *const Self, ent, shares, ach)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolConicArc.hxx`:74 - `IGESGeom_ToolConicArc::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomConicArc,
+        entto: &crate::ffi::HandleIGESGeomConicArc,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolConicArc_own_copy(self as *const Self, entfrom, entto, TC)
+        }
+    }
+}
+
+// ── Skipped symbols for ToolConicArc (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolConicArc.hxx`:79 - `IGESGeom_ToolConicArc::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleConicArc, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolCopiousData.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolCopiousData.hxx`:38 - `IGESGeom_ToolCopiousData`
+/// Tool to work on a CopiousData. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolCopiousData as ToolCopiousData;
+
+unsafe impl crate::CppDeletable for ToolCopiousData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolCopiousData_destructor(ptr);
+    }
+}
+
+impl ToolCopiousData {
+    /// **Source:** `IGESGeom_ToolCopiousData.hxx`:44 - `IGESGeom_ToolCopiousData::IGESGeom_ToolCopiousData()`
+    /// Returns a ToolCopiousData, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolCopiousData_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolCopiousData.hxx`:48 - `IGESGeom_ToolCopiousData::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCopiousData,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCopiousData_read_own_params(self as *const Self, ent, IR, PR)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolCopiousData.hxx`:53 - `IGESGeom_ToolCopiousData::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCopiousData,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCopiousData_write_own_params(self as *const Self, ent, IW)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolCopiousData.hxx`:58 - `IGESGeom_ToolCopiousData::OwnShared()`
+    /// Lists the Entities shared by a CopiousData <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCopiousData,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolCopiousData_own_shared(self as *const Self, ent, iter) }
+    }
+
+    /// **Source:** `IGESGeom_ToolCopiousData.hxx`:62 - `IGESGeom_ToolCopiousData::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCopiousData,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolCopiousData_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolCopiousData.hxx`:65 - `IGESGeom_ToolCopiousData::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCopiousData,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCopiousData_own_check(self as *const Self, ent, shares, ach)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolCopiousData.hxx`:70 - `IGESGeom_ToolCopiousData::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomCopiousData,
+        entto: &crate::ffi::HandleIGESGeomCopiousData,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCopiousData_own_copy(self as *const Self, entfrom, entto, TC)
+        }
+    }
+}
+
+// ── Skipped symbols for ToolCopiousData (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolCopiousData.hxx`:75 - `IGESGeom_ToolCopiousData::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleCopiousData, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolCurveOnSurface.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolCurveOnSurface.hxx`:38 - `IGESGeom_ToolCurveOnSurface`
+/// Tool to work on a CurveOnSurface. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolCurveOnSurface as ToolCurveOnSurface;
+
+unsafe impl crate::CppDeletable for ToolCurveOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolCurveOnSurface_destructor(ptr);
+    }
+}
+
+impl ToolCurveOnSurface {
+    /// **Source:** `IGESGeom_ToolCurveOnSurface.hxx`:44 - `IGESGeom_ToolCurveOnSurface::IGESGeom_ToolCurveOnSurface()`
+    /// Returns a ToolCurveOnSurface, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolCurveOnSurface_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolCurveOnSurface.hxx`:48 - `IGESGeom_ToolCurveOnSurface::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCurveOnSurface,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCurveOnSurface_read_own_params(
+                self as *const Self,
+                ent,
+                IR,
+                PR,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolCurveOnSurface.hxx`:53 - `IGESGeom_ToolCurveOnSurface::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCurveOnSurface,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCurveOnSurface_write_own_params(self as *const Self, ent, IW)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolCurveOnSurface.hxx`:58 - `IGESGeom_ToolCurveOnSurface::OwnShared()`
+    /// Lists the Entities shared by a CurveOnSurface <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCurveOnSurface,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCurveOnSurface_own_shared(self as *const Self, ent, iter)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolCurveOnSurface.hxx`:63 - `IGESGeom_ToolCurveOnSurface::OwnCorrect()`
+    /// Sets automatic unambiguous Correction on a CurveOnSurface
+    /// (its CurveUV must have UseFlag at 5)
+    pub fn own_correct(&self, ent: &crate::ffi::HandleIGESGeomCurveOnSurface) -> bool {
+        unsafe { crate::ffi::IGESGeom_ToolCurveOnSurface_own_correct(self as *const Self, ent) }
+    }
+
+    /// **Source:** `IGESGeom_ToolCurveOnSurface.hxx`:66 - `IGESGeom_ToolCurveOnSurface::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCurveOnSurface,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolCurveOnSurface_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolCurveOnSurface.hxx`:69 - `IGESGeom_ToolCurveOnSurface::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCurveOnSurface,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCurveOnSurface_own_check(self as *const Self, ent, shares, ach)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolCurveOnSurface.hxx`:74 - `IGESGeom_ToolCurveOnSurface::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomCurveOnSurface,
+        entto: &crate::ffi::HandleIGESGeomCurveOnSurface,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCurveOnSurface_own_copy(
+                self as *const Self,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for ToolCurveOnSurface (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolCurveOnSurface.hxx`:79 - `IGESGeom_ToolCurveOnSurface::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleCurveOnSurface, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolDirection.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolDirection.hxx`:38 - `IGESGeom_ToolDirection`
+/// Tool to work on a Direction. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolDirection as ToolDirection;
+
+unsafe impl crate::CppDeletable for ToolDirection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolDirection_destructor(ptr);
+    }
+}
+
+impl ToolDirection {
+    /// **Source:** `IGESGeom_ToolDirection.hxx`:44 - `IGESGeom_ToolDirection::IGESGeom_ToolDirection()`
+    /// Returns a ToolDirection, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolDirection_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolDirection.hxx`:48 - `IGESGeom_ToolDirection::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomDirection,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolDirection_read_own_params(self as *const Self, ent, IR, PR)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolDirection.hxx`:53 - `IGESGeom_ToolDirection::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomDirection,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolDirection_write_own_params(self as *const Self, ent, IW) }
+    }
+
+    /// **Source:** `IGESGeom_ToolDirection.hxx`:58 - `IGESGeom_ToolDirection::OwnShared()`
+    /// Lists the Entities shared by a Direction <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomDirection,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolDirection_own_shared(self as *const Self, ent, iter) }
+    }
+
+    /// **Source:** `IGESGeom_ToolDirection.hxx`:62 - `IGESGeom_ToolDirection::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomDirection,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolDirection_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolDirection.hxx`:65 - `IGESGeom_ToolDirection::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomDirection,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolDirection_own_check(self as *const Self, ent, shares, ach)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolDirection.hxx`:70 - `IGESGeom_ToolDirection::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomDirection,
+        entto: &crate::ffi::HandleIGESGeomDirection,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolDirection_own_copy(self as *const Self, entfrom, entto, TC)
+        }
+    }
+}
+
+// ── Skipped symbols for ToolDirection (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolDirection.hxx`:75 - `IGESGeom_ToolDirection::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleDirection, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolFlash.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolFlash.hxx`:38 - `IGESGeom_ToolFlash`
+/// Tool to work on a Flash. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolFlash as ToolFlash;
+
+unsafe impl crate::CppDeletable for ToolFlash {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolFlash_destructor(ptr);
+    }
+}
+
+impl ToolFlash {
+    /// **Source:** `IGESGeom_ToolFlash.hxx`:44 - `IGESGeom_ToolFlash::IGESGeom_ToolFlash()`
+    /// Returns a ToolFlash, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolFlash_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolFlash.hxx`:48 - `IGESGeom_ToolFlash::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomFlash,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolFlash_read_own_params(self as *const Self, ent, IR, PR) }
+    }
+
+    /// **Source:** `IGESGeom_ToolFlash.hxx`:53 - `IGESGeom_ToolFlash::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomFlash,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolFlash_write_own_params(self as *const Self, ent, IW) }
+    }
+
+    /// **Source:** `IGESGeom_ToolFlash.hxx`:58 - `IGESGeom_ToolFlash::OwnShared()`
+    /// Lists the Entities shared by a Flash <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomFlash,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolFlash_own_shared(self as *const Self, ent, iter) }
+    }
+
+    /// **Source:** `IGESGeom_ToolFlash.hxx`:63 - `IGESGeom_ToolFlash::OwnCorrect()`
+    /// Sets automatic unambiguous Correction on a Flash
+    /// (LineFont in Directory Entry forced to Rank = 1)
+    pub fn own_correct(&self, ent: &crate::ffi::HandleIGESGeomFlash) -> bool {
+        unsafe { crate::ffi::IGESGeom_ToolFlash_own_correct(self as *const Self, ent) }
+    }
+
+    /// **Source:** `IGESGeom_ToolFlash.hxx`:66 - `IGESGeom_ToolFlash::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomFlash,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolFlash_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolFlash.hxx`:69 - `IGESGeom_ToolFlash::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomFlash,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolFlash_own_check(self as *const Self, ent, shares, ach) }
+    }
+
+    /// **Source:** `IGESGeom_ToolFlash.hxx`:74 - `IGESGeom_ToolFlash::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomFlash,
+        entto: &crate::ffi::HandleIGESGeomFlash,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolFlash_own_copy(self as *const Self, entfrom, entto, TC) }
+    }
+}
+
+// ── Skipped symbols for ToolFlash (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolFlash.hxx`:79 - `IGESGeom_ToolFlash::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleFlash, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolLine.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolLine.hxx`:38 - `IGESGeom_ToolLine`
+/// Tool to work on a Line. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolLine as ToolLine;
+
+unsafe impl crate::CppDeletable for ToolLine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolLine_destructor(ptr);
+    }
+}
+
+impl ToolLine {
+    /// **Source:** `IGESGeom_ToolLine.hxx`:44 - `IGESGeom_ToolLine::IGESGeom_ToolLine()`
+    /// Returns a ToolLine, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolLine_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolLine.hxx`:48 - `IGESGeom_ToolLine::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomLine,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolLine_read_own_params(self as *const Self, ent, IR, PR) }
+    }
+
+    /// **Source:** `IGESGeom_ToolLine.hxx`:53 - `IGESGeom_ToolLine::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomLine,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolLine_write_own_params(self as *const Self, ent, IW) }
+    }
+
+    /// **Source:** `IGESGeom_ToolLine.hxx`:58 - `IGESGeom_ToolLine::OwnShared()`
+    /// Lists the Entities shared by a Line <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomLine,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolLine_own_shared(self as *const Self, ent, iter) }
+    }
+
+    /// **Source:** `IGESGeom_ToolLine.hxx`:62 - `IGESGeom_ToolLine::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomLine,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolLine_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolLine.hxx`:65 - `IGESGeom_ToolLine::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomLine,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolLine_own_check(self as *const Self, ent, shares, ach) }
+    }
+
+    /// **Source:** `IGESGeom_ToolLine.hxx`:70 - `IGESGeom_ToolLine::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomLine,
+        entto: &crate::ffi::HandleIGESGeomLine,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolLine_own_copy(self as *const Self, entfrom, entto, TC) }
+    }
+}
+
+// ── Skipped symbols for ToolLine (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolLine.hxx`:75 - `IGESGeom_ToolLine::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleLine, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolOffsetCurve.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolOffsetCurve.hxx`:38 - `IGESGeom_ToolOffsetCurve`
+/// Tool to work on a OffsetCurve. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolOffsetCurve as ToolOffsetCurve;
+
+unsafe impl crate::CppDeletable for ToolOffsetCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolOffsetCurve_destructor(ptr);
+    }
+}
+
+impl ToolOffsetCurve {
+    /// **Source:** `IGESGeom_ToolOffsetCurve.hxx`:44 - `IGESGeom_ToolOffsetCurve::IGESGeom_ToolOffsetCurve()`
+    /// Returns a ToolOffsetCurve, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolOffsetCurve_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolOffsetCurve.hxx`:48 - `IGESGeom_ToolOffsetCurve::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomOffsetCurve,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolOffsetCurve_read_own_params(self as *const Self, ent, IR, PR)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolOffsetCurve.hxx`:53 - `IGESGeom_ToolOffsetCurve::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomOffsetCurve,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolOffsetCurve_write_own_params(self as *const Self, ent, IW)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolOffsetCurve.hxx`:58 - `IGESGeom_ToolOffsetCurve::OwnShared()`
+    /// Lists the Entities shared by a OffsetCurve <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomOffsetCurve,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolOffsetCurve_own_shared(self as *const Self, ent, iter) }
+    }
+
+    /// **Source:** `IGESGeom_ToolOffsetCurve.hxx`:63 - `IGESGeom_ToolOffsetCurve::OwnCorrect()`
+    /// Sets automatic unambiguous Correction on a OffsetCurve
+    /// (if OffsetType is not 3, OffsetFunction is cleared)
+    pub fn own_correct(&self, ent: &crate::ffi::HandleIGESGeomOffsetCurve) -> bool {
+        unsafe { crate::ffi::IGESGeom_ToolOffsetCurve_own_correct(self as *const Self, ent) }
+    }
+
+    /// **Source:** `IGESGeom_ToolOffsetCurve.hxx`:66 - `IGESGeom_ToolOffsetCurve::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomOffsetCurve,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolOffsetCurve_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolOffsetCurve.hxx`:69 - `IGESGeom_ToolOffsetCurve::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomOffsetCurve,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolOffsetCurve_own_check(self as *const Self, ent, shares, ach)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolOffsetCurve.hxx`:74 - `IGESGeom_ToolOffsetCurve::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomOffsetCurve,
+        entto: &crate::ffi::HandleIGESGeomOffsetCurve,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolOffsetCurve_own_copy(self as *const Self, entfrom, entto, TC)
+        }
+    }
+}
+
+// ── Skipped symbols for ToolOffsetCurve (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolOffsetCurve.hxx`:79 - `IGESGeom_ToolOffsetCurve::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleOffsetCurve, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolOffsetSurface.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolOffsetSurface.hxx`:38 - `IGESGeom_ToolOffsetSurface`
+/// Tool to work on a OffsetSurface. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolOffsetSurface as ToolOffsetSurface;
+
+unsafe impl crate::CppDeletable for ToolOffsetSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolOffsetSurface_destructor(ptr);
+    }
+}
+
+impl ToolOffsetSurface {
+    /// **Source:** `IGESGeom_ToolOffsetSurface.hxx`:44 - `IGESGeom_ToolOffsetSurface::IGESGeom_ToolOffsetSurface()`
+    /// Returns a ToolOffsetSurface, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolOffsetSurface_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolOffsetSurface.hxx`:48 - `IGESGeom_ToolOffsetSurface::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomOffsetSurface,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolOffsetSurface_read_own_params(self as *const Self, ent, IR, PR)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolOffsetSurface.hxx`:53 - `IGESGeom_ToolOffsetSurface::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomOffsetSurface,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolOffsetSurface_write_own_params(self as *const Self, ent, IW)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolOffsetSurface.hxx`:58 - `IGESGeom_ToolOffsetSurface::OwnShared()`
+    /// Lists the Entities shared by a OffsetSurface <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomOffsetSurface,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolOffsetSurface_own_shared(self as *const Self, ent, iter) }
+    }
+
+    /// **Source:** `IGESGeom_ToolOffsetSurface.hxx`:62 - `IGESGeom_ToolOffsetSurface::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomOffsetSurface,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolOffsetSurface_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolOffsetSurface.hxx`:65 - `IGESGeom_ToolOffsetSurface::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomOffsetSurface,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolOffsetSurface_own_check(self as *const Self, ent, shares, ach)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolOffsetSurface.hxx`:70 - `IGESGeom_ToolOffsetSurface::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomOffsetSurface,
+        entto: &crate::ffi::HandleIGESGeomOffsetSurface,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolOffsetSurface_own_copy(self as *const Self, entfrom, entto, TC)
+        }
+    }
+}
+
+// ── Skipped symbols for ToolOffsetSurface (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolOffsetSurface.hxx`:75 - `IGESGeom_ToolOffsetSurface::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleOffsetSurface, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolPlane.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolPlane.hxx`:38 - `IGESGeom_ToolPlane`
+/// Tool to work on a Plane. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolPlane as ToolPlane;
+
+unsafe impl crate::CppDeletable for ToolPlane {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolPlane_destructor(ptr);
+    }
+}
+
+impl ToolPlane {
+    /// **Source:** `IGESGeom_ToolPlane.hxx`:44 - `IGESGeom_ToolPlane::IGESGeom_ToolPlane()`
+    /// Returns a ToolPlane, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolPlane_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolPlane.hxx`:48 - `IGESGeom_ToolPlane::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomPlane,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolPlane_read_own_params(self as *const Self, ent, IR, PR) }
+    }
+
+    /// **Source:** `IGESGeom_ToolPlane.hxx`:53 - `IGESGeom_ToolPlane::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomPlane,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolPlane_write_own_params(self as *const Self, ent, IW) }
+    }
+
+    /// **Source:** `IGESGeom_ToolPlane.hxx`:58 - `IGESGeom_ToolPlane::OwnShared()`
+    /// Lists the Entities shared by a Plane <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomPlane,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolPlane_own_shared(self as *const Self, ent, iter) }
+    }
+
+    /// **Source:** `IGESGeom_ToolPlane.hxx`:62 - `IGESGeom_ToolPlane::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomPlane,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolPlane_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolPlane.hxx`:65 - `IGESGeom_ToolPlane::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomPlane,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolPlane_own_check(self as *const Self, ent, shares, ach) }
+    }
+
+    /// **Source:** `IGESGeom_ToolPlane.hxx`:70 - `IGESGeom_ToolPlane::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomPlane,
+        entto: &crate::ffi::HandleIGESGeomPlane,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolPlane_own_copy(self as *const Self, entfrom, entto, TC) }
+    }
+}
+
+// ── Skipped symbols for ToolPlane (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolPlane.hxx`:75 - `IGESGeom_ToolPlane::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandlePlane, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolPoint.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolPoint.hxx`:38 - `IGESGeom_ToolPoint`
+/// Tool to work on a Point. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolPoint as ToolPoint;
+
+unsafe impl crate::CppDeletable for ToolPoint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolPoint_destructor(ptr);
+    }
+}
+
+impl ToolPoint {
+    /// **Source:** `IGESGeom_ToolPoint.hxx`:44 - `IGESGeom_ToolPoint::IGESGeom_ToolPoint()`
+    /// Returns a ToolPoint, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolPoint_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolPoint.hxx`:48 - `IGESGeom_ToolPoint::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomPoint,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolPoint_read_own_params(self as *const Self, ent, IR, PR) }
+    }
+
+    /// **Source:** `IGESGeom_ToolPoint.hxx`:53 - `IGESGeom_ToolPoint::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomPoint,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolPoint_write_own_params(self as *const Self, ent, IW) }
+    }
+
+    /// **Source:** `IGESGeom_ToolPoint.hxx`:58 - `IGESGeom_ToolPoint::OwnShared()`
+    /// Lists the Entities shared by a Point <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomPoint,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolPoint_own_shared(self as *const Self, ent, iter) }
+    }
+
+    /// **Source:** `IGESGeom_ToolPoint.hxx`:62 - `IGESGeom_ToolPoint::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomPoint,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolPoint_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolPoint.hxx`:65 - `IGESGeom_ToolPoint::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomPoint,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolPoint_own_check(self as *const Self, ent, shares, ach) }
+    }
+
+    /// **Source:** `IGESGeom_ToolPoint.hxx`:70 - `IGESGeom_ToolPoint::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomPoint,
+        entto: &crate::ffi::HandleIGESGeomPoint,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolPoint_own_copy(self as *const Self, entfrom, entto, TC) }
+    }
+}
+
+// ── Skipped symbols for ToolPoint (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolPoint.hxx`:75 - `IGESGeom_ToolPoint::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandlePoint, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolRuledSurface.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolRuledSurface.hxx`:38 - `IGESGeom_ToolRuledSurface`
+/// Tool to work on a RuledSurface. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolRuledSurface as ToolRuledSurface;
+
+unsafe impl crate::CppDeletable for ToolRuledSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolRuledSurface_destructor(ptr);
+    }
+}
+
+impl ToolRuledSurface {
+    /// **Source:** `IGESGeom_ToolRuledSurface.hxx`:44 - `IGESGeom_ToolRuledSurface::IGESGeom_ToolRuledSurface()`
+    /// Returns a ToolRuledSurface, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolRuledSurface_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolRuledSurface.hxx`:48 - `IGESGeom_ToolRuledSurface::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomRuledSurface,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolRuledSurface_read_own_params(self as *const Self, ent, IR, PR)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolRuledSurface.hxx`:53 - `IGESGeom_ToolRuledSurface::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomRuledSurface,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolRuledSurface_write_own_params(self as *const Self, ent, IW)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolRuledSurface.hxx`:58 - `IGESGeom_ToolRuledSurface::OwnShared()`
+    /// Lists the Entities shared by a RuledSurface <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomRuledSurface,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolRuledSurface_own_shared(self as *const Self, ent, iter) }
+    }
+
+    /// **Source:** `IGESGeom_ToolRuledSurface.hxx`:62 - `IGESGeom_ToolRuledSurface::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomRuledSurface,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolRuledSurface_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolRuledSurface.hxx`:65 - `IGESGeom_ToolRuledSurface::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomRuledSurface,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolRuledSurface_own_check(self as *const Self, ent, shares, ach)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolRuledSurface.hxx`:70 - `IGESGeom_ToolRuledSurface::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomRuledSurface,
+        entto: &crate::ffi::HandleIGESGeomRuledSurface,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolRuledSurface_own_copy(self as *const Self, entfrom, entto, TC)
+        }
+    }
+}
+
+// ── Skipped symbols for ToolRuledSurface (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolRuledSurface.hxx`:75 - `IGESGeom_ToolRuledSurface::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleRuledSurface, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolSplineCurve.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolSplineCurve.hxx`:38 - `IGESGeom_ToolSplineCurve`
+/// Tool to work on a SplineCurve. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolSplineCurve as ToolSplineCurve;
+
+unsafe impl crate::CppDeletable for ToolSplineCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolSplineCurve_destructor(ptr);
+    }
+}
+
+impl ToolSplineCurve {
+    /// **Source:** `IGESGeom_ToolSplineCurve.hxx`:44 - `IGESGeom_ToolSplineCurve::IGESGeom_ToolSplineCurve()`
+    /// Returns a ToolSplineCurve, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolSplineCurve_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolSplineCurve.hxx`:48 - `IGESGeom_ToolSplineCurve::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomSplineCurve,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolSplineCurve_read_own_params(self as *const Self, ent, IR, PR)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolSplineCurve.hxx`:53 - `IGESGeom_ToolSplineCurve::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomSplineCurve,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolSplineCurve_write_own_params(self as *const Self, ent, IW)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolSplineCurve.hxx`:58 - `IGESGeom_ToolSplineCurve::OwnShared()`
+    /// Lists the Entities shared by a SplineCurve <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomSplineCurve,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolSplineCurve_own_shared(self as *const Self, ent, iter) }
+    }
+
+    /// **Source:** `IGESGeom_ToolSplineCurve.hxx`:62 - `IGESGeom_ToolSplineCurve::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomSplineCurve,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolSplineCurve_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolSplineCurve.hxx`:65 - `IGESGeom_ToolSplineCurve::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomSplineCurve,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolSplineCurve_own_check(self as *const Self, ent, shares, ach)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolSplineCurve.hxx`:70 - `IGESGeom_ToolSplineCurve::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomSplineCurve,
+        entto: &crate::ffi::HandleIGESGeomSplineCurve,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolSplineCurve_own_copy(self as *const Self, entfrom, entto, TC)
+        }
+    }
+}
+
+// ── Skipped symbols for ToolSplineCurve (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolSplineCurve.hxx`:75 - `IGESGeom_ToolSplineCurve::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleSplineCurve, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolSplineSurface.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolSplineSurface.hxx`:38 - `IGESGeom_ToolSplineSurface`
+/// Tool to work on a SplineSurface. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolSplineSurface as ToolSplineSurface;
+
+unsafe impl crate::CppDeletable for ToolSplineSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolSplineSurface_destructor(ptr);
+    }
+}
+
+impl ToolSplineSurface {
+    /// **Source:** `IGESGeom_ToolSplineSurface.hxx`:44 - `IGESGeom_ToolSplineSurface::IGESGeom_ToolSplineSurface()`
+    /// Returns a ToolSplineSurface, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolSplineSurface_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolSplineSurface.hxx`:48 - `IGESGeom_ToolSplineSurface::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomSplineSurface,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolSplineSurface_read_own_params(self as *const Self, ent, IR, PR)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolSplineSurface.hxx`:53 - `IGESGeom_ToolSplineSurface::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomSplineSurface,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolSplineSurface_write_own_params(self as *const Self, ent, IW)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolSplineSurface.hxx`:58 - `IGESGeom_ToolSplineSurface::OwnShared()`
+    /// Lists the Entities shared by a SplineSurface <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomSplineSurface,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolSplineSurface_own_shared(self as *const Self, ent, iter) }
+    }
+
+    /// **Source:** `IGESGeom_ToolSplineSurface.hxx`:62 - `IGESGeom_ToolSplineSurface::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomSplineSurface,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolSplineSurface_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolSplineSurface.hxx`:65 - `IGESGeom_ToolSplineSurface::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomSplineSurface,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolSplineSurface_own_check(self as *const Self, ent, shares, ach)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolSplineSurface.hxx`:70 - `IGESGeom_ToolSplineSurface::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomSplineSurface,
+        entto: &crate::ffi::HandleIGESGeomSplineSurface,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolSplineSurface_own_copy(self as *const Self, entfrom, entto, TC)
+        }
+    }
+}
+
+// ── Skipped symbols for ToolSplineSurface (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolSplineSurface.hxx`:75 - `IGESGeom_ToolSplineSurface::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleSplineSurface, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolSurfaceOfRevolution.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolSurfaceOfRevolution.hxx`:38 - `IGESGeom_ToolSurfaceOfRevolution`
+/// Tool to work on a SurfaceOfRevolution. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolSurfaceOfRevolution as ToolSurfaceOfRevolution;
+
+unsafe impl crate::CppDeletable for ToolSurfaceOfRevolution {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolSurfaceOfRevolution_destructor(ptr);
+    }
+}
+
+impl ToolSurfaceOfRevolution {
+    /// **Source:** `IGESGeom_ToolSurfaceOfRevolution.hxx`:44 - `IGESGeom_ToolSurfaceOfRevolution::IGESGeom_ToolSurfaceOfRevolution()`
+    /// Returns a ToolSurfaceOfRevolution, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolSurfaceOfRevolution_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolSurfaceOfRevolution.hxx`:48 - `IGESGeom_ToolSurfaceOfRevolution::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomSurfaceOfRevolution,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolSurfaceOfRevolution_read_own_params(
+                self as *const Self,
+                ent,
+                IR,
+                PR,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolSurfaceOfRevolution.hxx`:53 - `IGESGeom_ToolSurfaceOfRevolution::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomSurfaceOfRevolution,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolSurfaceOfRevolution_write_own_params(
+                self as *const Self,
+                ent,
+                IW,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolSurfaceOfRevolution.hxx`:58 - `IGESGeom_ToolSurfaceOfRevolution::OwnShared()`
+    /// Lists the Entities shared by a SurfaceOfRevolution <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomSurfaceOfRevolution,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolSurfaceOfRevolution_own_shared(self as *const Self, ent, iter)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolSurfaceOfRevolution.hxx`:63 - `IGESGeom_ToolSurfaceOfRevolution::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomSurfaceOfRevolution,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolSurfaceOfRevolution_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolSurfaceOfRevolution.hxx`:66 - `IGESGeom_ToolSurfaceOfRevolution::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomSurfaceOfRevolution,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolSurfaceOfRevolution_own_check(
+                self as *const Self,
+                ent,
+                shares,
+                ach,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolSurfaceOfRevolution.hxx`:71 - `IGESGeom_ToolSurfaceOfRevolution::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomSurfaceOfRevolution,
+        entto: &crate::ffi::HandleIGESGeomSurfaceOfRevolution,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolSurfaceOfRevolution_own_copy(
+                self as *const Self,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for ToolSurfaceOfRevolution (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolSurfaceOfRevolution.hxx`:76 - `IGESGeom_ToolSurfaceOfRevolution::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleSurfaceOfRevolution, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolTabulatedCylinder.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolTabulatedCylinder.hxx`:38 - `IGESGeom_ToolTabulatedCylinder`
+/// Tool to work on a TabulatedCylinder. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolTabulatedCylinder as ToolTabulatedCylinder;
+
+unsafe impl crate::CppDeletable for ToolTabulatedCylinder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolTabulatedCylinder_destructor(ptr);
+    }
+}
+
+impl ToolTabulatedCylinder {
+    /// **Source:** `IGESGeom_ToolTabulatedCylinder.hxx`:44 - `IGESGeom_ToolTabulatedCylinder::IGESGeom_ToolTabulatedCylinder()`
+    /// Returns a ToolTabulatedCylinder, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolTabulatedCylinder_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolTabulatedCylinder.hxx`:48 - `IGESGeom_ToolTabulatedCylinder::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomTabulatedCylinder,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTabulatedCylinder_read_own_params(
+                self as *const Self,
+                ent,
+                IR,
+                PR,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolTabulatedCylinder.hxx`:53 - `IGESGeom_ToolTabulatedCylinder::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomTabulatedCylinder,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTabulatedCylinder_write_own_params(
+                self as *const Self,
+                ent,
+                IW,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolTabulatedCylinder.hxx`:58 - `IGESGeom_ToolTabulatedCylinder::OwnShared()`
+    /// Lists the Entities shared by a TabulatedCylinder <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomTabulatedCylinder,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTabulatedCylinder_own_shared(self as *const Self, ent, iter)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolTabulatedCylinder.hxx`:63 - `IGESGeom_ToolTabulatedCylinder::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomTabulatedCylinder,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolTabulatedCylinder_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolTabulatedCylinder.hxx`:66 - `IGESGeom_ToolTabulatedCylinder::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomTabulatedCylinder,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTabulatedCylinder_own_check(
+                self as *const Self,
+                ent,
+                shares,
+                ach,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolTabulatedCylinder.hxx`:71 - `IGESGeom_ToolTabulatedCylinder::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomTabulatedCylinder,
+        entto: &crate::ffi::HandleIGESGeomTabulatedCylinder,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTabulatedCylinder_own_copy(
+                self as *const Self,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for ToolTabulatedCylinder (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolTabulatedCylinder.hxx`:76 - `IGESGeom_ToolTabulatedCylinder::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleTabulatedCylinder, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolTransformationMatrix.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolTransformationMatrix.hxx`:38 - `IGESGeom_ToolTransformationMatrix`
+/// Tool to work on a TransformationMatrix. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolTransformationMatrix as ToolTransformationMatrix;
+
+unsafe impl crate::CppDeletable for ToolTransformationMatrix {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolTransformationMatrix_destructor(ptr);
+    }
+}
+
+impl ToolTransformationMatrix {
+    /// **Source:** `IGESGeom_ToolTransformationMatrix.hxx`:44 - `IGESGeom_ToolTransformationMatrix::IGESGeom_ToolTransformationMatrix()`
+    /// Returns a ToolTransformationMatrix, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolTransformationMatrix_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolTransformationMatrix.hxx`:48 - `IGESGeom_ToolTransformationMatrix::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomTransformationMatrix,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTransformationMatrix_read_own_params(
+                self as *const Self,
+                ent,
+                IR,
+                PR,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolTransformationMatrix.hxx`:53 - `IGESGeom_ToolTransformationMatrix::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomTransformationMatrix,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTransformationMatrix_write_own_params(
+                self as *const Self,
+                ent,
+                IW,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolTransformationMatrix.hxx`:58 - `IGESGeom_ToolTransformationMatrix::OwnShared()`
+    /// Lists the Entities shared by a TransformationMatrix <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomTransformationMatrix,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTransformationMatrix_own_shared(self as *const Self, ent, iter)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolTransformationMatrix.hxx`:64 - `IGESGeom_ToolTransformationMatrix::OwnCorrect()`
+    /// Sets automatic unambiguous Correction on a TransformationMatrix
+    /// (FormNumber if 0 or 1, recomputed according Positive/Negative)
+    pub fn own_correct(&self, ent: &crate::ffi::HandleIGESGeomTransformationMatrix) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTransformationMatrix_own_correct(self as *const Self, ent)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolTransformationMatrix.hxx`:68 - `IGESGeom_ToolTransformationMatrix::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomTransformationMatrix,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolTransformationMatrix_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolTransformationMatrix.hxx`:71 - `IGESGeom_ToolTransformationMatrix::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomTransformationMatrix,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTransformationMatrix_own_check(
+                self as *const Self,
+                ent,
+                shares,
+                ach,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolTransformationMatrix.hxx`:76 - `IGESGeom_ToolTransformationMatrix::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomTransformationMatrix,
+        entto: &crate::ffi::HandleIGESGeomTransformationMatrix,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTransformationMatrix_own_copy(
+                self as *const Self,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for ToolTransformationMatrix (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolTransformationMatrix.hxx`:81 - `IGESGeom_ToolTransformationMatrix::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleTransformationMatrix, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_ToolTrimmedSurface.hxx
+// ========================
+
+/// **Source:** `IGESGeom_ToolTrimmedSurface.hxx`:38 - `IGESGeom_ToolTrimmedSurface`
+/// Tool to work on a TrimmedSurface. Called by various Modules
+/// (ReadWriteModule, GeneralModule, SpecificModule)
+pub use crate::ffi::IGESGeom_ToolTrimmedSurface as ToolTrimmedSurface;
+
+unsafe impl crate::CppDeletable for ToolTrimmedSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_ToolTrimmedSurface_destructor(ptr);
+    }
+}
+
+impl ToolTrimmedSurface {
+    /// **Source:** `IGESGeom_ToolTrimmedSurface.hxx`:44 - `IGESGeom_ToolTrimmedSurface::IGESGeom_ToolTrimmedSurface()`
+    /// Returns a ToolTrimmedSurface, ready to work
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolTrimmedSurface_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_ToolTrimmedSurface.hxx`:48 - `IGESGeom_ToolTrimmedSurface::ReadOwnParams()`
+    /// Reads own parameters from file. <PR> gives access to them,
+    /// <IR> detains parameter types and values
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomTrimmedSurface,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut crate::iges_data::ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTrimmedSurface_read_own_params(
+                self as *const Self,
+                ent,
+                IR,
+                PR,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolTrimmedSurface.hxx`:53 - `IGESGeom_ToolTrimmedSurface::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter
+    pub fn write_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomTrimmedSurface,
+        IW: &mut crate::iges_data::IGESWriter,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTrimmedSurface_write_own_params(self as *const Self, ent, IW)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolTrimmedSurface.hxx`:58 - `IGESGeom_ToolTrimmedSurface::OwnShared()`
+    /// Lists the Entities shared by a TrimmedSurface <ent>, from
+    /// its specific (own) parameters
+    pub fn own_shared(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomTrimmedSurface,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTrimmedSurface_own_shared(self as *const Self, ent, iter)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolTrimmedSurface.hxx`:62 - `IGESGeom_ToolTrimmedSurface::DirChecker()`
+    /// Returns specific DirChecker
+    pub fn dir_checker(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomTrimmedSurface,
+    ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_ToolTrimmedSurface_dir_checker(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolTrimmedSurface.hxx`:65 - `IGESGeom_ToolTrimmedSurface::OwnCheck()`
+    /// Performs Specific Semantic Check
+    pub fn own_check(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomTrimmedSurface,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTrimmedSurface_own_check(self as *const Self, ent, shares, ach)
+        }
+    }
+
+    /// **Source:** `IGESGeom_ToolTrimmedSurface.hxx`:70 - `IGESGeom_ToolTrimmedSurface::OwnCopy()`
+    /// Copies Specific Parameters
+    pub fn own_copy(
+        &self,
+        entfrom: &crate::ffi::HandleIGESGeomTrimmedSurface,
+        entto: &crate::ffi::HandleIGESGeomTrimmedSurface,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTrimmedSurface_own_copy(
+                self as *const Self,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for ToolTrimmedSurface (1 total) ──
+// SKIPPED: **Source:** `IGESGeom_ToolTrimmedSurface.hxx`:75 - `IGESGeom_ToolTrimmedSurface::OwnDump`
+//   method: Dump of Specific Parameters
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleTrimmedSurface, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESGeom_TransformationMatrix.hxx
+// ========================
+
+/// **Source:** `IGESGeom_TransformationMatrix.hxx`:38 - `IGESGeom_TransformationMatrix`
+/// defines IGESTransformationMatrix, Type <124> Form <0>
+/// in package IGESGeom
+/// The transformation matrix entity transforms three-row column
+/// vectors by means of matrix multiplication and then a vector
+/// addition. This entity can be considered as an "operator"
+/// entity in that it starts with the input vector, operates on
+/// it as described above, and produces the output vector.
+pub use crate::ffi::IGESGeom_TransformationMatrix as TransformationMatrix;
+
+unsafe impl crate::CppDeletable for TransformationMatrix {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_TransformationMatrix_destructor(ptr);
+    }
+}
+
+impl TransformationMatrix {
+    /// **Source:** `IGESGeom_TransformationMatrix.hxx`:42 - `IGESGeom_TransformationMatrix::IGESGeom_TransformationMatrix()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TransformationMatrix_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_TransformationMatrix.hxx`:49 - `IGESGeom_TransformationMatrix::Init()`
+    /// This method is used to set the fields of the class
+    /// TransformationMatrix
+    /// - aMatrix : 3 x 4 array containing elements of the
+    /// transformation matrix
+    /// raises exception if aMatrix is not 3 x 4 array
+    pub fn init(&mut self, aMatrix: &crate::ffi::HandleTColStdHArray2OfReal) {
+        unsafe { crate::ffi::IGESGeom_TransformationMatrix_init(self as *mut Self, aMatrix) }
+    }
+
+    /// **Source:** `IGESGeom_TransformationMatrix.hxx`:54 - `IGESGeom_TransformationMatrix::SetFormNumber()`
+    /// Changes FormNumber (indicates the Type of Transf :
+    /// Transformation 0-1 or Coordinate System 10-11-12)
+    /// Error if not in ranges [0-1] or [10-12]
+    pub fn set_form_number(&mut self, form: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_set_form_number(self as *mut Self, form)
+        }
+    }
+
+    /// **Source:** `IGESGeom_TransformationMatrix.hxx`:58 - `IGESGeom_TransformationMatrix::Data()`
+    /// returns individual Data
+    /// Error if I not in [1-3] or J not in [1-4]
+    pub fn data(&self, I: i32, J: i32) -> f64 {
+        unsafe { crate::ffi::IGESGeom_TransformationMatrix_data(self as *const Self, I, J) }
+    }
+
+    /// **Source:** `IGESGeom_TransformationMatrix.hxx`:62 - `IGESGeom_TransformationMatrix::Value()`
+    /// returns the transformation matrix
+    /// 4th row elements of GTrsf will always be 0, 0, 0, 1 (not defined)
+    pub fn value(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TransformationMatrix_value(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_TransformationMatrix.hxx`:64 - `IGESGeom_TransformationMatrix::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_TransformationMatrix_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_TransformationMatrix.hxx`:64 - `IGESGeom_TransformationMatrix::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_TransformationMatrix_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_TransformationMatrix.hxx`:64 - `IGESGeom_TransformationMatrix::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_TransformationMatrix_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_TransfEntity
+    pub fn as_iges_data_transf_entity(&self) -> &crate::iges_data::TransfEntity {
+        unsafe {
+            &*(crate::ffi::IGESGeom_TransformationMatrix_as_IGESData_TransfEntity(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IGESData_TransfEntity (mutable)
+    pub fn as_iges_data_transf_entity_mut(&mut self) -> &mut crate::iges_data::TransfEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_TransformationMatrix_as_IGESData_TransfEntity_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe {
+            &*(crate::ffi::IGESGeom_TransformationMatrix_as_IGESData_IGESEntity(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_TransformationMatrix_as_IGESData_IGESEntity_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESGeom_TransformationMatrix_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_TransformationMatrix_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomTransformationMatrix> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TransformationMatrix_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TransformationMatrix_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_TypeNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_FormNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TransformationMatrix_inherited_DirFieldEntity(
+                    self as *const Self,
+                    fieldnum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_HasStructure(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TransformationMatrix_inherited_Structure(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_TransformationMatrix_inherited_DefLineFont(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_RankLineFont(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TransformationMatrix_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_TransformationMatrix_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TransformationMatrix_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TransformationMatrix_inherited_LevelList(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_TransformationMatrix_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TransformationMatrix_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TransformationMatrix_inherited_SingleView(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TransformationMatrix_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_HasTransf(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TransformationMatrix_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_HasLabelDisplay(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TransformationMatrix_inherited_LabelDisplay(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_BlankStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_SubordinateStatus(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TransformationMatrix_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_HierarchyStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_LineWeightNumber(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_LineWeight(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_TransformationMatrix_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_RankColor(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TransformationMatrix_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_HasShortLabel(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TransformationMatrix_inherited_ShortLabel(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_HasSubScriptNumber(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_SubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_InitTransf(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_InitView(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_InitLineFont(
+                self as *mut Self,
+                ent,
+                rank,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_InitLevel(
+                self as *mut Self,
+                ent,
+                val,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_InitColor(
+                self as *mut Self,
+                ent,
+                rank,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_SetLabel(
+                self as *mut Self,
+                label,
+                sub,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_HasOneParent(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TransformationMatrix_inherited_UniqueParent(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TransformationMatrix_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TransformationMatrix_inherited_VectorLocation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TransformationMatrix_inherited_CompoundLocation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_TransformationMatrix_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TransformationMatrix_inherited_NameValue(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_NbAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TransformationMatrix_inherited_Associativities(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TransformationMatrix_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_Associate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_Dissociate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_ArePresentProperties(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_NbProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TransformationMatrix_inherited_Properties(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TransformationMatrix_inherited_TypedProperty(
+                    self as *const Self,
+                    atype,
+                    anum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_AddProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_RemoveProperty(
+                self as *mut Self,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TransformationMatrix_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_TransformationMatrix_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomTransformationMatrix;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomTransformationMatrix {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomTransformationMatrix_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomTransformationMatrix {
+    /// Dereference this Handle to access the underlying IGESGeom_TransformationMatrix
+    pub fn get(&self) -> &crate::ffi::IGESGeom_TransformationMatrix {
+        unsafe { &*(crate::ffi::HandleIGESGeomTransformationMatrix_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_TransformationMatrix
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_TransformationMatrix {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomTransformationMatrix_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_TransformationMatrix> to Handle<IGESData_TransfEntity>
+    pub fn to_handle_transf_entity(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomTransformationMatrix_to_HandleIGESDataTransfEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_TransformationMatrix> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomTransformationMatrix_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_TransformationMatrix> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomTransformationMatrix_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESGeom_TrimmedSurface.hxx
+// ========================
+
+/// **Source:** `IGESGeom_TrimmedSurface.hxx`:40 - `IGESGeom_TrimmedSurface`
+/// defines IGESTrimmedSurface, Type <144> Form <0>
+/// in package IGESGeom
+/// A simple closed curve  in Euclidean plane  divides the
+/// plane in to two disjoint, open connected components; one
+/// bounded, one unbounded. The bounded one is called the
+/// interior region to the curve. Unbounded component is called
+/// exterior region to the curve. The domain of the trimmed
+/// surface is defined as the interior of the outer boundaries
+/// and exterior of the inner boundaries and includes the
+/// boundary curves.
+pub use crate::ffi::IGESGeom_TrimmedSurface as TrimmedSurface;
+
+unsafe impl crate::CppDeletable for TrimmedSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESGeom_TrimmedSurface_destructor(ptr);
+    }
+}
+
+impl TrimmedSurface {
+    /// **Source:** `IGESGeom_TrimmedSurface.hxx`:44 - `IGESGeom_TrimmedSurface::IGESGeom_TrimmedSurface()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_ctor()) }
+    }
+
+    /// **Source:** `IGESGeom_TrimmedSurface.hxx`:57 - `IGESGeom_TrimmedSurface::Init()`
+    /// This method is used to set the fields of the class
+    /// TrimmedSurface
+    /// - aSurface  : Surface to be trimmed
+    /// - aFlag     : Outer boundary type
+    /// False = The outer boundary is the boundary of
+    /// rectangle D which is the domain of the
+    /// surface to be trimmed
+    /// True  = otherwise
+    /// - anOuter   : Closed curve which constitutes outer boundary
+    /// - allInners : Array of closed curves which constitute the
+    /// inner boundary
+    pub fn init(
+        &mut self,
+        aSurface: &crate::ffi::HandleIGESDataIGESEntity,
+        aFlag: i32,
+        anOuter: &crate::ffi::HandleIGESGeomCurveOnSurface,
+        allInners: &crate::ffi::HandleIGESGeomHArray1OfCurveOnSurface,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_init(
+                self as *mut Self,
+                aSurface,
+                aFlag,
+                anOuter,
+                allInners,
+            )
+        }
+    }
+
+    /// **Source:** `IGESGeom_TrimmedSurface.hxx`:63 - `IGESGeom_TrimmedSurface::Surface()`
+    /// returns the surface to be trimmed
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_surface(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_TrimmedSurface.hxx`:66 - `IGESGeom_TrimmedSurface::HasOuterContour()`
+    /// returns True if outer contour exists
+    pub fn has_outer_contour(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_has_outer_contour(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_TrimmedSurface.hxx`:69 - `IGESGeom_TrimmedSurface::OuterContour()`
+    /// returns the outer contour of the trimmed surface
+    pub fn outer_contour(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomCurveOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_outer_contour(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_TrimmedSurface.hxx`:74 - `IGESGeom_TrimmedSurface::OuterBoundaryType()`
+    /// returns the outer contour type of the trimmed surface
+    /// 0  : The outer boundary is the boundary of D
+    /// 1  : otherwise
+    pub fn outer_boundary_type(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_outer_boundary_type(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_TrimmedSurface.hxx`:77 - `IGESGeom_TrimmedSurface::NbInnerContours()`
+    /// returns the number of inner boundaries
+    pub fn nb_inner_contours(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_nb_inner_contours(self as *const Self) }
+    }
+
+    /// **Source:** `IGESGeom_TrimmedSurface.hxx`:81 - `IGESGeom_TrimmedSurface::InnerContour()`
+    /// returns the Index'th inner contour
+    /// raises exception if Index <= 0 or Index > NbInnerContours()
+    pub fn inner_contour(
+        &self,
+        Index: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomCurveOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inner_contour(
+                self as *const Self,
+                Index,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESGeom_TrimmedSurface.hxx`:83 - `IGESGeom_TrimmedSurface::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_TrimmedSurface_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESGeom_TrimmedSurface.hxx`:83 - `IGESGeom_TrimmedSurface::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_TrimmedSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESGeom_TrimmedSurface.hxx`:83 - `IGESGeom_TrimmedSurface::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESGeom_TrimmedSurface_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
+        unsafe {
+            &*(crate::ffi::IGESGeom_TrimmedSurface_as_IGESData_IGESEntity(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_TrimmedSurface_as_IGESData_IGESEntity_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESGeom_TrimmedSurface_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESGeom_TrimmedSurface_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomTrimmedSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_TrimmedSurface_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_TrimmedSurface_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESGeom_TrimmedSurface_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_HasLabelDisplay(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_SubordinateStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_HierarchyStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_LineWeightNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESGeom_TrimmedSurface_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_SubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_InitLevel(self as *mut Self, ent, val)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TrimmedSurface_inherited_CompoundLocation(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_NbAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TrimmedSurface_inherited_Associativities(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_TrimmedSurface_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_Dissociate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_TrimmedSurface_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_RemoveProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESGeom_TrimmedSurface_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESGeom_TrimmedSurface_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESGeomTrimmedSurface;
+
+unsafe impl crate::CppDeletable for HandleIGESGeomTrimmedSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESGeomTrimmedSurface_destructor(ptr);
+    }
+}
+
+impl HandleIGESGeomTrimmedSurface {
+    /// Dereference this Handle to access the underlying IGESGeom_TrimmedSurface
+    pub fn get(&self) -> &crate::ffi::IGESGeom_TrimmedSurface {
+        unsafe { &*(crate::ffi::HandleIGESGeomTrimmedSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESGeom_TrimmedSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGeom_TrimmedSurface {
+        unsafe { &mut *(crate::ffi::HandleIGESGeomTrimmedSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESGeom_TrimmedSurface> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomTrimmedSurface_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESGeom_TrimmedSurface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESGeomTrimmedSurface_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
 // ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
-    IGESGeom_BSplineCurve as BSplineCurve, IGESGeom_BSplineSurface as BSplineSurface,
-    IGESGeom_Boundary as Boundary, IGESGeom_BoundedSurface as BoundedSurface,
-    IGESGeom_CircularArc as CircularArc, IGESGeom_CompositeCurve as CompositeCurve,
-    IGESGeom_ConicArc as ConicArc, IGESGeom_CopiousData as CopiousData,
-    IGESGeom_CurveOnSurface as CurveOnSurface, IGESGeom_Direction as Direction,
-    IGESGeom_Line as Line, IGESGeom_OffsetCurve as OffsetCurve,
-    IGESGeom_OffsetSurface as OffsetSurface, IGESGeom_Plane as Plane, IGESGeom_Point as Point,
-    IGESGeom_RuledSurface as RuledSurface, IGESGeom_SplineCurve as SplineCurve,
-    IGESGeom_SplineSurface as SplineSurface, IGESGeom_SurfaceOfRevolution as SurfaceOfRevolution,
-    IGESGeom_TabulatedCylinder as TabulatedCylinder,
-    IGESGeom_TransformationMatrix as TransformationMatrix,
-    IGESGeom_TrimmedSurface as TrimmedSurface,
+    IGESGeom_Array1OfBoundary as Array1OfBoundary,
+    IGESGeom_Array1OfCurveOnSurface as Array1OfCurveOnSurface,
+    IGESGeom_Array1OfTransformationMatrix as Array1OfTransformationMatrix,
 };

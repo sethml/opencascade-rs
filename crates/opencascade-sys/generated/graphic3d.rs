@@ -6,88 +6,14 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// Defines how alpha value of base color / texture should be treated.
-/// C++ enum: `Graphic3d_AlphaMode`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum AlphaMode {
-    /// < rendered output is fully opaque and alpha value is ignored
-    AlphamodeOpaque = 0,
-    /// < rendered output is either fully opaque or fully transparent
-    /// < depending on the alpha value and the alpha cutoff value
-    AlphamodeMask = 1,
-    /// < rendered output is combined with the background
-    AlphamodeBlend = 2,
-    /// < performs in-place blending (without implicit reordering of
-    /// < opaque objects) with alpha-test
-    AlphamodeMaskblend = 3,
-    AlphamodeBlendauto = -1,
-}
-
-impl From<AlphaMode> for i32 {
-    fn from(value: AlphaMode) -> Self {
-        value as i32
-    }
-}
-
-impl TryFrom<i32> for AlphaMode {
-    type Error = i32;
-
-    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
-        match value {
-            0 => Ok(AlphaMode::AlphamodeOpaque),
-            1 => Ok(AlphaMode::AlphamodeMask),
-            2 => Ok(AlphaMode::AlphamodeBlend),
-            3 => Ok(AlphaMode::AlphamodeMaskblend),
-            -1 => Ok(AlphaMode::AlphamodeBlendauto),
-            _ => Err(value),
-        }
-    }
-}
-
-/// Modes of display of back faces in the view.
-/// C++ enum: `Graphic3d_TypeOfBackfacingModel`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum TypeOfBackfacingModel {
-    /// < automatic back face culling enabled for opaque groups
-    /// < with closed flag
-    TypeofbackfacingmodelAuto = 0,
-    /// < no culling (double-sided shading)
-    TypeofbackfacingmodelDoublesided = 1,
-    /// < back  face culling
-    TypeofbackfacingmodelBackculled = 2,
-    /// < front face culling
-    TypeofbackfacingmodelFrontculled = 3,
-}
-
-impl From<TypeOfBackfacingModel> for i32 {
-    fn from(value: TypeOfBackfacingModel) -> Self {
-        value as i32
-    }
-}
-
-impl TryFrom<i32> for TypeOfBackfacingModel {
-    type Error = i32;
-
-    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
-        match value {
-            0 => Ok(TypeOfBackfacingModel::TypeofbackfacingmodelAuto),
-            1 => Ok(TypeOfBackfacingModel::TypeofbackfacingmodelDoublesided),
-            2 => Ok(TypeOfBackfacingModel::TypeofbackfacingmodelBackculled),
-            3 => Ok(TypeOfBackfacingModel::TypeofbackfacingmodelFrontculled),
-            _ => Err(value),
-        }
-    }
-}
-
 // ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
-    Graphic3d_Aspects as Aspects, Graphic3d_BndBox3d as BndBox3d,
-    Graphic3d_MaterialAspect as MaterialAspect, Graphic3d_Vec2 as Vec2, Graphic3d_Vec3 as Vec3,
-    Graphic3d_Vec3i as Vec3i, Graphic3d_Vec4 as Vec4, Graphic3d_Vec4i as Vec4i,
-    Graphic3d_Vec4ub as Vec4ub,
+    Graphic3d_AlphaMode as AlphaMode, Graphic3d_Aspects as Aspects, Graphic3d_BndBox3d as BndBox3d,
+    Graphic3d_MaterialAspect as MaterialAspect,
+    Graphic3d_TypeOfBackfacingModel as TypeOfBackfacingModel, Graphic3d_Vec2 as Vec2,
+    Graphic3d_Vec3 as Vec3, Graphic3d_Vec3i as Vec3i, Graphic3d_Vec4 as Vec4,
+    Graphic3d_Vec4i as Vec4i, Graphic3d_Vec4ub as Vec4ub,
 };

@@ -104,6 +104,8 @@ pub use crate::ffi::{
     HandleIGESControlActorWrite, HandleIGESToBRepActor, HandleInterfaceCopyControl,
     HandleInterfaceInterfaceError, HandleSTEPCAFControlActorWrite, HandleSTEPControlActorRead,
     HandleSTEPControlActorWrite, HandleStandardFailure, HandleStandardTransient,
+    HandleTransferBRepBinderOfShape, HandleTransferBRepShapeBinder,
+    HandleTransferBRepShapeListBinder, HandleTransferBRepShapeMapper,
 };
 
 // ========================
@@ -2239,6 +2241,60 @@ impl HandleTransferBinder {
         }
     }
 
+    /// Downcast Handle<Transfer_Binder> to Handle<TransferBRep_BinderOfShape>
+    ///
+    /// Returns `None` if the handle does not point to a `TransferBRep_BinderOfShape` (or subclass).
+    pub fn downcast_to_binder_of_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferBRepBinderOfShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTransferBinder_downcast_to_HandleTransferBRepBinderOfShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Transfer_Binder> to Handle<TransferBRep_ShapeBinder>
+    ///
+    /// Returns `None` if the handle does not point to a `TransferBRep_ShapeBinder` (or subclass).
+    pub fn downcast_to_shape_binder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferBRepShapeBinder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTransferBinder_downcast_to_HandleTransferBRepShapeBinder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Transfer_Binder> to Handle<TransferBRep_ShapeListBinder>
+    ///
+    /// Returns `None` if the handle does not point to a `TransferBRep_ShapeListBinder` (or subclass).
+    pub fn downcast_to_shape_list_binder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferBRepShapeListBinder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTransferBinder_downcast_to_HandleTransferBRepShapeListBinder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Transfer_Binder> to Handle<Transfer_BinderOfTransientInteger>
     ///
     /// Returns `None` if the handle does not point to a `Transfer_BinderOfTransientInteger` (or subclass).
@@ -3174,7 +3230,7 @@ impl Finder {
 
     /// **Source:** `Transfer_Finder.hxx`:126 - `Transfer_Finder::AttrList()`
     /// Returns the exhaustive list of attributes
-    pub fn attr_list(&mut self) -> &mut crate::ffi::XSControl_WorkSessionMap {
+    pub fn attr_list(&mut self) -> &mut crate::ffi::STEPConstruct_DataMapOfAsciiStringTransient {
         unsafe { &mut *(crate::ffi::Transfer_Finder_attr_list(self as *mut Self)) }
     }
 
@@ -3301,6 +3357,24 @@ impl HandleTransferFinder {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTransferFinder_to_HandleStandardTransient(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Downcast Handle<Transfer_Finder> to Handle<TransferBRep_ShapeMapper>
+    ///
+    /// Returns `None` if the handle does not point to a `TransferBRep_ShapeMapper` (or subclass).
+    pub fn downcast_to_shape_mapper(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferBRepShapeMapper>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTransferFinder_downcast_to_HandleTransferBRepShapeMapper(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 
@@ -10192,7 +10266,7 @@ impl TransientMapper {
     }
 
     /// Inherited: **Source:** `Transfer_Finder.hxx`:126 - `Transfer_Finder::AttrList()`
-    pub fn attr_list(&mut self) -> &mut crate::ffi::XSControl_WorkSessionMap {
+    pub fn attr_list(&mut self) -> &mut crate::ffi::STEPConstruct_DataMapOfAsciiStringTransient {
         unsafe {
             &mut *(crate::ffi::Transfer_TransientMapper_inherited_AttrList(self as *mut Self))
         }
@@ -10398,7 +10472,7 @@ impl TransientProcess {
     /// **Source:** `Transfer_TransientProcess.hxx`:82 - `Transfer_TransientProcess::Context()`
     /// Returns (modifiable) the whole definition of Context
     /// Rather for internal use (ex.: preparing and setting in once)
-    pub fn context(&mut self) -> &mut crate::ffi::XSControl_WorkSessionMap {
+    pub fn context(&mut self) -> &mut crate::ffi::STEPConstruct_DataMapOfAsciiStringTransient {
         unsafe { &mut *(crate::ffi::Transfer_TransientProcess_context(self as *mut Self)) }
     }
 

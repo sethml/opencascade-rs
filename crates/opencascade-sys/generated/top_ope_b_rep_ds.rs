@@ -6,6 +6,114 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `TopOpeBRepDS.hxx`:41 - `TopOpeBRepDS::SPrint`
+/// IN OU ON UN
+pub fn s_print_state(
+    S: crate::top_abs::State,
+) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_s_print_state(S.into())) }
+}
+/// **Source:** `TopOpeBRepDS.hxx`:46 - `TopOpeBRepDS::SPrint`
+/// <K>
+pub fn s_print_kind(
+    K: crate::top_ope_b_rep_ds::Kind,
+) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_s_print_kind(K.into())) }
+}
+/// **Source:** `TopOpeBRepDS.hxx`:49 - `TopOpeBRepDS::SPrint`
+/// S1(<K>,<I>)S2
+pub fn s_print_kind_int_asciistring2(
+    K: crate::top_ope_b_rep_ds::Kind,
+    I: i32,
+    B: &crate::t_collection::AsciiString,
+    A: &crate::t_collection::AsciiString,
+) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_s_print_kind_int_asciistring2(
+            K.into(),
+            I,
+            B,
+            A,
+        ))
+    }
+}
+/// **Source:** `TopOpeBRepDS.hxx`:62 - `TopOpeBRepDS::SPrint`
+pub fn s_print_shapeenum(
+    T: crate::top_abs::ShapeEnum,
+) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_s_print_shapeenum(T.into())) }
+}
+/// **Source:** `TopOpeBRepDS.hxx`:65 - `TopOpeBRepDS::SPrint`
+/// (<T>,<I>)
+pub fn s_print_shapeenum_int(
+    T: crate::top_abs::ShapeEnum,
+    I: i32,
+) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_s_print_shapeenum_int(T.into(), I))
+    }
+}
+/// **Source:** `TopOpeBRepDS.hxx`:72 - `TopOpeBRepDS::SPrint`
+pub fn s_print_orientation(
+    O: crate::top_abs::Orientation,
+) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_s_print_orientation(O.into())) }
+}
+/// **Source:** `TopOpeBRepDS.hxx`:74 - `TopOpeBRepDS::SPrint`
+pub fn s_print_config(
+    C: crate::top_ope_b_rep_ds::Config,
+) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_s_print_config(C.into())) }
+}
+/// **Source:** `TopOpeBRepDS.hxx`:78 - `TopOpeBRepDS::IsGeometry`
+pub fn is_geometry(K: crate::top_ope_b_rep_ds::Kind) -> bool {
+    unsafe { crate::ffi::TopOpeBRepDS_is_geometry(K.into()) }
+}
+/// **Source:** `TopOpeBRepDS.hxx`:80 - `TopOpeBRepDS::IsTopology`
+pub fn is_topology(K: crate::top_ope_b_rep_ds::Kind) -> bool {
+    unsafe { crate::ffi::TopOpeBRepDS_is_topology(K.into()) }
+}
+/// **Source:** `TopOpeBRepDS.hxx`:82 - `TopOpeBRepDS::KindToShape`
+pub fn kind_to_shape(K: crate::top_ope_b_rep_ds::Kind) -> crate::top_abs::ShapeEnum {
+    unsafe {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopOpeBRepDS_kind_to_shape(K.into()))
+            .unwrap()
+    }
+}
+/// **Source:** `TopOpeBRepDS.hxx`:84 - `TopOpeBRepDS::ShapeToKind`
+pub fn shape_to_kind(S: crate::top_abs::ShapeEnum) -> crate::top_ope_b_rep_ds::Kind {
+    unsafe {
+        crate::top_ope_b_rep_ds::Kind::try_from(crate::ffi::TopOpeBRepDS_shape_to_kind(S.into()))
+            .unwrap()
+    }
+}
+
+/// C++ enum: `TopOpeBRepDS_CheckStatus`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum CheckStatus {
+    Ok = 0,
+    Nok = 1,
+}
+
+impl From<CheckStatus> for i32 {
+    fn from(value: CheckStatus) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for CheckStatus {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(CheckStatus::Ok),
+            1 => Ok(CheckStatus::Nok),
+            _ => Err(value),
+        }
+    }
+}
+
 /// C++ enum: `TopOpeBRepDS_Config`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
@@ -83,6 +191,875 @@ impl TryFrom<i32> for Kind {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::HandleStandardTransient;
+
+// ========================
+// From TopOpeBRepDS_Association.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_Association.hxx`:31 - `TopOpeBRepDS_Association`
+pub use crate::ffi::TopOpeBRepDS_Association as Association;
+
+unsafe impl crate::CppDeletable for Association {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_Association_destructor(ptr);
+    }
+}
+
+impl Association {
+    /// **Source:** `TopOpeBRepDS_Association.hxx`:35 - `TopOpeBRepDS_Association::TopOpeBRepDS_Association()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Association_ctor()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Association.hxx`:37 - `TopOpeBRepDS_Association::Associate()`
+    pub fn associate_handletopopebrepdsinterference2(
+        &mut self,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+        K: &crate::ffi::HandleTopOpeBRepDSInterference,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Association_associate_handletopopebrepdsinterference2(
+                self as *mut Self,
+                I,
+                K,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Association.hxx`:40 - `TopOpeBRepDS_Association::Associate()`
+    pub fn associate_handletopopebrepdsinterference_listofinterference(
+        &mut self,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+        LI: &crate::ffi::TopOpeBRepDS_ListOfInterference,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Association_associate_handletopopebrepdsinterference_listofinterference(self as *mut Self, I, LI)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Association.hxx`:43 - `TopOpeBRepDS_Association::HasAssociation()`
+    pub fn has_association(&self, I: &crate::ffi::HandleTopOpeBRepDSInterference) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_Association_has_association(self as *const Self, I) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Association.hxx`:48 - `TopOpeBRepDS_Association::AreAssociated()`
+    pub fn are_associated(
+        &self,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+        K: &crate::ffi::HandleTopOpeBRepDSInterference,
+    ) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_Association_are_associated(self as *const Self, I, K) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Association.hxx`:51 - `TopOpeBRepDS_Association::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_Association_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Association.hxx`:51 - `TopOpeBRepDS_Association::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepDS_Association_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Association.hxx`:51 - `TopOpeBRepDS_Association::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_Association_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_Association_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_Association_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSAssociation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Association_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Association_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Association_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_Association_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Association_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Association_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopOpeBRepDS_Association_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleTopOpeBRepDSAssociation;
+
+unsafe impl crate::CppDeletable for HandleTopOpeBRepDSAssociation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopOpeBRepDSAssociation_destructor(ptr);
+    }
+}
+
+impl HandleTopOpeBRepDSAssociation {
+    /// Dereference this Handle to access the underlying TopOpeBRepDS_Association
+    pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_Association {
+        unsafe { &*(crate::ffi::HandleTopOpeBRepDSAssociation_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_Association
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_Association {
+        unsafe { &mut *(crate::ffi::HandleTopOpeBRepDSAssociation_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_Association> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopOpeBRepDSAssociation_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for Association (1 total) ──
+// SKIPPED: **Source:** `TopOpeBRepDS_Association.hxx`:45 - `TopOpeBRepDS_Association::Associated`
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn associated(&mut self, I: &HandleInterference) -> &mut ListOfInterference;
+//
+
+// ========================
+// From TopOpeBRepDS_BuildTool.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_BuildTool.hxx`:47 - `TopOpeBRepDS_BuildTool`
+/// Provides  a  Tool  to  build  topologies. Used  to
+/// instantiate the Builder algorithm.
+pub use crate::ffi::TopOpeBRepDS_BuildTool as BuildTool;
+
+unsafe impl crate::CppDeletable for BuildTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_BuildTool_destructor(ptr);
+    }
+}
+
+impl BuildTool {
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:52 - `TopOpeBRepDS_BuildTool::TopOpeBRepDS_BuildTool()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_BuildTool_ctor()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:54 - `TopOpeBRepDS_BuildTool::TopOpeBRepDS_BuildTool()`
+    pub fn new_outcurvetype(
+        OutCurveType: crate::top_ope_b_rep_tool::OutCurveType,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_BuildTool_ctor_outcurvetype(
+                OutCurveType.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:56 - `TopOpeBRepDS_BuildTool::TopOpeBRepDS_BuildTool()`
+    pub fn new_geomtool(GT: &crate::top_ope_b_rep_tool::GeomTool) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_BuildTool_ctor_geomtool(GT)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:58 - `TopOpeBRepDS_BuildTool::GetGeomTool()`
+    pub fn get_geom_tool(&self) -> &crate::top_ope_b_rep_tool::GeomTool {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_BuildTool_get_geom_tool(self as *const Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:60 - `TopOpeBRepDS_BuildTool::ChangeGeomTool()`
+    pub fn change_geom_tool(&mut self) -> &mut crate::top_ope_b_rep_tool::GeomTool {
+        unsafe { &mut *(crate::ffi::TopOpeBRepDS_BuildTool_change_geom_tool(self as *mut Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:62 - `TopOpeBRepDS_BuildTool::MakeVertex()`
+    pub fn make_vertex(&self, V: &mut crate::topo_ds::Shape, P: &Point) {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_make_vertex(self as *const Self, V, P) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:64 - `TopOpeBRepDS_BuildTool::MakeEdge()`
+    pub fn make_edge_shape_curve(&self, E: &mut crate::topo_ds::Shape, C: &Curve) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_BuildTool_make_edge_shape_curve(self as *const Self, E, C)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:66 - `TopOpeBRepDS_BuildTool::MakeEdge()`
+    pub fn make_edge_shape_curve_datastructure(
+        &self,
+        E: &mut crate::topo_ds::Shape,
+        C: &Curve,
+        DS: &DataStructure,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_BuildTool_make_edge_shape_curve_datastructure(
+                self as *const Self,
+                E,
+                C,
+                DS,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:70 - `TopOpeBRepDS_BuildTool::MakeEdge()`
+    pub fn make_edge_shape_handlegeomcurve_real(
+        &self,
+        E: &mut crate::topo_ds::Shape,
+        C: &crate::ffi::HandleGeomCurve,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_BuildTool_make_edge_shape_handlegeomcurve_real(
+                self as *const Self,
+                E,
+                C,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:74 - `TopOpeBRepDS_BuildTool::MakeEdge()`
+    pub fn make_edge_shape(&self, E: &mut crate::topo_ds::Shape) {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_make_edge_shape(self as *const Self, E) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:76 - `TopOpeBRepDS_BuildTool::MakeWire()`
+    pub fn make_wire(&self, W: &mut crate::topo_ds::Shape) {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_make_wire(self as *const Self, W) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:78 - `TopOpeBRepDS_BuildTool::MakeFace()`
+    pub fn make_face(&self, F: &mut crate::topo_ds::Shape, S: &Surface) {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_make_face(self as *const Self, F, S) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:80 - `TopOpeBRepDS_BuildTool::MakeShell()`
+    pub fn make_shell(&self, Sh: &mut crate::topo_ds::Shape) {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_make_shell(self as *const Self, Sh) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:82 - `TopOpeBRepDS_BuildTool::MakeSolid()`
+    pub fn make_solid(&self, S: &mut crate::topo_ds::Shape) {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_make_solid(self as *const Self, S) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:85 - `TopOpeBRepDS_BuildTool::CopyEdge()`
+    /// Make an edge <Eou> with the curve of the edge <Ein>
+    pub fn copy_edge(&self, Ein: &crate::topo_ds::Shape, Eou: &mut crate::topo_ds::Shape) {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_copy_edge(self as *const Self, Ein, Eou) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:87 - `TopOpeBRepDS_BuildTool::GetOrientedEdgeVertices()`
+    pub fn get_oriented_edge_vertices(
+        &self,
+        E: &mut crate::topo_ds::Edge,
+        Vmin: &mut crate::topo_ds::Vertex,
+        Vmax: &mut crate::topo_ds::Vertex,
+        Parmin: &mut f64,
+        Parmax: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_BuildTool_get_oriented_edge_vertices(
+                self as *const Self,
+                E,
+                Vmin,
+                Vmax,
+                Parmin,
+                Parmax,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:93 - `TopOpeBRepDS_BuildTool::UpdateEdgeCurveTol()`
+    pub fn update_edge_curve_tol(
+        &self,
+        F1: &crate::topo_ds::Face,
+        F2: &crate::topo_ds::Face,
+        E: &mut crate::topo_ds::Edge,
+        C3Dnew: &crate::ffi::HandleGeomCurve,
+        tol3d: f64,
+        tol2d1: f64,
+        tol2d2: f64,
+        newtol: &mut f64,
+        newparmin: &mut f64,
+        newparmax: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_BuildTool_update_edge_curve_tol(
+                self as *const Self,
+                F1,
+                F2,
+                E,
+                C3Dnew,
+                tol3d,
+                tol2d1,
+                tol2d2,
+                newtol,
+                newparmin,
+                newparmax,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:104 - `TopOpeBRepDS_BuildTool::ApproxCurves()`
+    pub fn approx_curves(
+        &self,
+        C: &Curve,
+        E: &mut crate::topo_ds::Edge,
+        inewC: &mut i32,
+        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_BuildTool_approx_curves(self as *const Self, C, E, inewC, HDS)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:109 - `TopOpeBRepDS_BuildTool::ComputePCurves()`
+    pub fn compute_p_curves(
+        &self,
+        C: &Curve,
+        E: &mut crate::topo_ds::Edge,
+        newC: &mut Curve,
+        CompPC1: bool,
+        CompPC2: bool,
+        CompC3D: bool,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_BuildTool_compute_p_curves(
+                self as *const Self,
+                C,
+                E,
+                newC,
+                CompPC1,
+                CompPC2,
+                CompC3D,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:116 - `TopOpeBRepDS_BuildTool::PutPCurves()`
+    pub fn put_p_curves(
+        &self,
+        newC: &Curve,
+        E: &mut crate::topo_ds::Edge,
+        CompPC1: bool,
+        CompPC2: bool,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_BuildTool_put_p_curves(
+                self as *const Self,
+                newC,
+                E,
+                CompPC1,
+                CompPC2,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:121 - `TopOpeBRepDS_BuildTool::RecomputeCurves()`
+    pub fn recompute_curves(
+        &self,
+        C: &Curve,
+        oldE: &crate::topo_ds::Edge,
+        E: &mut crate::topo_ds::Edge,
+        inewC: &mut i32,
+        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_BuildTool_recompute_curves(
+                self as *const Self,
+                C,
+                oldE,
+                E,
+                inewC,
+                HDS,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:128 - `TopOpeBRepDS_BuildTool::CopyFace()`
+    /// Make a face <Fou> with the surface of the face <Fin>
+    pub fn copy_face(&self, Fin: &crate::topo_ds::Shape, Fou: &mut crate::topo_ds::Shape) {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_copy_face(self as *const Self, Fin, Fou) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:130 - `TopOpeBRepDS_BuildTool::AddEdgeVertex()`
+    pub fn add_edge_vertex_shape3(
+        &self,
+        Ein: &crate::topo_ds::Shape,
+        Eou: &mut crate::topo_ds::Shape,
+        V: &crate::topo_ds::Shape,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_BuildTool_add_edge_vertex_shape3(
+                self as *const Self,
+                Ein,
+                Eou,
+                V,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:134 - `TopOpeBRepDS_BuildTool::AddEdgeVertex()`
+    pub fn add_edge_vertex_shape2(&self, E: &mut crate::topo_ds::Shape, V: &crate::topo_ds::Shape) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_BuildTool_add_edge_vertex_shape2(self as *const Self, E, V)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:136 - `TopOpeBRepDS_BuildTool::AddWireEdge()`
+    pub fn add_wire_edge(&self, W: &mut crate::topo_ds::Shape, E: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_add_wire_edge(self as *const Self, W, E) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:138 - `TopOpeBRepDS_BuildTool::AddFaceWire()`
+    pub fn add_face_wire(&self, F: &mut crate::topo_ds::Shape, W: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_add_face_wire(self as *const Self, F, W) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:140 - `TopOpeBRepDS_BuildTool::AddShellFace()`
+    pub fn add_shell_face(&self, Sh: &mut crate::topo_ds::Shape, F: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_add_shell_face(self as *const Self, Sh, F) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:142 - `TopOpeBRepDS_BuildTool::AddSolidShell()`
+    pub fn add_solid_shell(&self, S: &mut crate::topo_ds::Shape, Sh: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_add_solid_shell(self as *const Self, S, Sh) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:146 - `TopOpeBRepDS_BuildTool::Parameter()`
+    /// Sets the parameter <P>  for  the vertex <V> on the
+    /// edge <E>.
+    pub fn parameter_shape2_real(
+        &self,
+        E: &crate::topo_ds::Shape,
+        V: &crate::topo_ds::Shape,
+        P: f64,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_BuildTool_parameter_shape2_real(self as *const Self, E, V, P)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:151 - `TopOpeBRepDS_BuildTool::Range()`
+    /// Sets the range of edge <E>.
+    pub fn range(&self, E: &crate::topo_ds::Shape, first: f64, last: f64) {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_range(self as *const Self, E, first, last) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:157 - `TopOpeBRepDS_BuildTool::UpdateEdge()`
+    /// Sets the range of edge <Eou> from <Ein>
+    /// only when <Ein> has a closed geometry.
+    pub fn update_edge(&self, Ein: &crate::topo_ds::Shape, Eou: &mut crate::topo_ds::Shape) {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_update_edge(self as *const Self, Ein, Eou) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:161 - `TopOpeBRepDS_BuildTool::Parameter()`
+    /// Compute the parameter of  the vertex <V>, supported
+    /// by   the edge <E>, on the curve  <C>.
+    pub fn parameter_curve_shape2(
+        &self,
+        C: &Curve,
+        E: &mut crate::topo_ds::Shape,
+        V: &mut crate::topo_ds::Shape,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_BuildTool_parameter_curve_shape2(self as *const Self, C, E, V)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:166 - `TopOpeBRepDS_BuildTool::Curve3D()`
+    /// Sets the  curve <C> for the edge  <E>
+    pub fn curve3_d(
+        &self,
+        E: &mut crate::topo_ds::Shape,
+        C: &crate::ffi::HandleGeomCurve,
+        Tol: f64,
+    ) {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_curve3_d(self as *const Self, E, C, Tol) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:174 - `TopOpeBRepDS_BuildTool::PCurve()`
+    /// Sets  the pcurve <C> for  the edge <E> on the face
+    /// <F>.  If OverWrite is True the old pcurve if there
+    /// is one  is overwritten, else the  two  pcurves are
+    /// set.
+    pub fn p_curve_shape2_handlegeom2dcurve(
+        &self,
+        F: &mut crate::topo_ds::Shape,
+        E: &mut crate::topo_ds::Shape,
+        C: &crate::ffi::HandleGeom2dCurve,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_BuildTool_p_curve_shape2_handlegeom2dcurve(
+                self as *const Self,
+                F,
+                E,
+                C,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:178 - `TopOpeBRepDS_BuildTool::PCurve()`
+    pub fn p_curve_shape2_curve_handlegeom2dcurve(
+        &self,
+        F: &mut crate::topo_ds::Shape,
+        E: &mut crate::topo_ds::Shape,
+        CDS: &Curve,
+        C: &crate::ffi::HandleGeom2dCurve,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_BuildTool_p_curve_shape2_curve_handlegeom2dcurve(
+                self as *const Self,
+                F,
+                E,
+                CDS,
+                C,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:183 - `TopOpeBRepDS_BuildTool::Orientation()`
+    pub fn orientation_shape_orientation(
+        &self,
+        S: &mut crate::topo_ds::Shape,
+        O: crate::top_abs::Orientation,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_BuildTool_orientation_shape_orientation(
+                self as *const Self,
+                S,
+                O.into(),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:185 - `TopOpeBRepDS_BuildTool::Orientation()`
+    pub fn orientation_shape(&self, S: &crate::topo_ds::Shape) -> crate::top_abs::Orientation {
+        unsafe {
+            crate::top_abs::Orientation::try_from(
+                crate::ffi::TopOpeBRepDS_BuildTool_orientation_shape(self as *const Self, S),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:187 - `TopOpeBRepDS_BuildTool::Closed()`
+    pub fn closed(&self, S: &mut crate::topo_ds::Shape, B: bool) {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_closed(self as *const Self, S, B) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:189 - `TopOpeBRepDS_BuildTool::Approximation()`
+    pub fn approximation(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_approximation(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:191 - `TopOpeBRepDS_BuildTool::UpdateSurface()`
+    pub fn update_surface_shape_handlegeomsurface(
+        &self,
+        F: &crate::topo_ds::Shape,
+        SU: &crate::ffi::HandleGeomSurface,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_BuildTool_update_surface_shape_handlegeomsurface(
+                self as *const Self,
+                F,
+                SU,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:193 - `TopOpeBRepDS_BuildTool::UpdateSurface()`
+    pub fn update_surface_shape3(
+        &self,
+        E: &crate::topo_ds::Shape,
+        oldF: &crate::topo_ds::Shape,
+        newF: &crate::topo_ds::Shape,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_BuildTool_update_surface_shape3(
+                self as *const Self,
+                E,
+                oldF,
+                newF,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:197 - `TopOpeBRepDS_BuildTool::OverWrite()`
+    pub fn over_write(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_over_write(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:199 - `TopOpeBRepDS_BuildTool::OverWrite()`
+    pub fn over_write_bool(&mut self, O: bool) {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_over_write_bool(self as *mut Self, O) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:201 - `TopOpeBRepDS_BuildTool::Translate()`
+    pub fn translate(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_translate(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:203 - `TopOpeBRepDS_BuildTool::Translate()`
+    pub fn translate_bool(&mut self, T: bool) {
+        unsafe { crate::ffi::TopOpeBRepDS_BuildTool_translate_bool(self as *mut Self, T) }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_Check.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_Check.hxx`:39 - `TopOpeBRepDS_Check`
+/// a tool verifying integrity and structure of DS
+pub use crate::ffi::TopOpeBRepDS_Check as Check;
+
+unsafe impl crate::CppDeletable for Check {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_Check_destructor(ptr);
+    }
+}
+
+impl Check {
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:43 - `TopOpeBRepDS_Check::TopOpeBRepDS_Check()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Check_ctor()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:45 - `TopOpeBRepDS_Check::TopOpeBRepDS_Check()`
+    pub fn new_handletopopebrepdshdatastructure(
+        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_Check_ctor_handletopopebrepdshdatastructure(HDS),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:48 - `TopOpeBRepDS_Check::ChkIntg()`
+    /// Check integrition of DS
+    pub fn chk_intg(&mut self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_Check_chk_intg(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:52 - `TopOpeBRepDS_Check::ChkIntgInterf()`
+    /// Check integrition of interferences
+    /// (les supports et les geometries de LI)
+    pub fn chk_intg_interf(&mut self, LI: &crate::ffi::TopOpeBRepDS_ListOfInterference) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_Check_chk_intg_interf(self as *mut Self, LI) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:57 - `TopOpeBRepDS_Check::CheckDS()`
+    /// Verifie que le ieme element de la DS existe, et
+    /// pour un K de type topologique, verifie qu'il est du
+    /// bon type (VERTEX, EDGE, WIRE, FACE, SHELL ou SOLID)
+    pub fn check_ds(&mut self, i: i32, K: crate::top_ope_b_rep_ds::Kind) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_Check_check_ds(self as *mut Self, i, K.into()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:60 - `TopOpeBRepDS_Check::ChkIntgSamDom()`
+    /// Check integrition des champs SameDomain de la DS
+    pub fn chk_intg_sam_dom(&mut self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_Check_chk_intg_sam_dom(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:65 - `TopOpeBRepDS_Check::CheckShapes()`
+    /// Verifie que les Shapes existent bien dans la DS
+    /// Utile pour les Shapes SameDomain
+    /// si la liste est vide, renvoie vrai
+    pub fn check_shapes(&self, LS: &crate::ffi::TopTools_ListOfShape) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_Check_check_shapes(self as *const Self, LS) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:71 - `TopOpeBRepDS_Check::OneVertexOnPnt()`
+    /// Verifie que les Vertex   non   SameDomain sont bien
+    /// nonSameDomain, que  les  vertex sameDomain sont  bien
+    /// SameDomain,  que    les  Points sont  non    confondus
+    /// ni entre eux, ni avec des Vertex.
+    pub fn one_vertex_on_pnt(&mut self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_Check_one_vertex_on_pnt(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:73 - `TopOpeBRepDS_Check::HDS()`
+    pub fn hds(&self) -> &crate::ffi::HandleTopOpeBRepDSHDataStructure {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_Check_hds(self as *const Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:75 - `TopOpeBRepDS_Check::ChangeHDS()`
+    pub fn change_hds(&mut self) -> &mut crate::ffi::HandleTopOpeBRepDSHDataStructure {
+        unsafe { &mut *(crate::ffi::TopOpeBRepDS_Check_change_hds(self as *mut Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:88 - `TopOpeBRepDS_Check::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_Check_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:88 - `TopOpeBRepDS_Check::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepDS_Check_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:88 - `TopOpeBRepDS_Check::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_Check_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_Check_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_Check_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSCheck> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Check_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_Check_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_Check_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_Check_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_Check_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_Check_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopOpeBRepDS_Check_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleTopOpeBRepDSCheck;
+
+unsafe impl crate::CppDeletable for HandleTopOpeBRepDSCheck {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopOpeBRepDSCheck_destructor(ptr);
+    }
+}
+
+impl HandleTopOpeBRepDSCheck {
+    /// Dereference this Handle to access the underlying TopOpeBRepDS_Check
+    pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_Check {
+        unsafe { &*(crate::ffi::HandleTopOpeBRepDSCheck_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_Check
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_Check {
+        unsafe { &mut *(crate::ffi::HandleTopOpeBRepDSCheck_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_Check> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopOpeBRepDSCheck_to_HandleStandardTransient(self as *const Self),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for Check (4 total) ──
+// SKIPPED: **Source:** `TopOpeBRepDS_Check.hxx`:77 - `TopOpeBRepDS_Check::PrintIntg`
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn print_intg(&mut self, S: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TopOpeBRepDS_Check.hxx`:80 - `TopOpeBRepDS_Check::Print`
+//   method: Prints the name  of CheckStatus  <stat>  as  a String
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn print(&mut self, stat: CheckStatus, S: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TopOpeBRepDS_Check.hxx`:83 - `TopOpeBRepDS_Check::PrintShape`
+//   method: Prints the name  of CheckStatus  <stat>  as  a String
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn print_shape(&mut self, SE: ShapeEnum, S: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TopOpeBRepDS_Check.hxx`:86 - `TopOpeBRepDS_Check::PrintShape`
+//   method: Prints the name  of CheckStatus  <stat>  as  a String
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn print_shape(&mut self, index: i32, S: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
 
 // ========================
 // From TopOpeBRepDS_Curve.hxx
@@ -353,6 +1330,226 @@ impl CurveData {
     pub fn add_interference(&mut self, I: &crate::ffi::HandleTopOpeBRepDSInterference) {
         unsafe {
             crate::ffi::TopOpeBRepDS_CurveData_inherited_AddInterference(self as *mut Self, I)
+        }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_CurveExplorer.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_CurveExplorer.hxx`:27 - `TopOpeBRepDS_CurveExplorer`
+pub use crate::ffi::TopOpeBRepDS_CurveExplorer as CurveExplorer;
+
+unsafe impl crate::CppDeletable for CurveExplorer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_CurveExplorer_destructor(ptr);
+    }
+}
+
+impl CurveExplorer {
+    /// **Source:** `TopOpeBRepDS_CurveExplorer.hxx`:32 - `TopOpeBRepDS_CurveExplorer::TopOpeBRepDS_CurveExplorer()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_CurveExplorer_ctor()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_CurveExplorer.hxx`:34 - `TopOpeBRepDS_CurveExplorer::TopOpeBRepDS_CurveExplorer()`
+    pub fn new_datastructure_bool(DS: &DataStructure, FindOnlyKeep: bool) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_CurveExplorer_ctor_datastructure_bool(DS, FindOnlyKeep),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_CurveExplorer.hxx`:34 - `TopOpeBRepDS_CurveExplorer::TopOpeBRepDS_CurveExplorer()`
+    pub fn new_datastructure(DS: &DataStructure) -> crate::OwnedPtr<Self> {
+        Self::new_datastructure_bool(DS, true)
+    }
+
+    /// **Source:** `TopOpeBRepDS_CurveExplorer.hxx`:37 - `TopOpeBRepDS_CurveExplorer::Init()`
+    pub fn init(&mut self, DS: &DataStructure, FindOnlyKeep: bool) {
+        unsafe { crate::ffi::TopOpeBRepDS_CurveExplorer_init(self as *mut Self, DS, FindOnlyKeep) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_CurveExplorer.hxx`:40 - `TopOpeBRepDS_CurveExplorer::More()`
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_CurveExplorer_more(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_CurveExplorer.hxx`:42 - `TopOpeBRepDS_CurveExplorer::Next()`
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_CurveExplorer_next(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_CurveExplorer.hxx`:44 - `TopOpeBRepDS_CurveExplorer::Curve()`
+    pub fn curve(&self) -> &Curve {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_CurveExplorer_curve(self as *const Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_CurveExplorer.hxx`:46 - `TopOpeBRepDS_CurveExplorer::IsCurve()`
+    pub fn is_curve(&self, I: i32) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_CurveExplorer_is_curve(self as *const Self, I) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_CurveExplorer.hxx`:48 - `TopOpeBRepDS_CurveExplorer::IsCurveKeep()`
+    pub fn is_curve_keep(&self, I: i32) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_CurveExplorer_is_curve_keep(self as *const Self, I) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_CurveExplorer.hxx`:50 - `TopOpeBRepDS_CurveExplorer::Curve()`
+    pub fn curve_int(&self, I: i32) -> &Curve {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_CurveExplorer_curve_int(self as *const Self, I)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_CurveExplorer.hxx`:52 - `TopOpeBRepDS_CurveExplorer::NbCurve()`
+    pub fn nb_curve(&mut self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_CurveExplorer_nb_curve(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_CurveExplorer.hxx`:54 - `TopOpeBRepDS_CurveExplorer::Index()`
+    pub fn index(&self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_CurveExplorer_index(self as *const Self) }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_CurveIterator.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_CurveIterator.hxx`:32 - `TopOpeBRepDS_CurveIterator`
+pub use crate::ffi::TopOpeBRepDS_CurveIterator as CurveIterator;
+
+unsafe impl crate::CppDeletable for CurveIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_CurveIterator_destructor(ptr);
+    }
+}
+
+impl CurveIterator {
+    /// **Source:** `TopOpeBRepDS_CurveIterator.hxx`:39 - `TopOpeBRepDS_CurveIterator::TopOpeBRepDS_CurveIterator()`
+    /// Creates an  iterator on the  curves on surface
+    /// described by the interferences in <L>.
+    pub fn new_listofinterference(
+        L: &crate::ffi::TopOpeBRepDS_ListOfInterference,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_CurveIterator_ctor_listofinterference(L),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_CurveIterator.hxx`:44 - `TopOpeBRepDS_CurveIterator::MatchInterference()`
+    /// Returns  True if the Interference <I>  has a
+    /// GeometryType() TopOpeBRepDS_CURVE
+    /// returns False else.
+    pub fn match_interference(&self, I: &crate::ffi::HandleTopOpeBRepDSInterference) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_CurveIterator_match_interference(self as *const Self, I) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_CurveIterator.hxx`:48 - `TopOpeBRepDS_CurveIterator::Current()`
+    /// Index of the curve in the data structure.
+    pub fn current(&self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_CurveIterator_current(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_CurveIterator.hxx`:50 - `TopOpeBRepDS_CurveIterator::Orientation()`
+    pub fn orientation(&self, S: crate::top_abs::State) -> crate::top_abs::Orientation {
+        unsafe {
+            crate::top_abs::Orientation::try_from(
+                crate::ffi::TopOpeBRepDS_CurveIterator_orientation(self as *const Self, S.into()),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_CurveIterator.hxx`:52 - `TopOpeBRepDS_CurveIterator::PCurve()`
+    pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_CurveIterator_p_curve(self as *const Self)) }
+    }
+
+    /// Upcast to TopOpeBRepDS_InterferenceIterator
+    pub fn as_interference_iterator(&self) -> &InterferenceIterator {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_CurveIterator_as_TopOpeBRepDS_InterferenceIterator(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to TopOpeBRepDS_InterferenceIterator (mutable)
+    pub fn as_interference_iterator_mut(&mut self) -> &mut InterferenceIterator {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_CurveIterator_as_TopOpeBRepDS_InterferenceIterator_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:53 - `TopOpeBRepDS_InterferenceIterator::Init()`
+    pub fn init(&mut self, L: &crate::ffi::TopOpeBRepDS_ListOfInterference) {
+        unsafe { crate::ffi::TopOpeBRepDS_CurveIterator_inherited_Init(self as *mut Self, L) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:57 - `TopOpeBRepDS_InterferenceIterator::GeometryKind()`
+    pub fn geometry_kind(&mut self, GK: crate::top_ope_b_rep_ds::Kind) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_CurveIterator_inherited_GeometryKind(
+                self as *mut Self,
+                GK.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:61 - `TopOpeBRepDS_InterferenceIterator::Geometry()`
+    pub fn geometry(&mut self, G: i32) {
+        unsafe { crate::ffi::TopOpeBRepDS_CurveIterator_inherited_Geometry(self as *mut Self, G) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:65 - `TopOpeBRepDS_InterferenceIterator::SupportKind()`
+    pub fn support_kind(&mut self, ST: crate::top_ope_b_rep_ds::Kind) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_CurveIterator_inherited_SupportKind(
+                self as *mut Self,
+                ST.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:69 - `TopOpeBRepDS_InterferenceIterator::Support()`
+    pub fn support(&mut self, S: i32) {
+        unsafe { crate::ffi::TopOpeBRepDS_CurveIterator_inherited_Support(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:73 - `TopOpeBRepDS_InterferenceIterator::Match()`
+    pub fn match_(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_CurveIterator_inherited_Match(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:83 - `TopOpeBRepDS_InterferenceIterator::More()`
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_CurveIterator_inherited_More(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:86 - `TopOpeBRepDS_InterferenceIterator::Next()`
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_CurveIterator_inherited_Next(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:90 - `TopOpeBRepDS_InterferenceIterator::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleTopOpeBRepDSInterference {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_CurveIterator_inherited_Value(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:92 - `TopOpeBRepDS_InterferenceIterator::ChangeIterator()`
+    pub fn change_iterator(
+        &mut self,
+    ) -> &mut crate::ffi::TopOpeBRepDS_ListIteratorOfListOfInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_CurveIterator_inherited_ChangeIterator(
+                self as *mut Self,
+            ))
         }
     }
 }
@@ -1520,6 +2717,1686 @@ impl DataStructure {
 //
 
 // ========================
+// From TopOpeBRepDS_Dumper.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_Dumper.hxx`:32 - `TopOpeBRepDS_Dumper`
+pub use crate::ffi::TopOpeBRepDS_Dumper as Dumper;
+
+unsafe impl crate::CppDeletable for Dumper {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_Dumper_destructor(ptr);
+    }
+}
+
+impl Dumper {
+    /// **Source:** `TopOpeBRepDS_Dumper.hxx`:37 - `TopOpeBRepDS_Dumper::TopOpeBRepDS_Dumper()`
+    pub fn new_handletopopebrepdshdatastructure(
+        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_Dumper_ctor_handletopopebrepdshdatastructure(HDS),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Dumper.hxx`:39 - `TopOpeBRepDS_Dumper::SDumpRefOri()`
+    pub fn s_dump_ref_ori_kind_int(
+        &self,
+        K: crate::top_ope_b_rep_ds::Kind,
+        I: i32,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Dumper_s_dump_ref_ori_kind_int(
+                self as *const Self,
+                K.into(),
+                I,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Dumper.hxx`:42 - `TopOpeBRepDS_Dumper::SDumpRefOri()`
+    pub fn s_dump_ref_ori_shape(
+        &self,
+        S: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Dumper_s_dump_ref_ori_shape(
+                self as *const Self,
+                S,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Dumper.hxx`:44 - `TopOpeBRepDS_Dumper::SPrintShape()`
+    pub fn s_print_shape_int(&self, I: i32) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Dumper_s_print_shape_int(
+                self as *const Self,
+                I,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Dumper.hxx`:46 - `TopOpeBRepDS_Dumper::SPrintShape()`
+    pub fn s_print_shape_shape(
+        &self,
+        S: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Dumper_s_print_shape_shape(
+                self as *const Self,
+                S,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Dumper.hxx`:49 - `TopOpeBRepDS_Dumper::SPrintShapeRefOri()`
+    pub fn s_print_shape_ref_ori_shape_asciistring(
+        &self,
+        S: &crate::topo_ds::Shape,
+        B: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_Dumper_s_print_shape_ref_ori_shape_asciistring(
+                    self as *const Self,
+                    S,
+                    B,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Dumper.hxx`:52 - `TopOpeBRepDS_Dumper::SPrintShapeRefOri()`
+    pub fn s_print_shape_ref_ori_listofshape_asciistring(
+        &self,
+        L: &crate::ffi::TopTools_ListOfShape,
+        B: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_Dumper_s_print_shape_ref_ori_listofshape_asciistring(
+                    self as *const Self,
+                    L,
+                    B,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_EIR.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_EIR.hxx`:26 - `TopOpeBRepDS_EIR`
+/// EdgeInterferenceReducer
+pub use crate::ffi::TopOpeBRepDS_EIR as EIR;
+
+unsafe impl crate::CppDeletable for EIR {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_EIR_destructor(ptr);
+    }
+}
+
+impl EIR {
+    /// **Source:** `TopOpeBRepDS_EIR.hxx`:31 - `TopOpeBRepDS_EIR::TopOpeBRepDS_EIR()`
+    pub fn new_handletopopebrepdshdatastructure(
+        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_EIR_ctor_handletopopebrepdshdatastructure(HDS),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_EIR.hxx`:33 - `TopOpeBRepDS_EIR::ProcessEdgeInterferences()`
+    pub fn process_edge_interferences(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_EIR_process_edge_interferences(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_EIR.hxx`:35 - `TopOpeBRepDS_EIR::ProcessEdgeInterferences()`
+    pub fn process_edge_interferences_int(&mut self, I: i32) {
+        unsafe { crate::ffi::TopOpeBRepDS_EIR_process_edge_interferences_int(self as *mut Self, I) }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_Edge3dInterferenceTool.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_Edge3dInterferenceTool.hxx`:34 - `TopOpeBRepDS_Edge3dInterferenceTool`
+/// a tool computing edge / face complex transition,
+/// Interferences of edge reference are given by
+/// I = (T on face, G = point or vertex, S = edge)
+pub use crate::ffi::TopOpeBRepDS_Edge3dInterferenceTool as Edge3dInterferenceTool;
+
+unsafe impl crate::CppDeletable for Edge3dInterferenceTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_Edge3dInterferenceTool_destructor(ptr);
+    }
+}
+
+impl Edge3dInterferenceTool {
+    /// **Source:** `TopOpeBRepDS_Edge3dInterferenceTool.hxx`:39 - `TopOpeBRepDS_Edge3dInterferenceTool::TopOpeBRepDS_Edge3dInterferenceTool()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Edge3dInterferenceTool_ctor()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Edge3dInterferenceTool.hxx`:41 - `TopOpeBRepDS_Edge3dInterferenceTool::InitPointVertex()`
+    pub fn init_point_vertex(&mut self, IsVertex: i32, VonOO: &crate::topo_ds::Shape) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Edge3dInterferenceTool_init_point_vertex(
+                self as *mut Self,
+                IsVertex,
+                VonOO,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Edge3dInterferenceTool.hxx`:43 - `TopOpeBRepDS_Edge3dInterferenceTool::Init()`
+    pub fn init(
+        &mut self,
+        Eref: &crate::topo_ds::Shape,
+        E: &crate::topo_ds::Shape,
+        F: &crate::topo_ds::Shape,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Edge3dInterferenceTool_init(self as *mut Self, Eref, E, F, I)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Edge3dInterferenceTool.hxx`:48 - `TopOpeBRepDS_Edge3dInterferenceTool::Add()`
+    pub fn add(
+        &mut self,
+        Eref: &crate::topo_ds::Shape,
+        E: &crate::topo_ds::Shape,
+        F: &crate::topo_ds::Shape,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Edge3dInterferenceTool_add(self as *mut Self, Eref, E, F, I)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Edge3dInterferenceTool.hxx`:53 - `TopOpeBRepDS_Edge3dInterferenceTool::Transition()`
+    pub fn transition(&self, I: &crate::ffi::HandleTopOpeBRepDSInterference) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Edge3dInterferenceTool_transition(self as *const Self, I)
+        }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_EdgeInterferenceTool.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_EdgeInterferenceTool.hxx`:32 - `TopOpeBRepDS_EdgeInterferenceTool`
+/// a tool computing complex transition on Edge.
+pub use crate::ffi::TopOpeBRepDS_EdgeInterferenceTool as EdgeInterferenceTool;
+
+unsafe impl crate::CppDeletable for EdgeInterferenceTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_EdgeInterferenceTool_destructor(ptr);
+    }
+}
+
+impl EdgeInterferenceTool {
+    /// **Source:** `TopOpeBRepDS_EdgeInterferenceTool.hxx`:37 - `TopOpeBRepDS_EdgeInterferenceTool::TopOpeBRepDS_EdgeInterferenceTool()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_EdgeInterferenceTool_ctor()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_EdgeInterferenceTool.hxx`:39 - `TopOpeBRepDS_EdgeInterferenceTool::Init()`
+    pub fn init(
+        &mut self,
+        E: &crate::topo_ds::Shape,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+    ) {
+        unsafe { crate::ffi::TopOpeBRepDS_EdgeInterferenceTool_init(self as *mut Self, E, I) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_EdgeInterferenceTool.hxx`:41 - `TopOpeBRepDS_EdgeInterferenceTool::Add()`
+    pub fn add_shape2_handletopopebrepdsinterference(
+        &mut self,
+        E: &crate::topo_ds::Shape,
+        V: &crate::topo_ds::Shape,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeInterferenceTool_add_shape2_handletopopebrepdsinterference(
+                self as *mut Self,
+                E,
+                V,
+                I,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_EdgeInterferenceTool.hxx`:45 - `TopOpeBRepDS_EdgeInterferenceTool::Add()`
+    pub fn add_shape_point_handletopopebrepdsinterference(
+        &mut self,
+        E: &crate::topo_ds::Shape,
+        P: &Point,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeInterferenceTool_add_shape_point_handletopopebrepdsinterference(self as *mut Self, E, P, I)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_EdgeInterferenceTool.hxx`:49 - `TopOpeBRepDS_EdgeInterferenceTool::Transition()`
+    pub fn transition(&self, I: &crate::ffi::HandleTopOpeBRepDSInterference) {
+        unsafe { crate::ffi::TopOpeBRepDS_EdgeInterferenceTool_transition(self as *const Self, I) }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_EdgeVertexInterference.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_EdgeVertexInterference.hxx`:35 - `TopOpeBRepDS_EdgeVertexInterference`
+/// An interference with a parameter (ShapeShapeInterference).
+pub use crate::ffi::TopOpeBRepDS_EdgeVertexInterference as EdgeVertexInterference;
+
+unsafe impl crate::CppDeletable for EdgeVertexInterference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_EdgeVertexInterference_destructor(ptr);
+    }
+}
+
+impl EdgeVertexInterference {
+    /// **Source:** `TopOpeBRepDS_EdgeVertexInterference.hxx`:49 - `TopOpeBRepDS_EdgeVertexInterference::TopOpeBRepDS_EdgeVertexInterference()`
+    /// Create an interference of VERTEX <G> on a crossed EDGE E.
+    ///
+    /// if support type <ST> == EDGE : <S> is edge E
+    /// FACE : <S> is the face with bound E.
+    /// <T> is the transition along the edge, crossing the crossed edge.
+    /// E  is the crossed edge.
+    /// <GIsBound> indicates if <G> is a bound of the edge.
+    /// <P> is the parameter of <G> on the edge.
+    ///
+    /// interference is stored in the list of interfs of the edge.
+    pub fn new_transition_kind_int2_bool_config_real(
+        T: &Transition,
+        ST: crate::top_ope_b_rep_ds::Kind,
+        S: i32,
+        G: i32,
+        GIsBound: bool,
+        C: crate::top_ope_b_rep_ds::Config,
+        P: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_EdgeVertexInterference_ctor_transition_kind_int2_bool_config_real(T, ST.into(), S, G, GIsBound, C.into(), P))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_EdgeVertexInterference.hxx`:67 - `TopOpeBRepDS_EdgeVertexInterference::TopOpeBRepDS_EdgeVertexInterference()`
+    /// Create an interference of VERTEX <G> on crossed EDGE <S>.
+    ///
+    /// <T> is the transition along the edge, crossing the crossed edge.
+    /// <S> is the crossed edge.
+    /// <GIsBound> indicates if <G> is a bound of the edge.
+    /// <C> indicates the geometric configuration between
+    /// the edge and the crossed edge.
+    /// <P> is the parameter of <G> on the edge.
+    ///
+    /// interference is stored in the list of interfs of the edge.
+    pub fn new_transition_int2_bool_config_real(
+        T: &Transition,
+        S: i32,
+        G: i32,
+        GIsBound: bool,
+        C: crate::top_ope_b_rep_ds::Config,
+        P: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_EdgeVertexInterference_ctor_transition_int2_bool_config_real(T, S, G, GIsBound, C.into(), P))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_EdgeVertexInterference.hxx`:74 - `TopOpeBRepDS_EdgeVertexInterference::Parameter()`
+    pub fn parameter(&self) -> f64 {
+        unsafe { crate::ffi::TopOpeBRepDS_EdgeVertexInterference_parameter(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_EdgeVertexInterference.hxx`:76 - `TopOpeBRepDS_EdgeVertexInterference::Parameter()`
+    pub fn parameter_real(&mut self, P: f64) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_parameter_real(self as *mut Self, P)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_EdgeVertexInterference.hxx`:78 - `TopOpeBRepDS_EdgeVertexInterference::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_EdgeVertexInterference_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_EdgeVertexInterference.hxx`:78 - `TopOpeBRepDS_EdgeVertexInterference::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepDS_EdgeVertexInterference_get_type_name()).to_string_lossy().into_owned()
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_EdgeVertexInterference.hxx`:78 - `TopOpeBRepDS_EdgeVertexInterference::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_EdgeVertexInterference_get_type_descriptor()) }
+    }
+
+    /// Upcast to TopOpeBRepDS_ShapeShapeInterference
+    pub fn as_shape_shape_interference(&self) -> &ShapeShapeInterference {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_EdgeVertexInterference_as_TopOpeBRepDS_ShapeShapeInterference(self as *const Self))
+        }
+    }
+
+    /// Upcast to TopOpeBRepDS_ShapeShapeInterference (mutable)
+    pub fn as_shape_shape_interference_mut(&mut self) -> &mut ShapeShapeInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_EdgeVertexInterference_as_TopOpeBRepDS_ShapeShapeInterference_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to TopOpeBRepDS_Interference
+    pub fn as_interference(&self) -> &Interference {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_EdgeVertexInterference_as_TopOpeBRepDS_Interference(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to TopOpeBRepDS_Interference (mutable)
+    pub fn as_interference_mut(&mut self) -> &mut Interference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_EdgeVertexInterference_as_TopOpeBRepDS_Interference_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_EdgeVertexInterference_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_EdgeVertexInterference_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_EdgeVertexInterference_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:68 - `TopOpeBRepDS_ShapeShapeInterference::Config()`
+    pub fn config(&self) -> crate::top_ope_b_rep_ds::Config {
+        unsafe {
+            crate::top_ope_b_rep_ds::Config::try_from(
+                crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_Config(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:70 - `TopOpeBRepDS_ShapeShapeInterference::GBound()`
+    pub fn g_bound(&self) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_GBound(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:72 - `TopOpeBRepDS_ShapeShapeInterference::SetGBound()`
+    pub fn set_g_bound(&mut self, b: bool) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_SetGBound(
+                self as *mut Self,
+                b,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:67 - `TopOpeBRepDS_Interference::Transition()`
+    pub fn transition(&self) -> &Transition {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_Transition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:69 - `TopOpeBRepDS_Interference::ChangeTransition()`
+    pub fn change_transition(&mut self) -> &mut Transition {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_ChangeTransition(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:79 - `TopOpeBRepDS_Interference::SupportType()`
+    pub fn support_type(&self) -> crate::top_ope_b_rep_ds::Kind {
+        unsafe {
+            crate::top_ope_b_rep_ds::Kind::try_from(
+                crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_SupportType(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:81 - `TopOpeBRepDS_Interference::Support()`
+    pub fn support(&self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_Support(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:83 - `TopOpeBRepDS_Interference::GeometryType()`
+    pub fn geometry_type(&self) -> crate::top_ope_b_rep_ds::Kind {
+        unsafe {
+            crate::top_ope_b_rep_ds::Kind::try_from(
+                crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_GeometryType(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:85 - `TopOpeBRepDS_Interference::Geometry()`
+    pub fn geometry(&self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_Geometry(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:87 - `TopOpeBRepDS_Interference::SetGeometry()`
+    pub fn set_geometry(&mut self, GI: i32) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_SetGeometry(
+                self as *mut Self,
+                GI,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:98 - `TopOpeBRepDS_Interference::HasSameSupport()`
+    pub fn has_same_support(&self, Other: &crate::ffi::HandleTopOpeBRepDSInterference) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_HasSameSupport(
+                self as *const Self,
+                Other,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:101 - `TopOpeBRepDS_Interference::HasSameGeometry()`
+    pub fn has_same_geometry(&self, Other: &crate::ffi::HandleTopOpeBRepDSInterference) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_HasSameGeometry(
+                self as *const Self,
+                Other,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference;
+
+unsafe impl crate::CppDeletable for HandleTopOpeBRepDSEdgeVertexInterference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference_destructor(ptr);
+    }
+}
+
+impl HandleTopOpeBRepDSEdgeVertexInterference {
+    /// Dereference this Handle to access the underlying TopOpeBRepDS_EdgeVertexInterference
+    pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_EdgeVertexInterference {
+        unsafe { &*(crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_EdgeVertexInterference
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_EdgeVertexInterference {
+        unsafe {
+            &mut *(crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_EdgeVertexInterference> to Handle<TopOpeBRepDS_ShapeShapeInterference>
+    pub fn to_handle_shape_shape_interference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSShapeShapeInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference_to_HandleTopOpeBRepDSShapeShapeInterference(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_EdgeVertexInterference> to Handle<TopOpeBRepDS_Interference>
+    pub fn to_handle_interference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference_to_HandleTopOpeBRepDSInterference(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_EdgeVertexInterference> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_Explorer.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_Explorer.hxx`:32 - `TopOpeBRepDS_Explorer`
+pub use crate::ffi::TopOpeBRepDS_Explorer as Explorer;
+
+unsafe impl crate::CppDeletable for Explorer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_Explorer_destructor(ptr);
+    }
+}
+
+impl Explorer {
+    /// **Source:** `TopOpeBRepDS_Explorer.hxx`:37 - `TopOpeBRepDS_Explorer::TopOpeBRepDS_Explorer()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Explorer_ctor()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Explorer.hxx`:39 - `TopOpeBRepDS_Explorer::TopOpeBRepDS_Explorer()`
+    pub fn new_handletopopebrepdshdatastructure_shapeenum_bool(
+        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+        T: crate::top_abs::ShapeEnum,
+        findkeep: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Explorer_ctor_handletopopebrepdshdatastructure_shapeenum_bool(HDS, T.into(), findkeep))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Explorer.hxx`:39 - `TopOpeBRepDS_Explorer::TopOpeBRepDS_Explorer()`
+    pub fn new_handletopopebrepdshdatastructure_shapeenum(
+        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+        T: crate::top_abs::ShapeEnum,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handletopopebrepdshdatastructure_shapeenum_bool(HDS, T, true)
+    }
+
+    /// **Source:** `TopOpeBRepDS_Explorer.hxx`:43 - `TopOpeBRepDS_Explorer::Init()`
+    pub fn init(
+        &mut self,
+        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+        T: crate::top_abs::ShapeEnum,
+        findkeep: bool,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Explorer_init(self as *mut Self, HDS, T.into(), findkeep)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Explorer.hxx`:47 - `TopOpeBRepDS_Explorer::Type()`
+    pub fn type_(&self) -> crate::top_abs::ShapeEnum {
+        unsafe {
+            crate::top_abs::ShapeEnum::try_from(crate::ffi::TopOpeBRepDS_Explorer_type_(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Explorer.hxx`:49 - `TopOpeBRepDS_Explorer::More()`
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_Explorer_more(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Explorer.hxx`:51 - `TopOpeBRepDS_Explorer::Next()`
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_Explorer_next(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Explorer.hxx`:53 - `TopOpeBRepDS_Explorer::Current()`
+    pub fn current(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_Explorer_current(self as *const Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Explorer.hxx`:55 - `TopOpeBRepDS_Explorer::Index()`
+    pub fn index(&self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_Explorer_index(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Explorer.hxx`:57 - `TopOpeBRepDS_Explorer::Face()`
+    pub fn face(&self) -> &crate::topo_ds::Face {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_Explorer_face(self as *const Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Explorer.hxx`:59 - `TopOpeBRepDS_Explorer::Edge()`
+    pub fn edge(&self) -> &crate::topo_ds::Edge {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_Explorer_edge(self as *const Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Explorer.hxx`:61 - `TopOpeBRepDS_Explorer::Vertex()`
+    pub fn vertex(&self) -> &crate::topo_ds::Vertex {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_Explorer_vertex(self as *const Self)) }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_FIR.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_FIR.hxx`:27 - `TopOpeBRepDS_FIR`
+/// FaceInterferenceReducer
+pub use crate::ffi::TopOpeBRepDS_FIR as FIR;
+
+unsafe impl crate::CppDeletable for FIR {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_FIR_destructor(ptr);
+    }
+}
+
+impl FIR {
+    /// **Source:** `TopOpeBRepDS_FIR.hxx`:32 - `TopOpeBRepDS_FIR::TopOpeBRepDS_FIR()`
+    pub fn new_handletopopebrepdshdatastructure(
+        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_FIR_ctor_handletopopebrepdshdatastructure(HDS),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_FIR.hxx`:34 - `TopOpeBRepDS_FIR::ProcessFaceInterferences()`
+    pub fn process_face_interferences_datamapofshapelistofshapeon1state(
+        &mut self,
+        M: &crate::ffi::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FIR_process_face_interferences_datamapofshapelistofshapeon1state(self as *mut Self, M)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_FIR.hxx`:37 - `TopOpeBRepDS_FIR::ProcessFaceInterferences()`
+    pub fn process_face_interferences_int_datamapofshapelistofshapeon1state(
+        &mut self,
+        I: i32,
+        M: &crate::ffi::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FIR_process_face_interferences_int_datamapofshapelistofshapeon1state(self as *mut Self, I, M)
+        }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_FaceEdgeInterference.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_FaceEdgeInterference.hxx`:33 - `TopOpeBRepDS_FaceEdgeInterference`
+/// ShapeShapeInterference
+pub use crate::ffi::TopOpeBRepDS_FaceEdgeInterference as FaceEdgeInterference;
+
+unsafe impl crate::CppDeletable for FaceEdgeInterference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_FaceEdgeInterference_destructor(ptr);
+    }
+}
+
+impl FaceEdgeInterference {
+    /// **Source:** `TopOpeBRepDS_FaceEdgeInterference.hxx`:38 - `TopOpeBRepDS_FaceEdgeInterference::TopOpeBRepDS_FaceEdgeInterference()`
+    /// Create an interference of EDGE <G> on FACE <S>.
+    pub fn new_transition_int2_bool_config(
+        T: &Transition,
+        S: i32,
+        G: i32,
+        GIsBound: bool,
+        C: crate::top_ope_b_rep_ds::Config,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_FaceEdgeInterference_ctor_transition_int2_bool_config(
+                    T,
+                    S,
+                    G,
+                    GIsBound,
+                    C.into(),
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_FaceEdgeInterference.hxx`:44 - `TopOpeBRepDS_FaceEdgeInterference::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_FaceEdgeInterference_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_FaceEdgeInterference.hxx`:44 - `TopOpeBRepDS_FaceEdgeInterference::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepDS_FaceEdgeInterference_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_FaceEdgeInterference.hxx`:44 - `TopOpeBRepDS_FaceEdgeInterference::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_FaceEdgeInterference_get_type_descriptor()) }
+    }
+
+    /// Upcast to TopOpeBRepDS_ShapeShapeInterference
+    pub fn as_shape_shape_interference(&self) -> &ShapeShapeInterference {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_FaceEdgeInterference_as_TopOpeBRepDS_ShapeShapeInterference(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to TopOpeBRepDS_ShapeShapeInterference (mutable)
+    pub fn as_shape_shape_interference_mut(&mut self) -> &mut ShapeShapeInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_FaceEdgeInterference_as_TopOpeBRepDS_ShapeShapeInterference_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to TopOpeBRepDS_Interference
+    pub fn as_interference(&self) -> &Interference {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_FaceEdgeInterference_as_TopOpeBRepDS_Interference(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to TopOpeBRepDS_Interference (mutable)
+    pub fn as_interference_mut(&mut self) -> &mut Interference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_FaceEdgeInterference_as_TopOpeBRepDS_Interference_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_FaceEdgeInterference_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_FaceEdgeInterference_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_FaceEdgeInterference_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:68 - `TopOpeBRepDS_ShapeShapeInterference::Config()`
+    pub fn config(&self) -> crate::top_ope_b_rep_ds::Config {
+        unsafe {
+            crate::top_ope_b_rep_ds::Config::try_from(
+                crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_Config(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:70 - `TopOpeBRepDS_ShapeShapeInterference::GBound()`
+    pub fn g_bound(&self) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_GBound(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:72 - `TopOpeBRepDS_ShapeShapeInterference::SetGBound()`
+    pub fn set_g_bound(&mut self, b: bool) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_SetGBound(self as *mut Self, b)
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:67 - `TopOpeBRepDS_Interference::Transition()`
+    pub fn transition(&self) -> &Transition {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_Transition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:69 - `TopOpeBRepDS_Interference::ChangeTransition()`
+    pub fn change_transition(&mut self) -> &mut Transition {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_ChangeTransition(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:79 - `TopOpeBRepDS_Interference::SupportType()`
+    pub fn support_type(&self) -> crate::top_ope_b_rep_ds::Kind {
+        unsafe {
+            crate::top_ope_b_rep_ds::Kind::try_from(
+                crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_SupportType(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:81 - `TopOpeBRepDS_Interference::Support()`
+    pub fn support(&self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_Support(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:83 - `TopOpeBRepDS_Interference::GeometryType()`
+    pub fn geometry_type(&self) -> crate::top_ope_b_rep_ds::Kind {
+        unsafe {
+            crate::top_ope_b_rep_ds::Kind::try_from(
+                crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_GeometryType(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:85 - `TopOpeBRepDS_Interference::Geometry()`
+    pub fn geometry(&self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_Geometry(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:87 - `TopOpeBRepDS_Interference::SetGeometry()`
+    pub fn set_geometry(&mut self, GI: i32) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_SetGeometry(
+                self as *mut Self,
+                GI,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:98 - `TopOpeBRepDS_Interference::HasSameSupport()`
+    pub fn has_same_support(&self, Other: &crate::ffi::HandleTopOpeBRepDSInterference) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_HasSameSupport(
+                self as *const Self,
+                Other,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:101 - `TopOpeBRepDS_Interference::HasSameGeometry()`
+    pub fn has_same_geometry(&self, Other: &crate::ffi::HandleTopOpeBRepDSInterference) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_HasSameGeometry(
+                self as *const Self,
+                Other,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference;
+
+unsafe impl crate::CppDeletable for HandleTopOpeBRepDSFaceEdgeInterference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference_destructor(ptr);
+    }
+}
+
+impl HandleTopOpeBRepDSFaceEdgeInterference {
+    /// Dereference this Handle to access the underlying TopOpeBRepDS_FaceEdgeInterference
+    pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_FaceEdgeInterference {
+        unsafe { &*(crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_FaceEdgeInterference
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_FaceEdgeInterference {
+        unsafe {
+            &mut *(crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_FaceEdgeInterference> to Handle<TopOpeBRepDS_ShapeShapeInterference>
+    pub fn to_handle_shape_shape_interference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSShapeShapeInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference_to_HandleTopOpeBRepDSShapeShapeInterference(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_FaceEdgeInterference> to Handle<TopOpeBRepDS_Interference>
+    pub fn to_handle_interference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference_to_HandleTopOpeBRepDSInterference(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_FaceEdgeInterference> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_FaceInterferenceTool.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_FaceInterferenceTool.hxx`:34 - `TopOpeBRepDS_FaceInterferenceTool`
+/// a tool computing complex transition on Face.
+pub use crate::ffi::TopOpeBRepDS_FaceInterferenceTool as FaceInterferenceTool;
+
+unsafe impl crate::CppDeletable for FaceInterferenceTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_FaceInterferenceTool_destructor(ptr);
+    }
+}
+
+impl FaceInterferenceTool {
+    /// **Source:** `TopOpeBRepDS_FaceInterferenceTool.hxx`:43 - `TopOpeBRepDS_FaceInterferenceTool::Init()`
+    /// Eisnew = true if E is a new edge built on edge I->Geometry()
+    /// false if E is shape <=> I->Geometry()
+    pub fn init(
+        &mut self,
+        FI: &crate::topo_ds::Shape,
+        E: &crate::topo_ds::Shape,
+        Eisnew: bool,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceInterferenceTool_init(self as *mut Self, FI, E, Eisnew, I)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_FaceInterferenceTool.hxx`:50 - `TopOpeBRepDS_FaceInterferenceTool::Add()`
+    /// Eisnew = true if E is a new edge built on edge I->Geometry()
+    /// false if E is shape <=> I->Geometry()
+    pub fn add_shape3_bool_handletopopebrepdsinterference(
+        &mut self,
+        FI: &crate::topo_ds::Shape,
+        F: &crate::topo_ds::Shape,
+        E: &crate::topo_ds::Shape,
+        Eisnew: bool,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceInterferenceTool_add_shape3_bool_handletopopebrepdsinterference(self as *mut Self, FI, F, E, Eisnew, I)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_FaceInterferenceTool.hxx`:56 - `TopOpeBRepDS_FaceInterferenceTool::Add()`
+    pub fn add_shape_curve_handletopopebrepdsinterference(
+        &mut self,
+        E: &crate::topo_ds::Shape,
+        C: &Curve,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceInterferenceTool_add_shape_curve_handletopopebrepdsinterference(self as *mut Self, E, C, I)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_FaceInterferenceTool.hxx`:60 - `TopOpeBRepDS_FaceInterferenceTool::SetEdgePntPar()`
+    pub fn set_edge_pnt_par(&mut self, P: &crate::gp::Pnt, par: f64) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceInterferenceTool_set_edge_pnt_par(
+                self as *mut Self,
+                P,
+                par,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_FaceInterferenceTool.hxx`:62 - `TopOpeBRepDS_FaceInterferenceTool::GetEdgePntPar()`
+    pub fn get_edge_pnt_par(&self, P: &mut crate::gp::Pnt, par: &mut f64) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceInterferenceTool_get_edge_pnt_par(
+                self as *const Self,
+                P,
+                par,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_FaceInterferenceTool.hxx`:64 - `TopOpeBRepDS_FaceInterferenceTool::IsEdgePntParDef()`
+    pub fn is_edge_pnt_par_def(&self) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_FaceInterferenceTool_is_edge_pnt_par_def(self as *const Self)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_FaceInterferenceTool.hxx`:66 - `TopOpeBRepDS_FaceInterferenceTool::Transition()`
+    pub fn transition(&self, I: &crate::ffi::HandleTopOpeBRepDSInterference) {
+        unsafe { crate::ffi::TopOpeBRepDS_FaceInterferenceTool_transition(self as *const Self, I) }
+    }
+}
+
+// ── Skipped symbols for FaceInterferenceTool (1 total) ──
+// SKIPPED: **Source:** `TopOpeBRepDS_FaceInterferenceTool.hxx`:39 - `TopOpeBRepDS_FaceInterferenceTool::TopOpeBRepDS_FaceInterferenceTool`
+//   Reason: param 'P' uses unknown type 'const TopOpeBRepDS_PDataStructure&'
+//   // pub fn new_pdatastructure(P: &PDataStructure) -> OwnedPtr<Self>;
+//
+
+// ========================
+// From TopOpeBRepDS_Filter.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_Filter.hxx`:29 - `TopOpeBRepDS_Filter`
+pub use crate::ffi::TopOpeBRepDS_Filter as Filter;
+
+unsafe impl crate::CppDeletable for Filter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_Filter_destructor(ptr);
+    }
+}
+
+impl Filter {
+    /// **Source:** `TopOpeBRepDS_Filter.hxx`:34 - `TopOpeBRepDS_Filter::TopOpeBRepDS_Filter()`
+    pub fn new_handletopopebrepdshdatastructure(
+        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_Filter_ctor_handletopopebrepdshdatastructure(HDS),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Filter.hxx`:37 - `TopOpeBRepDS_Filter::ProcessInterferences()`
+    pub fn process_interferences(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_Filter_process_interferences(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Filter.hxx`:39 - `TopOpeBRepDS_Filter::ProcessFaceInterferences()`
+    pub fn process_face_interferences_datamapofshapelistofshapeon1state(
+        &mut self,
+        MEsp: &crate::ffi::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Filter_process_face_interferences_datamapofshapelistofshapeon1state(self as *mut Self, MEsp)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Filter.hxx`:42 - `TopOpeBRepDS_Filter::ProcessFaceInterferences()`
+    pub fn process_face_interferences_int_datamapofshapelistofshapeon1state(
+        &mut self,
+        I: i32,
+        MEsp: &crate::ffi::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Filter_process_face_interferences_int_datamapofshapelistofshapeon1state(self as *mut Self, I, MEsp)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Filter.hxx`:46 - `TopOpeBRepDS_Filter::ProcessEdgeInterferences()`
+    pub fn process_edge_interferences(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_Filter_process_edge_interferences(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Filter.hxx`:48 - `TopOpeBRepDS_Filter::ProcessEdgeInterferences()`
+    pub fn process_edge_interferences_int(&mut self, I: i32) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Filter_process_edge_interferences_int(self as *mut Self, I)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Filter.hxx`:50 - `TopOpeBRepDS_Filter::ProcessCurveInterferences()`
+    pub fn process_curve_interferences(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_Filter_process_curve_interferences(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Filter.hxx`:52 - `TopOpeBRepDS_Filter::ProcessCurveInterferences()`
+    pub fn process_curve_interferences_int(&mut self, I: i32) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Filter_process_curve_interferences_int(self as *mut Self, I)
+        }
+    }
+}
+
+// ── Skipped symbols for Filter (1 total) ──
+// SKIPPED: **Source:** `TopOpeBRepDS_Filter.hxx`:34 - `TopOpeBRepDS_Filter::TopOpeBRepDS_Filter`
+//   Reason: param 'pClassif' uses unknown type 'const TopOpeBRepTool_PShapeClassifier&'
+//   // pub fn new_handletopopebrepdshdatastructure_pshapeclassifier(HDS: &HandleHDataStructure, pClassif: &PShapeClassifier) -> OwnedPtr<Self>;
+//
+
+// ========================
+// From TopOpeBRepDS_GapFiller.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_GapFiller.hxx`:34 - `TopOpeBRepDS_GapFiller`
+pub use crate::ffi::TopOpeBRepDS_GapFiller as GapFiller;
+
+unsafe impl crate::CppDeletable for GapFiller {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_GapFiller_destructor(ptr);
+    }
+}
+
+impl GapFiller {
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:39 - `TopOpeBRepDS_GapFiller::TopOpeBRepDS_GapFiller()`
+    pub fn new_handletopopebrepdshdatastructure(
+        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_GapFiller_ctor_handletopopebrepdshdatastructure(HDS),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:41 - `TopOpeBRepDS_GapFiller::Perform()`
+    pub fn perform(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_GapFiller_perform(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:45 - `TopOpeBRepDS_GapFiller::FindAssociatedPoints()`
+    /// Recherche parmi  l'ensemble  des points  d'Interference
+    /// la Liste <LI> des points qui correspondent au point d'indice <Index>
+    pub fn find_associated_points(
+        &mut self,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+        LI: &mut crate::ffi::TopOpeBRepDS_ListOfInterference,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_GapFiller_find_associated_points(self as *mut Self, I, LI)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:52 - `TopOpeBRepDS_GapFiller::CheckConnexity()`
+    /// Enchaine les sections   via  les points d'Interferences  deja
+    /// associe; Renvoit  dans   <L> les points extremites des Lignes.
+    /// Methodes pour  construire la liste des Points qui
+    /// peuvent correspondre a une Point donne.
+    pub fn check_connexity(
+        &mut self,
+        LI: &mut crate::ffi::TopOpeBRepDS_ListOfInterference,
+    ) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_GapFiller_check_connexity(self as *mut Self, LI) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:54 - `TopOpeBRepDS_GapFiller::AddPointsOnShape()`
+    pub fn add_points_on_shape(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+        LI: &mut crate::ffi::TopOpeBRepDS_ListOfInterference,
+    ) {
+        unsafe { crate::ffi::TopOpeBRepDS_GapFiller_add_points_on_shape(self as *mut Self, S, LI) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:58 - `TopOpeBRepDS_GapFiller::AddPointsOnConnexShape()`
+    /// Methodes pour  reduire la liste des Points qui
+    /// peuvent correspondre a une Point donne.
+    pub fn add_points_on_connex_shape(
+        &mut self,
+        F: &crate::topo_ds::Shape,
+        LI: &crate::ffi::TopOpeBRepDS_ListOfInterference,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_GapFiller_add_points_on_connex_shape(self as *mut Self, F, LI)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:61 - `TopOpeBRepDS_GapFiller::FilterByFace()`
+    pub fn filter_by_face(
+        &mut self,
+        F: &crate::topo_ds::Face,
+        LI: &mut crate::ffi::TopOpeBRepDS_ListOfInterference,
+    ) {
+        unsafe { crate::ffi::TopOpeBRepDS_GapFiller_filter_by_face(self as *mut Self, F, LI) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:63 - `TopOpeBRepDS_GapFiller::FilterByEdge()`
+    pub fn filter_by_edge(
+        &mut self,
+        E: &crate::topo_ds::Edge,
+        LI: &mut crate::ffi::TopOpeBRepDS_ListOfInterference,
+    ) {
+        unsafe { crate::ffi::TopOpeBRepDS_GapFiller_filter_by_edge(self as *mut Self, E, LI) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:65 - `TopOpeBRepDS_GapFiller::FilterByIncidentDistance()`
+    pub fn filter_by_incident_distance(
+        &mut self,
+        F: &crate::topo_ds::Face,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+        LI: &mut crate::ffi::TopOpeBRepDS_ListOfInterference,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_GapFiller_filter_by_incident_distance(
+                self as *mut Self,
+                F,
+                I,
+                LI,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:71 - `TopOpeBRepDS_GapFiller::IsOnFace()`
+    /// Return TRUE si I a ete obtenu par une intersection
+    /// avec <F>.
+    pub fn is_on_face(
+        &self,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+        F: &crate::topo_ds::Face,
+    ) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_GapFiller_is_on_face(self as *const Self, I, F) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:78 - `TopOpeBRepDS_GapFiller::IsOnEdge()`
+    /// Return TRUE  si I ou une  de  ses representaions a
+    /// pour support <E>.
+    /// Methodes de  reconstructions des  geometries des point
+    /// et des courbes de section
+    pub fn is_on_edge(
+        &self,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+        E: &crate::topo_ds::Edge,
+    ) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_GapFiller_is_on_edge(self as *const Self, I, E) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:81 - `TopOpeBRepDS_GapFiller::BuildNewGeometries()`
+    pub fn build_new_geometries(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_GapFiller_build_new_geometries(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:83 - `TopOpeBRepDS_GapFiller::ReBuildGeom()`
+    pub fn re_build_geom(
+        &mut self,
+        I1: &crate::ffi::HandleTopOpeBRepDSInterference,
+        Done: &mut crate::ffi::TColStd_MapOfInteger,
+    ) {
+        unsafe { crate::ffi::TopOpeBRepDS_GapFiller_re_build_geom(self as *mut Self, I1, Done) }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_GapTool.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_GapTool.hxx`:36 - `TopOpeBRepDS_GapTool`
+pub use crate::ffi::TopOpeBRepDS_GapTool as GapTool;
+
+unsafe impl crate::CppDeletable for GapTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_GapTool_destructor(ptr);
+    }
+}
+
+impl GapTool {
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:40 - `TopOpeBRepDS_GapTool::TopOpeBRepDS_GapTool()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_GapTool_ctor()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:42 - `TopOpeBRepDS_GapTool::TopOpeBRepDS_GapTool()`
+    pub fn new_handletopopebrepdshdatastructure(
+        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_GapTool_ctor_handletopopebrepdshdatastructure(HDS),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:44 - `TopOpeBRepDS_GapTool::Init()`
+    pub fn init(&mut self, HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
+        unsafe { crate::ffi::TopOpeBRepDS_GapTool_init(self as *mut Self, HDS) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:46 - `TopOpeBRepDS_GapTool::Interferences()`
+    pub fn interferences(&self, IndexPoint: i32) -> &crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_GapTool_interferences(self as *const Self, IndexPoint))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:49 - `TopOpeBRepDS_GapTool::SameInterferences()`
+    pub fn same_interferences(
+        &self,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+    ) -> &crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_GapTool_same_interferences(self as *const Self, I)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:55 - `TopOpeBRepDS_GapTool::Curve()`
+    pub fn curve(&self, I: &crate::ffi::HandleTopOpeBRepDSInterference, C: &mut Curve) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_GapTool_curve(self as *const Self, I, C) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:58 - `TopOpeBRepDS_GapTool::EdgeSupport()`
+    pub fn edge_support(
+        &self,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+        E: &mut crate::topo_ds::Shape,
+    ) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_GapTool_edge_support(self as *const Self, I, E) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:63 - `TopOpeBRepDS_GapTool::FacesSupport()`
+    /// Return les faces qui  ont genere la section origine
+    /// de I
+    pub fn faces_support(
+        &self,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+        F1: &mut crate::topo_ds::Shape,
+        F2: &mut crate::topo_ds::Shape,
+    ) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_GapTool_faces_support(self as *const Self, I, F1, F2) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:67 - `TopOpeBRepDS_GapTool::ParameterOnEdge()`
+    pub fn parameter_on_edge(
+        &self,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+        E: &crate::topo_ds::Shape,
+        U: &mut f64,
+    ) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_GapTool_parameter_on_edge(self as *const Self, I, E, U) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:71 - `TopOpeBRepDS_GapTool::SetPoint()`
+    pub fn set_point(&mut self, I: &crate::ffi::HandleTopOpeBRepDSInterference, IndexPoint: i32) {
+        unsafe { crate::ffi::TopOpeBRepDS_GapTool_set_point(self as *mut Self, I, IndexPoint) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:74 - `TopOpeBRepDS_GapTool::SetParameterOnEdge()`
+    pub fn set_parameter_on_edge(
+        &mut self,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+        E: &crate::topo_ds::Shape,
+        U: f64,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_GapTool_set_parameter_on_edge(self as *mut Self, I, E, U)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:78 - `TopOpeBRepDS_GapTool::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_GapTool_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:78 - `TopOpeBRepDS_GapTool::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepDS_GapTool_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:78 - `TopOpeBRepDS_GapTool::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_GapTool_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_GapTool_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_GapTool_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSGapTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_GapTool_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_GapTool_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_GapTool_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_GapTool_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_GapTool_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_GapTool_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopOpeBRepDS_GapTool_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleTopOpeBRepDSGapTool;
+
+unsafe impl crate::CppDeletable for HandleTopOpeBRepDSGapTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopOpeBRepDSGapTool_destructor(ptr);
+    }
+}
+
+impl HandleTopOpeBRepDSGapTool {
+    /// Dereference this Handle to access the underlying TopOpeBRepDS_GapTool
+    pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_GapTool {
+        unsafe { &*(crate::ffi::HandleTopOpeBRepDSGapTool_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_GapTool
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_GapTool {
+        unsafe { &mut *(crate::ffi::HandleTopOpeBRepDSGapTool_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_GapTool> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopOpeBRepDSGapTool_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for GapTool (1 total) ──
+// SKIPPED: **Source:** `TopOpeBRepDS_GapTool.hxx`:52 - `TopOpeBRepDS_GapTool::ChangeSameInterferences`
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn change_same_interferences(&mut self, I: &HandleInterference) -> &mut ListOfInterference;
+//
+
+// ========================
 // From TopOpeBRepDS_GeometryData.hxx
 // ========================
 
@@ -1570,6 +4447,848 @@ impl GeometryData {
         }
     }
 }
+
+// ========================
+// From TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference.hxx`:23 - `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference`
+pub use crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference as HArray1OfDataMapOfIntegerListOfInterference;
+
+unsafe impl crate::CppDeletable for HArray1OfDataMapOfIntegerListOfInterference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_destructor(ptr);
+    }
+}
+
+impl HArray1OfDataMapOfIntegerListOfInterference {
+    /// **Source:** `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference.hxx`:23 - `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_ctor(),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference.hxx`:23 - `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_ctor_int2(
+                    theLower, theUpper,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference.hxx`:23 - `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference.hxx`:23 - `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_ctor_type_int2_bool(theBegin, theLower, theUpper, arg3))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference.hxx`:23 - `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference()`
+    pub fn new_array1ofdatamapofintegerlistofinterference(
+        theOther: &crate::ffi::TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_ctor_array1ofdatamapofintegerlistofinterference(theOther))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference.hxx`:23 - `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_array1(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference.hxx`:23 - `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference::ChangeArray1()`
+    pub fn change_array1(
+        &mut self,
+    ) -> &mut crate::ffi::TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_change_array1(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference.hxx`:23 - `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference.hxx`:23 - `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_get_type_name(
+                ),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference.hxx`:23 - `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_get_type_descriptor())
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference;
+
+unsafe impl crate::CppDeletable for HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_destructor(ptr);
+    }
+}
+
+impl HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference {
+    /// Dereference this Handle to access the underlying TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference
+    pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference {
+        unsafe {
+            &*(crate::ffi::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference {
+        unsafe {
+            &mut *(crate::ffi::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_to_HandleStandardTransient(self as *const Self))
+        }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_HDataStructure.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:43 - `TopOpeBRepDS_HDataStructure`
+pub use crate::ffi::TopOpeBRepDS_HDataStructure as HDataStructure;
+
+unsafe impl crate::CppDeletable for HDataStructure {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_HDataStructure_destructor(ptr);
+    }
+}
+
+impl HDataStructure {
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:47 - `TopOpeBRepDS_HDataStructure::TopOpeBRepDS_HDataStructure()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_HDataStructure_ctor()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:49 - `TopOpeBRepDS_HDataStructure::AddAncestors()`
+    pub fn add_ancestors_shape(&mut self, S: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_add_ancestors_shape(self as *mut Self, S) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:55 - `TopOpeBRepDS_HDataStructure::AddAncestors()`
+    /// Update  the data structure with  shapes of type T1
+    /// containing a subshape of type T2 which is stored
+    /// in the DS.
+    /// Used by the previous one.
+    pub fn add_ancestors_shape_shapeenum2(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+        T1: crate::top_abs::ShapeEnum,
+        T2: crate::top_abs::ShapeEnum,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_add_ancestors_shape_shapeenum2(
+                self as *mut Self,
+                S,
+                T1.into(),
+                T2.into(),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:60 - `TopOpeBRepDS_HDataStructure::ChkIntg()`
+    /// Check the integrity of the DS
+    pub fn chk_intg(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_chk_intg(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:62 - `TopOpeBRepDS_HDataStructure::DS()`
+    pub fn ds(&self) -> &DataStructure {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_HDataStructure_ds(self as *const Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:64 - `TopOpeBRepDS_HDataStructure::ChangeDS()`
+    pub fn change_ds(&mut self) -> &mut DataStructure {
+        unsafe { &mut *(crate::ffi::TopOpeBRepDS_HDataStructure_change_ds(self as *mut Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:66 - `TopOpeBRepDS_HDataStructure::NbSurfaces()`
+    pub fn nb_surfaces(&self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_nb_surfaces(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:68 - `TopOpeBRepDS_HDataStructure::NbCurves()`
+    pub fn nb_curves(&self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_nb_curves(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:70 - `TopOpeBRepDS_HDataStructure::NbPoints()`
+    pub fn nb_points(&self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_nb_points(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:73 - `TopOpeBRepDS_HDataStructure::Surface()`
+    /// Returns the surface of index <I>.
+    pub fn surface(&self, I: i32) -> &Surface {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_HDataStructure_surface(self as *const Self, I)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:77 - `TopOpeBRepDS_HDataStructure::SurfaceCurves()`
+    /// Returns an iterator  on the curves on  the surface
+    /// <I>.
+    pub fn surface_curves(&self, I: i32) -> crate::OwnedPtr<CurveIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_HDataStructure_surface_curves(
+                self as *const Self,
+                I,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:80 - `TopOpeBRepDS_HDataStructure::Curve()`
+    /// Returns the Curve of index <I>.
+    pub fn curve(&self, I: i32) -> &Curve {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_HDataStructure_curve(self as *const Self, I)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:83 - `TopOpeBRepDS_HDataStructure::ChangeCurve()`
+    /// Returns the Curve of index <I>.
+    pub fn change_curve(&mut self, I: i32) -> &mut Curve {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_HDataStructure_change_curve(self as *mut Self, I))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:87 - `TopOpeBRepDS_HDataStructure::CurvePoints()`
+    /// Returns an iterator   on the points on  the  curve
+    /// <I>.
+    pub fn curve_points(&self, I: i32) -> crate::OwnedPtr<PointIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_HDataStructure_curve_points(
+                self as *const Self,
+                I,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:90 - `TopOpeBRepDS_HDataStructure::Point()`
+    /// Returns the point of index <I>.
+    pub fn point(&self, I: i32) -> &Point {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_HDataStructure_point(self as *const Self, I)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:92 - `TopOpeBRepDS_HDataStructure::NbShapes()`
+    pub fn nb_shapes(&self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_nb_shapes(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:95 - `TopOpeBRepDS_HDataStructure::Shape()`
+    /// Returns the shape of index <I> in the DS
+    pub fn shape_int_bool(&self, I: i32, FindKeep: bool) -> &crate::topo_ds::Shape {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_HDataStructure_shape_int_bool(
+                self as *const Self,
+                I,
+                FindKeep,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:100 - `TopOpeBRepDS_HDataStructure::Shape()`
+    /// Returns the index of shape <S> in the DS
+    /// returns 0 if <S> is not in the DS
+    pub fn shape_shape_bool(&self, S: &crate::topo_ds::Shape, FindKeep: bool) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_shape_shape_bool(
+                self as *const Self,
+                S,
+                FindKeep,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:104 - `TopOpeBRepDS_HDataStructure::HasGeometry()`
+    /// Returns True if <S> has new geometries.
+    pub fn has_geometry(&self, S: &crate::topo_ds::Shape) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_has_geometry(self as *const Self, S) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:109 - `TopOpeBRepDS_HDataStructure::HasShape()`
+    /// Returns True if <S> has new geometries (SOLID,FACE,EDGE)
+    /// or if <S> (SHELL,WIRE) has sub-shape (FACE,EDGE)
+    /// with new geometries
+    pub fn has_shape(&self, S: &crate::topo_ds::Shape, FindKeep: bool) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_has_shape(self as *const Self, S, FindKeep)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:115 - `TopOpeBRepDS_HDataStructure::HasSameDomain()`
+    /// Returns True if <S> share a geometrical domain with
+    /// some other shapes.
+    pub fn has_same_domain(&self, S: &crate::topo_ds::Shape, FindKeep: bool) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_has_same_domain(
+                self as *const Self,
+                S,
+                FindKeep,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:123 - `TopOpeBRepDS_HDataStructure::SameDomainOrientation()`
+    /// Returns orientation of shape <S> compared with its
+    /// reference shape
+    pub fn same_domain_orientation(
+        &self,
+        S: &crate::topo_ds::Shape,
+    ) -> crate::top_ope_b_rep_ds::Config {
+        unsafe {
+            crate::top_ope_b_rep_ds::Config::try_from(
+                crate::ffi::TopOpeBRepDS_HDataStructure_same_domain_orientation(
+                    self as *const Self,
+                    S,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:127 - `TopOpeBRepDS_HDataStructure::SameDomainReference()`
+    /// Returns orientation of shape <S> compared with its
+    /// reference shape
+    pub fn same_domain_reference(&self, S: &crate::topo_ds::Shape) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_same_domain_reference(self as *const Self, S)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:131 - `TopOpeBRepDS_HDataStructure::SolidSurfaces()`
+    /// Returns an iterator on the  surfaces attached to the
+    /// solid <S>.
+    pub fn solid_surfaces_shape(
+        &self,
+        S: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<SurfaceIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_HDataStructure_solid_surfaces_shape(
+                self as *const Self,
+                S,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:135 - `TopOpeBRepDS_HDataStructure::SolidSurfaces()`
+    /// Returns an iterator on the  surfaces attached to the
+    /// solid <I>.
+    pub fn solid_surfaces_int(&self, I: i32) -> crate::OwnedPtr<SurfaceIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_HDataStructure_solid_surfaces_int(
+                self as *const Self,
+                I,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:139 - `TopOpeBRepDS_HDataStructure::FaceCurves()`
+    /// Returns an iterator on the  curves attached to the
+    /// face <F>.
+    pub fn face_curves_shape(&self, F: &crate::topo_ds::Shape) -> crate::OwnedPtr<CurveIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_HDataStructure_face_curves_shape(
+                self as *const Self,
+                F,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:143 - `TopOpeBRepDS_HDataStructure::FaceCurves()`
+    /// Returns an iterator on the  curves attached to the
+    /// face <I>.
+    pub fn face_curves_int(&self, I: i32) -> crate::OwnedPtr<CurveIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_HDataStructure_face_curves_int(
+                self as *const Self,
+                I,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:147 - `TopOpeBRepDS_HDataStructure::EdgePoints()`
+    /// Returns an iterator on the points  attached to the
+    /// edge <E>.
+    pub fn edge_points(&self, E: &crate::topo_ds::Shape) -> crate::OwnedPtr<PointIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_HDataStructure_edge_points(
+                self as *const Self,
+                E,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:149 - `TopOpeBRepDS_HDataStructure::MakeCurve()`
+    pub fn make_curve(&mut self, C1: &Curve, C2: &mut Curve) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_make_curve(self as *mut Self, C1, C2) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:151 - `TopOpeBRepDS_HDataStructure::RemoveCurve()`
+    pub fn remove_curve(&mut self, iC: i32) {
+        unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_remove_curve(self as *mut Self, iC) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:153 - `TopOpeBRepDS_HDataStructure::NbGeometry()`
+    pub fn nb_geometry(&self, K: crate::top_ope_b_rep_ds::Kind) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_nb_geometry(self as *const Self, K.into())
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:155 - `TopOpeBRepDS_HDataStructure::NbTopology()`
+    pub fn nb_topology_kind(&self, K: crate::top_ope_b_rep_ds::Kind) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_nb_topology_kind(self as *const Self, K.into())
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:157 - `TopOpeBRepDS_HDataStructure::NbTopology()`
+    pub fn nb_topology(&self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_nb_topology(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:161 - `TopOpeBRepDS_HDataStructure::EdgesSameParameter()`
+    /// returns True if all the edges stored as shapes in the DS
+    /// are SameParameter, otherwise False.
+    pub fn edges_same_parameter(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_edges_same_parameter(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:163 - `TopOpeBRepDS_HDataStructure::SortOnParameter()`
+    pub fn sort_on_parameter_listofinterference2(
+        &self,
+        L1: &crate::ffi::TopOpeBRepDS_ListOfInterference,
+        L2: &mut crate::ffi::TopOpeBRepDS_ListOfInterference,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_sort_on_parameter_listofinterference2(
+                self as *const Self,
+                L1,
+                L2,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:166 - `TopOpeBRepDS_HDataStructure::SortOnParameter()`
+    pub fn sort_on_parameter_listofinterference(
+        &self,
+        L: &mut crate::ffi::TopOpeBRepDS_ListOfInterference,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_sort_on_parameter_listofinterference(
+                self as *const Self,
+                L,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:168 - `TopOpeBRepDS_HDataStructure::MinMaxOnParameter()`
+    pub fn min_max_on_parameter(
+        &self,
+        L: &crate::ffi::TopOpeBRepDS_ListOfInterference,
+        Min: &mut f64,
+        Max: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_min_max_on_parameter(
+                self as *const Self,
+                L,
+                Min,
+                Max,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:178 - `TopOpeBRepDS_HDataStructure::ScanInterfList()`
+    /// Search, among a list of interferences accessed by the iterator
+    /// <IT>, a geometry <G> whose 3D point is identical to the 3D point
+    /// of the TheDSPoint <PDS>.
+    /// returns True if such an interference has been found, False else.
+    /// if True, iterator It points (by the Value() method) on the first
+    /// interference accessing an identical 3D point.
+    pub fn scan_interf_list(
+        &self,
+        IT: &mut crate::ffi::TopOpeBRepDS_ListIteratorOfListOfInterference,
+        PDS: &Point,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_scan_interf_list(self as *const Self, IT, PDS)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:185 - `TopOpeBRepDS_HDataStructure::GetGeometry()`
+    /// Get the geometry of a DS point <PDS>.
+    /// Search for it with ScanInterfList (previous method).
+    /// if found, set <G,K> to the geometry,kind of the interference found.
+    /// returns the value of ScanInterfList().
+    pub fn get_geometry(
+        &self,
+        IT: &mut crate::ffi::TopOpeBRepDS_ListIteratorOfListOfInterference,
+        PDS: &Point,
+        G: &mut i32,
+        K: &mut crate::top_ope_b_rep_ds::Kind,
+    ) -> bool {
+        let mut K_i32_: i32 = (*K).into();
+        let result_ = unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_get_geometry(
+                self as *const Self,
+                IT,
+                PDS,
+                G,
+                &mut K_i32_,
+            )
+        };
+        *K = crate::top_ope_b_rep_ds::Kind::try_from(K_i32_).unwrap();
+        result_
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:191 - `TopOpeBRepDS_HDataStructure::StoreInterference()`
+    /// Add interference <I> to list <LI>.
+    pub fn store_interference_handletopopebrepdsinterference_listofinterference_asciistring(
+        &mut self,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+        LI: &mut crate::ffi::TopOpeBRepDS_ListOfInterference,
+        str: &crate::t_collection::AsciiString,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_store_interference_handletopopebrepdsinterference_listofinterference_asciistring(self as *mut Self, I, LI, str)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:196 - `TopOpeBRepDS_HDataStructure::StoreInterference()`
+    /// Add interference <I> to list of interference of shape <S>.
+    pub fn store_interference_handletopopebrepdsinterference_shape_asciistring(
+        &mut self,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+        S: &crate::topo_ds::Shape,
+        str: &crate::t_collection::AsciiString,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_store_interference_handletopopebrepdsinterference_shape_asciistring(self as *mut Self, I, S, str)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:201 - `TopOpeBRepDS_HDataStructure::StoreInterference()`
+    /// Add interference <I> to list of interference of shape <IS>.
+    pub fn store_interference_handletopopebrepdsinterference_int_asciistring(
+        &mut self,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+        IS: i32,
+        str: &crate::t_collection::AsciiString,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_store_interference_handletopopebrepdsinterference_int_asciistring(self as *mut Self, I, IS, str)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:205 - `TopOpeBRepDS_HDataStructure::StoreInterferences()`
+    pub fn store_interferences_listofinterference_shape_asciistring(
+        &mut self,
+        LI: &crate::ffi::TopOpeBRepDS_ListOfInterference,
+        S: &crate::topo_ds::Shape,
+        str: &crate::t_collection::AsciiString,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_store_interferences_listofinterference_shape_asciistring(self as *mut Self, LI, S, str)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:209 - `TopOpeBRepDS_HDataStructure::StoreInterferences()`
+    pub fn store_interferences_listofinterference_int_asciistring(
+        &mut self,
+        LI: &crate::ffi::TopOpeBRepDS_ListOfInterference,
+        IS: i32,
+        str: &crate::t_collection::AsciiString,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_store_interferences_listofinterference_int_asciistring(self as *mut Self, LI, IS, str)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:213 - `TopOpeBRepDS_HDataStructure::ClearStoreInterferences()`
+    pub fn clear_store_interferences_listofinterference_shape_asciistring(
+        &mut self,
+        LI: &crate::ffi::TopOpeBRepDS_ListOfInterference,
+        S: &crate::topo_ds::Shape,
+        str: &crate::t_collection::AsciiString,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_clear_store_interferences_listofinterference_shape_asciistring(self as *mut Self, LI, S, str)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:217 - `TopOpeBRepDS_HDataStructure::ClearStoreInterferences()`
+    pub fn clear_store_interferences_listofinterference_int_asciistring(
+        &mut self,
+        LI: &crate::ffi::TopOpeBRepDS_ListOfInterference,
+        IS: i32,
+        str: &crate::t_collection::AsciiString,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_clear_store_interferences_listofinterference_int_asciistring(self as *mut Self, LI, IS, str)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:221 - `TopOpeBRepDS_HDataStructure::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_HDataStructure_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:221 - `TopOpeBRepDS_HDataStructure::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepDS_HDataStructure_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:221 - `TopOpeBRepDS_HDataStructure::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_HDataStructure_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_HDataStructure_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_HDataStructure_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSHDataStructure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_HDataStructure_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleTopOpeBRepDSHDataStructure;
+
+unsafe impl crate::CppDeletable for HandleTopOpeBRepDSHDataStructure {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopOpeBRepDSHDataStructure_destructor(ptr);
+    }
+}
+
+impl HandleTopOpeBRepDSHDataStructure {
+    /// Dereference this Handle to access the underlying TopOpeBRepDS_HDataStructure
+    pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_HDataStructure {
+        unsafe { &*(crate::ffi::HandleTopOpeBRepDSHDataStructure_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_HDataStructure
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_HDataStructure {
+        unsafe { &mut *(crate::ffi::HandleTopOpeBRepDSHDataStructure_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_HDataStructure> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopOpeBRepDSHDataStructure_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for HDataStructure (1 total) ──
+// SKIPPED: **Source:** `TopOpeBRepDS_HDataStructure.hxx`:119 - `TopOpeBRepDS_HDataStructure::SameDomain`
+//   method: Returns an iterator on the SameDomain shapes attached
+//   method: to the shape <S>.
+//   Reason: return type 'TopTools_ListIteratorOfListOfShape' is not CppDeletable
+//   // pub fn same_domain(&self, S: &Shape) -> OwnedPtr<TopTools_ListIteratorOfListOfShape>;
+//
 
 // ========================
 // From TopOpeBRepDS_Interference.hxx
@@ -1888,6 +5607,70 @@ impl HandleTopOpeBRepDSInterference {
         }
     }
 
+    /// Downcast Handle<TopOpeBRepDS_Interference> to Handle<TopOpeBRepDS_EdgeVertexInterference>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepDS_EdgeVertexInterference` (or subclass).
+    pub fn downcast_to_edge_vertex_interference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopOpeBRepDSInterference_downcast_to_HandleTopOpeBRepDSEdgeVertexInterference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopOpeBRepDS_Interference> to Handle<TopOpeBRepDS_FaceEdgeInterference>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepDS_FaceEdgeInterference` (or subclass).
+    pub fn downcast_to_face_edge_interference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopOpeBRepDSInterference_downcast_to_HandleTopOpeBRepDSFaceEdgeInterference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopOpeBRepDS_Interference> to Handle<TopOpeBRepDS_ShapeShapeInterference>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepDS_ShapeShapeInterference` (or subclass).
+    pub fn downcast_to_shape_shape_interference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSShapeShapeInterference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopOpeBRepDSInterference_downcast_to_HandleTopOpeBRepDSShapeShapeInterference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopOpeBRepDS_Interference> to Handle<TopOpeBRepDS_SolidSurfaceInterference>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepDS_SolidSurfaceInterference` (or subclass).
+    pub fn downcast_to_solid_surface_interference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopOpeBRepDSInterference_downcast_to_HandleTopOpeBRepDSSolidSurfaceInterference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<TopOpeBRepDS_Interference> to Handle<TopOpeBRepDS_SurfaceCurveInterference>
     ///
     /// Returns `None` if the handle does not point to a `TopOpeBRepDS_SurfaceCurveInterference` (or subclass).
@@ -1904,6 +5687,512 @@ impl HandleTopOpeBRepDSInterference {
         }
     }
 }
+
+// ========================
+// From TopOpeBRepDS_InterferenceIterator.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:40 - `TopOpeBRepDS_InterferenceIterator`
+/// Iterate  on  interferences  of  a  list,  matching
+/// conditions  on   interferences.
+/// Nota   :
+/// inheritance  of   ListIteratorOfListOfInterference  from
+/// TopOpeBRepDS  has  not   been  done   because  of  the
+/// impossibility of naming  the classical  More, Next
+/// methods  which are declared as static in
+/// TCollection_ListIteratorOfList ... . ListIteratorOfList
+/// has benn placed as a field of InterferenceIterator.
+pub use crate::ffi::TopOpeBRepDS_InterferenceIterator as InterferenceIterator;
+
+unsafe impl crate::CppDeletable for InterferenceIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_InterferenceIterator_destructor(ptr);
+    }
+}
+
+impl InterferenceIterator {
+    /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:45 - `TopOpeBRepDS_InterferenceIterator::TopOpeBRepDS_InterferenceIterator()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_InterferenceIterator_ctor()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:48 - `TopOpeBRepDS_InterferenceIterator::TopOpeBRepDS_InterferenceIterator()`
+    /// Creates an iterator on the Interference of list <L>.
+    pub fn new_listofinterference(
+        L: &crate::ffi::TopOpeBRepDS_ListOfInterference,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_InterferenceIterator_ctor_listofinterference(L),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:53 - `TopOpeBRepDS_InterferenceIterator::Init()`
+    /// re-initialize  interference iteration  process  on
+    /// the list of interference <L>.
+    /// Conditions are not modified.
+    pub fn init(&mut self, L: &crate::ffi::TopOpeBRepDS_ListOfInterference) {
+        unsafe { crate::ffi::TopOpeBRepDS_InterferenceIterator_init(self as *mut Self, L) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:57 - `TopOpeBRepDS_InterferenceIterator::GeometryKind()`
+    /// define a condition on interference iteration process.
+    /// Interference must match the Geometry Kind <ST>
+    pub fn geometry_kind(&mut self, GK: crate::top_ope_b_rep_ds::Kind) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_InterferenceIterator_geometry_kind(
+                self as *mut Self,
+                GK.into(),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:61 - `TopOpeBRepDS_InterferenceIterator::Geometry()`
+    /// define a condition on interference iteration process.
+    /// Interference must match the Geometry <G>
+    pub fn geometry(&mut self, G: i32) {
+        unsafe { crate::ffi::TopOpeBRepDS_InterferenceIterator_geometry(self as *mut Self, G) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:65 - `TopOpeBRepDS_InterferenceIterator::SupportKind()`
+    /// define a condition on interference iteration process.
+    /// Interference must match the Support Kind <ST>
+    pub fn support_kind(&mut self, ST: crate::top_ope_b_rep_ds::Kind) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_InterferenceIterator_support_kind(self as *mut Self, ST.into())
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:69 - `TopOpeBRepDS_InterferenceIterator::Support()`
+    /// define a condition on interference iteration process.
+    /// Interference must match the Support <S>
+    pub fn support(&mut self, S: i32) {
+        unsafe { crate::ffi::TopOpeBRepDS_InterferenceIterator_support(self as *mut Self, S) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:73 - `TopOpeBRepDS_InterferenceIterator::Match()`
+    /// reach for an interference  matching the conditions
+    /// (if  defined).
+    pub fn match_(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_InterferenceIterator_match_(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:78 - `TopOpeBRepDS_InterferenceIterator::MatchInterference()`
+    /// Returns  True if the Interference <I>  matches the
+    /// conditions (if defined).
+    /// If no conditions defined, returns True.
+    pub fn match_interference(&self, I: &crate::ffi::HandleTopOpeBRepDSInterference) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_InterferenceIterator_match_interference(self as *const Self, I)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:83 - `TopOpeBRepDS_InterferenceIterator::More()`
+    /// Returns True if there is a current Interference in
+    /// the iteration.
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_InterferenceIterator_more(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:86 - `TopOpeBRepDS_InterferenceIterator::Next()`
+    /// Move to the next Interference.
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_InterferenceIterator_next(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:90 - `TopOpeBRepDS_InterferenceIterator::Value()`
+    /// Returns   the   current   Interference,   matching   the
+    /// conditions  (if defined).
+    pub fn value(&self) -> &crate::ffi::HandleTopOpeBRepDSInterference {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_InterferenceIterator_value(self as *const Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:92 - `TopOpeBRepDS_InterferenceIterator::ChangeIterator()`
+    pub fn change_iterator(
+        &mut self,
+    ) -> &mut crate::ffi::TopOpeBRepDS_ListIteratorOfListOfInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_InterferenceIterator_change_iterator(self as *mut Self))
+        }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_InterferenceTool.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_InterferenceTool.hxx`:31 - `TopOpeBRepDS_InterferenceTool`
+pub use crate::ffi::TopOpeBRepDS_InterferenceTool as InterferenceTool;
+
+unsafe impl crate::CppDeletable for InterferenceTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_InterferenceTool_destructor(ptr);
+    }
+}
+
+impl InterferenceTool {
+    /// **Source:** `TopOpeBRepDS_InterferenceTool.hxx` - `TopOpeBRepDS_InterferenceTool::TopOpeBRepDS_InterferenceTool()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_InterferenceTool_ctor()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceTool.hxx`:36 - `TopOpeBRepDS_InterferenceTool::MakeEdgeInterference()`
+    pub fn make_edge_interference(
+        T: &Transition,
+        SK: crate::top_ope_b_rep_ds::Kind,
+        SI: i32,
+        GK: crate::top_ope_b_rep_ds::Kind,
+        GI: i32,
+        P: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_InterferenceTool_make_edge_interference(
+                    T,
+                    SK.into(),
+                    SI,
+                    GK.into(),
+                    GI,
+                    P,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceTool.hxx`:44 - `TopOpeBRepDS_InterferenceTool::MakeCurveInterference()`
+    pub fn make_curve_interference(
+        T: &Transition,
+        SK: crate::top_ope_b_rep_ds::Kind,
+        SI: i32,
+        GK: crate::top_ope_b_rep_ds::Kind,
+        GI: i32,
+        P: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_InterferenceTool_make_curve_interference(
+                    T,
+                    SK.into(),
+                    SI,
+                    GK.into(),
+                    GI,
+                    P,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceTool.hxx`:53 - `TopOpeBRepDS_InterferenceTool::DuplicateCurvePointInterference()`
+    /// duplicate I in a new interference with Complement() transition.
+    pub fn duplicate_curve_point_interference(
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_InterferenceTool_duplicate_curve_point_interference(I),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceTool.hxx`:56 - `TopOpeBRepDS_InterferenceTool::MakeFaceCurveInterference()`
+    pub fn make_face_curve_interference(
+        Transition: &Transition,
+        FaceI: i32,
+        CurveI: i32,
+        PC: &crate::ffi::HandleGeom2dCurve,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_InterferenceTool_make_face_curve_interference(
+                    Transition, FaceI, CurveI, PC,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceTool.hxx`:62 - `TopOpeBRepDS_InterferenceTool::MakeSolidSurfaceInterference()`
+    pub fn make_solid_surface_interference(
+        Transition: &Transition,
+        SolidI: i32,
+        SurfaceI: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_InterferenceTool_make_solid_surface_interference(
+                    Transition, SolidI, SurfaceI,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceTool.hxx`:67 - `TopOpeBRepDS_InterferenceTool::MakeEdgeVertexInterference()`
+    pub fn make_edge_vertex_interference(
+        Transition: &Transition,
+        EdgeI: i32,
+        VertexI: i32,
+        VertexIsBound: bool,
+        Config: crate::top_ope_b_rep_ds::Config,
+        param: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_InterferenceTool_make_edge_vertex_interference(
+                    Transition,
+                    EdgeI,
+                    VertexI,
+                    VertexIsBound,
+                    Config.into(),
+                    param,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceTool.hxx`:75 - `TopOpeBRepDS_InterferenceTool::MakeFaceEdgeInterference()`
+    pub fn make_face_edge_interference(
+        Transition: &Transition,
+        FaceI: i32,
+        EdgeI: i32,
+        EdgeIsBound: bool,
+        Config: crate::top_ope_b_rep_ds::Config,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_InterferenceTool_make_face_edge_interference(
+                    Transition,
+                    FaceI,
+                    EdgeI,
+                    EdgeIsBound,
+                    Config.into(),
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceTool.hxx`:82 - `TopOpeBRepDS_InterferenceTool::Parameter()`
+    pub fn parameter_handletopopebrepdsinterference(
+        CPI: &crate::ffi::HandleTopOpeBRepDSInterference,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_InterferenceTool_parameter_handletopopebrepdsinterference(CPI)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceTool.hxx`:84 - `TopOpeBRepDS_InterferenceTool::Parameter()`
+    pub fn parameter_handletopopebrepdsinterference_real(
+        CPI: &crate::ffi::HandleTopOpeBRepDSInterference,
+        Par: f64,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_InterferenceTool_parameter_handletopopebrepdsinterference_real(
+                CPI, Par,
+            )
+        }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_ListOfShapeOn1State.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_ListOfShapeOn1State.hxx`:28 - `TopOpeBRepDS_ListOfShapeOn1State`
+/// represent a list of shape
+pub use crate::ffi::TopOpeBRepDS_ListOfShapeOn1State as ListOfShapeOn1State;
+
+unsafe impl crate::CppDeletable for ListOfShapeOn1State {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_ListOfShapeOn1State_destructor(ptr);
+    }
+}
+
+impl ListOfShapeOn1State {
+    /// **Source:** `TopOpeBRepDS_ListOfShapeOn1State.hxx`:33 - `TopOpeBRepDS_ListOfShapeOn1State::TopOpeBRepDS_ListOfShapeOn1State()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_ListOfShapeOn1State_ctor()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_ListOfShapeOn1State.hxx`:35 - `TopOpeBRepDS_ListOfShapeOn1State::ListOnState()`
+    pub fn list_on_state(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_ListOfShapeOn1State_list_on_state(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_ListOfShapeOn1State.hxx`:37 - `TopOpeBRepDS_ListOfShapeOn1State::ChangeListOnState()`
+    pub fn change_list_on_state(&mut self) -> &mut crate::ffi::TopTools_ListOfShape {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_ListOfShapeOn1State_change_list_on_state(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_ListOfShapeOn1State.hxx`:39 - `TopOpeBRepDS_ListOfShapeOn1State::IsSplit()`
+    pub fn is_split(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_ListOfShapeOn1State_is_split(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_ListOfShapeOn1State.hxx`:41 - `TopOpeBRepDS_ListOfShapeOn1State::Split()`
+    pub fn split(&mut self, B: bool) {
+        unsafe { crate::ffi::TopOpeBRepDS_ListOfShapeOn1State_split(self as *mut Self, B) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_ListOfShapeOn1State.hxx`:43 - `TopOpeBRepDS_ListOfShapeOn1State::Clear()`
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_ListOfShapeOn1State_clear(self as *mut Self) }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_Marker.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_Marker.hxx`:30 - `TopOpeBRepDS_Marker`
+pub use crate::ffi::TopOpeBRepDS_Marker as Marker;
+
+unsafe impl crate::CppDeletable for Marker {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_Marker_destructor(ptr);
+    }
+}
+
+impl Marker {
+    /// **Source:** `TopOpeBRepDS_Marker.hxx`:34 - `TopOpeBRepDS_Marker::TopOpeBRepDS_Marker()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Marker_ctor()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Marker.hxx`:36 - `TopOpeBRepDS_Marker::Reset()`
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_Marker_reset(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Marker.hxx`:38 - `TopOpeBRepDS_Marker::Set()`
+    pub fn set(&mut self, i: i32, b: bool) {
+        unsafe { crate::ffi::TopOpeBRepDS_Marker_set(self as *mut Self, i, b) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Marker.hxx`:44 - `TopOpeBRepDS_Marker::GetI()`
+    pub fn get_i(&self, i: i32) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_Marker_get_i(self as *const Self, i) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Marker.hxx`:46 - `TopOpeBRepDS_Marker::Allocate()`
+    pub fn allocate(&mut self, n: i32) {
+        unsafe { crate::ffi::TopOpeBRepDS_Marker_allocate(self as *mut Self, n) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Marker.hxx`:48 - `TopOpeBRepDS_Marker::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_Marker_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Marker.hxx`:48 - `TopOpeBRepDS_Marker::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepDS_Marker_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Marker.hxx`:48 - `TopOpeBRepDS_Marker::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_Marker_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_Marker_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_Marker_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSMarker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Marker_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Marker_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_Marker_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_Marker_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_Marker_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_Marker_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopOpeBRepDS_Marker_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleTopOpeBRepDSMarker;
+
+unsafe impl crate::CppDeletable for HandleTopOpeBRepDSMarker {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopOpeBRepDSMarker_destructor(ptr);
+    }
+}
+
+impl HandleTopOpeBRepDSMarker {
+    /// Dereference this Handle to access the underlying TopOpeBRepDS_Marker
+    pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_Marker {
+        unsafe { &*(crate::ffi::HandleTopOpeBRepDSMarker_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_Marker
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_Marker {
+        unsafe { &mut *(crate::ffi::HandleTopOpeBRepDSMarker_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_Marker> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopOpeBRepDSMarker_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for Marker (1 total) ──
+// SKIPPED: **Source:** `TopOpeBRepDS_Marker.hxx`:40 - `TopOpeBRepDS_Marker::Set`
+//   Reason: has unbindable types: param 'a': void pointer (Standard_Address)
+//   // pub fn set(&mut self, b: bool, n: i32, a: /* Standard_Address */);
+//
 
 // ========================
 // From TopOpeBRepDS_Point.hxx
@@ -2058,6 +6347,287 @@ impl PointData {
 }
 
 // ========================
+// From TopOpeBRepDS_PointExplorer.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_PointExplorer.hxx`:27 - `TopOpeBRepDS_PointExplorer`
+pub use crate::ffi::TopOpeBRepDS_PointExplorer as PointExplorer;
+
+unsafe impl crate::CppDeletable for PointExplorer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_PointExplorer_destructor(ptr);
+    }
+}
+
+impl PointExplorer {
+    /// **Source:** `TopOpeBRepDS_PointExplorer.hxx`:32 - `TopOpeBRepDS_PointExplorer::TopOpeBRepDS_PointExplorer()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_PointExplorer_ctor()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointExplorer.hxx`:34 - `TopOpeBRepDS_PointExplorer::TopOpeBRepDS_PointExplorer()`
+    pub fn new_datastructure_bool(DS: &DataStructure, FindOnlyKeep: bool) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_PointExplorer_ctor_datastructure_bool(DS, FindOnlyKeep),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointExplorer.hxx`:34 - `TopOpeBRepDS_PointExplorer::TopOpeBRepDS_PointExplorer()`
+    pub fn new_datastructure(DS: &DataStructure) -> crate::OwnedPtr<Self> {
+        Self::new_datastructure_bool(DS, true)
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointExplorer.hxx`:37 - `TopOpeBRepDS_PointExplorer::Init()`
+    pub fn init(&mut self, DS: &DataStructure, FindOnlyKeep: bool) {
+        unsafe { crate::ffi::TopOpeBRepDS_PointExplorer_init(self as *mut Self, DS, FindOnlyKeep) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointExplorer.hxx`:40 - `TopOpeBRepDS_PointExplorer::More()`
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_PointExplorer_more(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointExplorer.hxx`:42 - `TopOpeBRepDS_PointExplorer::Next()`
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_PointExplorer_next(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointExplorer.hxx`:44 - `TopOpeBRepDS_PointExplorer::Point()`
+    pub fn point(&self) -> &Point {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_PointExplorer_point(self as *const Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointExplorer.hxx`:46 - `TopOpeBRepDS_PointExplorer::IsPoint()`
+    pub fn is_point(&self, I: i32) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_PointExplorer_is_point(self as *const Self, I) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointExplorer.hxx`:48 - `TopOpeBRepDS_PointExplorer::IsPointKeep()`
+    pub fn is_point_keep(&self, I: i32) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_PointExplorer_is_point_keep(self as *const Self, I) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointExplorer.hxx`:50 - `TopOpeBRepDS_PointExplorer::Point()`
+    pub fn point_int(&self, I: i32) -> &Point {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_PointExplorer_point_int(self as *const Self, I)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointExplorer.hxx`:52 - `TopOpeBRepDS_PointExplorer::NbPoint()`
+    pub fn nb_point(&mut self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_PointExplorer_nb_point(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointExplorer.hxx`:54 - `TopOpeBRepDS_PointExplorer::Index()`
+    pub fn index(&self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_PointExplorer_index(self as *const Self) }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_PointIterator.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_PointIterator.hxx`:31 - `TopOpeBRepDS_PointIterator`
+pub use crate::ffi::TopOpeBRepDS_PointIterator as PointIterator;
+
+unsafe impl crate::CppDeletable for PointIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_PointIterator_destructor(ptr);
+    }
+}
+
+impl PointIterator {
+    /// **Source:** `TopOpeBRepDS_PointIterator.hxx`:38 - `TopOpeBRepDS_PointIterator::TopOpeBRepDS_PointIterator()`
+    /// Creates an  iterator on the  points on curves
+    /// described by the interferences in <L>.
+    pub fn new_listofinterference(
+        L: &crate::ffi::TopOpeBRepDS_ListOfInterference,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_PointIterator_ctor_listofinterference(L),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointIterator.hxx`:43 - `TopOpeBRepDS_PointIterator::MatchInterference()`
+    /// Returns  True if the Interference <I>  has a
+    /// GeometryType() TopOpeBRepDS_POINT or TopOpeBRepDS_VERTEX
+    /// returns False else.
+    pub fn match_interference(&self, I: &crate::ffi::HandleTopOpeBRepDSInterference) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_PointIterator_match_interference(self as *const Self, I) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointIterator.hxx`:47 - `TopOpeBRepDS_PointIterator::Current()`
+    /// Index of the point in the data structure.
+    pub fn current(&self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_PointIterator_current(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointIterator.hxx`:49 - `TopOpeBRepDS_PointIterator::Orientation()`
+    pub fn orientation(&self, S: crate::top_abs::State) -> crate::top_abs::Orientation {
+        unsafe {
+            crate::top_abs::Orientation::try_from(
+                crate::ffi::TopOpeBRepDS_PointIterator_orientation(self as *const Self, S.into()),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointIterator.hxx`:51 - `TopOpeBRepDS_PointIterator::Parameter()`
+    pub fn parameter(&self) -> f64 {
+        unsafe { crate::ffi::TopOpeBRepDS_PointIterator_parameter(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointIterator.hxx`:53 - `TopOpeBRepDS_PointIterator::IsVertex()`
+    pub fn is_vertex(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_PointIterator_is_vertex(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointIterator.hxx`:55 - `TopOpeBRepDS_PointIterator::IsPoint()`
+    pub fn is_point(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_PointIterator_is_point(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointIterator.hxx`:57 - `TopOpeBRepDS_PointIterator::DiffOriented()`
+    pub fn diff_oriented(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_PointIterator_diff_oriented(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointIterator.hxx`:59 - `TopOpeBRepDS_PointIterator::SameOriented()`
+    pub fn same_oriented(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_PointIterator_same_oriented(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_PointIterator.hxx`:61 - `TopOpeBRepDS_PointIterator::Support()`
+    pub fn support(&self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_PointIterator_support(self as *const Self) }
+    }
+
+    /// Upcast to TopOpeBRepDS_InterferenceIterator
+    pub fn as_interference_iterator(&self) -> &InterferenceIterator {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_PointIterator_as_TopOpeBRepDS_InterferenceIterator(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to TopOpeBRepDS_InterferenceIterator (mutable)
+    pub fn as_interference_iterator_mut(&mut self) -> &mut InterferenceIterator {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_PointIterator_as_TopOpeBRepDS_InterferenceIterator_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:53 - `TopOpeBRepDS_InterferenceIterator::Init()`
+    pub fn init(&mut self, L: &crate::ffi::TopOpeBRepDS_ListOfInterference) {
+        unsafe { crate::ffi::TopOpeBRepDS_PointIterator_inherited_Init(self as *mut Self, L) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:57 - `TopOpeBRepDS_InterferenceIterator::GeometryKind()`
+    pub fn geometry_kind(&mut self, GK: crate::top_ope_b_rep_ds::Kind) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_PointIterator_inherited_GeometryKind(
+                self as *mut Self,
+                GK.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:61 - `TopOpeBRepDS_InterferenceIterator::Geometry()`
+    pub fn geometry(&mut self, G: i32) {
+        unsafe { crate::ffi::TopOpeBRepDS_PointIterator_inherited_Geometry(self as *mut Self, G) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:65 - `TopOpeBRepDS_InterferenceIterator::SupportKind()`
+    pub fn support_kind(&mut self, ST: crate::top_ope_b_rep_ds::Kind) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_PointIterator_inherited_SupportKind(
+                self as *mut Self,
+                ST.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:73 - `TopOpeBRepDS_InterferenceIterator::Match()`
+    pub fn match_(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_PointIterator_inherited_Match(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:83 - `TopOpeBRepDS_InterferenceIterator::More()`
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_PointIterator_inherited_More(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:86 - `TopOpeBRepDS_InterferenceIterator::Next()`
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_PointIterator_inherited_Next(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:90 - `TopOpeBRepDS_InterferenceIterator::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleTopOpeBRepDSInterference {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_PointIterator_inherited_Value(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:92 - `TopOpeBRepDS_InterferenceIterator::ChangeIterator()`
+    pub fn change_iterator(
+        &mut self,
+    ) -> &mut crate::ffi::TopOpeBRepDS_ListIteratorOfListOfInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_PointIterator_inherited_ChangeIterator(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_Reducer.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_Reducer.hxx`:27 - `TopOpeBRepDS_Reducer`
+/// reduce interferences of a data structure (HDS)
+/// used in topological operations.
+pub use crate::ffi::TopOpeBRepDS_Reducer as Reducer;
+
+unsafe impl crate::CppDeletable for Reducer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_Reducer_destructor(ptr);
+    }
+}
+
+impl Reducer {
+    /// **Source:** `TopOpeBRepDS_Reducer.hxx`:32 - `TopOpeBRepDS_Reducer::TopOpeBRepDS_Reducer()`
+    pub fn new_handletopopebrepdshdatastructure(
+        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_Reducer_ctor_handletopopebrepdshdatastructure(HDS),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Reducer.hxx`:34 - `TopOpeBRepDS_Reducer::ProcessFaceInterferences()`
+    pub fn process_face_interferences(
+        &mut self,
+        M: &crate::ffi::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State,
+    ) {
+        unsafe { crate::ffi::TopOpeBRepDS_Reducer_process_face_interferences(self as *mut Self, M) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Reducer.hxx`:37 - `TopOpeBRepDS_Reducer::ProcessEdgeInterferences()`
+    pub fn process_edge_interferences(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_Reducer_process_edge_interferences(self as *mut Self) }
+    }
+}
+
+// ========================
 // From TopOpeBRepDS_ShapeData.hxx
 // ========================
 
@@ -2096,6 +6666,359 @@ impl ShapeData {
     /// **Source:** `TopOpeBRepDS_ShapeData.hxx`:42 - `TopOpeBRepDS_ShapeData::ChangeKeep()`
     pub fn change_keep(&mut self, B: bool) {
         unsafe { crate::ffi::TopOpeBRepDS_ShapeData_change_keep(self as *mut Self, B) }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_ShapeShapeInterference.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:34 - `TopOpeBRepDS_ShapeShapeInterference`
+/// Interference
+pub use crate::ffi::TopOpeBRepDS_ShapeShapeInterference as ShapeShapeInterference;
+
+unsafe impl crate::CppDeletable for ShapeShapeInterference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_ShapeShapeInterference_destructor(ptr);
+    }
+}
+
+impl ShapeShapeInterference {
+    /// **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:60 - `TopOpeBRepDS_ShapeShapeInterference::TopOpeBRepDS_ShapeShapeInterference()`
+    /// a shape interferes on shape <G> with shape <S>.
+    /// examples :
+    /// create a ShapeShapeInterference describing :
+    /// vertex V of edge E1 found on edge E2 :
+    /// ST,S,GT,G = TopOpeBRepDS_EDGE,E2,TopOpeBRepDS_VERTEX,V
+    ///
+    /// create a ShapeShapeInterference describing
+    /// vertex V of edge E found on face F :
+    /// ST,S,GT,G = TopOpeBRepDS_FACE,F,TopOpeBRepDS_VERTEX,V
+    ///
+    /// <GBound> indicates if shape <G> is a bound of shape <S>.
+    ///
+    /// <SCC> :
+    /// UNSH_GEOMETRY :
+    /// <S> and <Ancestor> have any types,
+    /// <S> and <Ancestor> don't share the same geometry
+    /// SAME_ORIENTED :
+    /// <S> and <Ancestor> have identical types,
+    /// <S> and <Ancestor> orientations are IDENTICAL.
+    /// DIFF_ORIENTED :
+    /// <S> and <Ancestor> have identical types,
+    /// <S> and <Ancestor> orientations are DIFFERENT.
+    pub fn new_transition_kind_int_kind_int_bool_config(
+        T: &Transition,
+        ST: crate::top_ope_b_rep_ds::Kind,
+        S: i32,
+        GT: crate::top_ope_b_rep_ds::Kind,
+        G: i32,
+        GBound: bool,
+        C: crate::top_ope_b_rep_ds::Config,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_ShapeShapeInterference_ctor_transition_kind_int_kind_int_bool_config(T, ST.into(), S, GT.into(), G, GBound, C.into()))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:68 - `TopOpeBRepDS_ShapeShapeInterference::Config()`
+    pub fn config(&self) -> crate::top_ope_b_rep_ds::Config {
+        unsafe {
+            crate::top_ope_b_rep_ds::Config::try_from(
+                crate::ffi::TopOpeBRepDS_ShapeShapeInterference_config(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:70 - `TopOpeBRepDS_ShapeShapeInterference::GBound()`
+    pub fn g_bound(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_ShapeShapeInterference_g_bound(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:72 - `TopOpeBRepDS_ShapeShapeInterference::SetGBound()`
+    pub fn set_g_bound(&mut self, b: bool) {
+        unsafe { crate::ffi::TopOpeBRepDS_ShapeShapeInterference_set_g_bound(self as *mut Self, b) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:74 - `TopOpeBRepDS_ShapeShapeInterference::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_ShapeShapeInterference_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:74 - `TopOpeBRepDS_ShapeShapeInterference::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepDS_ShapeShapeInterference_get_type_name()).to_string_lossy().into_owned()
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:74 - `TopOpeBRepDS_ShapeShapeInterference::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_ShapeShapeInterference_get_type_descriptor()) }
+    }
+
+    /// Upcast to TopOpeBRepDS_Interference
+    pub fn as_interference(&self) -> &Interference {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_ShapeShapeInterference_as_TopOpeBRepDS_Interference(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to TopOpeBRepDS_Interference (mutable)
+    pub fn as_interference_mut(&mut self) -> &mut Interference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_ShapeShapeInterference_as_TopOpeBRepDS_Interference_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_ShapeShapeInterference_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_ShapeShapeInterference_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSShapeShapeInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_ShapeShapeInterference_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:67 - `TopOpeBRepDS_Interference::Transition()`
+    pub fn transition(&self) -> &Transition {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_Transition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:69 - `TopOpeBRepDS_Interference::ChangeTransition()`
+    pub fn change_transition(&mut self) -> &mut Transition {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_ChangeTransition(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:79 - `TopOpeBRepDS_Interference::SupportType()`
+    pub fn support_type(&self) -> crate::top_ope_b_rep_ds::Kind {
+        unsafe {
+            crate::top_ope_b_rep_ds::Kind::try_from(
+                crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_SupportType(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:81 - `TopOpeBRepDS_Interference::Support()`
+    pub fn support(&self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_Support(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:83 - `TopOpeBRepDS_Interference::GeometryType()`
+    pub fn geometry_type(&self) -> crate::top_ope_b_rep_ds::Kind {
+        unsafe {
+            crate::top_ope_b_rep_ds::Kind::try_from(
+                crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_GeometryType(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:85 - `TopOpeBRepDS_Interference::Geometry()`
+    pub fn geometry(&self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_Geometry(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:87 - `TopOpeBRepDS_Interference::SetGeometry()`
+    pub fn set_geometry(&mut self, GI: i32) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_SetGeometry(
+                self as *mut Self,
+                GI,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:98 - `TopOpeBRepDS_Interference::HasSameSupport()`
+    pub fn has_same_support(&self, Other: &crate::ffi::HandleTopOpeBRepDSInterference) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_HasSameSupport(
+                self as *const Self,
+                Other,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:101 - `TopOpeBRepDS_Interference::HasSameGeometry()`
+    pub fn has_same_geometry(&self, Other: &crate::ffi::HandleTopOpeBRepDSInterference) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_HasSameGeometry(
+                self as *const Self,
+                Other,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleTopOpeBRepDSShapeShapeInterference;
+
+unsafe impl crate::CppDeletable for HandleTopOpeBRepDSShapeShapeInterference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopOpeBRepDSShapeShapeInterference_destructor(ptr);
+    }
+}
+
+impl HandleTopOpeBRepDSShapeShapeInterference {
+    /// Dereference this Handle to access the underlying TopOpeBRepDS_ShapeShapeInterference
+    pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_ShapeShapeInterference {
+        unsafe { &*(crate::ffi::HandleTopOpeBRepDSShapeShapeInterference_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_ShapeShapeInterference
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_ShapeShapeInterference {
+        unsafe {
+            &mut *(crate::ffi::HandleTopOpeBRepDSShapeShapeInterference_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_ShapeShapeInterference> to Handle<TopOpeBRepDS_Interference>
+    pub fn to_handle_interference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopOpeBRepDSShapeShapeInterference_to_HandleTopOpeBRepDSInterference(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_ShapeShapeInterference> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopOpeBRepDSShapeShapeInterference_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<TopOpeBRepDS_ShapeShapeInterference> to Handle<TopOpeBRepDS_EdgeVertexInterference>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepDS_EdgeVertexInterference` (or subclass).
+    pub fn downcast_to_edge_vertex_interference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopOpeBRepDSShapeShapeInterference_downcast_to_HandleTopOpeBRepDSEdgeVertexInterference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopOpeBRepDS_ShapeShapeInterference> to Handle<TopOpeBRepDS_FaceEdgeInterference>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepDS_FaceEdgeInterference` (or subclass).
+    pub fn downcast_to_face_edge_interference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopOpeBRepDSShapeShapeInterference_downcast_to_HandleTopOpeBRepDSFaceEdgeInterference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -2178,6 +7101,299 @@ impl ShapeWithState {
     /// **Source:** `TopOpeBRepDS_ShapeWithState.hxx`:49 - `TopOpeBRepDS_ShapeWithState::IsSplitted()`
     pub fn is_splitted(&self) -> bool {
         unsafe { crate::ffi::TopOpeBRepDS_ShapeWithState_is_splitted(self as *const Self) }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_SolidSurfaceInterference.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_SolidSurfaceInterference.hxx`:32 - `TopOpeBRepDS_SolidSurfaceInterference`
+/// Interference
+pub use crate::ffi::TopOpeBRepDS_SolidSurfaceInterference as SolidSurfaceInterference;
+
+unsafe impl crate::CppDeletable for SolidSurfaceInterference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_destructor(ptr);
+    }
+}
+
+impl SolidSurfaceInterference {
+    /// **Source:** `TopOpeBRepDS_SolidSurfaceInterference.hxx`:36 - `TopOpeBRepDS_SolidSurfaceInterference::TopOpeBRepDS_SolidSurfaceInterference()`
+    pub fn new_transition_kind_int_kind_int(
+        Transition: &Transition,
+        SupportType: crate::top_ope_b_rep_ds::Kind,
+        Support: i32,
+        GeometryType: crate::top_ope_b_rep_ds::Kind,
+        Geometry: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_ctor_transition_kind_int_kind_int(
+                    Transition,
+                    SupportType.into(),
+                    Support,
+                    GeometryType.into(),
+                    Geometry,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_SolidSurfaceInterference.hxx`:42 - `TopOpeBRepDS_SolidSurfaceInterference::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_SolidSurfaceInterference.hxx`:42 - `TopOpeBRepDS_SolidSurfaceInterference::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_SolidSurfaceInterference.hxx`:42 - `TopOpeBRepDS_SolidSurfaceInterference::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_get_type_descriptor()) }
+    }
+
+    /// Upcast to TopOpeBRepDS_Interference
+    pub fn as_interference(&self) -> &Interference {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_as_TopOpeBRepDS_Interference(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to TopOpeBRepDS_Interference (mutable)
+    pub fn as_interference_mut(&mut self) -> &mut Interference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_as_TopOpeBRepDS_Interference_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:67 - `TopOpeBRepDS_Interference::Transition()`
+    pub fn transition(&self) -> &Transition {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_inherited_Transition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:69 - `TopOpeBRepDS_Interference::ChangeTransition()`
+    pub fn change_transition(&mut self) -> &mut Transition {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_inherited_ChangeTransition(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:79 - `TopOpeBRepDS_Interference::SupportType()`
+    pub fn support_type(&self) -> crate::top_ope_b_rep_ds::Kind {
+        unsafe {
+            crate::top_ope_b_rep_ds::Kind::try_from(
+                crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_inherited_SupportType(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:81 - `TopOpeBRepDS_Interference::Support()`
+    pub fn support(&self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_inherited_Support(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:83 - `TopOpeBRepDS_Interference::GeometryType()`
+    pub fn geometry_type(&self) -> crate::top_ope_b_rep_ds::Kind {
+        unsafe {
+            crate::top_ope_b_rep_ds::Kind::try_from(
+                crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_inherited_GeometryType(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:85 - `TopOpeBRepDS_Interference::Geometry()`
+    pub fn geometry(&self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_inherited_Geometry(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:87 - `TopOpeBRepDS_Interference::SetGeometry()`
+    pub fn set_geometry(&mut self, GI: i32) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_inherited_SetGeometry(
+                self as *mut Self,
+                GI,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:98 - `TopOpeBRepDS_Interference::HasSameSupport()`
+    pub fn has_same_support(&self, Other: &crate::ffi::HandleTopOpeBRepDSInterference) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_inherited_HasSameSupport(
+                self as *const Self,
+                Other,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:101 - `TopOpeBRepDS_Interference::HasSameGeometry()`
+    pub fn has_same_geometry(&self, Other: &crate::ffi::HandleTopOpeBRepDSInterference) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_inherited_HasSameGeometry(
+                self as *const Self,
+                Other,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference;
+
+unsafe impl crate::CppDeletable for HandleTopOpeBRepDSSolidSurfaceInterference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference_destructor(ptr);
+    }
+}
+
+impl HandleTopOpeBRepDSSolidSurfaceInterference {
+    /// Dereference this Handle to access the underlying TopOpeBRepDS_SolidSurfaceInterference
+    pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_SolidSurfaceInterference {
+        unsafe {
+            &*(crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_SolidSurfaceInterference
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_SolidSurfaceInterference {
+        unsafe {
+            &mut *(crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_SolidSurfaceInterference> to Handle<TopOpeBRepDS_Interference>
+    pub fn to_handle_interference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference_to_HandleTopOpeBRepDSInterference(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_SolidSurfaceInterference> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -2645,6 +7861,424 @@ impl SurfaceData {
 }
 
 // ========================
+// From TopOpeBRepDS_SurfaceExplorer.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_SurfaceExplorer.hxx`:27 - `TopOpeBRepDS_SurfaceExplorer`
+pub use crate::ffi::TopOpeBRepDS_SurfaceExplorer as SurfaceExplorer;
+
+unsafe impl crate::CppDeletable for SurfaceExplorer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_SurfaceExplorer_destructor(ptr);
+    }
+}
+
+impl SurfaceExplorer {
+    /// **Source:** `TopOpeBRepDS_SurfaceExplorer.hxx`:32 - `TopOpeBRepDS_SurfaceExplorer::TopOpeBRepDS_SurfaceExplorer()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_SurfaceExplorer_ctor()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_SurfaceExplorer.hxx`:34 - `TopOpeBRepDS_SurfaceExplorer::TopOpeBRepDS_SurfaceExplorer()`
+    pub fn new_datastructure_bool(DS: &DataStructure, FindOnlyKeep: bool) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_SurfaceExplorer_ctor_datastructure_bool(DS, FindOnlyKeep),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_SurfaceExplorer.hxx`:34 - `TopOpeBRepDS_SurfaceExplorer::TopOpeBRepDS_SurfaceExplorer()`
+    pub fn new_datastructure(DS: &DataStructure) -> crate::OwnedPtr<Self> {
+        Self::new_datastructure_bool(DS, true)
+    }
+
+    /// **Source:** `TopOpeBRepDS_SurfaceExplorer.hxx`:37 - `TopOpeBRepDS_SurfaceExplorer::Init()`
+    pub fn init(&mut self, DS: &DataStructure, FindOnlyKeep: bool) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SurfaceExplorer_init(self as *mut Self, DS, FindOnlyKeep)
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_SurfaceExplorer.hxx`:40 - `TopOpeBRepDS_SurfaceExplorer::More()`
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_SurfaceExplorer_more(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_SurfaceExplorer.hxx`:42 - `TopOpeBRepDS_SurfaceExplorer::Next()`
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_SurfaceExplorer_next(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_SurfaceExplorer.hxx`:44 - `TopOpeBRepDS_SurfaceExplorer::Surface()`
+    pub fn surface(&self) -> &Surface {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_SurfaceExplorer_surface(self as *const Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_SurfaceExplorer.hxx`:46 - `TopOpeBRepDS_SurfaceExplorer::IsSurface()`
+    pub fn is_surface(&self, I: i32) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_SurfaceExplorer_is_surface(self as *const Self, I) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_SurfaceExplorer.hxx`:48 - `TopOpeBRepDS_SurfaceExplorer::IsSurfaceKeep()`
+    pub fn is_surface_keep(&self, I: i32) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_SurfaceExplorer_is_surface_keep(self as *const Self, I) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_SurfaceExplorer.hxx`:50 - `TopOpeBRepDS_SurfaceExplorer::Surface()`
+    pub fn surface_int(&self, I: i32) -> &Surface {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_SurfaceExplorer_surface_int(self as *const Self, I)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_SurfaceExplorer.hxx`:52 - `TopOpeBRepDS_SurfaceExplorer::NbSurface()`
+    pub fn nb_surface(&mut self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_SurfaceExplorer_nb_surface(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_SurfaceExplorer.hxx`:54 - `TopOpeBRepDS_SurfaceExplorer::Index()`
+    pub fn index(&self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_SurfaceExplorer_index(self as *const Self) }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_SurfaceIterator.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_SurfaceIterator.hxx`:29 - `TopOpeBRepDS_SurfaceIterator`
+pub use crate::ffi::TopOpeBRepDS_SurfaceIterator as SurfaceIterator;
+
+unsafe impl crate::CppDeletable for SurfaceIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_SurfaceIterator_destructor(ptr);
+    }
+}
+
+impl SurfaceIterator {
+    /// **Source:** `TopOpeBRepDS_SurfaceIterator.hxx`:36 - `TopOpeBRepDS_SurfaceIterator::TopOpeBRepDS_SurfaceIterator()`
+    /// Creates an  iterator on the  Surfaces on solid
+    /// described by the interferences in <L>.
+    pub fn new_listofinterference(
+        L: &crate::ffi::TopOpeBRepDS_ListOfInterference,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_SurfaceIterator_ctor_listofinterference(L),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_SurfaceIterator.hxx`:39 - `TopOpeBRepDS_SurfaceIterator::Current()`
+    /// Index of the surface in the data structure.
+    pub fn current(&self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_SurfaceIterator_current(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_SurfaceIterator.hxx`:41 - `TopOpeBRepDS_SurfaceIterator::Orientation()`
+    pub fn orientation(&self, S: crate::top_abs::State) -> crate::top_abs::Orientation {
+        unsafe {
+            crate::top_abs::Orientation::try_from(
+                crate::ffi::TopOpeBRepDS_SurfaceIterator_orientation(self as *const Self, S.into()),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Upcast to TopOpeBRepDS_InterferenceIterator
+    pub fn as_interference_iterator(&self) -> &InterferenceIterator {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_SurfaceIterator_as_TopOpeBRepDS_InterferenceIterator(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to TopOpeBRepDS_InterferenceIterator (mutable)
+    pub fn as_interference_iterator_mut(&mut self) -> &mut InterferenceIterator {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_SurfaceIterator_as_TopOpeBRepDS_InterferenceIterator_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:53 - `TopOpeBRepDS_InterferenceIterator::Init()`
+    pub fn init(&mut self, L: &crate::ffi::TopOpeBRepDS_ListOfInterference) {
+        unsafe { crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_Init(self as *mut Self, L) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:57 - `TopOpeBRepDS_InterferenceIterator::GeometryKind()`
+    pub fn geometry_kind(&mut self, GK: crate::top_ope_b_rep_ds::Kind) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_GeometryKind(
+                self as *mut Self,
+                GK.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:61 - `TopOpeBRepDS_InterferenceIterator::Geometry()`
+    pub fn geometry(&mut self, G: i32) {
+        unsafe { crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_Geometry(self as *mut Self, G) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:65 - `TopOpeBRepDS_InterferenceIterator::SupportKind()`
+    pub fn support_kind(&mut self, ST: crate::top_ope_b_rep_ds::Kind) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_SupportKind(
+                self as *mut Self,
+                ST.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:69 - `TopOpeBRepDS_InterferenceIterator::Support()`
+    pub fn support(&mut self, S: i32) {
+        unsafe { crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_Support(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:73 - `TopOpeBRepDS_InterferenceIterator::Match()`
+    pub fn match_(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_Match(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:78 - `TopOpeBRepDS_InterferenceIterator::MatchInterference()`
+    pub fn match_interference(&self, I: &crate::ffi::HandleTopOpeBRepDSInterference) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_MatchInterference(
+                self as *const Self,
+                I,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:83 - `TopOpeBRepDS_InterferenceIterator::More()`
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_More(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:86 - `TopOpeBRepDS_InterferenceIterator::Next()`
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_Next(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:90 - `TopOpeBRepDS_InterferenceIterator::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleTopOpeBRepDSInterference {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_Value(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:92 - `TopOpeBRepDS_InterferenceIterator::ChangeIterator()`
+    pub fn change_iterator(
+        &mut self,
+    ) -> &mut crate::ffi::TopOpeBRepDS_ListIteratorOfListOfInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_ChangeIterator(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From TopOpeBRepDS_TKI.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_TKI.hxx`:31 - `TopOpeBRepDS_TKI`
+pub use crate::ffi::TopOpeBRepDS_TKI as TKI;
+
+unsafe impl crate::CppDeletable for TKI {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_TKI_destructor(ptr);
+    }
+}
+
+impl TKI {
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:36 - `TopOpeBRepDS_TKI::TopOpeBRepDS_TKI()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_TKI_ctor()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:38 - `TopOpeBRepDS_TKI::Clear()`
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_TKI_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:40 - `TopOpeBRepDS_TKI::FillOnGeometry()`
+    pub fn fill_on_geometry(&mut self, L: &crate::ffi::TopOpeBRepDS_ListOfInterference) {
+        unsafe { crate::ffi::TopOpeBRepDS_TKI_fill_on_geometry(self as *mut Self, L) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:42 - `TopOpeBRepDS_TKI::FillOnSupport()`
+    pub fn fill_on_support(&mut self, L: &crate::ffi::TopOpeBRepDS_ListOfInterference) {
+        unsafe { crate::ffi::TopOpeBRepDS_TKI_fill_on_support(self as *mut Self, L) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:44 - `TopOpeBRepDS_TKI::IsBound()`
+    pub fn is_bound(&self, K: crate::top_ope_b_rep_ds::Kind, G: i32) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_TKI_is_bound(self as *const Self, K.into(), G) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:47 - `TopOpeBRepDS_TKI::Interferences()`
+    pub fn interferences(
+        &self,
+        K: crate::top_ope_b_rep_ds::Kind,
+        G: i32,
+    ) -> &crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_TKI_interferences(self as *const Self, K.into(), G)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:51 - `TopOpeBRepDS_TKI::ChangeInterferences()`
+    pub fn change_interferences(
+        &mut self,
+        K: crate::top_ope_b_rep_ds::Kind,
+        G: i32,
+    ) -> &mut crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_TKI_change_interferences(
+                self as *mut Self,
+                K.into(),
+                G,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:54 - `TopOpeBRepDS_TKI::HasInterferences()`
+    pub fn has_interferences(&self, K: crate::top_ope_b_rep_ds::Kind, G: i32) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_TKI_has_interferences(self as *const Self, K.into(), G) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:57 - `TopOpeBRepDS_TKI::Add()`
+    pub fn add_kind_int(&mut self, K: crate::top_ope_b_rep_ds::Kind, G: i32) {
+        unsafe { crate::ffi::TopOpeBRepDS_TKI_add_kind_int(self as *mut Self, K.into(), G) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:59 - `TopOpeBRepDS_TKI::Add()`
+    pub fn add_kind_int_handletopopebrepdsinterference(
+        &mut self,
+        K: crate::top_ope_b_rep_ds::Kind,
+        G: i32,
+        HI: &crate::ffi::HandleTopOpeBRepDSInterference,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_TKI_add_kind_int_handletopopebrepdsinterference(
+                self as *mut Self,
+                K.into(),
+                G,
+                HI,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:63 - `TopOpeBRepDS_TKI::DumpTKIIterator()`
+    pub fn dump_tki_iterator(
+        &mut self,
+        s1: &crate::t_collection::AsciiString,
+        s2: &crate::t_collection::AsciiString,
+    ) {
+        unsafe { crate::ffi::TopOpeBRepDS_TKI_dump_tki_iterator(self as *mut Self, s1, s2) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:66 - `TopOpeBRepDS_TKI::Init()`
+    pub fn init(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_TKI_init(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:68 - `TopOpeBRepDS_TKI::More()`
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_TKI_more(self as *const Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:70 - `TopOpeBRepDS_TKI::Next()`
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::TopOpeBRepDS_TKI_next(self as *mut Self) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:72 - `TopOpeBRepDS_TKI::Value()`
+    pub fn value(
+        &self,
+        K: &mut crate::top_ope_b_rep_ds::Kind,
+        G: &mut i32,
+    ) -> &crate::ffi::TopOpeBRepDS_ListOfInterference {
+        let mut K_i32_: i32 = (*K).into();
+        let result_ =
+            unsafe { &*(crate::ffi::TopOpeBRepDS_TKI_value(self as *const Self, &mut K_i32_, G)) };
+        *K = crate::top_ope_b_rep_ds::Kind::try_from(K_i32_).unwrap();
+        result_
+    }
+}
+
+// ── Skipped symbols for TKI (1 total) ──
+// SKIPPED: **Source:** `TopOpeBRepDS_TKI.hxx`:75 - `TopOpeBRepDS_TKI::ChangeValue`
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn change_value(&mut self, K: &mut Kind, G: &mut i32) -> &mut ListOfInterference;
+//
+
+// ========================
+// From TopOpeBRepDS_TOOL.hxx
+// ========================
+
+/// **Source:** `TopOpeBRepDS_TOOL.hxx`:31 - `TopOpeBRepDS_TOOL`
+pub use crate::ffi::TopOpeBRepDS_TOOL as TOOL;
+
+unsafe impl crate::CppDeletable for TOOL {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopOpeBRepDS_TOOL_destructor(ptr);
+    }
+}
+
+impl TOOL {
+    /// **Source:** `TopOpeBRepDS_TOOL.hxx` - `TopOpeBRepDS_TOOL::TopOpeBRepDS_TOOL()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_TOOL_ctor()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TOOL.hxx`:36 - `TopOpeBRepDS_TOOL::EShareG()`
+    pub fn e_share_g(
+        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+        E: &crate::topo_ds::Edge,
+        lEsd: &mut crate::ffi::TopTools_ListOfShape,
+    ) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_TOOL_e_share_g(HDS, E, lEsd) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TOOL.hxx`:40 - `TopOpeBRepDS_TOOL::ShareG()`
+    pub fn share_g(HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure, is1: i32, is2: i32) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_TOOL_share_g(HDS, is1, is2) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TOOL.hxx`:44 - `TopOpeBRepDS_TOOL::GetEsd()`
+    pub fn get_esd(
+        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+        S: &crate::topo_ds::Shape,
+        ie: i32,
+        iesd: &mut i32,
+    ) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_TOOL_get_esd(HDS, S, ie, iesd) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TOOL.hxx`:49 - `TopOpeBRepDS_TOOL::ShareSplitON()`
+    pub fn share_split_on(
+        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+        MspON: &crate::ffi::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State,
+        i1: i32,
+        i2: i32,
+        spON: &mut crate::topo_ds::Shape,
+    ) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_TOOL_share_split_on(HDS, MspON, i1, i2, spON) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TOOL.hxx`:56 - `TopOpeBRepDS_TOOL::GetConfig()`
+    pub fn get_config(
+        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+        MEspON: &crate::ffi::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State,
+        ie: i32,
+        iesd: i32,
+        conf: &mut i32,
+    ) -> bool {
+        unsafe { crate::ffi::TopOpeBRepDS_TOOL_get_config(HDS, MEspON, ie, iesd, conf) }
+    }
+}
+
+// ========================
 // From TopOpeBRepDS_Transition.hxx
 // ========================
 
@@ -2912,7 +8546,11 @@ impl Transition {
 // ========================
 
 pub use crate::ffi::{
+    TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference as Array1OfDataMapOfIntegerListOfInterference,
+    TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State as DataMapOfShapeListOfShapeOn1State,
+    TopOpeBRepDS_DataMapOfShapeState as DataMapOfShapeState,
     TopOpeBRepDS_IndexedDataMapOfShapeWithState as IndexedDataMapOfShapeWithState,
+    TopOpeBRepDS_ListIteratorOfListOfInterference as ListIteratorOfListOfInterference,
     TopOpeBRepDS_ListOfInterference as ListOfInterference,
-    TopOpeBRepDS_MapOfShapeData as MapOfShapeData,
+    TopOpeBRepDS_MapOfShapeData as MapOfShapeData, TopOpeBRepDS_PDataStructure as PDataStructure,
 };

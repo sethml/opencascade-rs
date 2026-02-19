@@ -6,54 +6,16 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// Some fields of an IGES entity may be
-/// - Undefined
-/// - Defined as a positive integer
-/// - Defined as a reference to a specialized entity.
-/// A typical example of this kind of variation is color.
-/// This enumeration allows you to identify which of the above is the case.
-/// The semantics of the terms are as follows:
-/// - DefVoid indicates that the item contained in the field is undefined
-/// - DefValue indicates that the item is defined as an immediate
-/// positive integer value (i.e. not a pointer)
-/// - DefReference indicates that the item is defined as an entity
-/// - DefAny indicates the item could not be determined
-/// - ErrorVal indicates that the item is defined as an integer
-/// but its value is incorrect (it could be out of range, for example)
-/// - ErrorRef indicates that the item is defined as an entity but
-/// is not of the required type.
-/// C++ enum: `IGESData_DefType`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum DefType {
-    Defvoid = 0,
-    Defvalue = 1,
-    Defreference = 2,
-    Defany = 3,
-    Errorval = 4,
-    Errorref = 5,
+/// **Source:** `IGESData.hxx`:34 - `IGESData::Init`
+/// Prepares General dynamic data used for IGESData specifically :
+/// Protocol and Modules, which treat UndefinedEntity
+pub fn init() {
+    unsafe { crate::ffi::IGESData_init() }
 }
-
-impl From<DefType> for i32 {
-    fn from(value: DefType) -> Self {
-        value as i32
-    }
-}
-
-impl TryFrom<i32> for DefType {
-    type Error = i32;
-
-    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
-        match value {
-            0 => Ok(DefType::Defvoid),
-            1 => Ok(DefType::Defvalue),
-            2 => Ok(DefType::Defreference),
-            3 => Ok(DefType::Defany),
-            4 => Ok(DefType::Errorval),
-            5 => Ok(DefType::Errorref),
-            _ => Err(value),
-        }
-    }
+/// **Source:** `IGESData.hxx`:37 - `IGESData::Protocol`
+/// Returns a Protocol from IGESData (avoids to create it)
+pub fn protocol() -> crate::OwnedPtr<crate::ffi::HandleIGESDataProtocol> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_protocol()) }
 }
 
 /// Some fields of an IGES entity may be
@@ -104,8 +66,186 @@ impl TryFrom<i32> for DefList {
     }
 }
 
+/// Some fields of an IGES entity may be
+/// - Undefined
+/// - Defined as a positive integer
+/// - Defined as a reference to a specialized entity.
+/// A typical example of this kind of variation is color.
+/// This enumeration allows you to identify which of the above is the case.
+/// The semantics of the terms are as follows:
+/// - DefVoid indicates that the item contained in the field is undefined
+/// - DefValue indicates that the item is defined as an immediate
+/// positive integer value (i.e. not a pointer)
+/// - DefReference indicates that the item is defined as an entity
+/// - DefAny indicates the item could not be determined
+/// - ErrorVal indicates that the item is defined as an integer
+/// but its value is incorrect (it could be out of range, for example)
+/// - ErrorRef indicates that the item is defined as an entity but
+/// is not of the required type.
+/// C++ enum: `IGESData_DefType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum DefType {
+    Defvoid = 0,
+    Defvalue = 1,
+    Defreference = 2,
+    Defany = 3,
+    Errorval = 4,
+    Errorref = 5,
+}
+
+impl From<DefType> for i32 {
+    fn from(value: DefType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for DefType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(DefType::Defvoid),
+            1 => Ok(DefType::Defvalue),
+            2 => Ok(DefType::Defreference),
+            3 => Ok(DefType::Defany),
+            4 => Ok(DefType::Errorval),
+            5 => Ok(DefType::Errorref),
+            _ => Err(value),
+        }
+    }
+}
+
+/// gives successive stages of reading an entity (see ParamReader)
+/// C++ enum: `IGESData_ReadStage`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ReadStage {
+    Readdir = 0,
+    Readown = 1,
+    Readassocs = 2,
+    Readprops = 3,
+    Readend = 4,
+}
+
+impl From<ReadStage> for i32 {
+    fn from(value: ReadStage) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ReadStage {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(ReadStage::Readdir),
+            1 => Ok(ReadStage::Readown),
+            2 => Ok(ReadStage::Readassocs),
+            3 => Ok(ReadStage::Readprops),
+            4 => Ok(ReadStage::Readend),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `IGESData_Status`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum Status {
+    Entityok = 0,
+    Entityerror = 1,
+    Referenceerror = 2,
+    Typeerror = 3,
+}
+
+impl From<Status> for i32 {
+    fn from(value: Status) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for Status {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(Status::Entityok),
+            1 => Ok(Status::Entityerror),
+            2 => Ok(Status::Referenceerror),
+            3 => Ok(Status::Typeerror),
+            _ => Err(value),
+        }
+    }
+}
+
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi::{
+    HandleIGESAppliDrilledHole, HandleIGESAppliElementResults, HandleIGESAppliFiniteElement,
+    HandleIGESAppliFlow, HandleIGESAppliFlowLineSpec, HandleIGESAppliGeneralModule,
+    HandleIGESAppliLevelFunction, HandleIGESAppliLevelToPWBLayerMap, HandleIGESAppliLineWidening,
+    HandleIGESAppliNodalConstraint, HandleIGESAppliNodalDisplAndRot, HandleIGESAppliNodalResults,
+    HandleIGESAppliNode, HandleIGESAppliPWBArtworkStackup, HandleIGESAppliPWBDrilledHole,
+    HandleIGESAppliPartNumber, HandleIGESAppliPinNumber, HandleIGESAppliPipingFlow,
+    HandleIGESAppliProtocol, HandleIGESAppliReadWriteModule, HandleIGESAppliReferenceDesignator,
+    HandleIGESAppliRegionRestriction, HandleIGESAppliSpecificModule, HandleIGESBasicAssocGroupType,
+    HandleIGESBasicExternalRefFile, HandleIGESBasicExternalRefFileIndex,
+    HandleIGESBasicExternalRefFileName, HandleIGESBasicExternalRefLibName,
+    HandleIGESBasicExternalRefName, HandleIGESBasicExternalReferenceFile,
+    HandleIGESBasicGeneralModule, HandleIGESBasicGroup, HandleIGESBasicGroupWithoutBackP,
+    HandleIGESBasicHierarchy, HandleIGESBasicName, HandleIGESBasicOrderedGroup,
+    HandleIGESBasicOrderedGroupWithoutBackP, HandleIGESBasicProtocol,
+    HandleIGESBasicReadWriteModule, HandleIGESBasicSingleParent, HandleIGESBasicSingularSubfigure,
+    HandleIGESBasicSpecificModule, HandleIGESBasicSubfigureDef, HandleIGESDefsAssociativityDef,
+    HandleIGESDefsAttributeDef, HandleIGESDefsAttributeTable, HandleIGESDefsGeneralModule,
+    HandleIGESDefsGenericData, HandleIGESDefsMacroDef, HandleIGESDefsProtocol,
+    HandleIGESDefsReadWriteModule, HandleIGESDefsSpecificModule, HandleIGESDefsTabularData,
+    HandleIGESDefsUnitsData, HandleIGESDimenAngularDimension, HandleIGESDimenBasicDimension,
+    HandleIGESDimenCenterLine, HandleIGESDimenCurveDimension, HandleIGESDimenDiameterDimension,
+    HandleIGESDimenDimensionDisplayData, HandleIGESDimenDimensionTolerance,
+    HandleIGESDimenDimensionUnits, HandleIGESDimenDimensionedGeometry, HandleIGESDimenFlagNote,
+    HandleIGESDimenGeneralLabel, HandleIGESDimenGeneralModule, HandleIGESDimenGeneralNote,
+    HandleIGESDimenGeneralSymbol, HandleIGESDimenLeaderArrow, HandleIGESDimenLinearDimension,
+    HandleIGESDimenNewDimensionedGeometry, HandleIGESDimenNewGeneralNote,
+    HandleIGESDimenOrdinateDimension, HandleIGESDimenPointDimension, HandleIGESDimenProtocol,
+    HandleIGESDimenRadiusDimension, HandleIGESDimenReadWriteModule, HandleIGESDimenSection,
+    HandleIGESDimenSectionedArea, HandleIGESDimenSpecificModule, HandleIGESDimenWitnessLine,
+    HandleIGESDrawCircArraySubfigure, HandleIGESDrawConnectPoint, HandleIGESDrawDrawing,
+    HandleIGESDrawDrawingWithRotation, HandleIGESDrawGeneralModule, HandleIGESDrawLabelDisplay,
+    HandleIGESDrawNetworkSubfigure, HandleIGESDrawNetworkSubfigureDef,
+    HandleIGESDrawPerspectiveView, HandleIGESDrawPlanar, HandleIGESDrawProtocol,
+    HandleIGESDrawReadWriteModule, HandleIGESDrawRectArraySubfigure,
+    HandleIGESDrawSegmentedViewsVisible, HandleIGESDrawSpecificModule, HandleIGESDrawView,
+    HandleIGESDrawViewsVisible, HandleIGESDrawViewsVisibleWithAttr, HandleIGESGeomBSplineCurve,
+    HandleIGESGeomBSplineSurface, HandleIGESGeomBoundary, HandleIGESGeomBoundedSurface,
+    HandleIGESGeomCircularArc, HandleIGESGeomCompositeCurve, HandleIGESGeomConicArc,
+    HandleIGESGeomCopiousData, HandleIGESGeomCurveOnSurface, HandleIGESGeomDirection,
+    HandleIGESGeomFlash, HandleIGESGeomGeneralModule, HandleIGESGeomLine,
+    HandleIGESGeomOffsetCurve, HandleIGESGeomOffsetSurface, HandleIGESGeomPlane,
+    HandleIGESGeomPoint, HandleIGESGeomProtocol, HandleIGESGeomReadWriteModule,
+    HandleIGESGeomRuledSurface, HandleIGESGeomSpecificModule, HandleIGESGeomSplineCurve,
+    HandleIGESGeomSplineSurface, HandleIGESGeomSurfaceOfRevolution,
+    HandleIGESGeomTabulatedCylinder, HandleIGESGeomTransformationMatrix,
+    HandleIGESGeomTrimmedSurface, HandleIGESGraphColor, HandleIGESGraphDefinitionLevel,
+    HandleIGESGraphDrawingSize, HandleIGESGraphDrawingUnits, HandleIGESGraphGeneralModule,
+    HandleIGESGraphHighLight, HandleIGESGraphIntercharacterSpacing,
+    HandleIGESGraphLineFontDefPattern, HandleIGESGraphLineFontDefTemplate,
+    HandleIGESGraphLineFontPredefined, HandleIGESGraphNominalSize, HandleIGESGraphPick,
+    HandleIGESGraphProtocol, HandleIGESGraphReadWriteModule, HandleIGESGraphSpecificModule,
+    HandleIGESGraphTextDisplayTemplate, HandleIGESGraphTextFontDef, HandleIGESGraphUniformRectGrid,
+    HandleIGESSolidBlock, HandleIGESSolidBooleanTree, HandleIGESSolidConeFrustum,
+    HandleIGESSolidConicalSurface, HandleIGESSolidCylinder, HandleIGESSolidCylindricalSurface,
+    HandleIGESSolidEdgeList, HandleIGESSolidEllipsoid, HandleIGESSolidFace,
+    HandleIGESSolidGeneralModule, HandleIGESSolidLoop, HandleIGESSolidManifoldSolid,
+    HandleIGESSolidPlaneSurface, HandleIGESSolidProtocol, HandleIGESSolidReadWriteModule,
+    HandleIGESSolidRightAngularWedge, HandleIGESSolidSelectedComponent, HandleIGESSolidShell,
+    HandleIGESSolidSolidAssembly, HandleIGESSolidSolidInstance,
+    HandleIGESSolidSolidOfLinearExtrusion, HandleIGESSolidSolidOfRevolution,
+    HandleIGESSolidSpecificModule, HandleIGESSolidSphere, HandleIGESSolidSphericalSurface,
+    HandleIGESSolidToroidalSurface, HandleIGESSolidTorus, HandleIGESSolidVertexList,
+    HandleInterfaceFileReaderData, HandleInterfaceGeneralModule, HandleInterfaceInterfaceModel,
+    HandleInterfaceProtocol, HandleInterfaceReaderModule, HandleStandardTransient,
+};
 
 // ========================
 // From IGESData_BasicEditor.hxx
@@ -134,6 +274,64 @@ impl BasicEditor {
     /// Creates an empty Basic Editor which should be initialized via Init() method.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_BasicEditor_ctor()) }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:51 - `IGESData_BasicEditor::IGESData_BasicEditor()`
+    /// Creates a Basic Editor, with a new IGESModel, ready to run
+    pub fn new_handleigesdataprotocol(
+        protocol: &crate::ffi::HandleIGESDataProtocol,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_BasicEditor_ctor_handleigesdataprotocol(
+                protocol,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:54 - `IGESData_BasicEditor::IGESData_BasicEditor()`
+    /// Creates a Basic Editor for IGES Data, ready to run
+    pub fn new_handleigesdataigesmodel_handleigesdataprotocol(
+        model: &crate::ffi::HandleIGESDataIGESModel,
+        protocol: &crate::ffi::HandleIGESDataProtocol,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_BasicEditor_ctor_handleigesdataigesmodel_handleigesdataprotocol(model, protocol))
+        }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:58 - `IGESData_BasicEditor::Init()`
+    /// Initialize a Basic Editor, with a new IGESModel, ready to run
+    pub fn init_handleigesdataprotocol(&mut self, protocol: &crate::ffi::HandleIGESDataProtocol) {
+        unsafe {
+            crate::ffi::IGESData_BasicEditor_init_handleigesdataprotocol(
+                self as *mut Self,
+                protocol,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:61 - `IGESData_BasicEditor::Init()`
+    /// Initialize a Basic Editor for IGES Data, ready to run
+    pub fn init_handleigesdataigesmodel_handleigesdataprotocol(
+        &mut self,
+        model: &crate::ffi::HandleIGESDataIGESModel,
+        protocol: &crate::ffi::HandleIGESDataProtocol,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_BasicEditor_init_handleigesdataigesmodel_handleigesdataprotocol(
+                self as *mut Self,
+                model,
+                protocol,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:65 - `IGESData_BasicEditor::Model()`
+    /// Returns the designated model
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_BasicEditor_model(self as *const Self))
+        }
     }
 
     /// **Source:** `IGESData_BasicEditor.hxx`:69 - `IGESData_BasicEditor::SetUnitFlag()`
@@ -268,32 +466,668 @@ impl BasicEditor {
     }
 }
 
-// ── Skipped symbols for BasicEditor (5 total) ──
-// SKIPPED: **Source:** `IGESData_BasicEditor.hxx`:51 - `IGESData_BasicEditor::IGESData_BasicEditor`
-//   constructor: Creates a Basic Editor, with a new IGESModel, ready to run
-//   Reason: param 'protocol' uses unknown Handle type
-//   // pub fn new_handleigesdataprotocol(protocol: &HandleProtocol) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `IGESData_BasicEditor.hxx`:54 - `IGESData_BasicEditor::IGESData_BasicEditor`
-//   constructor: Creates a Basic Editor for IGES Data, ready to run
-//   Reason: param 'model' uses unknown Handle type
-//   // pub fn new_handleigesdataigesmodel_handleigesdataprotocol(model: &HandleIGESModel, protocol: &HandleProtocol) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `IGESData_BasicEditor.hxx`:58 - `IGESData_BasicEditor::Init`
-//   method: Initialize a Basic Editor, with a new IGESModel, ready to run
-//   Reason: param 'protocol' uses unknown type 'const Handle(IGESData_Protocol)&'
-//   // pub fn init(&mut self, protocol: &HandleProtocol);
-//
-// SKIPPED: **Source:** `IGESData_BasicEditor.hxx`:61 - `IGESData_BasicEditor::Init`
-//   method: Initialize a Basic Editor for IGES Data, ready to run
-//   Reason: param 'model' uses unknown type 'const Handle(IGESData_IGESModel)&'
-//   // pub fn init(&mut self, model: &HandleIGESModel, protocol: &HandleProtocol);
-//
-// SKIPPED: **Source:** `IGESData_BasicEditor.hxx`:65 - `IGESData_BasicEditor::Model`
-//   method: Returns the designated model
-//   Reason: return type 'Handle(IGESData_IGESModel)' is unknown
-//   // pub fn model(&self) -> OwnedPtr<Handle<IGESData_IGESModel>>;
-//
+// ========================
+// From IGESData_ColorEntity.hxx
+// ========================
+
+/// **Source:** `IGESData_ColorEntity.hxx`:29 - `IGESData_ColorEntity`
+/// defines required type for Color in directory part
+/// an effective Color entity must inherits it
+pub use crate::ffi::IGESData_ColorEntity as ColorEntity;
+
+unsafe impl crate::CppDeletable for ColorEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_ColorEntity_destructor(ptr);
+    }
+}
+
+impl ColorEntity {
+    /// **Source:** `IGESData_ColorEntity.hxx` - `IGESData_ColorEntity::IGESData_ColorEntity()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_ctor()) }
+    }
+
+    /// **Source:** `IGESData_ColorEntity.hxx`:33 - `IGESData_ColorEntity::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_ColorEntity_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_ColorEntity.hxx`:33 - `IGESData_ColorEntity::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_ColorEntity_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_ColorEntity.hxx`:33 - `IGESData_ColorEntity::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_ColorEntity_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_entity(&self) -> &IGESEntity {
+        unsafe { &*(crate::ffi::IGESData_ColorEntity_as_IGESData_IGESEntity(self as *const Self)) }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_entity_mut(&mut self) -> &mut IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESData_ColorEntity_as_IGESData_IGESEntity_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESData_ColorEntity_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_ColorEntity_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESData_ColorEntity_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESData_ColorEntity_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESData_ColorEntity_inherited_DefView(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_HasLabelDisplay(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_SubordinateStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_HierarchyStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_LineWeightNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESData_ColorEntity_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ColorEntity_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_SubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_ColorEntity_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_ColorEntity_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_InitLevel(self as *mut Self, ent, val) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_ColorEntity_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESData_ColorEntity_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESData_ColorEntity_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_ColorEntity_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_CompoundLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ColorEntity_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_NbAssociativities(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_Associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_ColorEntity_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_ColorEntity_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_Dissociate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ColorEntity_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_ColorEntity_inherited_NbTypedProperties(self as *const Self, atype)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ColorEntity_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_RemoveProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESData_ColorEntity_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ColorEntity_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_ColorEntity_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataColorEntity;
+
+unsafe impl crate::CppDeletable for HandleIGESDataColorEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataColorEntity_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataColorEntity {
+    /// Dereference this Handle to access the underlying IGESData_ColorEntity
+    pub fn get(&self) -> &crate::ffi::IGESData_ColorEntity {
+        unsafe { &*(crate::ffi::HandleIGESDataColorEntity_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_ColorEntity
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_ColorEntity {
+        unsafe { &mut *(crate::ffi::HandleIGESDataColorEntity_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_ColorEntity> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataColorEntity_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_ColorEntity> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataColorEntity_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IGESData_ColorEntity> to Handle<IGESGraph_Color>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_Color` (or subclass).
+    pub fn downcast_to_color(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphColor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataColorEntity_downcast_to_HandleIGESGraphColor(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From IGESData_DefSwitch.hxx
@@ -355,6 +1189,4118 @@ impl DefSwitch {
         unsafe { crate::ffi::IGESData_DefSwitch_value(self as *const Self) }
     }
 }
+
+// ========================
+// From IGESData_DefaultGeneral.hxx
+// ========================
+
+/// **Source:** `IGESData_DefaultGeneral.hxx`:37 - `IGESData_DefaultGeneral`
+/// Processes the specific case of UndefinedEntity from IGESData
+/// (Case Number 1)
+pub use crate::ffi::IGESData_DefaultGeneral as DefaultGeneral;
+
+unsafe impl crate::CppDeletable for DefaultGeneral {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_DefaultGeneral_destructor(ptr);
+    }
+}
+
+impl DefaultGeneral {
+    /// **Source:** `IGESData_DefaultGeneral.hxx`:43 - `IGESData_DefaultGeneral::IGESData_DefaultGeneral()`
+    /// Creates a DefaultGeneral and puts it into GeneralLib,
+    /// bound with a Protocol from IGESData
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_DefaultGeneral_ctor()) }
+    }
+
+    /// **Source:** `IGESData_DefaultGeneral.hxx`:47 - `IGESData_DefaultGeneral::OwnSharedCase()`
+    /// Lists the Entities shared by an IGESEntity, which must be
+    /// an UndefinedEntity
+    pub fn own_shared_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_own_shared_case(self as *const Self, CN, ent, iter)
+        }
+    }
+
+    /// **Source:** `IGESData_DefaultGeneral.hxx`:54 - `IGESData_DefaultGeneral::DirChecker()`
+    /// Returns a DirChecker, specific for each type of Entity
+    /// Here, Returns an empty DirChecker (no constraint to check)
+    pub fn dir_checker(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_DefaultGeneral_dir_checker(
+                self as *const Self,
+                CN,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_DefaultGeneral.hxx`:59 - `IGESData_DefaultGeneral::OwnCheckCase()`
+    /// Performs Specific Semantic Check for each type of Entity
+    /// Here, does nothing (no constraint to check)
+    pub fn own_check_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_own_check_case(
+                self as *const Self,
+                CN,
+                ent,
+                shares,
+                ach,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_DefaultGeneral.hxx`:66 - `IGESData_DefaultGeneral::NewVoid()`
+    /// Specific creation of a new void entity (UndefinedEntity only)
+    pub fn new_void(&self, CN: i32, entto: &mut crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IGESData_DefaultGeneral_new_void(self as *const Self, CN, entto) }
+    }
+
+    /// **Source:** `IGESData_DefaultGeneral.hxx`:69 - `IGESData_DefaultGeneral::OwnCopyCase()`
+    /// Copies parameters which are specific of each Type of Entity
+    pub fn own_copy_case(
+        &self,
+        CN: i32,
+        entfrom: &crate::ffi::HandleIGESDataIGESEntity,
+        entto: &crate::ffi::HandleIGESDataIGESEntity,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_own_copy_case(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_DefaultGeneral.hxx`:74 - `IGESData_DefaultGeneral::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_DefaultGeneral_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_DefaultGeneral.hxx`:74 - `IGESData_DefaultGeneral::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_DefaultGeneral_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_DefaultGeneral.hxx`:74 - `IGESData_DefaultGeneral::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_DefaultGeneral_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_GeneralModule
+    pub fn as_general_module(&self) -> &GeneralModule {
+        unsafe {
+            &*(crate::ffi::IGESData_DefaultGeneral_as_IGESData_GeneralModule(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_GeneralModule (mutable)
+    pub fn as_general_module_mut(&mut self) -> &mut GeneralModule {
+        unsafe {
+            &mut *(crate::ffi::IGESData_DefaultGeneral_as_IGESData_GeneralModule_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Interface_GeneralModule
+    pub fn as_interface_general_module(&self) -> &crate::interface::GeneralModule {
+        unsafe {
+            &*(crate::ffi::IGESData_DefaultGeneral_as_Interface_GeneralModule(self as *const Self))
+        }
+    }
+
+    /// Upcast to Interface_GeneralModule (mutable)
+    pub fn as_interface_general_module_mut(&mut self) -> &mut crate::interface::GeneralModule {
+        unsafe {
+            &mut *(crate::ffi::IGESData_DefaultGeneral_as_Interface_GeneralModule_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESData_DefaultGeneral_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_DefaultGeneral_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataDefaultGeneral> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_DefaultGeneral_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:50 - `IGESData_GeneralModule::FillSharedCase()`
+    pub fn fill_shared_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_FillSharedCase(
+                self as *const Self,
+                CN,
+                ent,
+                iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:62 - `IGESData_GeneralModule::ListImpliedCase()`
+    pub fn list_implied_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_ListImpliedCase(
+                self as *const Self,
+                CN,
+                ent,
+                iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:70 - `IGESData_GeneralModule::OwnImpliedCase()`
+    pub fn own_implied_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_OwnImpliedCase(
+                self as *const Self,
+                CN,
+                ent,
+                iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:77 - `IGESData_GeneralModule::CheckCase()`
+    pub fn check_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_CheckCase(
+                self as *const Self,
+                CN,
+                ent,
+                shares,
+                ach,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:97 - `IGESData_GeneralModule::CanCopy()`
+    pub fn can_copy(&self, CN: i32, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_CanCopy(self as *const Self, CN, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:110 - `IGESData_GeneralModule::CopyCase()`
+    pub fn copy_case(
+        &self,
+        CN: i32,
+        entfrom: &crate::ffi::HandleStandardTransient,
+        entto: &crate::ffi::HandleStandardTransient,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_CopyCase(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:124 - `IGESData_GeneralModule::RenewImpliedCase()`
+    pub fn renew_implied_case(
+        &self,
+        CN: i32,
+        entfrom: &crate::ffi::HandleStandardTransient,
+        entto: &crate::ffi::HandleStandardTransient,
+        TC: &crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_RenewImpliedCase(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:133 - `IGESData_GeneralModule::OwnRenewCase()`
+    pub fn own_renew_case(
+        &self,
+        CN: i32,
+        entfrom: &crate::ffi::HandleIGESDataIGESEntity,
+        entto: &crate::ffi::HandleIGESDataIGESEntity,
+        TC: &crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_OwnRenewCase(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:142 - `IGESData_GeneralModule::WhenDeleteCase()`
+    pub fn when_delete_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        dispatched: bool,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_WhenDeleteCase(
+                self as *const Self,
+                CN,
+                ent,
+                dispatched,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:149 - `IGESData_GeneralModule::OwnDeleteCase()`
+    pub fn own_delete_case(&self, CN: i32, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_OwnDeleteCase(
+                self as *const Self,
+                CN,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:154 - `IGESData_GeneralModule::Name()`
+    pub fn name(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        shares: &crate::interface::ShareTool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_DefaultGeneral_inherited_Name(
+                self as *const Self,
+                CN,
+                ent,
+                shares,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_GeneralModule.hxx`:52 - `Interface_GeneralModule::FillShared()`
+    pub fn fill_shared(
+        &self,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_FillShared(
+                self as *const Self,
+                model,
+                CN,
+                ent,
+                iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_GeneralModule.hxx`:65 - `Interface_GeneralModule::Share()`
+    pub fn share(
+        &self,
+        iter: &mut crate::interface::EntityIterator,
+        shared: &crate::ffi::HandleStandardTransient,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_Share(self as *const Self, iter, shared)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_GeneralModule.hxx`:76 - `Interface_GeneralModule::ListImplied()`
+    pub fn list_implied(
+        &self,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_ListImplied(
+                self as *const Self,
+                model,
+                CN,
+                ent,
+                iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_GeneralModule.hxx`:126 - `Interface_GeneralModule::Dispatch()`
+    pub fn dispatch(
+        &self,
+        CN: i32,
+        entfrom: &crate::ffi::HandleStandardTransient,
+        entto: &mut crate::ffi::HandleStandardTransient,
+        TC: &mut crate::interface::CopyTool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_Dispatch(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_GeneralModule.hxx`:152 - `Interface_GeneralModule::NewCopiedCase()`
+    pub fn new_copied_case(
+        &self,
+        CN: i32,
+        entfrom: &crate::ffi::HandleStandardTransient,
+        entto: &mut crate::ffi::HandleStandardTransient,
+        TC: &mut crate::interface::CopyTool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_NewCopiedCase(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_GeneralModule.hxx`:198 - `Interface_GeneralModule::CategoryNumber()`
+    pub fn category_number(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        shares: &crate::interface::ShareTool,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_CategoryNumber(
+                self as *const Self,
+                CN,
+                ent,
+                shares,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_DefaultGeneral_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_DefaultGeneral_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_DefaultGeneral_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataDefaultGeneral;
+
+unsafe impl crate::CppDeletable for HandleIGESDataDefaultGeneral {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataDefaultGeneral_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataDefaultGeneral {
+    /// Dereference this Handle to access the underlying IGESData_DefaultGeneral
+    pub fn get(&self) -> &crate::ffi::IGESData_DefaultGeneral {
+        unsafe { &*(crate::ffi::HandleIGESDataDefaultGeneral_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_DefaultGeneral
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_DefaultGeneral {
+        unsafe { &mut *(crate::ffi::HandleIGESDataDefaultGeneral_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_DefaultGeneral> to Handle<IGESData_GeneralModule>
+    pub fn to_handle_iges_data_general_module(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataGeneralModule> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataDefaultGeneral_to_HandleIGESDataGeneralModule(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_DefaultGeneral> to Handle<Interface_GeneralModule>
+    pub fn to_handle_interface_general_module(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceGeneralModule> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataDefaultGeneral_to_HandleInterfaceGeneralModule(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_DefaultGeneral> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataDefaultGeneral_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESData_DefaultSpecific.hxx
+// ========================
+
+/// **Source:** `IGESData_DefaultSpecific.hxx`:31 - `IGESData_DefaultSpecific`
+/// Specific IGES Services for UndefinedEntity, FreeFormatEntity
+pub use crate::ffi::IGESData_DefaultSpecific as DefaultSpecific;
+
+unsafe impl crate::CppDeletable for DefaultSpecific {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_DefaultSpecific_destructor(ptr);
+    }
+}
+
+impl DefaultSpecific {
+    /// **Source:** `IGESData_DefaultSpecific.hxx`:36 - `IGESData_DefaultSpecific::IGESData_DefaultSpecific()`
+    /// Creates a DefaultSpecific and puts it into SpecificLib
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_DefaultSpecific_ctor()) }
+    }
+
+    /// **Source:** `IGESData_DefaultSpecific.hxx`:47 - `IGESData_DefaultSpecific::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_DefaultSpecific_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_DefaultSpecific.hxx`:47 - `IGESData_DefaultSpecific::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_DefaultSpecific_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_DefaultSpecific.hxx`:47 - `IGESData_DefaultSpecific::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_DefaultSpecific_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_SpecificModule
+    pub fn as_specific_module(&self) -> &SpecificModule {
+        unsafe {
+            &*(crate::ffi::IGESData_DefaultSpecific_as_IGESData_SpecificModule(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_SpecificModule (mutable)
+    pub fn as_specific_module_mut(&mut self) -> &mut SpecificModule {
+        unsafe {
+            &mut *(crate::ffi::IGESData_DefaultSpecific_as_IGESData_SpecificModule_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESData_DefaultSpecific_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_DefaultSpecific_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataDefaultSpecific> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_DefaultSpecific_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_SpecificModule.hxx`:65 - `IGESData_SpecificModule::OwnCorrect()`
+    pub fn own_correct(&self, CN: i32, ent: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+        unsafe {
+            crate::ffi::IGESData_DefaultSpecific_inherited_OwnCorrect(self as *const Self, CN, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_DefaultSpecific_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_DefaultSpecific_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_DefaultSpecific_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_DefaultSpecific_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_DefaultSpecific_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_DefaultSpecific_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataDefaultSpecific;
+
+unsafe impl crate::CppDeletable for HandleIGESDataDefaultSpecific {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataDefaultSpecific_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataDefaultSpecific {
+    /// Dereference this Handle to access the underlying IGESData_DefaultSpecific
+    pub fn get(&self) -> &crate::ffi::IGESData_DefaultSpecific {
+        unsafe { &*(crate::ffi::HandleIGESDataDefaultSpecific_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_DefaultSpecific
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_DefaultSpecific {
+        unsafe { &mut *(crate::ffi::HandleIGESDataDefaultSpecific_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_DefaultSpecific> to Handle<IGESData_SpecificModule>
+    pub fn to_handle_specific_module(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataSpecificModule> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataDefaultSpecific_to_HandleIGESDataSpecificModule(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_DefaultSpecific> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataDefaultSpecific_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for DefaultSpecific (1 total) ──
+// SKIPPED: **Source:** `IGESData_DefaultSpecific.hxx`:41 - `IGESData_DefaultSpecific::OwnDump`
+//   method: Specific Dump for UndefinedEntity : it concerns only
+//   method: own parameters, the general data (Directory Part, Lists) are
+//   method: taken into account by the IGESDumper
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, CN: i32, ent: &HandleIGESEntity, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
+// From IGESData_DirChecker.hxx
+// ========================
+
+/// **Source:** `IGESData_DirChecker.hxx`:42 - `IGESData_DirChecker`
+/// This class centralizes general Checks upon an IGES Entity's
+/// Directory Part. That is : such field Ignored or Required,
+/// or Required with a given Value (for an Integer field)
+/// More precise checks can be performed as necessary, by each
+/// Entity (method OwnCheck).
+///
+/// Each class of Entity defines its DirChecker (method DirChecker)
+/// and the DirChecker is able to perform its Checks on an Entity
+///
+/// A Required Value or presence of a field causes a Fail Message
+/// if criterium is not satisfied
+/// An Ignored field causes a Correction Message if the field is
+/// not null/zero
+pub use crate::ffi::IGESData_DirChecker as DirChecker;
+
+unsafe impl crate::CppDeletable for DirChecker {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_DirChecker_destructor(ptr);
+    }
+}
+
+impl DirChecker {
+    /// **Source:** `IGESData_DirChecker.hxx`:48 - `IGESData_DirChecker::IGESData_DirChecker()`
+    /// Returns a DirChecker, with no criterium at all to be checked
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_DirChecker_ctor()) }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:51 - `IGESData_DirChecker::IGESData_DirChecker()`
+    /// Returns a DirChecker, with no criterium except Required Type
+    pub fn new_int(atype: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_DirChecker_ctor_int(atype)) }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:55 - `IGESData_DirChecker::IGESData_DirChecker()`
+    /// Returns a DirChecker, with no criterium except Required values
+    /// for Type and Form numbers
+    pub fn new_int2(atype: i32, aform: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_DirChecker_ctor_int2(atype, aform))
+        }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:60 - `IGESData_DirChecker::IGESData_DirChecker()`
+    /// Returns a DirChecker, with no criterium except Required values
+    /// for Type number (atype), and Required Range for Form number
+    /// (which must be between aform1 and aform2 included)
+    pub fn new_int3(atype: i32, aform1: i32, aform2: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_DirChecker_ctor_int3(
+                atype, aform1, aform2,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:67 - `IGESData_DirChecker::IsSet()`
+    /// Returns True if at least one criterium has already been set
+    /// Allows user to store a DirChecker (static variable) then ask
+    /// if it has been set before setting it
+    pub fn is_set(&self) -> bool {
+        unsafe { crate::ffi::IGESData_DirChecker_is_set(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:71 - `IGESData_DirChecker::SetDefault()`
+    /// Sets a DirChecker with most current criteria, that is :
+    /// Structure Ignored ( worths call Structure(crit = DefVoid) )
+    pub fn set_default(&mut self) {
+        unsafe { crate::ffi::IGESData_DirChecker_set_default(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:77 - `IGESData_DirChecker::Structure()`
+    /// Sets Structure criterium.
+    /// If crit is DefVoid, Ignored : should not be defined
+    /// If crit is DefReference, Required : must be defined
+    /// Other values are not taken in account
+    pub fn structure(&mut self, crit: crate::iges_data::DefType) {
+        unsafe { crate::ffi::IGESData_DirChecker_structure(self as *mut Self, crit.into()) }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:84 - `IGESData_DirChecker::LineFont()`
+    /// Sets LineFont criterium
+    /// If crit is DefVoid, Ignored : should not be defined
+    /// If crit is DefAny, Required : must be defined (value or ref)
+    /// If crit is DefValue, Required as a Value (error if Reference)
+    /// Other values are not taken in account
+    pub fn line_font(&mut self, crit: crate::iges_data::DefType) {
+        unsafe { crate::ffi::IGESData_DirChecker_line_font(self as *mut Self, crit.into()) }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:90 - `IGESData_DirChecker::LineWeight()`
+    /// Sets LineWeight criterium
+    /// If crit is DefVoid, Ignored : should not be defined
+    /// If crit is DefValue, Required
+    /// Other values are not taken in account
+    pub fn line_weight(&mut self, crit: crate::iges_data::DefType) {
+        unsafe { crate::ffi::IGESData_DirChecker_line_weight(self as *mut Self, crit.into()) }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:96 - `IGESData_DirChecker::Color()`
+    /// Sets Color criterium
+    /// If crit is DefVoid, Ignored : should not be defined
+    /// If crit is DefAny, Required : must be defined (value or ref)
+    /// Other values are not taken in account
+    pub fn color(&mut self, crit: crate::iges_data::DefType) {
+        unsafe { crate::ffi::IGESData_DirChecker_color(self as *mut Self, crit.into()) }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:104 - `IGESData_DirChecker::GraphicsIgnored()`
+    /// Sets Graphics data (LineFont, LineWeight, Color, Level, View)
+    /// to be ignored according value of Hierarchy status :
+    /// If hierarchy is not given, they are Ignored any way
+    /// (that is, they should not be defined)
+    /// If hierarchy is given, Graphics are Ignored if the Hierarchy
+    /// status has the value given in argument "hierarchy"
+    pub fn graphics_ignored(&mut self, hierarchy: i32) {
+        unsafe { crate::ffi::IGESData_DirChecker_graphics_ignored(self as *mut Self, hierarchy) }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:108 - `IGESData_DirChecker::BlankStatusIgnored()`
+    /// Sets Blank Status to be ignored
+    /// (should not be defined, or its value should be 0)
+    pub fn blank_status_ignored(&mut self) {
+        unsafe { crate::ffi::IGESData_DirChecker_blank_status_ignored(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:111 - `IGESData_DirChecker::BlankStatusRequired()`
+    /// Sets Blank Status to be required at a given value
+    pub fn blank_status_required(&mut self, val: i32) {
+        unsafe { crate::ffi::IGESData_DirChecker_blank_status_required(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:115 - `IGESData_DirChecker::SubordinateStatusIgnored()`
+    /// Sets Subordinate Status to be ignored
+    /// (should not be defined, or its value should be 0)
+    pub fn subordinate_status_ignored(&mut self) {
+        unsafe { crate::ffi::IGESData_DirChecker_subordinate_status_ignored(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:118 - `IGESData_DirChecker::SubordinateStatusRequired()`
+    /// Sets Subordinate Status to be required at a given value
+    pub fn subordinate_status_required(&mut self, val: i32) {
+        unsafe {
+            crate::ffi::IGESData_DirChecker_subordinate_status_required(self as *mut Self, val)
+        }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:122 - `IGESData_DirChecker::UseFlagIgnored()`
+    /// Sets Blank Status to be ignored
+    /// (should not be defined, or its value should be 0)
+    pub fn use_flag_ignored(&mut self) {
+        unsafe { crate::ffi::IGESData_DirChecker_use_flag_ignored(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:126 - `IGESData_DirChecker::UseFlagRequired()`
+    /// Sets Blank Status to be required at a given value
+    /// Give -1 to demand UseFlag not zero (but no precise value req.)
+    pub fn use_flag_required(&mut self, val: i32) {
+        unsafe { crate::ffi::IGESData_DirChecker_use_flag_required(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:130 - `IGESData_DirChecker::HierarchyStatusIgnored()`
+    /// Sets Hierarchy Status to be ignored
+    /// (should not be defined, or its value should be 0)
+    pub fn hierarchy_status_ignored(&mut self) {
+        unsafe { crate::ffi::IGESData_DirChecker_hierarchy_status_ignored(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:133 - `IGESData_DirChecker::HierarchyStatusRequired()`
+    /// Sets Hierarchy Status to be required at a given value
+    pub fn hierarchy_status_required(&mut self, val: i32) {
+        unsafe { crate::ffi::IGESData_DirChecker_hierarchy_status_required(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:139 - `IGESData_DirChecker::Check()`
+    /// Performs the Checks on an IGESEntity, according to the
+    /// recorded criteria
+    /// In addition, does minimal Checks, such as admitted range for
+    /// Status, or presence of Error status in some data (Color, ...)
+    pub fn check(
+        &self,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe { crate::ffi::IGESData_DirChecker_check(self as *const Self, ach, ent) }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:145 - `IGESData_DirChecker::CheckTypeAndForm()`
+    /// Performs a Check only on Values of Type Number and Form Number
+    /// This allows to do a check on an Entity not yet completely
+    /// filled but of which Type and Form Number have been already set
+    pub fn check_type_and_form(
+        &self,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_DirChecker_check_type_and_form(self as *const Self, ach, ent)
+        }
+    }
+
+    /// **Source:** `IGESData_DirChecker.hxx`:157 - `IGESData_DirChecker::Correct()`
+    /// Corrects the Directory Entry of an IGES Entity as far as it is
+    /// possible according recorded criteria without any ambiguity :
+    /// - if a numeric Status is required a given value, this value is
+    /// enforced
+    /// - if an item is required to be Void, or if it recorded as
+    /// Erroneous, it is cleared (set to Void)
+    /// - Type Number is enforced
+    /// - finally Form Number is enforced only if one and only Value
+    /// is admitted (no range, see Constructors of DirChecker)
+    pub fn correct(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+        unsafe { crate::ffi::IGESData_DirChecker_correct(self as *const Self, ent) }
+    }
+}
+
+// ========================
+// From IGESData_DirPart.hxx
+// ========================
+
+/// **Source:** `IGESData_DirPart.hxx`:27 - `IGESData_DirPart`
+/// literal/numeric description of an entity's directory section, taken from file
+pub use crate::ffi::IGESData_DirPart as DirPart;
+
+unsafe impl crate::CppDeletable for DirPart {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_DirPart_destructor(ptr);
+    }
+}
+
+impl DirPart {
+    /// **Source:** `IGESData_DirPart.hxx`:33 - `IGESData_DirPart::IGESData_DirPart()`
+    /// creates an empty DirPart, ready to be filled by Init
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_DirPart_ctor()) }
+    }
+
+    /// **Source:** `IGESData_DirPart.hxx`:36 - `IGESData_DirPart::Init()`
+    /// fills DirPart with consistent data read from file
+    pub fn init(
+        &mut self,
+        i1: i32,
+        i2: i32,
+        i3: i32,
+        i4: i32,
+        i5: i32,
+        i6: i32,
+        i7: i32,
+        i8: i32,
+        i9: i32,
+        i19: i32,
+        i11: i32,
+        i12: i32,
+        i13: i32,
+        i14: i32,
+        i15: i32,
+        i16: i32,
+        i17: i32,
+        res1: &str,
+        res2: &str,
+        label: &str,
+        subscript: &str,
+    ) {
+        let c_res1 = std::ffi::CString::new(res1).unwrap();
+        let c_res2 = std::ffi::CString::new(res2).unwrap();
+        let c_label = std::ffi::CString::new(label).unwrap();
+        let c_subscript = std::ffi::CString::new(subscript).unwrap();
+        unsafe {
+            crate::ffi::IGESData_DirPart_init(
+                self as *mut Self,
+                i1,
+                i2,
+                i3,
+                i4,
+                i5,
+                i6,
+                i7,
+                i8,
+                i9,
+                i19,
+                i11,
+                i12,
+                i13,
+                i14,
+                i15,
+                i16,
+                i17,
+                c_res1.as_ptr(),
+                c_res2.as_ptr(),
+                c_label.as_ptr(),
+                c_subscript.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_DirPart.hxx`:60 - `IGESData_DirPart::Values()`
+    /// returns values recorded in DirPart
+    /// (content of cstrings are modified)
+    pub fn values(
+        &self,
+        i1: &mut i32,
+        i2: &mut i32,
+        i3: &mut i32,
+        i4: &mut i32,
+        i5: &mut i32,
+        i6: &mut i32,
+        i7: &mut i32,
+        i8: &mut i32,
+        i9: &mut i32,
+        i19: &mut i32,
+        i11: &mut i32,
+        i12: &mut i32,
+        i13: &mut i32,
+        i14: &mut i32,
+        i15: &mut i32,
+        i16: &mut i32,
+        i17: &mut i32,
+        res1: &str,
+        res2: &str,
+        label: &str,
+        subscript: &str,
+    ) {
+        let c_res1 = std::ffi::CString::new(res1).unwrap();
+        let c_res2 = std::ffi::CString::new(res2).unwrap();
+        let c_label = std::ffi::CString::new(label).unwrap();
+        let c_subscript = std::ffi::CString::new(subscript).unwrap();
+        unsafe {
+            crate::ffi::IGESData_DirPart_values(
+                self as *const Self,
+                i1,
+                i2,
+                i3,
+                i4,
+                i5,
+                i6,
+                i7,
+                i8,
+                i9,
+                i19,
+                i11,
+                i12,
+                i13,
+                i14,
+                i15,
+                i16,
+                i17,
+                c_res1.as_ptr(),
+                c_res2.as_ptr(),
+                c_label.as_ptr(),
+                c_subscript.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_DirPart.hxx`:83 - `IGESData_DirPart::Type()`
+    /// returns "type" and "form" info, used to recognize the entity
+    pub fn type_(&self) -> crate::OwnedPtr<IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_DirPart_type_(self as *const Self))
+        }
+    }
+}
+
+// ========================
+// From IGESData_FileProtocol.hxx
+// ========================
+
+/// **Source:** `IGESData_FileProtocol.hxx`:34 - `IGESData_FileProtocol`
+/// This class allows to define complex protocols, in order to
+/// treat various sub-sets (or the complete set) of the IGES Norm,
+/// such as Solid + Draw (which are normally independent), etc...
+/// While it inherits Protocol from IGESData, it admits UndefinedEntity too
+pub use crate::ffi::IGESData_FileProtocol as FileProtocol;
+
+unsafe impl crate::CppDeletable for FileProtocol {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_FileProtocol_destructor(ptr);
+    }
+}
+
+impl FileProtocol {
+    /// **Source:** `IGESData_FileProtocol.hxx`:39 - `IGESData_FileProtocol::IGESData_FileProtocol()`
+    /// Returns an empty FileProtocol
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_FileProtocol_ctor()) }
+    }
+
+    /// **Source:** `IGESData_FileProtocol.hxx`:42 - `IGESData_FileProtocol::Add()`
+    /// Adds a resource
+    pub fn add(&mut self, protocol: &crate::ffi::HandleIGESDataProtocol) {
+        unsafe { crate::ffi::IGESData_FileProtocol_add(self as *mut Self, protocol) }
+    }
+
+    /// **Source:** `IGESData_FileProtocol.hxx`:45 - `IGESData_FileProtocol::NbResources()`
+    /// Gives the count of Resources : the count of Added Protocols
+    pub fn nb_resources(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_FileProtocol_nb_resources(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_FileProtocol.hxx`:48 - `IGESData_FileProtocol::Resource()`
+    /// Returns a Resource, given a rank (rank of call to Add)
+    pub fn resource(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FileProtocol_resource(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_FileProtocol.hxx`:51 - `IGESData_FileProtocol::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_FileProtocol_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_FileProtocol.hxx`:51 - `IGESData_FileProtocol::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_FileProtocol_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_FileProtocol.hxx`:51 - `IGESData_FileProtocol::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_FileProtocol_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_Protocol
+    pub fn as_protocol(&self) -> &Protocol {
+        unsafe { &*(crate::ffi::IGESData_FileProtocol_as_IGESData_Protocol(self as *const Self)) }
+    }
+
+    /// Upcast to IGESData_Protocol (mutable)
+    pub fn as_protocol_mut(&mut self) -> &mut Protocol {
+        unsafe {
+            &mut *(crate::ffi::IGESData_FileProtocol_as_IGESData_Protocol_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Interface_Protocol
+    pub fn as_interface_protocol(&self) -> &crate::interface::Protocol {
+        unsafe { &*(crate::ffi::IGESData_FileProtocol_as_Interface_Protocol(self as *const Self)) }
+    }
+
+    /// Upcast to Interface_Protocol (mutable)
+    pub fn as_interface_protocol_mut(&mut self) -> &mut crate::interface::Protocol {
+        unsafe {
+            &mut *(crate::ffi::IGESData_FileProtocol_as_Interface_Protocol_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESData_FileProtocol_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_FileProtocol_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataFileProtocol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FileProtocol_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_Protocol.hxx`:50 - `IGESData_Protocol::TypeNumber()`
+    pub fn type_number(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_FileProtocol_inherited_TypeNumber(self as *const Self, atype)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_Protocol.hxx`:53 - `IGESData_Protocol::NewModel()`
+    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FileProtocol_inherited_NewModel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_Protocol.hxx`:57 - `IGESData_Protocol::IsSuitableModel()`
+    pub fn is_suitable_model(&self, model: &crate::ffi::HandleInterfaceInterfaceModel) -> bool {
+        unsafe {
+            crate::ffi::IGESData_FileProtocol_inherited_IsSuitableModel(self as *const Self, model)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_Protocol.hxx`:60 - `IGESData_Protocol::UnknownEntity()`
+    pub fn unknown_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FileProtocol_inherited_UnknownEntity(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_Protocol.hxx`:65 - `IGESData_Protocol::IsUnknownEntity()`
+    pub fn is_unknown_entity(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe {
+            crate::ffi::IGESData_FileProtocol_inherited_IsUnknownEntity(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_Protocol.hxx`:64 - `Interface_Protocol::CaseNumber()`
+    pub fn case_number(&self, obj: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::IGESData_FileProtocol_inherited_CaseNumber(self as *const Self, obj) }
+    }
+
+    /// Inherited: **Source:** `Interface_Protocol.hxx`:68 - `Interface_Protocol::IsDynamicType()`
+    pub fn is_dynamic_type(&self, obj: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe {
+            crate::ffi::IGESData_FileProtocol_inherited_IsDynamicType(self as *const Self, obj)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_Protocol.hxx`:75 - `Interface_Protocol::NbTypes()`
+    pub fn nb_types(&self, obj: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::IGESData_FileProtocol_inherited_NbTypes(self as *const Self, obj) }
+    }
+
+    /// Inherited: **Source:** `Interface_Protocol.hxx`:81 - `Interface_Protocol::Type()`
+    pub fn type_(
+        &self,
+        obj: &crate::ffi::HandleStandardTransient,
+        nt: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FileProtocol_inherited_Type(
+                self as *const Self,
+                obj,
+                nt,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_Protocol.hxx`:96 - `Interface_Protocol::GlobalCheck()`
+    pub fn global_check(
+        &self,
+        G: &crate::interface::Graph,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_FileProtocol_inherited_GlobalCheck(self as *const Self, G, ach)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_FileProtocol_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESData_FileProtocol_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_FileProtocol_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_FileProtocol_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_FileProtocol_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_FileProtocol_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataFileProtocol;
+
+unsafe impl crate::CppDeletable for HandleIGESDataFileProtocol {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataFileProtocol_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataFileProtocol {
+    /// Dereference this Handle to access the underlying IGESData_FileProtocol
+    pub fn get(&self) -> &crate::ffi::IGESData_FileProtocol {
+        unsafe { &*(crate::ffi::HandleIGESDataFileProtocol_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_FileProtocol
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_FileProtocol {
+        unsafe { &mut *(crate::ffi::HandleIGESDataFileProtocol_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_FileProtocol> to Handle<IGESData_Protocol>
+    pub fn to_handle_iges_data_protocol(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataProtocol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataFileProtocol_to_HandleIGESDataProtocol(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_FileProtocol> to Handle<Interface_Protocol>
+    pub fn to_handle_interface_protocol(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataFileProtocol_to_HandleInterfaceProtocol(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_FileProtocol> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataFileProtocol_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESData_FileRecognizer.hxx
+// ========================
+
+/// **Source:** `IGESData_FileRecognizer.hxx`:31 - `IGESData_FileRecognizer`
+pub use crate::ffi::IGESData_FileRecognizer as FileRecognizer;
+
+unsafe impl crate::CppDeletable for FileRecognizer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_FileRecognizer_destructor(ptr);
+    }
+}
+
+impl FileRecognizer {
+    /// **Source:** `IGESData_FileRecognizer.hxx`:40 - `IGESData_FileRecognizer::Evaluate()`
+    /// Evaluates if recognition has a result, returns it if yes
+    /// In case of success, Returns True and puts result in "res"
+    /// In case of Failure, simply Returns False
+    /// Works by calling deferred method Eval, and in case of failure,
+    /// looks for Added Recognizers to work
+    pub fn evaluate(
+        &mut self,
+        akey: &IGESType,
+        res: &mut crate::ffi::HandleIGESDataIGESEntity,
+    ) -> bool {
+        unsafe { crate::ffi::IGESData_FileRecognizer_evaluate(self as *mut Self, akey, res) }
+    }
+
+    /// **Source:** `IGESData_FileRecognizer.hxx`:44 - `IGESData_FileRecognizer::Result()`
+    /// Returns result of last recognition (call of Evaluate)
+    pub fn result(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FileRecognizer_result(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_FileRecognizer.hxx`:51 - `IGESData_FileRecognizer::Add()`
+    /// Adds a new Recognizer to the Compound, at the end
+    /// Several calls to Add work by adding in the order of calls :
+    /// Hence, when Eval has failed to recognize, Evaluate will call
+    /// Evaluate from the first added Recognizer if there is one,
+    /// and to the second if there is still no result, and so on
+    pub fn add(&mut self, reco: &crate::ffi::HandleIGESDataFileRecognizer) {
+        unsafe { crate::ffi::IGESData_FileRecognizer_add(self as *mut Self, reco) }
+    }
+
+    /// **Source:** `IGESData_FileRecognizer.hxx`:53 - `IGESData_FileRecognizer::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_FileRecognizer_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_FileRecognizer.hxx`:53 - `IGESData_FileRecognizer::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_FileRecognizer_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_FileRecognizer.hxx`:53 - `IGESData_FileRecognizer::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_FileRecognizer_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESData_FileRecognizer_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_FileRecognizer_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_FileRecognizer_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_FileRecognizer_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_FileRecognizer_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_FileRecognizer_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_FileRecognizer_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_FileRecognizer_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataFileRecognizer;
+
+unsafe impl crate::CppDeletable for HandleIGESDataFileRecognizer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataFileRecognizer_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataFileRecognizer {
+    /// Dereference this Handle to access the underlying IGESData_FileRecognizer
+    pub fn get(&self) -> &crate::ffi::IGESData_FileRecognizer {
+        unsafe { &*(crate::ffi::HandleIGESDataFileRecognizer_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_FileRecognizer
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_FileRecognizer {
+        unsafe { &mut *(crate::ffi::HandleIGESDataFileRecognizer_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_FileRecognizer> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataFileRecognizer_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESData_FreeFormatEntity.hxx
+// ========================
+
+/// **Source:** `IGESData_FreeFormatEntity.hxx`:45 - `IGESData_FreeFormatEntity`
+/// This class allows to create IGES Entities in a literal form :
+/// their definition is free, but they are not recognized as
+/// instances of specific classes.
+///
+/// This is a way to define test files without having to create
+/// and fill specific classes of Entities, or creating an IGES
+/// File ex nihilo, with respect for all format constraints
+/// (such a way is very difficult to run and to master).
+///
+/// This class has the same content as an UndefinedEntity, only
+/// it gives way to act on its content
+pub use crate::ffi::IGESData_FreeFormatEntity as FreeFormatEntity;
+
+unsafe impl crate::CppDeletable for FreeFormatEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_FreeFormatEntity_destructor(ptr);
+    }
+}
+
+impl FreeFormatEntity {
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:50 - `IGESData_FreeFormatEntity::IGESData_FreeFormatEntity()`
+    /// Creates a completely empty FreeFormatEntity
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_ctor()) }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:53 - `IGESData_FreeFormatEntity::SetTypeNumber()`
+    /// Sets Type Number to a new Value, and Form Number to Zero
+    pub fn set_type_number(&mut self, typenum: i32) {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_set_type_number(self as *mut Self, typenum) }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:56 - `IGESData_FreeFormatEntity::SetFormNumber()`
+    /// Sets Form Number to a new Value (to called after SetTypeNumber)
+    pub fn set_form_number(&mut self, formnum: i32) {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_set_form_number(self as *mut Self, formnum) }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:59 - `IGESData_FreeFormatEntity::NbParams()`
+    /// Gives count of recorded parameters
+    pub fn nb_params(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_nb_params(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:64 - `IGESData_FreeFormatEntity::ParamData()`
+    /// Returns data of a Parameter : its type, and the entity if it
+    /// designates en entity ("ent") or its literal value else ("str")
+    /// Returned value (Boolean) : True if it is an Entity, False else
+    pub fn param_data(
+        &self,
+        num: i32,
+        ptype: &mut crate::interface::ParamType,
+        ent: &mut crate::ffi::HandleIGESDataIGESEntity,
+        val: &mut crate::ffi::HandleTCollectionHAsciiString,
+    ) -> bool {
+        let mut ptype_i32_: i32 = (*ptype).into();
+        let result_ = unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_param_data(
+                self as *const Self,
+                num,
+                &mut ptype_i32_,
+                ent,
+                val,
+            )
+        };
+        *ptype = crate::interface::ParamType::try_from(ptype_i32_).unwrap();
+        result_
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:71 - `IGESData_FreeFormatEntity::ParamType()`
+    /// Returns the ParamType of a Param, given its rank
+    /// Error if num is not between 1 and NbParams
+    pub fn param_type(&self, num: i32) -> crate::interface::ParamType {
+        unsafe {
+            crate::interface::ParamType::try_from(crate::ffi::IGESData_FreeFormatEntity_param_type(
+                self as *const Self,
+                num,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:75 - `IGESData_FreeFormatEntity::IsParamEntity()`
+    /// Returns True if a Parameter is recorded as an entity
+    /// Error if num is not between 1 and NbParams
+    pub fn is_param_entity(&self, num: i32) -> bool {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_is_param_entity(self as *const Self, num) }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:80 - `IGESData_FreeFormatEntity::ParamEntity()`
+    /// Returns Entity corresponding to a Param, given its rank
+    /// Error if out of range or if Param num does not designate
+    /// an Entity
+    pub fn param_entity(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_param_entity(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:85 - `IGESData_FreeFormatEntity::IsNegativePointer()`
+    /// Returns True if <num> is noted as for a "Negative Pointer"
+    /// (see AddEntity for details). Senseful only if IsParamEntity
+    /// answers True for <num>, else returns False.
+    pub fn is_negative_pointer(&self, num: i32) -> bool {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_is_negative_pointer(self as *const Self, num)
+        }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:89 - `IGESData_FreeFormatEntity::ParamValue()`
+    /// Returns literal value of a Parameter, given its rank
+    /// Error if num is out of range, or if Parameter is not literal
+    pub fn param_value(
+        &self,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_param_value(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:94 - `IGESData_FreeFormatEntity::NegativePointers()`
+    /// Returns the complete list of Ramks of Parameters which have
+    /// been noted as Negative Pointers
+    /// Warning : It is returned as a Null Handle if none was noted
+    pub fn negative_pointers(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_negative_pointers(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:97 - `IGESData_FreeFormatEntity::AddLiteral()`
+    /// Adds a literal Parameter to the list (as such)
+    pub fn add_literal_paramtype_handletcollectionhasciistring(
+        &mut self,
+        ptype: crate::interface::ParamType,
+        val: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_add_literal_paramtype_handletcollectionhasciistring(self as *mut Self, ptype.into(), val)
+        }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:101 - `IGESData_FreeFormatEntity::AddLiteral()`
+    /// Adds a literal Parameter to the list (builds an HAsciiString)
+    pub fn add_literal_paramtype_charptr(&mut self, ptype: crate::interface::ParamType, val: &str) {
+        let c_val = std::ffi::CString::new(val).unwrap();
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_add_literal_paramtype_charptr(
+                self as *mut Self,
+                ptype.into(),
+                c_val.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:108 - `IGESData_FreeFormatEntity::AddEntity()`
+    /// Adds a Parameter which references an Entity. If the Entity is
+    /// Null, the added parameter will define a "Null Pointer" (0)
+    /// If <negative> is given True, this will command Sending to File
+    /// (see IGESWriter) to produce a "Negative Pointer"
+    /// (Default is False)
+    pub fn add_entity(
+        &mut self,
+        ptype: crate::interface::ParamType,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        negative: bool,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_add_entity(
+                self as *mut Self,
+                ptype.into(),
+                ent,
+                negative,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:118 - `IGESData_FreeFormatEntity::AddEntities()`
+    /// Adds a set of Entities, given as a HArray1OfIGESEntity
+    /// Causes creation of : an Integer Parameter which gives count
+    /// of Entities, then the list of Entities of the Array
+    /// Error if an Entity is not an IGESEntity
+    /// All these Entities will be interpreted as "Positive Pointers"
+    /// by IGESWriter
+    pub fn add_entities(&mut self, ents: &crate::ffi::HandleIGESDataHArray1OfIGESEntity) {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_add_entities(self as *mut Self, ents) }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:123 - `IGESData_FreeFormatEntity::AddNegativePointers()`
+    /// Adds a list of Ranks of Parameters to be noted as Negative
+    /// Pointers (this will be taken into account for Parameters
+    /// which are Entities)
+    pub fn add_negative_pointers(&mut self, list: &crate::ffi::HandleTColStdHSequenceOfInteger) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_add_negative_pointers(self as *mut Self, list)
+        }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:127 - `IGESData_FreeFormatEntity::ClearNegativePointers()`
+    /// Clears all information about Negative Pointers, hence every
+    /// Entity kind Parameter will be sent normally, as Positive
+    pub fn clear_negative_pointers(&mut self) {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_clear_negative_pointers(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:131 - `IGESData_FreeFormatEntity::WriteOwnParams()`
+    /// WriteOwnParams is redefined for FreeFormatEntity to take
+    /// into account the supplementary information "Negative Pointer"
+    pub fn write_own_params(&self, IW: &mut IGESWriter) {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_write_own_params(self as *const Self, IW) }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:133 - `IGESData_FreeFormatEntity::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_FreeFormatEntity_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:133 - `IGESData_FreeFormatEntity::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_FreeFormatEntity_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_FreeFormatEntity.hxx`:133 - `IGESData_FreeFormatEntity::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_FreeFormatEntity_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_UndefinedEntity
+    pub fn as_undefined_entity(&self) -> &UndefinedEntity {
+        unsafe {
+            &*(crate::ffi::IGESData_FreeFormatEntity_as_IGESData_UndefinedEntity(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IGESData_UndefinedEntity (mutable)
+    pub fn as_undefined_entity_mut(&mut self) -> &mut UndefinedEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESData_FreeFormatEntity_as_IGESData_UndefinedEntity_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_entity(&self) -> &IGESEntity {
+        unsafe {
+            &*(crate::ffi::IGESData_FreeFormatEntity_as_IGESData_IGESEntity(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_entity_mut(&mut self) -> &mut IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESData_FreeFormatEntity_as_IGESData_IGESEntity_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESData_FreeFormatEntity_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_FreeFormatEntity_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataFreeFormatEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_UndefinedEntity.hxx`:48 - `IGESData_UndefinedEntity::UndefinedContent()`
+    pub fn undefined_content(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceUndefinedContent> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_FreeFormatEntity_inherited_UndefinedContent(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_UndefinedEntity.hxx`:51 - `IGESData_UndefinedEntity::ChangeableContent()`
+    pub fn changeable_content(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceUndefinedContent> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_FreeFormatEntity_inherited_ChangeableContent(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_UndefinedEntity.hxx`:55 - `IGESData_UndefinedEntity::SetNewContent()`
+    pub fn set_new_content(&mut self, cont: &crate::ffi::HandleInterfaceUndefinedContent) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_SetNewContent(self as *mut Self, cont)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_UndefinedEntity.hxx`:59 - `IGESData_UndefinedEntity::IsOKDirPart()`
+    pub fn is_ok_dir_part(&self) -> bool {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_IsOKDirPart(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_UndefinedEntity.hxx`:62 - `IGESData_UndefinedEntity::DirStatus()`
+    pub fn dir_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_DirStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_UndefinedEntity.hxx`:66 - `IGESData_UndefinedEntity::SetOKDirPart()`
+    pub fn set_ok_dir_part(&mut self) {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_SetOKDirPart(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_UndefinedEntity.hxx`:69 - `IGESData_UndefinedEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESData_FreeFormatEntity_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_UndefinedEntity.hxx`:72 - `IGESData_UndefinedEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESData_FreeFormatEntity_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_UndefinedEntity.hxx`:75 - `IGESData_UndefinedEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESData_FreeFormatEntity_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_UndefinedEntity.hxx`:78 - `IGESData_UndefinedEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESData_FreeFormatEntity_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_UndefinedEntity.hxx`:82 - `IGESData_UndefinedEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_UndefinedEntity.hxx`:90 - `IGESData_UndefinedEntity::ReadDir()`
+    pub fn read_dir(
+        &mut self,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        DP: &mut DirPart,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_ReadDir(self as *mut Self, IR, DP, ach)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_UndefinedEntity.hxx`:99 - `IGESData_UndefinedEntity::ReadOwnParams()`
+    pub fn read_own_params(
+        &mut self,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_ReadOwnParams(self as *mut Self, IR, PR)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_FreeFormatEntity_inherited_DirFieldEntity(
+                    self as *const Self,
+                    fieldnum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_HasLabelDisplay(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_SubordinateStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_HierarchyStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_LineWeightNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_HasShortLabel(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_SubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_InitTransf(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_InitLineFont(
+                self as *mut Self,
+                ent,
+                rank,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_InitLevel(self as *mut Self, ent, val)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_FreeFormatEntity_inherited_VectorLocation(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_FreeFormatEntity_inherited_CompoundLocation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_NbAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_FreeFormatEntity_inherited_Associativities(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_FreeFormatEntity_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_Associate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_Dissociate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_ArePresentProperties(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_FreeFormatEntity_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_FreeFormatEntity_inherited_TypedProperty(
+                    self as *const Self,
+                    atype,
+                    anum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_AddProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_RemoveProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_FreeFormatEntity_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_FreeFormatEntity_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataFreeFormatEntity;
+
+unsafe impl crate::CppDeletable for HandleIGESDataFreeFormatEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataFreeFormatEntity_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataFreeFormatEntity {
+    /// Dereference this Handle to access the underlying IGESData_FreeFormatEntity
+    pub fn get(&self) -> &crate::ffi::IGESData_FreeFormatEntity {
+        unsafe { &*(crate::ffi::HandleIGESDataFreeFormatEntity_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_FreeFormatEntity
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_FreeFormatEntity {
+        unsafe { &mut *(crate::ffi::HandleIGESDataFreeFormatEntity_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_FreeFormatEntity> to Handle<IGESData_UndefinedEntity>
+    pub fn to_handle_undefined_entity(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataUndefinedEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataFreeFormatEntity_to_HandleIGESDataUndefinedEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_FreeFormatEntity> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataFreeFormatEntity_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_FreeFormatEntity> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataFreeFormatEntity_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESData_GeneralModule.hxx
+// ========================
+
+/// **Source:** `IGESData_GeneralModule.hxx`:42 - `IGESData_GeneralModule`
+/// Definition of General Services adapted to IGES.
+/// This Services comprise : Shared & Implied Lists, Copy, Check
+/// They are adapted according to the organisation of IGES
+/// Entities : Directory Part, Lists of Associativities and
+/// Properties are specifically processed
+pub use crate::ffi::IGESData_GeneralModule as GeneralModule;
+
+unsafe impl crate::CppDeletable for GeneralModule {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_GeneralModule_destructor(ptr);
+    }
+}
+
+impl GeneralModule {
+    /// **Source:** `IGESData_GeneralModule.hxx`:50 - `IGESData_GeneralModule::FillSharedCase()`
+    /// Fills the list of Entities shared by an IGESEntity <ent>,
+    /// according a Case Number <CN> (formerly computed by CaseNum).
+    /// Considers Properties and Directory Part, and calls
+    /// OwnSharedCase (which is adapted to each Type of Entity)
+    pub fn fill_shared_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_fill_shared_case(self as *const Self, CN, ent, iter)
+        }
+    }
+
+    /// **Source:** `IGESData_GeneralModule.hxx`:56 - `IGESData_GeneralModule::OwnSharedCase()`
+    /// Lists the Entities shared by a given IGESEntity <ent>, from
+    /// its specific parameters : specific for each type
+    pub fn own_shared_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_own_shared_case(self as *const Self, CN, ent, iter)
+        }
+    }
+
+    /// **Source:** `IGESData_GeneralModule.hxx`:62 - `IGESData_GeneralModule::ListImpliedCase()`
+    /// Lists the Implied References of <ent>. Here, these are the
+    /// Associativities, plus the Entities defined by OwnSharedCase
+    pub fn list_implied_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_list_implied_case(self as *const Self, CN, ent, iter)
+        }
+    }
+
+    /// **Source:** `IGESData_GeneralModule.hxx`:70 - `IGESData_GeneralModule::OwnImpliedCase()`
+    /// Specific list of Entities implied by a given IGESEntity <ent>
+    /// (in addition to Associativities). By default, there are none,
+    /// but this method can be redefined as required
+    pub fn own_implied_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_own_implied_case(self as *const Self, CN, ent, iter)
+        }
+    }
+
+    /// **Source:** `IGESData_GeneralModule.hxx`:77 - `IGESData_GeneralModule::CheckCase()`
+    /// Semantic Checking of an IGESEntity. Performs general Checks,
+    /// which use DirChecker, then call OwnCheck which does a check
+    /// specific for each type of Entity
+    pub fn check_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_check_case(self as *const Self, CN, ent, shares, ach)
+        }
+    }
+
+    /// **Source:** `IGESData_GeneralModule.hxx`:85 - `IGESData_GeneralModule::DirChecker()`
+    /// Returns a DirChecker, specific for each type of Entity
+    /// (identified by its Case Number) : this DirChecker defines
+    /// constraints which must be respected by the DirectoryPart
+    pub fn dir_checker(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<DirChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GeneralModule_dir_checker(
+                self as *const Self,
+                CN,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_GeneralModule.hxx`:90 - `IGESData_GeneralModule::OwnCheckCase()`
+    /// Performs Specific Semantic Check for each type of Entity
+    pub fn own_check_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        shares: &crate::interface::ShareTool,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_own_check_case(
+                self as *const Self,
+                CN,
+                ent,
+                shares,
+                ach,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_GeneralModule.hxx`:97 - `IGESData_GeneralModule::CanCopy()`
+    /// Specific answer to the question "is Copy properly implemented"
+    /// For IGES, answer is always True
+    pub fn can_copy(&self, CN: i32, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IGESData_GeneralModule_can_copy(self as *const Self, CN, ent) }
+    }
+
+    /// **Source:** `IGESData_GeneralModule.hxx`:102 - `IGESData_GeneralModule::NewVoid()`
+    /// Specific creation of a new void entity
+    pub fn new_void(&self, CN: i32, entto: &mut crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IGESData_GeneralModule_new_void(self as *const Self, CN, entto) }
+    }
+
+    /// **Source:** `IGESData_GeneralModule.hxx`:110 - `IGESData_GeneralModule::CopyCase()`
+    /// Copy ("Deep") from <entfrom> to <entto> (same type)
+    /// by using a CopyTool which provides its working Map.
+    /// For IGESEntities, Copies general data (Directory Part, List of
+    /// Properties) and call OwnCopyCase
+    pub fn copy_case(
+        &self,
+        CN: i32,
+        entfrom: &crate::ffi::HandleStandardTransient,
+        entto: &crate::ffi::HandleStandardTransient,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_copy_case(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_GeneralModule.hxx`:116 - `IGESData_GeneralModule::OwnCopyCase()`
+    /// Copies parameters which are specific of each Type of Entity
+    pub fn own_copy_case(
+        &self,
+        CN: i32,
+        entfrom: &crate::ffi::HandleIGESDataIGESEntity,
+        entto: &crate::ffi::HandleIGESDataIGESEntity,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_own_copy_case(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_GeneralModule.hxx`:124 - `IGESData_GeneralModule::RenewImpliedCase()`
+    /// Renewing of Implied References.
+    /// For IGESEntities, Copies general data(List of Associativities)
+    /// and calls OwnRenewCase
+    pub fn renew_implied_case(
+        &self,
+        CN: i32,
+        entfrom: &crate::ffi::HandleStandardTransient,
+        entto: &crate::ffi::HandleStandardTransient,
+        TC: &crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_renew_implied_case(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_GeneralModule.hxx`:133 - `IGESData_GeneralModule::OwnRenewCase()`
+    /// Renews parameters which are specific of each Type of Entity :
+    /// the provided default does nothing, but this method may be
+    /// redefined as required
+    pub fn own_renew_case(
+        &self,
+        CN: i32,
+        entfrom: &crate::ffi::HandleIGESDataIGESEntity,
+        entto: &crate::ffi::HandleIGESDataIGESEntity,
+        TC: &crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_own_renew_case(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_GeneralModule.hxx`:142 - `IGESData_GeneralModule::WhenDeleteCase()`
+    /// Prepares an IGES Entity for delete : works on directory part
+    /// then calls OwnDeleteCase
+    /// While dispatch requires to copy the entities, <dispatched> is
+    /// ignored, entities are cleared in any case
+    pub fn when_delete_case(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        dispatched: bool,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_when_delete_case(
+                self as *const Self,
+                CN,
+                ent,
+                dispatched,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_GeneralModule.hxx`:149 - `IGESData_GeneralModule::OwnDeleteCase()`
+    /// Specific preparation for delete, acts on own parameters
+    /// Default does nothing, to be redefined as required
+    pub fn own_delete_case(&self, CN: i32, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_GeneralModule_own_delete_case(self as *const Self, CN, ent) }
+    }
+
+    /// **Source:** `IGESData_GeneralModule.hxx`:154 - `IGESData_GeneralModule::Name()`
+    /// Returns the name of an IGES Entity (its NameValue)
+    /// Can be redefined for an even more specific case ...
+    pub fn name(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        shares: &crate::interface::ShareTool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GeneralModule_name(
+                self as *const Self,
+                CN,
+                ent,
+                shares,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_GeneralModule.hxx`:159 - `IGESData_GeneralModule::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_GeneralModule_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_GeneralModule.hxx`:159 - `IGESData_GeneralModule::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_GeneralModule_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_GeneralModule.hxx`:159 - `IGESData_GeneralModule::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_GeneralModule_get_type_descriptor()) }
+    }
+
+    /// Upcast to Interface_GeneralModule
+    pub fn as_interface_general_module(&self) -> &crate::interface::GeneralModule {
+        unsafe {
+            &*(crate::ffi::IGESData_GeneralModule_as_Interface_GeneralModule(self as *const Self))
+        }
+    }
+
+    /// Upcast to Interface_GeneralModule (mutable)
+    pub fn as_interface_general_module_mut(&mut self) -> &mut crate::interface::GeneralModule {
+        unsafe {
+            &mut *(crate::ffi::IGESData_GeneralModule_as_Interface_GeneralModule_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESData_GeneralModule_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_GeneralModule_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_GeneralModule.hxx`:52 - `Interface_GeneralModule::FillShared()`
+    pub fn fill_shared(
+        &self,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_inherited_FillShared(
+                self as *const Self,
+                model,
+                CN,
+                ent,
+                iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_GeneralModule.hxx`:65 - `Interface_GeneralModule::Share()`
+    pub fn share(
+        &self,
+        iter: &mut crate::interface::EntityIterator,
+        shared: &crate::ffi::HandleStandardTransient,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_inherited_Share(self as *const Self, iter, shared)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_GeneralModule.hxx`:76 - `Interface_GeneralModule::ListImplied()`
+    pub fn list_implied(
+        &self,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        iter: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_inherited_ListImplied(
+                self as *const Self,
+                model,
+                CN,
+                ent,
+                iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_GeneralModule.hxx`:126 - `Interface_GeneralModule::Dispatch()`
+    pub fn dispatch(
+        &self,
+        CN: i32,
+        entfrom: &crate::ffi::HandleStandardTransient,
+        entto: &mut crate::ffi::HandleStandardTransient,
+        TC: &mut crate::interface::CopyTool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_inherited_Dispatch(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_GeneralModule.hxx`:152 - `Interface_GeneralModule::NewCopiedCase()`
+    pub fn new_copied_case(
+        &self,
+        CN: i32,
+        entfrom: &crate::ffi::HandleStandardTransient,
+        entto: &mut crate::ffi::HandleStandardTransient,
+        TC: &mut crate::interface::CopyTool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_inherited_NewCopiedCase(
+                self as *const Self,
+                CN,
+                entfrom,
+                entto,
+                TC,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_GeneralModule.hxx`:198 - `Interface_GeneralModule::CategoryNumber()`
+    pub fn category_number(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        shares: &crate::interface::ShareTool,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_inherited_CategoryNumber(
+                self as *const Self,
+                CN,
+                ent,
+                shares,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESData_GeneralModule_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_GeneralModule_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_GeneralModule_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_GeneralModule_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataGeneralModule;
+
+unsafe impl crate::CppDeletable for HandleIGESDataGeneralModule {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataGeneralModule_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataGeneralModule {
+    /// Dereference this Handle to access the underlying IGESData_GeneralModule
+    pub fn get(&self) -> &crate::ffi::IGESData_GeneralModule {
+        unsafe { &*(crate::ffi::HandleIGESDataGeneralModule_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_GeneralModule
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_GeneralModule {
+        unsafe { &mut *(crate::ffi::HandleIGESDataGeneralModule_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_GeneralModule> to Handle<Interface_GeneralModule>
+    pub fn to_handle_general_module(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceGeneralModule> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataGeneralModule_to_HandleInterfaceGeneralModule(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_GeneralModule> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataGeneralModule_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IGESData_GeneralModule> to Handle<IGESAppli_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_appli_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataGeneralModule_downcast_to_HandleIGESAppliGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_GeneralModule> to Handle<IGESBasic_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_basic_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataGeneralModule_downcast_to_HandleIGESBasicGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_GeneralModule> to Handle<IGESData_DefaultGeneral>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_DefaultGeneral` (or subclass).
+    pub fn downcast_to_default_general(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataDefaultGeneral>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataGeneralModule_downcast_to_HandleIGESDataDefaultGeneral(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_GeneralModule> to Handle<IGESDefs_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_defs_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataGeneralModule_downcast_to_HandleIGESDefsGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_GeneralModule> to Handle<IGESDimen_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_dimen_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataGeneralModule_downcast_to_HandleIGESDimenGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_GeneralModule> to Handle<IGESDraw_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_draw_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataGeneralModule_downcast_to_HandleIGESDrawGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_GeneralModule> to Handle<IGESGeom_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_geom_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataGeneralModule_downcast_to_HandleIGESGeomGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_GeneralModule> to Handle<IGESGraph_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_graph_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataGeneralModule_downcast_to_HandleIGESGraphGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_GeneralModule> to Handle<IGESSolid_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_solid_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataGeneralModule_downcast_to_HandleIGESSolidGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From IGESData_GlobalNodeOfSpecificLib.hxx
+// ========================
+
+/// **Source:** `IGESData_GlobalNodeOfSpecificLib.hxx`:33 - `IGESData_GlobalNodeOfSpecificLib`
+pub use crate::ffi::IGESData_GlobalNodeOfSpecificLib as GlobalNodeOfSpecificLib;
+
+unsafe impl crate::CppDeletable for GlobalNodeOfSpecificLib {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_GlobalNodeOfSpecificLib_destructor(ptr);
+    }
+}
+
+impl GlobalNodeOfSpecificLib {
+    /// **Source:** `IGESData_GlobalNodeOfSpecificLib.hxx`:38 - `IGESData_GlobalNodeOfSpecificLib::IGESData_GlobalNodeOfSpecificLib()`
+    /// Creates an empty GlobalNode, with no Next
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalNodeOfSpecificLib_ctor()) }
+    }
+
+    /// **Source:** `IGESData_GlobalNodeOfSpecificLib.hxx`:44 - `IGESData_GlobalNodeOfSpecificLib::Add()`
+    /// Adds a Module bound with a Protocol to the list : does
+    /// nothing if already in the list, THAT IS, Same Type (exact
+    /// match) and Same State (that is, IsEqual is not required)
+    /// Once added, stores its attached Protocol in correspondence
+    pub fn add(
+        &mut self,
+        amodule: &crate::ffi::HandleIGESDataSpecificModule,
+        aprotocol: &crate::ffi::HandleIGESDataProtocol,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_GlobalNodeOfSpecificLib_add(self as *mut Self, amodule, aprotocol)
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalNodeOfSpecificLib.hxx`:48 - `IGESData_GlobalNodeOfSpecificLib::Module()`
+    /// Returns the Module stored in a given GlobalNode
+    pub fn module(&self) -> &crate::ffi::HandleIGESDataSpecificModule {
+        unsafe { &*(crate::ffi::IGESData_GlobalNodeOfSpecificLib_module(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_GlobalNodeOfSpecificLib.hxx`:51 - `IGESData_GlobalNodeOfSpecificLib::Protocol()`
+    /// Returns the attached Protocol stored in a given GlobalNode
+    pub fn protocol(&self) -> &crate::ffi::HandleIGESDataProtocol {
+        unsafe { &*(crate::ffi::IGESData_GlobalNodeOfSpecificLib_protocol(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_GlobalNodeOfSpecificLib.hxx`:55 - `IGESData_GlobalNodeOfSpecificLib::Next()`
+    /// Returns the Next GlobalNode. If none is defined, returned
+    /// value is a Null Handle
+    pub fn next(&self) -> &crate::ffi::HandleIGESDataGlobalNodeOfSpecificLib {
+        unsafe { &*(crate::ffi::IGESData_GlobalNodeOfSpecificLib_next(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_GlobalNodeOfSpecificLib.hxx`:57 - `IGESData_GlobalNodeOfSpecificLib::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::IGESData_GlobalNodeOfSpecificLib_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalNodeOfSpecificLib.hxx`:57 - `IGESData_GlobalNodeOfSpecificLib::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_GlobalNodeOfSpecificLib_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalNodeOfSpecificLib.hxx`:57 - `IGESData_GlobalNodeOfSpecificLib::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_GlobalNodeOfSpecificLib_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESData_GlobalNodeOfSpecificLib_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_GlobalNodeOfSpecificLib_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataGlobalNodeOfSpecificLib> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalNodeOfSpecificLib_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_GlobalNodeOfSpecificLib_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_GlobalNodeOfSpecificLib_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_GlobalNodeOfSpecificLib_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_GlobalNodeOfSpecificLib_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_GlobalNodeOfSpecificLib_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::IGESData_GlobalNodeOfSpecificLib_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataGlobalNodeOfSpecificLib;
+
+unsafe impl crate::CppDeletable for HandleIGESDataGlobalNodeOfSpecificLib {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataGlobalNodeOfSpecificLib_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataGlobalNodeOfSpecificLib {
+    /// Dereference this Handle to access the underlying IGESData_GlobalNodeOfSpecificLib
+    pub fn get(&self) -> &crate::ffi::IGESData_GlobalNodeOfSpecificLib {
+        unsafe { &*(crate::ffi::HandleIGESDataGlobalNodeOfSpecificLib_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_GlobalNodeOfSpecificLib
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_GlobalNodeOfSpecificLib {
+        unsafe {
+            &mut *(crate::ffi::HandleIGESDataGlobalNodeOfSpecificLib_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<IGESData_GlobalNodeOfSpecificLib> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataGlobalNodeOfSpecificLib_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESData_GlobalNodeOfWriterLib.hxx
+// ========================
+
+/// **Source:** `IGESData_GlobalNodeOfWriterLib.hxx`:33 - `IGESData_GlobalNodeOfWriterLib`
+pub use crate::ffi::IGESData_GlobalNodeOfWriterLib as GlobalNodeOfWriterLib;
+
+unsafe impl crate::CppDeletable for GlobalNodeOfWriterLib {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_GlobalNodeOfWriterLib_destructor(ptr);
+    }
+}
+
+impl GlobalNodeOfWriterLib {
+    /// **Source:** `IGESData_GlobalNodeOfWriterLib.hxx`:38 - `IGESData_GlobalNodeOfWriterLib::IGESData_GlobalNodeOfWriterLib()`
+    /// Creates an empty GlobalNode, with no Next
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalNodeOfWriterLib_ctor()) }
+    }
+
+    /// **Source:** `IGESData_GlobalNodeOfWriterLib.hxx`:44 - `IGESData_GlobalNodeOfWriterLib::Add()`
+    /// Adds a Module bound with a Protocol to the list:
+    /// does nothing if already in the list,
+    /// THAT IS, Same Type (exact match) and Same State (that is, IsEqual is not required).
+    /// Once added, stores its attached Protocol in correspondence
+    pub fn add(
+        &mut self,
+        amodule: &crate::ffi::HandleIGESDataReadWriteModule,
+        aprotocol: &crate::ffi::HandleIGESDataProtocol,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_GlobalNodeOfWriterLib_add(self as *mut Self, amodule, aprotocol)
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalNodeOfWriterLib.hxx`:48 - `IGESData_GlobalNodeOfWriterLib::Module()`
+    /// Returns the Module stored in a given GlobalNode
+    pub fn module(&self) -> &crate::ffi::HandleIGESDataReadWriteModule {
+        unsafe { &*(crate::ffi::IGESData_GlobalNodeOfWriterLib_module(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_GlobalNodeOfWriterLib.hxx`:51 - `IGESData_GlobalNodeOfWriterLib::Protocol()`
+    /// Returns the attached Protocol stored in a given GlobalNode
+    pub fn protocol(&self) -> &crate::ffi::HandleIGESDataProtocol {
+        unsafe { &*(crate::ffi::IGESData_GlobalNodeOfWriterLib_protocol(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_GlobalNodeOfWriterLib.hxx`:55 - `IGESData_GlobalNodeOfWriterLib::Next()`
+    /// Returns the Next GlobalNode. If none is defined, returned
+    /// value is a Null Handle
+    pub fn next(&self) -> &crate::ffi::HandleIGESDataGlobalNodeOfWriterLib {
+        unsafe { &*(crate::ffi::IGESData_GlobalNodeOfWriterLib_next(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_GlobalNodeOfWriterLib.hxx`:57 - `IGESData_GlobalNodeOfWriterLib::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_GlobalNodeOfWriterLib_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_GlobalNodeOfWriterLib.hxx`:57 - `IGESData_GlobalNodeOfWriterLib::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_GlobalNodeOfWriterLib_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalNodeOfWriterLib.hxx`:57 - `IGESData_GlobalNodeOfWriterLib::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_GlobalNodeOfWriterLib_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESData_GlobalNodeOfWriterLib_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_GlobalNodeOfWriterLib_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataGlobalNodeOfWriterLib> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalNodeOfWriterLib_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_GlobalNodeOfWriterLib_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_GlobalNodeOfWriterLib_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_GlobalNodeOfWriterLib_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_GlobalNodeOfWriterLib_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_GlobalNodeOfWriterLib_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_GlobalNodeOfWriterLib_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataGlobalNodeOfWriterLib;
+
+unsafe impl crate::CppDeletable for HandleIGESDataGlobalNodeOfWriterLib {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataGlobalNodeOfWriterLib_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataGlobalNodeOfWriterLib {
+    /// Dereference this Handle to access the underlying IGESData_GlobalNodeOfWriterLib
+    pub fn get(&self) -> &crate::ffi::IGESData_GlobalNodeOfWriterLib {
+        unsafe { &*(crate::ffi::HandleIGESDataGlobalNodeOfWriterLib_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_GlobalNodeOfWriterLib
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_GlobalNodeOfWriterLib {
+        unsafe {
+            &mut *(crate::ffi::HandleIGESDataGlobalNodeOfWriterLib_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<IGESData_GlobalNodeOfWriterLib> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataGlobalNodeOfWriterLib_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESData_GlobalSection.hxx
+// ========================
+
+/// **Source:** `IGESData_GlobalSection.hxx`:39 - `IGESData_GlobalSection`
+/// Description of a global section (corresponds to file header)
+/// used as well in IGESModel, IGESReader and IGESWriter
+/// Warning : From IGES-5.1, a parameter is added : LastChangeDate (concerns
+/// transferred set of data, not the file itself)
+/// Of course, it can be absent if read from earlier versions
+/// (a default is then to be set to current date)
+/// From 5.3, one more : ApplicationProtocol (optional)
+pub use crate::ffi::IGESData_GlobalSection as GlobalSection;
+
+unsafe impl crate::CppDeletable for GlobalSection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_GlobalSection_destructor(ptr);
+    }
+}
+
+impl GlobalSection {
+    /// **Source:** `IGESData_GlobalSection.hxx`:46 - `IGESData_GlobalSection::IGESData_GlobalSection()`
+    /// Creates an empty GlobalSection, ready to be filled,
+    /// Warning : No default value is provided
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalSection_ctor()) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:51 - `IGESData_GlobalSection::Init()`
+    /// Fills GlobalSection from a ParamSet (i.e. taken from file)
+    /// undefined parameters do not change default values when defined
+    /// Fills Check about Corrections or Fails
+    pub fn init(
+        &mut self,
+        params: &crate::ffi::HandleInterfaceParamSet,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe { crate::ffi::IGESData_GlobalSection_init(self as *mut Self, params, ach) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:56 - `IGESData_GlobalSection::CopyRefs()`
+    /// Copies data referenced by Handle (that is, Strings)
+    /// useful to "isolate" a GlobalSection after copy by "="
+    /// (from a Model to another Model for instance)
+    pub fn copy_refs(&mut self) {
+        unsafe { crate::ffi::IGESData_GlobalSection_copy_refs(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:60 - `IGESData_GlobalSection::Params()`
+    /// Returns all contained data in the form of a ParamSet
+    /// Remark : Strings are given under Hollerith form
+    pub fn params(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceParamSet> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalSection_params(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:66 - `IGESData_GlobalSection::TranslatedFromHollerith()`
+    /// Returns a string withpout its Hollerith marks (nnnH ahead).
+    /// Remark : all strings stored in GlobalSection are expurged
+    /// from Hollerith information (without nnnH)
+    /// If <astr> is not Hollerith form, it is simply copied
+    pub fn translated_from_hollerith(
+        &self,
+        astr: &crate::ffi::HandleTCollectionHAsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalSection_translated_from_hollerith(
+                self as *const Self,
+                astr,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:76 - `IGESData_GlobalSection::SendName()`
+    /// Returns the name of the sending system.
+    pub fn send_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalSection_send_name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:79 - `IGESData_GlobalSection::FileName()`
+    /// Returns the name of the IGES file.
+    pub fn file_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalSection_file_name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:82 - `IGESData_GlobalSection::SystemId()`
+    /// Returns the Native System ID of the system that created the IGES file.
+    pub fn system_id(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalSection_system_id(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:85 - `IGESData_GlobalSection::InterfaceVersion()`
+    /// Returns the name of the pre-processor used to write the IGES file.
+    pub fn interface_version(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalSection_interface_version(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:88 - `IGESData_GlobalSection::IntegerBits()`
+    /// Returns the number of binary bits for integer representations.
+    pub fn integer_bits(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_GlobalSection_integer_bits(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:92 - `IGESData_GlobalSection::MaxPower10Single()`
+    /// Returns the maximum power of a decimal representation of a
+    /// single-precision floating point number in the sending system.
+    pub fn max_power10_single(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_GlobalSection_max_power10_single(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:94 - `IGESData_GlobalSection::MaxDigitsSingle()`
+    pub fn max_digits_single(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_GlobalSection_max_digits_single(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:98 - `IGESData_GlobalSection::MaxPower10Double()`
+    /// Returns the maximum power of a decimal representation of a
+    /// double-precision floating point number in the sending system.
+    pub fn max_power10_double(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_GlobalSection_max_power10_double(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:100 - `IGESData_GlobalSection::MaxDigitsDouble()`
+    pub fn max_digits_double(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_GlobalSection_max_digits_double(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:103 - `IGESData_GlobalSection::ReceiveName()`
+    /// Returns the name of the receiving system.
+    pub fn receive_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalSection_receive_name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:106 - `IGESData_GlobalSection::Scale()`
+    /// Returns the scale used in the IGES file.
+    pub fn scale(&self) -> f64 {
+        unsafe { crate::ffi::IGESData_GlobalSection_scale(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:109 - `IGESData_GlobalSection::CascadeUnit()`
+    /// Returns the system length unit
+    pub fn cascade_unit(&self) -> f64 {
+        unsafe { crate::ffi::IGESData_GlobalSection_cascade_unit(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:112 - `IGESData_GlobalSection::UnitFlag()`
+    /// Returns the unit flag that was used to write the IGES file.
+    pub fn unit_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_GlobalSection_unit_flag(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:115 - `IGESData_GlobalSection::UnitName()`
+    /// Returns the name of the unit the IGES file was written in.
+    pub fn unit_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalSection_unit_name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:118 - `IGESData_GlobalSection::LineWeightGrad()`
+    /// Returns the maximum number of line weight gradations.
+    pub fn line_weight_grad(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_GlobalSection_line_weight_grad(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:121 - `IGESData_GlobalSection::MaxLineWeight()`
+    /// Returns the of maximum line weight width in IGES file units.
+    pub fn max_line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESData_GlobalSection_max_line_weight(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:124 - `IGESData_GlobalSection::Date()`
+    /// Returns the IGES file creation date.
+    pub fn date(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalSection_date(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:127 - `IGESData_GlobalSection::Resolution()`
+    /// Returns the resolution used in the IGES file.
+    pub fn resolution(&self) -> f64 {
+        unsafe { crate::ffi::IGESData_GlobalSection_resolution(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:130 - `IGESData_GlobalSection::MaxCoord()`
+    /// Returns the approximate maximum coordinate value found in the model.
+    pub fn max_coord(&self) -> f64 {
+        unsafe { crate::ffi::IGESData_GlobalSection_max_coord(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:134 - `IGESData_GlobalSection::HasMaxCoord()`
+    /// Returns True if the approximate maximum coordinate value found in
+    /// the model is greater than 0.
+    pub fn has_max_coord(&self) -> bool {
+        unsafe { crate::ffi::IGESData_GlobalSection_has_max_coord(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:137 - `IGESData_GlobalSection::AuthorName()`
+    /// Returns the name of the IGES file author.
+    pub fn author_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalSection_author_name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:140 - `IGESData_GlobalSection::CompanyName()`
+    /// Returns the name of the company where the IGES file was written.
+    pub fn company_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalSection_company_name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:143 - `IGESData_GlobalSection::IGESVersion()`
+    /// Returns the IGES version that the IGES file was written in.
+    pub fn iges_version(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_GlobalSection_iges_version(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:145 - `IGESData_GlobalSection::DraftingStandard()`
+    pub fn drafting_standard(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_GlobalSection_drafting_standard(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:149 - `IGESData_GlobalSection::LastChangeDate()`
+    /// Returns the date and time when the model was created or last
+    /// modified (for IGES 5.1 and later).
+    pub fn last_change_date(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalSection_last_change_date(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:153 - `IGESData_GlobalSection::HasLastChangeDate()`
+    /// Returns True if the date and time when the model was created or
+    /// last modified are specified, i.e. not defaulted to NULL.
+    pub fn has_last_change_date(&self) -> bool {
+        unsafe { crate::ffi::IGESData_GlobalSection_has_last_change_date(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:155 - `IGESData_GlobalSection::SetLastChangeDate()`
+    pub fn set_last_change_date(&mut self) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_last_change_date(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:157 - `IGESData_GlobalSection::ApplicationProtocol()`
+    pub fn application_protocol(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalSection_application_protocol(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:159 - `IGESData_GlobalSection::HasApplicationProtocol()`
+    pub fn has_application_protocol(&self) -> bool {
+        unsafe { crate::ffi::IGESData_GlobalSection_has_application_protocol(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:191 - `IGESData_GlobalSection::UnitValue()`
+    /// Returns the unit value (in
+    /// meters) that the IGES file was written in.
+    pub fn unit_value(&self) -> f64 {
+        unsafe { crate::ffi::IGESData_GlobalSection_unit_value(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:197 - `IGESData_GlobalSection::SetSendName()`
+    pub fn set_send_name(&mut self, val: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_send_name(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:199 - `IGESData_GlobalSection::SetFileName()`
+    pub fn set_file_name(&mut self, val: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_file_name(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:201 - `IGESData_GlobalSection::SetSystemId()`
+    pub fn set_system_id(&mut self, val: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_system_id(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:203 - `IGESData_GlobalSection::SetInterfaceVersion()`
+    pub fn set_interface_version(&mut self, val: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_interface_version(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:205 - `IGESData_GlobalSection::SetIntegerBits()`
+    pub fn set_integer_bits(&mut self, val: i32) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_integer_bits(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:207 - `IGESData_GlobalSection::SetMaxPower10Single()`
+    pub fn set_max_power10_single(&mut self, val: i32) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_max_power10_single(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:209 - `IGESData_GlobalSection::SetMaxDigitsSingle()`
+    pub fn set_max_digits_single(&mut self, val: i32) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_max_digits_single(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:211 - `IGESData_GlobalSection::SetMaxPower10Double()`
+    pub fn set_max_power10_double(&mut self, val: i32) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_max_power10_double(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:213 - `IGESData_GlobalSection::SetMaxDigitsDouble()`
+    pub fn set_max_digits_double(&mut self, val: i32) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_max_digits_double(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:215 - `IGESData_GlobalSection::SetReceiveName()`
+    pub fn set_receive_name(&mut self, val: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_receive_name(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:217 - `IGESData_GlobalSection::SetCascadeUnit()`
+    pub fn set_cascade_unit(&mut self, theUnit: f64) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_cascade_unit(self as *mut Self, theUnit) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:219 - `IGESData_GlobalSection::SetScale()`
+    pub fn set_scale(&mut self, val: f64) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_scale(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:221 - `IGESData_GlobalSection::SetUnitFlag()`
+    pub fn set_unit_flag(&mut self, val: i32) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_unit_flag(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:223 - `IGESData_GlobalSection::SetUnitName()`
+    pub fn set_unit_name(&mut self, val: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_unit_name(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:225 - `IGESData_GlobalSection::SetLineWeightGrad()`
+    pub fn set_line_weight_grad(&mut self, val: i32) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_line_weight_grad(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:227 - `IGESData_GlobalSection::SetMaxLineWeight()`
+    pub fn set_max_line_weight(&mut self, val: f64) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_max_line_weight(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:229 - `IGESData_GlobalSection::SetDate()`
+    pub fn set_date(&mut self, val: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_date(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:231 - `IGESData_GlobalSection::SetResolution()`
+    pub fn set_resolution(&mut self, val: f64) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_resolution(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:233 - `IGESData_GlobalSection::SetMaxCoord()`
+    pub fn set_max_coord(&mut self, val: f64) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_max_coord(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:235 - `IGESData_GlobalSection::MaxMaxCoord()`
+    pub fn max_max_coord(&mut self, val: f64) {
+        unsafe { crate::ffi::IGESData_GlobalSection_max_max_coord(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:237 - `IGESData_GlobalSection::MaxMaxCoords()`
+    pub fn max_max_coords(&mut self, xyz: &crate::gp::XYZ) {
+        unsafe { crate::ffi::IGESData_GlobalSection_max_max_coords(self as *mut Self, xyz) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:239 - `IGESData_GlobalSection::SetAuthorName()`
+    pub fn set_author_name(&mut self, val: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_author_name(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:241 - `IGESData_GlobalSection::SetCompanyName()`
+    pub fn set_company_name(&mut self, val: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_company_name(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:243 - `IGESData_GlobalSection::SetIGESVersion()`
+    pub fn set_iges_version(&mut self, val: i32) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_iges_version(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:245 - `IGESData_GlobalSection::SetDraftingStandard()`
+    pub fn set_drafting_standard(&mut self, val: i32) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_drafting_standard(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:247 - `IGESData_GlobalSection::SetLastChangeDate()`
+    pub fn set_last_change_date_handletcollectionhasciistring(
+        &mut self,
+        val: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_GlobalSection_set_last_change_date_handletcollectionhasciistring(
+                self as *mut Self,
+                val,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:249 - `IGESData_GlobalSection::SetApplicationProtocol()`
+    pub fn set_application_protocol(&mut self, val: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::IGESData_GlobalSection_set_application_protocol(self as *mut Self, val)
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:173 - `IGESData_GlobalSection::NewDateString()`
+    /// Returns a string built from year,
+    /// month, day, hour, minute and second values. The form of the
+    /// resulting string is defined as follows:
+    /// -      -1: YYMMDD.HHNNSS,
+    /// -       0: YYYYMMDD.HHNNSS,
+    /// -       1: YYYY-MM-DD:HH-NN-SS, where:
+    /// - YYYY or YY is 4 or 2 digit year,
+    /// - HH is hour (00-23),
+    /// - MM is month (01-12),
+    /// - NN is minute (00-59)
+    /// - DD is day (01-31),
+    /// - SS is second (00-59).
+    pub fn new_date_string_int7(
+        year: i32,
+        month: i32,
+        day: i32,
+        hour: i32,
+        minut: i32,
+        second: i32,
+        mode: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalSection_new_date_string_int7(
+                year, month, day, hour, minut, second, mode,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:185 - `IGESData_GlobalSection::NewDateString()`
+    /// Converts the string given in the
+    /// form YYMMDD.HHNNSS or YYYYMMDD.HHNNSS to either
+    /// YYMMDD.HHNNSS, YYYYMMDD.HHNNSS or YYYY-MM-DD:HH-NN-SS.
+    pub fn new_date_string_handletcollectionhasciistring_int(
+        date: &crate::ffi::HandleTCollectionHAsciiString,
+        mode: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_GlobalSection_new_date_string_handletcollectionhasciistring_int(date, mode))
+        }
+    }
+}
+
+// ── Skipped symbols for GlobalSection (4 total) ──
+// SKIPPED: **Source:** `IGESData_GlobalSection.hxx`:70 - `IGESData_GlobalSection::Separator`
+//   method: Returns the parameter delimiter character.
+//   Reason: return type 'Standard_Character' is unknown
+//   // pub fn separator(&self) -> OwnedPtr<Standard_Character>;
+//
+// SKIPPED: **Source:** `IGESData_GlobalSection.hxx`:73 - `IGESData_GlobalSection::EndMark`
+//   method: Returns the record delimiter character.
+//   Reason: return type 'Standard_Character' is unknown
+//   // pub fn end_mark(&self) -> OwnedPtr<Standard_Character>;
+//
+// SKIPPED: **Source:** `IGESData_GlobalSection.hxx`:193 - `IGESData_GlobalSection::SetSeparator`
+//   Reason: param 'val' uses unknown type 'Standard_Character'
+//   // pub fn set_separator(&mut self, val: Character);
+//
+// SKIPPED: **Source:** `IGESData_GlobalSection.hxx`:195 - `IGESData_GlobalSection::SetEndMark`
+//   Reason: param 'val' uses unknown type 'Standard_Character'
+//   // pub fn set_end_mark(&mut self, val: Character);
+//
 
 // ========================
 // From IGESData_HArray1OfIGESEntity.hxx
@@ -558,6 +5504,74 @@ impl HandleIGESDataHArray1OfIGESEntity {
 }
 
 // ========================
+// From IGESData_IGESDumper.hxx
+// ========================
+
+/// **Source:** `IGESData_IGESDumper.hxx`:40 - `IGESData_IGESDumper`
+/// Provides a way to obtain a clear Dump of an IGESEntity
+/// (distinct from normalized output). It works with tools
+/// attached to Entities, as for normalized Reade and Write
+///
+/// For each Entity, displaying data is split in own data
+/// (specific to each type) and other attached data, which are
+/// defined for all IGES Types (either from "Directory Entry" or
+/// from Lists of Associativities and Properties)
+pub use crate::ffi::IGESData_IGESDumper as IGESDumper;
+
+unsafe impl crate::CppDeletable for IGESDumper {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_IGESDumper_destructor(ptr);
+    }
+}
+
+impl IGESDumper {
+    /// **Source:** `IGESData_IGESDumper.hxx`:50 - `IGESData_IGESDumper::IGESData_IGESDumper()`
+    /// Returns an IGESDumper ready to work.
+    /// The IGESModel provides the numbering of Entities:
+    /// as for any InterfaceModel, it gives each Entity a number;
+    /// but for IGESEntities, the "Number of Directory Entry"
+    /// according to the definition of IGES Files, is also useful.
+    pub fn new_handleigesdataigesmodel_handleigesdataprotocol(
+        model: &crate::ffi::HandleIGESDataIGESModel,
+        protocol: &crate::ffi::HandleIGESDataProtocol,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_IGESDumper_ctor_handleigesdataigesmodel_handleigesdataprotocol(
+                    model, protocol,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for IGESDumper (4 total) ──
+// SKIPPED: **Source:** `IGESData_IGESDumper.hxx`:56 - `IGESData_IGESDumper::PrintDNum`
+//   method: Prints onto an output, the "Number of Directory Entry" which
+//   method: corresponds to an IGESEntity in the IGESModel, under the form
+//   method: "D#nnn" (a Null Handle gives D#0)
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_d_num(&self, ent: &HandleIGESEntity, S: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `IGESData_IGESDumper.hxx`:61 - `IGESData_IGESDumper::PrintShort`
+//   method: Prints onto an output, the "Number of Directory Entry" (see
+//   method: PrintDNum) plus IGES Type and Form Numbers, which gives
+//   method: "D#nnn  Type nnn  Form nnn"
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_short(&self, ent: &HandleIGESEntity, S: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `IGESData_IGESDumper.hxx`:64 - `IGESData_IGESDumper::Dump`
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn dump(&self, ent: &HandleIGESEntity, S: /* Standard_OStream& */, own: i32, attached: i32);
+//
+// SKIPPED: **Source:** `IGESData_IGESDumper.hxx`:71 - `IGESData_IGESDumper::OwnDump`
+//   method: Specific Dump for each IGES Entity, call by Dump (just above)
+//   method: <own> is the parameter <own> from Dump
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, ent: &HandleIGESEntity, S: /* Standard_OStream& */, own: i32);
+//
+
+// ========================
 // From IGESData_IGESEntity.hxx
 // ========================
 
@@ -573,6 +5587,16 @@ unsafe impl crate::CppDeletable for IGESEntity {
 }
 
 impl IGESEntity {
+    /// **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    /// gives IGES typing info (includes "Type" and "Form" data)
+    pub fn iges_type(&self) -> crate::OwnedPtr<IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESEntity_iges_type(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
     /// gives IGES Type Number (often coupled with Form Number)
     pub fn type_number(&self) -> i32 {
@@ -641,6 +5665,17 @@ impl IGESEntity {
         unsafe { crate::ffi::IGESData_IGESEntity_rank_line_font(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    /// Returns LineFont as an Entity (if defined as Reference)
+    /// Returns a Null Handle if DefLineFont is not "DefReference"
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESEntity_line_font(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
     /// Returns the definition status of Level
     pub fn def_level(&self) -> crate::iges_data::DefList {
@@ -659,6 +5694,17 @@ impl IGESEntity {
         unsafe { crate::ffi::IGESData_IGESEntity_level(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    /// Returns LevelList if Level is
+    /// defined as a list. Returns a null handle if DefLevel is not DefSeveral.
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESEntity_level_list(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
     /// Returns the definition status of
     /// the view. This can be: none, one or several.
@@ -671,16 +5717,71 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    /// Returns the view of this IGES entity.
+    /// This view can be a single view or a list of views.
+    /// Warning A null handle is returned if the view is not defined.
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESEntity_view(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    /// Returns the view as a single view
+    /// if it was defined as such and not as a list of views.
+    /// Warning A null handle is returned if DefView does not have the value DefOne.
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESEntity_single_view(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    /// Returns the view of this IGES entity as a list.
+    /// Warning A null handle is returned if the
+    /// definition status does not have the value DefSeveral.
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESEntity_view_list(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
     /// Returns True if a Transformation Matrix is defined
     pub fn has_transf(&self) -> bool {
         unsafe { crate::ffi::IGESData_IGESEntity_has_transf(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    /// Returns the Transformation Matrix (under IGES definition)
+    /// Returns a Null Handle if there is none
+    /// for a more complete use, see Location & CompoundLocation
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESEntity_transf(self as *const Self))
+        }
+    }
+
     /// **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
     /// Returns True if a LabelDisplay mode is defined for this entity
     pub fn has_label_display(&self) -> bool {
         unsafe { crate::ffi::IGESData_IGESEntity_has_label_display(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    /// Returns the Label Display
+    /// Associativity Entity if there is one. Returns a null handle if there is none.
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESEntity_label_display(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
@@ -737,6 +5838,16 @@ impl IGESEntity {
     /// Warning A negative value is returned if the color was defined as an entity.
     pub fn rank_color(&self) -> i32 {
         unsafe { crate::ffi::IGESData_IGESEntity_rank_color(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    /// Returns the IGES entity which
+    /// describes the color of the entity.
+    /// Returns a null handle if this entity was defined as an integer.
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESEntity_color(self as *const Self))
+        }
     }
 
     /// **Source:** `IGESData_IGESEntity.hxx`:169 - `IGESData_IGESEntity::CResValues()`
@@ -802,6 +5913,39 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    /// Initializes Transf, or erases it if <ent> is given Null
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESData_IGESEntity_init_transf(self as *mut Self, ent) }
+    }
+
+    /// **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    /// Initializes View, or erases it if <ent> is given Null
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESData_IGESEntity_init_view(self as *mut Self, ent) }
+    }
+
+    /// **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    /// Initializes LineFont : if <ent> is not Null, it gives LineFont,
+    /// else <rank> gives or erases (if zero) RankLineFont
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe { crate::ffi::IGESData_IGESEntity_init_line_font(self as *mut Self, ent, rank) }
+    }
+
+    /// **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    /// Initializes Level : if <ent> is not Null, it gives LevelList,
+    /// else <val> gives or erases (if zero) unique Level
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe { crate::ffi::IGESData_IGESEntity_init_level(self as *mut Self, ent, val) }
+    }
+
+    /// **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    /// Initializes Color data : if <ent> is not Null, it gives Color,
+    /// else <rank> gives or erases (if zero) RankColor
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe { crate::ffi::IGESData_IGESEntity_init_color(self as *mut Self, ent, rank) }
+    }
+
     /// **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     /// Initializes the Status of Directory Part
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
@@ -822,6 +5966,20 @@ impl IGESEntity {
     /// else, SubScriptNumber is erased
     pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
         unsafe { crate::ffi::IGESData_IGESEntity_set_label(self as *mut Self, label, sub) }
+    }
+
+    /// **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    /// Initializes various data (those not yet seen above), or erases
+    /// them if they are given as Null (Zero for <weightnum>) :
+    /// <str> for Structure, <lab> for LabelDisplay, and
+    /// <weightnum> for WeightNumber
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe { crate::ffi::IGESData_IGESEntity_init_misc(self as *mut Self, str, lab, weightnum) }
     }
 
     /// **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
@@ -1130,102 +6288,10154 @@ impl HandleIGESDataIGESEntity {
             )
         }
     }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_DrilledHole>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_DrilledHole` (or subclass).
+    pub fn downcast_to_drilled_hole(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliDrilledHole>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliDrilledHole(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_ElementResults>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_ElementResults` (or subclass).
+    pub fn downcast_to_element_results(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliElementResults>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliElementResults(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_FiniteElement>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_FiniteElement` (or subclass).
+    pub fn downcast_to_finite_element(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliFiniteElement>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliFiniteElement(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_Flow>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_Flow` (or subclass).
+    pub fn downcast_to_flow(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliFlow>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliFlow(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_FlowLineSpec>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_FlowLineSpec` (or subclass).
+    pub fn downcast_to_flow_line_spec(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliFlowLineSpec>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliFlowLineSpec(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_LevelFunction>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_LevelFunction` (or subclass).
+    pub fn downcast_to_level_function(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliLevelFunction>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliLevelFunction(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_LevelToPWBLayerMap>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_LevelToPWBLayerMap` (or subclass).
+    pub fn downcast_to_level_to_pwb_layer_map(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliLevelToPWBLayerMap>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliLevelToPWBLayerMap(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_LineWidening>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_LineWidening` (or subclass).
+    pub fn downcast_to_line_widening(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliLineWidening>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliLineWidening(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_NodalConstraint>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_NodalConstraint` (or subclass).
+    pub fn downcast_to_nodal_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliNodalConstraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliNodalConstraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_NodalDisplAndRot>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_NodalDisplAndRot` (or subclass).
+    pub fn downcast_to_nodal_displ_and_rot(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliNodalDisplAndRot>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliNodalDisplAndRot(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_NodalResults>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_NodalResults` (or subclass).
+    pub fn downcast_to_nodal_results(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliNodalResults>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliNodalResults(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_Node>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_Node` (or subclass).
+    pub fn downcast_to_node(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_PWBArtworkStackup>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_PWBArtworkStackup` (or subclass).
+    pub fn downcast_to_pwb_artwork_stackup(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliPWBArtworkStackup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliPWBArtworkStackup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_PWBDrilledHole>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_PWBDrilledHole` (or subclass).
+    pub fn downcast_to_pwb_drilled_hole(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliPWBDrilledHole>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliPWBDrilledHole(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_PartNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_PartNumber` (or subclass).
+    pub fn downcast_to_part_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliPartNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliPartNumber(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_PinNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_PinNumber` (or subclass).
+    pub fn downcast_to_pin_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliPinNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliPinNumber(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_PipingFlow>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_PipingFlow` (or subclass).
+    pub fn downcast_to_piping_flow(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliPipingFlow>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliPipingFlow(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_ReferenceDesignator>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_ReferenceDesignator` (or subclass).
+    pub fn downcast_to_reference_designator(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliReferenceDesignator>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliReferenceDesignator(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESAppli_RegionRestriction>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_RegionRestriction` (or subclass).
+    pub fn downcast_to_region_restriction(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliRegionRestriction>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESAppliRegionRestriction(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESBasic_AssocGroupType>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_AssocGroupType` (or subclass).
+    pub fn downcast_to_assoc_group_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicAssocGroupType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESBasicAssocGroupType(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESBasic_ExternalRefFile>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_ExternalRefFile` (or subclass).
+    pub fn downcast_to_external_ref_file(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicExternalRefFile>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESBasicExternalRefFile(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESBasic_ExternalRefFileIndex>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_ExternalRefFileIndex` (or subclass).
+    pub fn downcast_to_external_ref_file_index(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicExternalRefFileIndex>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESBasicExternalRefFileIndex(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESBasic_ExternalRefFileName>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_ExternalRefFileName` (or subclass).
+    pub fn downcast_to_external_ref_file_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicExternalRefFileName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESBasicExternalRefFileName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESBasic_ExternalRefLibName>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_ExternalRefLibName` (or subclass).
+    pub fn downcast_to_external_ref_lib_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicExternalRefLibName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESBasicExternalRefLibName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESBasic_ExternalRefName>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_ExternalRefName` (or subclass).
+    pub fn downcast_to_external_ref_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicExternalRefName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESBasicExternalRefName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESBasic_ExternalReferenceFile>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_ExternalReferenceFile` (or subclass).
+    pub fn downcast_to_external_reference_file(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicExternalReferenceFile>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESBasicExternalReferenceFile(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESBasic_Group>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_Group` (or subclass).
+    pub fn downcast_to_group(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicGroup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESBasicGroup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESBasic_GroupWithoutBackP>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_GroupWithoutBackP` (or subclass).
+    pub fn downcast_to_group_without_back_p(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicGroupWithoutBackP>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESBasicGroupWithoutBackP(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESBasic_Hierarchy>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_Hierarchy` (or subclass).
+    pub fn downcast_to_hierarchy(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicHierarchy>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESBasicHierarchy(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESBasic_Name>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_Name` (or subclass).
+    pub fn downcast_to_name(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESBasicName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESBasic_OrderedGroup>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_OrderedGroup` (or subclass).
+    pub fn downcast_to_ordered_group(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicOrderedGroup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESBasicOrderedGroup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESBasic_OrderedGroupWithoutBackP>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_OrderedGroupWithoutBackP` (or subclass).
+    pub fn downcast_to_ordered_group_without_back_p(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicOrderedGroupWithoutBackP>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESBasicOrderedGroupWithoutBackP(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESBasic_SingleParent>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_SingleParent` (or subclass).
+    pub fn downcast_to_single_parent(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicSingleParent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESBasicSingleParent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESBasic_SingularSubfigure>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_SingularSubfigure` (or subclass).
+    pub fn downcast_to_singular_subfigure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicSingularSubfigure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESBasicSingularSubfigure(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESBasic_SubfigureDef>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_SubfigureDef` (or subclass).
+    pub fn downcast_to_subfigure_def(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicSubfigureDef>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESBasicSubfigureDef(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESData_ColorEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_ColorEntity` (or subclass).
+    pub fn downcast_to_color_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDataColorEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESData_FreeFormatEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_FreeFormatEntity` (or subclass).
+    pub fn downcast_to_free_format_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataFreeFormatEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDataFreeFormatEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESData_LabelDisplayEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_LabelDisplayEntity` (or subclass).
+    pub fn downcast_to_label_display_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDataLabelDisplayEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESData_LineFontEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_LineFontEntity` (or subclass).
+    pub fn downcast_to_line_font_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDataLineFontEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESData_UndefinedEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_UndefinedEntity` (or subclass).
+    pub fn downcast_to_undefined_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataUndefinedEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDataUndefinedEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDefs_AssociativityDef>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_AssociativityDef` (or subclass).
+    pub fn downcast_to_associativity_def(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsAssociativityDef>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDefsAssociativityDef(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDefs_AttributeDef>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_AttributeDef` (or subclass).
+    pub fn downcast_to_attribute_def(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsAttributeDef>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDefsAttributeDef(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDefs_AttributeTable>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_AttributeTable` (or subclass).
+    pub fn downcast_to_attribute_table(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsAttributeTable>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDefsAttributeTable(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDefs_GenericData>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_GenericData` (or subclass).
+    pub fn downcast_to_generic_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsGenericData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDefsGenericData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDefs_MacroDef>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_MacroDef` (or subclass).
+    pub fn downcast_to_macro_def(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsMacroDef>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDefsMacroDef(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDefs_TabularData>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_TabularData` (or subclass).
+    pub fn downcast_to_tabular_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsTabularData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDefsTabularData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDefs_UnitsData>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_UnitsData` (or subclass).
+    pub fn downcast_to_units_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsUnitsData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDefsUnitsData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_AngularDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_AngularDimension` (or subclass).
+    pub fn downcast_to_angular_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenAngularDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenAngularDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_BasicDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_BasicDimension` (or subclass).
+    pub fn downcast_to_basic_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenBasicDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenBasicDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_CenterLine>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_CenterLine` (or subclass).
+    pub fn downcast_to_center_line(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenCenterLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenCenterLine(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_CurveDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_CurveDimension` (or subclass).
+    pub fn downcast_to_curve_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenCurveDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenCurveDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_DiameterDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_DiameterDimension` (or subclass).
+    pub fn downcast_to_diameter_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenDiameterDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenDiameterDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_DimensionDisplayData>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_DimensionDisplayData` (or subclass).
+    pub fn downcast_to_dimension_display_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenDimensionDisplayData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenDimensionDisplayData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_DimensionTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_DimensionTolerance` (or subclass).
+    pub fn downcast_to_dimension_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenDimensionTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenDimensionTolerance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_DimensionUnits>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_DimensionUnits` (or subclass).
+    pub fn downcast_to_dimension_units(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenDimensionUnits>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenDimensionUnits(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_DimensionedGeometry>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_DimensionedGeometry` (or subclass).
+    pub fn downcast_to_dimensioned_geometry(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenDimensionedGeometry>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenDimensionedGeometry(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_FlagNote>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_FlagNote` (or subclass).
+    pub fn downcast_to_flag_note(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenFlagNote>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenFlagNote(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_GeneralLabel>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_GeneralLabel` (or subclass).
+    pub fn downcast_to_general_label(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenGeneralLabel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenGeneralLabel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_GeneralNote>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_GeneralNote` (or subclass).
+    pub fn downcast_to_general_note(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenGeneralNote>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenGeneralNote(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_GeneralSymbol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_GeneralSymbol` (or subclass).
+    pub fn downcast_to_general_symbol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenGeneralSymbol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenGeneralSymbol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_LeaderArrow>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_LeaderArrow` (or subclass).
+    pub fn downcast_to_leader_arrow(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenLeaderArrow>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenLeaderArrow(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_LinearDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_LinearDimension` (or subclass).
+    pub fn downcast_to_linear_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenLinearDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenLinearDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_NewDimensionedGeometry>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_NewDimensionedGeometry` (or subclass).
+    pub fn downcast_to_new_dimensioned_geometry(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenNewDimensionedGeometry>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenNewDimensionedGeometry(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_NewGeneralNote>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_NewGeneralNote` (or subclass).
+    pub fn downcast_to_new_general_note(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenNewGeneralNote>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenNewGeneralNote(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_OrdinateDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_OrdinateDimension` (or subclass).
+    pub fn downcast_to_ordinate_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenOrdinateDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenOrdinateDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_PointDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_PointDimension` (or subclass).
+    pub fn downcast_to_point_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenPointDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenPointDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_RadiusDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_RadiusDimension` (or subclass).
+    pub fn downcast_to_radius_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenRadiusDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenRadiusDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_Section>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_Section` (or subclass).
+    pub fn downcast_to_section(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenSection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenSection(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_SectionedArea>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_SectionedArea` (or subclass).
+    pub fn downcast_to_sectioned_area(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenSectionedArea>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenSectionedArea(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDimen_WitnessLine>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_WitnessLine` (or subclass).
+    pub fn downcast_to_witness_line(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenWitnessLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDimenWitnessLine(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDraw_CircArraySubfigure>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_CircArraySubfigure` (or subclass).
+    pub fn downcast_to_circ_array_subfigure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawCircArraySubfigure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDrawCircArraySubfigure(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDraw_ConnectPoint>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_ConnectPoint` (or subclass).
+    pub fn downcast_to_connect_point(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawConnectPoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDrawConnectPoint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDraw_Drawing>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_Drawing` (or subclass).
+    pub fn downcast_to_drawing(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawDrawing>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDrawDrawing(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDraw_DrawingWithRotation>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_DrawingWithRotation` (or subclass).
+    pub fn downcast_to_drawing_with_rotation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawDrawingWithRotation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDrawDrawingWithRotation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDraw_LabelDisplay>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_LabelDisplay` (or subclass).
+    pub fn downcast_to_label_display(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawLabelDisplay>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDrawLabelDisplay(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDraw_NetworkSubfigure>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_NetworkSubfigure` (or subclass).
+    pub fn downcast_to_network_subfigure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawNetworkSubfigure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDrawNetworkSubfigure(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDraw_NetworkSubfigureDef>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_NetworkSubfigureDef` (or subclass).
+    pub fn downcast_to_network_subfigure_def(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawNetworkSubfigureDef>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDrawNetworkSubfigureDef(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDraw_PerspectiveView>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_PerspectiveView` (or subclass).
+    pub fn downcast_to_perspective_view(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawPerspectiveView>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDrawPerspectiveView(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDraw_Planar>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_Planar` (or subclass).
+    pub fn downcast_to_planar(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawPlanar>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDrawPlanar(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDraw_RectArraySubfigure>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_RectArraySubfigure` (or subclass).
+    pub fn downcast_to_rect_array_subfigure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawRectArraySubfigure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDrawRectArraySubfigure(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDraw_SegmentedViewsVisible>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_SegmentedViewsVisible` (or subclass).
+    pub fn downcast_to_segmented_views_visible(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawSegmentedViewsVisible>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDrawSegmentedViewsVisible(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDraw_View>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_View` (or subclass).
+    pub fn downcast_to_view(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawView>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDrawView(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDraw_ViewsVisible>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_ViewsVisible` (or subclass).
+    pub fn downcast_to_views_visible(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawViewsVisible>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDrawViewsVisible(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESDraw_ViewsVisibleWithAttr>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_ViewsVisibleWithAttr` (or subclass).
+    pub fn downcast_to_views_visible_with_attr(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawViewsVisibleWithAttr>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESDrawViewsVisibleWithAttr(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_BSplineCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_BSplineCurve` (or subclass).
+    pub fn downcast_to_b_spline_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomBSplineCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomBSplineCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_BSplineSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_BSplineSurface` (or subclass).
+    pub fn downcast_to_b_spline_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomBSplineSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomBSplineSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_Boundary>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_Boundary` (or subclass).
+    pub fn downcast_to_boundary(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomBoundary>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomBoundary(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_BoundedSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_BoundedSurface` (or subclass).
+    pub fn downcast_to_bounded_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomBoundedSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomBoundedSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_CircularArc>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_CircularArc` (or subclass).
+    pub fn downcast_to_circular_arc(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomCircularArc>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomCircularArc(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_CompositeCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_CompositeCurve` (or subclass).
+    pub fn downcast_to_composite_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomCompositeCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomCompositeCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_ConicArc>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_ConicArc` (or subclass).
+    pub fn downcast_to_conic_arc(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomConicArc>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomConicArc(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_CopiousData>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_CopiousData` (or subclass).
+    pub fn downcast_to_copious_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomCopiousData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomCopiousData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_CurveOnSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_CurveOnSurface` (or subclass).
+    pub fn downcast_to_curve_on_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomCurveOnSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomCurveOnSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_Direction>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_Direction` (or subclass).
+    pub fn downcast_to_direction(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomDirection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomDirection(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_Flash>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_Flash` (or subclass).
+    pub fn downcast_to_flash(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomFlash>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomFlash(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_Line>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_Line` (or subclass).
+    pub fn downcast_to_line(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomLine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_OffsetCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_OffsetCurve` (or subclass).
+    pub fn downcast_to_offset_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomOffsetCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomOffsetCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_OffsetSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_OffsetSurface` (or subclass).
+    pub fn downcast_to_offset_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomOffsetSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomOffsetSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_Plane>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_Plane` (or subclass).
+    pub fn downcast_to_plane(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomPlane>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomPlane(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_Point>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_Point` (or subclass).
+    pub fn downcast_to_point(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomPoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomPoint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_RuledSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_RuledSurface` (or subclass).
+    pub fn downcast_to_ruled_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomRuledSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomRuledSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_SplineCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_SplineCurve` (or subclass).
+    pub fn downcast_to_spline_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomSplineCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomSplineCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_SplineSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_SplineSurface` (or subclass).
+    pub fn downcast_to_spline_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomSplineSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomSplineSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_SurfaceOfRevolution>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_SurfaceOfRevolution` (or subclass).
+    pub fn downcast_to_surface_of_revolution(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomSurfaceOfRevolution>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomSurfaceOfRevolution(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_TabulatedCylinder>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_TabulatedCylinder` (or subclass).
+    pub fn downcast_to_tabulated_cylinder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomTabulatedCylinder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomTabulatedCylinder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_TransformationMatrix>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_TransformationMatrix` (or subclass).
+    pub fn downcast_to_transformation_matrix(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomTransformationMatrix>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomTransformationMatrix(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGeom_TrimmedSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_TrimmedSurface` (or subclass).
+    pub fn downcast_to_trimmed_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomTrimmedSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGeomTrimmedSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGraph_Color>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_Color` (or subclass).
+    pub fn downcast_to_color(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphColor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGraphColor(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGraph_DefinitionLevel>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_DefinitionLevel` (or subclass).
+    pub fn downcast_to_definition_level(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphDefinitionLevel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGraphDefinitionLevel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGraph_DrawingSize>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_DrawingSize` (or subclass).
+    pub fn downcast_to_drawing_size(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphDrawingSize>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGraphDrawingSize(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGraph_DrawingUnits>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_DrawingUnits` (or subclass).
+    pub fn downcast_to_drawing_units(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphDrawingUnits>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGraphDrawingUnits(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGraph_HighLight>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_HighLight` (or subclass).
+    pub fn downcast_to_high_light(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphHighLight>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGraphHighLight(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGraph_IntercharacterSpacing>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_IntercharacterSpacing` (or subclass).
+    pub fn downcast_to_intercharacter_spacing(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphIntercharacterSpacing>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGraphIntercharacterSpacing(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGraph_LineFontDefPattern>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_LineFontDefPattern` (or subclass).
+    pub fn downcast_to_line_font_def_pattern(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphLineFontDefPattern>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGraphLineFontDefPattern(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGraph_LineFontDefTemplate>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_LineFontDefTemplate` (or subclass).
+    pub fn downcast_to_line_font_def_template(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphLineFontDefTemplate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGraphLineFontDefTemplate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGraph_LineFontPredefined>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_LineFontPredefined` (or subclass).
+    pub fn downcast_to_line_font_predefined(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphLineFontPredefined>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGraphLineFontPredefined(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGraph_NominalSize>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_NominalSize` (or subclass).
+    pub fn downcast_to_nominal_size(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphNominalSize>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGraphNominalSize(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGraph_Pick>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_Pick` (or subclass).
+    pub fn downcast_to_pick(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphPick>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGraphPick(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGraph_TextDisplayTemplate>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_TextDisplayTemplate` (or subclass).
+    pub fn downcast_to_text_display_template(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphTextDisplayTemplate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGraphTextDisplayTemplate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGraph_TextFontDef>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_TextFontDef` (or subclass).
+    pub fn downcast_to_text_font_def(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphTextFontDef>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGraphTextFontDef(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESGraph_UniformRectGrid>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_UniformRectGrid` (or subclass).
+    pub fn downcast_to_uniform_rect_grid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphUniformRectGrid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESGraphUniformRectGrid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_Block>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Block` (or subclass).
+    pub fn downcast_to_block(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidBlock>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidBlock(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_BooleanTree>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_BooleanTree` (or subclass).
+    pub fn downcast_to_boolean_tree(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidBooleanTree>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidBooleanTree(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_ConeFrustum>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_ConeFrustum` (or subclass).
+    pub fn downcast_to_cone_frustum(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidConeFrustum>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidConeFrustum(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_ConicalSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_ConicalSurface` (or subclass).
+    pub fn downcast_to_conical_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidConicalSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidConicalSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_Cylinder>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Cylinder` (or subclass).
+    pub fn downcast_to_cylinder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidCylinder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidCylinder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_CylindricalSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_CylindricalSurface` (or subclass).
+    pub fn downcast_to_cylindrical_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidCylindricalSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidCylindricalSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_EdgeList>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_EdgeList` (or subclass).
+    pub fn downcast_to_edge_list(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidEdgeList>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidEdgeList(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_Ellipsoid>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Ellipsoid` (or subclass).
+    pub fn downcast_to_ellipsoid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidEllipsoid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidEllipsoid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_Face>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Face` (or subclass).
+    pub fn downcast_to_face(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidFace(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_Loop>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Loop` (or subclass).
+    pub fn downcast_to_loop(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidLoop>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidLoop(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_ManifoldSolid>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_ManifoldSolid` (or subclass).
+    pub fn downcast_to_manifold_solid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidManifoldSolid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidManifoldSolid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_PlaneSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_PlaneSurface` (or subclass).
+    pub fn downcast_to_plane_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidPlaneSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidPlaneSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_RightAngularWedge>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_RightAngularWedge` (or subclass).
+    pub fn downcast_to_right_angular_wedge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidRightAngularWedge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidRightAngularWedge(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_SelectedComponent>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_SelectedComponent` (or subclass).
+    pub fn downcast_to_selected_component(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidSelectedComponent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidSelectedComponent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_Shell>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Shell` (or subclass).
+    pub fn downcast_to_shell(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidShell>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidShell(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_SolidAssembly>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_SolidAssembly` (or subclass).
+    pub fn downcast_to_solid_assembly(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidSolidAssembly>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidSolidAssembly(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_SolidInstance>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_SolidInstance` (or subclass).
+    pub fn downcast_to_solid_instance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidSolidInstance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidSolidInstance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_SolidOfLinearExtrusion>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_SolidOfLinearExtrusion` (or subclass).
+    pub fn downcast_to_solid_of_linear_extrusion(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidSolidOfLinearExtrusion>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidSolidOfLinearExtrusion(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_SolidOfRevolution>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_SolidOfRevolution` (or subclass).
+    pub fn downcast_to_solid_of_revolution(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidSolidOfRevolution>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidSolidOfRevolution(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_Sphere>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Sphere` (or subclass).
+    pub fn downcast_to_sphere(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidSphere>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidSphere(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_SphericalSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_SphericalSurface` (or subclass).
+    pub fn downcast_to_spherical_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidSphericalSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidSphericalSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_ToroidalSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_ToroidalSurface` (or subclass).
+    pub fn downcast_to_toroidal_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidToroidalSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidToroidalSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_Torus>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Torus` (or subclass).
+    pub fn downcast_to_torus(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidTorus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidTorus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_IGESEntity> to Handle<IGESSolid_VertexList>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_VertexList` (or subclass).
+    pub fn downcast_to_vertex_list(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidVertexList>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataIGESEntity_downcast_to_HandleIGESSolidVertexList(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
-// ── Skipped symbols for IGESEntity (15 total) ──
-// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType`
-//   method: gives IGES typing info (includes "Type" and "Form" data)
-//   Reason: return type 'IGESData_IGESType' is unknown
-//   // pub fn iges_type(&self) -> OwnedPtr<IGESData_IGESType>;
+// ========================
+// From IGESData_IGESModel.hxx
+// ========================
+
+/// **Source:** `IGESData_IGESModel.hxx`:44 - `IGESData_IGESModel`
+/// Defines the file header and
+/// entities for IGES files. These headers and entities result from
+/// a complete data translation using the IGES data exchange processor.
+/// Each entity is contained in a single model only and has a
+/// unique identifier. You can access this identifier using the method Number.
+/// Gives an access to the general data in the Start and the Global
+/// sections of an IGES file.
+/// The IGES file includes the following sections:
+/// -Start,
+/// -Global,
+/// -Directory Entry,
+/// -Parameter Data,
+/// -Terminate
+pub use crate::ffi::IGESData_IGESModel as IGESModel;
+
+unsafe impl crate::CppDeletable for IGESModel {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_IGESModel_destructor(ptr);
+    }
+}
+
+impl IGESModel {
+    /// **Source:** `IGESData_IGESModel.hxx`:48 - `IGESData_IGESModel::IGESData_IGESModel()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESModel_ctor()) }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:51 - `IGESData_IGESModel::ClearHeader()`
+    /// Erases all data specific to IGES file Header (Start + Global)
+    pub fn clear_header(&mut self) {
+        unsafe { crate::ffi::IGESData_IGESModel_clear_header(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:60 - `IGESData_IGESModel::StartSection()`
+    /// Returns Model's Start Section (list of comment lines)
+    pub fn start_section(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESModel_start_section(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:63 - `IGESData_IGESModel::NbStartLines()`
+    /// Returns the count of recorded Start Lines
+    pub fn nb_start_lines(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_IGESModel_nb_start_lines(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:69 - `IGESData_IGESModel::StartLine()`
+    /// Returns a line from the IGES file
+    /// Start section by specifying its number. An empty string is
+    /// returned if the number given is out of range, the range being
+    /// from 1 to NbStartLines.
+    pub fn start_line(&self, num: i32) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_IGESModel_start_line(
+                self as *const Self,
+                num,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:72 - `IGESData_IGESModel::ClearStartSection()`
+    /// Clears the IGES file Start Section
+    pub fn clear_start_section(&mut self) {
+        unsafe { crate::ffi::IGESData_IGESModel_clear_start_section(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:81 - `IGESData_IGESModel::SetStartSection()`
+    /// Sets a new Start section from a list of strings.
+    /// If copy is false, the Start section will be shared. Any
+    /// modifications made to the strings later on, will have an effect on
+    /// the Start section. If copy is true (default value),
+    /// an independent copy of the strings is created and used as
+    /// the Start section. Any modifications made to the strings
+    /// later on, will have no effect on the Start section.
+    pub fn set_start_section(
+        &mut self,
+        list: &crate::ffi::HandleTColStdHSequenceOfHAsciiString,
+        copy: bool,
+    ) {
+        unsafe { crate::ffi::IGESData_IGESModel_set_start_section(self as *mut Self, list, copy) }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:87 - `IGESData_IGESModel::AddStartLine()`
+    /// Adds a new string to the existing
+    /// Start section at the end if atnum is 0 or not given, or before
+    /// atnumth line.
+    pub fn add_start_line(&mut self, line: &str, atnum: i32) {
+        let c_line = std::ffi::CString::new(line).unwrap();
+        unsafe {
+            crate::ffi::IGESData_IGESModel_add_start_line(self as *mut Self, c_line.as_ptr(), atnum)
+        }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:90 - `IGESData_IGESModel::GlobalSection()`
+    /// Returns the Global section of the IGES file.
+    pub fn global_section(&self) -> &GlobalSection {
+        unsafe { &*(crate::ffi::IGESData_IGESModel_global_section(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:93 - `IGESData_IGESModel::ChangeGlobalSection()`
+    /// Returns the Global section of the IGES file.
+    pub fn change_global_section(&mut self) -> &mut GlobalSection {
+        unsafe { &mut *(crate::ffi::IGESData_IGESModel_change_global_section(self as *mut Self)) }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:96 - `IGESData_IGESModel::SetGlobalSection()`
+    /// Sets the Global section of the IGES file.
+    pub fn set_global_section(&mut self, header: &GlobalSection) {
+        unsafe { crate::ffi::IGESData_IGESModel_set_global_section(self as *mut Self, header) }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:108 - `IGESData_IGESModel::ApplyStatic()`
+    /// Sets some of the Global section
+    /// parameters with the values defined by the translation
+    /// parameters. param may be:
+    /// - receiver (value read in XSTEP.iges.header.receiver),
+    /// - author (value read in XSTEP.iges.header.author),
+    /// - company (value read in XSTEP.iges.header.company).
+    /// The default value for param is an empty string.
+    /// Returns True when done and if param is given, False if param is
+    /// unknown or empty. Note: Set the unit in the IGES
+    /// file Global section via IGESData_BasicEditor class.
+    pub fn apply_static(&mut self, param: &str) -> bool {
+        let c_param = std::ffi::CString::new(param).unwrap();
+        unsafe { crate::ffi::IGESData_IGESModel_apply_static(self as *mut Self, c_param.as_ptr()) }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:111 - `IGESData_IGESModel::Entity()`
+    /// Returns an IGES entity given by its rank number.
+    pub fn entity(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESModel_entity(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:116 - `IGESData_IGESModel::DNum()`
+    /// Returns the equivalent DE Number for an Entity, i.e.
+    /// 2*Number(ent)-1 , or 0 if <ent> is unknown from <me>
+    /// This DE Number is used for File Writing for instance
+    pub fn d_num(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
+        unsafe { crate::ffi::IGESData_IGESModel_d_num(self as *const Self, ent) }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:119 - `IGESData_IGESModel::GetFromAnother()`
+    /// gets Header (GlobalSection) from another Model
+    pub fn get_from_another(&mut self, other: &crate::ffi::HandleInterfaceInterfaceModel) {
+        unsafe { crate::ffi::IGESData_IGESModel_get_from_another(self as *mut Self, other) }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:123 - `IGESData_IGESModel::NewEmptyModel()`
+    /// Returns a New Empty Model, same type as <me> i.e. IGESModel
+    pub fn new_empty_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESModel_new_empty_model(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:127 - `IGESData_IGESModel::VerifyCheck()`
+    /// Checks that the IGES file Global
+    /// section contains valid data that conforms to the IGES specifications.
+    pub fn verify_check(&self, ach: &mut crate::ffi::HandleInterfaceCheck) {
+        unsafe { crate::ffi::IGESData_IGESModel_verify_check(self as *const Self, ach) }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:132 - `IGESData_IGESModel::SetLineWeights()`
+    /// Sets LineWeights of contained Entities according header data
+    /// (MaxLineWeight and LineWeightGrad) or to a default value for
+    /// undefined weights
+    pub fn set_line_weights(&mut self, defw: f64) {
+        unsafe { crate::ffi::IGESData_IGESModel_set_line_weights(self as *mut Self, defw) }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:135 - `IGESData_IGESModel::ClearLabels()`
+    /// erases specific labels, i.e. does nothing
+    pub fn clear_labels(&mut self) {
+        unsafe { crate::ffi::IGESData_IGESModel_clear_labels(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:154 - `IGESData_IGESModel::StringLabel()`
+    /// Returns a string with the label attached to a given entity,
+    /// i.e. a string "Dnn" with nn = directory entry number (2*N-1)
+    pub fn string_label(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESModel_string_label(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:157 - `IGESData_IGESModel::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_IGESModel_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:157 - `IGESData_IGESModel::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_IGESModel_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:157 - `IGESData_IGESModel::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_IGESModel_get_type_descriptor()) }
+    }
+
+    /// Upcast to Interface_InterfaceModel
+    pub fn as_interface_interface_model(&self) -> &crate::interface::InterfaceModel {
+        unsafe {
+            &*(crate::ffi::IGESData_IGESModel_as_Interface_InterfaceModel(self as *const Self))
+        }
+    }
+
+    /// Upcast to Interface_InterfaceModel (mutable)
+    pub fn as_interface_interface_model_mut(&mut self) -> &mut crate::interface::InterfaceModel {
+        unsafe {
+            &mut *(crate::ffi::IGESData_IGESModel_as_Interface_InterfaceModel_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESData_IGESModel_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_IGESModel_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESModel_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:71 - `Interface_InterfaceModel::Destroy()`
+    pub fn destroy(&mut self) {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_Destroy(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:78 - `Interface_InterfaceModel::SetProtocol()`
+    pub fn set_protocol(&mut self, proto: &crate::ffi::HandleInterfaceProtocol) {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_SetProtocol(self as *mut Self, proto) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:82 - `Interface_InterfaceModel::Protocol()`
+    pub fn protocol(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESModel_inherited_Protocol(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:85 - `Interface_InterfaceModel::SetGTool()`
+    pub fn set_g_tool(&mut self, gtool: &crate::ffi::HandleInterfaceGTool) {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_SetGTool(self as *mut Self, gtool) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:88 - `Interface_InterfaceModel::GTool()`
+    pub fn g_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceGTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESModel_inherited_GTool(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:94 - `Interface_InterfaceModel::DispatchStatus()`
+    pub fn dispatch_status(&mut self) -> &mut bool {
+        unsafe {
+            &mut *(crate::ffi::IGESData_IGESModel_inherited_DispatchStatus(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:99 - `Interface_InterfaceModel::Clear()`
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_Clear(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:103 - `Interface_InterfaceModel::ClearEntities()`
+    pub fn clear_entities(&mut self) {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_ClearEntities(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:113 - `Interface_InterfaceModel::NbEntities()`
+    pub fn nb_entities(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_NbEntities(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:117 - `Interface_InterfaceModel::Contains()`
+    pub fn contains(&self, anentity: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_Contains(self as *const Self, anentity) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:124 - `Interface_InterfaceModel::Number()`
+    pub fn number(&self, anentity: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_Number(self as *const Self, anentity) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:133 - `Interface_InterfaceModel::Value()`
+    pub fn value(&self, num: i32) -> &crate::ffi::HandleStandardTransient {
+        unsafe { &*(crate::ffi::IGESData_IGESModel_inherited_Value(self as *const Self, num)) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:138 - `Interface_InterfaceModel::NbTypes()`
+    pub fn nb_types(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_NbTypes(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:142 - `Interface_InterfaceModel::Type()`
+    pub fn type_(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESModel_inherited_Type(
+                self as *const Self,
+                ent,
+                num,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:158 - `Interface_InterfaceModel::EntityState()`
+    pub fn entity_state(&self, num: i32) -> crate::interface::DataState {
+        unsafe {
+            crate::interface::DataState::try_from(
+                crate::ffi::IGESData_IGESModel_inherited_EntityState(self as *const Self, num),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:170 - `Interface_InterfaceModel::IsReportEntity()`
+    pub fn is_report_entity(&self, num: i32, semantic: bool) -> bool {
+        unsafe {
+            crate::ffi::IGESData_IGESModel_inherited_IsReportEntity(
+                self as *const Self,
+                num,
+                semantic,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:178 - `Interface_InterfaceModel::ReportEntity()`
+    pub fn report_entity(
+        &self,
+        num: i32,
+        semantic: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceReportEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESModel_inherited_ReportEntity(
+                self as *const Self,
+                num,
+                semantic,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:185 - `Interface_InterfaceModel::IsErrorEntity()`
+    pub fn is_error_entity(&self, num: i32) -> bool {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_IsErrorEntity(self as *const Self, num) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:192 - `Interface_InterfaceModel::IsRedefinedContent()`
+    pub fn is_redefined_content(&self, num: i32) -> bool {
+        unsafe {
+            crate::ffi::IGESData_IGESModel_inherited_IsRedefinedContent(self as *const Self, num)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:197 - `Interface_InterfaceModel::ClearReportEntity()`
+    pub fn clear_report_entity(&mut self, num: i32) -> bool {
+        unsafe {
+            crate::ffi::IGESData_IGESModel_inherited_ClearReportEntity(self as *mut Self, num)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:202 - `Interface_InterfaceModel::SetReportEntity()`
+    pub fn set_report_entity(
+        &mut self,
+        num: i32,
+        rep: &crate::ffi::HandleInterfaceReportEntity,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_IGESModel_inherited_SetReportEntity(self as *mut Self, num, rep)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:210 - `Interface_InterfaceModel::AddReportEntity()`
+    pub fn add_report_entity(
+        &mut self,
+        rep: &crate::ffi::HandleInterfaceReportEntity,
+        semantic: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_IGESModel_inherited_AddReportEntity(
+                self as *mut Self,
+                rep,
+                semantic,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:215 - `Interface_InterfaceModel::IsUnknownEntity()`
+    pub fn is_unknown_entity(&self, num: i32) -> bool {
+        unsafe {
+            crate::ffi::IGESData_IGESModel_inherited_IsUnknownEntity(self as *const Self, num)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:222 - `Interface_InterfaceModel::FillSemanticChecks()`
+    pub fn fill_semantic_checks(&mut self, checks: &crate::interface::CheckIterator, clear: bool) {
+        unsafe {
+            crate::ffi::IGESData_IGESModel_inherited_FillSemanticChecks(
+                self as *mut Self,
+                checks,
+                clear,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:226 - `Interface_InterfaceModel::HasSemanticChecks()`
+    pub fn has_semantic_checks(&self) -> bool {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_HasSemanticChecks(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:233 - `Interface_InterfaceModel::Check()`
+    pub fn check(&self, num: i32, syntactic: bool) -> &crate::ffi::HandleInterfaceCheck {
+        unsafe {
+            &*(crate::ffi::IGESData_IGESModel_inherited_Check(self as *const Self, num, syntactic))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:240 - `Interface_InterfaceModel::Reservate()`
+    pub fn reservate(&mut self, nbent: i32) {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_Reservate(self as *mut Self, nbent) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:249 - `Interface_InterfaceModel::AddEntity()`
+    pub fn add_entity(&mut self, anentity: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_AddEntity(self as *mut Self, anentity) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:262 - `Interface_InterfaceModel::AddWithRefs()`
+    pub fn add_with_refs(
+        &mut self,
+        anent: &crate::ffi::HandleStandardTransient,
+        proto: &crate::ffi::HandleInterfaceProtocol,
+        level: i32,
+        listall: bool,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_IGESModel_inherited_AddWithRefs(
+                self as *mut Self,
+                anent,
+                proto,
+                level,
+                listall,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:279 - `Interface_InterfaceModel::ReplaceEntity()`
+    pub fn replace_entity(&mut self, nument: i32, anent: &crate::ffi::HandleStandardTransient) {
+        unsafe {
+            crate::ffi::IGESData_IGESModel_inherited_ReplaceEntity(self as *mut Self, nument, anent)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:287 - `Interface_InterfaceModel::ReverseOrders()`
+    pub fn reverse_orders(&mut self, after: i32) {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_ReverseOrders(self as *mut Self, after) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:294 - `Interface_InterfaceModel::ChangeOrder()`
+    pub fn change_order(&mut self, oldnum: i32, newnum: i32, count: i32) {
+        unsafe {
+            crate::ffi::IGESData_IGESModel_inherited_ChangeOrder(
+                self as *mut Self,
+                oldnum,
+                newnum,
+                count,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:300 - `Interface_InterfaceModel::GetFromTransfer()`
+    pub fn get_from_transfer(&mut self, aniter: &crate::interface::EntityIterator) {
+        unsafe {
+            crate::ffi::IGESData_IGESModel_inherited_GetFromTransfer(self as *mut Self, aniter)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:314 - `Interface_InterfaceModel::SetCategoryNumber()`
+    pub fn set_category_number(&mut self, num: i32, val: i32) -> bool {
+        unsafe {
+            crate::ffi::IGESData_IGESModel_inherited_SetCategoryNumber(self as *mut Self, num, val)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:319 - `Interface_InterfaceModel::CategoryNumber()`
+    pub fn category_number(&self, num: i32) -> i32 {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_CategoryNumber(self as *const Self, num) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:322 - `Interface_InterfaceModel::FillIterator()`
+    pub fn fill_iterator(&self, iter: &mut crate::interface::EntityIterator) {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_FillIterator(self as *const Self, iter) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:326 - `Interface_InterfaceModel::Entities()`
+    pub fn entities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESModel_inherited_Entities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:335 - `Interface_InterfaceModel::Reports()`
+    pub fn reports(&self, semantic: bool) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESModel_inherited_Reports(
+                self as *const Self,
+                semantic,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:340 - `Interface_InterfaceModel::Redefineds()`
+    pub fn redefineds(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESModel_inherited_Redefineds(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:344 - `Interface_InterfaceModel::GlobalCheck()`
+    pub fn global_check(&self, syntactic: bool) -> &crate::ffi::HandleInterfaceCheck {
+        unsafe {
+            &*(crate::ffi::IGESData_IGESModel_inherited_GlobalCheck(self as *const Self, syntactic))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:349 - `Interface_InterfaceModel::SetGlobalCheck()`
+    pub fn set_global_check(&mut self, ach: &crate::ffi::HandleInterfaceCheck) {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_SetGlobalCheck(self as *mut Self, ach) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataIGESModel;
+
+unsafe impl crate::CppDeletable for HandleIGESDataIGESModel {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataIGESModel_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataIGESModel {
+    /// Dereference this Handle to access the underlying IGESData_IGESModel
+    pub fn get(&self) -> &crate::ffi::IGESData_IGESModel {
+        unsafe { &*(crate::ffi::HandleIGESDataIGESModel_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_IGESModel
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_IGESModel {
+        unsafe { &mut *(crate::ffi::HandleIGESDataIGESModel_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_IGESModel> to Handle<Interface_InterfaceModel>
+    pub fn to_handle_interface_model(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataIGESModel_to_HandleInterfaceInterfaceModel(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_IGESModel> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataIGESModel_to_HandleStandardTransient(self as *const Self),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for IGESModel (4 total) ──
+// SKIPPED: **Source:** `IGESData_IGESModel.hxx`:56 - `IGESData_IGESModel::DumpHeader`
+//   method: Prints the IGES file header
+//   method: (Start and Global Sections) to the log file. The integer
+//   method: parameter is intended to be used as a level indicator but is not used at present.
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn dump_header(&self, S: /* Standard_OStream& */, level: i32);
 //
-// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont`
-//   method: Returns LineFont as an Entity (if defined as Reference)
-//   method: Returns a Null Handle if DefLineFont is not "DefReference"
-//   Reason: return type 'Handle(IGESData_LineFontEntity)' is unknown
-//   // pub fn line_font(&self) -> OwnedPtr<Handle<IGESData_LineFontEntity>>;
+// SKIPPED: **Source:** `IGESData_IGESModel.hxx`:139 - `IGESData_IGESModel::PrintLabel`
+//   method: Prints label specific to IGES norm for a given entity, i.e.
+//   method: its directory entry number (2*Number-1)
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_label(&self, ent: &HandleTransient, S: /* Standard_OStream& */);
 //
-// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList`
-//   method: Returns LevelList if Level is
-//   method: defined as a list. Returns a null handle if DefLevel is not DefSeveral.
-//   Reason: return type 'Handle(IGESData_LevelListEntity)' is unknown
-//   // pub fn level_list(&self) -> OwnedPtr<Handle<IGESData_LevelListEntity>>;
+// SKIPPED: **Source:** `IGESData_IGESModel.hxx`:145 - `IGESData_IGESModel::PrintToLog`
+//   method: Prints label specific to IGES norm  for a given -- --
+//   method: entity,  i.e.  its directory entry number (2*Number-1)
+//   method: in the log file format.
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_to_log(&self, ent: &HandleTransient, S: /* Standard_OStream& */);
 //
-// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View`
-//   method: Returns the view of this IGES entity.
-//   method: This view can be a single view or a list of views.
-//   method: Warning A null handle is returned if the view is not defined.
-//   Reason: return type 'Handle(IGESData_ViewKindEntity)' is unknown
-//   // pub fn view(&self) -> OwnedPtr<Handle<IGESData_ViewKindEntity>>;
+// SKIPPED: **Source:** `IGESData_IGESModel.hxx`:150 - `IGESData_IGESModel::PrintInfo`
+//   method: Prints label specific to IGES norm for a given entity, i.e.
+//   method: its directory entry number (2*Number-1)
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_info(&self, ent: &HandleTransient, S: /* Standard_OStream& */);
 //
-// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView`
-//   method: Returns the view as a single view
-//   method: if it was defined as such and not as a list of views.
-//   method: Warning A null handle is returned if DefView does not have the value DefOne.
-//   Reason: return type 'Handle(IGESData_ViewKindEntity)' is unknown
-//   // pub fn single_view(&self) -> OwnedPtr<Handle<IGESData_ViewKindEntity>>;
+
+// ========================
+// From IGESData_IGESReaderData.hxx
+// ========================
+
+/// **Source:** `IGESData_IGESReaderData.hxx`:45 - `IGESData_IGESReaderData`
+/// specific FileReaderData for IGES
+/// contains header as GlobalSection, and for each Entity, its
+/// directory part as DirPart, list of Parameters as ParamSet
+/// Each Item has a DirPart, plus classically a ParamSet and the
+/// correspondent recognized Entity (inherited from FileReaderData)
+/// Parameters are accessed through specific objects, ParamReaders
+pub use crate::ffi::IGESData_IGESReaderData as IGESReaderData;
+
+unsafe impl crate::CppDeletable for IGESReaderData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_IGESReaderData_destructor(ptr);
+    }
+}
+
+impl IGESReaderData {
+    /// **Source:** `IGESData_IGESReaderData.hxx`:52 - `IGESData_IGESReaderData::IGESData_IGESReaderData()`
+    /// creates IGESReaderData correctly dimensioned (for arrays)
+    /// <nbe> count of entities, that is, half nb of directory lines
+    /// <nbp> : count of parameters
+    pub fn new_int2(nbe: i32, nbp: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESReaderData_ctor_int2(nbe, nbp))
+        }
+    }
+
+    /// **Source:** `IGESData_IGESReaderData.hxx`:55 - `IGESData_IGESReaderData::AddStartLine()`
+    /// adds a start line to start section
+    pub fn add_start_line(&mut self, aval: &str) {
+        let c_aval = std::ffi::CString::new(aval).unwrap();
+        unsafe {
+            crate::ffi::IGESData_IGESReaderData_add_start_line(self as *mut Self, c_aval.as_ptr())
+        }
+    }
+
+    /// **Source:** `IGESData_IGESReaderData.hxx`:58 - `IGESData_IGESReaderData::StartSection()`
+    /// Returns the Start Section in once
+    pub fn start_section(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESReaderData_start_section(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_IGESReaderData.hxx`:61 - `IGESData_IGESReaderData::AddGlobal()`
+    /// adds a parameter to global section's parameter list
+    pub fn add_global(&mut self, atype: crate::interface::ParamType, aval: &str) {
+        let c_aval = std::ffi::CString::new(aval).unwrap();
+        unsafe {
+            crate::ffi::IGESData_IGESReaderData_add_global(
+                self as *mut Self,
+                atype.into(),
+                c_aval.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_IGESReaderData.hxx`:65 - `IGESData_IGESReaderData::SetGlobalSection()`
+    /// reads header (as GlobalSection) content from the ParamSet
+    /// after it has been filled by successive calls to AddGlobal
+    pub fn set_global_section(&mut self) {
+        unsafe { crate::ffi::IGESData_IGESReaderData_set_global_section(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_IGESReaderData.hxx`:68 - `IGESData_IGESReaderData::GlobalSection()`
+    /// returns header as GlobalSection
+    pub fn global_section(&self) -> &GlobalSection {
+        unsafe { &*(crate::ffi::IGESData_IGESReaderData_global_section(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_IGESReaderData.hxx`:72 - `IGESData_IGESReaderData::SetDirPart()`
+    /// fills a DirPart, designated by its rank (that is, (N+1)/2 if N
+    /// is its first number in section D)
+    pub fn set_dir_part(
+        &mut self,
+        num: i32,
+        i1: i32,
+        i2: i32,
+        i3: i32,
+        i4: i32,
+        i5: i32,
+        i6: i32,
+        i7: i32,
+        i8: i32,
+        i9: i32,
+        i10: i32,
+        i11: i32,
+        i12: i32,
+        i13: i32,
+        i14: i32,
+        i15: i32,
+        i16: i32,
+        i17: i32,
+        res1: &str,
+        res2: &str,
+        label: &str,
+        subs: &str,
+    ) {
+        let c_res1 = std::ffi::CString::new(res1).unwrap();
+        let c_res2 = std::ffi::CString::new(res2).unwrap();
+        let c_label = std::ffi::CString::new(label).unwrap();
+        let c_subs = std::ffi::CString::new(subs).unwrap();
+        unsafe {
+            crate::ffi::IGESData_IGESReaderData_set_dir_part(
+                self as *mut Self,
+                num,
+                i1,
+                i2,
+                i3,
+                i4,
+                i5,
+                i6,
+                i7,
+                i8,
+                i9,
+                i10,
+                i11,
+                i12,
+                i13,
+                i14,
+                i15,
+                i16,
+                i17,
+                c_res1.as_ptr(),
+                c_res2.as_ptr(),
+                c_label.as_ptr(),
+                c_subs.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_IGESReaderData.hxx`:96 - `IGESData_IGESReaderData::DirPart()`
+    /// returns DirPart identified by record no (half Dsect number)
+    pub fn dir_part(&self, num: i32) -> &DirPart {
+        unsafe { &*(crate::ffi::IGESData_IGESReaderData_dir_part(self as *const Self, num)) }
+    }
+
+    /// **Source:** `IGESData_IGESReaderData.hxx`:123 - `IGESData_IGESReaderData::DirType()`
+    /// returns "type" and "form" info from a directory part
+    pub fn dir_type(&self, num: i32) -> crate::OwnedPtr<IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESReaderData_dir_type(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_IGESReaderData.hxx`:126 - `IGESData_IGESReaderData::NbEntities()`
+    /// Returns count of recorded Entities (i.e. size of Directory)
+    pub fn nb_entities(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_IGESReaderData_nb_entities(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_IGESReaderData.hxx`:131 - `IGESData_IGESReaderData::FindNextRecord()`
+    /// determines next suitable record from num; that is num+1 except
+    /// for last one which gives 0
+    pub fn find_next_record(&self, num: i32) -> i32 {
+        unsafe { crate::ffi::IGESData_IGESReaderData_find_next_record(self as *const Self, num) }
+    }
+
+    /// **Source:** `IGESData_IGESReaderData.hxx`:139 - `IGESData_IGESReaderData::SetEntityNumbers()`
+    /// determines reference numbers in EntityNumber fields (called by
+    /// SetEntities from IGESReaderTool)
+    /// works on "Integer" type Parameters, because IGES does not
+    /// distinguish Integer and Entity Refs : every Integer which is
+    /// odd and less than twice NbRecords can be an Entity Ref ...
+    /// (Ref Number is then (N+1)/2 if N is the Integer Value)
+    pub fn set_entity_numbers(&mut self) {
+        unsafe { crate::ffi::IGESData_IGESReaderData_set_entity_numbers(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_IGESReaderData.hxx`:142 - `IGESData_IGESReaderData::GlobalCheck()`
+    /// Returns the recorded Global Check
+    pub fn global_check(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESReaderData_global_check(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_IGESReaderData.hxx`:146 - `IGESData_IGESReaderData::SetDefaultLineWeight()`
+    /// allows to set a default line weight, will be later applied at
+    /// load time, on Entities which have no specified line weight
+    pub fn set_default_line_weight(&mut self, defw: f64) {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderData_set_default_line_weight(self as *mut Self, defw)
+        }
+    }
+
+    /// **Source:** `IGESData_IGESReaderData.hxx`:150 - `IGESData_IGESReaderData::DefaultLineWeight()`
+    /// Returns the recorded Default Line Weight, if there is
+    /// (else, returns 0)
+    pub fn default_line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESData_IGESReaderData_default_line_weight(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_IGESReaderData.hxx`:152 - `IGESData_IGESReaderData::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_IGESReaderData_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_IGESReaderData.hxx`:152 - `IGESData_IGESReaderData::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_IGESReaderData_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_IGESReaderData.hxx`:152 - `IGESData_IGESReaderData::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_IGESReaderData_get_type_descriptor()) }
+    }
+
+    /// Upcast to Interface_FileReaderData
+    pub fn as_interface_file_reader_data(&self) -> &crate::interface::FileReaderData {
+        unsafe {
+            &*(crate::ffi::IGESData_IGESReaderData_as_Interface_FileReaderData(self as *const Self))
+        }
+    }
+
+    /// Upcast to Interface_FileReaderData (mutable)
+    pub fn as_interface_file_reader_data_mut(&mut self) -> &mut crate::interface::FileReaderData {
+        unsafe {
+            &mut *(crate::ffi::IGESData_IGESReaderData_as_Interface_FileReaderData_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESData_IGESReaderData_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_IGESReaderData_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESReaderData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESReaderData_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderData.hxx`:57 - `Interface_FileReaderData::NbRecords()`
+    pub fn nb_records(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_IGESReaderData_inherited_NbRecords(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderData.hxx`:73 - `Interface_FileReaderData::InitParams()`
+    pub fn init_params(&mut self, num: i32) {
+        unsafe { crate::ffi::IGESData_IGESReaderData_inherited_InitParams(self as *mut Self, num) }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderData.hxx`:100 - `Interface_FileReaderData::SetParam()`
+    pub fn set_param(&mut self, num: i32, nump: i32, FP: &crate::interface::FileParameter) {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderData_inherited_SetParam(self as *mut Self, num, nump, FP)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderData.hxx`:106 - `Interface_FileReaderData::NbParams()`
+    pub fn nb_params(&self, num: i32) -> i32 {
+        unsafe { crate::ffi::IGESData_IGESReaderData_inherited_NbParams(self as *const Self, num) }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderData.hxx`:110 - `Interface_FileReaderData::Params()`
+    pub fn params(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleInterfaceParamList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESReaderData_inherited_Params(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderData.hxx`:114 - `Interface_FileReaderData::Param()`
+    pub fn param(&self, num: i32, nump: i32) -> &crate::interface::FileParameter {
+        unsafe {
+            &*(crate::ffi::IGESData_IGESReaderData_inherited_Param(self as *const Self, num, nump))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderData.hxx`:118 - `Interface_FileReaderData::ChangeParam()`
+    pub fn change_param(&mut self, num: i32, nump: i32) -> &mut crate::interface::FileParameter {
+        unsafe {
+            &mut *(crate::ffi::IGESData_IGESReaderData_inherited_ChangeParam(
+                self as *mut Self,
+                num,
+                nump,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderData.hxx`:124 - `Interface_FileReaderData::ParamType()`
+    pub fn param_type(&self, num: i32, nump: i32) -> crate::interface::ParamType {
+        unsafe {
+            crate::interface::ParamType::try_from(
+                crate::ffi::IGESData_IGESReaderData_inherited_ParamType(
+                    self as *const Self,
+                    num,
+                    nump,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderData.hxx`:134 - `Interface_FileReaderData::IsParamDefined()`
+    pub fn is_param_defined(&self, num: i32, nump: i32) -> bool {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderData_inherited_IsParamDefined(
+                self as *const Self,
+                num,
+                nump,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderData.hxx`:141 - `Interface_FileReaderData::ParamNumber()`
+    pub fn param_number(&self, num: i32, nump: i32) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderData_inherited_ParamNumber(
+                self as *const Self,
+                num,
+                nump,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderData.hxx`:146 - `Interface_FileReaderData::ParamEntity()`
+    pub fn param_entity(&self, num: i32, nump: i32) -> &crate::ffi::HandleStandardTransient {
+        unsafe {
+            &*(crate::ffi::IGESData_IGESReaderData_inherited_ParamEntity(
+                self as *const Self,
+                num,
+                nump,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderData.hxx`:151 - `Interface_FileReaderData::ParamFirstRank()`
+    pub fn param_first_rank(&self, num: i32) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderData_inherited_ParamFirstRank(self as *const Self, num)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderData.hxx`:154 - `Interface_FileReaderData::BoundEntity()`
+    pub fn bound_entity(&self, num: i32) -> &crate::ffi::HandleStandardTransient {
+        unsafe {
+            &*(crate::ffi::IGESData_IGESReaderData_inherited_BoundEntity(self as *const Self, num))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderData.hxx`:157 - `Interface_FileReaderData::BindEntity()`
+    pub fn bind_entity(&mut self, num: i32, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderData_inherited_BindEntity(self as *mut Self, num, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderData.hxx`:169 - `Interface_FileReaderData::SetErrorLoad()`
+    pub fn set_error_load(&mut self, val: bool) {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderData_inherited_SetErrorLoad(self as *mut Self, val)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderData.hxx`:173 - `Interface_FileReaderData::IsErrorLoad()`
+    pub fn is_error_load(&self) -> bool {
+        unsafe { crate::ffi::IGESData_IGESReaderData_inherited_IsErrorLoad(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderData.hxx`:177 - `Interface_FileReaderData::ResetErrorLoad()`
+    pub fn reset_error_load(&mut self) -> bool {
+        unsafe { crate::ffi::IGESData_IGESReaderData_inherited_ResetErrorLoad(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderData.hxx`:180 - `Interface_FileReaderData::Destroy()`
+    pub fn destroy(&mut self) {
+        unsafe { crate::ffi::IGESData_IGESReaderData_inherited_Destroy(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderData_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderData_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_IGESReaderData_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderData_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderData_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_IGESReaderData_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataIGESReaderData;
+
+unsafe impl crate::CppDeletable for HandleIGESDataIGESReaderData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataIGESReaderData_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataIGESReaderData {
+    /// Dereference this Handle to access the underlying IGESData_IGESReaderData
+    pub fn get(&self) -> &crate::ffi::IGESData_IGESReaderData {
+        unsafe { &*(crate::ffi::HandleIGESDataIGESReaderData_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_IGESReaderData
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_IGESReaderData {
+        unsafe { &mut *(crate::ffi::HandleIGESDataIGESReaderData_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_IGESReaderData> to Handle<Interface_FileReaderData>
+    pub fn to_handle_file_reader_data(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceFileReaderData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataIGESReaderData_to_HandleInterfaceFileReaderData(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_IGESReaderData> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataIGESReaderData_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for IGESReaderData (1 total) ──
+// SKIPPED: **Source:** `IGESData_IGESReaderData.hxx`:99 - `IGESData_IGESReaderData::DirValues`
+//   method: returns values recorded in directory part n0 <num>
+//   Reason: has string ref param 'res1' of type 'const char*&' (needs manual binding)
+//   // pub fn dir_values(&self, num: i32, i1: &mut i32, i2: &mut i32, i3: &mut i32, i4: &mut i32, i5: &mut i32, i6: &mut i32, i7: &mut i32, i8: &mut i32, i9: &mut i32, i10: &mut i32, i11: &mut i32, i12: &mut i32, i13: &mut i32, i14: &mut i32, i15: &mut i32, i16: &mut i32, i17: &mut i32, res1: &mut *const char, res2: &mut *const char, label: &mut *const char, subs: &mut *const char);
 //
-// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList`
-//   method: Returns the view of this IGES entity as a list.
-//   method: Warning A null handle is returned if the
-//   method: definition status does not have the value DefSeveral.
-//   Reason: return type 'Handle(IGESData_ViewKindEntity)' is unknown
-//   // pub fn view_list(&self) -> OwnedPtr<Handle<IGESData_ViewKindEntity>>;
+
+// ========================
+// From IGESData_IGESReaderTool.hxx
+// ========================
+
+/// **Source:** `IGESData_IGESReaderTool.hxx`:43 - `IGESData_IGESReaderTool`
+/// specific FileReaderTool for IGES
+/// Parameters are accessed through specific objects, ParamReaders
+pub use crate::ffi::IGESData_IGESReaderTool as IGESReaderTool;
+
+unsafe impl crate::CppDeletable for IGESReaderTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_IGESReaderTool_destructor(ptr);
+    }
+}
+
+impl IGESReaderTool {
+    /// **Source:** `IGESData_IGESReaderTool.hxx`:51 - `IGESData_IGESReaderTool::IGESData_IGESReaderTool()`
+    /// creates IGESReaderTool to work with an IGESReaderData and an
+    /// IGES Protocol.
+    /// Actually, no Lib is used
+    pub fn new_handleigesdataigesreaderdata_handleigesdataprotocol(
+        reader: &crate::ffi::HandleIGESDataIGESReaderData,
+        protocol: &crate::ffi::HandleIGESDataProtocol,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESReaderTool_ctor_handleigesdataigesreaderdata_handleigesdataprotocol(reader, protocol))
+        }
+    }
+
+    /// **Source:** `IGESData_IGESReaderTool.hxx`:58 - `IGESData_IGESReaderTool::Prepare()`
+    /// binds empty entities to records, works with the Protocol
+    /// (from IGESData) stored and later used
+    /// RQ : Actually, sets DNum into IGES Entities
+    /// Also loads the list of parameters for ParamReader
+    pub fn prepare(&mut self, reco: &crate::ffi::HandleIGESDataFileRecognizer) {
+        unsafe { crate::ffi::IGESData_IGESReaderTool_prepare(self as *mut Self, reco) }
+    }
+
+    /// **Source:** `IGESData_IGESReaderTool.hxx`:61 - `IGESData_IGESReaderTool::Recognize()`
+    /// recognizes records by asking Protocol (on data of DirType)
+    pub fn recognize(
+        &mut self,
+        num: i32,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ent: &mut crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe { crate::ffi::IGESData_IGESReaderTool_recognize(self as *mut Self, num, ach, ent) }
+    }
+
+    /// **Source:** `IGESData_IGESReaderTool.hxx`:66 - `IGESData_IGESReaderTool::BeginRead()`
+    /// fills model's header, that is, its GlobalSection
+    pub fn begin_read(&mut self, amodel: &crate::ffi::HandleInterfaceInterfaceModel) {
+        unsafe { crate::ffi::IGESData_IGESReaderTool_begin_read(self as *mut Self, amodel) }
+    }
+
+    /// **Source:** `IGESData_IGESReaderTool.hxx`:72 - `IGESData_IGESReaderTool::AnalyseRecord()`
+    /// fills an entity, given record no; works by calling ReadDirPart
+    /// then ReadParams (with help of a ParamReader), then if required
+    /// ReadProps and ReadAssocs, from IGESEntity
+    /// Returns True if no fail has been recorded
+    pub fn analyse_record(
+        &mut self,
+        num: i32,
+        anent: &crate::ffi::HandleStandardTransient,
+        acheck: &mut crate::ffi::HandleInterfaceCheck,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderTool_analyse_record(
+                self as *mut Self,
+                num,
+                anent,
+                acheck,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_IGESReaderTool.hxx`:77 - `IGESData_IGESReaderTool::EndRead()`
+    /// after reading entities, true line weights can be computed
+    pub fn end_read(&mut self, amodel: &crate::ffi::HandleInterfaceInterfaceModel) {
+        unsafe { crate::ffi::IGESData_IGESReaderTool_end_read(self as *mut Self, amodel) }
+    }
+
+    /// **Source:** `IGESData_IGESReaderTool.hxx`:82 - `IGESData_IGESReaderTool::ReadDir()`
+    /// Reads directory part components from file; DP is the literal
+    /// directory part, IR detains entities referenced by DP
+    pub fn read_dir(
+        &self,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        DP: &DirPart,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderTool_read_dir(self as *const Self, ent, IR, DP, ach)
+        }
+    }
+
+    /// **Source:** `IGESData_IGESReaderTool.hxx`:90 - `IGESData_IGESReaderTool::ReadOwnParams()`
+    /// Performs Reading of own Parameters for each IGESEntity
+    /// Works with the ReaderLib loaded with ReadWriteModules for IGES
+    /// In case of failure, tries UndefinedEntity from IGES
+    pub fn read_own_params(
+        &self,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderTool_read_own_params(self as *const Self, ent, IR, PR)
+        }
+    }
+
+    /// **Source:** `IGESData_IGESReaderTool.hxx`:100 - `IGESData_IGESReaderTool::ReadProps()`
+    /// Reads Property List, if there is (if not, does nothing)
+    /// criterium is : current parameter of PR remains inside params
+    /// list, and Stage is "Own"
+    /// Current parameter must be a positive integer, which value
+    /// gives the length of the list; else, a Fail is produced (into
+    /// Check of PR) and reading process is stopped
+    pub fn read_props(
+        &self,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut ParamReader,
+    ) {
+        unsafe { crate::ffi::IGESData_IGESReaderTool_read_props(self as *const Self, ent, IR, PR) }
+    }
+
+    /// **Source:** `IGESData_IGESReaderTool.hxx`:110 - `IGESData_IGESReaderTool::ReadAssocs()`
+    /// Reads Associativity List, if there is (if not, does nothing)
+    /// criterium is : current parameter of PR remains inside params
+    /// list, and Stage is "Own"
+    /// Same conditions as above; in addition, no parameter must be
+    /// let after the list once read
+    /// Note that "Associated" entities are not declared "Shared"
+    pub fn read_assocs(
+        &self,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut ParamReader,
+    ) {
+        unsafe { crate::ffi::IGESData_IGESReaderTool_read_assocs(self as *const Self, ent, IR, PR) }
+    }
+
+    /// Upcast to Interface_FileReaderTool
+    pub fn as_interface_file_reader_tool(&self) -> &crate::interface::FileReaderTool {
+        unsafe {
+            &*(crate::ffi::IGESData_IGESReaderTool_as_Interface_FileReaderTool(self as *const Self))
+        }
+    }
+
+    /// Upcast to Interface_FileReaderTool (mutable)
+    pub fn as_interface_file_reader_tool_mut(&mut self) -> &mut crate::interface::FileReaderTool {
+        unsafe {
+            &mut *(crate::ffi::IGESData_IGESReaderTool_as_Interface_FileReaderTool_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:54 - `Interface_FileReaderTool::SetData()`
+    pub fn set_data(
+        &mut self,
+        reader: &crate::ffi::HandleInterfaceFileReaderData,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderTool_inherited_SetData(
+                self as *mut Self,
+                reader,
+                protocol,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:58 - `Interface_FileReaderTool::Protocol()`
+    pub fn protocol(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESReaderTool_inherited_Protocol(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:61 - `Interface_FileReaderTool::Data()`
+    pub fn data(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceFileReaderData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESReaderTool_inherited_Data(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:64 - `Interface_FileReaderTool::SetModel()`
+    pub fn set_model(&mut self, amodel: &crate::ffi::HandleInterfaceInterfaceModel) {
+        unsafe { crate::ffi::IGESData_IGESReaderTool_inherited_SetModel(self as *mut Self, amodel) }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:67 - `Interface_FileReaderTool::Model()`
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESReaderTool_inherited_Model(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:70 - `Interface_FileReaderTool::SetMessenger()`
+    pub fn set_messenger(&mut self, messenger: &crate::ffi::HandleMessageMessenger) {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderTool_inherited_SetMessenger(self as *mut Self, messenger)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:75 - `Interface_FileReaderTool::Messenger()`
+    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESReaderTool_inherited_Messenger(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:83 - `Interface_FileReaderTool::SetTraceLevel()`
+    pub fn set_trace_level(&mut self, tracelev: i32) {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderTool_inherited_SetTraceLevel(self as *mut Self, tracelev)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:86 - `Interface_FileReaderTool::TraceLevel()`
+    pub fn trace_level(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_IGESReaderTool_inherited_TraceLevel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:93 - `Interface_FileReaderTool::SetErrorHandle()`
+    pub fn set_error_handle(&mut self, err: bool) {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderTool_inherited_SetErrorHandle(self as *mut Self, err)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:96 - `Interface_FileReaderTool::ErrorHandle()`
+    pub fn error_handle(&self) -> bool {
+        unsafe { crate::ffi::IGESData_IGESReaderTool_inherited_ErrorHandle(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:102 - `Interface_FileReaderTool::SetEntities()`
+    pub fn set_entities(&mut self) {
+        unsafe { crate::ffi::IGESData_IGESReaderTool_inherited_SetEntities(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:127 - `Interface_FileReaderTool::RecognizeByLib()`
+    pub fn recognize_by_lib(
+        &self,
+        num: i32,
+        glib: &mut crate::interface::GeneralLib,
+        rlib: &mut crate::interface::ReaderLib,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ent: &mut crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderTool_inherited_RecognizeByLib(
+                self as *const Self,
+                num,
+                glib,
+                rlib,
+                ach,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:138 - `Interface_FileReaderTool::UnknownEntity()`
+    pub fn unknown_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESReaderTool_inherited_UnknownEntity(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:141 - `Interface_FileReaderTool::NewModel()`
+    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESReaderTool_inherited_NewModel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:152 - `Interface_FileReaderTool::LoadModel()`
+    pub fn load_model(&mut self, amodel: &crate::ffi::HandleInterfaceInterfaceModel) {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderTool_inherited_LoadModel(self as *mut Self, amodel)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:158 - `Interface_FileReaderTool::LoadedEntity()`
+    pub fn loaded_entity(
+        &mut self,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESReaderTool_inherited_LoadedEntity(
+                self as *mut Self,
+                num,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:188 - `Interface_FileReaderTool::Clear()`
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::IGESData_IGESReaderTool_inherited_Clear(self as *mut Self) }
+    }
+}
+
+// ========================
+// From IGESData_IGESType.hxx
+// ========================
+
+/// **Source:** `IGESData_IGESType.hxx`:28 - `IGESData_IGESType`
+/// taken from directory part of an entity (from file or model),
+/// gives "type" and "form" data, used to recognize entity's type
+pub use crate::ffi::IGESData_IGESType as IGESType;
+
+unsafe impl crate::CppDeletable for IGESType {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_IGESType_destructor(ptr);
+    }
+}
+
+impl IGESType {
+    /// **Source:** `IGESData_IGESType.hxx`:33 - `IGESData_IGESType::IGESData_IGESType()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESType_ctor()) }
+    }
+
+    /// **Source:** `IGESData_IGESType.hxx`:35 - `IGESData_IGESType::IGESData_IGESType()`
+    pub fn new_int2(atype: i32, aform: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESType_ctor_int2(atype, aform)) }
+    }
+
+    /// **Source:** `IGESData_IGESType.hxx`:38 - `IGESData_IGESType::Type()`
+    /// returns "type" data
+    pub fn type_(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_IGESType_type_(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_IGESType.hxx`:41 - `IGESData_IGESType::Form()`
+    /// returns "form" data
+    pub fn form(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_IGESType_form(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_IGESType.hxx`:44 - `IGESData_IGESType::IsEqual()`
+    /// compares two IGESTypes, avoiding comparing their fields
+    pub fn is_equal(&self, another: &IGESType) -> bool {
+        unsafe { crate::ffi::IGESData_IGESType_is_equal(self as *const Self, another) }
+    }
+
+    /// **Source:** `IGESData_IGESType.hxx`:49 - `IGESData_IGESType::Nullify()`
+    /// resets fields (useful when an IGESType is stored as mask)
+    pub fn nullify(&mut self) {
+        unsafe { crate::ffi::IGESData_IGESType_nullify(self as *mut Self) }
+    }
+}
+
+// ========================
+// From IGESData_IGESWriter.hxx
+// ========================
+
+/// **Source:** `IGESData_IGESWriter.hxx`:45 - `IGESData_IGESWriter`
+/// manages atomic file writing, under control of IGESModel :
+/// prepare text to be sent then sends it
+/// takes into account distinction between successive Sections
+pub use crate::ffi::IGESData_IGESWriter as IGESWriter;
+
+unsafe impl crate::CppDeletable for IGESWriter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_IGESWriter_destructor(ptr);
+    }
+}
+
+impl IGESWriter {
+    /// **Source:** `IGESData_IGESWriter.hxx`:52 - `IGESData_IGESWriter::IGESData_IGESWriter()`
+    /// Creates an IGESWriter, empty ready to work
+    /// (see the methods SendModel and Print)
+    pub fn new_handleigesdataigesmodel(
+        amodel: &crate::ffi::HandleIGESDataIGESModel,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESWriter_ctor_handleigesdataigesmodel(
+                amodel,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:55 - `IGESData_IGESWriter::IGESData_IGESWriter()`
+    /// Default constructor (not used) to satisfy the compiler
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESWriter_ctor()) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:64 - `IGESData_IGESWriter::FloatWriter()`
+    /// Returns the embedded FloatWriter, which controls sending Reals
+    /// Use this method to access FloatWriter in order to consult or
+    /// change its options (MainFormat, FormatForRange,ZeroSuppress),
+    /// because it is returned as the address of its field
+    pub fn float_writer(&mut self) -> &mut crate::interface::FloatWriter {
+        unsafe { &mut *(crate::ffi::IGESData_IGESWriter_float_writer(self as *mut Self)) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:69 - `IGESData_IGESWriter::WriteMode()`
+    /// Returns the write mode, in order to be read and/or changed
+    /// Write Mode controls the way final print works
+    /// 0 (D) : Normal IGES, 10 : FNES
+    pub fn write_mode(&mut self) -> &mut i32 {
+        unsafe { &mut *(crate::ffi::IGESData_IGESWriter_write_mode(self as *mut Self)) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:75 - `IGESData_IGESWriter::SendStartLine()`
+    /// Sends an additional Starting Line : this is the way used to
+    /// send comments in an IGES File (at beginning of the file).
+    /// If the line is more than 72 chars long, it is split into
+    /// as many lines as required to send it completely
+    pub fn send_start_line(&mut self, startline: &str) {
+        let c_startline = std::ffi::CString::new(startline).unwrap();
+        unsafe {
+            crate::ffi::IGESData_IGESWriter_send_start_line(self as *mut Self, c_startline.as_ptr())
+        }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:81 - `IGESData_IGESWriter::SendModel()`
+    /// Sends the complete IGESModel (Global Section, Entities as
+    /// Directory Entries & Parameter Lists, etc...)
+    /// i.e. fills a list of texts. Once filled, it can be sent by
+    /// method Print
+    pub fn send_model(&mut self, protocol: &crate::ffi::HandleIGESDataProtocol) {
+        unsafe { crate::ffi::IGESData_IGESWriter_send_model(self as *mut Self, protocol) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:85 - `IGESData_IGESWriter::SectionS()`
+    /// declares sending of S section (only a declaration)
+    /// error if state is not initial
+    pub fn section_s(&mut self) {
+        unsafe { crate::ffi::IGESData_IGESWriter_section_s(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:90 - `IGESData_IGESWriter::SectionG()`
+    /// prepares sending of header, from a GlobalSection (stores it)
+    /// error if SectionS was not called just before
+    /// takes in account special characters (Separator, EndMark)
+    pub fn section_g(&mut self, header: &GlobalSection) {
+        unsafe { crate::ffi::IGESData_IGESWriter_section_g(self as *mut Self, header) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:96 - `IGESData_IGESWriter::SectionsDP()`
+    /// prepares sending of list of entities, as Sections D (directory
+    /// list) and P (Parameters lists, one per entity)
+    /// Entities will be then processed, one after the other
+    /// error if SectionG has not be called just before
+    pub fn sections_dp(&mut self) {
+        unsafe { crate::ffi::IGESData_IGESWriter_sections_dp(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:100 - `IGESData_IGESWriter::SectionT()`
+    /// declares sending of T section (only a declaration)
+    /// error if does not follow Entities sending
+    pub fn section_t(&mut self) {
+        unsafe { crate::ffi::IGESData_IGESWriter_section_t(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:105 - `IGESData_IGESWriter::DirPart()`
+    /// translates directory part of an Entity into a literal DirPart
+    /// Some infos are computed after sending parameters
+    /// Error if not in sections DP or Stage not "Dir"
+    pub fn dir_part(&mut self, anent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_IGESWriter_dir_part(self as *mut Self, anent) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:110 - `IGESData_IGESWriter::OwnParams()`
+    /// sends own parameters of the entity, by sending firstly its
+    /// type, then calling specific method WriteOwnParams
+    /// Error if not in sections DP or Stage not "Own"
+    pub fn own_params(&mut self, anent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_IGESWriter_own_params(self as *mut Self, anent) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:114 - `IGESData_IGESWriter::Associativities()`
+    /// sends associativity list, as complement of parameters list
+    /// error if not in sections DP or Stage not "Associativity"
+    pub fn associativities(&mut self, anent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_IGESWriter_associativities(self as *mut Self, anent) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:118 - `IGESData_IGESWriter::Properties()`
+    /// sends property list, as complement of parameters list
+    /// error if not in sections DP or Stage not "Property"
+    pub fn properties(&mut self, anent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_IGESWriter_properties(self as *mut Self, anent) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:121 - `IGESData_IGESWriter::EndEntity()`
+    /// declares end of sending an entity (ends param list by ';')
+    pub fn end_entity(&mut self) {
+        unsafe { crate::ffi::IGESData_IGESWriter_end_entity(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:124 - `IGESData_IGESWriter::SendVoid()`
+    /// sends a void parameter, that is null text
+    pub fn send_void(&mut self) {
+        unsafe { crate::ffi::IGESData_IGESWriter_send_void(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:127 - `IGESData_IGESWriter::Send()`
+    /// sends an Integer parameter
+    pub fn send_int(&mut self, val: i32) {
+        unsafe { crate::ffi::IGESData_IGESWriter_send_int(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:130 - `IGESData_IGESWriter::SendBoolean()`
+    /// sends a Boolean parameter as an Integer value 0(False)/1(True)
+    pub fn send_boolean(&mut self, val: bool) {
+        unsafe { crate::ffi::IGESData_IGESWriter_send_boolean(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:133 - `IGESData_IGESWriter::Send()`
+    /// sends a Real parameter. Works with FloatWriter
+    pub fn send_real(&mut self, val: f64) {
+        unsafe { crate::ffi::IGESData_IGESWriter_send_real(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:136 - `IGESData_IGESWriter::Send()`
+    /// sends a Text parameter under Hollerith form
+    pub fn send_handletcollectionhasciistring(
+        &mut self,
+        val: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_IGESWriter_send_handletcollectionhasciistring(
+                self as *mut Self,
+                val,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:142 - `IGESData_IGESWriter::Send()`
+    /// sends a Reference to an Entity (if its Number is N, its
+    /// pointer is 2*N-1)
+    /// If <val> is Null, "0" will be sent
+    /// If <negative> is True, "Pointer" is sent as negative
+    pub fn send_handleigesdataigesentity_bool(
+        &mut self,
+        val: &crate::ffi::HandleIGESDataIGESEntity,
+        negative: bool,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_IGESWriter_send_handleigesdataigesentity_bool(
+                self as *mut Self,
+                val,
+                negative,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:157 - `IGESData_IGESWriter::SendString()`
+    /// sends a parameter under its exact form given as a string
+    pub fn send_string(&mut self, val: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::IGESData_IGESWriter_send_string(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:160 - `IGESData_IGESWriter::Send()`
+    /// Sends a XY, interpreted as a couple of 2 Reals (X & Y)
+    pub fn send_xy(&mut self, val: &crate::gp::XY) {
+        unsafe { crate::ffi::IGESData_IGESWriter_send_xy(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:163 - `IGESData_IGESWriter::Send()`
+    /// Sends a XYZ, interpreted as a couple of 2 Reals (X , Y & Z)
+    pub fn send_xyz(&mut self, val: &crate::gp::XYZ) {
+        unsafe { crate::ffi::IGESData_IGESWriter_send_xyz(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_IGESWriter.hxx`:169 - `IGESData_IGESWriter::SectionStrings()`
+    /// Returns the list of strings for a section given its rank
+    /// 1 : Start (if not empty)  2 : Global  3 or 4 : Parameters
+    /// RQ: no string list for Directory section
+    /// An empty section gives a null handle
+    pub fn section_strings(
+        &self,
+        numsec: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESWriter_section_strings(
+                self as *const Self,
+                numsec,
+            ))
+        }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESWriter_to_owned(self as *const Self))
+        }
+    }
+}
+
+// ── Skipped symbols for IGESWriter (1 total) ──
+// SKIPPED: **Source:** `IGESData_IGESWriter.hxx`:176 - `IGESData_IGESWriter::Print`
+//   method: Writes result on an output defined as an OStream
+//   method: resolves stored infos at this time; in particular, numbers of
+//   method: lines used to address P-section from D-section and final totals
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print(&self, S: /* Standard_OStream& */) -> bool;
 //
-// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf`
-//   method: Returns the Transformation Matrix (under IGES definition)
-//   method: Returns a Null Handle if there is none
-//   method: for a more complete use, see Location & CompoundLocation
-//   Reason: return type 'Handle(IGESData_TransfEntity)' is unknown
-//   // pub fn transf(&self) -> OwnedPtr<Handle<IGESData_TransfEntity>>;
-//
-// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay`
-//   method: Returns the Label Display
-//   method: Associativity Entity if there is one. Returns a null handle if there is none.
-//   Reason: return type 'Handle(IGESData_LabelDisplayEntity)' is unknown
-//   // pub fn label_display(&self) -> OwnedPtr<Handle<IGESData_LabelDisplayEntity>>;
-//
-// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color`
-//   method: Returns the IGES entity which
-//   method: describes the color of the entity.
-//   method: Returns a null handle if this entity was defined as an integer.
-//   Reason: return type 'Handle(IGESData_ColorEntity)' is unknown
-//   // pub fn color(&self) -> OwnedPtr<Handle<IGESData_ColorEntity>>;
-//
-// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf`
-//   method: Initializes Transf, or erases it if <ent> is given Null
-//   Reason: param 'ent' uses unknown type 'const Handle(IGESData_TransfEntity)&'
-//   // pub fn init_transf(&mut self, ent: &HandleTransfEntity);
-//
-// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView`
-//   method: Initializes View, or erases it if <ent> is given Null
-//   Reason: param 'ent' uses unknown type 'const Handle(IGESData_ViewKindEntity)&'
-//   // pub fn init_view(&mut self, ent: &HandleViewKindEntity);
-//
-// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont`
-//   method: Initializes LineFont : if <ent> is not Null, it gives LineFont,
-//   method: else <rank> gives or erases (if zero) RankLineFont
-//   Reason: param 'ent' uses unknown type 'const Handle(IGESData_LineFontEntity)&'
-//   // pub fn init_line_font(&mut self, ent: &HandleLineFontEntity, rank: i32);
-//
-// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel`
-//   method: Initializes Level : if <ent> is not Null, it gives LevelList,
-//   method: else <val> gives or erases (if zero) unique Level
-//   Reason: param 'ent' uses unknown type 'const Handle(IGESData_LevelListEntity)&'
-//   // pub fn init_level(&mut self, ent: &HandleLevelListEntity, val: i32);
-//
-// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor`
-//   method: Initializes Color data : if <ent> is not Null, it gives Color,
-//   method: else <rank> gives or erases (if zero) RankColor
-//   Reason: param 'ent' uses unknown type 'const Handle(IGESData_ColorEntity)&'
-//   // pub fn init_color(&mut self, ent: &HandleColorEntity, rank: i32);
-//
-// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc`
-//   method: Initializes various data (those not yet seen above), or erases
-//   method: them if they are given as Null (Zero for <weightnum>) :
-//   method: <str> for Structure, <lab> for LabelDisplay, and
-//   Reason: param 'lab' uses unknown type 'const Handle(IGESData_LabelDisplayEntity)&'
-//   // pub fn init_misc(&mut self, str: &HandleIGESEntity, lab: &HandleLabelDisplayEntity, weightnum: i32);
-//
+
+// ========================
+// From IGESData_LabelDisplayEntity.hxx
+// ========================
+
+/// **Source:** `IGESData_LabelDisplayEntity.hxx`:29 - `IGESData_LabelDisplayEntity`
+/// defines required type for LabelDisplay in directory part
+/// an effective LabelDisplay entity must inherits it
+pub use crate::ffi::IGESData_LabelDisplayEntity as LabelDisplayEntity;
+
+unsafe impl crate::CppDeletable for LabelDisplayEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_LabelDisplayEntity_destructor(ptr);
+    }
+}
+
+impl LabelDisplayEntity {
+    /// **Source:** `IGESData_LabelDisplayEntity.hxx` - `IGESData_LabelDisplayEntity::IGESData_LabelDisplayEntity()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_LabelDisplayEntity_ctor()) }
+    }
+
+    /// **Source:** `IGESData_LabelDisplayEntity.hxx`:33 - `IGESData_LabelDisplayEntity::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_LabelDisplayEntity_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_LabelDisplayEntity.hxx`:33 - `IGESData_LabelDisplayEntity::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_LabelDisplayEntity_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_LabelDisplayEntity.hxx`:33 - `IGESData_LabelDisplayEntity::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_LabelDisplayEntity_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_entity(&self) -> &IGESEntity {
+        unsafe {
+            &*(crate::ffi::IGESData_LabelDisplayEntity_as_IGESData_IGESEntity(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_entity_mut(&mut self) -> &mut IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESData_LabelDisplayEntity_as_IGESData_IGESEntity_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESData_LabelDisplayEntity_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_LabelDisplayEntity_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LabelDisplayEntity_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LabelDisplayEntity_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LabelDisplayEntity_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LabelDisplayEntity_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_LabelDisplayEntity_inherited_DirFieldEntity(
+                    self as *const Self,
+                    fieldnum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_HasStructure(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LabelDisplayEntity_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESData_LabelDisplayEntity_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_RankLineFont(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LabelDisplayEntity_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESData_LabelDisplayEntity_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LabelDisplayEntity_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LabelDisplayEntity_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESData_LabelDisplayEntity_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LabelDisplayEntity_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LabelDisplayEntity_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LabelDisplayEntity_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESData_LabelDisplayEntity_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LabelDisplayEntity_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_HasLabelDisplay(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_LabelDisplayEntity_inherited_LabelDisplay(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_BlankStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_SubordinateStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LabelDisplayEntity_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_HierarchyStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_LineWeightNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESData_LabelDisplayEntity_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESData_LabelDisplayEntity_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LabelDisplayEntity_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LabelDisplayEntity_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_HasShortLabel(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LabelDisplayEntity_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_HasSubScriptNumber(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_SubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_InitTransf(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_InitView(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_InitLineFont(
+                self as *mut Self,
+                ent,
+                rank,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_InitLevel(self as *mut Self, ent, val)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_InitColor(
+                self as *mut Self,
+                ent,
+                rank,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_SetLabel(
+                self as *mut Self,
+                label,
+                sub,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_HasOneParent(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_LabelDisplayEntity_inherited_UniqueParent(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LabelDisplayEntity_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_LabelDisplayEntity_inherited_VectorLocation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_LabelDisplayEntity_inherited_CompoundLocation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESData_LabelDisplayEntity_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LabelDisplayEntity_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_NbAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_LabelDisplayEntity_inherited_Associativities(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_LabelDisplayEntity_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_Associate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_Dissociate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_ArePresentProperties(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_NbProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LabelDisplayEntity_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_LabelDisplayEntity_inherited_TypedProperty(
+                    self as *const Self,
+                    atype,
+                    anum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_AddProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_RemoveProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LabelDisplayEntity_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_LabelDisplayEntity_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataLabelDisplayEntity;
+
+unsafe impl crate::CppDeletable for HandleIGESDataLabelDisplayEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataLabelDisplayEntity_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataLabelDisplayEntity {
+    /// Dereference this Handle to access the underlying IGESData_LabelDisplayEntity
+    pub fn get(&self) -> &crate::ffi::IGESData_LabelDisplayEntity {
+        unsafe { &*(crate::ffi::HandleIGESDataLabelDisplayEntity_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_LabelDisplayEntity
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_LabelDisplayEntity {
+        unsafe { &mut *(crate::ffi::HandleIGESDataLabelDisplayEntity_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_LabelDisplayEntity> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataLabelDisplayEntity_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_LabelDisplayEntity> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataLabelDisplayEntity_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IGESData_LabelDisplayEntity> to Handle<IGESDraw_LabelDisplay>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_LabelDisplay` (or subclass).
+    pub fn downcast_to_label_display(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawLabelDisplay>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataLabelDisplayEntity_downcast_to_HandleIGESDrawLabelDisplay(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From IGESData_LevelListEntity.hxx
+// ========================
+
+/// **Source:** `IGESData_LevelListEntity.hxx`:30 - `IGESData_LevelListEntity`
+/// defines required type for LevelList in directory part
+/// an effective LevelList entity must inherits it
+pub use crate::ffi::IGESData_LevelListEntity as LevelListEntity;
+
+unsafe impl crate::CppDeletable for LevelListEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_LevelListEntity_destructor(ptr);
+    }
+}
+
+impl LevelListEntity {
+    /// **Source:** `IGESData_LevelListEntity.hxx`:35 - `IGESData_LevelListEntity::NbLevelNumbers()`
+    /// Must return the count of levels
+    pub fn nb_level_numbers(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LevelListEntity_nb_level_numbers(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_LevelListEntity.hxx`:39 - `IGESData_LevelListEntity::LevelNumber()`
+    /// returns the Level Number of <me>, indicated by <num>
+    /// raises an exception if num is out of range
+    pub fn level_number(&self, num: i32) -> i32 {
+        unsafe { crate::ffi::IGESData_LevelListEntity_level_number(self as *const Self, num) }
+    }
+
+    /// **Source:** `IGESData_LevelListEntity.hxx`:42 - `IGESData_LevelListEntity::HasLevelNumber()`
+    /// returns True if <level> is in the list
+    pub fn has_level_number(&self, level: i32) -> bool {
+        unsafe { crate::ffi::IGESData_LevelListEntity_has_level_number(self as *const Self, level) }
+    }
+
+    /// **Source:** `IGESData_LevelListEntity.hxx`:44 - `IGESData_LevelListEntity::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_LevelListEntity_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_LevelListEntity.hxx`:44 - `IGESData_LevelListEntity::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_LevelListEntity_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_LevelListEntity.hxx`:44 - `IGESData_LevelListEntity::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_LevelListEntity_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_entity(&self) -> &IGESEntity {
+        unsafe {
+            &*(crate::ffi::IGESData_LevelListEntity_as_IGESData_IGESEntity(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_entity_mut(&mut self) -> &mut IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESData_LevelListEntity_as_IGESData_IGESEntity_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESData_LevelListEntity_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_LevelListEntity_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LevelListEntity_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LevelListEntity_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LevelListEntity_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_LevelListEntity_inherited_DirFieldEntity(
+                    self as *const Self,
+                    fieldnum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESData_LevelListEntity_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LevelListEntity_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESData_LevelListEntity_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LevelListEntity_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LevelListEntity_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESData_LevelListEntity_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LevelListEntity_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LevelListEntity_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESData_LevelListEntity_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LevelListEntity_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LevelListEntity_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LevelListEntity_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESData_LevelListEntity_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LevelListEntity_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_HasLabelDisplay(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LevelListEntity_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LevelListEntity_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_SubordinateStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LevelListEntity_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_HierarchyStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_LineWeightNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESData_LevelListEntity_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESData_LevelListEntity_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LevelListEntity_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LevelListEntity_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESData_LevelListEntity_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LevelListEntity_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_SubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESData_LevelListEntity_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESData_LevelListEntity_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_InitLineFont(
+                self as *mut Self,
+                ent,
+                rank,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_InitLevel(self as *mut Self, ent, val)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESData_LevelListEntity_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LevelListEntity_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LevelListEntity_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_LevelListEntity_inherited_VectorLocation(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_LevelListEntity_inherited_CompoundLocation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESData_LevelListEntity_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LevelListEntity_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_NbAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_LevelListEntity_inherited_Associativities(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_LevelListEntity_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_Associate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_Dissociate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LevelListEntity_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LevelListEntity_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LevelListEntity_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_AddProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_RemoveProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LevelListEntity_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LevelListEntity_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_LevelListEntity_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataLevelListEntity;
+
+unsafe impl crate::CppDeletable for HandleIGESDataLevelListEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataLevelListEntity_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataLevelListEntity {
+    /// Dereference this Handle to access the underlying IGESData_LevelListEntity
+    pub fn get(&self) -> &crate::ffi::IGESData_LevelListEntity {
+        unsafe { &*(crate::ffi::HandleIGESDataLevelListEntity_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_LevelListEntity
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_LevelListEntity {
+        unsafe { &mut *(crate::ffi::HandleIGESDataLevelListEntity_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_LevelListEntity> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataLevelListEntity_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_LevelListEntity> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataLevelListEntity_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IGESData_LevelListEntity> to Handle<IGESGraph_DefinitionLevel>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_DefinitionLevel` (or subclass).
+    pub fn downcast_to_definition_level(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphDefinitionLevel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataLevelListEntity_downcast_to_HandleIGESGraphDefinitionLevel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From IGESData_LineFontEntity.hxx
+// ========================
+
+/// **Source:** `IGESData_LineFontEntity.hxx`:29 - `IGESData_LineFontEntity`
+/// defines required type for LineFont in directory part
+/// an effective LineFont entity must inherits it
+pub use crate::ffi::IGESData_LineFontEntity as LineFontEntity;
+
+unsafe impl crate::CppDeletable for LineFontEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_LineFontEntity_destructor(ptr);
+    }
+}
+
+impl LineFontEntity {
+    /// **Source:** `IGESData_LineFontEntity.hxx` - `IGESData_LineFontEntity::IGESData_LineFontEntity()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_ctor()) }
+    }
+
+    /// **Source:** `IGESData_LineFontEntity.hxx`:33 - `IGESData_LineFontEntity::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_LineFontEntity_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_LineFontEntity.hxx`:33 - `IGESData_LineFontEntity::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_LineFontEntity_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_LineFontEntity.hxx`:33 - `IGESData_LineFontEntity::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_LineFontEntity_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_entity(&self) -> &IGESEntity {
+        unsafe {
+            &*(crate::ffi::IGESData_LineFontEntity_as_IGESData_IGESEntity(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_entity_mut(&mut self) -> &mut IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESData_LineFontEntity_as_IGESData_IGESEntity_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESData_LineFontEntity_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_LineFontEntity_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESData_LineFontEntity_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESData_LineFontEntity_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESData_LineFontEntity_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_HasLabelDisplay(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_SubordinateStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_HierarchyStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_LineWeightNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESData_LineFontEntity_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_SubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_InitLevel(self as *mut Self, ent, val)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_LineFontEntity_inherited_CompoundLocation(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_NbAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_LineFontEntity_inherited_Associativities(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_LineFontEntity_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_Dissociate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_LineFontEntity_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_RemoveProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_LineFontEntity_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_LineFontEntity_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataLineFontEntity;
+
+unsafe impl crate::CppDeletable for HandleIGESDataLineFontEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataLineFontEntity_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataLineFontEntity {
+    /// Dereference this Handle to access the underlying IGESData_LineFontEntity
+    pub fn get(&self) -> &crate::ffi::IGESData_LineFontEntity {
+        unsafe { &*(crate::ffi::HandleIGESDataLineFontEntity_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_LineFontEntity
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_LineFontEntity {
+        unsafe { &mut *(crate::ffi::HandleIGESDataLineFontEntity_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_LineFontEntity> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataLineFontEntity_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_LineFontEntity> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataLineFontEntity_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IGESData_LineFontEntity> to Handle<IGESGraph_LineFontDefPattern>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_LineFontDefPattern` (or subclass).
+    pub fn downcast_to_line_font_def_pattern(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphLineFontDefPattern>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataLineFontEntity_downcast_to_HandleIGESGraphLineFontDefPattern(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_LineFontEntity> to Handle<IGESGraph_LineFontDefTemplate>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_LineFontDefTemplate` (or subclass).
+    pub fn downcast_to_line_font_def_template(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphLineFontDefTemplate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataLineFontEntity_downcast_to_HandleIGESGraphLineFontDefTemplate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From IGESData_NameEntity.hxx
+// ========================
+
+/// **Source:** `IGESData_NameEntity.hxx`:31 - `IGESData_NameEntity`
+/// a NameEntity is a kind of IGESEntity which can provide a Name
+/// under alphanumeric (String) form, from Properties list
+/// an effective Name entity must inherit it
+pub use crate::ffi::IGESData_NameEntity as NameEntity;
+
+unsafe impl crate::CppDeletable for NameEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_NameEntity_destructor(ptr);
+    }
+}
+
+impl NameEntity {
+    /// **Source:** `IGESData_NameEntity.hxx`:36 - `IGESData_NameEntity::Value()`
+    /// Retyrns the alphanumeric value of the Name, to be defined
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_value(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESData_NameEntity.hxx`:38 - `IGESData_NameEntity::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_NameEntity_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_NameEntity.hxx`:38 - `IGESData_NameEntity::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_NameEntity_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_NameEntity.hxx`:38 - `IGESData_NameEntity::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_NameEntity_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_entity(&self) -> &IGESEntity {
+        unsafe { &*(crate::ffi::IGESData_NameEntity_as_IGESData_IGESEntity(self as *const Self)) }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_entity_mut(&mut self) -> &mut IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESData_NameEntity_as_IGESData_IGESEntity_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESData_NameEntity_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_NameEntity_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESData_NameEntity_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESData_NameEntity_inherited_DefLevel(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESData_NameEntity_inherited_DefView(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_HasLabelDisplay(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_SubordinateStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_HierarchyStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_LineWeightNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(crate::ffi::IGESData_NameEntity_inherited_DefColor(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_HasSubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_SubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_NameEntity_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_NameEntity_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_InitLevel(self as *mut Self, ent, val) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_InitColor(self as *mut Self, ent, rank) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESData_NameEntity_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_SetLabel(self as *mut Self, label, sub) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_NameEntity_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_CompoundLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_NameEntity_inherited_ArePresentAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_NbAssociativities(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_Associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_NameEntity_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_TypedAssociativity(
+                self as *const Self,
+                atype,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_Dissociate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_NameEntity_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_NameEntity_inherited_NbTypedProperties(self as *const Self, atype)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NameEntity_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_RemoveProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESData_NameEntity_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_NameEntity_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_NameEntity_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataNameEntity;
+
+unsafe impl crate::CppDeletable for HandleIGESDataNameEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataNameEntity_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataNameEntity {
+    /// Dereference this Handle to access the underlying IGESData_NameEntity
+    pub fn get(&self) -> &crate::ffi::IGESData_NameEntity {
+        unsafe { &*(crate::ffi::HandleIGESDataNameEntity_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_NameEntity
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_NameEntity {
+        unsafe { &mut *(crate::ffi::HandleIGESDataNameEntity_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_NameEntity> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataNameEntity_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_NameEntity> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataNameEntity_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IGESData_NameEntity> to Handle<IGESBasic_Name>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_Name` (or subclass).
+    pub fn downcast_to_name(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataNameEntity_downcast_to_HandleIGESBasicName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From IGESData_NodeOfSpecificLib.hxx
+// ========================
+
+/// **Source:** `IGESData_NodeOfSpecificLib.hxx`:33 - `IGESData_NodeOfSpecificLib`
+pub use crate::ffi::IGESData_NodeOfSpecificLib as NodeOfSpecificLib;
+
+unsafe impl crate::CppDeletable for NodeOfSpecificLib {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_NodeOfSpecificLib_destructor(ptr);
+    }
+}
+
+impl NodeOfSpecificLib {
+    /// **Source:** `IGESData_NodeOfSpecificLib.hxx`:38 - `IGESData_NodeOfSpecificLib::IGESData_NodeOfSpecificLib()`
+    /// Creates an empty Node, with no Next
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_NodeOfSpecificLib_ctor()) }
+    }
+
+    /// **Source:** `IGESData_NodeOfSpecificLib.hxx`:42 - `IGESData_NodeOfSpecificLib::AddNode()`
+    /// Adds a couple (Module,Protocol), that is, stores it into
+    /// itself if not yet done, else creates a Next Node to do it
+    pub fn add_node(&mut self, anode: &crate::ffi::HandleIGESDataGlobalNodeOfSpecificLib) {
+        unsafe { crate::ffi::IGESData_NodeOfSpecificLib_add_node(self as *mut Self, anode) }
+    }
+
+    /// **Source:** `IGESData_NodeOfSpecificLib.hxx`:45 - `IGESData_NodeOfSpecificLib::Module()`
+    /// Returns the Module designated by a precise Node
+    pub fn module(&self) -> &crate::ffi::HandleIGESDataSpecificModule {
+        unsafe { &*(crate::ffi::IGESData_NodeOfSpecificLib_module(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_NodeOfSpecificLib.hxx`:48 - `IGESData_NodeOfSpecificLib::Protocol()`
+    /// Returns the Protocol designated by a precise Node
+    pub fn protocol(&self) -> &crate::ffi::HandleIGESDataProtocol {
+        unsafe { &*(crate::ffi::IGESData_NodeOfSpecificLib_protocol(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_NodeOfSpecificLib.hxx`:52 - `IGESData_NodeOfSpecificLib::Next()`
+    /// Returns the Next Node. If none was defined, returned value
+    /// is a Null Handle
+    pub fn next(&self) -> &crate::ffi::HandleIGESDataNodeOfSpecificLib {
+        unsafe { &*(crate::ffi::IGESData_NodeOfSpecificLib_next(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_NodeOfSpecificLib.hxx`:54 - `IGESData_NodeOfSpecificLib::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_NodeOfSpecificLib_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_NodeOfSpecificLib.hxx`:54 - `IGESData_NodeOfSpecificLib::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_NodeOfSpecificLib_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_NodeOfSpecificLib.hxx`:54 - `IGESData_NodeOfSpecificLib::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_NodeOfSpecificLib_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESData_NodeOfSpecificLib_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_NodeOfSpecificLib_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataNodeOfSpecificLib> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NodeOfSpecificLib_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_NodeOfSpecificLib_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_NodeOfSpecificLib_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_NodeOfSpecificLib_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_NodeOfSpecificLib_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_NodeOfSpecificLib_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_NodeOfSpecificLib_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataNodeOfSpecificLib;
+
+unsafe impl crate::CppDeletable for HandleIGESDataNodeOfSpecificLib {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataNodeOfSpecificLib_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataNodeOfSpecificLib {
+    /// Dereference this Handle to access the underlying IGESData_NodeOfSpecificLib
+    pub fn get(&self) -> &crate::ffi::IGESData_NodeOfSpecificLib {
+        unsafe { &*(crate::ffi::HandleIGESDataNodeOfSpecificLib_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_NodeOfSpecificLib
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_NodeOfSpecificLib {
+        unsafe { &mut *(crate::ffi::HandleIGESDataNodeOfSpecificLib_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_NodeOfSpecificLib> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataNodeOfSpecificLib_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESData_NodeOfWriterLib.hxx
+// ========================
+
+/// **Source:** `IGESData_NodeOfWriterLib.hxx`:33 - `IGESData_NodeOfWriterLib`
+pub use crate::ffi::IGESData_NodeOfWriterLib as NodeOfWriterLib;
+
+unsafe impl crate::CppDeletable for NodeOfWriterLib {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_NodeOfWriterLib_destructor(ptr);
+    }
+}
+
+impl NodeOfWriterLib {
+    /// **Source:** `IGESData_NodeOfWriterLib.hxx`:38 - `IGESData_NodeOfWriterLib::IGESData_NodeOfWriterLib()`
+    /// Creates an empty Node, with no Next
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_NodeOfWriterLib_ctor()) }
+    }
+
+    /// **Source:** `IGESData_NodeOfWriterLib.hxx`:42 - `IGESData_NodeOfWriterLib::AddNode()`
+    /// Adds a couple (Module,Protocol), that is, stores it into
+    /// itself if not yet done, else creates a Next Node to do it
+    pub fn add_node(&mut self, anode: &crate::ffi::HandleIGESDataGlobalNodeOfWriterLib) {
+        unsafe { crate::ffi::IGESData_NodeOfWriterLib_add_node(self as *mut Self, anode) }
+    }
+
+    /// **Source:** `IGESData_NodeOfWriterLib.hxx`:45 - `IGESData_NodeOfWriterLib::Module()`
+    /// Returns the Module designated by a precise Node
+    pub fn module(&self) -> &crate::ffi::HandleIGESDataReadWriteModule {
+        unsafe { &*(crate::ffi::IGESData_NodeOfWriterLib_module(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_NodeOfWriterLib.hxx`:48 - `IGESData_NodeOfWriterLib::Protocol()`
+    /// Returns the Protocol designated by a precise Node
+    pub fn protocol(&self) -> &crate::ffi::HandleIGESDataProtocol {
+        unsafe { &*(crate::ffi::IGESData_NodeOfWriterLib_protocol(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_NodeOfWriterLib.hxx`:52 - `IGESData_NodeOfWriterLib::Next()`
+    /// Returns the Next Node. If none was defined, returned value
+    /// is a Null Handle
+    pub fn next(&self) -> &crate::ffi::HandleIGESDataNodeOfWriterLib {
+        unsafe { &*(crate::ffi::IGESData_NodeOfWriterLib_next(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_NodeOfWriterLib.hxx`:54 - `IGESData_NodeOfWriterLib::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_NodeOfWriterLib_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_NodeOfWriterLib.hxx`:54 - `IGESData_NodeOfWriterLib::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_NodeOfWriterLib_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_NodeOfWriterLib.hxx`:54 - `IGESData_NodeOfWriterLib::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_NodeOfWriterLib_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESData_NodeOfWriterLib_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_NodeOfWriterLib_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataNodeOfWriterLib> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_NodeOfWriterLib_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_NodeOfWriterLib_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_NodeOfWriterLib_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_NodeOfWriterLib_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_NodeOfWriterLib_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_NodeOfWriterLib_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_NodeOfWriterLib_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataNodeOfWriterLib;
+
+unsafe impl crate::CppDeletable for HandleIGESDataNodeOfWriterLib {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataNodeOfWriterLib_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataNodeOfWriterLib {
+    /// Dereference this Handle to access the underlying IGESData_NodeOfWriterLib
+    pub fn get(&self) -> &crate::ffi::IGESData_NodeOfWriterLib {
+        unsafe { &*(crate::ffi::HandleIGESDataNodeOfWriterLib_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_NodeOfWriterLib
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_NodeOfWriterLib {
+        unsafe { &mut *(crate::ffi::HandleIGESDataNodeOfWriterLib_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_NodeOfWriterLib> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataNodeOfWriterLib_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESData_ParamCursor.hxx
+// ========================
+
+/// **Source:** `IGESData_ParamCursor.hxx`:46 - `IGESData_ParamCursor`
+/// Auxiliary class for ParamReader.
+/// It stores commands for a ParamReader to manage the current
+/// parameter number. Used by methods Read... from ParamReader.
+/// It allows to define the following commands :
+/// - read a parameter specified by a precise Number (basic case)
+/// - read a parameter then set Current Number to follow its number
+/// - read the current parameter (with Current Number) then
+/// advance Current Number by one
+/// - idem with several : read "nb" parameters from one specified,
+/// included, with or without setting Current Number to follow
+/// last parameter read
+/// - read several parameter from the current one, then advance
+/// Current Number to follow the last one read
+/// - Read several parameters (as above) but in interlaced lists,
+/// i.e. from complex items (each one including successively for
+/// instance, an Integer, a Real, an Entity ...)
+///
+/// If commands to advance Current Number are not set, it must be
+/// set by the user (with method SetCurrent from ParamReader)
+/// ParamReader offers methods which create most useful cases
+pub use crate::ffi::IGESData_ParamCursor as ParamCursor;
+
+unsafe impl crate::CppDeletable for ParamCursor {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_ParamCursor_destructor(ptr);
+    }
+}
+
+impl ParamCursor {
+    /// **Source:** `IGESData_ParamCursor.hxx`:56 - `IGESData_ParamCursor::IGESData_ParamCursor()`
+    /// Creates a Cursor to read a precise parameter of ParamReader,
+    /// identified by its number, then set Current Number to "num + 1"
+    /// (this constructor allows to simply give a Number to a method
+    /// Read... from ParamReader, which will be translated into a
+    /// ParamCursor by compiler)
+    pub fn new_int(num: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_ParamCursor_ctor_int(num)) }
+    }
+
+    /// **Source:** `IGESData_ParamCursor.hxx`:67 - `IGESData_ParamCursor::IGESData_ParamCursor()`
+    /// Creates a Cursor to read a list of parameters (count "nb")
+    /// starting from a precise one (number "num") included, then
+    /// set Current Number of ParamNumber to the first following one
+    /// ("num + nb")
+    /// If size is given, it means that each parameter is made of more
+    /// than one term. One term is the normal (default) case : for
+    /// instance, a Parameter comprises one Integer, or one Entity ...
+    /// Size gives the complete size of each Item if it is complex.
+    /// To be used ONLY IF it is constant
+    pub fn new_int3(num: i32, nb: i32, size: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ParamCursor_ctor_int3(num, nb, size))
+        }
+    }
+
+    /// **Source:** `IGESData_ParamCursor.hxx`:67 - `IGESData_ParamCursor::IGESData_ParamCursor()`
+    /// Creates a Cursor to read a list of parameters (count "nb")
+    /// starting from a precise one (number "num") included, then
+    /// set Current Number of ParamNumber to the first following one
+    /// ("num + nb")
+    /// If size is given, it means that each parameter is made of more
+    /// than one term. One term is the normal (default) case : for
+    /// instance, a Parameter comprises one Integer, or one Entity ...
+    /// Size gives the complete size of each Item if it is complex.
+    /// To be used ONLY IF it is constant
+    pub fn new_int2(num: i32, nb: i32) -> crate::OwnedPtr<Self> {
+        Self::new_int3(num, nb, 1)
+    }
+
+    /// **Source:** `IGESData_ParamCursor.hxx`:87 - `IGESData_ParamCursor::SetTerm()`
+    /// Defines the size of a term to read in the item : this commands
+    /// ParamReader to read "size" parameters for each item, then
+    /// skip the remainder of the item to the same term of next Item
+    /// (that is, skip "item size" - "term size")
+    ///
+    /// In addition, Offset from beginning of Item is managed :
+    /// After being created, and for the first call to SetTerm, the
+    /// part of Item to be read begins exactly as the Item begins
+    /// But after a SetTerm, the next read will add an offset which is
+    /// the size of former term.
+    ///
+    /// autoadv commands Advance management. If it is True (default),
+    /// the last SetTerm (Item size has been covered) calls SetAdvance
+    /// If it is False, SetAdvance must be called directly if necessary
+    ///
+    /// Error if a SetTerm overpasses the size of the Item
+    pub fn set_term(&mut self, size: i32, autoadv: bool) {
+        unsafe { crate::ffi::IGESData_ParamCursor_set_term(self as *mut Self, size, autoadv) }
+    }
+
+    /// **Source:** `IGESData_ParamCursor.hxx`:91 - `IGESData_ParamCursor::SetOne()`
+    /// Defines a term of one Parameter (very current case)
+    pub fn set_one(&mut self, autoadv: bool) {
+        unsafe { crate::ffi::IGESData_ParamCursor_set_one(self as *mut Self, autoadv) }
+    }
+
+    /// **Source:** `IGESData_ParamCursor.hxx`:94 - `IGESData_ParamCursor::SetXY()`
+    /// Defines a term of two Parameters for a XY (current case)
+    pub fn set_xy(&mut self, autoadv: bool) {
+        unsafe { crate::ffi::IGESData_ParamCursor_set_xy(self as *mut Self, autoadv) }
+    }
+
+    /// **Source:** `IGESData_ParamCursor.hxx`:97 - `IGESData_ParamCursor::SetXYZ()`
+    /// Defines a term of three Parameters for XYZ (current case)
+    pub fn set_xyz(&mut self, autoadv: bool) {
+        unsafe { crate::ffi::IGESData_ParamCursor_set_xyz(self as *mut Self, autoadv) }
+    }
+
+    /// **Source:** `IGESData_ParamCursor.hxx`:102 - `IGESData_ParamCursor::SetAdvance()`
+    /// Changes command to advance current cursor after reading
+    /// parameters. If "advance" True, sets advance, if "False",
+    /// resets it. ParamCursor is created by default with True.
+    pub fn set_advance(&mut self, advance: bool) {
+        unsafe { crate::ffi::IGESData_ParamCursor_set_advance(self as *mut Self, advance) }
+    }
+
+    /// **Source:** `IGESData_ParamCursor.hxx`:105 - `IGESData_ParamCursor::Start()`
+    /// Returns (included) starting number for reading parameters
+    pub fn start(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ParamCursor_start(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_ParamCursor.hxx`:108 - `IGESData_ParamCursor::Limit()`
+    /// Returns (excluded) upper limit number for reading parameters
+    pub fn limit(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ParamCursor_limit(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_ParamCursor.hxx`:111 - `IGESData_ParamCursor::Count()`
+    /// Returns required count of items to be read
+    pub fn count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ParamCursor_count(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_ParamCursor.hxx`:114 - `IGESData_ParamCursor::ItemSize()`
+    /// Returns length of item (count of parameters per item)
+    pub fn item_size(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ParamCursor_item_size(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_ParamCursor.hxx`:117 - `IGESData_ParamCursor::TermSize()`
+    /// Returns length of current term (count of parameters) in item
+    pub fn term_size(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ParamCursor_term_size(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_ParamCursor.hxx`:120 - `IGESData_ParamCursor::Offset()`
+    /// Returns offset from which current term must be read in item
+    pub fn offset(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ParamCursor_offset(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_ParamCursor.hxx`:123 - `IGESData_ParamCursor::Advance()`
+    /// Returns True if Advance command has been set
+    pub fn advance(&self) -> bool {
+        unsafe { crate::ffi::IGESData_ParamCursor_advance(self as *const Self) }
+    }
+}
+
+// ========================
+// From IGESData_ParamReader.hxx
+// ========================
+
+/// **Source:** `IGESData_ParamReader.hxx`:56 - `IGESData_ParamReader`
+/// access to a list of parameters, with management of read stage
+/// (owned parameters, properties, associativities) and current
+/// parameter number, read errors (which feed a Check), plus
+/// convenient facilities to read parameters, in particular :
+/// - first parameter is ignored (it repeats entity type), hence
+/// number 1 gives 2nd parameter, etc...
+/// - lists are not explicit, list-reading methods are provided
+/// which manage a current param. number
+/// - interpretation is made as possible (texts, reals, entities ...)
+/// (in particular, Reading a Real accepts an Integer)
+pub use crate::ffi::IGESData_ParamReader as ParamReader;
+
+unsafe impl crate::CppDeletable for ParamReader {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_ParamReader_destructor(ptr);
+    }
+}
+
+impl ParamReader {
+    /// **Source:** `IGESData_ParamReader.hxx`:65 - `IGESData_ParamReader::IGESData_ParamReader()`
+    /// Prepares a ParamReader, stage "Own", current param = 1
+    /// It considers a part of the list, from <base> (excluded) for
+    /// <nbpar> parameters; <nbpar> = 0 commands to take list length.
+    /// Default is (1 to skip type)
+    pub fn new_handleinterfaceparamlist_handleinterfacecheck_int3(
+        list: &crate::ffi::HandleInterfaceParamList,
+        ach: &crate::ffi::HandleInterfaceCheck,
+        base: i32,
+        nbpar: i32,
+        num: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ParamReader_ctor_handleinterfaceparamlist_handleinterfacecheck_int3(list, ach, base, nbpar, num))
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:65 - `IGESData_ParamReader::IGESData_ParamReader()`
+    /// Prepares a ParamReader, stage "Own", current param = 1
+    /// It considers a part of the list, from <base> (excluded) for
+    /// <nbpar> parameters; <nbpar> = 0 commands to take list length.
+    /// Default is (1 to skip type)
+    pub fn new_handleinterfaceparamlist_handleinterfacecheck_int2(
+        list: &crate::ffi::HandleInterfaceParamList,
+        ach: &crate::ffi::HandleInterfaceCheck,
+        base: i32,
+        nbpar: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleinterfaceparamlist_handleinterfacecheck_int3(list, ach, base, nbpar, 0)
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:65 - `IGESData_ParamReader::IGESData_ParamReader()`
+    /// Prepares a ParamReader, stage "Own", current param = 1
+    /// It considers a part of the list, from <base> (excluded) for
+    /// <nbpar> parameters; <nbpar> = 0 commands to take list length.
+    /// Default is (1 to skip type)
+    pub fn new_handleinterfaceparamlist_handleinterfacecheck_int(
+        list: &crate::ffi::HandleInterfaceParamList,
+        ach: &crate::ffi::HandleInterfaceCheck,
+        base: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleinterfaceparamlist_handleinterfacecheck_int3(list, ach, base, 0, 0)
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:65 - `IGESData_ParamReader::IGESData_ParamReader()`
+    /// Prepares a ParamReader, stage "Own", current param = 1
+    /// It considers a part of the list, from <base> (excluded) for
+    /// <nbpar> parameters; <nbpar> = 0 commands to take list length.
+    /// Default is (1 to skip type)
+    pub fn new_handleinterfaceparamlist_handleinterfacecheck(
+        list: &crate::ffi::HandleInterfaceParamList,
+        ach: &crate::ffi::HandleInterfaceCheck,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleinterfaceparamlist_handleinterfacecheck_int3(list, ach, 1, 0, 0)
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:72 - `IGESData_ParamReader::EntityNumber()`
+    /// Returns the entity number in the file
+    pub fn entity_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ParamReader_entity_number(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:75 - `IGESData_ParamReader::Clear()`
+    /// resets state (stage, current param number, check with no fail)
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::IGESData_ParamReader_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:83 - `IGESData_ParamReader::CurrentNumber()`
+    /// returns the current parameter number
+    /// This notion is involved by the organisation of an IGES list of
+    /// parameter : it can be ended by two lists (Associativities and
+    /// Properties), which can be empty, or even absent. Hence, it is
+    /// necessary to know, at the end of specific reading, how many
+    /// parameters have been read : the optional lists follow
+    pub fn current_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ParamReader_current_number(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:92 - `IGESData_ParamReader::SetCurrentNumber()`
+    /// sets current parameter number to a new value
+    /// must be done at end of each step : set on first parameter
+    /// following last read one; is done by some Read... methods
+    /// (must be done directly if these method are not used)
+    /// num greater than NbParams means that following lists are empty
+    /// If current num is not managed, it remains at 1, which probably
+    /// will cause error when successive steps of reading are made
+    pub fn set_current_number(&mut self, num: i32) {
+        unsafe { crate::ffi::IGESData_ParamReader_set_current_number(self as *mut Self, num) }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:95 - `IGESData_ParamReader::Stage()`
+    /// gives current stage (Own-Props-Assocs-End, begins at Own)
+    pub fn stage(&self) -> crate::iges_data::ReadStage {
+        unsafe {
+            crate::iges_data::ReadStage::try_from(crate::ffi::IGESData_ParamReader_stage(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:98 - `IGESData_ParamReader::NextStage()`
+    /// passes to next stage (must be linked with setting Current)
+    pub fn next_stage(&mut self) {
+        unsafe { crate::ffi::IGESData_ParamReader_next_stage(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:101 - `IGESData_ParamReader::EndAll()`
+    /// passes directly to the end of reading process
+    pub fn end_all(&mut self) {
+        unsafe { crate::ffi::IGESData_ParamReader_end_all(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:105 - `IGESData_ParamReader::NbParams()`
+    /// returns number of parameters (minus the first one)
+    /// following method skip the first parameter (1 gives the 2nd)
+    pub fn nb_params(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ParamReader_nb_params(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:109 - `IGESData_ParamReader::ParamType()`
+    /// returns type of parameter; note that "Ident" or "Sub" cannot
+    /// be encountered, they correspond to "Integer", see also below
+    pub fn param_type(&self, num: i32) -> crate::interface::ParamType {
+        unsafe {
+            crate::interface::ParamType::try_from(crate::ffi::IGESData_ParamReader_param_type(
+                self as *const Self,
+                num,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:112 - `IGESData_ParamReader::ParamValue()`
+    /// returns literal value of a parameter, as it was in file
+    pub fn param_value(&self, num: i32) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_ParamReader_param_value(
+                self as *const Self,
+                num,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:116 - `IGESData_ParamReader::IsParamDefined()`
+    /// says if a parameter is defined (not void)
+    /// See also DefinedElseSkip
+    pub fn is_param_defined(&self, num: i32) -> bool {
+        unsafe { crate::ffi::IGESData_ParamReader_is_param_defined(self as *const Self, num) }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:121 - `IGESData_ParamReader::IsParamEntity()`
+    /// says if a parameter can be regarded as an entity reference
+    /// (see Prepare from IGESReaderData for more explanation)
+    /// Note that such a parameter can seen as be a plain Integer too
+    pub fn is_param_entity(&self, num: i32) -> bool {
+        unsafe { crate::ffi::IGESData_ParamReader_is_param_entity(self as *const Self, num) }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:125 - `IGESData_ParamReader::ParamNumber()`
+    /// returns entity number corresponding to a parameter if there is
+    /// otherwise zero (according criterium IsParamEntity)
+    pub fn param_number(&self, num: i32) -> i32 {
+        unsafe { crate::ffi::IGESData_ParamReader_param_number(self as *const Self, num) }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:128 - `IGESData_ParamReader::ParamEntity()`
+    /// directly returns entity referenced by a parameter
+    pub fn param_entity(
+        &mut self,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ParamReader_param_entity(
+                self as *mut Self,
+                IR,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:133 - `IGESData_ParamReader::Current()`
+    /// Creates a ParamCursor from the Current Number, to read one
+    /// parameter, and to advance Current Number after reading
+    pub fn current(&self) -> crate::OwnedPtr<ParamCursor> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ParamReader_current(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:139 - `IGESData_ParamReader::CurrentList()`
+    /// Creates a ParamCursor from the Current Number, to read a list
+    /// of "nb" items, and to advance Current Number after reading
+    /// By default, each item is made of one parameter
+    /// If size is given, it precises the number of params per item
+    pub fn current_list(&self, nb: i32, size: i32) -> crate::OwnedPtr<ParamCursor> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ParamReader_current_list(
+                self as *const Self,
+                nb,
+                size,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:157 - `IGESData_ParamReader::DefinedElseSkip()`
+    /// Allows to simply process a parameter which can be defaulted.
+    /// Waits on the Current Number a defined parameter or skips it :
+    /// If the parameter <num> is defined, changes nothing and returns True
+    /// Hence, the next reading with current cursor will concern <num>
+    /// If it is void, advances Current Position by one, and returns False
+    /// The next reading will concern <num+1> (except if <num> = NbParams)
+    ///
+    /// This allows to process Default values as follows (C++) :
+    /// if (PR.DefinedElseSkip()) {
+    /// .. PR.Read... (current parameter);
+    /// } else {
+    /// <current parameter> = default value
+    /// .. nothing else to do with ParamReader
+    /// }
+    /// For Message
+    pub fn defined_else_skip(&mut self) -> bool {
+        unsafe { crate::ffi::IGESData_ParamReader_defined_else_skip(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:159 - `IGESData_ParamReader::ReadInteger()`
+    pub fn read_integer_paramcursor_int(&mut self, PC: &ParamCursor, val: &mut i32) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_integer_paramcursor_int(
+                self as *mut Self,
+                PC,
+                val,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:168 - `IGESData_ParamReader::ReadInteger()`
+    /// Reads an Integer value designated by PC
+    /// The method Current designates the current parameter and
+    /// advances the Current Number by one after reading
+    /// Note that if a count (not 1) is given, it is ignored
+    /// If it is not an Integer, fills Check with a Fail (using mess)
+    /// and returns False
+    pub fn read_integer_paramcursor_charptr_int(
+        &mut self,
+        PC: &ParamCursor,
+        mess: &str,
+        val: &mut i32,
+    ) -> bool {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_integer_paramcursor_charptr_int(
+                self as *mut Self,
+                PC,
+                c_mess.as_ptr(),
+                val,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:172 - `IGESData_ParamReader::ReadBoolean()`
+    pub fn read_boolean_paramcursor_msg_bool2(
+        &mut self,
+        PC: &ParamCursor,
+        amsg: &crate::message::Msg,
+        val: &mut bool,
+        exact: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_boolean_paramcursor_msg_bool2(
+                self as *mut Self,
+                PC,
+                amsg,
+                val,
+                exact,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:185 - `IGESData_ParamReader::ReadBoolean()`
+    /// Reads a Boolean value from parameter "num"
+    /// A Boolean is given as an Integer value 0 (False) or 1 (True)
+    /// Anyway, an Integer is demanded (else, Check is filled)
+    /// If exact is given True, those precise values are demanded
+    /// Else, Correction is done, as False for 0 or <0, True for >0
+    /// (with a Warning error message, and return is True)
+    /// In case of error (not an Integer, or not 0/1 and exact True),
+    /// Check is filled with a Fail (using mess) and return is False
+    pub fn read_boolean_paramcursor_charptr_bool2(
+        &mut self,
+        PC: &ParamCursor,
+        mess: &str,
+        val: &mut bool,
+        exact: bool,
+    ) -> bool {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_boolean_paramcursor_charptr_bool2(
+                self as *mut Self,
+                PC,
+                c_mess.as_ptr(),
+                val,
+                exact,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:190 - `IGESData_ParamReader::ReadReal()`
+    pub fn read_real_paramcursor_real(&mut self, PC: &ParamCursor, val: &mut f64) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_real_paramcursor_real(self as *mut Self, PC, val)
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:196 - `IGESData_ParamReader::ReadReal()`
+    /// Reads a Real value from parameter "num"
+    /// An Integer is accepted (Check is filled with a Warning
+    /// message) and causes return to be True (as normal case)
+    /// In other cases, Check is filled with a Fail and return is False
+    pub fn read_real_paramcursor_charptr_real(
+        &mut self,
+        PC: &ParamCursor,
+        mess: &str,
+        val: &mut f64,
+    ) -> bool {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_real_paramcursor_charptr_real(
+                self as *mut Self,
+                PC,
+                c_mess.as_ptr(),
+                val,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:200 - `IGESData_ParamReader::ReadXY()`
+    pub fn read_xy_paramcursor_msg_xy(
+        &mut self,
+        PC: &ParamCursor,
+        amsg: &mut crate::message::Msg,
+        val: &mut crate::gp::XY,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_xy_paramcursor_msg_xy(
+                self as *mut Self,
+                PC,
+                amsg,
+                val,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:208 - `IGESData_ParamReader::ReadXY()`
+    /// Reads a couple of Real values (X,Y) from parameter "num"
+    /// Integers are accepted (Check is filled with a Warning
+    /// message) and cause return to be True (as normal case)
+    /// In other cases, Check is filled with a Fail and return is False
+    pub fn read_xy_paramcursor_charptr_xy(
+        &mut self,
+        PC: &ParamCursor,
+        mess: &str,
+        val: &mut crate::gp::XY,
+    ) -> bool {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_xy_paramcursor_charptr_xy(
+                self as *mut Self,
+                PC,
+                c_mess.as_ptr(),
+                val,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:212 - `IGESData_ParamReader::ReadXYZ()`
+    pub fn read_xyz_paramcursor_msg_xyz(
+        &mut self,
+        PC: &ParamCursor,
+        amsg: &mut crate::message::Msg,
+        val: &mut crate::gp::XYZ,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_xyz_paramcursor_msg_xyz(
+                self as *mut Self,
+                PC,
+                amsg,
+                val,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:221 - `IGESData_ParamReader::ReadXYZ()`
+    /// Reads a triplet of Real values (X,Y,Z) from parameter "num"
+    /// Integers are accepted (Check is filled with a Warning
+    /// message) and cause return to be True (as normal case)
+    /// In other cases, Check is filled with a Fail and return is False
+    /// For Message
+    pub fn read_xyz_paramcursor_charptr_xyz(
+        &mut self,
+        PC: &ParamCursor,
+        mess: &str,
+        val: &mut crate::gp::XYZ,
+    ) -> bool {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_xyz_paramcursor_charptr_xyz(
+                self as *mut Self,
+                PC,
+                c_mess.as_ptr(),
+                val,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:225 - `IGESData_ParamReader::ReadText()`
+    pub fn read_text_paramcursor_msg_handletcollectionhasciistring(
+        &mut self,
+        thePC: &ParamCursor,
+        theMsg: &crate::message::Msg,
+        theVal: &mut crate::ffi::HandleTCollectionHAsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_text_paramcursor_msg_handletcollectionhasciistring(
+                self as *mut Self,
+                thePC,
+                theMsg,
+                theVal,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:233 - `IGESData_ParamReader::ReadText()`
+    /// Reads a Text value from parameter "num", as a String from
+    /// Collection, that is, Hollerith text without leading "nnnH"
+    /// If it is not a String, fills Check with a Fail (using mess)
+    /// and returns False
+    pub fn read_text_paramcursor_charptr_handletcollectionhasciistring(
+        &mut self,
+        PC: &ParamCursor,
+        mess: &str,
+        val: &mut crate::ffi::HandleTCollectionHAsciiString,
+    ) -> bool {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_text_paramcursor_charptr_handletcollectionhasciistring(self as *mut Self, PC, c_mess.as_ptr(), val)
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:237 - `IGESData_ParamReader::ReadEntity()`
+    pub fn read_entity_handleigesdataigesreaderdata_paramcursor_status_handleigesdataigesentity_bool(
+        &mut self,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PC: &ParamCursor,
+        aStatus: &mut crate::iges_data::Status,
+        val: &mut crate::ffi::HandleIGESDataIGESEntity,
+        canbenul: bool,
+    ) -> bool {
+        let mut aStatus_i32_: i32 = (*aStatus).into();
+        let result_ = unsafe {
+            crate::ffi::IGESData_ParamReader_read_entity_handleigesdataigesreaderdata_paramcursor_status_handleigesdataigesentity_bool(self as *mut Self, IR, PC, &mut aStatus_i32_, val, canbenul)
+        };
+        *aStatus = crate::iges_data::Status::try_from(aStatus_i32_).unwrap();
+        result_
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:251 - `IGESData_ParamReader::ReadEntity()`
+    /// Reads an IGES entity from parameter "num"
+    /// An Entity is known by its reference, which has the form of an
+    /// odd Integer Value (a number in the Directory)
+    /// If <canbenul> is given True, a Reference can also be Null :
+    /// in this case, the result is a Null Handle with no Error
+    /// If <canbenul> is False, a Null Reference causes an Error
+    /// If the parameter cannot refer to an entity (or null), fills
+    /// Check with a Fail (using mess) and returns False
+    pub fn read_entity_handleigesdataigesreaderdata_paramcursor_charptr_handleigesdataigesentity_bool(
+        &mut self,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PC: &ParamCursor,
+        mess: &str,
+        val: &mut crate::ffi::HandleIGESDataIGESEntity,
+        canbenul: bool,
+    ) -> bool {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_entity_handleigesdataigesreaderdata_paramcursor_charptr_handleigesdataigesentity_bool(self as *mut Self, IR, PC, c_mess.as_ptr(), val, canbenul)
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:257 - `IGESData_ParamReader::ReadEntity()`
+    pub fn read_entity_handleigesdataigesreaderdata_paramcursor_status_handlestandardtype_handleigesdataigesentity_bool(
+        &mut self,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PC: &ParamCursor,
+        aStatus: &mut crate::iges_data::Status,
+        type_: &crate::ffi::HandleStandardType,
+        val: &mut crate::ffi::HandleIGESDataIGESEntity,
+        canbenul: bool,
+    ) -> bool {
+        let mut aStatus_i32_: i32 = (*aStatus).into();
+        let result_ = unsafe {
+            crate::ffi::IGESData_ParamReader_read_entity_handleigesdataigesreaderdata_paramcursor_status_handlestandardtype_handleigesdataigesentity_bool(self as *mut Self, IR, PC, &mut aStatus_i32_, type_, val, canbenul)
+        };
+        *aStatus = crate::iges_data::Status::try_from(aStatus_i32_).unwrap();
+        result_
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:284 - `IGESData_ParamReader::ReadEntity()`
+    /// Works as ReadEntity without Type, but in addition checks the
+    /// Type of the Entity, which must be "kind of" a given <type>
+    /// Then, gives the same fail cases as ReadEntity without Type,
+    /// plus the case "Incorrect Type"
+    /// (in such a case, returns False and givel <val> = Null)
+    pub fn read_entity_handleigesdataigesreaderdata_paramcursor_charptr_handlestandardtype_handleigesdataigesentity_bool(
+        &mut self,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PC: &ParamCursor,
+        mess: &str,
+        type_: &crate::ffi::HandleStandardType,
+        val: &mut crate::ffi::HandleIGESDataIGESEntity,
+        canbenul: bool,
+    ) -> bool {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_entity_handleigesdataigesreaderdata_paramcursor_charptr_handlestandardtype_handleigesdataigesentity_bool(self as *mut Self, IR, PC, c_mess.as_ptr(), type_, val, canbenul)
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:306 - `IGESData_ParamReader::ReadInts()`
+    pub fn read_ints_paramcursor_msg_handletcolstdharray1ofinteger_int(
+        &mut self,
+        PC: &ParamCursor,
+        amsg: &crate::message::Msg,
+        val: &mut crate::ffi::HandleTColStdHArray1OfInteger,
+        index: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_ints_paramcursor_msg_handletcolstdharray1ofinteger_int(self as *mut Self, PC, amsg, val, index)
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:317 - `IGESData_ParamReader::ReadInts()`
+    /// Reads a list of Integer values, defined by PC (with a count of
+    /// parameters). PC can start from Current Number and command it
+    /// to advance after reading (use method CurrentList to do this)
+    /// The list is given as a HArray1, numered from "index"
+    /// If all params are not Integer, Check is filled (using mess)
+    /// and return value is False
+    pub fn read_ints_paramcursor_charptr_handletcolstdharray1ofinteger_int(
+        &mut self,
+        PC: &ParamCursor,
+        mess: &str,
+        val: &mut crate::ffi::HandleTColStdHArray1OfInteger,
+        index: i32,
+    ) -> bool {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_ints_paramcursor_charptr_handletcolstdharray1ofinteger_int(self as *mut Self, PC, c_mess.as_ptr(), val, index)
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:322 - `IGESData_ParamReader::ReadReals()`
+    pub fn read_reals_paramcursor_msg_handletcolstdharray1ofreal_int(
+        &mut self,
+        PC: &ParamCursor,
+        amsg: &mut crate::message::Msg,
+        val: &mut crate::ffi::HandleTColStdHArray1OfReal,
+        index: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_reals_paramcursor_msg_handletcolstdharray1ofreal_int(self as *mut Self, PC, amsg, val, index)
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:333 - `IGESData_ParamReader::ReadReals()`
+    /// Reads a list of Real values defined by PC
+    /// Same conditions as for ReadInts, for PC and index
+    /// An Integer parameter is accepted, if at least one parameter is
+    /// Integer, Check is filled with a "Warning" message
+    /// If all params are neither Real nor Integer, Check is filled
+    /// (using mess) and return value is False
+    pub fn read_reals_paramcursor_charptr_handletcolstdharray1ofreal_int(
+        &mut self,
+        PC: &ParamCursor,
+        mess: &str,
+        val: &mut crate::ffi::HandleTColStdHArray1OfReal,
+        index: i32,
+    ) -> bool {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_reals_paramcursor_charptr_handletcolstdharray1ofreal_int(self as *mut Self, PC, c_mess.as_ptr(), val, index)
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:338 - `IGESData_ParamReader::ReadTexts()`
+    pub fn read_texts_paramcursor_msg_handleinterfaceharray1ofhasciistring_int(
+        &mut self,
+        PC: &ParamCursor,
+        amsg: &crate::message::Msg,
+        val: &mut crate::ffi::HandleInterfaceHArray1OfHAsciiString,
+        index: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_texts_paramcursor_msg_handleinterfaceharray1ofhasciistring_int(self as *mut Self, PC, amsg, val, index)
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:348 - `IGESData_ParamReader::ReadTexts()`
+    /// Reads a list of Hollerith Texts, defined by PC
+    /// Texts are read as Hollerith texts without leading "nnnH"
+    /// Same conditions as for ReadInts, for PC and index
+    /// If all params are not Text, Check is filled (using mess)
+    /// and return value is False
+    pub fn read_texts_paramcursor_charptr_handleinterfaceharray1ofhasciistring_int(
+        &mut self,
+        PC: &ParamCursor,
+        mess: &str,
+        val: &mut crate::ffi::HandleInterfaceHArray1OfHAsciiString,
+        index: i32,
+    ) -> bool {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_texts_paramcursor_charptr_handleinterfaceharray1ofhasciistring_int(self as *mut Self, PC, c_mess.as_ptr(), val, index)
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:353 - `IGESData_ParamReader::ReadEnts()`
+    pub fn read_ents_handleigesdataigesreaderdata_paramcursor_msg_handleigesdataharray1ofigesentity_int(
+        &mut self,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PC: &ParamCursor,
+        amsg: &crate::message::Msg,
+        val: &mut crate::ffi::HandleIGESDataHArray1OfIGESEntity,
+        index: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_ents_handleigesdataigesreaderdata_paramcursor_msg_handleigesdataharray1ofigesentity_int(self as *mut Self, IR, PC, amsg, val, index)
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:368 - `IGESData_ParamReader::ReadEnts()`
+    /// Reads a list of Entities defined by PC
+    /// Same conditions as for ReadInts, for PC and index
+    /// The list is given as a HArray1, numered from "index"
+    /// If all params cannot be read as Entities, Check is filled
+    /// (using mess) and return value is False
+    /// Remark : Null references are accepted, they are ignored
+    /// (negative pointers too : they provoke a Warning message)
+    /// If the caller wants to check them, a loop on ReadEntity should
+    /// be used
+    pub fn read_ents_handleigesdataigesreaderdata_paramcursor_charptr_handleigesdataharray1ofigesentity_int(
+        &mut self,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PC: &ParamCursor,
+        mess: &str,
+        val: &mut crate::ffi::HandleIGESDataHArray1OfIGESEntity,
+        index: i32,
+    ) -> bool {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_ents_handleigesdataigesreaderdata_paramcursor_charptr_handleigesdataharray1ofigesentity_int(self as *mut Self, IR, PC, c_mess.as_ptr(), val, index)
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:374 - `IGESData_ParamReader::ReadEntList()`
+    pub fn read_ent_list_handleigesdataigesreaderdata_paramcursor_msg_entitylist_bool(
+        &mut self,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PC: &ParamCursor,
+        amsg: &mut crate::message::Msg,
+        val: &mut crate::interface::EntityList,
+        ord: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_ent_list_handleigesdataigesreaderdata_paramcursor_msg_entitylist_bool(self as *mut Self, IR, PC, amsg, val, ord)
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:390 - `IGESData_ParamReader::ReadEntList()`
+    /// Reads a list of Entities defined by PC
+    /// Same conditions as for ReadEnts, for PC
+    /// The list is given as an EntityList
+    /// (index has no meaning; the EntityList starts from clear)
+    /// If "ord" is given True (default), entities will be added to
+    /// the list in their original order
+    /// Remark : Negative or Null Pointers are ignored
+    /// Else ("ord" False), order is not guaranteed (faster mode)
+    /// If all params cannot be read as Entities, same as above
+    /// Warning  Give "ord" to False ONLY if order is not significant
+    pub fn read_ent_list_handleigesdataigesreaderdata_paramcursor_charptr_entitylist_bool(
+        &mut self,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PC: &ParamCursor,
+        mess: &str,
+        val: &mut crate::interface::EntityList,
+        ord: bool,
+    ) -> bool {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        unsafe {
+            crate::ffi::IGESData_ParamReader_read_ent_list_handleigesdataigesreaderdata_paramcursor_charptr_entitylist_bool(self as *mut Self, IR, PC, c_mess.as_ptr(), val, ord)
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:396 - `IGESData_ParamReader::ReadingReal()`
+    pub fn reading_real_int_real(&mut self, num: i32, val: &mut f64) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ParamReader_reading_real_int_real(self as *mut Self, num, val)
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:400 - `IGESData_ParamReader::ReadingReal()`
+    /// Routine which reads a Real parameter, given its number
+    /// Same conditions as ReadReal for mess, val, and return value
+    pub fn reading_real_int_charptr_real(&mut self, num: i32, mess: &str, val: &mut f64) -> bool {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        unsafe {
+            crate::ffi::IGESData_ParamReader_reading_real_int_charptr_real(
+                self as *mut Self,
+                num,
+                c_mess.as_ptr(),
+                val,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:404 - `IGESData_ParamReader::ReadingEntityNumber()`
+    pub fn reading_entity_number_int2(&mut self, num: i32, val: &mut i32) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ParamReader_reading_entity_number_int2(self as *mut Self, num, val)
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:413 - `IGESData_ParamReader::ReadingEntityNumber()`
+    /// Routine which reads an Entity Number (which allows to read the
+    /// Entity in the IGESReaderData by BoundEntity), given its number
+    /// in the list of Parameters
+    /// Same conditions as ReadEntity for mess, val, and return value
+    /// In particular, returns True and val to zero means Null Entity,
+    /// and val not zero means Entity read by BoundEntity
+    pub fn reading_entity_number_int_charptr_int(
+        &mut self,
+        num: i32,
+        mess: &str,
+        val: &mut i32,
+    ) -> bool {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        unsafe {
+            crate::ffi::IGESData_ParamReader_reading_entity_number_int_charptr_int(
+                self as *mut Self,
+                num,
+                c_mess.as_ptr(),
+                val,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:417 - `IGESData_ParamReader::SendFail()`
+    pub fn send_fail(&mut self, amsg: &crate::message::Msg) {
+        unsafe { crate::ffi::IGESData_ParamReader_send_fail(self as *mut Self, amsg) }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:419 - `IGESData_ParamReader::SendWarning()`
+    pub fn send_warning(&mut self, amsg: &crate::message::Msg) {
+        unsafe { crate::ffi::IGESData_ParamReader_send_warning(self as *mut Self, amsg) }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:421 - `IGESData_ParamReader::AddFail()`
+    pub fn add_fail_charptr2(&mut self, afail: &str, bfail: &str) {
+        let c_afail = std::ffi::CString::new(afail).unwrap();
+        let c_bfail = std::ffi::CString::new(bfail).unwrap();
+        unsafe {
+            crate::ffi::IGESData_ParamReader_add_fail_charptr2(
+                self as *mut Self,
+                c_afail.as_ptr(),
+                c_bfail.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:424 - `IGESData_ParamReader::AddFail()`
+    /// feeds the Check with a new fail (as a String or as a CString)
+    pub fn add_fail_handletcollectionhasciistring2(
+        &mut self,
+        af: &crate::ffi::HandleTCollectionHAsciiString,
+        bf: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_ParamReader_add_fail_handletcollectionhasciistring2(
+                self as *mut Self,
+                af,
+                bf,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:427 - `IGESData_ParamReader::AddWarning()`
+    pub fn add_warning_charptr2(&mut self, awarn: &str, bwarn: &str) {
+        let c_awarn = std::ffi::CString::new(awarn).unwrap();
+        let c_bwarn = std::ffi::CString::new(bwarn).unwrap();
+        unsafe {
+            crate::ffi::IGESData_ParamReader_add_warning_charptr2(
+                self as *mut Self,
+                c_awarn.as_ptr(),
+                c_bwarn.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:430 - `IGESData_ParamReader::AddWarning()`
+    /// feeds the Check with a new Warning message
+    pub fn add_warning_handletcollectionhasciistring2(
+        &mut self,
+        aw: &crate::ffi::HandleTCollectionHAsciiString,
+        bw: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_ParamReader_add_warning_handletcollectionhasciistring2(
+                self as *mut Self,
+                aw,
+                bw,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:433 - `IGESData_ParamReader::Mend()`
+    pub fn mend(&mut self, pref: &str) {
+        let c_pref = std::ffi::CString::new(pref).unwrap();
+        unsafe { crate::ffi::IGESData_ParamReader_mend(self as *mut Self, c_pref.as_ptr()) }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:436 - `IGESData_ParamReader::HasFailed()`
+    /// says if fails have been recorded into the Check
+    pub fn has_failed(&self) -> bool {
+        unsafe { crate::ffi::IGESData_ParamReader_has_failed(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:440 - `IGESData_ParamReader::Check()`
+    /// returns the Check
+    /// Note that any error signaled above is also recorded into it
+    pub fn check(&self) -> &crate::ffi::HandleInterfaceCheck {
+        unsafe { &*(crate::ffi::IGESData_ParamReader_check(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:444 - `IGESData_ParamReader::CCheck()`
+    /// returns the check in a way which allows to work on it directly
+    /// (i.e. messages added to the Check are added to ParamReader too)
+    pub fn c_check(&mut self) -> &mut crate::ffi::HandleInterfaceCheck {
+        unsafe { &mut *(crate::ffi::IGESData_ParamReader_c_check(self as *mut Self)) }
+    }
+
+    /// **Source:** `IGESData_ParamReader.hxx`:448 - `IGESData_ParamReader::IsCheckEmpty()`
+    /// Returns True if the Check is Empty
+    /// Else, it has to be recorded with the Read Entity
+    pub fn is_check_empty(&self) -> bool {
+        unsafe { crate::ffi::IGESData_ParamReader_is_check_empty(self as *const Self) }
+    }
+}
+
+// ========================
+// From IGESData_Protocol.hxx
+// ========================
+
+/// **Source:** `IGESData_Protocol.hxx`:34 - `IGESData_Protocol`
+/// Description of basic Protocol for IGES
+/// This comprises treatment of IGESModel and Recognition of
+/// Undefined-FreeFormat-Entity
+pub use crate::ffi::IGESData_Protocol as Protocol;
+
+unsafe impl crate::CppDeletable for Protocol {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_Protocol_destructor(ptr);
+    }
+}
+
+impl Protocol {
+    /// **Source:** `IGESData_Protocol.hxx`:38 - `IGESData_Protocol::IGESData_Protocol()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_Protocol_ctor()) }
+    }
+
+    /// **Source:** `IGESData_Protocol.hxx`:41 - `IGESData_Protocol::NbResources()`
+    /// Gives the count of Resource Protocol. Here, none
+    pub fn nb_resources(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_Protocol_nb_resources(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_Protocol.hxx`:44 - `IGESData_Protocol::Resource()`
+    /// Returns a Resource, given a rank. Here, none
+    pub fn resource(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_Protocol_resource(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_Protocol.hxx`:50 - `IGESData_Protocol::TypeNumber()`
+    /// Returns a Case Number, specific of each recognized Type
+    /// Here, Undefined and Free Format Entities have the Number 1.
+    pub fn type_number(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe { crate::ffi::IGESData_Protocol_type_number(self as *const Self, atype) }
+    }
+
+    /// **Source:** `IGESData_Protocol.hxx`:53 - `IGESData_Protocol::NewModel()`
+    /// Creates an empty Model for IGES Norm
+    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_Protocol_new_model(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESData_Protocol.hxx`:57 - `IGESData_Protocol::IsSuitableModel()`
+    /// Returns True if <model> is a Model of IGES Norm
+    pub fn is_suitable_model(&self, model: &crate::ffi::HandleInterfaceInterfaceModel) -> bool {
+        unsafe { crate::ffi::IGESData_Protocol_is_suitable_model(self as *const Self, model) }
+    }
+
+    /// **Source:** `IGESData_Protocol.hxx`:60 - `IGESData_Protocol::UnknownEntity()`
+    /// Creates a new Unknown Entity for IGES (UndefinedEntity)
+    pub fn unknown_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_Protocol_unknown_entity(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_Protocol.hxx`:65 - `IGESData_Protocol::IsUnknownEntity()`
+    /// Returns True if <ent> is an Unknown Entity for the Norm, i.e.
+    /// Type UndefinedEntity, status Unknown
+    pub fn is_unknown_entity(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IGESData_Protocol_is_unknown_entity(self as *const Self, ent) }
+    }
+
+    /// **Source:** `IGESData_Protocol.hxx`:67 - `IGESData_Protocol::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_Protocol_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_Protocol.hxx`:67 - `IGESData_Protocol::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_Protocol_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_Protocol.hxx`:67 - `IGESData_Protocol::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_Protocol_get_type_descriptor()) }
+    }
+
+    /// Upcast to Interface_Protocol
+    pub fn as_interface_protocol(&self) -> &crate::interface::Protocol {
+        unsafe { &*(crate::ffi::IGESData_Protocol_as_Interface_Protocol(self as *const Self)) }
+    }
+
+    /// Upcast to Interface_Protocol (mutable)
+    pub fn as_interface_protocol_mut(&mut self) -> &mut crate::interface::Protocol {
+        unsafe {
+            &mut *(crate::ffi::IGESData_Protocol_as_Interface_Protocol_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESData_Protocol_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_Protocol_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataProtocol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_Protocol_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_Protocol.hxx`:64 - `Interface_Protocol::CaseNumber()`
+    pub fn case_number(&self, obj: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::IGESData_Protocol_inherited_CaseNumber(self as *const Self, obj) }
+    }
+
+    /// Inherited: **Source:** `Interface_Protocol.hxx`:68 - `Interface_Protocol::IsDynamicType()`
+    pub fn is_dynamic_type(&self, obj: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IGESData_Protocol_inherited_IsDynamicType(self as *const Self, obj) }
+    }
+
+    /// Inherited: **Source:** `Interface_Protocol.hxx`:75 - `Interface_Protocol::NbTypes()`
+    pub fn nb_types(&self, obj: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::IGESData_Protocol_inherited_NbTypes(self as *const Self, obj) }
+    }
+
+    /// Inherited: **Source:** `Interface_Protocol.hxx`:81 - `Interface_Protocol::Type()`
+    pub fn type_(
+        &self,
+        obj: &crate::ffi::HandleStandardTransient,
+        nt: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_Protocol_inherited_Type(
+                self as *const Self,
+                obj,
+                nt,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_Protocol.hxx`:96 - `Interface_Protocol::GlobalCheck()`
+    pub fn global_check(
+        &self,
+        G: &crate::interface::Graph,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) -> bool {
+        unsafe { crate::ffi::IGESData_Protocol_inherited_GlobalCheck(self as *const Self, G, ach) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESData_Protocol_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESData_Protocol_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_Protocol_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IGESData_Protocol_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IGESData_Protocol_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_Protocol_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataProtocol;
+
+unsafe impl crate::CppDeletable for HandleIGESDataProtocol {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataProtocol_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataProtocol {
+    /// Dereference this Handle to access the underlying IGESData_Protocol
+    pub fn get(&self) -> &crate::ffi::IGESData_Protocol {
+        unsafe { &*(crate::ffi::HandleIGESDataProtocol_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_Protocol
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_Protocol {
+        unsafe { &mut *(crate::ffi::HandleIGESDataProtocol_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_Protocol> to Handle<Interface_Protocol>
+    pub fn to_handle_protocol(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataProtocol_to_HandleInterfaceProtocol(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_Protocol> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataProtocol_to_HandleStandardTransient(self as *const Self),
+            )
+        }
+    }
+
+    /// Downcast Handle<IGESData_Protocol> to Handle<IGESAppli_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_Protocol` (or subclass).
+    pub fn downcast_to_iges_appli_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataProtocol_downcast_to_HandleIGESAppliProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_Protocol> to Handle<IGESBasic_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_Protocol` (or subclass).
+    pub fn downcast_to_iges_basic_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataProtocol_downcast_to_HandleIGESBasicProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_Protocol> to Handle<IGESData_FileProtocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_FileProtocol` (or subclass).
+    pub fn downcast_to_file_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataFileProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataProtocol_downcast_to_HandleIGESDataFileProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_Protocol> to Handle<IGESDefs_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_Protocol` (or subclass).
+    pub fn downcast_to_iges_defs_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataProtocol_downcast_to_HandleIGESDefsProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_Protocol> to Handle<IGESDimen_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_Protocol` (or subclass).
+    pub fn downcast_to_iges_dimen_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataProtocol_downcast_to_HandleIGESDimenProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_Protocol> to Handle<IGESDraw_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_Protocol` (or subclass).
+    pub fn downcast_to_iges_draw_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataProtocol_downcast_to_HandleIGESDrawProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_Protocol> to Handle<IGESGeom_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_Protocol` (or subclass).
+    pub fn downcast_to_iges_geom_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataProtocol_downcast_to_HandleIGESGeomProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_Protocol> to Handle<IGESGraph_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_Protocol` (or subclass).
+    pub fn downcast_to_iges_graph_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataProtocol_downcast_to_HandleIGESGraphProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_Protocol> to Handle<IGESSolid_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Protocol` (or subclass).
+    pub fn downcast_to_iges_solid_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataProtocol_downcast_to_HandleIGESSolidProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From IGESData_ReadWriteModule.hxx
+// ========================
+
+/// **Source:** `IGESData_ReadWriteModule.hxx`:54 - `IGESData_ReadWriteModule`
+/// Defines basic File Access Module, under the control of
+/// IGESReaderTool for Reading and IGESWriter for Writing :
+/// Specific actions concern : Read and Write Own Parameters of
+/// an IGESEntity.
+/// The common parts (Directory Entry, Lists of Associativities
+/// and Properties) are processed by IGESReaderTool & IGESWriter
+///
+/// Each sub-class of ReadWriteModule is used in conjunction with
+/// a sub-class of Protocol from IGESData and processes several
+/// types of IGESEntity (typically, them of a package) :
+/// The Protocol gives a unique positive integer Case Number for
+/// each type of IGESEntity it recognizes, the corresponding
+/// ReadWriteModule processes an Entity by using the Case Number
+/// to known what is to do
+/// On Reading, the general service NewVoid is used to create an
+/// IGES Entity the first time
+///
+/// Warning : Works with an IGESReaderData which stores "DE parts" of Items
+pub use crate::ffi::IGESData_ReadWriteModule as ReadWriteModule;
+
+unsafe impl crate::CppDeletable for ReadWriteModule {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_ReadWriteModule_destructor(ptr);
+    }
+}
+
+impl ReadWriteModule {
+    /// **Source:** `IGESData_ReadWriteModule.hxx`:62 - `IGESData_ReadWriteModule::CaseNum()`
+    /// Translates the Type of record <num> in <data> to a positive
+    /// Case Number, or 0 if failed.
+    /// Works with IGESReaderData which provides Type & Form Numbers,
+    /// and calls CaseIGES (see below)
+    pub fn case_num(&self, data: &crate::ffi::HandleInterfaceFileReaderData, num: i32) -> i32 {
+        unsafe { crate::ffi::IGESData_ReadWriteModule_case_num(self as *const Self, data, num) }
+    }
+
+    /// **Source:** `IGESData_ReadWriteModule.hxx`:70 - `IGESData_ReadWriteModule::CaseIGES()`
+    /// Defines Case Numbers corresponding to the Entity Types taken
+    /// into account by a sub-class of ReadWriteModule (hence, each
+    /// sub-class of ReadWriteModule has to redefine this method)
+    /// Called by CaseNum. Its result will then be used to call
+    /// Read, etc ...
+    pub fn case_iges(&self, typenum: i32, formnum: i32) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_ReadWriteModule_case_iges(self as *const Self, typenum, formnum)
+        }
+    }
+
+    /// **Source:** `IGESData_ReadWriteModule.hxx`:74 - `IGESData_ReadWriteModule::Read()`
+    /// General Read Function. See IGESReaderTool for more info
+    pub fn read(
+        &self,
+        CN: i32,
+        data: &crate::ffi::HandleInterfaceFileReaderData,
+        num: i32,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_ReadWriteModule_read(self as *const Self, CN, data, num, ach, ent)
+        }
+    }
+
+    /// **Source:** `IGESData_ReadWriteModule.hxx`:87 - `IGESData_ReadWriteModule::ReadOwnParams()`
+    /// Reads own parameters from file for an Entity; <PR> gives
+    /// access to them, <IR> detains parameter types and values
+    /// For each class, there must be a specific action provided
+    /// Note that Properties and Associativities Lists are Read by
+    /// specific methods (see below), they are called under control
+    /// of reading process (only one call) according Stage recorded
+    /// in ParamReader
+    pub fn read_own_params(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut ParamReader,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_ReadWriteModule_read_own_params(
+                self as *const Self,
+                CN,
+                ent,
+                IR,
+                PR,
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_ReadWriteModule.hxx`:96 - `IGESData_ReadWriteModule::WriteOwnParams()`
+    /// Writes own parameters to IGESWriter; defined for each class
+    /// (to be redefined for other IGES ReadWriteModules)
+    /// Warning : Properties and Associativities are directly managed by
+    /// WriteIGES, must not be sent by this method
+    pub fn write_own_params(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        IW: &mut IGESWriter,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_ReadWriteModule_write_own_params(self as *const Self, CN, ent, IW)
+        }
+    }
+
+    /// **Source:** `IGESData_ReadWriteModule.hxx`:100 - `IGESData_ReadWriteModule::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_ReadWriteModule_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_ReadWriteModule.hxx`:100 - `IGESData_ReadWriteModule::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_ReadWriteModule_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_ReadWriteModule.hxx`:100 - `IGESData_ReadWriteModule::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_ReadWriteModule_get_type_descriptor()) }
+    }
+
+    /// Upcast to Interface_ReaderModule
+    pub fn as_interface_reader_module(&self) -> &crate::interface::ReaderModule {
+        unsafe {
+            &*(crate::ffi::IGESData_ReadWriteModule_as_Interface_ReaderModule(self as *const Self))
+        }
+    }
+
+    /// Upcast to Interface_ReaderModule (mutable)
+    pub fn as_interface_reader_module_mut(&mut self) -> &mut crate::interface::ReaderModule {
+        unsafe {
+            &mut *(crate::ffi::IGESData_ReadWriteModule_as_Interface_ReaderModule_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESData_ReadWriteModule_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_ReadWriteModule_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_ReaderModule.hxx`:69 - `Interface_ReaderModule::NewRead()`
+    pub fn new_read(
+        &self,
+        casenum: i32,
+        data: &crate::ffi::HandleInterfaceFileReaderData,
+        num: i32,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ent: &mut crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ReadWriteModule_inherited_NewRead(
+                self as *const Self,
+                casenum,
+                data,
+                num,
+                ach,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ReadWriteModule_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ReadWriteModule_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ReadWriteModule_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_ReadWriteModule_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_ReadWriteModule_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_ReadWriteModule_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataReadWriteModule;
+
+unsafe impl crate::CppDeletable for HandleIGESDataReadWriteModule {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataReadWriteModule_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataReadWriteModule {
+    /// Dereference this Handle to access the underlying IGESData_ReadWriteModule
+    pub fn get(&self) -> &crate::ffi::IGESData_ReadWriteModule {
+        unsafe { &*(crate::ffi::HandleIGESDataReadWriteModule_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_ReadWriteModule
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_ReadWriteModule {
+        unsafe { &mut *(crate::ffi::HandleIGESDataReadWriteModule_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_ReadWriteModule> to Handle<Interface_ReaderModule>
+    pub fn to_handle_reader_module(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceReaderModule> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataReadWriteModule_to_HandleInterfaceReaderModule(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_ReadWriteModule> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataReadWriteModule_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IGESData_ReadWriteModule> to Handle<IGESAppli_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_appli_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataReadWriteModule_downcast_to_HandleIGESAppliReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_ReadWriteModule> to Handle<IGESBasic_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_basic_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataReadWriteModule_downcast_to_HandleIGESBasicReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_ReadWriteModule> to Handle<IGESDefs_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_defs_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataReadWriteModule_downcast_to_HandleIGESDefsReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_ReadWriteModule> to Handle<IGESDimen_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_dimen_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataReadWriteModule_downcast_to_HandleIGESDimenReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_ReadWriteModule> to Handle<IGESDraw_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_draw_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataReadWriteModule_downcast_to_HandleIGESDrawReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_ReadWriteModule> to Handle<IGESGeom_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_geom_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataReadWriteModule_downcast_to_HandleIGESGeomReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_ReadWriteModule> to Handle<IGESGraph_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_graph_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataReadWriteModule_downcast_to_HandleIGESGraphReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_ReadWriteModule> to Handle<IGESSolid_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_solid_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataReadWriteModule_downcast_to_HandleIGESSolidReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From IGESData_SingleParentEntity.hxx
+// ========================
+
+/// **Source:** `IGESData_SingleParentEntity.hxx`:31 - `IGESData_SingleParentEntity`
+/// a SingleParentEntity is a kind of IGESEntity which can refer
+/// to a (Single) Parent, from Associativities list of an Entity
+/// a effective SingleParent definition entity must inherit it
+pub use crate::ffi::IGESData_SingleParentEntity as SingleParentEntity;
+
+unsafe impl crate::CppDeletable for SingleParentEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_SingleParentEntity_destructor(ptr);
+    }
+}
+
+impl SingleParentEntity {
+    /// **Source:** `IGESData_SingleParentEntity.hxx`:36 - `IGESData_SingleParentEntity::SingleParent()`
+    /// Returns the parent designated by the Entity, if only one !
+    pub fn single_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_SingleParentEntity_single_parent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_SingleParentEntity.hxx`:39 - `IGESData_SingleParentEntity::NbChildren()`
+    /// Returns the count of Entities designated as children
+    pub fn nb_children(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_SingleParentEntity_nb_children(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_SingleParentEntity.hxx`:42 - `IGESData_SingleParentEntity::Child()`
+    /// Returns a Child given its rank
+    pub fn child(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_SingleParentEntity_child(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_SingleParentEntity.hxx`:44 - `IGESData_SingleParentEntity::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_SingleParentEntity_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_SingleParentEntity.hxx`:44 - `IGESData_SingleParentEntity::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_SingleParentEntity_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_SingleParentEntity.hxx`:44 - `IGESData_SingleParentEntity::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_SingleParentEntity_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_entity(&self) -> &IGESEntity {
+        unsafe {
+            &*(crate::ffi::IGESData_SingleParentEntity_as_IGESData_IGESEntity(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_entity_mut(&mut self) -> &mut IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESData_SingleParentEntity_as_IGESData_IGESEntity_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESData_SingleParentEntity_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_SingleParentEntity_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_SingleParentEntity_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_SingleParentEntity_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_SingleParentEntity_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_SingleParentEntity_inherited_DirFieldEntity(
+                    self as *const Self,
+                    fieldnum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_HasStructure(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_SingleParentEntity_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESData_SingleParentEntity_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_RankLineFont(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_SingleParentEntity_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESData_SingleParentEntity_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_SingleParentEntity_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_SingleParentEntity_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESData_SingleParentEntity_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_SingleParentEntity_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_SingleParentEntity_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_SingleParentEntity_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESData_SingleParentEntity_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_SingleParentEntity_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_HasLabelDisplay(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_SingleParentEntity_inherited_LabelDisplay(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_BlankStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_SubordinateStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_SingleParentEntity_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_HierarchyStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_LineWeightNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESData_SingleParentEntity_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESData_SingleParentEntity_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_SingleParentEntity_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_SingleParentEntity_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_HasShortLabel(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_SingleParentEntity_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_HasSubScriptNumber(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_SubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_InitTransf(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_InitView(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_InitLineFont(
+                self as *mut Self,
+                ent,
+                rank,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_InitLevel(self as *mut Self, ent, val)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_InitColor(
+                self as *mut Self,
+                ent,
+                rank,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_SetLabel(
+                self as *mut Self,
+                label,
+                sub,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_HasOneParent(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_SingleParentEntity_inherited_UniqueParent(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_SingleParentEntity_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_SingleParentEntity_inherited_VectorLocation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_SingleParentEntity_inherited_CompoundLocation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESData_SingleParentEntity_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_SingleParentEntity_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_NbAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_SingleParentEntity_inherited_Associativities(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_SingleParentEntity_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_Associate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_Dissociate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_ArePresentProperties(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_NbProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_SingleParentEntity_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_SingleParentEntity_inherited_TypedProperty(
+                    self as *const Self,
+                    atype,
+                    anum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_AddProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_RemoveProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_SingleParentEntity_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_SingleParentEntity_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataSingleParentEntity;
+
+unsafe impl crate::CppDeletable for HandleIGESDataSingleParentEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataSingleParentEntity_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataSingleParentEntity {
+    /// Dereference this Handle to access the underlying IGESData_SingleParentEntity
+    pub fn get(&self) -> &crate::ffi::IGESData_SingleParentEntity {
+        unsafe { &*(crate::ffi::HandleIGESDataSingleParentEntity_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_SingleParentEntity
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_SingleParentEntity {
+        unsafe { &mut *(crate::ffi::HandleIGESDataSingleParentEntity_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_SingleParentEntity> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataSingleParentEntity_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_SingleParentEntity> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataSingleParentEntity_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IGESData_SingleParentEntity> to Handle<IGESBasic_SingleParent>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_SingleParent` (or subclass).
+    pub fn downcast_to_single_parent(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicSingleParent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataSingleParentEntity_downcast_to_HandleIGESBasicSingleParent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From IGESData_SpecificLib.hxx
@@ -1241,6 +16451,21 @@ unsafe impl crate::CppDeletable for SpecificLib {
 }
 
 impl SpecificLib {
+    /// **Source:** `IGESData_SpecificLib.hxx`:47 - `IGESData_SpecificLib::IGESData_SpecificLib()`
+    /// Creates a Library which complies with a Protocol, that is :
+    /// Same class (criterium IsInstance)
+    /// This creation gets the Modules from the global set, those
+    /// which are bound to the given Protocol and its Resources
+    pub fn new_handleigesdataprotocol(
+        aprotocol: &crate::ffi::HandleIGESDataProtocol,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_SpecificLib_ctor_handleigesdataprotocol(
+                aprotocol,
+            ))
+        }
+    }
+
     /// **Source:** `IGESData_SpecificLib.hxx`:51 - `IGESData_SpecificLib::IGESData_SpecificLib()`
     /// Creates an empty Library : it will later by filled by method
     /// AddProtocol
@@ -1271,6 +16496,22 @@ impl SpecificLib {
         unsafe { crate::ffi::IGESData_SpecificLib_set_complete(self as *mut Self) }
     }
 
+    /// **Source:** `IGESData_SpecificLib.hxx`:73 - `IGESData_SpecificLib::Select()`
+    /// Selects a Module from the Library, given an Object.
+    /// Returns True if Select has succeeded, False else.
+    /// Also Returns (as arguments) the selected Module and the Case
+    /// Number determined by the associated Protocol.
+    /// If Select has failed, <module> is Null Handle and CN is zero.
+    /// (Select can work on any criterium, such as Object DynamicType)
+    pub fn select(
+        &self,
+        obj: &crate::ffi::HandleIGESDataIGESEntity,
+        module: &mut crate::ffi::HandleIGESDataSpecificModule,
+        CN: &mut i32,
+    ) -> bool {
+        unsafe { crate::ffi::IGESData_SpecificLib_select(self as *const Self, obj, module, CN) }
+    }
+
     /// **Source:** `IGESData_SpecificLib.hxx`:78 - `IGESData_SpecificLib::Start()`
     /// Starts Iteration on the Modules (sets it on the first one)
     pub fn start(&mut self) {
@@ -1289,49 +16530,3069 @@ impl SpecificLib {
     pub fn next(&mut self) {
         unsafe { crate::ffi::IGESData_SpecificLib_next(self as *mut Self) }
     }
+
+    /// **Source:** `IGESData_SpecificLib.hxx`:88 - `IGESData_SpecificLib::Module()`
+    /// Returns the current Module in the Iteration
+    pub fn module(&self) -> &crate::ffi::HandleIGESDataSpecificModule {
+        unsafe { &*(crate::ffi::IGESData_SpecificLib_module(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_SpecificLib.hxx`:91 - `IGESData_SpecificLib::Protocol()`
+    /// Returns the current Protocol in the Iteration
+    pub fn protocol(&self) -> &crate::ffi::HandleIGESDataProtocol {
+        unsafe { &*(crate::ffi::IGESData_SpecificLib_protocol(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_SpecificLib.hxx`:40 - `IGESData_SpecificLib::SetGlobal()`
+    /// Adds a couple (Module-Protocol) into the global definition set
+    /// for this class of Library.
+    pub fn set_global(
+        amodule: &crate::ffi::HandleIGESDataSpecificModule,
+        aprotocol: &crate::ffi::HandleIGESDataProtocol,
+    ) {
+        unsafe { crate::ffi::IGESData_SpecificLib_set_global(amodule, aprotocol) }
+    }
 }
 
-// ── Skipped symbols for SpecificLib (5 total) ──
-// SKIPPED: **Source:** `IGESData_SpecificLib.hxx`:47 - `IGESData_SpecificLib::IGESData_SpecificLib`
-//   constructor: Creates a Library which complies with a Protocol, that is :
-//   constructor: Same class (criterium IsInstance)
-//   constructor: This creation gets the Modules from the global set, those
-//   Reason: param 'aprotocol' uses unknown Handle type
-//   // pub fn new_handleigesdataprotocol(aprotocol: &HandleProtocol) -> OwnedPtr<Self>;
+// ========================
+// From IGESData_SpecificModule.hxx
+// ========================
+
+/// **Source:** `IGESData_SpecificModule.hxx`:33 - `IGESData_SpecificModule`
+/// This class defines some Services which are specifically
+/// attached to IGES Entities : Dump
+pub use crate::ffi::IGESData_SpecificModule as SpecificModule;
+
+unsafe impl crate::CppDeletable for SpecificModule {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_SpecificModule_destructor(ptr);
+    }
+}
+
+impl SpecificModule {
+    /// **Source:** `IGESData_SpecificModule.hxx`:65 - `IGESData_SpecificModule::OwnCorrect()`
+    /// Specific Automatic Correction on own Parameters of an Entity.
+    /// It works by setting in accordance redundant data, if there are
+    /// when there is no ambiguity (else, it does nothing).
+    /// Remark that classic Corrections on Directory Entry (to set
+    /// void data) are taken into account alsewhere.
+    ///
+    /// For instance, many "Associativity Entities" have a Number of
+    /// Properties which must have a fixed value.
+    /// Or, a ConicalArc has its Form Number which records the kind of
+    /// Conic, also determined from its coefficients
+    /// But, a CircularArc of which Distances (Center-Start) and
+    /// (Center-End) are not equal cannot be corrected ...
+    ///
+    /// Returns True if something has been corrected in <ent>
+    /// By default, does nothing. If at least one of the Types
+    /// processed by a sub-class of SpecificModule has a Correct
+    /// procedure attached, this method can be redefined
+    pub fn own_correct(&self, CN: i32, ent: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+        unsafe { crate::ffi::IGESData_SpecificModule_own_correct(self as *const Self, CN, ent) }
+    }
+
+    /// **Source:** `IGESData_SpecificModule.hxx`:68 - `IGESData_SpecificModule::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_SpecificModule_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_SpecificModule.hxx`:68 - `IGESData_SpecificModule::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_SpecificModule_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_SpecificModule.hxx`:68 - `IGESData_SpecificModule::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_SpecificModule_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESData_SpecificModule_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_SpecificModule_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_SpecificModule_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_SpecificModule_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_SpecificModule_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_SpecificModule_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_SpecificModule_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_SpecificModule_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataSpecificModule;
+
+unsafe impl crate::CppDeletable for HandleIGESDataSpecificModule {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataSpecificModule_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataSpecificModule {
+    /// Dereference this Handle to access the underlying IGESData_SpecificModule
+    pub fn get(&self) -> &crate::ffi::IGESData_SpecificModule {
+        unsafe { &*(crate::ffi::HandleIGESDataSpecificModule_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_SpecificModule
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_SpecificModule {
+        unsafe { &mut *(crate::ffi::HandleIGESDataSpecificModule_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_SpecificModule> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataSpecificModule_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IGESData_SpecificModule> to Handle<IGESAppli_SpecificModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_SpecificModule` (or subclass).
+    pub fn downcast_to_iges_appli_specific_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliSpecificModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataSpecificModule_downcast_to_HandleIGESAppliSpecificModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_SpecificModule> to Handle<IGESBasic_SpecificModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_SpecificModule` (or subclass).
+    pub fn downcast_to_iges_basic_specific_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicSpecificModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataSpecificModule_downcast_to_HandleIGESBasicSpecificModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_SpecificModule> to Handle<IGESData_DefaultSpecific>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_DefaultSpecific` (or subclass).
+    pub fn downcast_to_default_specific(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataDefaultSpecific>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataSpecificModule_downcast_to_HandleIGESDataDefaultSpecific(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_SpecificModule> to Handle<IGESDefs_SpecificModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_SpecificModule` (or subclass).
+    pub fn downcast_to_iges_defs_specific_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsSpecificModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataSpecificModule_downcast_to_HandleIGESDefsSpecificModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_SpecificModule> to Handle<IGESDimen_SpecificModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_SpecificModule` (or subclass).
+    pub fn downcast_to_iges_dimen_specific_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenSpecificModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataSpecificModule_downcast_to_HandleIGESDimenSpecificModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_SpecificModule> to Handle<IGESDraw_SpecificModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_SpecificModule` (or subclass).
+    pub fn downcast_to_iges_draw_specific_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawSpecificModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataSpecificModule_downcast_to_HandleIGESDrawSpecificModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_SpecificModule> to Handle<IGESGeom_SpecificModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_SpecificModule` (or subclass).
+    pub fn downcast_to_iges_geom_specific_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomSpecificModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataSpecificModule_downcast_to_HandleIGESGeomSpecificModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_SpecificModule> to Handle<IGESGraph_SpecificModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_SpecificModule` (or subclass).
+    pub fn downcast_to_iges_graph_specific_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphSpecificModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataSpecificModule_downcast_to_HandleIGESGraphSpecificModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_SpecificModule> to Handle<IGESSolid_SpecificModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_SpecificModule` (or subclass).
+    pub fn downcast_to_iges_solid_specific_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidSpecificModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataSpecificModule_downcast_to_HandleIGESSolidSpecificModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ── Skipped symbols for SpecificModule (1 total) ──
+// SKIPPED: **Source:** `IGESData_SpecificModule.hxx`:42 - `IGESData_SpecificModule::OwnDump`
+//   method: Specific Dump for each type of IGES Entity : it concerns only
+//   method: own parameters, the general data (Directory Part, Lists) are
+//   method: taken into account by the IGESDumper
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn own_dump(&self, CN: i32, ent: &HandleIGESEntity, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
 //
-// SKIPPED: **Source:** `IGESData_SpecificLib.hxx`:73 - `IGESData_SpecificLib::Select`
-//   method: Selects a Module from the Library, given an Object.
-//   method: Returns True if Select has succeeded, False else.
-//   method: Also Returns (as arguments) the selected Module and the Case
-//   Reason: param 'module' uses unknown type 'Handle(IGESData_SpecificModule)&'
-//   // pub fn select(&self, obj: &HandleIGESEntity, module: &mut HandleSpecificModule, CN: &mut i32) -> bool;
-//
-// SKIPPED: **Source:** `IGESData_SpecificLib.hxx`:88 - `IGESData_SpecificLib::Module`
-//   method: Returns the current Module in the Iteration
-//   Reason: return type 'const Handle(IGESData_SpecificModule)&' is unknown
-//   // pub fn module(&self) -> &HandleSpecificModule;
-//
-// SKIPPED: **Source:** `IGESData_SpecificLib.hxx`:91 - `IGESData_SpecificLib::Protocol`
-//   method: Returns the current Protocol in the Iteration
-//   Reason: return type 'const Handle(IGESData_Protocol)&' is unknown
-//   // pub fn protocol(&self) -> &HandleProtocol;
-//
-// SKIPPED: **Source:** `IGESData_SpecificLib.hxx`:40 - `IGESData_SpecificLib::SetGlobal`
-//   static_method: Adds a couple (Module-Protocol) into the global definition set
-//   static_method: for this class of Library.
-//   Reason: param 'amodule' uses unknown type 'const Handle(IGESData_SpecificModule)&'
-//   // pub fn set_global(amodule: &HandleSpecificModule, aprotocol: &HandleProtocol);
-//
+
+// ========================
+// From IGESData_ToolLocation.hxx
+// ========================
+
+/// **Source:** `IGESData_ToolLocation.hxx`:55 - `IGESData_ToolLocation`
+/// This Tool determines and gives access to effective Locations
+/// of IGES Entities as defined by the IGES Norm. These Locations
+/// can be for each Entity :
+/// - on one part, explicitly defined by a Transf in Directory
+/// Part (this Transf can be itself compound); if not defined,
+/// no proper Transformation is defined
+/// - on the other part, implicitly defined by a reference from
+/// another Entity : its Parent
+/// Both implicit and explicit locations are combinable.
+///
+/// Implicit definition can be itself defined, either through the
+/// definition of an Entity (i.e. a Composite Curve references
+/// a list of Curves), or by a specific Associativity, of type
+/// SingleParentEntity, by which the Location of the Parent is
+/// applied to the Childs defined by this Associativity.
+/// Remark that a Transf itself has no Location, but it can be
+/// compound
+///
+/// This is a TShared object, then it is easier to use in an
+/// interactive session
+pub use crate::ffi::IGESData_ToolLocation as ToolLocation;
+
+unsafe impl crate::CppDeletable for ToolLocation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_ToolLocation_destructor(ptr);
+    }
+}
+
+impl ToolLocation {
+    /// **Source:** `IGESData_ToolLocation.hxx`:62 - `IGESData_ToolLocation::IGESData_ToolLocation()`
+    /// Creates a ToolLocation on a given Model, filled with the help
+    /// of a Protocol (which allows to known Entities referenced by
+    /// other ones)
+    pub fn new_handleigesdataigesmodel_handleigesdataprotocol(
+        amodel: &crate::ffi::HandleIGESDataIGESModel,
+        protocol: &crate::ffi::HandleIGESDataProtocol,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ToolLocation_ctor_handleigesdataigesmodel_handleigesdataprotocol(amodel, protocol))
+        }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:66 - `IGESData_ToolLocation::Load()`
+    /// Does the effective work of determining Locations of Entities
+    pub fn load(&mut self) {
+        unsafe { crate::ffi::IGESData_ToolLocation_load(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:70 - `IGESData_ToolLocation::SetPrecision()`
+    /// Sets a precision for the Analysis of Locations
+    /// (default by constructor is 1.E-05)
+    pub fn set_precision(&mut self, prec: f64) {
+        unsafe { crate::ffi::IGESData_ToolLocation_set_precision(self as *mut Self, prec) }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:74 - `IGESData_ToolLocation::SetReference()`
+    /// Sets the "Reference" information for <child> as being <parent>
+    /// Sets an Error Status if already set (see method IsAmbiguous)
+    pub fn set_reference(
+        &mut self,
+        parent: &crate::ffi::HandleIGESDataIGESEntity,
+        child: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe { crate::ffi::IGESData_ToolLocation_set_reference(self as *mut Self, parent, child) }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:79 - `IGESData_ToolLocation::SetParentAssoc()`
+    /// Sets the "Associativity" information for <child> as being
+    /// <parent> (it must be the Parent itself, not the Associativity)
+    pub fn set_parent_assoc(
+        &mut self,
+        parent: &crate::ffi::HandleIGESDataIGESEntity,
+        child: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_ToolLocation_set_parent_assoc(self as *mut Self, parent, child)
+        }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:83 - `IGESData_ToolLocation::ResetDependences()`
+    /// Resets all information about dependences for <child>
+    pub fn reset_dependences(&mut self, child: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_ToolLocation_reset_dependences(self as *mut Self, child) }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:88 - `IGESData_ToolLocation::SetOwnAsDependent()`
+    /// Unitary action which defines Entities referenced by <ent>
+    /// (except those in Directory Part and Associativities List)
+    /// as Dependent (their Locations are related to that of <ent>)
+    pub fn set_own_as_dependent(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_ToolLocation_set_own_as_dependent(self as *mut Self, ent) }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:92 - `IGESData_ToolLocation::IsTransf()`
+    /// Returns True if <ent> is kind of TransfEntity. Then, it has
+    /// no location, while it can be used to define a Location)
+    pub fn is_transf(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+        unsafe { crate::ffi::IGESData_ToolLocation_is_transf(self as *const Self, ent) }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:96 - `IGESData_ToolLocation::IsAssociativity()`
+    /// Returns True if <ent> is an Associativity (IGES Type 402).
+    /// Then, Location does not apply.
+    pub fn is_associativity(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+        unsafe { crate::ffi::IGESData_ToolLocation_is_associativity(self as *const Self, ent) }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:100 - `IGESData_ToolLocation::HasTransf()`
+    /// Returns True if <ent> has a Transformation Matrix in proper
+    /// (referenced from its Directory Part)
+    pub fn has_transf(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+        unsafe { crate::ffi::IGESData_ToolLocation_has_transf(self as *const Self, ent) }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:104 - `IGESData_ToolLocation::ExplicitLocation()`
+    /// Returns the Explicit Location defined by the Transformation
+    /// Matrix of <ent>. Identity if there is none
+    pub fn explicit_location(
+        &self,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ToolLocation_explicit_location(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:108 - `IGESData_ToolLocation::IsAmbiguous()`
+    /// Returns True if more than one Parent has been determined for
+    /// <ent>, by adding direct References and Associativities
+    pub fn is_ambiguous(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+        unsafe { crate::ffi::IGESData_ToolLocation_is_ambiguous(self as *const Self, ent) }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:112 - `IGESData_ToolLocation::HasParent()`
+    /// Returns True if <ent> is dependent from one and only one other
+    /// Entity, either by Reference or by Associativity
+    pub fn has_parent(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+        unsafe { crate::ffi::IGESData_ToolLocation_has_parent(self as *const Self, ent) }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:116 - `IGESData_ToolLocation::Parent()`
+    /// Returns the unique Parent recorded for <ent>.
+    /// Returns a Null Handle if there is none
+    pub fn parent(
+        &self,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ToolLocation_parent(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:122 - `IGESData_ToolLocation::HasParentByAssociativity()`
+    /// Returns True if the Parent, if there is one, is defined by
+    /// a SingleParentEntity Associativity
+    /// Else, if HasParent is True, it is by Reference
+    pub fn has_parent_by_associativity(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ToolLocation_has_parent_by_associativity(self as *const Self, ent)
+        }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:128 - `IGESData_ToolLocation::ParentLocation()`
+    /// Returns the effective Location of the Parent of <ent>, if
+    /// there is one : this Location is itself given as compound
+    /// according dependences on the Parent, if there are some.
+    /// Returns an Identity Transformation if no Parent is recorded.
+    pub fn parent_location(
+        &self,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ToolLocation_parent_location(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:133 - `IGESData_ToolLocation::EffectiveLocation()`
+    /// Returns the effective Location of an Entity, i.e. the
+    /// composition of its proper Transformation Matrix (returned by
+    /// Transf) and its Parent's Location (returned by ParentLocation)
+    pub fn effective_location(
+        &self,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ToolLocation_effective_location(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:140 - `IGESData_ToolLocation::AnalyseLocation()`
+    /// Analysis a Location given as a GTrsf, by trying to convert it
+    /// to a Trsf (i.e. to a True Location of which effect is
+    /// described by an Isometry or a Similarity)
+    /// Works with the Precision given by default or by SetPrecision
+    /// Calls ConvertLocation (see below)
+    pub fn analyse_location(&self, loc: &crate::gp::GTrsf, result: &mut crate::gp::Trsf) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ToolLocation_analyse_location(self as *const Self, loc, result)
+        }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:155 - `IGESData_ToolLocation::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_ToolLocation_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:150 - `IGESData_ToolLocation::ConvertLocation()`
+    /// Conversion of a Location, from GTrsf form to Trsf form
+    /// Works with a precision given as argument.
+    /// Returns True if the Conversion is possible, (hence, <result>
+    /// contains the converted location), False else
+    /// <unit>, if given, indicates the unit in which <loc> is defined
+    /// in meters. It concerns the translation part (to be converted.
+    ///
+    /// As a class method, it can be called separately
+    pub fn convert_location(
+        prec: f64,
+        loc: &crate::gp::GTrsf,
+        result: &mut crate::gp::Trsf,
+        uni: f64,
+    ) -> bool {
+        unsafe { crate::ffi::IGESData_ToolLocation_convert_location(prec, loc, result, uni) }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:155 - `IGESData_ToolLocation::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_ToolLocation_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_ToolLocation.hxx`:155 - `IGESData_ToolLocation::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_ToolLocation_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESData_ToolLocation_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_ToolLocation_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataToolLocation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ToolLocation_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ToolLocation_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESData_ToolLocation_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ToolLocation_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_ToolLocation_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_ToolLocation_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_ToolLocation_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataToolLocation;
+
+unsafe impl crate::CppDeletable for HandleIGESDataToolLocation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataToolLocation_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataToolLocation {
+    /// Dereference this Handle to access the underlying IGESData_ToolLocation
+    pub fn get(&self) -> &crate::ffi::IGESData_ToolLocation {
+        unsafe { &*(crate::ffi::HandleIGESDataToolLocation_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_ToolLocation
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_ToolLocation {
+        unsafe { &mut *(crate::ffi::HandleIGESDataToolLocation_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_ToolLocation> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataToolLocation_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IGESData_TransfEntity.hxx
+// ========================
+
+/// **Source:** `IGESData_TransfEntity.hxx`:31 - `IGESData_TransfEntity`
+/// defines required type for Transf in directory part
+/// an effective Transf entity must inherits it
+pub use crate::ffi::IGESData_TransfEntity as TransfEntity;
+
+unsafe impl crate::CppDeletable for TransfEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_TransfEntity_destructor(ptr);
+    }
+}
+
+impl TransfEntity {
+    /// **Source:** `IGESData_TransfEntity.hxx`:40 - `IGESData_TransfEntity::Value()`
+    /// gives value of the transformation, as a GTrsf
+    /// To be defined by an effective class of Transformation Entity
+    /// Warning : Must take in account Composition : if a TransfEntity has in
+    /// its Directory Part, a Transf, this means that it is Compound,
+    /// Value must return the global result
+    pub fn value(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_value(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IGESData_TransfEntity.hxx`:42 - `IGESData_TransfEntity::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_TransfEntity_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_TransfEntity.hxx`:42 - `IGESData_TransfEntity::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_TransfEntity_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_TransfEntity.hxx`:42 - `IGESData_TransfEntity::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_TransfEntity_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_entity(&self) -> &IGESEntity {
+        unsafe { &*(crate::ffi::IGESData_TransfEntity_as_IGESData_IGESEntity(self as *const Self)) }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_entity_mut(&mut self) -> &mut IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESData_TransfEntity_as_IGESData_IGESEntity_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IGESData_TransfEntity_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_TransfEntity_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESData_TransfEntity_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESData_TransfEntity_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESData_TransfEntity_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_HasLabelDisplay(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_SubordinateStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_HierarchyStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_LineWeightNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESData_TransfEntity_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_SubScriptNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_InitLevel(self as *mut Self, ent, val)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_CompoundLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_NbAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_Associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_TransfEntity_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_Dissociate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_TransfEntity_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_RemoveProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_TransfEntity_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_TransfEntity_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataTransfEntity;
+
+unsafe impl crate::CppDeletable for HandleIGESDataTransfEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataTransfEntity_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataTransfEntity {
+    /// Dereference this Handle to access the underlying IGESData_TransfEntity
+    pub fn get(&self) -> &crate::ffi::IGESData_TransfEntity {
+        unsafe { &*(crate::ffi::HandleIGESDataTransfEntity_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_TransfEntity
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_TransfEntity {
+        unsafe { &mut *(crate::ffi::HandleIGESDataTransfEntity_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_TransfEntity> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataTransfEntity_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_TransfEntity> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataTransfEntity_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IGESData_TransfEntity> to Handle<IGESGeom_TransformationMatrix>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_TransformationMatrix` (or subclass).
+    pub fn downcast_to_transformation_matrix(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomTransformationMatrix>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataTransfEntity_downcast_to_HandleIGESGeomTransformationMatrix(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From IGESData_UndefinedEntity.hxx
+// ========================
+
+/// **Source:** `IGESData_UndefinedEntity.hxx`:40 - `IGESData_UndefinedEntity`
+/// undefined (unknown or error) entity specific of IGES
+/// DirPart can be correct or not : if it is not, a flag indicates
+/// it, and each corrupted field has an associated error flag
+pub use crate::ffi::IGESData_UndefinedEntity as UndefinedEntity;
+
+unsafe impl crate::CppDeletable for UndefinedEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_UndefinedEntity_destructor(ptr);
+    }
+}
+
+impl UndefinedEntity {
+    /// **Source:** `IGESData_UndefinedEntity.hxx`:45 - `IGESData_UndefinedEntity::IGESData_UndefinedEntity()`
+    /// creates an unknown entity
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_ctor()) }
+    }
+
+    /// **Source:** `IGESData_UndefinedEntity.hxx`:48 - `IGESData_UndefinedEntity::UndefinedContent()`
+    /// Returns own data as an UndefinedContent
+    pub fn undefined_content(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceUndefinedContent> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_undefined_content(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_UndefinedEntity.hxx`:51 - `IGESData_UndefinedEntity::ChangeableContent()`
+    /// Returns own data as an UndefinedContent, in order to touch it
+    pub fn changeable_content(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceUndefinedContent> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_changeable_content(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_UndefinedEntity.hxx`:55 - `IGESData_UndefinedEntity::SetNewContent()`
+    /// Redefines a completely new UndefinedContent
+    /// Used by a Copy which begins by ShallowCopy, for instance
+    pub fn set_new_content(&mut self, cont: &crate::ffi::HandleInterfaceUndefinedContent) {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_set_new_content(self as *mut Self, cont) }
+    }
+
+    /// **Source:** `IGESData_UndefinedEntity.hxx`:59 - `IGESData_UndefinedEntity::IsOKDirPart()`
+    /// says if DirPart is OK or not (if not, it is erroneous)
+    /// Note that if it is not, Def* methods can return Error status
+    pub fn is_ok_dir_part(&self) -> bool {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_is_ok_dir_part(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_UndefinedEntity.hxx`:62 - `IGESData_UndefinedEntity::DirStatus()`
+    /// returns Directory Error Status (used for Copy)
+    pub fn dir_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_dir_status(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_UndefinedEntity.hxx`:66 - `IGESData_UndefinedEntity::SetOKDirPart()`
+    /// Erases the Directory Error Status
+    /// Warning : Be sure that data are consistent to call this method ...
+    pub fn set_ok_dir_part(&mut self) {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_set_ok_dir_part(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_UndefinedEntity.hxx`:69 - `IGESData_UndefinedEntity::DefLineFont()`
+    /// returns Error status if necessary, else calls original method
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(crate::ffi::IGESData_UndefinedEntity_def_line_font(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `IGESData_UndefinedEntity.hxx`:72 - `IGESData_UndefinedEntity::DefLevel()`
+    /// returns Error status if necessary, else calls original method
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESData_UndefinedEntity_def_level(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `IGESData_UndefinedEntity.hxx`:75 - `IGESData_UndefinedEntity::DefView()`
+    /// returns Error status if necessary, else calls original method
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(crate::ffi::IGESData_UndefinedEntity_def_view(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `IGESData_UndefinedEntity.hxx`:78 - `IGESData_UndefinedEntity::DefColor()`
+    /// returns Error status if necessary, else calls original method
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(crate::ffi::IGESData_UndefinedEntity_def_color(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `IGESData_UndefinedEntity.hxx`:82 - `IGESData_UndefinedEntity::HasSubScriptNumber()`
+    /// returns Error status if necessary, else calls original method
+    /// (that is, if SubScript field is not blank or positive integer)
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_has_sub_script_number(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_UndefinedEntity.hxx`:90 - `IGESData_UndefinedEntity::ReadDir()`
+    /// Computes the Directory Error Status, to be called before
+    /// standard ReadDir from IGESReaderTool
+    /// Returns True if OK (hence, Directory can be loaded),
+    /// Else returns False and the DirPart <DP> is modified
+    /// (hence, Directory Error Status is non null; and standard Read
+    /// will work with an acceptable DirectoryPart)
+    pub fn read_dir(
+        &mut self,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        DP: &mut DirPart,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+    ) -> bool {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_read_dir(self as *mut Self, IR, DP, ach) }
+    }
+
+    /// **Source:** `IGESData_UndefinedEntity.hxx`:99 - `IGESData_UndefinedEntity::ReadOwnParams()`
+    /// reads own parameters from file; PR gives access to them, IR
+    /// detains parameter types and values
+    /// Here, reads all parameters, integers are considered as entity
+    /// reference unless they cannot be; no list interpretation
+    /// No property or associativity list is managed
+    pub fn read_own_params(
+        &mut self,
+        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        PR: &mut ParamReader,
+    ) {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_read_own_params(self as *mut Self, IR, PR) }
+    }
+
+    /// **Source:** `IGESData_UndefinedEntity.hxx`:103 - `IGESData_UndefinedEntity::WriteOwnParams()`
+    /// writes parameters to IGESWriter, taken from UndefinedContent
+    pub fn write_own_params(&self, IW: &mut IGESWriter) {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_write_own_params(self as *const Self, IW) }
+    }
+
+    /// **Source:** `IGESData_UndefinedEntity.hxx`:105 - `IGESData_UndefinedEntity::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_UndefinedEntity_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_UndefinedEntity.hxx`:105 - `IGESData_UndefinedEntity::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_UndefinedEntity_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_UndefinedEntity.hxx`:105 - `IGESData_UndefinedEntity::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_UndefinedEntity_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_entity(&self) -> &IGESEntity {
+        unsafe {
+            &*(crate::ffi::IGESData_UndefinedEntity_as_IGESData_IGESEntity(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_entity_mut(&mut self) -> &mut IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESData_UndefinedEntity_as_IGESData_IGESEntity_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESData_UndefinedEntity_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_UndefinedEntity_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataUndefinedEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_UndefinedEntity_inherited_DirFieldEntity(
+                    self as *const Self,
+                    fieldnum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_HasLabelDisplay(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_SubordinateStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_HierarchyStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_LineWeightNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_SubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_InitLineFont(
+                self as *mut Self,
+                ent,
+                rank,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_InitLevel(self as *mut Self, ent, val)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_UndefinedEntity_inherited_VectorLocation(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_UndefinedEntity_inherited_CompoundLocation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_NbAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_UndefinedEntity_inherited_Associativities(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_UndefinedEntity_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_Associate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_Dissociate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_UndefinedEntity_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_AddProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_RemoveProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_UndefinedEntity_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_UndefinedEntity_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataUndefinedEntity;
+
+unsafe impl crate::CppDeletable for HandleIGESDataUndefinedEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataUndefinedEntity_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataUndefinedEntity {
+    /// Dereference this Handle to access the underlying IGESData_UndefinedEntity
+    pub fn get(&self) -> &crate::ffi::IGESData_UndefinedEntity {
+        unsafe { &*(crate::ffi::HandleIGESDataUndefinedEntity_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_UndefinedEntity
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_UndefinedEntity {
+        unsafe { &mut *(crate::ffi::HandleIGESDataUndefinedEntity_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_UndefinedEntity> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataUndefinedEntity_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_UndefinedEntity> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataUndefinedEntity_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IGESData_UndefinedEntity> to Handle<IGESData_FreeFormatEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_FreeFormatEntity` (or subclass).
+    pub fn downcast_to_free_format_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataFreeFormatEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataUndefinedEntity_downcast_to_HandleIGESDataFreeFormatEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From IGESData_ViewKindEntity.hxx
+// ========================
+
+/// **Source:** `IGESData_ViewKindEntity.hxx`:33 - `IGESData_ViewKindEntity`
+/// defines required type for ViewKind in directory part
+/// that is, Single view or Multiple view
+/// An effective ViewKind entity must inherit it and define
+/// IsSingle (True for Single, False for List of Views),
+/// NbViews and ViewItem (especially for a List)
+pub use crate::ffi::IGESData_ViewKindEntity as ViewKindEntity;
+
+unsafe impl crate::CppDeletable for ViewKindEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_ViewKindEntity_destructor(ptr);
+    }
+}
+
+impl ViewKindEntity {
+    /// **Source:** `IGESData_ViewKindEntity.hxx`:38 - `IGESData_ViewKindEntity::IsSingle()`
+    /// says if "me" is a Single View (True) or a List of Views (False)
+    pub fn is_single(&self) -> bool {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_is_single(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_ViewKindEntity.hxx`:42 - `IGESData_ViewKindEntity::NbViews()`
+    /// Returns the count of Views for a List of Views. For a Single
+    /// View, may return simply 1
+    pub fn nb_views(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_nb_views(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_ViewKindEntity.hxx`:46 - `IGESData_ViewKindEntity::ViewItem()`
+    /// Returns the View n0. <num> for a List of Views. For a Single
+    /// Views, may return <me> itself
+    pub fn view_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_view_item(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_ViewKindEntity.hxx`:49 - `IGESData_ViewKindEntity::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_ViewKindEntity_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_ViewKindEntity.hxx`:49 - `IGESData_ViewKindEntity::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_ViewKindEntity_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_ViewKindEntity.hxx`:49 - `IGESData_ViewKindEntity::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_ViewKindEntity_get_type_descriptor()) }
+    }
+
+    /// Upcast to IGESData_IGESEntity
+    pub fn as_iges_entity(&self) -> &IGESEntity {
+        unsafe {
+            &*(crate::ffi::IGESData_ViewKindEntity_as_IGESData_IGESEntity(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESData_IGESEntity (mutable)
+    pub fn as_iges_entity_mut(&mut self) -> &mut IGESEntity {
+        unsafe {
+            &mut *(crate::ffi::IGESData_ViewKindEntity_as_IGESData_IGESEntity_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IGESData_ViewKindEntity_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IGESData_ViewKindEntity_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
+    pub fn iges_type(&self) -> crate::OwnedPtr<IGESType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_inherited_IGESType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
+    pub fn type_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_TypeNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
+    pub fn form_number(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_FormNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_inherited_DirFieldEntity(
+                self as *const Self,
+                fieldnum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
+    pub fn has_structure(&self) -> bool {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_HasStructure(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_inherited_Structure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESData_ViewKindEntity_inherited_DefLineFont(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
+    pub fn rank_line_font(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_RankLineFont(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_inherited_LineFont(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESData_ViewKindEntity_inherited_DefLevel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_inherited_LevelList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        unsafe {
+            crate::iges_data::DefList::try_from(
+                crate::ffi::IGESData_ViewKindEntity_inherited_DefView(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_inherited_View(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_inherited_SingleView(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_inherited_ViewList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
+    pub fn has_transf(&self) -> bool {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_HasTransf(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_inherited_Transf(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
+    pub fn has_label_display(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_HasLabelDisplay(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
+    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_inherited_LabelDisplay(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
+    pub fn blank_status(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_BlankStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
+    pub fn subordinate_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_SubordinateStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
+    pub fn use_flag(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_UseFlag(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
+    pub fn hierarchy_status(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_HierarchyStatus(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
+    pub fn line_weight_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_LineWeightNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
+    pub fn line_weight(&self) -> f64 {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_LineWeight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        unsafe {
+            crate::iges_data::DefType::try_from(
+                crate::ffi::IGESData_ViewKindEntity_inherited_DefColor(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
+    pub fn rank_color(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_RankColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_inherited_Color(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
+    pub fn has_short_label(&self) -> bool {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_HasShortLabel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_inherited_ShortLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
+    pub fn has_sub_script_number(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_HasSubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
+    pub fn sub_script_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_SubScriptNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
+    pub fn init_dir_field_entity(
+        &mut self,
+        fieldnum: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
+    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_InitTransf(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
+    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_InitView(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
+    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_InitLineFont(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
+    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_InitLevel(self as *mut Self, ent, val)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
+    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_InitColor(self as *mut Self, ent, rank)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
+    pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_InitStatus(
+                self as *mut Self,
+                blank,
+                subordinate,
+                useflag,
+                hierarchy,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
+    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_SetLabel(self as *mut Self, label, sub)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
+    pub fn init_misc(
+        &mut self,
+        str: &crate::ffi::HandleIGESDataIGESEntity,
+        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        weightnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
+    pub fn has_one_parent(&self) -> bool {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_HasOneParent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_inherited_UniqueParent(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_inherited_VectorLocation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_ViewKindEntity_inherited_CompoundLocation(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_inherited_NameValue(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
+    pub fn are_present_associativities(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
+    pub fn nb_associativities(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_NbAssociativities(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_ViewKindEntity_inherited_Associativities(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_ViewKindEntity_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
+    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_Associate(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
+    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_Dissociate(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
+    pub fn are_present_properties(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_ArePresentProperties(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
+    pub fn nb_properties(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_NbProperties(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_inherited_Properties(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
+    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_ViewKindEntity_inherited_TypedProperty(
+                self as *const Self,
+                atype,
+                anum,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
+    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_AddProperty(self as *mut Self, ent) }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
+    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_RemoveProperty(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
+    pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IGESData_ViewKindEntity_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IGESData_ViewKindEntity_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataViewKindEntity;
+
+unsafe impl crate::CppDeletable for HandleIGESDataViewKindEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataViewKindEntity_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataViewKindEntity {
+    /// Dereference this Handle to access the underlying IGESData_ViewKindEntity
+    pub fn get(&self) -> &crate::ffi::IGESData_ViewKindEntity {
+        unsafe { &*(crate::ffi::HandleIGESDataViewKindEntity_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_ViewKindEntity
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_ViewKindEntity {
+        unsafe { &mut *(crate::ffi::HandleIGESDataViewKindEntity_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESData_ViewKindEntity> to Handle<IGESData_IGESEntity>
+    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataViewKindEntity_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESData_ViewKindEntity> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESDataViewKindEntity_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IGESData_ViewKindEntity> to Handle<IGESDraw_PerspectiveView>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_PerspectiveView` (or subclass).
+    pub fn downcast_to_perspective_view(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawPerspectiveView>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataViewKindEntity_downcast_to_HandleIGESDrawPerspectiveView(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_ViewKindEntity> to Handle<IGESDraw_SegmentedViewsVisible>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_SegmentedViewsVisible` (or subclass).
+    pub fn downcast_to_segmented_views_visible(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawSegmentedViewsVisible>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataViewKindEntity_downcast_to_HandleIGESDrawSegmentedViewsVisible(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_ViewKindEntity> to Handle<IGESDraw_View>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_View` (or subclass).
+    pub fn downcast_to_view(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawView>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataViewKindEntity_downcast_to_HandleIGESDrawView(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_ViewKindEntity> to Handle<IGESDraw_ViewsVisible>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_ViewsVisible` (or subclass).
+    pub fn downcast_to_views_visible(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawViewsVisible>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataViewKindEntity_downcast_to_HandleIGESDrawViewsVisible(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IGESData_ViewKindEntity> to Handle<IGESDraw_ViewsVisibleWithAttr>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_ViewsVisibleWithAttr` (or subclass).
+    pub fn downcast_to_views_visible_with_attr(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawViewsVisibleWithAttr>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESDataViewKindEntity_downcast_to_HandleIGESDrawViewsVisibleWithAttr(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From IGESData_WriterLib.hxx
+// ========================
+
+/// **Source:** `IGESData_WriterLib.hxx`:33 - `IGESData_WriterLib`
+pub use crate::ffi::IGESData_WriterLib as WriterLib;
+
+unsafe impl crate::CppDeletable for WriterLib {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_WriterLib_destructor(ptr);
+    }
+}
+
+impl WriterLib {
+    /// **Source:** `IGESData_WriterLib.hxx`:47 - `IGESData_WriterLib::IGESData_WriterLib()`
+    /// Creates a Library which complies with a Protocol, that is :
+    /// Same class (criterium IsInstance)
+    /// This creation gets the Modules from the global set, those
+    /// which are bound to the given Protocol and its Resources
+    pub fn new_handleigesdataprotocol(
+        aprotocol: &crate::ffi::HandleIGESDataProtocol,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_WriterLib_ctor_handleigesdataprotocol(
+                aprotocol,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_WriterLib.hxx`:51 - `IGESData_WriterLib::IGESData_WriterLib()`
+    /// Creates an empty Library : it will later by filled by method
+    /// AddProtocol
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_WriterLib_ctor()) }
+    }
+
+    /// **Source:** `IGESData_WriterLib.hxx`:56 - `IGESData_WriterLib::AddProtocol()`
+    /// Adds a couple (Module-Protocol) to the Library, given the
+    /// class of a Protocol. Takes Resources into account.
+    /// (if <aprotocol> is not of type TheProtocol, it is not added)
+    pub fn add_protocol(&mut self, aprotocol: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::IGESData_WriterLib_add_protocol(self as *mut Self, aprotocol) }
+    }
+
+    /// **Source:** `IGESData_WriterLib.hxx`:61 - `IGESData_WriterLib::Clear()`
+    /// Clears the list of Modules of a library (can be used to
+    /// redefine the order of Modules before action : Clear then
+    /// refill the Library by calls to AddProtocol)
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::IGESData_WriterLib_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_WriterLib.hxx`:65 - `IGESData_WriterLib::SetComplete()`
+    /// Sets a library to be defined with the complete Global list
+    /// (all the couples Protocol/Modules recorded in it)
+    pub fn set_complete(&mut self) {
+        unsafe { crate::ffi::IGESData_WriterLib_set_complete(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_WriterLib.hxx`:73 - `IGESData_WriterLib::Select()`
+    /// Selects a Module from the Library, given an Object.
+    /// Returns True if Select has succeeded, False else.
+    /// Also Returns (as arguments) the selected Module and the Case
+    /// Number determined by the associated Protocol.
+    /// If Select has failed, <module> is Null Handle and CN is zero.
+    /// (Select can work on any criterium, such as Object DynamicType)
+    pub fn select(
+        &self,
+        obj: &crate::ffi::HandleIGESDataIGESEntity,
+        module: &mut crate::ffi::HandleIGESDataReadWriteModule,
+        CN: &mut i32,
+    ) -> bool {
+        unsafe { crate::ffi::IGESData_WriterLib_select(self as *const Self, obj, module, CN) }
+    }
+
+    /// **Source:** `IGESData_WriterLib.hxx`:78 - `IGESData_WriterLib::Start()`
+    /// Starts Iteration on the Modules (sets it on the first one)
+    pub fn start(&mut self) {
+        unsafe { crate::ffi::IGESData_WriterLib_start(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_WriterLib.hxx`:81 - `IGESData_WriterLib::More()`
+    /// Returns True if there are more Modules to iterate on
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::IGESData_WriterLib_more(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_WriterLib.hxx`:85 - `IGESData_WriterLib::Next()`
+    /// Iterates by getting the next Module in the list
+    /// If there is none, the exception will be raised by Value
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::IGESData_WriterLib_next(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_WriterLib.hxx`:88 - `IGESData_WriterLib::Module()`
+    /// Returns the current Module in the Iteration
+    pub fn module(&self) -> &crate::ffi::HandleIGESDataReadWriteModule {
+        unsafe { &*(crate::ffi::IGESData_WriterLib_module(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_WriterLib.hxx`:91 - `IGESData_WriterLib::Protocol()`
+    /// Returns the current Protocol in the Iteration
+    pub fn protocol(&self) -> &crate::ffi::HandleIGESDataProtocol {
+        unsafe { &*(crate::ffi::IGESData_WriterLib_protocol(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_WriterLib.hxx`:40 - `IGESData_WriterLib::SetGlobal()`
+    /// Adds a couple (Module-Protocol) into the global definition set
+    /// for this class of Library.
+    pub fn set_global(
+        amodule: &crate::ffi::HandleIGESDataReadWriteModule,
+        aprotocol: &crate::ffi::HandleIGESDataProtocol,
+    ) {
+        unsafe { crate::ffi::IGESData_WriterLib_set_global(amodule, aprotocol) }
+    }
+}
 
 // ========================
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
-    IGESData_Array1OfIGESEntity as Array1OfIGESEntity, IGESData_ColorEntity as ColorEntity,
-    IGESData_IGESModel as IGESModel, IGESData_IGESType as IGESType,
-    IGESData_LabelDisplayEntity as LabelDisplayEntity, IGESData_LevelListEntity as LevelListEntity,
-    IGESData_LineFontEntity as LineFontEntity, IGESData_Protocol as Protocol,
-    IGESData_SpecificModule as SpecificModule, IGESData_TransfEntity as TransfEntity,
-    IGESData_ViewKindEntity as ViewKindEntity,
-};
+pub use crate::ffi::IGESData_Array1OfIGESEntity as Array1OfIGESEntity;

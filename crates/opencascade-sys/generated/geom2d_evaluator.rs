@@ -6,6 +6,88 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `Geom2dEvaluator.hxx`:36 - `Geom2dEvaluator::CalculateD0`
+/// Recalculate D1 values of base curve into D0 value of offset curve
+pub fn calculate_d0(theValue: &mut crate::gp::Pnt2d, theD1: &crate::gp::Vec2d, theOffset: f64) {
+    unsafe { crate::ffi::Geom2dEvaluator_calculate_d0(theValue, theD1, theOffset) }
+}
+/// **Source:** `Geom2dEvaluator.hxx`:41 - `Geom2dEvaluator::CalculateD1`
+/// Recalculate D2 values of base curve into D1 values of offset curve
+pub fn calculate_d1(
+    theValue: &mut crate::gp::Pnt2d,
+    theD1: &mut crate::gp::Vec2d,
+    theD2: &crate::gp::Vec2d,
+    theOffset: f64,
+) {
+    unsafe { crate::ffi::Geom2dEvaluator_calculate_d1(theValue, theD1, theD2, theOffset) }
+}
+/// **Source:** `Geom2dEvaluator.hxx`:47 - `Geom2dEvaluator::CalculateD2`
+/// Recalculate D3 values of base curve into D2 values of offset curve
+pub fn calculate_d2(
+    theValue: &mut crate::gp::Pnt2d,
+    theD1: &mut crate::gp::Vec2d,
+    theD2: &mut crate::gp::Vec2d,
+    theD3: &crate::gp::Vec2d,
+    theIsDirChange: bool,
+    theOffset: f64,
+) {
+    unsafe {
+        crate::ffi::Geom2dEvaluator_calculate_d2(
+            theValue,
+            theD1,
+            theD2,
+            theD3,
+            theIsDirChange,
+            theOffset,
+        )
+    }
+}
+/// **Source:** `Geom2dEvaluator.hxx`:55 - `Geom2dEvaluator::CalculateD3`
+/// Recalculate D3 values of base curve into D3 values of offset curve
+pub fn calculate_d3(
+    theValue: &mut crate::gp::Pnt2d,
+    theD1: &mut crate::gp::Vec2d,
+    theD2: &mut crate::gp::Vec2d,
+    theD3: &mut crate::gp::Vec2d,
+    theD4: &crate::gp::Vec2d,
+    theIsDirChange: bool,
+    theOffset: f64,
+) {
+    unsafe {
+        crate::ffi::Geom2dEvaluator_calculate_d3(
+            theValue,
+            theD1,
+            theD2,
+            theD3,
+            theD4,
+            theIsDirChange,
+            theOffset,
+        )
+    }
+}
+/// **Source:** `Geom2dEvaluator.hxx`:65 - `Geom2dEvaluator::AdjustDerivative`
+/// Recalculate derivatives in the singular point
+/// Returns true if the direction of derivatives is changed
+pub fn adjust_derivative(
+    theMaxDerivative: i32,
+    theU: f64,
+    theD1: &mut crate::gp::Vec2d,
+    theD2: &mut crate::gp::Vec2d,
+    theD3: &mut crate::gp::Vec2d,
+    theD4: &mut crate::gp::Vec2d,
+) -> bool {
+    unsafe {
+        crate::ffi::Geom2dEvaluator_adjust_derivative(
+            theMaxDerivative,
+            theU,
+            theD1,
+            theD2,
+            theD3,
+            theD4,
+        )
+    }
+}
+
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::HandleStandardTransient;
 

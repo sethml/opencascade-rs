@@ -6,34 +6,23 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// C++ enum: `IntSurf_TypeTrans`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum TypeTrans {
-    In = 0,
-    Out = 1,
-    Touch = 2,
-    Undecided = 3,
-}
-
-impl From<TypeTrans> for i32 {
-    fn from(value: TypeTrans) -> Self {
-        value as i32
-    }
-}
-
-impl TryFrom<i32> for TypeTrans {
-    type Error = i32;
-
-    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
-        match value {
-            0 => Ok(TypeTrans::In),
-            1 => Ok(TypeTrans::Out),
-            2 => Ok(TypeTrans::Touch),
-            3 => Ok(TypeTrans::Undecided),
-            _ => Err(value),
-        }
-    }
+/// **Source:** `IntSurf.hxx`:42 - `IntSurf::MakeTransition`
+/// Computes the transition of the intersection point
+/// between the two lines.
+/// TgFirst is the tangent vector of the first line.
+/// TgSecond is the tangent vector of the second line.
+/// Normal is the direction used to orientate the cross
+/// product TgFirst^TgSecond.
+/// TFirst is the transition of the point on the first line.
+/// TSecond is the transition of the point on the second line.
+pub fn make_transition(
+    TgFirst: &crate::gp::Vec,
+    TgSecond: &crate::gp::Vec,
+    Normal: &crate::gp::Dir,
+    TFirst: &mut Transition,
+    TSecond: &mut Transition,
+) {
+    unsafe { crate::ffi::IntSurf_make_transition(TgFirst, TgSecond, Normal, TFirst, TSecond) }
 }
 
 /// C++ enum: `IntSurf_Situation`
@@ -64,8 +53,229 @@ impl TryFrom<i32> for Situation {
     }
 }
 
+/// C++ enum: `IntSurf_TypeTrans`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum TypeTrans {
+    In = 0,
+    Out = 1,
+    Touch = 2,
+    Undecided = 3,
+}
+
+impl From<TypeTrans> for i32 {
+    fn from(value: TypeTrans) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for TypeTrans {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(TypeTrans::In),
+            1 => Ok(TypeTrans::Out),
+            2 => Ok(TypeTrans::Touch),
+            3 => Ok(TypeTrans::Undecided),
+            _ => Err(value),
+        }
+    }
+}
+
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::HandleStandardTransient;
+
+// ========================
+// From IntSurf_Couple.hxx
+// ========================
+
+/// **Source:** `IntSurf_Couple.hxx`:26 - `IntSurf_Couple`
+/// creation d 'un couple de 2 entiers
+pub use crate::ffi::IntSurf_Couple as Couple;
+
+unsafe impl crate::CppDeletable for Couple {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntSurf_Couple_destructor(ptr);
+    }
+}
+
+impl Couple {
+    /// **Source:** `IntSurf_Couple.hxx`:31 - `IntSurf_Couple::IntSurf_Couple()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Couple_ctor()) }
+    }
+
+    /// **Source:** `IntSurf_Couple.hxx`:33 - `IntSurf_Couple::IntSurf_Couple()`
+    pub fn new_int2(Index1: i32, Index2: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Couple_ctor_int2(Index1, Index2)) }
+    }
+
+    /// **Source:** `IntSurf_Couple.hxx`:36 - `IntSurf_Couple::First()`
+    /// returns the first element
+    pub fn first(&self) -> i32 {
+        unsafe { crate::ffi::IntSurf_Couple_first(self as *const Self) }
+    }
+
+    /// **Source:** `IntSurf_Couple.hxx`:39 - `IntSurf_Couple::Second()`
+    /// returns the Second element
+    pub fn second(&self) -> i32 {
+        unsafe { crate::ffi::IntSurf_Couple_second(self as *const Self) }
+    }
+}
+
+// ========================
+// From IntSurf_InteriorPoint.hxx
+// ========================
+
+/// **Source:** `IntSurf_InteriorPoint.hxx`:33 - `IntSurf_InteriorPoint`
+/// Definition of a point solution of the
+/// intersection between an implicit an a
+/// parametrised surface. These points are
+/// passing points on the intersection lines,
+/// or starting points for the closed lines
+/// on the parametrised surface.
+pub use crate::ffi::IntSurf_InteriorPoint as InteriorPoint;
+
+unsafe impl crate::CppDeletable for InteriorPoint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntSurf_InteriorPoint_destructor(ptr);
+    }
+}
+
+impl InteriorPoint {
+    /// **Source:** `IntSurf_InteriorPoint.hxx`:38 - `IntSurf_InteriorPoint::IntSurf_InteriorPoint()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_InteriorPoint_ctor()) }
+    }
+
+    /// **Source:** `IntSurf_InteriorPoint.hxx`:40 - `IntSurf_InteriorPoint::IntSurf_InteriorPoint()`
+    pub fn new_pnt_real2_vec_vec2d(
+        P: &crate::gp::Pnt,
+        U: f64,
+        V: f64,
+        Direc: &crate::gp::Vec,
+        Direc2d: &crate::gp::Vec2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_InteriorPoint_ctor_pnt_real2_vec_vec2d(
+                P, U, V, Direc, Direc2d,
+            ))
+        }
+    }
+
+    /// **Source:** `IntSurf_InteriorPoint.hxx`:46 - `IntSurf_InteriorPoint::SetValue()`
+    pub fn set_value(
+        &mut self,
+        P: &crate::gp::Pnt,
+        U: f64,
+        V: f64,
+        Direc: &crate::gp::Vec,
+        Direc2d: &crate::gp::Vec2d,
+    ) {
+        unsafe {
+            crate::ffi::IntSurf_InteriorPoint_set_value(self as *mut Self, P, U, V, Direc, Direc2d)
+        }
+    }
+
+    /// **Source:** `IntSurf_InteriorPoint.hxx`:53 - `IntSurf_InteriorPoint::Value()`
+    /// Returns the 3d coordinates of the interior point.
+    pub fn value(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::IntSurf_InteriorPoint_value(self as *const Self)) }
+    }
+
+    /// **Source:** `IntSurf_InteriorPoint.hxx`:57 - `IntSurf_InteriorPoint::Parameters()`
+    /// Returns the parameters of the interior point on the
+    /// parametric surface.
+    pub fn parameters(&self, U: &mut f64, V: &mut f64) {
+        unsafe { crate::ffi::IntSurf_InteriorPoint_parameters(self as *const Self, U, V) }
+    }
+
+    /// **Source:** `IntSurf_InteriorPoint.hxx`:61 - `IntSurf_InteriorPoint::UParameter()`
+    /// Returns the first parameter of the interior point on the
+    /// parametric surface.
+    pub fn u_parameter(&self) -> f64 {
+        unsafe { crate::ffi::IntSurf_InteriorPoint_u_parameter(self as *const Self) }
+    }
+
+    /// **Source:** `IntSurf_InteriorPoint.hxx`:65 - `IntSurf_InteriorPoint::VParameter()`
+    /// Returns the second parameter of the interior point on the
+    /// parametric surface.
+    pub fn v_parameter(&self) -> f64 {
+        unsafe { crate::ffi::IntSurf_InteriorPoint_v_parameter(self as *const Self) }
+    }
+
+    /// **Source:** `IntSurf_InteriorPoint.hxx`:69 - `IntSurf_InteriorPoint::Direction()`
+    /// Returns the tangent at the intersection in 3d space
+    /// associated to the interior point.
+    pub fn direction(&self) -> &crate::gp::Vec {
+        unsafe { &*(crate::ffi::IntSurf_InteriorPoint_direction(self as *const Self)) }
+    }
+
+    /// **Source:** `IntSurf_InteriorPoint.hxx`:73 - `IntSurf_InteriorPoint::Direction2d()`
+    /// Returns the tangent at the intersection in the parametric
+    /// space of the parametric surface.
+    pub fn direction2d(&self) -> &crate::gp::Vec2d {
+        unsafe { &*(crate::ffi::IntSurf_InteriorPoint_direction2d(self as *const Self)) }
+    }
+}
+
+// ========================
+// From IntSurf_InteriorPointTool.hxx
+// ========================
+
+/// **Source:** `IntSurf_InteriorPointTool.hxx`:31 - `IntSurf_InteriorPointTool`
+/// This class provides a tool on the "interior point"
+/// that can be used to instantiates the Walking
+/// algorithms (see package IntWalk).
+pub use crate::ffi::IntSurf_InteriorPointTool as InteriorPointTool;
+
+unsafe impl crate::CppDeletable for InteriorPointTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntSurf_InteriorPointTool_destructor(ptr);
+    }
+}
+
+impl InteriorPointTool {
+    /// **Source:** `IntSurf_InteriorPointTool.hxx` - `IntSurf_InteriorPointTool::IntSurf_InteriorPointTool()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_InteriorPointTool_ctor()) }
+    }
+
+    /// **Source:** `IntSurf_InteriorPointTool.hxx`:37 - `IntSurf_InteriorPointTool::Value3d()`
+    /// Returns the 3d coordinates of the starting point.
+    pub fn value3d(PStart: &InteriorPoint) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_InteriorPointTool_value3d(PStart)) }
+    }
+
+    /// **Source:** `IntSurf_InteriorPointTool.hxx`:42 - `IntSurf_InteriorPointTool::Value2d()`
+    /// Returns the <U,V> parameters which are associated
+    /// with <P>
+    /// it's the parameters which start the marching algorithm
+    pub fn value2d(PStart: &InteriorPoint, U: &mut f64, V: &mut f64) {
+        unsafe { crate::ffi::IntSurf_InteriorPointTool_value2d(PStart, U, V) }
+    }
+
+    /// **Source:** `IntSurf_InteriorPointTool.hxx`:46 - `IntSurf_InteriorPointTool::Direction3d()`
+    /// returns the tangent at the intersection in 3d space
+    /// associated to <P>
+    pub fn direction3d(PStart: &InteriorPoint) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_InteriorPointTool_direction3d(PStart))
+        }
+    }
+
+    /// **Source:** `IntSurf_InteriorPointTool.hxx`:51 - `IntSurf_InteriorPointTool::Direction2d()`
+    /// returns the tangent at the intersection in the
+    /// parametric space of the parametrized surface.This tangent
+    /// is associated to the value2d
+    pub fn direction2d(PStart: &InteriorPoint) -> crate::OwnedPtr<crate::gp::Dir2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_InteriorPointTool_direction2d(PStart))
+        }
+    }
+}
 
 // ========================
 // From IntSurf_LineOn2S.hxx
@@ -82,8 +292,10 @@ unsafe impl crate::CppDeletable for LineOn2S {
 
 impl LineOn2S {
     /// **Source:** `IntSurf_LineOn2S.hxx`:38 - `IntSurf_LineOn2S::IntSurf_LineOn2S()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_LineOn2S_ctor()) }
+    pub fn new_allocator(theAllocator: &crate::ffi::IntSurf_Allocator) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_LineOn2S_ctor_allocator(theAllocator))
+        }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:41 - `IntSurf_LineOn2S::Add()`
@@ -269,11 +481,182 @@ impl HandleIntSurfLineOn2S {
     }
 }
 
-// ── Skipped symbols for LineOn2S (1 total) ──
-// SKIPPED: **Source:** `IntSurf_LineOn2S.hxx`:38 - `IntSurf_LineOn2S::IntSurf_LineOn2S`
-//   Reason: param 'theAllocator' uses unknown type 'const IntSurf_Allocator&'
-//   // pub fn new_allocator(theAllocator: &Allocator) -> OwnedPtr<Self>;
-//
+// ========================
+// From IntSurf_PathPoint.hxx
+// ========================
+
+/// **Source:** `IntSurf_PathPoint.hxx`:30 - `IntSurf_PathPoint`
+pub use crate::ffi::IntSurf_PathPoint as PathPoint;
+
+unsafe impl crate::CppDeletable for PathPoint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntSurf_PathPoint_destructor(ptr);
+    }
+}
+
+impl PathPoint {
+    /// **Source:** `IntSurf_PathPoint.hxx`:35 - `IntSurf_PathPoint::IntSurf_PathPoint()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_PathPoint_ctor()) }
+    }
+
+    /// **Source:** `IntSurf_PathPoint.hxx`:37 - `IntSurf_PathPoint::IntSurf_PathPoint()`
+    pub fn new_pnt_real2(P: &crate::gp::Pnt, U: f64, V: f64) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_PathPoint_ctor_pnt_real2(P, U, V)) }
+    }
+
+    /// **Source:** `IntSurf_PathPoint.hxx`:39 - `IntSurf_PathPoint::SetValue()`
+    pub fn set_value(&mut self, P: &crate::gp::Pnt, U: f64, V: f64) {
+        unsafe { crate::ffi::IntSurf_PathPoint_set_value(self as *mut Self, P, U, V) }
+    }
+
+    /// **Source:** `IntSurf_PathPoint.hxx`:41 - `IntSurf_PathPoint::AddUV()`
+    pub fn add_uv(&mut self, U: f64, V: f64) {
+        unsafe { crate::ffi::IntSurf_PathPoint_add_uv(self as *mut Self, U, V) }
+    }
+
+    /// **Source:** `IntSurf_PathPoint.hxx`:43 - `IntSurf_PathPoint::SetDirections()`
+    pub fn set_directions(&mut self, V: &crate::gp::Vec, D: &crate::gp::Dir2d) {
+        unsafe { crate::ffi::IntSurf_PathPoint_set_directions(self as *mut Self, V, D) }
+    }
+
+    /// **Source:** `IntSurf_PathPoint.hxx`:45 - `IntSurf_PathPoint::SetTangency()`
+    pub fn set_tangency(&mut self, Tang: bool) {
+        unsafe { crate::ffi::IntSurf_PathPoint_set_tangency(self as *mut Self, Tang) }
+    }
+
+    /// **Source:** `IntSurf_PathPoint.hxx`:47 - `IntSurf_PathPoint::SetPassing()`
+    pub fn set_passing(&mut self, Pass: bool) {
+        unsafe { crate::ffi::IntSurf_PathPoint_set_passing(self as *mut Self, Pass) }
+    }
+
+    /// **Source:** `IntSurf_PathPoint.hxx`:49 - `IntSurf_PathPoint::Value()`
+    pub fn value(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::IntSurf_PathPoint_value(self as *const Self)) }
+    }
+
+    /// **Source:** `IntSurf_PathPoint.hxx`:51 - `IntSurf_PathPoint::Value2d()`
+    pub fn value2d(&self, U: &mut f64, V: &mut f64) {
+        unsafe { crate::ffi::IntSurf_PathPoint_value2d(self as *const Self, U, V) }
+    }
+
+    /// **Source:** `IntSurf_PathPoint.hxx`:53 - `IntSurf_PathPoint::IsPassingPnt()`
+    pub fn is_passing_pnt(&self) -> bool {
+        unsafe { crate::ffi::IntSurf_PathPoint_is_passing_pnt(self as *const Self) }
+    }
+
+    /// **Source:** `IntSurf_PathPoint.hxx`:55 - `IntSurf_PathPoint::IsTangent()`
+    pub fn is_tangent(&self) -> bool {
+        unsafe { crate::ffi::IntSurf_PathPoint_is_tangent(self as *const Self) }
+    }
+
+    /// **Source:** `IntSurf_PathPoint.hxx`:57 - `IntSurf_PathPoint::Direction3d()`
+    pub fn direction3d(&self) -> &crate::gp::Vec {
+        unsafe { &*(crate::ffi::IntSurf_PathPoint_direction3d(self as *const Self)) }
+    }
+
+    /// **Source:** `IntSurf_PathPoint.hxx`:59 - `IntSurf_PathPoint::Direction2d()`
+    pub fn direction2d(&self) -> &crate::gp::Dir2d {
+        unsafe { &*(crate::ffi::IntSurf_PathPoint_direction2d(self as *const Self)) }
+    }
+
+    /// **Source:** `IntSurf_PathPoint.hxx`:61 - `IntSurf_PathPoint::Multiplicity()`
+    pub fn multiplicity(&self) -> i32 {
+        unsafe { crate::ffi::IntSurf_PathPoint_multiplicity(self as *const Self) }
+    }
+
+    /// **Source:** `IntSurf_PathPoint.hxx`:63 - `IntSurf_PathPoint::Parameters()`
+    pub fn parameters(&self, Index: i32, U: &mut f64, V: &mut f64) {
+        unsafe { crate::ffi::IntSurf_PathPoint_parameters(self as *const Self, Index, U, V) }
+    }
+}
+
+// ========================
+// From IntSurf_PathPointTool.hxx
+// ========================
+
+/// **Source:** `IntSurf_PathPointTool.hxx`:31 - `IntSurf_PathPointTool`
+pub use crate::ffi::IntSurf_PathPointTool as PathPointTool;
+
+unsafe impl crate::CppDeletable for PathPointTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntSurf_PathPointTool_destructor(ptr);
+    }
+}
+
+impl PathPointTool {
+    /// **Source:** `IntSurf_PathPointTool.hxx` - `IntSurf_PathPointTool::IntSurf_PathPointTool()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_PathPointTool_ctor()) }
+    }
+
+    /// **Source:** `IntSurf_PathPointTool.hxx`:37 - `IntSurf_PathPointTool::Value3d()`
+    /// Returns the 3d coordinates of the starting point.
+    pub fn value3d(PStart: &PathPoint) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_PathPointTool_value3d(PStart)) }
+    }
+
+    /// **Source:** `IntSurf_PathPointTool.hxx`:42 - `IntSurf_PathPointTool::Value2d()`
+    /// Returns the <U, V> parameters which are associated
+    /// with <P>
+    /// it's the parameters which start the marching algorithm
+    pub fn value2d(PStart: &PathPoint, U: &mut f64, V: &mut f64) {
+        unsafe { crate::ffi::IntSurf_PathPointTool_value2d(PStart, U, V) }
+    }
+
+    /// **Source:** `IntSurf_PathPointTool.hxx`:48 - `IntSurf_PathPointTool::IsPassingPnt()`
+    /// Returns True if the point is a point on a non-oriented
+    /// arc, which means that the intersection line does not
+    /// stop at such a point but just go through such a point.
+    /// IsPassingPnt is True when IsOnArc is True
+    pub fn is_passing_pnt(PStart: &PathPoint) -> bool {
+        unsafe { crate::ffi::IntSurf_PathPointTool_is_passing_pnt(PStart) }
+    }
+
+    /// **Source:** `IntSurf_PathPointTool.hxx`:54 - `IntSurf_PathPointTool::IsTangent()`
+    /// Returns True if the surfaces are tangent at this point.
+    /// IsTangent can be True when IsOnArc is True
+    /// if IsPassingPnt is True and IsTangent is True,this point
+    /// is a stopped point.
+    pub fn is_tangent(PStart: &PathPoint) -> bool {
+        unsafe { crate::ffi::IntSurf_PathPointTool_is_tangent(PStart) }
+    }
+
+    /// **Source:** `IntSurf_PathPointTool.hxx`:59 - `IntSurf_PathPointTool::Direction3d()`
+    /// returns the tangent at the intersection in 3d space
+    /// associated to <P>
+    /// an exception is raised if IsTangent is true.
+    pub fn direction3d(PStart: &PathPoint) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_PathPointTool_direction3d(PStart)) }
+    }
+
+    /// **Source:** `IntSurf_PathPointTool.hxx`:67 - `IntSurf_PathPointTool::Direction2d()`
+    /// returns the tangent at the intersection in the
+    /// parametric space of the parametrized surface.This tangent
+    /// is associated to the value2d
+    /// la tangente a un sens signifiant (indique le sens de chemin
+    /// ement)
+    /// an exception is raised if IsTangent is true.
+    pub fn direction2d(PStart: &PathPoint) -> crate::OwnedPtr<crate::gp::Dir2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_PathPointTool_direction2d(PStart)) }
+    }
+
+    /// **Source:** `IntSurf_PathPointTool.hxx`:72 - `IntSurf_PathPointTool::Multiplicity()`
+    /// Returns the multiplicity of the point i-e
+    /// the number of auxillar parameters associated to the
+    /// point which the principal parameters are given by Value2d
+    pub fn multiplicity(PStart: &PathPoint) -> i32 {
+        unsafe { crate::ffi::IntSurf_PathPointTool_multiplicity(PStart) }
+    }
+
+    /// **Source:** `IntSurf_PathPointTool.hxx`:76 - `IntSurf_PathPointTool::Parameters()`
+    /// Parametric coordinates associated to the multiplicity.
+    /// An exception is raised if Mult<=0 or Mult>multiplicity.
+    pub fn parameters(PStart: &PathPoint, Mult: i32, U: &mut f64, V: &mut f64) {
+        unsafe { crate::ffi::IntSurf_PathPointTool_parameters(PStart, Mult, U, V) }
+    }
+}
 
 // ========================
 // From IntSurf_PntOn2S.hxx
@@ -590,6 +973,62 @@ impl Quadric {
 }
 
 // ========================
+// From IntSurf_QuadricTool.hxx
+// ========================
+
+/// **Source:** `IntSurf_QuadricTool.hxx`:32 - `IntSurf_QuadricTool`
+/// This class provides a tool on a quadric that can be
+/// used to instantiates the Walking algorithms (see
+/// package IntWalk) with a Quadric from IntSurf
+/// as implicit surface.
+pub use crate::ffi::IntSurf_QuadricTool as QuadricTool;
+
+unsafe impl crate::CppDeletable for QuadricTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntSurf_QuadricTool_destructor(ptr);
+    }
+}
+
+impl QuadricTool {
+    /// **Source:** `IntSurf_QuadricTool.hxx` - `IntSurf_QuadricTool::IntSurf_QuadricTool()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_QuadricTool_ctor()) }
+    }
+
+    /// **Source:** `IntSurf_QuadricTool.hxx`:38 - `IntSurf_QuadricTool::Value()`
+    /// Returns the value of the function.
+    pub fn value(Quad: &Quadric, X: f64, Y: f64, Z: f64) -> f64 {
+        unsafe { crate::ffi::IntSurf_QuadricTool_value(Quad, X, Y, Z) }
+    }
+
+    /// **Source:** `IntSurf_QuadricTool.hxx`:44 - `IntSurf_QuadricTool::Gradient()`
+    /// Returns the gradient of the function.
+    pub fn gradient(Quad: &Quadric, X: f64, Y: f64, Z: f64, V: &mut crate::gp::Vec) {
+        unsafe { crate::ffi::IntSurf_QuadricTool_gradient(Quad, X, Y, Z, V) }
+    }
+
+    /// **Source:** `IntSurf_QuadricTool.hxx`:51 - `IntSurf_QuadricTool::ValueAndGradient()`
+    /// Returns the value and the gradient.
+    pub fn value_and_gradient(
+        Quad: &Quadric,
+        X: f64,
+        Y: f64,
+        Z: f64,
+        Val: &mut f64,
+        Grad: &mut crate::gp::Vec,
+    ) {
+        unsafe { crate::ffi::IntSurf_QuadricTool_value_and_gradient(Quad, X, Y, Z, Val, Grad) }
+    }
+
+    /// **Source:** `IntSurf_QuadricTool.hxx`:59 - `IntSurf_QuadricTool::Tolerance()`
+    /// returns the tolerance of the zero of the implicit function
+    pub fn tolerance(Quad: &Quadric) -> f64 {
+        unsafe { crate::ffi::IntSurf_QuadricTool_tolerance(Quad) }
+    }
+}
+
+// ========================
 // From IntSurf_Transition.hxx
 // ========================
 
@@ -736,4 +1175,8 @@ impl Transition {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{IntSurf_Allocator as Allocator, IntSurf_ListOfPntOn2S as ListOfPntOn2S};
+pub use crate::ffi::{
+    IntSurf_Allocator as Allocator, IntSurf_ListOfPntOn2S as ListOfPntOn2S,
+    IntSurf_SequenceOfInteriorPoint as SequenceOfInteriorPoint,
+    IntSurf_SequenceOfPathPoint as SequenceOfPathPoint,
+};

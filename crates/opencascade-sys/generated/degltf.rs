@@ -404,88 +404,6 @@ impl Provider {
         unsafe { &*(crate::ffi::DEGLTF_Provider_dynamic_type(self as *const Self)) }
     }
 
-    /// **Source:** `DEGLTF_Provider.hxx`:51 - `DEGLTF_Provider::Read()`
-    /// Reads a CAD file, according internal configuration
-    /// @param[in] thePath path to the import CAD file
-    /// @param[out] theDocument document to save result
-    /// @param[in] theWS current work session
-    /// @param[in] theProgress progress indicator
-    /// @return true if Read operation has ended correctly
-    pub fn read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
-        &mut self,
-        thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi::HandleTDocStdDocument,
-        theWS: &mut crate::ffi::HandleXSControlWorkSession,
-        theProgress: &crate::message::ProgressRange,
-    ) -> bool {
-        unsafe {
-            crate::ffi::DEGLTF_Provider_read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
-        }
-    }
-
-    /// **Source:** `DEGLTF_Provider.hxx`:63 - `DEGLTF_Provider::Write()`
-    /// Writes a CAD file, according internal configuration
-    /// @param[in] thePath path to the export CAD file
-    /// @param[out] theDocument document to export
-    /// @param[in] theWS current work session
-    /// @param[in] theProgress progress indicator
-    /// @return true if Write operation has ended correctly
-    pub fn write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
-        &mut self,
-        thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi::HandleTDocStdDocument,
-        theWS: &mut crate::ffi::HandleXSControlWorkSession,
-        theProgress: &crate::message::ProgressRange,
-    ) -> bool {
-        unsafe {
-            crate::ffi::DEGLTF_Provider_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
-        }
-    }
-
-    /// **Source:** `DEGLTF_Provider.hxx`:74 - `DEGLTF_Provider::Read()`
-    /// Reads a CAD file, according internal configuration
-    /// @param[in] thePath path to the import CAD file
-    /// @param[out] theDocument document to save result
-    /// @param[in] theProgress progress indicator
-    /// @return true if Read operation has ended correctly
-    pub fn read_asciistring_handletdocstddocument_progressrange(
-        &mut self,
-        thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi::HandleTDocStdDocument,
-        theProgress: &crate::message::ProgressRange,
-    ) -> bool {
-        unsafe {
-            crate::ffi::DEGLTF_Provider_read_asciistring_handletdocstddocument_progressrange(
-                self as *mut Self,
-                thePath,
-                theDocument,
-                theProgress,
-            )
-        }
-    }
-
-    /// **Source:** `DEGLTF_Provider.hxx`:84 - `DEGLTF_Provider::Write()`
-    /// Writes a CAD file, according internal configuration
-    /// @param[in] thePath path to the export CAD file
-    /// @param[out] theDocument document to export
-    /// @param[in] theProgress progress indicator
-    /// @return true if Write operation has ended correctly
-    pub fn write_asciistring_handletdocstddocument_progressrange(
-        &mut self,
-        thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi::HandleTDocStdDocument,
-        theProgress: &crate::message::ProgressRange,
-    ) -> bool {
-        unsafe {
-            crate::ffi::DEGLTF_Provider_write_asciistring_handletdocstddocument_progressrange(
-                self as *mut Self,
-                thePath,
-                theDocument,
-                theProgress,
-            )
-        }
-    }
-
     /// **Source:** `DEGLTF_Provider.hxx`:95 - `DEGLTF_Provider::Read()`
     /// Reads a CAD file, according internal configuration
     /// @param[in] thePath path to the import CAD file
@@ -709,3 +627,33 @@ impl HandleDEGLTFProvider {
         }
     }
 }
+
+// ── Skipped symbols for Provider (4 total) ──
+// SKIPPED: **Source:** `DEGLTF_Provider.hxx`:51 - `DEGLTF_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theDocument document to save result
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DEGLTF_Provider.hxx`:63 - `DEGLTF_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theDocument document to export
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DEGLTF_Provider.hxx`:74 - `DEGLTF_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theDocument document to save result
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DEGLTF_Provider.hxx`:84 - `DEGLTF_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theDocument document to export
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//

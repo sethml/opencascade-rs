@@ -2640,17 +2640,6 @@ unsafe impl crate::CppDeletable for Tool {
 }
 
 impl Tool {
-    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:38 - `XCAFDimTolObjects_Tool::XCAFDimTolObjects_Tool()`
-    pub fn new_handletdocstddocument(
-        theDoc: &crate::ffi::HandleTDocStdDocument,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::XCAFDimTolObjects_Tool_ctor_handletdocstddocument(theDoc),
-            )
-        }
-    }
-
     /// **Source:** `XCAFDimTolObjects_Tool.hxx`:42 - `XCAFDimTolObjects_Tool::GetDimensions()`
     /// Returns a sequence of Dimensions currently stored
     /// in the GD&T table
@@ -2737,6 +2726,12 @@ impl Tool {
         }
     }
 }
+
+// ── Skipped symbols for Tool (1 total) ──
+// SKIPPED: **Source:** `XCAFDimTolObjects_Tool.hxx`:38 - `XCAFDimTolObjects_Tool::XCAFDimTolObjects_Tool`
+//   Reason: param 'theDoc' uses unknown Handle type
+//   // pub fn new_handletdocstddocument(theDoc: &HandleDocument) -> OwnedPtr<Self>;
+//
 
 // ========================
 // Additional type re-exports

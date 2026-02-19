@@ -127,10 +127,25 @@ impl TryFrom<i32> for ParamType {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
-    HandleIFSelectSignAncestor, HandleIFSelectSignCategory, HandleIFSelectSignMultiple,
-    HandleIFSelectSignType, HandleIFSelectSignValidity, HandleIFSelectSignature,
-    HandleMoniToolSignText, HandleMoniToolTypedValue, HandleStandardFailure,
-    HandleStandardTransient, HandleStepDataStepModel, HandleTransferDispatchControl,
+    HandleHeaderSectionProtocol, HandleIFSelectSignAncestor, HandleIFSelectSignCategory,
+    HandleIFSelectSignMultiple, HandleIFSelectSignType, HandleIFSelectSignValidity,
+    HandleIFSelectSignature, HandleIGESAppliGeneralModule, HandleIGESAppliProtocol,
+    HandleIGESAppliReadWriteModule, HandleIGESBasicGeneralModule, HandleIGESBasicProtocol,
+    HandleIGESBasicReadWriteModule, HandleIGESDataDefaultGeneral, HandleIGESDataFileProtocol,
+    HandleIGESDataIGESModel, HandleIGESDataIGESReaderData, HandleIGESDataProtocol,
+    HandleIGESDefsGeneralModule, HandleIGESDefsProtocol, HandleIGESDefsReadWriteModule,
+    HandleIGESDimenGeneralModule, HandleIGESDimenProtocol, HandleIGESDimenReadWriteModule,
+    HandleIGESDrawGeneralModule, HandleIGESDrawProtocol, HandleIGESDrawReadWriteModule,
+    HandleIGESGeomGeneralModule, HandleIGESGeomProtocol, HandleIGESGeomReadWriteModule,
+    HandleIGESGraphGeneralModule, HandleIGESGraphProtocol, HandleIGESGraphReadWriteModule,
+    HandleIGESSelectIGESName, HandleIGESSelectIGESTypeForm, HandleIGESSelectSignColor,
+    HandleIGESSelectSignLevelNumber, HandleIGESSelectSignStatus, HandleIGESSolidGeneralModule,
+    HandleIGESSolidProtocol, HandleIGESSolidReadWriteModule, HandleMoniToolSignText,
+    HandleMoniToolTypedValue, HandleRWHeaderSectionGeneralModule,
+    HandleRWHeaderSectionReadWriteModule, HandleSTEPSelectionsSelectDerived, HandleStandardFailure,
+    HandleStandardTransient, HandleStepAP214Protocol, HandleStepDataDefaultGeneral,
+    HandleStepDataFileProtocol, HandleStepDataProtocol, HandleStepDataStepModel,
+    HandleStepDataStepReaderData, HandleStepSelectStepType, HandleTransferDispatchControl,
     HandleTransferTransferDeadLoop, HandleTransferTransferFailure,
     HandleXSControlSignTransferStatus,
 };
@@ -3426,6 +3441,42 @@ impl HandleInterfaceFileReaderData {
             )
         }
     }
+
+    /// Downcast Handle<Interface_FileReaderData> to Handle<IGESData_IGESReaderData>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_IGESReaderData` (or subclass).
+    pub fn downcast_to_iges_reader_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataIGESReaderData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceFileReaderData_downcast_to_HandleIGESDataIGESReaderData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_FileReaderData> to Handle<StepData_StepReaderData>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_StepReaderData` (or subclass).
+    pub fn downcast_to_step_reader_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataStepReaderData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceFileReaderData_downcast_to_HandleStepDataStepReaderData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -4701,6 +4752,204 @@ impl HandleInterfaceGeneralModule {
                     self as *const Self,
                 ),
             )
+        }
+    }
+
+    /// Downcast Handle<Interface_GeneralModule> to Handle<IGESAppli_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_appli_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceGeneralModule_downcast_to_HandleIGESAppliGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_GeneralModule> to Handle<IGESBasic_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_basic_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceGeneralModule_downcast_to_HandleIGESBasicGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_GeneralModule> to Handle<IGESData_DefaultGeneral>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_DefaultGeneral` (or subclass).
+    pub fn downcast_to_iges_data_default_general(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataDefaultGeneral>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceGeneralModule_downcast_to_HandleIGESDataDefaultGeneral(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_GeneralModule> to Handle<IGESDefs_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_defs_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceGeneralModule_downcast_to_HandleIGESDefsGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_GeneralModule> to Handle<IGESDimen_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_dimen_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceGeneralModule_downcast_to_HandleIGESDimenGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_GeneralModule> to Handle<IGESDraw_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_draw_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceGeneralModule_downcast_to_HandleIGESDrawGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_GeneralModule> to Handle<IGESGeom_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_geom_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceGeneralModule_downcast_to_HandleIGESGeomGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_GeneralModule> to Handle<IGESGraph_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_graph_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceGeneralModule_downcast_to_HandleIGESGraphGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_GeneralModule> to Handle<IGESSolid_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_solid_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceGeneralModule_downcast_to_HandleIGESSolidGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_GeneralModule> to Handle<RWHeaderSection_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `RWHeaderSection_GeneralModule` (or subclass).
+    pub fn downcast_to_rw_header_section_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWHeaderSectionGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceGeneralModule_downcast_to_HandleRWHeaderSectionGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_GeneralModule> to Handle<StepData_DefaultGeneral>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_DefaultGeneral` (or subclass).
+    pub fn downcast_to_step_data_default_general(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataDefaultGeneral>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceGeneralModule_downcast_to_HandleStepDataDefaultGeneral(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -8030,6 +8279,24 @@ impl HandleInterfaceInterfaceModel {
         }
     }
 
+    /// Downcast Handle<Interface_InterfaceModel> to Handle<IGESData_IGESModel>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_IGESModel` (or subclass).
+    pub fn downcast_to_iges_model(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceInterfaceModel_downcast_to_HandleIGESDataIGESModel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Interface_InterfaceModel> to Handle<StepData_StepModel>
     ///
     /// Returns `None` if the handle does not point to a `StepData_StepModel` (or subclass).
@@ -9564,6 +9831,258 @@ impl HandleInterfaceProtocol {
             )
         }
     }
+
+    /// Downcast Handle<Interface_Protocol> to Handle<HeaderSection_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `HeaderSection_Protocol` (or subclass).
+    pub fn downcast_to_header_section_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleHeaderSectionProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceProtocol_downcast_to_HandleHeaderSectionProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_Protocol> to Handle<IGESAppli_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_Protocol` (or subclass).
+    pub fn downcast_to_iges_appli_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceProtocol_downcast_to_HandleIGESAppliProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_Protocol> to Handle<IGESBasic_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_Protocol` (or subclass).
+    pub fn downcast_to_iges_basic_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceProtocol_downcast_to_HandleIGESBasicProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_Protocol> to Handle<IGESData_FileProtocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_FileProtocol` (or subclass).
+    pub fn downcast_to_iges_data_file_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataFileProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceProtocol_downcast_to_HandleIGESDataFileProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_Protocol> to Handle<IGESData_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_Protocol` (or subclass).
+    pub fn downcast_to_iges_data_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceProtocol_downcast_to_HandleIGESDataProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_Protocol> to Handle<IGESDefs_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_Protocol` (or subclass).
+    pub fn downcast_to_iges_defs_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceProtocol_downcast_to_HandleIGESDefsProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_Protocol> to Handle<IGESDimen_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_Protocol` (or subclass).
+    pub fn downcast_to_iges_dimen_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceProtocol_downcast_to_HandleIGESDimenProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_Protocol> to Handle<IGESDraw_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_Protocol` (or subclass).
+    pub fn downcast_to_iges_draw_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceProtocol_downcast_to_HandleIGESDrawProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_Protocol> to Handle<IGESGeom_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_Protocol` (or subclass).
+    pub fn downcast_to_iges_geom_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceProtocol_downcast_to_HandleIGESGeomProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_Protocol> to Handle<IGESGraph_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_Protocol` (or subclass).
+    pub fn downcast_to_iges_graph_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceProtocol_downcast_to_HandleIGESGraphProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_Protocol> to Handle<IGESSolid_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Protocol` (or subclass).
+    pub fn downcast_to_iges_solid_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceProtocol_downcast_to_HandleIGESSolidProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_Protocol> to Handle<StepAP214_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_Protocol` (or subclass).
+    pub fn downcast_to_step_ap214_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214Protocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceProtocol_downcast_to_HandleStepAP214Protocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_Protocol> to Handle<StepData_FileProtocol>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_FileProtocol` (or subclass).
+    pub fn downcast_to_step_data_file_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataFileProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceProtocol_downcast_to_HandleStepDataFileProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_Protocol> to Handle<StepData_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_Protocol` (or subclass).
+    pub fn downcast_to_step_data_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceProtocol_downcast_to_HandleStepDataProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -9864,6 +10383,168 @@ impl HandleInterfaceReaderModule {
                     self as *const Self,
                 ),
             )
+        }
+    }
+
+    /// Downcast Handle<Interface_ReaderModule> to Handle<IGESAppli_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_appli_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceReaderModule_downcast_to_HandleIGESAppliReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_ReaderModule> to Handle<IGESBasic_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_basic_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceReaderModule_downcast_to_HandleIGESBasicReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_ReaderModule> to Handle<IGESDefs_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_defs_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceReaderModule_downcast_to_HandleIGESDefsReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_ReaderModule> to Handle<IGESDimen_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_dimen_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceReaderModule_downcast_to_HandleIGESDimenReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_ReaderModule> to Handle<IGESDraw_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_draw_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceReaderModule_downcast_to_HandleIGESDrawReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_ReaderModule> to Handle<IGESGeom_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_geom_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceReaderModule_downcast_to_HandleIGESGeomReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_ReaderModule> to Handle<IGESGraph_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_graph_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceReaderModule_downcast_to_HandleIGESGraphReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_ReaderModule> to Handle<IGESSolid_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_solid_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceReaderModule_downcast_to_HandleIGESSolidReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_ReaderModule> to Handle<RWHeaderSection_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `RWHeaderSection_ReadWriteModule` (or subclass).
+    pub fn downcast_to_rw_header_section_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWHeaderSectionReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceReaderModule_downcast_to_HandleRWHeaderSectionReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -11166,6 +11847,132 @@ impl HandleInterfaceSignType {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignature>> {
         let ptr = unsafe {
             crate::ffi::HandleInterfaceSignType_downcast_to_HandleIFSelectSignature(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_SignType> to Handle<IGESSelect_IGESName>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_IGESName` (or subclass).
+    pub fn downcast_to_iges_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectIGESName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceSignType_downcast_to_HandleIGESSelectIGESName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_SignType> to Handle<IGESSelect_IGESTypeForm>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_IGESTypeForm` (or subclass).
+    pub fn downcast_to_iges_type_form(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectIGESTypeForm>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceSignType_downcast_to_HandleIGESSelectIGESTypeForm(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_SignType> to Handle<IGESSelect_SignColor>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SignColor` (or subclass).
+    pub fn downcast_to_sign_color(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSignColor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceSignType_downcast_to_HandleIGESSelectSignColor(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_SignType> to Handle<IGESSelect_SignLevelNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SignLevelNumber` (or subclass).
+    pub fn downcast_to_sign_level_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSignLevelNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceSignType_downcast_to_HandleIGESSelectSignLevelNumber(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_SignType> to Handle<IGESSelect_SignStatus>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SignStatus` (or subclass).
+    pub fn downcast_to_sign_status(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSignStatus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceSignType_downcast_to_HandleIGESSelectSignStatus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_SignType> to Handle<STEPSelections_SelectDerived>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectDerived` (or subclass).
+    pub fn downcast_to_select_derived(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectDerived>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceSignType_downcast_to_HandleSTEPSelectionsSelectDerived(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_SignType> to Handle<StepSelect_StepType>
+    ///
+    /// Returns `None` if the handle does not point to a `StepSelect_StepType` (or subclass).
+    pub fn downcast_to_step_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepSelectStepType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceSignType_downcast_to_HandleStepSelectStepType(
                 self as *const Self,
             )
         };

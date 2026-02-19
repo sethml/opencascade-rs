@@ -236,9 +236,32 @@ impl TryFrom<i32> for ReturnStatus {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
-    HandleInterfaceSignType, HandleMoniToolSignText, HandleStandardTransient,
-    HandleXSControlConnectedShapes, HandleXSControlSelectForTransfer,
-    HandleXSControlSignTransferStatus, HandleXSControlWorkSession,
+    HandleAPIHeaderSectionEditHeader, HandleIGESSelectActivator, HandleIGESSelectAddFileComment,
+    HandleIGESSelectAddGroup, HandleIGESSelectAutoCorrect, HandleIGESSelectChangeLevelList,
+    HandleIGESSelectChangeLevelNumber, HandleIGESSelectComputeStatus,
+    HandleIGESSelectCounterOfLevelNumber, HandleIGESSelectDispPerDrawing,
+    HandleIGESSelectDispPerSingleView, HandleIGESSelectDumper, HandleIGESSelectEditDirPart,
+    HandleIGESSelectEditHeader, HandleIGESSelectFloatFormat, HandleIGESSelectIGESName,
+    HandleIGESSelectIGESTypeForm, HandleIGESSelectRebuildDrawings, HandleIGESSelectRebuildGroups,
+    HandleIGESSelectRemoveCurves, HandleIGESSelectSelectBasicGeom,
+    HandleIGESSelectSelectBypassGroup, HandleIGESSelectSelectBypassSubfigure,
+    HandleIGESSelectSelectDrawingFrom, HandleIGESSelectSelectFaces,
+    HandleIGESSelectSelectFromDrawing, HandleIGESSelectSelectFromSingleView,
+    HandleIGESSelectSelectLevelNumber, HandleIGESSelectSelectName, HandleIGESSelectSelectPCurves,
+    HandleIGESSelectSelectSingleViewFrom, HandleIGESSelectSelectSubordinate,
+    HandleIGESSelectSelectVisibleStatus, HandleIGESSelectSetGlobalParameter,
+    HandleIGESSelectSetLabel, HandleIGESSelectSetVersion5, HandleIGESSelectSignColor,
+    HandleIGESSelectSignLevelNumber, HandleIGESSelectSignStatus, HandleIGESSelectSplineToBSpline,
+    HandleIGESSelectUpdateCreationDate, HandleIGESSelectUpdateFileName,
+    HandleIGESSelectUpdateLastChange, HandleIGESSelectWorkLibrary, HandleInterfaceSignType,
+    HandleMoniToolSignText, HandleSTEPEditEditContext, HandleSTEPEditEditSDR,
+    HandleSTEPSelectionsSelectAssembly, HandleSTEPSelectionsSelectDerived,
+    HandleSTEPSelectionsSelectFaces, HandleSTEPSelectionsSelectForTransfer,
+    HandleSTEPSelectionsSelectGSCurves, HandleSTEPSelectionsSelectInstances,
+    HandleStandardTransient, HandleStepSelectActivator, HandleStepSelectFloatFormat,
+    HandleStepSelectStepType, HandleStepSelectWorkLibrary, HandleXSControlConnectedShapes,
+    HandleXSControlSelectForTransfer, HandleXSControlSignTransferStatus,
+    HandleXSControlWorkSession,
 };
 
 // ========================
@@ -761,6 +784,42 @@ impl HandleIFSelectActivator {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSessionPilot>> {
         let ptr = unsafe {
             crate::ffi::HandleIFSelectActivator_downcast_to_HandleIFSelectSessionPilot(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Activator> to Handle<IGESSelect_Activator>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_Activator` (or subclass).
+    pub fn downcast_to_iges_select_activator(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectActivator>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectActivator_downcast_to_HandleIGESSelectActivator(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Activator> to Handle<StepSelect_Activator>
+    ///
+    /// Returns `None` if the handle does not point to a `StepSelect_Activator` (or subclass).
+    pub fn downcast_to_step_select_activator(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepSelectActivator>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectActivator_downcast_to_HandleStepSelectActivator(
                 self as *const Self,
             )
         };
@@ -3834,6 +3893,42 @@ impl HandleIFSelectDispatch {
             Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
+
+    /// Downcast Handle<IFSelect_Dispatch> to Handle<IGESSelect_DispPerDrawing>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_DispPerDrawing` (or subclass).
+    pub fn downcast_to_disp_per_drawing(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectDispPerDrawing>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectDispatch_downcast_to_HandleIGESSelectDispPerDrawing(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Dispatch> to Handle<IGESSelect_DispPerSingleView>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_DispPerSingleView` (or subclass).
+    pub fn downcast_to_disp_per_single_view(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectDispPerSingleView>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectDispatch_downcast_to_HandleIGESSelectDispPerSingleView(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -4791,6 +4886,24 @@ impl HandleIFSelectEditor {
         }
     }
 
+    /// Downcast Handle<IFSelect_Editor> to Handle<APIHeaderSection_EditHeader>
+    ///
+    /// Returns `None` if the handle does not point to a `APIHeaderSection_EditHeader` (or subclass).
+    pub fn downcast_to_api_header_section_edit_header(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAPIHeaderSectionEditHeader>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectEditor_downcast_to_HandleAPIHeaderSectionEditHeader(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<IFSelect_Editor> to Handle<IFSelect_ParamEditor>
     ///
     /// Returns `None` if the handle does not point to a `IFSelect_ParamEditor` (or subclass).
@@ -4801,6 +4914,76 @@ impl HandleIFSelectEditor {
             crate::ffi::HandleIFSelectEditor_downcast_to_HandleIFSelectParamEditor(
                 self as *const Self,
             )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Editor> to Handle<IGESSelect_EditDirPart>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_EditDirPart` (or subclass).
+    pub fn downcast_to_edit_dir_part(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectEditDirPart>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectEditor_downcast_to_HandleIGESSelectEditDirPart(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Editor> to Handle<IGESSelect_EditHeader>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_EditHeader` (or subclass).
+    pub fn downcast_to_iges_select_edit_header(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectEditHeader>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectEditor_downcast_to_HandleIGESSelectEditHeader(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Editor> to Handle<STEPEdit_EditContext>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPEdit_EditContext` (or subclass).
+    pub fn downcast_to_edit_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPEditEditContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectEditor_downcast_to_HandleSTEPEditEditContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Editor> to Handle<STEPEdit_EditSDR>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPEdit_EditSDR` (or subclass).
+    pub fn downcast_to_edit_sdr(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPEditEditSDR>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectEditor_downcast_to_HandleSTEPEditEditSDR(self as *const Self)
         };
         if ptr.is_null() {
             None
@@ -5174,6 +5357,312 @@ impl HandleIFSelectGeneralModifier {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectModifReorder>> {
         let ptr = unsafe {
             crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIFSelectModifReorder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<IGESSelect_AddFileComment>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_AddFileComment` (or subclass).
+    pub fn downcast_to_add_file_comment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectAddFileComment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectAddFileComment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<IGESSelect_AddGroup>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_AddGroup` (or subclass).
+    pub fn downcast_to_add_group(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectAddGroup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectAddGroup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<IGESSelect_AutoCorrect>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_AutoCorrect` (or subclass).
+    pub fn downcast_to_auto_correct(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectAutoCorrect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectAutoCorrect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<IGESSelect_ChangeLevelList>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_ChangeLevelList` (or subclass).
+    pub fn downcast_to_change_level_list(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectChangeLevelList>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectChangeLevelList(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<IGESSelect_ChangeLevelNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_ChangeLevelNumber` (or subclass).
+    pub fn downcast_to_change_level_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectChangeLevelNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectChangeLevelNumber(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<IGESSelect_ComputeStatus>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_ComputeStatus` (or subclass).
+    pub fn downcast_to_compute_status(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectComputeStatus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectComputeStatus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<IGESSelect_FloatFormat>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_FloatFormat` (or subclass).
+    pub fn downcast_to_iges_select_float_format(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectFloatFormat>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectFloatFormat(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<IGESSelect_RebuildDrawings>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_RebuildDrawings` (or subclass).
+    pub fn downcast_to_rebuild_drawings(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectRebuildDrawings>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectRebuildDrawings(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<IGESSelect_RebuildGroups>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_RebuildGroups` (or subclass).
+    pub fn downcast_to_rebuild_groups(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectRebuildGroups>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectRebuildGroups(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<IGESSelect_RemoveCurves>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_RemoveCurves` (or subclass).
+    pub fn downcast_to_remove_curves(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectRemoveCurves>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectRemoveCurves(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<IGESSelect_SetGlobalParameter>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SetGlobalParameter` (or subclass).
+    pub fn downcast_to_set_global_parameter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSetGlobalParameter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectSetGlobalParameter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<IGESSelect_SetLabel>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SetLabel` (or subclass).
+    pub fn downcast_to_set_label(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSetLabel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectSetLabel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<IGESSelect_SetVersion5>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SetVersion5` (or subclass).
+    pub fn downcast_to_set_version5(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSetVersion5>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectSetVersion5(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<IGESSelect_UpdateCreationDate>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_UpdateCreationDate` (or subclass).
+    pub fn downcast_to_update_creation_date(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectUpdateCreationDate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectUpdateCreationDate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<IGESSelect_UpdateFileName>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_UpdateFileName` (or subclass).
+    pub fn downcast_to_update_file_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectUpdateFileName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectUpdateFileName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<IGESSelect_UpdateLastChange>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_UpdateLastChange` (or subclass).
+    pub fn downcast_to_update_last_change(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectUpdateLastChange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectUpdateLastChange(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<StepSelect_FloatFormat>
+    ///
+    /// Returns `None` if the handle does not point to a `StepSelect_FloatFormat` (or subclass).
+    pub fn downcast_to_step_select_float_format(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepSelectFloatFormat>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleStepSelectFloatFormat(
                 self as *const Self,
             )
         };
@@ -7466,6 +7955,258 @@ impl HandleIFSelectModifier {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectModifReorder>> {
         let ptr = unsafe {
             crate::ffi::HandleIFSelectModifier_downcast_to_HandleIFSelectModifReorder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Modifier> to Handle<IGESSelect_AddGroup>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_AddGroup` (or subclass).
+    pub fn downcast_to_add_group(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectAddGroup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectModifier_downcast_to_HandleIGESSelectAddGroup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Modifier> to Handle<IGESSelect_AutoCorrect>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_AutoCorrect` (or subclass).
+    pub fn downcast_to_auto_correct(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectAutoCorrect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectModifier_downcast_to_HandleIGESSelectAutoCorrect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Modifier> to Handle<IGESSelect_ChangeLevelList>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_ChangeLevelList` (or subclass).
+    pub fn downcast_to_change_level_list(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectChangeLevelList>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectModifier_downcast_to_HandleIGESSelectChangeLevelList(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Modifier> to Handle<IGESSelect_ChangeLevelNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_ChangeLevelNumber` (or subclass).
+    pub fn downcast_to_change_level_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectChangeLevelNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectModifier_downcast_to_HandleIGESSelectChangeLevelNumber(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Modifier> to Handle<IGESSelect_ComputeStatus>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_ComputeStatus` (or subclass).
+    pub fn downcast_to_compute_status(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectComputeStatus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectModifier_downcast_to_HandleIGESSelectComputeStatus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Modifier> to Handle<IGESSelect_RebuildDrawings>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_RebuildDrawings` (or subclass).
+    pub fn downcast_to_rebuild_drawings(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectRebuildDrawings>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectModifier_downcast_to_HandleIGESSelectRebuildDrawings(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Modifier> to Handle<IGESSelect_RebuildGroups>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_RebuildGroups` (or subclass).
+    pub fn downcast_to_rebuild_groups(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectRebuildGroups>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectModifier_downcast_to_HandleIGESSelectRebuildGroups(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Modifier> to Handle<IGESSelect_RemoveCurves>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_RemoveCurves` (or subclass).
+    pub fn downcast_to_remove_curves(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectRemoveCurves>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectModifier_downcast_to_HandleIGESSelectRemoveCurves(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Modifier> to Handle<IGESSelect_SetGlobalParameter>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SetGlobalParameter` (or subclass).
+    pub fn downcast_to_set_global_parameter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSetGlobalParameter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectModifier_downcast_to_HandleIGESSelectSetGlobalParameter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Modifier> to Handle<IGESSelect_SetLabel>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SetLabel` (or subclass).
+    pub fn downcast_to_set_label(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSetLabel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectModifier_downcast_to_HandleIGESSelectSetLabel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Modifier> to Handle<IGESSelect_SetVersion5>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SetVersion5` (or subclass).
+    pub fn downcast_to_set_version5(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSetVersion5>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectModifier_downcast_to_HandleIGESSelectSetVersion5(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Modifier> to Handle<IGESSelect_UpdateCreationDate>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_UpdateCreationDate` (or subclass).
+    pub fn downcast_to_update_creation_date(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectUpdateCreationDate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectModifier_downcast_to_HandleIGESSelectUpdateCreationDate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Modifier> to Handle<IGESSelect_UpdateFileName>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_UpdateFileName` (or subclass).
+    pub fn downcast_to_update_file_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectUpdateFileName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectModifier_downcast_to_HandleIGESSelectUpdateFileName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Modifier> to Handle<IGESSelect_UpdateLastChange>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_UpdateLastChange` (or subclass).
+    pub fn downcast_to_update_last_change(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectUpdateLastChange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectModifier_downcast_to_HandleIGESSelectUpdateLastChange(
                 self as *const Self,
             )
         };
@@ -10217,6 +10958,330 @@ impl HandleIFSelectSelectDeduct {
         }
     }
 
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IGESSelect_SelectBasicGeom>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectBasicGeom` (or subclass).
+    pub fn downcast_to_select_basic_geom(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectBasicGeom>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectBasicGeom(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IGESSelect_SelectBypassGroup>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectBypassGroup` (or subclass).
+    pub fn downcast_to_select_bypass_group(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectBypassGroup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectBypassGroup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IGESSelect_SelectBypassSubfigure>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectBypassSubfigure` (or subclass).
+    pub fn downcast_to_select_bypass_subfigure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectBypassSubfigure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectBypassSubfigure(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IGESSelect_SelectDrawingFrom>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectDrawingFrom` (or subclass).
+    pub fn downcast_to_select_drawing_from(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectDrawingFrom>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectDrawingFrom(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IGESSelect_SelectFaces>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectFaces` (or subclass).
+    pub fn downcast_to_iges_select_select_faces(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectFaces>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectFaces(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IGESSelect_SelectFromDrawing>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectFromDrawing` (or subclass).
+    pub fn downcast_to_select_from_drawing(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectFromDrawing>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectFromDrawing(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IGESSelect_SelectFromSingleView>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectFromSingleView` (or subclass).
+    pub fn downcast_to_select_from_single_view(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectFromSingleView>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectFromSingleView(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IGESSelect_SelectLevelNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectLevelNumber` (or subclass).
+    pub fn downcast_to_select_level_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectLevelNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectLevelNumber(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IGESSelect_SelectName>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectName` (or subclass).
+    pub fn downcast_to_select_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IGESSelect_SelectPCurves>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectPCurves` (or subclass).
+    pub fn downcast_to_select_p_curves(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectPCurves>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectPCurves(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IGESSelect_SelectSingleViewFrom>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectSingleViewFrom` (or subclass).
+    pub fn downcast_to_select_single_view_from(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectSingleViewFrom>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectSingleViewFrom(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IGESSelect_SelectSubordinate>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectSubordinate` (or subclass).
+    pub fn downcast_to_select_subordinate(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectSubordinate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectSubordinate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IGESSelect_SelectVisibleStatus>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectVisibleStatus` (or subclass).
+    pub fn downcast_to_select_visible_status(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectVisibleStatus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectVisibleStatus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<STEPSelections_SelectAssembly>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectAssembly` (or subclass).
+    pub fn downcast_to_select_assembly(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectAssembly>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleSTEPSelectionsSelectAssembly(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<STEPSelections_SelectFaces>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectFaces` (or subclass).
+    pub fn downcast_to_step_selections_select_faces(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectFaces>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleSTEPSelectionsSelectFaces(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<STEPSelections_SelectForTransfer>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectForTransfer` (or subclass).
+    pub fn downcast_to_step_selections_select_for_transfer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectForTransfer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleSTEPSelectionsSelectForTransfer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<STEPSelections_SelectGSCurves>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectGSCurves` (or subclass).
+    pub fn downcast_to_select_gs_curves(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectGSCurves>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleSTEPSelectionsSelectGSCurves(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<STEPSelections_SelectInstances>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectInstances` (or subclass).
+    pub fn downcast_to_select_instances(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectInstances>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleSTEPSelectionsSelectInstances(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<IFSelect_SelectDeduct> to Handle<XSControl_ConnectedShapes>
     ///
     /// Returns `None` if the handle does not point to a `XSControl_ConnectedShapes` (or subclass).
@@ -10238,7 +11303,7 @@ impl HandleIFSelectSelectDeduct {
     /// Downcast Handle<IFSelect_SelectDeduct> to Handle<XSControl_SelectForTransfer>
     ///
     /// Returns `None` if the handle does not point to a `XSControl_SelectForTransfer` (or subclass).
-    pub fn downcast_to_select_for_transfer(
+    pub fn downcast_to_xs_control_select_for_transfer(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXSControlSelectForTransfer>> {
         let ptr = unsafe {
@@ -11563,6 +12628,166 @@ impl HandleIFSelectSelectExplore {
         }
     }
 
+    /// Downcast Handle<IFSelect_SelectExplore> to Handle<IGESSelect_SelectBasicGeom>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectBasicGeom` (or subclass).
+    pub fn downcast_to_select_basic_geom(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectBasicGeom>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExplore_downcast_to_HandleIGESSelectSelectBasicGeom(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExplore> to Handle<IGESSelect_SelectBypassGroup>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectBypassGroup` (or subclass).
+    pub fn downcast_to_select_bypass_group(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectBypassGroup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExplore_downcast_to_HandleIGESSelectSelectBypassGroup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExplore> to Handle<IGESSelect_SelectBypassSubfigure>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectBypassSubfigure` (or subclass).
+    pub fn downcast_to_select_bypass_subfigure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectBypassSubfigure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExplore_downcast_to_HandleIGESSelectSelectBypassSubfigure(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExplore> to Handle<IGESSelect_SelectFaces>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectFaces` (or subclass).
+    pub fn downcast_to_iges_select_select_faces(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectFaces>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExplore_downcast_to_HandleIGESSelectSelectFaces(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExplore> to Handle<IGESSelect_SelectPCurves>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectPCurves` (or subclass).
+    pub fn downcast_to_select_p_curves(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectPCurves>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExplore_downcast_to_HandleIGESSelectSelectPCurves(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExplore> to Handle<STEPSelections_SelectAssembly>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectAssembly` (or subclass).
+    pub fn downcast_to_select_assembly(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectAssembly>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExplore_downcast_to_HandleSTEPSelectionsSelectAssembly(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExplore> to Handle<STEPSelections_SelectFaces>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectFaces` (or subclass).
+    pub fn downcast_to_step_selections_select_faces(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectFaces>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExplore_downcast_to_HandleSTEPSelectionsSelectFaces(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExplore> to Handle<STEPSelections_SelectGSCurves>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectGSCurves` (or subclass).
+    pub fn downcast_to_select_gs_curves(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectGSCurves>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExplore_downcast_to_HandleSTEPSelectionsSelectGSCurves(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExplore> to Handle<STEPSelections_SelectInstances>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectInstances` (or subclass).
+    pub fn downcast_to_select_instances(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectInstances>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExplore_downcast_to_HandleSTEPSelectionsSelectInstances(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<IFSelect_SelectExplore> to Handle<XSControl_ConnectedShapes>
     ///
     /// Returns `None` if the handle does not point to a `XSControl_ConnectedShapes` (or subclass).
@@ -12088,10 +13313,98 @@ impl HandleIFSelectSelectExtract {
         }
     }
 
+    /// Downcast Handle<IFSelect_SelectExtract> to Handle<IGESSelect_SelectLevelNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectLevelNumber` (or subclass).
+    pub fn downcast_to_select_level_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectLevelNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExtract_downcast_to_HandleIGESSelectSelectLevelNumber(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExtract> to Handle<IGESSelect_SelectName>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectName` (or subclass).
+    pub fn downcast_to_select_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExtract_downcast_to_HandleIGESSelectSelectName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExtract> to Handle<IGESSelect_SelectSubordinate>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectSubordinate` (or subclass).
+    pub fn downcast_to_select_subordinate(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectSubordinate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExtract_downcast_to_HandleIGESSelectSelectSubordinate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExtract> to Handle<IGESSelect_SelectVisibleStatus>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectVisibleStatus` (or subclass).
+    pub fn downcast_to_select_visible_status(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectVisibleStatus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExtract_downcast_to_HandleIGESSelectSelectVisibleStatus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExtract> to Handle<STEPSelections_SelectForTransfer>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectForTransfer` (or subclass).
+    pub fn downcast_to_step_selections_select_for_transfer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectForTransfer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExtract_downcast_to_HandleSTEPSelectionsSelectForTransfer(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<IFSelect_SelectExtract> to Handle<XSControl_SelectForTransfer>
     ///
     /// Returns `None` if the handle does not point to a `XSControl_SelectForTransfer` (or subclass).
-    pub fn downcast_to_select_for_transfer(
+    pub fn downcast_to_xs_control_select_for_transfer(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXSControlSelectForTransfer>> {
         let ptr = unsafe {
@@ -20158,6 +21471,330 @@ impl HandleIFSelectSelection {
         }
     }
 
+    /// Downcast Handle<IFSelect_Selection> to Handle<IGESSelect_SelectBasicGeom>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectBasicGeom` (or subclass).
+    pub fn downcast_to_select_basic_geom(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectBasicGeom>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectBasicGeom(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IGESSelect_SelectBypassGroup>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectBypassGroup` (or subclass).
+    pub fn downcast_to_select_bypass_group(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectBypassGroup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectBypassGroup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IGESSelect_SelectBypassSubfigure>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectBypassSubfigure` (or subclass).
+    pub fn downcast_to_select_bypass_subfigure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectBypassSubfigure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectBypassSubfigure(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IGESSelect_SelectDrawingFrom>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectDrawingFrom` (or subclass).
+    pub fn downcast_to_select_drawing_from(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectDrawingFrom>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectDrawingFrom(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IGESSelect_SelectFaces>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectFaces` (or subclass).
+    pub fn downcast_to_iges_select_select_faces(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectFaces>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectFaces(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IGESSelect_SelectFromDrawing>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectFromDrawing` (or subclass).
+    pub fn downcast_to_select_from_drawing(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectFromDrawing>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectFromDrawing(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IGESSelect_SelectFromSingleView>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectFromSingleView` (or subclass).
+    pub fn downcast_to_select_from_single_view(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectFromSingleView>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectFromSingleView(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IGESSelect_SelectLevelNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectLevelNumber` (or subclass).
+    pub fn downcast_to_select_level_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectLevelNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectLevelNumber(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IGESSelect_SelectName>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectName` (or subclass).
+    pub fn downcast_to_select_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IGESSelect_SelectPCurves>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectPCurves` (or subclass).
+    pub fn downcast_to_select_p_curves(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectPCurves>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectPCurves(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IGESSelect_SelectSingleViewFrom>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectSingleViewFrom` (or subclass).
+    pub fn downcast_to_select_single_view_from(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectSingleViewFrom>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectSingleViewFrom(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IGESSelect_SelectSubordinate>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectSubordinate` (or subclass).
+    pub fn downcast_to_select_subordinate(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectSubordinate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectSubordinate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IGESSelect_SelectVisibleStatus>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectVisibleStatus` (or subclass).
+    pub fn downcast_to_select_visible_status(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectVisibleStatus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectVisibleStatus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<STEPSelections_SelectAssembly>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectAssembly` (or subclass).
+    pub fn downcast_to_select_assembly(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectAssembly>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleSTEPSelectionsSelectAssembly(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<STEPSelections_SelectFaces>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectFaces` (or subclass).
+    pub fn downcast_to_step_selections_select_faces(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectFaces>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleSTEPSelectionsSelectFaces(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<STEPSelections_SelectForTransfer>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectForTransfer` (or subclass).
+    pub fn downcast_to_step_selections_select_for_transfer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectForTransfer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleSTEPSelectionsSelectForTransfer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<STEPSelections_SelectGSCurves>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectGSCurves` (or subclass).
+    pub fn downcast_to_select_gs_curves(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectGSCurves>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleSTEPSelectionsSelectGSCurves(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<STEPSelections_SelectInstances>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectInstances` (or subclass).
+    pub fn downcast_to_select_instances(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectInstances>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleSTEPSelectionsSelectInstances(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<IFSelect_Selection> to Handle<XSControl_ConnectedShapes>
     ///
     /// Returns `None` if the handle does not point to a `XSControl_ConnectedShapes` (or subclass).
@@ -20179,7 +21816,7 @@ impl HandleIFSelectSelection {
     /// Downcast Handle<IFSelect_Selection> to Handle<XSControl_SelectForTransfer>
     ///
     /// Returns `None` if the handle does not point to a `XSControl_SelectForTransfer` (or subclass).
-    pub fn downcast_to_select_for_transfer(
+    pub fn downcast_to_xs_control_select_for_transfer(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXSControlSelectForTransfer>> {
         let ptr = unsafe {
@@ -20467,6 +22104,24 @@ impl HandleIFSelectSessionDumper {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectBasicDumper>> {
         let ptr = unsafe {
             crate::ffi::HandleIFSelectSessionDumper_downcast_to_HandleIFSelectBasicDumper(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SessionDumper> to Handle<IGESSelect_Dumper>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_Dumper` (or subclass).
+    pub fn downcast_to_dumper(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectDumper>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSessionDumper_downcast_to_HandleIGESSelectDumper(
                 self as *const Self,
             )
         };
@@ -23172,6 +24827,24 @@ impl HandleIFSelectSignCounter {
             Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
+
+    /// Downcast Handle<IFSelect_SignCounter> to Handle<IGESSelect_CounterOfLevelNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_CounterOfLevelNumber` (or subclass).
+    pub fn downcast_to_counter_of_level_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectCounterOfLevelNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignCounter_downcast_to_HandleIGESSelectCounterOfLevelNumber(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -24561,6 +26234,132 @@ impl HandleIFSelectSignature {
         }
     }
 
+    /// Downcast Handle<IFSelect_Signature> to Handle<IGESSelect_IGESName>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_IGESName` (or subclass).
+    pub fn downcast_to_iges_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectIGESName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignature_downcast_to_HandleIGESSelectIGESName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Signature> to Handle<IGESSelect_IGESTypeForm>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_IGESTypeForm` (or subclass).
+    pub fn downcast_to_iges_type_form(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectIGESTypeForm>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignature_downcast_to_HandleIGESSelectIGESTypeForm(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Signature> to Handle<IGESSelect_SignColor>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SignColor` (or subclass).
+    pub fn downcast_to_sign_color(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSignColor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignature_downcast_to_HandleIGESSelectSignColor(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Signature> to Handle<IGESSelect_SignLevelNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SignLevelNumber` (or subclass).
+    pub fn downcast_to_sign_level_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSignLevelNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignature_downcast_to_HandleIGESSelectSignLevelNumber(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Signature> to Handle<IGESSelect_SignStatus>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SignStatus` (or subclass).
+    pub fn downcast_to_sign_status(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSignStatus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignature_downcast_to_HandleIGESSelectSignStatus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Signature> to Handle<STEPSelections_SelectDerived>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectDerived` (or subclass).
+    pub fn downcast_to_select_derived(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectDerived>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignature_downcast_to_HandleSTEPSelectionsSelectDerived(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Signature> to Handle<StepSelect_StepType>
+    ///
+    /// Returns `None` if the handle does not point to a `StepSelect_StepType` (or subclass).
+    pub fn downcast_to_step_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepSelectStepType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignature_downcast_to_HandleStepSelectStepType(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<IFSelect_Signature> to Handle<XSControl_SignTransferStatus>
     ///
     /// Returns `None` if the handle does not point to a `XSControl_SignTransferStatus` (or subclass).
@@ -24891,6 +26690,24 @@ impl HandleIFSelectSignatureList {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignCounter>> {
         let ptr = unsafe {
             crate::ffi::HandleIFSelectSignatureList_downcast_to_HandleIFSelectSignCounter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SignatureList> to Handle<IGESSelect_CounterOfLevelNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_CounterOfLevelNumber` (or subclass).
+    pub fn downcast_to_counter_of_level_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectCounterOfLevelNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignatureList_downcast_to_HandleIGESSelectCounterOfLevelNumber(
                 self as *const Self,
             )
         };
@@ -25544,6 +27361,24 @@ impl HandleIFSelectTransformer {
             Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
+
+    /// Downcast Handle<IFSelect_Transformer> to Handle<IGESSelect_SplineToBSpline>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SplineToBSpline` (or subclass).
+    pub fn downcast_to_spline_to_b_spline(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSplineToBSpline>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectTransformer_downcast_to_HandleIGESSelectSplineToBSpline(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -25779,6 +27614,42 @@ impl HandleIFSelectWorkLibrary {
                     self as *const Self,
                 ),
             )
+        }
+    }
+
+    /// Downcast Handle<IFSelect_WorkLibrary> to Handle<IGESSelect_WorkLibrary>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_WorkLibrary` (or subclass).
+    pub fn downcast_to_iges_select_work_library(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectWorkLibrary>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectWorkLibrary_downcast_to_HandleIGESSelectWorkLibrary(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_WorkLibrary> to Handle<StepSelect_WorkLibrary>
+    ///
+    /// Returns `None` if the handle does not point to a `StepSelect_WorkLibrary` (or subclass).
+    pub fn downcast_to_step_select_work_library(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepSelectWorkLibrary>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectWorkLibrary_downcast_to_HandleStepSelectWorkLibrary(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }

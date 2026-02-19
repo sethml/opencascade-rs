@@ -7,7 +7,10 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleStandardDomainError, HandleStandardFailure, HandleStandardTransient};
+pub use crate::ffi::{
+    HandleBisectorBisecAna, HandleBisectorBisecCC, HandleBisectorBisecPC,
+    HandleStandardDomainError, HandleStandardFailure, HandleStandardTransient,
+};
 
 // ========================
 // From Geom2d_AxisPlacement.hxx
@@ -5033,6 +5036,54 @@ impl HandleGeom2dCurve {
         }
     }
 
+    /// Downcast Handle<Geom2d_Curve> to Handle<Bisector_BisecAna>
+    ///
+    /// Returns `None` if the handle does not point to a `Bisector_BisecAna` (or subclass).
+    pub fn downcast_to_bisec_ana(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBisectorBisecAna>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dCurve_downcast_to_HandleBisectorBisecAna(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Curve> to Handle<Bisector_BisecCC>
+    ///
+    /// Returns `None` if the handle does not point to a `Bisector_BisecCC` (or subclass).
+    pub fn downcast_to_bisec_cc(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBisectorBisecCC>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dCurve_downcast_to_HandleBisectorBisecCC(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Curve> to Handle<Bisector_BisecPC>
+    ///
+    /// Returns `None` if the handle does not point to a `Bisector_BisecPC` (or subclass).
+    pub fn downcast_to_bisec_pc(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBisectorBisecPC>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dCurve_downcast_to_HandleBisectorBisecPC(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Geom2d_Curve> to Handle<Geom2d_BSplineCurve>
     ///
     /// Returns `None` if the handle does not point to a `Geom2d_BSplineCurve` (or subclass).
@@ -6521,6 +6572,54 @@ impl HandleGeom2dGeometry {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dGeometry_to_HandleStandardTransient(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Geometry> to Handle<Bisector_BisecAna>
+    ///
+    /// Returns `None` if the handle does not point to a `Bisector_BisecAna` (or subclass).
+    pub fn downcast_to_bisec_ana(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBisectorBisecAna>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dGeometry_downcast_to_HandleBisectorBisecAna(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Geometry> to Handle<Bisector_BisecCC>
+    ///
+    /// Returns `None` if the handle does not point to a `Bisector_BisecCC` (or subclass).
+    pub fn downcast_to_bisec_cc(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBisectorBisecCC>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dGeometry_downcast_to_HandleBisectorBisecCC(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Geometry> to Handle<Bisector_BisecPC>
+    ///
+    /// Returns `None` if the handle does not point to a `Bisector_BisecPC` (or subclass).
+    pub fn downcast_to_bisec_pc(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBisectorBisecPC>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dGeometry_downcast_to_HandleBisectorBisecPC(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 

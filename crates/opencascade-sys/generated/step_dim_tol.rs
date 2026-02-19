@@ -6,6 +6,64 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// C++ enum: `StepDimTol_AreaUnitType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum AreaUnitType {
+    Circular = 0,
+    Rectangular = 1,
+    Square = 2,
+}
+
+impl From<AreaUnitType> for i32 {
+    fn from(value: AreaUnitType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for AreaUnitType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(AreaUnitType::Circular),
+            1 => Ok(AreaUnitType::Rectangular),
+            2 => Ok(AreaUnitType::Square),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `StepDimTol_DatumReferenceModifierType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum DatumReferenceModifierType {
+    Circularorcylindrical = 0,
+    Distance = 1,
+    Projected = 2,
+    Spherical = 3,
+}
+
+impl From<DatumReferenceModifierType> for i32 {
+    fn from(value: DatumReferenceModifierType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for DatumReferenceModifierType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(DatumReferenceModifierType::Circularorcylindrical),
+            1 => Ok(DatumReferenceModifierType::Distance),
+            2 => Ok(DatumReferenceModifierType::Projected),
+            3 => Ok(DatumReferenceModifierType::Spherical),
+            _ => Err(value),
+        }
+    }
+}
+
 /// C++ enum: `StepDimTol_GeometricToleranceModifier`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
@@ -110,6 +168,34 @@ impl TryFrom<i32> for GeometricToleranceType {
     }
 }
 
+/// C++ enum: `StepDimTol_LimitCondition`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum LimitCondition {
+    Maximummaterialcondition = 0,
+    Leastmaterialcondition = 1,
+    Regardlessoffeaturesize = 2,
+}
+
+impl From<LimitCondition> for i32 {
+    fn from(value: LimitCondition) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for LimitCondition {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(LimitCondition::Maximummaterialcondition),
+            1 => Ok(LimitCondition::Leastmaterialcondition),
+            2 => Ok(LimitCondition::Regardlessoffeaturesize),
+            _ => Err(value),
+        }
+    }
+}
+
 /// C++ enum: `StepDimTol_SimpleDatumReferenceModifier`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
@@ -176,41 +262,2005 @@ impl TryFrom<i32> for SimpleDatumReferenceModifier {
     }
 }
 
-/// C++ enum: `StepDimTol_DatumReferenceModifierType`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum DatumReferenceModifierType {
-    Circularorcylindrical = 0,
-    Distance = 1,
-    Projected = 2,
-    Spherical = 3,
-}
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleStandardTransient, HandleStepDataSelectInt, HandleStepDataSelectMember,
+    HandleStepReprCompositeShapeAspect, HandleStepReprShapeAspect,
+};
 
-impl From<DatumReferenceModifierType> for i32 {
-    fn from(value: DatumReferenceModifierType) -> Self {
-        value as i32
+// ========================
+// From StepDimTol_AngularityTolerance.hxx
+// ========================
+
+/// **Source:** `StepDimTol_AngularityTolerance.hxx`:28 - `StepDimTol_AngularityTolerance`
+/// Representation of STEP entity AngularityTolerance
+pub use crate::ffi::StepDimTol_AngularityTolerance as AngularityTolerance;
+
+unsafe impl crate::CppDeletable for AngularityTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_AngularityTolerance_destructor(ptr);
     }
 }
 
-impl TryFrom<i32> for DatumReferenceModifierType {
-    type Error = i32;
+impl AngularityTolerance {
+    /// **Source:** `StepDimTol_AngularityTolerance.hxx`:33 - `StepDimTol_AngularityTolerance::StepDimTol_AngularityTolerance()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_AngularityTolerance_ctor()) }
+    }
 
-    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
-        match value {
-            0 => Ok(DatumReferenceModifierType::Circularorcylindrical),
-            1 => Ok(DatumReferenceModifierType::Distance),
-            2 => Ok(DatumReferenceModifierType::Projected),
-            3 => Ok(DatumReferenceModifierType::Spherical),
-            _ => Err(value),
+    /// **Source:** `StepDimTol_AngularityTolerance.hxx`:35 - `StepDimTol_AngularityTolerance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_AngularityTolerance_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_AngularityTolerance.hxx`:35 - `StepDimTol_AngularityTolerance::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_AngularityTolerance_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_AngularityTolerance.hxx`:35 - `StepDimTol_AngularityTolerance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_AngularityTolerance_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithDatumReference
+    pub fn as_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> &GeometricToleranceWithDatumReference {
+        unsafe {
+            &*(crate::ffi::StepDimTol_AngularityTolerance_as_StepDimTol_GeometricToleranceWithDatumReference(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithDatumReference (mutable)
+    pub fn as_geometric_tolerance_with_datum_reference_mut(
+        &mut self,
+    ) -> &mut GeometricToleranceWithDatumReference {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_AngularityTolerance_as_StepDimTol_GeometricToleranceWithDatumReference_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_AngularityTolerance_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_AngularityTolerance_as_StepDimTol_GeometricTolerance_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_AngularityTolerance_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_AngularityTolerance_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolAngularityTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_AngularityTolerance_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:43 - `StepDimTol_GeometricToleranceWithDatumReference::Init()`
+    pub fn init(
+        &mut self,
+        theGeometricTolerance_Name: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Description: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Magnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theGeometricTolerance_TolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_AngularityTolerance_inherited_Init(
+                self as *mut Self,
+                theGeometricTolerance_Name,
+                theGeometricTolerance_Description,
+                theGeometricTolerance_Magnitude,
+                theGeometricTolerance_TolerancedShapeAspect,
+                theDatumSystem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:59 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystem()`
+    pub fn datum_system(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_AngularityTolerance_inherited_DatumSystem(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:62 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242()`
+    pub fn datum_system_ap242(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumSystemOrReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_AngularityTolerance_inherited_DatumSystemAP242(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:65 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
+    pub fn set_datum_system(
+        &mut self,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_AngularityTolerance_inherited_SetDatumSystem(
+                self as *mut Self,
+                theDatumSystem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_AngularityTolerance_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_AngularityTolerance_inherited_SetName(self as *mut Self, theName)
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_AngularityTolerance_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_AngularityTolerance_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_AngularityTolerance_inherited_Magnitude(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_AngularityTolerance_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_AngularityTolerance_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_AngularityTolerance_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_AngularityTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_AngularityTolerance_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_AngularityTolerance_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_AngularityTolerance_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_AngularityTolerance_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_AngularityTolerance_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolAngularityTolerance;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolAngularityTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolAngularityTolerance_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolAngularityTolerance {
+    /// Dereference this Handle to access the underlying StepDimTol_AngularityTolerance
+    pub fn get(&self) -> &crate::ffi::StepDimTol_AngularityTolerance {
+        unsafe { &*(crate::ffi::HandleStepDimTolAngularityTolerance_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_AngularityTolerance
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_AngularityTolerance {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolAngularityTolerance_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_AngularityTolerance> to Handle<StepDimTol_GeometricToleranceWithDatumReference>
+    pub fn to_handle_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolAngularityTolerance_to_HandleStepDimTolGeometricToleranceWithDatumReference(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_AngularityTolerance> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolAngularityTolerance_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_AngularityTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolAngularityTolerance_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
 
-// Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
-    HandleStandardTransient, HandleStepDataSelectInt, HandleStepDataSelectMember,
-    HandleStepReprShapeAspect,
-};
+// ========================
+// From StepDimTol_CircularRunoutTolerance.hxx
+// ========================
+
+/// **Source:** `StepDimTol_CircularRunoutTolerance.hxx`:28 - `StepDimTol_CircularRunoutTolerance`
+/// Representation of STEP entity CircularRunoutTolerance
+pub use crate::ffi::StepDimTol_CircularRunoutTolerance as CircularRunoutTolerance;
+
+unsafe impl crate::CppDeletable for CircularRunoutTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_CircularRunoutTolerance_destructor(ptr);
+    }
+}
+
+impl CircularRunoutTolerance {
+    /// **Source:** `StepDimTol_CircularRunoutTolerance.hxx`:33 - `StepDimTol_CircularRunoutTolerance::StepDimTol_CircularRunoutTolerance()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_CircularRunoutTolerance_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_CircularRunoutTolerance.hxx`:35 - `StepDimTol_CircularRunoutTolerance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_CircularRunoutTolerance_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_CircularRunoutTolerance.hxx`:35 - `StepDimTol_CircularRunoutTolerance::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_CircularRunoutTolerance_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_CircularRunoutTolerance.hxx`:35 - `StepDimTol_CircularRunoutTolerance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_CircularRunoutTolerance_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithDatumReference
+    pub fn as_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> &GeometricToleranceWithDatumReference {
+        unsafe {
+            &*(crate::ffi::StepDimTol_CircularRunoutTolerance_as_StepDimTol_GeometricToleranceWithDatumReference(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithDatumReference (mutable)
+    pub fn as_geometric_tolerance_with_datum_reference_mut(
+        &mut self,
+    ) -> &mut GeometricToleranceWithDatumReference {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_CircularRunoutTolerance_as_StepDimTol_GeometricToleranceWithDatumReference_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_CircularRunoutTolerance_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_CircularRunoutTolerance_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_CircularRunoutTolerance_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_CircularRunoutTolerance_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolCircularRunoutTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_CircularRunoutTolerance_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:43 - `StepDimTol_GeometricToleranceWithDatumReference::Init()`
+    pub fn init(
+        &mut self,
+        theGeometricTolerance_Name: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Description: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Magnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theGeometricTolerance_TolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_CircularRunoutTolerance_inherited_Init(
+                self as *mut Self,
+                theGeometricTolerance_Name,
+                theGeometricTolerance_Description,
+                theGeometricTolerance_Magnitude,
+                theGeometricTolerance_TolerancedShapeAspect,
+                theDatumSystem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:59 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystem()`
+    pub fn datum_system(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_CircularRunoutTolerance_inherited_DatumSystem(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:62 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242()`
+    pub fn datum_system_ap242(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumSystemOrReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_CircularRunoutTolerance_inherited_DatumSystemAP242(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:65 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
+    pub fn set_datum_system(
+        &mut self,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_CircularRunoutTolerance_inherited_SetDatumSystem(
+                self as *mut Self,
+                theDatumSystem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_CircularRunoutTolerance_inherited_Name(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_CircularRunoutTolerance_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_CircularRunoutTolerance_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_CircularRunoutTolerance_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_CircularRunoutTolerance_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_CircularRunoutTolerance_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_CircularRunoutTolerance_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_CircularRunoutTolerance_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_CircularRunoutTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_CircularRunoutTolerance_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_CircularRunoutTolerance_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_CircularRunoutTolerance_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_CircularRunoutTolerance_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_CircularRunoutTolerance_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolCircularRunoutTolerance;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolCircularRunoutTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolCircularRunoutTolerance_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolCircularRunoutTolerance {
+    /// Dereference this Handle to access the underlying StepDimTol_CircularRunoutTolerance
+    pub fn get(&self) -> &crate::ffi::StepDimTol_CircularRunoutTolerance {
+        unsafe { &*(crate::ffi::HandleStepDimTolCircularRunoutTolerance_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_CircularRunoutTolerance
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_CircularRunoutTolerance {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolCircularRunoutTolerance_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_CircularRunoutTolerance> to Handle<StepDimTol_GeometricToleranceWithDatumReference>
+    pub fn to_handle_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolCircularRunoutTolerance_to_HandleStepDimTolGeometricToleranceWithDatumReference(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_CircularRunoutTolerance> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolCircularRunoutTolerance_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_CircularRunoutTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolCircularRunoutTolerance_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_CoaxialityTolerance.hxx
+// ========================
+
+/// **Source:** `StepDimTol_CoaxialityTolerance.hxx`:28 - `StepDimTol_CoaxialityTolerance`
+/// Representation of STEP entity CoaxialityTolerance
+pub use crate::ffi::StepDimTol_CoaxialityTolerance as CoaxialityTolerance;
+
+unsafe impl crate::CppDeletable for CoaxialityTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_CoaxialityTolerance_destructor(ptr);
+    }
+}
+
+impl CoaxialityTolerance {
+    /// **Source:** `StepDimTol_CoaxialityTolerance.hxx`:33 - `StepDimTol_CoaxialityTolerance::StepDimTol_CoaxialityTolerance()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_CoaxialityTolerance_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_CoaxialityTolerance.hxx`:35 - `StepDimTol_CoaxialityTolerance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_CoaxialityTolerance_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_CoaxialityTolerance.hxx`:35 - `StepDimTol_CoaxialityTolerance::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_CoaxialityTolerance_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_CoaxialityTolerance.hxx`:35 - `StepDimTol_CoaxialityTolerance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_CoaxialityTolerance_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithDatumReference
+    pub fn as_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> &GeometricToleranceWithDatumReference {
+        unsafe {
+            &*(crate::ffi::StepDimTol_CoaxialityTolerance_as_StepDimTol_GeometricToleranceWithDatumReference(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithDatumReference (mutable)
+    pub fn as_geometric_tolerance_with_datum_reference_mut(
+        &mut self,
+    ) -> &mut GeometricToleranceWithDatumReference {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_CoaxialityTolerance_as_StepDimTol_GeometricToleranceWithDatumReference_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_CoaxialityTolerance_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_CoaxialityTolerance_as_StepDimTol_GeometricTolerance_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_CoaxialityTolerance_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_CoaxialityTolerance_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolCoaxialityTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_CoaxialityTolerance_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:43 - `StepDimTol_GeometricToleranceWithDatumReference::Init()`
+    pub fn init(
+        &mut self,
+        theGeometricTolerance_Name: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Description: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Magnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theGeometricTolerance_TolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_CoaxialityTolerance_inherited_Init(
+                self as *mut Self,
+                theGeometricTolerance_Name,
+                theGeometricTolerance_Description,
+                theGeometricTolerance_Magnitude,
+                theGeometricTolerance_TolerancedShapeAspect,
+                theDatumSystem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:59 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystem()`
+    pub fn datum_system(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_CoaxialityTolerance_inherited_DatumSystem(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:62 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242()`
+    pub fn datum_system_ap242(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumSystemOrReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_CoaxialityTolerance_inherited_DatumSystemAP242(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:65 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
+    pub fn set_datum_system(
+        &mut self,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_CoaxialityTolerance_inherited_SetDatumSystem(
+                self as *mut Self,
+                theDatumSystem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_CoaxialityTolerance_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_CoaxialityTolerance_inherited_SetName(self as *mut Self, theName)
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_CoaxialityTolerance_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_CoaxialityTolerance_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_CoaxialityTolerance_inherited_Magnitude(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_CoaxialityTolerance_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_CoaxialityTolerance_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_CoaxialityTolerance_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_CoaxialityTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_CoaxialityTolerance_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_CoaxialityTolerance_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_CoaxialityTolerance_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_CoaxialityTolerance_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_CoaxialityTolerance_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolCoaxialityTolerance;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolCoaxialityTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolCoaxialityTolerance_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolCoaxialityTolerance {
+    /// Dereference this Handle to access the underlying StepDimTol_CoaxialityTolerance
+    pub fn get(&self) -> &crate::ffi::StepDimTol_CoaxialityTolerance {
+        unsafe { &*(crate::ffi::HandleStepDimTolCoaxialityTolerance_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_CoaxialityTolerance
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_CoaxialityTolerance {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolCoaxialityTolerance_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_CoaxialityTolerance> to Handle<StepDimTol_GeometricToleranceWithDatumReference>
+    pub fn to_handle_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolCoaxialityTolerance_to_HandleStepDimTolGeometricToleranceWithDatumReference(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_CoaxialityTolerance> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolCoaxialityTolerance_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_CoaxialityTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolCoaxialityTolerance_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_CommonDatum.hxx
+// ========================
+
+/// **Source:** `StepDimTol_CommonDatum.hxx`:32 - `StepDimTol_CommonDatum`
+/// Representation of STEP entity CommonDatum
+pub use crate::ffi::StepDimTol_CommonDatum as CommonDatum;
+
+unsafe impl crate::CppDeletable for CommonDatum {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_CommonDatum_destructor(ptr);
+    }
+}
+
+impl CommonDatum {
+    /// **Source:** `StepDimTol_CommonDatum.hxx`:37 - `StepDimTol_CommonDatum::StepDimTol_CommonDatum()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_CommonDatum_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_CommonDatum.hxx`:40 - `StepDimTol_CommonDatum::Init()`
+    /// Initialize all fields (own and inherited)
+    pub fn init(
+        &mut self,
+        theShapeAspect_Name: &crate::ffi::HandleTCollectionHAsciiString,
+        theShapeAspect_Description: &crate::ffi::HandleTCollectionHAsciiString,
+        theShapeAspect_OfShape: &crate::ffi::HandleStepReprProductDefinitionShape,
+        theShapeAspect_ProductDefinitional: crate::step_data::Logical,
+        theDatum_Name: &crate::ffi::HandleTCollectionHAsciiString,
+        theDatum_Description: &crate::ffi::HandleTCollectionHAsciiString,
+        theDatum_OfShape: &crate::ffi::HandleStepReprProductDefinitionShape,
+        theDatum_ProductDefinitional: crate::step_data::Logical,
+        theDatum_Identification: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_CommonDatum_init(
+                self as *mut Self,
+                theShapeAspect_Name,
+                theShapeAspect_Description,
+                theShapeAspect_OfShape,
+                theShapeAspect_ProductDefinitional.into(),
+                theDatum_Name,
+                theDatum_Description,
+                theDatum_OfShape,
+                theDatum_ProductDefinitional.into(),
+                theDatum_Identification,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_CommonDatum.hxx`:51 - `StepDimTol_CommonDatum::Datum()`
+    /// Returns data for supertype Datum
+    pub fn datum(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolDatum> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_CommonDatum_datum(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_CommonDatum.hxx`:54 - `StepDimTol_CommonDatum::SetDatum()`
+    /// Set data for supertype Datum
+    pub fn set_datum(&mut self, theDatum: &crate::ffi::HandleStepDimTolDatum) {
+        unsafe { crate::ffi::StepDimTol_CommonDatum_set_datum(self as *mut Self, theDatum) }
+    }
+
+    /// **Source:** `StepDimTol_CommonDatum.hxx`:56 - `StepDimTol_CommonDatum::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_CommonDatum_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_CommonDatum.hxx`:56 - `StepDimTol_CommonDatum::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_CommonDatum_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_CommonDatum.hxx`:56 - `StepDimTol_CommonDatum::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_CommonDatum_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepRepr_CompositeShapeAspect
+    pub fn as_step_repr_composite_shape_aspect(&self) -> &crate::step_repr::CompositeShapeAspect {
+        unsafe {
+            &*(crate::ffi::StepDimTol_CommonDatum_as_StepRepr_CompositeShapeAspect(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepRepr_CompositeShapeAspect (mutable)
+    pub fn as_step_repr_composite_shape_aspect_mut(
+        &mut self,
+    ) -> &mut crate::step_repr::CompositeShapeAspect {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_CommonDatum_as_StepRepr_CompositeShapeAspect_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect
+    pub fn as_step_repr_shape_aspect(&self) -> &crate::step_repr::ShapeAspect {
+        unsafe {
+            &*(crate::ffi::StepDimTol_CommonDatum_as_StepRepr_ShapeAspect(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect (mutable)
+    pub fn as_step_repr_shape_aspect_mut(&mut self) -> &mut crate::step_repr::ShapeAspect {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_CommonDatum_as_StepRepr_ShapeAspect_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::StepDimTol_CommonDatum_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_CommonDatum_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolCommonDatum> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_CommonDatum_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:43 - `StepRepr_ShapeAspect::SetName()`
+    pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::StepDimTol_CommonDatum_inherited_SetName(self as *mut Self, aName) }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:45 - `StepRepr_ShapeAspect::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_CommonDatum_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:47 - `StepRepr_ShapeAspect::SetDescription()`
+    pub fn set_description(&mut self, aDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_CommonDatum_inherited_SetDescription(
+                self as *mut Self,
+                aDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:49 - `StepRepr_ShapeAspect::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_CommonDatum_inherited_Description(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:51 - `StepRepr_ShapeAspect::SetOfShape()`
+    pub fn set_of_shape(&mut self, aOfShape: &crate::ffi::HandleStepReprProductDefinitionShape) {
+        unsafe {
+            crate::ffi::StepDimTol_CommonDatum_inherited_SetOfShape(self as *mut Self, aOfShape)
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:53 - `StepRepr_ShapeAspect::OfShape()`
+    pub fn of_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_CommonDatum_inherited_OfShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:55 - `StepRepr_ShapeAspect::SetProductDefinitional()`
+    pub fn set_product_definitional(&mut self, aProductDefinitional: crate::step_data::Logical) {
+        unsafe {
+            crate::ffi::StepDimTol_CommonDatum_inherited_SetProductDefinitional(
+                self as *mut Self,
+                aProductDefinitional.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:57 - `StepRepr_ShapeAspect::ProductDefinitional()`
+    pub fn product_definitional(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(
+                crate::ffi::StepDimTol_CommonDatum_inherited_ProductDefinitional(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_CommonDatum_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::StepDimTol_CommonDatum_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_CommonDatum_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_CommonDatum_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_CommonDatum_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_CommonDatum_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolCommonDatum;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolCommonDatum {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolCommonDatum_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolCommonDatum {
+    /// Dereference this Handle to access the underlying StepDimTol_CommonDatum
+    pub fn get(&self) -> &crate::ffi::StepDimTol_CommonDatum {
+        unsafe { &*(crate::ffi::HandleStepDimTolCommonDatum_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_CommonDatum
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_CommonDatum {
+        unsafe { &mut *(crate::ffi::HandleStepDimTolCommonDatum_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StepDimTol_CommonDatum> to Handle<StepRepr_CompositeShapeAspect>
+    pub fn to_handle_composite_shape_aspect(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprCompositeShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolCommonDatum_to_HandleStepReprCompositeShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_CommonDatum> to Handle<StepRepr_ShapeAspect>
+    pub fn to_handle_shape_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolCommonDatum_to_HandleStepReprShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_CommonDatum> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolCommonDatum_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_ConcentricityTolerance.hxx
+// ========================
+
+/// **Source:** `StepDimTol_ConcentricityTolerance.hxx`:28 - `StepDimTol_ConcentricityTolerance`
+/// Representation of STEP entity ConcentricityTolerance
+pub use crate::ffi::StepDimTol_ConcentricityTolerance as ConcentricityTolerance;
+
+unsafe impl crate::CppDeletable for ConcentricityTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_ConcentricityTolerance_destructor(ptr);
+    }
+}
+
+impl ConcentricityTolerance {
+    /// **Source:** `StepDimTol_ConcentricityTolerance.hxx`:33 - `StepDimTol_ConcentricityTolerance::StepDimTol_ConcentricityTolerance()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ConcentricityTolerance_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_ConcentricityTolerance.hxx`:35 - `StepDimTol_ConcentricityTolerance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ConcentricityTolerance_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_ConcentricityTolerance.hxx`:35 - `StepDimTol_ConcentricityTolerance::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_ConcentricityTolerance_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_ConcentricityTolerance.hxx`:35 - `StepDimTol_ConcentricityTolerance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_ConcentricityTolerance_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithDatumReference
+    pub fn as_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> &GeometricToleranceWithDatumReference {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ConcentricityTolerance_as_StepDimTol_GeometricToleranceWithDatumReference(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithDatumReference (mutable)
+    pub fn as_geometric_tolerance_with_datum_reference_mut(
+        &mut self,
+    ) -> &mut GeometricToleranceWithDatumReference {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_ConcentricityTolerance_as_StepDimTol_GeometricToleranceWithDatumReference_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ConcentricityTolerance_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_ConcentricityTolerance_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ConcentricityTolerance_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_ConcentricityTolerance_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolConcentricityTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ConcentricityTolerance_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:43 - `StepDimTol_GeometricToleranceWithDatumReference::Init()`
+    pub fn init(
+        &mut self,
+        theGeometricTolerance_Name: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Description: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Magnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theGeometricTolerance_TolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_ConcentricityTolerance_inherited_Init(
+                self as *mut Self,
+                theGeometricTolerance_Name,
+                theGeometricTolerance_Description,
+                theGeometricTolerance_Magnitude,
+                theGeometricTolerance_TolerancedShapeAspect,
+                theDatumSystem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:59 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystem()`
+    pub fn datum_system(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ConcentricityTolerance_inherited_DatumSystem(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:62 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242()`
+    pub fn datum_system_ap242(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumSystemOrReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ConcentricityTolerance_inherited_DatumSystemAP242(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:65 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
+    pub fn set_datum_system(
+        &mut self,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_ConcentricityTolerance_inherited_SetDatumSystem(
+                self as *mut Self,
+                theDatumSystem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ConcentricityTolerance_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_ConcentricityTolerance_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ConcentricityTolerance_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_ConcentricityTolerance_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ConcentricityTolerance_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_ConcentricityTolerance_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ConcentricityTolerance_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_ConcentricityTolerance_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_ConcentricityTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_ConcentricityTolerance_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ConcentricityTolerance_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_ConcentricityTolerance_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ConcentricityTolerance_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_ConcentricityTolerance_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolConcentricityTolerance;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolConcentricityTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolConcentricityTolerance_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolConcentricityTolerance {
+    /// Dereference this Handle to access the underlying StepDimTol_ConcentricityTolerance
+    pub fn get(&self) -> &crate::ffi::StepDimTol_ConcentricityTolerance {
+        unsafe { &*(crate::ffi::HandleStepDimTolConcentricityTolerance_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_ConcentricityTolerance
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_ConcentricityTolerance {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolConcentricityTolerance_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_ConcentricityTolerance> to Handle<StepDimTol_GeometricToleranceWithDatumReference>
+    pub fn to_handle_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolConcentricityTolerance_to_HandleStepDimTolGeometricToleranceWithDatumReference(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_ConcentricityTolerance> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolConcentricityTolerance_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_ConcentricityTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolConcentricityTolerance_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_CylindricityTolerance.hxx
+// ========================
+
+/// **Source:** `StepDimTol_CylindricityTolerance.hxx`:27 - `StepDimTol_CylindricityTolerance`
+/// Representation of STEP entity CylindricityTolerance
+pub use crate::ffi::StepDimTol_CylindricityTolerance as CylindricityTolerance;
+
+unsafe impl crate::CppDeletable for CylindricityTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_CylindricityTolerance_destructor(ptr);
+    }
+}
+
+impl CylindricityTolerance {
+    /// **Source:** `StepDimTol_CylindricityTolerance.hxx`:32 - `StepDimTol_CylindricityTolerance::StepDimTol_CylindricityTolerance()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_CylindricityTolerance_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_CylindricityTolerance.hxx`:34 - `StepDimTol_CylindricityTolerance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_CylindricityTolerance_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_CylindricityTolerance.hxx`:34 - `StepDimTol_CylindricityTolerance::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_CylindricityTolerance_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_CylindricityTolerance.hxx`:34 - `StepDimTol_CylindricityTolerance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_CylindricityTolerance_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_CylindricityTolerance_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_CylindricityTolerance_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_CylindricityTolerance_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_CylindricityTolerance_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolCylindricityTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_CylindricityTolerance_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:40 - `StepDimTol_GeometricTolerance::Init()`
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_CylindricityTolerance_inherited_Init(
+                self as *mut Self,
+                theName,
+                theDescription,
+                theMagnitude,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_CylindricityTolerance_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_CylindricityTolerance_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_CylindricityTolerance_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_CylindricityTolerance_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_CylindricityTolerance_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_CylindricityTolerance_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_CylindricityTolerance_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_CylindricityTolerance_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_CylindricityTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_CylindricityTolerance_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_CylindricityTolerance_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_CylindricityTolerance_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_CylindricityTolerance_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_CylindricityTolerance_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolCylindricityTolerance;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolCylindricityTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolCylindricityTolerance_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolCylindricityTolerance {
+    /// Dereference this Handle to access the underlying StepDimTol_CylindricityTolerance
+    pub fn get(&self) -> &crate::ffi::StepDimTol_CylindricityTolerance {
+        unsafe { &*(crate::ffi::HandleStepDimTolCylindricityTolerance_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_CylindricityTolerance
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_CylindricityTolerance {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolCylindricityTolerance_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_CylindricityTolerance> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolCylindricityTolerance_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_CylindricityTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolCylindricityTolerance_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From StepDimTol_Datum.hxx
@@ -458,6 +2508,1428 @@ impl HandleStepDimTolDatum {
 }
 
 // ========================
+// From StepDimTol_DatumFeature.hxx
+// ========================
+
+/// **Source:** `StepDimTol_DatumFeature.hxx`:28 - `StepDimTol_DatumFeature`
+/// Representation of STEP entity DatumFeature
+pub use crate::ffi::StepDimTol_DatumFeature as DatumFeature;
+
+unsafe impl crate::CppDeletable for DatumFeature {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_DatumFeature_destructor(ptr);
+    }
+}
+
+impl DatumFeature {
+    /// **Source:** `StepDimTol_DatumFeature.hxx`:33 - `StepDimTol_DatumFeature::StepDimTol_DatumFeature()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumFeature_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_DatumFeature.hxx`:35 - `StepDimTol_DatumFeature::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_DatumFeature_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_DatumFeature.hxx`:35 - `StepDimTol_DatumFeature::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_DatumFeature_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumFeature.hxx`:35 - `StepDimTol_DatumFeature::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_DatumFeature_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect
+    pub fn as_step_repr_shape_aspect(&self) -> &crate::step_repr::ShapeAspect {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumFeature_as_StepRepr_ShapeAspect(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect (mutable)
+    pub fn as_step_repr_shape_aspect_mut(&mut self) -> &mut crate::step_repr::ShapeAspect {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_DatumFeature_as_StepRepr_ShapeAspect_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumFeature_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_DatumFeature_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumFeature> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumFeature_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:38 - `StepRepr_ShapeAspect::Init()`
+    pub fn init(
+        &mut self,
+        aName: &crate::ffi::HandleTCollectionHAsciiString,
+        aDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        aOfShape: &crate::ffi::HandleStepReprProductDefinitionShape,
+        aProductDefinitional: crate::step_data::Logical,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumFeature_inherited_Init(
+                self as *mut Self,
+                aName,
+                aDescription,
+                aOfShape,
+                aProductDefinitional.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:43 - `StepRepr_ShapeAspect::SetName()`
+    pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::StepDimTol_DatumFeature_inherited_SetName(self as *mut Self, aName) }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:45 - `StepRepr_ShapeAspect::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumFeature_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:47 - `StepRepr_ShapeAspect::SetDescription()`
+    pub fn set_description(&mut self, aDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumFeature_inherited_SetDescription(
+                self as *mut Self,
+                aDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:49 - `StepRepr_ShapeAspect::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumFeature_inherited_Description(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:51 - `StepRepr_ShapeAspect::SetOfShape()`
+    pub fn set_of_shape(&mut self, aOfShape: &crate::ffi::HandleStepReprProductDefinitionShape) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumFeature_inherited_SetOfShape(self as *mut Self, aOfShape)
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:53 - `StepRepr_ShapeAspect::OfShape()`
+    pub fn of_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumFeature_inherited_OfShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:55 - `StepRepr_ShapeAspect::SetProductDefinitional()`
+    pub fn set_product_definitional(&mut self, aProductDefinitional: crate::step_data::Logical) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumFeature_inherited_SetProductDefinitional(
+                self as *mut Self,
+                aProductDefinitional.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:57 - `StepRepr_ShapeAspect::ProductDefinitional()`
+    pub fn product_definitional(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(
+                crate::ffi::StepDimTol_DatumFeature_inherited_ProductDefinitional(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumFeature_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumFeature_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_DatumFeature_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumFeature_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumFeature_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_DatumFeature_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolDatumFeature;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolDatumFeature {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolDatumFeature_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolDatumFeature {
+    /// Dereference this Handle to access the underlying StepDimTol_DatumFeature
+    pub fn get(&self) -> &crate::ffi::StepDimTol_DatumFeature {
+        unsafe { &*(crate::ffi::HandleStepDimTolDatumFeature_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_DatumFeature
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_DatumFeature {
+        unsafe { &mut *(crate::ffi::HandleStepDimTolDatumFeature_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StepDimTol_DatumFeature> to Handle<StepRepr_ShapeAspect>
+    pub fn to_handle_shape_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolDatumFeature_to_HandleStepReprShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_DatumFeature> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolDatumFeature_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_DatumOrCommonDatum.hxx
+// ========================
+
+/// **Source:** `StepDimTol_DatumOrCommonDatum.hxx`:30 - `StepDimTol_DatumOrCommonDatum`
+pub use crate::ffi::StepDimTol_DatumOrCommonDatum as DatumOrCommonDatum;
+
+unsafe impl crate::CppDeletable for DatumOrCommonDatum {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_DatumOrCommonDatum_destructor(ptr);
+    }
+}
+
+impl DatumOrCommonDatum {
+    /// **Source:** `StepDimTol_DatumOrCommonDatum.hxx`:36 - `StepDimTol_DatumOrCommonDatum::StepDimTol_DatumOrCommonDatum()`
+    /// Returns a DatumOrCommonDatum select type
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumOrCommonDatum_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_DatumOrCommonDatum.hxx`:42 - `StepDimTol_DatumOrCommonDatum::CaseNum()`
+    /// Recognizes a DatumOrCommonDatum Kind Entity that is :
+    /// 1 -> Datum
+    /// 2 -> CommonDatumList
+    /// 0 else
+    pub fn case_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::StepDimTol_DatumOrCommonDatum_case_num(self as *const Self, ent) }
+    }
+
+    /// **Source:** `StepDimTol_DatumOrCommonDatum.hxx`:45 - `StepDimTol_DatumOrCommonDatum::Datum()`
+    /// returns Value as a Datum (Null if another type)
+    pub fn datum(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolDatum> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumOrCommonDatum_datum(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumOrCommonDatum.hxx`:48 - `StepDimTol_DatumOrCommonDatum::CommonDatumList()`
+    /// returns Value as a CommonDatumList  (Null if another type)
+    pub fn common_datum_list(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReferenceElement> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumOrCommonDatum_common_datum_list(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepData_SelectType
+    pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumOrCommonDatum_as_StepData_SelectType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepData_SelectType (mutable)
+    pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_DatumOrCommonDatum_as_StepData_SelectType_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
+    pub fn matches(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumOrCommonDatum_inherited_Matches(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
+    pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumOrCommonDatum_inherited_SetValue(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
+    pub fn nullify(&mut self) {
+        unsafe { crate::ffi::StepDimTol_DatumOrCommonDatum_inherited_Nullify(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumOrCommonDatum_inherited_Value(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:79 - `StepData_SelectType::IsNull()`
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi::StepDimTol_DatumOrCommonDatum_inherited_IsNull(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:83 - `StepData_SelectType::Type()`
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumOrCommonDatum_inherited_Type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:87 - `StepData_SelectType::CaseNumber()`
+    pub fn case_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumOrCommonDatum_inherited_CaseNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:94 - `StepData_SelectType::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataPDescr> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_DatumOrCommonDatum_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:104 - `StepData_SelectType::NewMember()`
+    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_DatumOrCommonDatum_inherited_NewMember(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:111 - `StepData_SelectType::CaseMem()`
+    pub fn case_mem(&self, ent: &crate::ffi::HandleStepDataSelectMember) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumOrCommonDatum_inherited_CaseMem(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:115 - `StepData_SelectType::CaseMember()`
+    pub fn case_member(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumOrCommonDatum_inherited_CaseMember(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:118 - `StepData_SelectType::Member()`
+    pub fn member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumOrCommonDatum_inherited_Member(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:127 - `StepData_SelectType::Int()`
+    pub fn int(&self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_DatumOrCommonDatum_inherited_Int(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
+    pub fn set_int(&mut self, val: i32) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumOrCommonDatum_inherited_SetInt(self as *mut Self, val)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:134 - `StepData_SelectType::Integer()`
+    pub fn integer(&self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_DatumOrCommonDatum_inherited_Integer(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:141 - `StepData_SelectType::Boolean()`
+    pub fn boolean(&self) -> bool {
+        unsafe { crate::ffi::StepDimTol_DatumOrCommonDatum_inherited_Boolean(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:145 - `StepData_SelectType::Logical()`
+    pub fn logical(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(
+                crate::ffi::StepDimTol_DatumOrCommonDatum_inherited_Logical(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:149 - `StepData_SelectType::Real()`
+    pub fn real(&self) -> f64 {
+        unsafe { crate::ffi::StepDimTol_DatumOrCommonDatum_inherited_Real(self as *const Self) }
+    }
+}
+
+// ========================
+// From StepDimTol_DatumReference.hxx
+// ========================
+
+/// **Source:** `StepDimTol_DatumReference.hxx`:30 - `StepDimTol_DatumReference`
+/// Representation of STEP entity DatumReference
+pub use crate::ffi::StepDimTol_DatumReference as DatumReference;
+
+unsafe impl crate::CppDeletable for DatumReference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_DatumReference_destructor(ptr);
+    }
+}
+
+impl DatumReference {
+    /// **Source:** `StepDimTol_DatumReference.hxx`:35 - `StepDimTol_DatumReference::StepDimTol_DatumReference()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumReference_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_DatumReference.hxx`:38 - `StepDimTol_DatumReference::Init()`
+    /// Initialize all fields (own and inherited)
+    pub fn init(
+        &mut self,
+        thePrecedence: i32,
+        theReferencedDatum: &crate::ffi::HandleStepDimTolDatum,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReference_init(
+                self as *mut Self,
+                thePrecedence,
+                theReferencedDatum,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumReference.hxx`:42 - `StepDimTol_DatumReference::Precedence()`
+    /// Returns field Precedence
+    pub fn precedence(&self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_DatumReference_precedence(self as *const Self) }
+    }
+
+    /// **Source:** `StepDimTol_DatumReference.hxx`:45 - `StepDimTol_DatumReference::SetPrecedence()`
+    /// Set field Precedence
+    pub fn set_precedence(&mut self, thePrecedence: i32) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReference_set_precedence(self as *mut Self, thePrecedence)
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumReference.hxx`:48 - `StepDimTol_DatumReference::ReferencedDatum()`
+    /// Returns field ReferencedDatum
+    pub fn referenced_datum(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolDatum> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumReference_referenced_datum(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumReference.hxx`:51 - `StepDimTol_DatumReference::SetReferencedDatum()`
+    /// Set field ReferencedDatum
+    pub fn set_referenced_datum(&mut self, theReferencedDatum: &crate::ffi::HandleStepDimTolDatum) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReference_set_referenced_datum(
+                self as *mut Self,
+                theReferencedDatum,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumReference.hxx`:53 - `StepDimTol_DatumReference::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_DatumReference_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_DatumReference.hxx`:53 - `StepDimTol_DatumReference::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_DatumReference_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumReference.hxx`:53 - `StepDimTol_DatumReference::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_DatumReference_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumReference_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_DatumReference_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumReference_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReference_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReference_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_DatumReference_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReference_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReference_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_DatumReference_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolDatumReference;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolDatumReference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolDatumReference_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolDatumReference {
+    /// Dereference this Handle to access the underlying StepDimTol_DatumReference
+    pub fn get(&self) -> &crate::ffi::StepDimTol_DatumReference {
+        unsafe { &*(crate::ffi::HandleStepDimTolDatumReference_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_DatumReference
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_DatumReference {
+        unsafe { &mut *(crate::ffi::HandleStepDimTolDatumReference_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StepDimTol_DatumReference> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolDatumReference_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_DatumReferenceCompartment.hxx
+// ========================
+
+/// **Source:** `StepDimTol_DatumReferenceCompartment.hxx`:27 - `StepDimTol_DatumReferenceCompartment`
+/// Representation of STEP entity DatumReferenceCompartment
+pub use crate::ffi::StepDimTol_DatumReferenceCompartment as DatumReferenceCompartment;
+
+unsafe impl crate::CppDeletable for DatumReferenceCompartment {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_DatumReferenceCompartment_destructor(ptr);
+    }
+}
+
+impl DatumReferenceCompartment {
+    /// **Source:** `StepDimTol_DatumReferenceCompartment.hxx`:32 - `StepDimTol_DatumReferenceCompartment::StepDimTol_DatumReferenceCompartment()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumReferenceCompartment_ctor())
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumReferenceCompartment.hxx`:34 - `StepDimTol_DatumReferenceCompartment::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumReferenceCompartment_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumReferenceCompartment.hxx`:34 - `StepDimTol_DatumReferenceCompartment::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_DatumReferenceCompartment_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumReferenceCompartment.hxx`:34 - `StepDimTol_DatumReferenceCompartment::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_DatumReferenceCompartment_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeneralDatumReference
+    pub fn as_general_datum_reference(&self) -> &GeneralDatumReference {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumReferenceCompartment_as_StepDimTol_GeneralDatumReference(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeneralDatumReference (mutable)
+    pub fn as_general_datum_reference_mut(&mut self) -> &mut GeneralDatumReference {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_DatumReferenceCompartment_as_StepDimTol_GeneralDatumReference_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect
+    pub fn as_step_repr_shape_aspect(&self) -> &crate::step_repr::ShapeAspect {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumReferenceCompartment_as_StepRepr_ShapeAspect(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect (mutable)
+    pub fn as_step_repr_shape_aspect_mut(&mut self) -> &mut crate::step_repr::ShapeAspect {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_DatumReferenceCompartment_as_StepRepr_ShapeAspect_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumReferenceCompartment_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_DatumReferenceCompartment_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumReferenceCompartment> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumReferenceCompartment_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeneralDatumReference.hxx`:38 - `StepDimTol_GeneralDatumReference::Init()`
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theOfShape: &crate::ffi::HandleStepReprProductDefinitionShape,
+        theProductDefinitional: crate::step_data::Logical,
+        theBase: &DatumOrCommonDatum,
+        theHasModifiers: bool,
+        theModifiers: &crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_Init(
+                self as *mut Self,
+                theName,
+                theDescription,
+                theOfShape,
+                theProductDefinitional.into(),
+                theBase,
+                theHasModifiers,
+                theModifiers,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeneralDatumReference.hxx`:47 - `StepDimTol_GeneralDatumReference::Base()`
+    pub fn base(&mut self) -> crate::OwnedPtr<DatumOrCommonDatum> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_Base(self as *mut Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeneralDatumReference.hxx`:50 - `StepDimTol_GeneralDatumReference::SetBase()`
+    pub fn set_base(&mut self, theBase: &DatumOrCommonDatum) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_SetBase(
+                self as *mut Self,
+                theBase,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeneralDatumReference.hxx`:53 - `StepDimTol_GeneralDatumReference::HasModifiers()`
+    pub fn has_modifiers(&self) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_HasModifiers(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeneralDatumReference.hxx`:59 - `StepDimTol_GeneralDatumReference::Modifiers()`
+    pub fn modifiers(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_Modifiers(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeneralDatumReference.hxx`:62 - `StepDimTol_GeneralDatumReference::SetModifiers()`
+    pub fn set_modifiers(
+        &mut self,
+        theModifiers: &crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_SetModifiers(
+                self as *mut Self,
+                theModifiers,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeneralDatumReference.hxx`:68 - `StepDimTol_GeneralDatumReference::NbModifiers()`
+    pub fn nb_modifiers(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_NbModifiers(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeneralDatumReference.hxx`:74 - `StepDimTol_GeneralDatumReference::ModifiersValue()`
+    pub fn modifiers_value(&self, theNum: i32) -> crate::OwnedPtr<DatumReferenceModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_ModifiersValue(
+                    self as *const Self,
+                    theNum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:43 - `StepRepr_ShapeAspect::SetName()`
+    pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_SetName(
+                self as *mut Self,
+                aName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:45 - `StepRepr_ShapeAspect::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_Name(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:47 - `StepRepr_ShapeAspect::SetDescription()`
+    pub fn set_description(&mut self, aDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_SetDescription(
+                self as *mut Self,
+                aDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:49 - `StepRepr_ShapeAspect::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:51 - `StepRepr_ShapeAspect::SetOfShape()`
+    pub fn set_of_shape(&mut self, aOfShape: &crate::ffi::HandleStepReprProductDefinitionShape) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_SetOfShape(
+                self as *mut Self,
+                aOfShape,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:53 - `StepRepr_ShapeAspect::OfShape()`
+    pub fn of_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_OfShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:55 - `StepRepr_ShapeAspect::SetProductDefinitional()`
+    pub fn set_product_definitional(&mut self, aProductDefinitional: crate::step_data::Logical) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_SetProductDefinitional(
+                self as *mut Self,
+                aProductDefinitional.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:57 - `StepRepr_ShapeAspect::ProductDefinitional()`
+    pub fn product_definitional(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(
+                crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_ProductDefinitional(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceCompartment_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolDatumReferenceCompartment;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolDatumReferenceCompartment {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolDatumReferenceCompartment_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolDatumReferenceCompartment {
+    /// Dereference this Handle to access the underlying StepDimTol_DatumReferenceCompartment
+    pub fn get(&self) -> &crate::ffi::StepDimTol_DatumReferenceCompartment {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolDatumReferenceCompartment_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_DatumReferenceCompartment
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_DatumReferenceCompartment {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolDatumReferenceCompartment_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_DatumReferenceCompartment> to Handle<StepDimTol_GeneralDatumReference>
+    pub fn to_handle_general_datum_reference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeneralDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolDatumReferenceCompartment_to_HandleStepDimTolGeneralDatumReference(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_DatumReferenceCompartment> to Handle<StepRepr_ShapeAspect>
+    pub fn to_handle_shape_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolDatumReferenceCompartment_to_HandleStepReprShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_DatumReferenceCompartment> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolDatumReferenceCompartment_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_DatumReferenceElement.hxx
+// ========================
+
+/// **Source:** `StepDimTol_DatumReferenceElement.hxx`:28 - `StepDimTol_DatumReferenceElement`
+/// Representation of STEP entity DatumReferenceElement
+pub use crate::ffi::StepDimTol_DatumReferenceElement as DatumReferenceElement;
+
+unsafe impl crate::CppDeletable for DatumReferenceElement {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_DatumReferenceElement_destructor(ptr);
+    }
+}
+
+impl DatumReferenceElement {
+    /// **Source:** `StepDimTol_DatumReferenceElement.hxx`:33 - `StepDimTol_DatumReferenceElement::StepDimTol_DatumReferenceElement()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumReferenceElement_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_DatumReferenceElement.hxx`:35 - `StepDimTol_DatumReferenceElement::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumReferenceElement_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumReferenceElement.hxx`:35 - `StepDimTol_DatumReferenceElement::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_DatumReferenceElement_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumReferenceElement.hxx`:35 - `StepDimTol_DatumReferenceElement::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_DatumReferenceElement_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeneralDatumReference
+    pub fn as_general_datum_reference(&self) -> &GeneralDatumReference {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumReferenceElement_as_StepDimTol_GeneralDatumReference(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeneralDatumReference (mutable)
+    pub fn as_general_datum_reference_mut(&mut self) -> &mut GeneralDatumReference {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_DatumReferenceElement_as_StepDimTol_GeneralDatumReference_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect
+    pub fn as_step_repr_shape_aspect(&self) -> &crate::step_repr::ShapeAspect {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumReferenceElement_as_StepRepr_ShapeAspect(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect (mutable)
+    pub fn as_step_repr_shape_aspect_mut(&mut self) -> &mut crate::step_repr::ShapeAspect {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_DatumReferenceElement_as_StepRepr_ShapeAspect_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumReferenceElement_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_DatumReferenceElement_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumReferenceElement> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumReferenceElement_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeneralDatumReference.hxx`:38 - `StepDimTol_GeneralDatumReference::Init()`
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theOfShape: &crate::ffi::HandleStepReprProductDefinitionShape,
+        theProductDefinitional: crate::step_data::Logical,
+        theBase: &DatumOrCommonDatum,
+        theHasModifiers: bool,
+        theModifiers: &crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceElement_inherited_Init(
+                self as *mut Self,
+                theName,
+                theDescription,
+                theOfShape,
+                theProductDefinitional.into(),
+                theBase,
+                theHasModifiers,
+                theModifiers,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeneralDatumReference.hxx`:47 - `StepDimTol_GeneralDatumReference::Base()`
+    pub fn base(&mut self) -> crate::OwnedPtr<DatumOrCommonDatum> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumReferenceElement_inherited_Base(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeneralDatumReference.hxx`:50 - `StepDimTol_GeneralDatumReference::SetBase()`
+    pub fn set_base(&mut self, theBase: &DatumOrCommonDatum) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceElement_inherited_SetBase(
+                self as *mut Self,
+                theBase,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeneralDatumReference.hxx`:53 - `StepDimTol_GeneralDatumReference::HasModifiers()`
+    pub fn has_modifiers(&self) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceElement_inherited_HasModifiers(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeneralDatumReference.hxx`:59 - `StepDimTol_GeneralDatumReference::Modifiers()`
+    pub fn modifiers(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_DatumReferenceElement_inherited_Modifiers(self as *mut Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeneralDatumReference.hxx`:62 - `StepDimTol_GeneralDatumReference::SetModifiers()`
+    pub fn set_modifiers(
+        &mut self,
+        theModifiers: &crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceElement_inherited_SetModifiers(
+                self as *mut Self,
+                theModifiers,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeneralDatumReference.hxx`:68 - `StepDimTol_GeneralDatumReference::NbModifiers()`
+    pub fn nb_modifiers(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceElement_inherited_NbModifiers(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeneralDatumReference.hxx`:74 - `StepDimTol_GeneralDatumReference::ModifiersValue()`
+    pub fn modifiers_value(&self, theNum: i32) -> crate::OwnedPtr<DatumReferenceModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_DatumReferenceElement_inherited_ModifiersValue(
+                    self as *const Self,
+                    theNum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:43 - `StepRepr_ShapeAspect::SetName()`
+    pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceElement_inherited_SetName(self as *mut Self, aName)
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:45 - `StepRepr_ShapeAspect::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumReferenceElement_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:47 - `StepRepr_ShapeAspect::SetDescription()`
+    pub fn set_description(&mut self, aDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceElement_inherited_SetDescription(
+                self as *mut Self,
+                aDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:49 - `StepRepr_ShapeAspect::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_DatumReferenceElement_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:51 - `StepRepr_ShapeAspect::SetOfShape()`
+    pub fn set_of_shape(&mut self, aOfShape: &crate::ffi::HandleStepReprProductDefinitionShape) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceElement_inherited_SetOfShape(
+                self as *mut Self,
+                aOfShape,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:53 - `StepRepr_ShapeAspect::OfShape()`
+    pub fn of_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_DatumReferenceElement_inherited_OfShape(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:55 - `StepRepr_ShapeAspect::SetProductDefinitional()`
+    pub fn set_product_definitional(&mut self, aProductDefinitional: crate::step_data::Logical) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceElement_inherited_SetProductDefinitional(
+                self as *mut Self,
+                aProductDefinitional.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:57 - `StepRepr_ShapeAspect::ProductDefinitional()`
+    pub fn product_definitional(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(
+                crate::ffi::StepDimTol_DatumReferenceElement_inherited_ProductDefinitional(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceElement_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceElement_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceElement_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceElement_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceElement_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceElement_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolDatumReferenceElement;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolDatumReferenceElement {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolDatumReferenceElement_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolDatumReferenceElement {
+    /// Dereference this Handle to access the underlying StepDimTol_DatumReferenceElement
+    pub fn get(&self) -> &crate::ffi::StepDimTol_DatumReferenceElement {
+        unsafe { &*(crate::ffi::HandleStepDimTolDatumReferenceElement_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_DatumReferenceElement
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_DatumReferenceElement {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolDatumReferenceElement_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_DatumReferenceElement> to Handle<StepDimTol_GeneralDatumReference>
+    pub fn to_handle_general_datum_reference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeneralDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolDatumReferenceElement_to_HandleStepDimTolGeneralDatumReference(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_DatumReferenceElement> to Handle<StepRepr_ShapeAspect>
+    pub fn to_handle_shape_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolDatumReferenceElement_to_HandleStepReprShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_DatumReferenceElement> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolDatumReferenceElement_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
 // From StepDimTol_DatumReferenceModifier.hxx
 // ========================
 
@@ -579,6 +4051,17 @@ impl DatumReferenceModifier {
     pub fn case_number(&self) -> i32 {
         unsafe {
             crate::ffi::StepDimTol_DatumReferenceModifier_inherited_CaseNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:94 - `StepData_SelectType::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataPDescr> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_DatumReferenceModifier_inherited_Description(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -902,6 +4385,310 @@ impl HandleStepDimTolDatumReferenceModifierWithValue {
 }
 
 // ========================
+// From StepDimTol_DatumSystem.hxx
+// ========================
+
+/// **Source:** `StepDimTol_DatumSystem.hxx`:28 - `StepDimTol_DatumSystem`
+/// Representation of STEP entity DatumSystem
+pub use crate::ffi::StepDimTol_DatumSystem as DatumSystem;
+
+unsafe impl crate::CppDeletable for DatumSystem {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_DatumSystem_destructor(ptr);
+    }
+}
+
+impl DatumSystem {
+    /// **Source:** `StepDimTol_DatumSystem.hxx`:33 - `StepDimTol_DatumSystem::StepDimTol_DatumSystem()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumSystem_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_DatumSystem.hxx`:36 - `StepDimTol_DatumSystem::Init()`
+    /// Initialize all fields (own and inherited)
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theOfShape: &crate::ffi::HandleStepReprProductDefinitionShape,
+        theProductDefinitional: crate::step_data::Logical,
+        theConstituents: &crate::ffi::HandleStepDimTolHArray1OfDatumReferenceCompartment,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystem_init(
+                self as *mut Self,
+                theName,
+                theDescription,
+                theOfShape,
+                theProductDefinitional.into(),
+                theConstituents,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumSystem.hxx`:44 - `StepDimTol_DatumSystem::Constituents()`
+    /// Returns field Constituents
+    pub fn constituents(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReferenceCompartment> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumSystem_constituents(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumSystem.hxx`:50 - `StepDimTol_DatumSystem::SetConstituents()`
+    /// Set field Constituents
+    pub fn set_constituents(
+        &mut self,
+        theConstituents: &crate::ffi::HandleStepDimTolHArray1OfDatumReferenceCompartment,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystem_set_constituents(self as *mut Self, theConstituents)
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumSystem.hxx`:57 - `StepDimTol_DatumSystem::NbConstituents()`
+    /// Returns number of Constituents
+    pub fn nb_constituents(&self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_DatumSystem_nb_constituents(self as *const Self) }
+    }
+
+    /// **Source:** `StepDimTol_DatumSystem.hxx`:63 - `StepDimTol_DatumSystem::ConstituentsValue()`
+    /// Returns Constituents with the given number
+    pub fn constituents_value_int(
+        &self,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumReferenceCompartment> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumSystem_constituents_value_int(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumSystem.hxx`:70 - `StepDimTol_DatumSystem::ConstituentsValue()`
+    /// Sets Constituents with given number
+    pub fn constituents_value_int_handlestepdimtoldatumreferencecompartment(
+        &mut self,
+        num: i32,
+        theItem: &crate::ffi::HandleStepDimTolDatumReferenceCompartment,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystem_constituents_value_int_handlestepdimtoldatumreferencecompartment(self as *mut Self, num, theItem)
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumSystem.hxx`:76 - `StepDimTol_DatumSystem::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_DatumSystem_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_DatumSystem.hxx`:76 - `StepDimTol_DatumSystem::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_DatumSystem_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumSystem.hxx`:76 - `StepDimTol_DatumSystem::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_DatumSystem_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect
+    pub fn as_step_repr_shape_aspect(&self) -> &crate::step_repr::ShapeAspect {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumSystem_as_StepRepr_ShapeAspect(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect (mutable)
+    pub fn as_step_repr_shape_aspect_mut(&mut self) -> &mut crate::step_repr::ShapeAspect {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_DatumSystem_as_StepRepr_ShapeAspect_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::StepDimTol_DatumSystem_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_DatumSystem_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumSystem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumSystem_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:43 - `StepRepr_ShapeAspect::SetName()`
+    pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::StepDimTol_DatumSystem_inherited_SetName(self as *mut Self, aName) }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:45 - `StepRepr_ShapeAspect::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumSystem_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:47 - `StepRepr_ShapeAspect::SetDescription()`
+    pub fn set_description(&mut self, aDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystem_inherited_SetDescription(
+                self as *mut Self,
+                aDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:49 - `StepRepr_ShapeAspect::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumSystem_inherited_Description(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:51 - `StepRepr_ShapeAspect::SetOfShape()`
+    pub fn set_of_shape(&mut self, aOfShape: &crate::ffi::HandleStepReprProductDefinitionShape) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystem_inherited_SetOfShape(self as *mut Self, aOfShape)
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:53 - `StepRepr_ShapeAspect::OfShape()`
+    pub fn of_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumSystem_inherited_OfShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:55 - `StepRepr_ShapeAspect::SetProductDefinitional()`
+    pub fn set_product_definitional(&mut self, aProductDefinitional: crate::step_data::Logical) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystem_inherited_SetProductDefinitional(
+                self as *mut Self,
+                aProductDefinitional.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:57 - `StepRepr_ShapeAspect::ProductDefinitional()`
+    pub fn product_definitional(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(
+                crate::ffi::StepDimTol_DatumSystem_inherited_ProductDefinitional(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystem_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::StepDimTol_DatumSystem_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_DatumSystem_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystem_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystem_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_DatumSystem_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolDatumSystem;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolDatumSystem {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolDatumSystem_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolDatumSystem {
+    /// Dereference this Handle to access the underlying StepDimTol_DatumSystem
+    pub fn get(&self) -> &crate::ffi::StepDimTol_DatumSystem {
+        unsafe { &*(crate::ffi::HandleStepDimTolDatumSystem_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_DatumSystem
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_DatumSystem {
+        unsafe { &mut *(crate::ffi::HandleStepDimTolDatumSystem_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StepDimTol_DatumSystem> to Handle<StepRepr_ShapeAspect>
+    pub fn to_handle_shape_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolDatumSystem_to_HandleStepReprShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_DatumSystem> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolDatumSystem_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
 // From StepDimTol_DatumSystemOrReference.hxx
 // ========================
 
@@ -928,6 +4715,26 @@ impl DatumSystemOrReference {
     /// 0 else
     pub fn case_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
         unsafe { crate::ffi::StepDimTol_DatumSystemOrReference_case_num(self as *const Self, ent) }
+    }
+
+    /// **Source:** `StepDimTol_DatumSystemOrReference.hxx`:45 - `StepDimTol_DatumSystemOrReference::DatumSystem()`
+    /// returns Value as a DatumSystem (Null if another type)
+    pub fn datum_system(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumSystem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumSystemOrReference_datum_system(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumSystemOrReference.hxx`:48 - `StepDimTol_DatumSystemOrReference::DatumReference()`
+    /// returns Value as a DatumReference (Null if another type)
+    pub fn datum_reference(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_DatumSystemOrReference_datum_reference(self as *const Self),
+            )
+        }
     }
 
     /// Upcast to StepData_SelectType
@@ -999,6 +4806,17 @@ impl DatumSystemOrReference {
     pub fn case_number(&self) -> i32 {
         unsafe {
             crate::ffi::StepDimTol_DatumSystemOrReference_inherited_CaseNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:94 - `StepData_SelectType::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataPDescr> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_DatumSystemOrReference_inherited_Description(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1083,17 +4901,3567 @@ impl DatumSystemOrReference {
     }
 }
 
-// ── Skipped symbols for DatumSystemOrReference (2 total) ──
-// SKIPPED: **Source:** `StepDimTol_DatumSystemOrReference.hxx`:45 - `StepDimTol_DatumSystemOrReference::DatumSystem`
-//   method: returns Value as a DatumSystem (Null if another type)
-//   Reason: return type 'Handle(StepDimTol_DatumSystem)' is unknown
-//   // pub fn datum_system(&self) -> OwnedPtr<Handle<StepDimTol_DatumSystem>>;
-//
-// SKIPPED: **Source:** `StepDimTol_DatumSystemOrReference.hxx`:48 - `StepDimTol_DatumSystemOrReference::DatumReference`
-//   method: returns Value as a DatumReference (Null if another type)
-//   Reason: return type 'Handle(StepDimTol_DatumReference)' is unknown
-//   // pub fn datum_reference(&self) -> OwnedPtr<Handle<StepDimTol_DatumReference>>;
-//
+// ========================
+// From StepDimTol_DatumTarget.hxx
+// ========================
+
+/// **Source:** `StepDimTol_DatumTarget.hxx`:31 - `StepDimTol_DatumTarget`
+/// Representation of STEP entity DatumTarget
+pub use crate::ffi::StepDimTol_DatumTarget as DatumTarget;
+
+unsafe impl crate::CppDeletable for DatumTarget {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_DatumTarget_destructor(ptr);
+    }
+}
+
+impl DatumTarget {
+    /// **Source:** `StepDimTol_DatumTarget.hxx`:36 - `StepDimTol_DatumTarget::StepDimTol_DatumTarget()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumTarget_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_DatumTarget.hxx`:39 - `StepDimTol_DatumTarget::Init()`
+    /// Initialize all fields (own and inherited)
+    pub fn init(
+        &mut self,
+        theShapeAspect_Name: &crate::ffi::HandleTCollectionHAsciiString,
+        theShapeAspect_Description: &crate::ffi::HandleTCollectionHAsciiString,
+        theShapeAspect_OfShape: &crate::ffi::HandleStepReprProductDefinitionShape,
+        theShapeAspect_ProductDefinitional: crate::step_data::Logical,
+        theTargetId: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumTarget_init(
+                self as *mut Self,
+                theShapeAspect_Name,
+                theShapeAspect_Description,
+                theShapeAspect_OfShape,
+                theShapeAspect_ProductDefinitional.into(),
+                theTargetId,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumTarget.hxx`:46 - `StepDimTol_DatumTarget::TargetId()`
+    /// Returns field TargetId
+    pub fn target_id(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumTarget_target_id(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumTarget.hxx`:49 - `StepDimTol_DatumTarget::SetTargetId()`
+    /// Set field TargetId
+    pub fn set_target_id(&mut self, theTargetId: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::StepDimTol_DatumTarget_set_target_id(self as *mut Self, theTargetId) }
+    }
+
+    /// **Source:** `StepDimTol_DatumTarget.hxx`:51 - `StepDimTol_DatumTarget::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_DatumTarget_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_DatumTarget.hxx`:51 - `StepDimTol_DatumTarget::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_DatumTarget_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumTarget.hxx`:51 - `StepDimTol_DatumTarget::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_DatumTarget_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect
+    pub fn as_step_repr_shape_aspect(&self) -> &crate::step_repr::ShapeAspect {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumTarget_as_StepRepr_ShapeAspect(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect (mutable)
+    pub fn as_step_repr_shape_aspect_mut(&mut self) -> &mut crate::step_repr::ShapeAspect {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_DatumTarget_as_StepRepr_ShapeAspect_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::StepDimTol_DatumTarget_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_DatumTarget_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumTarget_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:43 - `StepRepr_ShapeAspect::SetName()`
+    pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::StepDimTol_DatumTarget_inherited_SetName(self as *mut Self, aName) }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:45 - `StepRepr_ShapeAspect::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumTarget_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:47 - `StepRepr_ShapeAspect::SetDescription()`
+    pub fn set_description(&mut self, aDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumTarget_inherited_SetDescription(
+                self as *mut Self,
+                aDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:49 - `StepRepr_ShapeAspect::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumTarget_inherited_Description(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:51 - `StepRepr_ShapeAspect::SetOfShape()`
+    pub fn set_of_shape(&mut self, aOfShape: &crate::ffi::HandleStepReprProductDefinitionShape) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumTarget_inherited_SetOfShape(self as *mut Self, aOfShape)
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:53 - `StepRepr_ShapeAspect::OfShape()`
+    pub fn of_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumTarget_inherited_OfShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:55 - `StepRepr_ShapeAspect::SetProductDefinitional()`
+    pub fn set_product_definitional(&mut self, aProductDefinitional: crate::step_data::Logical) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumTarget_inherited_SetProductDefinitional(
+                self as *mut Self,
+                aProductDefinitional.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:57 - `StepRepr_ShapeAspect::ProductDefinitional()`
+    pub fn product_definitional(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(
+                crate::ffi::StepDimTol_DatumTarget_inherited_ProductDefinitional(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumTarget_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::StepDimTol_DatumTarget_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_DatumTarget_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumTarget_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumTarget_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_DatumTarget_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolDatumTarget;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolDatumTarget {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolDatumTarget_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolDatumTarget {
+    /// Dereference this Handle to access the underlying StepDimTol_DatumTarget
+    pub fn get(&self) -> &crate::ffi::StepDimTol_DatumTarget {
+        unsafe { &*(crate::ffi::HandleStepDimTolDatumTarget_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_DatumTarget
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_DatumTarget {
+        unsafe { &mut *(crate::ffi::HandleStepDimTolDatumTarget_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StepDimTol_DatumTarget> to Handle<StepRepr_ShapeAspect>
+    pub fn to_handle_shape_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolDatumTarget_to_HandleStepReprShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_DatumTarget> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolDatumTarget_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_DatumTarget> to Handle<StepDimTol_PlacedDatumTargetFeature>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_PlacedDatumTargetFeature` (or subclass).
+    pub fn downcast_to_placed_datum_target_feature(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolPlacedDatumTargetFeature>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolDatumTarget_downcast_to_HandleStepDimTolPlacedDatumTargetFeature(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_FlatnessTolerance.hxx
+// ========================
+
+/// **Source:** `StepDimTol_FlatnessTolerance.hxx`:27 - `StepDimTol_FlatnessTolerance`
+/// Representation of STEP entity FlatnessTolerance
+pub use crate::ffi::StepDimTol_FlatnessTolerance as FlatnessTolerance;
+
+unsafe impl crate::CppDeletable for FlatnessTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_FlatnessTolerance_destructor(ptr);
+    }
+}
+
+impl FlatnessTolerance {
+    /// **Source:** `StepDimTol_FlatnessTolerance.hxx`:32 - `StepDimTol_FlatnessTolerance::StepDimTol_FlatnessTolerance()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_FlatnessTolerance_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_FlatnessTolerance.hxx`:34 - `StepDimTol_FlatnessTolerance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_FlatnessTolerance_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_FlatnessTolerance.hxx`:34 - `StepDimTol_FlatnessTolerance::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_FlatnessTolerance_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_FlatnessTolerance.hxx`:34 - `StepDimTol_FlatnessTolerance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_FlatnessTolerance_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_FlatnessTolerance_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_FlatnessTolerance_as_StepDimTol_GeometricTolerance_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_FlatnessTolerance_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_FlatnessTolerance_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolFlatnessTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_FlatnessTolerance_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:40 - `StepDimTol_GeometricTolerance::Init()`
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_FlatnessTolerance_inherited_Init(
+                self as *mut Self,
+                theName,
+                theDescription,
+                theMagnitude,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_FlatnessTolerance_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_FlatnessTolerance_inherited_SetName(self as *mut Self, theName)
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_FlatnessTolerance_inherited_Description(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_FlatnessTolerance_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_FlatnessTolerance_inherited_Magnitude(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_FlatnessTolerance_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_FlatnessTolerance_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_FlatnessTolerance_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_FlatnessTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_FlatnessTolerance_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_FlatnessTolerance_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_FlatnessTolerance_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_FlatnessTolerance_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_FlatnessTolerance_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolFlatnessTolerance;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolFlatnessTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolFlatnessTolerance_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolFlatnessTolerance {
+    /// Dereference this Handle to access the underlying StepDimTol_FlatnessTolerance
+    pub fn get(&self) -> &crate::ffi::StepDimTol_FlatnessTolerance {
+        unsafe { &*(crate::ffi::HandleStepDimTolFlatnessTolerance_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_FlatnessTolerance
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_FlatnessTolerance {
+        unsafe { &mut *(crate::ffi::HandleStepDimTolFlatnessTolerance_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StepDimTol_FlatnessTolerance> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolFlatnessTolerance_to_HandleStepDimTolGeometricTolerance(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_FlatnessTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolFlatnessTolerance_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_GeneralDatumReference.hxx
+// ========================
+
+/// **Source:** `StepDimTol_GeneralDatumReference.hxx`:30 - `StepDimTol_GeneralDatumReference`
+/// Representation of STEP entity GeneralDatumReference
+pub use crate::ffi::StepDimTol_GeneralDatumReference as GeneralDatumReference;
+
+unsafe impl crate::CppDeletable for GeneralDatumReference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_GeneralDatumReference_destructor(ptr);
+    }
+}
+
+impl GeneralDatumReference {
+    /// **Source:** `StepDimTol_GeneralDatumReference.hxx`:35 - `StepDimTol_GeneralDatumReference::StepDimTol_GeneralDatumReference()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeneralDatumReference_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_GeneralDatumReference.hxx`:38 - `StepDimTol_GeneralDatumReference::Init()`
+    /// Initialize all fields (own and inherited)
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theOfShape: &crate::ffi::HandleStepReprProductDefinitionShape,
+        theProductDefinitional: crate::step_data::Logical,
+        theBase: &DatumOrCommonDatum,
+        theHasModifiers: bool,
+        theModifiers: &crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeneralDatumReference_init(
+                self as *mut Self,
+                theName,
+                theDescription,
+                theOfShape,
+                theProductDefinitional.into(),
+                theBase,
+                theHasModifiers,
+                theModifiers,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeneralDatumReference.hxx`:47 - `StepDimTol_GeneralDatumReference::Base()`
+    /// Returns field Base
+    pub fn base(&mut self) -> crate::OwnedPtr<DatumOrCommonDatum> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeneralDatumReference_base(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeneralDatumReference.hxx`:50 - `StepDimTol_GeneralDatumReference::SetBase()`
+    /// Set field Base
+    pub fn set_base(&mut self, theBase: &DatumOrCommonDatum) {
+        unsafe { crate::ffi::StepDimTol_GeneralDatumReference_set_base(self as *mut Self, theBase) }
+    }
+
+    /// **Source:** `StepDimTol_GeneralDatumReference.hxx`:53 - `StepDimTol_GeneralDatumReference::HasModifiers()`
+    /// Indicates is field Modifiers exist
+    pub fn has_modifiers(&self) -> bool {
+        unsafe { crate::ffi::StepDimTol_GeneralDatumReference_has_modifiers(self as *const Self) }
+    }
+
+    /// **Source:** `StepDimTol_GeneralDatumReference.hxx`:59 - `StepDimTol_GeneralDatumReference::Modifiers()`
+    /// Returns field Modifiers
+    pub fn modifiers(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeneralDatumReference_modifiers(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeneralDatumReference.hxx`:62 - `StepDimTol_GeneralDatumReference::SetModifiers()`
+    /// Set field Modifiers
+    pub fn set_modifiers(
+        &mut self,
+        theModifiers: &crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeneralDatumReference_set_modifiers(
+                self as *mut Self,
+                theModifiers,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeneralDatumReference.hxx`:68 - `StepDimTol_GeneralDatumReference::NbModifiers()`
+    /// Returns number of Modifiers
+    pub fn nb_modifiers(&self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_GeneralDatumReference_nb_modifiers(self as *const Self) }
+    }
+
+    /// **Source:** `StepDimTol_GeneralDatumReference.hxx`:74 - `StepDimTol_GeneralDatumReference::ModifiersValue()`
+    /// Returns Modifiers with the given number
+    pub fn modifiers_value_int(&self, theNum: i32) -> crate::OwnedPtr<DatumReferenceModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeneralDatumReference_modifiers_value_int(
+                    self as *const Self,
+                    theNum,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeneralDatumReference.hxx`:80 - `StepDimTol_GeneralDatumReference::ModifiersValue()`
+    /// Sets Modifiers with given number
+    pub fn modifiers_value_int_datumreferencemodifier(
+        &mut self,
+        theNum: i32,
+        theItem: &DatumReferenceModifier,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeneralDatumReference_modifiers_value_int_datumreferencemodifier(
+                self as *mut Self,
+                theNum,
+                theItem,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeneralDatumReference.hxx`:86 - `StepDimTol_GeneralDatumReference::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeneralDatumReference_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeneralDatumReference.hxx`:86 - `StepDimTol_GeneralDatumReference::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_GeneralDatumReference_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeneralDatumReference.hxx`:86 - `StepDimTol_GeneralDatumReference::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_GeneralDatumReference_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect
+    pub fn as_step_repr_shape_aspect(&self) -> &crate::step_repr::ShapeAspect {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeneralDatumReference_as_StepRepr_ShapeAspect(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect (mutable)
+    pub fn as_step_repr_shape_aspect_mut(&mut self) -> &mut crate::step_repr::ShapeAspect {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeneralDatumReference_as_StepRepr_ShapeAspect_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeneralDatumReference_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeneralDatumReference_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeneralDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeneralDatumReference_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:43 - `StepRepr_ShapeAspect::SetName()`
+    pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeneralDatumReference_inherited_SetName(self as *mut Self, aName)
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:45 - `StepRepr_ShapeAspect::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeneralDatumReference_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:47 - `StepRepr_ShapeAspect::SetDescription()`
+    pub fn set_description(&mut self, aDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeneralDatumReference_inherited_SetDescription(
+                self as *mut Self,
+                aDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:49 - `StepRepr_ShapeAspect::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeneralDatumReference_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:51 - `StepRepr_ShapeAspect::SetOfShape()`
+    pub fn set_of_shape(&mut self, aOfShape: &crate::ffi::HandleStepReprProductDefinitionShape) {
+        unsafe {
+            crate::ffi::StepDimTol_GeneralDatumReference_inherited_SetOfShape(
+                self as *mut Self,
+                aOfShape,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:53 - `StepRepr_ShapeAspect::OfShape()`
+    pub fn of_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeneralDatumReference_inherited_OfShape(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:55 - `StepRepr_ShapeAspect::SetProductDefinitional()`
+    pub fn set_product_definitional(&mut self, aProductDefinitional: crate::step_data::Logical) {
+        unsafe {
+            crate::ffi::StepDimTol_GeneralDatumReference_inherited_SetProductDefinitional(
+                self as *mut Self,
+                aProductDefinitional.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:57 - `StepRepr_ShapeAspect::ProductDefinitional()`
+    pub fn product_definitional(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(
+                crate::ffi::StepDimTol_GeneralDatumReference_inherited_ProductDefinitional(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeneralDatumReference_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeneralDatumReference_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeneralDatumReference_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeneralDatumReference_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeneralDatumReference_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeneralDatumReference_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolGeneralDatumReference;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolGeneralDatumReference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolGeneralDatumReference_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolGeneralDatumReference {
+    /// Dereference this Handle to access the underlying StepDimTol_GeneralDatumReference
+    pub fn get(&self) -> &crate::ffi::StepDimTol_GeneralDatumReference {
+        unsafe { &*(crate::ffi::HandleStepDimTolGeneralDatumReference_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_GeneralDatumReference
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_GeneralDatumReference {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolGeneralDatumReference_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeneralDatumReference> to Handle<StepRepr_ShapeAspect>
+    pub fn to_handle_shape_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolGeneralDatumReference_to_HandleStepReprShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeneralDatumReference> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolGeneralDatumReference_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeneralDatumReference> to Handle<StepDimTol_DatumReferenceCompartment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_DatumReferenceCompartment` (or subclass).
+    pub fn downcast_to_datum_reference_compartment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumReferenceCompartment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeneralDatumReference_downcast_to_HandleStepDimTolDatumReferenceCompartment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeneralDatumReference> to Handle<StepDimTol_DatumReferenceElement>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_DatumReferenceElement` (or subclass).
+    pub fn downcast_to_datum_reference_element(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumReferenceElement>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeneralDatumReference_downcast_to_HandleStepDimTolDatumReferenceElement(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_GeoTolAndGeoTolWthDatRef.hxx
+// ========================
+
+/// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRef.hxx`:33 - `StepDimTol_GeoTolAndGeoTolWthDatRef`
+pub use crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef as GeoTolAndGeoTolWthDatRef;
+
+unsafe impl crate::CppDeletable for GeoTolAndGeoTolWthDatRef {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_destructor(ptr);
+    }
+}
+
+impl GeoTolAndGeoTolWthDatRef {
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRef.hxx`:37 - `StepDimTol_GeoTolAndGeoTolWthDatRef::StepDimTol_GeoTolAndGeoTolWthDatRef()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRef.hxx`:39 - `StepDimTol_GeoTolAndGeoTolWthDatRef::Init()`
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_handlestepdimtolgeometrictolerancewithdatumreference_geometrictolerancetype(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+        theGTWDR: &crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference,
+        theType: crate::step_dim_tol::GeometricToleranceType,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_handlestepdimtolgeometrictolerancewithdatumreference_geometrictolerancetype(self as *mut Self, theName, theDescription, theMagnitude, theTolerancedShapeAspect, theGTWDR, theType.into())
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRef.hxx`:46 - `StepDimTol_GeoTolAndGeoTolWthDatRef::Init()`
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_handlestepdimtolgeometrictolerancewithdatumreference_geometrictolerancetype(
+        &mut self,
+        aName: &crate::ffi::HandleTCollectionHAsciiString,
+        aDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        aMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        aTolerancedShapeAspect: &GeometricToleranceTarget,
+        aGTWDR: &crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference,
+        theType: crate::step_dim_tol::GeometricToleranceType,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_handlestepdimtolgeometrictolerancewithdatumreference_geometrictolerancetype(self as *mut Self, aName, aDescription, aMagnitude, aTolerancedShapeAspect, aGTWDR, theType.into())
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRef.hxx`:53 - `StepDimTol_GeoTolAndGeoTolWthDatRef::SetGeometricToleranceWithDatumReference()`
+    pub fn set_geometric_tolerance_with_datum_reference(
+        &mut self,
+        theGTWDR: &crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_set_geometric_tolerance_with_datum_reference(self as *mut Self, theGTWDR)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRef.hxx`:60 - `StepDimTol_GeoTolAndGeoTolWthDatRef::GetGeometricToleranceWithDatumReference()`
+    pub fn get_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_get_geometric_tolerance_with_datum_reference(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRef.hxx`:65 - `StepDimTol_GeoTolAndGeoTolWthDatRef::SetGeometricToleranceType()`
+    pub fn set_geometric_tolerance_type(
+        &mut self,
+        theType: crate::step_dim_tol::GeometricToleranceType,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_set_geometric_tolerance_type(
+                self as *mut Self,
+                theType.into(),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRef.hxx`:70 - `StepDimTol_GeoTolAndGeoTolWthDatRef::GetToleranceType()`
+    pub fn get_tolerance_type(&self) -> crate::step_dim_tol::GeometricToleranceType {
+        unsafe {
+            crate::step_dim_tol::GeometricToleranceType::try_from(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_get_tolerance_type(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRef.hxx`:72 - `StepDimTol_GeoTolAndGeoTolWthDatRef::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRef.hxx`:72 - `StepDimTol_GeoTolAndGeoTolWthDatRef::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_get_type_name()).to_string_lossy().into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRef.hxx`:72 - `StepDimTol_GeoTolAndGeoTolWthDatRef::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRef> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_inherited_Name(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRef;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolGeoTolAndGeoTolWthDatRef {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRef_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolGeoTolAndGeoTolWthDatRef {
+    /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthDatRef
+    pub fn get(&self) -> &crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef {
+        unsafe { &*(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRef_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_GeoTolAndGeoTolWthDatRef
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRef_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeoTolAndGeoTolWthDatRef> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRef_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeoTolAndGeoTolWthDatRef> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRef_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeoTolAndGeoTolWthDatRef> to Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol` (or subclass).
+    pub fn downcast_to_geo_tol_and_geo_tol_wth_dat_ref_and_uneq_dis_geo_tol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRef_downcast_to_HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol.hxx
+// ========================
+
+/// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol.hxx`:35 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol`
+pub use crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol as GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol;
+
+unsafe impl crate::CppDeletable for GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_destructor(ptr);
+    }
+}
+
+impl GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol {
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol.hxx`:40 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_ctor(),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol.hxx`:42 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol::Init()`
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_handlestepdimtolgeometrictolerancewithdatumreference_handlestepdimtolgeometrictolerancewithmodifiers_handlestepbasiclengthmeasurewithunit_geometrictolerancetype(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+        theGTWDR: &crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference,
+        theGTWM: &crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers,
+        theMaxTol: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+        theType: crate::step_dim_tol::GeometricToleranceType,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_handlestepdimtolgeometrictolerancewithdatumreference_handlestepdimtolgeometrictolerancewithmodifiers_handlestepbasiclengthmeasurewithunit_geometrictolerancetype(self as *mut Self, theName, theDescription, theMagnitude, theTolerancedShapeAspect, theGTWDR, theGTWM, theMaxTol, theType.into())
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol.hxx`:51 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol::Init()`
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_handlestepdimtolgeometrictolerancewithdatumreference_handlestepdimtolgeometrictolerancewithmodifiers_handlestepbasiclengthmeasurewithunit_geometrictolerancetype(
+        &mut self,
+        aName: &crate::ffi::HandleTCollectionHAsciiString,
+        aDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        aMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        aTolerancedShapeAspect: &GeometricToleranceTarget,
+        aGTWDR: &crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference,
+        aGTWM: &crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers,
+        theMaxTol: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+        theType: crate::step_dim_tol::GeometricToleranceType,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_handlestepdimtolgeometrictolerancewithdatumreference_handlestepdimtolgeometrictolerancewithmodifiers_handlestepbasiclengthmeasurewithunit_geometrictolerancetype(self as *mut Self, aName, aDescription, aMagnitude, aTolerancedShapeAspect, aGTWDR, aGTWM, theMaxTol, theType.into())
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol.hxx`:60 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol::SetMaxTolerance()`
+    pub fn set_max_tolerance(
+        &mut self,
+        theMaxTol: &mut crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_set_max_tolerance(
+                self as *mut Self,
+                theMaxTol,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol.hxx`:65 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol::GetMaxTolerance()`
+    pub fn get_max_tolerance(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicLengthMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_get_max_tolerance(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol.hxx`:67 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol.hxx`:67 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol.hxx`:67 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_get_type_descriptor())
+        }
+    }
+
+    /// Upcast to StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod
+    pub fn as_geo_tol_and_geo_tol_wth_dat_ref_and_geo_tol_wth_mod(
+        &self,
+    ) -> &GeoTolAndGeoTolWthDatRefAndGeoTolWthMod {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_as_StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod (mutable)
+    pub fn as_geo_tol_and_geo_tol_wth_dat_ref_and_geo_tol_wth_mod_mut(
+        &mut self,
+    ) -> &mut GeoTolAndGeoTolWthDatRefAndGeoTolWthMod {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_as_StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_as_StepDimTol_GeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:57 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::SetGeometricToleranceWithDatumReference()`
+    pub fn set_geometric_tolerance_with_datum_reference(
+        &mut self,
+        theGTWDR: &crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_SetGeometricToleranceWithDatumReference(self as *mut Self, theGTWDR)
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:64 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::GetGeometricToleranceWithDatumReference()`
+    pub fn get_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_GetGeometricToleranceWithDatumReference(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:69 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::SetGeometricToleranceWithModifiers()`
+    pub fn set_geometric_tolerance_with_modifiers(
+        &mut self,
+        theGTWM: &crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_SetGeometricToleranceWithModifiers(self as *mut Self, theGTWM)
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:75 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::GetGeometricToleranceWithModifiers()`
+    pub fn get_geometric_tolerance_with_modifiers(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_GetGeometricToleranceWithModifiers(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:81 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::SetGeometricToleranceType()`
+    pub fn set_geometric_tolerance_type(
+        &mut self,
+        theType: crate::step_dim_tol::GeometricToleranceType,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_SetGeometricToleranceType(self as *mut Self, theType.into())
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:86 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::GetToleranceType()`
+    pub fn get_tolerance_type(&self) -> crate::step_dim_tol::GeometricToleranceType {
+        unsafe {
+            crate::step_dim_tol::GeometricToleranceType::try_from(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_GetToleranceType(self as *const Self)).unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_Name(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_Description(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_SetDescription(self as *mut Self, theDescription)
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_Magnitude(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_TolerancedShapeAspect(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_SetTolerancedShapeAspect(self as *mut Self, theTolerancedShapeAspect)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol {
+    /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol
+    pub fn get(&self) -> &crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol> to Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod>
+    pub fn to_handle_geo_tol_and_geo_tol_wth_dat_ref_and_geo_tol_wth_mod(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_to_HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_to_HandleStandardTransient(self as *const Self))
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx
+// ========================
+
+/// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:35 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod`
+pub use crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod as GeoTolAndGeoTolWthDatRefAndGeoTolWthMod;
+
+unsafe impl crate::CppDeletable for GeoTolAndGeoTolWthDatRefAndGeoTolWthMod {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_destructor(ptr);
+    }
+}
+
+impl GeoTolAndGeoTolWthDatRefAndGeoTolWthMod {
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:39 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_ctor(),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:41 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::Init()`
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_handlestepdimtolgeometrictolerancewithdatumreference_handlestepdimtolgeometrictolerancewithmodifiers_geometrictolerancetype(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+        theGTWDR: &crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference,
+        theGTWM: &crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers,
+        theType: crate::step_dim_tol::GeometricToleranceType,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_handlestepdimtolgeometrictolerancewithdatumreference_handlestepdimtolgeometrictolerancewithmodifiers_geometrictolerancetype(self as *mut Self, theName, theDescription, theMagnitude, theTolerancedShapeAspect, theGTWDR, theGTWM, theType.into())
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:49 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::Init()`
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_handlestepdimtolgeometrictolerancewithdatumreference_handlestepdimtolgeometrictolerancewithmodifiers_geometrictolerancetype(
+        &mut self,
+        aName: &crate::ffi::HandleTCollectionHAsciiString,
+        aDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        aMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        aTolerancedShapeAspect: &GeometricToleranceTarget,
+        aGTWDR: &crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference,
+        aGTWM: &crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers,
+        theType: crate::step_dim_tol::GeometricToleranceType,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_handlestepdimtolgeometrictolerancewithdatumreference_handlestepdimtolgeometrictolerancewithmodifiers_geometrictolerancetype(self as *mut Self, aName, aDescription, aMagnitude, aTolerancedShapeAspect, aGTWDR, aGTWM, theType.into())
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:57 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::SetGeometricToleranceWithDatumReference()`
+    pub fn set_geometric_tolerance_with_datum_reference(
+        &mut self,
+        theGTWDR: &crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_set_geometric_tolerance_with_datum_reference(self as *mut Self, theGTWDR)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:64 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::GetGeometricToleranceWithDatumReference()`
+    pub fn get_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_get_geometric_tolerance_with_datum_reference(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:69 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::SetGeometricToleranceWithModifiers()`
+    pub fn set_geometric_tolerance_with_modifiers(
+        &mut self,
+        theGTWM: &crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_set_geometric_tolerance_with_modifiers(self as *mut Self, theGTWM)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:75 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::GetGeometricToleranceWithModifiers()`
+    pub fn get_geometric_tolerance_with_modifiers(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_get_geometric_tolerance_with_modifiers(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:81 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::SetGeometricToleranceType()`
+    pub fn set_geometric_tolerance_type(
+        &mut self,
+        theType: crate::step_dim_tol::GeometricToleranceType,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_set_geometric_tolerance_type(self as *mut Self, theType.into())
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:86 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::GetToleranceType()`
+    pub fn get_tolerance_type(&self) -> crate::step_dim_tol::GeometricToleranceType {
+        unsafe {
+            crate::step_dim_tol::GeometricToleranceType::try_from(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_get_tolerance_type(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:88 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:88 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:88 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_get_type_descriptor())
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_as_StepDimTol_GeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_inherited_Name(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_inherited_Description(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_inherited_TolerancedShapeAspect(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_inherited_SetTolerancedShapeAspect(self as *mut Self, theTolerancedShapeAspect)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod {
+    /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod
+    pub fn get(&self) -> &crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod_to_HandleStandardTransient(self as *const Self))
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod> to Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol` (or subclass).
+    pub fn downcast_to_geo_tol_and_geo_tol_wth_dat_ref_and_geo_tol_wth_max_tol(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod_downcast_to_HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.hxx
+// ========================
+
+/// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.hxx`:35 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol`
+pub use crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol as GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol;
+
+unsafe impl crate::CppDeletable for GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_destructor(ptr);
+    }
+}
+
+impl GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol {
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.hxx`:40 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_ctor(),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.hxx`:42 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol::Init()`
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_handlestepdimtolgeometrictolerancewithdatumreference_handlestepdimtolmodifiedgeometrictolerance(
+        &mut self,
+        aName: &crate::ffi::HandleTCollectionHAsciiString,
+        aDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        aMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        aTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+        aGTWDR: &crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference,
+        aMGT: &crate::ffi::HandleStepDimTolModifiedGeometricTolerance,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_handlestepdimtolgeometrictolerancewithdatumreference_handlestepdimtolmodifiedgeometrictolerance(self as *mut Self, aName, aDescription, aMagnitude, aTolerancedShapeAspect, aGTWDR, aMGT)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.hxx`:49 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol::Init()`
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_handlestepdimtolgeometrictolerancewithdatumreference_handlestepdimtolmodifiedgeometrictolerance(
+        &mut self,
+        aName: &crate::ffi::HandleTCollectionHAsciiString,
+        aDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        aMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        aTolerancedShapeAspect: &GeometricToleranceTarget,
+        aGTWDR: &crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference,
+        aMGT: &crate::ffi::HandleStepDimTolModifiedGeometricTolerance,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_handlestepdimtolgeometrictolerancewithdatumreference_handlestepdimtolmodifiedgeometrictolerance(self as *mut Self, aName, aDescription, aMagnitude, aTolerancedShapeAspect, aGTWDR, aMGT)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.hxx`:56 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol::SetGeometricToleranceWithDatumReference()`
+    pub fn set_geometric_tolerance_with_datum_reference(
+        &mut self,
+        aGTWDR: &crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_set_geometric_tolerance_with_datum_reference(self as *mut Self, aGTWDR)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.hxx`:60 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol::GetGeometricToleranceWithDatumReference()`
+    pub fn get_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_get_geometric_tolerance_with_datum_reference(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.hxx`:62 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol::SetModifiedGeometricTolerance()`
+    pub fn set_modified_geometric_tolerance(
+        &mut self,
+        aMGT: &crate::ffi::HandleStepDimTolModifiedGeometricTolerance,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_set_modified_geometric_tolerance(self as *mut Self, aMGT)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.hxx`:65 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol::GetModifiedGeometricTolerance()`
+    pub fn get_modified_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolModifiedGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_get_modified_geometric_tolerance(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.hxx`:68 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol::SetPositionTolerance()`
+    pub fn set_position_tolerance(&mut self, aPT: &crate::ffi::HandleStepDimTolPositionTolerance) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_set_position_tolerance(self as *mut Self, aPT)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.hxx`:70 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol::GetPositionTolerance()`
+    pub fn get_position_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolPositionTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_get_position_tolerance(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.hxx`:72 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.hxx`:72 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_get_type_name(
+                ),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.hxx`:72 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_get_type_descriptor())
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_as_StepDimTol_GeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_inherited_Name(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_inherited_Description(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_inherited_SetDescription(self as *mut Self, theDescription)
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_inherited_Magnitude(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_inherited_SetMagnitude(self as *mut Self, theMagnitude)
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_inherited_TolerancedShapeAspect(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_inherited_SetTolerancedShapeAspect(self as *mut Self, theTolerancedShapeAspect)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol {
+    /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol
+    pub fn get(&self) -> &crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_to_HandleStandardTransient(self as *const Self))
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol.hxx
+// ========================
+
+/// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol.hxx`:34 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol`
+pub use crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol as GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol;
+
+unsafe impl crate::CppDeletable for GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_destructor(ptr);
+    }
+}
+
+impl GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol {
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol.hxx`:39 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_ctor(),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol.hxx`:41 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol::Init()`
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_handlestepdimtolgeometrictolerancewithdatumreference_geometrictolerancetype_handlestepdimtolunequallydisposedgeometrictolerance(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+        theGTWDR: &crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference,
+        theType: crate::step_dim_tol::GeometricToleranceType,
+        theUDGT: &crate::ffi::HandleStepDimTolUnequallyDisposedGeometricTolerance,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_handlestepdimtolgeometrictolerancewithdatumreference_geometrictolerancetype_handlestepdimtolunequallydisposedgeometrictolerance(self as *mut Self, theName, theDescription, theMagnitude, theTolerancedShapeAspect, theGTWDR, theType.into(), theUDGT)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol.hxx`:49 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol::Init()`
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_handlestepdimtolgeometrictolerancewithdatumreference_geometrictolerancetype_handlestepdimtolunequallydisposedgeometrictolerance(
+        &mut self,
+        aName: &crate::ffi::HandleTCollectionHAsciiString,
+        aDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        aMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        aTolerancedShapeAspect: &GeometricToleranceTarget,
+        aGTWDR: &crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference,
+        theType: crate::step_dim_tol::GeometricToleranceType,
+        theUDGT: &crate::ffi::HandleStepDimTolUnequallyDisposedGeometricTolerance,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_handlestepdimtolgeometrictolerancewithdatumreference_geometrictolerancetype_handlestepdimtolunequallydisposedgeometrictolerance(self as *mut Self, aName, aDescription, aMagnitude, aTolerancedShapeAspect, aGTWDR, theType.into(), theUDGT)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol.hxx`:57 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol::SetUnequallyDisposedGeometricTolerance()`
+    pub fn set_unequally_disposed_geometric_tolerance(
+        &mut self,
+        theUDGT: &crate::ffi::HandleStepDimTolUnequallyDisposedGeometricTolerance,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_set_unequally_disposed_geometric_tolerance(self as *mut Self, theUDGT)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol.hxx`:64 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol::GetUnequallyDisposedGeometricTolerance()`
+    pub fn get_unequally_disposed_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolUnequallyDisposedGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_get_unequally_disposed_geometric_tolerance(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol.hxx`:69 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol.hxx`:69 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol.hxx`:69 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_get_type_descriptor(
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeoTolAndGeoTolWthDatRef
+    pub fn as_geo_tol_and_geo_tol_wth_dat_ref(&self) -> &GeoTolAndGeoTolWthDatRef {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_as_StepDimTol_GeoTolAndGeoTolWthDatRef(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeoTolAndGeoTolWthDatRef (mutable)
+    pub fn as_geo_tol_and_geo_tol_wth_dat_ref_mut(&mut self) -> &mut GeoTolAndGeoTolWthDatRef {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_as_StepDimTol_GeoTolAndGeoTolWthDatRef_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_as_StepDimTol_GeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRef.hxx`:53 - `StepDimTol_GeoTolAndGeoTolWthDatRef::SetGeometricToleranceWithDatumReference()`
+    pub fn set_geometric_tolerance_with_datum_reference(
+        &mut self,
+        theGTWDR: &crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_inherited_SetGeometricToleranceWithDatumReference(self as *mut Self, theGTWDR)
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRef.hxx`:60 - `StepDimTol_GeoTolAndGeoTolWthDatRef::GetGeometricToleranceWithDatumReference()`
+    pub fn get_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_inherited_GetGeometricToleranceWithDatumReference(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRef.hxx`:65 - `StepDimTol_GeoTolAndGeoTolWthDatRef::SetGeometricToleranceType()`
+    pub fn set_geometric_tolerance_type(
+        &mut self,
+        theType: crate::step_dim_tol::GeometricToleranceType,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_inherited_SetGeometricToleranceType(self as *mut Self, theType.into())
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRef.hxx`:70 - `StepDimTol_GeoTolAndGeoTolWthDatRef::GetToleranceType()`
+    pub fn get_tolerance_type(&self) -> crate::step_dim_tol::GeometricToleranceType {
+        unsafe {
+            crate::step_dim_tol::GeometricToleranceType::try_from(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_inherited_GetToleranceType(self as *const Self)).unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_inherited_Name(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_inherited_Description(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_inherited_TolerancedShapeAspect(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_inherited_SetTolerancedShapeAspect(self as *mut Self, theTolerancedShapeAspect)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol {
+    /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol
+    pub fn get(&self) -> &crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol> to Handle<StepDimTol_GeoTolAndGeoTolWthDatRef>
+    pub fn to_handle_geo_tol_and_geo_tol_wth_dat_ref(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRef> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_to_HandleStepDimTolGeoTolAndGeoTolWthDatRef(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_to_HandleStandardTransient(self as *const Self))
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_GeoTolAndGeoTolWthMaxTol.hxx
+// ========================
+
+/// **Source:** `StepDimTol_GeoTolAndGeoTolWthMaxTol.hxx`:34 - `StepDimTol_GeoTolAndGeoTolWthMaxTol`
+pub use crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol as GeoTolAndGeoTolWthMaxTol;
+
+unsafe impl crate::CppDeletable for GeoTolAndGeoTolWthMaxTol {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_destructor(ptr);
+    }
+}
+
+impl GeoTolAndGeoTolWthMaxTol {
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMaxTol.hxx`:38 - `StepDimTol_GeoTolAndGeoTolWthMaxTol::StepDimTol_GeoTolAndGeoTolWthMaxTol()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMaxTol.hxx`:40 - `StepDimTol_GeoTolAndGeoTolWthMaxTol::Init()`
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_handlestepdimtolgeometrictolerancewithmodifiers_handlestepbasiclengthmeasurewithunit_geometrictolerancetype(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+        theGTWM: &crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers,
+        theMaxTol: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+        theType: crate::step_dim_tol::GeometricToleranceType,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_handlestepdimtolgeometrictolerancewithmodifiers_handlestepbasiclengthmeasurewithunit_geometrictolerancetype(self as *mut Self, theName, theDescription, theMagnitude, theTolerancedShapeAspect, theGTWM, theMaxTol, theType.into())
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMaxTol.hxx`:48 - `StepDimTol_GeoTolAndGeoTolWthMaxTol::Init()`
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_handlestepdimtolgeometrictolerancewithmodifiers_handlestepbasiclengthmeasurewithunit_geometrictolerancetype(
+        &mut self,
+        aName: &crate::ffi::HandleTCollectionHAsciiString,
+        aDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        aMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        aTolerancedShapeAspect: &GeometricToleranceTarget,
+        aGTWM: &crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers,
+        theMaxTol: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+        theType: crate::step_dim_tol::GeometricToleranceType,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_handlestepdimtolgeometrictolerancewithmodifiers_handlestepbasiclengthmeasurewithunit_geometrictolerancetype(self as *mut Self, aName, aDescription, aMagnitude, aTolerancedShapeAspect, aGTWM, theMaxTol, theType.into())
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMaxTol.hxx`:56 - `StepDimTol_GeoTolAndGeoTolWthMaxTol::SetMaxTolerance()`
+    pub fn set_max_tolerance(
+        &mut self,
+        theMaxTol: &mut crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_set_max_tolerance(
+                self as *mut Self,
+                theMaxTol,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMaxTol.hxx`:61 - `StepDimTol_GeoTolAndGeoTolWthMaxTol::GetMaxTolerance()`
+    pub fn get_max_tolerance(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicLengthMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_get_max_tolerance(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMaxTol.hxx`:63 - `StepDimTol_GeoTolAndGeoTolWthMaxTol::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMaxTol.hxx`:63 - `StepDimTol_GeoTolAndGeoTolWthMaxTol::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_get_type_name()).to_string_lossy().into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMaxTol.hxx`:63 - `StepDimTol_GeoTolAndGeoTolWthMaxTol::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeoTolAndGeoTolWthMod
+    pub fn as_geo_tol_and_geo_tol_wth_mod(&self) -> &GeoTolAndGeoTolWthMod {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_as_StepDimTol_GeoTolAndGeoTolWthMod(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeoTolAndGeoTolWthMod (mutable)
+    pub fn as_geo_tol_and_geo_tol_wth_mod_mut(&mut self) -> &mut GeoTolAndGeoTolWthMod {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_as_StepDimTol_GeoTolAndGeoTolWthMod_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMaxTol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeoTolAndGeoTolWthMod.hxx`:53 - `StepDimTol_GeoTolAndGeoTolWthMod::SetGeometricToleranceWithModifiers()`
+    pub fn set_geometric_tolerance_with_modifiers(
+        &mut self,
+        theGTWM: &crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_inherited_SetGeometricToleranceWithModifiers(self as *mut Self, theGTWM)
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeoTolAndGeoTolWthMod.hxx`:59 - `StepDimTol_GeoTolAndGeoTolWthMod::GetGeometricToleranceWithModifiers()`
+    pub fn get_geometric_tolerance_with_modifiers(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_inherited_GetGeometricToleranceWithModifiers(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeoTolAndGeoTolWthMod.hxx`:65 - `StepDimTol_GeoTolAndGeoTolWthMod::SetGeometricToleranceType()`
+    pub fn set_geometric_tolerance_type(
+        &mut self,
+        theType: crate::step_dim_tol::GeometricToleranceType,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_inherited_SetGeometricToleranceType(
+                self as *mut Self,
+                theType.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeoTolAndGeoTolWthMod.hxx`:70 - `StepDimTol_GeoTolAndGeoTolWthMod::GetToleranceType()`
+    pub fn get_tolerance_type(&self) -> crate::step_dim_tol::GeometricToleranceType {
+        unsafe {
+            crate::step_dim_tol::GeometricToleranceType::try_from(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_inherited_GetToleranceType(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_inherited_Name(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMaxTol;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolGeoTolAndGeoTolWthMaxTol {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMaxTol_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolGeoTolAndGeoTolWthMaxTol {
+    /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthMaxTol
+    pub fn get(&self) -> &crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol {
+        unsafe { &*(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMaxTol_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_GeoTolAndGeoTolWthMaxTol
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMaxTol_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeoTolAndGeoTolWthMaxTol> to Handle<StepDimTol_GeoTolAndGeoTolWthMod>
+    pub fn to_handle_geo_tol_and_geo_tol_wth_mod(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMod> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMaxTol_to_HandleStepDimTolGeoTolAndGeoTolWthMod(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeoTolAndGeoTolWthMaxTol> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMaxTol_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeoTolAndGeoTolWthMaxTol> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMaxTol_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_GeoTolAndGeoTolWthMod.hxx
+// ========================
+
+/// **Source:** `StepDimTol_GeoTolAndGeoTolWthMod.hxx`:33 - `StepDimTol_GeoTolAndGeoTolWthMod`
+pub use crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod as GeoTolAndGeoTolWthMod;
+
+unsafe impl crate::CppDeletable for GeoTolAndGeoTolWthMod {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_destructor(ptr);
+    }
+}
+
+impl GeoTolAndGeoTolWthMod {
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMod.hxx`:37 - `StepDimTol_GeoTolAndGeoTolWthMod::StepDimTol_GeoTolAndGeoTolWthMod()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMod.hxx`:39 - `StepDimTol_GeoTolAndGeoTolWthMod::Init()`
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_handlestepdimtolgeometrictolerancewithmodifiers_geometrictolerancetype(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+        theGTWM: &crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers,
+        theType: crate::step_dim_tol::GeometricToleranceType,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_handlestepdimtolgeometrictolerancewithmodifiers_geometrictolerancetype(self as *mut Self, theName, theDescription, theMagnitude, theTolerancedShapeAspect, theGTWM, theType.into())
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMod.hxx`:46 - `StepDimTol_GeoTolAndGeoTolWthMod::Init()`
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_handlestepdimtolgeometrictolerancewithmodifiers_geometrictolerancetype(
+        &mut self,
+        aName: &crate::ffi::HandleTCollectionHAsciiString,
+        aDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        aMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        aTolerancedShapeAspect: &GeometricToleranceTarget,
+        aGTWM: &crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers,
+        theType: crate::step_dim_tol::GeometricToleranceType,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_handlestepdimtolgeometrictolerancewithmodifiers_geometrictolerancetype(self as *mut Self, aName, aDescription, aMagnitude, aTolerancedShapeAspect, aGTWM, theType.into())
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMod.hxx`:53 - `StepDimTol_GeoTolAndGeoTolWthMod::SetGeometricToleranceWithModifiers()`
+    pub fn set_geometric_tolerance_with_modifiers(
+        &mut self,
+        theGTWM: &crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_set_geometric_tolerance_with_modifiers(
+                self as *mut Self,
+                theGTWM,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMod.hxx`:59 - `StepDimTol_GeoTolAndGeoTolWthMod::GetGeometricToleranceWithModifiers()`
+    pub fn get_geometric_tolerance_with_modifiers(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_get_geometric_tolerance_with_modifiers(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMod.hxx`:65 - `StepDimTol_GeoTolAndGeoTolWthMod::SetGeometricToleranceType()`
+    pub fn set_geometric_tolerance_type(
+        &mut self,
+        theType: crate::step_dim_tol::GeometricToleranceType,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_set_geometric_tolerance_type(
+                self as *mut Self,
+                theType.into(),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMod.hxx`:70 - `StepDimTol_GeoTolAndGeoTolWthMod::GetToleranceType()`
+    pub fn get_tolerance_type(&self) -> crate::step_dim_tol::GeometricToleranceType {
+        unsafe {
+            crate::step_dim_tol::GeometricToleranceType::try_from(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_get_tolerance_type(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMod.hxx`:72 - `StepDimTol_GeoTolAndGeoTolWthMod::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMod.hxx`:72 - `StepDimTol_GeoTolAndGeoTolWthMod::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMod.hxx`:72 - `StepDimTol_GeoTolAndGeoTolWthMod::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMod> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMod;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolGeoTolAndGeoTolWthMod {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMod_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolGeoTolAndGeoTolWthMod {
+    /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthMod
+    pub fn get(&self) -> &crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod {
+        unsafe { &*(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMod_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_GeoTolAndGeoTolWthMod
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMod_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeoTolAndGeoTolWthMod> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMod_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeoTolAndGeoTolWthMod> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMod_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeoTolAndGeoTolWthMod> to Handle<StepDimTol_GeoTolAndGeoTolWthMaxTol>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeoTolAndGeoTolWthMaxTol` (or subclass).
+    pub fn downcast_to_geo_tol_and_geo_tol_wth_max_tol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMaxTol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMod_downcast_to_HandleStepDimTolGeoTolAndGeoTolWthMaxTol(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From StepDimTol_GeometricTolerance.hxx
@@ -1357,6 +8725,768 @@ impl HandleStepDimTolGeometricTolerance {
             )
         }
     }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_AngularityTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_AngularityTolerance` (or subclass).
+    pub fn downcast_to_angularity_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolAngularityTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolAngularityTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_CircularRunoutTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_CircularRunoutTolerance` (or subclass).
+    pub fn downcast_to_circular_runout_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolCircularRunoutTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolCircularRunoutTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_CoaxialityTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_CoaxialityTolerance` (or subclass).
+    pub fn downcast_to_coaxiality_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolCoaxialityTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolCoaxialityTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_ConcentricityTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_ConcentricityTolerance` (or subclass).
+    pub fn downcast_to_concentricity_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolConcentricityTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolConcentricityTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_CylindricityTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_CylindricityTolerance` (or subclass).
+    pub fn downcast_to_cylindricity_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolCylindricityTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolCylindricityTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_FlatnessTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_FlatnessTolerance` (or subclass).
+    pub fn downcast_to_flatness_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolFlatnessTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolFlatnessTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_GeoTolAndGeoTolWthDatRef>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeoTolAndGeoTolWthDatRef` (or subclass).
+    pub fn downcast_to_geo_tol_and_geo_tol_wth_dat_ref(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRef>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolGeoTolAndGeoTolWthDatRef(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol` (or subclass).
+    pub fn downcast_to_geo_tol_and_geo_tol_wth_dat_ref_and_geo_tol_wth_max_tol(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod` (or subclass).
+    pub fn downcast_to_geo_tol_and_geo_tol_wth_dat_ref_and_geo_tol_wth_mod(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol` (or subclass).
+    pub fn downcast_to_geo_tol_and_geo_tol_wth_dat_ref_and_mod_geo_tol_and_pos_tol(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol` (or subclass).
+    pub fn downcast_to_geo_tol_and_geo_tol_wth_dat_ref_and_uneq_dis_geo_tol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_GeoTolAndGeoTolWthMaxTol>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeoTolAndGeoTolWthMaxTol` (or subclass).
+    pub fn downcast_to_geo_tol_and_geo_tol_wth_max_tol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMaxTol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolGeoTolAndGeoTolWthMaxTol(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_GeoTolAndGeoTolWthMod>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeoTolAndGeoTolWthMod` (or subclass).
+    pub fn downcast_to_geo_tol_and_geo_tol_wth_mod(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMod>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolGeoTolAndGeoTolWthMod(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_GeometricToleranceWithDatumReference>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeometricToleranceWithDatumReference` (or subclass).
+    pub fn downcast_to_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolGeometricToleranceWithDatumReference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_GeometricToleranceWithDefinedAreaUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeometricToleranceWithDefinedAreaUnit` (or subclass).
+    pub fn downcast_to_geometric_tolerance_with_defined_area_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedAreaUnit>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolGeometricToleranceWithDefinedAreaUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_GeometricToleranceWithDefinedUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeometricToleranceWithDefinedUnit` (or subclass).
+    pub fn downcast_to_geometric_tolerance_with_defined_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedUnit>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolGeometricToleranceWithDefinedUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_GeometricToleranceWithMaximumTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeometricToleranceWithMaximumTolerance` (or subclass).
+    pub fn downcast_to_geometric_tolerance_with_maximum_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithMaximumTolerance>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolGeometricToleranceWithMaximumTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_GeometricToleranceWithModifiers>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeometricToleranceWithModifiers` (or subclass).
+    pub fn downcast_to_geometric_tolerance_with_modifiers(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolGeometricToleranceWithModifiers(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_LineProfileTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_LineProfileTolerance` (or subclass).
+    pub fn downcast_to_line_profile_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolLineProfileTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolLineProfileTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_ModifiedGeometricTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_ModifiedGeometricTolerance` (or subclass).
+    pub fn downcast_to_modified_geometric_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolModifiedGeometricTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolModifiedGeometricTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_ParallelismTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_ParallelismTolerance` (or subclass).
+    pub fn downcast_to_parallelism_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolParallelismTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolParallelismTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_PerpendicularityTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_PerpendicularityTolerance` (or subclass).
+    pub fn downcast_to_perpendicularity_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolPerpendicularityTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolPerpendicularityTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_PositionTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_PositionTolerance` (or subclass).
+    pub fn downcast_to_position_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolPositionTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolPositionTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_RoundnessTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_RoundnessTolerance` (or subclass).
+    pub fn downcast_to_roundness_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolRoundnessTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolRoundnessTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_StraightnessTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_StraightnessTolerance` (or subclass).
+    pub fn downcast_to_straightness_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolStraightnessTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolStraightnessTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_SurfaceProfileTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_SurfaceProfileTolerance` (or subclass).
+    pub fn downcast_to_surface_profile_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolSurfaceProfileTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolSurfaceProfileTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_SymmetryTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_SymmetryTolerance` (or subclass).
+    pub fn downcast_to_symmetry_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolSymmetryTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolSymmetryTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_TotalRunoutTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_TotalRunoutTolerance` (or subclass).
+    pub fn downcast_to_total_runout_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolTotalRunoutTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolTotalRunoutTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricTolerance> to Handle<StepDimTol_UnequallyDisposedGeometricTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_UnequallyDisposedGeometricTolerance` (or subclass).
+    pub fn downcast_to_unequally_disposed_geometric_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolUnequallyDisposedGeometricTolerance>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricTolerance_downcast_to_HandleStepDimTolUnequallyDisposedGeometricTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_GeometricToleranceRelationship.hxx
+// ========================
+
+/// **Source:** `StepDimTol_GeometricToleranceRelationship.hxx`:30 - `StepDimTol_GeometricToleranceRelationship`
+/// Representation of STEP entity GeometricToleranceRelationship
+pub use crate::ffi::StepDimTol_GeometricToleranceRelationship as GeometricToleranceRelationship;
+
+unsafe impl crate::CppDeletable for GeometricToleranceRelationship {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_GeometricToleranceRelationship_destructor(ptr);
+    }
+}
+
+impl GeometricToleranceRelationship {
+    /// **Source:** `StepDimTol_GeometricToleranceRelationship.hxx`:35 - `StepDimTol_GeometricToleranceRelationship::StepDimTol_GeometricToleranceRelationship()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeometricToleranceRelationship_ctor())
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceRelationship.hxx`:38 - `StepDimTol_GeometricToleranceRelationship::Init()`
+    /// Initialize all fields (own and inherited)
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theRelatingGeometricTolerance: &crate::ffi::HandleStepDimTolGeometricTolerance,
+        theRelatedGeometricTolerance: &crate::ffi::HandleStepDimTolGeometricTolerance,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceRelationship_init(
+                self as *mut Self,
+                theName,
+                theDescription,
+                theRelatingGeometricTolerance,
+                theRelatedGeometricTolerance,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceRelationship.hxx`:45 - `StepDimTol_GeometricToleranceRelationship::Name()`
+    /// Returns field Name
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeometricToleranceRelationship_name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceRelationship.hxx`:48 - `StepDimTol_GeometricToleranceRelationship::SetName()`
+    /// Set field Name
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceRelationship_set_name(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceRelationship.hxx`:51 - `StepDimTol_GeometricToleranceRelationship::Description()`
+    /// Returns field Description
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceRelationship_description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceRelationship.hxx`:54 - `StepDimTol_GeometricToleranceRelationship::SetDescription()`
+    /// Set field Description
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceRelationship_set_description(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceRelationship.hxx`:57 - `StepDimTol_GeometricToleranceRelationship::RelatingGeometricTolerance()`
+    /// Returns field RelatingGeometricTolerance
+    pub fn relating_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceRelationship_relating_geometric_tolerance(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceRelationship.hxx`:60 - `StepDimTol_GeometricToleranceRelationship::SetRelatingGeometricTolerance()`
+    /// Set field RelatingGeometricTolerance
+    pub fn set_relating_geometric_tolerance(
+        &mut self,
+        theRelatingGeometricTolerance: &crate::ffi::HandleStepDimTolGeometricTolerance,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceRelationship_set_relating_geometric_tolerance(
+                self as *mut Self,
+                theRelatingGeometricTolerance,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceRelationship.hxx`:64 - `StepDimTol_GeometricToleranceRelationship::RelatedGeometricTolerance()`
+    /// Returns field RelatedGeometricTolerance
+    pub fn related_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceRelationship_related_geometric_tolerance(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceRelationship.hxx`:67 - `StepDimTol_GeometricToleranceRelationship::SetRelatedGeometricTolerance()`
+    /// Set field RelatedGeometricTolerance
+    pub fn set_related_geometric_tolerance(
+        &mut self,
+        theRelatedGeometricTolerance: &crate::ffi::HandleStepDimTolGeometricTolerance,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceRelationship_set_related_geometric_tolerance(
+                self as *mut Self,
+                theRelatedGeometricTolerance,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceRelationship.hxx`:70 - `StepDimTol_GeometricToleranceRelationship::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceRelationship_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceRelationship.hxx`:70 - `StepDimTol_GeometricToleranceRelationship::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_GeometricToleranceRelationship_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceRelationship.hxx`:70 - `StepDimTol_GeometricToleranceRelationship::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_GeometricToleranceRelationship_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceRelationship_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeometricToleranceRelationship_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceRelationship> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceRelationship_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceRelationship_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceRelationship_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceRelationship_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceRelationship_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceRelationship_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceRelationship_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolGeometricToleranceRelationship;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolGeometricToleranceRelationship {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolGeometricToleranceRelationship_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolGeometricToleranceRelationship {
+    /// Dereference this Handle to access the underlying StepDimTol_GeometricToleranceRelationship
+    pub fn get(&self) -> &crate::ffi::StepDimTol_GeometricToleranceRelationship {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolGeometricToleranceRelationship_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_GeometricToleranceRelationship
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_GeometricToleranceRelationship {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolGeometricToleranceRelationship_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeometricToleranceRelationship> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeometricToleranceRelationship_to_HandleStandardTransient(self as *const Self))
+        }
+    }
 }
 
 // ========================
@@ -1389,6 +9519,32 @@ impl GeometricToleranceTarget {
     pub fn case_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
         unsafe {
             crate::ffi::StepDimTol_GeometricToleranceTarget_case_num(self as *const Self, ent)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceTarget.hxx`:49 - `StepDimTol_GeometricToleranceTarget::DimensionalLocation()`
+    /// returns Value as a DimensionalLocation (Null if another type)
+    pub fn dimensional_location(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepShapeDimensionalLocation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceTarget_dimensional_location(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceTarget.hxx`:52 - `StepDimTol_GeometricToleranceTarget::DimensionalSize()`
+    /// returns Value as a DimensionalSize (Null if another type)
+    pub fn dimensional_size(&self) -> crate::OwnedPtr<crate::ffi::HandleStepShapeDimensionalSize> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceTarget_dimensional_size(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1493,6 +9649,17 @@ impl GeometricToleranceTarget {
         }
     }
 
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:94 - `StepData_SelectType::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataPDescr> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceTarget_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `StepData_SelectType.hxx`:104 - `StepData_SelectType::NewMember()`
     pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
         unsafe {
@@ -1582,17 +9749,2711 @@ impl GeometricToleranceTarget {
     }
 }
 
-// ── Skipped symbols for GeometricToleranceTarget (2 total) ──
-// SKIPPED: **Source:** `StepDimTol_GeometricToleranceTarget.hxx`:49 - `StepDimTol_GeometricToleranceTarget::DimensionalLocation`
-//   method: returns Value as a DimensionalLocation (Null if another type)
-//   Reason: return type 'Handle(StepShape_DimensionalLocation)' is unknown
-//   // pub fn dimensional_location(&self) -> OwnedPtr<Handle<StepShape_DimensionalLocation>>;
-//
-// SKIPPED: **Source:** `StepDimTol_GeometricToleranceTarget.hxx`:52 - `StepDimTol_GeometricToleranceTarget::DimensionalSize`
-//   method: returns Value as a DimensionalSize (Null if another type)
-//   Reason: return type 'Handle(StepShape_DimensionalSize)' is unknown
-//   // pub fn dimensional_size(&self) -> OwnedPtr<Handle<StepShape_DimensionalSize>>;
-//
+// ========================
+// From StepDimTol_GeometricToleranceWithDatumReference.hxx
+// ========================
+
+/// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:35 - `StepDimTol_GeometricToleranceWithDatumReference`
+/// Representation of STEP entity GeometricToleranceWithDatumReference
+pub use crate::ffi::StepDimTol_GeometricToleranceWithDatumReference as GeometricToleranceWithDatumReference;
+
+unsafe impl crate::CppDeletable for GeometricToleranceWithDatumReference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_destructor(ptr);
+    }
+}
+
+impl GeometricToleranceWithDatumReference {
+    /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:40 - `StepDimTol_GeometricToleranceWithDatumReference::StepDimTol_GeometricToleranceWithDatumReference()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_ctor(),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:43 - `StepDimTol_GeometricToleranceWithDatumReference::Init()`
+    /// Initialize all fields (own and inherited) AP214
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_handlestepdimtolharray1ofdatumreference(
+        &mut self,
+        theGeometricTolerance_Name: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Description: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Magnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theGeometricTolerance_TolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_handlestepdimtolharray1ofdatumreference(self as *mut Self, theGeometricTolerance_Name, theGeometricTolerance_Description, theGeometricTolerance_Magnitude, theGeometricTolerance_TolerancedShapeAspect, theDatumSystem)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:51 - `StepDimTol_GeometricToleranceWithDatumReference::Init()`
+    /// Initialize all fields (own and inherited) AP242
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_handlestepdimtolharray1ofdatumsystemorreference(
+        &mut self,
+        theGeometricTolerance_Name: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Description: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Magnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theGeometricTolerance_TolerancedShapeAspect: &GeometricToleranceTarget,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumSystemOrReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_handlestepdimtolharray1ofdatumsystemorreference(self as *mut Self, theGeometricTolerance_Name, theGeometricTolerance_Description, theGeometricTolerance_Magnitude, theGeometricTolerance_TolerancedShapeAspect, theDatumSystem)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:59 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystem()`
+    /// Returns field DatumSystem AP214
+    pub fn datum_system(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_datum_system(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:62 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242()`
+    /// Returns field DatumSystem AP242
+    pub fn datum_system_ap242(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumSystemOrReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_datum_system_ap242(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:65 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
+    /// Set field DatumSystem AP214
+    pub fn set_datum_system_handlestepdimtolharray1ofdatumreference(
+        &mut self,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_set_datum_system_handlestepdimtolharray1ofdatumreference(self as *mut Self, theDatumSystem)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:69 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
+    /// Set field DatumSystem AP242
+    pub fn set_datum_system_handlestepdimtolharray1ofdatumsystemorreference(
+        &mut self,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumSystemOrReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_set_datum_system_handlestepdimtolharray1ofdatumsystemorreference(self as *mut Self, theDatumSystem)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:72 - `StepDimTol_GeometricToleranceWithDatumReference::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:72 - `StepDimTol_GeometricToleranceWithDatumReference::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:72 - `StepDimTol_GeometricToleranceWithDatumReference::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_get_type_descriptor())
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_as_StepDimTol_GeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_inherited_Name(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_inherited_TolerancedShapeAspect(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_inherited_SetTolerancedShapeAspect(self as *mut Self, theTolerancedShapeAspect)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolGeometricToleranceWithDatumReference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolGeometricToleranceWithDatumReference {
+    /// Dereference this Handle to access the underlying StepDimTol_GeometricToleranceWithDatumReference
+    pub fn get(&self) -> &crate::ffi::StepDimTol_GeometricToleranceWithDatumReference {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_GeometricToleranceWithDatumReference
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_GeometricToleranceWithDatumReference {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeometricToleranceWithDatumReference> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeometricToleranceWithDatumReference> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference_to_HandleStandardTransient(self as *const Self))
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricToleranceWithDatumReference> to Handle<StepDimTol_AngularityTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_AngularityTolerance` (or subclass).
+    pub fn downcast_to_angularity_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolAngularityTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference_downcast_to_HandleStepDimTolAngularityTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricToleranceWithDatumReference> to Handle<StepDimTol_CircularRunoutTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_CircularRunoutTolerance` (or subclass).
+    pub fn downcast_to_circular_runout_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolCircularRunoutTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference_downcast_to_HandleStepDimTolCircularRunoutTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricToleranceWithDatumReference> to Handle<StepDimTol_CoaxialityTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_CoaxialityTolerance` (or subclass).
+    pub fn downcast_to_coaxiality_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolCoaxialityTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference_downcast_to_HandleStepDimTolCoaxialityTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricToleranceWithDatumReference> to Handle<StepDimTol_ConcentricityTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_ConcentricityTolerance` (or subclass).
+    pub fn downcast_to_concentricity_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolConcentricityTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference_downcast_to_HandleStepDimTolConcentricityTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricToleranceWithDatumReference> to Handle<StepDimTol_ParallelismTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_ParallelismTolerance` (or subclass).
+    pub fn downcast_to_parallelism_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolParallelismTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference_downcast_to_HandleStepDimTolParallelismTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricToleranceWithDatumReference> to Handle<StepDimTol_PerpendicularityTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_PerpendicularityTolerance` (or subclass).
+    pub fn downcast_to_perpendicularity_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolPerpendicularityTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference_downcast_to_HandleStepDimTolPerpendicularityTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricToleranceWithDatumReference> to Handle<StepDimTol_SymmetryTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_SymmetryTolerance` (or subclass).
+    pub fn downcast_to_symmetry_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolSymmetryTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference_downcast_to_HandleStepDimTolSymmetryTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricToleranceWithDatumReference> to Handle<StepDimTol_TotalRunoutTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_TotalRunoutTolerance` (or subclass).
+    pub fn downcast_to_total_runout_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolTotalRunoutTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference_downcast_to_HandleStepDimTolTotalRunoutTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_GeometricToleranceWithDefinedAreaUnit.hxx
+// ========================
+
+/// **Source:** `StepDimTol_GeometricToleranceWithDefinedAreaUnit.hxx`:35 - `StepDimTol_GeometricToleranceWithDefinedAreaUnit`
+/// Representation of STEP entity GeometricToleranceWithDefinedAreaUnit
+pub use crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit as GeometricToleranceWithDefinedAreaUnit;
+
+unsafe impl crate::CppDeletable for GeometricToleranceWithDefinedAreaUnit {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_destructor(ptr);
+    }
+}
+
+impl GeometricToleranceWithDefinedAreaUnit {
+    /// **Source:** `StepDimTol_GeometricToleranceWithDefinedAreaUnit.hxx`:41 - `StepDimTol_GeometricToleranceWithDefinedAreaUnit::StepDimTol_GeometricToleranceWithDefinedAreaUnit()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_ctor(),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDefinedAreaUnit.hxx`:44 - `StepDimTol_GeometricToleranceWithDefinedAreaUnit::Init()`
+    /// Initialize all fields (own and inherited)
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &GeometricToleranceTarget,
+        theUnitSize: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+        theAreaType: crate::step_dim_tol::AreaUnitType,
+        theHasSecondUnitSize: bool,
+        theSecondUnitSize: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_init(
+                self as *mut Self,
+                theName,
+                theDescription,
+                theMagnitude,
+                theTolerancedShapeAspect,
+                theUnitSize,
+                theAreaType.into(),
+                theHasSecondUnitSize,
+                theSecondUnitSize,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDefinedAreaUnit.hxx`:54 - `StepDimTol_GeometricToleranceWithDefinedAreaUnit::AreaType()`
+    /// Returns field AreaType
+    pub fn area_type(&self) -> crate::step_dim_tol::AreaUnitType {
+        unsafe {
+            crate::step_dim_tol::AreaUnitType::try_from(
+                crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_area_type(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDefinedAreaUnit.hxx`:57 - `StepDimTol_GeometricToleranceWithDefinedAreaUnit::SetAreaType()`
+    /// Set field AreaType
+    pub fn set_area_type(&mut self, theAreaType: crate::step_dim_tol::AreaUnitType) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_set_area_type(
+                self as *mut Self,
+                theAreaType.into(),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDefinedAreaUnit.hxx`:60 - `StepDimTol_GeometricToleranceWithDefinedAreaUnit::SecondUnitSize()`
+    /// Returns field SecondUnitSize
+    pub fn second_unit_size(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicLengthMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_second_unit_size(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDefinedAreaUnit.hxx`:63 - `StepDimTol_GeometricToleranceWithDefinedAreaUnit::SetSecondUnitSize()`
+    /// Set field SecondUnitSize
+    pub fn set_second_unit_size(
+        &mut self,
+        theSecondUnitSize: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_set_second_unit_size(
+                self as *mut Self,
+                theSecondUnitSize,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDefinedAreaUnit.hxx`:69 - `StepDimTol_GeometricToleranceWithDefinedAreaUnit::HasSecondUnitSize()`
+    /// Indicates if SecondUnitSize field exist
+    pub fn has_second_unit_size(&self) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_has_second_unit_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDefinedAreaUnit.hxx`:71 - `StepDimTol_GeometricToleranceWithDefinedAreaUnit::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDefinedAreaUnit.hxx`:71 - `StepDimTol_GeometricToleranceWithDefinedAreaUnit::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDefinedAreaUnit.hxx`:71 - `StepDimTol_GeometricToleranceWithDefinedAreaUnit::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_get_type_descriptor())
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithDefinedUnit
+    pub fn as_geometric_tolerance_with_defined_unit(&self) -> &GeometricToleranceWithDefinedUnit {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_as_StepDimTol_GeometricToleranceWithDefinedUnit(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithDefinedUnit (mutable)
+    pub fn as_geometric_tolerance_with_defined_unit_mut(
+        &mut self,
+    ) -> &mut GeometricToleranceWithDefinedUnit {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_as_StepDimTol_GeometricToleranceWithDefinedUnit_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_as_StepDimTol_GeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedAreaUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDefinedUnit.hxx`:55 - `StepDimTol_GeometricToleranceWithDefinedUnit::UnitSize()`
+    pub fn unit_size(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicLengthMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_inherited_UnitSize(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDefinedUnit.hxx`:58 - `StepDimTol_GeometricToleranceWithDefinedUnit::SetUnitSize()`
+    pub fn set_unit_size(
+        &mut self,
+        theUnitSize: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_inherited_SetUnitSize(
+                self as *mut Self,
+                theUnitSize,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_inherited_Name(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_inherited_TolerancedShapeAspect(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_inherited_SetTolerancedShapeAspect(self as *mut Self, theTolerancedShapeAspect)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedAreaUnit;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolGeometricToleranceWithDefinedAreaUnit {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedAreaUnit_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolGeometricToleranceWithDefinedAreaUnit {
+    /// Dereference this Handle to access the underlying StepDimTol_GeometricToleranceWithDefinedAreaUnit
+    pub fn get(&self) -> &crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedAreaUnit_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_GeometricToleranceWithDefinedAreaUnit
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedAreaUnit_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeometricToleranceWithDefinedAreaUnit> to Handle<StepDimTol_GeometricToleranceWithDefinedUnit>
+    pub fn to_handle_geometric_tolerance_with_defined_unit(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedAreaUnit_to_HandleStepDimTolGeometricToleranceWithDefinedUnit(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeometricToleranceWithDefinedAreaUnit> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedAreaUnit_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeometricToleranceWithDefinedAreaUnit> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedAreaUnit_to_HandleStandardTransient(self as *const Self))
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_GeometricToleranceWithDefinedUnit.hxx
+// ========================
+
+/// **Source:** `StepDimTol_GeometricToleranceWithDefinedUnit.hxx`:33 - `StepDimTol_GeometricToleranceWithDefinedUnit`
+/// Representation of STEP entity GeometricToleranceWithDefinedUnit
+pub use crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit as GeometricToleranceWithDefinedUnit;
+
+unsafe impl crate::CppDeletable for GeometricToleranceWithDefinedUnit {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_destructor(ptr);
+    }
+}
+
+impl GeometricToleranceWithDefinedUnit {
+    /// **Source:** `StepDimTol_GeometricToleranceWithDefinedUnit.hxx`:38 - `StepDimTol_GeometricToleranceWithDefinedUnit::StepDimTol_GeometricToleranceWithDefinedUnit()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_ctor(),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDefinedUnit.hxx`:41 - `StepDimTol_GeometricToleranceWithDefinedUnit::Init()`
+    /// Initialize all fields (own and inherited) AP214
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_handlestepbasiclengthmeasurewithunit(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+        theUnitSize: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_handlestepbasiclengthmeasurewithunit(self as *mut Self, theName, theDescription, theMagnitude, theTolerancedShapeAspect, theUnitSize)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDefinedUnit.hxx`:48 - `StepDimTol_GeometricToleranceWithDefinedUnit::Init()`
+    /// Initialize all fields (own and inherited) AP242
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_handlestepbasiclengthmeasurewithunit(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &GeometricToleranceTarget,
+        theUnitSize: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_handlestepbasiclengthmeasurewithunit(self as *mut Self, theName, theDescription, theMagnitude, theTolerancedShapeAspect, theUnitSize)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDefinedUnit.hxx`:55 - `StepDimTol_GeometricToleranceWithDefinedUnit::UnitSize()`
+    /// Returns field UnitSize
+    pub fn unit_size(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicLengthMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_unit_size(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDefinedUnit.hxx`:58 - `StepDimTol_GeometricToleranceWithDefinedUnit::SetUnitSize()`
+    /// Set field UnitSize
+    pub fn set_unit_size(
+        &mut self,
+        theUnitSize: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_set_unit_size(
+                self as *mut Self,
+                theUnitSize,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDefinedUnit.hxx`:63 - `StepDimTol_GeometricToleranceWithDefinedUnit::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDefinedUnit.hxx`:63 - `StepDimTol_GeometricToleranceWithDefinedUnit::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithDefinedUnit.hxx`:63 - `StepDimTol_GeometricToleranceWithDefinedUnit::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_get_type_descriptor())
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_as_StepDimTol_GeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_inherited_Name(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_inherited_TolerancedShapeAspect(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_inherited_SetTolerancedShapeAspect(self as *mut Self, theTolerancedShapeAspect)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedUnit;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolGeometricToleranceWithDefinedUnit {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedUnit_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolGeometricToleranceWithDefinedUnit {
+    /// Dereference this Handle to access the underlying StepDimTol_GeometricToleranceWithDefinedUnit
+    pub fn get(&self) -> &crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedUnit_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_GeometricToleranceWithDefinedUnit
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedUnit_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeometricToleranceWithDefinedUnit> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedUnit_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeometricToleranceWithDefinedUnit> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedUnit_to_HandleStandardTransient(self as *const Self))
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricToleranceWithDefinedUnit> to Handle<StepDimTol_GeometricToleranceWithDefinedAreaUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeometricToleranceWithDefinedAreaUnit` (or subclass).
+    pub fn downcast_to_geometric_tolerance_with_defined_area_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedAreaUnit>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedUnit_downcast_to_HandleStepDimTolGeometricToleranceWithDefinedAreaUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_GeometricToleranceWithMaximumTolerance.hxx
+// ========================
+
+/// **Source:** `StepDimTol_GeometricToleranceWithMaximumTolerance.hxx`:34 - `StepDimTol_GeometricToleranceWithMaximumTolerance`
+/// Representation of STEP entity GeometricToleranceWithMaximumTolerance
+pub use crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance as GeometricToleranceWithMaximumTolerance;
+
+unsafe impl crate::CppDeletable for GeometricToleranceWithMaximumTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_destructor(ptr);
+    }
+}
+
+impl GeometricToleranceWithMaximumTolerance {
+    /// **Source:** `StepDimTol_GeometricToleranceWithMaximumTolerance.hxx`:40 - `StepDimTol_GeometricToleranceWithMaximumTolerance::StepDimTol_GeometricToleranceWithMaximumTolerance()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_ctor(),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithMaximumTolerance.hxx`:43 - `StepDimTol_GeometricToleranceWithMaximumTolerance::Init()`
+    /// Initialize all fields (own and inherited)
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &GeometricToleranceTarget,
+        theModifiers: &crate::ffi::HandleStepDimTolHArray1OfGeometricToleranceModifier,
+        theUnitSize: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_init(
+                self as *mut Self,
+                theName,
+                theDescription,
+                theMagnitude,
+                theTolerancedShapeAspect,
+                theModifiers,
+                theUnitSize,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithMaximumTolerance.hxx`:52 - `StepDimTol_GeometricToleranceWithMaximumTolerance::MaximumUpperTolerance()`
+    /// Returns field MaximumUpperTolerance
+    pub fn maximum_upper_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicLengthMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_maximum_upper_tolerance(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithMaximumTolerance.hxx`:58 - `StepDimTol_GeometricToleranceWithMaximumTolerance::SetMaximumUpperTolerance()`
+    /// Set field MaximumUpperTolerance
+    pub fn set_maximum_upper_tolerance(
+        &mut self,
+        theMaximumUpperTolerance: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_set_maximum_upper_tolerance(self as *mut Self, theMaximumUpperTolerance)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithMaximumTolerance.hxx`:64 - `StepDimTol_GeometricToleranceWithMaximumTolerance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithMaximumTolerance.hxx`:64 - `StepDimTol_GeometricToleranceWithMaximumTolerance::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithMaximumTolerance.hxx`:64 - `StepDimTol_GeometricToleranceWithMaximumTolerance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_get_type_descriptor())
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithModifiers
+    pub fn as_geometric_tolerance_with_modifiers(&self) -> &GeometricToleranceWithModifiers {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_as_StepDimTol_GeometricToleranceWithModifiers(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithModifiers (mutable)
+    pub fn as_geometric_tolerance_with_modifiers_mut(
+        &mut self,
+    ) -> &mut GeometricToleranceWithModifiers {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_as_StepDimTol_GeometricToleranceWithModifiers_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_as_StepDimTol_GeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithMaximumTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithModifiers.hxx`:49 - `StepDimTol_GeometricToleranceWithModifiers::Modifiers()`
+    pub fn modifiers(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfGeometricToleranceModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_Modifiers(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithModifiers.hxx`:55 - `StepDimTol_GeometricToleranceWithModifiers::SetModifiers()`
+    pub fn set_modifiers(
+        &mut self,
+        theModifiers: &crate::ffi::HandleStepDimTolHArray1OfGeometricToleranceModifier,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_SetModifiers(
+                self as *mut Self,
+                theModifiers,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithModifiers.hxx`:62 - `StepDimTol_GeometricToleranceWithModifiers::NbModifiers()`
+    pub fn nb_modifiers(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_NbModifiers(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithModifiers.hxx`:68 - `StepDimTol_GeometricToleranceWithModifiers::ModifierValue()`
+    pub fn modifier_value(&self, theNum: i32) -> crate::step_dim_tol::GeometricToleranceModifier {
+        unsafe {
+            crate::step_dim_tol::GeometricToleranceModifier::try_from(crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_ModifierValue(self as *const Self, theNum)).unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithModifiers.hxx`:74 - `StepDimTol_GeometricToleranceWithModifiers::SetModifierValue()`
+    pub fn set_modifier_value(
+        &mut self,
+        theNum: i32,
+        theItem: crate::step_dim_tol::GeometricToleranceModifier,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_SetModifierValue(
+                self as *mut Self,
+                theNum,
+                theItem.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_Name(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_TolerancedShapeAspect(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_SetTolerancedShapeAspect(self as *mut Self, theTolerancedShapeAspect)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolGeometricToleranceWithMaximumTolerance;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolGeometricToleranceWithMaximumTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolGeometricToleranceWithMaximumTolerance_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolGeometricToleranceWithMaximumTolerance {
+    /// Dereference this Handle to access the underlying StepDimTol_GeometricToleranceWithMaximumTolerance
+    pub fn get(&self) -> &crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolGeometricToleranceWithMaximumTolerance_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_GeometricToleranceWithMaximumTolerance
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolGeometricToleranceWithMaximumTolerance_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeometricToleranceWithMaximumTolerance> to Handle<StepDimTol_GeometricToleranceWithModifiers>
+    pub fn to_handle_geometric_tolerance_with_modifiers(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeometricToleranceWithMaximumTolerance_to_HandleStepDimTolGeometricToleranceWithModifiers(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeometricToleranceWithMaximumTolerance> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeometricToleranceWithMaximumTolerance_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeometricToleranceWithMaximumTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeometricToleranceWithMaximumTolerance_to_HandleStandardTransient(self as *const Self))
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_GeometricToleranceWithModifiers.hxx
+// ========================
+
+/// **Source:** `StepDimTol_GeometricToleranceWithModifiers.hxx`:33 - `StepDimTol_GeometricToleranceWithModifiers`
+/// Representation of STEP entity GeometricToleranceWithModifiers
+pub use crate::ffi::StepDimTol_GeometricToleranceWithModifiers as GeometricToleranceWithModifiers;
+
+unsafe impl crate::CppDeletable for GeometricToleranceWithModifiers {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_GeometricToleranceWithModifiers_destructor(ptr);
+    }
+}
+
+impl GeometricToleranceWithModifiers {
+    /// **Source:** `StepDimTol_GeometricToleranceWithModifiers.hxx`:38 - `StepDimTol_GeometricToleranceWithModifiers::StepDimTol_GeometricToleranceWithModifiers()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeometricToleranceWithModifiers_ctor())
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithModifiers.hxx`:41 - `StepDimTol_GeometricToleranceWithModifiers::Init()`
+    /// Initialize all fields (own and inherited)
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &GeometricToleranceTarget,
+        theModifiers: &crate::ffi::HandleStepDimTolHArray1OfGeometricToleranceModifier,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithModifiers_init(
+                self as *mut Self,
+                theName,
+                theDescription,
+                theMagnitude,
+                theTolerancedShapeAspect,
+                theModifiers,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithModifiers.hxx`:49 - `StepDimTol_GeometricToleranceWithModifiers::Modifiers()`
+    /// Returns field Modifiers
+    pub fn modifiers(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfGeometricToleranceModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithModifiers_modifiers(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithModifiers.hxx`:55 - `StepDimTol_GeometricToleranceWithModifiers::SetModifiers()`
+    /// Set field Modifiers
+    pub fn set_modifiers(
+        &mut self,
+        theModifiers: &crate::ffi::HandleStepDimTolHArray1OfGeometricToleranceModifier,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithModifiers_set_modifiers(
+                self as *mut Self,
+                theModifiers,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithModifiers.hxx`:62 - `StepDimTol_GeometricToleranceWithModifiers::NbModifiers()`
+    /// Returns number of modifiers
+    pub fn nb_modifiers(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithModifiers_nb_modifiers(self as *const Self)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithModifiers.hxx`:68 - `StepDimTol_GeometricToleranceWithModifiers::ModifierValue()`
+    /// Returns modifier with the given number
+    pub fn modifier_value(&self, theNum: i32) -> crate::step_dim_tol::GeometricToleranceModifier {
+        unsafe {
+            crate::step_dim_tol::GeometricToleranceModifier::try_from(
+                crate::ffi::StepDimTol_GeometricToleranceWithModifiers_modifier_value(
+                    self as *const Self,
+                    theNum,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithModifiers.hxx`:74 - `StepDimTol_GeometricToleranceWithModifiers::SetModifierValue()`
+    /// Sets modifier with given number
+    pub fn set_modifier_value(
+        &mut self,
+        theNum: i32,
+        theItem: crate::step_dim_tol::GeometricToleranceModifier,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithModifiers_set_modifier_value(
+                self as *mut Self,
+                theNum,
+                theItem.into(),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithModifiers.hxx`:79 - `StepDimTol_GeometricToleranceWithModifiers::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithModifiers_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithModifiers.hxx`:79 - `StepDimTol_GeometricToleranceWithModifiers::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_GeometricToleranceWithModifiers_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceWithModifiers.hxx`:79 - `StepDimTol_GeometricToleranceWithModifiers::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_GeometricToleranceWithModifiers_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithModifiers_as_StepDimTol_GeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeometricToleranceWithModifiers_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceWithModifiers_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeometricToleranceWithModifiers_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithModifiers_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithModifiers_inherited_Name(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithModifiers_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithModifiers_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithModifiers_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceWithModifiers_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithModifiers_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeometricToleranceWithModifiers_inherited_TolerancedShapeAspect(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithModifiers_inherited_SetTolerancedShapeAspect(self as *mut Self, theTolerancedShapeAspect)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithModifiers_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithModifiers_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithModifiers_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithModifiers_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithModifiers_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceWithModifiers_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolGeometricToleranceWithModifiers {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolGeometricToleranceWithModifiers {
+    /// Dereference this Handle to access the underlying StepDimTol_GeometricToleranceWithModifiers
+    pub fn get(&self) -> &crate::ffi::StepDimTol_GeometricToleranceWithModifiers {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_GeometricToleranceWithModifiers
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_GeometricToleranceWithModifiers {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeometricToleranceWithModifiers> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_GeometricToleranceWithModifiers> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers_to_HandleStandardTransient(self as *const Self))
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_GeometricToleranceWithModifiers> to Handle<StepDimTol_GeometricToleranceWithMaximumTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeometricToleranceWithMaximumTolerance` (or subclass).
+    pub fn downcast_to_geometric_tolerance_with_maximum_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithMaximumTolerance>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers_downcast_to_HandleStepDimTolGeometricToleranceWithMaximumTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_HArray1OfDatumReference.hxx
+// ========================
+
+/// **Source:** `StepDimTol_HArray1OfDatumReference.hxx`:22 - `StepDimTol_HArray1OfDatumReference`
+pub use crate::ffi::StepDimTol_HArray1OfDatumReference as HArray1OfDatumReference;
+
+unsafe impl crate::CppDeletable for HArray1OfDatumReference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_HArray1OfDatumReference_destructor(ptr);
+    }
+}
+
+impl HArray1OfDatumReference {
+    /// **Source:** `StepDimTol_HArray1OfDatumReference.hxx`:22 - `StepDimTol_HArray1OfDatumReference::StepDimTol_HArray1OfDatumReference()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumReference_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReference.hxx`:22 - `StepDimTol_HArray1OfDatumReference::StepDimTol_HArray1OfDatumReference()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumReference_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReference.hxx`:22 - `StepDimTol_HArray1OfDatumReference::StepDimTol_HArray1OfDatumReference()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::StepDimTol_Array1OfDatumReference_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfDatumReference_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReference.hxx`:22 - `StepDimTol_HArray1OfDatumReference::StepDimTol_HArray1OfDatumReference()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::StepDimTol_Array1OfDatumReference_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfDatumReference_ctor_type_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReference.hxx`:22 - `StepDimTol_HArray1OfDatumReference::StepDimTol_HArray1OfDatumReference()`
+    pub fn new_array1ofdatumreference(
+        theOther: &crate::ffi::StepDimTol_Array1OfDatumReference,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfDatumReference_ctor_array1ofdatumreference(
+                    theOther,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReference.hxx`:22 - `StepDimTol_HArray1OfDatumReference::Array1()`
+    pub fn array1(&self) -> &crate::ffi::StepDimTol_Array1OfDatumReference {
+        unsafe { &*(crate::ffi::StepDimTol_HArray1OfDatumReference_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReference.hxx`:22 - `StepDimTol_HArray1OfDatumReference::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::StepDimTol_Array1OfDatumReference {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_HArray1OfDatumReference_change_array1(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReference.hxx`:22 - `StepDimTol_HArray1OfDatumReference::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfDatumReference_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReference.hxx`:22 - `StepDimTol_HArray1OfDatumReference::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_HArray1OfDatumReference_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReference.hxx`:22 - `StepDimTol_HArray1OfDatumReference::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_HArray1OfDatumReference_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfDatumReference_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_HArray1OfDatumReference_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumReference_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReference_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReference_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReference_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReference_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReference_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReference_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolHArray1OfDatumReference;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolHArray1OfDatumReference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolHArray1OfDatumReference_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolHArray1OfDatumReference {
+    /// Dereference this Handle to access the underlying StepDimTol_HArray1OfDatumReference
+    pub fn get(&self) -> &crate::ffi::StepDimTol_HArray1OfDatumReference {
+        unsafe { &*(crate::ffi::HandleStepDimTolHArray1OfDatumReference_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_HArray1OfDatumReference
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_HArray1OfDatumReference {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolHArray1OfDatumReference_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_HArray1OfDatumReference> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolHArray1OfDatumReference_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_HArray1OfDatumReferenceCompartment.hxx
+// ========================
+
+/// **Source:** `StepDimTol_HArray1OfDatumReferenceCompartment.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceCompartment`
+pub use crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment as HArray1OfDatumReferenceCompartment;
+
+unsafe impl crate::CppDeletable for HArray1OfDatumReferenceCompartment {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_destructor(ptr);
+    }
+}
+
+impl HArray1OfDatumReferenceCompartment {
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceCompartment.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceCompartment::StepDimTol_HArray1OfDatumReferenceCompartment()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_ctor(),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceCompartment.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceCompartment::StepDimTol_HArray1OfDatumReferenceCompartment()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_ctor_int2(
+                    theLower, theUpper,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceCompartment.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceCompartment::StepDimTol_HArray1OfDatumReferenceCompartment()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::StepDimTol_Array1OfDatumReferenceCompartment_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceCompartment.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceCompartment::StepDimTol_HArray1OfDatumReferenceCompartment()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::StepDimTol_Array1OfDatumReferenceCompartment_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_ctor_type_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceCompartment.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceCompartment::StepDimTol_HArray1OfDatumReferenceCompartment()`
+    pub fn new_array1ofdatumreferencecompartment(
+        theOther: &crate::ffi::StepDimTol_Array1OfDatumReferenceCompartment,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_ctor_array1ofdatumreferencecompartment(theOther))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceCompartment.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceCompartment::Array1()`
+    pub fn array1(&self) -> &crate::ffi::StepDimTol_Array1OfDatumReferenceCompartment {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_array1(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceCompartment.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceCompartment::ChangeArray1()`
+    pub fn change_array1(
+        &mut self,
+    ) -> &mut crate::ffi::StepDimTol_Array1OfDatumReferenceCompartment {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_change_array1(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceCompartment.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceCompartment::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceCompartment.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceCompartment::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceCompartment.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceCompartment::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_get_type_descriptor())
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReferenceCompartment> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolHArray1OfDatumReferenceCompartment;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolHArray1OfDatumReferenceCompartment {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolHArray1OfDatumReferenceCompartment_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolHArray1OfDatumReferenceCompartment {
+    /// Dereference this Handle to access the underlying StepDimTol_HArray1OfDatumReferenceCompartment
+    pub fn get(&self) -> &crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolHArray1OfDatumReferenceCompartment_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_HArray1OfDatumReferenceCompartment
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolHArray1OfDatumReferenceCompartment_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_HArray1OfDatumReferenceCompartment> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolHArray1OfDatumReferenceCompartment_to_HandleStandardTransient(self as *const Self))
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_HArray1OfDatumReferenceElement.hxx
+// ========================
+
+/// **Source:** `StepDimTol_HArray1OfDatumReferenceElement.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceElement`
+pub use crate::ffi::StepDimTol_HArray1OfDatumReferenceElement as HArray1OfDatumReferenceElement;
+
+unsafe impl crate::CppDeletable for HArray1OfDatumReferenceElement {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_destructor(ptr);
+    }
+}
+
+impl HArray1OfDatumReferenceElement {
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceElement.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceElement::StepDimTol_HArray1OfDatumReferenceElement()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_ctor())
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceElement.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceElement::StepDimTol_HArray1OfDatumReferenceElement()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_ctor_int2(theLower, theUpper),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceElement.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceElement::StepDimTol_HArray1OfDatumReferenceElement()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::StepDimTol_Array1OfDatumReferenceElement_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceElement.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceElement::StepDimTol_HArray1OfDatumReferenceElement()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::StepDimTol_Array1OfDatumReferenceElement_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_ctor_type_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceElement.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceElement::StepDimTol_HArray1OfDatumReferenceElement()`
+    pub fn new_array1ofdatumreferenceelement(
+        theOther: &crate::ffi::StepDimTol_Array1OfDatumReferenceElement,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_ctor_array1ofdatumreferenceelement(theOther))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceElement.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceElement::Array1()`
+    pub fn array1(&self) -> &crate::ffi::StepDimTol_Array1OfDatumReferenceElement {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_array1(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceElement.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceElement::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::StepDimTol_Array1OfDatumReferenceElement {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_change_array1(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceElement.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceElement::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceElement.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceElement::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceElement.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceElement::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReferenceElement> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolHArray1OfDatumReferenceElement;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolHArray1OfDatumReferenceElement {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolHArray1OfDatumReferenceElement_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolHArray1OfDatumReferenceElement {
+    /// Dereference this Handle to access the underlying StepDimTol_HArray1OfDatumReferenceElement
+    pub fn get(&self) -> &crate::ffi::StepDimTol_HArray1OfDatumReferenceElement {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolHArray1OfDatumReferenceElement_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_HArray1OfDatumReferenceElement
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_HArray1OfDatumReferenceElement {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolHArray1OfDatumReferenceElement_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_HArray1OfDatumReferenceElement> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolHArray1OfDatumReferenceElement_to_HandleStandardTransient(self as *const Self))
+        }
+    }
+}
 
 // ========================
 // From StepDimTol_HArray1OfDatumReferenceModifier.hxx
@@ -2043,6 +12904,3993 @@ impl HandleStepDimTolHArray1OfDatumSystemOrReference {
 }
 
 // ========================
+// From StepDimTol_HArray1OfGeometricToleranceModifier.hxx
+// ========================
+
+/// **Source:** `StepDimTol_HArray1OfGeometricToleranceModifier.hxx`:22 - `StepDimTol_HArray1OfGeometricToleranceModifier`
+pub use crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier as HArray1OfGeometricToleranceModifier;
+
+unsafe impl crate::CppDeletable for HArray1OfGeometricToleranceModifier {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_destructor(ptr);
+    }
+}
+
+impl HArray1OfGeometricToleranceModifier {
+    /// **Source:** `StepDimTol_HArray1OfGeometricToleranceModifier.hxx`:22 - `StepDimTol_HArray1OfGeometricToleranceModifier::StepDimTol_HArray1OfGeometricToleranceModifier()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_ctor(),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfGeometricToleranceModifier.hxx`:22 - `StepDimTol_HArray1OfGeometricToleranceModifier::StepDimTol_HArray1OfGeometricToleranceModifier()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_ctor_int2(
+                    theLower, theUpper,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfGeometricToleranceModifier.hxx`:22 - `StepDimTol_HArray1OfGeometricToleranceModifier::StepDimTol_HArray1OfGeometricToleranceModifier()`
+    pub fn new_int2_geometrictolerancemodifier(
+        theLower: i32,
+        theUpper: i32,
+        theValue: crate::step_dim_tol::GeometricToleranceModifier,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_ctor_int2_geometrictolerancemodifier(theLower, theUpper, theValue.into()))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfGeometricToleranceModifier.hxx`:22 - `StepDimTol_HArray1OfGeometricToleranceModifier::StepDimTol_HArray1OfGeometricToleranceModifier()`
+    pub fn new_geometrictolerancemodifier_int2_bool(
+        theBegin: crate::step_dim_tol::GeometricToleranceModifier,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_ctor_geometrictolerancemodifier_int2_bool(theBegin.into(), theLower, theUpper, arg3))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfGeometricToleranceModifier.hxx`:22 - `StepDimTol_HArray1OfGeometricToleranceModifier::StepDimTol_HArray1OfGeometricToleranceModifier()`
+    pub fn new_array1ofgeometrictolerancemodifier(
+        theOther: &crate::ffi::StepDimTol_Array1OfGeometricToleranceModifier,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_ctor_array1ofgeometrictolerancemodifier(theOther))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfGeometricToleranceModifier.hxx`:22 - `StepDimTol_HArray1OfGeometricToleranceModifier::Array1()`
+    pub fn array1(&self) -> &crate::ffi::StepDimTol_Array1OfGeometricToleranceModifier {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_array1(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfGeometricToleranceModifier.hxx`:22 - `StepDimTol_HArray1OfGeometricToleranceModifier::ChangeArray1()`
+    pub fn change_array1(
+        &mut self,
+    ) -> &mut crate::ffi::StepDimTol_Array1OfGeometricToleranceModifier {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_change_array1(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfGeometricToleranceModifier.hxx`:22 - `StepDimTol_HArray1OfGeometricToleranceModifier::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfGeometricToleranceModifier.hxx`:22 - `StepDimTol_HArray1OfGeometricToleranceModifier::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfGeometricToleranceModifier.hxx`:22 - `StepDimTol_HArray1OfGeometricToleranceModifier::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_get_type_descriptor())
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfGeometricToleranceModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolHArray1OfGeometricToleranceModifier;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolHArray1OfGeometricToleranceModifier {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolHArray1OfGeometricToleranceModifier_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolHArray1OfGeometricToleranceModifier {
+    /// Dereference this Handle to access the underlying StepDimTol_HArray1OfGeometricToleranceModifier
+    pub fn get(&self) -> &crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolHArray1OfGeometricToleranceModifier_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_HArray1OfGeometricToleranceModifier
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolHArray1OfGeometricToleranceModifier_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_HArray1OfGeometricToleranceModifier> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolHArray1OfGeometricToleranceModifier_to_HandleStandardTransient(self as *const Self))
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_HArray1OfToleranceZoneTarget.hxx
+// ========================
+
+/// **Source:** `StepDimTol_HArray1OfToleranceZoneTarget.hxx`:22 - `StepDimTol_HArray1OfToleranceZoneTarget`
+pub use crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget as HArray1OfToleranceZoneTarget;
+
+unsafe impl crate::CppDeletable for HArray1OfToleranceZoneTarget {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_destructor(ptr);
+    }
+}
+
+impl HArray1OfToleranceZoneTarget {
+    /// **Source:** `StepDimTol_HArray1OfToleranceZoneTarget.hxx`:22 - `StepDimTol_HArray1OfToleranceZoneTarget::StepDimTol_HArray1OfToleranceZoneTarget()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_ctor())
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfToleranceZoneTarget.hxx`:22 - `StepDimTol_HArray1OfToleranceZoneTarget::StepDimTol_HArray1OfToleranceZoneTarget()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_ctor_int2(theLower, theUpper),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfToleranceZoneTarget.hxx`:22 - `StepDimTol_HArray1OfToleranceZoneTarget::StepDimTol_HArray1OfToleranceZoneTarget()`
+    pub fn new_int2_tolerancezonetarget(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &ToleranceZoneTarget,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_ctor_int2_tolerancezonetarget(
+                    theLower, theUpper, theValue,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfToleranceZoneTarget.hxx`:22 - `StepDimTol_HArray1OfToleranceZoneTarget::StepDimTol_HArray1OfToleranceZoneTarget()`
+    pub fn new_tolerancezonetarget_int2_bool(
+        theBegin: &ToleranceZoneTarget,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_ctor_tolerancezonetarget_int2_bool(theBegin, theLower, theUpper, arg3))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfToleranceZoneTarget.hxx`:22 - `StepDimTol_HArray1OfToleranceZoneTarget::StepDimTol_HArray1OfToleranceZoneTarget()`
+    pub fn new_array1oftolerancezonetarget(
+        theOther: &crate::ffi::StepDimTol_Array1OfToleranceZoneTarget,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_ctor_array1oftolerancezonetarget(theOther))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfToleranceZoneTarget.hxx`:22 - `StepDimTol_HArray1OfToleranceZoneTarget::Array1()`
+    pub fn array1(&self) -> &crate::ffi::StepDimTol_Array1OfToleranceZoneTarget {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_array1(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfToleranceZoneTarget.hxx`:22 - `StepDimTol_HArray1OfToleranceZoneTarget::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::StepDimTol_Array1OfToleranceZoneTarget {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_change_array1(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfToleranceZoneTarget.hxx`:22 - `StepDimTol_HArray1OfToleranceZoneTarget::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfToleranceZoneTarget.hxx`:22 - `StepDimTol_HArray1OfToleranceZoneTarget::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfToleranceZoneTarget.hxx`:22 - `StepDimTol_HArray1OfToleranceZoneTarget::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfToleranceZoneTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolHArray1OfToleranceZoneTarget;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolHArray1OfToleranceZoneTarget {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolHArray1OfToleranceZoneTarget_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolHArray1OfToleranceZoneTarget {
+    /// Dereference this Handle to access the underlying StepDimTol_HArray1OfToleranceZoneTarget
+    pub fn get(&self) -> &crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolHArray1OfToleranceZoneTarget_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_HArray1OfToleranceZoneTarget
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolHArray1OfToleranceZoneTarget_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_HArray1OfToleranceZoneTarget> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolHArray1OfToleranceZoneTarget_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_LineProfileTolerance.hxx
+// ========================
+
+/// **Source:** `StepDimTol_LineProfileTolerance.hxx`:27 - `StepDimTol_LineProfileTolerance`
+/// Representation of STEP entity LineProfileTolerance
+pub use crate::ffi::StepDimTol_LineProfileTolerance as LineProfileTolerance;
+
+unsafe impl crate::CppDeletable for LineProfileTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_LineProfileTolerance_destructor(ptr);
+    }
+}
+
+impl LineProfileTolerance {
+    /// **Source:** `StepDimTol_LineProfileTolerance.hxx`:32 - `StepDimTol_LineProfileTolerance::StepDimTol_LineProfileTolerance()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_LineProfileTolerance_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_LineProfileTolerance.hxx`:34 - `StepDimTol_LineProfileTolerance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_LineProfileTolerance_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_LineProfileTolerance.hxx`:34 - `StepDimTol_LineProfileTolerance::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_LineProfileTolerance_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_LineProfileTolerance.hxx`:34 - `StepDimTol_LineProfileTolerance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_LineProfileTolerance_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_LineProfileTolerance_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_LineProfileTolerance_as_StepDimTol_GeometricTolerance_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_LineProfileTolerance_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_LineProfileTolerance_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolLineProfileTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_LineProfileTolerance_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:40 - `StepDimTol_GeometricTolerance::Init()`
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_LineProfileTolerance_inherited_Init(
+                self as *mut Self,
+                theName,
+                theDescription,
+                theMagnitude,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_LineProfileTolerance_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_LineProfileTolerance_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_LineProfileTolerance_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_LineProfileTolerance_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_LineProfileTolerance_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_LineProfileTolerance_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_LineProfileTolerance_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_LineProfileTolerance_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_LineProfileTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_LineProfileTolerance_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_LineProfileTolerance_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_LineProfileTolerance_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_LineProfileTolerance_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_LineProfileTolerance_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolLineProfileTolerance;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolLineProfileTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolLineProfileTolerance_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolLineProfileTolerance {
+    /// Dereference this Handle to access the underlying StepDimTol_LineProfileTolerance
+    pub fn get(&self) -> &crate::ffi::StepDimTol_LineProfileTolerance {
+        unsafe { &*(crate::ffi::HandleStepDimTolLineProfileTolerance_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_LineProfileTolerance
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_LineProfileTolerance {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolLineProfileTolerance_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_LineProfileTolerance> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolLineProfileTolerance_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_LineProfileTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolLineProfileTolerance_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_ModifiedGeometricTolerance.hxx
+// ========================
+
+/// **Source:** `StepDimTol_ModifiedGeometricTolerance.hxx`:33 - `StepDimTol_ModifiedGeometricTolerance`
+/// Representation of STEP entity ModifiedGeometricTolerance
+pub use crate::ffi::StepDimTol_ModifiedGeometricTolerance as ModifiedGeometricTolerance;
+
+unsafe impl crate::CppDeletable for ModifiedGeometricTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_ModifiedGeometricTolerance_destructor(ptr);
+    }
+}
+
+impl ModifiedGeometricTolerance {
+    /// **Source:** `StepDimTol_ModifiedGeometricTolerance.hxx`:38 - `StepDimTol_ModifiedGeometricTolerance::StepDimTol_ModifiedGeometricTolerance()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ModifiedGeometricTolerance_ctor())
+        }
+    }
+
+    /// **Source:** `StepDimTol_ModifiedGeometricTolerance.hxx`:41 - `StepDimTol_ModifiedGeometricTolerance::Init()`
+    /// Initialize all fields (own and inherited) AP214
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_limitcondition(
+        &mut self,
+        theGeometricTolerance_Name: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Description: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Magnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theGeometricTolerance_TolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+        theModifier: crate::step_dim_tol::LimitCondition,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_ModifiedGeometricTolerance_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect_limitcondition(self as *mut Self, theGeometricTolerance_Name, theGeometricTolerance_Description, theGeometricTolerance_Magnitude, theGeometricTolerance_TolerancedShapeAspect, theModifier.into())
+        }
+    }
+
+    /// **Source:** `StepDimTol_ModifiedGeometricTolerance.hxx`:49 - `StepDimTol_ModifiedGeometricTolerance::Init()`
+    /// Initialize all fields (own and inherited) AP242
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_limitcondition(
+        &mut self,
+        theGeometricTolerance_Name: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Description: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Magnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theGeometricTolerance_TolerancedShapeAspect: &GeometricToleranceTarget,
+        theModifier: crate::step_dim_tol::LimitCondition,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_ModifiedGeometricTolerance_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget_limitcondition(self as *mut Self, theGeometricTolerance_Name, theGeometricTolerance_Description, theGeometricTolerance_Magnitude, theGeometricTolerance_TolerancedShapeAspect, theModifier.into())
+        }
+    }
+
+    /// **Source:** `StepDimTol_ModifiedGeometricTolerance.hxx`:57 - `StepDimTol_ModifiedGeometricTolerance::Modifier()`
+    /// Returns field Modifier
+    pub fn modifier(&self) -> crate::step_dim_tol::LimitCondition {
+        unsafe {
+            crate::step_dim_tol::LimitCondition::try_from(
+                crate::ffi::StepDimTol_ModifiedGeometricTolerance_modifier(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `StepDimTol_ModifiedGeometricTolerance.hxx`:60 - `StepDimTol_ModifiedGeometricTolerance::SetModifier()`
+    /// Set field Modifier
+    pub fn set_modifier(&mut self, theModifier: crate::step_dim_tol::LimitCondition) {
+        unsafe {
+            crate::ffi::StepDimTol_ModifiedGeometricTolerance_set_modifier(
+                self as *mut Self,
+                theModifier.into(),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_ModifiedGeometricTolerance.hxx`:62 - `StepDimTol_ModifiedGeometricTolerance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ModifiedGeometricTolerance_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_ModifiedGeometricTolerance.hxx`:62 - `StepDimTol_ModifiedGeometricTolerance::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_ModifiedGeometricTolerance_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_ModifiedGeometricTolerance.hxx`:62 - `StepDimTol_ModifiedGeometricTolerance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_ModifiedGeometricTolerance_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ModifiedGeometricTolerance_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_ModifiedGeometricTolerance_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ModifiedGeometricTolerance_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_ModifiedGeometricTolerance_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolModifiedGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ModifiedGeometricTolerance_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ModifiedGeometricTolerance_inherited_Name(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_ModifiedGeometricTolerance_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ModifiedGeometricTolerance_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_ModifiedGeometricTolerance_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ModifiedGeometricTolerance_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_ModifiedGeometricTolerance_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ModifiedGeometricTolerance_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_ModifiedGeometricTolerance_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_ModifiedGeometricTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_ModifiedGeometricTolerance_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ModifiedGeometricTolerance_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_ModifiedGeometricTolerance_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ModifiedGeometricTolerance_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_ModifiedGeometricTolerance_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolModifiedGeometricTolerance;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolModifiedGeometricTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolModifiedGeometricTolerance_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolModifiedGeometricTolerance {
+    /// Dereference this Handle to access the underlying StepDimTol_ModifiedGeometricTolerance
+    pub fn get(&self) -> &crate::ffi::StepDimTol_ModifiedGeometricTolerance {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolModifiedGeometricTolerance_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_ModifiedGeometricTolerance
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_ModifiedGeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolModifiedGeometricTolerance_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_ModifiedGeometricTolerance> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolModifiedGeometricTolerance_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_ModifiedGeometricTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolModifiedGeometricTolerance_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_NonUniformZoneDefinition.hxx
+// ========================
+
+/// **Source:** `StepDimTol_NonUniformZoneDefinition.hxx`:27 - `StepDimTol_NonUniformZoneDefinition`
+/// Representation of STEP entity NonUniformZoneDefinition
+pub use crate::ffi::StepDimTol_NonUniformZoneDefinition as NonUniformZoneDefinition;
+
+unsafe impl crate::CppDeletable for NonUniformZoneDefinition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_NonUniformZoneDefinition_destructor(ptr);
+    }
+}
+
+impl NonUniformZoneDefinition {
+    /// **Source:** `StepDimTol_NonUniformZoneDefinition.hxx`:32 - `StepDimTol_NonUniformZoneDefinition::StepDimTol_NonUniformZoneDefinition()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_NonUniformZoneDefinition_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_NonUniformZoneDefinition.hxx`:34 - `StepDimTol_NonUniformZoneDefinition::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_NonUniformZoneDefinition_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_NonUniformZoneDefinition.hxx`:34 - `StepDimTol_NonUniformZoneDefinition::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_NonUniformZoneDefinition_get_type_name()).to_string_lossy().into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_NonUniformZoneDefinition.hxx`:34 - `StepDimTol_NonUniformZoneDefinition::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_NonUniformZoneDefinition_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_ToleranceZoneDefinition
+    pub fn as_tolerance_zone_definition(&self) -> &ToleranceZoneDefinition {
+        unsafe {
+            &*(crate::ffi::StepDimTol_NonUniformZoneDefinition_as_StepDimTol_ToleranceZoneDefinition(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_ToleranceZoneDefinition (mutable)
+    pub fn as_tolerance_zone_definition_mut(&mut self) -> &mut ToleranceZoneDefinition {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_NonUniformZoneDefinition_as_StepDimTol_ToleranceZoneDefinition_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_NonUniformZoneDefinition_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_NonUniformZoneDefinition_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolNonUniformZoneDefinition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_NonUniformZoneDefinition_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:39 - `StepDimTol_ToleranceZoneDefinition::Init()`
+    pub fn init(
+        &mut self,
+        theZone: &crate::ffi::HandleStepDimTolToleranceZone,
+        theBoundaries: &crate::ffi::HandleStepReprHArray1OfShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_NonUniformZoneDefinition_inherited_Init(
+                self as *mut Self,
+                theZone,
+                theBoundaries,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:43 - `StepDimTol_ToleranceZoneDefinition::Boundaries()`
+    pub fn boundaries(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprHArray1OfShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_NonUniformZoneDefinition_inherited_Boundaries(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:46 - `StepDimTol_ToleranceZoneDefinition::SetBoundaries()`
+    pub fn set_boundaries(
+        &mut self,
+        theBoundaries: &crate::ffi::HandleStepReprHArray1OfShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_NonUniformZoneDefinition_inherited_SetBoundaries(
+                self as *mut Self,
+                theBoundaries,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:52 - `StepDimTol_ToleranceZoneDefinition::NbBoundaries()`
+    pub fn nb_boundaries(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_NonUniformZoneDefinition_inherited_NbBoundaries(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:58 - `StepDimTol_ToleranceZoneDefinition::BoundariesValue()`
+    pub fn boundaries_value(
+        &self,
+        theNum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_NonUniformZoneDefinition_inherited_BoundariesValue(
+                    self as *const Self,
+                    theNum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:64 - `StepDimTol_ToleranceZoneDefinition::SetBoundariesValue()`
+    pub fn set_boundaries_value(
+        &mut self,
+        theNum: i32,
+        theItem: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_NonUniformZoneDefinition_inherited_SetBoundariesValue(
+                self as *mut Self,
+                theNum,
+                theItem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:71 - `StepDimTol_ToleranceZoneDefinition::Zone()`
+    pub fn zone(&mut self) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolToleranceZone> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_NonUniformZoneDefinition_inherited_Zone(self as *mut Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:74 - `StepDimTol_ToleranceZoneDefinition::SetZone()`
+    pub fn set_zone(&mut self, theZone: &crate::ffi::HandleStepDimTolToleranceZone) {
+        unsafe {
+            crate::ffi::StepDimTol_NonUniformZoneDefinition_inherited_SetZone(
+                self as *mut Self,
+                theZone,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_NonUniformZoneDefinition_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_NonUniformZoneDefinition_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_NonUniformZoneDefinition_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_NonUniformZoneDefinition_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_NonUniformZoneDefinition_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_NonUniformZoneDefinition_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolNonUniformZoneDefinition;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolNonUniformZoneDefinition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolNonUniformZoneDefinition_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolNonUniformZoneDefinition {
+    /// Dereference this Handle to access the underlying StepDimTol_NonUniformZoneDefinition
+    pub fn get(&self) -> &crate::ffi::StepDimTol_NonUniformZoneDefinition {
+        unsafe { &*(crate::ffi::HandleStepDimTolNonUniformZoneDefinition_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_NonUniformZoneDefinition
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_NonUniformZoneDefinition {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolNonUniformZoneDefinition_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_NonUniformZoneDefinition> to Handle<StepDimTol_ToleranceZoneDefinition>
+    pub fn to_handle_tolerance_zone_definition(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolToleranceZoneDefinition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolNonUniformZoneDefinition_to_HandleStepDimTolToleranceZoneDefinition(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_NonUniformZoneDefinition> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolNonUniformZoneDefinition_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_ParallelismTolerance.hxx
+// ========================
+
+/// **Source:** `StepDimTol_ParallelismTolerance.hxx`:28 - `StepDimTol_ParallelismTolerance`
+/// Representation of STEP entity ParallelismTolerance
+pub use crate::ffi::StepDimTol_ParallelismTolerance as ParallelismTolerance;
+
+unsafe impl crate::CppDeletable for ParallelismTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_ParallelismTolerance_destructor(ptr);
+    }
+}
+
+impl ParallelismTolerance {
+    /// **Source:** `StepDimTol_ParallelismTolerance.hxx`:33 - `StepDimTol_ParallelismTolerance::StepDimTol_ParallelismTolerance()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ParallelismTolerance_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_ParallelismTolerance.hxx`:35 - `StepDimTol_ParallelismTolerance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_ParallelismTolerance_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_ParallelismTolerance.hxx`:35 - `StepDimTol_ParallelismTolerance::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_ParallelismTolerance_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_ParallelismTolerance.hxx`:35 - `StepDimTol_ParallelismTolerance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_ParallelismTolerance_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithDatumReference
+    pub fn as_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> &GeometricToleranceWithDatumReference {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ParallelismTolerance_as_StepDimTol_GeometricToleranceWithDatumReference(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithDatumReference (mutable)
+    pub fn as_geometric_tolerance_with_datum_reference_mut(
+        &mut self,
+    ) -> &mut GeometricToleranceWithDatumReference {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_ParallelismTolerance_as_StepDimTol_GeometricToleranceWithDatumReference_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ParallelismTolerance_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_ParallelismTolerance_as_StepDimTol_GeometricTolerance_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ParallelismTolerance_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_ParallelismTolerance_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolParallelismTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ParallelismTolerance_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:43 - `StepDimTol_GeometricToleranceWithDatumReference::Init()`
+    pub fn init(
+        &mut self,
+        theGeometricTolerance_Name: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Description: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Magnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theGeometricTolerance_TolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_ParallelismTolerance_inherited_Init(
+                self as *mut Self,
+                theGeometricTolerance_Name,
+                theGeometricTolerance_Description,
+                theGeometricTolerance_Magnitude,
+                theGeometricTolerance_TolerancedShapeAspect,
+                theDatumSystem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:59 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystem()`
+    pub fn datum_system(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ParallelismTolerance_inherited_DatumSystem(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:62 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242()`
+    pub fn datum_system_ap242(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumSystemOrReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ParallelismTolerance_inherited_DatumSystemAP242(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:65 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
+    pub fn set_datum_system(
+        &mut self,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_ParallelismTolerance_inherited_SetDatumSystem(
+                self as *mut Self,
+                theDatumSystem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ParallelismTolerance_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_ParallelismTolerance_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ParallelismTolerance_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_ParallelismTolerance_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ParallelismTolerance_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_ParallelismTolerance_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ParallelismTolerance_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_ParallelismTolerance_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_ParallelismTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_ParallelismTolerance_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ParallelismTolerance_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_ParallelismTolerance_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ParallelismTolerance_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_ParallelismTolerance_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolParallelismTolerance;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolParallelismTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolParallelismTolerance_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolParallelismTolerance {
+    /// Dereference this Handle to access the underlying StepDimTol_ParallelismTolerance
+    pub fn get(&self) -> &crate::ffi::StepDimTol_ParallelismTolerance {
+        unsafe { &*(crate::ffi::HandleStepDimTolParallelismTolerance_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_ParallelismTolerance
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_ParallelismTolerance {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolParallelismTolerance_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_ParallelismTolerance> to Handle<StepDimTol_GeometricToleranceWithDatumReference>
+    pub fn to_handle_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolParallelismTolerance_to_HandleStepDimTolGeometricToleranceWithDatumReference(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_ParallelismTolerance> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolParallelismTolerance_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_ParallelismTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolParallelismTolerance_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_PerpendicularityTolerance.hxx
+// ========================
+
+/// **Source:** `StepDimTol_PerpendicularityTolerance.hxx`:28 - `StepDimTol_PerpendicularityTolerance`
+/// Representation of STEP entity PerpendicularityTolerance
+pub use crate::ffi::StepDimTol_PerpendicularityTolerance as PerpendicularityTolerance;
+
+unsafe impl crate::CppDeletable for PerpendicularityTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_PerpendicularityTolerance_destructor(ptr);
+    }
+}
+
+impl PerpendicularityTolerance {
+    /// **Source:** `StepDimTol_PerpendicularityTolerance.hxx`:33 - `StepDimTol_PerpendicularityTolerance::StepDimTol_PerpendicularityTolerance()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_PerpendicularityTolerance_ctor())
+        }
+    }
+
+    /// **Source:** `StepDimTol_PerpendicularityTolerance.hxx`:35 - `StepDimTol_PerpendicularityTolerance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_PerpendicularityTolerance_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_PerpendicularityTolerance.hxx`:35 - `StepDimTol_PerpendicularityTolerance::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_PerpendicularityTolerance_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_PerpendicularityTolerance.hxx`:35 - `StepDimTol_PerpendicularityTolerance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_PerpendicularityTolerance_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithDatumReference
+    pub fn as_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> &GeometricToleranceWithDatumReference {
+        unsafe {
+            &*(crate::ffi::StepDimTol_PerpendicularityTolerance_as_StepDimTol_GeometricToleranceWithDatumReference(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithDatumReference (mutable)
+    pub fn as_geometric_tolerance_with_datum_reference_mut(
+        &mut self,
+    ) -> &mut GeometricToleranceWithDatumReference {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_PerpendicularityTolerance_as_StepDimTol_GeometricToleranceWithDatumReference_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_PerpendicularityTolerance_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_PerpendicularityTolerance_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_PerpendicularityTolerance_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_PerpendicularityTolerance_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolPerpendicularityTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_PerpendicularityTolerance_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:43 - `StepDimTol_GeometricToleranceWithDatumReference::Init()`
+    pub fn init(
+        &mut self,
+        theGeometricTolerance_Name: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Description: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Magnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theGeometricTolerance_TolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_PerpendicularityTolerance_inherited_Init(
+                self as *mut Self,
+                theGeometricTolerance_Name,
+                theGeometricTolerance_Description,
+                theGeometricTolerance_Magnitude,
+                theGeometricTolerance_TolerancedShapeAspect,
+                theDatumSystem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:59 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystem()`
+    pub fn datum_system(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_PerpendicularityTolerance_inherited_DatumSystem(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:62 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242()`
+    pub fn datum_system_ap242(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumSystemOrReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_PerpendicularityTolerance_inherited_DatumSystemAP242(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:65 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
+    pub fn set_datum_system(
+        &mut self,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_PerpendicularityTolerance_inherited_SetDatumSystem(
+                self as *mut Self,
+                theDatumSystem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_PerpendicularityTolerance_inherited_Name(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_PerpendicularityTolerance_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_PerpendicularityTolerance_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_PerpendicularityTolerance_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_PerpendicularityTolerance_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_PerpendicularityTolerance_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_PerpendicularityTolerance_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_PerpendicularityTolerance_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_PerpendicularityTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_PerpendicularityTolerance_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_PerpendicularityTolerance_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_PerpendicularityTolerance_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_PerpendicularityTolerance_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_PerpendicularityTolerance_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolPerpendicularityTolerance;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolPerpendicularityTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolPerpendicularityTolerance_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolPerpendicularityTolerance {
+    /// Dereference this Handle to access the underlying StepDimTol_PerpendicularityTolerance
+    pub fn get(&self) -> &crate::ffi::StepDimTol_PerpendicularityTolerance {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolPerpendicularityTolerance_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_PerpendicularityTolerance
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_PerpendicularityTolerance {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolPerpendicularityTolerance_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_PerpendicularityTolerance> to Handle<StepDimTol_GeometricToleranceWithDatumReference>
+    pub fn to_handle_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolPerpendicularityTolerance_to_HandleStepDimTolGeometricToleranceWithDatumReference(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_PerpendicularityTolerance> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolPerpendicularityTolerance_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_PerpendicularityTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolPerpendicularityTolerance_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_PlacedDatumTargetFeature.hxx
+// ========================
+
+/// **Source:** `StepDimTol_PlacedDatumTargetFeature.hxx`:28 - `StepDimTol_PlacedDatumTargetFeature`
+/// Representation of STEP entity PlacedDatumTargetFeature
+pub use crate::ffi::StepDimTol_PlacedDatumTargetFeature as PlacedDatumTargetFeature;
+
+unsafe impl crate::CppDeletable for PlacedDatumTargetFeature {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_PlacedDatumTargetFeature_destructor(ptr);
+    }
+}
+
+impl PlacedDatumTargetFeature {
+    /// **Source:** `StepDimTol_PlacedDatumTargetFeature.hxx`:33 - `StepDimTol_PlacedDatumTargetFeature::StepDimTol_PlacedDatumTargetFeature()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_PlacedDatumTargetFeature_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_PlacedDatumTargetFeature.hxx`:35 - `StepDimTol_PlacedDatumTargetFeature::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_PlacedDatumTargetFeature_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_PlacedDatumTargetFeature.hxx`:35 - `StepDimTol_PlacedDatumTargetFeature::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_PlacedDatumTargetFeature_get_type_name()).to_string_lossy().into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_PlacedDatumTargetFeature.hxx`:35 - `StepDimTol_PlacedDatumTargetFeature::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_PlacedDatumTargetFeature_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_DatumTarget
+    pub fn as_datum_target(&self) -> &DatumTarget {
+        unsafe {
+            &*(crate::ffi::StepDimTol_PlacedDatumTargetFeature_as_StepDimTol_DatumTarget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_DatumTarget (mutable)
+    pub fn as_datum_target_mut(&mut self) -> &mut DatumTarget {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_PlacedDatumTargetFeature_as_StepDimTol_DatumTarget_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect
+    pub fn as_step_repr_shape_aspect(&self) -> &crate::step_repr::ShapeAspect {
+        unsafe {
+            &*(crate::ffi::StepDimTol_PlacedDatumTargetFeature_as_StepRepr_ShapeAspect(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect (mutable)
+    pub fn as_step_repr_shape_aspect_mut(&mut self) -> &mut crate::step_repr::ShapeAspect {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_PlacedDatumTargetFeature_as_StepRepr_ShapeAspect_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_PlacedDatumTargetFeature_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_PlacedDatumTargetFeature_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolPlacedDatumTargetFeature> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_PlacedDatumTargetFeature_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_DatumTarget.hxx`:39 - `StepDimTol_DatumTarget::Init()`
+    pub fn init(
+        &mut self,
+        theShapeAspect_Name: &crate::ffi::HandleTCollectionHAsciiString,
+        theShapeAspect_Description: &crate::ffi::HandleTCollectionHAsciiString,
+        theShapeAspect_OfShape: &crate::ffi::HandleStepReprProductDefinitionShape,
+        theShapeAspect_ProductDefinitional: crate::step_data::Logical,
+        theTargetId: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_PlacedDatumTargetFeature_inherited_Init(
+                self as *mut Self,
+                theShapeAspect_Name,
+                theShapeAspect_Description,
+                theShapeAspect_OfShape,
+                theShapeAspect_ProductDefinitional.into(),
+                theTargetId,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_DatumTarget.hxx`:46 - `StepDimTol_DatumTarget::TargetId()`
+    pub fn target_id(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_PlacedDatumTargetFeature_inherited_TargetId(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_DatumTarget.hxx`:49 - `StepDimTol_DatumTarget::SetTargetId()`
+    pub fn set_target_id(&mut self, theTargetId: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_PlacedDatumTargetFeature_inherited_SetTargetId(
+                self as *mut Self,
+                theTargetId,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:43 - `StepRepr_ShapeAspect::SetName()`
+    pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_PlacedDatumTargetFeature_inherited_SetName(
+                self as *mut Self,
+                aName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:45 - `StepRepr_ShapeAspect::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_PlacedDatumTargetFeature_inherited_Name(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:47 - `StepRepr_ShapeAspect::SetDescription()`
+    pub fn set_description(&mut self, aDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_PlacedDatumTargetFeature_inherited_SetDescription(
+                self as *mut Self,
+                aDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:49 - `StepRepr_ShapeAspect::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_PlacedDatumTargetFeature_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:51 - `StepRepr_ShapeAspect::SetOfShape()`
+    pub fn set_of_shape(&mut self, aOfShape: &crate::ffi::HandleStepReprProductDefinitionShape) {
+        unsafe {
+            crate::ffi::StepDimTol_PlacedDatumTargetFeature_inherited_SetOfShape(
+                self as *mut Self,
+                aOfShape,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:53 - `StepRepr_ShapeAspect::OfShape()`
+    pub fn of_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_PlacedDatumTargetFeature_inherited_OfShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:55 - `StepRepr_ShapeAspect::SetProductDefinitional()`
+    pub fn set_product_definitional(&mut self, aProductDefinitional: crate::step_data::Logical) {
+        unsafe {
+            crate::ffi::StepDimTol_PlacedDatumTargetFeature_inherited_SetProductDefinitional(
+                self as *mut Self,
+                aProductDefinitional.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:57 - `StepRepr_ShapeAspect::ProductDefinitional()`
+    pub fn product_definitional(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(
+                crate::ffi::StepDimTol_PlacedDatumTargetFeature_inherited_ProductDefinitional(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_PlacedDatumTargetFeature_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_PlacedDatumTargetFeature_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_PlacedDatumTargetFeature_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_PlacedDatumTargetFeature_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_PlacedDatumTargetFeature_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_PlacedDatumTargetFeature_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolPlacedDatumTargetFeature;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolPlacedDatumTargetFeature {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolPlacedDatumTargetFeature_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolPlacedDatumTargetFeature {
+    /// Dereference this Handle to access the underlying StepDimTol_PlacedDatumTargetFeature
+    pub fn get(&self) -> &crate::ffi::StepDimTol_PlacedDatumTargetFeature {
+        unsafe { &*(crate::ffi::HandleStepDimTolPlacedDatumTargetFeature_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_PlacedDatumTargetFeature
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_PlacedDatumTargetFeature {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolPlacedDatumTargetFeature_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_PlacedDatumTargetFeature> to Handle<StepDimTol_DatumTarget>
+    pub fn to_handle_datum_target(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolPlacedDatumTargetFeature_to_HandleStepDimTolDatumTarget(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_PlacedDatumTargetFeature> to Handle<StepRepr_ShapeAspect>
+    pub fn to_handle_shape_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolPlacedDatumTargetFeature_to_HandleStepReprShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_PlacedDatumTargetFeature> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolPlacedDatumTargetFeature_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_PositionTolerance.hxx
+// ========================
+
+/// **Source:** `StepDimTol_PositionTolerance.hxx`:27 - `StepDimTol_PositionTolerance`
+/// Representation of STEP entity PositionTolerance
+pub use crate::ffi::StepDimTol_PositionTolerance as PositionTolerance;
+
+unsafe impl crate::CppDeletable for PositionTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_PositionTolerance_destructor(ptr);
+    }
+}
+
+impl PositionTolerance {
+    /// **Source:** `StepDimTol_PositionTolerance.hxx`:32 - `StepDimTol_PositionTolerance::StepDimTol_PositionTolerance()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_PositionTolerance_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_PositionTolerance.hxx`:34 - `StepDimTol_PositionTolerance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_PositionTolerance_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_PositionTolerance.hxx`:34 - `StepDimTol_PositionTolerance::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_PositionTolerance_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_PositionTolerance.hxx`:34 - `StepDimTol_PositionTolerance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_PositionTolerance_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_PositionTolerance_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_PositionTolerance_as_StepDimTol_GeometricTolerance_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_PositionTolerance_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_PositionTolerance_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolPositionTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_PositionTolerance_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:40 - `StepDimTol_GeometricTolerance::Init()`
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_PositionTolerance_inherited_Init(
+                self as *mut Self,
+                theName,
+                theDescription,
+                theMagnitude,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_PositionTolerance_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_PositionTolerance_inherited_SetName(self as *mut Self, theName)
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_PositionTolerance_inherited_Description(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_PositionTolerance_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_PositionTolerance_inherited_Magnitude(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_PositionTolerance_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_PositionTolerance_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_PositionTolerance_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_PositionTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_PositionTolerance_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_PositionTolerance_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_PositionTolerance_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_PositionTolerance_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_PositionTolerance_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolPositionTolerance;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolPositionTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolPositionTolerance_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolPositionTolerance {
+    /// Dereference this Handle to access the underlying StepDimTol_PositionTolerance
+    pub fn get(&self) -> &crate::ffi::StepDimTol_PositionTolerance {
+        unsafe { &*(crate::ffi::HandleStepDimTolPositionTolerance_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_PositionTolerance
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_PositionTolerance {
+        unsafe { &mut *(crate::ffi::HandleStepDimTolPositionTolerance_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StepDimTol_PositionTolerance> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolPositionTolerance_to_HandleStepDimTolGeometricTolerance(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_PositionTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolPositionTolerance_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_ProjectedZoneDefinition.hxx
+// ========================
+
+/// **Source:** `StepDimTol_ProjectedZoneDefinition.hxx`:30 - `StepDimTol_ProjectedZoneDefinition`
+/// Representation of STEP entity ProjectedZoneDefinition
+pub use crate::ffi::StepDimTol_ProjectedZoneDefinition as ProjectedZoneDefinition;
+
+unsafe impl crate::CppDeletable for ProjectedZoneDefinition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_ProjectedZoneDefinition_destructor(ptr);
+    }
+}
+
+impl ProjectedZoneDefinition {
+    /// **Source:** `StepDimTol_ProjectedZoneDefinition.hxx`:35 - `StepDimTol_ProjectedZoneDefinition::StepDimTol_ProjectedZoneDefinition()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ProjectedZoneDefinition_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_ProjectedZoneDefinition.hxx`:38 - `StepDimTol_ProjectedZoneDefinition::Init()`
+    /// Initialize all fields (own and inherited)
+    pub fn init(
+        &mut self,
+        theZone: &crate::ffi::HandleStepDimTolToleranceZone,
+        theBoundaries: &crate::ffi::HandleStepReprHArray1OfShapeAspect,
+        theProjectionEnd: &crate::ffi::HandleStepReprShapeAspect,
+        theProjectionLength: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_ProjectedZoneDefinition_init(
+                self as *mut Self,
+                theZone,
+                theBoundaries,
+                theProjectionEnd,
+                theProjectionLength,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_ProjectedZoneDefinition.hxx`:44 - `StepDimTol_ProjectedZoneDefinition::ProjectionEnd()`
+    /// Returns field ProjectionEnd
+    pub fn projection_end(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ProjectedZoneDefinition_projection_end(self as *const Self),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_ProjectedZoneDefinition.hxx`:47 - `StepDimTol_ProjectedZoneDefinition::SetProjectionEnd()`
+    /// Set field ProjectionEnd
+    pub fn set_projection_end(&mut self, theProjectionEnd: &crate::ffi::HandleStepReprShapeAspect) {
+        unsafe {
+            crate::ffi::StepDimTol_ProjectedZoneDefinition_set_projection_end(
+                self as *mut Self,
+                theProjectionEnd,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_ProjectedZoneDefinition.hxx`:53 - `StepDimTol_ProjectedZoneDefinition::ProjectionLength()`
+    /// Returns field ProjectionLength
+    pub fn projection_length(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicLengthMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ProjectedZoneDefinition_projection_length(self as *mut Self),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_ProjectedZoneDefinition.hxx`:56 - `StepDimTol_ProjectedZoneDefinition::SetProjectionLength()`
+    /// Set field ProjectionLength
+    pub fn set_projection_length(
+        &mut self,
+        theProjectionLength: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_ProjectedZoneDefinition_set_projection_length(
+                self as *mut Self,
+                theProjectionLength,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_ProjectedZoneDefinition.hxx`:62 - `StepDimTol_ProjectedZoneDefinition::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ProjectedZoneDefinition_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_ProjectedZoneDefinition.hxx`:62 - `StepDimTol_ProjectedZoneDefinition::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_ProjectedZoneDefinition_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_ProjectedZoneDefinition.hxx`:62 - `StepDimTol_ProjectedZoneDefinition::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_ProjectedZoneDefinition_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_ToleranceZoneDefinition
+    pub fn as_tolerance_zone_definition(&self) -> &ToleranceZoneDefinition {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ProjectedZoneDefinition_as_StepDimTol_ToleranceZoneDefinition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_ToleranceZoneDefinition (mutable)
+    pub fn as_tolerance_zone_definition_mut(&mut self) -> &mut ToleranceZoneDefinition {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_ProjectedZoneDefinition_as_StepDimTol_ToleranceZoneDefinition_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ProjectedZoneDefinition_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_ProjectedZoneDefinition_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolProjectedZoneDefinition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ProjectedZoneDefinition_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:43 - `StepDimTol_ToleranceZoneDefinition::Boundaries()`
+    pub fn boundaries(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprHArray1OfShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ProjectedZoneDefinition_inherited_Boundaries(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:46 - `StepDimTol_ToleranceZoneDefinition::SetBoundaries()`
+    pub fn set_boundaries(
+        &mut self,
+        theBoundaries: &crate::ffi::HandleStepReprHArray1OfShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_ProjectedZoneDefinition_inherited_SetBoundaries(
+                self as *mut Self,
+                theBoundaries,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:52 - `StepDimTol_ToleranceZoneDefinition::NbBoundaries()`
+    pub fn nb_boundaries(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ProjectedZoneDefinition_inherited_NbBoundaries(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:58 - `StepDimTol_ToleranceZoneDefinition::BoundariesValue()`
+    pub fn boundaries_value(
+        &self,
+        theNum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ProjectedZoneDefinition_inherited_BoundariesValue(
+                    self as *const Self,
+                    theNum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:64 - `StepDimTol_ToleranceZoneDefinition::SetBoundariesValue()`
+    pub fn set_boundaries_value(
+        &mut self,
+        theNum: i32,
+        theItem: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_ProjectedZoneDefinition_inherited_SetBoundariesValue(
+                self as *mut Self,
+                theNum,
+                theItem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:71 - `StepDimTol_ToleranceZoneDefinition::Zone()`
+    pub fn zone(&mut self) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolToleranceZone> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ProjectedZoneDefinition_inherited_Zone(self as *mut Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:74 - `StepDimTol_ToleranceZoneDefinition::SetZone()`
+    pub fn set_zone(&mut self, theZone: &crate::ffi::HandleStepDimTolToleranceZone) {
+        unsafe {
+            crate::ffi::StepDimTol_ProjectedZoneDefinition_inherited_SetZone(
+                self as *mut Self,
+                theZone,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_ProjectedZoneDefinition_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_ProjectedZoneDefinition_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ProjectedZoneDefinition_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_ProjectedZoneDefinition_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ProjectedZoneDefinition_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_ProjectedZoneDefinition_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolProjectedZoneDefinition;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolProjectedZoneDefinition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolProjectedZoneDefinition_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolProjectedZoneDefinition {
+    /// Dereference this Handle to access the underlying StepDimTol_ProjectedZoneDefinition
+    pub fn get(&self) -> &crate::ffi::StepDimTol_ProjectedZoneDefinition {
+        unsafe { &*(crate::ffi::HandleStepDimTolProjectedZoneDefinition_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_ProjectedZoneDefinition
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_ProjectedZoneDefinition {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolProjectedZoneDefinition_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_ProjectedZoneDefinition> to Handle<StepDimTol_ToleranceZoneDefinition>
+    pub fn to_handle_tolerance_zone_definition(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolToleranceZoneDefinition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolProjectedZoneDefinition_to_HandleStepDimTolToleranceZoneDefinition(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_ProjectedZoneDefinition> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolProjectedZoneDefinition_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_RoundnessTolerance.hxx
+// ========================
+
+/// **Source:** `StepDimTol_RoundnessTolerance.hxx`:27 - `StepDimTol_RoundnessTolerance`
+/// Representation of STEP entity RoundnessTolerance
+pub use crate::ffi::StepDimTol_RoundnessTolerance as RoundnessTolerance;
+
+unsafe impl crate::CppDeletable for RoundnessTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_RoundnessTolerance_destructor(ptr);
+    }
+}
+
+impl RoundnessTolerance {
+    /// **Source:** `StepDimTol_RoundnessTolerance.hxx`:32 - `StepDimTol_RoundnessTolerance::StepDimTol_RoundnessTolerance()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_RoundnessTolerance_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_RoundnessTolerance.hxx`:34 - `StepDimTol_RoundnessTolerance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_RoundnessTolerance_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_RoundnessTolerance.hxx`:34 - `StepDimTol_RoundnessTolerance::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_RoundnessTolerance_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_RoundnessTolerance.hxx`:34 - `StepDimTol_RoundnessTolerance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_RoundnessTolerance_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_RoundnessTolerance_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_RoundnessTolerance_as_StepDimTol_GeometricTolerance_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_RoundnessTolerance_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_RoundnessTolerance_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolRoundnessTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_RoundnessTolerance_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:40 - `StepDimTol_GeometricTolerance::Init()`
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_RoundnessTolerance_inherited_Init(
+                self as *mut Self,
+                theName,
+                theDescription,
+                theMagnitude,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_RoundnessTolerance_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_RoundnessTolerance_inherited_SetName(self as *mut Self, theName)
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_RoundnessTolerance_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_RoundnessTolerance_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_RoundnessTolerance_inherited_Magnitude(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_RoundnessTolerance_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_RoundnessTolerance_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_RoundnessTolerance_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_RoundnessTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_RoundnessTolerance_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_RoundnessTolerance_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_RoundnessTolerance_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_RoundnessTolerance_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_RoundnessTolerance_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolRoundnessTolerance;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolRoundnessTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolRoundnessTolerance_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolRoundnessTolerance {
+    /// Dereference this Handle to access the underlying StepDimTol_RoundnessTolerance
+    pub fn get(&self) -> &crate::ffi::StepDimTol_RoundnessTolerance {
+        unsafe { &*(crate::ffi::HandleStepDimTolRoundnessTolerance_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_RoundnessTolerance
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_RoundnessTolerance {
+        unsafe { &mut *(crate::ffi::HandleStepDimTolRoundnessTolerance_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StepDimTol_RoundnessTolerance> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolRoundnessTolerance_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_RoundnessTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolRoundnessTolerance_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_RunoutZoneDefinition.hxx
+// ========================
+
+/// **Source:** `StepDimTol_RunoutZoneDefinition.hxx`:31 - `StepDimTol_RunoutZoneDefinition`
+/// Representation of STEP entity ToleranceZoneDefinition
+pub use crate::ffi::StepDimTol_RunoutZoneDefinition as RunoutZoneDefinition;
+
+unsafe impl crate::CppDeletable for RunoutZoneDefinition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_RunoutZoneDefinition_destructor(ptr);
+    }
+}
+
+impl RunoutZoneDefinition {
+    /// **Source:** `StepDimTol_RunoutZoneDefinition.hxx`:36 - `StepDimTol_RunoutZoneDefinition::StepDimTol_RunoutZoneDefinition()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_RunoutZoneDefinition_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_RunoutZoneDefinition.hxx`:39 - `StepDimTol_RunoutZoneDefinition::Init()`
+    /// Initialize all fields (own and inherited)
+    pub fn init(
+        &mut self,
+        theZone: &crate::ffi::HandleStepDimTolToleranceZone,
+        theBoundaries: &crate::ffi::HandleStepReprHArray1OfShapeAspect,
+        theOrientation: &crate::ffi::HandleStepDimTolRunoutZoneOrientation,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_RunoutZoneDefinition_init(
+                self as *mut Self,
+                theZone,
+                theBoundaries,
+                theOrientation,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_RunoutZoneDefinition.hxx`:44 - `StepDimTol_RunoutZoneDefinition::Orientation()`
+    /// Returns field Orientation
+    pub fn orientation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolRunoutZoneOrientation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_RunoutZoneDefinition_orientation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_RunoutZoneDefinition.hxx`:47 - `StepDimTol_RunoutZoneDefinition::SetOrientation()`
+    /// Set field Orientation
+    pub fn set_orientation(
+        &mut self,
+        theOrientation: &crate::ffi::HandleStepDimTolRunoutZoneOrientation,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_RunoutZoneDefinition_set_orientation(
+                self as *mut Self,
+                theOrientation,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_RunoutZoneDefinition.hxx`:52 - `StepDimTol_RunoutZoneDefinition::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_RunoutZoneDefinition_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_RunoutZoneDefinition.hxx`:52 - `StepDimTol_RunoutZoneDefinition::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_RunoutZoneDefinition_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_RunoutZoneDefinition.hxx`:52 - `StepDimTol_RunoutZoneDefinition::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_RunoutZoneDefinition_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_ToleranceZoneDefinition
+    pub fn as_tolerance_zone_definition(&self) -> &ToleranceZoneDefinition {
+        unsafe {
+            &*(crate::ffi::StepDimTol_RunoutZoneDefinition_as_StepDimTol_ToleranceZoneDefinition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_ToleranceZoneDefinition (mutable)
+    pub fn as_tolerance_zone_definition_mut(&mut self) -> &mut ToleranceZoneDefinition {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_RunoutZoneDefinition_as_StepDimTol_ToleranceZoneDefinition_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_RunoutZoneDefinition_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_RunoutZoneDefinition_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolRunoutZoneDefinition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_RunoutZoneDefinition_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:43 - `StepDimTol_ToleranceZoneDefinition::Boundaries()`
+    pub fn boundaries(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprHArray1OfShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_RunoutZoneDefinition_inherited_Boundaries(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:46 - `StepDimTol_ToleranceZoneDefinition::SetBoundaries()`
+    pub fn set_boundaries(
+        &mut self,
+        theBoundaries: &crate::ffi::HandleStepReprHArray1OfShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_RunoutZoneDefinition_inherited_SetBoundaries(
+                self as *mut Self,
+                theBoundaries,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:52 - `StepDimTol_ToleranceZoneDefinition::NbBoundaries()`
+    pub fn nb_boundaries(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_RunoutZoneDefinition_inherited_NbBoundaries(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:58 - `StepDimTol_ToleranceZoneDefinition::BoundariesValue()`
+    pub fn boundaries_value(
+        &self,
+        theNum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_RunoutZoneDefinition_inherited_BoundariesValue(
+                    self as *const Self,
+                    theNum,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:64 - `StepDimTol_ToleranceZoneDefinition::SetBoundariesValue()`
+    pub fn set_boundaries_value(
+        &mut self,
+        theNum: i32,
+        theItem: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_RunoutZoneDefinition_inherited_SetBoundariesValue(
+                self as *mut Self,
+                theNum,
+                theItem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:71 - `StepDimTol_ToleranceZoneDefinition::Zone()`
+    pub fn zone(&mut self) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolToleranceZone> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_RunoutZoneDefinition_inherited_Zone(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:74 - `StepDimTol_ToleranceZoneDefinition::SetZone()`
+    pub fn set_zone(&mut self, theZone: &crate::ffi::HandleStepDimTolToleranceZone) {
+        unsafe {
+            crate::ffi::StepDimTol_RunoutZoneDefinition_inherited_SetZone(
+                self as *mut Self,
+                theZone,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_RunoutZoneDefinition_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_RunoutZoneDefinition_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_RunoutZoneDefinition_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_RunoutZoneDefinition_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_RunoutZoneDefinition_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_RunoutZoneDefinition_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolRunoutZoneDefinition;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolRunoutZoneDefinition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolRunoutZoneDefinition_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolRunoutZoneDefinition {
+    /// Dereference this Handle to access the underlying StepDimTol_RunoutZoneDefinition
+    pub fn get(&self) -> &crate::ffi::StepDimTol_RunoutZoneDefinition {
+        unsafe { &*(crate::ffi::HandleStepDimTolRunoutZoneDefinition_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_RunoutZoneDefinition
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_RunoutZoneDefinition {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolRunoutZoneDefinition_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_RunoutZoneDefinition> to Handle<StepDimTol_ToleranceZoneDefinition>
+    pub fn to_handle_tolerance_zone_definition(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolToleranceZoneDefinition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolRunoutZoneDefinition_to_HandleStepDimTolToleranceZoneDefinition(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_RunoutZoneDefinition> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolRunoutZoneDefinition_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_RunoutZoneOrientation.hxx
+// ========================
+
+/// **Source:** `StepDimTol_RunoutZoneOrientation.hxx`:29 - `StepDimTol_RunoutZoneOrientation`
+/// Added for Dimensional Tolerances
+pub use crate::ffi::StepDimTol_RunoutZoneOrientation as RunoutZoneOrientation;
+
+unsafe impl crate::CppDeletable for RunoutZoneOrientation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_RunoutZoneOrientation_destructor(ptr);
+    }
+}
+
+impl RunoutZoneOrientation {
+    /// **Source:** `StepDimTol_RunoutZoneOrientation.hxx`:33 - `StepDimTol_RunoutZoneOrientation::StepDimTol_RunoutZoneOrientation()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_RunoutZoneOrientation_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_RunoutZoneOrientation.hxx`:36 - `StepDimTol_RunoutZoneOrientation::Init()`
+    /// Init all field own and inherited
+    pub fn init(&mut self, theAngle: &crate::ffi::HandleStepBasicPlaneAngleMeasureWithUnit) {
+        unsafe { crate::ffi::StepDimTol_RunoutZoneOrientation_init(self as *mut Self, theAngle) }
+    }
+
+    /// **Source:** `StepDimTol_RunoutZoneOrientation.hxx`:39 - `StepDimTol_RunoutZoneOrientation::Angle()`
+    /// Returns field Angle
+    pub fn angle(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicPlaneAngleMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_RunoutZoneOrientation_angle(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_RunoutZoneOrientation.hxx`:42 - `StepDimTol_RunoutZoneOrientation::SetAngle()`
+    /// Set field Angle
+    pub fn set_angle(&mut self, theAngle: &crate::ffi::HandleStepBasicPlaneAngleMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_RunoutZoneOrientation_set_angle(self as *mut Self, theAngle)
+        }
+    }
+
+    /// **Source:** `StepDimTol_RunoutZoneOrientation.hxx`:47 - `StepDimTol_RunoutZoneOrientation::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_RunoutZoneOrientation_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_RunoutZoneOrientation.hxx`:47 - `StepDimTol_RunoutZoneOrientation::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_RunoutZoneOrientation_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_RunoutZoneOrientation.hxx`:47 - `StepDimTol_RunoutZoneOrientation::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_RunoutZoneOrientation_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_RunoutZoneOrientation_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_RunoutZoneOrientation_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolRunoutZoneOrientation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_RunoutZoneOrientation_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_RunoutZoneOrientation_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_RunoutZoneOrientation_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_RunoutZoneOrientation_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_RunoutZoneOrientation_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_RunoutZoneOrientation_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_RunoutZoneOrientation_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolRunoutZoneOrientation;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolRunoutZoneOrientation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolRunoutZoneOrientation_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolRunoutZoneOrientation {
+    /// Dereference this Handle to access the underlying StepDimTol_RunoutZoneOrientation
+    pub fn get(&self) -> &crate::ffi::StepDimTol_RunoutZoneOrientation {
+        unsafe { &*(crate::ffi::HandleStepDimTolRunoutZoneOrientation_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_RunoutZoneOrientation
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_RunoutZoneOrientation {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolRunoutZoneOrientation_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_RunoutZoneOrientation> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolRunoutZoneOrientation_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_ShapeToleranceSelect.hxx
+// ========================
+
+/// **Source:** `StepDimTol_ShapeToleranceSelect.hxx`:30 - `StepDimTol_ShapeToleranceSelect`
+/// Representation of STEP SELECT type ShapeToleranceSelect
+pub use crate::ffi::StepDimTol_ShapeToleranceSelect as ShapeToleranceSelect;
+
+unsafe impl crate::CppDeletable for ShapeToleranceSelect {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_ShapeToleranceSelect_destructor(ptr);
+    }
+}
+
+impl ShapeToleranceSelect {
+    /// **Source:** `StepDimTol_ShapeToleranceSelect.hxx`:36 - `StepDimTol_ShapeToleranceSelect::StepDimTol_ShapeToleranceSelect()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ShapeToleranceSelect_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_ShapeToleranceSelect.hxx`:42 - `StepDimTol_ShapeToleranceSelect::CaseNum()`
+    /// Recognizes a kind of ShapeToleranceSelect select type
+    /// 1 -> GeometricTolerance from StepDimTol
+    /// 2 -> PlusMinusTolerance from StepShape
+    /// 0 else
+    pub fn case_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::StepDimTol_ShapeToleranceSelect_case_num(self as *const Self, ent) }
+    }
+
+    /// **Source:** `StepDimTol_ShapeToleranceSelect.hxx`:45 - `StepDimTol_ShapeToleranceSelect::GeometricTolerance()`
+    /// Returns Value as GeometricTolerance (or Null if another type)
+    pub fn geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ShapeToleranceSelect_geometric_tolerance(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_ShapeToleranceSelect.hxx`:48 - `StepDimTol_ShapeToleranceSelect::PlusMinusTolerance()`
+    /// Returns Value as PlusMinusTolerance (or Null if another type)
+    pub fn plus_minus_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepShapePlusMinusTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ShapeToleranceSelect_plus_minus_tolerance(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to StepData_SelectType
+    pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ShapeToleranceSelect_as_StepData_SelectType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepData_SelectType (mutable)
+    pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_ShapeToleranceSelect_as_StepData_SelectType_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
+    pub fn matches(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_ShapeToleranceSelect_inherited_Matches(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
+    pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe {
+            crate::ffi::StepDimTol_ShapeToleranceSelect_inherited_SetValue(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
+    pub fn nullify(&mut self) {
+        unsafe { crate::ffi::StepDimTol_ShapeToleranceSelect_inherited_Nullify(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ShapeToleranceSelect_inherited_Value(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:79 - `StepData_SelectType::IsNull()`
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi::StepDimTol_ShapeToleranceSelect_inherited_IsNull(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:83 - `StepData_SelectType::Type()`
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ShapeToleranceSelect_inherited_Type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:87 - `StepData_SelectType::CaseNumber()`
+    pub fn case_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ShapeToleranceSelect_inherited_CaseNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:94 - `StepData_SelectType::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataPDescr> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ShapeToleranceSelect_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:104 - `StepData_SelectType::NewMember()`
+    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ShapeToleranceSelect_inherited_NewMember(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:111 - `StepData_SelectType::CaseMem()`
+    pub fn case_mem(&self, ent: &crate::ffi::HandleStepDataSelectMember) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ShapeToleranceSelect_inherited_CaseMem(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:115 - `StepData_SelectType::CaseMember()`
+    pub fn case_member(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ShapeToleranceSelect_inherited_CaseMember(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:118 - `StepData_SelectType::Member()`
+    pub fn member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ShapeToleranceSelect_inherited_Member(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:127 - `StepData_SelectType::Int()`
+    pub fn int(&self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_ShapeToleranceSelect_inherited_Int(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
+    pub fn set_int(&mut self, val: i32) {
+        unsafe {
+            crate::ffi::StepDimTol_ShapeToleranceSelect_inherited_SetInt(self as *mut Self, val)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:134 - `StepData_SelectType::Integer()`
+    pub fn integer(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ShapeToleranceSelect_inherited_Integer(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:141 - `StepData_SelectType::Boolean()`
+    pub fn boolean(&self) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_ShapeToleranceSelect_inherited_Boolean(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:145 - `StepData_SelectType::Logical()`
+    pub fn logical(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(
+                crate::ffi::StepDimTol_ShapeToleranceSelect_inherited_Logical(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:149 - `StepData_SelectType::Real()`
+    pub fn real(&self) -> f64 {
+        unsafe { crate::ffi::StepDimTol_ShapeToleranceSelect_inherited_Real(self as *const Self) }
+    }
+}
+
+// ========================
 // From StepDimTol_SimpleDatumReferenceModifierMember.hxx
 // ========================
 
@@ -2474,11 +17322,2634 @@ impl HandleStepDimTolSimpleDatumReferenceModifierMember {
 }
 
 // ========================
+// From StepDimTol_StraightnessTolerance.hxx
+// ========================
+
+/// **Source:** `StepDimTol_StraightnessTolerance.hxx`:27 - `StepDimTol_StraightnessTolerance`
+/// Representation of STEP entity StraightnessTolerance
+pub use crate::ffi::StepDimTol_StraightnessTolerance as StraightnessTolerance;
+
+unsafe impl crate::CppDeletable for StraightnessTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_StraightnessTolerance_destructor(ptr);
+    }
+}
+
+impl StraightnessTolerance {
+    /// **Source:** `StepDimTol_StraightnessTolerance.hxx`:32 - `StepDimTol_StraightnessTolerance::StepDimTol_StraightnessTolerance()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_StraightnessTolerance_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_StraightnessTolerance.hxx`:34 - `StepDimTol_StraightnessTolerance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_StraightnessTolerance_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_StraightnessTolerance.hxx`:34 - `StepDimTol_StraightnessTolerance::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_StraightnessTolerance_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_StraightnessTolerance.hxx`:34 - `StepDimTol_StraightnessTolerance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_StraightnessTolerance_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_StraightnessTolerance_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_StraightnessTolerance_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_StraightnessTolerance_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_StraightnessTolerance_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolStraightnessTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_StraightnessTolerance_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:40 - `StepDimTol_GeometricTolerance::Init()`
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_StraightnessTolerance_inherited_Init(
+                self as *mut Self,
+                theName,
+                theDescription,
+                theMagnitude,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_StraightnessTolerance_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_StraightnessTolerance_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_StraightnessTolerance_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_StraightnessTolerance_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_StraightnessTolerance_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_StraightnessTolerance_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_StraightnessTolerance_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_StraightnessTolerance_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_StraightnessTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_StraightnessTolerance_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_StraightnessTolerance_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_StraightnessTolerance_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_StraightnessTolerance_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_StraightnessTolerance_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolStraightnessTolerance;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolStraightnessTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolStraightnessTolerance_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolStraightnessTolerance {
+    /// Dereference this Handle to access the underlying StepDimTol_StraightnessTolerance
+    pub fn get(&self) -> &crate::ffi::StepDimTol_StraightnessTolerance {
+        unsafe { &*(crate::ffi::HandleStepDimTolStraightnessTolerance_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_StraightnessTolerance
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_StraightnessTolerance {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolStraightnessTolerance_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_StraightnessTolerance> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolStraightnessTolerance_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_StraightnessTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolStraightnessTolerance_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_SurfaceProfileTolerance.hxx
+// ========================
+
+/// **Source:** `StepDimTol_SurfaceProfileTolerance.hxx`:27 - `StepDimTol_SurfaceProfileTolerance`
+/// Representation of STEP entity SurfaceProfileTolerance
+pub use crate::ffi::StepDimTol_SurfaceProfileTolerance as SurfaceProfileTolerance;
+
+unsafe impl crate::CppDeletable for SurfaceProfileTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_SurfaceProfileTolerance_destructor(ptr);
+    }
+}
+
+impl SurfaceProfileTolerance {
+    /// **Source:** `StepDimTol_SurfaceProfileTolerance.hxx`:32 - `StepDimTol_SurfaceProfileTolerance::StepDimTol_SurfaceProfileTolerance()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_SurfaceProfileTolerance_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_SurfaceProfileTolerance.hxx`:34 - `StepDimTol_SurfaceProfileTolerance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_SurfaceProfileTolerance_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_SurfaceProfileTolerance.hxx`:34 - `StepDimTol_SurfaceProfileTolerance::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_SurfaceProfileTolerance_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_SurfaceProfileTolerance.hxx`:34 - `StepDimTol_SurfaceProfileTolerance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_SurfaceProfileTolerance_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_SurfaceProfileTolerance_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_SurfaceProfileTolerance_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_SurfaceProfileTolerance_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_SurfaceProfileTolerance_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolSurfaceProfileTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_SurfaceProfileTolerance_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:40 - `StepDimTol_GeometricTolerance::Init()`
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_SurfaceProfileTolerance_inherited_Init(
+                self as *mut Self,
+                theName,
+                theDescription,
+                theMagnitude,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_SurfaceProfileTolerance_inherited_Name(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_SurfaceProfileTolerance_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_SurfaceProfileTolerance_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_SurfaceProfileTolerance_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_SurfaceProfileTolerance_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_SurfaceProfileTolerance_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_SurfaceProfileTolerance_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_SurfaceProfileTolerance_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_SurfaceProfileTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_SurfaceProfileTolerance_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_SurfaceProfileTolerance_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_SurfaceProfileTolerance_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_SurfaceProfileTolerance_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_SurfaceProfileTolerance_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolSurfaceProfileTolerance;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolSurfaceProfileTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolSurfaceProfileTolerance_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolSurfaceProfileTolerance {
+    /// Dereference this Handle to access the underlying StepDimTol_SurfaceProfileTolerance
+    pub fn get(&self) -> &crate::ffi::StepDimTol_SurfaceProfileTolerance {
+        unsafe { &*(crate::ffi::HandleStepDimTolSurfaceProfileTolerance_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_SurfaceProfileTolerance
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_SurfaceProfileTolerance {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolSurfaceProfileTolerance_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_SurfaceProfileTolerance> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolSurfaceProfileTolerance_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_SurfaceProfileTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolSurfaceProfileTolerance_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_SymmetryTolerance.hxx
+// ========================
+
+/// **Source:** `StepDimTol_SymmetryTolerance.hxx`:28 - `StepDimTol_SymmetryTolerance`
+/// Representation of STEP entity SymmetryTolerance
+pub use crate::ffi::StepDimTol_SymmetryTolerance as SymmetryTolerance;
+
+unsafe impl crate::CppDeletable for SymmetryTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_SymmetryTolerance_destructor(ptr);
+    }
+}
+
+impl SymmetryTolerance {
+    /// **Source:** `StepDimTol_SymmetryTolerance.hxx`:33 - `StepDimTol_SymmetryTolerance::StepDimTol_SymmetryTolerance()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_SymmetryTolerance_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_SymmetryTolerance.hxx`:35 - `StepDimTol_SymmetryTolerance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_SymmetryTolerance_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_SymmetryTolerance.hxx`:35 - `StepDimTol_SymmetryTolerance::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_SymmetryTolerance_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_SymmetryTolerance.hxx`:35 - `StepDimTol_SymmetryTolerance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_SymmetryTolerance_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithDatumReference
+    pub fn as_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> &GeometricToleranceWithDatumReference {
+        unsafe {
+            &*(crate::ffi::StepDimTol_SymmetryTolerance_as_StepDimTol_GeometricToleranceWithDatumReference(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithDatumReference (mutable)
+    pub fn as_geometric_tolerance_with_datum_reference_mut(
+        &mut self,
+    ) -> &mut GeometricToleranceWithDatumReference {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_SymmetryTolerance_as_StepDimTol_GeometricToleranceWithDatumReference_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_SymmetryTolerance_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_SymmetryTolerance_as_StepDimTol_GeometricTolerance_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_SymmetryTolerance_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_SymmetryTolerance_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolSymmetryTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_SymmetryTolerance_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:43 - `StepDimTol_GeometricToleranceWithDatumReference::Init()`
+    pub fn init(
+        &mut self,
+        theGeometricTolerance_Name: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Description: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Magnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theGeometricTolerance_TolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_SymmetryTolerance_inherited_Init(
+                self as *mut Self,
+                theGeometricTolerance_Name,
+                theGeometricTolerance_Description,
+                theGeometricTolerance_Magnitude,
+                theGeometricTolerance_TolerancedShapeAspect,
+                theDatumSystem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:59 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystem()`
+    pub fn datum_system(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_SymmetryTolerance_inherited_DatumSystem(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:62 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242()`
+    pub fn datum_system_ap242(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumSystemOrReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_SymmetryTolerance_inherited_DatumSystemAP242(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:65 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
+    pub fn set_datum_system(
+        &mut self,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_SymmetryTolerance_inherited_SetDatumSystem(
+                self as *mut Self,
+                theDatumSystem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_SymmetryTolerance_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_SymmetryTolerance_inherited_SetName(self as *mut Self, theName)
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_SymmetryTolerance_inherited_Description(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_SymmetryTolerance_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_SymmetryTolerance_inherited_Magnitude(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_SymmetryTolerance_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_SymmetryTolerance_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_SymmetryTolerance_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_SymmetryTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_SymmetryTolerance_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_SymmetryTolerance_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_SymmetryTolerance_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_SymmetryTolerance_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_SymmetryTolerance_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolSymmetryTolerance;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolSymmetryTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolSymmetryTolerance_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolSymmetryTolerance {
+    /// Dereference this Handle to access the underlying StepDimTol_SymmetryTolerance
+    pub fn get(&self) -> &crate::ffi::StepDimTol_SymmetryTolerance {
+        unsafe { &*(crate::ffi::HandleStepDimTolSymmetryTolerance_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_SymmetryTolerance
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_SymmetryTolerance {
+        unsafe { &mut *(crate::ffi::HandleStepDimTolSymmetryTolerance_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StepDimTol_SymmetryTolerance> to Handle<StepDimTol_GeometricToleranceWithDatumReference>
+    pub fn to_handle_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolSymmetryTolerance_to_HandleStepDimTolGeometricToleranceWithDatumReference(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_SymmetryTolerance> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolSymmetryTolerance_to_HandleStepDimTolGeometricTolerance(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_SymmetryTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolSymmetryTolerance_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_ToleranceZone.hxx
+// ========================
+
+/// **Source:** `StepDimTol_ToleranceZone.hxx`:38 - `StepDimTol_ToleranceZone`
+/// Representation of STEP entity ToleranceZone
+pub use crate::ffi::StepDimTol_ToleranceZone as ToleranceZone;
+
+unsafe impl crate::CppDeletable for ToleranceZone {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_ToleranceZone_destructor(ptr);
+    }
+}
+
+impl ToleranceZone {
+    /// **Source:** `StepDimTol_ToleranceZone.hxx`:43 - `StepDimTol_ToleranceZone::StepDimTol_ToleranceZone()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ToleranceZone_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZone.hxx`:46 - `StepDimTol_ToleranceZone::Init()`
+    /// Initialize all fields (own and inherited)
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theOfShape: &crate::ffi::HandleStepReprProductDefinitionShape,
+        theProductDefinitional: crate::step_data::Logical,
+        theDefiningTolerance: &crate::ffi::HandleStepDimTolHArray1OfToleranceZoneTarget,
+        theForm: &crate::ffi::HandleStepDimTolToleranceZoneForm,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZone_init(
+                self as *mut Self,
+                theName,
+                theDescription,
+                theOfShape,
+                theProductDefinitional.into(),
+                theDefiningTolerance,
+                theForm,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZone.hxx`:55 - `StepDimTol_ToleranceZone::DefiningTolerance()`
+    /// Returns field DefiningTolerance
+    pub fn defining_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfToleranceZoneTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ToleranceZone_defining_tolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZone.hxx`:61 - `StepDimTol_ToleranceZone::SetDefiningTolerance()`
+    /// Set field DefiningTolerance
+    pub fn set_defining_tolerance(
+        &mut self,
+        theDefiningTolerance: &crate::ffi::HandleStepDimTolHArray1OfToleranceZoneTarget,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZone_set_defining_tolerance(
+                self as *mut Self,
+                theDefiningTolerance,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZone.hxx`:68 - `StepDimTol_ToleranceZone::NbDefiningTolerances()`
+    /// Returns number of Defining Tolerances
+    pub fn nb_defining_tolerances(&self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_ToleranceZone_nb_defining_tolerances(self as *const Self) }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZone.hxx`:74 - `StepDimTol_ToleranceZone::DefiningToleranceValue()`
+    /// Returns Defining Tolerance with the given number
+    pub fn defining_tolerance_value(&self, theNum: i32) -> crate::OwnedPtr<ToleranceZoneTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ToleranceZone_defining_tolerance_value(
+                    self as *const Self,
+                    theNum,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZone.hxx`:80 - `StepDimTol_ToleranceZone::SetDefiningToleranceValue()`
+    /// Sets Defining Tolerance with given number
+    pub fn set_defining_tolerance_value(&mut self, theNum: i32, theItem: &ToleranceZoneTarget) {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZone_set_defining_tolerance_value(
+                self as *mut Self,
+                theNum,
+                theItem,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZone.hxx`:87 - `StepDimTol_ToleranceZone::Form()`
+    /// Returns field Form
+    pub fn form(&mut self) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolToleranceZoneForm> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ToleranceZone_form(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZone.hxx`:90 - `StepDimTol_ToleranceZone::SetForm()`
+    /// Set field Form
+    pub fn set_form(&mut self, theForm: &crate::ffi::HandleStepDimTolToleranceZoneForm) {
+        unsafe { crate::ffi::StepDimTol_ToleranceZone_set_form(self as *mut Self, theForm) }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZone.hxx`:92 - `StepDimTol_ToleranceZone::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_ToleranceZone_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZone.hxx`:92 - `StepDimTol_ToleranceZone::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_ToleranceZone_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZone.hxx`:92 - `StepDimTol_ToleranceZone::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_ToleranceZone_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect
+    pub fn as_step_repr_shape_aspect(&self) -> &crate::step_repr::ShapeAspect {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ToleranceZone_as_StepRepr_ShapeAspect(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect (mutable)
+    pub fn as_step_repr_shape_aspect_mut(&mut self) -> &mut crate::step_repr::ShapeAspect {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_ToleranceZone_as_StepRepr_ShapeAspect_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ToleranceZone_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_ToleranceZone_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolToleranceZone> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ToleranceZone_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:43 - `StepRepr_ShapeAspect::SetName()`
+    pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::StepDimTol_ToleranceZone_inherited_SetName(self as *mut Self, aName) }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:45 - `StepRepr_ShapeAspect::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ToleranceZone_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:47 - `StepRepr_ShapeAspect::SetDescription()`
+    pub fn set_description(&mut self, aDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZone_inherited_SetDescription(
+                self as *mut Self,
+                aDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:49 - `StepRepr_ShapeAspect::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ToleranceZone_inherited_Description(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:51 - `StepRepr_ShapeAspect::SetOfShape()`
+    pub fn set_of_shape(&mut self, aOfShape: &crate::ffi::HandleStepReprProductDefinitionShape) {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZone_inherited_SetOfShape(self as *mut Self, aOfShape)
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:53 - `StepRepr_ShapeAspect::OfShape()`
+    pub fn of_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ToleranceZone_inherited_OfShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:55 - `StepRepr_ShapeAspect::SetProductDefinitional()`
+    pub fn set_product_definitional(&mut self, aProductDefinitional: crate::step_data::Logical) {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZone_inherited_SetProductDefinitional(
+                self as *mut Self,
+                aProductDefinitional.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:57 - `StepRepr_ShapeAspect::ProductDefinitional()`
+    pub fn product_definitional(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(
+                crate::ffi::StepDimTol_ToleranceZone_inherited_ProductDefinitional(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZone_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZone_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_ToleranceZone_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZone_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZone_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_ToleranceZone_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolToleranceZone;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolToleranceZone {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolToleranceZone_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolToleranceZone {
+    /// Dereference this Handle to access the underlying StepDimTol_ToleranceZone
+    pub fn get(&self) -> &crate::ffi::StepDimTol_ToleranceZone {
+        unsafe { &*(crate::ffi::HandleStepDimTolToleranceZone_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_ToleranceZone
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_ToleranceZone {
+        unsafe { &mut *(crate::ffi::HandleStepDimTolToleranceZone_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StepDimTol_ToleranceZone> to Handle<StepRepr_ShapeAspect>
+    pub fn to_handle_shape_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolToleranceZone_to_HandleStepReprShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_ToleranceZone> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolToleranceZone_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_ToleranceZoneDefinition.hxx
+// ========================
+
+/// **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:31 - `StepDimTol_ToleranceZoneDefinition`
+/// Representation of STEP entity ToleranceZoneDefinition
+pub use crate::ffi::StepDimTol_ToleranceZoneDefinition as ToleranceZoneDefinition;
+
+unsafe impl crate::CppDeletable for ToleranceZoneDefinition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_ToleranceZoneDefinition_destructor(ptr);
+    }
+}
+
+impl ToleranceZoneDefinition {
+    /// **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:36 - `StepDimTol_ToleranceZoneDefinition::StepDimTol_ToleranceZoneDefinition()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ToleranceZoneDefinition_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:39 - `StepDimTol_ToleranceZoneDefinition::Init()`
+    /// Initialize all fields (own and inherited)
+    pub fn init(
+        &mut self,
+        theZone: &crate::ffi::HandleStepDimTolToleranceZone,
+        theBoundaries: &crate::ffi::HandleStepReprHArray1OfShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneDefinition_init(
+                self as *mut Self,
+                theZone,
+                theBoundaries,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:43 - `StepDimTol_ToleranceZoneDefinition::Boundaries()`
+    /// Returns field Boundaries
+    pub fn boundaries(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprHArray1OfShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ToleranceZoneDefinition_boundaries(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:46 - `StepDimTol_ToleranceZoneDefinition::SetBoundaries()`
+    /// Set field Boundaries
+    pub fn set_boundaries(
+        &mut self,
+        theBoundaries: &crate::ffi::HandleStepReprHArray1OfShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneDefinition_set_boundaries(
+                self as *mut Self,
+                theBoundaries,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:52 - `StepDimTol_ToleranceZoneDefinition::NbBoundaries()`
+    /// Returns number of Boundaries
+    pub fn nb_boundaries(&self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_ToleranceZoneDefinition_nb_boundaries(self as *const Self) }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:58 - `StepDimTol_ToleranceZoneDefinition::BoundariesValue()`
+    /// Returns Boundaries with the given number
+    pub fn boundaries_value(
+        &self,
+        theNum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ToleranceZoneDefinition_boundaries_value(
+                    self as *const Self,
+                    theNum,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:64 - `StepDimTol_ToleranceZoneDefinition::SetBoundariesValue()`
+    /// Sets Boundaries with given number
+    pub fn set_boundaries_value(
+        &mut self,
+        theNum: i32,
+        theItem: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneDefinition_set_boundaries_value(
+                self as *mut Self,
+                theNum,
+                theItem,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:71 - `StepDimTol_ToleranceZoneDefinition::Zone()`
+    /// Returns field Zone
+    pub fn zone(&mut self) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolToleranceZone> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ToleranceZoneDefinition_zone(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:74 - `StepDimTol_ToleranceZoneDefinition::SetZone()`
+    /// Set field Zone
+    pub fn set_zone(&mut self, theZone: &crate::ffi::HandleStepDimTolToleranceZone) {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneDefinition_set_zone(self as *mut Self, theZone)
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:76 - `StepDimTol_ToleranceZoneDefinition::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ToleranceZoneDefinition_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:76 - `StepDimTol_ToleranceZoneDefinition::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_ToleranceZoneDefinition_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:76 - `StepDimTol_ToleranceZoneDefinition::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_ToleranceZoneDefinition_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ToleranceZoneDefinition_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_ToleranceZoneDefinition_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolToleranceZoneDefinition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ToleranceZoneDefinition_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneDefinition_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneDefinition_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneDefinition_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneDefinition_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneDefinition_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneDefinition_inherited_Delete(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolToleranceZoneDefinition;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolToleranceZoneDefinition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolToleranceZoneDefinition_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolToleranceZoneDefinition {
+    /// Dereference this Handle to access the underlying StepDimTol_ToleranceZoneDefinition
+    pub fn get(&self) -> &crate::ffi::StepDimTol_ToleranceZoneDefinition {
+        unsafe { &*(crate::ffi::HandleStepDimTolToleranceZoneDefinition_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_ToleranceZoneDefinition
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_ToleranceZoneDefinition {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolToleranceZoneDefinition_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_ToleranceZoneDefinition> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolToleranceZoneDefinition_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_ToleranceZoneDefinition> to Handle<StepDimTol_NonUniformZoneDefinition>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_NonUniformZoneDefinition` (or subclass).
+    pub fn downcast_to_non_uniform_zone_definition(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolNonUniformZoneDefinition>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolToleranceZoneDefinition_downcast_to_HandleStepDimTolNonUniformZoneDefinition(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_ToleranceZoneDefinition> to Handle<StepDimTol_ProjectedZoneDefinition>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_ProjectedZoneDefinition` (or subclass).
+    pub fn downcast_to_projected_zone_definition(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolProjectedZoneDefinition>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolToleranceZoneDefinition_downcast_to_HandleStepDimTolProjectedZoneDefinition(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepDimTol_ToleranceZoneDefinition> to Handle<StepDimTol_RunoutZoneDefinition>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_RunoutZoneDefinition` (or subclass).
+    pub fn downcast_to_runout_zone_definition(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolRunoutZoneDefinition>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDimTolToleranceZoneDefinition_downcast_to_HandleStepDimTolRunoutZoneDefinition(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_ToleranceZoneForm.hxx
+// ========================
+
+/// **Source:** `StepDimTol_ToleranceZoneForm.hxx`:31 - `StepDimTol_ToleranceZoneForm`
+/// Added for Dimensional Tolerances
+pub use crate::ffi::StepDimTol_ToleranceZoneForm as ToleranceZoneForm;
+
+unsafe impl crate::CppDeletable for ToleranceZoneForm {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_ToleranceZoneForm_destructor(ptr);
+    }
+}
+
+impl ToleranceZoneForm {
+    /// **Source:** `StepDimTol_ToleranceZoneForm.hxx`:35 - `StepDimTol_ToleranceZoneForm::StepDimTol_ToleranceZoneForm()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ToleranceZoneForm_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneForm.hxx`:38 - `StepDimTol_ToleranceZoneForm::Init()`
+    /// Init all field own and inherited
+    pub fn init(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::StepDimTol_ToleranceZoneForm_init(self as *mut Self, theName) }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneForm.hxx`:41 - `StepDimTol_ToleranceZoneForm::Name()`
+    /// Returns field Name
+    pub fn name(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ToleranceZoneForm_name(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneForm.hxx`:44 - `StepDimTol_ToleranceZoneForm::SetName()`
+    /// Set field Name
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::StepDimTol_ToleranceZoneForm_set_name(self as *mut Self, theName) }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneForm.hxx`:46 - `StepDimTol_ToleranceZoneForm::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_ToleranceZoneForm_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneForm.hxx`:46 - `StepDimTol_ToleranceZoneForm::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_ToleranceZoneForm_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneForm.hxx`:46 - `StepDimTol_ToleranceZoneForm::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_ToleranceZoneForm_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ToleranceZoneForm_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_ToleranceZoneForm_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolToleranceZoneForm> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ToleranceZoneForm_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneForm_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneForm_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneForm_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneForm_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneForm_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_ToleranceZoneForm_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolToleranceZoneForm;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolToleranceZoneForm {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolToleranceZoneForm_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolToleranceZoneForm {
+    /// Dereference this Handle to access the underlying StepDimTol_ToleranceZoneForm
+    pub fn get(&self) -> &crate::ffi::StepDimTol_ToleranceZoneForm {
+        unsafe { &*(crate::ffi::HandleStepDimTolToleranceZoneForm_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_ToleranceZoneForm
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_ToleranceZoneForm {
+        unsafe { &mut *(crate::ffi::HandleStepDimTolToleranceZoneForm_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StepDimTol_ToleranceZoneForm> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolToleranceZoneForm_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_ToleranceZoneTarget.hxx
+// ========================
+
+/// **Source:** `StepDimTol_ToleranceZoneTarget.hxx`:32 - `StepDimTol_ToleranceZoneTarget`
+pub use crate::ffi::StepDimTol_ToleranceZoneTarget as ToleranceZoneTarget;
+
+unsafe impl crate::CppDeletable for ToleranceZoneTarget {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_ToleranceZoneTarget_destructor(ptr);
+    }
+}
+
+impl ToleranceZoneTarget {
+    /// **Source:** `StepDimTol_ToleranceZoneTarget.hxx`:38 - `StepDimTol_ToleranceZoneTarget::StepDimTol_ToleranceZoneTarget()`
+    /// Returns a ToleranceZoneTarget select type
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ToleranceZoneTarget_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneTarget.hxx`:46 - `StepDimTol_ToleranceZoneTarget::CaseNum()`
+    /// Recognizes a ToleranceZoneTarget Kind Entity that is :
+    /// 1 -> DimensionalLocation
+    /// 2 -> DimensionalSize
+    /// 3 -> GeometricTolerance
+    /// 4 -> GeneralDatumReference
+    /// 0 else
+    pub fn case_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::StepDimTol_ToleranceZoneTarget_case_num(self as *const Self, ent) }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneTarget.hxx`:49 - `StepDimTol_ToleranceZoneTarget::DimensionalLocation()`
+    /// returns Value as a DimensionalLocation (Null if another type)
+    pub fn dimensional_location(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepShapeDimensionalLocation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ToleranceZoneTarget_dimensional_location(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneTarget.hxx`:52 - `StepDimTol_ToleranceZoneTarget::DimensionalSize()`
+    /// returns Value as a DimensionalSize (Null if another type)
+    pub fn dimensional_size(&self) -> crate::OwnedPtr<crate::ffi::HandleStepShapeDimensionalSize> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ToleranceZoneTarget_dimensional_size(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneTarget.hxx`:55 - `StepDimTol_ToleranceZoneTarget::GeometricTolerance()`
+    /// returns Value as a GeometricTolerance (Null if another type)
+    pub fn geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ToleranceZoneTarget_geometric_tolerance(self as *const Self),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_ToleranceZoneTarget.hxx`:58 - `StepDimTol_ToleranceZoneTarget::GeneralDatumReference()`
+    /// returns Value as a GeneralDatumReference (Null if another type)
+    pub fn general_datum_reference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeneralDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ToleranceZoneTarget_general_datum_reference(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to StepData_SelectType
+    pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ToleranceZoneTarget_as_StepData_SelectType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepData_SelectType (mutable)
+    pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_ToleranceZoneTarget_as_StepData_SelectType_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
+    pub fn matches(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneTarget_inherited_Matches(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
+    pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneTarget_inherited_SetValue(self as *mut Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
+    pub fn nullify(&mut self) {
+        unsafe { crate::ffi::StepDimTol_ToleranceZoneTarget_inherited_Nullify(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_ToleranceZoneTarget_inherited_Value(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:79 - `StepData_SelectType::IsNull()`
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi::StepDimTol_ToleranceZoneTarget_inherited_IsNull(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:83 - `StepData_SelectType::Type()`
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ToleranceZoneTarget_inherited_Type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:87 - `StepData_SelectType::CaseNumber()`
+    pub fn case_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneTarget_inherited_CaseNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:94 - `StepData_SelectType::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataPDescr> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ToleranceZoneTarget_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:104 - `StepData_SelectType::NewMember()`
+    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_ToleranceZoneTarget_inherited_NewMember(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:111 - `StepData_SelectType::CaseMem()`
+    pub fn case_mem(&self, ent: &crate::ffi::HandleStepDataSelectMember) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneTarget_inherited_CaseMem(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:115 - `StepData_SelectType::CaseMember()`
+    pub fn case_member(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneTarget_inherited_CaseMember(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:118 - `StepData_SelectType::Member()`
+    pub fn member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_ToleranceZoneTarget_inherited_Member(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:127 - `StepData_SelectType::Int()`
+    pub fn int(&self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_ToleranceZoneTarget_inherited_Int(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
+    pub fn set_int(&mut self, val: i32) {
+        unsafe {
+            crate::ffi::StepDimTol_ToleranceZoneTarget_inherited_SetInt(self as *mut Self, val)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:134 - `StepData_SelectType::Integer()`
+    pub fn integer(&self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_ToleranceZoneTarget_inherited_Integer(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:141 - `StepData_SelectType::Boolean()`
+    pub fn boolean(&self) -> bool {
+        unsafe { crate::ffi::StepDimTol_ToleranceZoneTarget_inherited_Boolean(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:145 - `StepData_SelectType::Logical()`
+    pub fn logical(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(
+                crate::ffi::StepDimTol_ToleranceZoneTarget_inherited_Logical(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:149 - `StepData_SelectType::Real()`
+    pub fn real(&self) -> f64 {
+        unsafe { crate::ffi::StepDimTol_ToleranceZoneTarget_inherited_Real(self as *const Self) }
+    }
+}
+
+// ========================
+// From StepDimTol_TotalRunoutTolerance.hxx
+// ========================
+
+/// **Source:** `StepDimTol_TotalRunoutTolerance.hxx`:28 - `StepDimTol_TotalRunoutTolerance`
+/// Representation of STEP entity TotalRunoutTolerance
+pub use crate::ffi::StepDimTol_TotalRunoutTolerance as TotalRunoutTolerance;
+
+unsafe impl crate::CppDeletable for TotalRunoutTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_TotalRunoutTolerance_destructor(ptr);
+    }
+}
+
+impl TotalRunoutTolerance {
+    /// **Source:** `StepDimTol_TotalRunoutTolerance.hxx`:33 - `StepDimTol_TotalRunoutTolerance::StepDimTol_TotalRunoutTolerance()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_TotalRunoutTolerance_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_TotalRunoutTolerance.hxx`:35 - `StepDimTol_TotalRunoutTolerance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_TotalRunoutTolerance_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_TotalRunoutTolerance.hxx`:35 - `StepDimTol_TotalRunoutTolerance::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_TotalRunoutTolerance_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_TotalRunoutTolerance.hxx`:35 - `StepDimTol_TotalRunoutTolerance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_TotalRunoutTolerance_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithDatumReference
+    pub fn as_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> &GeometricToleranceWithDatumReference {
+        unsafe {
+            &*(crate::ffi::StepDimTol_TotalRunoutTolerance_as_StepDimTol_GeometricToleranceWithDatumReference(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricToleranceWithDatumReference (mutable)
+    pub fn as_geometric_tolerance_with_datum_reference_mut(
+        &mut self,
+    ) -> &mut GeometricToleranceWithDatumReference {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_TotalRunoutTolerance_as_StepDimTol_GeometricToleranceWithDatumReference_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_TotalRunoutTolerance_as_StepDimTol_GeometricTolerance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_TotalRunoutTolerance_as_StepDimTol_GeometricTolerance_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_TotalRunoutTolerance_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_TotalRunoutTolerance_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolTotalRunoutTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_TotalRunoutTolerance_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:43 - `StepDimTol_GeometricToleranceWithDatumReference::Init()`
+    pub fn init(
+        &mut self,
+        theGeometricTolerance_Name: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Description: &crate::ffi::HandleTCollectionHAsciiString,
+        theGeometricTolerance_Magnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theGeometricTolerance_TolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_TotalRunoutTolerance_inherited_Init(
+                self as *mut Self,
+                theGeometricTolerance_Name,
+                theGeometricTolerance_Description,
+                theGeometricTolerance_Magnitude,
+                theGeometricTolerance_TolerancedShapeAspect,
+                theDatumSystem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:59 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystem()`
+    pub fn datum_system(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_TotalRunoutTolerance_inherited_DatumSystem(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:62 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242()`
+    pub fn datum_system_ap242(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumSystemOrReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_TotalRunoutTolerance_inherited_DatumSystemAP242(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:65 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
+    pub fn set_datum_system(
+        &mut self,
+        theDatumSystem: &crate::ffi::HandleStepDimTolHArray1OfDatumReference,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_TotalRunoutTolerance_inherited_SetDatumSystem(
+                self as *mut Self,
+                theDatumSystem,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_TotalRunoutTolerance_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_TotalRunoutTolerance_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_TotalRunoutTolerance_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_TotalRunoutTolerance_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_TotalRunoutTolerance_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_TotalRunoutTolerance_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_TotalRunoutTolerance_inherited_TolerancedShapeAspect(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_TotalRunoutTolerance_inherited_SetTolerancedShapeAspect(
+                self as *mut Self,
+                theTolerancedShapeAspect,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_TotalRunoutTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_TotalRunoutTolerance_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_TotalRunoutTolerance_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_TotalRunoutTolerance_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_TotalRunoutTolerance_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_TotalRunoutTolerance_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolTotalRunoutTolerance;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolTotalRunoutTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolTotalRunoutTolerance_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolTotalRunoutTolerance {
+    /// Dereference this Handle to access the underlying StepDimTol_TotalRunoutTolerance
+    pub fn get(&self) -> &crate::ffi::StepDimTol_TotalRunoutTolerance {
+        unsafe { &*(crate::ffi::HandleStepDimTolTotalRunoutTolerance_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_TotalRunoutTolerance
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_TotalRunoutTolerance {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolTotalRunoutTolerance_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_TotalRunoutTolerance> to Handle<StepDimTol_GeometricToleranceWithDatumReference>
+    pub fn to_handle_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolTotalRunoutTolerance_to_HandleStepDimTolGeometricToleranceWithDatumReference(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_TotalRunoutTolerance> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolTotalRunoutTolerance_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_TotalRunoutTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolTotalRunoutTolerance_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_UnequallyDisposedGeometricTolerance.hxx
+// ========================
+
+/// **Source:** `StepDimTol_UnequallyDisposedGeometricTolerance.hxx`:33 - `StepDimTol_UnequallyDisposedGeometricTolerance`
+/// Representation of STEP entity UnequallyDisposedGeometricTolerance
+pub use crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance as UnequallyDisposedGeometricTolerance;
+
+unsafe impl crate::CppDeletable for UnequallyDisposedGeometricTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_destructor(ptr);
+    }
+}
+
+impl UnequallyDisposedGeometricTolerance {
+    /// **Source:** `StepDimTol_UnequallyDisposedGeometricTolerance.hxx`:38 - `StepDimTol_UnequallyDisposedGeometricTolerance::StepDimTol_UnequallyDisposedGeometricTolerance()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_ctor(),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_UnequallyDisposedGeometricTolerance.hxx`:41 - `StepDimTol_UnequallyDisposedGeometricTolerance::Init()`
+    /// Initialize all fields (own and inherited)
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &GeometricToleranceTarget,
+        theDisplacement: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_init(
+                self as *mut Self,
+                theName,
+                theDescription,
+                theMagnitude,
+                theTolerancedShapeAspect,
+                theDisplacement,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_UnequallyDisposedGeometricTolerance.hxx`:48 - `StepDimTol_UnequallyDisposedGeometricTolerance::Displacement()`
+    /// Returns field Displacement
+    pub fn displacement(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicLengthMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_displacement(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_UnequallyDisposedGeometricTolerance.hxx`:51 - `StepDimTol_UnequallyDisposedGeometricTolerance::SetDisplacement()`
+    /// Set field Displacement
+    pub fn set_displacement(
+        &mut self,
+        theDisplacement: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_set_displacement(
+                self as *mut Self,
+                theDisplacement,
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_UnequallyDisposedGeometricTolerance.hxx`:56 - `StepDimTol_UnequallyDisposedGeometricTolerance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_UnequallyDisposedGeometricTolerance.hxx`:56 - `StepDimTol_UnequallyDisposedGeometricTolerance::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_UnequallyDisposedGeometricTolerance.hxx`:56 - `StepDimTol_UnequallyDisposedGeometricTolerance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_get_type_descriptor())
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance
+    pub fn as_geometric_tolerance(&self) -> &GeometricTolerance {
+        unsafe {
+            &*(crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_as_StepDimTol_GeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepDimTol_GeometricTolerance (mutable)
+    pub fn as_geometric_tolerance_mut(&mut self) -> &mut GeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_as_StepDimTol_GeometricTolerance_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolUnequallyDisposedGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:52 - `StepDimTol_GeometricTolerance::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_inherited_Name(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:55 - `StepDimTol_GeometricTolerance::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:58 - `StepDimTol_GeometricTolerance::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_inherited_Description(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:61 - `StepDimTol_GeometricTolerance::SetDescription()`
+    pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_inherited_SetDescription(
+                self as *mut Self,
+                theDescription,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:64 - `StepDimTol_GeometricTolerance::Magnitude()`
+    pub fn magnitude(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_inherited_Magnitude(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:67 - `StepDimTol_GeometricTolerance::SetMagnitude()`
+    pub fn set_magnitude(&mut self, theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit) {
+        unsafe {
+            crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_inherited_SetMagnitude(
+                self as *mut Self,
+                theMagnitude,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_inherited_TolerancedShapeAspect(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    pub fn set_toleranced_shape_aspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_inherited_SetTolerancedShapeAspect(self as *mut Self, theTolerancedShapeAspect)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolUnequallyDisposedGeometricTolerance;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolUnequallyDisposedGeometricTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolUnequallyDisposedGeometricTolerance_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolUnequallyDisposedGeometricTolerance {
+    /// Dereference this Handle to access the underlying StepDimTol_UnequallyDisposedGeometricTolerance
+    pub fn get(&self) -> &crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolUnequallyDisposedGeometricTolerance_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_UnequallyDisposedGeometricTolerance
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolUnequallyDisposedGeometricTolerance_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_UnequallyDisposedGeometricTolerance> to Handle<StepDimTol_GeometricTolerance>
+    pub fn to_handle_geometric_tolerance(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolUnequallyDisposedGeometricTolerance_to_HandleStepDimTolGeometricTolerance(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_UnequallyDisposedGeometricTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolUnequallyDisposedGeometricTolerance_to_HandleStandardTransient(self as *const Self))
+        }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
+    StepDimTol_Array1OfDatumReference as Array1OfDatumReference,
+    StepDimTol_Array1OfDatumReferenceCompartment as Array1OfDatumReferenceCompartment,
+    StepDimTol_Array1OfDatumReferenceElement as Array1OfDatumReferenceElement,
     StepDimTol_Array1OfDatumReferenceModifier as Array1OfDatumReferenceModifier,
     StepDimTol_Array1OfDatumSystemOrReference as Array1OfDatumSystemOrReference,
-    StepDimTol_DatumReference as DatumReference, StepDimTol_DatumSystem as DatumSystem,
+    StepDimTol_Array1OfGeometricToleranceModifier as Array1OfGeometricToleranceModifier,
+    StepDimTol_Array1OfToleranceZoneTarget as Array1OfToleranceZoneTarget,
 };

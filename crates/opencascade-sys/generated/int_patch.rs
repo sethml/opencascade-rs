@@ -44,8 +44,2354 @@ impl TryFrom<i32> for IType {
     }
 }
 
+/// This enum describe the  different kinds of
+/// special (singular) points of Surface-Surface
+/// intersection algorithm. Such as pole of sphere,
+/// apex of cone, point on U- or V-seam etc.
+/// C++ enum: `IntPatch_SpecPntType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum SpecPntType {
+    Spntnone = 0,
+    Spntseamu = 1,
+    Spntseamv = 2,
+    Spntseamuv = 3,
+    Spntpoleseamu = 4,
+    Spntpole = 5,
+}
+
+impl From<SpecPntType> for i32 {
+    fn from(value: SpecPntType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for SpecPntType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(SpecPntType::Spntnone),
+            1 => Ok(SpecPntType::Spntseamu),
+            2 => Ok(SpecPntType::Spntseamv),
+            3 => Ok(SpecPntType::Spntseamuv),
+            4 => Ok(SpecPntType::Spntpoleseamu),
+            5 => Ok(SpecPntType::Spntpole),
+            _ => Err(value),
+        }
+    }
+}
+
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::HandleStandardTransient;
+
+// ========================
+// From IntPatch_ALine.hxx
+// ========================
+
+/// **Source:** `IntPatch_ALine.hxx`:34 - `IntPatch_ALine`
+/// Implementation of an intersection line described by a
+/// parametrized curve.
+pub use crate::ffi::IntPatch_ALine as ALine;
+
+unsafe impl crate::CppDeletable for ALine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_ALine_destructor(ptr);
+    }
+}
+
+impl ALine {
+    /// **Source:** `IntPatch_ALine.hxx`:40 - `IntPatch_ALine::IntPatch_ALine()`
+    /// Creates an analytic intersection line
+    /// when the transitions are In or Out.
+    pub fn new_curve_bool_typetrans2(
+        C: &crate::int_ana::Curve,
+        Tang: bool,
+        Trans1: crate::int_surf::TypeTrans,
+        Trans2: crate::int_surf::TypeTrans,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_ALine_ctor_curve_bool_typetrans2(
+                C,
+                Tang,
+                Trans1.into(),
+                Trans2.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:47 - `IntPatch_ALine::IntPatch_ALine()`
+    /// Creates an analytic intersection line
+    /// when the transitions are Touch.
+    pub fn new_curve_bool_situation2(
+        C: &crate::int_ana::Curve,
+        Tang: bool,
+        Situ1: crate::int_surf::Situation,
+        Situ2: crate::int_surf::Situation,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_ALine_ctor_curve_bool_situation2(
+                C,
+                Tang,
+                Situ1.into(),
+                Situ2.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:54 - `IntPatch_ALine::IntPatch_ALine()`
+    /// Creates an analytic intersection line
+    /// when the transitions are Undecided.
+    pub fn new_curve_bool(C: &crate::int_ana::Curve, Tang: bool) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_ALine_ctor_curve_bool(C, Tang)) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:57 - `IntPatch_ALine::AddVertex()`
+    /// To add a vertex in the list.
+    pub fn add_vertex(&mut self, Pnt: &Point) {
+        unsafe { crate::ffi::IntPatch_ALine_add_vertex(self as *mut Self, Pnt) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:61 - `IntPatch_ALine::Replace()`
+    /// Replaces the element of range Index in the list
+    /// of points.
+    pub fn replace(&mut self, Index: i32, Pnt: &Point) {
+        unsafe { crate::ffi::IntPatch_ALine_replace(self as *mut Self, Index, Pnt) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:63 - `IntPatch_ALine::SetFirstPoint()`
+    pub fn set_first_point(&mut self, IndFirst: i32) {
+        unsafe { crate::ffi::IntPatch_ALine_set_first_point(self as *mut Self, IndFirst) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:65 - `IntPatch_ALine::SetLastPoint()`
+    pub fn set_last_point(&mut self, IndLast: i32) {
+        unsafe { crate::ffi::IntPatch_ALine_set_last_point(self as *mut Self, IndLast) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:72 - `IntPatch_ALine::FirstParameter()`
+    /// Returns the first parameter on the intersection line.
+    /// If IsIncluded returns True, Value and D1 methods can
+    /// be call with a parameter equal to FirstParameter.
+    /// Otherwise, the parameter must be greater than
+    /// FirstParameter.
+    pub fn first_parameter(&self, IsIncluded: &mut bool) -> f64 {
+        unsafe { crate::ffi::IntPatch_ALine_first_parameter(self as *const Self, IsIncluded) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:78 - `IntPatch_ALine::LastParameter()`
+    /// Returns the last parameter on the intersection line.
+    /// If IsIncluded returns True, Value and D1 methods can
+    /// be call with a parameter equal to LastParameter.
+    /// Otherwise, the parameter must be less than LastParameter.
+    pub fn last_parameter(&self, IsIncluded: &mut bool) -> f64 {
+        unsafe { crate::ffi::IntPatch_ALine_last_parameter(self as *const Self, IsIncluded) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:82 - `IntPatch_ALine::Value()`
+    /// Returns the point of parameter U on the analytic
+    /// intersection line.
+    pub fn value(&mut self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_ALine_value(self as *mut Self, U)) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:91 - `IntPatch_ALine::D1()`
+    /// Returns Standard_True when the derivative at parameter U
+    /// is defined on the analytic intersection line.
+    /// In that case, Du is the derivative.
+    /// Returns Standard_False when it is not possible to
+    /// evaluate the derivative.
+    /// In both cases, P is the point at parameter U on the
+    /// intersection.
+    pub fn d1(&mut self, U: f64, P: &mut crate::gp::Pnt, Du: &mut crate::gp::Vec) -> bool {
+        unsafe { crate::ffi::IntPatch_ALine_d1(self as *mut Self, U, P, Du) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:98 - `IntPatch_ALine::FindParameter()`
+    /// Tries to find the parameters of the point P on the curve.
+    /// If the method returns False, the "projection" is
+    /// impossible.
+    /// If the method returns True at least one parameter has been found.
+    /// theParams is always sorted in ascending order.
+    pub fn find_parameter(
+        &self,
+        P: &crate::gp::Pnt,
+        theParams: &mut crate::ffi::TColStd_ListOfReal,
+    ) {
+        unsafe { crate::ffi::IntPatch_ALine_find_parameter(self as *const Self, P, theParams) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:102 - `IntPatch_ALine::HasFirstPoint()`
+    /// Returns True if the line has a known First point.
+    /// This point is given by the method FirstPoint().
+    pub fn has_first_point(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_ALine_has_first_point(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:106 - `IntPatch_ALine::HasLastPoint()`
+    /// Returns True if the line has a known Last point.
+    /// This point is given by the method LastPoint().
+    pub fn has_last_point(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_ALine_has_last_point(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:110 - `IntPatch_ALine::FirstPoint()`
+    /// Returns the IntPoint corresponding to the FirstPoint.
+    /// An exception is raised when HasFirstPoint returns False.
+    pub fn first_point(&self) -> &Point {
+        unsafe { &*(crate::ffi::IntPatch_ALine_first_point(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:114 - `IntPatch_ALine::LastPoint()`
+    /// Returns the IntPoint corresponding to the LastPoint.
+    /// An exception is raised when HasLastPoint returns False.
+    pub fn last_point(&self) -> &Point {
+        unsafe { &*(crate::ffi::IntPatch_ALine_last_point(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:116 - `IntPatch_ALine::NbVertex()`
+    pub fn nb_vertex(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_ALine_nb_vertex(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:119 - `IntPatch_ALine::Vertex()`
+    /// Returns the vertex of range Index on the line.
+    pub fn vertex(&self, Index: i32) -> &Point {
+        unsafe { &*(crate::ffi::IntPatch_ALine_vertex(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:122 - `IntPatch_ALine::ChangeVertex()`
+    /// Allows modifying the vertex with index theIndex on the line.
+    pub fn change_vertex(&mut self, theIndex: i32) -> &mut Point {
+        unsafe { &mut *(crate::ffi::IntPatch_ALine_change_vertex(self as *mut Self, theIndex)) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:131 - `IntPatch_ALine::ComputeVertexParameters()`
+    /// Set the parameters of all the vertex on the line.
+    /// if a vertex is already in the line,
+    /// its parameter is modified
+    /// else a new point in the line is inserted.
+    pub fn compute_vertex_parameters(&mut self, Tol: f64) {
+        unsafe { crate::ffi::IntPatch_ALine_compute_vertex_parameters(self as *mut Self, Tol) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:133 - `IntPatch_ALine::Curve()`
+    pub fn curve(&self) -> &crate::int_ana::Curve {
+        unsafe { &*(crate::ffi::IntPatch_ALine_curve(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:135 - `IntPatch_ALine::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IntPatch_ALine_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:135 - `IntPatch_ALine::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IntPatch_ALine_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IntPatch_ALine.hxx`:135 - `IntPatch_ALine::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IntPatch_ALine_get_type_descriptor()) }
+    }
+
+    /// Upcast to IntPatch_Line
+    pub fn as_line(&self) -> &Line {
+        unsafe { &*(crate::ffi::IntPatch_ALine_as_IntPatch_Line(self as *const Self)) }
+    }
+
+    /// Upcast to IntPatch_Line (mutable)
+    pub fn as_line_mut(&mut self) -> &mut Line {
+        unsafe { &mut *(crate::ffi::IntPatch_ALine_as_IntPatch_Line_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IntPatch_ALine_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::IntPatch_ALine_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIntPatchALine> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_ALine_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:44 - `IntPatch_Line::SetValue()`
+    pub fn set_value(&mut self, Uiso1: bool, Viso1: bool, Uiso2: bool, Viso2: bool) {
+        unsafe {
+            crate::ffi::IntPatch_ALine_inherited_SetValue(
+                self as *mut Self,
+                Uiso1,
+                Viso1,
+                Uiso2,
+                Viso2,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:51 - `IntPatch_Line::ArcType()`
+    pub fn arc_type(&self) -> crate::int_patch::IType {
+        unsafe {
+            crate::int_patch::IType::try_from(crate::ffi::IntPatch_ALine_inherited_ArcType(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:55 - `IntPatch_Line::IsTangent()`
+    pub fn is_tangent(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_ALine_inherited_IsTangent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:76 - `IntPatch_Line::TransitionOnS1()`
+    pub fn transition_on_s1(&self) -> crate::int_surf::TypeTrans {
+        unsafe {
+            crate::int_surf::TypeTrans::try_from(
+                crate::ffi::IntPatch_ALine_inherited_TransitionOnS1(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:81 - `IntPatch_Line::TransitionOnS2()`
+    pub fn transition_on_s2(&self) -> crate::int_surf::TypeTrans {
+        unsafe {
+            crate::int_surf::TypeTrans::try_from(
+                crate::ffi::IntPatch_ALine_inherited_TransitionOnS2(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:87 - `IntPatch_Line::SituationS1()`
+    pub fn situation_s1(&self) -> crate::int_surf::Situation {
+        unsafe {
+            crate::int_surf::Situation::try_from(crate::ffi::IntPatch_ALine_inherited_SituationS1(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:93 - `IntPatch_Line::SituationS2()`
+    pub fn situation_s2(&self) -> crate::int_surf::Situation {
+        unsafe {
+            crate::int_surf::Situation::try_from(crate::ffi::IntPatch_ALine_inherited_SituationS2(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:97 - `IntPatch_Line::IsUIsoOnS1()`
+    pub fn is_u_iso_on_s1(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_ALine_inherited_IsUIsoOnS1(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:101 - `IntPatch_Line::IsVIsoOnS1()`
+    pub fn is_v_iso_on_s1(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_ALine_inherited_IsVIsoOnS1(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:105 - `IntPatch_Line::IsUIsoOnS2()`
+    pub fn is_u_iso_on_s2(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_ALine_inherited_IsUIsoOnS2(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:109 - `IntPatch_Line::IsVIsoOnS2()`
+    pub fn is_v_iso_on_s2(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_ALine_inherited_IsVIsoOnS2(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IntPatch_ALine_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IntPatch_ALine_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_ALine_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IntPatch_ALine_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IntPatch_ALine_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IntPatch_ALine_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIntPatchALine;
+
+unsafe impl crate::CppDeletable for HandleIntPatchALine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIntPatchALine_destructor(ptr);
+    }
+}
+
+impl HandleIntPatchALine {
+    /// Dereference this Handle to access the underlying IntPatch_ALine
+    pub fn get(&self) -> &crate::ffi::IntPatch_ALine {
+        unsafe { &*(crate::ffi::HandleIntPatchALine_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IntPatch_ALine
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IntPatch_ALine {
+        unsafe { &mut *(crate::ffi::HandleIntPatchALine_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IntPatch_ALine> to Handle<IntPatch_Line>
+    pub fn to_handle_line(&self) -> crate::OwnedPtr<crate::ffi::HandleIntPatchLine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIntPatchALine_to_HandleIntPatchLine(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<IntPatch_ALine> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIntPatchALine_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From IntPatch_ALineToWLine.hxx
+// ========================
+
+/// **Source:** `IntPatch_ALineToWLine.hxx`:28 - `IntPatch_ALineToWLine`
+pub use crate::ffi::IntPatch_ALineToWLine as ALineToWLine;
+
+unsafe impl crate::CppDeletable for ALineToWLine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_ALineToWLine_destructor(ptr);
+    }
+}
+
+impl ALineToWLine {
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:34 - `IntPatch_ALineToWLine::IntPatch_ALineToWLine()`
+    /// Constructor
+    pub fn new_handleadaptor3dsurface2_int(
+        theS1: &crate::ffi::HandleAdaptor3dSurface,
+        theS2: &crate::ffi::HandleAdaptor3dSurface,
+        theNbPoints: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IntPatch_ALineToWLine_ctor_handleadaptor3dsurface2_int(
+                    theS1,
+                    theS2,
+                    theNbPoints,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:34 - `IntPatch_ALineToWLine::IntPatch_ALineToWLine()`
+    /// Constructor
+    pub fn new_handleadaptor3dsurface2(
+        theS1: &crate::ffi::HandleAdaptor3dSurface,
+        theS2: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleadaptor3dsurface2_int(theS1, theS2, 200)
+    }
+
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:38 - `IntPatch_ALineToWLine::SetTolOpenDomain()`
+    pub fn set_tol_open_domain(&mut self, aT: f64) {
+        unsafe { crate::ffi::IntPatch_ALineToWLine_set_tol_open_domain(self as *mut Self, aT) }
+    }
+
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:40 - `IntPatch_ALineToWLine::TolOpenDomain()`
+    pub fn tol_open_domain(&self) -> f64 {
+        unsafe { crate::ffi::IntPatch_ALineToWLine_tol_open_domain(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:42 - `IntPatch_ALineToWLine::SetTolTransition()`
+    pub fn set_tol_transition(&mut self, aT: f64) {
+        unsafe { crate::ffi::IntPatch_ALineToWLine_set_tol_transition(self as *mut Self, aT) }
+    }
+
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:44 - `IntPatch_ALineToWLine::TolTransition()`
+    pub fn tol_transition(&self) -> f64 {
+        unsafe { crate::ffi::IntPatch_ALineToWLine_tol_transition(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:46 - `IntPatch_ALineToWLine::SetTol3D()`
+    pub fn set_tol3_d(&mut self, aT: f64) {
+        unsafe { crate::ffi::IntPatch_ALineToWLine_set_tol3_d(self as *mut Self, aT) }
+    }
+
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:48 - `IntPatch_ALineToWLine::Tol3D()`
+    pub fn tol3_d(&self) -> f64 {
+        unsafe { crate::ffi::IntPatch_ALineToWLine_tol3_d(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:52 - `IntPatch_ALineToWLine::MakeWLine()`
+    /// Converts aline to the set of Walking-lines and adds
+    /// them in theLines.
+    pub fn make_w_line_handleintpatchaline_sequenceofline(
+        &self,
+        aline: &crate::ffi::HandleIntPatchALine,
+        theLines: &mut crate::ffi::IntPatch_SequenceOfLine,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_ALineToWLine_make_w_line_handleintpatchaline_sequenceofline(
+                self as *const Self,
+                aline,
+                theLines,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:57 - `IntPatch_ALineToWLine::MakeWLine()`
+    /// Converts aline (limited by paraminf and paramsup) to the set of
+    /// Walking-lines and adds them in theLines.
+    pub fn make_w_line_handleintpatchaline_real2_sequenceofline(
+        &self,
+        aline: &crate::ffi::HandleIntPatchALine,
+        paraminf: f64,
+        paramsup: f64,
+        theLines: &mut crate::ffi::IntPatch_SequenceOfLine,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_ALineToWLine_make_w_line_handleintpatchaline_real2_sequenceofline(
+                self as *const Self,
+                aline,
+                paraminf,
+                paramsup,
+                theLines,
+            )
+        }
+    }
+}
+
+// ========================
+// From IntPatch_ArcFunction.hxx
+// ========================
+
+/// **Source:** `IntPatch_ArcFunction.hxx`:26 - `IntPatch_ArcFunction`
+pub use crate::ffi::IntPatch_ArcFunction as ArcFunction;
+
+unsafe impl crate::CppDeletable for ArcFunction {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_ArcFunction_destructor(ptr);
+    }
+}
+
+impl ArcFunction {
+    /// **Source:** `IntPatch_ArcFunction.hxx`:31 - `IntPatch_ArcFunction::IntPatch_ArcFunction()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_ArcFunction_ctor()) }
+    }
+
+    /// **Source:** `IntPatch_ArcFunction.hxx`:33 - `IntPatch_ArcFunction::SetQuadric()`
+    pub fn set_quadric(&mut self, Q: &crate::int_surf::Quadric) {
+        unsafe { crate::ffi::IntPatch_ArcFunction_set_quadric(self as *mut Self, Q) }
+    }
+
+    /// **Source:** `IntPatch_ArcFunction.hxx`:35 - `IntPatch_ArcFunction::Set()`
+    pub fn set_handleadaptor2dcurve2d(&mut self, A: &crate::ffi::HandleAdaptor2dCurve2d) {
+        unsafe { crate::ffi::IntPatch_ArcFunction_set_handleadaptor2dcurve2d(self as *mut Self, A) }
+    }
+
+    /// **Source:** `IntPatch_ArcFunction.hxx`:37 - `IntPatch_ArcFunction::Set()`
+    pub fn set_handleadaptor3dsurface(&mut self, S: &crate::ffi::HandleAdaptor3dSurface) {
+        unsafe { crate::ffi::IntPatch_ArcFunction_set_handleadaptor3dsurface(self as *mut Self, S) }
+    }
+
+    /// **Source:** `IntPatch_ArcFunction.hxx`:39 - `IntPatch_ArcFunction::Value()`
+    pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
+        unsafe { crate::ffi::IntPatch_ArcFunction_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `IntPatch_ArcFunction.hxx`:41 - `IntPatch_ArcFunction::Derivative()`
+    pub fn derivative(&mut self, X: f64, D: &mut f64) -> bool {
+        unsafe { crate::ffi::IntPatch_ArcFunction_derivative(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `IntPatch_ArcFunction.hxx`:44 - `IntPatch_ArcFunction::Values()`
+    pub fn values(&mut self, X: f64, F: &mut f64, D: &mut f64) -> bool {
+        unsafe { crate::ffi::IntPatch_ArcFunction_values(self as *mut Self, X, F, D) }
+    }
+
+    /// **Source:** `IntPatch_ArcFunction.hxx`:48 - `IntPatch_ArcFunction::NbSamples()`
+    pub fn nb_samples(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_ArcFunction_nb_samples(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ArcFunction.hxx`:50 - `IntPatch_ArcFunction::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::IntPatch_ArcFunction_get_state_number(self as *mut Self) }
+    }
+
+    /// **Source:** `IntPatch_ArcFunction.hxx`:52 - `IntPatch_ArcFunction::Valpoint()`
+    pub fn valpoint(&self, Index: i32) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::IntPatch_ArcFunction_valpoint(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `IntPatch_ArcFunction.hxx`:54 - `IntPatch_ArcFunction::Quadric()`
+    pub fn quadric(&self) -> &crate::int_surf::Quadric {
+        unsafe { &*(crate::ffi::IntPatch_ArcFunction_quadric(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_ArcFunction.hxx`:56 - `IntPatch_ArcFunction::Arc()`
+    pub fn arc(&self) -> &crate::ffi::HandleAdaptor2dCurve2d {
+        unsafe { &*(crate::ffi::IntPatch_ArcFunction_arc(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_ArcFunction.hxx`:58 - `IntPatch_ArcFunction::Surface()`
+    pub fn surface(&self) -> &crate::ffi::HandleAdaptor3dSurface {
+        unsafe { &*(crate::ffi::IntPatch_ArcFunction_surface(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_ArcFunction.hxx`:62 - `IntPatch_ArcFunction::LastComputedPoint()`
+    /// Returns the point, which has been computed
+    /// while the last calling Value() method
+    pub fn last_computed_point(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::IntPatch_ArcFunction_last_computed_point(self as *const Self)) }
+    }
+
+    /// Upcast to math_FunctionWithDerivative
+    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
+        unsafe {
+            &*(crate::ffi::IntPatch_ArcFunction_as_math_FunctionWithDerivative(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_FunctionWithDerivative (mutable)
+    pub fn as_math_function_with_derivative_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionWithDerivative {
+        unsafe {
+            &mut *(crate::ffi::IntPatch_ArcFunction_as_math_FunctionWithDerivative_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe { &*(crate::ffi::IntPatch_ArcFunction_as_math_Function(self as *const Self)) }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe { &mut *(crate::ffi::IntPatch_ArcFunction_as_math_Function_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From IntPatch_CSFunction.hxx
+// ========================
+
+/// **Source:** `IntPatch_CSFunction.hxx`:29 - `IntPatch_CSFunction`
+/// this function is associated to the intersection between
+/// a curve on surface and a surface  .
+pub use crate::ffi::IntPatch_CSFunction as CSFunction;
+
+unsafe impl crate::CppDeletable for CSFunction {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_CSFunction_destructor(ptr);
+    }
+}
+
+impl CSFunction {
+    /// **Source:** `IntPatch_CSFunction.hxx`:36 - `IntPatch_CSFunction::IntPatch_CSFunction()`
+    /// S1 is the surface on which the intersection is searched.
+    /// C is a curve on the surface S2.
+    pub fn new_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface(
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_CSFunction_ctor_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface(S1, C, S2))
+        }
+    }
+
+    /// **Source:** `IntPatch_CSFunction.hxx`:40 - `IntPatch_CSFunction::NbVariables()`
+    pub fn nb_variables(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_CSFunction_nb_variables(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_CSFunction.hxx`:42 - `IntPatch_CSFunction::NbEquations()`
+    pub fn nb_equations(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_CSFunction_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_CSFunction.hxx`:50 - `IntPatch_CSFunction::Point()`
+    pub fn point(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::IntPatch_CSFunction_point(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_CSFunction.hxx`:52 - `IntPatch_CSFunction::Root()`
+    pub fn root(&self) -> f64 {
+        unsafe { crate::ffi::IntPatch_CSFunction_root(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_CSFunction.hxx`:54 - `IntPatch_CSFunction::AuxillarSurface()`
+    pub fn auxillar_surface(&self) -> &crate::ffi::HandleAdaptor3dSurface {
+        unsafe { &*(crate::ffi::IntPatch_CSFunction_auxillar_surface(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_CSFunction.hxx`:56 - `IntPatch_CSFunction::AuxillarCurve()`
+    pub fn auxillar_curve(&self) -> &crate::ffi::HandleAdaptor2dCurve2d {
+        unsafe { &*(crate::ffi::IntPatch_CSFunction_auxillar_curve(self as *const Self)) }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &*(crate::ffi::IntPatch_CSFunction_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &mut *(crate::ffi::IntPatch_CSFunction_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe { &*(crate::ffi::IntPatch_CSFunction_as_math_FunctionSet(self as *const Self)) }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::IntPatch_CSFunction_as_math_FunctionSet_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::IntPatch_CSFunction_inherited_GetStateNumber(self as *mut Self) }
+    }
+}
+
+// ── Skipped symbols for CSFunction (3 total) ──
+// SKIPPED: **Source:** `IntPatch_CSFunction.hxx`:44 - `IntPatch_CSFunction::Value`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `IntPatch_CSFunction.hxx`:46 - `IntPatch_CSFunction::Derivatives`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `IntPatch_CSFunction.hxx`:48 - `IntPatch_CSFunction::Values`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
+
+// ========================
+// From IntPatch_CurvIntSurf.hxx
+// ========================
+
+/// **Source:** `IntPatch_CurvIntSurf.hxx`:26 - `IntPatch_CurvIntSurf`
+pub use crate::ffi::IntPatch_CurvIntSurf as CurvIntSurf;
+
+unsafe impl crate::CppDeletable for CurvIntSurf {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_CurvIntSurf_destructor(ptr);
+    }
+}
+
+impl CurvIntSurf {
+    /// **Source:** `IntPatch_CurvIntSurf.hxx`:34 - `IntPatch_CurvIntSurf::IntPatch_CurvIntSurf()`
+    /// compute the solution point with the close point
+    /// MarginCoef is the coefficient for extension of UV bounds.
+    /// Ex., UFirst -= MarginCoef*(ULast-UFirst)
+    pub fn new_real3_csfunction_real2(
+        U: f64,
+        V: f64,
+        W: f64,
+        F: &CSFunction,
+        TolTangency: f64,
+        MarginCoef: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_CurvIntSurf_ctor_real3_csfunction_real2(
+                U,
+                V,
+                W,
+                F,
+                TolTangency,
+                MarginCoef,
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_CurvIntSurf.hxx`:42 - `IntPatch_CurvIntSurf::IntPatch_CurvIntSurf()`
+    /// initialize the parameters to compute the solution
+    pub fn new_csfunction_real(F: &CSFunction, TolTangency: f64) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_CurvIntSurf_ctor_csfunction_real(
+                F,
+                TolTangency,
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_CurvIntSurf.hxx`:34 - `IntPatch_CurvIntSurf::IntPatch_CurvIntSurf()`
+    /// compute the solution point with the close point
+    /// MarginCoef is the coefficient for extension of UV bounds.
+    /// Ex., UFirst -= MarginCoef*(ULast-UFirst)
+    pub fn new_real3_csfunction_real(
+        U: f64,
+        V: f64,
+        W: f64,
+        F: &CSFunction,
+        TolTangency: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_real3_csfunction_real2(U, V, W, F, TolTangency, 0.0)
+    }
+
+    /// **Source:** `IntPatch_CurvIntSurf.hxx`:67 - `IntPatch_CurvIntSurf::Perform()`
+    /// compute the solution
+    /// it's possible to write to optimize:
+    /// IntImp_IntCS inter(S1,C1,Toltangency)
+    /// math_FunctionSetRoot rsnld(Inter.function())
+    /// while ...{
+    /// u=...
+    /// v=...
+    /// w=...
+    /// inter.Perform(u,v,w,rsnld)
+    /// }
+    /// or
+    /// IntImp_IntCS inter(Toltangency)
+    /// inter.SetSurface(S);
+    /// math_FunctionSetRoot rsnld(Inter.function())
+    /// while ...{
+    /// C=...
+    /// inter.SetCurve(C);
+    /// u=...
+    /// v=...
+    /// w=...
+    /// inter.Perform(u,v,w,rsnld)
+    /// }
+    pub fn perform(
+        &mut self,
+        U: f64,
+        V: f64,
+        W: f64,
+        Rsnld: &mut crate::math::FunctionSetRoot,
+        u0: f64,
+        v0: f64,
+        u1: f64,
+        v1: f64,
+        w0: f64,
+        w1: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_CurvIntSurf_perform(
+                self as *mut Self,
+                U,
+                V,
+                W,
+                Rsnld,
+                u0,
+                v0,
+                u1,
+                v1,
+                w0,
+                w1,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_CurvIntSurf.hxx`:79 - `IntPatch_CurvIntSurf::IsDone()`
+    /// Returns TRUE if the creation completed without failure.
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_CurvIntSurf_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_CurvIntSurf.hxx`:81 - `IntPatch_CurvIntSurf::IsEmpty()`
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_CurvIntSurf_is_empty(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_CurvIntSurf.hxx`:86 - `IntPatch_CurvIntSurf::Point()`
+    /// returns the intersection point
+    /// The exception NotDone is raised if IsDone is false.
+    /// The exception DomainError is raised if IsEmpty is true.
+    pub fn point(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::IntPatch_CurvIntSurf_point(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_CurvIntSurf.hxx`:88 - `IntPatch_CurvIntSurf::ParameterOnCurve()`
+    pub fn parameter_on_curve(&self) -> f64 {
+        unsafe { crate::ffi::IntPatch_CurvIntSurf_parameter_on_curve(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_CurvIntSurf.hxx`:90 - `IntPatch_CurvIntSurf::ParameterOnSurface()`
+    pub fn parameter_on_surface(&self, U: &mut f64, V: &mut f64) {
+        unsafe { crate::ffi::IntPatch_CurvIntSurf_parameter_on_surface(self as *const Self, U, V) }
+    }
+
+    /// **Source:** `IntPatch_CurvIntSurf.hxx`:94 - `IntPatch_CurvIntSurf::Function()`
+    /// return the math function which
+    /// is used to compute the intersection
+    pub fn function(&mut self) -> &mut CSFunction {
+        unsafe { &mut *(crate::ffi::IntPatch_CurvIntSurf_function(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From IntPatch_GLine.hxx
+// ========================
+
+/// **Source:** `IntPatch_GLine.hxx`:42 - `IntPatch_GLine`
+/// Implementation of an intersection line represented
+/// by a conic.
+pub use crate::ffi::IntPatch_GLine as GLine;
+
+unsafe impl crate::CppDeletable for GLine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_GLine_destructor(ptr);
+    }
+}
+
+impl GLine {
+    /// **Source:** `IntPatch_GLine.hxx`:48 - `IntPatch_GLine::IntPatch_GLine()`
+    /// Creates a Line as intersection line
+    /// when the transitions are In or Out.
+    pub fn new_lin_bool_typetrans2(
+        L: &crate::gp::Lin,
+        Tang: bool,
+        Trans1: crate::int_surf::TypeTrans,
+        Trans2: crate::int_surf::TypeTrans,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_ctor_lin_bool_typetrans2(
+                L,
+                Tang,
+                Trans1.into(),
+                Trans2.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:55 - `IntPatch_GLine::IntPatch_GLine()`
+    /// Creates a Line as intersection line
+    /// when the transitions are Touch.
+    pub fn new_lin_bool_situation2(
+        L: &crate::gp::Lin,
+        Tang: bool,
+        Situ1: crate::int_surf::Situation,
+        Situ2: crate::int_surf::Situation,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_ctor_lin_bool_situation2(
+                L,
+                Tang,
+                Situ1.into(),
+                Situ2.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:62 - `IntPatch_GLine::IntPatch_GLine()`
+    /// Creates a Line as intersection line
+    /// when the transitions are Undecided.
+    pub fn new_lin_bool(L: &crate::gp::Lin, Tang: bool) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_ctor_lin_bool(L, Tang)) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:66 - `IntPatch_GLine::IntPatch_GLine()`
+    /// Creates a circle as intersection line
+    /// when the transitions are In or Out.
+    pub fn new_circ_bool_typetrans2(
+        C: &crate::gp::Circ,
+        Tang: bool,
+        Trans1: crate::int_surf::TypeTrans,
+        Trans2: crate::int_surf::TypeTrans,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_ctor_circ_bool_typetrans2(
+                C,
+                Tang,
+                Trans1.into(),
+                Trans2.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:73 - `IntPatch_GLine::IntPatch_GLine()`
+    /// Creates a circle as intersection line
+    /// when the transitions are Touch.
+    pub fn new_circ_bool_situation2(
+        C: &crate::gp::Circ,
+        Tang: bool,
+        Situ1: crate::int_surf::Situation,
+        Situ2: crate::int_surf::Situation,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_ctor_circ_bool_situation2(
+                C,
+                Tang,
+                Situ1.into(),
+                Situ2.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:80 - `IntPatch_GLine::IntPatch_GLine()`
+    /// Creates a circle as intersection line
+    /// when the transitions are Undecided.
+    pub fn new_circ_bool(C: &crate::gp::Circ, Tang: bool) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_ctor_circ_bool(C, Tang)) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:84 - `IntPatch_GLine::IntPatch_GLine()`
+    /// Creates an ellipse as intersection line
+    /// when the transitions are In or Out.
+    pub fn new_elips_bool_typetrans2(
+        E: &crate::gp::Elips,
+        Tang: bool,
+        Trans1: crate::int_surf::TypeTrans,
+        Trans2: crate::int_surf::TypeTrans,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_ctor_elips_bool_typetrans2(
+                E,
+                Tang,
+                Trans1.into(),
+                Trans2.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:91 - `IntPatch_GLine::IntPatch_GLine()`
+    /// Creates an ellispe as intersection line
+    /// when the transitions are Touch.
+    pub fn new_elips_bool_situation2(
+        E: &crate::gp::Elips,
+        Tang: bool,
+        Situ1: crate::int_surf::Situation,
+        Situ2: crate::int_surf::Situation,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_ctor_elips_bool_situation2(
+                E,
+                Tang,
+                Situ1.into(),
+                Situ2.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:98 - `IntPatch_GLine::IntPatch_GLine()`
+    /// Creates an ellipse as intersection line
+    /// when the transitions are Undecided.
+    pub fn new_elips_bool(E: &crate::gp::Elips, Tang: bool) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_ctor_elips_bool(E, Tang)) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:102 - `IntPatch_GLine::IntPatch_GLine()`
+    /// Creates a parabola as intersection line
+    /// when the transitions are In or Out.
+    pub fn new_parab_bool_typetrans2(
+        P: &crate::gp::Parab,
+        Tang: bool,
+        Trans1: crate::int_surf::TypeTrans,
+        Trans2: crate::int_surf::TypeTrans,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_ctor_parab_bool_typetrans2(
+                P,
+                Tang,
+                Trans1.into(),
+                Trans2.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:109 - `IntPatch_GLine::IntPatch_GLine()`
+    /// Creates a parabola as intersection line
+    /// when the transitions are Touch.
+    pub fn new_parab_bool_situation2(
+        P: &crate::gp::Parab,
+        Tang: bool,
+        Situ1: crate::int_surf::Situation,
+        Situ2: crate::int_surf::Situation,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_ctor_parab_bool_situation2(
+                P,
+                Tang,
+                Situ1.into(),
+                Situ2.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:116 - `IntPatch_GLine::IntPatch_GLine()`
+    /// Creates a parabola as intersection line
+    /// when the transitions are Undecided.
+    pub fn new_parab_bool(P: &crate::gp::Parab, Tang: bool) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_ctor_parab_bool(P, Tang)) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:120 - `IntPatch_GLine::IntPatch_GLine()`
+    /// Creates an hyperbola as intersection line
+    /// when the transitions are In or Out.
+    pub fn new_hypr_bool_typetrans2(
+        H: &crate::gp::Hypr,
+        Tang: bool,
+        Trans1: crate::int_surf::TypeTrans,
+        Trans2: crate::int_surf::TypeTrans,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_ctor_hypr_bool_typetrans2(
+                H,
+                Tang,
+                Trans1.into(),
+                Trans2.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:127 - `IntPatch_GLine::IntPatch_GLine()`
+    /// Creates an hyperbola as intersection line
+    /// when the transitions are Touch.
+    pub fn new_hypr_bool_situation2(
+        H: &crate::gp::Hypr,
+        Tang: bool,
+        Situ1: crate::int_surf::Situation,
+        Situ2: crate::int_surf::Situation,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_ctor_hypr_bool_situation2(
+                H,
+                Tang,
+                Situ1.into(),
+                Situ2.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:134 - `IntPatch_GLine::IntPatch_GLine()`
+    /// Creates an hyperbola as  intersection line
+    /// when the transitions are Undecided.
+    pub fn new_hypr_bool(H: &crate::gp::Hypr, Tang: bool) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_ctor_hypr_bool(H, Tang)) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:137 - `IntPatch_GLine::AddVertex()`
+    /// To add a vertex in the list.
+    pub fn add_vertex(&mut self, Pnt: &Point) {
+        unsafe { crate::ffi::IntPatch_GLine_add_vertex(self as *mut Self, Pnt) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:141 - `IntPatch_GLine::Replace()`
+    /// To replace the element of range Index in the list
+    /// of points.
+    pub fn replace(&mut self, Index: i32, Pnt: &Point) {
+        unsafe { crate::ffi::IntPatch_GLine_replace(self as *mut Self, Index, Pnt) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:143 - `IntPatch_GLine::SetFirstPoint()`
+    pub fn set_first_point(&mut self, IndFirst: i32) {
+        unsafe { crate::ffi::IntPatch_GLine_set_first_point(self as *mut Self, IndFirst) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:145 - `IntPatch_GLine::SetLastPoint()`
+    pub fn set_last_point(&mut self, IndLast: i32) {
+        unsafe { crate::ffi::IntPatch_GLine_set_last_point(self as *mut Self, IndLast) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:149 - `IntPatch_GLine::Line()`
+    /// Returns the Lin from gp corresponding to the intersection
+    /// when ArcType returns IntPatch_Line.
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_line(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:153 - `IntPatch_GLine::Circle()`
+    /// Returns the Circ from gp corresponding to the intersection
+    /// when ArcType returns IntPatch_Circle.
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_circle(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:157 - `IntPatch_GLine::Ellipse()`
+    /// Returns the Elips from gp corresponding to the intersection
+    /// when ArcType returns IntPatch_Ellipse.
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_ellipse(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:161 - `IntPatch_GLine::Parabola()`
+    /// Returns the Parab from gp corresponding to the intersection
+    /// when ArcType returns IntPatch_Parabola.
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_parabola(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:165 - `IntPatch_GLine::Hyperbola()`
+    /// Returns the Hypr from gp corresponding to the intersection
+    /// when ArcType returns IntPatch_Hyperbola.
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_hyperbola(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:169 - `IntPatch_GLine::HasFirstPoint()`
+    /// Returns True if the line has a known First point.
+    /// This point is given by the method FirstPoint().
+    pub fn has_first_point(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_GLine_has_first_point(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:173 - `IntPatch_GLine::HasLastPoint()`
+    /// Returns True if the line has a known Last point.
+    /// This point is given by the method LastPoint().
+    pub fn has_last_point(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_GLine_has_last_point(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:177 - `IntPatch_GLine::FirstPoint()`
+    /// Returns the IntPoint corresponding to the FirstPoint.
+    /// An exception is raised when HasFirstPoint returns False.
+    pub fn first_point(&self) -> &Point {
+        unsafe { &*(crate::ffi::IntPatch_GLine_first_point(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:181 - `IntPatch_GLine::LastPoint()`
+    /// Returns the IntPoint corresponding to the LastPoint.
+    /// An exception is raised when HasLastPoint returns False.
+    pub fn last_point(&self) -> &Point {
+        unsafe { &*(crate::ffi::IntPatch_GLine_last_point(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:183 - `IntPatch_GLine::NbVertex()`
+    pub fn nb_vertex(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_GLine_nb_vertex(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:186 - `IntPatch_GLine::Vertex()`
+    /// Returns the vertex of range Index on the line.
+    pub fn vertex(&self, Index: i32) -> &Point {
+        unsafe { &*(crate::ffi::IntPatch_GLine_vertex(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:192 - `IntPatch_GLine::ComputeVertexParameters()`
+    /// Set the parameters of all the vertex on the line.
+    /// if a vertex is already in the line,
+    /// its parameter is modified
+    /// else a new point in the line is inserted.
+    pub fn compute_vertex_parameters(&mut self, Tol: f64) {
+        unsafe { crate::ffi::IntPatch_GLine_compute_vertex_parameters(self as *mut Self, Tol) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:194 - `IntPatch_GLine::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IntPatch_GLine_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:194 - `IntPatch_GLine::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IntPatch_GLine_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IntPatch_GLine.hxx`:194 - `IntPatch_GLine::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IntPatch_GLine_get_type_descriptor()) }
+    }
+
+    /// Upcast to IntPatch_Line
+    pub fn as_line(&self) -> &Line {
+        unsafe { &*(crate::ffi::IntPatch_GLine_as_IntPatch_Line(self as *const Self)) }
+    }
+
+    /// Upcast to IntPatch_Line (mutable)
+    pub fn as_line_mut(&mut self) -> &mut Line {
+        unsafe { &mut *(crate::ffi::IntPatch_GLine_as_IntPatch_Line_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IntPatch_GLine_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::IntPatch_GLine_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIntPatchGLine> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_GLine_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:44 - `IntPatch_Line::SetValue()`
+    pub fn set_value(&mut self, Uiso1: bool, Viso1: bool, Uiso2: bool, Viso2: bool) {
+        unsafe {
+            crate::ffi::IntPatch_GLine_inherited_SetValue(
+                self as *mut Self,
+                Uiso1,
+                Viso1,
+                Uiso2,
+                Viso2,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:51 - `IntPatch_Line::ArcType()`
+    pub fn arc_type(&self) -> crate::int_patch::IType {
+        unsafe {
+            crate::int_patch::IType::try_from(crate::ffi::IntPatch_GLine_inherited_ArcType(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:55 - `IntPatch_Line::IsTangent()`
+    pub fn is_tangent(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_GLine_inherited_IsTangent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:76 - `IntPatch_Line::TransitionOnS1()`
+    pub fn transition_on_s1(&self) -> crate::int_surf::TypeTrans {
+        unsafe {
+            crate::int_surf::TypeTrans::try_from(
+                crate::ffi::IntPatch_GLine_inherited_TransitionOnS1(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:81 - `IntPatch_Line::TransitionOnS2()`
+    pub fn transition_on_s2(&self) -> crate::int_surf::TypeTrans {
+        unsafe {
+            crate::int_surf::TypeTrans::try_from(
+                crate::ffi::IntPatch_GLine_inherited_TransitionOnS2(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:87 - `IntPatch_Line::SituationS1()`
+    pub fn situation_s1(&self) -> crate::int_surf::Situation {
+        unsafe {
+            crate::int_surf::Situation::try_from(crate::ffi::IntPatch_GLine_inherited_SituationS1(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:93 - `IntPatch_Line::SituationS2()`
+    pub fn situation_s2(&self) -> crate::int_surf::Situation {
+        unsafe {
+            crate::int_surf::Situation::try_from(crate::ffi::IntPatch_GLine_inherited_SituationS2(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:97 - `IntPatch_Line::IsUIsoOnS1()`
+    pub fn is_u_iso_on_s1(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_GLine_inherited_IsUIsoOnS1(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:101 - `IntPatch_Line::IsVIsoOnS1()`
+    pub fn is_v_iso_on_s1(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_GLine_inherited_IsVIsoOnS1(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:105 - `IntPatch_Line::IsUIsoOnS2()`
+    pub fn is_u_iso_on_s2(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_GLine_inherited_IsUIsoOnS2(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:109 - `IntPatch_Line::IsVIsoOnS2()`
+    pub fn is_v_iso_on_s2(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_GLine_inherited_IsVIsoOnS2(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IntPatch_GLine_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IntPatch_GLine_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_GLine_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IntPatch_GLine_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IntPatch_GLine_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IntPatch_GLine_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIntPatchGLine;
+
+unsafe impl crate::CppDeletable for HandleIntPatchGLine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIntPatchGLine_destructor(ptr);
+    }
+}
+
+impl HandleIntPatchGLine {
+    /// Dereference this Handle to access the underlying IntPatch_GLine
+    pub fn get(&self) -> &crate::ffi::IntPatch_GLine {
+        unsafe { &*(crate::ffi::HandleIntPatchGLine_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IntPatch_GLine
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IntPatch_GLine {
+        unsafe { &mut *(crate::ffi::HandleIntPatchGLine_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IntPatch_GLine> to Handle<IntPatch_Line>
+    pub fn to_handle_line(&self) -> crate::OwnedPtr<crate::ffi::HandleIntPatchLine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIntPatchGLine_to_HandleIntPatchLine(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<IntPatch_GLine> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIntPatchGLine_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From IntPatch_HCurve2dTool.hxx
+// ========================
+
+/// **Source:** `IntPatch_HCurve2dTool.hxx`:34 - `IntPatch_HCurve2dTool`
+pub use crate::ffi::IntPatch_HCurve2dTool as HCurve2dTool;
+
+unsafe impl crate::CppDeletable for HCurve2dTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_HCurve2dTool_destructor(ptr);
+    }
+}
+
+impl HCurve2dTool {
+    /// **Source:** `IntPatch_HCurve2dTool.hxx` - `IntPatch_HCurve2dTool::IntPatch_HCurve2dTool()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_HCurve2dTool_ctor()) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:39 - `IntPatch_HCurve2dTool::FirstParameter()`
+    pub fn first_parameter(C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
+        unsafe { crate::ffi::IntPatch_HCurve2dTool_first_parameter(C) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:41 - `IntPatch_HCurve2dTool::LastParameter()`
+    pub fn last_parameter(C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
+        unsafe { crate::ffi::IntPatch_HCurve2dTool_last_parameter(C) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:43 - `IntPatch_HCurve2dTool::Continuity()`
+    pub fn continuity(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::geom_abs::Shape {
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::IntPatch_HCurve2dTool_continuity(C))
+                .unwrap()
+        }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:47 - `IntPatch_HCurve2dTool::NbIntervals()`
+    /// Returns  the number  of  intervals for  continuity
+    /// <S>. May be one if Continuity(myclass) >= <S>
+    pub fn nb_intervals(C: &crate::ffi::HandleAdaptor2dCurve2d, S: crate::geom_abs::Shape) -> i32 {
+        unsafe { crate::ffi::IntPatch_HCurve2dTool_nb_intervals(C, S.into()) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:54 - `IntPatch_HCurve2dTool::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        T: &mut crate::ffi::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
+        unsafe { crate::ffi::IntPatch_HCurve2dTool_intervals(C, T, S.into()) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:58 - `IntPatch_HCurve2dTool::IsClosed()`
+    pub fn is_closed(C: &crate::ffi::HandleAdaptor2dCurve2d) -> bool {
+        unsafe { crate::ffi::IntPatch_HCurve2dTool_is_closed(C) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:60 - `IntPatch_HCurve2dTool::IsPeriodic()`
+    pub fn is_periodic(C: &crate::ffi::HandleAdaptor2dCurve2d) -> bool {
+        unsafe { crate::ffi::IntPatch_HCurve2dTool_is_periodic(C) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:62 - `IntPatch_HCurve2dTool::Period()`
+    pub fn period(C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
+        unsafe { crate::ffi::IntPatch_HCurve2dTool_period(C) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:65 - `IntPatch_HCurve2dTool::Value()`
+    /// Computes the point of parameter U on the curve.
+    pub fn value(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        U: f64,
+    ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_HCurve2dTool_value(C, U)) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:68 - `IntPatch_HCurve2dTool::D0()`
+    /// Computes the point of parameter U on the curve.
+    pub fn d0(C: &crate::ffi::HandleAdaptor2dCurve2d, U: f64, P: &mut crate::gp::Pnt2d) {
+        unsafe { crate::ffi::IntPatch_HCurve2dTool_d0(C, U, P) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:74 - `IntPatch_HCurve2dTool::D1()`
+    /// Computes the point of parameter U on the curve with its
+    /// first derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C1.
+    pub fn d1(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        U: f64,
+        P: &mut crate::gp::Pnt2d,
+        V: &mut crate::gp::Vec2d,
+    ) {
+        unsafe { crate::ffi::IntPatch_HCurve2dTool_d1(C, U, P, V) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:83 - `IntPatch_HCurve2dTool::D2()`
+    /// Returns the point P of parameter U, the first and second
+    /// derivatives V1 and V2.
+    /// Raised if the continuity of the current interval
+    /// is not C2.
+    pub fn d2(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        U: f64,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
+    ) {
+        unsafe { crate::ffi::IntPatch_HCurve2dTool_d2(C, U, P, V1, V2) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:93 - `IntPatch_HCurve2dTool::D3()`
+    /// Returns the point P of parameter U, the first, the second
+    /// and the third derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C3.
+    pub fn d3(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        U: f64,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
+        V3: &mut crate::gp::Vec2d,
+    ) {
+        unsafe { crate::ffi::IntPatch_HCurve2dTool_d3(C, U, P, V1, V2, V3) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:105 - `IntPatch_HCurve2dTool::DN()`
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if the continuity of the current interval
+    /// is not CN.
+    /// Raised if N < 1.
+    pub fn dn(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        U: f64,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::gp::Vec2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_HCurve2dTool_dn(C, U, N)) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:111 - `IntPatch_HCurve2dTool::Resolution()`
+    /// Returns the parametric  resolution corresponding
+    /// to the real space resolution <R3d>.
+    pub fn resolution(C: &crate::ffi::HandleAdaptor2dCurve2d, R3d: f64) -> f64 {
+        unsafe { crate::ffi::IntPatch_HCurve2dTool_resolution(C, R3d) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:116 - `IntPatch_HCurve2dTool::GetType()`
+    /// Returns  the  type of the   curve  in the  current
+    /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+    /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
+    pub fn get_type(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::geom_abs::CurveType {
+        unsafe {
+            crate::geom_abs::CurveType::try_from(crate::ffi::IntPatch_HCurve2dTool_get_type(C))
+                .unwrap()
+        }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:118 - `IntPatch_HCurve2dTool::Line()`
+    pub fn line(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Lin2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_HCurve2dTool_line(C)) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:120 - `IntPatch_HCurve2dTool::Circle()`
+    pub fn circle(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Circ2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_HCurve2dTool_circle(C)) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:122 - `IntPatch_HCurve2dTool::Ellipse()`
+    pub fn ellipse(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Elips2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_HCurve2dTool_ellipse(C)) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:124 - `IntPatch_HCurve2dTool::Hyperbola()`
+    pub fn hyperbola(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Hypr2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_HCurve2dTool_hyperbola(C)) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:126 - `IntPatch_HCurve2dTool::Parabola()`
+    pub fn parabola(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Parab2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_HCurve2dTool_parabola(C)) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:128 - `IntPatch_HCurve2dTool::Bezier()`
+    pub fn bezier(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_HCurve2dTool_bezier(C)) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:130 - `IntPatch_HCurve2dTool::BSpline()`
+    pub fn b_spline(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_HCurve2dTool_b_spline(C)) }
+    }
+
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:132 - `IntPatch_HCurve2dTool::NbSamples()`
+    pub fn nb_samples(C: &crate::ffi::HandleAdaptor2dCurve2d, U0: f64, U1: f64) -> i32 {
+        unsafe { crate::ffi::IntPatch_HCurve2dTool_nb_samples(C, U0, U1) }
+    }
+}
+
+// ========================
+// From IntPatch_HInterTool.hxx
+// ========================
+
+/// **Source:** `IntPatch_HInterTool.hxx`:29 - `IntPatch_HInterTool`
+/// Tool for the intersection between 2 surfaces.
+/// Regroupe pour l instant les methodes hors Adaptor3d...
+pub use crate::ffi::IntPatch_HInterTool as HInterTool;
+
+unsafe impl crate::CppDeletable for HInterTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_HInterTool_destructor(ptr);
+    }
+}
+
+impl HInterTool {
+    /// **Source:** `IntPatch_HInterTool.hxx`:34 - `IntPatch_HInterTool::IntPatch_HInterTool()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_HInterTool_ctor()) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:52 - `IntPatch_HInterTool::NbSamplePoints()`
+    pub fn nb_sample_points(&mut self, S: &crate::ffi::HandleAdaptor3dSurface) -> i32 {
+        unsafe { crate::ffi::IntPatch_HInterTool_nb_sample_points(self as *mut Self, S) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:54 - `IntPatch_HInterTool::SamplePoint()`
+    pub fn sample_point(
+        &self,
+        S: &crate::ffi::HandleAdaptor3dSurface,
+        Index: i32,
+        U: &mut f64,
+        V: &mut f64,
+    ) {
+        unsafe { crate::ffi::IntPatch_HInterTool_sample_point(self as *const Self, S, Index, U, V) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:36 - `IntPatch_HInterTool::SingularOnUMin()`
+    pub fn singular_on_u_min(S: &crate::ffi::HandleAdaptor3dSurface) -> bool {
+        unsafe { crate::ffi::IntPatch_HInterTool_singular_on_u_min(S) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:38 - `IntPatch_HInterTool::SingularOnUMax()`
+    pub fn singular_on_u_max(S: &crate::ffi::HandleAdaptor3dSurface) -> bool {
+        unsafe { crate::ffi::IntPatch_HInterTool_singular_on_u_max(S) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:40 - `IntPatch_HInterTool::SingularOnVMin()`
+    pub fn singular_on_v_min(S: &crate::ffi::HandleAdaptor3dSurface) -> bool {
+        unsafe { crate::ffi::IntPatch_HInterTool_singular_on_v_min(S) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:42 - `IntPatch_HInterTool::SingularOnVMax()`
+    pub fn singular_on_v_max(S: &crate::ffi::HandleAdaptor3dSurface) -> bool {
+        unsafe { crate::ffi::IntPatch_HInterTool_singular_on_v_max(S) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:44 - `IntPatch_HInterTool::NbSamplesU()`
+    pub fn nb_samples_u(S: &crate::ffi::HandleAdaptor3dSurface, u1: f64, u2: f64) -> i32 {
+        unsafe { crate::ffi::IntPatch_HInterTool_nb_samples_u(S, u1, u2) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:48 - `IntPatch_HInterTool::NbSamplesV()`
+    pub fn nb_samples_v(S: &crate::ffi::HandleAdaptor3dSurface, v1: f64, v2: f64) -> i32 {
+        unsafe { crate::ffi::IntPatch_HInterTool_nb_samples_v(S, v1, v2) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:64 - `IntPatch_HInterTool::HasBeenSeen()`
+    /// Returns True if all the intersection point and edges
+    /// are known on the Arc.
+    /// The intersection point are given as vertices.
+    /// The intersection edges are given as intervals between
+    /// two vertices.
+    pub fn has_been_seen(C: &crate::ffi::HandleAdaptor2dCurve2d) -> bool {
+        unsafe { crate::ffi::IntPatch_HInterTool_has_been_seen(C) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:69 - `IntPatch_HInterTool::NbSamplesOnArc()`
+    /// returns the number of points which is used to make
+    /// a sample on the arc. this number is a function of
+    /// the Surface and the CurveOnSurface complexity.
+    pub fn nb_samples_on_arc(A: &crate::ffi::HandleAdaptor2dCurve2d) -> i32 {
+        unsafe { crate::ffi::IntPatch_HInterTool_nb_samples_on_arc(A) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:75 - `IntPatch_HInterTool::Bounds()`
+    /// Returns the parametric limits on the arc C.
+    /// These limits must be finite : they are either
+    /// the real limits of the arc, for a finite arc,
+    /// or a bounding box for an infinite arc.
+    pub fn bounds(C: &crate::ffi::HandleAdaptor2dCurve2d, Ufirst: &mut f64, Ulast: &mut f64) {
+        unsafe { crate::ffi::IntPatch_HInterTool_bounds(C, Ufirst, Ulast) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:85 - `IntPatch_HInterTool::Project()`
+    /// Projects the point P on the arc C.
+    /// If the methods returns Standard_True, the projection is
+    /// successful, and Paramproj is the parameter on the arc
+    /// of the projected point, Ptproj is the projected Point.
+    /// If the method returns Standard_False, Param proj and Ptproj
+    /// are not significant.
+    pub fn project(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        P: &crate::gp::Pnt2d,
+        Paramproj: &mut f64,
+        Ptproj: &mut crate::gp::Pnt2d,
+    ) -> bool {
+        unsafe { crate::ffi::IntPatch_HInterTool_project(C, P, Paramproj, Ptproj) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:94 - `IntPatch_HInterTool::Tolerance()`
+    /// Returns the parametric tolerance used to consider
+    /// that the vertex and another point meet, i-e
+    /// if Abs(parameter(Vertex) - parameter(OtherPnt))<=
+    /// Tolerance, the points are "merged".
+    pub fn tolerance(
+        V: &crate::ffi::HandleAdaptor3dHVertex,
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+    ) -> f64 {
+        unsafe { crate::ffi::IntPatch_HInterTool_tolerance(V, C) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:98 - `IntPatch_HInterTool::Parameter()`
+    /// Returns the parameter of the vertex V on the arc A.
+    pub fn parameter(
+        V: &crate::ffi::HandleAdaptor3dHVertex,
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+    ) -> f64 {
+        unsafe { crate::ffi::IntPatch_HInterTool_parameter(V, C) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:102 - `IntPatch_HInterTool::NbPoints()`
+    /// Returns the number of intersection points on the arc A.
+    pub fn nb_points(C: &crate::ffi::HandleAdaptor2dCurve2d) -> i32 {
+        unsafe { crate::ffi::IntPatch_HInterTool_nb_points(C) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:107 - `IntPatch_HInterTool::Value()`
+    /// Returns the value (Pt), the tolerance (Tol), and
+    /// the parameter (U) on the arc A , of the intersection
+    /// point of range Index.
+    pub fn value(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        Index: i32,
+        Pt: &mut crate::gp::Pnt,
+        Tol: &mut f64,
+        U: &mut f64,
+    ) {
+        unsafe { crate::ffi::IntPatch_HInterTool_value(C, Index, Pt, Tol, U) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:115 - `IntPatch_HInterTool::IsVertex()`
+    /// Returns True if the intersection point of range Index
+    /// corresponds with a vertex on the arc A.
+    pub fn is_vertex(C: &crate::ffi::HandleAdaptor2dCurve2d, Index: i32) -> bool {
+        unsafe { crate::ffi::IntPatch_HInterTool_is_vertex(C, Index) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:120 - `IntPatch_HInterTool::Vertex()`
+    /// When IsVertex returns True, this method returns the
+    /// vertex on the arc A.
+    pub fn vertex(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        Index: i32,
+        V: &mut crate::ffi::HandleAdaptor3dHVertex,
+    ) {
+        unsafe { crate::ffi::IntPatch_HInterTool_vertex(C, Index, V) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:126 - `IntPatch_HInterTool::NbSegments()`
+    /// returns the number of part of A solution of the
+    /// of intersection problem.
+    pub fn nb_segments(C: &crate::ffi::HandleAdaptor2dCurve2d) -> i32 {
+        unsafe { crate::ffi::IntPatch_HInterTool_nb_segments(C) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:134 - `IntPatch_HInterTool::HasFirstPoint()`
+    /// Returns True when the segment of range Index is not
+    /// open at the left side. In that case, IndFirst is the
+    /// range in the list intersection points (see NbPoints)
+    /// of the one which defines the left bound of the segment.
+    /// Otherwise, the method has to return False, and IndFirst
+    /// has no meaning.
+    pub fn has_first_point(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        Index: i32,
+        IndFirst: &mut i32,
+    ) -> bool {
+        unsafe { crate::ffi::IntPatch_HInterTool_has_first_point(C, Index, IndFirst) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:144 - `IntPatch_HInterTool::HasLastPoint()`
+    /// Returns True when the segment of range Index is not
+    /// open at the right side. In that case, IndLast is the
+    /// range in the list intersection points (see NbPoints)
+    /// of the one which defines the right bound of the segment.
+    /// Otherwise, the method has to return False, and IndLast
+    /// has no meaning.
+    pub fn has_last_point(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        Index: i32,
+        IndLast: &mut i32,
+    ) -> bool {
+        unsafe { crate::ffi::IntPatch_HInterTool_has_last_point(C, Index, IndLast) }
+    }
+
+    /// **Source:** `IntPatch_HInterTool.hxx`:150 - `IntPatch_HInterTool::IsAllSolution()`
+    /// Returns True when the whole restriction is solution
+    /// of the intersection problem.
+    pub fn is_all_solution(C: &crate::ffi::HandleAdaptor2dCurve2d) -> bool {
+        unsafe { crate::ffi::IntPatch_HInterTool_is_all_solution(C) }
+    }
+}
+
+// ========================
+// From IntPatch_ImpImpIntersection.hxx
+// ========================
+
+/// **Source:** `IntPatch_ImpImpIntersection.hxx`:29 - `IntPatch_ImpImpIntersection`
+/// Implementation of the intersection between two
+/// quadric patches : Plane, Cone, Cylinder or Sphere.
+pub use crate::ffi::IntPatch_ImpImpIntersection as ImpImpIntersection;
+
+unsafe impl crate::CppDeletable for ImpImpIntersection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_ImpImpIntersection_destructor(ptr);
+    }
+}
+
+impl ImpImpIntersection {
+    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:50 - `IntPatch_ImpImpIntersection::IntPatch_ImpImpIntersection()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_ImpImpIntersection_ctor()) }
+    }
+
+    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:58 - `IntPatch_ImpImpIntersection::IntPatch_ImpImpIntersection()`
+    /// Flag theIsReqToKeepRLine has been entered only for
+    /// compatibility with TopOpeBRep package. It shall be deleted
+    /// after deleting TopOpeBRep.
+    /// When intersection result returns IntPatch_RLine and another
+    /// IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==TRUE)
+    /// will always keep both lines even if they are coincided.
+    pub fn new_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2_bool(
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        D1: &crate::ffi::HandleAdaptor3dTopolTool,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+        D2: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolArc: f64,
+        TolTang: f64,
+        theIsReqToKeepRLine: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_ImpImpIntersection_ctor_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2_bool(S1, D1, S2, D2, TolArc, TolTang, theIsReqToKeepRLine))
+        }
+    }
+
+    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:58 - `IntPatch_ImpImpIntersection::IntPatch_ImpImpIntersection()`
+    /// Flag theIsReqToKeepRLine has been entered only for
+    /// compatibility with TopOpeBRep package. It shall be deleted
+    /// after deleting TopOpeBRep.
+    /// When intersection result returns IntPatch_RLine and another
+    /// IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==TRUE)
+    /// will always keep both lines even if they are coincided.
+    pub fn new_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        D1: &crate::ffi::HandleAdaptor3dTopolTool,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+        D2: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolArc: f64,
+        TolTang: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2_bool(S1, D1, S2, D2, TolArc, TolTang, false)
+    }
+
+    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:73 - `IntPatch_ImpImpIntersection::Perform()`
+    /// Flag theIsReqToKeepRLine has been entered only for
+    /// compatibility with TopOpeBRep package. It shall be deleted
+    /// after deleting TopOpeBRep.
+    /// When intersection result returns IntPatch_RLine and another
+    /// IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==TRUE)
+    /// will always keep both lines even if they are coincided.
+    pub fn perform(
+        &mut self,
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        D1: &crate::ffi::HandleAdaptor3dTopolTool,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+        D2: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolArc: f64,
+        TolTang: f64,
+        theIsReqToKeepRLine: bool,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_ImpImpIntersection_perform(
+                self as *mut Self,
+                S1,
+                D1,
+                S2,
+                D2,
+                TolArc,
+                TolTang,
+                theIsReqToKeepRLine,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:82 - `IntPatch_ImpImpIntersection::IsDone()`
+    /// Returns True if the calculus was successful.
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_ImpImpIntersection_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:85 - `IntPatch_ImpImpIntersection::GetStatus()`
+    /// Returns status
+    pub fn get_status(&self) -> crate::OwnedPtr<crate::ffi::IntPatch_ImpImpIntersection_IntStatus> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_ImpImpIntersection_get_status(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:88 - `IntPatch_ImpImpIntersection::IsEmpty()`
+    /// Returns true if the is no intersection.
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_ImpImpIntersection_is_empty(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:93 - `IntPatch_ImpImpIntersection::TangentFaces()`
+    /// Returns True if the two patches are considered as
+    /// entirely tangent, i.e every restriction arc of one
+    /// patch is inside the geometric base of the other patch.
+    pub fn tangent_faces(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_ImpImpIntersection_tangent_faces(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:100 - `IntPatch_ImpImpIntersection::OppositeFaces()`
+    /// Returns True when the TangentFaces returns True and the
+    /// normal vectors evaluated at a point on the first and the
+    /// second surface are opposite.
+    /// The exception DomainError is raised if TangentFaces
+    /// returns False.
+    pub fn opposite_faces(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_ImpImpIntersection_opposite_faces(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:103 - `IntPatch_ImpImpIntersection::NbPnts()`
+    /// Returns the number of "single" points.
+    pub fn nb_pnts(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_ImpImpIntersection_nb_pnts(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:107 - `IntPatch_ImpImpIntersection::Point()`
+    /// Returns the point of range Index.
+    /// An exception is raised if Index<=0 or Index>NbPnt.
+    pub fn point(&self, Index: i32) -> &Point {
+        unsafe { &*(crate::ffi::IntPatch_ImpImpIntersection_point(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:110 - `IntPatch_ImpImpIntersection::NbLines()`
+    /// Returns the number of intersection lines.
+    pub fn nb_lines(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_ImpImpIntersection_nb_lines(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:114 - `IntPatch_ImpImpIntersection::Line()`
+    /// Returns the line of range Index.
+    /// An exception is raised if Index<=0 or Index>NbLine.
+    pub fn line(&self, Index: i32) -> &crate::ffi::HandleIntPatchLine {
+        unsafe { &*(crate::ffi::IntPatch_ImpImpIntersection_line(self as *const Self, Index)) }
+    }
+}
+
+// ========================
+// From IntPatch_ImpPrmIntersection.hxx
+// ========================
+
+/// **Source:** `IntPatch_ImpPrmIntersection.hxx`:31 - `IntPatch_ImpPrmIntersection`
+/// Implementation of the intersection between a natural
+/// quadric patch : Plane, Cone, Cylinder or Sphere and
+/// a bi-parametrised surface.
+pub use crate::ffi::IntPatch_ImpPrmIntersection as ImpPrmIntersection;
+
+unsafe impl crate::CppDeletable for ImpPrmIntersection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_ImpPrmIntersection_destructor(ptr);
+    }
+}
+
+impl ImpPrmIntersection {
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:36 - `IntPatch_ImpPrmIntersection::IntPatch_ImpPrmIntersection()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_ImpPrmIntersection_ctor()) }
+    }
+
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:38 - `IntPatch_ImpPrmIntersection::IntPatch_ImpPrmIntersection()`
+    pub fn new_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real4(
+        Surf1: &crate::ffi::HandleAdaptor3dSurface,
+        D1: &crate::ffi::HandleAdaptor3dTopolTool,
+        Surf2: &crate::ffi::HandleAdaptor3dSurface,
+        D2: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolArc: f64,
+        TolTang: f64,
+        Fleche: f64,
+        Pas: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_ImpPrmIntersection_ctor_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real4(Surf1, D1, Surf2, D2, TolArc, TolTang, Fleche, Pas))
+        }
+    }
+
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:48 - `IntPatch_ImpPrmIntersection::SetStartPoint()`
+    /// to search for solution from the given point
+    pub fn set_start_point(&mut self, U: f64, V: f64) {
+        unsafe { crate::ffi::IntPatch_ImpPrmIntersection_set_start_point(self as *mut Self, U, V) }
+    }
+
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:50 - `IntPatch_ImpPrmIntersection::Perform()`
+    pub fn perform(
+        &mut self,
+        Surf1: &crate::ffi::HandleAdaptor3dSurface,
+        D1: &crate::ffi::HandleAdaptor3dTopolTool,
+        Surf2: &crate::ffi::HandleAdaptor3dSurface,
+        D2: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolArc: f64,
+        TolTang: f64,
+        Fleche: f64,
+        Pas: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_ImpPrmIntersection_perform(
+                self as *mut Self,
+                Surf1,
+                D1,
+                Surf2,
+                D2,
+                TolArc,
+                TolTang,
+                Fleche,
+                Pas,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:60 - `IntPatch_ImpPrmIntersection::IsDone()`
+    /// Returns true if the calculus was successful.
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_ImpPrmIntersection_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:63 - `IntPatch_ImpPrmIntersection::IsEmpty()`
+    /// Returns true if the is no intersection.
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_ImpPrmIntersection_is_empty(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:66 - `IntPatch_ImpPrmIntersection::NbPnts()`
+    /// Returns the number of "single" points.
+    pub fn nb_pnts(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_ImpPrmIntersection_nb_pnts(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:70 - `IntPatch_ImpPrmIntersection::Point()`
+    /// Returns the point of range Index.
+    /// An exception is raised if Index<=0 or Index>NbPnt.
+    pub fn point(&self, Index: i32) -> &Point {
+        unsafe { &*(crate::ffi::IntPatch_ImpPrmIntersection_point(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:73 - `IntPatch_ImpPrmIntersection::NbLines()`
+    /// Returns the number of intersection lines.
+    pub fn nb_lines(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_ImpPrmIntersection_nb_lines(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:77 - `IntPatch_ImpPrmIntersection::Line()`
+    /// Returns the line of range Index.
+    /// An exception is raised if Index<=0 or Index>NbLine.
+    pub fn line(&self, Index: i32) -> &crate::ffi::HandleIntPatchLine {
+        unsafe { &*(crate::ffi::IntPatch_ImpPrmIntersection_line(self as *const Self, Index)) }
+    }
+}
+
+// ========================
+// From IntPatch_InterferencePolyhedron.hxx
+// ========================
+
+/// **Source:** `IntPatch_InterferencePolyhedron.hxx`:32 - `IntPatch_InterferencePolyhedron`
+/// Computes the  interference between two polyhedra or the
+/// self interference of a polyhedron. Points of intersection,
+/// polylines  of intersection and zones of tangence.
+pub use crate::ffi::IntPatch_InterferencePolyhedron as InterferencePolyhedron;
+
+unsafe impl crate::CppDeletable for InterferencePolyhedron {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_InterferencePolyhedron_destructor(ptr);
+    }
+}
+
+impl InterferencePolyhedron {
+    /// **Source:** `IntPatch_InterferencePolyhedron.hxx`:38 - `IntPatch_InterferencePolyhedron::IntPatch_InterferencePolyhedron()`
+    /// Constructs an empty interference of Polyhedron.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_InterferencePolyhedron_ctor()) }
+    }
+
+    /// **Source:** `IntPatch_InterferencePolyhedron.hxx`:42 - `IntPatch_InterferencePolyhedron::IntPatch_InterferencePolyhedron()`
+    /// Constructs  and computes  an  interference between  the two
+    /// Polyhedra.
+    pub fn new_polyhedron2(Obje1: &Polyhedron, Obje2: &Polyhedron) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_InterferencePolyhedron_ctor_polyhedron2(
+                Obje1, Obje2,
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_InterferencePolyhedron.hxx`:47 - `IntPatch_InterferencePolyhedron::IntPatch_InterferencePolyhedron()`
+    /// Constructs  and  computes   the self   interference  of   a
+    /// Polyhedron.
+    pub fn new_polyhedron(Obje: &Polyhedron) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_InterferencePolyhedron_ctor_polyhedron(
+                Obje,
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_InterferencePolyhedron.hxx`:50 - `IntPatch_InterferencePolyhedron::Perform()`
+    /// Computes the interference between the two Polyhedra.
+    pub fn perform_polyhedron2(&mut self, Obje1: &Polyhedron, Obje2: &Polyhedron) {
+        unsafe {
+            crate::ffi::IntPatch_InterferencePolyhedron_perform_polyhedron2(
+                self as *mut Self,
+                Obje1,
+                Obje2,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_InterferencePolyhedron.hxx`:53 - `IntPatch_InterferencePolyhedron::Perform()`
+    /// Computes the self interference of a Polyhedron.
+    pub fn perform_polyhedron(&mut self, Obje: &Polyhedron) {
+        unsafe {
+            crate::ffi::IntPatch_InterferencePolyhedron_perform_polyhedron(self as *mut Self, Obje)
+        }
+    }
+
+    /// Upcast to Intf_Interference
+    pub fn as_intf_interference(&self) -> &crate::intf::Interference {
+        unsafe {
+            &*(crate::ffi::IntPatch_InterferencePolyhedron_as_Intf_Interference(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Intf_Interference (mutable)
+    pub fn as_intf_interference_mut(&mut self) -> &mut crate::intf::Interference {
+        unsafe {
+            &mut *(crate::ffi::IntPatch_InterferencePolyhedron_as_Intf_Interference_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Intf_Interference.hxx`:43 - `Intf_Interference::NbSectionPoints()`
+    pub fn nb_section_points(&self) -> i32 {
+        unsafe {
+            crate::ffi::IntPatch_InterferencePolyhedron_inherited_NbSectionPoints(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Intf_Interference.hxx`:47 - `Intf_Interference::PntValue()`
+    pub fn pnt_value(&self, Index: i32) -> &crate::intf::SectionPoint {
+        unsafe {
+            &*(crate::ffi::IntPatch_InterferencePolyhedron_inherited_PntValue(
+                self as *const Self,
+                Index,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Intf_Interference.hxx`:51 - `Intf_Interference::NbSectionLines()`
+    pub fn nb_section_lines(&self) -> i32 {
+        unsafe {
+            crate::ffi::IntPatch_InterferencePolyhedron_inherited_NbSectionLines(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Intf_Interference.hxx`:55 - `Intf_Interference::LineValue()`
+    pub fn line_value(&self, Index: i32) -> &crate::intf::SectionLine {
+        unsafe {
+            &*(crate::ffi::IntPatch_InterferencePolyhedron_inherited_LineValue(
+                self as *const Self,
+                Index,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Intf_Interference.hxx`:58 - `Intf_Interference::NbTangentZones()`
+    pub fn nb_tangent_zones(&self) -> i32 {
+        unsafe {
+            crate::ffi::IntPatch_InterferencePolyhedron_inherited_NbTangentZones(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Intf_Interference.hxx`:62 - `Intf_Interference::ZoneValue()`
+    pub fn zone_value(&self, Index: i32) -> &crate::intf::TangentZone {
+        unsafe {
+            &*(crate::ffi::IntPatch_InterferencePolyhedron_inherited_ZoneValue(
+                self as *const Self,
+                Index,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Intf_Interference.hxx`:65 - `Intf_Interference::GetTolerance()`
+    pub fn get_tolerance(&self) -> f64 {
+        unsafe {
+            crate::ffi::IntPatch_InterferencePolyhedron_inherited_GetTolerance(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Intf_Interference.hxx`:69 - `Intf_Interference::Contains()`
+    pub fn contains(&self, ThePnt: &crate::intf::SectionPoint) -> bool {
+        unsafe {
+            crate::ffi::IntPatch_InterferencePolyhedron_inherited_Contains(
+                self as *const Self,
+                ThePnt,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Intf_Interference.hxx`:74 - `Intf_Interference::Insert()`
+    pub fn insert(&mut self, TheZone: &crate::intf::TangentZone) -> bool {
+        unsafe {
+            crate::ffi::IntPatch_InterferencePolyhedron_inherited_Insert(self as *mut Self, TheZone)
+        }
+    }
+
+    /// Inherited: **Source:** `Intf_Interference.hxx`:80 - `Intf_Interference::Dump()`
+    pub fn dump(&self) {
+        unsafe { crate::ffi::IntPatch_InterferencePolyhedron_inherited_Dump(self as *const Self) }
+    }
+}
 
 // ========================
 // From IntPatch_Intersection.hxx
@@ -571,6 +2917,48 @@ impl HandleIntPatchLine {
         }
     }
 
+    /// Downcast Handle<IntPatch_Line> to Handle<IntPatch_ALine>
+    ///
+    /// Returns `None` if the handle does not point to a `IntPatch_ALine` (or subclass).
+    pub fn downcast_to_a_line(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIntPatchALine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIntPatchLine_downcast_to_HandleIntPatchALine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IntPatch_Line> to Handle<IntPatch_GLine>
+    ///
+    /// Returns `None` if the handle does not point to a `IntPatch_GLine` (or subclass).
+    pub fn downcast_to_g_line(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIntPatchGLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIntPatchLine_downcast_to_HandleIntPatchGLine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IntPatch_Line> to Handle<IntPatch_RLine>
+    ///
+    /// Returns `None` if the handle does not point to a `IntPatch_RLine` (or subclass).
+    pub fn downcast_to_r_line(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIntPatchRLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIntPatchLine_downcast_to_HandleIntPatchRLine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<IntPatch_Line> to Handle<IntPatch_WLine>
     ///
     /// Returns `None` if the handle does not point to a `IntPatch_WLine` (or subclass).
@@ -582,6 +2970,69 @@ impl HandleIntPatchLine {
             None
         } else {
             Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From IntPatch_LineConstructor.hxx
+// ========================
+
+/// **Source:** `IntPatch_LineConstructor.hxx`:28 - `IntPatch_LineConstructor`
+/// The intersections  algorithms compute the intersection
+/// on two surfaces and  return the intersections lines as
+/// IntPatch_Line.
+pub use crate::ffi::IntPatch_LineConstructor as LineConstructor;
+
+unsafe impl crate::CppDeletable for LineConstructor {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_LineConstructor_destructor(ptr);
+    }
+}
+
+impl LineConstructor {
+    /// **Source:** `IntPatch_LineConstructor.hxx`:33 - `IntPatch_LineConstructor::IntPatch_LineConstructor()`
+    pub fn new_int(mode: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_LineConstructor_ctor_int(mode)) }
+    }
+
+    /// **Source:** `IntPatch_LineConstructor.hxx`:35 - `IntPatch_LineConstructor::Perform()`
+    pub fn perform(
+        &mut self,
+        SL: &crate::ffi::IntPatch_SequenceOfLine,
+        L: &crate::ffi::HandleIntPatchLine,
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        D1: &crate::ffi::HandleAdaptor3dTopolTool,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+        D2: &crate::ffi::HandleAdaptor3dTopolTool,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_LineConstructor_perform(
+                self as *mut Self,
+                SL,
+                L,
+                S1,
+                D1,
+                S2,
+                D2,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_LineConstructor.hxx`:43 - `IntPatch_LineConstructor::NbLines()`
+    pub fn nb_lines(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_LineConstructor_nb_lines(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_LineConstructor.hxx`:45 - `IntPatch_LineConstructor::Line()`
+    pub fn line(&self, index: i32) -> crate::OwnedPtr<crate::ffi::HandleIntPatchLine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_LineConstructor_line(
+                self as *const Self,
+                index,
+            ))
         }
     }
 }
@@ -1188,6 +3639,20 @@ impl HandleIntPatchPointLine {
         }
     }
 
+    /// Downcast Handle<IntPatch_PointLine> to Handle<IntPatch_RLine>
+    ///
+    /// Returns `None` if the handle does not point to a `IntPatch_RLine` (or subclass).
+    pub fn downcast_to_r_line(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIntPatchRLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIntPatchPointLine_downcast_to_HandleIntPatchRLine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<IntPatch_PointLine> to Handle<IntPatch_WLine>
     ///
     /// Returns `None` if the handle does not point to a `IntPatch_WLine` (or subclass).
@@ -1202,6 +3667,2889 @@ impl HandleIntPatchPointLine {
         }
     }
 }
+
+// ========================
+// From IntPatch_PolyArc.hxx
+// ========================
+
+/// **Source:** `IntPatch_PolyArc.hxx`:31 - `IntPatch_PolyArc`
+pub use crate::ffi::IntPatch_PolyArc as PolyArc;
+
+unsafe impl crate::CppDeletable for PolyArc {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_PolyArc_destructor(ptr);
+    }
+}
+
+impl PolyArc {
+    /// **Source:** `IntPatch_PolyArc.hxx`:39 - `IntPatch_PolyArc::IntPatch_PolyArc()`
+    /// Creates the polygon of the arc A on the surface S.
+    /// The arc is limited by the parameters Pfirst and Plast.
+    /// None of these parameters can be infinite.
+    pub fn new_handleadaptor2dcurve2d_int_real2_box2d(
+        A: &crate::ffi::HandleAdaptor2dCurve2d,
+        NbSample: i32,
+        Pfirst: f64,
+        Plast: f64,
+        BoxOtherPolygon: &crate::bnd::Box2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IntPatch_PolyArc_ctor_handleadaptor2dcurve2d_int_real2_box2d(
+                    A,
+                    NbSample,
+                    Pfirst,
+                    Plast,
+                    BoxOtherPolygon,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_PolyArc.hxx`:45 - `IntPatch_PolyArc::Closed()`
+    pub fn closed(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_PolyArc_closed(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_PolyArc.hxx`:47 - `IntPatch_PolyArc::NbPoints()`
+    pub fn nb_points(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_PolyArc_nb_points(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_PolyArc.hxx`:49 - `IntPatch_PolyArc::Point()`
+    pub fn point(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_PolyArc_point(
+                self as *const Self,
+                Index,
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_PolyArc.hxx`:51 - `IntPatch_PolyArc::Parameter()`
+    pub fn parameter(&self, Index: i32) -> f64 {
+        unsafe { crate::ffi::IntPatch_PolyArc_parameter(self as *const Self, Index) }
+    }
+
+    /// **Source:** `IntPatch_PolyArc.hxx`:53 - `IntPatch_PolyArc::SetOffset()`
+    pub fn set_offset(&mut self, OffsetX: f64, OffsetY: f64) {
+        unsafe { crate::ffi::IntPatch_PolyArc_set_offset(self as *mut Self, OffsetX, OffsetY) }
+    }
+
+    /// Upcast to IntPatch_Polygo
+    pub fn as_polygo(&self) -> &Polygo {
+        unsafe { &*(crate::ffi::IntPatch_PolyArc_as_IntPatch_Polygo(self as *const Self)) }
+    }
+
+    /// Upcast to IntPatch_Polygo (mutable)
+    pub fn as_polygo_mut(&mut self) -> &mut Polygo {
+        unsafe { &mut *(crate::ffi::IntPatch_PolyArc_as_IntPatch_Polygo_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Intf_Polygon2d
+    pub fn as_intf_polygon2d(&self) -> &crate::intf::Polygon2d {
+        unsafe { &*(crate::ffi::IntPatch_PolyArc_as_Intf_Polygon2d(self as *const Self)) }
+    }
+
+    /// Upcast to Intf_Polygon2d (mutable)
+    pub fn as_intf_polygon2d_mut(&mut self) -> &mut crate::intf::Polygon2d {
+        unsafe { &mut *(crate::ffi::IntPatch_PolyArc_as_Intf_Polygon2d_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Polygo.hxx`:32 - `IntPatch_Polygo::Error()`
+    pub fn error(&self) -> f64 {
+        unsafe { crate::ffi::IntPatch_PolyArc_inherited_Error(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Polygo.hxx`:39 - `IntPatch_Polygo::DeflectionOverEstimation()`
+    pub fn deflection_over_estimation(&self) -> f64 {
+        unsafe {
+            crate::ffi::IntPatch_PolyArc_inherited_DeflectionOverEstimation(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Polygo.hxx`:42 - `IntPatch_Polygo::NbSegments()`
+    pub fn nb_segments(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_PolyArc_inherited_NbSegments(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Polygo.hxx`:45 - `IntPatch_Polygo::Segment()`
+    pub fn segment(
+        &self,
+        theIndex: i32,
+        theBegin: &mut crate::gp::Pnt2d,
+        theEnd: &mut crate::gp::Pnt2d,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_PolyArc_inherited_Segment(
+                self as *const Self,
+                theIndex,
+                theBegin,
+                theEnd,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Polygo.hxx`:49 - `IntPatch_Polygo::Dump()`
+    pub fn dump(&self) {
+        unsafe { crate::ffi::IntPatch_PolyArc_inherited_Dump(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Intf_Polygon2d.hxx`:35 - `Intf_Polygon2d::Bounding()`
+    pub fn bounding(&self) -> &crate::bnd::Box2d {
+        unsafe { &*(crate::ffi::IntPatch_PolyArc_inherited_Bounding(self as *const Self)) }
+    }
+}
+
+// ========================
+// From IntPatch_PolyLine.hxx
+// ========================
+
+/// **Source:** `IntPatch_PolyLine.hxx`:33 - `IntPatch_PolyLine`
+pub use crate::ffi::IntPatch_PolyLine as PolyLine;
+
+unsafe impl crate::CppDeletable for PolyLine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_PolyLine_destructor(ptr);
+    }
+}
+
+impl PolyLine {
+    /// **Source:** `IntPatch_PolyLine.hxx`:38 - `IntPatch_PolyLine::IntPatch_PolyLine()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_PolyLine_ctor()) }
+    }
+
+    /// **Source:** `IntPatch_PolyLine.hxx`:40 - `IntPatch_PolyLine::IntPatch_PolyLine()`
+    pub fn new_real(InitDefle: f64) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_PolyLine_ctor_real(InitDefle)) }
+    }
+
+    /// **Source:** `IntPatch_PolyLine.hxx`:42 - `IntPatch_PolyLine::SetWLine()`
+    pub fn set_w_line(&mut self, OnFirst: bool, Line: &crate::ffi::HandleIntPatchWLine) {
+        unsafe { crate::ffi::IntPatch_PolyLine_set_w_line(self as *mut Self, OnFirst, Line) }
+    }
+
+    /// **Source:** `IntPatch_PolyLine.hxx`:44 - `IntPatch_PolyLine::SetRLine()`
+    pub fn set_r_line(&mut self, OnFirst: bool, Line: &crate::ffi::HandleIntPatchRLine) {
+        unsafe { crate::ffi::IntPatch_PolyLine_set_r_line(self as *mut Self, OnFirst, Line) }
+    }
+
+    /// **Source:** `IntPatch_PolyLine.hxx`:46 - `IntPatch_PolyLine::ResetError()`
+    pub fn reset_error(&mut self) {
+        unsafe { crate::ffi::IntPatch_PolyLine_reset_error(self as *mut Self) }
+    }
+
+    /// **Source:** `IntPatch_PolyLine.hxx`:48 - `IntPatch_PolyLine::NbPoints()`
+    pub fn nb_points(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_PolyLine_nb_points(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_PolyLine.hxx`:50 - `IntPatch_PolyLine::Point()`
+    pub fn point(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_PolyLine_point(
+                self as *const Self,
+                Index,
+            ))
+        }
+    }
+
+    /// Upcast to IntPatch_Polygo
+    pub fn as_polygo(&self) -> &Polygo {
+        unsafe { &*(crate::ffi::IntPatch_PolyLine_as_IntPatch_Polygo(self as *const Self)) }
+    }
+
+    /// Upcast to IntPatch_Polygo (mutable)
+    pub fn as_polygo_mut(&mut self) -> &mut Polygo {
+        unsafe { &mut *(crate::ffi::IntPatch_PolyLine_as_IntPatch_Polygo_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Intf_Polygon2d
+    pub fn as_intf_polygon2d(&self) -> &crate::intf::Polygon2d {
+        unsafe { &*(crate::ffi::IntPatch_PolyLine_as_Intf_Polygon2d(self as *const Self)) }
+    }
+
+    /// Upcast to Intf_Polygon2d (mutable)
+    pub fn as_intf_polygon2d_mut(&mut self) -> &mut crate::intf::Polygon2d {
+        unsafe { &mut *(crate::ffi::IntPatch_PolyLine_as_Intf_Polygon2d_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Polygo.hxx`:32 - `IntPatch_Polygo::Error()`
+    pub fn error(&self) -> f64 {
+        unsafe { crate::ffi::IntPatch_PolyLine_inherited_Error(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Polygo.hxx`:39 - `IntPatch_Polygo::DeflectionOverEstimation()`
+    pub fn deflection_over_estimation(&self) -> f64 {
+        unsafe {
+            crate::ffi::IntPatch_PolyLine_inherited_DeflectionOverEstimation(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Polygo.hxx`:42 - `IntPatch_Polygo::NbSegments()`
+    pub fn nb_segments(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_PolyLine_inherited_NbSegments(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Polygo.hxx`:45 - `IntPatch_Polygo::Segment()`
+    pub fn segment(
+        &self,
+        theIndex: i32,
+        theBegin: &mut crate::gp::Pnt2d,
+        theEnd: &mut crate::gp::Pnt2d,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_PolyLine_inherited_Segment(
+                self as *const Self,
+                theIndex,
+                theBegin,
+                theEnd,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Polygo.hxx`:49 - `IntPatch_Polygo::Dump()`
+    pub fn dump(&self) {
+        unsafe { crate::ffi::IntPatch_PolyLine_inherited_Dump(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Intf_Polygon2d.hxx`:35 - `Intf_Polygon2d::Bounding()`
+    pub fn bounding(&self) -> &crate::bnd::Box2d {
+        unsafe { &*(crate::ffi::IntPatch_PolyLine_inherited_Bounding(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Intf_Polygon2d.hxx`:38 - `Intf_Polygon2d::Closed()`
+    pub fn closed(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_PolyLine_inherited_Closed(self as *const Self) }
+    }
+}
+
+// ========================
+// From IntPatch_Polygo.hxx
+// ========================
+
+/// **Source:** `IntPatch_Polygo.hxx`:27 - `IntPatch_Polygo`
+pub use crate::ffi::IntPatch_Polygo as Polygo;
+
+unsafe impl crate::CppDeletable for Polygo {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_Polygo_destructor(ptr);
+    }
+}
+
+impl Polygo {
+    /// **Source:** `IntPatch_Polygo.hxx`:32 - `IntPatch_Polygo::Error()`
+    pub fn error(&self) -> f64 {
+        unsafe { crate::ffi::IntPatch_Polygo_error(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_Polygo.hxx`:34 - `IntPatch_Polygo::NbPoints()`
+    pub fn nb_points(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_Polygo_nb_points(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_Polygo.hxx`:36 - `IntPatch_Polygo::Point()`
+    pub fn point(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_Polygo_point(self as *const Self, Index))
+        }
+    }
+
+    /// **Source:** `IntPatch_Polygo.hxx`:39 - `IntPatch_Polygo::DeflectionOverEstimation()`
+    /// Returns the tolerance of the polygon.
+    pub fn deflection_over_estimation(&self) -> f64 {
+        unsafe { crate::ffi::IntPatch_Polygo_deflection_over_estimation(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_Polygo.hxx`:42 - `IntPatch_Polygo::NbSegments()`
+    /// Returns the number of Segments in the polyline.
+    pub fn nb_segments(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_Polygo_nb_segments(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_Polygo.hxx`:45 - `IntPatch_Polygo::Segment()`
+    /// Returns the points of the segment <Index> in the Polygon.
+    pub fn segment(
+        &self,
+        theIndex: i32,
+        theBegin: &mut crate::gp::Pnt2d,
+        theEnd: &mut crate::gp::Pnt2d,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_Polygo_segment(self as *const Self, theIndex, theBegin, theEnd)
+        }
+    }
+
+    /// **Source:** `IntPatch_Polygo.hxx`:49 - `IntPatch_Polygo::Dump()`
+    pub fn dump(&self) {
+        unsafe { crate::ffi::IntPatch_Polygo_dump(self as *const Self) }
+    }
+
+    /// Upcast to Intf_Polygon2d
+    pub fn as_intf_polygon2d(&self) -> &crate::intf::Polygon2d {
+        unsafe { &*(crate::ffi::IntPatch_Polygo_as_Intf_Polygon2d(self as *const Self)) }
+    }
+
+    /// Upcast to Intf_Polygon2d (mutable)
+    pub fn as_intf_polygon2d_mut(&mut self) -> &mut crate::intf::Polygon2d {
+        unsafe { &mut *(crate::ffi::IntPatch_Polygo_as_Intf_Polygon2d_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `Intf_Polygon2d.hxx`:35 - `Intf_Polygon2d::Bounding()`
+    pub fn bounding(&self) -> &crate::bnd::Box2d {
+        unsafe { &*(crate::ffi::IntPatch_Polygo_inherited_Bounding(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Intf_Polygon2d.hxx`:38 - `Intf_Polygon2d::Closed()`
+    pub fn closed(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Polygo_inherited_Closed(self as *const Self) }
+    }
+}
+
+// ========================
+// From IntPatch_Polyhedron.hxx
+// ========================
+
+/// **Source:** `IntPatch_Polyhedron.hxx`:25 - `IntPatch_Polyhedron`
+/// This class provides a linear approximation of the PSurface.
+/// preview a constructor on a zone of  a surface
+pub use crate::ffi::IntPatch_Polyhedron as Polyhedron;
+
+unsafe impl crate::CppDeletable for Polyhedron {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_Polyhedron_destructor(ptr);
+    }
+}
+
+impl Polyhedron {
+    /// **Source:** `IntPatch_Polyhedron.hxx`:32 - `IntPatch_Polyhedron::IntPatch_Polyhedron()`
+    /// MaTriangle constructor with an double array of pnt for the
+    /// representation of a double array of triangles.
+    pub fn new_handleadaptor3dsurface_int2(
+        Surface: &crate::ffi::HandleAdaptor3dSurface,
+        nbdU: i32,
+        nbdV: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IntPatch_Polyhedron_ctor_handleadaptor3dsurface_int2(
+                    Surface, nbdU, nbdV,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:36 - `IntPatch_Polyhedron::IntPatch_Polyhedron()`
+    pub fn new_handleadaptor3dsurface(
+        Surface: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_Polyhedron_ctor_handleadaptor3dsurface(
+                Surface,
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:38 - `IntPatch_Polyhedron::Destroy()`
+    pub fn destroy(&mut self) {
+        unsafe { crate::ffi::IntPatch_Polyhedron_destroy(self as *mut Self) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:42 - `IntPatch_Polyhedron::Perform()`
+    pub fn perform(&mut self, Surface: &crate::ffi::HandleAdaptor3dSurface, nbdU: i32, nbdV: i32) {
+        unsafe { crate::ffi::IntPatch_Polyhedron_perform(self as *mut Self, Surface, nbdU, nbdV) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:46 - `IntPatch_Polyhedron::DeflectionOverEstimation()`
+    pub fn deflection_over_estimation_real(&mut self, flec: f64) {
+        unsafe {
+            crate::ffi::IntPatch_Polyhedron_deflection_over_estimation_real(self as *mut Self, flec)
+        }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:48 - `IntPatch_Polyhedron::DeflectionOnTriangle()`
+    pub fn deflection_on_triangle(
+        &self,
+        Surface: &crate::ffi::HandleAdaptor3dSurface,
+        Index: i32,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::IntPatch_Polyhedron_deflection_on_triangle(
+                self as *const Self,
+                Surface,
+                Index,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:51 - `IntPatch_Polyhedron::UMinSingularity()`
+    pub fn u_min_singularity(&mut self, Sing: bool) {
+        unsafe { crate::ffi::IntPatch_Polyhedron_u_min_singularity(self as *mut Self, Sing) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:53 - `IntPatch_Polyhedron::UMaxSingularity()`
+    pub fn u_max_singularity(&mut self, Sing: bool) {
+        unsafe { crate::ffi::IntPatch_Polyhedron_u_max_singularity(self as *mut Self, Sing) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:55 - `IntPatch_Polyhedron::VMinSingularity()`
+    pub fn v_min_singularity(&mut self, Sing: bool) {
+        unsafe { crate::ffi::IntPatch_Polyhedron_v_min_singularity(self as *mut Self, Sing) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:57 - `IntPatch_Polyhedron::VMaxSingularity()`
+    pub fn v_max_singularity(&mut self, Sing: bool) {
+        unsafe { crate::ffi::IntPatch_Polyhedron_v_max_singularity(self as *mut Self, Sing) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:60 - `IntPatch_Polyhedron::Size()`
+    /// Get the size of the MaTriangle.
+    pub fn size(&self, nbdu: &mut i32, nbdv: &mut i32) {
+        unsafe { crate::ffi::IntPatch_Polyhedron_size(self as *const Self, nbdu, nbdv) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:64 - `IntPatch_Polyhedron::NbTriangles()`
+    /// Give the number of triangles in this double array of
+    /// triangles (nbdu*nbdv*2).
+    pub fn nb_triangles(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_Polyhedron_nb_triangles(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:68 - `IntPatch_Polyhedron::Triangle()`
+    /// Give the 3 points of the triangle of address Index in
+    /// the double array of triangles.
+    pub fn triangle(&self, Index: i32, P1: &mut i32, P2: &mut i32, P3: &mut i32) {
+        unsafe { crate::ffi::IntPatch_Polyhedron_triangle(self as *const Self, Index, P1, P2, P3) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:79 - `IntPatch_Polyhedron::TriConnex()`
+    /// Give the address Tricon of the triangle connexe to the
+    /// triangle of address Triang by the edge Pivot Pedge and
+    /// the third point of this connexe triangle. When we are
+    /// on a free edge TriCon==0 but the function return the
+    /// value of the triangle in the other side of Pivot on
+    /// the free edge. Used to turn around a vertex.
+    pub fn tri_connex(
+        &self,
+        Triang: i32,
+        Pivot: i32,
+        Pedge: i32,
+        TriCon: &mut i32,
+        OtherP: &mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::IntPatch_Polyhedron_tri_connex(
+                self as *const Self,
+                Triang,
+                Pivot,
+                Pedge,
+                TriCon,
+                OtherP,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:87 - `IntPatch_Polyhedron::NbPoints()`
+    /// Give the number of point in the double array of
+    /// triangles ((nbdu+1)*(nbdv+1)).
+    pub fn nb_points(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_Polyhedron_nb_points(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:91 - `IntPatch_Polyhedron::Point()`
+    /// Set the value of a field of the double array of
+    /// points.
+    pub fn point_pnt_int2_real2(
+        &mut self,
+        thePnt: &crate::gp::Pnt,
+        lig: i32,
+        col: i32,
+        U: f64,
+        V: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_Polyhedron_point_pnt_int2_real2(
+                self as *mut Self,
+                thePnt,
+                lig,
+                col,
+                U,
+                V,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:98 - `IntPatch_Polyhedron::Point()`
+    /// Give the point of index i in the MaTriangle.
+    pub fn point_int_real2(&self, Index: i32, U: &mut f64, V: &mut f64) -> &crate::gp::Pnt {
+        unsafe {
+            &*(crate::ffi::IntPatch_Polyhedron_point_int_real2(self as *const Self, Index, U, V))
+        }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:103 - `IntPatch_Polyhedron::Point()`
+    /// Give the point of index i in the MaTriangle.
+    pub fn point_int(&self, Index: i32) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::IntPatch_Polyhedron_point_int(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:106 - `IntPatch_Polyhedron::Point()`
+    /// Give the point of index i in the MaTriangle.
+    pub fn point_int_pnt(&self, Index: i32, P: &mut crate::gp::Pnt) {
+        unsafe { crate::ffi::IntPatch_Polyhedron_point_int_pnt(self as *const Self, Index, P) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:109 - `IntPatch_Polyhedron::Bounding()`
+    /// Give the bounding box of the MaTriangle.
+    pub fn bounding(&self) -> &crate::bnd::Box {
+        unsafe { &*(crate::ffi::IntPatch_Polyhedron_bounding(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:113 - `IntPatch_Polyhedron::FillBounding()`
+    /// Compute the array of boxes. The box <n> corresponding
+    /// to the triangle <n>.
+    pub fn fill_bounding(&mut self) {
+        unsafe { crate::ffi::IntPatch_Polyhedron_fill_bounding(self as *mut Self) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:117 - `IntPatch_Polyhedron::ComponentsBounding()`
+    /// Give the array of boxes. The box <n> corresponding
+    /// to the triangle <n>.
+    pub fn components_bounding(&self) -> &crate::ffi::HandleBndHArray1OfBox {
+        unsafe { &*(crate::ffi::IntPatch_Polyhedron_components_bounding(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:119 - `IntPatch_Polyhedron::DeflectionOverEstimation()`
+    pub fn deflection_over_estimation(&self) -> f64 {
+        unsafe { crate::ffi::IntPatch_Polyhedron_deflection_over_estimation(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:121 - `IntPatch_Polyhedron::HasUMinSingularity()`
+    pub fn has_u_min_singularity(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Polyhedron_has_u_min_singularity(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:123 - `IntPatch_Polyhedron::HasUMaxSingularity()`
+    pub fn has_u_max_singularity(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Polyhedron_has_u_max_singularity(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:125 - `IntPatch_Polyhedron::HasVMinSingularity()`
+    pub fn has_v_min_singularity(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Polyhedron_has_v_min_singularity(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:127 - `IntPatch_Polyhedron::HasVMaxSingularity()`
+    pub fn has_v_max_singularity(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Polyhedron_has_v_max_singularity(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:130 - `IntPatch_Polyhedron::PlaneEquation()`
+    /// Give the plane equation of the triangle of address Triang.
+    pub fn plane_equation(
+        &self,
+        Triang: i32,
+        NormalVector: &mut crate::gp::XYZ,
+        PolarDistance: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_Polyhedron_plane_equation(
+                self as *const Self,
+                Triang,
+                NormalVector,
+                PolarDistance,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:135 - `IntPatch_Polyhedron::Contain()`
+    /// Give the plane equation of the triangle of address Triang.
+    pub fn contain(&self, Triang: i32, ThePnt: &crate::gp::Pnt) -> bool {
+        unsafe { crate::ffi::IntPatch_Polyhedron_contain(self as *const Self, Triang, ThePnt) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:138 - `IntPatch_Polyhedron::Parameters()`
+    pub fn parameters(&self, Index: i32, U: &mut f64, V: &mut f64) {
+        unsafe { crate::ffi::IntPatch_Polyhedron_parameters(self as *const Self, Index, U, V) }
+    }
+
+    /// **Source:** `IntPatch_Polyhedron.hxx`:142 - `IntPatch_Polyhedron::Dump()`
+    pub fn dump(&self) {
+        unsafe { crate::ffi::IntPatch_Polyhedron_dump(self as *const Self) }
+    }
+}
+
+// ========================
+// From IntPatch_PolyhedronTool.hxx
+// ========================
+
+/// **Source:** `IntPatch_PolyhedronTool.hxx`:34 - `IntPatch_PolyhedronTool`
+/// Describe the signature of a polyhedral surface with
+/// only triangular  facets and the necessary information
+/// to compute the interferences.
+pub use crate::ffi::IntPatch_PolyhedronTool as PolyhedronTool;
+
+unsafe impl crate::CppDeletable for PolyhedronTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_PolyhedronTool_destructor(ptr);
+    }
+}
+
+impl PolyhedronTool {
+    /// **Source:** `IntPatch_PolyhedronTool.hxx` - `IntPatch_PolyhedronTool::IntPatch_PolyhedronTool()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_PolyhedronTool_ctor()) }
+    }
+
+    /// **Source:** `IntPatch_PolyhedronTool.hxx`:40 - `IntPatch_PolyhedronTool::Bounding()`
+    /// Give the bounding box of the Polyhedron.
+    pub fn bounding(thePolyh: &Polyhedron) -> &'static crate::bnd::Box {
+        unsafe { &*(crate::ffi::IntPatch_PolyhedronTool_bounding(thePolyh)) }
+    }
+
+    /// **Source:** `IntPatch_PolyhedronTool.hxx`:44 - `IntPatch_PolyhedronTool::ComponentsBounding()`
+    /// Give the array of boxes. The box <n> corresponding
+    /// to the triangle <n>.
+    pub fn components_bounding(
+        thePolyh: &Polyhedron,
+    ) -> &'static crate::ffi::HandleBndHArray1OfBox {
+        unsafe { &*(crate::ffi::IntPatch_PolyhedronTool_components_bounding(thePolyh)) }
+    }
+
+    /// **Source:** `IntPatch_PolyhedronTool.hxx`:47 - `IntPatch_PolyhedronTool::DeflectionOverEstimation()`
+    /// Give the tolerance of the polygon.
+    pub fn deflection_over_estimation(thePolyh: &Polyhedron) -> f64 {
+        unsafe { crate::ffi::IntPatch_PolyhedronTool_deflection_over_estimation(thePolyh) }
+    }
+
+    /// **Source:** `IntPatch_PolyhedronTool.hxx`:50 - `IntPatch_PolyhedronTool::NbTriangles()`
+    /// Give the number of triangles in this polyhedral surface.
+    pub fn nb_triangles(thePolyh: &Polyhedron) -> i32 {
+        unsafe { crate::ffi::IntPatch_PolyhedronTool_nb_triangles(thePolyh) }
+    }
+
+    /// **Source:** `IntPatch_PolyhedronTool.hxx`:54 - `IntPatch_PolyhedronTool::Triangle()`
+    /// Give the indices  of  the 3 points of  the triangle of
+    /// address Index in the Polyhedron.
+    pub fn triangle(thePolyh: &Polyhedron, Index: i32, P1: &mut i32, P2: &mut i32, P3: &mut i32) {
+        unsafe { crate::ffi::IntPatch_PolyhedronTool_triangle(thePolyh, Index, P1, P2, P3) }
+    }
+
+    /// **Source:** `IntPatch_PolyhedronTool.hxx`:61 - `IntPatch_PolyhedronTool::Point()`
+    /// Give the point of index i in the polyhedral surface.
+    pub fn point(thePolyh: &Polyhedron, Index: i32) -> &'static crate::gp::Pnt {
+        unsafe { &*(crate::ffi::IntPatch_PolyhedronTool_point(thePolyh, Index)) }
+    }
+
+    /// **Source:** `IntPatch_PolyhedronTool.hxx`:69 - `IntPatch_PolyhedronTool::TriConnex()`
+    /// Gives the address Tricon of the triangle connexe to
+    /// the triangle of address Triang by the edge Pivot Pedge
+    /// and the third point of this  connexe triangle. When we
+    /// are on  a free edge TriCon==0  but the function return
+    /// the value of  the triangle in the  other side of Pivot
+    /// on the free edge.  Used to turn around a vertex.
+    pub fn tri_connex(
+        thePolyh: &Polyhedron,
+        Triang: i32,
+        Pivot: i32,
+        Pedge: i32,
+        TriCon: &mut i32,
+        OtherP: &mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::IntPatch_PolyhedronTool_tri_connex(
+                thePolyh, Triang, Pivot, Pedge, TriCon, OtherP,
+            )
+        }
+    }
+}
+
+// ========================
+// From IntPatch_PrmPrmIntersection.hxx
+// ========================
+
+/// **Source:** `IntPatch_PrmPrmIntersection.hxx`:34 - `IntPatch_PrmPrmIntersection`
+/// Implementation of the Intersection between two bi-parametrised surfaces.
+///
+/// To avoid multiple constructions of the approximated
+/// polyhedron of the surfaces, the algorithm can be
+/// called with the two surfaces and their associated polyhedron.
+pub use crate::ffi::IntPatch_PrmPrmIntersection as PrmPrmIntersection;
+
+unsafe impl crate::CppDeletable for PrmPrmIntersection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_PrmPrmIntersection_destructor(ptr);
+    }
+}
+
+impl PrmPrmIntersection {
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:40 - `IntPatch_PrmPrmIntersection::IntPatch_PrmPrmIntersection()`
+    /// Empty Constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_PrmPrmIntersection_ctor()) }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:45 - `IntPatch_PrmPrmIntersection::Perform()`
+    /// Performs the intersection between <Caro1>  and
+    /// <Caro2>.  Associated Polyhedrons <Polyhedron1>
+    /// and <Polyhedron2> are given.
+    pub fn perform_handleadaptor3dsurface_polyhedron_handleadaptor3dtopoltool_handleadaptor3dsurface_polyhedron_handleadaptor3dtopoltool_real4(
+        &mut self,
+        Caro1: &crate::ffi::HandleAdaptor3dSurface,
+        Polyhedron1: &Polyhedron,
+        Domain1: &crate::ffi::HandleAdaptor3dTopolTool,
+        Caro2: &crate::ffi::HandleAdaptor3dSurface,
+        Polyhedron2: &Polyhedron,
+        Domain2: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolTangency: f64,
+        Epsilon: f64,
+        Deflection: f64,
+        Increment: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_PrmPrmIntersection_perform_handleadaptor3dsurface_polyhedron_handleadaptor3dtopoltool_handleadaptor3dsurface_polyhedron_handleadaptor3dtopoltool_real4(self as *mut Self, Caro1, Polyhedron1, Domain1, Caro2, Polyhedron2, Domain2, TolTangency, Epsilon, Deflection, Increment)
+        }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:56 - `IntPatch_PrmPrmIntersection::Perform()`
+    pub fn perform_handleadaptor3dsurface_polyhedron_handleadaptor3dtopoltool_real4(
+        &mut self,
+        Caro1: &crate::ffi::HandleAdaptor3dSurface,
+        Polyhedron1: &Polyhedron,
+        Domain1: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolTangency: f64,
+        Epsilon: f64,
+        Deflection: f64,
+        Increment: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_PrmPrmIntersection_perform_handleadaptor3dsurface_polyhedron_handleadaptor3dtopoltool_real4(self as *mut Self, Caro1, Polyhedron1, Domain1, TolTangency, Epsilon, Deflection, Increment)
+        }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:67 - `IntPatch_PrmPrmIntersection::Perform()`
+    /// Performs the intersection between <Caro1>  and
+    /// <Caro2>. The method computes the polyhedron on
+    /// each surface.
+    pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real4_bool(
+        &mut self,
+        Caro1: &crate::ffi::HandleAdaptor3dSurface,
+        Domain1: &crate::ffi::HandleAdaptor3dTopolTool,
+        Caro2: &crate::ffi::HandleAdaptor3dSurface,
+        Domain2: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolTangency: f64,
+        Epsilon: f64,
+        Deflection: f64,
+        Increment: f64,
+        ClearFlag: bool,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_PrmPrmIntersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real4_bool(self as *mut Self, Caro1, Domain1, Caro2, Domain2, TolTangency, Epsilon, Deflection, Increment, ClearFlag)
+        }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:80 - `IntPatch_PrmPrmIntersection::Perform()`
+    /// Performs the intersection between <Caro1>  and
+    /// <Caro2>. The method computes the polyhedron on
+    /// each surface.
+    pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real4_listofpnton2s(
+        &mut self,
+        Caro1: &crate::ffi::HandleAdaptor3dSurface,
+        Domain1: &crate::ffi::HandleAdaptor3dTopolTool,
+        Caro2: &crate::ffi::HandleAdaptor3dSurface,
+        Domain2: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolTangency: f64,
+        Epsilon: f64,
+        Deflection: f64,
+        Increment: f64,
+        ListOfPnts: &mut crate::ffi::IntSurf_ListOfPntOn2S,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_PrmPrmIntersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real4_listofpnton2s(self as *mut Self, Caro1, Domain1, Caro2, Domain2, TolTangency, Epsilon, Deflection, Increment, ListOfPnts)
+        }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:93 - `IntPatch_PrmPrmIntersection::Perform()`
+    /// Performs the intersection between <Caro1>  and
+    /// <Caro2>. The method computes the polyhedron on
+    /// each surface.
+    pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real8(
+        &mut self,
+        Caro1: &crate::ffi::HandleAdaptor3dSurface,
+        Domain1: &crate::ffi::HandleAdaptor3dTopolTool,
+        Caro2: &crate::ffi::HandleAdaptor3dSurface,
+        Domain2: &crate::ffi::HandleAdaptor3dTopolTool,
+        U1: f64,
+        V1: f64,
+        U2: f64,
+        V2: f64,
+        TolTangency: f64,
+        Epsilon: f64,
+        Deflection: f64,
+        Increment: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_PrmPrmIntersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real8(self as *mut Self, Caro1, Domain1, Caro2, Domain2, U1, V1, U2, V2, TolTangency, Epsilon, Deflection, Increment)
+        }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:109 - `IntPatch_PrmPrmIntersection::Perform()`
+    /// Performs the intersection between <Caro1>  and
+    /// <Caro2>. The method computes the polyhedron on
+    /// each surface.
+    pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_real4(
+        &mut self,
+        Caro1: &crate::ffi::HandleAdaptor3dSurface,
+        Domain1: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolTangency: f64,
+        Epsilon: f64,
+        Deflection: f64,
+        Increment: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_PrmPrmIntersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_real4(self as *mut Self, Caro1, Domain1, TolTangency, Epsilon, Deflection, Increment)
+        }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:122 - `IntPatch_PrmPrmIntersection::Perform()`
+    /// Performs  the intersection between <Caro1> and
+    /// <Caro2>.
+    ///
+    /// The polyhedron which approximates     <Caro2>,
+    /// <Polyhedron2> is given. The other one is
+    /// computed.
+    pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_polyhedron_handleadaptor3dtopoltool_real4(
+        &mut self,
+        Caro1: &crate::ffi::HandleAdaptor3dSurface,
+        Domain1: &crate::ffi::HandleAdaptor3dTopolTool,
+        Caro2: &crate::ffi::HandleAdaptor3dSurface,
+        Polyhedron2: &Polyhedron,
+        Domain2: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolTangency: f64,
+        Epsilon: f64,
+        Deflection: f64,
+        Increment: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_PrmPrmIntersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_polyhedron_handleadaptor3dtopoltool_real4(self as *mut Self, Caro1, Domain1, Caro2, Polyhedron2, Domain2, TolTangency, Epsilon, Deflection, Increment)
+        }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:138 - `IntPatch_PrmPrmIntersection::Perform()`
+    /// Performs  the intersection between <Caro1> and
+    /// <Caro2>.
+    ///
+    /// The polyhedron which approximates     <Caro1>,
+    /// <Polyhedron1> is given. The other one is
+    /// computed.
+    pub fn perform_handleadaptor3dsurface_polyhedron_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real4(
+        &mut self,
+        Caro1: &crate::ffi::HandleAdaptor3dSurface,
+        Polyhedron1: &Polyhedron,
+        Domain1: &crate::ffi::HandleAdaptor3dTopolTool,
+        Caro2: &crate::ffi::HandleAdaptor3dSurface,
+        Domain2: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolTangency: f64,
+        Epsilon: f64,
+        Deflection: f64,
+        Increment: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_PrmPrmIntersection_perform_handleadaptor3dsurface_polyhedron_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real4(self as *mut Self, Caro1, Polyhedron1, Domain1, Caro2, Domain2, TolTangency, Epsilon, Deflection, Increment)
+        }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:149 - `IntPatch_PrmPrmIntersection::IsDone()`
+    /// Returns true if the calculus was successful.
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_PrmPrmIntersection_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:152 - `IntPatch_PrmPrmIntersection::IsEmpty()`
+    /// Returns true if the is no intersection.
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_PrmPrmIntersection_is_empty(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:155 - `IntPatch_PrmPrmIntersection::NbLines()`
+    /// Returns the number of intersection lines.
+    pub fn nb_lines(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_PrmPrmIntersection_nb_lines(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:159 - `IntPatch_PrmPrmIntersection::Line()`
+    /// Returns the line of range Index.
+    /// An exception is raised if Index<=0 or Index>NbLine.
+    pub fn line(&self, Index: i32) -> &crate::ffi::HandleIntPatchLine {
+        unsafe { &*(crate::ffi::IntPatch_PrmPrmIntersection_line(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:173 - `IntPatch_PrmPrmIntersection::NewLine()`
+    /// Computes about <NbPoints>  Intersection Points  on
+    /// the Line <IndexLine> between  the Points of  Index
+    /// <LowPoint> and <HighPoint>.
+    ///
+    /// All  the points  of the line  of index <IndexLine>
+    /// with an index  between <LowPoint>  and <HighPoint>
+    /// are in the returned  line. New Points are inserted
+    /// between existing points  if  those  points are not
+    /// too closed.
+    ///
+    /// An exception is raised if Index<=0 or Index>NbLine.
+    /// or if IsDone returns False
+    pub fn new_line(
+        &self,
+        Caro1: &crate::ffi::HandleAdaptor3dSurface,
+        Caro2: &crate::ffi::HandleAdaptor3dSurface,
+        IndexLine: i32,
+        LowPoint: i32,
+        HighPoint: i32,
+        NbPoints: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIntPatchLine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_PrmPrmIntersection_new_line(
+                self as *const Self,
+                Caro1,
+                Caro2,
+                IndexLine,
+                LowPoint,
+                HighPoint,
+                NbPoints,
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:180 - `IntPatch_PrmPrmIntersection::GrilleInteger()`
+    pub fn grille_integer(&self, ix: i32, iy: i32, iz: i32) -> i32 {
+        unsafe {
+            crate::ffi::IntPatch_PrmPrmIntersection_grille_integer(self as *const Self, ix, iy, iz)
+        }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:184 - `IntPatch_PrmPrmIntersection::IntegerGrille()`
+    pub fn integer_grille(&self, t: i32, ix: &mut i32, iy: &mut i32, iz: &mut i32) {
+        unsafe {
+            crate::ffi::IntPatch_PrmPrmIntersection_integer_grille(
+                self as *const Self,
+                t,
+                ix,
+                iy,
+                iz,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:189 - `IntPatch_PrmPrmIntersection::DansGrille()`
+    pub fn dans_grille(&self, t: i32) -> i32 {
+        unsafe { crate::ffi::IntPatch_PrmPrmIntersection_dans_grille(self as *const Self, t) }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:191 - `IntPatch_PrmPrmIntersection::NbPointsGrille()`
+    pub fn nb_points_grille(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_PrmPrmIntersection_nb_points_grille(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:193 - `IntPatch_PrmPrmIntersection::RemplitLin()`
+    pub fn remplit_lin(
+        &self,
+        x1: i32,
+        y1: i32,
+        z1: i32,
+        x2: i32,
+        y2: i32,
+        z2: i32,
+        Map: &mut PrmPrmIntersection_T3Bits,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_PrmPrmIntersection_remplit_lin(
+                self as *const Self,
+                x1,
+                y1,
+                z1,
+                x2,
+                y2,
+                z2,
+                Map,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:201 - `IntPatch_PrmPrmIntersection::RemplitTri()`
+    pub fn remplit_tri(
+        &self,
+        x1: i32,
+        y1: i32,
+        z1: i32,
+        x2: i32,
+        y2: i32,
+        z2: i32,
+        x3: i32,
+        y3: i32,
+        z3: i32,
+        Map: &mut PrmPrmIntersection_T3Bits,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_PrmPrmIntersection_remplit_tri(
+                self as *const Self,
+                x1,
+                y1,
+                z1,
+                x2,
+                y2,
+                z2,
+                x3,
+                y3,
+                z3,
+                Map,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:212 - `IntPatch_PrmPrmIntersection::Remplit()`
+    pub fn remplit(&self, a: i32, b: i32, c: i32, Map: &mut PrmPrmIntersection_T3Bits) {
+        unsafe {
+            crate::ffi::IntPatch_PrmPrmIntersection_remplit(self as *const Self, a, b, c, Map)
+        }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:217 - `IntPatch_PrmPrmIntersection::CodeReject()`
+    pub fn code_reject(
+        &self,
+        x1: f64,
+        y1: f64,
+        z1: f64,
+        x2: f64,
+        y2: f64,
+        z2: f64,
+        x3: f64,
+        y3: f64,
+        z3: f64,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::IntPatch_PrmPrmIntersection_code_reject(
+                self as *const Self,
+                x1,
+                y1,
+                z1,
+                x2,
+                y2,
+                z2,
+                x3,
+                y3,
+                z3,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:227 - `IntPatch_PrmPrmIntersection::PointDepart()`
+    pub fn point_depart(
+        &self,
+        LineOn2S: &mut crate::ffi::HandleIntSurfLineOn2S,
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        SU1: i32,
+        SV1: i32,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+        SU2: i32,
+        SV2: i32,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_PrmPrmIntersection_point_depart(
+                self as *const Self,
+                LineOn2S,
+                S1,
+                SU1,
+                SV1,
+                S2,
+                SU2,
+                SV2,
+            )
+        }
+    }
+}
+
+// ========================
+// From IntPatch_PrmPrmIntersection_T3Bits.hxx
+// ========================
+
+/// **Source:** `IntPatch_PrmPrmIntersection_T3Bits.hxx`:24 - `IntPatch_PrmPrmIntersection_T3Bits`
+pub use crate::ffi::IntPatch_PrmPrmIntersection_T3Bits as PrmPrmIntersection_T3Bits;
+
+unsafe impl crate::CppDeletable for PrmPrmIntersection_T3Bits {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_PrmPrmIntersection_T3Bits_destructor(ptr);
+    }
+}
+
+impl PrmPrmIntersection_T3Bits {
+    /// **Source:** `IntPatch_PrmPrmIntersection_T3Bits.hxx`:29 - `IntPatch_PrmPrmIntersection_T3Bits::IntPatch_PrmPrmIntersection_T3Bits()`
+    pub fn new_int(size: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_PrmPrmIntersection_T3Bits_ctor_int(size))
+        }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection_T3Bits.hxx`:33 - `IntPatch_PrmPrmIntersection_T3Bits::Add()`
+    pub fn add(&mut self, t: i32) {
+        unsafe { crate::ffi::IntPatch_PrmPrmIntersection_T3Bits_add(self as *mut Self, t) }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection_T3Bits.hxx`:35 - `IntPatch_PrmPrmIntersection_T3Bits::Val()`
+    pub fn val(&self, t: i32) -> i32 {
+        unsafe { crate::ffi::IntPatch_PrmPrmIntersection_T3Bits_val(self as *const Self, t) }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection_T3Bits.hxx`:40 - `IntPatch_PrmPrmIntersection_T3Bits::Raz()`
+    pub fn raz(&mut self, t: i32) {
+        unsafe { crate::ffi::IntPatch_PrmPrmIntersection_T3Bits_raz(self as *mut Self, t) }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection_T3Bits.hxx`:42 - `IntPatch_PrmPrmIntersection_T3Bits::ResetAnd()`
+    pub fn reset_and(&mut self) {
+        unsafe { crate::ffi::IntPatch_PrmPrmIntersection_T3Bits_reset_and(self as *mut Self) }
+    }
+
+    /// **Source:** `IntPatch_PrmPrmIntersection_T3Bits.hxx`:44 - `IntPatch_PrmPrmIntersection_T3Bits::And()`
+    pub fn and(&mut self, Oth: &mut PrmPrmIntersection_T3Bits, indiceprecedent: &mut i32) -> i32 {
+        unsafe {
+            crate::ffi::IntPatch_PrmPrmIntersection_T3Bits_and(
+                self as *mut Self,
+                Oth,
+                indiceprecedent,
+            )
+        }
+    }
+}
+
+// ========================
+// From IntPatch_RLine.hxx
+// ========================
+
+/// **Source:** `IntPatch_RLine.hxx`:38 - `IntPatch_RLine`
+/// Implementation of an intersection line described by a
+/// restriction line on one of the surfaces.
+pub use crate::ffi::IntPatch_RLine as RLine;
+
+unsafe impl crate::CppDeletable for RLine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_RLine_destructor(ptr);
+    }
+}
+
+impl RLine {
+    /// **Source:** `IntPatch_RLine.hxx`:44 - `IntPatch_RLine::IntPatch_RLine()`
+    /// Creates a restriction as an intersection line
+    /// when the transitions are In or Out.
+    pub fn new_bool_typetrans2(
+        Tang: bool,
+        Trans1: crate::int_surf::TypeTrans,
+        Trans2: crate::int_surf::TypeTrans,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_RLine_ctor_bool_typetrans2(
+                Tang,
+                Trans1.into(),
+                Trans2.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:50 - `IntPatch_RLine::IntPatch_RLine()`
+    /// Creates a restriction as an intersection line
+    /// when the transitions are Touch.
+    pub fn new_bool_situation2(
+        Tang: bool,
+        Situ1: crate::int_surf::Situation,
+        Situ2: crate::int_surf::Situation,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_RLine_ctor_bool_situation2(
+                Tang,
+                Situ1.into(),
+                Situ2.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:56 - `IntPatch_RLine::IntPatch_RLine()`
+    /// Creates a restriction as an intersection line
+    /// when the transitions are Undecided.
+    pub fn new_bool(Tang: bool) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_RLine_ctor_bool(Tang)) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:61 - `IntPatch_RLine::AddVertex()`
+    /// Adds a vertex in the list. If theIsPrepend == TRUE the new
+    /// vertex will be added before the first element of vertices sequence.
+    /// Otherwise, to the end of the sequence
+    pub fn add_vertex(&mut self, Pnt: &Point, theIsPrepend: bool) {
+        unsafe { crate::ffi::IntPatch_RLine_add_vertex(self as *mut Self, Pnt, theIsPrepend) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:66 - `IntPatch_RLine::Replace()`
+    /// Replaces the element of range Index in the list
+    /// of points.
+    pub fn replace(&mut self, Index: i32, Pnt: &Point) {
+        unsafe { crate::ffi::IntPatch_RLine_replace(self as *mut Self, Index, Pnt) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:68 - `IntPatch_RLine::SetFirstPoint()`
+    pub fn set_first_point(&mut self, IndFirst: i32) {
+        unsafe { crate::ffi::IntPatch_RLine_set_first_point(self as *mut Self, IndFirst) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:70 - `IntPatch_RLine::SetLastPoint()`
+    pub fn set_last_point(&mut self, IndLast: i32) {
+        unsafe { crate::ffi::IntPatch_RLine_set_last_point(self as *mut Self, IndLast) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:72 - `IntPatch_RLine::Add()`
+    pub fn add(&mut self, L: &crate::ffi::HandleIntSurfLineOn2S) {
+        unsafe { crate::ffi::IntPatch_RLine_add(self as *mut Self, L) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:78 - `IntPatch_RLine::IsArcOnS1()`
+    /// Returns True if the intersection is on the domain of the
+    /// first patch.
+    /// Returns False if the intersection is on the domain of
+    /// the second patch.
+    pub fn is_arc_on_s1(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_RLine_is_arc_on_s1(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:84 - `IntPatch_RLine::IsArcOnS2()`
+    /// Returns True if the intersection is on the domain of the
+    /// first patch.
+    /// Returns False if the intersection is on the domain of
+    /// the second patch.
+    pub fn is_arc_on_s2(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_RLine_is_arc_on_s2(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:86 - `IntPatch_RLine::SetArcOnS1()`
+    pub fn set_arc_on_s1(&mut self, A: &crate::ffi::HandleAdaptor2dCurve2d) {
+        unsafe { crate::ffi::IntPatch_RLine_set_arc_on_s1(self as *mut Self, A) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:88 - `IntPatch_RLine::SetArcOnS2()`
+    pub fn set_arc_on_s2(&mut self, A: &crate::ffi::HandleAdaptor2dCurve2d) {
+        unsafe { crate::ffi::IntPatch_RLine_set_arc_on_s2(self as *mut Self, A) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:90 - `IntPatch_RLine::SetParamOnS1()`
+    pub fn set_param_on_s1(&mut self, p1: f64, p2: f64) {
+        unsafe { crate::ffi::IntPatch_RLine_set_param_on_s1(self as *mut Self, p1, p2) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:92 - `IntPatch_RLine::SetParamOnS2()`
+    pub fn set_param_on_s2(&mut self, p1: &mut f64, p2: &mut f64) {
+        unsafe { crate::ffi::IntPatch_RLine_set_param_on_s2(self as *mut Self, p1, p2) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:95 - `IntPatch_RLine::ArcOnS1()`
+    /// Returns the concerned arc.
+    pub fn arc_on_s1(&self) -> &crate::ffi::HandleAdaptor2dCurve2d {
+        unsafe { &*(crate::ffi::IntPatch_RLine_arc_on_s1(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:98 - `IntPatch_RLine::ArcOnS2()`
+    /// Returns the concerned arc.
+    pub fn arc_on_s2(&self) -> &crate::ffi::HandleAdaptor2dCurve2d {
+        unsafe { &*(crate::ffi::IntPatch_RLine_arc_on_s2(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:100 - `IntPatch_RLine::ParamOnS1()`
+    pub fn param_on_s1(&self, p1: &mut f64, p2: &mut f64) {
+        unsafe { crate::ffi::IntPatch_RLine_param_on_s1(self as *const Self, p1, p2) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:102 - `IntPatch_RLine::ParamOnS2()`
+    pub fn param_on_s2(&self, p1: &mut f64, p2: &mut f64) {
+        unsafe { crate::ffi::IntPatch_RLine_param_on_s2(self as *const Self, p1, p2) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:106 - `IntPatch_RLine::HasFirstPoint()`
+    /// Returns True if the line has a known First point.
+    /// This point is given by the method FirstPoint().
+    pub fn has_first_point(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_RLine_has_first_point(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:110 - `IntPatch_RLine::HasLastPoint()`
+    /// Returns True if the line has a known Last point.
+    /// This point is given by the method LastPoint().
+    pub fn has_last_point(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_RLine_has_last_point(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:114 - `IntPatch_RLine::FirstPoint()`
+    /// Returns the IntPoint corresponding to the FirstPoint.
+    /// An exception is raised when HasFirstPoint returns False.
+    pub fn first_point(&self) -> &Point {
+        unsafe { &*(crate::ffi::IntPatch_RLine_first_point(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:118 - `IntPatch_RLine::LastPoint()`
+    /// Returns the IntPoint corresponding to the LastPoint.
+    /// An exception is raised when HasLastPoint returns False.
+    pub fn last_point(&self) -> &Point {
+        unsafe { &*(crate::ffi::IntPatch_RLine_last_point(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:121 - `IntPatch_RLine::NbVertex()`
+    /// Returns number of vertices (IntPatch_Point) of the line
+    pub fn nb_vertex(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_RLine_nb_vertex(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:124 - `IntPatch_RLine::Vertex()`
+    /// Returns the vertex of range Index on the line.
+    pub fn vertex(&self, Index: i32) -> &Point {
+        unsafe { &*(crate::ffi::IntPatch_RLine_vertex(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:127 - `IntPatch_RLine::ChangeVertex()`
+    /// Returns the vertex of range Index on the line.
+    pub fn change_vertex(&mut self, Index: i32) -> &mut Point {
+        unsafe { &mut *(crate::ffi::IntPatch_RLine_change_vertex(self as *mut Self, Index)) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:130 - `IntPatch_RLine::RemoveVertex()`
+    /// Removes single vertex from the line
+    pub fn remove_vertex(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::IntPatch_RLine_remove_vertex(self as *mut Self, theIndex) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:132 - `IntPatch_RLine::HasPolygon()`
+    pub fn has_polygon(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_RLine_has_polygon(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:135 - `IntPatch_RLine::NbPnts()`
+    /// Returns the number of intersection points.
+    pub fn nb_pnts(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_RLine_nb_pnts(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:138 - `IntPatch_RLine::Point()`
+    /// Returns the intersection point of range Index.
+    pub fn point(&self, Index: i32) -> &crate::int_surf::PntOn2S {
+        unsafe { &*(crate::ffi::IntPatch_RLine_point(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:141 - `IntPatch_RLine::SetPoint()`
+    /// Set the Point of index <Index> in the LineOn2S
+    pub fn set_point(&mut self, Index: i32, Pnt: &Point) {
+        unsafe { crate::ffi::IntPatch_RLine_set_point(self as *mut Self, Index, Pnt) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:147 - `IntPatch_RLine::ComputeVertexParameters()`
+    /// Set the parameters of all the vertex on the line.
+    /// if a vertex is already in the line,
+    /// its parameter is modified
+    /// else a new point in the line is inserted.
+    pub fn compute_vertex_parameters(&mut self, Tol: f64) {
+        unsafe { crate::ffi::IntPatch_RLine_compute_vertex_parameters(self as *mut Self, Tol) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:150 - `IntPatch_RLine::Curve()`
+    /// Returns set of intersection points
+    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi::HandleIntSurfLineOn2S> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_RLine_curve(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:154 - `IntPatch_RLine::IsOutSurf1Box()`
+    /// Returns TRUE if theP is out of the box built from
+    /// the points on 1st surface
+    pub fn is_out_surf1_box(&self, theP: &crate::gp::Pnt2d) -> bool {
+        unsafe { crate::ffi::IntPatch_RLine_is_out_surf1_box(self as *const Self, theP) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:161 - `IntPatch_RLine::IsOutSurf2Box()`
+    /// Returns TRUE if theP is out of the box built from
+    /// the points on 2nd surface
+    pub fn is_out_surf2_box(&self, theP: &crate::gp::Pnt2d) -> bool {
+        unsafe { crate::ffi::IntPatch_RLine_is_out_surf2_box(self as *const Self, theP) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:167 - `IntPatch_RLine::IsOutBox()`
+    /// Returns TRUE if theP is out of the box built from 3D-points.
+    pub fn is_out_box(&self, theP: &crate::gp::Pnt) -> bool {
+        unsafe { crate::ffi::IntPatch_RLine_is_out_box(self as *const Self, theP) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:173 - `IntPatch_RLine::ClearVertexes()`
+    /// Removes vertices from the line (i.e. cleans svtx member)
+    pub fn clear_vertexes(&mut self) {
+        unsafe { crate::ffi::IntPatch_RLine_clear_vertexes(self as *mut Self) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:175 - `IntPatch_RLine::SetCurve()`
+    pub fn set_curve(&mut self, theNewCurve: &crate::ffi::HandleIntSurfLineOn2S) {
+        unsafe { crate::ffi::IntPatch_RLine_set_curve(self as *mut Self, theNewCurve) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:181 - `IntPatch_RLine::Dump()`
+    /// if (theMode == 0) then prints the information about WLine
+    /// if (theMode == 1) then prints the list of 3d-points
+    /// if (theMode == 2) then prints the list of 2d-points on the 1st surface
+    /// Otherwise,             prints list of 2d-points on the 2nd surface
+    pub fn dump(&self, theMode: i32) {
+        unsafe { crate::ffi::IntPatch_RLine_dump(self as *const Self, theMode) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:183 - `IntPatch_RLine::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IntPatch_RLine_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:183 - `IntPatch_RLine::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IntPatch_RLine_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IntPatch_RLine.hxx`:183 - `IntPatch_RLine::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IntPatch_RLine_get_type_descriptor()) }
+    }
+
+    /// Upcast to IntPatch_PointLine
+    pub fn as_point_line(&self) -> &PointLine {
+        unsafe { &*(crate::ffi::IntPatch_RLine_as_IntPatch_PointLine(self as *const Self)) }
+    }
+
+    /// Upcast to IntPatch_PointLine (mutable)
+    pub fn as_point_line_mut(&mut self) -> &mut PointLine {
+        unsafe { &mut *(crate::ffi::IntPatch_RLine_as_IntPatch_PointLine_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to IntPatch_Line
+    pub fn as_line(&self) -> &Line {
+        unsafe { &*(crate::ffi::IntPatch_RLine_as_IntPatch_Line(self as *const Self)) }
+    }
+
+    /// Upcast to IntPatch_Line (mutable)
+    pub fn as_line_mut(&mut self) -> &mut Line {
+        unsafe { &mut *(crate::ffi::IntPatch_RLine_as_IntPatch_Line_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IntPatch_RLine_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::IntPatch_RLine_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIntPatchRLine> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_RLine_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:44 - `IntPatch_Line::SetValue()`
+    pub fn set_value(&mut self, Uiso1: bool, Viso1: bool, Uiso2: bool, Viso2: bool) {
+        unsafe {
+            crate::ffi::IntPatch_RLine_inherited_SetValue(
+                self as *mut Self,
+                Uiso1,
+                Viso1,
+                Uiso2,
+                Viso2,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:51 - `IntPatch_Line::ArcType()`
+    pub fn arc_type(&self) -> crate::int_patch::IType {
+        unsafe {
+            crate::int_patch::IType::try_from(crate::ffi::IntPatch_RLine_inherited_ArcType(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:55 - `IntPatch_Line::IsTangent()`
+    pub fn is_tangent(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_RLine_inherited_IsTangent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:76 - `IntPatch_Line::TransitionOnS1()`
+    pub fn transition_on_s1(&self) -> crate::int_surf::TypeTrans {
+        unsafe {
+            crate::int_surf::TypeTrans::try_from(
+                crate::ffi::IntPatch_RLine_inherited_TransitionOnS1(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:81 - `IntPatch_Line::TransitionOnS2()`
+    pub fn transition_on_s2(&self) -> crate::int_surf::TypeTrans {
+        unsafe {
+            crate::int_surf::TypeTrans::try_from(
+                crate::ffi::IntPatch_RLine_inherited_TransitionOnS2(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:87 - `IntPatch_Line::SituationS1()`
+    pub fn situation_s1(&self) -> crate::int_surf::Situation {
+        unsafe {
+            crate::int_surf::Situation::try_from(crate::ffi::IntPatch_RLine_inherited_SituationS1(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:93 - `IntPatch_Line::SituationS2()`
+    pub fn situation_s2(&self) -> crate::int_surf::Situation {
+        unsafe {
+            crate::int_surf::Situation::try_from(crate::ffi::IntPatch_RLine_inherited_SituationS2(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:97 - `IntPatch_Line::IsUIsoOnS1()`
+    pub fn is_u_iso_on_s1(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_RLine_inherited_IsUIsoOnS1(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:101 - `IntPatch_Line::IsVIsoOnS1()`
+    pub fn is_v_iso_on_s1(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_RLine_inherited_IsVIsoOnS1(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:105 - `IntPatch_Line::IsUIsoOnS2()`
+    pub fn is_u_iso_on_s2(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_RLine_inherited_IsUIsoOnS2(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:109 - `IntPatch_Line::IsVIsoOnS2()`
+    pub fn is_v_iso_on_s2(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_RLine_inherited_IsVIsoOnS2(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IntPatch_RLine_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IntPatch_RLine_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_RLine_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IntPatch_RLine_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IntPatch_RLine_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IntPatch_RLine_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIntPatchRLine;
+
+unsafe impl crate::CppDeletable for HandleIntPatchRLine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIntPatchRLine_destructor(ptr);
+    }
+}
+
+impl HandleIntPatchRLine {
+    /// Dereference this Handle to access the underlying IntPatch_RLine
+    pub fn get(&self) -> &crate::ffi::IntPatch_RLine {
+        unsafe { &*(crate::ffi::HandleIntPatchRLine_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IntPatch_RLine
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IntPatch_RLine {
+        unsafe { &mut *(crate::ffi::HandleIntPatchRLine_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IntPatch_RLine> to Handle<IntPatch_PointLine>
+    pub fn to_handle_point_line(&self) -> crate::OwnedPtr<crate::ffi::HandleIntPatchPointLine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIntPatchRLine_to_HandleIntPatchPointLine(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<IntPatch_RLine> to Handle<IntPatch_Line>
+    pub fn to_handle_line(&self) -> crate::OwnedPtr<crate::ffi::HandleIntPatchLine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIntPatchRLine_to_HandleIntPatchLine(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<IntPatch_RLine> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIntPatchRLine_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From IntPatch_RstInt.hxx
+// ========================
+
+/// **Source:** `IntPatch_RstInt.hxx`:27 - `IntPatch_RstInt`
+/// trouver les points d intersection entre la ligne de
+/// cheminement et les arcs de restriction
+pub use crate::ffi::IntPatch_RstInt as RstInt;
+
+unsafe impl crate::CppDeletable for RstInt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_RstInt_destructor(ptr);
+    }
+}
+
+impl RstInt {
+    /// **Source:** `IntPatch_RstInt.hxx` - `IntPatch_RstInt::IntPatch_RstInt()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_RstInt_ctor()) }
+    }
+
+    /// **Source:** `IntPatch_RstInt.hxx`:32 - `IntPatch_RstInt::PutVertexOnLine()`
+    pub fn put_vertex_on_line(
+        L: &crate::ffi::HandleIntPatchLine,
+        Surf: &crate::ffi::HandleAdaptor3dSurface,
+        Domain: &crate::ffi::HandleAdaptor3dTopolTool,
+        OtherSurf: &crate::ffi::HandleAdaptor3dSurface,
+        OnFirst: bool,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_RstInt_put_vertex_on_line(L, Surf, Domain, OtherSurf, OnFirst, Tol)
+        }
+    }
+}
+
+// ========================
+// From IntPatch_SpecialPoints.hxx
+// ========================
+
+/// **Source:** `IntPatch_SpecialPoints.hxx`:36 - `IntPatch_SpecialPoints`
+pub use crate::ffi::IntPatch_SpecialPoints as SpecialPoints;
+
+unsafe impl crate::CppDeletable for SpecialPoints {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_SpecialPoints_destructor(ptr);
+    }
+}
+
+impl SpecialPoints {
+    /// **Source:** `IntPatch_SpecialPoints.hxx` - `IntPatch_SpecialPoints::IntPatch_SpecialPoints()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_SpecialPoints_ctor()) }
+    }
+
+    /// **Source:** `IntPatch_SpecialPoints.hxx`:45 - `IntPatch_SpecialPoints::AddCrossUVIsoPoint()`
+    /// Adds the point defined as intersection
+    /// of two isolines (U = 0 and V = 0) on theQSurf in theLine.
+    /// theRefPt is used to correct adjusting parameters.
+    /// If theIsReversed is TRUE then theQSurf correspond to the
+    /// second (otherwise, the first) surface while forming
+    /// intersection point IntSurf_PntOn2S.
+    pub fn add_cross_uv_iso_point(
+        theQSurf: &crate::ffi::HandleAdaptor3dSurface,
+        thePSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theRefPt: &crate::int_surf::PntOn2S,
+        theTol3d: f64,
+        theAddedPoint: &mut crate::int_surf::PntOn2S,
+        theIsReversed: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IntPatch_SpecialPoints_add_cross_uv_iso_point(
+                theQSurf,
+                thePSurf,
+                theRefPt,
+                theTol3d,
+                theAddedPoint,
+                theIsReversed,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_SpecialPoints.hxx`:88 - `IntPatch_SpecialPoints::AddSingularPole()`
+    /// Computes the pole of sphere to add it in the intersection line.
+    /// Stores the result in theAddedPoint variable (does not add in the line).
+    /// At that, cone and sphere (with singularity) must be set in theQSurf parameter.
+    /// By default (if theIsReversed == FALSE), theQSurf is the first surface of the
+    /// Walking line. If it is not, theIsReversed parameter must be set to TRUE.
+    /// theIsReqRefCheck is TRUE if and only if 3D-point of theRefPt must be pole or apex
+    /// for check (e.g. if it is vertex).
+    /// thePtIso is the reference point for obtaining isoline where must be placed the Apex/Pole.
+    ///
+    /// ATTENTION!!!
+    /// theVertex must be initialized before calling the method .
+    pub fn add_singular_pole(
+        theQSurf: &crate::ffi::HandleAdaptor3dSurface,
+        thePSurf: &crate::ffi::HandleAdaptor3dSurface,
+        thePtIso: &crate::int_surf::PntOn2S,
+        theVertex: &mut Point,
+        theAddedPoint: &mut crate::int_surf::PntOn2S,
+        theIsReversed: bool,
+        theIsReqRefCheck: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IntPatch_SpecialPoints_add_singular_pole(
+                theQSurf,
+                thePSurf,
+                thePtIso,
+                theVertex,
+                theAddedPoint,
+                theIsReversed,
+                theIsReqRefCheck,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_SpecialPoints.hxx`:103 - `IntPatch_SpecialPoints::ContinueAfterSpecialPoint()`
+    /// Special point has already been added in the line. Now, we need in correct
+    /// prolongation of the line or in start new line. This function returns new point.
+    ///
+    /// ATTENTION!!!
+    /// theNewPoint is not only Output parameter. It is Input/Output one. I.e.
+    /// theNewPoint is reference point together with theRefPt.
+    pub fn continue_after_special_point(
+        theQSurf: &crate::ffi::HandleAdaptor3dSurface,
+        thePSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theRefPt: &crate::int_surf::PntOn2S,
+        theSPType: crate::int_patch::SpecPntType,
+        theTol2D: f64,
+        theNewPoint: &mut crate::int_surf::PntOn2S,
+        theIsReversed: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IntPatch_SpecialPoints_continue_after_special_point(
+                theQSurf,
+                thePSurf,
+                theRefPt,
+                theSPType.into(),
+                theTol2D,
+                theNewPoint,
+                theIsReversed,
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for SpecialPoints (2 total) ──
+// SKIPPED: **Source:** `IntPatch_SpecialPoints.hxx`:64 - `IntPatch_SpecialPoints::AddPointOnUorVIso`
+//   static_method: Adds the point lain strictly in the isoline U = 0 or V = 0 of theQSurf,
+//   static_method: in theLine.
+//   static_method: theRefPt is used to correct adjusting parameters.
+//   Reason: param 'theToler' uses unknown type 'const math_Vector&'
+//   // pub fn add_point_on_uor_v_iso(theQSurf: &HandleSurface, thePSurf: &HandleSurface, theRefPt: &PntOn2S, theIsU: bool, theIsoParameter: f64, theToler: &Vector, theInitPoint: &Vector, theInfBound: &Vector, theSupBound: &Vector, theAddedPoint: &mut PntOn2S, theIsReversed: bool) -> bool;
+//
+// SKIPPED: **Source:** `IntPatch_SpecialPoints.hxx`:123 - `IntPatch_SpecialPoints::AdjustPointAndVertex`
+//   static_method: Sets theNewPoint parameters in 2D-space the closest to
+//   static_method: theRefPoint with help of adding/subtracting corresponding periods.
+//   static_method: theArrPeriods must be filled as follows:
+//   Reason: has unbindable types: param 'theArrPeriods': C-style array (Standard_Real[4])
+//   // pub fn adjust_point_and_vertex(theRefPoint: &PntOn2S, theArrPeriods: /* Standard_Real[4] */, theNewPoint: &mut PntOn2S, theVertex: /* IntPatch_Point* */);
+//
+
+// ========================
+// From IntPatch_TheIWLineOfTheIWalking.hxx
+// ========================
+
+/// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:39 - `IntPatch_TheIWLineOfTheIWalking`
+pub use crate::ffi::IntPatch_TheIWLineOfTheIWalking as TheIWLineOfTheIWalking;
+
+unsafe impl crate::CppDeletable for TheIWLineOfTheIWalking {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_TheIWLineOfTheIWalking_destructor(ptr);
+    }
+}
+
+impl TheIWLineOfTheIWalking {
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:43 - `IntPatch_TheIWLineOfTheIWalking::IntPatch_TheIWLineOfTheIWalking()`
+    pub fn new_allocator(theAllocator: &crate::ffi::IntSurf_Allocator) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_TheIWLineOfTheIWalking_ctor_allocator(
+                theAllocator,
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:46 - `IntPatch_TheIWLineOfTheIWalking::Reverse()`
+    /// reverse the points in the line. Hasfirst, HasLast are kept.
+    pub fn reverse(&mut self) {
+        unsafe { crate::ffi::IntPatch_TheIWLineOfTheIWalking_reverse(self as *mut Self) }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:49 - `IntPatch_TheIWLineOfTheIWalking::Cut()`
+    /// Cut the line at the point of rank Index.
+    pub fn cut(&mut self, Index: i32) {
+        unsafe { crate::ffi::IntPatch_TheIWLineOfTheIWalking_cut(self as *mut Self, Index) }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:52 - `IntPatch_TheIWLineOfTheIWalking::AddPoint()`
+    /// Add a point in the line.
+    pub fn add_point(&mut self, P: &crate::int_surf::PntOn2S) {
+        unsafe { crate::ffi::IntPatch_TheIWLineOfTheIWalking_add_point(self as *mut Self, P) }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:54 - `IntPatch_TheIWLineOfTheIWalking::AddStatusFirst()`
+    pub fn add_status_first_bool2(&mut self, Closed: bool, HasFirst: bool) {
+        unsafe {
+            crate::ffi::IntPatch_TheIWLineOfTheIWalking_add_status_first_bool2(
+                self as *mut Self,
+                Closed,
+                HasFirst,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:56 - `IntPatch_TheIWLineOfTheIWalking::AddStatusFirst()`
+    pub fn add_status_first_bool2_int_pathpoint(
+        &mut self,
+        Closed: bool,
+        HasLast: bool,
+        Index: i32,
+        P: &crate::int_surf::PathPoint,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_TheIWLineOfTheIWalking_add_status_first_bool2_int_pathpoint(
+                self as *mut Self,
+                Closed,
+                HasLast,
+                Index,
+                P,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:61 - `IntPatch_TheIWLineOfTheIWalking::AddStatusFirstLast()`
+    pub fn add_status_first_last(&mut self, Closed: bool, HasFirst: bool, HasLast: bool) {
+        unsafe {
+            crate::ffi::IntPatch_TheIWLineOfTheIWalking_add_status_first_last(
+                self as *mut Self,
+                Closed,
+                HasFirst,
+                HasLast,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:65 - `IntPatch_TheIWLineOfTheIWalking::AddStatusLast()`
+    pub fn add_status_last_bool(&mut self, HasLast: bool) {
+        unsafe {
+            crate::ffi::IntPatch_TheIWLineOfTheIWalking_add_status_last_bool(
+                self as *mut Self,
+                HasLast,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:67 - `IntPatch_TheIWLineOfTheIWalking::AddStatusLast()`
+    pub fn add_status_last_bool_int_pathpoint(
+        &mut self,
+        HasLast: bool,
+        Index: i32,
+        P: &crate::int_surf::PathPoint,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_TheIWLineOfTheIWalking_add_status_last_bool_int_pathpoint(
+                self as *mut Self,
+                HasLast,
+                Index,
+                P,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:73 - `IntPatch_TheIWLineOfTheIWalking::AddIndexPassing()`
+    /// associer a l 'indice du point sur la ligne l'indice du point
+    /// passant dans l'iterateur de depart
+    pub fn add_index_passing(&mut self, Index: i32) {
+        unsafe {
+            crate::ffi::IntPatch_TheIWLineOfTheIWalking_add_index_passing(self as *mut Self, Index)
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:75 - `IntPatch_TheIWLineOfTheIWalking::SetTangentVector()`
+    pub fn set_tangent_vector(&mut self, V: &crate::gp::Vec, Index: i32) {
+        unsafe {
+            crate::ffi::IntPatch_TheIWLineOfTheIWalking_set_tangent_vector(
+                self as *mut Self,
+                V,
+                Index,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:77 - `IntPatch_TheIWLineOfTheIWalking::SetTangencyAtBegining()`
+    pub fn set_tangency_at_begining(&mut self, IsTangent: bool) {
+        unsafe {
+            crate::ffi::IntPatch_TheIWLineOfTheIWalking_set_tangency_at_begining(
+                self as *mut Self,
+                IsTangent,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:79 - `IntPatch_TheIWLineOfTheIWalking::SetTangencyAtEnd()`
+    pub fn set_tangency_at_end(&mut self, IsTangent: bool) {
+        unsafe {
+            crate::ffi::IntPatch_TheIWLineOfTheIWalking_set_tangency_at_end(
+                self as *mut Self,
+                IsTangent,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:83 - `IntPatch_TheIWLineOfTheIWalking::NbPoints()`
+    /// Returns the number of points of the line (including first
+    /// point and end point : see HasLastPoint and HasFirstPoint).
+    pub fn nb_points(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_TheIWLineOfTheIWalking_nb_points(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:87 - `IntPatch_TheIWLineOfTheIWalking::Value()`
+    /// Returns the point of range Index.
+    /// If index <= 0 or Index > NbPoints, an exception is raised.
+    pub fn value(&self, Index: i32) -> &crate::int_surf::PntOn2S {
+        unsafe { &*(crate::ffi::IntPatch_TheIWLineOfTheIWalking_value(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:90 - `IntPatch_TheIWLineOfTheIWalking::Line()`
+    /// Returns the LineOn2S contained in the walking line.
+    pub fn line(&self) -> &crate::ffi::HandleIntSurfLineOn2S {
+        unsafe { &*(crate::ffi::IntPatch_TheIWLineOfTheIWalking_line(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:93 - `IntPatch_TheIWLineOfTheIWalking::IsClosed()`
+    /// Returns True if the line is closed.
+    pub fn is_closed(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_TheIWLineOfTheIWalking_is_closed(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:99 - `IntPatch_TheIWLineOfTheIWalking::HasFirstPoint()`
+    /// Returns True if the first point of the line is a
+    /// marching point . when is HasFirstPoint==False ,the line
+    /// begins on the natural bound of the surface.the line can be
+    /// too long
+    pub fn has_first_point(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_TheIWLineOfTheIWalking_has_first_point(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:106 - `IntPatch_TheIWLineOfTheIWalking::HasLastPoint()`
+    /// Returns True if the end point of the line is a
+    /// marching point (Point from IntWS).
+    /// when is HasFirstPoint==False ,the line ends
+    /// on the natural bound of the surface.the line can be
+    /// too long.
+    pub fn has_last_point(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_TheIWLineOfTheIWalking_has_last_point(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:111 - `IntPatch_TheIWLineOfTheIWalking::FirstPoint()`
+    /// Returns the first point of the line when it is a
+    /// marching point.
+    /// An exception is raised if HasFirstPoint returns False.
+    pub fn first_point(&self) -> &crate::int_surf::PathPoint {
+        unsafe { &*(crate::ffi::IntPatch_TheIWLineOfTheIWalking_first_point(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:117 - `IntPatch_TheIWLineOfTheIWalking::FirstPointIndex()`
+    /// Returns the Index of first point of the line when it is a
+    /// marching point.This index is the index in the
+    /// PointStartIterator.
+    /// An exception is raised if HasFirstPoint returns False.
+    pub fn first_point_index(&self) -> i32 {
+        unsafe {
+            crate::ffi::IntPatch_TheIWLineOfTheIWalking_first_point_index(self as *const Self)
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:122 - `IntPatch_TheIWLineOfTheIWalking::LastPoint()`
+    /// Returns the last point of the line when it is a
+    /// marching point.
+    /// An exception is raised if HasLastPoint returns False.
+    pub fn last_point(&self) -> &crate::int_surf::PathPoint {
+        unsafe { &*(crate::ffi::IntPatch_TheIWLineOfTheIWalking_last_point(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:128 - `IntPatch_TheIWLineOfTheIWalking::LastPointIndex()`
+    /// Returns the index of last point of the line when it is a
+    /// marching point.This index is the index in the
+    /// PointStartIterator.
+    /// An exception is raised if HasLastPoint returns False.
+    pub fn last_point_index(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_TheIWLineOfTheIWalking_last_point_index(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:132 - `IntPatch_TheIWLineOfTheIWalking::NbPassingPoint()`
+    /// returns the number of points belonging to Pnts1 which are
+    /// passing point.
+    pub fn nb_passing_point(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_TheIWLineOfTheIWalking_nb_passing_point(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:137 - `IntPatch_TheIWLineOfTheIWalking::PassingPoint()`
+    /// returns the index of the point belonging to the line which
+    /// is associated to the passing point belonging to Pnts1
+    /// an exception is raised if Index > NbPassingPoint()
+    pub fn passing_point(&self, Index: i32, IndexLine: &mut i32, IndexPnts: &mut i32) {
+        unsafe {
+            crate::ffi::IntPatch_TheIWLineOfTheIWalking_passing_point(
+                self as *const Self,
+                Index,
+                IndexLine,
+                IndexPnts,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:141 - `IntPatch_TheIWLineOfTheIWalking::TangentVector()`
+    pub fn tangent_vector(&self, Index: &mut i32) -> &crate::gp::Vec {
+        unsafe {
+            &*(crate::ffi::IntPatch_TheIWLineOfTheIWalking_tangent_vector(
+                self as *const Self,
+                Index,
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:143 - `IntPatch_TheIWLineOfTheIWalking::IsTangentAtBegining()`
+    pub fn is_tangent_at_begining(&self) -> bool {
+        unsafe {
+            crate::ffi::IntPatch_TheIWLineOfTheIWalking_is_tangent_at_begining(self as *const Self)
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:145 - `IntPatch_TheIWLineOfTheIWalking::IsTangentAtEnd()`
+    pub fn is_tangent_at_end(&self) -> bool {
+        unsafe {
+            crate::ffi::IntPatch_TheIWLineOfTheIWalking_is_tangent_at_end(self as *const Self)
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:147 - `IntPatch_TheIWLineOfTheIWalking::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IntPatch_TheIWLineOfTheIWalking_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:147 - `IntPatch_TheIWLineOfTheIWalking::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IntPatch_TheIWLineOfTheIWalking_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:147 - `IntPatch_TheIWLineOfTheIWalking::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IntPatch_TheIWLineOfTheIWalking_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IntPatch_TheIWLineOfTheIWalking_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IntPatch_TheIWLineOfTheIWalking_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIntPatchTheIWLineOfTheIWalking> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_TheIWLineOfTheIWalking_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IntPatch_TheIWLineOfTheIWalking_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IntPatch_TheIWLineOfTheIWalking_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::IntPatch_TheIWLineOfTheIWalking_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IntPatch_TheIWLineOfTheIWalking_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IntPatch_TheIWLineOfTheIWalking_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IntPatch_TheIWLineOfTheIWalking_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIntPatchTheIWLineOfTheIWalking;
+
+unsafe impl crate::CppDeletable for HandleIntPatchTheIWLineOfTheIWalking {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIntPatchTheIWLineOfTheIWalking_destructor(ptr);
+    }
+}
+
+impl HandleIntPatchTheIWLineOfTheIWalking {
+    /// Dereference this Handle to access the underlying IntPatch_TheIWLineOfTheIWalking
+    pub fn get(&self) -> &crate::ffi::IntPatch_TheIWLineOfTheIWalking {
+        unsafe { &*(crate::ffi::HandleIntPatchTheIWLineOfTheIWalking_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IntPatch_TheIWLineOfTheIWalking
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IntPatch_TheIWLineOfTheIWalking {
+        unsafe {
+            &mut *(crate::ffi::HandleIntPatchTheIWLineOfTheIWalking_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<IntPatch_TheIWLineOfTheIWalking> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIntPatchTheIWLineOfTheIWalking_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From IntPatch_TheIWalking.hxx
+// ========================
+
+/// **Source:** `IntPatch_TheIWalking.hxx`:47 - `IntPatch_TheIWalking`
+pub use crate::ffi::IntPatch_TheIWalking as TheIWalking;
+
+unsafe impl crate::CppDeletable for TheIWalking {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_TheIWalking_destructor(ptr);
+    }
+}
+
+impl TheIWalking {
+    /// **Source:** `IntPatch_TheIWalking.hxx`:61 - `IntPatch_TheIWalking::IntPatch_TheIWalking()`
+    /// Deflection is the maximum deflection admitted between two
+    /// consecutive points on a resulting polyline.
+    /// Step is the maximum increment admitted between two
+    /// consecutive points (in 2d space).
+    /// Epsilon is the tolerance beyond which 2 points
+    /// are confused.
+    /// theToFillHoles is the flag defining whether possible holes
+    /// between resulting curves are filled or not
+    /// in case of IntPatch walking theToFillHoles is False
+    pub fn new_real3_bool(
+        Epsilon: f64,
+        Deflection: f64,
+        Step: f64,
+        theToFillHoles: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_TheIWalking_ctor_real3_bool(
+                Epsilon,
+                Deflection,
+                Step,
+                theToFillHoles,
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWalking.hxx`:61 - `IntPatch_TheIWalking::IntPatch_TheIWalking()`
+    /// Deflection is the maximum deflection admitted between two
+    /// consecutive points on a resulting polyline.
+    /// Step is the maximum increment admitted between two
+    /// consecutive points (in 2d space).
+    /// Epsilon is the tolerance beyond which 2 points
+    /// are confused.
+    /// theToFillHoles is the flag defining whether possible holes
+    /// between resulting curves are filled or not
+    /// in case of IntPatch walking theToFillHoles is False
+    pub fn new_real3(Epsilon: f64, Deflection: f64, Step: f64) -> crate::OwnedPtr<Self> {
+        Self::new_real3_bool(Epsilon, Deflection, Step, false)
+    }
+
+    /// **Source:** `IntPatch_TheIWalking.hxx`:72 - `IntPatch_TheIWalking::SetTolerance()`
+    /// Deflection is the maximum deflection admitted between two
+    /// consecutive points on a resulting polyline.
+    /// Step is the maximum increment admitted between two
+    /// consecutive points (in 2d space).
+    /// Epsilon is the tolerance beyond which 2 points
+    /// are confused
+    pub fn set_tolerance(&mut self, Epsilon: f64, Deflection: f64, Step: f64) {
+        unsafe {
+            crate::ffi::IntPatch_TheIWalking_set_tolerance(
+                self as *mut Self,
+                Epsilon,
+                Deflection,
+                Step,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWalking.hxx`:79 - `IntPatch_TheIWalking::Perform()`
+    /// Searches a set of polylines starting on a point of Pnts1
+    /// or Pnts2.
+    /// Each point on a resulting polyline verifies F(u,v)=0
+    pub fn perform_sequenceofpathpoint_sequenceofinteriorpoint_thesurffunction_handleadaptor3dsurface_bool(
+        &mut self,
+        Pnts1: &crate::ffi::IntSurf_SequenceOfPathPoint,
+        Pnts2: &crate::ffi::IntSurf_SequenceOfInteriorPoint,
+        Func: &mut TheSurfFunction,
+        S: &crate::ffi::HandleAdaptor3dSurface,
+        Reversed: bool,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_TheIWalking_perform_sequenceofpathpoint_sequenceofinteriorpoint_thesurffunction_handleadaptor3dsurface_bool(self as *mut Self, Pnts1, Pnts2, Func, S, Reversed)
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWalking.hxx`:87 - `IntPatch_TheIWalking::Perform()`
+    /// Searches a set of polylines starting on a point of Pnts1.
+    /// Each point on a resulting polyline verifies F(u,v)=0
+    pub fn perform_sequenceofpathpoint_thesurffunction_handleadaptor3dsurface_bool(
+        &mut self,
+        Pnts1: &crate::ffi::IntSurf_SequenceOfPathPoint,
+        Func: &mut TheSurfFunction,
+        S: &crate::ffi::HandleAdaptor3dSurface,
+        Reversed: bool,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_TheIWalking_perform_sequenceofpathpoint_thesurffunction_handleadaptor3dsurface_bool(self as *mut Self, Pnts1, Func, S, Reversed)
+        }
+    }
+
+    /// **Source:** `IntPatch_TheIWalking.hxx`:93 - `IntPatch_TheIWalking::IsDone()`
+    /// Returns true if the calculus was successful.
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_TheIWalking_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheIWalking.hxx`:97 - `IntPatch_TheIWalking::NbLines()`
+    /// Returns the number of resulting polylines.
+    /// An exception is raised if IsDone returns False.
+    pub fn nb_lines(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_TheIWalking_nb_lines(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheIWalking.hxx`:102 - `IntPatch_TheIWalking::Value()`
+    /// Returns the polyline of range Index.
+    /// An exception is raised if IsDone is False.
+    /// An exception is raised if Index<=0 or Index>NbLines.
+    pub fn value(&self, Index: i32) -> &crate::ffi::HandleIntPatchTheIWLineOfTheIWalking {
+        unsafe { &*(crate::ffi::IntPatch_TheIWalking_value(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `IntPatch_TheIWalking.hxx`:107 - `IntPatch_TheIWalking::NbSinglePnts()`
+    /// Returns the number of points belonging to Pnts on which no
+    /// line starts or ends.
+    /// An exception is raised if IsDone returns False.
+    pub fn nb_single_pnts(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_TheIWalking_nb_single_pnts(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheIWalking.hxx`:113 - `IntPatch_TheIWalking::SinglePnt()`
+    /// Returns the point of range Index .
+    /// An exception is raised if IsDone returns False.
+    /// An exception is raised if Index<=0 or
+    /// Index > NbSinglePnts.
+    pub fn single_pnt(&self, Index: i32) -> &crate::int_surf::PathPoint {
+        unsafe { &*(crate::ffi::IntPatch_TheIWalking_single_pnt(self as *const Self, Index)) }
+    }
+}
+
+// ========================
+// From IntPatch_ThePathPointOfTheSOnBounds.hxx
+// ========================
+
+/// **Source:** `IntPatch_ThePathPointOfTheSOnBounds.hxx`:27 - `IntPatch_ThePathPointOfTheSOnBounds`
+pub use crate::ffi::IntPatch_ThePathPointOfTheSOnBounds as ThePathPointOfTheSOnBounds;
+
+unsafe impl crate::CppDeletable for ThePathPointOfTheSOnBounds {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_ThePathPointOfTheSOnBounds_destructor(ptr);
+    }
+}
+
+impl ThePathPointOfTheSOnBounds {
+    /// **Source:** `IntPatch_ThePathPointOfTheSOnBounds.hxx`:32 - `IntPatch_ThePathPointOfTheSOnBounds::IntPatch_ThePathPointOfTheSOnBounds()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_ThePathPointOfTheSOnBounds_ctor()) }
+    }
+
+    /// **Source:** `IntPatch_ThePathPointOfTheSOnBounds.hxx`:34 - `IntPatch_ThePathPointOfTheSOnBounds::IntPatch_ThePathPointOfTheSOnBounds()`
+    pub fn new_pnt_real_handleadaptor3dhvertex_handleadaptor2dcurve2d_real(
+        P: &crate::gp::Pnt,
+        Tol: f64,
+        V: &crate::ffi::HandleAdaptor3dHVertex,
+        A: &crate::ffi::HandleAdaptor2dCurve2d,
+        Parameter: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_ThePathPointOfTheSOnBounds_ctor_pnt_real_handleadaptor3dhvertex_handleadaptor2dcurve2d_real(P, Tol, V, A, Parameter))
+        }
+    }
+
+    /// **Source:** `IntPatch_ThePathPointOfTheSOnBounds.hxx`:40 - `IntPatch_ThePathPointOfTheSOnBounds::IntPatch_ThePathPointOfTheSOnBounds()`
+    pub fn new_pnt_real_handleadaptor2dcurve2d_real(
+        P: &crate::gp::Pnt,
+        Tol: f64,
+        A: &crate::ffi::HandleAdaptor2dCurve2d,
+        Parameter: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_ThePathPointOfTheSOnBounds_ctor_pnt_real_handleadaptor2dcurve2d_real(P, Tol, A, Parameter))
+        }
+    }
+
+    /// **Source:** `IntPatch_ThePathPointOfTheSOnBounds.hxx`:45 - `IntPatch_ThePathPointOfTheSOnBounds::SetValue()`
+    pub fn set_value_pnt_real_handleadaptor3dhvertex_handleadaptor2dcurve2d_real(
+        &mut self,
+        P: &crate::gp::Pnt,
+        Tol: f64,
+        V: &crate::ffi::HandleAdaptor3dHVertex,
+        A: &crate::ffi::HandleAdaptor2dCurve2d,
+        Parameter: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_ThePathPointOfTheSOnBounds_set_value_pnt_real_handleadaptor3dhvertex_handleadaptor2dcurve2d_real(self as *mut Self, P, Tol, V, A, Parameter)
+        }
+    }
+
+    /// **Source:** `IntPatch_ThePathPointOfTheSOnBounds.hxx`:51 - `IntPatch_ThePathPointOfTheSOnBounds::SetValue()`
+    pub fn set_value_pnt_real_handleadaptor2dcurve2d_real(
+        &mut self,
+        P: &crate::gp::Pnt,
+        Tol: f64,
+        A: &crate::ffi::HandleAdaptor2dCurve2d,
+        Parameter: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_ThePathPointOfTheSOnBounds_set_value_pnt_real_handleadaptor2dcurve2d_real(self as *mut Self, P, Tol, A, Parameter)
+        }
+    }
+
+    /// **Source:** `IntPatch_ThePathPointOfTheSOnBounds.hxx`:56 - `IntPatch_ThePathPointOfTheSOnBounds::Value()`
+    pub fn value(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::IntPatch_ThePathPointOfTheSOnBounds_value(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_ThePathPointOfTheSOnBounds.hxx`:58 - `IntPatch_ThePathPointOfTheSOnBounds::Tolerance()`
+    pub fn tolerance(&self) -> f64 {
+        unsafe { crate::ffi::IntPatch_ThePathPointOfTheSOnBounds_tolerance(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ThePathPointOfTheSOnBounds.hxx`:60 - `IntPatch_ThePathPointOfTheSOnBounds::IsNew()`
+    pub fn is_new(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_ThePathPointOfTheSOnBounds_is_new(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_ThePathPointOfTheSOnBounds.hxx`:62 - `IntPatch_ThePathPointOfTheSOnBounds::Vertex()`
+    pub fn vertex(&self) -> &crate::ffi::HandleAdaptor3dHVertex {
+        unsafe { &*(crate::ffi::IntPatch_ThePathPointOfTheSOnBounds_vertex(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_ThePathPointOfTheSOnBounds.hxx`:64 - `IntPatch_ThePathPointOfTheSOnBounds::Arc()`
+    pub fn arc(&self) -> &crate::ffi::HandleAdaptor2dCurve2d {
+        unsafe { &*(crate::ffi::IntPatch_ThePathPointOfTheSOnBounds_arc(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_ThePathPointOfTheSOnBounds.hxx`:66 - `IntPatch_ThePathPointOfTheSOnBounds::Parameter()`
+    pub fn parameter(&self) -> f64 {
+        unsafe { crate::ffi::IntPatch_ThePathPointOfTheSOnBounds_parameter(self as *const Self) }
+    }
+}
+
+// ========================
+// From IntPatch_TheSOnBounds.hxx
+// ========================
+
+/// **Source:** `IntPatch_TheSOnBounds.hxx`:38 - `IntPatch_TheSOnBounds`
+pub use crate::ffi::IntPatch_TheSOnBounds as TheSOnBounds;
+
+unsafe impl crate::CppDeletable for TheSOnBounds {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_TheSOnBounds_destructor(ptr);
+    }
+}
+
+impl TheSOnBounds {
+    /// **Source:** `IntPatch_TheSOnBounds.hxx`:44 - `IntPatch_TheSOnBounds::IntPatch_TheSOnBounds()`
+    /// Empty constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_TheSOnBounds_ctor()) }
+    }
+
+    /// **Source:** `IntPatch_TheSOnBounds.hxx`:51 - `IntPatch_TheSOnBounds::Perform()`
+    /// Algorithm to find the points and parts of curves of Domain
+    /// (domain of of restriction of a surface) which verify
+    /// F = 0.
+    /// TolBoundary defines if a curve is on Q.
+    /// TolTangency defines if a point is on Q.
+    pub fn perform(
+        &mut self,
+        F: &mut ArcFunction,
+        Domain: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolBoundary: f64,
+        TolTangency: f64,
+        RecheckOnRegularity: bool,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_TheSOnBounds_perform(
+                self as *mut Self,
+                F,
+                Domain,
+                TolBoundary,
+                TolTangency,
+                RecheckOnRegularity,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_TheSOnBounds.hxx`:58 - `IntPatch_TheSOnBounds::IsDone()`
+    /// Returns True if the calculus was successful.
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_TheSOnBounds_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheSOnBounds.hxx`:63 - `IntPatch_TheSOnBounds::AllArcSolution()`
+    /// Returns true if all arc of the Arcs are solution (inside
+    /// the surface).
+    /// An exception is raised if IsDone returns False.
+    pub fn all_arc_solution(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_TheSOnBounds_all_arc_solution(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheSOnBounds.hxx`:67 - `IntPatch_TheSOnBounds::NbPoints()`
+    /// Returns the number of resulting points.
+    /// An exception is raised if IsDone returns False (NotDone).
+    pub fn nb_points(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_TheSOnBounds_nb_points(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheSOnBounds.hxx`:74 - `IntPatch_TheSOnBounds::Point()`
+    /// Returns the resulting point of range Index.
+    /// The exception NotDone is raised if IsDone() returns
+    /// False.
+    /// The exception OutOfRange is raised if
+    /// Index <= 0 or Index > NbPoints.
+    pub fn point(&self, Index: i32) -> &ThePathPointOfTheSOnBounds {
+        unsafe { &*(crate::ffi::IntPatch_TheSOnBounds_point(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `IntPatch_TheSOnBounds.hxx`:78 - `IntPatch_TheSOnBounds::NbSegments()`
+    /// Returns the number of the resulting segments.
+    /// An exception is raised if IsDone returns False (NotDone).
+    pub fn nb_segments(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_TheSOnBounds_nb_segments(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheSOnBounds.hxx`:85 - `IntPatch_TheSOnBounds::Segment()`
+    /// Returns the resulting segment of range Index.
+    /// The exception NotDone is raised if IsDone() returns
+    /// False.
+    /// The exception OutOfRange is raised if
+    /// Index <= 0 or Index > NbPoints.
+    pub fn segment(&self, Index: i32) -> &TheSegmentOfTheSOnBounds {
+        unsafe { &*(crate::ffi::IntPatch_TheSOnBounds_segment(self as *const Self, Index)) }
+    }
+}
+
+// ========================
+// From IntPatch_TheSearchInside.hxx
+// ========================
+
+/// **Source:** `IntPatch_TheSearchInside.hxx`:28 - `IntPatch_TheSearchInside`
+pub use crate::ffi::IntPatch_TheSearchInside as TheSearchInside;
+
+unsafe impl crate::CppDeletable for TheSearchInside {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_TheSearchInside_destructor(ptr);
+    }
+}
+
+impl TheSearchInside {
+    /// **Source:** `IntPatch_TheSearchInside.hxx`:33 - `IntPatch_TheSearchInside::IntPatch_TheSearchInside()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_TheSearchInside_ctor()) }
+    }
+
+    /// **Source:** `IntPatch_TheSearchInside.hxx`:35 - `IntPatch_TheSearchInside::IntPatch_TheSearchInside()`
+    pub fn new_thesurffunction_handleadaptor3dsurface_handleadaptor3dtopoltool_real(
+        F: &mut TheSurfFunction,
+        Surf: &crate::ffi::HandleAdaptor3dSurface,
+        T: &crate::ffi::HandleAdaptor3dTopolTool,
+        Epsilon: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_TheSearchInside_ctor_thesurffunction_handleadaptor3dsurface_handleadaptor3dtopoltool_real(F, Surf, T, Epsilon))
+        }
+    }
+
+    /// **Source:** `IntPatch_TheSearchInside.hxx`:40 - `IntPatch_TheSearchInside::Perform()`
+    pub fn perform_thesurffunction_handleadaptor3dsurface_handleadaptor3dtopoltool_real(
+        &mut self,
+        F: &mut TheSurfFunction,
+        Surf: &crate::ffi::HandleAdaptor3dSurface,
+        T: &crate::ffi::HandleAdaptor3dTopolTool,
+        Epsilon: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_TheSearchInside_perform_thesurffunction_handleadaptor3dsurface_handleadaptor3dtopoltool_real(self as *mut Self, F, Surf, T, Epsilon)
+        }
+    }
+
+    /// **Source:** `IntPatch_TheSearchInside.hxx`:45 - `IntPatch_TheSearchInside::Perform()`
+    pub fn perform_thesurffunction_handleadaptor3dsurface_real2(
+        &mut self,
+        F: &mut TheSurfFunction,
+        Surf: &crate::ffi::HandleAdaptor3dSurface,
+        UStart: f64,
+        VStart: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_TheSearchInside_perform_thesurffunction_handleadaptor3dsurface_real2(self as *mut Self, F, Surf, UStart, VStart)
+        }
+    }
+
+    /// **Source:** `IntPatch_TheSearchInside.hxx`:50 - `IntPatch_TheSearchInside::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_TheSearchInside_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheSearchInside.hxx`:55 - `IntPatch_TheSearchInside::NbPoints()`
+    /// Returns the number of points.
+    /// The exception NotDone if raised if IsDone
+    /// returns False.
+    pub fn nb_points(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_TheSearchInside_nb_points(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheSearchInside.hxx`:62 - `IntPatch_TheSearchInside::Value()`
+    /// Returns the point of range Index.
+    /// The exception NotDone if raised if IsDone
+    /// returns False.
+    /// The exception OutOfRange if raised if
+    /// Index <= 0 or Index > NbPoints.
+    pub fn value(&self, Index: i32) -> &crate::int_surf::InteriorPoint {
+        unsafe { &*(crate::ffi::IntPatch_TheSearchInside_value(self as *const Self, Index)) }
+    }
+}
+
+// ========================
+// From IntPatch_TheSegmentOfTheSOnBounds.hxx
+// ========================
+
+/// **Source:** `IntPatch_TheSegmentOfTheSOnBounds.hxx`:30 - `IntPatch_TheSegmentOfTheSOnBounds`
+pub use crate::ffi::IntPatch_TheSegmentOfTheSOnBounds as TheSegmentOfTheSOnBounds;
+
+unsafe impl crate::CppDeletable for TheSegmentOfTheSOnBounds {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_TheSegmentOfTheSOnBounds_destructor(ptr);
+    }
+}
+
+impl TheSegmentOfTheSOnBounds {
+    /// **Source:** `IntPatch_TheSegmentOfTheSOnBounds.hxx`:36 - `IntPatch_TheSegmentOfTheSOnBounds::IntPatch_TheSegmentOfTheSOnBounds()`
+    /// Empty constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_TheSegmentOfTheSOnBounds_ctor()) }
+    }
+
+    /// **Source:** `IntPatch_TheSegmentOfTheSOnBounds.hxx`:39 - `IntPatch_TheSegmentOfTheSOnBounds::SetValue()`
+    /// Defines the concerned arc.
+    pub fn set_value(&mut self, A: &crate::ffi::HandleAdaptor2dCurve2d) {
+        unsafe { crate::ffi::IntPatch_TheSegmentOfTheSOnBounds_set_value(self as *mut Self, A) }
+    }
+
+    /// **Source:** `IntPatch_TheSegmentOfTheSOnBounds.hxx`:43 - `IntPatch_TheSegmentOfTheSOnBounds::SetLimitPoint()`
+    /// Defines the first point or the last point,
+    /// depending on the value of the boolean First.
+    pub fn set_limit_point(&mut self, V: &ThePathPointOfTheSOnBounds, First: bool) {
+        unsafe {
+            crate::ffi::IntPatch_TheSegmentOfTheSOnBounds_set_limit_point(
+                self as *mut Self,
+                V,
+                First,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_TheSegmentOfTheSOnBounds.hxx`:48 - `IntPatch_TheSegmentOfTheSOnBounds::Curve()`
+    /// Returns the geometric curve on the surface 's domain
+    /// which is solution.
+    pub fn curve(&self) -> &crate::ffi::HandleAdaptor2dCurve2d {
+        unsafe { &*(crate::ffi::IntPatch_TheSegmentOfTheSOnBounds_curve(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_TheSegmentOfTheSOnBounds.hxx`:52 - `IntPatch_TheSegmentOfTheSOnBounds::HasFirstPoint()`
+    /// Returns True if there is a vertex (ThePathPoint) defining
+    /// the lowest valid parameter on the arc.
+    pub fn has_first_point(&self) -> bool {
+        unsafe {
+            crate::ffi::IntPatch_TheSegmentOfTheSOnBounds_has_first_point(self as *const Self)
+        }
+    }
+
+    /// **Source:** `IntPatch_TheSegmentOfTheSOnBounds.hxx`:55 - `IntPatch_TheSegmentOfTheSOnBounds::FirstPoint()`
+    /// Returns the first point.
+    pub fn first_point(&self) -> &ThePathPointOfTheSOnBounds {
+        unsafe {
+            &*(crate::ffi::IntPatch_TheSegmentOfTheSOnBounds_first_point(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IntPatch_TheSegmentOfTheSOnBounds.hxx`:59 - `IntPatch_TheSegmentOfTheSOnBounds::HasLastPoint()`
+    /// Returns True if there is a vertex (ThePathPoint) defining
+    /// the greatest valid parameter on the arc.
+    pub fn has_last_point(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_TheSegmentOfTheSOnBounds_has_last_point(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheSegmentOfTheSOnBounds.hxx`:62 - `IntPatch_TheSegmentOfTheSOnBounds::LastPoint()`
+    /// Returns the last point.
+    pub fn last_point(&self) -> &ThePathPointOfTheSOnBounds {
+        unsafe { &*(crate::ffi::IntPatch_TheSegmentOfTheSOnBounds_last_point(self as *const Self)) }
+    }
+}
+
+// ========================
+// From IntPatch_TheSurfFunction.hxx
+// ========================
+
+/// **Source:** `IntPatch_TheSurfFunction.hxx`:32 - `IntPatch_TheSurfFunction`
+pub use crate::ffi::IntPatch_TheSurfFunction as TheSurfFunction;
+
+unsafe impl crate::CppDeletable for TheSurfFunction {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_TheSurfFunction_destructor(ptr);
+    }
+}
+
+impl TheSurfFunction {
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:37 - `IntPatch_TheSurfFunction::IntPatch_TheSurfFunction()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_TheSurfFunction_ctor()) }
+    }
+
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:39 - `IntPatch_TheSurfFunction::IntPatch_TheSurfFunction()`
+    pub fn new_handleadaptor3dsurface_quadric(
+        PS: &crate::ffi::HandleAdaptor3dSurface,
+        IS: &crate::int_surf::Quadric,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IntPatch_TheSurfFunction_ctor_handleadaptor3dsurface_quadric(PS, IS),
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:42 - `IntPatch_TheSurfFunction::IntPatch_TheSurfFunction()`
+    pub fn new_quadric(IS: &crate::int_surf::Quadric) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_TheSurfFunction_ctor_quadric(IS)) }
+    }
+
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:44 - `IntPatch_TheSurfFunction::Set()`
+    pub fn set_handleadaptor3dsurface(&mut self, PS: &crate::ffi::HandleAdaptor3dSurface) {
+        unsafe {
+            crate::ffi::IntPatch_TheSurfFunction_set_handleadaptor3dsurface(self as *mut Self, PS)
+        }
+    }
+
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:46 - `IntPatch_TheSurfFunction::SetImplicitSurface()`
+    pub fn set_implicit_surface(&mut self, IS: &crate::int_surf::Quadric) {
+        unsafe { crate::ffi::IntPatch_TheSurfFunction_set_implicit_surface(self as *mut Self, IS) }
+    }
+
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:48 - `IntPatch_TheSurfFunction::Set()`
+    pub fn set_real(&mut self, Tolerance: f64) {
+        unsafe { crate::ffi::IntPatch_TheSurfFunction_set_real(self as *mut Self, Tolerance) }
+    }
+
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:50 - `IntPatch_TheSurfFunction::NbVariables()`
+    pub fn nb_variables(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_TheSurfFunction_nb_variables(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:52 - `IntPatch_TheSurfFunction::NbEquations()`
+    pub fn nb_equations(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_TheSurfFunction_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:60 - `IntPatch_TheSurfFunction::Root()`
+    pub fn root(&self) -> f64 {
+        unsafe { crate::ffi::IntPatch_TheSurfFunction_root(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:64 - `IntPatch_TheSurfFunction::Tolerance()`
+    /// Returns the value Tol so that if Abs(Func.Root())<Tol
+    /// the function is considered null.
+    pub fn tolerance(&self) -> f64 {
+        unsafe { crate::ffi::IntPatch_TheSurfFunction_tolerance(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:66 - `IntPatch_TheSurfFunction::Point()`
+    pub fn point(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::IntPatch_TheSurfFunction_point(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:68 - `IntPatch_TheSurfFunction::IsTangent()`
+    pub fn is_tangent(&mut self) -> bool {
+        unsafe { crate::ffi::IntPatch_TheSurfFunction_is_tangent(self as *mut Self) }
+    }
+
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:70 - `IntPatch_TheSurfFunction::Direction3d()`
+    pub fn direction3d(&mut self) -> &crate::gp::Vec {
+        unsafe { &*(crate::ffi::IntPatch_TheSurfFunction_direction3d(self as *mut Self)) }
+    }
+
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:72 - `IntPatch_TheSurfFunction::Direction2d()`
+    pub fn direction2d(&mut self) -> &crate::gp::Dir2d {
+        unsafe { &*(crate::ffi::IntPatch_TheSurfFunction_direction2d(self as *mut Self)) }
+    }
+
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:74 - `IntPatch_TheSurfFunction::PSurface()`
+    pub fn p_surface(&self) -> &crate::ffi::HandleAdaptor3dSurface {
+        unsafe { &*(crate::ffi::IntPatch_TheSurfFunction_p_surface(self as *const Self)) }
+    }
+
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:76 - `IntPatch_TheSurfFunction::ISurface()`
+    pub fn i_surface(&self) -> &crate::int_surf::Quadric {
+        unsafe { &*(crate::ffi::IntPatch_TheSurfFunction_i_surface(self as *const Self)) }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &*(crate::ffi::IntPatch_TheSurfFunction_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &mut *(crate::ffi::IntPatch_TheSurfFunction_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe { &*(crate::ffi::IntPatch_TheSurfFunction_as_math_FunctionSet(self as *const Self)) }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::IntPatch_TheSurfFunction_as_math_FunctionSet_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::IntPatch_TheSurfFunction_inherited_GetStateNumber(self as *mut Self) }
+    }
+}
+
+// ── Skipped symbols for TheSurfFunction (3 total) ──
+// SKIPPED: **Source:** `IntPatch_TheSurfFunction.hxx`:54 - `IntPatch_TheSurfFunction::Value`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `IntPatch_TheSurfFunction.hxx`:56 - `IntPatch_TheSurfFunction::Derivatives`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `IntPatch_TheSurfFunction.hxx`:58 - `IntPatch_TheSurfFunction::Values`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
 
 // ========================
 // From IntPatch_WLine.hxx
@@ -1749,7 +7097,89 @@ impl HandleIntPatchWLine {
 }
 
 // ========================
+// From IntPatch_WLineTool.hxx
+// ========================
+
+/// **Source:** `IntPatch_WLineTool.hxx`:24 - `IntPatch_WLineTool`
+/// IntPatch_WLineTool provides set of static methods related to walking lines.
+pub use crate::ffi::IntPatch_WLineTool as WLineTool;
+
+unsafe impl crate::CppDeletable for WLineTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_WLineTool_destructor(ptr);
+    }
+}
+
+impl WLineTool {
+    /// **Source:** `IntPatch_WLineTool.hxx` - `IntPatch_WLineTool::IntPatch_WLineTool()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_WLineTool_ctor()) }
+    }
+
+    /// **Source:** `IntPatch_WLineTool.hxx`:43 - `IntPatch_WLineTool::ComputePurgedWLine()`
+    /// I
+    /// Removes equal points (leave one of equal points) from theWLine
+    /// and recompute vertex parameters.
+    ///
+    /// II
+    /// Removes point out of borders in case of non periodic surfaces.
+    ///
+    /// III
+    /// Removes exceed points using tube criteria:
+    /// delete 7D point if it lies near to expected lines in 2d and 3d.
+    /// Each task (2d, 2d, 3d) have its own tolerance and checked separately.
+    ///
+    /// Returns new WLine or null WLine if the number
+    /// of the points is less than 2.
+    pub fn compute_purged_w_line(
+        theWLine: &crate::ffi::HandleIntPatchWLine,
+        theS1: &crate::ffi::HandleAdaptor3dSurface,
+        theS2: &crate::ffi::HandleAdaptor3dSurface,
+        theDom1: &crate::ffi::HandleAdaptor3dTopolTool,
+        theDom2: &crate::ffi::HandleAdaptor3dTopolTool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIntPatchWLine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_WLineTool_compute_purged_w_line(
+                theWLine, theS1, theS2, theDom1, theDom2,
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_WLineTool.hxx`:57 - `IntPatch_WLineTool::JoinWLines()`
+    /// Joins all WLines from theSlin to one if it is possible and records
+    /// the result into theSlin again. Lines will be kept to be split if:
+    /// a) they are separated (has no common points);
+    /// b) resulted line (after joining) go through seam-edges or surface boundaries.
+    ///
+    /// In addition, if points in theSPnt lies at least in one of the line in theSlin,
+    /// this point will be deleted.
+    pub fn join_w_lines(
+        theSlin: &mut crate::ffi::IntPatch_SequenceOfLine,
+        theSPnt: &mut crate::ffi::IntPatch_SequenceOfPoint,
+        theS1: &crate::ffi::HandleAdaptor3dSurface,
+        theS2: &crate::ffi::HandleAdaptor3dSurface,
+        theTol3D: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_WLineTool_join_w_lines(theSlin, theSPnt, theS1, theS2, theTol3D)
+        }
+    }
+}
+
+// ── Skipped symbols for WLineTool (1 total) ──
+// SKIPPED: **Source:** `IntPatch_WLineTool.hxx`:74 - `IntPatch_WLineTool::ExtendTwoWLines`
+//   static_method: Extends every line from theSlin (if it is possible) to be started/finished
+//   static_method: in strictly determined point (in the place of joint of two lines).
+//   static_method: As result, some gaps between two lines will vanish.
+//   Reason: has unbindable types: param 'theArrPeriods': raw pointer (const double*); param 'theListOfCriticalPoints': unresolved template/nested type (const NCollection_List<gp_Pnt>&)
+//   // pub fn extend_two_w_lines(theSlin: &mut SequenceOfLine, theS1: &HandleSurface, theS2: &HandleSurface, theToler3D: f64, theArrPeriods: /* const double* */, theBoxS1: &Box2d, theBoxS2: &Box2d, theListOfCriticalPoints: /* const NCollection_List<gp_Pnt>& */);
+//
+
+// ========================
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{IntPatch_RLine as RLine, IntPatch_SequenceOfLine as SequenceOfLine};
+pub use crate::ffi::{
+    IntPatch_SequenceOfLine as SequenceOfLine, IntPatch_SequenceOfPoint as SequenceOfPoint,
+};

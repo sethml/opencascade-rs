@@ -91,9 +91,12 @@ impl TryFrom<i32> for HandlerStatus {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
-    HandleAdaptor2dCurve2d, HandleAdaptor2dLine2d, HandleAdaptor2dOffsetCurve,
-    HandleAdaptor3dCurve, HandleAdaptor3dCurveOnSurface, HandleAdaptor3dHVertex,
-    HandleAdaptor3dIsoCurve, HandleAdaptor3dSurface, HandleAdaptor3dTopolTool,
+    HandleAPIHeaderSectionEditHeader, HandleAdaptor2dCurve2d, HandleAdaptor2dLine2d,
+    HandleAdaptor2dOffsetCurve, HandleAdaptor3dCurve, HandleAdaptor3dCurveOnSurface,
+    HandleAdaptor3dHVertex, HandleAdaptor3dIsoCurve, HandleAdaptor3dSurface,
+    HandleAdaptor3dTopolTool, HandleAppDefHArray1OfMultiPointConstraint,
+    HandleAppDefLinearCriteria, HandleAppParCurvesHArray1OfConstraintCouple,
+    HandleAppParCurvesHArray1OfMultiBSpCurve, HandleAppParCurvesHArray1OfMultiCurve,
     HandleAppParCurvesHArray1OfMultiPoint, HandleApproxCurvlinFunc,
     HandleApproxHArray1OfAdHSurface, HandleApproxHArray1OfGTrsf2d,
     HandleBOPAlgoAlertAcquiredSelfIntersection, HandleBOPAlgoAlertBOPNotAllowed,
@@ -118,7 +121,9 @@ pub use crate::ffi::{
     HandleBOPAlgoAlertUnknownShape, HandleBOPAlgoAlertUnsupportedType, HandleBOPAlgoAlertUserBreak,
     HandleBOPDSCommonBlock, HandleBOPDSPaveBlock, HandleBRepAdaptorCompCurve,
     HandleBRepAdaptorCurve, HandleBRepAdaptorCurve2d, HandleBRepAdaptorHArray1OfCurve,
-    HandleBRepAdaptorSurface, HandleBRepBuilderAPIFastSewing, HandleBRepBuilderAPISewing,
+    HandleBRepAdaptorSurface, HandleBRepAlgoAsDes, HandleBRepApproxApproxLine,
+    HandleBRepBlendAppFunc, HandleBRepBlendAppFuncRst, HandleBRepBlendAppFuncRstRst,
+    HandleBRepBlendLine, HandleBRepBuilderAPIFastSewing, HandleBRepBuilderAPISewing,
     HandleBRepCheckEdge, HandleBRepCheckFace, HandleBRepCheckShell, HandleBRepCheckSolid,
     HandleBRepCheckVertex, HandleBRepCheckWire, HandleBRepCurve3D, HandleBRepCurveOn2Surfaces,
     HandleBRepCurveOnClosedSurface, HandleBRepCurveOnSurface, HandleBRepExtremaUnCompatibleShape,
@@ -140,19 +145,21 @@ pub use crate::ffi::{
     HandleBRepPolygonOnSurface, HandleBRepPolygonOnTriangulation, HandleBRepTEdge, HandleBRepTFace,
     HandleBRepTVertex, HandleBRepToolsCopyModification, HandleBRepToolsGTrsfModification,
     HandleBRepToolsHistory, HandleBRepToolsNurbsConvertModification, HandleBRepToolsReShape,
-    HandleBRepToolsTrsfModification, HandleBSplCLibCache, HandleBSplSLibCache,
-    HandleBVHBuildThread, HandleBVHBuilderTransient, HandleBVHObjectTransient,
-    HandleBVHTreeBaseTransient, HandleBiTgteCurveOnEdge, HandleBiTgteCurveOnVertex,
-    HandleBndHArray1OfBox, HandleBndHArray1OfBox2d, HandleBndHArray1OfSphere, HandleCDFApplication,
-    HandleCDMReference, HandleChFiDSElSpine, HandleChFiDSHData, HandleChFiDSSecHArray1,
-    HandleChFiDSSpine, HandleChFiDSStripe, HandleChFiDSSurfData, HandleDEBREPConfigurationNode,
-    HandleDEBREPProvider, HandleDEConfigurationContext, HandleDEGLTFConfigurationNode,
-    HandleDEGLTFProvider, HandleDEIGESConfigurationNode, HandleDEIGESProvider,
-    HandleDEOBJConfigurationNode, HandleDEOBJProvider, HandleDEPLYConfigurationNode,
-    HandleDEPLYProvider, HandleDESTEPConfigurationNode, HandleDESTEPProvider,
-    HandleDESTLConfigurationNode, HandleDESTLProvider, HandleDEShapeFixConfigurationNode,
-    HandleDEVRMLConfigurationNode, HandleDEVRMLProvider, HandleDEWrapper,
-    HandleDEXCAFConfigurationNode, HandleDEXCAFProvider, HandleDraftModification,
+    HandleBRepToolsTrsfModification, HandleBRepTopAdaptorHVertex, HandleBRepTopAdaptorTopolTool,
+    HandleBSplCLibCache, HandleBSplSLibCache, HandleBVHBuildThread, HandleBVHBuilderTransient,
+    HandleBVHObjectTransient, HandleBVHTreeBaseTransient, HandleBiTgteCurveOnEdge,
+    HandleBiTgteCurveOnVertex, HandleBisectorBisecAna, HandleBisectorBisecCC,
+    HandleBisectorBisecPC, HandleBndHArray1OfBox, HandleBndHArray1OfBox2d,
+    HandleBndHArray1OfSphere, HandleChFiDSChamfSpine, HandleChFiDSElSpine, HandleChFiDSFilSpine,
+    HandleChFiDSHData, HandleChFiDSSecHArray1, HandleChFiDSSpine, HandleChFiDSStripe,
+    HandleChFiDSSurfData, HandleContapTheHSequenceOfPoint, HandleContapTheIWLineOfTheIWalking,
+    HandleDEBREPConfigurationNode, HandleDEBREPProvider, HandleDEConfigurationContext,
+    HandleDEGLTFConfigurationNode, HandleDEGLTFProvider, HandleDEIGESConfigurationNode,
+    HandleDEIGESProvider, HandleDEOBJConfigurationNode, HandleDEOBJProvider,
+    HandleDEPLYConfigurationNode, HandleDEPLYProvider, HandleDESTEPConfigurationNode,
+    HandleDESTEPProvider, HandleDESTLConfigurationNode, HandleDESTLProvider,
+    HandleDEShapeFixConfigurationNode, HandleDEVRMLConfigurationNode, HandleDEVRMLProvider,
+    HandleDEWrapper, HandleDEXCAFConfigurationNode, HandleDEXCAFProvider, HandleDraftModification,
     HandleExprAbsolute, HandleExprArcCosine, HandleExprArcSine, HandleExprArcTangent,
     HandleExprArgCosh, HandleExprArgSinh, HandleExprArgTanh, HandleExprBinaryExpression,
     HandleExprBinaryFunction, HandleExprCosh, HandleExprCosine, HandleExprDifference,
@@ -170,7 +177,9 @@ pub use crate::ffi::{
     HandleExprTanh, HandleExprUnaryExpression, HandleExprUnaryFunction, HandleExprUnaryMinus,
     HandleExtremaExtPExtS, HandleExtremaExtPRevS, HandleExtremaHArray1OfPOnCurv,
     HandleExtremaHArray1OfPOnCurv2d, HandleExtremaHArray1OfPOnSurf, HandleExtremaHArray2OfPOnCurv,
-    HandleExtremaHArray2OfPOnCurv2d, HandleExtremaHArray2OfPOnSurf, HandleGPropUndefinedAxis,
+    HandleExtremaHArray2OfPOnCurv2d, HandleExtremaHArray2OfPOnSurf, HandleFEmToolCurve,
+    HandleFEmToolHAssemblyTable, HandleFEmToolLinearFlexion, HandleFEmToolLinearJerk,
+    HandleFEmToolLinearTension, HandleFEmToolProfileMatrix, HandleGPropUndefinedAxis,
     HandleGccAnaNoSolution, HandleGccEntBadQualifier, HandleGccIntBCirc, HandleGccIntBElips,
     HandleGccIntBHyper, HandleGccIntBLine, HandleGccIntBParab, HandleGccIntBPoint,
     HandleGeom2dAdaptorCurve, HandleGeom2dAxisPlacement, HandleGeom2dBSplineCurve,
@@ -209,34 +218,135 @@ pub use crate::ffi::{
     HandleHLRAlgoHArray1OfTData, HandleHLRAlgoPolyAlgo, HandleHLRAlgoPolyData,
     HandleHLRAlgoPolyInternalData, HandleHLRAlgoPolyInternalNode, HandleHLRAlgoPolyShellData,
     HandleHLRAlgoWiresBlock, HandleHLRBRepAlgo, HandleHLRBRepAreaLimit, HandleHLRBRepData,
-    HandleHLRBRepInternalAlgo, HandleHLRBRepPolyAlgo, HandleIFSelectAct,
-    HandleIFSelectAppliedModifiers, HandleIFSelectBasicDumper, HandleIFSelectCheckCounter,
-    HandleIFSelectDispGlobal, HandleIFSelectDispPerCount, HandleIFSelectDispPerFiles,
-    HandleIFSelectDispPerOne, HandleIFSelectDispPerSignature, HandleIFSelectEditForm,
-    HandleIFSelectGraphCounter, HandleIFSelectHSeqOfSelection, HandleIFSelectIntParam,
-    HandleIFSelectListEditor, HandleIFSelectModelCopier, HandleIFSelectModifEditForm,
-    HandleIFSelectModifReorder, HandleIFSelectPacketList, HandleIFSelectParamEditor,
-    HandleIFSelectSelectBase, HandleIFSelectSelectCombine, HandleIFSelectSelectControl,
-    HandleIFSelectSelectDeduct, HandleIFSelectSelectDiff, HandleIFSelectSelectEntityNumber,
-    HandleIFSelectSelectErrorEntities, HandleIFSelectSelectFlag,
-    HandleIFSelectSelectIncorrectEntities, HandleIFSelectSelectIntersection,
-    HandleIFSelectSelectModelEntities, HandleIFSelectSelectModelRoots, HandleIFSelectSelectPointed,
-    HandleIFSelectSelectRange, HandleIFSelectSelectRootComps, HandleIFSelectSelectRoots,
-    HandleIFSelectSelectSent, HandleIFSelectSelectShared, HandleIFSelectSelectSharing,
-    HandleIFSelectSelectSignature, HandleIFSelectSelectSignedShared,
-    HandleIFSelectSelectSignedSharing, HandleIFSelectSelectSuite, HandleIFSelectSelectType,
-    HandleIFSelectSelectUnion, HandleIFSelectSelectUnknownEntities, HandleIFSelectSessionPilot,
-    HandleIFSelectShareOut, HandleIFSelectSignAncestor, HandleIFSelectSignCategory,
-    HandleIFSelectSignCounter, HandleIFSelectSignMultiple, HandleIFSelectSignType,
-    HandleIFSelectSignValidity, HandleIFSelectSignature, HandleIFSelectSignatureList,
-    HandleIFSelectTransformStandard, HandleIFSelectWorkSession, HandleIGESControlActorWrite,
+    HandleHLRBRepInternalAlgo, HandleHLRBRepPolyAlgo, HandleHLRTopoBRepOutLiner,
+    HandleHeaderSectionFileDescription, HandleHeaderSectionFileName, HandleHeaderSectionFileSchema,
+    HandleHeaderSectionProtocol, HandleIFSelectAct, HandleIFSelectAppliedModifiers,
+    HandleIFSelectBasicDumper, HandleIFSelectCheckCounter, HandleIFSelectDispGlobal,
+    HandleIFSelectDispPerCount, HandleIFSelectDispPerFiles, HandleIFSelectDispPerOne,
+    HandleIFSelectDispPerSignature, HandleIFSelectEditForm, HandleIFSelectGraphCounter,
+    HandleIFSelectHSeqOfSelection, HandleIFSelectIntParam, HandleIFSelectListEditor,
+    HandleIFSelectModelCopier, HandleIFSelectModifEditForm, HandleIFSelectModifReorder,
+    HandleIFSelectPacketList, HandleIFSelectParamEditor, HandleIFSelectSelectBase,
+    HandleIFSelectSelectCombine, HandleIFSelectSelectControl, HandleIFSelectSelectDeduct,
+    HandleIFSelectSelectDiff, HandleIFSelectSelectEntityNumber, HandleIFSelectSelectErrorEntities,
+    HandleIFSelectSelectFlag, HandleIFSelectSelectIncorrectEntities,
+    HandleIFSelectSelectIntersection, HandleIFSelectSelectModelEntities,
+    HandleIFSelectSelectModelRoots, HandleIFSelectSelectPointed, HandleIFSelectSelectRange,
+    HandleIFSelectSelectRootComps, HandleIFSelectSelectRoots, HandleIFSelectSelectSent,
+    HandleIFSelectSelectShared, HandleIFSelectSelectSharing, HandleIFSelectSelectSignature,
+    HandleIFSelectSelectSignedShared, HandleIFSelectSelectSignedSharing, HandleIFSelectSelectSuite,
+    HandleIFSelectSelectType, HandleIFSelectSelectUnion, HandleIFSelectSelectUnknownEntities,
+    HandleIFSelectSessionPilot, HandleIFSelectShareOut, HandleIFSelectSignAncestor,
+    HandleIFSelectSignCategory, HandleIFSelectSignCounter, HandleIFSelectSignMultiple,
+    HandleIFSelectSignType, HandleIFSelectSignValidity, HandleIFSelectSignature,
+    HandleIFSelectSignatureList, HandleIFSelectTransformStandard, HandleIFSelectWorkSession,
+    HandleIGESAppliDrilledHole, HandleIGESAppliElementResults, HandleIGESAppliFiniteElement,
+    HandleIGESAppliFlow, HandleIGESAppliFlowLineSpec, HandleIGESAppliGeneralModule,
+    HandleIGESAppliHArray1OfFiniteElement, HandleIGESAppliHArray1OfFlow,
+    HandleIGESAppliHArray1OfNode, HandleIGESAppliLevelFunction, HandleIGESAppliLevelToPWBLayerMap,
+    HandleIGESAppliLineWidening, HandleIGESAppliNodalConstraint, HandleIGESAppliNodalDisplAndRot,
+    HandleIGESAppliNodalResults, HandleIGESAppliNode, HandleIGESAppliPWBArtworkStackup,
+    HandleIGESAppliPWBDrilledHole, HandleIGESAppliPartNumber, HandleIGESAppliPinNumber,
+    HandleIGESAppliPipingFlow, HandleIGESAppliProtocol, HandleIGESAppliReadWriteModule,
+    HandleIGESAppliReferenceDesignator, HandleIGESAppliRegionRestriction,
+    HandleIGESAppliSpecificModule, HandleIGESBasicAssocGroupType, HandleIGESBasicExternalRefFile,
+    HandleIGESBasicExternalRefFileIndex, HandleIGESBasicExternalRefFileName,
+    HandleIGESBasicExternalRefLibName, HandleIGESBasicExternalRefName,
+    HandleIGESBasicExternalReferenceFile, HandleIGESBasicGeneralModule, HandleIGESBasicGroup,
+    HandleIGESBasicGroupWithoutBackP, HandleIGESBasicHArray1OfHArray1OfIGESEntity,
+    HandleIGESBasicHArray1OfHArray1OfInteger, HandleIGESBasicHArray1OfHArray1OfReal,
+    HandleIGESBasicHArray1OfHArray1OfXY, HandleIGESBasicHArray1OfHArray1OfXYZ,
+    HandleIGESBasicHArray1OfLineFontEntity, HandleIGESBasicHArray2OfHArray1OfReal,
+    HandleIGESBasicHierarchy, HandleIGESBasicName, HandleIGESBasicOrderedGroup,
+    HandleIGESBasicOrderedGroupWithoutBackP, HandleIGESBasicProtocol,
+    HandleIGESBasicReadWriteModule, HandleIGESBasicSingleParent, HandleIGESBasicSingularSubfigure,
+    HandleIGESBasicSpecificModule, HandleIGESBasicSubfigureDef, HandleIGESControlActorWrite,
     HandleIGESControlAlgoContainer, HandleIGESControlController, HandleIGESControlIGESBoundary,
-    HandleIGESControlToolContainer, HandleIGESDataHArray1OfIGESEntity, HandleIGESDataIGESEntity,
-    HandleIGESToBRepActor, HandleIGESToBRepAlgoContainer, HandleIGESToBRepIGESBoundary,
-    HandleIGESToBRepToolContainer, HandleIMeshDataShape, HandleIMeshDataTessellatedShape,
-    HandleIMeshToolsContext, HandleIMeshToolsMeshBuilder, HandleIMeshToolsShapeExplorer,
-    HandleImageTexture, HandleIntCurvesFaceIntersector, HandleIntPatchLine, HandleIntPatchWLine,
-    HandleIntSurfLineOn2S, HandleIntToolsContext, HandleIntToolsTopolTool, HandleInterfaceCheck,
+    HandleIGESControlToolContainer, HandleIGESDataColorEntity, HandleIGESDataDefaultGeneral,
+    HandleIGESDataDefaultSpecific, HandleIGESDataFileProtocol, HandleIGESDataFreeFormatEntity,
+    HandleIGESDataGlobalNodeOfSpecificLib, HandleIGESDataGlobalNodeOfWriterLib,
+    HandleIGESDataHArray1OfIGESEntity, HandleIGESDataIGESEntity, HandleIGESDataIGESModel,
+    HandleIGESDataIGESReaderData, HandleIGESDataLabelDisplayEntity, HandleIGESDataLineFontEntity,
+    HandleIGESDataNodeOfSpecificLib, HandleIGESDataNodeOfWriterLib, HandleIGESDataProtocol,
+    HandleIGESDataToolLocation, HandleIGESDataUndefinedEntity, HandleIGESDefsAssociativityDef,
+    HandleIGESDefsAttributeDef, HandleIGESDefsAttributeTable, HandleIGESDefsGeneralModule,
+    HandleIGESDefsGenericData, HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate,
+    HandleIGESDefsHArray1OfTabularData, HandleIGESDefsMacroDef, HandleIGESDefsProtocol,
+    HandleIGESDefsReadWriteModule, HandleIGESDefsSpecificModule, HandleIGESDefsTabularData,
+    HandleIGESDefsUnitsData, HandleIGESDimenAngularDimension, HandleIGESDimenBasicDimension,
+    HandleIGESDimenCenterLine, HandleIGESDimenCurveDimension, HandleIGESDimenDiameterDimension,
+    HandleIGESDimenDimensionDisplayData, HandleIGESDimenDimensionTolerance,
+    HandleIGESDimenDimensionUnits, HandleIGESDimenDimensionedGeometry, HandleIGESDimenFlagNote,
+    HandleIGESDimenGeneralLabel, HandleIGESDimenGeneralModule, HandleIGESDimenGeneralNote,
+    HandleIGESDimenGeneralSymbol, HandleIGESDimenHArray1OfGeneralNote,
+    HandleIGESDimenHArray1OfLeaderArrow, HandleIGESDimenLeaderArrow,
+    HandleIGESDimenLinearDimension, HandleIGESDimenNewDimensionedGeometry,
+    HandleIGESDimenNewGeneralNote, HandleIGESDimenOrdinateDimension, HandleIGESDimenPointDimension,
+    HandleIGESDimenProtocol, HandleIGESDimenRadiusDimension, HandleIGESDimenReadWriteModule,
+    HandleIGESDimenSection, HandleIGESDimenSectionedArea, HandleIGESDimenSpecificModule,
+    HandleIGESDimenWitnessLine, HandleIGESDrawCircArraySubfigure, HandleIGESDrawConnectPoint,
+    HandleIGESDrawDrawing, HandleIGESDrawDrawingWithRotation, HandleIGESDrawGeneralModule,
+    HandleIGESDrawHArray1OfConnectPoint, HandleIGESDrawHArray1OfViewKindEntity,
+    HandleIGESDrawLabelDisplay, HandleIGESDrawNetworkSubfigure, HandleIGESDrawNetworkSubfigureDef,
+    HandleIGESDrawPerspectiveView, HandleIGESDrawPlanar, HandleIGESDrawProtocol,
+    HandleIGESDrawReadWriteModule, HandleIGESDrawRectArraySubfigure,
+    HandleIGESDrawSegmentedViewsVisible, HandleIGESDrawSpecificModule, HandleIGESDrawView,
+    HandleIGESDrawViewsVisible, HandleIGESDrawViewsVisibleWithAttr, HandleIGESGeomBSplineCurve,
+    HandleIGESGeomBSplineSurface, HandleIGESGeomBoundary, HandleIGESGeomBoundedSurface,
+    HandleIGESGeomCircularArc, HandleIGESGeomCompositeCurve, HandleIGESGeomConicArc,
+    HandleIGESGeomCopiousData, HandleIGESGeomCurveOnSurface, HandleIGESGeomDirection,
+    HandleIGESGeomFlash, HandleIGESGeomGeneralModule, HandleIGESGeomHArray1OfBoundary,
+    HandleIGESGeomHArray1OfCurveOnSurface, HandleIGESGeomHArray1OfTransformationMatrix,
+    HandleIGESGeomLine, HandleIGESGeomOffsetCurve, HandleIGESGeomOffsetSurface,
+    HandleIGESGeomPlane, HandleIGESGeomPoint, HandleIGESGeomProtocol,
+    HandleIGESGeomReadWriteModule, HandleIGESGeomRuledSurface, HandleIGESGeomSpecificModule,
+    HandleIGESGeomSplineCurve, HandleIGESGeomSplineSurface, HandleIGESGeomSurfaceOfRevolution,
+    HandleIGESGeomTabulatedCylinder, HandleIGESGeomTransformationMatrix,
+    HandleIGESGeomTrimmedSurface, HandleIGESGraphColor, HandleIGESGraphDefinitionLevel,
+    HandleIGESGraphDrawingSize, HandleIGESGraphDrawingUnits, HandleIGESGraphGeneralModule,
+    HandleIGESGraphHArray1OfColor, HandleIGESGraphHArray1OfTextDisplayTemplate,
+    HandleIGESGraphHArray1OfTextFontDef, HandleIGESGraphHighLight,
+    HandleIGESGraphIntercharacterSpacing, HandleIGESGraphLineFontDefPattern,
+    HandleIGESGraphLineFontDefTemplate, HandleIGESGraphLineFontPredefined,
+    HandleIGESGraphNominalSize, HandleIGESGraphPick, HandleIGESGraphProtocol,
+    HandleIGESGraphReadWriteModule, HandleIGESGraphSpecificModule,
+    HandleIGESGraphTextDisplayTemplate, HandleIGESGraphTextFontDef, HandleIGESGraphUniformRectGrid,
+    HandleIGESSelectActivator, HandleIGESSelectAddFileComment, HandleIGESSelectAddGroup,
+    HandleIGESSelectAutoCorrect, HandleIGESSelectChangeLevelList,
+    HandleIGESSelectChangeLevelNumber, HandleIGESSelectComputeStatus,
+    HandleIGESSelectCounterOfLevelNumber, HandleIGESSelectDispPerDrawing,
+    HandleIGESSelectDispPerSingleView, HandleIGESSelectDumper, HandleIGESSelectEditDirPart,
+    HandleIGESSelectEditHeader, HandleIGESSelectFloatFormat, HandleIGESSelectIGESName,
+    HandleIGESSelectIGESTypeForm, HandleIGESSelectRebuildDrawings, HandleIGESSelectRebuildGroups,
+    HandleIGESSelectRemoveCurves, HandleIGESSelectSelectBasicGeom,
+    HandleIGESSelectSelectBypassGroup, HandleIGESSelectSelectBypassSubfigure,
+    HandleIGESSelectSelectDrawingFrom, HandleIGESSelectSelectFaces,
+    HandleIGESSelectSelectFromDrawing, HandleIGESSelectSelectFromSingleView,
+    HandleIGESSelectSelectLevelNumber, HandleIGESSelectSelectName, HandleIGESSelectSelectPCurves,
+    HandleIGESSelectSelectSingleViewFrom, HandleIGESSelectSelectSubordinate,
+    HandleIGESSelectSelectVisibleStatus, HandleIGESSelectSetGlobalParameter,
+    HandleIGESSelectSetLabel, HandleIGESSelectSetVersion5, HandleIGESSelectSignColor,
+    HandleIGESSelectSignLevelNumber, HandleIGESSelectSignStatus, HandleIGESSelectSplineToBSpline,
+    HandleIGESSelectUpdateCreationDate, HandleIGESSelectUpdateFileName,
+    HandleIGESSelectUpdateLastChange, HandleIGESSelectViewSorter, HandleIGESSelectWorkLibrary,
+    HandleIGESSolidBlock, HandleIGESSolidBooleanTree, HandleIGESSolidConeFrustum,
+    HandleIGESSolidConicalSurface, HandleIGESSolidCylinder, HandleIGESSolidCylindricalSurface,
+    HandleIGESSolidEdgeList, HandleIGESSolidEllipsoid, HandleIGESSolidFace,
+    HandleIGESSolidGeneralModule, HandleIGESSolidHArray1OfFace, HandleIGESSolidHArray1OfLoop,
+    HandleIGESSolidHArray1OfShell, HandleIGESSolidHArray1OfVertexList, HandleIGESSolidLoop,
+    HandleIGESSolidManifoldSolid, HandleIGESSolidPlaneSurface, HandleIGESSolidProtocol,
+    HandleIGESSolidReadWriteModule, HandleIGESSolidRightAngularWedge,
+    HandleIGESSolidSelectedComponent, HandleIGESSolidShell, HandleIGESSolidSolidAssembly,
+    HandleIGESSolidSolidInstance, HandleIGESSolidSolidOfLinearExtrusion,
+    HandleIGESSolidSolidOfRevolution, HandleIGESSolidSpecificModule, HandleIGESSolidSphere,
+    HandleIGESSolidSphericalSurface, HandleIGESSolidToroidalSurface, HandleIGESSolidTorus,
+    HandleIGESSolidVertexList, HandleIGESToBRepActor, HandleIGESToBRepAlgoContainer,
+    HandleIGESToBRepIGESBoundary, HandleIGESToBRepToolContainer, HandleIMeshDataShape,
+    HandleIMeshDataTessellatedShape, HandleIMeshToolsContext, HandleIMeshToolsMeshBuilder,
+    HandleIMeshToolsShapeExplorer, HandleIntCurvesFaceIntersector, HandleIntPatchALine,
+    HandleIntPatchGLine, HandleIntPatchLine, HandleIntPatchRLine,
+    HandleIntPatchTheIWLineOfTheIWalking, HandleIntPatchWLine, HandleIntSurfLineOn2S,
+    HandleIntToolsContext, HandleIntToolsTopolTool, HandleInterfaceCheck,
     HandleInterfaceCheckFailure, HandleInterfaceCopyMap, HandleInterfaceEntityCluster,
     HandleInterfaceGTool, HandleInterfaceGlobalNodeOfGeneralLib,
     HandleInterfaceGlobalNodeOfReaderLib, HandleInterfaceHArray1OfHAsciiString,
@@ -245,43 +355,54 @@ pub use crate::ffi::{
     HandleInterfaceNodeOfGeneralLib, HandleInterfaceNodeOfReaderLib, HandleInterfaceParamList,
     HandleInterfaceParamSet, HandleInterfaceReportEntity, HandleInterfaceSignLabel,
     HandleInterfaceStatic, HandleInterfaceTypedValue, HandleInterfaceUndefinedContent,
-    HandleLawBSpFunc, HandleLawBSpline, HandleLawComposite, HandleLawConstant, HandleLawInterpol,
-    HandleLawLinear, HandleLawS, HandleLocOpeGluedShape, HandleLocOpeWiresOnShape,
-    HandleMAT2dCircuit, HandleMAT2dConnexion, HandleMATArc, HandleMATBasicElt, HandleMATBisector,
-    HandleMATEdge, HandleMATGraph, HandleMATListOfBisector, HandleMATListOfEdge, HandleMATNode,
+    HandleLPropBadContinuity, HandleLPropNotDefined, HandleLawBSpFunc, HandleLawBSpline,
+    HandleLawComposite, HandleLawConstant, HandleLawInterpol, HandleLawLinear, HandleLawS,
+    HandleLocOpeGluedShape, HandleLocOpeWiresOnShape, HandleMAT2dCircuit, HandleMAT2dConnexion,
+    HandleMATArc, HandleMATBasicElt, HandleMATBisector, HandleMATEdge, HandleMATGraph,
+    HandleMATListOfBisector, HandleMATListOfEdge, HandleMATNode,
     HandleMATTListNodeOfListOfBisector, HandleMATTListNodeOfListOfEdge, HandleMATZone,
     HandleMessageAlert, HandleMessageAlertExtended, HandleMessageAlgorithm, HandleMessageAttribute,
     HandleMessageAttributeMeter, HandleMessageAttributeObject, HandleMessageAttributeStream,
     HandleMessageCompositeAlerts, HandleMessageMessenger, HandleMessagePrinterOStream,
     HandleMessagePrinterSystemLog, HandleMessagePrinterToReport, HandleMessageReport,
-    HandleMoniToolTypedValue, HandleNCollectionAccAllocator, HandleNCollectionAlignedAllocator,
-    HandleNCollectionBaseAllocator, HandleNCollectionBuffer, HandleNCollectionHeapAllocator,
-    HandleNCollectionIncAllocator, HandleNCollectionWinHeapAllocator, HandleNLPlateHPG0Constraint,
-    HandleNLPlateHPG0G1Constraint, HandleNLPlateHPG0G2Constraint, HandleNLPlateHPG0G3Constraint,
-    HandleNLPlateHPG1Constraint, HandleNLPlateHPG2Constraint, HandleNLPlateHPG3Constraint,
-    HandleOSDCachedFileSystem, HandleOSDException, HandleOSDExceptionACCESSVIOLATION,
-    HandleOSDExceptionARRAYBOUNDSEXCEEDED, HandleOSDExceptionCTRLBREAK,
-    HandleOSDExceptionILLEGALINSTRUCTION, HandleOSDExceptionINPAGEERROR,
-    HandleOSDExceptionINTOVERFLOW, HandleOSDExceptionINVALIDDISPOSITION,
-    HandleOSDExceptionNONCONTINUABLEEXCEPTION, HandleOSDExceptionPRIVINSTRUCTION,
-    HandleOSDExceptionSTACKOVERFLOW, HandleOSDExceptionSTATUSNOMEMORY, HandleOSDFileSystemSelector,
-    HandleOSDLocalFileSystem, HandleOSDOSDError, HandleOSDSIGBUS, HandleOSDSIGHUP, HandleOSDSIGILL,
-    HandleOSDSIGINT, HandleOSDSIGKILL, HandleOSDSIGQUIT, HandleOSDSIGSEGV, HandleOSDSIGSYS,
-    HandleOSDSignal, HandleOSDThreadPool, HandlePCDMReaderFilter, HandlePLibHermitJacobi,
-    HandlePLibJacobiPolynomial, HandlePlateHArray1OfPinpointConstraint,
-    HandlePolyCoherentTriangulation, HandlePolyHArray1OfTriangle, HandlePolyMergeNodesTool,
-    HandlePolyPolygon2D, HandlePolyPolygon3D, HandlePolyPolygonOnTriangulation,
-    HandlePolyTriangulation, HandlePolyTriangulationParameters, HandleProjLibCompProjectedCurve,
+    HandleMoniToolCaseData, HandleMoniToolHSequenceOfElement, HandleMoniToolIntVal,
+    HandleMoniToolRealVal, HandleMoniToolSignShape, HandleMoniToolTimer,
+    HandleMoniToolTransientElem, HandleMoniToolTypedValue, HandleNCollectionAccAllocator,
+    HandleNCollectionAlignedAllocator, HandleNCollectionBaseAllocator, HandleNCollectionBuffer,
+    HandleNCollectionHeapAllocator, HandleNCollectionIncAllocator,
+    HandleNCollectionWinHeapAllocator, HandleNLPlateHPG0Constraint, HandleNLPlateHPG0G1Constraint,
+    HandleNLPlateHPG0G2Constraint, HandleNLPlateHPG0G3Constraint, HandleNLPlateHPG1Constraint,
+    HandleNLPlateHPG2Constraint, HandleNLPlateHPG3Constraint, HandleOSDCachedFileSystem,
+    HandleOSDException, HandleOSDExceptionACCESSVIOLATION, HandleOSDExceptionARRAYBOUNDSEXCEEDED,
+    HandleOSDExceptionCTRLBREAK, HandleOSDExceptionILLEGALINSTRUCTION,
+    HandleOSDExceptionINPAGEERROR, HandleOSDExceptionINTOVERFLOW,
+    HandleOSDExceptionINVALIDDISPOSITION, HandleOSDExceptionNONCONTINUABLEEXCEPTION,
+    HandleOSDExceptionPRIVINSTRUCTION, HandleOSDExceptionSTACKOVERFLOW,
+    HandleOSDExceptionSTATUSNOMEMORY, HandleOSDFileSystemSelector, HandleOSDLocalFileSystem,
+    HandleOSDOSDError, HandleOSDSIGBUS, HandleOSDSIGHUP, HandleOSDSIGILL, HandleOSDSIGINT,
+    HandleOSDSIGKILL, HandleOSDSIGQUIT, HandleOSDSIGSEGV, HandleOSDSIGSYS, HandleOSDSignal,
+    HandleOSDThreadPool, HandlePLibHermitJacobi, HandlePLibJacobiPolynomial,
+    HandlePlateHArray1OfPinpointConstraint, HandlePolyCoherentTriangulation,
+    HandlePolyHArray1OfTriangle, HandlePolyMergeNodesTool, HandlePolyPolygon2D,
+    HandlePolyPolygon3D, HandlePolyPolygonOnTriangulation, HandlePolyTriangulation,
+    HandlePolyTriangulationParameters, HandleProjLibCompProjectedCurve,
     HandleProjLibHSequenceOfHSequenceOfPnt, HandleProjLibProjectOnPlane,
     HandleProjLibProjectedCurve, HandleQuantityDateDefinitionError, HandleQuantityHArray1OfColor,
     HandleQuantityPeriodDefinitionError, HandleRWGltfCafReader, HandleRWGltfGltfFace,
     HandleRWGltfGltfLatePrimitiveArray, HandleRWGltfGltfMaterialMap, HandleRWGltfMaterialCommon,
     HandleRWGltfMaterialMetallicRoughness, HandleRWGltfTriangulationReader,
+    HandleRWHeaderSectionGeneralModule, HandleRWHeaderSectionReadWriteModule,
     HandleRWMeshTriangulationSource, HandleRWObjCafReader, HandleRWObjCafWriter,
     HandleRWObjObjMaterialMap, HandleRWObjTriangulationReader, HandleRWPlyCafWriter,
     HandleResourceManager, HandleResourceNoSuchResource, HandleSTEPCAFControlActorWrite,
     HandleSTEPCAFControlController, HandleSTEPCAFControlExternFile, HandleSTEPControlActorRead,
-    HandleSTEPControlActorWrite, HandleSTEPControlController, HandleShapeAnalysisFreeBoundData,
+    HandleSTEPControlActorWrite, HandleSTEPControlController, HandleSTEPEditEditContext,
+    HandleSTEPEditEditSDR, HandleSTEPSelectionsAssemblyComponent, HandleSTEPSelectionsAssemblyLink,
+    HandleSTEPSelectionsHSequenceOfAssemblyLink, HandleSTEPSelectionsSelectAssembly,
+    HandleSTEPSelectionsSelectDerived, HandleSTEPSelectionsSelectFaces,
+    HandleSTEPSelectionsSelectForTransfer, HandleSTEPSelectionsSelectGSCurves,
+    HandleSTEPSelectionsSelectInstances, HandleShapeAlgoAlgoContainer,
+    HandleShapeAlgoToolContainer, HandleShapeAnalysisFreeBoundData,
     HandleShapeAnalysisHSequenceOfFreeBounds, HandleShapeAnalysisSurface,
     HandleShapeAnalysisTransferParameters, HandleShapeAnalysisTransferParametersProj,
     HandleShapeAnalysisWire, HandleShapeBuildReShape, HandleShapeConstructProjectCurveOnSurface,
@@ -308,28 +429,483 @@ pub use crate::ffi::{
     HandleShapeUpgradeSplitSurfaceContinuity, HandleShapeUpgradeTool,
     HandleShapeUpgradeUnifySameDomain, HandleShapeUpgradeWireDivide,
     HandleStdFailInfiniteSolutions, HandleStdFailNotDone, HandleStdFailUndefined,
-    HandleStdFailUndefinedDerivative, HandleStdFailUndefinedValue,
-    HandleStepAP242GeometricItemSpecificUsage, HandleStepAP242ItemIdentifiedRepresentationUsage,
-    HandleStepBasicLengthMeasureWithUnit, HandleStepBasicMeasureWithUnit,
-    HandleStepBasicProductDefinition, HandleStepDataSelectInt, HandleStepDataSelectMember,
-    HandleStepDataStepModel, HandleStepDimTolDatum,
-    HandleStepDimTolDatumReferenceModifierWithValue, HandleStepDimTolGeometricTolerance,
+    HandleStdFailUndefinedDerivative, HandleStdFailUndefinedValue, HandleStepAP203CcDesignApproval,
+    HandleStepAP203CcDesignCertification, HandleStepAP203CcDesignContract,
+    HandleStepAP203CcDesignDateAndTimeAssignment,
+    HandleStepAP203CcDesignPersonAndOrganizationAssignment,
+    HandleStepAP203CcDesignSecurityClassification, HandleStepAP203CcDesignSpecificationReference,
+    HandleStepAP203Change, HandleStepAP203ChangeRequest, HandleStepAP203HArray1OfApprovedItem,
+    HandleStepAP203HArray1OfCertifiedItem, HandleStepAP203HArray1OfChangeRequestItem,
+    HandleStepAP203HArray1OfClassifiedItem, HandleStepAP203HArray1OfContractedItem,
+    HandleStepAP203HArray1OfDateTimeItem, HandleStepAP203HArray1OfPersonOrganizationItem,
+    HandleStepAP203HArray1OfSpecifiedItem, HandleStepAP203HArray1OfStartRequestItem,
+    HandleStepAP203HArray1OfWorkItem, HandleStepAP203StartRequest, HandleStepAP203StartWork,
+    HandleStepAP214AppliedApprovalAssignment, HandleStepAP214AppliedDateAndTimeAssignment,
+    HandleStepAP214AppliedDateAssignment, HandleStepAP214AppliedDocumentReference,
+    HandleStepAP214AppliedExternalIdentificationAssignment, HandleStepAP214AppliedGroupAssignment,
+    HandleStepAP214AppliedOrganizationAssignment,
+    HandleStepAP214AppliedPersonAndOrganizationAssignment, HandleStepAP214AppliedPresentedItem,
+    HandleStepAP214AppliedSecurityClassificationAssignment,
+    HandleStepAP214AutoDesignActualDateAndTimeAssignment,
+    HandleStepAP214AutoDesignActualDateAssignment, HandleStepAP214AutoDesignApprovalAssignment,
+    HandleStepAP214AutoDesignDateAndPersonAssignment, HandleStepAP214AutoDesignDocumentReference,
+    HandleStepAP214AutoDesignGroupAssignment,
+    HandleStepAP214AutoDesignNominalDateAndTimeAssignment,
+    HandleStepAP214AutoDesignNominalDateAssignment,
+    HandleStepAP214AutoDesignOrganizationAssignment,
+    HandleStepAP214AutoDesignPersonAndOrganizationAssignment,
+    HandleStepAP214AutoDesignPresentedItem,
+    HandleStepAP214AutoDesignSecurityClassificationAssignment, HandleStepAP214Class,
+    HandleStepAP214ExternallyDefinedClass, HandleStepAP214ExternallyDefinedGeneralProperty,
+    HandleStepAP214HArray1OfApprovalItem, HandleStepAP214HArray1OfAutoDesignDateAndPersonItem,
+    HandleStepAP214HArray1OfAutoDesignDateAndTimeItem, HandleStepAP214HArray1OfAutoDesignDatedItem,
+    HandleStepAP214HArray1OfAutoDesignGeneralOrgItem,
+    HandleStepAP214HArray1OfAutoDesignGroupedItem,
+    HandleStepAP214HArray1OfAutoDesignPresentedItemSelect,
+    HandleStepAP214HArray1OfAutoDesignReferencingItem, HandleStepAP214HArray1OfDateAndTimeItem,
+    HandleStepAP214HArray1OfDateItem, HandleStepAP214HArray1OfDocumentReferenceItem,
+    HandleStepAP214HArray1OfExternalIdentificationItem, HandleStepAP214HArray1OfGroupItem,
+    HandleStepAP214HArray1OfOrganizationItem, HandleStepAP214HArray1OfPersonAndOrganizationItem,
+    HandleStepAP214HArray1OfPresentedItemSelect,
+    HandleStepAP214HArray1OfSecurityClassificationItem, HandleStepAP214Protocol,
+    HandleStepAP214RepItemGroup, HandleStepAP242DraughtingModelItemAssociation,
+    HandleStepAP242GeometricItemSpecificUsage, HandleStepAP242IdAttribute,
+    HandleStepAP242ItemIdentifiedRepresentationUsage, HandleStepBasicAction,
+    HandleStepBasicActionAssignment, HandleStepBasicActionMethod,
+    HandleStepBasicActionRequestAssignment, HandleStepBasicActionRequestSolution,
+    HandleStepBasicAddress, HandleStepBasicApplicationContext,
+    HandleStepBasicApplicationContextElement, HandleStepBasicApplicationProtocolDefinition,
+    HandleStepBasicApproval, HandleStepBasicApprovalAssignment, HandleStepBasicApprovalDateTime,
+    HandleStepBasicApprovalPersonOrganization, HandleStepBasicApprovalRelationship,
+    HandleStepBasicApprovalRole, HandleStepBasicApprovalStatus, HandleStepBasicAreaUnit,
+    HandleStepBasicCalendarDate, HandleStepBasicCertification,
+    HandleStepBasicCertificationAssignment, HandleStepBasicCertificationType,
+    HandleStepBasicCharacterizedObject, HandleStepBasicContract, HandleStepBasicContractAssignment,
+    HandleStepBasicContractType, HandleStepBasicConversionBasedUnit,
+    HandleStepBasicConversionBasedUnitAndAreaUnit, HandleStepBasicConversionBasedUnitAndLengthUnit,
+    HandleStepBasicConversionBasedUnitAndMassUnit,
+    HandleStepBasicConversionBasedUnitAndPlaneAngleUnit,
+    HandleStepBasicConversionBasedUnitAndRatioUnit,
+    HandleStepBasicConversionBasedUnitAndSolidAngleUnit,
+    HandleStepBasicConversionBasedUnitAndTimeUnit, HandleStepBasicConversionBasedUnitAndVolumeUnit,
+    HandleStepBasicCoordinatedUniversalTimeOffset, HandleStepBasicDate, HandleStepBasicDateAndTime,
+    HandleStepBasicDateAndTimeAssignment, HandleStepBasicDateAssignment, HandleStepBasicDateRole,
+    HandleStepBasicDateTimeRole, HandleStepBasicDerivedUnit, HandleStepBasicDerivedUnitElement,
+    HandleStepBasicDesignContext, HandleStepBasicDigitalDocument,
+    HandleStepBasicDimensionalExponents, HandleStepBasicDocument, HandleStepBasicDocumentFile,
+    HandleStepBasicDocumentProductAssociation, HandleStepBasicDocumentProductEquivalence,
+    HandleStepBasicDocumentReference, HandleStepBasicDocumentRelationship,
+    HandleStepBasicDocumentRepresentationType, HandleStepBasicDocumentType,
+    HandleStepBasicDocumentUsageConstraint, HandleStepBasicEffectivity,
+    HandleStepBasicEffectivityAssignment, HandleStepBasicEulerAngles,
+    HandleStepBasicExternalIdentificationAssignment, HandleStepBasicExternalSource,
+    HandleStepBasicExternallyDefinedItem, HandleStepBasicGeneralProperty,
+    HandleStepBasicGeneralPropertyAssociation, HandleStepBasicGeneralPropertyRelationship,
+    HandleStepBasicGroup, HandleStepBasicGroupAssignment, HandleStepBasicGroupRelationship,
+    HandleStepBasicHArray1OfApproval, HandleStepBasicHArray1OfDerivedUnitElement,
+    HandleStepBasicHArray1OfDocument, HandleStepBasicHArray1OfNamedUnit,
+    HandleStepBasicHArray1OfOrganization, HandleStepBasicHArray1OfPerson,
+    HandleStepBasicHArray1OfProduct, HandleStepBasicHArray1OfProductContext,
+    HandleStepBasicHArray1OfProductDefinition, HandleStepBasicHArray1OfUncertaintyMeasureWithUnit,
+    HandleStepBasicIdentificationAssignment, HandleStepBasicIdentificationRole,
+    HandleStepBasicLengthMeasureWithUnit, HandleStepBasicLengthUnit, HandleStepBasicLocalTime,
+    HandleStepBasicMassMeasureWithUnit, HandleStepBasicMassUnit, HandleStepBasicMeasureValueMember,
+    HandleStepBasicMeasureWithUnit, HandleStepBasicMechanicalContext,
+    HandleStepBasicNameAssignment, HandleStepBasicNamedUnit, HandleStepBasicObjectRole,
+    HandleStepBasicOrdinalDate, HandleStepBasicOrganization, HandleStepBasicOrganizationAssignment,
+    HandleStepBasicOrganizationRole, HandleStepBasicOrganizationalAddress, HandleStepBasicPerson,
+    HandleStepBasicPersonAndOrganization, HandleStepBasicPersonAndOrganizationAssignment,
+    HandleStepBasicPersonAndOrganizationRole, HandleStepBasicPersonalAddress,
+    HandleStepBasicPhysicallyModeledProductDefinition, HandleStepBasicPlaneAngleMeasureWithUnit,
+    HandleStepBasicPlaneAngleUnit, HandleStepBasicProduct, HandleStepBasicProductCategory,
+    HandleStepBasicProductCategoryRelationship, HandleStepBasicProductConceptContext,
+    HandleStepBasicProductContext, HandleStepBasicProductDefinition,
+    HandleStepBasicProductDefinitionContext, HandleStepBasicProductDefinitionEffectivity,
+    HandleStepBasicProductDefinitionFormation,
+    HandleStepBasicProductDefinitionFormationRelationship,
+    HandleStepBasicProductDefinitionFormationWithSpecifiedSource,
+    HandleStepBasicProductDefinitionReference,
+    HandleStepBasicProductDefinitionReferenceWithLocalRepresentation,
+    HandleStepBasicProductDefinitionRelationship,
+    HandleStepBasicProductDefinitionWithAssociatedDocuments,
+    HandleStepBasicProductRelatedProductCategory, HandleStepBasicProductType,
+    HandleStepBasicRatioMeasureWithUnit, HandleStepBasicRatioUnit, HandleStepBasicRoleAssociation,
+    HandleStepBasicSecurityClassification, HandleStepBasicSecurityClassificationAssignment,
+    HandleStepBasicSecurityClassificationLevel, HandleStepBasicSiUnit,
+    HandleStepBasicSiUnitAndAreaUnit, HandleStepBasicSiUnitAndLengthUnit,
+    HandleStepBasicSiUnitAndMassUnit, HandleStepBasicSiUnitAndPlaneAngleUnit,
+    HandleStepBasicSiUnitAndRatioUnit, HandleStepBasicSiUnitAndSolidAngleUnit,
+    HandleStepBasicSiUnitAndThermodynamicTemperatureUnit, HandleStepBasicSiUnitAndTimeUnit,
+    HandleStepBasicSiUnitAndVolumeUnit, HandleStepBasicSizeMember,
+    HandleStepBasicSolidAngleMeasureWithUnit, HandleStepBasicSolidAngleUnit,
+    HandleStepBasicThermodynamicTemperatureUnit, HandleStepBasicTimeMeasureWithUnit,
+    HandleStepBasicTimeUnit, HandleStepBasicUncertaintyMeasureWithUnit,
+    HandleStepBasicVersionedActionRequest, HandleStepBasicVolumeUnit,
+    HandleStepBasicWeekOfYearAndDayDate, HandleStepDataDefaultGeneral, HandleStepDataECDescr,
+    HandleStepDataESDescr, HandleStepDataFileProtocol, HandleStepDataFreeFormEntity,
+    HandleStepDataGlobalNodeOfWriterLib, HandleStepDataHArray1OfField,
+    HandleStepDataNodeOfWriterLib, HandleStepDataPDescr, HandleStepDataPlex,
+    HandleStepDataProtocol, HandleStepDataSelectArrReal, HandleStepDataSelectInt,
+    HandleStepDataSelectMember, HandleStepDataSelectNamed, HandleStepDataSelectReal,
+    HandleStepDataSimple, HandleStepDataStepModel, HandleStepDataStepReaderData,
+    HandleStepDataUndefinedEntity, HandleStepDimTolAngularityTolerance,
+    HandleStepDimTolCircularRunoutTolerance, HandleStepDimTolCoaxialityTolerance,
+    HandleStepDimTolCommonDatum, HandleStepDimTolConcentricityTolerance,
+    HandleStepDimTolCylindricityTolerance, HandleStepDimTolDatum, HandleStepDimTolDatumFeature,
+    HandleStepDimTolDatumReference, HandleStepDimTolDatumReferenceCompartment,
+    HandleStepDimTolDatumReferenceElement, HandleStepDimTolDatumReferenceModifierWithValue,
+    HandleStepDimTolDatumSystem, HandleStepDimTolDatumTarget, HandleStepDimTolFlatnessTolerance,
+    HandleStepDimTolGeneralDatumReference, HandleStepDimTolGeoTolAndGeoTolWthDatRef,
+    HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol,
+    HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod,
+    HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol,
+    HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol,
+    HandleStepDimTolGeoTolAndGeoTolWthMaxTol, HandleStepDimTolGeoTolAndGeoTolWthMod,
+    HandleStepDimTolGeometricTolerance, HandleStepDimTolGeometricToleranceRelationship,
+    HandleStepDimTolGeometricToleranceWithDatumReference,
+    HandleStepDimTolGeometricToleranceWithDefinedAreaUnit,
+    HandleStepDimTolGeometricToleranceWithDefinedUnit,
+    HandleStepDimTolGeometricToleranceWithMaximumTolerance,
+    HandleStepDimTolGeometricToleranceWithModifiers, HandleStepDimTolHArray1OfDatumReference,
+    HandleStepDimTolHArray1OfDatumReferenceCompartment,
+    HandleStepDimTolHArray1OfDatumReferenceElement,
     HandleStepDimTolHArray1OfDatumReferenceModifier,
     HandleStepDimTolHArray1OfDatumSystemOrReference,
-    HandleStepDimTolSimpleDatumReferenceModifierMember, HandleStepGeomGeometricRepresentationItem,
-    HandleStepReprCompoundRepresentationItem, HandleStepReprHArray1OfRepresentationItem,
-    HandleStepReprProductDefinitionShape, HandleStepReprPropertyDefinition,
-    HandleStepReprPropertyDefinitionRepresentation, HandleStepReprRepresentation,
-    HandleStepReprRepresentationItem, HandleStepReprShapeAspect, HandleStepShapeLimitsAndFits,
-    HandleStepShapeShapeDefinitionRepresentation, HandleStepVisualDraughtingModel,
+    HandleStepDimTolHArray1OfGeometricToleranceModifier,
+    HandleStepDimTolHArray1OfToleranceZoneTarget, HandleStepDimTolLineProfileTolerance,
+    HandleStepDimTolModifiedGeometricTolerance, HandleStepDimTolNonUniformZoneDefinition,
+    HandleStepDimTolParallelismTolerance, HandleStepDimTolPerpendicularityTolerance,
+    HandleStepDimTolPlacedDatumTargetFeature, HandleStepDimTolPositionTolerance,
+    HandleStepDimTolProjectedZoneDefinition, HandleStepDimTolRoundnessTolerance,
+    HandleStepDimTolRunoutZoneDefinition, HandleStepDimTolRunoutZoneOrientation,
+    HandleStepDimTolSimpleDatumReferenceModifierMember, HandleStepDimTolStraightnessTolerance,
+    HandleStepDimTolSurfaceProfileTolerance, HandleStepDimTolSymmetryTolerance,
+    HandleStepDimTolToleranceZone, HandleStepDimTolToleranceZoneDefinition,
+    HandleStepDimTolToleranceZoneForm, HandleStepDimTolTotalRunoutTolerance,
+    HandleStepDimTolUnequallyDisposedGeometricTolerance,
+    HandleStepElementAnalysisItemWithinRepresentation, HandleStepElementCurve3dElementDescriptor,
+    HandleStepElementCurveElementEndReleasePacket, HandleStepElementCurveElementFreedomMember,
+    HandleStepElementCurveElementPurposeMember, HandleStepElementCurveElementSectionDefinition,
+    HandleStepElementCurveElementSectionDerivedDefinitions, HandleStepElementElementAspectMember,
+    HandleStepElementElementDescriptor, HandleStepElementElementMaterial,
+    HandleStepElementHArray1OfCurveElementEndReleasePacket,
+    HandleStepElementHArray1OfCurveElementSectionDefinition,
+    HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember,
+    HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember,
+    HandleStepElementHArray1OfMeasureOrUnspecifiedValue, HandleStepElementHArray1OfSurfaceSection,
+    HandleStepElementHArray1OfVolumeElementPurpose,
+    HandleStepElementHArray1OfVolumeElementPurposeMember,
+    HandleStepElementHArray2OfCurveElementPurposeMember,
+    HandleStepElementHArray2OfSurfaceElementPurpose,
+    HandleStepElementHArray2OfSurfaceElementPurposeMember,
+    HandleStepElementHSequenceOfCurveElementPurposeMember,
+    HandleStepElementHSequenceOfCurveElementSectionDefinition,
+    HandleStepElementHSequenceOfElementMaterial,
+    HandleStepElementHSequenceOfSurfaceElementPurposeMember,
+    HandleStepElementMeasureOrUnspecifiedValueMember, HandleStepElementSurface3dElementDescriptor,
+    HandleStepElementSurfaceElementProperty, HandleStepElementSurfaceElementPurposeMember,
+    HandleStepElementSurfaceSection, HandleStepElementSurfaceSectionField,
+    HandleStepElementSurfaceSectionFieldConstant, HandleStepElementSurfaceSectionFieldVarying,
+    HandleStepElementUniformSurfaceSection, HandleStepElementVolume3dElementDescriptor,
+    HandleStepElementVolumeElementPurposeMember,
+    HandleStepFEAAlignedCurve3dElementCoordinateSystem,
+    HandleStepFEAAlignedSurface3dElementCoordinateSystem,
+    HandleStepFEAArbitraryVolume3dElementCoordinateSystem,
+    HandleStepFEAConstantSurface3dElementCoordinateSystem, HandleStepFEACurve3dElementProperty,
+    HandleStepFEACurve3dElementRepresentation, HandleStepFEACurveElementEndOffset,
+    HandleStepFEACurveElementEndRelease, HandleStepFEACurveElementInterval,
+    HandleStepFEACurveElementIntervalConstant, HandleStepFEACurveElementIntervalLinearlyVarying,
+    HandleStepFEACurveElementLocation, HandleStepFEADegreeOfFreedomMember, HandleStepFEADummyNode,
+    HandleStepFEAElementGeometricRelationship, HandleStepFEAElementGroup,
+    HandleStepFEAElementRepresentation, HandleStepFEAFeaAreaDensity,
+    HandleStepFEAFeaAxis2Placement3d, HandleStepFEAFeaCurveSectionGeometricRelationship,
+    HandleStepFEAFeaGroup, HandleStepFEAFeaLinearElasticity, HandleStepFEAFeaMassDensity,
+    HandleStepFEAFeaMaterialPropertyRepresentation,
+    HandleStepFEAFeaMaterialPropertyRepresentationItem, HandleStepFEAFeaModel,
+    HandleStepFEAFeaModel3d, HandleStepFEAFeaModelDefinition, HandleStepFEAFeaMoistureAbsorption,
+    HandleStepFEAFeaParametricPoint, HandleStepFEAFeaRepresentationItem,
+    HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion,
+    HandleStepFEAFeaShellBendingStiffness, HandleStepFEAFeaShellMembraneBendingCouplingStiffness,
+    HandleStepFEAFeaShellMembraneStiffness, HandleStepFEAFeaShellShearStiffness,
+    HandleStepFEAFeaSurfaceSectionGeometricRelationship,
+    HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion,
+    HandleStepFEAFreedomAndCoefficient, HandleStepFEAFreedomsList, HandleStepFEAGeometricNode,
+    HandleStepFEAHArray1OfCurveElementEndOffset, HandleStepFEAHArray1OfCurveElementEndRelease,
+    HandleStepFEAHArray1OfCurveElementInterval, HandleStepFEAHArray1OfDegreeOfFreedom,
+    HandleStepFEAHArray1OfElementRepresentation, HandleStepFEAHArray1OfNodeRepresentation,
+    HandleStepFEAHSequenceOfCurve3dElementProperty,
+    HandleStepFEAHSequenceOfElementGeometricRelationship,
+    HandleStepFEAHSequenceOfElementRepresentation, HandleStepFEAHSequenceOfNodeRepresentation,
+    HandleStepFEANode, HandleStepFEANodeDefinition, HandleStepFEANodeGroup,
+    HandleStepFEANodeRepresentation, HandleStepFEANodeSet,
+    HandleStepFEANodeWithSolutionCoordinateSystem, HandleStepFEANodeWithVector,
+    HandleStepFEAParametricCurve3dElementCoordinateDirection,
+    HandleStepFEAParametricCurve3dElementCoordinateSystem,
+    HandleStepFEAParametricSurface3dElementCoordinateSystem,
+    HandleStepFEASurface3dElementRepresentation, HandleStepFEASymmetricTensor23dMember,
+    HandleStepFEASymmetricTensor43dMember, HandleStepFEAVolume3dElementRepresentation,
+    HandleStepGeomAxis1Placement, HandleStepGeomAxis2Placement2d, HandleStepGeomAxis2Placement3d,
+    HandleStepGeomBSplineCurve, HandleStepGeomBSplineCurveWithKnots,
+    HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve, HandleStepGeomBSplineSurface,
+    HandleStepGeomBSplineSurfaceWithKnots,
+    HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface, HandleStepGeomBezierCurve,
+    HandleStepGeomBezierCurveAndRationalBSplineCurve, HandleStepGeomBezierSurface,
+    HandleStepGeomBezierSurfaceAndRationalBSplineSurface, HandleStepGeomBoundaryCurve,
+    HandleStepGeomBoundedCurve, HandleStepGeomBoundedSurface, HandleStepGeomCartesianPoint,
+    HandleStepGeomCartesianTransformationOperator, HandleStepGeomCartesianTransformationOperator2d,
+    HandleStepGeomCartesianTransformationOperator3d, HandleStepGeomCircle,
+    HandleStepGeomCompositeCurve, HandleStepGeomCompositeCurveOnSurface,
+    HandleStepGeomCompositeCurveSegment, HandleStepGeomConic, HandleStepGeomConicalSurface,
+    HandleStepGeomCurve, HandleStepGeomCurveBoundedSurface, HandleStepGeomCurveReplica,
+    HandleStepGeomCylindricalSurface, HandleStepGeomDegeneratePcurve,
+    HandleStepGeomDegenerateToroidalSurface, HandleStepGeomDirection,
+    HandleStepGeomElementarySurface, HandleStepGeomEllipse,
+    HandleStepGeomEvaluatedDegeneratePcurve,
+    HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx,
+    HandleStepGeomGeometricRepresentationContext,
+    HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext,
+    HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext,
+    HandleStepGeomGeometricRepresentationItem, HandleStepGeomHArray1OfBoundaryCurve,
+    HandleStepGeomHArray1OfCartesianPoint, HandleStepGeomHArray1OfCompositeCurveSegment,
+    HandleStepGeomHArray1OfCurve, HandleStepGeomHArray1OfPcurveOrSurface,
+    HandleStepGeomHArray1OfSurfaceBoundary, HandleStepGeomHArray1OfTrimmingSelect,
+    HandleStepGeomHArray2OfCartesianPoint, HandleStepGeomHArray2OfSurfacePatch,
+    HandleStepGeomHyperbola, HandleStepGeomIntersectionCurve, HandleStepGeomLine,
+    HandleStepGeomOffsetCurve3d, HandleStepGeomOffsetSurface, HandleStepGeomOrientedSurface,
+    HandleStepGeomOuterBoundaryCurve, HandleStepGeomParabola, HandleStepGeomPcurve,
+    HandleStepGeomPlacement, HandleStepGeomPlane, HandleStepGeomPoint, HandleStepGeomPointOnCurve,
+    HandleStepGeomPointOnSurface, HandleStepGeomPointReplica, HandleStepGeomPolyline,
+    HandleStepGeomQuasiUniformCurve, HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve,
+    HandleStepGeomQuasiUniformSurface, HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface,
+    HandleStepGeomRationalBSplineCurve, HandleStepGeomRationalBSplineSurface,
+    HandleStepGeomRectangularCompositeSurface, HandleStepGeomRectangularTrimmedSurface,
+    HandleStepGeomReparametrisedCompositeCurveSegment, HandleStepGeomSeamCurve,
+    HandleStepGeomSphericalSurface, HandleStepGeomSuParameters, HandleStepGeomSurface,
+    HandleStepGeomSurfaceCurve, HandleStepGeomSurfaceCurveAndBoundedCurve,
+    HandleStepGeomSurfaceOfLinearExtrusion, HandleStepGeomSurfaceOfRevolution,
+    HandleStepGeomSurfacePatch, HandleStepGeomSurfaceReplica, HandleStepGeomSweptSurface,
+    HandleStepGeomToroidalSurface, HandleStepGeomTrimmedCurve, HandleStepGeomTrimmingMember,
+    HandleStepGeomUniformCurve, HandleStepGeomUniformCurveAndRationalBSplineCurve,
+    HandleStepGeomUniformSurface, HandleStepGeomUniformSurfaceAndRationalBSplineSurface,
+    HandleStepGeomVector, HandleStepKinematicsActuatedKinPairAndOrderKinPair,
+    HandleStepKinematicsActuatedKinematicPair,
+    HandleStepKinematicsContextDependentKinematicLinkRepresentation,
+    HandleStepKinematicsCylindricalPair, HandleStepKinematicsCylindricalPairValue,
+    HandleStepKinematicsCylindricalPairWithRange, HandleStepKinematicsFullyConstrainedPair,
+    HandleStepKinematicsGearPair, HandleStepKinematicsGearPairValue,
+    HandleStepKinematicsGearPairWithRange, HandleStepKinematicsHighOrderKinematicPair,
+    HandleStepKinematicsHomokineticPair, HandleStepKinematicsKinematicJoint,
+    HandleStepKinematicsKinematicLink, HandleStepKinematicsKinematicLinkRepresentation,
+    HandleStepKinematicsKinematicLinkRepresentationAssociation, HandleStepKinematicsKinematicPair,
+    HandleStepKinematicsKinematicPropertyDefinitionRepresentation,
+    HandleStepKinematicsKinematicPropertyMechanismRepresentation,
+    HandleStepKinematicsKinematicTopologyDirectedStructure,
+    HandleStepKinematicsKinematicTopologyNetworkStructure,
+    HandleStepKinematicsKinematicTopologyStructure,
+    HandleStepKinematicsLinearFlexibleAndPinionPair,
+    HandleStepKinematicsLinearFlexibleAndPlanarCurvePair,
+    HandleStepKinematicsLinearFlexibleLinkRepresentation,
+    HandleStepKinematicsLowOrderKinematicPair, HandleStepKinematicsLowOrderKinematicPairValue,
+    HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling,
+    HandleStepKinematicsLowOrderKinematicPairWithRange,
+    HandleStepKinematicsMechanismRepresentation, HandleStepKinematicsMechanismStateRepresentation,
+    HandleStepKinematicsOrientedJoint, HandleStepKinematicsPairRepresentationRelationship,
+    HandleStepKinematicsPairValue, HandleStepKinematicsPlanarCurvePair,
+    HandleStepKinematicsPlanarCurvePairRange, HandleStepKinematicsPlanarPair,
+    HandleStepKinematicsPlanarPairValue, HandleStepKinematicsPlanarPairWithRange,
+    HandleStepKinematicsPointOnPlanarCurvePair, HandleStepKinematicsPointOnPlanarCurvePairValue,
+    HandleStepKinematicsPointOnPlanarCurvePairWithRange, HandleStepKinematicsPointOnSurfacePair,
+    HandleStepKinematicsPointOnSurfacePairValue, HandleStepKinematicsPointOnSurfacePairWithRange,
+    HandleStepKinematicsPrismaticPair, HandleStepKinematicsPrismaticPairValue,
+    HandleStepKinematicsPrismaticPairWithRange, HandleStepKinematicsProductDefinitionKinematics,
+    HandleStepKinematicsProductDefinitionRelationshipKinematics,
+    HandleStepKinematicsRackAndPinionPair, HandleStepKinematicsRackAndPinionPairValue,
+    HandleStepKinematicsRackAndPinionPairWithRange, HandleStepKinematicsRevolutePair,
+    HandleStepKinematicsRevolutePairValue, HandleStepKinematicsRevolutePairWithRange,
+    HandleStepKinematicsRigidLinkRepresentation, HandleStepKinematicsRollingCurvePair,
+    HandleStepKinematicsRollingCurvePairValue, HandleStepKinematicsRollingSurfacePair,
+    HandleStepKinematicsRollingSurfacePairValue, HandleStepKinematicsRotationAboutDirection,
+    HandleStepKinematicsScrewPair, HandleStepKinematicsScrewPairValue,
+    HandleStepKinematicsScrewPairWithRange, HandleStepKinematicsSlidingCurvePair,
+    HandleStepKinematicsSlidingCurvePairValue, HandleStepKinematicsSlidingSurfacePair,
+    HandleStepKinematicsSlidingSurfacePairValue, HandleStepKinematicsSphericalPair,
+    HandleStepKinematicsSphericalPairValue, HandleStepKinematicsSphericalPairWithPin,
+    HandleStepKinematicsSphericalPairWithPinAndRange, HandleStepKinematicsSphericalPairWithRange,
+    HandleStepKinematicsSurfacePair, HandleStepKinematicsSurfacePairWithRange,
+    HandleStepKinematicsUnconstrainedPair, HandleStepKinematicsUnconstrainedPairValue,
+    HandleStepKinematicsUniversalPair, HandleStepKinematicsUniversalPairValue,
+    HandleStepKinematicsUniversalPairWithRange, HandleStepReprAllAroundShapeAspect,
+    HandleStepReprApex, HandleStepReprAssemblyComponentUsage,
+    HandleStepReprAssemblyComponentUsageSubstitute, HandleStepReprBetweenShapeAspect,
+    HandleStepReprBooleanRepresentationItem, HandleStepReprCentreOfSymmetry,
+    HandleStepReprCharacterizedRepresentation,
+    HandleStepReprCompGroupShAspAndCompShAspAndDatumFeatAndShAsp,
+    HandleStepReprCompShAspAndDatumFeatAndShAsp, HandleStepReprCompositeGroupShapeAspect,
+    HandleStepReprCompositeShapeAspect, HandleStepReprCompoundRepresentationItem,
+    HandleStepReprConfigurationDesign, HandleStepReprConfigurationEffectivity,
+    HandleStepReprConfigurationItem, HandleStepReprConstructiveGeometryRepresentation,
+    HandleStepReprConstructiveGeometryRepresentationRelationship,
+    HandleStepReprContinuosShapeAspect, HandleStepReprDataEnvironment,
+    HandleStepReprDefinitionalRepresentation, HandleStepReprDerivedShapeAspect,
+    HandleStepReprDescriptiveRepresentationItem, HandleStepReprExtension,
+    HandleStepReprExternallyDefinedRepresentation, HandleStepReprFeatureForDatumTargetRelationship,
+    HandleStepReprFunctionallyDefinedTransformation, HandleStepReprGeometricAlignment,
+    HandleStepReprGlobalUncertaintyAssignedContext, HandleStepReprGlobalUnitAssignedContext,
+    HandleStepReprHArray1OfMaterialPropertyRepresentation,
+    HandleStepReprHArray1OfPropertyDefinitionRepresentation,
+    HandleStepReprHArray1OfRepresentationItem, HandleStepReprHArray1OfShapeAspect,
+    HandleStepReprHSequenceOfMaterialPropertyRepresentation,
+    HandleStepReprHSequenceOfRepresentationItem, HandleStepReprIntegerRepresentationItem,
+    HandleStepReprItemDefinedTransformation, HandleStepReprMakeFromUsageOption,
+    HandleStepReprMappedItem, HandleStepReprMaterialDesignation, HandleStepReprMaterialProperty,
+    HandleStepReprMaterialPropertyRepresentation, HandleStepReprMeasureRepresentationItem,
+    HandleStepReprMechanicalDesignAndDraughtingRelationship,
+    HandleStepReprNextAssemblyUsageOccurrence, HandleStepReprParallelOffset,
+    HandleStepReprParametricRepresentationContext, HandleStepReprPerpendicularTo,
+    HandleStepReprProductConcept, HandleStepReprProductDefinitionShape,
+    HandleStepReprProductDefinitionUsage, HandleStepReprPromissoryUsageOccurrence,
+    HandleStepReprPropertyDefinition, HandleStepReprPropertyDefinitionRelationship,
+    HandleStepReprPropertyDefinitionRepresentation, HandleStepReprQuantifiedAssemblyComponentUsage,
+    HandleStepReprRealRepresentationItem, HandleStepReprReprItemAndLengthMeasureWithUnit,
+    HandleStepReprReprItemAndLengthMeasureWithUnitAndQRI, HandleStepReprReprItemAndMeasureWithUnit,
+    HandleStepReprReprItemAndMeasureWithUnitAndQRI,
+    HandleStepReprReprItemAndPlaneAngleMeasureWithUnit,
+    HandleStepReprReprItemAndPlaneAngleMeasureWithUnitAndQRI, HandleStepReprRepresentation,
+    HandleStepReprRepresentationContext, HandleStepReprRepresentationContextReference,
+    HandleStepReprRepresentationItem, HandleStepReprRepresentationMap,
+    HandleStepReprRepresentationReference, HandleStepReprRepresentationRelationship,
+    HandleStepReprRepresentationRelationshipWithTransformation, HandleStepReprShapeAspect,
+    HandleStepReprShapeAspectDerivingRelationship, HandleStepReprShapeAspectRelationship,
+    HandleStepReprShapeAspectTransition, HandleStepReprShapeRepresentationRelationship,
+    HandleStepReprShapeRepresentationRelationshipWithTransformation,
+    HandleStepReprSpecifiedHigherUsageOccurrence, HandleStepReprStructuralResponseProperty,
+    HandleStepReprStructuralResponsePropertyDefinitionRepresentation,
+    HandleStepReprSuppliedPartRelationship, HandleStepReprTangent, HandleStepReprValueRange,
+    HandleStepReprValueRepresentationItem, HandleStepSelectActivator, HandleStepSelectFloatFormat,
+    HandleStepSelectStepType, HandleStepSelectWorkLibrary,
+    HandleStepShapeAdvancedBrepShapeRepresentation, HandleStepShapeAdvancedFace,
+    HandleStepShapeAngularLocation, HandleStepShapeAngularSize, HandleStepShapeBlock,
+    HandleStepShapeBooleanResult, HandleStepShapeBoxDomain, HandleStepShapeBoxedHalfSpace,
+    HandleStepShapeBrepWithVoids, HandleStepShapeClosedShell,
+    HandleStepShapeCompoundShapeRepresentation, HandleStepShapeConnectedEdgeSet,
+    HandleStepShapeConnectedFaceSet, HandleStepShapeConnectedFaceShapeRepresentation,
+    HandleStepShapeConnectedFaceSubSet, HandleStepShapeContextDependentShapeRepresentation,
+    HandleStepShapeCsgShapeRepresentation, HandleStepShapeCsgSolid,
+    HandleStepShapeDefinitionalRepresentationAndShapeRepresentation,
+    HandleStepShapeDimensionalCharacteristicRepresentation, HandleStepShapeDimensionalLocation,
+    HandleStepShapeDimensionalLocationWithPath, HandleStepShapeDimensionalSize,
+    HandleStepShapeDimensionalSizeWithPath, HandleStepShapeDirectedDimensionalLocation,
+    HandleStepShapeEdge, HandleStepShapeEdgeBasedWireframeModel,
+    HandleStepShapeEdgeBasedWireframeShapeRepresentation, HandleStepShapeEdgeCurve,
+    HandleStepShapeEdgeLoop, HandleStepShapeExtrudedAreaSolid, HandleStepShapeExtrudedFaceSolid,
+    HandleStepShapeFace, HandleStepShapeFaceBasedSurfaceModel, HandleStepShapeFaceBound,
+    HandleStepShapeFaceOuterBound, HandleStepShapeFaceSurface, HandleStepShapeFacetedBrep,
+    HandleStepShapeFacetedBrepAndBrepWithVoids, HandleStepShapeFacetedBrepShapeRepresentation,
+    HandleStepShapeGeometricCurveSet, HandleStepShapeGeometricSet,
+    HandleStepShapeGeometricallyBoundedSurfaceShapeRepresentation,
+    HandleStepShapeGeometricallyBoundedWireframeShapeRepresentation,
+    HandleStepShapeHArray1OfConnectedEdgeSet, HandleStepShapeHArray1OfConnectedFaceSet,
+    HandleStepShapeHArray1OfEdge, HandleStepShapeHArray1OfFace, HandleStepShapeHArray1OfFaceBound,
+    HandleStepShapeHArray1OfGeometricSetSelect, HandleStepShapeHArray1OfOrientedClosedShell,
+    HandleStepShapeHArray1OfOrientedEdge, HandleStepShapeHArray1OfShapeDimensionRepresentationItem,
+    HandleStepShapeHArray1OfShell, HandleStepShapeHArray1OfValueQualifier,
+    HandleStepShapeHalfSpaceSolid, HandleStepShapeLimitsAndFits, HandleStepShapeLoop,
+    HandleStepShapeLoopAndPath, HandleStepShapeManifoldSolidBrep,
+    HandleStepShapeManifoldSurfaceShapeRepresentation, HandleStepShapeMeasureQualification,
+    HandleStepShapeMeasureRepresentationItemAndQualifiedRepresentationItem,
+    HandleStepShapeNonManifoldSurfaceShapeRepresentation, HandleStepShapeOpenShell,
+    HandleStepShapeOrientedClosedShell, HandleStepShapeOrientedEdge, HandleStepShapeOrientedFace,
+    HandleStepShapeOrientedOpenShell, HandleStepShapeOrientedPath, HandleStepShapePath,
+    HandleStepShapePlusMinusTolerance, HandleStepShapePointRepresentation, HandleStepShapePolyLoop,
+    HandleStepShapePrecisionQualifier, HandleStepShapeQualifiedRepresentationItem,
+    HandleStepShapeRevolvedAreaSolid, HandleStepShapeRevolvedFaceSolid,
+    HandleStepShapeRightAngularWedge, HandleStepShapeRightCircularCone,
+    HandleStepShapeRightCircularCylinder, HandleStepShapeSeamEdge,
+    HandleStepShapeShapeDefinitionRepresentation, HandleStepShapeShapeDimensionRepresentation,
+    HandleStepShapeShapeRepresentation, HandleStepShapeShapeRepresentationWithParameters,
+    HandleStepShapeShellBasedSurfaceModel, HandleStepShapeSolidModel, HandleStepShapeSolidReplica,
+    HandleStepShapeSphere, HandleStepShapeSubedge, HandleStepShapeSubface,
+    HandleStepShapeSweptAreaSolid, HandleStepShapeSweptFaceSolid, HandleStepShapeToleranceValue,
+    HandleStepShapeTopologicalRepresentationItem, HandleStepShapeTorus,
+    HandleStepShapeTransitionalShapeRepresentation, HandleStepShapeTypeQualifier,
+    HandleStepShapeValueFormatTypeQualifier, HandleStepShapeVertex, HandleStepShapeVertexLoop,
+    HandleStepShapeVertexPoint, HandleStepVisualAnnotationCurveOccurrence,
+    HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem, HandleStepVisualAnnotationFillArea,
+    HandleStepVisualAnnotationFillAreaOccurrence, HandleStepVisualAnnotationOccurrence,
+    HandleStepVisualAnnotationPlane, HandleStepVisualAnnotationText,
+    HandleStepVisualAnnotationTextOccurrence, HandleStepVisualAreaInSet,
+    HandleStepVisualBackgroundColour, HandleStepVisualCameraImage,
+    HandleStepVisualCameraImage2dWithScale, HandleStepVisualCameraImage3dWithScale,
+    HandleStepVisualCameraModel, HandleStepVisualCameraModelD2, HandleStepVisualCameraModelD3,
+    HandleStepVisualCameraModelD3MultiClipping,
+    HandleStepVisualCameraModelD3MultiClippingIntersection,
+    HandleStepVisualCameraModelD3MultiClippingUnion, HandleStepVisualCameraUsage,
+    HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel, HandleStepVisualColour,
+    HandleStepVisualColourRgb, HandleStepVisualColourSpecification,
+    HandleStepVisualComplexTriangulatedFace, HandleStepVisualComplexTriangulatedSurfaceSet,
+    HandleStepVisualCompositeText, HandleStepVisualCompositeTextWithExtent,
+    HandleStepVisualContextDependentInvisibility,
+    HandleStepVisualContextDependentOverRidingStyledItem, HandleStepVisualCoordinatesList,
+    HandleStepVisualCubicBezierTessellatedEdge, HandleStepVisualCubicBezierTriangulatedFace,
+    HandleStepVisualCurveStyle, HandleStepVisualCurveStyleFont,
+    HandleStepVisualCurveStyleFontPattern, HandleStepVisualDraughtingAnnotationOccurrence,
+    HandleStepVisualDraughtingCallout, HandleStepVisualDraughtingModel,
+    HandleStepVisualDraughtingPreDefinedColour, HandleStepVisualDraughtingPreDefinedCurveFont,
+    HandleStepVisualExternallyDefinedCurveFont, HandleStepVisualExternallyDefinedTextFont,
+    HandleStepVisualFillAreaStyle, HandleStepVisualFillAreaStyleColour,
+    HandleStepVisualHArray1OfAnnotationPlaneElement,
+    HandleStepVisualHArray1OfBoxCharacteristicSelect,
+    HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect,
+    HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect,
+    HandleStepVisualHArray1OfCurveStyleFontPattern, HandleStepVisualHArray1OfDirectionCountSelect,
+    HandleStepVisualHArray1OfDraughtingCalloutElement, HandleStepVisualHArray1OfFillStyleSelect,
+    HandleStepVisualHArray1OfInvisibleItem, HandleStepVisualHArray1OfLayeredItem,
     HandleStepVisualHArray1OfPresentationStyleAssignment,
-    HandleStepVisualHArray1OfPresentationStyleSelect, HandleStepVisualPresentationStyleAssignment,
-    HandleStepVisualTessellatedGeometricSet, HandleStepVisualTessellatedItem,
-    HandleTColGeom2dHArray1OfBSplineCurve, HandleTColGeom2dHArray1OfBezierCurve,
-    HandleTColGeom2dHArray1OfCurve, HandleTColGeom2dHSequenceOfBoundedCurve,
-    HandleTColGeom2dHSequenceOfCurve, HandleTColGeomHArray1OfBSplineCurve,
-    HandleTColGeomHArray1OfBezierCurve, HandleTColGeomHArray1OfCurve,
-    HandleTColGeomHArray1OfSurface, HandleTColGeomHArray2OfSurface,
+    HandleStepVisualHArray1OfPresentationStyleSelect,
+    HandleStepVisualHArray1OfRenderingPropertiesSelect,
+    HandleStepVisualHArray1OfStyleContextSelect,
+    HandleStepVisualHArray1OfSurfaceStyleElementSelect,
+    HandleStepVisualHArray1OfTessellatedEdgeOrVertex,
+    HandleStepVisualHArray1OfTessellatedStructuredItem, HandleStepVisualHArray1OfTextOrCharacter,
+    HandleStepVisualInvisibility, HandleStepVisualMarkerMember,
+    HandleStepVisualMechanicalDesignGeometricPresentationArea,
+    HandleStepVisualMechanicalDesignGeometricPresentationRepresentation,
+    HandleStepVisualNullStyleMember, HandleStepVisualOverRidingStyledItem,
+    HandleStepVisualPlanarBox, HandleStepVisualPlanarExtent, HandleStepVisualPointStyle,
+    HandleStepVisualPreDefinedColour, HandleStepVisualPreDefinedCurveFont,
+    HandleStepVisualPreDefinedItem, HandleStepVisualPreDefinedTextFont,
+    HandleStepVisualPresentationArea, HandleStepVisualPresentationLayerAssignment,
+    HandleStepVisualPresentationLayerUsage, HandleStepVisualPresentationRepresentation,
+    HandleStepVisualPresentationSet, HandleStepVisualPresentationSize,
+    HandleStepVisualPresentationStyleAssignment, HandleStepVisualPresentationStyleByContext,
+    HandleStepVisualPresentationView, HandleStepVisualPresentedItem,
+    HandleStepVisualPresentedItemRepresentation,
+    HandleStepVisualRepositionedTessellatedGeometricSet,
+    HandleStepVisualRepositionedTessellatedItem, HandleStepVisualStyledItem,
+    HandleStepVisualSurfaceSideStyle, HandleStepVisualSurfaceStyleBoundary,
+    HandleStepVisualSurfaceStyleControlGrid, HandleStepVisualSurfaceStyleFillArea,
+    HandleStepVisualSurfaceStyleParameterLine, HandleStepVisualSurfaceStyleReflectanceAmbient,
+    HandleStepVisualSurfaceStyleRendering, HandleStepVisualSurfaceStyleRenderingWithProperties,
+    HandleStepVisualSurfaceStyleSegmentationCurve, HandleStepVisualSurfaceStyleSilhouette,
+    HandleStepVisualSurfaceStyleTransparent, HandleStepVisualSurfaceStyleUsage,
+    HandleStepVisualTemplate, HandleStepVisualTemplateInstance,
+    HandleStepVisualTessellatedAnnotationOccurrence, HandleStepVisualTessellatedConnectingEdge,
+    HandleStepVisualTessellatedCurveSet, HandleStepVisualTessellatedEdge,
+    HandleStepVisualTessellatedFace, HandleStepVisualTessellatedGeometricSet,
+    HandleStepVisualTessellatedItem, HandleStepVisualTessellatedPointSet,
+    HandleStepVisualTessellatedShapeRepresentation,
+    HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters,
+    HandleStepVisualTessellatedShell, HandleStepVisualTessellatedSolid,
+    HandleStepVisualTessellatedStructuredItem, HandleStepVisualTessellatedSurfaceSet,
+    HandleStepVisualTessellatedVertex, HandleStepVisualTessellatedWire,
+    HandleStepVisualTextLiteral, HandleStepVisualTextStyle,
+    HandleStepVisualTextStyleForDefinedFont, HandleStepVisualTextStyleWithBoxCharacteristics,
+    HandleStepVisualTriangulatedFace, HandleStepVisualTriangulatedSurfaceSet,
+    HandleStepVisualViewVolume, HandleTColGeom2dHArray1OfBSplineCurve,
+    HandleTColGeom2dHArray1OfBezierCurve, HandleTColGeom2dHArray1OfCurve,
+    HandleTColGeom2dHSequenceOfBoundedCurve, HandleTColGeom2dHSequenceOfCurve,
+    HandleTColGeomHArray1OfBSplineCurve, HandleTColGeomHArray1OfBezierCurve,
+    HandleTColGeomHArray1OfCurve, HandleTColGeomHArray1OfSurface, HandleTColGeomHArray2OfSurface,
     HandleTColGeomHSequenceOfBoundedCurve, HandleTColGeomHSequenceOfCurve,
     HandleTColStdHArray1OfAsciiString, HandleTColStdHArray1OfBoolean, HandleTColStdHArray1OfByte,
     HandleTColStdHArray1OfCharacter, HandleTColStdHArray1OfExtendedString,
@@ -372,31 +948,40 @@ pub use crate::ffi::{
     HandleTDataStdVariable, HandleTDataXtdAxis, HandleTDataXtdConstraint, HandleTDataXtdGeometry,
     HandleTDataXtdHArray1OfTrsf, HandleTDataXtdPatternStd, HandleTDataXtdPlacement,
     HandleTDataXtdPlane, HandleTDataXtdPoint, HandleTDataXtdPosition, HandleTDataXtdPresentation,
-    HandleTDataXtdShape, HandleTDataXtdTriangulation, HandleTDocStdApplication,
-    HandleTDocStdApplicationDelta, HandleTDocStdCompoundDelta, HandleTDocStdDocument,
-    HandleTDocStdModified, HandleTDocStdMultiTransactionManager, HandleTDocStdOwner,
-    HandleTDocStdXLink, HandleTDocStdXLinkRoot, HandleTFunctionDriverTable,
+    HandleTDataXtdShape, HandleTDataXtdTriangulation, HandleTDocStdApplicationDelta,
+    HandleTDocStdCompoundDelta, HandleTDocStdModified, HandleTDocStdMultiTransactionManager,
+    HandleTDocStdOwner, HandleTDocStdXLink, HandleTDocStdXLinkRoot, HandleTFunctionDriverTable,
     HandleTFunctionFunction, HandleTFunctionGraphNode, HandleTFunctionHArray1OfDataMapOfGUIDDriver,
     HandleTFunctionLogbook, HandleTFunctionScope, HandleTNamingDeltaOnModification,
     HandleTNamingDeltaOnRemoval, HandleTNamingNamedShape, HandleTNamingNaming,
-    HandleTNamingTranslateTool, HandleTNamingUsedShapes, HandleTObjApplication,
-    HandleTObjCheckModel, HandleTObjHSequenceOfObject, HandleTObjHiddenPartition,
-    HandleTObjModelIterator, HandleTObjObject, HandleTObjObjectIterator,
-    HandleTObjOcafObjectIterator, HandleTObjPartition, HandleTObjReferenceIterator,
-    HandleTObjSequenceIterator, HandleTObjTIntSparseArray, HandleTObjTModel,
-    HandleTObjTNameContainer, HandleTObjTObject, HandleTObjTReference, HandleTObjTXYZ,
-    HandleTShortHArray1OfShortReal, HandleTShortHArray2OfShortReal,
+    HandleTNamingTranslateTool, HandleTNamingUsedShapes, HandleTObjCheckModel,
+    HandleTObjHSequenceOfObject, HandleTObjHiddenPartition, HandleTObjModelIterator,
+    HandleTObjObject, HandleTObjObjectIterator, HandleTObjOcafObjectIterator, HandleTObjPartition,
+    HandleTObjReferenceIterator, HandleTObjSequenceIterator, HandleTObjTIntSparseArray,
+    HandleTObjTModel, HandleTObjTNameContainer, HandleTObjTObject, HandleTObjTReference,
+    HandleTObjTXYZ, HandleTShortHArray1OfShortReal, HandleTShortHArray2OfShortReal,
     HandleTShortHSequenceOfShortReal, HandleTopLocDatum3D, HandleTopLocSListNodeOfItemLocation,
-    HandleTopOpeBRepDSCurvePointInterference, HandleTopOpeBRepDSInterference,
-    HandleTopOpeBRepDSSurfaceCurveInterference, HandleTopToolsHArray1OfListOfShape,
-    HandleTopToolsHArray1OfShape, HandleTopToolsHArray2OfShape, HandleTopToolsHSequenceOfShape,
-    HandleTopoDSAlertAttribute, HandleTopoDSAlertWithShape, HandleTopoDSFrozenShape,
-    HandleTopoDSHShape, HandleTopoDSLockedShape, HandleTopoDSTCompSolid, HandleTopoDSTCompound,
-    HandleTopoDSTEdge, HandleTopoDSTFace, HandleTopoDSTShell, HandleTopoDSTSolid,
-    HandleTopoDSTVertex, HandleTopoDSTWire, HandleTopoDSUnCompatibleShapes,
+    HandleTopOpeBRepBuildHBuilder, HandleTopOpeBRepBuildLoop, HandleTopOpeBRepBuildPave,
+    HandleTopOpeBRepDSAssociation, HandleTopOpeBRepDSCheck,
+    HandleTopOpeBRepDSCurvePointInterference, HandleTopOpeBRepDSEdgeVertexInterference,
+    HandleTopOpeBRepDSFaceEdgeInterference, HandleTopOpeBRepDSGapTool,
+    HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference,
+    HandleTopOpeBRepDSHDataStructure, HandleTopOpeBRepDSInterference, HandleTopOpeBRepDSMarker,
+    HandleTopOpeBRepDSShapeShapeInterference, HandleTopOpeBRepDSSolidSurfaceInterference,
+    HandleTopOpeBRepDSSurfaceCurveInterference, HandleTopOpeBRepFFDumper,
+    HandleTopOpeBRepHArray1OfLineInter, HandleTopOpeBRepHArray1OfVPointInter,
+    HandleTopOpeBRepHctxee2d, HandleTopOpeBRepHctxff2d, HandleTopOpeBRepToolHBoxTool,
+    HandleTopToolsHArray1OfListOfShape, HandleTopToolsHArray1OfShape, HandleTopToolsHArray2OfShape,
+    HandleTopToolsHSequenceOfShape, HandleTopoDSAlertAttribute, HandleTopoDSAlertWithShape,
+    HandleTopoDSFrozenShape, HandleTopoDSHShape, HandleTopoDSLockedShape, HandleTopoDSTCompSolid,
+    HandleTopoDSTCompound, HandleTopoDSTEdge, HandleTopoDSTFace, HandleTopoDSTShell,
+    HandleTopoDSTSolid, HandleTopoDSTVertex, HandleTopoDSTWire, HandleTopoDSUnCompatibleShapes,
     HandleTransferActorDispatch, HandleTransferActorOfFinderProcess,
     HandleTransferActorOfProcessForFinder, HandleTransferActorOfProcessForTransient,
-    HandleTransferActorOfTransientProcess, HandleTransferBinderOfTransientInteger,
+    HandleTransferActorOfTransientProcess, HandleTransferBRepBinderOfShape,
+    HandleTransferBRepHSequenceOfTransferResultInfo, HandleTransferBRepShapeBinder,
+    HandleTransferBRepShapeListBinder, HandleTransferBRepShapeMapper,
+    HandleTransferBRepTransferResultInfo, HandleTransferBinderOfTransientInteger,
     HandleTransferDispatchControl, HandleTransferFinderProcess, HandleTransferHSequenceOfBinder,
     HandleTransferHSequenceOfFinder, HandleTransferMapContainer, HandleTransferMultipleBinder,
     HandleTransferProcessForFinder, HandleTransferProcessForTransient,
@@ -408,22 +993,33 @@ pub use crate::ffi::{
     HandleUnitsQuantitiesSequence, HandleUnitsQuantity, HandleUnitsShiftedToken,
     HandleUnitsShiftedUnit, HandleUnitsToken, HandleUnitsTokensSequence, HandleUnitsUnit,
     HandleUnitsUnitsDictionary, HandleUnitsUnitsLexicon, HandleUnitsUnitsSequence,
-    HandleUnitsUnitsSystem, HandleXCAFAppApplication, HandleXCAFDimTolObjectsDatumObject,
-    HandleXCAFDimTolObjectsDimensionObject, HandleXCAFDimTolObjectsGeomToleranceObject,
-    HandleXCAFDocArea, HandleXCAFDocAssemblyGraph, HandleXCAFDocAssemblyItemRef,
-    HandleXCAFDocCentroid, HandleXCAFDocClippingPlaneTool, HandleXCAFDocColor,
-    HandleXCAFDocColorTool, HandleXCAFDocDatum, HandleXCAFDocDimTol, HandleXCAFDocDimTolTool,
-    HandleXCAFDocDimension, HandleXCAFDocDocumentTool, HandleXCAFDocGeomTolerance,
-    HandleXCAFDocGraphNode, HandleXCAFDocLayerTool, HandleXCAFDocLengthUnit, HandleXCAFDocLocation,
-    HandleXCAFDocMaterial, HandleXCAFDocMaterialTool, HandleXCAFDocNote, HandleXCAFDocNoteBalloon,
+    HandleUnitsUnitsSystem, HandleVrmlAPICafReader, HandleVrmlAsciiText, HandleVrmlConverterDrawer,
+    HandleVrmlConverterIsoAspect, HandleVrmlConverterLineAspect, HandleVrmlConverterPointAspect,
+    HandleVrmlConverterProjector, HandleVrmlConverterShadingAspect, HandleVrmlCoordinate3,
+    HandleVrmlDataAppearance, HandleVrmlDataArrayVec3d, HandleVrmlDataBox, HandleVrmlDataColor,
+    HandleVrmlDataCone, HandleVrmlDataCoordinate, HandleVrmlDataCylinder, HandleVrmlDataFaceted,
+    HandleVrmlDataGroup, HandleVrmlDataImageTexture, HandleVrmlDataIndexedFaceSet,
+    HandleVrmlDataIndexedLineSet, HandleVrmlDataMaterial, HandleVrmlDataNormal,
+    HandleVrmlDataShapeNode, HandleVrmlDataSphere, HandleVrmlDataTexture,
+    HandleVrmlDataTextureCoordinate, HandleVrmlDataTextureTransform, HandleVrmlDataUnknownNode,
+    HandleVrmlDataWorldInfo, HandleVrmlIndexedFaceSet, HandleVrmlIndexedLineSet, HandleVrmlLOD,
+    HandleVrmlMaterial, HandleVrmlNormal, HandleVrmlSFImage, HandleVrmlTextureCoordinate2,
+    HandleXCAFDimTolObjectsDatumObject, HandleXCAFDimTolObjectsDimensionObject,
+    HandleXCAFDimTolObjectsGeomToleranceObject, HandleXCAFDocArea, HandleXCAFDocAssemblyGraph,
+    HandleXCAFDocAssemblyItemRef, HandleXCAFDocCentroid, HandleXCAFDocClippingPlaneTool,
+    HandleXCAFDocColor, HandleXCAFDocColorTool, HandleXCAFDocDatum, HandleXCAFDocDimTol,
+    HandleXCAFDocDimTolTool, HandleXCAFDocDimension, HandleXCAFDocDocumentTool,
+    HandleXCAFDocGeomTolerance, HandleXCAFDocGraphNode, HandleXCAFDocLayerTool,
+    HandleXCAFDocLengthUnit, HandleXCAFDocLocation, HandleXCAFDocMaterial,
+    HandleXCAFDocMaterialTool, HandleXCAFDocNote, HandleXCAFDocNoteBalloon,
     HandleXCAFDocNoteBinData, HandleXCAFDocNoteComment, HandleXCAFDocNotesTool,
     HandleXCAFDocShapeMapTool, HandleXCAFDocShapeTool, HandleXCAFDocView, HandleXCAFDocViewTool,
     HandleXCAFDocVisMaterial, HandleXCAFDocVisMaterialTool, HandleXCAFDocVolume,
-    HandleXCAFNoteObjectsNoteObject, HandleXSControlConnectedShapes,
-    HandleXSControlSelectForTransfer, HandleXSControlSignTransferStatus,
-    HandleXSControlTransferReader, HandleXSControlTransferWriter, HandleXSControlVars,
-    HandleXSControlWorkSession, HandlegpVectorWithNullMagnitude, HandlemathNotSquare,
-    HandlemathSingularMatrix,
+    HandleXCAFNoteObjectsNoteObject, HandleXCAFViewObject, HandleXSAlgoAlgoContainer,
+    HandleXSControlConnectedShapes, HandleXSControlSelectForTransfer,
+    HandleXSControlSignTransferStatus, HandleXSControlTransferReader,
+    HandleXSControlTransferWriter, HandleXSControlVars, HandleXSControlWorkSession,
+    HandlegpVectorWithNullMagnitude, HandlemathNotSquare, HandlemathSingularMatrix,
 };
 
 // ========================
@@ -3692,6 +4288,40 @@ impl HandleStandardFailure {
             crate::ffi::HandleStandardFailure_downcast_to_HandleInterfaceInterfaceMismatch(
                 self as *const Self,
             )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<LProp_BadContinuity>
+    ///
+    /// Returns `None` if the handle does not point to a `LProp_BadContinuity` (or subclass).
+    pub fn downcast_to_bad_continuity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleLPropBadContinuity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleLPropBadContinuity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<LProp_NotDefined>
+    ///
+    /// Returns `None` if the handle does not point to a `LProp_NotDefined` (or subclass).
+    pub fn downcast_to_not_defined(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleLPropNotDefined>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleLPropNotDefined(self as *const Self)
         };
         if ptr.is_null() {
             None
@@ -9853,6 +10483,24 @@ impl HandleStandardTransient {
         unsafe { &mut *(crate::ffi::HandleStandardTransient_get_mut(self as *mut Self)) }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<APIHeaderSection_EditHeader>
+    ///
+    /// Returns `None` if the handle does not point to a `APIHeaderSection_EditHeader` (or subclass).
+    pub fn downcast_to_api_header_section_edit_header(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAPIHeaderSectionEditHeader>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAPIHeaderSectionEditHeader(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<Adaptor2d_Curve2d>
     ///
     /// Returns `None` if the handle does not point to a `Adaptor2d_Curve2d` (or subclass).
@@ -9944,7 +10592,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<Adaptor3d_HVertex>
     ///
     /// Returns `None` if the handle does not point to a `Adaptor3d_HVertex` (or subclass).
-    pub fn downcast_to_h_vertex(
+    pub fn downcast_to_adaptor3d_h_vertex(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleAdaptor3dHVertex>> {
         let ptr = unsafe {
@@ -10003,6 +10651,92 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleAdaptor3dTopolTool>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleAdaptor3dTopolTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AppDef_HArray1OfMultiPointConstraint>
+    ///
+    /// Returns `None` if the handle does not point to a `AppDef_HArray1OfMultiPointConstraint` (or subclass).
+    pub fn downcast_to_h_array1_of_multi_point_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAppDefHArray1OfMultiPointConstraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAppDefHArray1OfMultiPointConstraint(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AppDef_LinearCriteria>
+    ///
+    /// Returns `None` if the handle does not point to a `AppDef_LinearCriteria` (or subclass).
+    pub fn downcast_to_linear_criteria(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAppDefLinearCriteria>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAppDefLinearCriteria(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AppParCurves_HArray1OfConstraintCouple>
+    ///
+    /// Returns `None` if the handle does not point to a `AppParCurves_HArray1OfConstraintCouple` (or subclass).
+    pub fn downcast_to_h_array1_of_constraint_couple(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAppParCurvesHArray1OfConstraintCouple(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AppParCurves_HArray1OfMultiBSpCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `AppParCurves_HArray1OfMultiBSpCurve` (or subclass).
+    pub fn downcast_to_h_array1_of_multi_b_sp_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAppParCurvesHArray1OfMultiBSpCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAppParCurvesHArray1OfMultiBSpCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AppParCurves_HArray1OfMultiCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `AppParCurves_HArray1OfMultiCurve` (or subclass).
+    pub fn downcast_to_h_array1_of_multi_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAppParCurvesHArray1OfMultiCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAppParCurvesHArray1OfMultiCurve(
                 self as *const Self,
             )
         };
@@ -10930,6 +11664,108 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<BRepAlgo_AsDes>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepAlgo_AsDes` (or subclass).
+    pub fn downcast_to_as_des(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepAlgoAsDes>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBRepAlgoAsDes(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BRepApprox_ApproxLine>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepApprox_ApproxLine` (or subclass).
+    pub fn downcast_to_approx_line(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepApproxApproxLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBRepApproxApproxLine(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BRepBlend_AppFunc>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepBlend_AppFunc` (or subclass).
+    pub fn downcast_to_app_func(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFunc>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBRepBlendAppFunc(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BRepBlend_AppFuncRst>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepBlend_AppFuncRst` (or subclass).
+    pub fn downcast_to_app_func_rst(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRst>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBRepBlendAppFuncRst(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BRepBlend_AppFuncRstRst>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepBlend_AppFuncRstRst` (or subclass).
+    pub fn downcast_to_app_func_rst_rst(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRstRst>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBRepBlendAppFuncRstRst(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BRepBlend_Line>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepBlend_Line` (or subclass).
+    pub fn downcast_to_b_rep_blend_line(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBRepBlendLine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<BRepBuilderAPI_FastSewing>
     ///
     /// Returns `None` if the handle does not point to a `BRepBuilderAPI_FastSewing` (or subclass).
@@ -11037,7 +11873,9 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<BRepCheck_Vertex>
     ///
     /// Returns `None` if the handle does not point to a `BRepCheck_Vertex` (or subclass).
-    pub fn downcast_to_vertex(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCheckVertex>> {
+    pub fn downcast_to_b_rep_check_vertex(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCheckVertex>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleBRepCheckVertex(
                 self as *const Self,
@@ -11800,6 +12638,42 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<BRepTopAdaptor_HVertex>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepTopAdaptor_HVertex` (or subclass).
+    pub fn downcast_to_b_rep_top_adaptor_h_vertex(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepTopAdaptorHVertex>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBRepTopAdaptorHVertex(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BRepTopAdaptor_TopolTool>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepTopAdaptor_TopolTool` (or subclass).
+    pub fn downcast_to_b_rep_top_adaptor_topol_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepTopAdaptorTopolTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBRepTopAdaptorTopolTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<BRep_Curve3D>
     ///
     /// Returns `None` if the handle does not point to a `BRep_Curve3D` (or subclass).
@@ -11871,7 +12745,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<BRep_PointOnCurve>
     ///
     /// Returns `None` if the handle does not point to a `BRep_PointOnCurve` (or subclass).
-    pub fn downcast_to_point_on_curve(
+    pub fn downcast_to_b_rep_point_on_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepPointOnCurve>> {
         let ptr = unsafe {
@@ -11907,7 +12781,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<BRep_PointOnSurface>
     ///
     /// Returns `None` if the handle does not point to a `BRep_PointOnSurface` (or subclass).
-    pub fn downcast_to_point_on_surface(
+    pub fn downcast_to_b_rep_point_on_surface(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepPointOnSurface>> {
         let ptr = unsafe {
@@ -11925,7 +12799,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<BRep_PointRepresentation>
     ///
     /// Returns `None` if the handle does not point to a `BRep_PointRepresentation` (or subclass).
-    pub fn downcast_to_point_representation(
+    pub fn downcast_to_b_rep_point_representation(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepPointRepresentation>> {
         let ptr = unsafe {
@@ -12230,6 +13104,60 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<Bisector_BisecAna>
+    ///
+    /// Returns `None` if the handle does not point to a `Bisector_BisecAna` (or subclass).
+    pub fn downcast_to_bisec_ana(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBisectorBisecAna>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBisectorBisecAna(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Bisector_BisecCC>
+    ///
+    /// Returns `None` if the handle does not point to a `Bisector_BisecCC` (or subclass).
+    pub fn downcast_to_bisec_cc(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBisectorBisecCC>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBisectorBisecCC(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Bisector_BisecPC>
+    ///
+    /// Returns `None` if the handle does not point to a `Bisector_BisecPC` (or subclass).
+    pub fn downcast_to_bisec_pc(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBisectorBisecPC>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBisectorBisecPC(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<Bnd_HArray1OfBox>
     ///
     /// Returns `None` if the handle does not point to a `Bnd_HArray1OfBox` (or subclass).
@@ -12284,32 +13212,16 @@ impl HandleStandardTransient {
         }
     }
 
-    /// Downcast Handle<Standard_Transient> to Handle<CDF_Application>
+    /// Downcast Handle<Standard_Transient> to Handle<ChFiDS_ChamfSpine>
     ///
-    /// Returns `None` if the handle does not point to a `CDF_Application` (or subclass).
-    pub fn downcast_to_cdf_application(
+    /// Returns `None` if the handle does not point to a `ChFiDS_ChamfSpine` (or subclass).
+    pub fn downcast_to_chamf_spine(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleCDFApplication>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleChFiDSChamfSpine>> {
         let ptr = unsafe {
-            crate::ffi::HandleStandardTransient_downcast_to_HandleCDFApplication(
+            crate::ffi::HandleStandardTransient_downcast_to_HandleChFiDSChamfSpine(
                 self as *const Self,
             )
-        };
-        if ptr.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
-        }
-    }
-
-    /// Downcast Handle<Standard_Transient> to Handle<CDM_Reference>
-    ///
-    /// Returns `None` if the handle does not point to a `CDM_Reference` (or subclass).
-    pub fn downcast_to_cdm_reference(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleCDMReference>> {
-        let ptr = unsafe {
-            crate::ffi::HandleStandardTransient_downcast_to_HandleCDMReference(self as *const Self)
         };
         if ptr.is_null() {
             None
@@ -12324,6 +13236,24 @@ impl HandleStandardTransient {
     pub fn downcast_to_el_spine(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleChFiDSElSpine>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleChFiDSElSpine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<ChFiDS_FilSpine>
+    ///
+    /// Returns `None` if the handle does not point to a `ChFiDS_FilSpine` (or subclass).
+    pub fn downcast_to_fil_spine(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleChFiDSFilSpine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleChFiDSFilSpine(
+                self as *const Self,
+            )
         };
         if ptr.is_null() {
             None
@@ -12400,6 +13330,42 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleChFiDSSurfData>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleChFiDSSurfData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Contap_TheHSequenceOfPoint>
+    ///
+    /// Returns `None` if the handle does not point to a `Contap_TheHSequenceOfPoint` (or subclass).
+    pub fn downcast_to_the_h_sequence_of_point(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleContapTheHSequenceOfPoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleContapTheHSequenceOfPoint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Contap_TheIWLineOfTheIWalking>
+    ///
+    /// Returns `None` if the handle does not point to a `Contap_TheIWLineOfTheIWalking` (or subclass).
+    pub fn downcast_to_contap_the_iw_line_of_the_i_walking(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleContapTheIWLineOfTheIWalking>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleContapTheIWLineOfTheIWalking(
                 self as *const Self,
             )
         };
@@ -13503,7 +14469,9 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<Expr_Product>
     ///
     /// Returns `None` if the handle does not point to a `Expr_Product` (or subclass).
-    pub fn downcast_to_product(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprProduct>> {
+    pub fn downcast_to_expr_product(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprProduct>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleExprProduct(self as *const Self)
         };
@@ -13641,7 +14609,9 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<Expr_Tangent>
     ///
     /// Returns `None` if the handle does not point to a `Expr_Tangent` (or subclass).
-    pub fn downcast_to_tangent(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprTangent>> {
+    pub fn downcast_to_expr_tangent(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprTangent>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleExprTangent(self as *const Self)
         };
@@ -13854,6 +14824,112 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleExtremaHArray2OfPOnSurf>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleExtremaHArray2OfPOnSurf(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<FEmTool_Curve>
+    ///
+    /// Returns `None` if the handle does not point to a `FEmTool_Curve` (or subclass).
+    pub fn downcast_to_f_em_tool_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleFEmToolCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleFEmToolCurve(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<FEmTool_HAssemblyTable>
+    ///
+    /// Returns `None` if the handle does not point to a `FEmTool_HAssemblyTable` (or subclass).
+    pub fn downcast_to_h_assembly_table(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleFEmToolHAssemblyTable>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleFEmToolHAssemblyTable(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<FEmTool_LinearFlexion>
+    ///
+    /// Returns `None` if the handle does not point to a `FEmTool_LinearFlexion` (or subclass).
+    pub fn downcast_to_linear_flexion(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleFEmToolLinearFlexion>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleFEmToolLinearFlexion(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<FEmTool_LinearJerk>
+    ///
+    /// Returns `None` if the handle does not point to a `FEmTool_LinearJerk` (or subclass).
+    pub fn downcast_to_linear_jerk(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleFEmToolLinearJerk>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleFEmToolLinearJerk(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<FEmTool_LinearTension>
+    ///
+    /// Returns `None` if the handle does not point to a `FEmTool_LinearTension` (or subclass).
+    pub fn downcast_to_linear_tension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleFEmToolLinearTension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleFEmToolLinearTension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<FEmTool_ProfileMatrix>
+    ///
+    /// Returns `None` if the handle does not point to a `FEmTool_ProfileMatrix` (or subclass).
+    pub fn downcast_to_profile_matrix(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleFEmToolProfileMatrix>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleFEmToolProfileMatrix(
                 self as *const Self,
             )
         };
@@ -15099,7 +16175,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<Geom_Axis1Placement>
     ///
     /// Returns `None` if the handle does not point to a `Geom_Axis1Placement` (or subclass).
-    pub fn downcast_to_axis1_placement(
+    pub fn downcast_to_geom_axis1_placement(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomAxis1Placement>> {
         let ptr = unsafe {
@@ -15153,7 +16229,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<Geom_BSplineSurface>
     ///
     /// Returns `None` if the handle does not point to a `Geom_BSplineSurface` (or subclass).
-    pub fn downcast_to_b_spline_surface(
+    pub fn downcast_to_geom_b_spline_surface(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface>> {
         let ptr = unsafe {
@@ -15189,7 +16265,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<Geom_BezierSurface>
     ///
     /// Returns `None` if the handle does not point to a `Geom_BezierSurface` (or subclass).
-    pub fn downcast_to_bezier_surface(
+    pub fn downcast_to_geom_bezier_surface(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomBezierSurface>> {
         let ptr = unsafe {
@@ -15207,7 +16283,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<Geom_BoundedSurface>
     ///
     /// Returns `None` if the handle does not point to a `Geom_BoundedSurface` (or subclass).
-    pub fn downcast_to_bounded_surface(
+    pub fn downcast_to_geom_bounded_surface(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomBoundedSurface>> {
         let ptr = unsafe {
@@ -15257,7 +16333,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<Geom_ConicalSurface>
     ///
     /// Returns `None` if the handle does not point to a `Geom_ConicalSurface` (or subclass).
-    pub fn downcast_to_conical_surface(
+    pub fn downcast_to_geom_conical_surface(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomConicalSurface>> {
         let ptr = unsafe {
@@ -15275,7 +16351,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<Geom_CylindricalSurface>
     ///
     /// Returns `None` if the handle does not point to a `Geom_CylindricalSurface` (or subclass).
-    pub fn downcast_to_cylindrical_surface(
+    pub fn downcast_to_geom_cylindrical_surface(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomCylindricalSurface>> {
         let ptr = unsafe {
@@ -15457,7 +16533,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<Geom_RectangularTrimmedSurface>
     ///
     /// Returns `None` if the handle does not point to a `Geom_RectangularTrimmedSurface` (or subclass).
-    pub fn downcast_to_rectangular_trimmed_surface(
+    pub fn downcast_to_geom_rectangular_trimmed_surface(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomRectangularTrimmedSurface>> {
         let ptr = unsafe {
@@ -15475,7 +16551,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<Geom_SphericalSurface>
     ///
     /// Returns `None` if the handle does not point to a `Geom_SphericalSurface` (or subclass).
-    pub fn downcast_to_spherical_surface(
+    pub fn downcast_to_geom_spherical_surface(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomSphericalSurface>> {
         let ptr = unsafe {
@@ -15529,7 +16605,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<Geom_SweptSurface>
     ///
     /// Returns `None` if the handle does not point to a `Geom_SweptSurface` (or subclass).
-    pub fn downcast_to_swept_surface(
+    pub fn downcast_to_geom_swept_surface(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomSweptSurface>> {
         let ptr = unsafe {
@@ -15547,7 +16623,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<Geom_ToroidalSurface>
     ///
     /// Returns `None` if the handle does not point to a `Geom_ToroidalSurface` (or subclass).
-    pub fn downcast_to_toroidal_surface(
+    pub fn downcast_to_geom_toroidal_surface(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomToroidalSurface>> {
         let ptr = unsafe {
@@ -15924,6 +17000,96 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleHLRBRepPolyAlgo>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleHLRBRepPolyAlgo(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<HLRTopoBRep_OutLiner>
+    ///
+    /// Returns `None` if the handle does not point to a `HLRTopoBRep_OutLiner` (or subclass).
+    pub fn downcast_to_out_liner(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleHLRTopoBRepOutLiner>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleHLRTopoBRepOutLiner(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<HeaderSection_FileDescription>
+    ///
+    /// Returns `None` if the handle does not point to a `HeaderSection_FileDescription` (or subclass).
+    pub fn downcast_to_file_description(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleHeaderSectionFileDescription>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleHeaderSectionFileDescription(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<HeaderSection_FileName>
+    ///
+    /// Returns `None` if the handle does not point to a `HeaderSection_FileName` (or subclass).
+    pub fn downcast_to_file_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleHeaderSectionFileName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleHeaderSectionFileName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<HeaderSection_FileSchema>
+    ///
+    /// Returns `None` if the handle does not point to a `HeaderSection_FileSchema` (or subclass).
+    pub fn downcast_to_file_schema(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleHeaderSectionFileSchema>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleHeaderSectionFileSchema(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<HeaderSection_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `HeaderSection_Protocol` (or subclass).
+    pub fn downcast_to_header_section_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleHeaderSectionProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleHeaderSectionProtocol(
                 self as *const Self,
             )
         };
@@ -16956,6 +18122,950 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_DrilledHole>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_DrilledHole` (or subclass).
+    pub fn downcast_to_drilled_hole(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliDrilledHole>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliDrilledHole(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_ElementResults>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_ElementResults` (or subclass).
+    pub fn downcast_to_element_results(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliElementResults>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliElementResults(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_FiniteElement>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_FiniteElement` (or subclass).
+    pub fn downcast_to_finite_element(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliFiniteElement>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliFiniteElement(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_Flow>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_Flow` (or subclass).
+    pub fn downcast_to_flow(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliFlow>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliFlow(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_FlowLineSpec>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_FlowLineSpec` (or subclass).
+    pub fn downcast_to_flow_line_spec(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliFlowLineSpec>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliFlowLineSpec(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_appli_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_HArray1OfFiniteElement>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_HArray1OfFiniteElement` (or subclass).
+    pub fn downcast_to_h_array1_of_finite_element(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliHArray1OfFiniteElement>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliHArray1OfFiniteElement(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_HArray1OfFlow>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_HArray1OfFlow` (or subclass).
+    pub fn downcast_to_h_array1_of_flow(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliHArray1OfFlow>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliHArray1OfFlow(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_HArray1OfNode>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_HArray1OfNode` (or subclass).
+    pub fn downcast_to_h_array1_of_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliHArray1OfNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliHArray1OfNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_LevelFunction>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_LevelFunction` (or subclass).
+    pub fn downcast_to_level_function(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliLevelFunction>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliLevelFunction(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_LevelToPWBLayerMap>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_LevelToPWBLayerMap` (or subclass).
+    pub fn downcast_to_level_to_pwb_layer_map(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliLevelToPWBLayerMap>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliLevelToPWBLayerMap(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_LineWidening>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_LineWidening` (or subclass).
+    pub fn downcast_to_line_widening(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliLineWidening>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliLineWidening(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_NodalConstraint>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_NodalConstraint` (or subclass).
+    pub fn downcast_to_nodal_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliNodalConstraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliNodalConstraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_NodalDisplAndRot>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_NodalDisplAndRot` (or subclass).
+    pub fn downcast_to_nodal_displ_and_rot(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliNodalDisplAndRot>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliNodalDisplAndRot(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_NodalResults>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_NodalResults` (or subclass).
+    pub fn downcast_to_nodal_results(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliNodalResults>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliNodalResults(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_Node>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_Node` (or subclass).
+    pub fn downcast_to_iges_appli_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliNode(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_PWBArtworkStackup>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_PWBArtworkStackup` (or subclass).
+    pub fn downcast_to_pwb_artwork_stackup(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliPWBArtworkStackup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliPWBArtworkStackup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_PWBDrilledHole>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_PWBDrilledHole` (or subclass).
+    pub fn downcast_to_pwb_drilled_hole(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliPWBDrilledHole>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliPWBDrilledHole(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_PartNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_PartNumber` (or subclass).
+    pub fn downcast_to_part_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliPartNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliPartNumber(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_PinNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_PinNumber` (or subclass).
+    pub fn downcast_to_pin_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliPinNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliPinNumber(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_PipingFlow>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_PipingFlow` (or subclass).
+    pub fn downcast_to_piping_flow(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliPipingFlow>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliPipingFlow(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_Protocol` (or subclass).
+    pub fn downcast_to_iges_appli_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_appli_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_ReferenceDesignator>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_ReferenceDesignator` (or subclass).
+    pub fn downcast_to_reference_designator(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliReferenceDesignator>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliReferenceDesignator(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_RegionRestriction>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_RegionRestriction` (or subclass).
+    pub fn downcast_to_region_restriction(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliRegionRestriction>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliRegionRestriction(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESAppli_SpecificModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESAppli_SpecificModule` (or subclass).
+    pub fn downcast_to_iges_appli_specific_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESAppliSpecificModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESAppliSpecificModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_AssocGroupType>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_AssocGroupType` (or subclass).
+    pub fn downcast_to_assoc_group_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicAssocGroupType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicAssocGroupType(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_ExternalRefFile>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_ExternalRefFile` (or subclass).
+    pub fn downcast_to_external_ref_file(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicExternalRefFile>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicExternalRefFile(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_ExternalRefFileIndex>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_ExternalRefFileIndex` (or subclass).
+    pub fn downcast_to_external_ref_file_index(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicExternalRefFileIndex>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicExternalRefFileIndex(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_ExternalRefFileName>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_ExternalRefFileName` (or subclass).
+    pub fn downcast_to_external_ref_file_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicExternalRefFileName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicExternalRefFileName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_ExternalRefLibName>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_ExternalRefLibName` (or subclass).
+    pub fn downcast_to_external_ref_lib_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicExternalRefLibName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicExternalRefLibName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_ExternalRefName>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_ExternalRefName` (or subclass).
+    pub fn downcast_to_external_ref_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicExternalRefName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicExternalRefName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_ExternalReferenceFile>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_ExternalReferenceFile` (or subclass).
+    pub fn downcast_to_external_reference_file(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicExternalReferenceFile>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicExternalReferenceFile(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_basic_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_Group>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_Group` (or subclass).
+    pub fn downcast_to_iges_basic_group(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicGroup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicGroup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_GroupWithoutBackP>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_GroupWithoutBackP` (or subclass).
+    pub fn downcast_to_group_without_back_p(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicGroupWithoutBackP>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicGroupWithoutBackP(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_HArray1OfHArray1OfIGESEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_HArray1OfHArray1OfIGESEntity` (or subclass).
+    pub fn downcast_to_h_array1_of_h_array1_of_iges_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicHArray1OfHArray1OfIGESEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicHArray1OfHArray1OfIGESEntity(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_HArray1OfHArray1OfInteger>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_HArray1OfHArray1OfInteger` (or subclass).
+    pub fn downcast_to_h_array1_of_h_array1_of_integer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicHArray1OfHArray1OfInteger>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicHArray1OfHArray1OfInteger(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_HArray1OfHArray1OfReal>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_HArray1OfHArray1OfReal` (or subclass).
+    pub fn downcast_to_h_array1_of_h_array1_of_real(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicHArray1OfHArray1OfReal>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicHArray1OfHArray1OfReal(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_HArray1OfHArray1OfXY>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_HArray1OfHArray1OfXY` (or subclass).
+    pub fn downcast_to_h_array1_of_h_array1_of_xy(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicHArray1OfHArray1OfXY>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicHArray1OfHArray1OfXY(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_HArray1OfHArray1OfXYZ>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_HArray1OfHArray1OfXYZ` (or subclass).
+    pub fn downcast_to_h_array1_of_h_array1_of_xyz(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicHArray1OfHArray1OfXYZ>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicHArray1OfHArray1OfXYZ(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_HArray1OfLineFontEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_HArray1OfLineFontEntity` (or subclass).
+    pub fn downcast_to_h_array1_of_line_font_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicHArray1OfLineFontEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicHArray1OfLineFontEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_HArray2OfHArray1OfReal>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_HArray2OfHArray1OfReal` (or subclass).
+    pub fn downcast_to_h_array2_of_h_array1_of_real(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicHArray2OfHArray1OfReal>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicHArray2OfHArray1OfReal(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_Hierarchy>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_Hierarchy` (or subclass).
+    pub fn downcast_to_hierarchy(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicHierarchy>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicHierarchy(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_Name>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_Name` (or subclass).
+    pub fn downcast_to_iges_basic_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicName(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_OrderedGroup>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_OrderedGroup` (or subclass).
+    pub fn downcast_to_ordered_group(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicOrderedGroup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicOrderedGroup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_OrderedGroupWithoutBackP>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_OrderedGroupWithoutBackP` (or subclass).
+    pub fn downcast_to_ordered_group_without_back_p(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicOrderedGroupWithoutBackP>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicOrderedGroupWithoutBackP(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_Protocol` (or subclass).
+    pub fn downcast_to_iges_basic_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_basic_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_SingleParent>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_SingleParent` (or subclass).
+    pub fn downcast_to_single_parent(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicSingleParent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicSingleParent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_SingularSubfigure>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_SingularSubfigure` (or subclass).
+    pub fn downcast_to_singular_subfigure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicSingularSubfigure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicSingularSubfigure(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_SpecificModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_SpecificModule` (or subclass).
+    pub fn downcast_to_iges_basic_specific_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicSpecificModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicSpecificModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESBasic_SubfigureDef>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESBasic_SubfigureDef` (or subclass).
+    pub fn downcast_to_subfigure_def(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESBasicSubfigureDef>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESBasicSubfigureDef(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<IGESControl_ActorWrite>
     ///
     /// Returns `None` if the handle does not point to a `IGESControl_ActorWrite` (or subclass).
@@ -17046,6 +19156,132 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<IGESData_ColorEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_ColorEntity` (or subclass).
+    pub fn downcast_to_color_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDataColorEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESData_DefaultGeneral>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_DefaultGeneral` (or subclass).
+    pub fn downcast_to_iges_data_default_general(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataDefaultGeneral>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDataDefaultGeneral(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESData_DefaultSpecific>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_DefaultSpecific` (or subclass).
+    pub fn downcast_to_default_specific(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataDefaultSpecific>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDataDefaultSpecific(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESData_FileProtocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_FileProtocol` (or subclass).
+    pub fn downcast_to_iges_data_file_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataFileProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDataFileProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESData_FreeFormatEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_FreeFormatEntity` (or subclass).
+    pub fn downcast_to_free_format_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataFreeFormatEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDataFreeFormatEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESData_GlobalNodeOfSpecificLib>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_GlobalNodeOfSpecificLib` (or subclass).
+    pub fn downcast_to_global_node_of_specific_lib(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataGlobalNodeOfSpecificLib>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDataGlobalNodeOfSpecificLib(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESData_GlobalNodeOfWriterLib>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_GlobalNodeOfWriterLib` (or subclass).
+    pub fn downcast_to_iges_data_global_node_of_writer_lib(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataGlobalNodeOfWriterLib>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDataGlobalNodeOfWriterLib(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<IGESData_HArray1OfIGESEntity>
     ///
     /// Returns `None` if the handle does not point to a `IGESData_HArray1OfIGESEntity` (or subclass).
@@ -17072,6 +19308,3543 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDataIGESEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESData_IGESModel>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_IGESModel` (or subclass).
+    pub fn downcast_to_iges_model(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDataIGESModel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESData_IGESReaderData>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_IGESReaderData` (or subclass).
+    pub fn downcast_to_iges_reader_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataIGESReaderData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDataIGESReaderData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESData_LabelDisplayEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_LabelDisplayEntity` (or subclass).
+    pub fn downcast_to_label_display_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDataLabelDisplayEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESData_LineFontEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_LineFontEntity` (or subclass).
+    pub fn downcast_to_line_font_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDataLineFontEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESData_NodeOfSpecificLib>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_NodeOfSpecificLib` (or subclass).
+    pub fn downcast_to_node_of_specific_lib(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataNodeOfSpecificLib>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDataNodeOfSpecificLib(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESData_NodeOfWriterLib>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_NodeOfWriterLib` (or subclass).
+    pub fn downcast_to_iges_data_node_of_writer_lib(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataNodeOfWriterLib>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDataNodeOfWriterLib(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESData_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_Protocol` (or subclass).
+    pub fn downcast_to_iges_data_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDataProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESData_ToolLocation>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_ToolLocation` (or subclass).
+    pub fn downcast_to_tool_location(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataToolLocation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDataToolLocation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESData_UndefinedEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESData_UndefinedEntity` (or subclass).
+    pub fn downcast_to_iges_data_undefined_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDataUndefinedEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDataUndefinedEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDefs_AssociativityDef>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_AssociativityDef` (or subclass).
+    pub fn downcast_to_associativity_def(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsAssociativityDef>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDefsAssociativityDef(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDefs_AttributeDef>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_AttributeDef` (or subclass).
+    pub fn downcast_to_attribute_def(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsAttributeDef>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDefsAttributeDef(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDefs_AttributeTable>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_AttributeTable` (or subclass).
+    pub fn downcast_to_attribute_table(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsAttributeTable>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDefsAttributeTable(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDefs_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_defs_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDefsGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDefs_GenericData>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_GenericData` (or subclass).
+    pub fn downcast_to_generic_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsGenericData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDefsGenericData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDefs_HArray1OfHArray1OfTextDisplayTemplate>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_HArray1OfHArray1OfTextDisplayTemplate` (or subclass).
+    pub fn downcast_to_h_array1_of_h_array1_of_text_display_template(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDefs_HArray1OfTabularData>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_HArray1OfTabularData` (or subclass).
+    pub fn downcast_to_h_array1_of_tabular_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsHArray1OfTabularData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDefsHArray1OfTabularData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDefs_MacroDef>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_MacroDef` (or subclass).
+    pub fn downcast_to_macro_def(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsMacroDef>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDefsMacroDef(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDefs_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_Protocol` (or subclass).
+    pub fn downcast_to_iges_defs_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDefsProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDefs_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_defs_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDefsReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDefs_SpecificModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_SpecificModule` (or subclass).
+    pub fn downcast_to_iges_defs_specific_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsSpecificModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDefsSpecificModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDefs_TabularData>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_TabularData` (or subclass).
+    pub fn downcast_to_tabular_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsTabularData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDefsTabularData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDefs_UnitsData>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDefs_UnitsData` (or subclass).
+    pub fn downcast_to_units_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDefsUnitsData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDefsUnitsData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_AngularDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_AngularDimension` (or subclass).
+    pub fn downcast_to_angular_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenAngularDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenAngularDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_BasicDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_BasicDimension` (or subclass).
+    pub fn downcast_to_basic_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenBasicDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenBasicDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_CenterLine>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_CenterLine` (or subclass).
+    pub fn downcast_to_center_line(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenCenterLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenCenterLine(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_CurveDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_CurveDimension` (or subclass).
+    pub fn downcast_to_curve_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenCurveDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenCurveDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_DiameterDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_DiameterDimension` (or subclass).
+    pub fn downcast_to_diameter_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenDiameterDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenDiameterDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_DimensionDisplayData>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_DimensionDisplayData` (or subclass).
+    pub fn downcast_to_dimension_display_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenDimensionDisplayData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenDimensionDisplayData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_DimensionTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_DimensionTolerance` (or subclass).
+    pub fn downcast_to_dimension_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenDimensionTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenDimensionTolerance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_DimensionUnits>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_DimensionUnits` (or subclass).
+    pub fn downcast_to_dimension_units(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenDimensionUnits>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenDimensionUnits(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_DimensionedGeometry>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_DimensionedGeometry` (or subclass).
+    pub fn downcast_to_dimensioned_geometry(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenDimensionedGeometry>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenDimensionedGeometry(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_FlagNote>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_FlagNote` (or subclass).
+    pub fn downcast_to_flag_note(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenFlagNote>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenFlagNote(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_GeneralLabel>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_GeneralLabel` (or subclass).
+    pub fn downcast_to_general_label(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenGeneralLabel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenGeneralLabel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_dimen_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_GeneralNote>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_GeneralNote` (or subclass).
+    pub fn downcast_to_general_note(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenGeneralNote>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenGeneralNote(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_GeneralSymbol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_GeneralSymbol` (or subclass).
+    pub fn downcast_to_general_symbol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenGeneralSymbol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenGeneralSymbol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_HArray1OfGeneralNote>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_HArray1OfGeneralNote` (or subclass).
+    pub fn downcast_to_h_array1_of_general_note(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenHArray1OfGeneralNote>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenHArray1OfGeneralNote(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_HArray1OfLeaderArrow>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_HArray1OfLeaderArrow` (or subclass).
+    pub fn downcast_to_h_array1_of_leader_arrow(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenHArray1OfLeaderArrow>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenHArray1OfLeaderArrow(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_LeaderArrow>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_LeaderArrow` (or subclass).
+    pub fn downcast_to_leader_arrow(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenLeaderArrow>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenLeaderArrow(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_LinearDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_LinearDimension` (or subclass).
+    pub fn downcast_to_linear_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenLinearDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenLinearDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_NewDimensionedGeometry>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_NewDimensionedGeometry` (or subclass).
+    pub fn downcast_to_new_dimensioned_geometry(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenNewDimensionedGeometry>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenNewDimensionedGeometry(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_NewGeneralNote>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_NewGeneralNote` (or subclass).
+    pub fn downcast_to_new_general_note(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenNewGeneralNote>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenNewGeneralNote(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_OrdinateDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_OrdinateDimension` (or subclass).
+    pub fn downcast_to_ordinate_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenOrdinateDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenOrdinateDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_PointDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_PointDimension` (or subclass).
+    pub fn downcast_to_point_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenPointDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenPointDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_Protocol` (or subclass).
+    pub fn downcast_to_iges_dimen_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_RadiusDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_RadiusDimension` (or subclass).
+    pub fn downcast_to_radius_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenRadiusDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenRadiusDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_dimen_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_Section>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_Section` (or subclass).
+    pub fn downcast_to_section(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenSection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenSection(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_SectionedArea>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_SectionedArea` (or subclass).
+    pub fn downcast_to_sectioned_area(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenSectionedArea>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenSectionedArea(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_SpecificModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_SpecificModule` (or subclass).
+    pub fn downcast_to_iges_dimen_specific_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenSpecificModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenSpecificModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_WitnessLine>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDimen_WitnessLine` (or subclass).
+    pub fn downcast_to_witness_line(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenWitnessLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDimenWitnessLine(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_CircArraySubfigure>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_CircArraySubfigure` (or subclass).
+    pub fn downcast_to_circ_array_subfigure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawCircArraySubfigure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawCircArraySubfigure(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_ConnectPoint>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_ConnectPoint` (or subclass).
+    pub fn downcast_to_connect_point(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawConnectPoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawConnectPoint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_Drawing>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_Drawing` (or subclass).
+    pub fn downcast_to_drawing(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawDrawing>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawDrawing(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_DrawingWithRotation>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_DrawingWithRotation` (or subclass).
+    pub fn downcast_to_drawing_with_rotation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawDrawingWithRotation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawDrawingWithRotation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_draw_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_HArray1OfConnectPoint>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_HArray1OfConnectPoint` (or subclass).
+    pub fn downcast_to_h_array1_of_connect_point(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawHArray1OfConnectPoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawHArray1OfConnectPoint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_HArray1OfViewKindEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_HArray1OfViewKindEntity` (or subclass).
+    pub fn downcast_to_h_array1_of_view_kind_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawHArray1OfViewKindEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawHArray1OfViewKindEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_LabelDisplay>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_LabelDisplay` (or subclass).
+    pub fn downcast_to_label_display(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawLabelDisplay>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawLabelDisplay(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_NetworkSubfigure>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_NetworkSubfigure` (or subclass).
+    pub fn downcast_to_network_subfigure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawNetworkSubfigure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawNetworkSubfigure(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_NetworkSubfigureDef>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_NetworkSubfigureDef` (or subclass).
+    pub fn downcast_to_network_subfigure_def(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawNetworkSubfigureDef>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawNetworkSubfigureDef(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_PerspectiveView>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_PerspectiveView` (or subclass).
+    pub fn downcast_to_perspective_view(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawPerspectiveView>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawPerspectiveView(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_Planar>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_Planar` (or subclass).
+    pub fn downcast_to_planar(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawPlanar>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawPlanar(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_Protocol` (or subclass).
+    pub fn downcast_to_iges_draw_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_draw_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_RectArraySubfigure>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_RectArraySubfigure` (or subclass).
+    pub fn downcast_to_rect_array_subfigure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawRectArraySubfigure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawRectArraySubfigure(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_SegmentedViewsVisible>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_SegmentedViewsVisible` (or subclass).
+    pub fn downcast_to_segmented_views_visible(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawSegmentedViewsVisible>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawSegmentedViewsVisible(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_SpecificModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_SpecificModule` (or subclass).
+    pub fn downcast_to_iges_draw_specific_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawSpecificModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawSpecificModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_View>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_View` (or subclass).
+    pub fn downcast_to_iges_draw_view(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawView>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawView(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_ViewsVisible>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_ViewsVisible` (or subclass).
+    pub fn downcast_to_views_visible(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawViewsVisible>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawViewsVisible(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESDraw_ViewsVisibleWithAttr>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESDraw_ViewsVisibleWithAttr` (or subclass).
+    pub fn downcast_to_views_visible_with_attr(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDrawViewsVisibleWithAttr>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESDrawViewsVisibleWithAttr(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_BSplineCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_BSplineCurve` (or subclass).
+    pub fn downcast_to_iges_geom_b_spline_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomBSplineCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomBSplineCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_BSplineSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_BSplineSurface` (or subclass).
+    pub fn downcast_to_iges_geom_b_spline_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomBSplineSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomBSplineSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_Boundary>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_Boundary` (or subclass).
+    pub fn downcast_to_boundary(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomBoundary>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomBoundary(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_BoundedSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_BoundedSurface` (or subclass).
+    pub fn downcast_to_iges_geom_bounded_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomBoundedSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomBoundedSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_CircularArc>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_CircularArc` (or subclass).
+    pub fn downcast_to_circular_arc(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomCircularArc>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomCircularArc(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_CompositeCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_CompositeCurve` (or subclass).
+    pub fn downcast_to_iges_geom_composite_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomCompositeCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomCompositeCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_ConicArc>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_ConicArc` (or subclass).
+    pub fn downcast_to_conic_arc(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomConicArc>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomConicArc(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_CopiousData>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_CopiousData` (or subclass).
+    pub fn downcast_to_copious_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomCopiousData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomCopiousData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_CurveOnSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_CurveOnSurface` (or subclass).
+    pub fn downcast_to_iges_geom_curve_on_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomCurveOnSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomCurveOnSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_Direction>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_Direction` (or subclass).
+    pub fn downcast_to_iges_geom_direction(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomDirection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomDirection(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_Flash>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_Flash` (or subclass).
+    pub fn downcast_to_flash(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomFlash>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomFlash(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_geom_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_HArray1OfBoundary>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_HArray1OfBoundary` (or subclass).
+    pub fn downcast_to_h_array1_of_boundary(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomHArray1OfBoundary>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomHArray1OfBoundary(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_HArray1OfCurveOnSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_HArray1OfCurveOnSurface` (or subclass).
+    pub fn downcast_to_h_array1_of_curve_on_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomHArray1OfCurveOnSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomHArray1OfCurveOnSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_HArray1OfTransformationMatrix>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_HArray1OfTransformationMatrix` (or subclass).
+    pub fn downcast_to_h_array1_of_transformation_matrix(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomHArray1OfTransformationMatrix>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomHArray1OfTransformationMatrix(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_Line>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_Line` (or subclass).
+    pub fn downcast_to_iges_geom_line(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomLine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_OffsetCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_OffsetCurve` (or subclass).
+    pub fn downcast_to_iges_geom_offset_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomOffsetCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomOffsetCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_OffsetSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_OffsetSurface` (or subclass).
+    pub fn downcast_to_iges_geom_offset_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomOffsetSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomOffsetSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_Plane>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_Plane` (or subclass).
+    pub fn downcast_to_iges_geom_plane(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomPlane>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomPlane(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_Point>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_Point` (or subclass).
+    pub fn downcast_to_iges_geom_point(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomPoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomPoint(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_Protocol` (or subclass).
+    pub fn downcast_to_iges_geom_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_geom_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_RuledSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_RuledSurface` (or subclass).
+    pub fn downcast_to_ruled_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomRuledSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomRuledSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_SpecificModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_SpecificModule` (or subclass).
+    pub fn downcast_to_iges_geom_specific_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomSpecificModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomSpecificModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_SplineCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_SplineCurve` (or subclass).
+    pub fn downcast_to_spline_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomSplineCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomSplineCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_SplineSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_SplineSurface` (or subclass).
+    pub fn downcast_to_spline_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomSplineSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomSplineSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_SurfaceOfRevolution>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_SurfaceOfRevolution` (or subclass).
+    pub fn downcast_to_iges_geom_surface_of_revolution(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomSurfaceOfRevolution>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomSurfaceOfRevolution(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_TabulatedCylinder>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_TabulatedCylinder` (or subclass).
+    pub fn downcast_to_tabulated_cylinder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomTabulatedCylinder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomTabulatedCylinder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_TransformationMatrix>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_TransformationMatrix` (or subclass).
+    pub fn downcast_to_transformation_matrix(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomTransformationMatrix>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomTransformationMatrix(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGeom_TrimmedSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGeom_TrimmedSurface` (or subclass).
+    pub fn downcast_to_trimmed_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGeomTrimmedSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGeomTrimmedSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_Color>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_Color` (or subclass).
+    pub fn downcast_to_iges_graph_color(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphColor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphColor(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_DefinitionLevel>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_DefinitionLevel` (or subclass).
+    pub fn downcast_to_definition_level(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphDefinitionLevel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphDefinitionLevel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_DrawingSize>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_DrawingSize` (or subclass).
+    pub fn downcast_to_drawing_size(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphDrawingSize>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphDrawingSize(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_DrawingUnits>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_DrawingUnits` (or subclass).
+    pub fn downcast_to_drawing_units(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphDrawingUnits>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphDrawingUnits(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_graph_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_HArray1OfColor>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_HArray1OfColor` (or subclass).
+    pub fn downcast_to_iges_graph_h_array1_of_color(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphHArray1OfColor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphHArray1OfColor(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_HArray1OfTextDisplayTemplate>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_HArray1OfTextDisplayTemplate` (or subclass).
+    pub fn downcast_to_h_array1_of_text_display_template(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphHArray1OfTextDisplayTemplate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphHArray1OfTextDisplayTemplate(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_HArray1OfTextFontDef>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_HArray1OfTextFontDef` (or subclass).
+    pub fn downcast_to_h_array1_of_text_font_def(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphHArray1OfTextFontDef>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphHArray1OfTextFontDef(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_HighLight>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_HighLight` (or subclass).
+    pub fn downcast_to_high_light(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphHighLight>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphHighLight(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_IntercharacterSpacing>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_IntercharacterSpacing` (or subclass).
+    pub fn downcast_to_intercharacter_spacing(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphIntercharacterSpacing>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphIntercharacterSpacing(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_LineFontDefPattern>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_LineFontDefPattern` (or subclass).
+    pub fn downcast_to_line_font_def_pattern(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphLineFontDefPattern>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphLineFontDefPattern(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_LineFontDefTemplate>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_LineFontDefTemplate` (or subclass).
+    pub fn downcast_to_line_font_def_template(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphLineFontDefTemplate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphLineFontDefTemplate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_LineFontPredefined>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_LineFontPredefined` (or subclass).
+    pub fn downcast_to_line_font_predefined(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphLineFontPredefined>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphLineFontPredefined(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_NominalSize>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_NominalSize` (or subclass).
+    pub fn downcast_to_nominal_size(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphNominalSize>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphNominalSize(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_Pick>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_Pick` (or subclass).
+    pub fn downcast_to_pick(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphPick>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphPick(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_Protocol` (or subclass).
+    pub fn downcast_to_iges_graph_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_graph_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_SpecificModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_SpecificModule` (or subclass).
+    pub fn downcast_to_iges_graph_specific_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphSpecificModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphSpecificModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_TextDisplayTemplate>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_TextDisplayTemplate` (or subclass).
+    pub fn downcast_to_text_display_template(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphTextDisplayTemplate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphTextDisplayTemplate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_TextFontDef>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_TextFontDef` (or subclass).
+    pub fn downcast_to_text_font_def(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphTextFontDef>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphTextFontDef(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESGraph_UniformRectGrid>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESGraph_UniformRectGrid` (or subclass).
+    pub fn downcast_to_uniform_rect_grid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESGraphUniformRectGrid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESGraphUniformRectGrid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_Activator>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_Activator` (or subclass).
+    pub fn downcast_to_iges_select_activator(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectActivator>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectActivator(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_AddFileComment>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_AddFileComment` (or subclass).
+    pub fn downcast_to_add_file_comment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectAddFileComment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectAddFileComment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_AddGroup>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_AddGroup` (or subclass).
+    pub fn downcast_to_add_group(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectAddGroup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectAddGroup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_AutoCorrect>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_AutoCorrect` (or subclass).
+    pub fn downcast_to_auto_correct(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectAutoCorrect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectAutoCorrect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_ChangeLevelList>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_ChangeLevelList` (or subclass).
+    pub fn downcast_to_change_level_list(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectChangeLevelList>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectChangeLevelList(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_ChangeLevelNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_ChangeLevelNumber` (or subclass).
+    pub fn downcast_to_change_level_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectChangeLevelNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectChangeLevelNumber(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_ComputeStatus>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_ComputeStatus` (or subclass).
+    pub fn downcast_to_compute_status(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectComputeStatus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectComputeStatus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_CounterOfLevelNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_CounterOfLevelNumber` (or subclass).
+    pub fn downcast_to_counter_of_level_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectCounterOfLevelNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectCounterOfLevelNumber(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_DispPerDrawing>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_DispPerDrawing` (or subclass).
+    pub fn downcast_to_disp_per_drawing(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectDispPerDrawing>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectDispPerDrawing(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_DispPerSingleView>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_DispPerSingleView` (or subclass).
+    pub fn downcast_to_disp_per_single_view(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectDispPerSingleView>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectDispPerSingleView(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_Dumper>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_Dumper` (or subclass).
+    pub fn downcast_to_dumper(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectDumper>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectDumper(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_EditDirPart>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_EditDirPart` (or subclass).
+    pub fn downcast_to_edit_dir_part(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectEditDirPart>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectEditDirPart(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_EditHeader>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_EditHeader` (or subclass).
+    pub fn downcast_to_iges_select_edit_header(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectEditHeader>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectEditHeader(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_FloatFormat>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_FloatFormat` (or subclass).
+    pub fn downcast_to_iges_select_float_format(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectFloatFormat>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectFloatFormat(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_IGESName>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_IGESName` (or subclass).
+    pub fn downcast_to_iges_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectIGESName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectIGESName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_IGESTypeForm>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_IGESTypeForm` (or subclass).
+    pub fn downcast_to_iges_type_form(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectIGESTypeForm>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectIGESTypeForm(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_RebuildDrawings>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_RebuildDrawings` (or subclass).
+    pub fn downcast_to_rebuild_drawings(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectRebuildDrawings>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectRebuildDrawings(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_RebuildGroups>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_RebuildGroups` (or subclass).
+    pub fn downcast_to_rebuild_groups(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectRebuildGroups>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectRebuildGroups(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_RemoveCurves>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_RemoveCurves` (or subclass).
+    pub fn downcast_to_remove_curves(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectRemoveCurves>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectRemoveCurves(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SelectBasicGeom>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectBasicGeom` (or subclass).
+    pub fn downcast_to_select_basic_geom(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectBasicGeom>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSelectBasicGeom(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SelectBypassGroup>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectBypassGroup` (or subclass).
+    pub fn downcast_to_select_bypass_group(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectBypassGroup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSelectBypassGroup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SelectBypassSubfigure>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectBypassSubfigure` (or subclass).
+    pub fn downcast_to_select_bypass_subfigure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectBypassSubfigure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSelectBypassSubfigure(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SelectDrawingFrom>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectDrawingFrom` (or subclass).
+    pub fn downcast_to_select_drawing_from(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectDrawingFrom>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSelectDrawingFrom(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SelectFaces>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectFaces` (or subclass).
+    pub fn downcast_to_iges_select_select_faces(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectFaces>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSelectFaces(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SelectFromDrawing>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectFromDrawing` (or subclass).
+    pub fn downcast_to_select_from_drawing(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectFromDrawing>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSelectFromDrawing(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SelectFromSingleView>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectFromSingleView` (or subclass).
+    pub fn downcast_to_select_from_single_view(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectFromSingleView>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSelectFromSingleView(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SelectLevelNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectLevelNumber` (or subclass).
+    pub fn downcast_to_select_level_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectLevelNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSelectLevelNumber(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SelectName>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectName` (or subclass).
+    pub fn downcast_to_select_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSelectName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SelectPCurves>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectPCurves` (or subclass).
+    pub fn downcast_to_select_p_curves(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectPCurves>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSelectPCurves(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SelectSingleViewFrom>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectSingleViewFrom` (or subclass).
+    pub fn downcast_to_select_single_view_from(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectSingleViewFrom>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSelectSingleViewFrom(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SelectSubordinate>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectSubordinate` (or subclass).
+    pub fn downcast_to_select_subordinate(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectSubordinate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSelectSubordinate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SelectVisibleStatus>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SelectVisibleStatus` (or subclass).
+    pub fn downcast_to_select_visible_status(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectVisibleStatus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSelectVisibleStatus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SetGlobalParameter>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SetGlobalParameter` (or subclass).
+    pub fn downcast_to_set_global_parameter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSetGlobalParameter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSetGlobalParameter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SetLabel>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SetLabel` (or subclass).
+    pub fn downcast_to_set_label(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSetLabel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSetLabel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SetVersion5>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SetVersion5` (or subclass).
+    pub fn downcast_to_set_version5(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSetVersion5>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSetVersion5(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SignColor>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SignColor` (or subclass).
+    pub fn downcast_to_sign_color(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSignColor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSignColor(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SignLevelNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SignLevelNumber` (or subclass).
+    pub fn downcast_to_sign_level_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSignLevelNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSignLevelNumber(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SignStatus>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SignStatus` (or subclass).
+    pub fn downcast_to_sign_status(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSignStatus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSignStatus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_SplineToBSpline>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_SplineToBSpline` (or subclass).
+    pub fn downcast_to_spline_to_b_spline(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSplineToBSpline>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectSplineToBSpline(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_UpdateCreationDate>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_UpdateCreationDate` (or subclass).
+    pub fn downcast_to_update_creation_date(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectUpdateCreationDate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectUpdateCreationDate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_UpdateFileName>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_UpdateFileName` (or subclass).
+    pub fn downcast_to_update_file_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectUpdateFileName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectUpdateFileName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_UpdateLastChange>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_UpdateLastChange` (or subclass).
+    pub fn downcast_to_update_last_change(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectUpdateLastChange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectUpdateLastChange(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_ViewSorter>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_ViewSorter` (or subclass).
+    pub fn downcast_to_view_sorter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectViewSorter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectViewSorter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSelect_WorkLibrary>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSelect_WorkLibrary` (or subclass).
+    pub fn downcast_to_iges_select_work_library(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectWorkLibrary>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSelectWorkLibrary(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_Block>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Block` (or subclass).
+    pub fn downcast_to_iges_solid_block(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidBlock>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidBlock(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_BooleanTree>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_BooleanTree` (or subclass).
+    pub fn downcast_to_boolean_tree(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidBooleanTree>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidBooleanTree(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_ConeFrustum>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_ConeFrustum` (or subclass).
+    pub fn downcast_to_cone_frustum(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidConeFrustum>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidConeFrustum(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_ConicalSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_ConicalSurface` (or subclass).
+    pub fn downcast_to_iges_solid_conical_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidConicalSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidConicalSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_Cylinder>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Cylinder` (or subclass).
+    pub fn downcast_to_iges_solid_cylinder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidCylinder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidCylinder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_CylindricalSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_CylindricalSurface` (or subclass).
+    pub fn downcast_to_iges_solid_cylindrical_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidCylindricalSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidCylindricalSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_EdgeList>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_EdgeList` (or subclass).
+    pub fn downcast_to_edge_list(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidEdgeList>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidEdgeList(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_Ellipsoid>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Ellipsoid` (or subclass).
+    pub fn downcast_to_ellipsoid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidEllipsoid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidEllipsoid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_Face>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Face` (or subclass).
+    pub fn downcast_to_iges_solid_face(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidFace(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_GeneralModule` (or subclass).
+    pub fn downcast_to_iges_solid_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_HArray1OfFace>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_HArray1OfFace` (or subclass).
+    pub fn downcast_to_iges_solid_h_array1_of_face(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidHArray1OfFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidHArray1OfFace(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_HArray1OfLoop>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_HArray1OfLoop` (or subclass).
+    pub fn downcast_to_h_array1_of_loop(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidHArray1OfLoop>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidHArray1OfLoop(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_HArray1OfShell>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_HArray1OfShell` (or subclass).
+    pub fn downcast_to_iges_solid_h_array1_of_shell(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidHArray1OfShell>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidHArray1OfShell(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_HArray1OfVertexList>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_HArray1OfVertexList` (or subclass).
+    pub fn downcast_to_h_array1_of_vertex_list(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidHArray1OfVertexList>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidHArray1OfVertexList(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_Loop>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Loop` (or subclass).
+    pub fn downcast_to_iges_solid_loop(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidLoop>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidLoop(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_ManifoldSolid>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_ManifoldSolid` (or subclass).
+    pub fn downcast_to_manifold_solid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidManifoldSolid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidManifoldSolid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_PlaneSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_PlaneSurface` (or subclass).
+    pub fn downcast_to_plane_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidPlaneSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidPlaneSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Protocol` (or subclass).
+    pub fn downcast_to_iges_solid_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_ReadWriteModule` (or subclass).
+    pub fn downcast_to_iges_solid_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_RightAngularWedge>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_RightAngularWedge` (or subclass).
+    pub fn downcast_to_iges_solid_right_angular_wedge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidRightAngularWedge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidRightAngularWedge(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_SelectedComponent>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_SelectedComponent` (or subclass).
+    pub fn downcast_to_selected_component(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidSelectedComponent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidSelectedComponent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_Shell>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Shell` (or subclass).
+    pub fn downcast_to_iges_solid_shell(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidShell>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidShell(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_SolidAssembly>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_SolidAssembly` (or subclass).
+    pub fn downcast_to_solid_assembly(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidSolidAssembly>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidSolidAssembly(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_SolidInstance>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_SolidInstance` (or subclass).
+    pub fn downcast_to_solid_instance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidSolidInstance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidSolidInstance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_SolidOfLinearExtrusion>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_SolidOfLinearExtrusion` (or subclass).
+    pub fn downcast_to_solid_of_linear_extrusion(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidSolidOfLinearExtrusion>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidSolidOfLinearExtrusion(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_SolidOfRevolution>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_SolidOfRevolution` (or subclass).
+    pub fn downcast_to_solid_of_revolution(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidSolidOfRevolution>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidSolidOfRevolution(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_SpecificModule>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_SpecificModule` (or subclass).
+    pub fn downcast_to_iges_solid_specific_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidSpecificModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidSpecificModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_Sphere>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Sphere` (or subclass).
+    pub fn downcast_to_iges_solid_sphere(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidSphere>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidSphere(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_SphericalSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_SphericalSurface` (or subclass).
+    pub fn downcast_to_iges_solid_spherical_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidSphericalSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidSphericalSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_ToroidalSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_ToroidalSurface` (or subclass).
+    pub fn downcast_to_iges_solid_toroidal_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidToroidalSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidToroidalSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_Torus>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_Torus` (or subclass).
+    pub fn downcast_to_iges_solid_torus(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidTorus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidTorus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IGESSolid_VertexList>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESSolid_VertexList` (or subclass).
+    pub fn downcast_to_vertex_list(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSolidVertexList>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIGESSolidVertexList(
                 self as *const Self,
             )
         };
@@ -17242,20 +23015,6 @@ impl HandleStandardTransient {
         }
     }
 
-    /// Downcast Handle<Standard_Transient> to Handle<Image_Texture>
-    ///
-    /// Returns `None` if the handle does not point to a `Image_Texture` (or subclass).
-    pub fn downcast_to_texture(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleImageTexture>> {
-        let ptr = unsafe {
-            crate::ffi::HandleStandardTransient_downcast_to_HandleImageTexture(self as *const Self)
-        };
-        if ptr.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
-        }
-    }
-
     /// Downcast Handle<Standard_Transient> to Handle<IntCurvesFace_Intersector>
     ///
     /// Returns `None` if the handle does not point to a `IntCurvesFace_Intersector` (or subclass).
@@ -17274,6 +23033,34 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<IntPatch_ALine>
+    ///
+    /// Returns `None` if the handle does not point to a `IntPatch_ALine` (or subclass).
+    pub fn downcast_to_a_line(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIntPatchALine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIntPatchALine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IntPatch_GLine>
+    ///
+    /// Returns `None` if the handle does not point to a `IntPatch_GLine` (or subclass).
+    pub fn downcast_to_g_line(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIntPatchGLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIntPatchGLine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<IntPatch_Line>
     ///
     /// Returns `None` if the handle does not point to a `IntPatch_Line` (or subclass).
@@ -17282,6 +23069,38 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIntPatchLine>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleIntPatchLine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IntPatch_RLine>
+    ///
+    /// Returns `None` if the handle does not point to a `IntPatch_RLine` (or subclass).
+    pub fn downcast_to_r_line(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIntPatchRLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIntPatchRLine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IntPatch_TheIWLineOfTheIWalking>
+    ///
+    /// Returns `None` if the handle does not point to a `IntPatch_TheIWLineOfTheIWalking` (or subclass).
+    pub fn downcast_to_int_patch_the_iw_line_of_the_i_walking(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIntPatchTheIWLineOfTheIWalking>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIntPatchTheIWLineOfTheIWalking(
+                self as *const Self,
+            )
         };
         if ptr.is_null() {
             None
@@ -17361,7 +23180,9 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<Interface_Check>
     ///
     /// Returns `None` if the handle does not point to a `Interface_Check` (or subclass).
-    pub fn downcast_to_check(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceCheck>> {
+    pub fn downcast_to_interface_check(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceCheck>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceCheck(
                 self as *const Self,
@@ -17537,7 +23358,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<Interface_IntVal>
     ///
     /// Returns `None` if the handle does not point to a `Interface_IntVal` (or subclass).
-    pub fn downcast_to_int_val(
+    pub fn downcast_to_interface_int_val(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceIntVal>> {
         let ptr = unsafe {
@@ -17738,6 +23559,42 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceUndefinedContent>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceUndefinedContent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<LProp_BadContinuity>
+    ///
+    /// Returns `None` if the handle does not point to a `LProp_BadContinuity` (or subclass).
+    pub fn downcast_to_bad_continuity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleLPropBadContinuity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleLPropBadContinuity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<LProp_NotDefined>
+    ///
+    /// Returns `None` if the handle does not point to a `LProp_NotDefined` (or subclass).
+    pub fn downcast_to_not_defined(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleLPropNotDefined>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleLPropNotDefined(
                 self as *const Self,
             )
         };
@@ -18021,7 +23878,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<MAT_Node>
     ///
     /// Returns `None` if the handle does not point to a `MAT_Node` (or subclass).
-    pub fn downcast_to_node(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleMATNode>> {
+    pub fn downcast_to_mat_node(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleMATNode>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleMATNode(self as *const Self)
         };
@@ -18300,6 +24157,128 @@ impl HandleStandardTransient {
     pub fn downcast_to_report(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleMessageReport>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleMessageReport(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MoniTool_CaseData>
+    ///
+    /// Returns `None` if the handle does not point to a `MoniTool_CaseData` (or subclass).
+    pub fn downcast_to_case_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMoniToolCaseData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMoniToolCaseData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MoniTool_HSequenceOfElement>
+    ///
+    /// Returns `None` if the handle does not point to a `MoniTool_HSequenceOfElement` (or subclass).
+    pub fn downcast_to_h_sequence_of_element(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMoniToolHSequenceOfElement>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMoniToolHSequenceOfElement(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MoniTool_IntVal>
+    ///
+    /// Returns `None` if the handle does not point to a `MoniTool_IntVal` (or subclass).
+    pub fn downcast_to_moni_tool_int_val(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMoniToolIntVal>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMoniToolIntVal(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MoniTool_RealVal>
+    ///
+    /// Returns `None` if the handle does not point to a `MoniTool_RealVal` (or subclass).
+    pub fn downcast_to_real_val(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMoniToolRealVal>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMoniToolRealVal(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MoniTool_SignShape>
+    ///
+    /// Returns `None` if the handle does not point to a `MoniTool_SignShape` (or subclass).
+    pub fn downcast_to_sign_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMoniToolSignShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMoniToolSignShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MoniTool_Timer>
+    ///
+    /// Returns `None` if the handle does not point to a `MoniTool_Timer` (or subclass).
+    pub fn downcast_to_timer(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleMoniToolTimer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMoniToolTimer(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MoniTool_TransientElem>
+    ///
+    /// Returns `None` if the handle does not point to a `MoniTool_TransientElem` (or subclass).
+    pub fn downcast_to_transient_elem(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMoniToolTransientElem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMoniToolTransientElem(
+                self as *const Self,
+            )
         };
         if ptr.is_null() {
             None
@@ -18998,24 +24977,6 @@ impl HandleStandardTransient {
         }
     }
 
-    /// Downcast Handle<Standard_Transient> to Handle<PCDM_ReaderFilter>
-    ///
-    /// Returns `None` if the handle does not point to a `PCDM_ReaderFilter` (or subclass).
-    pub fn downcast_to_reader_filter(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePCDMReaderFilter>> {
-        let ptr = unsafe {
-            crate::ffi::HandleStandardTransient_downcast_to_HandlePCDMReaderFilter(
-                self as *const Self,
-            )
-        };
-        if ptr.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
-        }
-    }
-
     /// Downcast Handle<Standard_Transient> to Handle<PLib_HermitJacobi>
     ///
     /// Returns `None` if the handle does not point to a `PLib_HermitJacobi` (or subclass).
@@ -19303,7 +25264,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<Quantity_HArray1OfColor>
     ///
     /// Returns `None` if the handle does not point to a `Quantity_HArray1OfColor` (or subclass).
-    pub fn downcast_to_h_array1_of_color(
+    pub fn downcast_to_quantity_h_array1_of_color(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleQuantityHArray1OfColor>> {
         let ptr = unsafe {
@@ -19452,6 +25413,42 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWGltfTriangulationReader>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleRWGltfTriangulationReader(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<RWHeaderSection_GeneralModule>
+    ///
+    /// Returns `None` if the handle does not point to a `RWHeaderSection_GeneralModule` (or subclass).
+    pub fn downcast_to_rw_header_section_general_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWHeaderSectionGeneralModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleRWHeaderSectionGeneralModule(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<RWHeaderSection_ReadWriteModule>
+    ///
+    /// Returns `None` if the handle does not point to a `RWHeaderSection_ReadWriteModule` (or subclass).
+    pub fn downcast_to_rw_header_section_read_write_module(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWHeaderSectionReadWriteModule>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleRWHeaderSectionReadWriteModule(
                 self as *const Self,
             )
         };
@@ -19704,6 +25701,238 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPControlController>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleSTEPControlController(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<STEPEdit_EditContext>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPEdit_EditContext` (or subclass).
+    pub fn downcast_to_edit_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPEditEditContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSTEPEditEditContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<STEPEdit_EditSDR>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPEdit_EditSDR` (or subclass).
+    pub fn downcast_to_edit_sdr(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPEditEditSDR>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSTEPEditEditSDR(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<STEPSelections_AssemblyComponent>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_AssemblyComponent` (or subclass).
+    pub fn downcast_to_assembly_component(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsAssemblyComponent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSTEPSelectionsAssemblyComponent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<STEPSelections_AssemblyLink>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_AssemblyLink` (or subclass).
+    pub fn downcast_to_assembly_link(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsAssemblyLink>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSTEPSelectionsAssemblyLink(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<STEPSelections_HSequenceOfAssemblyLink>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_HSequenceOfAssemblyLink` (or subclass).
+    pub fn downcast_to_h_sequence_of_assembly_link(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsHSequenceOfAssemblyLink>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSTEPSelectionsHSequenceOfAssemblyLink(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<STEPSelections_SelectAssembly>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectAssembly` (or subclass).
+    pub fn downcast_to_select_assembly(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectAssembly>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSTEPSelectionsSelectAssembly(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<STEPSelections_SelectDerived>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectDerived` (or subclass).
+    pub fn downcast_to_select_derived(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectDerived>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSTEPSelectionsSelectDerived(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<STEPSelections_SelectFaces>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectFaces` (or subclass).
+    pub fn downcast_to_step_selections_select_faces(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectFaces>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSTEPSelectionsSelectFaces(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<STEPSelections_SelectForTransfer>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectForTransfer` (or subclass).
+    pub fn downcast_to_step_selections_select_for_transfer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectForTransfer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSTEPSelectionsSelectForTransfer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<STEPSelections_SelectGSCurves>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectGSCurves` (or subclass).
+    pub fn downcast_to_select_gs_curves(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectGSCurves>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSTEPSelectionsSelectGSCurves(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<STEPSelections_SelectInstances>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPSelections_SelectInstances` (or subclass).
+    pub fn downcast_to_select_instances(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectInstances>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSTEPSelectionsSelectInstances(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<ShapeAlgo_AlgoContainer>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeAlgo_AlgoContainer` (or subclass).
+    pub fn downcast_to_shape_algo_algo_container(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeAlgoAlgoContainer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleShapeAlgoAlgoContainer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<ShapeAlgo_ToolContainer>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeAlgo_ToolContainer` (or subclass).
+    pub fn downcast_to_shape_algo_tool_container(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeAlgoToolContainer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleShapeAlgoToolContainer(
                 self as *const Self,
             )
         };
@@ -21342,6 +27571,1136 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_CcDesignApproval>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_CcDesignApproval` (or subclass).
+    pub fn downcast_to_cc_design_approval(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignApproval>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203CcDesignApproval(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_CcDesignCertification>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_CcDesignCertification` (or subclass).
+    pub fn downcast_to_cc_design_certification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignCertification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203CcDesignCertification(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_CcDesignContract>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_CcDesignContract` (or subclass).
+    pub fn downcast_to_cc_design_contract(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignContract>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203CcDesignContract(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_CcDesignDateAndTimeAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_CcDesignDateAndTimeAssignment` (or subclass).
+    pub fn downcast_to_cc_design_date_and_time_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignDateAndTimeAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203CcDesignDateAndTimeAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_CcDesignPersonAndOrganizationAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_CcDesignPersonAndOrganizationAssignment` (or subclass).
+    pub fn downcast_to_cc_design_person_and_organization_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignPersonAndOrganizationAssignment>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203CcDesignPersonAndOrganizationAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_CcDesignSecurityClassification>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_CcDesignSecurityClassification` (or subclass).
+    pub fn downcast_to_cc_design_security_classification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignSecurityClassification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203CcDesignSecurityClassification(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_CcDesignSpecificationReference>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_CcDesignSpecificationReference` (or subclass).
+    pub fn downcast_to_cc_design_specification_reference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignSpecificationReference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203CcDesignSpecificationReference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_Change>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_Change` (or subclass).
+    pub fn downcast_to_change(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203Change>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203Change(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_ChangeRequest>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_ChangeRequest` (or subclass).
+    pub fn downcast_to_change_request(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203ChangeRequest>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203ChangeRequest(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_HArray1OfApprovedItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_HArray1OfApprovedItem` (or subclass).
+    pub fn downcast_to_h_array1_of_approved_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfApprovedItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203HArray1OfApprovedItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_HArray1OfCertifiedItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_HArray1OfCertifiedItem` (or subclass).
+    pub fn downcast_to_h_array1_of_certified_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfCertifiedItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203HArray1OfCertifiedItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_HArray1OfChangeRequestItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_HArray1OfChangeRequestItem` (or subclass).
+    pub fn downcast_to_h_array1_of_change_request_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfChangeRequestItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203HArray1OfChangeRequestItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_HArray1OfClassifiedItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_HArray1OfClassifiedItem` (or subclass).
+    pub fn downcast_to_h_array1_of_classified_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfClassifiedItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203HArray1OfClassifiedItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_HArray1OfContractedItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_HArray1OfContractedItem` (or subclass).
+    pub fn downcast_to_h_array1_of_contracted_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfContractedItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203HArray1OfContractedItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_HArray1OfDateTimeItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_HArray1OfDateTimeItem` (or subclass).
+    pub fn downcast_to_h_array1_of_date_time_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfDateTimeItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203HArray1OfDateTimeItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_HArray1OfPersonOrganizationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_HArray1OfPersonOrganizationItem` (or subclass).
+    pub fn downcast_to_h_array1_of_person_organization_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfPersonOrganizationItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203HArray1OfPersonOrganizationItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_HArray1OfSpecifiedItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_HArray1OfSpecifiedItem` (or subclass).
+    pub fn downcast_to_h_array1_of_specified_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfSpecifiedItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203HArray1OfSpecifiedItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_HArray1OfStartRequestItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_HArray1OfStartRequestItem` (or subclass).
+    pub fn downcast_to_h_array1_of_start_request_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfStartRequestItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203HArray1OfStartRequestItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_HArray1OfWorkItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_HArray1OfWorkItem` (or subclass).
+    pub fn downcast_to_h_array1_of_work_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfWorkItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203HArray1OfWorkItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_StartRequest>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_StartRequest` (or subclass).
+    pub fn downcast_to_start_request(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203StartRequest>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203StartRequest(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP203_StartWork>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP203_StartWork` (or subclass).
+    pub fn downcast_to_start_work(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP203StartWork>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP203StartWork(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AppliedApprovalAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AppliedApprovalAssignment` (or subclass).
+    pub fn downcast_to_applied_approval_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AppliedApprovalAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AppliedApprovalAssignment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AppliedDateAndTimeAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AppliedDateAndTimeAssignment` (or subclass).
+    pub fn downcast_to_applied_date_and_time_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AppliedDateAndTimeAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AppliedDateAndTimeAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AppliedDateAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AppliedDateAssignment` (or subclass).
+    pub fn downcast_to_applied_date_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AppliedDateAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AppliedDateAssignment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AppliedDocumentReference>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AppliedDocumentReference` (or subclass).
+    pub fn downcast_to_applied_document_reference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AppliedDocumentReference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AppliedDocumentReference(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AppliedExternalIdentificationAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AppliedExternalIdentificationAssignment` (or subclass).
+    pub fn downcast_to_applied_external_identification_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AppliedExternalIdentificationAssignment>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AppliedExternalIdentificationAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AppliedGroupAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AppliedGroupAssignment` (or subclass).
+    pub fn downcast_to_applied_group_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AppliedGroupAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AppliedGroupAssignment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AppliedOrganizationAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AppliedOrganizationAssignment` (or subclass).
+    pub fn downcast_to_applied_organization_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AppliedOrganizationAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AppliedOrganizationAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AppliedPersonAndOrganizationAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AppliedPersonAndOrganizationAssignment` (or subclass).
+    pub fn downcast_to_applied_person_and_organization_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AppliedPersonAndOrganizationAssignment>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AppliedPersonAndOrganizationAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AppliedPresentedItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AppliedPresentedItem` (or subclass).
+    pub fn downcast_to_applied_presented_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AppliedPresentedItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AppliedPresentedItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AppliedSecurityClassificationAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AppliedSecurityClassificationAssignment` (or subclass).
+    pub fn downcast_to_applied_security_classification_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AppliedSecurityClassificationAssignment>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AppliedSecurityClassificationAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AutoDesignActualDateAndTimeAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AutoDesignActualDateAndTimeAssignment` (or subclass).
+    pub fn downcast_to_auto_design_actual_date_and_time_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AutoDesignActualDateAndTimeAssignment>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AutoDesignActualDateAndTimeAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AutoDesignActualDateAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AutoDesignActualDateAssignment` (or subclass).
+    pub fn downcast_to_auto_design_actual_date_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AutoDesignActualDateAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AutoDesignActualDateAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AutoDesignApprovalAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AutoDesignApprovalAssignment` (or subclass).
+    pub fn downcast_to_auto_design_approval_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AutoDesignApprovalAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AutoDesignApprovalAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AutoDesignDateAndPersonAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AutoDesignDateAndPersonAssignment` (or subclass).
+    pub fn downcast_to_auto_design_date_and_person_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AutoDesignDateAndPersonAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AutoDesignDateAndPersonAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AutoDesignDocumentReference>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AutoDesignDocumentReference` (or subclass).
+    pub fn downcast_to_auto_design_document_reference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AutoDesignDocumentReference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AutoDesignDocumentReference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AutoDesignGroupAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AutoDesignGroupAssignment` (or subclass).
+    pub fn downcast_to_auto_design_group_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AutoDesignGroupAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AutoDesignGroupAssignment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AutoDesignNominalDateAndTimeAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AutoDesignNominalDateAndTimeAssignment` (or subclass).
+    pub fn downcast_to_auto_design_nominal_date_and_time_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AutoDesignNominalDateAndTimeAssignment>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AutoDesignNominalDateAndTimeAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AutoDesignNominalDateAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AutoDesignNominalDateAssignment` (or subclass).
+    pub fn downcast_to_auto_design_nominal_date_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AutoDesignNominalDateAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AutoDesignNominalDateAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AutoDesignOrganizationAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AutoDesignOrganizationAssignment` (or subclass).
+    pub fn downcast_to_auto_design_organization_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AutoDesignOrganizationAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AutoDesignOrganizationAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AutoDesignPersonAndOrganizationAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AutoDesignPersonAndOrganizationAssignment` (or subclass).
+    pub fn downcast_to_auto_design_person_and_organization_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AutoDesignPersonAndOrganizationAssignment>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AutoDesignPersonAndOrganizationAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AutoDesignPresentedItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AutoDesignPresentedItem` (or subclass).
+    pub fn downcast_to_auto_design_presented_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214AutoDesignPresentedItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AutoDesignPresentedItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_AutoDesignSecurityClassificationAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_AutoDesignSecurityClassificationAssignment` (or subclass).
+    pub fn downcast_to_auto_design_security_classification_assignment(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepAP214AutoDesignSecurityClassificationAssignment>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214AutoDesignSecurityClassificationAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_Class>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_Class` (or subclass).
+    pub fn downcast_to_class(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214Class>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214Class(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_ExternallyDefinedClass>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_ExternallyDefinedClass` (or subclass).
+    pub fn downcast_to_externally_defined_class(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214ExternallyDefinedClass>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214ExternallyDefinedClass(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_ExternallyDefinedGeneralProperty>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_ExternallyDefinedGeneralProperty` (or subclass).
+    pub fn downcast_to_externally_defined_general_property(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214ExternallyDefinedGeneralProperty>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214ExternallyDefinedGeneralProperty(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_HArray1OfApprovalItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_HArray1OfApprovalItem` (or subclass).
+    pub fn downcast_to_h_array1_of_approval_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214HArray1OfApprovalItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214HArray1OfApprovalItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_HArray1OfAutoDesignDateAndPersonItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_HArray1OfAutoDesignDateAndPersonItem` (or subclass).
+    pub fn downcast_to_h_array1_of_auto_design_date_and_person_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214HArray1OfAutoDesignDateAndPersonItem>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214HArray1OfAutoDesignDateAndPersonItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_HArray1OfAutoDesignDateAndTimeItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_HArray1OfAutoDesignDateAndTimeItem` (or subclass).
+    pub fn downcast_to_h_array1_of_auto_design_date_and_time_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214HArray1OfAutoDesignDateAndTimeItem>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214HArray1OfAutoDesignDateAndTimeItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_HArray1OfAutoDesignDatedItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_HArray1OfAutoDesignDatedItem` (or subclass).
+    pub fn downcast_to_h_array1_of_auto_design_dated_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214HArray1OfAutoDesignDatedItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214HArray1OfAutoDesignDatedItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_HArray1OfAutoDesignGeneralOrgItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_HArray1OfAutoDesignGeneralOrgItem` (or subclass).
+    pub fn downcast_to_h_array1_of_auto_design_general_org_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214HArray1OfAutoDesignGeneralOrgItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214HArray1OfAutoDesignGeneralOrgItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_HArray1OfAutoDesignGroupedItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_HArray1OfAutoDesignGroupedItem` (or subclass).
+    pub fn downcast_to_h_array1_of_auto_design_grouped_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214HArray1OfAutoDesignGroupedItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214HArray1OfAutoDesignGroupedItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_HArray1OfAutoDesignPresentedItemSelect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_HArray1OfAutoDesignPresentedItemSelect` (or subclass).
+    pub fn downcast_to_h_array1_of_auto_design_presented_item_select(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214HArray1OfAutoDesignPresentedItemSelect>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214HArray1OfAutoDesignPresentedItemSelect(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_HArray1OfAutoDesignReferencingItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_HArray1OfAutoDesignReferencingItem` (or subclass).
+    pub fn downcast_to_h_array1_of_auto_design_referencing_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214HArray1OfAutoDesignReferencingItem>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214HArray1OfAutoDesignReferencingItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_HArray1OfDateAndTimeItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_HArray1OfDateAndTimeItem` (or subclass).
+    pub fn downcast_to_h_array1_of_date_and_time_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214HArray1OfDateAndTimeItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214HArray1OfDateAndTimeItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_HArray1OfDateItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_HArray1OfDateItem` (or subclass).
+    pub fn downcast_to_h_array1_of_date_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214HArray1OfDateItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214HArray1OfDateItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_HArray1OfDocumentReferenceItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_HArray1OfDocumentReferenceItem` (or subclass).
+    pub fn downcast_to_h_array1_of_document_reference_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214HArray1OfDocumentReferenceItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214HArray1OfDocumentReferenceItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_HArray1OfExternalIdentificationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_HArray1OfExternalIdentificationItem` (or subclass).
+    pub fn downcast_to_h_array1_of_external_identification_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214HArray1OfExternalIdentificationItem>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214HArray1OfExternalIdentificationItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_HArray1OfGroupItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_HArray1OfGroupItem` (or subclass).
+    pub fn downcast_to_h_array1_of_group_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214HArray1OfGroupItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214HArray1OfGroupItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_HArray1OfOrganizationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_HArray1OfOrganizationItem` (or subclass).
+    pub fn downcast_to_h_array1_of_organization_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214HArray1OfOrganizationItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214HArray1OfOrganizationItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_HArray1OfPersonAndOrganizationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_HArray1OfPersonAndOrganizationItem` (or subclass).
+    pub fn downcast_to_h_array1_of_person_and_organization_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214HArray1OfPersonAndOrganizationItem>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214HArray1OfPersonAndOrganizationItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_HArray1OfPresentedItemSelect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_HArray1OfPresentedItemSelect` (or subclass).
+    pub fn downcast_to_h_array1_of_presented_item_select(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214HArray1OfPresentedItemSelect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214HArray1OfPresentedItemSelect(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_HArray1OfSecurityClassificationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_HArray1OfSecurityClassificationItem` (or subclass).
+    pub fn downcast_to_h_array1_of_security_classification_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214HArray1OfSecurityClassificationItem>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214HArray1OfSecurityClassificationItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_Protocol` (or subclass).
+    pub fn downcast_to_step_ap214_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214Protocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214Protocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP214_RepItemGroup>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP214_RepItemGroup` (or subclass).
+    pub fn downcast_to_rep_item_group(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214RepItemGroup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP214RepItemGroup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP242_DraughtingModelItemAssociation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP242_DraughtingModelItemAssociation` (or subclass).
+    pub fn downcast_to_draughting_model_item_association(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP242DraughtingModelItemAssociation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP242DraughtingModelItemAssociation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<StepAP242_GeometricItemSpecificUsage>
     ///
     /// Returns `None` if the handle does not point to a `StepAP242_GeometricItemSpecificUsage` (or subclass).
@@ -21350,6 +28709,24 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP242GeometricItemSpecificUsage>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP242GeometricItemSpecificUsage(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepAP242_IdAttribute>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP242_IdAttribute` (or subclass).
+    pub fn downcast_to_id_attribute(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP242IdAttribute>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepAP242IdAttribute(
+                self as *const Self,
+            )
         };
         if ptr.is_null() {
             None
@@ -21374,6 +28751,1385 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_Action>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_Action` (or subclass).
+    pub fn downcast_to_action(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicAction>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicAction(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ActionAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ActionAssignment` (or subclass).
+    pub fn downcast_to_action_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicActionAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicActionAssignment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ActionMethod>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ActionMethod` (or subclass).
+    pub fn downcast_to_action_method(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicActionMethod>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicActionMethod(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ActionRequestAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ActionRequestAssignment` (or subclass).
+    pub fn downcast_to_action_request_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicActionRequestAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicActionRequestAssignment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ActionRequestSolution>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ActionRequestSolution` (or subclass).
+    pub fn downcast_to_action_request_solution(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicActionRequestSolution>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicActionRequestSolution(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_Address>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_Address` (or subclass).
+    pub fn downcast_to_address(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicAddress>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicAddress(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ApplicationContext>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ApplicationContext` (or subclass).
+    pub fn downcast_to_application_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicApplicationContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicApplicationContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ApplicationContextElement>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ApplicationContextElement` (or subclass).
+    pub fn downcast_to_application_context_element(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicApplicationContextElement>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicApplicationContextElement(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ApplicationProtocolDefinition>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ApplicationProtocolDefinition` (or subclass).
+    pub fn downcast_to_application_protocol_definition(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicApplicationProtocolDefinition>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicApplicationProtocolDefinition(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_Approval>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_Approval` (or subclass).
+    pub fn downcast_to_approval(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicApproval>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicApproval(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ApprovalAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ApprovalAssignment` (or subclass).
+    pub fn downcast_to_approval_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicApprovalAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicApprovalAssignment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ApprovalDateTime>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ApprovalDateTime` (or subclass).
+    pub fn downcast_to_approval_date_time(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicApprovalDateTime>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicApprovalDateTime(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ApprovalPersonOrganization>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ApprovalPersonOrganization` (or subclass).
+    pub fn downcast_to_approval_person_organization(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicApprovalPersonOrganization>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicApprovalPersonOrganization(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ApprovalRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ApprovalRelationship` (or subclass).
+    pub fn downcast_to_approval_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicApprovalRelationship>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicApprovalRelationship(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ApprovalRole>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ApprovalRole` (or subclass).
+    pub fn downcast_to_approval_role(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicApprovalRole>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicApprovalRole(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ApprovalStatus>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ApprovalStatus` (or subclass).
+    pub fn downcast_to_approval_status(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicApprovalStatus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicApprovalStatus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_AreaUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_AreaUnit` (or subclass).
+    pub fn downcast_to_area_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicAreaUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicAreaUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_CalendarDate>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_CalendarDate` (or subclass).
+    pub fn downcast_to_calendar_date(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicCalendarDate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicCalendarDate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_Certification>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_Certification` (or subclass).
+    pub fn downcast_to_certification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicCertification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicCertification(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_CertificationAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_CertificationAssignment` (or subclass).
+    pub fn downcast_to_certification_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicCertificationAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicCertificationAssignment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_CertificationType>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_CertificationType` (or subclass).
+    pub fn downcast_to_certification_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicCertificationType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicCertificationType(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_CharacterizedObject>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_CharacterizedObject` (or subclass).
+    pub fn downcast_to_characterized_object(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicCharacterizedObject>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicCharacterizedObject(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_Contract>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_Contract` (or subclass).
+    pub fn downcast_to_contract(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicContract>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicContract(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ContractAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ContractAssignment` (or subclass).
+    pub fn downcast_to_contract_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicContractAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicContractAssignment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ContractType>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ContractType` (or subclass).
+    pub fn downcast_to_contract_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicContractType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicContractType(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ConversionBasedUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ConversionBasedUnit` (or subclass).
+    pub fn downcast_to_conversion_based_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicConversionBasedUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicConversionBasedUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ConversionBasedUnitAndAreaUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ConversionBasedUnitAndAreaUnit` (or subclass).
+    pub fn downcast_to_conversion_based_unit_and_area_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicConversionBasedUnitAndAreaUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicConversionBasedUnitAndAreaUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ConversionBasedUnitAndLengthUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ConversionBasedUnitAndLengthUnit` (or subclass).
+    pub fn downcast_to_conversion_based_unit_and_length_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicConversionBasedUnitAndLengthUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicConversionBasedUnitAndLengthUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ConversionBasedUnitAndMassUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ConversionBasedUnitAndMassUnit` (or subclass).
+    pub fn downcast_to_conversion_based_unit_and_mass_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicConversionBasedUnitAndMassUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicConversionBasedUnitAndMassUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ConversionBasedUnitAndPlaneAngleUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ConversionBasedUnitAndPlaneAngleUnit` (or subclass).
+    pub fn downcast_to_conversion_based_unit_and_plane_angle_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicConversionBasedUnitAndPlaneAngleUnit>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicConversionBasedUnitAndPlaneAngleUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ConversionBasedUnitAndRatioUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ConversionBasedUnitAndRatioUnit` (or subclass).
+    pub fn downcast_to_conversion_based_unit_and_ratio_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicConversionBasedUnitAndRatioUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicConversionBasedUnitAndRatioUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ConversionBasedUnitAndSolidAngleUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ConversionBasedUnitAndSolidAngleUnit` (or subclass).
+    pub fn downcast_to_conversion_based_unit_and_solid_angle_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicConversionBasedUnitAndSolidAngleUnit>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicConversionBasedUnitAndSolidAngleUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ConversionBasedUnitAndTimeUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ConversionBasedUnitAndTimeUnit` (or subclass).
+    pub fn downcast_to_conversion_based_unit_and_time_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicConversionBasedUnitAndTimeUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicConversionBasedUnitAndTimeUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ConversionBasedUnitAndVolumeUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ConversionBasedUnitAndVolumeUnit` (or subclass).
+    pub fn downcast_to_conversion_based_unit_and_volume_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicConversionBasedUnitAndVolumeUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicConversionBasedUnitAndVolumeUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_CoordinatedUniversalTimeOffset>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_CoordinatedUniversalTimeOffset` (or subclass).
+    pub fn downcast_to_coordinated_universal_time_offset(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicCoordinatedUniversalTimeOffset>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicCoordinatedUniversalTimeOffset(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_Date>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_Date` (or subclass).
+    pub fn downcast_to_date(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDate(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_DateAndTime>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_DateAndTime` (or subclass).
+    pub fn downcast_to_date_and_time(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDateAndTime>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDateAndTime(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_DateAndTimeAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_DateAndTimeAssignment` (or subclass).
+    pub fn downcast_to_date_and_time_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDateAndTimeAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDateAndTimeAssignment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_DateAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_DateAssignment` (or subclass).
+    pub fn downcast_to_date_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDateAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDateAssignment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_DateRole>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_DateRole` (or subclass).
+    pub fn downcast_to_date_role(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDateRole>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDateRole(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_DateTimeRole>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_DateTimeRole` (or subclass).
+    pub fn downcast_to_date_time_role(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDateTimeRole>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDateTimeRole(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_DerivedUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_DerivedUnit` (or subclass).
+    pub fn downcast_to_derived_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDerivedUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDerivedUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_DerivedUnitElement>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_DerivedUnitElement` (or subclass).
+    pub fn downcast_to_derived_unit_element(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDerivedUnitElement>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDerivedUnitElement(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_DesignContext>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_DesignContext` (or subclass).
+    pub fn downcast_to_design_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDesignContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDesignContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_DigitalDocument>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_DigitalDocument` (or subclass).
+    pub fn downcast_to_digital_document(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDigitalDocument>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDigitalDocument(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_DimensionalExponents>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_DimensionalExponents` (or subclass).
+    pub fn downcast_to_dimensional_exponents(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDimensionalExponents>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDimensionalExponents(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_Document>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_Document` (or subclass).
+    pub fn downcast_to_document(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDocument>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDocument(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_DocumentFile>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_DocumentFile` (or subclass).
+    pub fn downcast_to_document_file(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDocumentFile>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDocumentFile(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_DocumentProductAssociation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_DocumentProductAssociation` (or subclass).
+    pub fn downcast_to_document_product_association(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDocumentProductAssociation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDocumentProductAssociation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_DocumentProductEquivalence>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_DocumentProductEquivalence` (or subclass).
+    pub fn downcast_to_document_product_equivalence(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDocumentProductEquivalence>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDocumentProductEquivalence(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_DocumentReference>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_DocumentReference` (or subclass).
+    pub fn downcast_to_document_reference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDocumentReference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDocumentReference(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_DocumentRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_DocumentRelationship` (or subclass).
+    pub fn downcast_to_document_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDocumentRelationship>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDocumentRelationship(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_DocumentRepresentationType>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_DocumentRepresentationType` (or subclass).
+    pub fn downcast_to_document_representation_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDocumentRepresentationType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDocumentRepresentationType(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_DocumentType>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_DocumentType` (or subclass).
+    pub fn downcast_to_document_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDocumentType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDocumentType(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_DocumentUsageConstraint>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_DocumentUsageConstraint` (or subclass).
+    pub fn downcast_to_document_usage_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDocumentUsageConstraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicDocumentUsageConstraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_Effectivity>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_Effectivity` (or subclass).
+    pub fn downcast_to_effectivity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicEffectivity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicEffectivity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_EffectivityAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_EffectivityAssignment` (or subclass).
+    pub fn downcast_to_effectivity_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicEffectivityAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicEffectivityAssignment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_EulerAngles>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_EulerAngles` (or subclass).
+    pub fn downcast_to_euler_angles(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicEulerAngles>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicEulerAngles(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ExternalIdentificationAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ExternalIdentificationAssignment` (or subclass).
+    pub fn downcast_to_external_identification_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicExternalIdentificationAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicExternalIdentificationAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ExternalSource>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ExternalSource` (or subclass).
+    pub fn downcast_to_external_source(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicExternalSource>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicExternalSource(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ExternallyDefinedItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ExternallyDefinedItem` (or subclass).
+    pub fn downcast_to_externally_defined_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicExternallyDefinedItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicExternallyDefinedItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_GeneralProperty>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_GeneralProperty` (or subclass).
+    pub fn downcast_to_general_property(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicGeneralProperty>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicGeneralProperty(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_GeneralPropertyAssociation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_GeneralPropertyAssociation` (or subclass).
+    pub fn downcast_to_general_property_association(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicGeneralPropertyAssociation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicGeneralPropertyAssociation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_GeneralPropertyRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_GeneralPropertyRelationship` (or subclass).
+    pub fn downcast_to_general_property_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicGeneralPropertyRelationship>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicGeneralPropertyRelationship(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_Group>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_Group` (or subclass).
+    pub fn downcast_to_step_basic_group(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicGroup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicGroup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_GroupAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_GroupAssignment` (or subclass).
+    pub fn downcast_to_group_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicGroupAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicGroupAssignment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_GroupRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_GroupRelationship` (or subclass).
+    pub fn downcast_to_group_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicGroupRelationship>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicGroupRelationship(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_HArray1OfApproval>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_HArray1OfApproval` (or subclass).
+    pub fn downcast_to_h_array1_of_approval(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicHArray1OfApproval>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicHArray1OfApproval(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_HArray1OfDerivedUnitElement>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_HArray1OfDerivedUnitElement` (or subclass).
+    pub fn downcast_to_h_array1_of_derived_unit_element(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicHArray1OfDerivedUnitElement>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicHArray1OfDerivedUnitElement(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_HArray1OfDocument>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_HArray1OfDocument` (or subclass).
+    pub fn downcast_to_h_array1_of_document(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicHArray1OfDocument>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicHArray1OfDocument(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_HArray1OfNamedUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_HArray1OfNamedUnit` (or subclass).
+    pub fn downcast_to_h_array1_of_named_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicHArray1OfNamedUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicHArray1OfNamedUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_HArray1OfOrganization>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_HArray1OfOrganization` (or subclass).
+    pub fn downcast_to_h_array1_of_organization(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicHArray1OfOrganization>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicHArray1OfOrganization(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_HArray1OfPerson>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_HArray1OfPerson` (or subclass).
+    pub fn downcast_to_h_array1_of_person(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicHArray1OfPerson>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicHArray1OfPerson(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_HArray1OfProduct>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_HArray1OfProduct` (or subclass).
+    pub fn downcast_to_h_array1_of_product(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicHArray1OfProduct>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicHArray1OfProduct(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_HArray1OfProductContext>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_HArray1OfProductContext` (or subclass).
+    pub fn downcast_to_h_array1_of_product_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicHArray1OfProductContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicHArray1OfProductContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_HArray1OfProductDefinition>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_HArray1OfProductDefinition` (or subclass).
+    pub fn downcast_to_h_array1_of_product_definition(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicHArray1OfProductDefinition>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicHArray1OfProductDefinition(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_HArray1OfUncertaintyMeasureWithUnit` (or subclass).
+    pub fn downcast_to_h_array1_of_uncertainty_measure_with_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicHArray1OfUncertaintyMeasureWithUnit>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicHArray1OfUncertaintyMeasureWithUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_IdentificationAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_IdentificationAssignment` (or subclass).
+    pub fn downcast_to_identification_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicIdentificationAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicIdentificationAssignment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_IdentificationRole>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_IdentificationRole` (or subclass).
+    pub fn downcast_to_identification_role(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicIdentificationRole>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicIdentificationRole(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<StepBasic_LengthMeasureWithUnit>
     ///
     /// Returns `None` if the handle does not point to a `StepBasic_LengthMeasureWithUnit` (or subclass).
@@ -21382,6 +30138,96 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicLengthMeasureWithUnit>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicLengthMeasureWithUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_LengthUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_LengthUnit` (or subclass).
+    pub fn downcast_to_step_basic_length_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicLengthUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicLengthUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_LocalTime>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_LocalTime` (or subclass).
+    pub fn downcast_to_local_time(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicLocalTime>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicLocalTime(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_MassMeasureWithUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_MassMeasureWithUnit` (or subclass).
+    pub fn downcast_to_mass_measure_with_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicMassMeasureWithUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicMassMeasureWithUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_MassUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_MassUnit` (or subclass).
+    pub fn downcast_to_mass_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicMassUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicMassUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_MeasureValueMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_MeasureValueMember` (or subclass).
+    pub fn downcast_to_measure_value_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureValueMember>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicMeasureValueMember(
                 self as *const Self,
             )
         };
@@ -21410,6 +30256,395 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_MechanicalContext>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_MechanicalContext` (or subclass).
+    pub fn downcast_to_mechanical_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicMechanicalContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicMechanicalContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_NameAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_NameAssignment` (or subclass).
+    pub fn downcast_to_name_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicNameAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicNameAssignment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_NamedUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_NamedUnit` (or subclass).
+    pub fn downcast_to_named_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicNamedUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicNamedUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ObjectRole>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ObjectRole` (or subclass).
+    pub fn downcast_to_object_role(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicObjectRole>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicObjectRole(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_OrdinalDate>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_OrdinalDate` (or subclass).
+    pub fn downcast_to_ordinal_date(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicOrdinalDate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicOrdinalDate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_Organization>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_Organization` (or subclass).
+    pub fn downcast_to_organization(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicOrganization>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicOrganization(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_OrganizationAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_OrganizationAssignment` (or subclass).
+    pub fn downcast_to_organization_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicOrganizationAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicOrganizationAssignment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_OrganizationRole>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_OrganizationRole` (or subclass).
+    pub fn downcast_to_organization_role(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicOrganizationRole>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicOrganizationRole(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_OrganizationalAddress>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_OrganizationalAddress` (or subclass).
+    pub fn downcast_to_organizational_address(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicOrganizationalAddress>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicOrganizationalAddress(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_Person>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_Person` (or subclass).
+    pub fn downcast_to_person(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicPerson>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicPerson(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_PersonAndOrganization>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_PersonAndOrganization` (or subclass).
+    pub fn downcast_to_person_and_organization(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicPersonAndOrganization>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicPersonAndOrganization(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_PersonAndOrganizationAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_PersonAndOrganizationAssignment` (or subclass).
+    pub fn downcast_to_person_and_organization_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicPersonAndOrganizationAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicPersonAndOrganizationAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_PersonAndOrganizationRole>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_PersonAndOrganizationRole` (or subclass).
+    pub fn downcast_to_person_and_organization_role(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicPersonAndOrganizationRole>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicPersonAndOrganizationRole(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_PersonalAddress>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_PersonalAddress` (or subclass).
+    pub fn downcast_to_personal_address(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicPersonalAddress>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicPersonalAddress(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_PhysicallyModeledProductDefinition>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_PhysicallyModeledProductDefinition` (or subclass).
+    pub fn downcast_to_physically_modeled_product_definition(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicPhysicallyModeledProductDefinition>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicPhysicallyModeledProductDefinition(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_PlaneAngleMeasureWithUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_PlaneAngleMeasureWithUnit` (or subclass).
+    pub fn downcast_to_plane_angle_measure_with_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicPlaneAngleMeasureWithUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicPlaneAngleMeasureWithUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_PlaneAngleUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_PlaneAngleUnit` (or subclass).
+    pub fn downcast_to_plane_angle_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicPlaneAngleUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicPlaneAngleUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_Product>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_Product` (or subclass).
+    pub fn downcast_to_step_basic_product(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicProduct>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicProduct(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ProductCategory>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ProductCategory` (or subclass).
+    pub fn downcast_to_product_category(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicProductCategory>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicProductCategory(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ProductCategoryRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ProductCategoryRelationship` (or subclass).
+    pub fn downcast_to_product_category_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicProductCategoryRelationship>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicProductCategoryRelationship(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ProductConceptContext>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ProductConceptContext` (or subclass).
+    pub fn downcast_to_product_concept_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicProductConceptContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicProductConceptContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ProductContext>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ProductContext` (or subclass).
+    pub fn downcast_to_product_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicProductContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicProductContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ProductDefinition>
     ///
     /// Returns `None` if the handle does not point to a `StepBasic_ProductDefinition` (or subclass).
@@ -21418,6 +30653,863 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicProductDefinition>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicProductDefinition(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ProductDefinitionContext>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ProductDefinitionContext` (or subclass).
+    pub fn downcast_to_product_definition_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicProductDefinitionContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicProductDefinitionContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ProductDefinitionEffectivity>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ProductDefinitionEffectivity` (or subclass).
+    pub fn downcast_to_product_definition_effectivity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicProductDefinitionEffectivity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicProductDefinitionEffectivity(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ProductDefinitionFormation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ProductDefinitionFormation` (or subclass).
+    pub fn downcast_to_product_definition_formation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicProductDefinitionFormation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicProductDefinitionFormation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ProductDefinitionFormationRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ProductDefinitionFormationRelationship` (or subclass).
+    pub fn downcast_to_product_definition_formation_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicProductDefinitionFormationRelationship>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicProductDefinitionFormationRelationship(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ProductDefinitionFormationWithSpecifiedSource>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ProductDefinitionFormationWithSpecifiedSource` (or subclass).
+    pub fn downcast_to_product_definition_formation_with_specified_source(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepBasicProductDefinitionFormationWithSpecifiedSource>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicProductDefinitionFormationWithSpecifiedSource(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ProductDefinitionReference>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ProductDefinitionReference` (or subclass).
+    pub fn downcast_to_product_definition_reference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicProductDefinitionReference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicProductDefinitionReference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ProductDefinitionReferenceWithLocalRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ProductDefinitionReferenceWithLocalRepresentation` (or subclass).
+    pub fn downcast_to_product_definition_reference_with_local_representation(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<
+            crate::ffi::HandleStepBasicProductDefinitionReferenceWithLocalRepresentation,
+        >,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicProductDefinitionReferenceWithLocalRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ProductDefinitionRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ProductDefinitionRelationship` (or subclass).
+    pub fn downcast_to_product_definition_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicProductDefinitionRelationship>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicProductDefinitionRelationship(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ProductDefinitionWithAssociatedDocuments>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ProductDefinitionWithAssociatedDocuments` (or subclass).
+    pub fn downcast_to_product_definition_with_associated_documents(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicProductDefinitionWithAssociatedDocuments>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicProductDefinitionWithAssociatedDocuments(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ProductRelatedProductCategory>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ProductRelatedProductCategory` (or subclass).
+    pub fn downcast_to_product_related_product_category(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicProductRelatedProductCategory>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicProductRelatedProductCategory(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ProductType>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ProductType` (or subclass).
+    pub fn downcast_to_product_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicProductType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicProductType(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_RatioMeasureWithUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_RatioMeasureWithUnit` (or subclass).
+    pub fn downcast_to_ratio_measure_with_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicRatioMeasureWithUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicRatioMeasureWithUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_RatioUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_RatioUnit` (or subclass).
+    pub fn downcast_to_ratio_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicRatioUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicRatioUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_RoleAssociation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_RoleAssociation` (or subclass).
+    pub fn downcast_to_role_association(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicRoleAssociation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicRoleAssociation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_SecurityClassification>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_SecurityClassification` (or subclass).
+    pub fn downcast_to_security_classification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicSecurityClassification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicSecurityClassification(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_SecurityClassificationAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_SecurityClassificationAssignment` (or subclass).
+    pub fn downcast_to_security_classification_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicSecurityClassificationAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicSecurityClassificationAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_SecurityClassificationLevel>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_SecurityClassificationLevel` (or subclass).
+    pub fn downcast_to_security_classification_level(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicSecurityClassificationLevel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicSecurityClassificationLevel(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_SiUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_SiUnit` (or subclass).
+    pub fn downcast_to_si_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicSiUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicSiUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_SiUnitAndAreaUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_SiUnitAndAreaUnit` (or subclass).
+    pub fn downcast_to_si_unit_and_area_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicSiUnitAndAreaUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicSiUnitAndAreaUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_SiUnitAndLengthUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_SiUnitAndLengthUnit` (or subclass).
+    pub fn downcast_to_si_unit_and_length_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicSiUnitAndLengthUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicSiUnitAndLengthUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_SiUnitAndMassUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_SiUnitAndMassUnit` (or subclass).
+    pub fn downcast_to_si_unit_and_mass_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicSiUnitAndMassUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicSiUnitAndMassUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_SiUnitAndPlaneAngleUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_SiUnitAndPlaneAngleUnit` (or subclass).
+    pub fn downcast_to_si_unit_and_plane_angle_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicSiUnitAndPlaneAngleUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicSiUnitAndPlaneAngleUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_SiUnitAndRatioUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_SiUnitAndRatioUnit` (or subclass).
+    pub fn downcast_to_si_unit_and_ratio_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicSiUnitAndRatioUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicSiUnitAndRatioUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_SiUnitAndSolidAngleUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_SiUnitAndSolidAngleUnit` (or subclass).
+    pub fn downcast_to_si_unit_and_solid_angle_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicSiUnitAndSolidAngleUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicSiUnitAndSolidAngleUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_SiUnitAndThermodynamicTemperatureUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_SiUnitAndThermodynamicTemperatureUnit` (or subclass).
+    pub fn downcast_to_si_unit_and_thermodynamic_temperature_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicSiUnitAndThermodynamicTemperatureUnit>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicSiUnitAndThermodynamicTemperatureUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_SiUnitAndTimeUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_SiUnitAndTimeUnit` (or subclass).
+    pub fn downcast_to_si_unit_and_time_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicSiUnitAndTimeUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicSiUnitAndTimeUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_SiUnitAndVolumeUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_SiUnitAndVolumeUnit` (or subclass).
+    pub fn downcast_to_si_unit_and_volume_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicSiUnitAndVolumeUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicSiUnitAndVolumeUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_SizeMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_SizeMember` (or subclass).
+    pub fn downcast_to_size_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicSizeMember>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicSizeMember(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_SolidAngleMeasureWithUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_SolidAngleMeasureWithUnit` (or subclass).
+    pub fn downcast_to_solid_angle_measure_with_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicSolidAngleMeasureWithUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicSolidAngleMeasureWithUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_SolidAngleUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_SolidAngleUnit` (or subclass).
+    pub fn downcast_to_solid_angle_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicSolidAngleUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicSolidAngleUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_ThermodynamicTemperatureUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_ThermodynamicTemperatureUnit` (or subclass).
+    pub fn downcast_to_thermodynamic_temperature_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicThermodynamicTemperatureUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicThermodynamicTemperatureUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_TimeMeasureWithUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_TimeMeasureWithUnit` (or subclass).
+    pub fn downcast_to_time_measure_with_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicTimeMeasureWithUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicTimeMeasureWithUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_TimeUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_TimeUnit` (or subclass).
+    pub fn downcast_to_time_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicTimeUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicTimeUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_UncertaintyMeasureWithUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_UncertaintyMeasureWithUnit` (or subclass).
+    pub fn downcast_to_uncertainty_measure_with_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicUncertaintyMeasureWithUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicUncertaintyMeasureWithUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_VersionedActionRequest>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_VersionedActionRequest` (or subclass).
+    pub fn downcast_to_versioned_action_request(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicVersionedActionRequest>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicVersionedActionRequest(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_VolumeUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_VolumeUnit` (or subclass).
+    pub fn downcast_to_volume_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicVolumeUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicVolumeUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepBasic_WeekOfYearAndDayDate>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_WeekOfYearAndDayDate` (or subclass).
+    pub fn downcast_to_week_of_year_and_day_date(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicWeekOfYearAndDayDate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepBasicWeekOfYearAndDayDate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepData_DefaultGeneral>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_DefaultGeneral` (or subclass).
+    pub fn downcast_to_step_data_default_general(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataDefaultGeneral>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDataDefaultGeneral(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepData_ECDescr>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_ECDescr` (or subclass).
+    pub fn downcast_to_ec_descr(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataECDescr>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDataECDescr(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepData_ESDescr>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_ESDescr` (or subclass).
+    pub fn downcast_to_es_descr(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataESDescr>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDataESDescr(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepData_FileProtocol>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_FileProtocol` (or subclass).
+    pub fn downcast_to_step_data_file_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataFileProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDataFileProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepData_FreeFormEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_FreeFormEntity` (or subclass).
+    pub fn downcast_to_free_form_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataFreeFormEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDataFreeFormEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepData_GlobalNodeOfWriterLib>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_GlobalNodeOfWriterLib` (or subclass).
+    pub fn downcast_to_step_data_global_node_of_writer_lib(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataGlobalNodeOfWriterLib>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDataGlobalNodeOfWriterLib(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepData_HArray1OfField>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_HArray1OfField` (or subclass).
+    pub fn downcast_to_h_array1_of_field(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataHArray1OfField>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDataHArray1OfField(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepData_NodeOfWriterLib>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_NodeOfWriterLib` (or subclass).
+    pub fn downcast_to_step_data_node_of_writer_lib(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataNodeOfWriterLib>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDataNodeOfWriterLib(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepData_PDescr>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_PDescr` (or subclass).
+    pub fn downcast_to_p_descr(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataPDescr>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDataPDescr(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepData_Plex>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_Plex` (or subclass).
+    pub fn downcast_to_plex(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataPlex>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDataPlex(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepData_Protocol>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_Protocol` (or subclass).
+    pub fn downcast_to_step_data_protocol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataProtocol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDataProtocol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepData_SelectArrReal>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_SelectArrReal` (or subclass).
+    pub fn downcast_to_select_arr_real(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataSelectArrReal>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDataSelectArrReal(
                 self as *const Self,
             )
         };
@@ -21464,6 +31556,58 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<StepData_SelectNamed>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_SelectNamed` (or subclass).
+    pub fn downcast_to_select_named(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataSelectNamed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDataSelectNamed(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepData_SelectReal>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_SelectReal` (or subclass).
+    pub fn downcast_to_select_real(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataSelectReal>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDataSelectReal(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepData_Simple>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_Simple` (or subclass).
+    pub fn downcast_to_simple(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataSimple>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDataSimple(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<StepData_StepModel>
     ///
     /// Returns `None` if the handle does not point to a `StepData_StepModel` (or subclass).
@@ -21472,6 +31616,150 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataStepModel>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleStepDataStepModel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepData_StepReaderData>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_StepReaderData` (or subclass).
+    pub fn downcast_to_step_reader_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataStepReaderData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDataStepReaderData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepData_UndefinedEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_UndefinedEntity` (or subclass).
+    pub fn downcast_to_step_data_undefined_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataUndefinedEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDataUndefinedEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_AngularityTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_AngularityTolerance` (or subclass).
+    pub fn downcast_to_angularity_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolAngularityTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolAngularityTolerance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_CircularRunoutTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_CircularRunoutTolerance` (or subclass).
+    pub fn downcast_to_circular_runout_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolCircularRunoutTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolCircularRunoutTolerance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_CoaxialityTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_CoaxialityTolerance` (or subclass).
+    pub fn downcast_to_coaxiality_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolCoaxialityTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolCoaxialityTolerance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_CommonDatum>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_CommonDatum` (or subclass).
+    pub fn downcast_to_common_datum(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolCommonDatum>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolCommonDatum(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_ConcentricityTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_ConcentricityTolerance` (or subclass).
+    pub fn downcast_to_concentricity_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolConcentricityTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolConcentricityTolerance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_CylindricityTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_CylindricityTolerance` (or subclass).
+    pub fn downcast_to_cylindricity_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolCylindricityTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolCylindricityTolerance(
                 self as *const Self,
             )
         };
@@ -21500,6 +31788,76 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_DatumFeature>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_DatumFeature` (or subclass).
+    pub fn downcast_to_datum_feature(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumFeature>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolDatumFeature(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_DatumReference>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_DatumReference` (or subclass).
+    pub fn downcast_to_datum_reference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumReference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolDatumReference(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_DatumReferenceCompartment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_DatumReferenceCompartment` (or subclass).
+    pub fn downcast_to_datum_reference_compartment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumReferenceCompartment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolDatumReferenceCompartment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_DatumReferenceElement>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_DatumReferenceElement` (or subclass).
+    pub fn downcast_to_datum_reference_element(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumReferenceElement>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolDatumReferenceElement(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_DatumReferenceModifierWithValue>
     ///
     /// Returns `None` if the handle does not point to a `StepDimTol_DatumReferenceModifierWithValue` (or subclass).
@@ -21508,6 +31866,202 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumReferenceModifierWithValue>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolDatumReferenceModifierWithValue(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_DatumSystem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_DatumSystem` (or subclass).
+    pub fn downcast_to_datum_system(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumSystem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolDatumSystem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_DatumTarget>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_DatumTarget` (or subclass).
+    pub fn downcast_to_datum_target(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolDatumTarget>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolDatumTarget(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_FlatnessTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_FlatnessTolerance` (or subclass).
+    pub fn downcast_to_flatness_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolFlatnessTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolFlatnessTolerance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_GeneralDatumReference>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeneralDatumReference` (or subclass).
+    pub fn downcast_to_general_datum_reference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeneralDatumReference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolGeneralDatumReference(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_GeoTolAndGeoTolWthDatRef>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeoTolAndGeoTolWthDatRef` (or subclass).
+    pub fn downcast_to_geo_tol_and_geo_tol_wth_dat_ref(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRef>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolGeoTolAndGeoTolWthDatRef(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol` (or subclass).
+    pub fn downcast_to_geo_tol_and_geo_tol_wth_dat_ref_and_geo_tol_wth_max_tol(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod` (or subclass).
+    pub fn downcast_to_geo_tol_and_geo_tol_wth_dat_ref_and_geo_tol_wth_mod(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol` (or subclass).
+    pub fn downcast_to_geo_tol_and_geo_tol_wth_dat_ref_and_mod_geo_tol_and_pos_tol(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol` (or subclass).
+    pub fn downcast_to_geo_tol_and_geo_tol_wth_dat_ref_and_uneq_dis_geo_tol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_GeoTolAndGeoTolWthMaxTol>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeoTolAndGeoTolWthMaxTol` (or subclass).
+    pub fn downcast_to_geo_tol_and_geo_tol_wth_max_tol(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMaxTol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolGeoTolAndGeoTolWthMaxTol(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_GeoTolAndGeoTolWthMod>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeoTolAndGeoTolWthMod` (or subclass).
+    pub fn downcast_to_geo_tol_and_geo_tol_wth_mod(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeoTolAndGeoTolWthMod>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolGeoTolAndGeoTolWthMod(
+                self as *const Self,
+            )
         };
         if ptr.is_null() {
             None
@@ -21526,6 +32080,157 @@ impl HandleStandardTransient {
             crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolGeometricTolerance(
                 self as *const Self,
             )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_GeometricToleranceRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeometricToleranceRelationship` (or subclass).
+    pub fn downcast_to_geometric_tolerance_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceRelationship>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolGeometricToleranceRelationship(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_GeometricToleranceWithDatumReference>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeometricToleranceWithDatumReference` (or subclass).
+    pub fn downcast_to_geometric_tolerance_with_datum_reference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDatumReference>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolGeometricToleranceWithDatumReference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_GeometricToleranceWithDefinedAreaUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeometricToleranceWithDefinedAreaUnit` (or subclass).
+    pub fn downcast_to_geometric_tolerance_with_defined_area_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedAreaUnit>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolGeometricToleranceWithDefinedAreaUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_GeometricToleranceWithDefinedUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeometricToleranceWithDefinedUnit` (or subclass).
+    pub fn downcast_to_geometric_tolerance_with_defined_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithDefinedUnit>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolGeometricToleranceWithDefinedUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_GeometricToleranceWithMaximumTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeometricToleranceWithMaximumTolerance` (or subclass).
+    pub fn downcast_to_geometric_tolerance_with_maximum_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithMaximumTolerance>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolGeometricToleranceWithMaximumTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_GeometricToleranceWithModifiers>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_GeometricToleranceWithModifiers` (or subclass).
+    pub fn downcast_to_geometric_tolerance_with_modifiers(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricToleranceWithModifiers>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolGeometricToleranceWithModifiers(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_HArray1OfDatumReference>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_HArray1OfDatumReference` (or subclass).
+    pub fn downcast_to_h_array1_of_datum_reference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolHArray1OfDatumReference(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_HArray1OfDatumReferenceCompartment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_HArray1OfDatumReferenceCompartment` (or subclass).
+    pub fn downcast_to_h_array1_of_datum_reference_compartment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReferenceCompartment>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolHArray1OfDatumReferenceCompartment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_HArray1OfDatumReferenceElement>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_HArray1OfDatumReferenceElement` (or subclass).
+    pub fn downcast_to_h_array1_of_datum_reference_element(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReferenceElement>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolHArray1OfDatumReferenceElement(self as *const Self)
         };
         if ptr.is_null() {
             None
@@ -21566,6 +32271,233 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_HArray1OfGeometricToleranceModifier>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_HArray1OfGeometricToleranceModifier` (or subclass).
+    pub fn downcast_to_h_array1_of_geometric_tolerance_modifier(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfGeometricToleranceModifier>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolHArray1OfGeometricToleranceModifier(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_HArray1OfToleranceZoneTarget>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_HArray1OfToleranceZoneTarget` (or subclass).
+    pub fn downcast_to_h_array1_of_tolerance_zone_target(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfToleranceZoneTarget>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolHArray1OfToleranceZoneTarget(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_LineProfileTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_LineProfileTolerance` (or subclass).
+    pub fn downcast_to_line_profile_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolLineProfileTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolLineProfileTolerance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_ModifiedGeometricTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_ModifiedGeometricTolerance` (or subclass).
+    pub fn downcast_to_modified_geometric_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolModifiedGeometricTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolModifiedGeometricTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_NonUniformZoneDefinition>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_NonUniformZoneDefinition` (or subclass).
+    pub fn downcast_to_non_uniform_zone_definition(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolNonUniformZoneDefinition>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolNonUniformZoneDefinition(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_ParallelismTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_ParallelismTolerance` (or subclass).
+    pub fn downcast_to_parallelism_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolParallelismTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolParallelismTolerance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_PerpendicularityTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_PerpendicularityTolerance` (or subclass).
+    pub fn downcast_to_perpendicularity_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolPerpendicularityTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolPerpendicularityTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_PlacedDatumTargetFeature>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_PlacedDatumTargetFeature` (or subclass).
+    pub fn downcast_to_placed_datum_target_feature(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolPlacedDatumTargetFeature>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolPlacedDatumTargetFeature(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_PositionTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_PositionTolerance` (or subclass).
+    pub fn downcast_to_position_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolPositionTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolPositionTolerance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_ProjectedZoneDefinition>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_ProjectedZoneDefinition` (or subclass).
+    pub fn downcast_to_projected_zone_definition(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolProjectedZoneDefinition>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolProjectedZoneDefinition(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_RoundnessTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_RoundnessTolerance` (or subclass).
+    pub fn downcast_to_roundness_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolRoundnessTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolRoundnessTolerance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_RunoutZoneDefinition>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_RunoutZoneDefinition` (or subclass).
+    pub fn downcast_to_runout_zone_definition(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolRunoutZoneDefinition>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolRunoutZoneDefinition(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_RunoutZoneOrientation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_RunoutZoneOrientation` (or subclass).
+    pub fn downcast_to_runout_zone_orientation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolRunoutZoneOrientation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolRunoutZoneOrientation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_SimpleDatumReferenceModifierMember>
     ///
     /// Returns `None` if the handle does not point to a `StepDimTol_SimpleDatumReferenceModifierMember` (or subclass).
@@ -21583,6 +32515,2588 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_StraightnessTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_StraightnessTolerance` (or subclass).
+    pub fn downcast_to_straightness_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolStraightnessTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolStraightnessTolerance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_SurfaceProfileTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_SurfaceProfileTolerance` (or subclass).
+    pub fn downcast_to_surface_profile_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolSurfaceProfileTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolSurfaceProfileTolerance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_SymmetryTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_SymmetryTolerance` (or subclass).
+    pub fn downcast_to_symmetry_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolSymmetryTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolSymmetryTolerance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_ToleranceZone>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_ToleranceZone` (or subclass).
+    pub fn downcast_to_tolerance_zone(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolToleranceZone>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolToleranceZone(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_ToleranceZoneDefinition>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_ToleranceZoneDefinition` (or subclass).
+    pub fn downcast_to_tolerance_zone_definition(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolToleranceZoneDefinition>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolToleranceZoneDefinition(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_ToleranceZoneForm>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_ToleranceZoneForm` (or subclass).
+    pub fn downcast_to_tolerance_zone_form(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolToleranceZoneForm>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolToleranceZoneForm(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_TotalRunoutTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_TotalRunoutTolerance` (or subclass).
+    pub fn downcast_to_total_runout_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolTotalRunoutTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolTotalRunoutTolerance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepDimTol_UnequallyDisposedGeometricTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_UnequallyDisposedGeometricTolerance` (or subclass).
+    pub fn downcast_to_unequally_disposed_geometric_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolUnequallyDisposedGeometricTolerance>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepDimTolUnequallyDisposedGeometricTolerance(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_AnalysisItemWithinRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_AnalysisItemWithinRepresentation` (or subclass).
+    pub fn downcast_to_analysis_item_within_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementAnalysisItemWithinRepresentation>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementAnalysisItemWithinRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_Curve3dElementDescriptor>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_Curve3dElementDescriptor` (or subclass).
+    pub fn downcast_to_curve3d_element_descriptor(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementCurve3dElementDescriptor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementCurve3dElementDescriptor(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_CurveElementEndReleasePacket>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_CurveElementEndReleasePacket` (or subclass).
+    pub fn downcast_to_curve_element_end_release_packet(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementCurveElementEndReleasePacket>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementCurveElementEndReleasePacket(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_CurveElementFreedomMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_CurveElementFreedomMember` (or subclass).
+    pub fn downcast_to_curve_element_freedom_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementCurveElementFreedomMember>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementCurveElementFreedomMember(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_CurveElementPurposeMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_CurveElementPurposeMember` (or subclass).
+    pub fn downcast_to_curve_element_purpose_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementCurveElementPurposeMember>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementCurveElementPurposeMember(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_CurveElementSectionDefinition>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_CurveElementSectionDefinition` (or subclass).
+    pub fn downcast_to_curve_element_section_definition(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementCurveElementSectionDefinition>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementCurveElementSectionDefinition(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_CurveElementSectionDerivedDefinitions>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_CurveElementSectionDerivedDefinitions` (or subclass).
+    pub fn downcast_to_curve_element_section_derived_definitions(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementCurveElementSectionDerivedDefinitions>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementCurveElementSectionDerivedDefinitions(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_ElementAspectMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_ElementAspectMember` (or subclass).
+    pub fn downcast_to_element_aspect_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementElementAspectMember>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementElementAspectMember(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_ElementDescriptor>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_ElementDescriptor` (or subclass).
+    pub fn downcast_to_element_descriptor(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementElementDescriptor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementElementDescriptor(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_ElementMaterial>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_ElementMaterial` (or subclass).
+    pub fn downcast_to_element_material(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementElementMaterial>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementElementMaterial(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_HArray1OfCurveElementEndReleasePacket>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_HArray1OfCurveElementEndReleasePacket` (or subclass).
+    pub fn downcast_to_h_array1_of_curve_element_end_release_packet(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementHArray1OfCurveElementEndReleasePacket>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementHArray1OfCurveElementEndReleasePacket(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_HArray1OfCurveElementSectionDefinition>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_HArray1OfCurveElementSectionDefinition` (or subclass).
+    pub fn downcast_to_h_array1_of_curve_element_section_definition(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementHArray1OfCurveElementSectionDefinition>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementHArray1OfCurveElementSectionDefinition(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember` (or subclass).
+    pub fn downcast_to_h_array1_of_h_sequence_of_curve_element_purpose_member(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember` (or subclass).
+    pub fn downcast_to_h_array1_of_h_sequence_of_surface_element_purpose_member(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<
+            crate::ffi::HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember,
+        >,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_HArray1OfMeasureOrUnspecifiedValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_HArray1OfMeasureOrUnspecifiedValue` (or subclass).
+    pub fn downcast_to_h_array1_of_measure_or_unspecified_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementHArray1OfMeasureOrUnspecifiedValue>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementHArray1OfMeasureOrUnspecifiedValue(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_HArray1OfSurfaceSection>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_HArray1OfSurfaceSection` (or subclass).
+    pub fn downcast_to_h_array1_of_surface_section(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementHArray1OfSurfaceSection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementHArray1OfSurfaceSection(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_HArray1OfVolumeElementPurpose>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_HArray1OfVolumeElementPurpose` (or subclass).
+    pub fn downcast_to_h_array1_of_volume_element_purpose(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementHArray1OfVolumeElementPurpose>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementHArray1OfVolumeElementPurpose(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_HArray1OfVolumeElementPurposeMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_HArray1OfVolumeElementPurposeMember` (or subclass).
+    pub fn downcast_to_h_array1_of_volume_element_purpose_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementHArray1OfVolumeElementPurposeMember>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementHArray1OfVolumeElementPurposeMember(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_HArray2OfCurveElementPurposeMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_HArray2OfCurveElementPurposeMember` (or subclass).
+    pub fn downcast_to_h_array2_of_curve_element_purpose_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementHArray2OfCurveElementPurposeMember>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementHArray2OfCurveElementPurposeMember(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_HArray2OfSurfaceElementPurpose>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_HArray2OfSurfaceElementPurpose` (or subclass).
+    pub fn downcast_to_h_array2_of_surface_element_purpose(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementHArray2OfSurfaceElementPurpose>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementHArray2OfSurfaceElementPurpose(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_HArray2OfSurfaceElementPurposeMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_HArray2OfSurfaceElementPurposeMember` (or subclass).
+    pub fn downcast_to_h_array2_of_surface_element_purpose_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementHArray2OfSurfaceElementPurposeMember>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementHArray2OfSurfaceElementPurposeMember(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_HSequenceOfCurveElementPurposeMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_HSequenceOfCurveElementPurposeMember` (or subclass).
+    pub fn downcast_to_h_sequence_of_curve_element_purpose_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementHSequenceOfCurveElementPurposeMember>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementHSequenceOfCurveElementPurposeMember(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_HSequenceOfCurveElementSectionDefinition>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_HSequenceOfCurveElementSectionDefinition` (or subclass).
+    pub fn downcast_to_h_sequence_of_curve_element_section_definition(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepElementHSequenceOfCurveElementSectionDefinition>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementHSequenceOfCurveElementSectionDefinition(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_HSequenceOfElementMaterial>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_HSequenceOfElementMaterial` (or subclass).
+    pub fn downcast_to_h_sequence_of_element_material(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementHSequenceOfElementMaterial>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementHSequenceOfElementMaterial(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_HSequenceOfSurfaceElementPurposeMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_HSequenceOfSurfaceElementPurposeMember` (or subclass).
+    pub fn downcast_to_h_sequence_of_surface_element_purpose_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementHSequenceOfSurfaceElementPurposeMember>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementHSequenceOfSurfaceElementPurposeMember(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_MeasureOrUnspecifiedValueMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_MeasureOrUnspecifiedValueMember` (or subclass).
+    pub fn downcast_to_measure_or_unspecified_value_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementMeasureOrUnspecifiedValueMember>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementMeasureOrUnspecifiedValueMember(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_Surface3dElementDescriptor>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_Surface3dElementDescriptor` (or subclass).
+    pub fn downcast_to_surface3d_element_descriptor(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementSurface3dElementDescriptor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementSurface3dElementDescriptor(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_SurfaceElementProperty>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_SurfaceElementProperty` (or subclass).
+    pub fn downcast_to_surface_element_property(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementSurfaceElementProperty>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementSurfaceElementProperty(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_SurfaceElementPurposeMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_SurfaceElementPurposeMember` (or subclass).
+    pub fn downcast_to_surface_element_purpose_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementSurfaceElementPurposeMember>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementSurfaceElementPurposeMember(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_SurfaceSection>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_SurfaceSection` (or subclass).
+    pub fn downcast_to_surface_section(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementSurfaceSection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementSurfaceSection(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_SurfaceSectionField>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_SurfaceSectionField` (or subclass).
+    pub fn downcast_to_surface_section_field(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementSurfaceSectionField>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementSurfaceSectionField(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_SurfaceSectionFieldConstant>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_SurfaceSectionFieldConstant` (or subclass).
+    pub fn downcast_to_surface_section_field_constant(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementSurfaceSectionFieldConstant>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementSurfaceSectionFieldConstant(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_SurfaceSectionFieldVarying>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_SurfaceSectionFieldVarying` (or subclass).
+    pub fn downcast_to_surface_section_field_varying(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementSurfaceSectionFieldVarying>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementSurfaceSectionFieldVarying(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_UniformSurfaceSection>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_UniformSurfaceSection` (or subclass).
+    pub fn downcast_to_uniform_surface_section(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementUniformSurfaceSection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementUniformSurfaceSection(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_Volume3dElementDescriptor>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_Volume3dElementDescriptor` (or subclass).
+    pub fn downcast_to_volume3d_element_descriptor(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementVolume3dElementDescriptor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementVolume3dElementDescriptor(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepElement_VolumeElementPurposeMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepElement_VolumeElementPurposeMember` (or subclass).
+    pub fn downcast_to_volume_element_purpose_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementVolumeElementPurposeMember>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepElementVolumeElementPurposeMember(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_AlignedCurve3dElementCoordinateSystem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_AlignedCurve3dElementCoordinateSystem` (or subclass).
+    pub fn downcast_to_aligned_curve3d_element_coordinate_system(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAAlignedCurve3dElementCoordinateSystem>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAAlignedCurve3dElementCoordinateSystem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_AlignedSurface3dElementCoordinateSystem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_AlignedSurface3dElementCoordinateSystem` (or subclass).
+    pub fn downcast_to_aligned_surface3d_element_coordinate_system(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAAlignedSurface3dElementCoordinateSystem>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAAlignedSurface3dElementCoordinateSystem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_ArbitraryVolume3dElementCoordinateSystem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_ArbitraryVolume3dElementCoordinateSystem` (or subclass).
+    pub fn downcast_to_arbitrary_volume3d_element_coordinate_system(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAArbitraryVolume3dElementCoordinateSystem>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAArbitraryVolume3dElementCoordinateSystem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_ConstantSurface3dElementCoordinateSystem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_ConstantSurface3dElementCoordinateSystem` (or subclass).
+    pub fn downcast_to_constant_surface3d_element_coordinate_system(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAConstantSurface3dElementCoordinateSystem>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAConstantSurface3dElementCoordinateSystem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_Curve3dElementProperty>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_Curve3dElementProperty` (or subclass).
+    pub fn downcast_to_curve3d_element_property(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEACurve3dElementProperty>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEACurve3dElementProperty(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_Curve3dElementRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_Curve3dElementRepresentation` (or subclass).
+    pub fn downcast_to_curve3d_element_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEACurve3dElementRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEACurve3dElementRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_CurveElementEndOffset>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_CurveElementEndOffset` (or subclass).
+    pub fn downcast_to_curve_element_end_offset(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEACurveElementEndOffset>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEACurveElementEndOffset(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_CurveElementEndRelease>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_CurveElementEndRelease` (or subclass).
+    pub fn downcast_to_curve_element_end_release(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEACurveElementEndRelease>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEACurveElementEndRelease(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_CurveElementInterval>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_CurveElementInterval` (or subclass).
+    pub fn downcast_to_curve_element_interval(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEACurveElementInterval>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEACurveElementInterval(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_CurveElementIntervalConstant>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_CurveElementIntervalConstant` (or subclass).
+    pub fn downcast_to_curve_element_interval_constant(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEACurveElementIntervalConstant>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEACurveElementIntervalConstant(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_CurveElementIntervalLinearlyVarying>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_CurveElementIntervalLinearlyVarying` (or subclass).
+    pub fn downcast_to_curve_element_interval_linearly_varying(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEACurveElementIntervalLinearlyVarying>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEACurveElementIntervalLinearlyVarying(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_CurveElementLocation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_CurveElementLocation` (or subclass).
+    pub fn downcast_to_curve_element_location(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEACurveElementLocation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEACurveElementLocation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_DegreeOfFreedomMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_DegreeOfFreedomMember` (or subclass).
+    pub fn downcast_to_degree_of_freedom_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEADegreeOfFreedomMember>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEADegreeOfFreedomMember(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_DummyNode>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_DummyNode` (or subclass).
+    pub fn downcast_to_dummy_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEADummyNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEADummyNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_ElementGeometricRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_ElementGeometricRelationship` (or subclass).
+    pub fn downcast_to_element_geometric_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAElementGeometricRelationship>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAElementGeometricRelationship(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_ElementGroup>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_ElementGroup` (or subclass).
+    pub fn downcast_to_element_group(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAElementGroup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAElementGroup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_ElementRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_ElementRepresentation` (or subclass).
+    pub fn downcast_to_element_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAElementRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAElementRepresentation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaAreaDensity>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaAreaDensity` (or subclass).
+    pub fn downcast_to_fea_area_density(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaAreaDensity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaAreaDensity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaAxis2Placement3d>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaAxis2Placement3d` (or subclass).
+    pub fn downcast_to_fea_axis2_placement3d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaAxis2Placement3d>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaAxis2Placement3d(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaCurveSectionGeometricRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaCurveSectionGeometricRelationship` (or subclass).
+    pub fn downcast_to_fea_curve_section_geometric_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaCurveSectionGeometricRelationship>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaCurveSectionGeometricRelationship(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaGroup>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaGroup` (or subclass).
+    pub fn downcast_to_fea_group(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaGroup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaGroup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaLinearElasticity>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaLinearElasticity` (or subclass).
+    pub fn downcast_to_fea_linear_elasticity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaLinearElasticity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaLinearElasticity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaMassDensity>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaMassDensity` (or subclass).
+    pub fn downcast_to_fea_mass_density(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaMassDensity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaMassDensity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaMaterialPropertyRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaMaterialPropertyRepresentation` (or subclass).
+    pub fn downcast_to_fea_material_property_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaMaterialPropertyRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaMaterialPropertyRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaMaterialPropertyRepresentationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaMaterialPropertyRepresentationItem` (or subclass).
+    pub fn downcast_to_fea_material_property_representation_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaMaterialPropertyRepresentationItem>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaMaterialPropertyRepresentationItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaModel>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaModel` (or subclass).
+    pub fn downcast_to_fea_model(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaModel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaModel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaModel3d>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaModel3d` (or subclass).
+    pub fn downcast_to_fea_model3d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaModel3d>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaModel3d(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaModelDefinition>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaModelDefinition` (or subclass).
+    pub fn downcast_to_fea_model_definition(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaModelDefinition>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaModelDefinition(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaMoistureAbsorption>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaMoistureAbsorption` (or subclass).
+    pub fn downcast_to_fea_moisture_absorption(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaMoistureAbsorption>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaMoistureAbsorption(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaParametricPoint>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaParametricPoint` (or subclass).
+    pub fn downcast_to_fea_parametric_point(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaParametricPoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaParametricPoint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaRepresentationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaRepresentationItem` (or subclass).
+    pub fn downcast_to_fea_representation_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaRepresentationItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaRepresentationItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaSecantCoefficientOfLinearThermalExpansion>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaSecantCoefficientOfLinearThermalExpansion` (or subclass).
+    pub fn downcast_to_fea_secant_coefficient_of_linear_thermal_expansion(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaShellBendingStiffness>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaShellBendingStiffness` (or subclass).
+    pub fn downcast_to_fea_shell_bending_stiffness(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaShellBendingStiffness>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaShellBendingStiffness(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaShellMembraneBendingCouplingStiffness>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaShellMembraneBendingCouplingStiffness` (or subclass).
+    pub fn downcast_to_fea_shell_membrane_bending_coupling_stiffness(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaShellMembraneBendingCouplingStiffness>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaShellMembraneBendingCouplingStiffness(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaShellMembraneStiffness>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaShellMembraneStiffness` (or subclass).
+    pub fn downcast_to_fea_shell_membrane_stiffness(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaShellMembraneStiffness>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaShellMembraneStiffness(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaShellShearStiffness>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaShellShearStiffness` (or subclass).
+    pub fn downcast_to_fea_shell_shear_stiffness(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaShellShearStiffness>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaShellShearStiffness(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaSurfaceSectionGeometricRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaSurfaceSectionGeometricRelationship` (or subclass).
+    pub fn downcast_to_fea_surface_section_geometric_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFeaSurfaceSectionGeometricRelationship>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaSurfaceSectionGeometricRelationship(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion` (or subclass).
+    pub fn downcast_to_fea_tangential_coefficient_of_linear_thermal_expansion(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FreedomAndCoefficient>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FreedomAndCoefficient` (or subclass).
+    pub fn downcast_to_freedom_and_coefficient(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFreedomAndCoefficient>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFreedomAndCoefficient(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_FreedomsList>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_FreedomsList` (or subclass).
+    pub fn downcast_to_freedoms_list(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAFreedomsList>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAFreedomsList(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_GeometricNode>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_GeometricNode` (or subclass).
+    pub fn downcast_to_geometric_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAGeometricNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAGeometricNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_HArray1OfCurveElementEndOffset>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_HArray1OfCurveElementEndOffset` (or subclass).
+    pub fn downcast_to_h_array1_of_curve_element_end_offset(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAHArray1OfCurveElementEndOffset>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAHArray1OfCurveElementEndOffset(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_HArray1OfCurveElementEndRelease>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_HArray1OfCurveElementEndRelease` (or subclass).
+    pub fn downcast_to_h_array1_of_curve_element_end_release(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAHArray1OfCurveElementEndRelease>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAHArray1OfCurveElementEndRelease(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_HArray1OfCurveElementInterval>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_HArray1OfCurveElementInterval` (or subclass).
+    pub fn downcast_to_h_array1_of_curve_element_interval(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAHArray1OfCurveElementInterval>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAHArray1OfCurveElementInterval(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_HArray1OfDegreeOfFreedom>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_HArray1OfDegreeOfFreedom` (or subclass).
+    pub fn downcast_to_h_array1_of_degree_of_freedom(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAHArray1OfDegreeOfFreedom>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAHArray1OfDegreeOfFreedom(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_HArray1OfElementRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_HArray1OfElementRepresentation` (or subclass).
+    pub fn downcast_to_h_array1_of_element_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAHArray1OfElementRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAHArray1OfElementRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_HArray1OfNodeRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_HArray1OfNodeRepresentation` (or subclass).
+    pub fn downcast_to_h_array1_of_node_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAHArray1OfNodeRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAHArray1OfNodeRepresentation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_HSequenceOfCurve3dElementProperty>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_HSequenceOfCurve3dElementProperty` (or subclass).
+    pub fn downcast_to_h_sequence_of_curve3d_element_property(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAHSequenceOfCurve3dElementProperty>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAHSequenceOfCurve3dElementProperty(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_HSequenceOfElementGeometricRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_HSequenceOfElementGeometricRelationship` (or subclass).
+    pub fn downcast_to_h_sequence_of_element_geometric_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAHSequenceOfElementGeometricRelationship>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAHSequenceOfElementGeometricRelationship(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_HSequenceOfElementRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_HSequenceOfElementRepresentation` (or subclass).
+    pub fn downcast_to_h_sequence_of_element_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAHSequenceOfElementRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAHSequenceOfElementRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_HSequenceOfNodeRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_HSequenceOfNodeRepresentation` (or subclass).
+    pub fn downcast_to_h_sequence_of_node_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAHSequenceOfNodeRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAHSequenceOfNodeRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_Node>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_Node` (or subclass).
+    pub fn downcast_to_step_fea_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEANode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEANode(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_NodeDefinition>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_NodeDefinition` (or subclass).
+    pub fn downcast_to_node_definition(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEANodeDefinition>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEANodeDefinition(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_NodeGroup>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_NodeGroup` (or subclass).
+    pub fn downcast_to_node_group(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEANodeGroup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEANodeGroup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_NodeRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_NodeRepresentation` (or subclass).
+    pub fn downcast_to_node_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEANodeRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEANodeRepresentation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_NodeSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_NodeSet` (or subclass).
+    pub fn downcast_to_node_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEANodeSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEANodeSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_NodeWithSolutionCoordinateSystem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_NodeWithSolutionCoordinateSystem` (or subclass).
+    pub fn downcast_to_node_with_solution_coordinate_system(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEANodeWithSolutionCoordinateSystem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEANodeWithSolutionCoordinateSystem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_NodeWithVector>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_NodeWithVector` (or subclass).
+    pub fn downcast_to_node_with_vector(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEANodeWithVector>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEANodeWithVector(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_ParametricCurve3dElementCoordinateDirection>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_ParametricCurve3dElementCoordinateDirection` (or subclass).
+    pub fn downcast_to_parametric_curve3d_element_coordinate_direction(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAParametricCurve3dElementCoordinateDirection>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAParametricCurve3dElementCoordinateDirection(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_ParametricCurve3dElementCoordinateSystem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_ParametricCurve3dElementCoordinateSystem` (or subclass).
+    pub fn downcast_to_parametric_curve3d_element_coordinate_system(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAParametricCurve3dElementCoordinateSystem>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAParametricCurve3dElementCoordinateSystem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_ParametricSurface3dElementCoordinateSystem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_ParametricSurface3dElementCoordinateSystem` (or subclass).
+    pub fn downcast_to_parametric_surface3d_element_coordinate_system(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAParametricSurface3dElementCoordinateSystem>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAParametricSurface3dElementCoordinateSystem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_Surface3dElementRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_Surface3dElementRepresentation` (or subclass).
+    pub fn downcast_to_surface3d_element_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEASurface3dElementRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEASurface3dElementRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_SymmetricTensor23dMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_SymmetricTensor23dMember` (or subclass).
+    pub fn downcast_to_symmetric_tensor23d_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEASymmetricTensor23dMember>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEASymmetricTensor23dMember(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_SymmetricTensor43dMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_SymmetricTensor43dMember` (or subclass).
+    pub fn downcast_to_symmetric_tensor43d_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEASymmetricTensor43dMember>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEASymmetricTensor43dMember(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepFEA_Volume3dElementRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepFEA_Volume3dElementRepresentation` (or subclass).
+    pub fn downcast_to_volume3d_element_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEAVolume3dElementRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepFEAVolume3dElementRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_Axis1Placement>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_Axis1Placement` (or subclass).
+    pub fn downcast_to_step_geom_axis1_placement(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomAxis1Placement>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomAxis1Placement(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_Axis2Placement2d>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_Axis2Placement2d` (or subclass).
+    pub fn downcast_to_axis2_placement2d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomAxis2Placement2d>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomAxis2Placement2d(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_Axis2Placement3d>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_Axis2Placement3d` (or subclass).
+    pub fn downcast_to_axis2_placement3d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomAxis2Placement3d>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomAxis2Placement3d(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_BSplineCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_BSplineCurve` (or subclass).
+    pub fn downcast_to_step_geom_b_spline_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomBSplineCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomBSplineCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_BSplineCurveWithKnots>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_BSplineCurveWithKnots` (or subclass).
+    pub fn downcast_to_b_spline_curve_with_knots(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomBSplineCurveWithKnots>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomBSplineCurveWithKnots(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve` (or subclass).
+    pub fn downcast_to_b_spline_curve_with_knots_and_rational_b_spline_curve(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_BSplineSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_BSplineSurface` (or subclass).
+    pub fn downcast_to_step_geom_b_spline_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomBSplineSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomBSplineSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_BSplineSurfaceWithKnots>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_BSplineSurfaceWithKnots` (or subclass).
+    pub fn downcast_to_b_spline_surface_with_knots(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomBSplineSurfaceWithKnots>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomBSplineSurfaceWithKnots(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface` (or subclass).
+    pub fn downcast_to_b_spline_surface_with_knots_and_rational_b_spline_surface(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_BezierCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_BezierCurve` (or subclass).
+    pub fn downcast_to_step_geom_bezier_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomBezierCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomBezierCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_BezierCurveAndRationalBSplineCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_BezierCurveAndRationalBSplineCurve` (or subclass).
+    pub fn downcast_to_bezier_curve_and_rational_b_spline_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomBezierCurveAndRationalBSplineCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomBezierCurveAndRationalBSplineCurve(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_BezierSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_BezierSurface` (or subclass).
+    pub fn downcast_to_step_geom_bezier_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomBezierSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomBezierSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_BezierSurfaceAndRationalBSplineSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_BezierSurfaceAndRationalBSplineSurface` (or subclass).
+    pub fn downcast_to_bezier_surface_and_rational_b_spline_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomBezierSurfaceAndRationalBSplineSurface>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomBezierSurfaceAndRationalBSplineSurface(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_BoundaryCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_BoundaryCurve` (or subclass).
+    pub fn downcast_to_boundary_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomBoundaryCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomBoundaryCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_BoundedCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_BoundedCurve` (or subclass).
+    pub fn downcast_to_bounded_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomBoundedCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomBoundedCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_BoundedSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_BoundedSurface` (or subclass).
+    pub fn downcast_to_step_geom_bounded_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomBoundedSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomBoundedSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_CartesianPoint>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_CartesianPoint` (or subclass).
+    pub fn downcast_to_step_geom_cartesian_point(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomCartesianPoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomCartesianPoint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_CartesianTransformationOperator>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_CartesianTransformationOperator` (or subclass).
+    pub fn downcast_to_cartesian_transformation_operator(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomCartesianTransformationOperator>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomCartesianTransformationOperator(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_CartesianTransformationOperator2d>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_CartesianTransformationOperator2d` (or subclass).
+    pub fn downcast_to_cartesian_transformation_operator2d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomCartesianTransformationOperator2d>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomCartesianTransformationOperator2d(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_CartesianTransformationOperator3d>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_CartesianTransformationOperator3d` (or subclass).
+    pub fn downcast_to_cartesian_transformation_operator3d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomCartesianTransformationOperator3d>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomCartesianTransformationOperator3d(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_Circle>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_Circle` (or subclass).
+    pub fn downcast_to_step_geom_circle(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomCircle>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomCircle(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_CompositeCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_CompositeCurve` (or subclass).
+    pub fn downcast_to_step_geom_composite_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomCompositeCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomCompositeCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_CompositeCurveOnSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_CompositeCurveOnSurface` (or subclass).
+    pub fn downcast_to_composite_curve_on_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomCompositeCurveOnSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomCompositeCurveOnSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_CompositeCurveSegment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_CompositeCurveSegment` (or subclass).
+    pub fn downcast_to_composite_curve_segment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomCompositeCurveSegment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomCompositeCurveSegment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_Conic>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_Conic` (or subclass).
+    pub fn downcast_to_conic(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomConic>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomConic(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_ConicalSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_ConicalSurface` (or subclass).
+    pub fn downcast_to_step_geom_conical_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomConicalSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomConicalSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_Curve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_Curve` (or subclass).
+    pub fn downcast_to_step_geom_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomCurve(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_CurveBoundedSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_CurveBoundedSurface` (or subclass).
+    pub fn downcast_to_curve_bounded_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomCurveBoundedSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomCurveBoundedSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_CurveReplica>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_CurveReplica` (or subclass).
+    pub fn downcast_to_curve_replica(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomCurveReplica>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomCurveReplica(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_CylindricalSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_CylindricalSurface` (or subclass).
+    pub fn downcast_to_step_geom_cylindrical_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomCylindricalSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomCylindricalSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_DegeneratePcurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_DegeneratePcurve` (or subclass).
+    pub fn downcast_to_degenerate_pcurve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomDegeneratePcurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomDegeneratePcurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_DegenerateToroidalSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_DegenerateToroidalSurface` (or subclass).
+    pub fn downcast_to_degenerate_toroidal_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomDegenerateToroidalSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomDegenerateToroidalSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_Direction>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_Direction` (or subclass).
+    pub fn downcast_to_step_geom_direction(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomDirection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomDirection(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_ElementarySurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_ElementarySurface` (or subclass).
+    pub fn downcast_to_elementary_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomElementarySurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomElementarySurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_Ellipse>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_Ellipse` (or subclass).
+    pub fn downcast_to_step_geom_ellipse(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomEllipse>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomEllipse(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_EvaluatedDegeneratePcurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_EvaluatedDegeneratePcurve` (or subclass).
+    pub fn downcast_to_evaluated_degenerate_pcurve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomEvaluatedDegeneratePcurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomEvaluatedDegeneratePcurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx` (or subclass).
+    pub fn downcast_to_geom_rep_context_and_glob_unit_ass_ctx_and_glob_uncertainty_ass_ctx(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<
+            crate::ffi::HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx,
+        >,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_GeometricRepresentationContext>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_GeometricRepresentationContext` (or subclass).
+    pub fn downcast_to_geometric_representation_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomGeometricRepresentationContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomGeometricRepresentationContext(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext` (or subclass).
+    pub fn downcast_to_geometric_representation_context_and_global_unit_assigned_context(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<
+            crate::ffi::HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext,
+        >,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_GeometricRepresentationContextAndParametricRepresentationContext>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_GeometricRepresentationContextAndParametricRepresentationContext` (or subclass).
+    pub fn downcast_to_geometric_representation_context_and_parametric_representation_context(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext>>{
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<StepGeom_GeometricRepresentationItem>
     ///
     /// Returns `None` if the handle does not point to a `StepGeom_GeometricRepresentationItem` (or subclass).
@@ -21591,6 +35105,2540 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomGeometricRepresentationItem>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomGeometricRepresentationItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_HArray1OfBoundaryCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_HArray1OfBoundaryCurve` (or subclass).
+    pub fn downcast_to_h_array1_of_boundary_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomHArray1OfBoundaryCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomHArray1OfBoundaryCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_HArray1OfCartesianPoint>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_HArray1OfCartesianPoint` (or subclass).
+    pub fn downcast_to_h_array1_of_cartesian_point(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomHArray1OfCartesianPoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomHArray1OfCartesianPoint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_HArray1OfCompositeCurveSegment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_HArray1OfCompositeCurveSegment` (or subclass).
+    pub fn downcast_to_h_array1_of_composite_curve_segment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomHArray1OfCompositeCurveSegment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomHArray1OfCompositeCurveSegment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_HArray1OfCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_HArray1OfCurve` (or subclass).
+    pub fn downcast_to_step_geom_h_array1_of_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomHArray1OfCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomHArray1OfCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_HArray1OfPcurveOrSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_HArray1OfPcurveOrSurface` (or subclass).
+    pub fn downcast_to_h_array1_of_pcurve_or_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomHArray1OfPcurveOrSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomHArray1OfPcurveOrSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_HArray1OfSurfaceBoundary>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_HArray1OfSurfaceBoundary` (or subclass).
+    pub fn downcast_to_h_array1_of_surface_boundary(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomHArray1OfSurfaceBoundary>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomHArray1OfSurfaceBoundary(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_HArray1OfTrimmingSelect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_HArray1OfTrimmingSelect` (or subclass).
+    pub fn downcast_to_h_array1_of_trimming_select(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomHArray1OfTrimmingSelect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomHArray1OfTrimmingSelect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_HArray2OfCartesianPoint>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_HArray2OfCartesianPoint` (or subclass).
+    pub fn downcast_to_h_array2_of_cartesian_point(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomHArray2OfCartesianPoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomHArray2OfCartesianPoint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_HArray2OfSurfacePatch>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_HArray2OfSurfacePatch` (or subclass).
+    pub fn downcast_to_h_array2_of_surface_patch(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomHArray2OfSurfacePatch>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomHArray2OfSurfacePatch(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_Hyperbola>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_Hyperbola` (or subclass).
+    pub fn downcast_to_step_geom_hyperbola(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomHyperbola>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomHyperbola(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_IntersectionCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_IntersectionCurve` (or subclass).
+    pub fn downcast_to_intersection_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomIntersectionCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomIntersectionCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_Line>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_Line` (or subclass).
+    pub fn downcast_to_step_geom_line(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomLine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_OffsetCurve3d>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_OffsetCurve3d` (or subclass).
+    pub fn downcast_to_offset_curve3d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomOffsetCurve3d>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomOffsetCurve3d(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_OffsetSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_OffsetSurface` (or subclass).
+    pub fn downcast_to_step_geom_offset_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomOffsetSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomOffsetSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_OrientedSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_OrientedSurface` (or subclass).
+    pub fn downcast_to_oriented_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomOrientedSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomOrientedSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_OuterBoundaryCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_OuterBoundaryCurve` (or subclass).
+    pub fn downcast_to_outer_boundary_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomOuterBoundaryCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomOuterBoundaryCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_Parabola>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_Parabola` (or subclass).
+    pub fn downcast_to_step_geom_parabola(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomParabola>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomParabola(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_Pcurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_Pcurve` (or subclass).
+    pub fn downcast_to_pcurve(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomPcurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomPcurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_Placement>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_Placement` (or subclass).
+    pub fn downcast_to_step_geom_placement(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomPlacement>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomPlacement(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_Plane>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_Plane` (or subclass).
+    pub fn downcast_to_step_geom_plane(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomPlane>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomPlane(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_Point>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_Point` (or subclass).
+    pub fn downcast_to_step_geom_point(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomPoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomPoint(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_PointOnCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_PointOnCurve` (or subclass).
+    pub fn downcast_to_step_geom_point_on_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomPointOnCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomPointOnCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_PointOnSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_PointOnSurface` (or subclass).
+    pub fn downcast_to_step_geom_point_on_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomPointOnSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomPointOnSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_PointReplica>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_PointReplica` (or subclass).
+    pub fn downcast_to_point_replica(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomPointReplica>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomPointReplica(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_Polyline>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_Polyline` (or subclass).
+    pub fn downcast_to_polyline(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomPolyline>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomPolyline(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_QuasiUniformCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_QuasiUniformCurve` (or subclass).
+    pub fn downcast_to_quasi_uniform_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomQuasiUniformCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomQuasiUniformCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_QuasiUniformCurveAndRationalBSplineCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_QuasiUniformCurveAndRationalBSplineCurve` (or subclass).
+    pub fn downcast_to_quasi_uniform_curve_and_rational_b_spline_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_QuasiUniformSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_QuasiUniformSurface` (or subclass).
+    pub fn downcast_to_quasi_uniform_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomQuasiUniformSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomQuasiUniformSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface` (or subclass).
+    pub fn downcast_to_quasi_uniform_surface_and_rational_b_spline_surface(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_RationalBSplineCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_RationalBSplineCurve` (or subclass).
+    pub fn downcast_to_rational_b_spline_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomRationalBSplineCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomRationalBSplineCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_RationalBSplineSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_RationalBSplineSurface` (or subclass).
+    pub fn downcast_to_rational_b_spline_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomRationalBSplineSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomRationalBSplineSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_RectangularCompositeSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_RectangularCompositeSurface` (or subclass).
+    pub fn downcast_to_rectangular_composite_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomRectangularCompositeSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomRectangularCompositeSurface(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_RectangularTrimmedSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_RectangularTrimmedSurface` (or subclass).
+    pub fn downcast_to_step_geom_rectangular_trimmed_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomRectangularTrimmedSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomRectangularTrimmedSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_ReparametrisedCompositeCurveSegment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_ReparametrisedCompositeCurveSegment` (or subclass).
+    pub fn downcast_to_reparametrised_composite_curve_segment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomReparametrisedCompositeCurveSegment>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomReparametrisedCompositeCurveSegment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_SeamCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_SeamCurve` (or subclass).
+    pub fn downcast_to_seam_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomSeamCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomSeamCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_SphericalSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_SphericalSurface` (or subclass).
+    pub fn downcast_to_step_geom_spherical_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomSphericalSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomSphericalSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_SuParameters>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_SuParameters` (or subclass).
+    pub fn downcast_to_su_parameters(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomSuParameters>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomSuParameters(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_Surface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_Surface` (or subclass).
+    pub fn downcast_to_step_geom_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_SurfaceCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_SurfaceCurve` (or subclass).
+    pub fn downcast_to_surface_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomSurfaceCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomSurfaceCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_SurfaceCurveAndBoundedCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_SurfaceCurveAndBoundedCurve` (or subclass).
+    pub fn downcast_to_surface_curve_and_bounded_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomSurfaceCurveAndBoundedCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomSurfaceCurveAndBoundedCurve(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_SurfaceOfLinearExtrusion>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_SurfaceOfLinearExtrusion` (or subclass).
+    pub fn downcast_to_step_geom_surface_of_linear_extrusion(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomSurfaceOfLinearExtrusion>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomSurfaceOfLinearExtrusion(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_SurfaceOfRevolution>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_SurfaceOfRevolution` (or subclass).
+    pub fn downcast_to_step_geom_surface_of_revolution(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomSurfaceOfRevolution>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomSurfaceOfRevolution(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_SurfacePatch>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_SurfacePatch` (or subclass).
+    pub fn downcast_to_surface_patch(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomSurfacePatch>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomSurfacePatch(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_SurfaceReplica>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_SurfaceReplica` (or subclass).
+    pub fn downcast_to_surface_replica(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomSurfaceReplica>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomSurfaceReplica(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_SweptSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_SweptSurface` (or subclass).
+    pub fn downcast_to_step_geom_swept_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomSweptSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomSweptSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_ToroidalSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_ToroidalSurface` (or subclass).
+    pub fn downcast_to_step_geom_toroidal_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomToroidalSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomToroidalSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_TrimmedCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_TrimmedCurve` (or subclass).
+    pub fn downcast_to_step_geom_trimmed_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomTrimmedCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomTrimmedCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_TrimmingMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_TrimmingMember` (or subclass).
+    pub fn downcast_to_trimming_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomTrimmingMember>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomTrimmingMember(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_UniformCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_UniformCurve` (or subclass).
+    pub fn downcast_to_uniform_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomUniformCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomUniformCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_UniformCurveAndRationalBSplineCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_UniformCurveAndRationalBSplineCurve` (or subclass).
+    pub fn downcast_to_uniform_curve_and_rational_b_spline_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomUniformCurveAndRationalBSplineCurve>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomUniformCurveAndRationalBSplineCurve(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_UniformSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_UniformSurface` (or subclass).
+    pub fn downcast_to_uniform_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomUniformSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomUniformSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_UniformSurfaceAndRationalBSplineSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_UniformSurfaceAndRationalBSplineSurface` (or subclass).
+    pub fn downcast_to_uniform_surface_and_rational_b_spline_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomUniformSurfaceAndRationalBSplineSurface>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomUniformSurfaceAndRationalBSplineSurface(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepGeom_Vector>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_Vector` (or subclass).
+    pub fn downcast_to_vector(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomVector>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepGeomVector(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_ActuatedKinPairAndOrderKinPair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_ActuatedKinPairAndOrderKinPair` (or subclass).
+    pub fn downcast_to_actuated_kin_pair_and_order_kin_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsActuatedKinPairAndOrderKinPair>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsActuatedKinPairAndOrderKinPair(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_ActuatedKinematicPair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_ActuatedKinematicPair` (or subclass).
+    pub fn downcast_to_actuated_kinematic_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsActuatedKinematicPair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsActuatedKinematicPair(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_ContextDependentKinematicLinkRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_ContextDependentKinematicLinkRepresentation` (or subclass).
+    pub fn downcast_to_context_dependent_kinematic_link_representation(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<
+            crate::ffi::HandleStepKinematicsContextDependentKinematicLinkRepresentation,
+        >,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsContextDependentKinematicLinkRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_CylindricalPair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_CylindricalPair` (or subclass).
+    pub fn downcast_to_cylindrical_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsCylindricalPair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsCylindricalPair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_CylindricalPairValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_CylindricalPairValue` (or subclass).
+    pub fn downcast_to_cylindrical_pair_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsCylindricalPairValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsCylindricalPairValue(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_CylindricalPairWithRange>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_CylindricalPairWithRange` (or subclass).
+    pub fn downcast_to_cylindrical_pair_with_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsCylindricalPairWithRange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsCylindricalPairWithRange(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_FullyConstrainedPair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_FullyConstrainedPair` (or subclass).
+    pub fn downcast_to_fully_constrained_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsFullyConstrainedPair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsFullyConstrainedPair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_GearPair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_GearPair` (or subclass).
+    pub fn downcast_to_gear_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsGearPair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsGearPair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_GearPairValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_GearPairValue` (or subclass).
+    pub fn downcast_to_gear_pair_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsGearPairValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsGearPairValue(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_GearPairWithRange>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_GearPairWithRange` (or subclass).
+    pub fn downcast_to_gear_pair_with_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsGearPairWithRange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsGearPairWithRange(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_HighOrderKinematicPair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_HighOrderKinematicPair` (or subclass).
+    pub fn downcast_to_high_order_kinematic_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsHighOrderKinematicPair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsHighOrderKinematicPair(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_HomokineticPair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_HomokineticPair` (or subclass).
+    pub fn downcast_to_homokinetic_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsHomokineticPair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsHomokineticPair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_KinematicJoint>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_KinematicJoint` (or subclass).
+    pub fn downcast_to_kinematic_joint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsKinematicJoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsKinematicJoint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_KinematicLink>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_KinematicLink` (or subclass).
+    pub fn downcast_to_kinematic_link(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsKinematicLink>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsKinematicLink(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_KinematicLinkRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_KinematicLinkRepresentation` (or subclass).
+    pub fn downcast_to_kinematic_link_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsKinematicLinkRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsKinematicLinkRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_KinematicLinkRepresentationAssociation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_KinematicLinkRepresentationAssociation` (or subclass).
+    pub fn downcast_to_kinematic_link_representation_association(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepKinematicsKinematicLinkRepresentationAssociation>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsKinematicLinkRepresentationAssociation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_KinematicPair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_KinematicPair` (or subclass).
+    pub fn downcast_to_kinematic_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsKinematicPair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsKinematicPair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_KinematicPropertyDefinitionRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_KinematicPropertyDefinitionRepresentation` (or subclass).
+    pub fn downcast_to_kinematic_property_definition_representation(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepKinematicsKinematicPropertyDefinitionRepresentation>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsKinematicPropertyDefinitionRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_KinematicPropertyMechanismRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_KinematicPropertyMechanismRepresentation` (or subclass).
+    pub fn downcast_to_kinematic_property_mechanism_representation(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepKinematicsKinematicPropertyMechanismRepresentation>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsKinematicPropertyMechanismRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_KinematicTopologyDirectedStructure>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_KinematicTopologyDirectedStructure` (or subclass).
+    pub fn downcast_to_kinematic_topology_directed_structure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsKinematicTopologyDirectedStructure>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsKinematicTopologyDirectedStructure(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_KinematicTopologyNetworkStructure>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_KinematicTopologyNetworkStructure` (or subclass).
+    pub fn downcast_to_kinematic_topology_network_structure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsKinematicTopologyNetworkStructure>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsKinematicTopologyNetworkStructure(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_KinematicTopologyStructure>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_KinematicTopologyStructure` (or subclass).
+    pub fn downcast_to_kinematic_topology_structure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsKinematicTopologyStructure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsKinematicTopologyStructure(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_LinearFlexibleAndPinionPair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_LinearFlexibleAndPinionPair` (or subclass).
+    pub fn downcast_to_linear_flexible_and_pinion_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsLinearFlexibleAndPinionPair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsLinearFlexibleAndPinionPair(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_LinearFlexibleAndPlanarCurvePair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_LinearFlexibleAndPlanarCurvePair` (or subclass).
+    pub fn downcast_to_linear_flexible_and_planar_curve_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsLinearFlexibleAndPlanarCurvePair>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsLinearFlexibleAndPlanarCurvePair(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_LinearFlexibleLinkRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_LinearFlexibleLinkRepresentation` (or subclass).
+    pub fn downcast_to_linear_flexible_link_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsLinearFlexibleLinkRepresentation>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsLinearFlexibleLinkRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_LowOrderKinematicPair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_LowOrderKinematicPair` (or subclass).
+    pub fn downcast_to_low_order_kinematic_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsLowOrderKinematicPair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsLowOrderKinematicPair(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_LowOrderKinematicPairValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_LowOrderKinematicPairValue` (or subclass).
+    pub fn downcast_to_low_order_kinematic_pair_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsLowOrderKinematicPairValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsLowOrderKinematicPairValue(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_LowOrderKinematicPairWithMotionCoupling>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_LowOrderKinematicPairWithMotionCoupling` (or subclass).
+    pub fn downcast_to_low_order_kinematic_pair_with_motion_coupling(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_LowOrderKinematicPairWithRange>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_LowOrderKinematicPairWithRange` (or subclass).
+    pub fn downcast_to_low_order_kinematic_pair_with_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsLowOrderKinematicPairWithRange>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsLowOrderKinematicPairWithRange(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_MechanismRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_MechanismRepresentation` (or subclass).
+    pub fn downcast_to_mechanism_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsMechanismRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsMechanismRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_MechanismStateRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_MechanismStateRepresentation` (or subclass).
+    pub fn downcast_to_mechanism_state_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsMechanismStateRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsMechanismStateRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_OrientedJoint>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_OrientedJoint` (or subclass).
+    pub fn downcast_to_oriented_joint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsOrientedJoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsOrientedJoint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_PairRepresentationRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_PairRepresentationRelationship` (or subclass).
+    pub fn downcast_to_pair_representation_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsPairRepresentationRelationship>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsPairRepresentationRelationship(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_PairValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_PairValue` (or subclass).
+    pub fn downcast_to_pair_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsPairValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsPairValue(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_PlanarCurvePair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_PlanarCurvePair` (or subclass).
+    pub fn downcast_to_planar_curve_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsPlanarCurvePair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsPlanarCurvePair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_PlanarCurvePairRange>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_PlanarCurvePairRange` (or subclass).
+    pub fn downcast_to_planar_curve_pair_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsPlanarCurvePairRange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsPlanarCurvePairRange(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_PlanarPair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_PlanarPair` (or subclass).
+    pub fn downcast_to_planar_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsPlanarPair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsPlanarPair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_PlanarPairValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_PlanarPairValue` (or subclass).
+    pub fn downcast_to_planar_pair_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsPlanarPairValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsPlanarPairValue(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_PlanarPairWithRange>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_PlanarPairWithRange` (or subclass).
+    pub fn downcast_to_planar_pair_with_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsPlanarPairWithRange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsPlanarPairWithRange(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_PointOnPlanarCurvePair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_PointOnPlanarCurvePair` (or subclass).
+    pub fn downcast_to_point_on_planar_curve_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsPointOnPlanarCurvePair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsPointOnPlanarCurvePair(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_PointOnPlanarCurvePairValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_PointOnPlanarCurvePairValue` (or subclass).
+    pub fn downcast_to_point_on_planar_curve_pair_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsPointOnPlanarCurvePairValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsPointOnPlanarCurvePairValue(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_PointOnPlanarCurvePairWithRange>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_PointOnPlanarCurvePairWithRange` (or subclass).
+    pub fn downcast_to_point_on_planar_curve_pair_with_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsPointOnPlanarCurvePairWithRange>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsPointOnPlanarCurvePairWithRange(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_PointOnSurfacePair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_PointOnSurfacePair` (or subclass).
+    pub fn downcast_to_point_on_surface_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsPointOnSurfacePair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsPointOnSurfacePair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_PointOnSurfacePairValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_PointOnSurfacePairValue` (or subclass).
+    pub fn downcast_to_point_on_surface_pair_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsPointOnSurfacePairValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsPointOnSurfacePairValue(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_PointOnSurfacePairWithRange>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_PointOnSurfacePairWithRange` (or subclass).
+    pub fn downcast_to_point_on_surface_pair_with_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsPointOnSurfacePairWithRange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsPointOnSurfacePairWithRange(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_PrismaticPair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_PrismaticPair` (or subclass).
+    pub fn downcast_to_prismatic_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsPrismaticPair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsPrismaticPair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_PrismaticPairValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_PrismaticPairValue` (or subclass).
+    pub fn downcast_to_prismatic_pair_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsPrismaticPairValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsPrismaticPairValue(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_PrismaticPairWithRange>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_PrismaticPairWithRange` (or subclass).
+    pub fn downcast_to_prismatic_pair_with_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsPrismaticPairWithRange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsPrismaticPairWithRange(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_ProductDefinitionKinematics>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_ProductDefinitionKinematics` (or subclass).
+    pub fn downcast_to_product_definition_kinematics(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsProductDefinitionKinematics>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsProductDefinitionKinematics(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_ProductDefinitionRelationshipKinematics>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_ProductDefinitionRelationshipKinematics` (or subclass).
+    pub fn downcast_to_product_definition_relationship_kinematics(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepKinematicsProductDefinitionRelationshipKinematics>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsProductDefinitionRelationshipKinematics(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_RackAndPinionPair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_RackAndPinionPair` (or subclass).
+    pub fn downcast_to_rack_and_pinion_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsRackAndPinionPair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsRackAndPinionPair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_RackAndPinionPairValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_RackAndPinionPairValue` (or subclass).
+    pub fn downcast_to_rack_and_pinion_pair_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsRackAndPinionPairValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsRackAndPinionPairValue(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_RackAndPinionPairWithRange>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_RackAndPinionPairWithRange` (or subclass).
+    pub fn downcast_to_rack_and_pinion_pair_with_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsRackAndPinionPairWithRange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsRackAndPinionPairWithRange(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_RevolutePair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_RevolutePair` (or subclass).
+    pub fn downcast_to_revolute_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsRevolutePair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsRevolutePair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_RevolutePairValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_RevolutePairValue` (or subclass).
+    pub fn downcast_to_revolute_pair_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsRevolutePairValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsRevolutePairValue(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_RevolutePairWithRange>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_RevolutePairWithRange` (or subclass).
+    pub fn downcast_to_revolute_pair_with_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsRevolutePairWithRange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsRevolutePairWithRange(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_RigidLinkRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_RigidLinkRepresentation` (or subclass).
+    pub fn downcast_to_rigid_link_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsRigidLinkRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsRigidLinkRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_RollingCurvePair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_RollingCurvePair` (or subclass).
+    pub fn downcast_to_rolling_curve_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsRollingCurvePair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsRollingCurvePair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_RollingCurvePairValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_RollingCurvePairValue` (or subclass).
+    pub fn downcast_to_rolling_curve_pair_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsRollingCurvePairValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsRollingCurvePairValue(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_RollingSurfacePair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_RollingSurfacePair` (or subclass).
+    pub fn downcast_to_rolling_surface_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsRollingSurfacePair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsRollingSurfacePair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_RollingSurfacePairValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_RollingSurfacePairValue` (or subclass).
+    pub fn downcast_to_rolling_surface_pair_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsRollingSurfacePairValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsRollingSurfacePairValue(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_RotationAboutDirection>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_RotationAboutDirection` (or subclass).
+    pub fn downcast_to_rotation_about_direction(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsRotationAboutDirection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsRotationAboutDirection(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_ScrewPair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_ScrewPair` (or subclass).
+    pub fn downcast_to_screw_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsScrewPair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsScrewPair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_ScrewPairValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_ScrewPairValue` (or subclass).
+    pub fn downcast_to_screw_pair_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsScrewPairValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsScrewPairValue(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_ScrewPairWithRange>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_ScrewPairWithRange` (or subclass).
+    pub fn downcast_to_screw_pair_with_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsScrewPairWithRange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsScrewPairWithRange(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_SlidingCurvePair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_SlidingCurvePair` (or subclass).
+    pub fn downcast_to_sliding_curve_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsSlidingCurvePair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsSlidingCurvePair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_SlidingCurvePairValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_SlidingCurvePairValue` (or subclass).
+    pub fn downcast_to_sliding_curve_pair_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsSlidingCurvePairValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsSlidingCurvePairValue(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_SlidingSurfacePair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_SlidingSurfacePair` (or subclass).
+    pub fn downcast_to_sliding_surface_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsSlidingSurfacePair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsSlidingSurfacePair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_SlidingSurfacePairValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_SlidingSurfacePairValue` (or subclass).
+    pub fn downcast_to_sliding_surface_pair_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsSlidingSurfacePairValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsSlidingSurfacePairValue(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_SphericalPair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_SphericalPair` (or subclass).
+    pub fn downcast_to_spherical_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsSphericalPair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsSphericalPair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_SphericalPairValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_SphericalPairValue` (or subclass).
+    pub fn downcast_to_spherical_pair_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsSphericalPairValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsSphericalPairValue(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_SphericalPairWithPin>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_SphericalPairWithPin` (or subclass).
+    pub fn downcast_to_spherical_pair_with_pin(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsSphericalPairWithPin>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsSphericalPairWithPin(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_SphericalPairWithPinAndRange>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_SphericalPairWithPinAndRange` (or subclass).
+    pub fn downcast_to_spherical_pair_with_pin_and_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsSphericalPairWithPinAndRange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsSphericalPairWithPinAndRange(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_SphericalPairWithRange>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_SphericalPairWithRange` (or subclass).
+    pub fn downcast_to_spherical_pair_with_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsSphericalPairWithRange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsSphericalPairWithRange(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_SurfacePair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_SurfacePair` (or subclass).
+    pub fn downcast_to_surface_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsSurfacePair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsSurfacePair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_SurfacePairWithRange>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_SurfacePairWithRange` (or subclass).
+    pub fn downcast_to_surface_pair_with_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsSurfacePairWithRange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsSurfacePairWithRange(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_UnconstrainedPair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_UnconstrainedPair` (or subclass).
+    pub fn downcast_to_unconstrained_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsUnconstrainedPair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsUnconstrainedPair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_UnconstrainedPairValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_UnconstrainedPairValue` (or subclass).
+    pub fn downcast_to_unconstrained_pair_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsUnconstrainedPairValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsUnconstrainedPairValue(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_UniversalPair>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_UniversalPair` (or subclass).
+    pub fn downcast_to_universal_pair(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsUniversalPair>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsUniversalPair(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_UniversalPairValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_UniversalPairValue` (or subclass).
+    pub fn downcast_to_universal_pair_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsUniversalPairValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsUniversalPairValue(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepKinematics_UniversalPairWithRange>
+    ///
+    /// Returns `None` if the handle does not point to a `StepKinematics_UniversalPairWithRange` (or subclass).
+    pub fn downcast_to_universal_pair_with_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepKinematicsUniversalPairWithRange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepKinematicsUniversalPairWithRange(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_AllAroundShapeAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_AllAroundShapeAspect` (or subclass).
+    pub fn downcast_to_all_around_shape_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprAllAroundShapeAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprAllAroundShapeAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_Apex>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_Apex` (or subclass).
+    pub fn downcast_to_apex(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprApex>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprApex(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_AssemblyComponentUsage>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_AssemblyComponentUsage` (or subclass).
+    pub fn downcast_to_assembly_component_usage(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprAssemblyComponentUsage>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprAssemblyComponentUsage(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_AssemblyComponentUsageSubstitute>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_AssemblyComponentUsageSubstitute` (or subclass).
+    pub fn downcast_to_assembly_component_usage_substitute(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprAssemblyComponentUsageSubstitute>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprAssemblyComponentUsageSubstitute(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_BetweenShapeAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_BetweenShapeAspect` (or subclass).
+    pub fn downcast_to_between_shape_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprBetweenShapeAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprBetweenShapeAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_BooleanRepresentationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_BooleanRepresentationItem` (or subclass).
+    pub fn downcast_to_boolean_representation_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprBooleanRepresentationItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprBooleanRepresentationItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_CentreOfSymmetry>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_CentreOfSymmetry` (or subclass).
+    pub fn downcast_to_centre_of_symmetry(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprCentreOfSymmetry>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprCentreOfSymmetry(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_CharacterizedRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_CharacterizedRepresentation` (or subclass).
+    pub fn downcast_to_characterized_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprCharacterizedRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprCharacterizedRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp` (or subclass).
+    pub fn downcast_to_comp_group_sh_asp_and_comp_sh_asp_and_datum_feat_and_sh_asp(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepReprCompGroupShAspAndCompShAspAndDatumFeatAndShAsp>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprCompGroupShAspAndCompShAspAndDatumFeatAndShAsp(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_CompShAspAndDatumFeatAndShAsp>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_CompShAspAndDatumFeatAndShAsp` (or subclass).
+    pub fn downcast_to_comp_sh_asp_and_datum_feat_and_sh_asp(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprCompShAspAndDatumFeatAndShAsp>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprCompShAspAndDatumFeatAndShAsp(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_CompositeGroupShapeAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_CompositeGroupShapeAspect` (or subclass).
+    pub fn downcast_to_composite_group_shape_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprCompositeGroupShapeAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprCompositeGroupShapeAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_CompositeShapeAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_CompositeShapeAspect` (or subclass).
+    pub fn downcast_to_composite_shape_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprCompositeShapeAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprCompositeShapeAspect(
+                self as *const Self,
+            )
         };
         if ptr.is_null() {
             None
@@ -21617,6 +37665,334 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ConfigurationDesign>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ConfigurationDesign` (or subclass).
+    pub fn downcast_to_configuration_design(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprConfigurationDesign>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprConfigurationDesign(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ConfigurationEffectivity>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ConfigurationEffectivity` (or subclass).
+    pub fn downcast_to_configuration_effectivity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprConfigurationEffectivity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprConfigurationEffectivity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ConfigurationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ConfigurationItem` (or subclass).
+    pub fn downcast_to_configuration_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprConfigurationItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprConfigurationItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ConstructiveGeometryRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ConstructiveGeometryRepresentation` (or subclass).
+    pub fn downcast_to_constructive_geometry_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprConstructiveGeometryRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprConstructiveGeometryRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ConstructiveGeometryRepresentationRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ConstructiveGeometryRepresentationRelationship` (or subclass).
+    pub fn downcast_to_constructive_geometry_representation_relationship(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepReprConstructiveGeometryRepresentationRelationship>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprConstructiveGeometryRepresentationRelationship(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ContinuosShapeAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ContinuosShapeAspect` (or subclass).
+    pub fn downcast_to_continuos_shape_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprContinuosShapeAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprContinuosShapeAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_DataEnvironment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_DataEnvironment` (or subclass).
+    pub fn downcast_to_data_environment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprDataEnvironment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprDataEnvironment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_DefinitionalRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_DefinitionalRepresentation` (or subclass).
+    pub fn downcast_to_definitional_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprDefinitionalRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprDefinitionalRepresentation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_DerivedShapeAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_DerivedShapeAspect` (or subclass).
+    pub fn downcast_to_derived_shape_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprDerivedShapeAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprDerivedShapeAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_DescriptiveRepresentationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_DescriptiveRepresentationItem` (or subclass).
+    pub fn downcast_to_descriptive_representation_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprDescriptiveRepresentationItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprDescriptiveRepresentationItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_Extension>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_Extension` (or subclass).
+    pub fn downcast_to_extension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprExtension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprExtension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ExternallyDefinedRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ExternallyDefinedRepresentation` (or subclass).
+    pub fn downcast_to_externally_defined_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprExternallyDefinedRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprExternallyDefinedRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_FeatureForDatumTargetRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_FeatureForDatumTargetRelationship` (or subclass).
+    pub fn downcast_to_feature_for_datum_target_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprFeatureForDatumTargetRelationship>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprFeatureForDatumTargetRelationship(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_FunctionallyDefinedTransformation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_FunctionallyDefinedTransformation` (or subclass).
+    pub fn downcast_to_functionally_defined_transformation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprFunctionallyDefinedTransformation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprFunctionallyDefinedTransformation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_GeometricAlignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_GeometricAlignment` (or subclass).
+    pub fn downcast_to_geometric_alignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprGeometricAlignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprGeometricAlignment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_GlobalUncertaintyAssignedContext>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_GlobalUncertaintyAssignedContext` (or subclass).
+    pub fn downcast_to_global_uncertainty_assigned_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprGlobalUncertaintyAssignedContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprGlobalUncertaintyAssignedContext(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_GlobalUnitAssignedContext>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_GlobalUnitAssignedContext` (or subclass).
+    pub fn downcast_to_global_unit_assigned_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprGlobalUnitAssignedContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprGlobalUnitAssignedContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_HArray1OfMaterialPropertyRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_HArray1OfMaterialPropertyRepresentation` (or subclass).
+    pub fn downcast_to_h_array1_of_material_property_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprHArray1OfMaterialPropertyRepresentation>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprHArray1OfMaterialPropertyRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_HArray1OfPropertyDefinitionRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_HArray1OfPropertyDefinitionRepresentation` (or subclass).
+    pub fn downcast_to_h_array1_of_property_definition_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprHArray1OfPropertyDefinitionRepresentation>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprHArray1OfPropertyDefinitionRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<StepRepr_HArray1OfRepresentationItem>
     ///
     /// Returns `None` if the handle does not point to a `StepRepr_HArray1OfRepresentationItem` (or subclass).
@@ -21633,6 +38009,302 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_HArray1OfShapeAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_HArray1OfShapeAspect` (or subclass).
+    pub fn downcast_to_h_array1_of_shape_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprHArray1OfShapeAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprHArray1OfShapeAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_HSequenceOfMaterialPropertyRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_HSequenceOfMaterialPropertyRepresentation` (or subclass).
+    pub fn downcast_to_h_sequence_of_material_property_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprHSequenceOfMaterialPropertyRepresentation>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprHSequenceOfMaterialPropertyRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_HSequenceOfRepresentationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_HSequenceOfRepresentationItem` (or subclass).
+    pub fn downcast_to_h_sequence_of_representation_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprHSequenceOfRepresentationItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprHSequenceOfRepresentationItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_IntegerRepresentationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_IntegerRepresentationItem` (or subclass).
+    pub fn downcast_to_integer_representation_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprIntegerRepresentationItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprIntegerRepresentationItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ItemDefinedTransformation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ItemDefinedTransformation` (or subclass).
+    pub fn downcast_to_item_defined_transformation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprItemDefinedTransformation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprItemDefinedTransformation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_MakeFromUsageOption>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_MakeFromUsageOption` (or subclass).
+    pub fn downcast_to_make_from_usage_option(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprMakeFromUsageOption>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprMakeFromUsageOption(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_MappedItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_MappedItem` (or subclass).
+    pub fn downcast_to_mapped_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprMappedItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprMappedItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_MaterialDesignation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_MaterialDesignation` (or subclass).
+    pub fn downcast_to_material_designation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprMaterialDesignation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprMaterialDesignation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_MaterialProperty>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_MaterialProperty` (or subclass).
+    pub fn downcast_to_material_property(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprMaterialProperty>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprMaterialProperty(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_MaterialPropertyRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_MaterialPropertyRepresentation` (or subclass).
+    pub fn downcast_to_material_property_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprMaterialPropertyRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprMaterialPropertyRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_MeasureRepresentationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_MeasureRepresentationItem` (or subclass).
+    pub fn downcast_to_measure_representation_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprMeasureRepresentationItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprMeasureRepresentationItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_MechanicalDesignAndDraughtingRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_MechanicalDesignAndDraughtingRelationship` (or subclass).
+    pub fn downcast_to_mechanical_design_and_draughting_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprMechanicalDesignAndDraughtingRelationship>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprMechanicalDesignAndDraughtingRelationship(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_NextAssemblyUsageOccurrence>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_NextAssemblyUsageOccurrence` (or subclass).
+    pub fn downcast_to_next_assembly_usage_occurrence(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprNextAssemblyUsageOccurrence>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprNextAssemblyUsageOccurrence(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ParallelOffset>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ParallelOffset` (or subclass).
+    pub fn downcast_to_parallel_offset(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprParallelOffset>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprParallelOffset(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ParametricRepresentationContext>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ParametricRepresentationContext` (or subclass).
+    pub fn downcast_to_parametric_representation_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprParametricRepresentationContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprParametricRepresentationContext(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_PerpendicularTo>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_PerpendicularTo` (or subclass).
+    pub fn downcast_to_perpendicular_to(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprPerpendicularTo>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprPerpendicularTo(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ProductConcept>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ProductConcept` (or subclass).
+    pub fn downcast_to_product_concept(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprProductConcept>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprProductConcept(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ProductDefinitionShape>
     ///
     /// Returns `None` if the handle does not point to a `StepRepr_ProductDefinitionShape` (or subclass).
@@ -21641,6 +38313,42 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionShape>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprProductDefinitionShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ProductDefinitionUsage>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ProductDefinitionUsage` (or subclass).
+    pub fn downcast_to_product_definition_usage(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionUsage>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprProductDefinitionUsage(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_PromissoryUsageOccurrence>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_PromissoryUsageOccurrence` (or subclass).
+    pub fn downcast_to_promissory_usage_occurrence(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprPromissoryUsageOccurrence>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprPromissoryUsageOccurrence(
                 self as *const Self,
             )
         };
@@ -21669,6 +38377,22 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_PropertyDefinitionRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_PropertyDefinitionRelationship` (or subclass).
+    pub fn downcast_to_property_definition_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprPropertyDefinitionRelationship>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprPropertyDefinitionRelationship(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<StepRepr_PropertyDefinitionRepresentation>
     ///
     /// Returns `None` if the handle does not point to a `StepRepr_PropertyDefinitionRepresentation` (or subclass).
@@ -21677,6 +38401,141 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprPropertyDefinitionRepresentation>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprPropertyDefinitionRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_QuantifiedAssemblyComponentUsage>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_QuantifiedAssemblyComponentUsage` (or subclass).
+    pub fn downcast_to_quantified_assembly_component_usage(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprQuantifiedAssemblyComponentUsage>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprQuantifiedAssemblyComponentUsage(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_RealRepresentationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_RealRepresentationItem` (or subclass).
+    pub fn downcast_to_real_representation_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprRealRepresentationItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprRealRepresentationItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ReprItemAndLengthMeasureWithUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ReprItemAndLengthMeasureWithUnit` (or subclass).
+    pub fn downcast_to_repr_item_and_length_measure_with_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprReprItemAndLengthMeasureWithUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprReprItemAndLengthMeasureWithUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI` (or subclass).
+    pub fn downcast_to_repr_item_and_length_measure_with_unit_and_qri(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprReprItemAndLengthMeasureWithUnitAndQRI>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprReprItemAndLengthMeasureWithUnitAndQRI(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ReprItemAndMeasureWithUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ReprItemAndMeasureWithUnit` (or subclass).
+    pub fn downcast_to_repr_item_and_measure_with_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprReprItemAndMeasureWithUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprReprItemAndMeasureWithUnit(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ReprItemAndMeasureWithUnitAndQRI>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ReprItemAndMeasureWithUnitAndQRI` (or subclass).
+    pub fn downcast_to_repr_item_and_measure_with_unit_and_qri(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprReprItemAndMeasureWithUnitAndQRI>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprReprItemAndMeasureWithUnitAndQRI(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ReprItemAndPlaneAngleMeasureWithUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ReprItemAndPlaneAngleMeasureWithUnit` (or subclass).
+    pub fn downcast_to_repr_item_and_plane_angle_measure_with_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprReprItemAndPlaneAngleMeasureWithUnit>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprReprItemAndPlaneAngleMeasureWithUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI` (or subclass).
+    pub fn downcast_to_repr_item_and_plane_angle_measure_with_unit_and_qri(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprReprItemAndPlaneAngleMeasureWithUnitAndQRI>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprReprItemAndPlaneAngleMeasureWithUnitAndQRI(self as *const Self)
         };
         if ptr.is_null() {
             None
@@ -21703,6 +38562,40 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_RepresentationContext>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_RepresentationContext` (or subclass).
+    pub fn downcast_to_representation_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprRepresentationContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprRepresentationContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_RepresentationContextReference>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_RepresentationContextReference` (or subclass).
+    pub fn downcast_to_representation_context_reference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprRepresentationContextReference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprRepresentationContextReference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<StepRepr_RepresentationItem>
     ///
     /// Returns `None` if the handle does not point to a `StepRepr_RepresentationItem` (or subclass).
@@ -21721,6 +38614,78 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_RepresentationMap>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_RepresentationMap` (or subclass).
+    pub fn downcast_to_representation_map(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprRepresentationMap>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprRepresentationMap(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_RepresentationReference>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_RepresentationReference` (or subclass).
+    pub fn downcast_to_representation_reference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprRepresentationReference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprRepresentationReference(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_RepresentationRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_RepresentationRelationship` (or subclass).
+    pub fn downcast_to_representation_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprRepresentationRelationship>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprRepresentationRelationship(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_RepresentationRelationshipWithTransformation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_RepresentationRelationshipWithTransformation` (or subclass).
+    pub fn downcast_to_representation_relationship_with_transformation(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepReprRepresentationRelationshipWithTransformation>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprRepresentationRelationshipWithTransformation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ShapeAspect>
     ///
     /// Returns `None` if the handle does not point to a `StepRepr_ShapeAspect` (or subclass).
@@ -21729,6 +38694,1278 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspect>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprShapeAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ShapeAspectDerivingRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ShapeAspectDerivingRelationship` (or subclass).
+    pub fn downcast_to_shape_aspect_deriving_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspectDerivingRelationship>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprShapeAspectDerivingRelationship(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ShapeAspectRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ShapeAspectRelationship` (or subclass).
+    pub fn downcast_to_shape_aspect_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspectRelationship>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprShapeAspectRelationship(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ShapeAspectTransition>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ShapeAspectTransition` (or subclass).
+    pub fn downcast_to_shape_aspect_transition(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspectTransition>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprShapeAspectTransition(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ShapeRepresentationRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ShapeRepresentationRelationship` (or subclass).
+    pub fn downcast_to_shape_representation_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprShapeRepresentationRelationship>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprShapeRepresentationRelationship(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ShapeRepresentationRelationshipWithTransformation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ShapeRepresentationRelationshipWithTransformation` (or subclass).
+    pub fn downcast_to_shape_representation_relationship_with_transformation(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<
+            crate::ffi::HandleStepReprShapeRepresentationRelationshipWithTransformation,
+        >,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprShapeRepresentationRelationshipWithTransformation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_SpecifiedHigherUsageOccurrence>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_SpecifiedHigherUsageOccurrence` (or subclass).
+    pub fn downcast_to_specified_higher_usage_occurrence(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprSpecifiedHigherUsageOccurrence>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprSpecifiedHigherUsageOccurrence(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_StructuralResponseProperty>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_StructuralResponseProperty` (or subclass).
+    pub fn downcast_to_structural_response_property(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprStructuralResponseProperty>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprStructuralResponseProperty(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_StructuralResponsePropertyDefinitionRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_StructuralResponsePropertyDefinitionRepresentation` (or subclass).
+    pub fn downcast_to_structural_response_property_definition_representation(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<
+            crate::ffi::HandleStepReprStructuralResponsePropertyDefinitionRepresentation,
+        >,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprStructuralResponsePropertyDefinitionRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_SuppliedPartRelationship>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_SuppliedPartRelationship` (or subclass).
+    pub fn downcast_to_supplied_part_relationship(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprSuppliedPartRelationship>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprSuppliedPartRelationship(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_Tangent>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_Tangent` (or subclass).
+    pub fn downcast_to_step_repr_tangent(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprTangent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprTangent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ValueRange>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ValueRange` (or subclass).
+    pub fn downcast_to_value_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprValueRange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprValueRange(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepRepr_ValueRepresentationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ValueRepresentationItem` (or subclass).
+    pub fn downcast_to_value_representation_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprValueRepresentationItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepReprValueRepresentationItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepSelect_Activator>
+    ///
+    /// Returns `None` if the handle does not point to a `StepSelect_Activator` (or subclass).
+    pub fn downcast_to_step_select_activator(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepSelectActivator>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepSelectActivator(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepSelect_FloatFormat>
+    ///
+    /// Returns `None` if the handle does not point to a `StepSelect_FloatFormat` (or subclass).
+    pub fn downcast_to_step_select_float_format(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepSelectFloatFormat>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepSelectFloatFormat(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepSelect_StepType>
+    ///
+    /// Returns `None` if the handle does not point to a `StepSelect_StepType` (or subclass).
+    pub fn downcast_to_step_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepSelectStepType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepSelectStepType(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepSelect_WorkLibrary>
+    ///
+    /// Returns `None` if the handle does not point to a `StepSelect_WorkLibrary` (or subclass).
+    pub fn downcast_to_step_select_work_library(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepSelectWorkLibrary>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepSelectWorkLibrary(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_AdvancedBrepShapeRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_AdvancedBrepShapeRepresentation` (or subclass).
+    pub fn downcast_to_advanced_brep_shape_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeAdvancedBrepShapeRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeAdvancedBrepShapeRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_AdvancedFace>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_AdvancedFace` (or subclass).
+    pub fn downcast_to_advanced_face(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeAdvancedFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeAdvancedFace(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_AngularLocation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_AngularLocation` (or subclass).
+    pub fn downcast_to_angular_location(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeAngularLocation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeAngularLocation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_AngularSize>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_AngularSize` (or subclass).
+    pub fn downcast_to_angular_size(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeAngularSize>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeAngularSize(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_Block>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_Block` (or subclass).
+    pub fn downcast_to_step_shape_block(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeBlock>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeBlock(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_BooleanResult>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_BooleanResult` (or subclass).
+    pub fn downcast_to_boolean_result(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeBooleanResult>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeBooleanResult(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_BoxDomain>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_BoxDomain` (or subclass).
+    pub fn downcast_to_box_domain(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeBoxDomain>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeBoxDomain(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_BoxedHalfSpace>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_BoxedHalfSpace` (or subclass).
+    pub fn downcast_to_boxed_half_space(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeBoxedHalfSpace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeBoxedHalfSpace(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_BrepWithVoids>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_BrepWithVoids` (or subclass).
+    pub fn downcast_to_brep_with_voids(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeBrepWithVoids>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeBrepWithVoids(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_ClosedShell>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_ClosedShell` (or subclass).
+    pub fn downcast_to_closed_shell(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeClosedShell>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeClosedShell(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_CompoundShapeRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_CompoundShapeRepresentation` (or subclass).
+    pub fn downcast_to_compound_shape_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeCompoundShapeRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeCompoundShapeRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_ConnectedEdgeSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_ConnectedEdgeSet` (or subclass).
+    pub fn downcast_to_connected_edge_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeConnectedEdgeSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeConnectedEdgeSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_ConnectedFaceSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_ConnectedFaceSet` (or subclass).
+    pub fn downcast_to_connected_face_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeConnectedFaceSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeConnectedFaceSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_ConnectedFaceShapeRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_ConnectedFaceShapeRepresentation` (or subclass).
+    pub fn downcast_to_connected_face_shape_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeConnectedFaceShapeRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeConnectedFaceShapeRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_ConnectedFaceSubSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_ConnectedFaceSubSet` (or subclass).
+    pub fn downcast_to_connected_face_sub_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeConnectedFaceSubSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeConnectedFaceSubSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_ContextDependentShapeRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_ContextDependentShapeRepresentation` (or subclass).
+    pub fn downcast_to_context_dependent_shape_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeContextDependentShapeRepresentation>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeContextDependentShapeRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_CsgShapeRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_CsgShapeRepresentation` (or subclass).
+    pub fn downcast_to_csg_shape_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeCsgShapeRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeCsgShapeRepresentation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_CsgSolid>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_CsgSolid` (or subclass).
+    pub fn downcast_to_csg_solid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeCsgSolid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeCsgSolid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_DefinitionalRepresentationAndShapeRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_DefinitionalRepresentationAndShapeRepresentation` (or subclass).
+    pub fn downcast_to_definitional_representation_and_shape_representation(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<
+            crate::ffi::HandleStepShapeDefinitionalRepresentationAndShapeRepresentation,
+        >,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeDefinitionalRepresentationAndShapeRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_DimensionalCharacteristicRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_DimensionalCharacteristicRepresentation` (or subclass).
+    pub fn downcast_to_dimensional_characteristic_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeDimensionalCharacteristicRepresentation>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeDimensionalCharacteristicRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_DimensionalLocation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_DimensionalLocation` (or subclass).
+    pub fn downcast_to_dimensional_location(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeDimensionalLocation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeDimensionalLocation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_DimensionalLocationWithPath>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_DimensionalLocationWithPath` (or subclass).
+    pub fn downcast_to_dimensional_location_with_path(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeDimensionalLocationWithPath>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeDimensionalLocationWithPath(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_DimensionalSize>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_DimensionalSize` (or subclass).
+    pub fn downcast_to_dimensional_size(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeDimensionalSize>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeDimensionalSize(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_DimensionalSizeWithPath>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_DimensionalSizeWithPath` (or subclass).
+    pub fn downcast_to_dimensional_size_with_path(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeDimensionalSizeWithPath>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeDimensionalSizeWithPath(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_DirectedDimensionalLocation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_DirectedDimensionalLocation` (or subclass).
+    pub fn downcast_to_directed_dimensional_location(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeDirectedDimensionalLocation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeDirectedDimensionalLocation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_Edge>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_Edge` (or subclass).
+    pub fn downcast_to_step_shape_edge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeEdge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeEdge(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_EdgeBasedWireframeModel>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_EdgeBasedWireframeModel` (or subclass).
+    pub fn downcast_to_edge_based_wireframe_model(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeEdgeBasedWireframeModel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeEdgeBasedWireframeModel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_EdgeBasedWireframeShapeRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_EdgeBasedWireframeShapeRepresentation` (or subclass).
+    pub fn downcast_to_edge_based_wireframe_shape_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeEdgeBasedWireframeShapeRepresentation>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeEdgeBasedWireframeShapeRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_EdgeCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_EdgeCurve` (or subclass).
+    pub fn downcast_to_edge_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeEdgeCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeEdgeCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_EdgeLoop>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_EdgeLoop` (or subclass).
+    pub fn downcast_to_edge_loop(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeEdgeLoop>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeEdgeLoop(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_ExtrudedAreaSolid>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_ExtrudedAreaSolid` (or subclass).
+    pub fn downcast_to_extruded_area_solid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeExtrudedAreaSolid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeExtrudedAreaSolid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_ExtrudedFaceSolid>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_ExtrudedFaceSolid` (or subclass).
+    pub fn downcast_to_extruded_face_solid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeExtrudedFaceSolid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeExtrudedFaceSolid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_Face>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_Face` (or subclass).
+    pub fn downcast_to_step_shape_face(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeFace(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_FaceBasedSurfaceModel>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_FaceBasedSurfaceModel` (or subclass).
+    pub fn downcast_to_face_based_surface_model(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeFaceBasedSurfaceModel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeFaceBasedSurfaceModel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_FaceBound>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_FaceBound` (or subclass).
+    pub fn downcast_to_face_bound(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeFaceBound>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeFaceBound(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_FaceOuterBound>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_FaceOuterBound` (or subclass).
+    pub fn downcast_to_face_outer_bound(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeFaceOuterBound>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeFaceOuterBound(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_FaceSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_FaceSurface` (or subclass).
+    pub fn downcast_to_face_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeFaceSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeFaceSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_FacetedBrep>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_FacetedBrep` (or subclass).
+    pub fn downcast_to_faceted_brep(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeFacetedBrep>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeFacetedBrep(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_FacetedBrepAndBrepWithVoids>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_FacetedBrepAndBrepWithVoids` (or subclass).
+    pub fn downcast_to_faceted_brep_and_brep_with_voids(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeFacetedBrepAndBrepWithVoids>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeFacetedBrepAndBrepWithVoids(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_FacetedBrepShapeRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_FacetedBrepShapeRepresentation` (or subclass).
+    pub fn downcast_to_faceted_brep_shape_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeFacetedBrepShapeRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeFacetedBrepShapeRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_GeometricCurveSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_GeometricCurveSet` (or subclass).
+    pub fn downcast_to_geometric_curve_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeGeometricCurveSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeGeometricCurveSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_GeometricSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_GeometricSet` (or subclass).
+    pub fn downcast_to_geometric_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeGeometricSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeGeometricSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_GeometricallyBoundedSurfaceShapeRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_GeometricallyBoundedSurfaceShapeRepresentation` (or subclass).
+    pub fn downcast_to_geometrically_bounded_surface_shape_representation(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepShapeGeometricallyBoundedSurfaceShapeRepresentation>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeGeometricallyBoundedSurfaceShapeRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_GeometricallyBoundedWireframeShapeRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_GeometricallyBoundedWireframeShapeRepresentation` (or subclass).
+    pub fn downcast_to_geometrically_bounded_wireframe_shape_representation(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<
+            crate::ffi::HandleStepShapeGeometricallyBoundedWireframeShapeRepresentation,
+        >,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeGeometricallyBoundedWireframeShapeRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_HArray1OfConnectedEdgeSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_HArray1OfConnectedEdgeSet` (or subclass).
+    pub fn downcast_to_h_array1_of_connected_edge_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeHArray1OfConnectedEdgeSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeHArray1OfConnectedEdgeSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_HArray1OfConnectedFaceSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_HArray1OfConnectedFaceSet` (or subclass).
+    pub fn downcast_to_h_array1_of_connected_face_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeHArray1OfConnectedFaceSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeHArray1OfConnectedFaceSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_HArray1OfEdge>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_HArray1OfEdge` (or subclass).
+    pub fn downcast_to_h_array1_of_edge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeHArray1OfEdge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeHArray1OfEdge(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_HArray1OfFace>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_HArray1OfFace` (or subclass).
+    pub fn downcast_to_step_shape_h_array1_of_face(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeHArray1OfFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeHArray1OfFace(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_HArray1OfFaceBound>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_HArray1OfFaceBound` (or subclass).
+    pub fn downcast_to_h_array1_of_face_bound(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeHArray1OfFaceBound>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeHArray1OfFaceBound(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_HArray1OfGeometricSetSelect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_HArray1OfGeometricSetSelect` (or subclass).
+    pub fn downcast_to_h_array1_of_geometric_set_select(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeHArray1OfGeometricSetSelect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeHArray1OfGeometricSetSelect(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_HArray1OfOrientedClosedShell>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_HArray1OfOrientedClosedShell` (or subclass).
+    pub fn downcast_to_h_array1_of_oriented_closed_shell(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeHArray1OfOrientedClosedShell>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeHArray1OfOrientedClosedShell(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_HArray1OfOrientedEdge>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_HArray1OfOrientedEdge` (or subclass).
+    pub fn downcast_to_h_array1_of_oriented_edge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeHArray1OfOrientedEdge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeHArray1OfOrientedEdge(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_HArray1OfShapeDimensionRepresentationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_HArray1OfShapeDimensionRepresentationItem` (or subclass).
+    pub fn downcast_to_h_array1_of_shape_dimension_representation_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeHArray1OfShapeDimensionRepresentationItem>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeHArray1OfShapeDimensionRepresentationItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_HArray1OfShell>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_HArray1OfShell` (or subclass).
+    pub fn downcast_to_step_shape_h_array1_of_shell(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeHArray1OfShell>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeHArray1OfShell(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_HArray1OfValueQualifier>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_HArray1OfValueQualifier` (or subclass).
+    pub fn downcast_to_h_array1_of_value_qualifier(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeHArray1OfValueQualifier>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeHArray1OfValueQualifier(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_HalfSpaceSolid>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_HalfSpaceSolid` (or subclass).
+    pub fn downcast_to_half_space_solid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeHalfSpaceSolid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeHalfSpaceSolid(
                 self as *const Self,
             )
         };
@@ -21757,6 +39994,448 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_Loop>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_Loop` (or subclass).
+    pub fn downcast_to_step_shape_loop(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeLoop>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeLoop(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_LoopAndPath>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_LoopAndPath` (or subclass).
+    pub fn downcast_to_loop_and_path(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeLoopAndPath>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeLoopAndPath(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_ManifoldSolidBrep>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_ManifoldSolidBrep` (or subclass).
+    pub fn downcast_to_manifold_solid_brep(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeManifoldSolidBrep>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeManifoldSolidBrep(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_ManifoldSurfaceShapeRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_ManifoldSurfaceShapeRepresentation` (or subclass).
+    pub fn downcast_to_manifold_surface_shape_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeManifoldSurfaceShapeRepresentation>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeManifoldSurfaceShapeRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_MeasureQualification>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_MeasureQualification` (or subclass).
+    pub fn downcast_to_measure_qualification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeMeasureQualification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeMeasureQualification(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem` (or subclass).
+    pub fn downcast_to_measure_representation_item_and_qualified_representation_item(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<
+            crate::ffi::HandleStepShapeMeasureRepresentationItemAndQualifiedRepresentationItem,
+        >,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeMeasureRepresentationItemAndQualifiedRepresentationItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_NonManifoldSurfaceShapeRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_NonManifoldSurfaceShapeRepresentation` (or subclass).
+    pub fn downcast_to_non_manifold_surface_shape_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeNonManifoldSurfaceShapeRepresentation>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeNonManifoldSurfaceShapeRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_OpenShell>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_OpenShell` (or subclass).
+    pub fn downcast_to_open_shell(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeOpenShell>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeOpenShell(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_OrientedClosedShell>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_OrientedClosedShell` (or subclass).
+    pub fn downcast_to_oriented_closed_shell(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeOrientedClosedShell>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeOrientedClosedShell(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_OrientedEdge>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_OrientedEdge` (or subclass).
+    pub fn downcast_to_oriented_edge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeOrientedEdge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeOrientedEdge(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_OrientedFace>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_OrientedFace` (or subclass).
+    pub fn downcast_to_oriented_face(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeOrientedFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeOrientedFace(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_OrientedOpenShell>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_OrientedOpenShell` (or subclass).
+    pub fn downcast_to_oriented_open_shell(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeOrientedOpenShell>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeOrientedOpenShell(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_OrientedPath>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_OrientedPath` (or subclass).
+    pub fn downcast_to_oriented_path(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeOrientedPath>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeOrientedPath(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_Path>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_Path` (or subclass).
+    pub fn downcast_to_path(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapePath>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapePath(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_PlusMinusTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_PlusMinusTolerance` (or subclass).
+    pub fn downcast_to_plus_minus_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapePlusMinusTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapePlusMinusTolerance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_PointRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_PointRepresentation` (or subclass).
+    pub fn downcast_to_step_shape_point_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapePointRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapePointRepresentation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_PolyLoop>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_PolyLoop` (or subclass).
+    pub fn downcast_to_poly_loop(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapePolyLoop>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapePolyLoop(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_PrecisionQualifier>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_PrecisionQualifier` (or subclass).
+    pub fn downcast_to_precision_qualifier(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapePrecisionQualifier>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapePrecisionQualifier(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_QualifiedRepresentationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_QualifiedRepresentationItem` (or subclass).
+    pub fn downcast_to_qualified_representation_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeQualifiedRepresentationItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeQualifiedRepresentationItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_RevolvedAreaSolid>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_RevolvedAreaSolid` (or subclass).
+    pub fn downcast_to_revolved_area_solid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeRevolvedAreaSolid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeRevolvedAreaSolid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_RevolvedFaceSolid>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_RevolvedFaceSolid` (or subclass).
+    pub fn downcast_to_revolved_face_solid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeRevolvedFaceSolid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeRevolvedFaceSolid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_RightAngularWedge>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_RightAngularWedge` (or subclass).
+    pub fn downcast_to_step_shape_right_angular_wedge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeRightAngularWedge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeRightAngularWedge(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_RightCircularCone>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_RightCircularCone` (or subclass).
+    pub fn downcast_to_right_circular_cone(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeRightCircularCone>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeRightCircularCone(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_RightCircularCylinder>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_RightCircularCylinder` (or subclass).
+    pub fn downcast_to_right_circular_cylinder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeRightCircularCylinder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeRightCircularCylinder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_SeamEdge>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_SeamEdge` (or subclass).
+    pub fn downcast_to_seam_edge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeSeamEdge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeSeamEdge(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<StepShape_ShapeDefinitionRepresentation>
     ///
     /// Returns `None` if the handle does not point to a `StepShape_ShapeDefinitionRepresentation` (or subclass).
@@ -21773,6 +40452,1023 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_ShapeDimensionRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_ShapeDimensionRepresentation` (or subclass).
+    pub fn downcast_to_shape_dimension_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeShapeDimensionRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeShapeDimensionRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_ShapeRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_ShapeRepresentation` (or subclass).
+    pub fn downcast_to_shape_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeShapeRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeShapeRepresentation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_ShapeRepresentationWithParameters>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_ShapeRepresentationWithParameters` (or subclass).
+    pub fn downcast_to_shape_representation_with_parameters(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeShapeRepresentationWithParameters>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeShapeRepresentationWithParameters(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_ShellBasedSurfaceModel>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_ShellBasedSurfaceModel` (or subclass).
+    pub fn downcast_to_shell_based_surface_model(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeShellBasedSurfaceModel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeShellBasedSurfaceModel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_SolidModel>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_SolidModel` (or subclass).
+    pub fn downcast_to_solid_model(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeSolidModel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeSolidModel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_SolidReplica>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_SolidReplica` (or subclass).
+    pub fn downcast_to_solid_replica(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeSolidReplica>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeSolidReplica(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_Sphere>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_Sphere` (or subclass).
+    pub fn downcast_to_step_shape_sphere(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeSphere>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeSphere(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_Subedge>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_Subedge` (or subclass).
+    pub fn downcast_to_subedge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeSubedge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeSubedge(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_Subface>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_Subface` (or subclass).
+    pub fn downcast_to_subface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeSubface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeSubface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_SweptAreaSolid>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_SweptAreaSolid` (or subclass).
+    pub fn downcast_to_swept_area_solid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeSweptAreaSolid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeSweptAreaSolid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_SweptFaceSolid>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_SweptFaceSolid` (or subclass).
+    pub fn downcast_to_swept_face_solid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeSweptFaceSolid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeSweptFaceSolid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_ToleranceValue>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_ToleranceValue` (or subclass).
+    pub fn downcast_to_tolerance_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeToleranceValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeToleranceValue(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_TopologicalRepresentationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_TopologicalRepresentationItem` (or subclass).
+    pub fn downcast_to_topological_representation_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeTopologicalRepresentationItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeTopologicalRepresentationItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_Torus>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_Torus` (or subclass).
+    pub fn downcast_to_step_shape_torus(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeTorus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeTorus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_TransitionalShapeRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_TransitionalShapeRepresentation` (or subclass).
+    pub fn downcast_to_transitional_shape_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeTransitionalShapeRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeTransitionalShapeRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_TypeQualifier>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_TypeQualifier` (or subclass).
+    pub fn downcast_to_type_qualifier(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeTypeQualifier>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeTypeQualifier(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_ValueFormatTypeQualifier>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_ValueFormatTypeQualifier` (or subclass).
+    pub fn downcast_to_value_format_type_qualifier(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeValueFormatTypeQualifier>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeValueFormatTypeQualifier(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_Vertex>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_Vertex` (or subclass).
+    pub fn downcast_to_step_shape_vertex(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeVertex>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeVertex(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_VertexLoop>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_VertexLoop` (or subclass).
+    pub fn downcast_to_vertex_loop(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeVertexLoop>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeVertexLoop(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepShape_VertexPoint>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_VertexPoint` (or subclass).
+    pub fn downcast_to_vertex_point(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeVertexPoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepShapeVertexPoint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_AnnotationCurveOccurrence>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_AnnotationCurveOccurrence` (or subclass).
+    pub fn downcast_to_annotation_curve_occurrence(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualAnnotationCurveOccurrence>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualAnnotationCurveOccurrence(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_AnnotationCurveOccurrenceAndGeomReprItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_AnnotationCurveOccurrenceAndGeomReprItem` (or subclass).
+    pub fn downcast_to_annotation_curve_occurrence_and_geom_repr_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_AnnotationFillArea>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_AnnotationFillArea` (or subclass).
+    pub fn downcast_to_annotation_fill_area(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualAnnotationFillArea>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualAnnotationFillArea(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_AnnotationFillAreaOccurrence>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_AnnotationFillAreaOccurrence` (or subclass).
+    pub fn downcast_to_annotation_fill_area_occurrence(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualAnnotationFillAreaOccurrence>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualAnnotationFillAreaOccurrence(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_AnnotationOccurrence>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_AnnotationOccurrence` (or subclass).
+    pub fn downcast_to_annotation_occurrence(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualAnnotationOccurrence>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualAnnotationOccurrence(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_AnnotationPlane>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_AnnotationPlane` (or subclass).
+    pub fn downcast_to_annotation_plane(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualAnnotationPlane>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualAnnotationPlane(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_AnnotationText>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_AnnotationText` (or subclass).
+    pub fn downcast_to_annotation_text(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualAnnotationText>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualAnnotationText(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_AnnotationTextOccurrence>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_AnnotationTextOccurrence` (or subclass).
+    pub fn downcast_to_annotation_text_occurrence(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualAnnotationTextOccurrence>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualAnnotationTextOccurrence(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_AreaInSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_AreaInSet` (or subclass).
+    pub fn downcast_to_area_in_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualAreaInSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualAreaInSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_BackgroundColour>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_BackgroundColour` (or subclass).
+    pub fn downcast_to_background_colour(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualBackgroundColour>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualBackgroundColour(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CameraImage>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CameraImage` (or subclass).
+    pub fn downcast_to_camera_image(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualCameraImage>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCameraImage(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CameraImage2dWithScale>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CameraImage2dWithScale` (or subclass).
+    pub fn downcast_to_camera_image2d_with_scale(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualCameraImage2dWithScale>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCameraImage2dWithScale(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CameraImage3dWithScale>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CameraImage3dWithScale` (or subclass).
+    pub fn downcast_to_camera_image3d_with_scale(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualCameraImage3dWithScale>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCameraImage3dWithScale(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CameraModel>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CameraModel` (or subclass).
+    pub fn downcast_to_camera_model(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualCameraModel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCameraModel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CameraModelD2>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CameraModelD2` (or subclass).
+    pub fn downcast_to_camera_model_d2(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualCameraModelD2>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCameraModelD2(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CameraModelD3>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CameraModelD3` (or subclass).
+    pub fn downcast_to_camera_model_d3(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualCameraModelD3>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCameraModelD3(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CameraModelD3MultiClipping>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CameraModelD3MultiClipping` (or subclass).
+    pub fn downcast_to_camera_model_d3_multi_clipping(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualCameraModelD3MultiClipping>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCameraModelD3MultiClipping(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CameraModelD3MultiClippingIntersection>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CameraModelD3MultiClippingIntersection` (or subclass).
+    pub fn downcast_to_camera_model_d3_multi_clipping_intersection(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualCameraModelD3MultiClippingIntersection>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCameraModelD3MultiClippingIntersection(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CameraModelD3MultiClippingUnion>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CameraModelD3MultiClippingUnion` (or subclass).
+    pub fn downcast_to_camera_model_d3_multi_clipping_union(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualCameraModelD3MultiClippingUnion>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCameraModelD3MultiClippingUnion(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CameraUsage>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CameraUsage` (or subclass).
+    pub fn downcast_to_camera_usage(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualCameraUsage>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCameraUsage(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel` (or subclass).
+    pub fn downcast_to_characterized_obj_and_representation_and_draughting_model(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<
+            crate::ffi::HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel,
+        >,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_Colour>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_Colour` (or subclass).
+    pub fn downcast_to_colour(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualColour>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualColour(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_ColourRgb>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_ColourRgb` (or subclass).
+    pub fn downcast_to_colour_rgb(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualColourRgb>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualColourRgb(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_ColourSpecification>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_ColourSpecification` (or subclass).
+    pub fn downcast_to_colour_specification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualColourSpecification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualColourSpecification(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_ComplexTriangulatedFace>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_ComplexTriangulatedFace` (or subclass).
+    pub fn downcast_to_complex_triangulated_face(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualComplexTriangulatedFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualComplexTriangulatedFace(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_ComplexTriangulatedSurfaceSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_ComplexTriangulatedSurfaceSet` (or subclass).
+    pub fn downcast_to_complex_triangulated_surface_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualComplexTriangulatedSurfaceSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualComplexTriangulatedSurfaceSet(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CompositeText>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CompositeText` (or subclass).
+    pub fn downcast_to_composite_text(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualCompositeText>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCompositeText(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CompositeTextWithExtent>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CompositeTextWithExtent` (or subclass).
+    pub fn downcast_to_composite_text_with_extent(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualCompositeTextWithExtent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCompositeTextWithExtent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_ContextDependentInvisibility>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_ContextDependentInvisibility` (or subclass).
+    pub fn downcast_to_context_dependent_invisibility(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualContextDependentInvisibility>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualContextDependentInvisibility(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_ContextDependentOverRidingStyledItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_ContextDependentOverRidingStyledItem` (or subclass).
+    pub fn downcast_to_context_dependent_over_riding_styled_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualContextDependentOverRidingStyledItem>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualContextDependentOverRidingStyledItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CoordinatesList>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CoordinatesList` (or subclass).
+    pub fn downcast_to_coordinates_list(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualCoordinatesList>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCoordinatesList(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CubicBezierTessellatedEdge>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CubicBezierTessellatedEdge` (or subclass).
+    pub fn downcast_to_cubic_bezier_tessellated_edge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualCubicBezierTessellatedEdge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCubicBezierTessellatedEdge(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CubicBezierTriangulatedFace>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CubicBezierTriangulatedFace` (or subclass).
+    pub fn downcast_to_cubic_bezier_triangulated_face(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualCubicBezierTriangulatedFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCubicBezierTriangulatedFace(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CurveStyle>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CurveStyle` (or subclass).
+    pub fn downcast_to_curve_style(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualCurveStyle>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCurveStyle(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CurveStyleFont>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CurveStyleFont` (or subclass).
+    pub fn downcast_to_curve_style_font(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualCurveStyleFont>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCurveStyleFont(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_CurveStyleFontPattern>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_CurveStyleFontPattern` (or subclass).
+    pub fn downcast_to_curve_style_font_pattern(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualCurveStyleFontPattern>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualCurveStyleFontPattern(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_DraughtingAnnotationOccurrence>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_DraughtingAnnotationOccurrence` (or subclass).
+    pub fn downcast_to_draughting_annotation_occurrence(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualDraughtingAnnotationOccurrence>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualDraughtingAnnotationOccurrence(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_DraughtingCallout>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_DraughtingCallout` (or subclass).
+    pub fn downcast_to_draughting_callout(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualDraughtingCallout>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualDraughtingCallout(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<StepVisual_DraughtingModel>
     ///
     /// Returns `None` if the handle does not point to a `StepVisual_DraughtingModel` (or subclass).
@@ -21781,6 +41477,279 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualDraughtingModel>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualDraughtingModel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_DraughtingPreDefinedColour>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_DraughtingPreDefinedColour` (or subclass).
+    pub fn downcast_to_draughting_pre_defined_colour(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualDraughtingPreDefinedColour>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualDraughtingPreDefinedColour(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_DraughtingPreDefinedCurveFont>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_DraughtingPreDefinedCurveFont` (or subclass).
+    pub fn downcast_to_draughting_pre_defined_curve_font(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualDraughtingPreDefinedCurveFont>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualDraughtingPreDefinedCurveFont(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_ExternallyDefinedCurveFont>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_ExternallyDefinedCurveFont` (or subclass).
+    pub fn downcast_to_externally_defined_curve_font(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualExternallyDefinedCurveFont>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualExternallyDefinedCurveFont(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_ExternallyDefinedTextFont>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_ExternallyDefinedTextFont` (or subclass).
+    pub fn downcast_to_externally_defined_text_font(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualExternallyDefinedTextFont>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualExternallyDefinedTextFont(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_FillAreaStyle>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_FillAreaStyle` (or subclass).
+    pub fn downcast_to_fill_area_style(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualFillAreaStyle>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualFillAreaStyle(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_FillAreaStyleColour>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_FillAreaStyleColour` (or subclass).
+    pub fn downcast_to_fill_area_style_colour(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualFillAreaStyleColour>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualFillAreaStyleColour(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_HArray1OfAnnotationPlaneElement>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_HArray1OfAnnotationPlaneElement` (or subclass).
+    pub fn downcast_to_h_array1_of_annotation_plane_element(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualHArray1OfAnnotationPlaneElement>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualHArray1OfAnnotationPlaneElement(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_HArray1OfBoxCharacteristicSelect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_HArray1OfBoxCharacteristicSelect` (or subclass).
+    pub fn downcast_to_h_array1_of_box_characteristic_select(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualHArray1OfBoxCharacteristicSelect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualHArray1OfBoxCharacteristicSelect(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect` (or subclass).
+    pub fn downcast_to_h_array1_of_camera_model_d3_multi_clipping_interection_select(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<
+            crate::ffi::HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect,
+        >,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect` (or subclass).
+    pub fn downcast_to_h_array1_of_camera_model_d3_multi_clipping_union_select(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_HArray1OfCurveStyleFontPattern>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_HArray1OfCurveStyleFontPattern` (or subclass).
+    pub fn downcast_to_h_array1_of_curve_style_font_pattern(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualHArray1OfCurveStyleFontPattern>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualHArray1OfCurveStyleFontPattern(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_HArray1OfDirectionCountSelect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_HArray1OfDirectionCountSelect` (or subclass).
+    pub fn downcast_to_h_array1_of_direction_count_select(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualHArray1OfDirectionCountSelect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualHArray1OfDirectionCountSelect(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_HArray1OfDraughtingCalloutElement>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_HArray1OfDraughtingCalloutElement` (or subclass).
+    pub fn downcast_to_h_array1_of_draughting_callout_element(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualHArray1OfDraughtingCalloutElement>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualHArray1OfDraughtingCalloutElement(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_HArray1OfFillStyleSelect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_HArray1OfFillStyleSelect` (or subclass).
+    pub fn downcast_to_h_array1_of_fill_style_select(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualHArray1OfFillStyleSelect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualHArray1OfFillStyleSelect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_HArray1OfInvisibleItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_HArray1OfInvisibleItem` (or subclass).
+    pub fn downcast_to_h_array1_of_invisible_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualHArray1OfInvisibleItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualHArray1OfInvisibleItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_HArray1OfLayeredItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_HArray1OfLayeredItem` (or subclass).
+    pub fn downcast_to_h_array1_of_layered_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualHArray1OfLayeredItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualHArray1OfLayeredItem(
                 self as *const Self,
             )
         };
@@ -21824,6 +41793,447 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_HArray1OfRenderingPropertiesSelect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_HArray1OfRenderingPropertiesSelect` (or subclass).
+    pub fn downcast_to_h_array1_of_rendering_properties_select(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualHArray1OfRenderingPropertiesSelect>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualHArray1OfRenderingPropertiesSelect(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_HArray1OfStyleContextSelect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_HArray1OfStyleContextSelect` (or subclass).
+    pub fn downcast_to_h_array1_of_style_context_select(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualHArray1OfStyleContextSelect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualHArray1OfStyleContextSelect(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_HArray1OfSurfaceStyleElementSelect>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_HArray1OfSurfaceStyleElementSelect` (or subclass).
+    pub fn downcast_to_h_array1_of_surface_style_element_select(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualHArray1OfSurfaceStyleElementSelect>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualHArray1OfSurfaceStyleElementSelect(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_HArray1OfTessellatedEdgeOrVertex>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_HArray1OfTessellatedEdgeOrVertex` (or subclass).
+    pub fn downcast_to_h_array1_of_tessellated_edge_or_vertex(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualHArray1OfTessellatedEdgeOrVertex>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualHArray1OfTessellatedEdgeOrVertex(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_HArray1OfTessellatedStructuredItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_HArray1OfTessellatedStructuredItem` (or subclass).
+    pub fn downcast_to_h_array1_of_tessellated_structured_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualHArray1OfTessellatedStructuredItem>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualHArray1OfTessellatedStructuredItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_HArray1OfTextOrCharacter>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_HArray1OfTextOrCharacter` (or subclass).
+    pub fn downcast_to_h_array1_of_text_or_character(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualHArray1OfTextOrCharacter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualHArray1OfTextOrCharacter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_Invisibility>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_Invisibility` (or subclass).
+    pub fn downcast_to_invisibility(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualInvisibility>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualInvisibility(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_MarkerMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_MarkerMember` (or subclass).
+    pub fn downcast_to_marker_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualMarkerMember>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualMarkerMember(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_MechanicalDesignGeometricPresentationArea>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_MechanicalDesignGeometricPresentationArea` (or subclass).
+    pub fn downcast_to_mechanical_design_geometric_presentation_area(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleStepVisualMechanicalDesignGeometricPresentationArea>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualMechanicalDesignGeometricPresentationArea(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_MechanicalDesignGeometricPresentationRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_MechanicalDesignGeometricPresentationRepresentation` (or subclass).
+    pub fn downcast_to_mechanical_design_geometric_presentation_representation(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<
+            crate::ffi::HandleStepVisualMechanicalDesignGeometricPresentationRepresentation,
+        >,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualMechanicalDesignGeometricPresentationRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_NullStyleMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_NullStyleMember` (or subclass).
+    pub fn downcast_to_null_style_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualNullStyleMember>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualNullStyleMember(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_OverRidingStyledItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_OverRidingStyledItem` (or subclass).
+    pub fn downcast_to_over_riding_styled_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualOverRidingStyledItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualOverRidingStyledItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_PlanarBox>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_PlanarBox` (or subclass).
+    pub fn downcast_to_planar_box(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualPlanarBox>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualPlanarBox(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_PlanarExtent>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_PlanarExtent` (or subclass).
+    pub fn downcast_to_planar_extent(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualPlanarExtent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualPlanarExtent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_PointStyle>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_PointStyle` (or subclass).
+    pub fn downcast_to_point_style(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualPointStyle>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualPointStyle(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_PreDefinedColour>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_PreDefinedColour` (or subclass).
+    pub fn downcast_to_pre_defined_colour(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualPreDefinedColour>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualPreDefinedColour(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_PreDefinedCurveFont>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_PreDefinedCurveFont` (or subclass).
+    pub fn downcast_to_pre_defined_curve_font(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualPreDefinedCurveFont>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualPreDefinedCurveFont(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_PreDefinedItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_PreDefinedItem` (or subclass).
+    pub fn downcast_to_pre_defined_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualPreDefinedItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualPreDefinedItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_PreDefinedTextFont>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_PreDefinedTextFont` (or subclass).
+    pub fn downcast_to_pre_defined_text_font(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualPreDefinedTextFont>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualPreDefinedTextFont(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_PresentationArea>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_PresentationArea` (or subclass).
+    pub fn downcast_to_presentation_area(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualPresentationArea>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualPresentationArea(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_PresentationLayerAssignment>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_PresentationLayerAssignment` (or subclass).
+    pub fn downcast_to_presentation_layer_assignment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualPresentationLayerAssignment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualPresentationLayerAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_PresentationLayerUsage>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_PresentationLayerUsage` (or subclass).
+    pub fn downcast_to_presentation_layer_usage(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualPresentationLayerUsage>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualPresentationLayerUsage(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_PresentationRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_PresentationRepresentation` (or subclass).
+    pub fn downcast_to_presentation_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualPresentationRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualPresentationRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_PresentationSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_PresentationSet` (or subclass).
+    pub fn downcast_to_presentation_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualPresentationSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualPresentationSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_PresentationSize>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_PresentationSize` (or subclass).
+    pub fn downcast_to_presentation_size(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualPresentationSize>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualPresentationSize(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<StepVisual_PresentationStyleAssignment>
     ///
     /// Returns `None` if the handle does not point to a `StepVisual_PresentationStyleAssignment` (or subclass).
@@ -21832,6 +42242,456 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualPresentationStyleAssignment>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualPresentationStyleAssignment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_PresentationStyleByContext>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_PresentationStyleByContext` (or subclass).
+    pub fn downcast_to_presentation_style_by_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualPresentationStyleByContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualPresentationStyleByContext(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_PresentationView>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_PresentationView` (or subclass).
+    pub fn downcast_to_presentation_view(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualPresentationView>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualPresentationView(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_PresentedItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_PresentedItem` (or subclass).
+    pub fn downcast_to_presented_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualPresentedItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualPresentedItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_PresentedItemRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_PresentedItemRepresentation` (or subclass).
+    pub fn downcast_to_presented_item_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualPresentedItemRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualPresentedItemRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_RepositionedTessellatedGeometricSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_RepositionedTessellatedGeometricSet` (or subclass).
+    pub fn downcast_to_repositioned_tessellated_geometric_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualRepositionedTessellatedGeometricSet>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualRepositionedTessellatedGeometricSet(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_RepositionedTessellatedItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_RepositionedTessellatedItem` (or subclass).
+    pub fn downcast_to_repositioned_tessellated_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualRepositionedTessellatedItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualRepositionedTessellatedItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_StyledItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_StyledItem` (or subclass).
+    pub fn downcast_to_styled_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualStyledItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualStyledItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_SurfaceSideStyle>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_SurfaceSideStyle` (or subclass).
+    pub fn downcast_to_surface_side_style(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualSurfaceSideStyle>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualSurfaceSideStyle(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_SurfaceStyleBoundary>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_SurfaceStyleBoundary` (or subclass).
+    pub fn downcast_to_surface_style_boundary(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualSurfaceStyleBoundary>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualSurfaceStyleBoundary(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_SurfaceStyleControlGrid>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_SurfaceStyleControlGrid` (or subclass).
+    pub fn downcast_to_surface_style_control_grid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualSurfaceStyleControlGrid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualSurfaceStyleControlGrid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_SurfaceStyleFillArea>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_SurfaceStyleFillArea` (or subclass).
+    pub fn downcast_to_surface_style_fill_area(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualSurfaceStyleFillArea>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualSurfaceStyleFillArea(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_SurfaceStyleParameterLine>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_SurfaceStyleParameterLine` (or subclass).
+    pub fn downcast_to_surface_style_parameter_line(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualSurfaceStyleParameterLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualSurfaceStyleParameterLine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_SurfaceStyleReflectanceAmbient>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_SurfaceStyleReflectanceAmbient` (or subclass).
+    pub fn downcast_to_surface_style_reflectance_ambient(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualSurfaceStyleReflectanceAmbient>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualSurfaceStyleReflectanceAmbient(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_SurfaceStyleRendering>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_SurfaceStyleRendering` (or subclass).
+    pub fn downcast_to_surface_style_rendering(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualSurfaceStyleRendering>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualSurfaceStyleRendering(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_SurfaceStyleRenderingWithProperties>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_SurfaceStyleRenderingWithProperties` (or subclass).
+    pub fn downcast_to_surface_style_rendering_with_properties(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualSurfaceStyleRenderingWithProperties>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualSurfaceStyleRenderingWithProperties(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_SurfaceStyleSegmentationCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_SurfaceStyleSegmentationCurve` (or subclass).
+    pub fn downcast_to_surface_style_segmentation_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualSurfaceStyleSegmentationCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualSurfaceStyleSegmentationCurve(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_SurfaceStyleSilhouette>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_SurfaceStyleSilhouette` (or subclass).
+    pub fn downcast_to_surface_style_silhouette(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualSurfaceStyleSilhouette>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualSurfaceStyleSilhouette(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_SurfaceStyleTransparent>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_SurfaceStyleTransparent` (or subclass).
+    pub fn downcast_to_surface_style_transparent(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualSurfaceStyleTransparent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualSurfaceStyleTransparent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_SurfaceStyleUsage>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_SurfaceStyleUsage` (or subclass).
+    pub fn downcast_to_surface_style_usage(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualSurfaceStyleUsage>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualSurfaceStyleUsage(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_Template>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_Template` (or subclass).
+    pub fn downcast_to_template(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTemplate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTemplate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TemplateInstance>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TemplateInstance` (or subclass).
+    pub fn downcast_to_template_instance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTemplateInstance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTemplateInstance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TessellatedAnnotationOccurrence>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedAnnotationOccurrence` (or subclass).
+    pub fn downcast_to_tessellated_annotation_occurrence(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedAnnotationOccurrence>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTessellatedAnnotationOccurrence(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TessellatedConnectingEdge>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedConnectingEdge` (or subclass).
+    pub fn downcast_to_tessellated_connecting_edge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedConnectingEdge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTessellatedConnectingEdge(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TessellatedCurveSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedCurveSet` (or subclass).
+    pub fn downcast_to_tessellated_curve_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedCurveSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTessellatedCurveSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TessellatedEdge>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedEdge` (or subclass).
+    pub fn downcast_to_tessellated_edge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedEdge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTessellatedEdge(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TessellatedFace>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedFace` (or subclass).
+    pub fn downcast_to_tessellated_face(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTessellatedFace(
+                self as *const Self,
+            )
         };
         if ptr.is_null() {
             None
@@ -21866,6 +42726,290 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedItem>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTessellatedItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TessellatedPointSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedPointSet` (or subclass).
+    pub fn downcast_to_tessellated_point_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedPointSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTessellatedPointSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TessellatedShapeRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedShapeRepresentation` (or subclass).
+    pub fn downcast_to_tessellated_shape_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedShapeRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTessellatedShapeRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TessellatedShapeRepresentationWithAccuracyParameters>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedShapeRepresentationWithAccuracyParameters` (or subclass).
+    pub fn downcast_to_tessellated_shape_representation_with_accuracy_parameters(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<
+            crate::ffi::HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters,
+        >,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TessellatedShell>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedShell` (or subclass).
+    pub fn downcast_to_tessellated_shell(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedShell>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTessellatedShell(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TessellatedSolid>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedSolid` (or subclass).
+    pub fn downcast_to_tessellated_solid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedSolid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTessellatedSolid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TessellatedStructuredItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedStructuredItem` (or subclass).
+    pub fn downcast_to_tessellated_structured_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedStructuredItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTessellatedStructuredItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TessellatedSurfaceSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedSurfaceSet` (or subclass).
+    pub fn downcast_to_tessellated_surface_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedSurfaceSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTessellatedSurfaceSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TessellatedVertex>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedVertex` (or subclass).
+    pub fn downcast_to_tessellated_vertex(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedVertex>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTessellatedVertex(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TessellatedWire>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedWire` (or subclass).
+    pub fn downcast_to_tessellated_wire(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedWire>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTessellatedWire(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TextLiteral>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TextLiteral` (or subclass).
+    pub fn downcast_to_text_literal(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTextLiteral>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTextLiteral(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TextStyle>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TextStyle` (or subclass).
+    pub fn downcast_to_text_style(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTextStyle>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTextStyle(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TextStyleForDefinedFont>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TextStyleForDefinedFont` (or subclass).
+    pub fn downcast_to_text_style_for_defined_font(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTextStyleForDefinedFont>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTextStyleForDefinedFont(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TextStyleWithBoxCharacteristics>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TextStyleWithBoxCharacteristics` (or subclass).
+    pub fn downcast_to_text_style_with_box_characteristics(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTextStyleWithBoxCharacteristics>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTextStyleWithBoxCharacteristics(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TriangulatedFace>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TriangulatedFace` (or subclass).
+    pub fn downcast_to_triangulated_face(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTriangulatedFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTriangulatedFace(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_TriangulatedSurfaceSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TriangulatedSurfaceSet` (or subclass).
+    pub fn downcast_to_triangulated_surface_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTriangulatedSurfaceSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualTriangulatedSurfaceSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StepVisual_ViewVolume>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_ViewVolume` (or subclass).
+    pub fn downcast_to_view_volume(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualViewVolume>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStepVisualViewVolume(
                 self as *const Self,
             )
         };
@@ -23217,9 +44361,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<TDF_Reference>
     ///
     /// Returns `None` if the handle does not point to a `TDF_Reference` (or subclass).
-    pub fn downcast_to_tdf_reference(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFReference>> {
+    pub fn downcast_to_reference(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFReference>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleTDFReference(self as *const Self)
         };
@@ -23758,7 +44900,9 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<TDataStd_Name>
     ///
     /// Returns `None` if the handle does not point to a `TDataStd_Name` (or subclass).
-    pub fn downcast_to_name(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdName>> {
+    pub fn downcast_to_t_data_std_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdName>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleTDataStdName(self as *const Self)
         };
@@ -24066,7 +45210,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<TDataXtd_Placement>
     ///
     /// Returns `None` if the handle does not point to a `TDataXtd_Placement` (or subclass).
-    pub fn downcast_to_placement(
+    pub fn downcast_to_t_data_xtd_placement(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPlacement>> {
         let ptr = unsafe {
@@ -24100,7 +45244,9 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<TDataXtd_Point>
     ///
     /// Returns `None` if the handle does not point to a `TDataXtd_Point` (or subclass).
-    pub fn downcast_to_point(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPoint>> {
+    pub fn downcast_to_t_data_xtd_point(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPoint>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleTDataXtdPoint(self as *const Self)
         };
@@ -24181,24 +45327,6 @@ impl HandleStandardTransient {
         }
     }
 
-    /// Downcast Handle<Standard_Transient> to Handle<TDocStd_Application>
-    ///
-    /// Returns `None` if the handle does not point to a `TDocStd_Application` (or subclass).
-    pub fn downcast_to_t_doc_std_application(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdApplication>> {
-        let ptr = unsafe {
-            crate::ffi::HandleStandardTransient_downcast_to_HandleTDocStdApplication(
-                self as *const Self,
-            )
-        };
-        if ptr.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
-        }
-    }
-
     /// Downcast Handle<Standard_Transient> to Handle<TDocStd_ApplicationDelta>
     ///
     /// Returns `None` if the handle does not point to a `TDocStd_ApplicationDelta` (or subclass).
@@ -24225,24 +45353,6 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdCompoundDelta>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleTDocStdCompoundDelta(
-                self as *const Self,
-            )
-        };
-        if ptr.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
-        }
-    }
-
-    /// Downcast Handle<Standard_Transient> to Handle<TDocStd_Document>
-    ///
-    /// Returns `None` if the handle does not point to a `TDocStd_Document` (or subclass).
-    pub fn downcast_to_document(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdDocument>> {
-        let ptr = unsafe {
-            crate::ffi::HandleStandardTransient_downcast_to_HandleTDocStdDocument(
                 self as *const Self,
             )
         };
@@ -24543,24 +45653,6 @@ impl HandleStandardTransient {
         }
     }
 
-    /// Downcast Handle<Standard_Transient> to Handle<TObj_Application>
-    ///
-    /// Returns `None` if the handle does not point to a `TObj_Application` (or subclass).
-    pub fn downcast_to_t_obj_application(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjApplication>> {
-        let ptr = unsafe {
-            crate::ffi::HandleStandardTransient_downcast_to_HandleTObjApplication(
-                self as *const Self,
-            )
-        };
-        if ptr.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
-        }
-    }
-
     /// Downcast Handle<Standard_Transient> to Handle<TObj_CheckModel>
     ///
     /// Returns `None` if the handle does not point to a `TObj_CheckModel` (or subclass).
@@ -24636,7 +45728,9 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<TObj_Object>
     ///
     /// Returns `None` if the handle does not point to a `TObj_Object` (or subclass).
-    pub fn downcast_to_object(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjObject>> {
+    pub fn downcast_to_t_obj_object(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjObject>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleTObjObject(self as *const Self)
         };
@@ -24917,6 +46011,96 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRepBuild_HBuilder>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepBuild_HBuilder` (or subclass).
+    pub fn downcast_to_h_builder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepBuildHBuilder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepBuildHBuilder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRepBuild_Loop>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepBuild_Loop` (or subclass).
+    pub fn downcast_to_top_ope_b_rep_build_loop(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepBuildLoop>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepBuildLoop(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRepBuild_Pave>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepBuild_Pave` (or subclass).
+    pub fn downcast_to_pave(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepBuildPave>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepBuildPave(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRepDS_Association>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepDS_Association` (or subclass).
+    pub fn downcast_to_association(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSAssociation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepDSAssociation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRepDS_Check>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepDS_Check` (or subclass).
+    pub fn downcast_to_top_ope_b_rep_ds_check(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSCheck>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepDSCheck(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRepDS_CurvePointInterference>
     ///
     /// Returns `None` if the handle does not point to a `TopOpeBRepDS_CurvePointInterference` (or subclass).
@@ -24925,6 +46109,96 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSCurvePointInterference>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepDSCurvePointInterference(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRepDS_EdgeVertexInterference>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepDS_EdgeVertexInterference` (or subclass).
+    pub fn downcast_to_edge_vertex_interference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepDSEdgeVertexInterference(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRepDS_FaceEdgeInterference>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepDS_FaceEdgeInterference` (or subclass).
+    pub fn downcast_to_face_edge_interference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepDSFaceEdgeInterference(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRepDS_GapTool>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepDS_GapTool` (or subclass).
+    pub fn downcast_to_gap_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSGapTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepDSGapTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference` (or subclass).
+    pub fn downcast_to_h_array1_of_data_map_of_integer_list_of_interference(
+        &self,
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference>,
+    > {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRepDS_HDataStructure>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepDS_HDataStructure` (or subclass).
+    pub fn downcast_to_h_data_structure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSHDataStructure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepDSHDataStructure(
                 self as *const Self,
             )
         };
@@ -24953,6 +46227,58 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRepDS_Marker>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepDS_Marker` (or subclass).
+    pub fn downcast_to_marker(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSMarker>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepDSMarker(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRepDS_ShapeShapeInterference>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepDS_ShapeShapeInterference` (or subclass).
+    pub fn downcast_to_shape_shape_interference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSShapeShapeInterference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepDSShapeShapeInterference(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRepDS_SolidSurfaceInterference>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepDS_SolidSurfaceInterference` (or subclass).
+    pub fn downcast_to_solid_surface_interference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepDSSolidSurfaceInterference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRepDS_SurfaceCurveInterference>
     ///
     /// Returns `None` if the handle does not point to a `TopOpeBRepDS_SurfaceCurveInterference` (or subclass).
@@ -24961,6 +46287,114 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepDSSurfaceCurveInterference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRepTool_HBoxTool>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepTool_HBoxTool` (or subclass).
+    pub fn downcast_to_h_box_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepToolHBoxTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepToolHBoxTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRep_FFDumper>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRep_FFDumper` (or subclass).
+    pub fn downcast_to_ff_dumper(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepFFDumper>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepFFDumper(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRep_HArray1OfLineInter>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRep_HArray1OfLineInter` (or subclass).
+    pub fn downcast_to_h_array1_of_line_inter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepHArray1OfLineInter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepHArray1OfLineInter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRep_HArray1OfVPointInter>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRep_HArray1OfVPointInter` (or subclass).
+    pub fn downcast_to_h_array1_of_v_point_inter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepHArray1OfVPointInter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepHArray1OfVPointInter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRep_Hctxee2d>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRep_Hctxee2d` (or subclass).
+    pub fn downcast_to_hctxee2d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepHctxee2d>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepHctxee2d(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TopOpeBRep_Hctxff2d>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRep_Hctxff2d` (or subclass).
+    pub fn downcast_to_hctxff2d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepHctxff2d>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopOpeBRepHctxff2d(
+                self as *const Self,
+            )
         };
         if ptr.is_null() {
             None
@@ -25261,6 +46695,112 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSUnCompatibleShapes>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleTopoDSUnCompatibleShapes(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TransferBRep_BinderOfShape>
+    ///
+    /// Returns `None` if the handle does not point to a `TransferBRep_BinderOfShape` (or subclass).
+    pub fn downcast_to_binder_of_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferBRepBinderOfShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferBRepBinderOfShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TransferBRep_HSequenceOfTransferResultInfo>
+    ///
+    /// Returns `None` if the handle does not point to a `TransferBRep_HSequenceOfTransferResultInfo` (or subclass).
+    pub fn downcast_to_h_sequence_of_transfer_result_info(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferBRepHSequenceOfTransferResultInfo>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferBRepHSequenceOfTransferResultInfo(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TransferBRep_ShapeBinder>
+    ///
+    /// Returns `None` if the handle does not point to a `TransferBRep_ShapeBinder` (or subclass).
+    pub fn downcast_to_shape_binder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferBRepShapeBinder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferBRepShapeBinder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TransferBRep_ShapeListBinder>
+    ///
+    /// Returns `None` if the handle does not point to a `TransferBRep_ShapeListBinder` (or subclass).
+    pub fn downcast_to_shape_list_binder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferBRepShapeListBinder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferBRepShapeListBinder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TransferBRep_ShapeMapper>
+    ///
+    /// Returns `None` if the handle does not point to a `TransferBRep_ShapeMapper` (or subclass).
+    pub fn downcast_to_shape_mapper(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferBRepShapeMapper>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferBRepShapeMapper(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TransferBRep_TransferResultInfo>
+    ///
+    /// Returns `None` if the handle does not point to a `TransferBRep_TransferResultInfo` (or subclass).
+    pub fn downcast_to_transfer_result_info(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferBRepTransferResultInfo>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferBRepTransferResultInfo(
                 self as *const Self,
             )
         };
@@ -25939,14 +47479,634 @@ impl HandleStandardTransient {
         }
     }
 
-    /// Downcast Handle<Standard_Transient> to Handle<XCAFApp_Application>
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlAPI_CafReader>
     ///
-    /// Returns `None` if the handle does not point to a `XCAFApp_Application` (or subclass).
-    pub fn downcast_to_xcaf_app_application(
+    /// Returns `None` if the handle does not point to a `VrmlAPI_CafReader` (or subclass).
+    pub fn downcast_to_vrml_api_caf_reader(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFAppApplication>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlAPICafReader>> {
         let ptr = unsafe {
-            crate::ffi::HandleStandardTransient_downcast_to_HandleXCAFAppApplication(
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlAPICafReader(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlConverter_Drawer>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlConverter_Drawer` (or subclass).
+    pub fn downcast_to_drawer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlConverterDrawer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlConverterDrawer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlConverter_IsoAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlConverter_IsoAspect` (or subclass).
+    pub fn downcast_to_iso_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlConverterIsoAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlConverterIsoAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlConverter_LineAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlConverter_LineAspect` (or subclass).
+    pub fn downcast_to_line_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlConverterLineAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlConverterLineAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlConverter_PointAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlConverter_PointAspect` (or subclass).
+    pub fn downcast_to_point_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlConverterPointAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlConverterPointAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlConverter_Projector>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlConverter_Projector` (or subclass).
+    pub fn downcast_to_projector(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlConverterProjector>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlConverterProjector(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlConverter_ShadingAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlConverter_ShadingAspect` (or subclass).
+    pub fn downcast_to_shading_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlConverterShadingAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlConverterShadingAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_Appearance>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_Appearance` (or subclass).
+    pub fn downcast_to_appearance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataAppearance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataAppearance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_ArrayVec3d>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_ArrayVec3d` (or subclass).
+    pub fn downcast_to_array_vec3d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataArrayVec3d>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataArrayVec3d(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_Box>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_Box` (or subclass).
+    pub fn downcast_to_box(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataBox>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataBox(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_Color>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_Color` (or subclass).
+    pub fn downcast_to_vrml_data_color(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataColor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataColor(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_Cone>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_Cone` (or subclass).
+    pub fn downcast_to_cone(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataCone>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataCone(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_Coordinate>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_Coordinate` (or subclass).
+    pub fn downcast_to_coordinate(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataCoordinate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataCoordinate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_Cylinder>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_Cylinder` (or subclass).
+    pub fn downcast_to_vrml_data_cylinder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataCylinder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataCylinder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_Faceted>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_Faceted` (or subclass).
+    pub fn downcast_to_faceted(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataFaceted>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataFaceted(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_Group>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_Group` (or subclass).
+    pub fn downcast_to_vrml_data_group(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataGroup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataGroup(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_ImageTexture>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_ImageTexture` (or subclass).
+    pub fn downcast_to_image_texture(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataImageTexture>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataImageTexture(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_IndexedFaceSet>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_IndexedFaceSet` (or subclass).
+    pub fn downcast_to_vrml_data_indexed_face_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataIndexedFaceSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataIndexedFaceSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_IndexedLineSet>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_IndexedLineSet` (or subclass).
+    pub fn downcast_to_vrml_data_indexed_line_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataIndexedLineSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataIndexedLineSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_Material>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_Material` (or subclass).
+    pub fn downcast_to_vrml_data_material(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataMaterial>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataMaterial(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_Normal>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_Normal` (or subclass).
+    pub fn downcast_to_vrml_data_normal(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataNormal>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataNormal(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_ShapeNode>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_ShapeNode` (or subclass).
+    pub fn downcast_to_shape_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataShapeNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataShapeNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_Sphere>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_Sphere` (or subclass).
+    pub fn downcast_to_vrml_data_sphere(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataSphere>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataSphere(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_Texture>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_Texture` (or subclass).
+    pub fn downcast_to_texture(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataTexture>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataTexture(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_TextureCoordinate>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_TextureCoordinate` (or subclass).
+    pub fn downcast_to_texture_coordinate(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataTextureCoordinate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataTextureCoordinate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_TextureTransform>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_TextureTransform` (or subclass).
+    pub fn downcast_to_texture_transform(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataTextureTransform>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataTextureTransform(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_UnknownNode>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_UnknownNode` (or subclass).
+    pub fn downcast_to_unknown_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataUnknownNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataUnknownNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<VrmlData_WorldInfo>
+    ///
+    /// Returns `None` if the handle does not point to a `VrmlData_WorldInfo` (or subclass).
+    pub fn downcast_to_world_info(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataWorldInfo>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlDataWorldInfo(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Vrml_AsciiText>
+    ///
+    /// Returns `None` if the handle does not point to a `Vrml_AsciiText` (or subclass).
+    pub fn downcast_to_ascii_text(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlAsciiText>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlAsciiText(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Vrml_Coordinate3>
+    ///
+    /// Returns `None` if the handle does not point to a `Vrml_Coordinate3` (or subclass).
+    pub fn downcast_to_coordinate3(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlCoordinate3>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlCoordinate3(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Vrml_IndexedFaceSet>
+    ///
+    /// Returns `None` if the handle does not point to a `Vrml_IndexedFaceSet` (or subclass).
+    pub fn downcast_to_vrml_indexed_face_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlIndexedFaceSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlIndexedFaceSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Vrml_IndexedLineSet>
+    ///
+    /// Returns `None` if the handle does not point to a `Vrml_IndexedLineSet` (or subclass).
+    pub fn downcast_to_vrml_indexed_line_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlIndexedLineSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlIndexedLineSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Vrml_LOD>
+    ///
+    /// Returns `None` if the handle does not point to a `Vrml_LOD` (or subclass).
+    pub fn downcast_to_lod(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlLOD>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlLOD(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Vrml_Material>
+    ///
+    /// Returns `None` if the handle does not point to a `Vrml_Material` (or subclass).
+    pub fn downcast_to_vrml_material(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlMaterial>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlMaterial(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Vrml_Normal>
+    ///
+    /// Returns `None` if the handle does not point to a `Vrml_Normal` (or subclass).
+    pub fn downcast_to_vrml_normal(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlNormal>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlNormal(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Vrml_SFImage>
+    ///
+    /// Returns `None` if the handle does not point to a `Vrml_SFImage` (or subclass).
+    pub fn downcast_to_sf_image(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlSFImage>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlSFImage(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Vrml_TextureCoordinate2>
+    ///
+    /// Returns `None` if the handle does not point to a `Vrml_TextureCoordinate2` (or subclass).
+    pub fn downcast_to_texture_coordinate2(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlTextureCoordinate2>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleVrmlTextureCoordinate2(
                 self as *const Self,
             )
         };
@@ -26098,7 +48258,9 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<XCAFDoc_Color>
     ///
     /// Returns `None` if the handle does not point to a `XCAFDoc_Color` (or subclass).
-    pub fn downcast_to_color(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocColor>> {
+    pub fn downcast_to_xcaf_doc_color(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocColor>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleXCAFDocColor(self as *const Self)
         };
@@ -26268,7 +48430,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<XCAFDoc_LengthUnit>
     ///
     /// Returns `None` if the handle does not point to a `XCAFDoc_LengthUnit` (or subclass).
-    pub fn downcast_to_length_unit(
+    pub fn downcast_to_xcaf_doc_length_unit(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocLengthUnit>> {
         let ptr = unsafe {
@@ -26304,7 +48466,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<XCAFDoc_Material>
     ///
     /// Returns `None` if the handle does not point to a `XCAFDoc_Material` (or subclass).
-    pub fn downcast_to_material(
+    pub fn downcast_to_xcaf_doc_material(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocMaterial>> {
         let ptr = unsafe {
@@ -26462,7 +48624,9 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<XCAFDoc_View>
     ///
     /// Returns `None` if the handle does not point to a `XCAFDoc_View` (or subclass).
-    pub fn downcast_to_view(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocView>> {
+    pub fn downcast_to_xcaf_doc_view(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocView>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleXCAFDocView(self as *const Self)
         };
@@ -26559,6 +48723,42 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<XCAFView_Object>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFView_Object` (or subclass).
+    pub fn downcast_to_xcaf_view_object(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFViewObject>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXCAFViewObject(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XSAlgo_AlgoContainer>
+    ///
+    /// Returns `None` if the handle does not point to a `XSAlgo_AlgoContainer` (or subclass).
+    pub fn downcast_to_xs_algo_algo_container(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXSAlgoAlgoContainer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXSAlgoAlgoContainer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<XSControl_ConnectedShapes>
     ///
     /// Returns `None` if the handle does not point to a `XSControl_ConnectedShapes` (or subclass).
@@ -26580,7 +48780,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<XSControl_SelectForTransfer>
     ///
     /// Returns `None` if the handle does not point to a `XSControl_SelectForTransfer` (or subclass).
-    pub fn downcast_to_select_for_transfer(
+    pub fn downcast_to_xs_control_select_for_transfer(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXSControlSelectForTransfer>> {
         let ptr = unsafe {

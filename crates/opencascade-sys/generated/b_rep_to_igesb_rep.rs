@@ -128,6 +128,75 @@ impl Entity {
         }
     }
 
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:100 - `BRepToIGESBRep_Entity::TransferWire()`
+    /// Transfert a Wire entity from TopoDS to IGES.
+    /// Returns the curve associated to mywire in the parametric space of myface.
+    /// If this Entity could not be converted, this member returns a NullEntity.
+    pub fn transfer_wire(
+        &mut self,
+        mywire: &crate::topo_ds::Wire,
+        myface: &crate::topo_ds::Face,
+        length: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESSolidLoop> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_transfer_wire(
+                self as *mut Self,
+                mywire,
+                myface,
+                length,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:106 - `BRepToIGESBRep_Entity::TransferFace()`
+    /// Transfert a Face entity from TopoDS to IGES
+    /// If this Entity could not be converted, this member returns a NullEntity.
+    pub fn transfer_face(
+        &mut self,
+        start: &crate::topo_ds::Face,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESSolidFace> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_transfer_face(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:110 - `BRepToIGESBRep_Entity::TransferShell()`
+    /// Transfert an Shell entity from TopoDS to IGES
+    /// If this Entity could not be converted, this member returns a NullEntity.
+    pub fn transfer_shell(
+        &mut self,
+        start: &crate::topo_ds::Shell,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESSolidShell> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_transfer_shell(
+                self as *mut Self,
+                start,
+                theProgress,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:116 - `BRepToIGESBRep_Entity::TransferSolid()`
+    /// Transfert a Solid entity from TopoDS to IGES
+    /// If this Entity could not be converted, this member returns a NullEntity.
+    pub fn transfer_solid(
+        &mut self,
+        start: &crate::topo_ds::Solid,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESSolidManifoldSolid> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_transfer_solid(
+                self as *mut Self,
+                start,
+                theProgress,
+            ))
+        }
+    }
+
     /// **Source:** `BRepToIGESBRep_Entity.hxx`:122 - `BRepToIGESBRep_Entity::TransferCompSolid()`
     /// Transfert an CompSolid entity from TopoDS to IGES
     /// If this Entity could not be converted, this member returns a NullEntity.
@@ -177,6 +246,20 @@ impl Entity {
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:44 - `BRepToIGES_BREntity::Init()`
     pub fn init(&mut self) {
         unsafe { crate::ffi::BRepToIGESBRep_Entity_inherited_Init(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:47 - `BRepToIGES_BREntity::SetModel()`
+    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+        unsafe { crate::ffi::BRepToIGESBRep_Entity_inherited_SetModel(self as *mut Self, model) }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:50 - `BRepToIGES_BREntity::GetModel()`
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_inherited_GetModel(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:54 - `BRepToIGES_BREntity::GetUnit()`
@@ -247,30 +330,3 @@ impl Entity {
         unsafe { crate::ffi::BRepToIGESBRep_Entity_inherited_GetPCurveMode(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for Entity (4 total) ──
-// SKIPPED: **Source:** `BRepToIGESBRep_Entity.hxx`:100 - `BRepToIGESBRep_Entity::TransferWire`
-//   method: Transfert a Wire entity from TopoDS to IGES.
-//   method: Returns the curve associated to mywire in the parametric space of myface.
-//   method: If this Entity could not be converted, this member returns a NullEntity.
-//   Reason: return type 'Handle(IGESSolid_Loop)' is unknown
-//   // pub fn transfer_wire(&mut self, mywire: &Wire, myface: &Face, length: f64) -> OwnedPtr<Handle<IGESSolid_Loop>>;
-//
-// SKIPPED: **Source:** `BRepToIGESBRep_Entity.hxx`:106 - `BRepToIGESBRep_Entity::TransferFace`
-//   method: Transfert a Face entity from TopoDS to IGES
-//   method: If this Entity could not be converted, this member returns a NullEntity.
-//   Reason: return type 'Handle(IGESSolid_Face)' is unknown
-//   // pub fn transfer_face(&mut self, start: &Face) -> OwnedPtr<Handle<IGESSolid_Face>>;
-//
-// SKIPPED: **Source:** `BRepToIGESBRep_Entity.hxx`:110 - `BRepToIGESBRep_Entity::TransferShell`
-//   method: Transfert an Shell entity from TopoDS to IGES
-//   method: If this Entity could not be converted, this member returns a NullEntity.
-//   Reason: return type 'Handle(IGESSolid_Shell)' is unknown
-//   // pub fn transfer_shell(&mut self, start: &Shell, theProgress: &ProgressRange) -> OwnedPtr<Handle<IGESSolid_Shell>>;
-//
-// SKIPPED: **Source:** `BRepToIGESBRep_Entity.hxx`:116 - `BRepToIGESBRep_Entity::TransferSolid`
-//   method: Transfert a Solid entity from TopoDS to IGES
-//   method: If this Entity could not be converted, this member returns a NullEntity.
-//   Reason: return type 'Handle(IGESSolid_ManifoldSolid)' is unknown
-//   // pub fn transfer_solid(&mut self, start: &Solid, theProgress: &ProgressRange) -> OwnedPtr<Handle<IGESSolid_ManifoldSolid>>;
-//

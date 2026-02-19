@@ -34,6 +34,22 @@ impl BREntity {
         unsafe { crate::ffi::BRepToIGES_BREntity_init(self as *mut Self) }
     }
 
+    /// **Source:** `BRepToIGES_BREntity.hxx`:47 - `BRepToIGES_BREntity::SetModel()`
+    /// Set the value of "TheModel"
+    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+        unsafe { crate::ffi::BRepToIGES_BREntity_set_model(self as *mut Self, model) }
+    }
+
+    /// **Source:** `BRepToIGES_BREntity.hxx`:50 - `BRepToIGES_BREntity::GetModel()`
+    /// Returns the value of "TheModel"
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BREntity_get_model(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `BRepToIGES_BREntity.hxx`:54 - `BRepToIGES_BREntity::GetUnit()`
     /// Returns the value of the UnitFlag of the header of the model
     /// in meters.
@@ -237,18 +253,6 @@ impl BREntity {
     }
 }
 
-// ── Skipped symbols for BREntity (2 total) ──
-// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:47 - `BRepToIGES_BREntity::SetModel`
-//   method: Set the value of "TheModel"
-//   Reason: param 'model' uses unknown type 'const Handle(IGESData_IGESModel)&'
-//   // pub fn set_model(&mut self, model: &HandleIGESModel);
-//
-// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:50 - `BRepToIGES_BREntity::GetModel`
-//   method: Returns the value of "TheModel"
-//   Reason: return type 'Handle(IGESData_IGESModel)' is unknown
-//   // pub fn get_model(&self) -> OwnedPtr<Handle<IGESData_IGESModel>>;
-//
-
 // ========================
 // From BRepToIGES_BRShell.hxx
 // ========================
@@ -349,6 +353,20 @@ impl BRShell {
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:44 - `BRepToIGES_BREntity::Init()`
     pub fn init(&mut self) {
         unsafe { crate::ffi::BRepToIGES_BRShell_inherited_Init(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:47 - `BRepToIGES_BREntity::SetModel()`
+    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+        unsafe { crate::ffi::BRepToIGES_BRShell_inherited_SetModel(self as *mut Self, model) }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:50 - `BRepToIGES_BREntity::GetModel()`
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRShell_inherited_GetModel(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:54 - `BRepToIGES_BREntity::GetUnit()`
@@ -552,6 +570,20 @@ impl BRSolid {
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:44 - `BRepToIGES_BREntity::Init()`
     pub fn init(&mut self) {
         unsafe { crate::ffi::BRepToIGES_BRSolid_inherited_Init(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:47 - `BRepToIGES_BREntity::SetModel()`
+    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+        unsafe { crate::ffi::BRepToIGES_BRSolid_inherited_SetModel(self as *mut Self, model) }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:50 - `BRepToIGES_BREntity::GetModel()`
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRSolid_inherited_GetModel(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:54 - `BRepToIGES_BREntity::GetUnit()`
@@ -904,6 +936,20 @@ impl BRWire {
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:44 - `BRepToIGES_BREntity::Init()`
     pub fn init(&mut self) {
         unsafe { crate::ffi::BRepToIGES_BRWire_inherited_Init(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:47 - `BRepToIGES_BREntity::SetModel()`
+    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+        unsafe { crate::ffi::BRepToIGES_BRWire_inherited_SetModel(self as *mut Self, model) }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:50 - `BRepToIGES_BREntity::GetModel()`
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRWire_inherited_GetModel(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:54 - `BRepToIGES_BREntity::GetUnit()`

@@ -555,16 +555,6 @@ impl CafReader {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWGltf_CafReader_to_handle(obj.into_raw())) }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
-    pub fn document(&self) -> &crate::ffi::HandleTDocStdDocument {
-        unsafe { &*(crate::ffi::RWGltf_CafReader_inherited_Document(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
-    pub fn set_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
-        unsafe { crate::ffi::RWGltf_CafReader_inherited_SetDocument(self as *mut Self, theDoc) }
-    }
-
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
     pub fn root_prefix(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::RWGltf_CafReader_inherited_RootPrefix(self as *const Self)) }
@@ -1855,14 +1845,6 @@ impl GltfMaterialMap {
         unsafe { &*(crate::ffi::RWGltf_GltfMaterialMap_get_type_descriptor()) }
     }
 
-    /// **Source:** `RWGltf_GltfMaterialMap.hxx`:73 - `RWGltf_GltfMaterialMap::baseColorTexture()`
-    /// Return base color texture.
-    pub fn base_color_texture(
-        theMat: &crate::ffi::HandleXCAFDocVisMaterial,
-    ) -> &'static crate::ffi::HandleImageTexture {
-        unsafe { &*(crate::ffi::RWGltf_GltfMaterialMap_base_color_texture(theMat)) }
-    }
-
     /// Upcast to RWMesh_MaterialMap
     pub fn as_rw_mesh_material_map(&self) -> &crate::rw_mesh::MaterialMap {
         unsafe { &*(crate::ffi::RWGltf_GltfMaterialMap_as_RWMesh_MaterialMap(self as *const Self)) }
@@ -1896,57 +1878,10 @@ impl GltfMaterialMap {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:35 - `RWMesh_MaterialMap::DefaultStyle()`
-    pub fn default_style(&self) -> &crate::xcaf_prs::Style {
-        unsafe {
-            &*(crate::ffi::RWGltf_GltfMaterialMap_inherited_DefaultStyle(self as *const Self))
-        }
-    }
-
-    /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:38 - `RWMesh_MaterialMap::SetDefaultStyle()`
-    pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
-        unsafe {
-            crate::ffi::RWGltf_GltfMaterialMap_inherited_SetDefaultStyle(
-                self as *mut Self,
-                theStyle,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:41 - `RWMesh_MaterialMap::FindMaterial()`
-    pub fn find_material(
-        &self,
-        theStyle: &crate::xcaf_prs::Style,
-    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWGltf_GltfMaterialMap_inherited_FindMaterial(
-                self as *const Self,
-                theStyle,
-            ))
-        }
-    }
-
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:57 - `RWMesh_MaterialMap::CreateTextureFolder()`
     pub fn create_texture_folder(&mut self) -> bool {
         unsafe {
             crate::ffi::RWGltf_GltfMaterialMap_inherited_CreateTextureFolder(self as *mut Self)
-        }
-    }
-
-    /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:63 - `RWMesh_MaterialMap::CopyTexture()`
-    pub fn copy_texture(
-        &mut self,
-        theResTexture: &mut crate::t_collection::AsciiString,
-        theTexture: &crate::ffi::HandleImageTexture,
-        theKey: &crate::t_collection::AsciiString,
-    ) -> bool {
-        unsafe {
-            crate::ffi::RWGltf_GltfMaterialMap_inherited_CopyTexture(
-                self as *mut Self,
-                theResTexture,
-                theTexture,
-                theKey,
-            )
         }
     }
 
@@ -2034,7 +1969,7 @@ impl HandleRWGltfGltfMaterialMap {
     }
 }
 
-// ── Skipped symbols for GltfMaterialMap (6 total) ──
+// ── Skipped symbols for GltfMaterialMap (7 total) ──
 // SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:38 - `RWGltf_GltfMaterialMap::AddGlbImages`
 //   method: Add material images into GLB stream.
 //   method: @param[in][out] theBinFile   output file stream
@@ -2068,6 +2003,11 @@ impl HandleRWGltfGltfMaterialMap {
 //   method: Add material textures.
 //   Reason: has unbindable types: param 'theWriter': raw pointer (RWGltf_GltfOStreamWriter*)
 //   // pub fn add_textures(&mut self, theWriter: /* RWGltf_GltfOStreamWriter* */, theStyle: &Style, theIsStarted: &mut bool);
+//
+// SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:73 - `RWGltf_GltfMaterialMap::baseColorTexture`
+//   static_method: Return base color texture.
+//   Reason: return type 'const Handle(Image_Texture)&' is unknown
+//   // pub fn base_color_texture(theMat: &HandleVisMaterial) -> &HandleTexture;
 //
 
 // ========================

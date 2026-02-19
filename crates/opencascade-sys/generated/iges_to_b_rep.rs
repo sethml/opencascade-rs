@@ -13,8 +13,10 @@ pub fn init() {
 }
 /// **Source:** `IGESToBRep.hxx`:43 - `IGESToBRep::SetAlgoContainer`
 /// Sets default AlgoContainer
-pub fn set_algo_container(aContainer: &crate::ffi::HandleIGESToBRepAlgoContainer) {
-    unsafe { crate::ffi::IGESToBRep_set_algo_container(aContainer) }
+pub fn set_algo_container_handleigestobrepalgocontainer(
+    aContainer: &crate::ffi::HandleIGESToBRepAlgoContainer,
+) {
+    unsafe { crate::ffi::IGESToBRep_set_algo_container_handleigestobrepalgocontainer(aContainer) }
 }
 /// **Source:** `IGESToBRep.hxx`:46 - `IGESToBRep::AlgoContainer`
 /// Returns default AlgoContainer
@@ -676,6 +678,104 @@ impl BRepEntity {
         }
     }
 
+    /// **Source:** `IGESToBRep_BRepEntity.hxx`:72 - `IGESToBRep_BRepEntity::TransferVertex()`
+    /// Transfer the entity number "index" of the VertexList "start"
+    pub fn transfer_vertex(
+        &mut self,
+        start: &crate::ffi::HandleIGESSolidVertexList,
+        index: i32,
+    ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BRepEntity_transfer_vertex(
+                self as *mut Self,
+                start,
+                index,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BRepEntity.hxx`:76 - `IGESToBRep_BRepEntity::TransferEdge()`
+    /// Transfer the entity number "index" of the EdgeList "start".
+    pub fn transfer_edge(
+        &mut self,
+        start: &crate::ffi::HandleIGESSolidEdgeList,
+        index: i32,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BRepEntity_transfer_edge(
+                self as *mut Self,
+                start,
+                index,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BRepEntity.hxx`:80 - `IGESToBRep_BRepEntity::TransferLoop()`
+    /// Transfer the Loop Entity
+    pub fn transfer_loop(
+        &mut self,
+        start: &crate::ffi::HandleIGESSolidLoop,
+        Face: &crate::topo_ds::Face,
+        trans: &crate::gp::Trsf2d,
+        uFact: f64,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BRepEntity_transfer_loop(
+                self as *mut Self,
+                start,
+                Face,
+                trans,
+                uFact,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BRepEntity.hxx`:86 - `IGESToBRep_BRepEntity::TransferFace()`
+    /// Transfer the Face Entity
+    pub fn transfer_face(
+        &mut self,
+        start: &crate::ffi::HandleIGESSolidFace,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BRepEntity_transfer_face(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BRepEntity.hxx`:90 - `IGESToBRep_BRepEntity::TransferShell()`
+    /// Transfer the Shell Entity
+    pub fn transfer_shell(
+        &mut self,
+        start: &crate::ffi::HandleIGESSolidShell,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BRepEntity_transfer_shell(
+                self as *mut Self,
+                start,
+                theProgress,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BRepEntity.hxx`:95 - `IGESToBRep_BRepEntity::TransferManifoldSolid()`
+    /// Transfer the ManifoldSolid Entity
+    pub fn transfer_manifold_solid(
+        &mut self,
+        start: &crate::ffi::HandleIGESSolidManifoldSolid,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BRepEntity_transfer_manifold_solid(
+                self as *mut Self,
+                start,
+                theProgress,
+            ))
+        }
+    }
+
     /// Upcast to IGESToBRep_CurveAndSurface
     pub fn as_curve_and_surface(&self) -> &CurveAndSurface {
         unsafe {
@@ -803,6 +903,20 @@ impl BRepEntity {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
     pub fn get_surface_curve(&self) -> i32 {
         unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_GetSurfaceCurve(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel()`
+    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_SetModel(self as *mut Self, model) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel()`
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BRepEntity_inherited_GetModel(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
@@ -979,38 +1093,6 @@ impl BRepEntity {
     }
 }
 
-// ── Skipped symbols for BRepEntity (6 total) ──
-// SKIPPED: **Source:** `IGESToBRep_BRepEntity.hxx`:72 - `IGESToBRep_BRepEntity::TransferVertex`
-//   method: Transfer the entity number "index" of the VertexList "start"
-//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_VertexList)&'
-//   // pub fn transfer_vertex(&mut self, start: &HandleVertexList, index: i32) -> OwnedPtr<TopoDS_Vertex>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BRepEntity.hxx`:76 - `IGESToBRep_BRepEntity::TransferEdge`
-//   method: Transfer the entity number "index" of the EdgeList "start".
-//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_EdgeList)&'
-//   // pub fn transfer_edge(&mut self, start: &HandleEdgeList, index: i32) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BRepEntity.hxx`:80 - `IGESToBRep_BRepEntity::TransferLoop`
-//   method: Transfer the Loop Entity
-//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_Loop)&'
-//   // pub fn transfer_loop(&mut self, start: &HandleLoop, Face: &Face, trans: &Trsf2d, uFact: f64) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BRepEntity.hxx`:86 - `IGESToBRep_BRepEntity::TransferFace`
-//   method: Transfer the Face Entity
-//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_Face)&'
-//   // pub fn transfer_face(&mut self, start: &HandleFace) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BRepEntity.hxx`:90 - `IGESToBRep_BRepEntity::TransferShell`
-//   method: Transfer the Shell Entity
-//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_Shell)&'
-//   // pub fn transfer_shell(&mut self, start: &HandleShell, theProgress: &ProgressRange) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BRepEntity.hxx`:95 - `IGESToBRep_BRepEntity::TransferManifoldSolid`
-//   method: Transfer the ManifoldSolid Entity
-//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_ManifoldSolid)&'
-//   // pub fn transfer_manifold_solid(&mut self, start: &HandleManifoldSolid, theProgress: &ProgressRange) -> OwnedPtr<TopoDS_Shape>;
-//
-
 // ========================
 // From IGESToBRep_BasicCurve.hxx
 // ========================
@@ -1098,6 +1180,175 @@ impl BasicCurve {
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_transfer2d_basic_curve(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicCurve.hxx`:85 - `IGESToBRep_BasicCurve::TransferBSplineCurve()`
+    pub fn transfer_b_spline_curve(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomBSplineCurve,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_transfer_b_spline_curve(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicCurve.hxx`:88 - `IGESToBRep_BasicCurve::Transfer2dBSplineCurve()`
+    pub fn transfer2d_b_spline_curve(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomBSplineCurve,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_transfer2d_b_spline_curve(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicCurve.hxx`:91 - `IGESToBRep_BasicCurve::TransferCircularArc()`
+    pub fn transfer_circular_arc(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomCircularArc,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_transfer_circular_arc(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicCurve.hxx`:93 - `IGESToBRep_BasicCurve::Transfer2dCircularArc()`
+    pub fn transfer2d_circular_arc(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomCircularArc,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_transfer2d_circular_arc(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicCurve.hxx`:96 - `IGESToBRep_BasicCurve::TransferConicArc()`
+    pub fn transfer_conic_arc(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomConicArc,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_transfer_conic_arc(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicCurve.hxx`:98 - `IGESToBRep_BasicCurve::Transfer2dConicArc()`
+    pub fn transfer2d_conic_arc(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomConicArc,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_transfer2d_conic_arc(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicCurve.hxx`:100 - `IGESToBRep_BasicCurve::TransferCopiousData()`
+    pub fn transfer_copious_data(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomCopiousData,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_transfer_copious_data(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicCurve.hxx`:103 - `IGESToBRep_BasicCurve::Transfer2dCopiousData()`
+    pub fn transfer2d_copious_data(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomCopiousData,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_transfer2d_copious_data(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicCurve.hxx`:106 - `IGESToBRep_BasicCurve::TransferLine()`
+    pub fn transfer_line(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomLine,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_transfer_line(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicCurve.hxx`:108 - `IGESToBRep_BasicCurve::Transfer2dLine()`
+    pub fn transfer2d_line(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomLine,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_transfer2d_line(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicCurve.hxx`:110 - `IGESToBRep_BasicCurve::TransferSplineCurve()`
+    pub fn transfer_spline_curve(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomSplineCurve,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_transfer_spline_curve(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicCurve.hxx`:113 - `IGESToBRep_BasicCurve::Transfer2dSplineCurve()`
+    pub fn transfer2d_spline_curve(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomSplineCurve,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_transfer2d_spline_curve(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicCurve.hxx`:116 - `IGESToBRep_BasicCurve::TransferTransformation()`
+    pub fn transfer_transformation(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomTransformationMatrix,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomTransformation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_transfer_transformation(
                 self as *mut Self,
                 start,
             ))
@@ -1231,6 +1482,20 @@ impl BasicCurve {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
     pub fn get_surface_curve(&self) -> i32 {
         unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_GetSurfaceCurve(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel()`
+    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_SetModel(self as *mut Self, model) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel()`
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_inherited_GetModel(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
@@ -1407,60 +1672,6 @@ impl BasicCurve {
     }
 }
 
-// ── Skipped symbols for BasicCurve (13 total) ──
-// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:85 - `IGESToBRep_BasicCurve::TransferBSplineCurve`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_BSplineCurve)&'
-//   // pub fn transfer_b_spline_curve(&mut self, start: &HandleBSplineCurve) -> OwnedPtr<Handle<Geom_Curve>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:88 - `IGESToBRep_BasicCurve::Transfer2dBSplineCurve`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_BSplineCurve)&'
-//   // pub fn transfer2d_b_spline_curve(&mut self, start: &HandleBSplineCurve) -> OwnedPtr<Handle<Geom2d_Curve>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:91 - `IGESToBRep_BasicCurve::TransferCircularArc`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_CircularArc)&'
-//   // pub fn transfer_circular_arc(&mut self, start: &HandleCircularArc) -> OwnedPtr<Handle<Geom_Curve>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:93 - `IGESToBRep_BasicCurve::Transfer2dCircularArc`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_CircularArc)&'
-//   // pub fn transfer2d_circular_arc(&mut self, start: &HandleCircularArc) -> OwnedPtr<Handle<Geom2d_Curve>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:96 - `IGESToBRep_BasicCurve::TransferConicArc`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_ConicArc)&'
-//   // pub fn transfer_conic_arc(&mut self, start: &HandleConicArc) -> OwnedPtr<Handle<Geom_Curve>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:98 - `IGESToBRep_BasicCurve::Transfer2dConicArc`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_ConicArc)&'
-//   // pub fn transfer2d_conic_arc(&mut self, start: &HandleConicArc) -> OwnedPtr<Handle<Geom2d_Curve>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:100 - `IGESToBRep_BasicCurve::TransferCopiousData`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_CopiousData)&'
-//   // pub fn transfer_copious_data(&mut self, start: &HandleCopiousData) -> OwnedPtr<Handle<Geom_BSplineCurve>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:103 - `IGESToBRep_BasicCurve::Transfer2dCopiousData`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_CopiousData)&'
-//   // pub fn transfer2d_copious_data(&mut self, start: &HandleCopiousData) -> OwnedPtr<Handle<Geom2d_BSplineCurve>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:106 - `IGESToBRep_BasicCurve::TransferLine`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_Line)&'
-//   // pub fn transfer_line(&mut self, start: &HandleLine) -> OwnedPtr<Handle<Geom_Curve>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:108 - `IGESToBRep_BasicCurve::Transfer2dLine`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_Line)&'
-//   // pub fn transfer2d_line(&mut self, start: &HandleLine) -> OwnedPtr<Handle<Geom2d_Curve>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:110 - `IGESToBRep_BasicCurve::TransferSplineCurve`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_SplineCurve)&'
-//   // pub fn transfer_spline_curve(&mut self, start: &HandleSplineCurve) -> OwnedPtr<Handle<Geom_BSplineCurve>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:113 - `IGESToBRep_BasicCurve::Transfer2dSplineCurve`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_SplineCurve)&'
-//   // pub fn transfer2d_spline_curve(&mut self, start: &HandleSplineCurve) -> OwnedPtr<Handle<Geom2d_BSplineCurve>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:116 - `IGESToBRep_BasicCurve::TransferTransformation`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_TransformationMatrix)&'
-//   // pub fn transfer_transformation(&mut self, start: &HandleTransformationMatrix) -> OwnedPtr<Handle<Geom_Transformation>>;
-//
-
 // ========================
 // From IGESToBRep_BasicSurface.hxx
 // ========================
@@ -1525,6 +1736,114 @@ impl BasicSurface {
                 self as *mut Self,
                 start,
             ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicSurface.hxx`:73 - `IGESToBRep_BasicSurface::TransferPlaneSurface()`
+    /// Returns Plane from Geom if the transfer has succeeded.
+    pub fn transfer_plane_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESSolidPlaneSurface,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicSurface_transfer_plane_surface(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicSurface.hxx`:77 - `IGESToBRep_BasicSurface::TransferRigthCylindricalSurface()`
+    /// Returns CylindricalSurface from Geom if the transfer has succeeded.
+    pub fn transfer_rigth_cylindrical_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESSolidCylindricalSurface,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCylindricalSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_BasicSurface_transfer_rigth_cylindrical_surface(
+                    self as *mut Self,
+                    start,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicSurface.hxx`:81 - `IGESToBRep_BasicSurface::TransferRigthConicalSurface()`
+    /// Returns ConicalSurface from Geom if the transfer has succeeded.
+    pub fn transfer_rigth_conical_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESSolidConicalSurface,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomConicalSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_BasicSurface_transfer_rigth_conical_surface(
+                    self as *mut Self,
+                    start,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicSurface.hxx`:85 - `IGESToBRep_BasicSurface::TransferSphericalSurface()`
+    /// Returns SphericalSurface from Geom if the transfer has succeeded.
+    pub fn transfer_spherical_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESSolidSphericalSurface,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomSphericalSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_BasicSurface_transfer_spherical_surface(
+                    self as *mut Self,
+                    start,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicSurface.hxx`:89 - `IGESToBRep_BasicSurface::TransferToroidalSurface()`
+    /// Returns SphericalSurface from Geom if the transfer has succeeded.
+    pub fn transfer_toroidal_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESSolidToroidalSurface,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomToroidalSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_BasicSurface_transfer_toroidal_surface(
+                    self as *mut Self,
+                    start,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicSurface.hxx`:93 - `IGESToBRep_BasicSurface::TransferSplineSurface()`
+    /// Returns BSplineSurface  from Geom if the transfer has succeeded.
+    pub fn transfer_spline_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomSplineSurface,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicSurface_transfer_spline_surface(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicSurface.hxx`:97 - `IGESToBRep_BasicSurface::TransferBSplineSurface()`
+    /// Returns BSplineSurface  from Geom if the transfer has succeeded.
+    pub fn transfer_b_spline_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomBSplineSurface,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_BasicSurface_transfer_b_spline_surface(
+                    self as *mut Self,
+                    start,
+                ),
+            )
         }
     }
 
@@ -1664,6 +1983,20 @@ impl BasicSurface {
     pub fn get_surface_curve(&self) -> i32 {
         unsafe {
             crate::ffi::IGESToBRep_BasicSurface_inherited_GetSurfaceCurve(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel()`
+    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+        unsafe { crate::ffi::IGESToBRep_BasicSurface_inherited_SetModel(self as *mut Self, model) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel()`
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicSurface_inherited_GetModel(
+                self as *const Self,
+            ))
         }
     }
 
@@ -1852,43 +2185,6 @@ impl BasicSurface {
     }
 }
 
-// ── Skipped symbols for BasicSurface (7 total) ──
-// SKIPPED: **Source:** `IGESToBRep_BasicSurface.hxx`:73 - `IGESToBRep_BasicSurface::TransferPlaneSurface`
-//   method: Returns Plane from Geom if the transfer has succeeded.
-//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_PlaneSurface)&'
-//   // pub fn transfer_plane_surface(&mut self, start: &HandlePlaneSurface) -> OwnedPtr<Handle<Geom_Plane>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BasicSurface.hxx`:77 - `IGESToBRep_BasicSurface::TransferRigthCylindricalSurface`
-//   method: Returns CylindricalSurface from Geom if the transfer has succeeded.
-//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_CylindricalSurface)&'
-//   // pub fn transfer_rigth_cylindrical_surface(&mut self, start: &HandleCylindricalSurface) -> OwnedPtr<Handle<Geom_CylindricalSurface>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BasicSurface.hxx`:81 - `IGESToBRep_BasicSurface::TransferRigthConicalSurface`
-//   method: Returns ConicalSurface from Geom if the transfer has succeeded.
-//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_ConicalSurface)&'
-//   // pub fn transfer_rigth_conical_surface(&mut self, start: &HandleConicalSurface) -> OwnedPtr<Handle<Geom_ConicalSurface>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BasicSurface.hxx`:85 - `IGESToBRep_BasicSurface::TransferSphericalSurface`
-//   method: Returns SphericalSurface from Geom if the transfer has succeeded.
-//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_SphericalSurface)&'
-//   // pub fn transfer_spherical_surface(&mut self, start: &HandleSphericalSurface) -> OwnedPtr<Handle<Geom_SphericalSurface>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BasicSurface.hxx`:89 - `IGESToBRep_BasicSurface::TransferToroidalSurface`
-//   method: Returns SphericalSurface from Geom if the transfer has succeeded.
-//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_ToroidalSurface)&'
-//   // pub fn transfer_toroidal_surface(&mut self, start: &HandleToroidalSurface) -> OwnedPtr<Handle<Geom_ToroidalSurface>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BasicSurface.hxx`:93 - `IGESToBRep_BasicSurface::TransferSplineSurface`
-//   method: Returns BSplineSurface  from Geom if the transfer has succeeded.
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_SplineSurface)&'
-//   // pub fn transfer_spline_surface(&mut self, start: &HandleSplineSurface) -> OwnedPtr<Handle<Geom_BSplineSurface>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_BasicSurface.hxx`:97 - `IGESToBRep_BasicSurface::TransferBSplineSurface`
-//   method: Returns BSplineSurface  from Geom if the transfer has succeeded.
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_BSplineSurface)&'
-//   // pub fn transfer_b_spline_surface(&mut self, start: &HandleBSplineSurface) -> OwnedPtr<Handle<Geom_BSplineSurface>>;
-//
-
 // ========================
 // From IGESToBRep_CurveAndSurface.hxx
 // ========================
@@ -2062,6 +2358,22 @@ impl CurveAndSurface {
     /// compute 2d
     pub fn get_surface_curve(&self) -> i32 {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_surface_curve(self as *const Self) }
+    }
+
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel()`
+    /// Set the value of "myModel"
+    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_model(self as *mut Self, model) }
+    }
+
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel()`
+    /// Returns the value of "myModel"
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_CurveAndSurface_get_model(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
@@ -2272,18 +2584,6 @@ impl CurveAndSurface {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_uv_resolution(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for CurveAndSurface (2 total) ──
-// SKIPPED: **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel`
-//   method: Set the value of "myModel"
-//   Reason: param 'model' uses unknown type 'const Handle(IGESData_IGESModel)&'
-//   // pub fn set_model(&mut self, model: &HandleIGESModel);
-//
-// SKIPPED: **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel`
-//   method: Returns the value of "myModel"
-//   Reason: return type 'Handle(IGESData_IGESModel)' is unknown
-//   // pub fn get_model(&self) -> OwnedPtr<Handle<IGESData_IGESModel>>;
-//
 
 // ========================
 // From IGESToBRep_IGESBoundary.hxx
@@ -2623,6 +2923,21 @@ impl Reader {
         unsafe { crate::ffi::IGESToBRep_Reader_load_file(self as *mut Self, c_filename.as_ptr()) }
     }
 
+    /// **Source:** `IGESToBRep_Reader.hxx`:54 - `IGESToBRep_Reader::SetModel()`
+    /// Specifies a Model to work on
+    /// Also clears the result and Done status, sets TransientProcess
+    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+        unsafe { crate::ffi::IGESToBRep_Reader_set_model(self as *mut Self, model) }
+    }
+
+    /// **Source:** `IGESToBRep_Reader.hxx`:57 - `IGESToBRep_Reader::Model()`
+    /// Returns the Model to be worked on.
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_Reader_model(self as *const Self))
+        }
+    }
+
     /// **Source:** `IGESToBRep_Reader.hxx`:61 - `IGESToBRep_Reader::SetTransientProcess()`
     /// Allows to set an already defined TransientProcess
     /// (to be called after LoadFile or SetModel)
@@ -2774,18 +3089,7 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (5 total) ──
-// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:54 - `IGESToBRep_Reader::SetModel`
-//   method: Specifies a Model to work on
-//   method: Also clears the result and Done status, sets TransientProcess
-//   Reason: param 'model' uses unknown type 'const Handle(IGESData_IGESModel)&'
-//   // pub fn set_model(&mut self, model: &HandleIGESModel);
-//
-// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:57 - `IGESToBRep_Reader::Model`
-//   method: Returns the Model to be worked on.
-//   Reason: return type 'Handle(IGESData_IGESModel)' is unknown
-//   // pub fn model(&self) -> OwnedPtr<Handle<IGESData_IGESModel>>;
-//
+// ── Skipped symbols for Reader (3 total) ──
 // SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:122 - `IGESToBRep_Reader::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: Parameters are moved from the input map.
@@ -3084,6 +3388,165 @@ impl TopoCurve {
         }
     }
 
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:85 - `IGESToBRep_TopoCurve::TransferPoint()`
+    pub fn transfer_point(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomPoint,
+    ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_transfer_point(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:87 - `IGESToBRep_TopoCurve::Transfer2dPoint()`
+    pub fn transfer2d_point(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomPoint,
+    ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_transfer2d_point(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:89 - `IGESToBRep_TopoCurve::TransferCompositeCurve()`
+    pub fn transfer_composite_curve(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomCompositeCurve,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_transfer_composite_curve(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:92 - `IGESToBRep_TopoCurve::Transfer2dCompositeCurve()`
+    pub fn transfer2d_composite_curve(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomCompositeCurve,
+        face: &crate::topo_ds::Face,
+        trans: &crate::gp::Trsf2d,
+        uFact: f64,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_transfer2d_composite_curve(
+                self as *mut Self,
+                start,
+                face,
+                trans,
+                uFact,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:97 - `IGESToBRep_TopoCurve::TransferOffsetCurve()`
+    pub fn transfer_offset_curve(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomOffsetCurve,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_transfer_offset_curve(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:99 - `IGESToBRep_TopoCurve::Transfer2dOffsetCurve()`
+    pub fn transfer2d_offset_curve(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomOffsetCurve,
+        face: &crate::topo_ds::Face,
+        trans: &crate::gp::Trsf2d,
+        uFact: f64,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_transfer2d_offset_curve(
+                self as *mut Self,
+                start,
+                face,
+                trans,
+                uFact,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:104 - `IGESToBRep_TopoCurve::TransferCurveOnSurface()`
+    pub fn transfer_curve_on_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomCurveOnSurface,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_transfer_curve_on_surface(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:108 - `IGESToBRep_TopoCurve::TransferCurveOnFace()`
+    /// Transfers a CurveOnSurface directly on a face to trim it.
+    /// The CurveOnSurface have to be defined Outer or Inner.
+    pub fn transfer_curve_on_face(
+        &mut self,
+        face: &mut crate::topo_ds::Face,
+        start: &crate::ffi::HandleIGESGeomCurveOnSurface,
+        trans: &crate::gp::Trsf2d,
+        uFact: f64,
+        IsCurv: bool,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_transfer_curve_on_face(
+                self as *mut Self,
+                face,
+                start,
+                trans,
+                uFact,
+                IsCurv,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:114 - `IGESToBRep_TopoCurve::TransferBoundary()`
+    pub fn transfer_boundary(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomBoundary,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_transfer_boundary(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:117 - `IGESToBRep_TopoCurve::TransferBoundaryOnFace()`
+    /// Transfers a Boundary directly on a face to trim it.
+    pub fn transfer_boundary_on_face(
+        &mut self,
+        face: &mut crate::topo_ds::Face,
+        start: &crate::ffi::HandleIGESGeomBoundary,
+        trans: &crate::gp::Trsf2d,
+        uFact: f64,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_transfer_boundary_on_face(
+                self as *mut Self,
+                face,
+                start,
+                trans,
+                uFact,
+            ))
+        }
+    }
+
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:122 - `IGESToBRep_TopoCurve::ApproxBSplineCurve()`
     pub fn approx_b_spline_curve(&mut self, start: &crate::ffi::HandleGeomBSplineCurve) {
         unsafe { crate::ffi::IGESToBRep_TopoCurve_approx_b_spline_curve(self as *mut Self, start) }
@@ -3280,6 +3743,20 @@ impl TopoCurve {
         unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_GetSurfaceCurve(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel()`
+    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_SetModel(self as *mut Self, model) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel()`
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_inherited_GetModel(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
     pub fn set_continuity(&mut self, continuity: i32) {
         unsafe {
@@ -3454,51 +3931,6 @@ impl TopoCurve {
     }
 }
 
-// ── Skipped symbols for TopoCurve (10 total) ──
-// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:85 - `IGESToBRep_TopoCurve::TransferPoint`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_Point)&'
-//   // pub fn transfer_point(&mut self, start: &HandlePoint) -> OwnedPtr<TopoDS_Vertex>;
-//
-// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:87 - `IGESToBRep_TopoCurve::Transfer2dPoint`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_Point)&'
-//   // pub fn transfer2d_point(&mut self, start: &HandlePoint) -> OwnedPtr<TopoDS_Vertex>;
-//
-// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:89 - `IGESToBRep_TopoCurve::TransferCompositeCurve`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_CompositeCurve)&'
-//   // pub fn transfer_composite_curve(&mut self, start: &HandleCompositeCurve) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:92 - `IGESToBRep_TopoCurve::Transfer2dCompositeCurve`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_CompositeCurve)&'
-//   // pub fn transfer2d_composite_curve(&mut self, start: &HandleCompositeCurve, face: &Face, trans: &Trsf2d, uFact: f64) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:97 - `IGESToBRep_TopoCurve::TransferOffsetCurve`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_OffsetCurve)&'
-//   // pub fn transfer_offset_curve(&mut self, start: &HandleOffsetCurve) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:99 - `IGESToBRep_TopoCurve::Transfer2dOffsetCurve`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_OffsetCurve)&'
-//   // pub fn transfer2d_offset_curve(&mut self, start: &HandleOffsetCurve, face: &Face, trans: &Trsf2d, uFact: f64) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:104 - `IGESToBRep_TopoCurve::TransferCurveOnSurface`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_CurveOnSurface)&'
-//   // pub fn transfer_curve_on_surface(&mut self, start: &HandleCurveOnSurface) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:108 - `IGESToBRep_TopoCurve::TransferCurveOnFace`
-//   method: Transfers a CurveOnSurface directly on a face to trim it.
-//   method: The CurveOnSurface have to be defined Outer or Inner.
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_CurveOnSurface)&'
-//   // pub fn transfer_curve_on_face(&mut self, face: &mut Face, start: &HandleCurveOnSurface, trans: &Trsf2d, uFact: f64, IsCurv: bool) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:114 - `IGESToBRep_TopoCurve::TransferBoundary`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_Boundary)&'
-//   // pub fn transfer_boundary(&mut self, start: &HandleBoundary) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:117 - `IGESToBRep_TopoCurve::TransferBoundaryOnFace`
-//   method: Transfers a Boundary directly on a face to trim it.
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_Boundary)&'
-//   // pub fn transfer_boundary_on_face(&mut self, face: &mut Face, start: &HandleBoundary, trans: &Trsf2d, uFact: f64) -> OwnedPtr<TopoDS_Shape>;
-//
-
 // ========================
 // From IGESToBRep_TopoSurface.hxx
 // ========================
@@ -3574,6 +4006,127 @@ impl TopoSurface {
                     start,
                 ),
             )
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoSurface.hxx`:68 - `IGESToBRep_TopoSurface::TransferRuledSurface()`
+    pub fn transfer_ruled_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomRuledSurface,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_transfer_ruled_surface(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoSurface.hxx`:71 - `IGESToBRep_TopoSurface::TransferSurfaceOfRevolution()`
+    pub fn transfer_surface_of_revolution(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomSurfaceOfRevolution,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_TopoSurface_transfer_surface_of_revolution(
+                    self as *mut Self,
+                    start,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoSurface.hxx`:74 - `IGESToBRep_TopoSurface::TransferTabulatedCylinder()`
+    pub fn transfer_tabulated_cylinder(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomTabulatedCylinder,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_TopoSurface_transfer_tabulated_cylinder(
+                    self as *mut Self,
+                    start,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoSurface.hxx`:76 - `IGESToBRep_TopoSurface::TransferOffsetSurface()`
+    pub fn transfer_offset_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomOffsetSurface,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_transfer_offset_surface(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoSurface.hxx`:78 - `IGESToBRep_TopoSurface::TransferTrimmedSurface()`
+    pub fn transfer_trimmed_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomTrimmedSurface,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_transfer_trimmed_surface(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoSurface.hxx`:80 - `IGESToBRep_TopoSurface::TransferBoundedSurface()`
+    pub fn transfer_bounded_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomBoundedSurface,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_transfer_bounded_surface(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoSurface.hxx`:82 - `IGESToBRep_TopoSurface::TransferPlane()`
+    pub fn transfer_plane(
+        &mut self,
+        start: &crate::ffi::HandleIGESGeomPlane,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_transfer_plane(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoSurface.hxx`:84 - `IGESToBRep_TopoSurface::TransferPlaneSurface()`
+    pub fn transfer_plane_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESSolidPlaneSurface,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_transfer_plane_surface(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoSurface.hxx`:86 - `IGESToBRep_TopoSurface::TransferPerforate()`
+    pub fn transfer_perforate(
+        &mut self,
+        start: &crate::ffi::HandleIGESBasicSingleParent,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_transfer_perforate(
+                self as *mut Self,
+                start,
+            ))
         }
     }
 
@@ -3723,6 +4276,20 @@ impl TopoSurface {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
     pub fn get_surface_curve(&self) -> i32 {
         unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_GetSurfaceCurve(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel()`
+    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_SetModel(self as *mut Self, model) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel()`
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_inherited_GetModel(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
@@ -3905,41 +4472,3 @@ impl TopoSurface {
         unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_GetUVResolution(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for TopoSurface (9 total) ──
-// SKIPPED: **Source:** `IGESToBRep_TopoSurface.hxx`:68 - `IGESToBRep_TopoSurface::TransferRuledSurface`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_RuledSurface)&'
-//   // pub fn transfer_ruled_surface(&mut self, start: &HandleRuledSurface) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_TopoSurface.hxx`:71 - `IGESToBRep_TopoSurface::TransferSurfaceOfRevolution`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_SurfaceOfRevolution)&'
-//   // pub fn transfer_surface_of_revolution(&mut self, start: &HandleSurfaceOfRevolution) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_TopoSurface.hxx`:74 - `IGESToBRep_TopoSurface::TransferTabulatedCylinder`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_TabulatedCylinder)&'
-//   // pub fn transfer_tabulated_cylinder(&mut self, start: &HandleTabulatedCylinder) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_TopoSurface.hxx`:76 - `IGESToBRep_TopoSurface::TransferOffsetSurface`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_OffsetSurface)&'
-//   // pub fn transfer_offset_surface(&mut self, start: &HandleOffsetSurface) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_TopoSurface.hxx`:78 - `IGESToBRep_TopoSurface::TransferTrimmedSurface`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_TrimmedSurface)&'
-//   // pub fn transfer_trimmed_surface(&mut self, start: &HandleTrimmedSurface) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_TopoSurface.hxx`:80 - `IGESToBRep_TopoSurface::TransferBoundedSurface`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_BoundedSurface)&'
-//   // pub fn transfer_bounded_surface(&mut self, start: &HandleBoundedSurface) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_TopoSurface.hxx`:82 - `IGESToBRep_TopoSurface::TransferPlane`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_Plane)&'
-//   // pub fn transfer_plane(&mut self, start: &HandlePlane) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_TopoSurface.hxx`:84 - `IGESToBRep_TopoSurface::TransferPlaneSurface`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_PlaneSurface)&'
-//   // pub fn transfer_plane_surface(&mut self, start: &HandlePlaneSurface) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `IGESToBRep_TopoSurface.hxx`:86 - `IGESToBRep_TopoSurface::TransferPerforate`
-//   Reason: param 'start' uses unknown type 'const Handle(IGESBasic_SingleParent)&'
-//   // pub fn transfer_perforate(&mut self, start: &HandleSingleParent) -> OwnedPtr<TopoDS_Shape>;
-//

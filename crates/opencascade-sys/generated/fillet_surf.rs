@@ -977,6 +977,15 @@ impl InternalBuilder {
         unsafe { crate::ffi::FilletSurf_InternalBuilder_inherited_Reset(self as *mut Self) }
     }
 
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:181 - `ChFi3d_Builder::Builder()`
+    pub fn builder(&self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepBuildHBuilder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::FilletSurf_InternalBuilder_inherited_Builder(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:186 - `ChFi3d_Builder::SplitKPart()`
     pub fn split_k_part(
         &mut self,

@@ -60,6 +60,28 @@ impl ApproxAFunction {
         }
     }
 
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:80 - `AdvApprox_ApproxAFunction::AdvApprox_ApproxAFunction()`
+    /// Approximation with user methode of cutting
+    pub fn new_int3_handletcolstdharray1ofreal3_real2_shape_int2_evaluatorfunction_cutting(
+        Num1DSS: i32,
+        Num2DSS: i32,
+        Num3DSS: i32,
+        OneDTol: &crate::ffi::HandleTColStdHArray1OfReal,
+        TwoDTol: &crate::ffi::HandleTColStdHArray1OfReal,
+        ThreeDTol: &crate::ffi::HandleTColStdHArray1OfReal,
+        First: f64,
+        Last: f64,
+        Continuity: crate::geom_abs::Shape,
+        MaxDeg: i32,
+        MaxSeg: i32,
+        Func: &EvaluatorFunction,
+        CutTool: &Cutting,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AdvApprox_ApproxAFunction_ctor_int3_handletcolstdharray1ofreal3_real2_shape_int2_evaluatorfunction_cutting(Num1DSS, Num2DSS, Num3DSS, OneDTol, TwoDTol, ThreeDTol, First, Last, Continuity.into(), MaxDeg, MaxSeg, Func, CutTool))
+        }
+    }
+
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:114 - `AdvApprox_ApproxAFunction::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::AdvApprox_ApproxAFunction_is_done(self as *const Self) }
@@ -226,23 +248,120 @@ impl ApproxAFunction {
             )
         }
     }
+
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:94 - `AdvApprox_ApproxAFunction::Approximation()`
+    pub fn approximation(
+        TotalDimension: i32,
+        TotalNumSS: i32,
+        LocalDimension: &crate::ffi::TColStd_Array1OfInteger,
+        First: f64,
+        Last: f64,
+        Evaluator: &mut EvaluatorFunction,
+        CutTool: &Cutting,
+        ContinuityOrder: i32,
+        NumMaxCoeffs: i32,
+        MaxSegments: i32,
+        TolerancesArray: &crate::ffi::TColStd_Array1OfReal,
+        code_precis: i32,
+        NumCurves: &mut i32,
+        NumCoeffPerCurveArray: &mut crate::ffi::TColStd_Array1OfInteger,
+        LocalCoefficientArray: &mut crate::ffi::TColStd_Array1OfReal,
+        IntervalsArray: &mut crate::ffi::TColStd_Array1OfReal,
+        ErrorMaxArray: &mut crate::ffi::TColStd_Array1OfReal,
+        AverageErrorArray: &mut crate::ffi::TColStd_Array1OfReal,
+        ErrorCode: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::AdvApprox_ApproxAFunction_approximation(
+                TotalDimension,
+                TotalNumSS,
+                LocalDimension,
+                First,
+                Last,
+                Evaluator,
+                CutTool,
+                ContinuityOrder,
+                NumMaxCoeffs,
+                MaxSegments,
+                TolerancesArray,
+                code_precis,
+                NumCurves,
+                NumCoeffPerCurveArray,
+                LocalCoefficientArray,
+                IntervalsArray,
+                ErrorMaxArray,
+                AverageErrorArray,
+                ErrorCode,
+            )
+        }
+    }
 }
 
-// ── Skipped symbols for ApproxAFunction (3 total) ──
-// SKIPPED: **Source:** `AdvApprox_ApproxAFunction.hxx`:80 - `AdvApprox_ApproxAFunction::AdvApprox_ApproxAFunction`
-//   constructor: Approximation with user methode of cutting
-//   Reason: param 'CutTool' uses unknown type 'const AdvApprox_Cutting&'
-//   // pub fn new_int3_handletcolstdharray1ofreal3_real2_shape_int2_evaluatorfunction_cutting(Num1DSS: i32, Num2DSS: i32, Num3DSS: i32, OneDTol: &HandleHArray1OfReal, TwoDTol: &HandleHArray1OfReal, ThreeDTol: &HandleHArray1OfReal, First: f64, Last: f64, Continuity: Shape, MaxDeg: i32, MaxSeg: i32, Func: &EvaluatorFunction, CutTool: &Cutting) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for ApproxAFunction (1 total) ──
 // SKIPPED: **Source:** `AdvApprox_ApproxAFunction.hxx`:163 - `AdvApprox_ApproxAFunction::Dump`
 //   method: display information on approximation.
 //   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
 //   // pub fn dump(&self, o: /* Standard_OStream& */);
 //
-// SKIPPED: **Source:** `AdvApprox_ApproxAFunction.hxx`:94 - `AdvApprox_ApproxAFunction::Approximation`
-//   Reason: param 'CutTool' uses unknown type 'const AdvApprox_Cutting&'
-//   // pub fn approximation(TotalDimension: i32, TotalNumSS: i32, LocalDimension: &Array1OfInteger, First: f64, Last: f64, Evaluator: &mut EvaluatorFunction, CutTool: &Cutting, ContinuityOrder: i32, NumMaxCoeffs: i32, MaxSegments: i32, TolerancesArray: &Array1OfReal, code_precis: i32, NumCurves: &mut i32, NumCoeffPerCurveArray: &mut Array1OfInteger, LocalCoefficientArray: &mut Array1OfReal, IntervalsArray: &mut Array1OfReal, ErrorMaxArray: &mut Array1OfReal, AverageErrorArray: &mut Array1OfReal, ErrorCode: &mut i32);
-//
+
+// ========================
+// From AdvApprox_Cutting.hxx
+// ========================
+
+/// **Source:** `AdvApprox_Cutting.hxx`:28 - `AdvApprox_Cutting`
+/// to choose the way of cutting in approximation
+pub use crate::ffi::AdvApprox_Cutting as Cutting;
+
+unsafe impl crate::CppDeletable for Cutting {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::AdvApprox_Cutting_destructor(ptr);
+    }
+}
+
+impl Cutting {
+    /// **Source:** `AdvApprox_Cutting.hxx`:35 - `AdvApprox_Cutting::Value()`
+    pub fn value(&self, a: f64, b: f64, cuttingvalue: &mut f64) -> bool {
+        unsafe { crate::ffi::AdvApprox_Cutting_value(self as *const Self, a, b, cuttingvalue) }
+    }
+}
+
+// ========================
+// From AdvApprox_DichoCutting.hxx
+// ========================
+
+/// **Source:** `AdvApprox_DichoCutting.hxx`:29 - `AdvApprox_DichoCutting`
+/// if Cutting is necessary in [a,b], we cut at (a+b) / 2.
+pub use crate::ffi::AdvApprox_DichoCutting as DichoCutting;
+
+unsafe impl crate::CppDeletable for DichoCutting {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::AdvApprox_DichoCutting_destructor(ptr);
+    }
+}
+
+impl DichoCutting {
+    /// **Source:** `AdvApprox_DichoCutting.hxx`:34 - `AdvApprox_DichoCutting::AdvApprox_DichoCutting()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::AdvApprox_DichoCutting_ctor()) }
+    }
+
+    /// **Source:** `AdvApprox_DichoCutting.hxx`:36 - `AdvApprox_DichoCutting::Value()`
+    pub fn value(&self, a: f64, b: f64, cuttingvalue: &mut f64) -> bool {
+        unsafe { crate::ffi::AdvApprox_DichoCutting_value(self as *const Self, a, b, cuttingvalue) }
+    }
+
+    /// Upcast to AdvApprox_Cutting
+    pub fn as_cutting(&self) -> &Cutting {
+        unsafe { &*(crate::ffi::AdvApprox_DichoCutting_as_AdvApprox_Cutting(self as *const Self)) }
+    }
+
+    /// Upcast to AdvApprox_Cutting (mutable)
+    pub fn as_cutting_mut(&mut self) -> &mut Cutting {
+        unsafe {
+            &mut *(crate::ffi::AdvApprox_DichoCutting_as_AdvApprox_Cutting_mut(self as *mut Self))
+        }
+    }
+}
 
 // ========================
 // From AdvApprox_EvaluatorFunction.hxx
@@ -272,7 +391,243 @@ unsafe impl crate::CppDeletable for EvaluatorFunction {
 //
 
 // ========================
-// Additional type re-exports
+// From AdvApprox_PrefAndRec.hxx
 // ========================
 
-pub use crate::ffi::AdvApprox_Cutting as Cutting;
+/// **Source:** `AdvApprox_PrefAndRec.hxx`:31 - `AdvApprox_PrefAndRec`
+/// inherits class Cutting; contains a list of preferential points (pi)i
+/// and a list of Recommended points used in cutting management.
+/// if Cutting is necessary in [a,b], we cut at the di nearest from (a+b)/2
+pub use crate::ffi::AdvApprox_PrefAndRec as PrefAndRec;
+
+unsafe impl crate::CppDeletable for PrefAndRec {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::AdvApprox_PrefAndRec_destructor(ptr);
+    }
+}
+
+impl PrefAndRec {
+    /// **Source:** `AdvApprox_PrefAndRec.hxx`:36 - `AdvApprox_PrefAndRec::AdvApprox_PrefAndRec()`
+    pub fn new_array1ofreal2_real(
+        RecomendedCut: &crate::ffi::TColStd_Array1OfReal,
+        PrefferedCut: &crate::ffi::TColStd_Array1OfReal,
+        Weight: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AdvApprox_PrefAndRec_ctor_array1ofreal2_real(
+                RecomendedCut,
+                PrefferedCut,
+                Weight,
+            ))
+        }
+    }
+
+    /// **Source:** `AdvApprox_PrefAndRec.hxx`:36 - `AdvApprox_PrefAndRec::AdvApprox_PrefAndRec()`
+    pub fn new_array1ofreal2(
+        RecomendedCut: &crate::ffi::TColStd_Array1OfReal,
+        PrefferedCut: &crate::ffi::TColStd_Array1OfReal,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_array1ofreal2_real(RecomendedCut, PrefferedCut, 5.0)
+    }
+
+    /// **Source:** `AdvApprox_PrefAndRec.hxx`:46 - `AdvApprox_PrefAndRec::Value()`
+    /// cuting value is
+    /// - the recommended point nerest of (a+b)/2
+    /// if pi is in ]a,b[ or else
+    /// -  the preferential point nearest of (a+b) / 2
+    /// if pi is in ](r*a+b)/(r+1) , (a+r*b)/(r+1)[ where r = Weight
+    /// -  or (a+b)/2 else.
+    pub fn value(&self, a: f64, b: f64, cuttingvalue: &mut f64) -> bool {
+        unsafe { crate::ffi::AdvApprox_PrefAndRec_value(self as *const Self, a, b, cuttingvalue) }
+    }
+
+    /// Upcast to AdvApprox_Cutting
+    pub fn as_cutting(&self) -> &Cutting {
+        unsafe { &*(crate::ffi::AdvApprox_PrefAndRec_as_AdvApprox_Cutting(self as *const Self)) }
+    }
+
+    /// Upcast to AdvApprox_Cutting (mutable)
+    pub fn as_cutting_mut(&mut self) -> &mut Cutting {
+        unsafe {
+            &mut *(crate::ffi::AdvApprox_PrefAndRec_as_AdvApprox_Cutting_mut(self as *mut Self))
+        }
+    }
+}
+
+// ========================
+// From AdvApprox_PrefCutting.hxx
+// ========================
+
+/// **Source:** `AdvApprox_PrefCutting.hxx`:30 - `AdvApprox_PrefCutting`
+/// inherits class Cutting; contains a list of preferential points (di)i
+/// if Cutting is necessary in [a,b], we cut at the di nearest from (a+b)/2.
+pub use crate::ffi::AdvApprox_PrefCutting as PrefCutting;
+
+unsafe impl crate::CppDeletable for PrefCutting {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::AdvApprox_PrefCutting_destructor(ptr);
+    }
+}
+
+impl PrefCutting {
+    /// **Source:** `AdvApprox_PrefCutting.hxx`:35 - `AdvApprox_PrefCutting::AdvApprox_PrefCutting()`
+    pub fn new_array1ofreal(CutPnts: &crate::ffi::TColStd_Array1OfReal) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AdvApprox_PrefCutting_ctor_array1ofreal(CutPnts))
+        }
+    }
+
+    /// **Source:** `AdvApprox_PrefCutting.hxx`:37 - `AdvApprox_PrefCutting::Value()`
+    pub fn value(&self, a: f64, b: f64, cuttingvalue: &mut f64) -> bool {
+        unsafe { crate::ffi::AdvApprox_PrefCutting_value(self as *const Self, a, b, cuttingvalue) }
+    }
+
+    /// Upcast to AdvApprox_Cutting
+    pub fn as_cutting(&self) -> &Cutting {
+        unsafe { &*(crate::ffi::AdvApprox_PrefCutting_as_AdvApprox_Cutting(self as *const Self)) }
+    }
+
+    /// Upcast to AdvApprox_Cutting (mutable)
+    pub fn as_cutting_mut(&mut self) -> &mut Cutting {
+        unsafe {
+            &mut *(crate::ffi::AdvApprox_PrefCutting_as_AdvApprox_Cutting_mut(self as *mut Self))
+        }
+    }
+}
+
+// ========================
+// From AdvApprox_SimpleApprox.hxx
+// ========================
+
+/// **Source:** `AdvApprox_SimpleApprox.hxx`:39 - `AdvApprox_SimpleApprox`
+/// Approximate  a function on   an interval [First,Last]
+/// The result  is  a simple  polynomial  whose  degree is  as low as
+/// possible  to   satisfy  the required  tolerance  and  the
+/// maximum degree.  The maximum  error and the averrage error
+/// resulting from  approximating the function by the polynomial are computed
+pub use crate::ffi::AdvApprox_SimpleApprox as SimpleApprox;
+
+unsafe impl crate::CppDeletable for SimpleApprox {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::AdvApprox_SimpleApprox_destructor(ptr);
+    }
+}
+
+impl SimpleApprox {
+    /// **Source:** `AdvApprox_SimpleApprox.hxx`:44 - `AdvApprox_SimpleApprox::AdvApprox_SimpleApprox()`
+    pub fn new_int2_shape_int2_handleplibjacobipolynomial_evaluatorfunction(
+        TotalDimension: i32,
+        TotalNumSS: i32,
+        Continuity: crate::geom_abs::Shape,
+        WorkDegree: i32,
+        NbGaussPoints: i32,
+        JacobiBase: &crate::ffi::HandlePLibJacobiPolynomial,
+        Func: &EvaluatorFunction,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AdvApprox_SimpleApprox_ctor_int2_shape_int2_handleplibjacobipolynomial_evaluatorfunction(TotalDimension, TotalNumSS, Continuity.into(), WorkDegree, NbGaussPoints, JacobiBase, Func))
+        }
+    }
+
+    /// **Source:** `AdvApprox_SimpleApprox.hxx`:58 - `AdvApprox_SimpleApprox::Perform()`
+    /// Constructs approximator tool.
+    ///
+    /// Warning:
+    /// the Func should be valid reference to object of type
+    /// inherited from class EvaluatorFunction from Approx
+    /// with life time longer than that of the approximator tool;
+    pub fn perform(
+        &mut self,
+        LocalDimension: &crate::ffi::TColStd_Array1OfInteger,
+        LocalTolerancesArray: &crate::ffi::TColStd_Array1OfReal,
+        First: f64,
+        Last: f64,
+        MaxDegree: i32,
+    ) {
+        unsafe {
+            crate::ffi::AdvApprox_SimpleApprox_perform(
+                self as *mut Self,
+                LocalDimension,
+                LocalTolerancesArray,
+                First,
+                Last,
+                MaxDegree,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApprox_SimpleApprox.hxx`:64 - `AdvApprox_SimpleApprox::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::AdvApprox_SimpleApprox_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `AdvApprox_SimpleApprox.hxx`:66 - `AdvApprox_SimpleApprox::Degree()`
+    pub fn degree(&self) -> i32 {
+        unsafe { crate::ffi::AdvApprox_SimpleApprox_degree(self as *const Self) }
+    }
+
+    /// **Source:** `AdvApprox_SimpleApprox.hxx`:69 - `AdvApprox_SimpleApprox::Coefficients()`
+    /// returns the coefficients in the Jacobi Base
+    pub fn coefficients(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AdvApprox_SimpleApprox_coefficients(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `AdvApprox_SimpleApprox.hxx`:72 - `AdvApprox_SimpleApprox::FirstConstr()`
+    /// returns the constraints at First
+    pub fn first_constr(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AdvApprox_SimpleApprox_first_constr(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `AdvApprox_SimpleApprox.hxx`:75 - `AdvApprox_SimpleApprox::LastConstr()`
+    /// returns the constraints at Last
+    pub fn last_constr(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AdvApprox_SimpleApprox_last_constr(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `AdvApprox_SimpleApprox.hxx`:77 - `AdvApprox_SimpleApprox::SomTab()`
+    pub fn som_tab(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AdvApprox_SimpleApprox_som_tab(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `AdvApprox_SimpleApprox.hxx`:79 - `AdvApprox_SimpleApprox::DifTab()`
+    pub fn dif_tab(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AdvApprox_SimpleApprox_dif_tab(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `AdvApprox_SimpleApprox.hxx`:81 - `AdvApprox_SimpleApprox::MaxError()`
+    pub fn max_error(&self, Index: i32) -> f64 {
+        unsafe { crate::ffi::AdvApprox_SimpleApprox_max_error(self as *const Self, Index) }
+    }
+
+    /// **Source:** `AdvApprox_SimpleApprox.hxx`:83 - `AdvApprox_SimpleApprox::AverageError()`
+    pub fn average_error(&self, Index: i32) -> f64 {
+        unsafe { crate::ffi::AdvApprox_SimpleApprox_average_error(self as *const Self, Index) }
+    }
+}
+
+// ── Skipped symbols for SimpleApprox (1 total) ──
+// SKIPPED: **Source:** `AdvApprox_SimpleApprox.hxx`:86 - `AdvApprox_SimpleApprox::Dump`
+//   method: display information on approximation
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
