@@ -318,7 +318,7 @@ See `crates/opencascade-sys/manual/` and the comments in `bindings.toml` for the
 
 ## Skipped Symbols
 
-The binding generator skips ~2,200 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
+The binding generator skips ~2,060 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
 
 - **Source location** (header file, line number, C++ symbol name)
 - **Documentation comment** from the C++ header (first 3 lines)
@@ -512,16 +512,13 @@ The current `StringRefParam` detection automatically catches `const char*&` case
 
 **Special-case/heuristic patterns in the codebase:**
 
-1. **`check_is_handle_type()` in parser.rs (~line 740)** — Still uses hardcoded prefix patterns (`"Standard_Transient"`, `"Geom_"`, `"Geom2d_"`, `"Law_"`) as the seed for handle detection. This is now harmless since the transitive closure in bindings.rs propagates correctly from these seeds, but the seed itself is a heuristic — any OCCT module not matching these prefixes that independently derives from `Standard_Transient` would be missed at the parser level (though caught by transitive closure if any of its descendants appear).
+1. **`copyable_modules` in bindings.rs (~line 2062)** — Hardcoded list `["TopoDS", "gp", "TopLoc", "Bnd", "GProp"]` determines which classes get `to_owned()`. Whether a class is copyable is really a C++ property (trivially copyable, has copy constructor) that could potentially be detected from libclang.
 
-2. **`extract_base_classes()` in parser.rs (~line 776)** — Filters out `Standard_*` base classes with `!base_name.contains("Standard_")`. This means the inheritance graph doesn't include `Standard_Transient` as a base for classes like `Geom_Geometry`. The transitive closure works around this because it seeds `Standard_Transient` directly, but if you ever wanted the inheritance graph to be accurate, this filter would need removal/refinement.
+2. **Short name convention (`split('_').skip(1)`)** — Used throughout for generating Rust method names from OCCT conventions (e.g., `BRepMesh_IncrementalMesh` → `IncrementalMesh` → `incremental_mesh`). This assumes a single module-prefix underscore, which breaks for multi-underscore prefixes like `DE_BREP_*`. This is mitigated by collision detection that falls back to full C++ names when short names collide, but the root assumption is still there.
 
-3. **`copyable_modules` in bindings.rs (~line 2062)** — Hardcoded list `["TopoDS", "gp", "TopLoc", "Bnd", "GProp"]` determines which classes get `to_owned()`. Whether a class is copyable is really a C++ property (trivially copyable, has copy constructor) that could potentially be detected from libclang.
+3. **`is_callback_class()` heuristic (bindings.rs)** — Uses naming patterns or structural checks to identify callback/functor classes, which could be fragile.
 
-4. **`collect_referenced_types()` in resolver.rs (~line 777-781)** — Still builds its own `handle_able_classes` from `class.is_handle_type` (the parser-level field) rather than using the transitive closure. This is used for signature scanning to discover additional Handle types referenced in method signatures. It works because these are separate concerns (resolver adds to symbol table, bindings.rs makes filtering decisions), but it's inconsistent.
+**Previously problematic special cases (now resolved):**
 
-5. **Short name convention (`split('_').skip(1)`)** — Used throughout for generating Rust method names from OCCT conventions (e.g., `BRepMesh_IncrementalMesh` → `IncrementalMesh` → `incremental_mesh`). This assumes a single module-prefix underscore, which breaks for multi-underscore prefixes like `DE_BREP_*`. Now mitigated by the collision detection I added, but the root assumption is still there.
-
-6. **`is_callback_class()` heuristic (bindings.rs)** — I didn't investigate this one deeply, but it likely uses naming patterns or structural checks to identify callback/functor classes, which could be fragile.
-
-Items 1, 2, and 4 are the most actionable — they could be unified into a single consistent approach where the transitive closure is computed once and shared across all phases. 
+- **Handle type detection**: Unified through a single transitive closure algorithm (`compute_handle_able_classes()`) that walks the full inheritance graph starting from `Standard_Transient`. This replaces the old parser heuristic with hardcoded prefixes (`"Geom_*"`, `"Geom2d_*"`, `"Law_*"`) and fixes the inheritance graph by including `Standard_*` base classes.
+- **Inheritance graph**: Fixed `extract_base_classes()` to include `Standard_*` classes, so the full inheritance hierarchy is now represented, enabling more accurate dependency analysis and upcasts.

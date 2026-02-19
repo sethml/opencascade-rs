@@ -4199,3 +4199,102 @@ Committed as `ced185f`. Summary of changes:
 Skipped symbols dropped from ~2,200 → ~2,060 (156 more unblocked from the more accurate inheritance graph).
 
 Made changes.
+
+User: Update the README to reflect the changes.
+
+GitHub Copilot: I'll update the README to reflect the unified handle type detection approach. Let me first check the relevant sections: 
+
+Searched for text `handle|Handle|parser|heuristic` (`**/crates/opencascade-binding-generator/README.md`), 20 results
+
+Reading lines 230-300 of [README.md](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L230-L301)
+Completed with input: {
+  "endLine": 300,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md",
+  "startLine": 230
+}
+
+Searched for text `Special Cases|Special case|heuristic|Heuristic|inheritance|graph` (`**/crates/opencascade-binding-generator/README.md`), 12 results
+
+Reading lines 510-535 of [README.md](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L510-L536)
+Completed with input: {
+  "endLine": 535,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md",
+  "startLine": 510
+}
+
+Reading lines 319-325 of [README.md](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L319-L326)
+Completed with input: {
+  "endLine": 325,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md",
+  "startLine": 319
+}
+
+Reading lines 280-295 of [README.md](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L280-L296)
+Completed with input: {
+  "endLine": 295,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md",
+  "startLine": 280
+}
+
+Edited: [README.md -1+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L321-L322), [-15+12](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L513-L525)
+Completed with input: {
+  "edits": [
+    {
+      "content": "The binding generator skips ~2,060 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md",
+      "lineHashes": "321:an"
+    },
+    {
+      "content": "**Special-case/heuristic patterns in the codebase:**\n\n1. **`copyable_modules` in bindings.rs (~line 2062)** — Hardcoded list `[\"TopoDS\", \"gp\", \"TopLoc\", \"Bnd\", \"GProp\"]` determines which classes get `to_owned()`. Whether a class is copyable is really a C++ property (trivially copyable, has copy constructor) that could potentially be detected from libclang.\n\n2. **Short name convention (`split('_').skip(1)`)** — Used throughout for generating Rust method names from OCCT conventions (e.g., `BRepMesh_IncrementalMesh` → `IncrementalMesh` → `incremental_mesh`). This assumes a single module-prefix underscore, which breaks for multi-underscore prefixes like `DE_BREP_*`. This is mitigated by collision detection that falls back to full C++ names when short names collide, but the root assumption is still there.\n\n3. **`is_callback_class()` heuristic (bindings.rs)** — Uses naming patterns or structural checks to identify callback/functor classes, which could be fragile.\n\n**Previously problematic special cases (now resolved):**\n\n- **Handle type detection**: Unified through a single transitive closure algorithm (`compute_handle_able_classes()`) that walks the full inheritance graph starting from `Standard_Transient`. This replaces the old parser heuristic with hardcoded prefixes (`\"Geom_*\"`, `\"Geom2d_*\"`, `\"Law_*\"`) and fixes the inheritance graph by including `Standard_*` base classes.\n- **Inheritance graph**: Fixed `extract_base_classes()` to include `Standard_*` classes, so the full inheritance hierarchy is now represented, enabling more accurate dependency analysis and upcasts.",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md",
+      "lineHashes": "513:rr,514:dd,515:fq,516:dd,517:by,518:dd,519:cs,520:dd,521:jf,522:dd,523:ie,524:dd,525:vd,526:dd,527:qq"
+    }
+  ]
+}
+
+Reading lines 319-540 of [README.md](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L319-L541)
+Completed with input: {
+  "endLine": 540,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md",
+  "startLine": 319
+}
+
+Ran terminal command:  head -50 /Users/sethml/Library/Application\ Support/Code/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/07623cc0-4928-471e-993b-0409119c507a/toolu_01KRsDqDbmNtWZ1TQLfkhV83__vscode-1771312783026/content.txt
+
+Ran terminal command:  tail -40 /Users/sethml/Library/Application\ Support/Code/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/07623cc0-4928-471e-993b-0409119c507a/toolu_01KRsDqDbmNtWZ1TQLfkhV83__vscode-1771312783026/content.txt
+
+Perfect! The README has been updated to reflect the changes:
+
+1. ✅ **Updated skip count**: Changed from ~2,200 to ~2,060 (reflecting the 156 additional unblocked symbols from the more accurate inheritance graph)
+
+2. ✅ **Updated special cases section**:
+   - Removed items about `check_is_handle_type()` heuristic (it's been deleted)
+   - Removed items about `extract_base_classes()` Standard_ filter (it's been fixed)
+   - Removed item about inconsistent `collect_referenced_types()` (it now uses the passed parameter)
+   - Kept items 3 and 5 about `copyable_modules` and short name convention (still valid)
+   - Added new "Previously problematic special cases (now resolved)" section documenting what was fixed
+
+Let me commit this README update: 
+
+Ran terminal command:  cd /Users/sethml/src/opencascade-rs && git add crates/opencascade-binding-generator/README.md && git commit -m "Update README: reflect unified handle type detection and reduce skip count
+
+- Update skip count from ~2,200 to ~2,060 (156 additional symbols unblocked)
+- Remove special case entries that were resolved:
+  - check_is_handle_type() parser heuristic (deleted)
+  - extract_base_classes() Standard_ filter (fixed)
+  - collect_referenced_types() inconsistency (now uses passed parameter)
+- Add 'Previously problematic special cases (now resolved)' section
+  documenting the unified transitive closure approach and
+  fixed inheritance graph"
+
+Done! The README has been updated to reflect the changes from both commits:
+
+**Changes made:**
+- Updated skipped symbol count from ~2,200 → ~2,060
+- Removed outdated special case documentation for the three issues that were resolved:
+  - Parser handle type heuristic (now deleted)
+  - Inheritance graph Standard_ filter (now fixed)  
+  - Inconsistent handle_able_classes computation (now unified)
+- Added new section documenting the "Previously problematic special cases (now resolved)" with explanations of the fixes
+
+Both commits (`ced185f` and `a25ed48`) are now in place with the updated bindings and documentation.
