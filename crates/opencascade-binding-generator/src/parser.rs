@@ -225,13 +225,32 @@ pub fn parse_headers(
     let parse_time = parse_start.elapsed();
     eprintln!("  Clang parse time: {:.2}s", parse_time.as_secs_f64());
 
-    // Check for parse errors
+    // Check for parse errors — fatal errors (e.g. missing #include <windows.h>)
+    // corrupt libclang's type resolution for ALL subsequent headers in the batch,
+    // causing template types to silently misresolve to `int`. Fail loudly.
     let diagnostics = tu.get_diagnostics();
+    let mut fatal_errors = Vec::new();
     for diag in &diagnostics {
-        if diag.get_severity() >= clang::diagnostic::Severity::Error
-            && verbose {
-                eprintln!("  Parse error: {}", diag.get_text());
-            }
+        let severity = diag.get_severity();
+        if severity == clang::diagnostic::Severity::Fatal {
+            fatal_errors.push(diag.get_text());
+        }
+        if severity >= clang::diagnostic::Severity::Error && verbose {
+            eprintln!("  Parse error: {}", diag.get_text());
+        }
+    }
+    if !fatal_errors.is_empty() {
+        let mut msg = format!(
+            "Clang encountered {} fatal error(s) during batch parsing.\n\
+             Fatal errors corrupt type resolution for all subsequent headers.\n\
+             Fix: add the offending header(s) to `exclude_headers` in bindings.toml.\n\
+             Fatal errors:",
+            fatal_errors.len()
+        );
+        for err in &fatal_errors {
+            msg.push_str(&format!("\n  - {}", err));
+        }
+        anyhow::bail!(msg);
     }
 
     // Initialize results - one ParsedHeader per input header

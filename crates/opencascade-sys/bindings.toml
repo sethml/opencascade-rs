@@ -271,7 +271,7 @@ exclude_headers = [
     "RWObj_MtlReader.hxx",
 
     # Windows-only: includes <windows.h> which causes a fatal error on non-Windows
-    # and may disrupt clang's type resolution for subsequent headers.
+    # and corrupts clang's type resolution for subsequent headers.
     "OSD_WNT.hxx",
 ]
 
