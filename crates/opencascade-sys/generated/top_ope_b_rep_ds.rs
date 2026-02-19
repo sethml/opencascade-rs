@@ -1539,15 +1539,6 @@ impl GeometryData {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_GeometryData_ctor()) }
     }
 
-    /// **Source:** `TopOpeBRepDS_GeometryData.hxx`:35 - `TopOpeBRepDS_GeometryData::TopOpeBRepDS_GeometryData()`
-    pub fn new_geometrydata(Other: &GeometryData) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_GeometryData_ctor_geometrydata(
-                Other,
-            ))
-        }
-    }
-
     /// **Source:** `TopOpeBRepDS_GeometryData.hxx`:37 - `TopOpeBRepDS_GeometryData::Assign()`
     pub fn assign(&mut self, Other: &GeometryData) {
         unsafe { crate::ffi::TopOpeBRepDS_GeometryData_assign(self as *mut Self, Other) }
@@ -1568,6 +1559,15 @@ impl GeometryData {
     /// **Source:** `TopOpeBRepDS_GeometryData.hxx`:45 - `TopOpeBRepDS_GeometryData::AddInterference()`
     pub fn add_interference(&mut self, I: &crate::ffi::HandleTopOpeBRepDSInterference) {
         unsafe { crate::ffi::TopOpeBRepDS_GeometryData_add_interference(self as *mut Self, I) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_GeometryData_to_owned(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -2197,11 +2197,6 @@ impl Surface {
         }
     }
 
-    /// **Source:** `TopOpeBRepDS_Surface.hxx`:38 - `TopOpeBRepDS_Surface::TopOpeBRepDS_Surface()`
-    pub fn new_surface(Other: &Surface) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Surface_ctor_surface(Other)) }
-    }
-
     /// **Source:** `TopOpeBRepDS_Surface.hxx`:40 - `TopOpeBRepDS_Surface::Assign()`
     pub fn assign(&mut self, Other: &Surface) {
         unsafe { crate::ffi::TopOpeBRepDS_Surface_assign(self as *mut Self, Other) }
@@ -2231,6 +2226,15 @@ impl Surface {
     /// **Source:** `TopOpeBRepDS_Surface.hxx`:53 - `TopOpeBRepDS_Surface::ChangeKeep()`
     pub fn change_keep(&mut self, theToKeep: bool) {
         unsafe { crate::ffi::TopOpeBRepDS_Surface_change_keep(self as *mut Self, theToKeep) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Surface_to_owned(
+                self as *const Self,
+            ))
+        }
     }
 }
 

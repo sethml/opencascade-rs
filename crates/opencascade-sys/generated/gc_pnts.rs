@@ -363,13 +363,6 @@ impl DistFunction {
         }
     }
 
-    /// **Source:** `GCPnts_DistFunction.hxx`:32 - `GCPnts_DistFunction::GCPnts_DistFunction()`
-    pub fn new_distfunction(theOther: &DistFunction) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GCPnts_DistFunction_ctor_distfunction(theOther))
-        }
-    }
-
     /// **Source:** `GCPnts_DistFunction.hxx`:34 - `GCPnts_DistFunction::Value()`
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         unsafe { crate::ffi::GCPnts_DistFunction_value(self as *mut Self, X, F) }
@@ -383,6 +376,13 @@ impl DistFunction {
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
         unsafe { &mut *(crate::ffi::GCPnts_DistFunction_as_math_Function_mut(self as *mut Self)) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GCPnts_DistFunction_to_owned(self as *const Self))
+        }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
@@ -476,15 +476,6 @@ impl DistFunction2d {
         }
     }
 
-    /// **Source:** `GCPnts_DistFunction2d.hxx`:32 - `GCPnts_DistFunction2d::GCPnts_DistFunction2d()`
-    pub fn new_distfunction2d(theOther: &DistFunction2d) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GCPnts_DistFunction2d_ctor_distfunction2d(
-                theOther,
-            ))
-        }
-    }
-
     /// **Source:** `GCPnts_DistFunction2d.hxx`:34 - `GCPnts_DistFunction2d::Value()`
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         unsafe { crate::ffi::GCPnts_DistFunction2d_value(self as *mut Self, X, F) }
@@ -498,6 +489,15 @@ impl DistFunction2d {
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
         unsafe { &mut *(crate::ffi::GCPnts_DistFunction2d_as_math_Function_mut(self as *mut Self)) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GCPnts_DistFunction2d_to_owned(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`

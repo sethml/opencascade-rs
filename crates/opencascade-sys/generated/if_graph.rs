@@ -44,18 +44,6 @@ impl SubPartsIterator {
         }
     }
 
-    /// **Source:** `IFGraph_SubPartsIterator.hxx`:59 - `IFGraph_SubPartsIterator::IFGraph_SubPartsIterator()`
-    /// Creates a SubPartIterator from another one and gets its Data
-    /// Note that only non-empty sub-parts are taken into account
-    /// PartNum is set to the last one
-    pub fn new_subpartsiterator(other: &mut SubPartsIterator) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SubPartsIterator_ctor_subpartsiterator(
-                other,
-            ))
-        }
-    }
-
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:64 - `IFGraph_SubPartsIterator::GetParts()`
     /// Gets Parts from another SubPartsIterator (in addition to the
     /// ones already recorded)

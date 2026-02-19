@@ -1750,13 +1750,6 @@ impl HArray1OfBox {
         unsafe { &mut *(crate::ffi::Bnd_HArray1OfBox_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Bnd_HArray1OfBox_to_owned(self as *const Self))
-        }
-    }
-
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1895,13 +1888,6 @@ impl HArray1OfBox2d {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *(crate::ffi::Bnd_HArray1OfBox2d_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Bnd_HArray1OfBox2d_to_owned(self as *const Self))
         }
     }
 
@@ -2045,13 +2031,6 @@ impl HArray1OfSphere {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *(crate::ffi::Bnd_HArray1OfSphere_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Bnd_HArray1OfSphere_to_owned(self as *const Self))
         }
     }
 

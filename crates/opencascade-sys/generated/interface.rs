@@ -176,16 +176,6 @@ impl BitMap {
         }
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:65 - `Interface_BitMap::Interface_BitMap()`
-    /// Creates a BitMap from another one
-    /// if <copied> is True, copies data
-    /// else, data are not copied, only the header object is
-    pub fn new_bitmap_bool(other: &BitMap, copied: bool) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Interface_BitMap_ctor_bitmap_bool(other, copied))
-        }
-    }
-
     /// **Source:** `Interface_BitMap.hxx`:52 - `Interface_BitMap::Interface_BitMap()`
     /// Creates a BitMap for <nbitems> items
     /// One flag is defined, n0 0
@@ -193,14 +183,6 @@ impl BitMap {
     /// Flags values start at false
     pub fn new_int(nbitems: i32) -> crate::OwnedPtr<Self> {
         Self::new_int2(nbitems, 0)
-    }
-
-    /// **Source:** `Interface_BitMap.hxx`:65 - `Interface_BitMap::Interface_BitMap()`
-    /// Creates a BitMap from another one
-    /// if <copied> is True, copies data
-    /// else, data are not copied, only the header object is
-    pub fn new_bitmap(other: &BitMap) -> crate::OwnedPtr<Self> {
-        Self::new_bitmap_bool(other, false)
     }
 
     /// **Source:** `Interface_BitMap.hxx`:59 - `Interface_BitMap::Initialize()`
@@ -354,6 +336,13 @@ impl BitMap {
     /// Clear all field of bit map
     pub fn clear(&mut self) {
         unsafe { crate::ffi::Interface_BitMap_clear(self as *mut Self) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_BitMap_to_owned(self as *const Self))
+        }
     }
 }
 
@@ -1526,16 +1515,6 @@ impl Graph {
         }
     }
 
-    /// **Source:** `Interface_Graph.hxx`:93 - `Interface_Graph::Interface_Graph()`
-    /// Creates a Graph from another one, getting all its data
-    /// Remark that status are copied from <agraph>, but the other
-    /// lists (sharing/shared) are copied only if <copied> = True
-    pub fn new_graph_bool(agraph: &Graph, copied: bool) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Interface_Graph_ctor_graph_bool(agraph, copied))
-        }
-    }
-
     /// **Source:** `Interface_Graph.hxx`:72 - `Interface_Graph::Interface_Graph()`
     /// Creates an empty graph, ready to receive Entities from amodel
     /// Note that this way of Creation allows <me> to verify that
@@ -1555,14 +1534,6 @@ impl Graph {
         amodel: &crate::ffi::HandleInterfaceInterfaceModel,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleinterfaceinterfacemodel_bool(amodel, true)
-    }
-
-    /// **Source:** `Interface_Graph.hxx`:93 - `Interface_Graph::Interface_Graph()`
-    /// Creates a Graph from another one, getting all its data
-    /// Remark that status are copied from <agraph>, but the other
-    /// lists (sharing/shared) are copied only if <copied> = True
-    pub fn new_graph(agraph: &Graph) -> crate::OwnedPtr<Self> {
-        Self::new_graph_bool(agraph, false)
     }
 
     /// **Source:** `Interface_Graph.hxx`:101 - `Interface_Graph::Reset()`
@@ -1807,6 +1778,13 @@ impl Graph {
     /// Returns mode responsible for computation of statuses;
     pub fn mode_stat(&self) -> bool {
         unsafe { crate::ffi::Interface_Graph_mode_stat(self as *const Self) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_Graph_to_owned(self as *const Self))
+        }
     }
 }
 

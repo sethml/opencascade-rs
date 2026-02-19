@@ -91,13 +91,6 @@ impl Datum3D {
         unsafe { &mut *(crate::ffi::TopLoc_Datum3D_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Datum3D_to_owned(self as *const Self))
-        }
-    }
-
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -491,15 +484,6 @@ impl SListNodeOfItemLocation {
         }
     }
 
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopLoc_SListNodeOfItemLocation_to_owned(
-                self as *const Self,
-            ))
-        }
-    }
-
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -645,16 +629,6 @@ impl SListOfItemLocation {
         }
     }
 
-    /// **Source:** `TopLoc_SListOfItemLocation.hxx`:56 - `TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation()`
-    /// Creates a list from an other one. The lists  are shared.
-    pub fn new_slistofitemlocation(Other: &SListOfItemLocation) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TopLoc_SListOfItemLocation_ctor_slistofitemlocation(Other),
-            )
-        }
-    }
-
     /// **Source:** `TopLoc_SListOfItemLocation.hxx`:85 - `TopLoc_SListOfItemLocation::IsEmpty()`
     /// Return true if this list is empty
     pub fn is_empty(&self) -> bool {
@@ -718,12 +692,7 @@ impl SListOfItemLocation {
     }
 }
 
-// ── Skipped symbols for SListOfItemLocation (2 total) ──
-// SKIPPED: **Source:** `TopLoc_SListOfItemLocation.hxx`:72 - `TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation`
-//   constructor: Move constructor
-//   Reason: has unbindable types: param 'theOther': rvalue reference (TopLoc_SListOfItemLocation&&)
-//   // pub fn new_slistofitemlocation(theOther: /* TopLoc_SListOfItemLocation&& */) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for SListOfItemLocation (1 total) ──
 // SKIPPED: **Source:** `TopLoc_SListOfItemLocation.hxx`:63 - `TopLoc_SListOfItemLocation::Assign`
 //   method: Sets  a list  from  an  other  one. The  lists are
 //   method: shared. The list itself is returned.

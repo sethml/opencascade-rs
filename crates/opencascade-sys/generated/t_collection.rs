@@ -90,14 +90,6 @@ impl AsciiString {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_real(value)) }
     }
 
-    /// **Source:** `TCollection_AsciiString.hxx`:77 - `TCollection_AsciiString::TCollection_AsciiString()`
-    /// Initializes a AsciiString with another AsciiString.
-    pub fn new_asciistring(astring: &AsciiString) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_asciistring(astring))
-        }
-    }
-
     /// **Source:** `TCollection_AsciiString.hxx`:89 - `TCollection_AsciiString::TCollection_AsciiString()`
     /// Initializes a AsciiString with copy of another AsciiString
     /// concatenated with the message string.
@@ -863,9 +855,18 @@ impl AsciiString {
             )
         }
     }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_to_owned(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for AsciiString (21 total) ──
+// ── Skipped symbols for AsciiString (20 total) ──
 // SKIPPED: **Source:** `TCollection_AsciiString.hxx`:63 - `TCollection_AsciiString::TCollection_AsciiString`
 //   constructor: Initializes a AsciiString with a single character.
 //   Reason: param 'aChar' uses unknown type 'Standard_Character'
@@ -876,11 +877,6 @@ impl AsciiString {
 //   constructor: and filled with <filler>. This is useful for buffers.
 //   Reason: param 'filler' uses unknown type 'Standard_Character'
 //   // pub fn new_int_character(length: i32, filler: Character) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:80 - `TCollection_AsciiString::TCollection_AsciiString`
-//   constructor: Move constructor
-//   Reason: has unbindable types: param 'theOther': rvalue reference (TCollection_AsciiString&&)
-//   // pub fn new_asciistring(theOther: /* TCollection_AsciiString&& */) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `TCollection_AsciiString.hxx`:84 - `TCollection_AsciiString::TCollection_AsciiString`
 //   constructor: Initializes a AsciiString with copy of another AsciiString
@@ -1059,16 +1055,6 @@ impl ExtendedString {
     pub fn new_real(value: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_real(value))
-        }
-    }
-
-    /// **Source:** `TCollection_ExtendedString.hxx`:97 - `TCollection_ExtendedString::TCollection_ExtendedString()`
-    /// Initializes a ExtendedString with another ExtendedString.
-    pub fn new_extendedstring(astring: &ExtendedString) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_extendedstring(
-                astring,
-            ))
         }
     }
 
@@ -1304,9 +1290,18 @@ impl ExtendedString {
             crate::ffi::TCollection_ExtendedString_is_equal_extendedstring2(theString1, theString2)
         }
     }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_to_owned(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for ExtendedString (21 total) ──
+// ── Skipped symbols for ExtendedString (20 total) ──
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:68 - `TCollection_ExtendedString::TCollection_ExtendedString`
 //   constructor: Creation by converting an ExtString to an extended string.
 //   Reason: param 'astring' uses unknown type 'Standard_ExtString'
@@ -1333,11 +1328,6 @@ impl ExtendedString {
 //   constructor: and filled with <filler>.This is useful for buffers.
 //   Reason: param 'filler' uses unknown type 'Standard_ExtCharacter'
 //   // pub fn new_int_extcharacter(length: i32, filler: ExtCharacter) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:100 - `TCollection_ExtendedString::TCollection_ExtendedString`
-//   constructor: Move constructor
-//   Reason: has unbindable types: param 'theOther': rvalue reference (TCollection_ExtendedString&&)
-//   // pub fn new_extendedstring(theOther: /* TCollection_ExtendedString&& */) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:118 - `TCollection_ExtendedString::AssignCat`
 //   method: Appends the utf16 char to this extended string.

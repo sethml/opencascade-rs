@@ -1042,11 +1042,6 @@ impl DoubleTab {
         }
     }
 
-    /// **Source:** `math_DoubleTab.hxx`:45 - `math_DoubleTab::math_DoubleTab()`
-    pub fn new_doubletab(Other: &DoubleTab) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_DoubleTab_ctor_doubletab(Other)) }
-    }
-
     /// **Source:** `math_DoubleTab.hxx`:43 - `math_DoubleTab::Init()`
     pub fn init(&mut self, InitValue: f64) {
         unsafe { crate::ffi::math_DoubleTab_init(self as *mut Self, InitValue) }
@@ -1075,6 +1070,13 @@ impl DoubleTab {
     /// **Source:** `math_DoubleTab.hxx`:60 - `math_DoubleTab::Free()`
     pub fn free(&mut self) {
         unsafe { crate::ffi::math_DoubleTab_free(self as *mut Self) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::math_DoubleTab_to_owned(self as *const Self))
+        }
     }
 }
 
@@ -3105,13 +3107,6 @@ impl Matrix {
         }
     }
 
-    /// **Source:** `math_Matrix.hxx`:113 - `math_Matrix::math_Matrix()`
-    /// constructs a matrix for copy in initialization.
-    /// An exception is raised if the matrixes have not the same dimensions.
-    pub fn new_matrix(Other: &Matrix) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_ctor_matrix(Other)) }
-    }
-
     /// **Source:** `math_Matrix.hxx`:116 - `math_Matrix::Init()`
     /// Initialize all the elements of a matrix to InitialValue.
     pub fn init(&mut self, InitialValue: f64) {
@@ -3444,6 +3439,11 @@ impl Matrix {
     /// An exception is raised if the dimensions are different.
     pub fn opposite(&mut self) -> crate::OwnedPtr<Matrix> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_opposite(self as *mut Self)) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_to_owned(self as *const Self)) }
     }
 }
 

@@ -4177,16 +4177,6 @@ impl PackedMapOfInteger {
         }
     }
 
-    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:275 - `TColStd_PackedMapOfInteger::TColStd_PackedMapOfInteger()`
-    /// Copy constructor
-    pub fn new_packedmapofinteger(theOther: &PackedMapOfInteger) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TColStd_PackedMapOfInteger_ctor_packedmapofinteger(theOther),
-            )
-        }
-    }
-
     /// **Source:** `TColStd_PackedMapOfInteger.hxx`:266 - `TColStd_PackedMapOfInteger::TColStd_PackedMapOfInteger()`
     /// Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -4360,6 +4350,15 @@ impl PackedMapOfInteger {
     pub fn has_intersection(&self, arg0: &PackedMapOfInteger) -> bool {
         unsafe {
             crate::ffi::TColStd_PackedMapOfInteger_has_intersection(self as *const Self, arg0)
+        }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_PackedMapOfInteger_to_owned(
+                self as *const Self,
+            ))
         }
     }
 }

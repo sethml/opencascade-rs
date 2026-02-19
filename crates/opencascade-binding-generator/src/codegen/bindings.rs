@@ -242,6 +242,8 @@ pub struct HandleUpcastBinding {
     pub base_handle_name: String,
     /// Base class C++ name, e.g. "Geom_Curve"
     pub base_class: String,
+    /// Base class module, e.g. "Geom"
+    pub base_module: String,
     /// FFI function name
     pub ffi_fn_name: String,
     /// Derived handle type name, e.g. "HandleGeomBSplineCurve"
@@ -255,6 +257,8 @@ pub struct HandleDowncastBinding {
     pub derived_handle_name: String,
     /// Derived class C++ name, e.g. "Geom_Plane"
     pub derived_class: String,
+    /// Derived class module, e.g. "Geom"
+    pub derived_module: String,
     /// Base handle type name, e.g. "HandleGeomSurface"
     pub base_handle_name: String,
     /// FFI function name, e.g. "HandleGeomSurface_downcast_to_HandleGeomPlane"
@@ -2061,9 +2065,37 @@ pub fn compute_class_bindings(
     // ── Upcasts ─────────────────────────────────────────────────────────
     let upcasts = compute_upcast_bindings(class, symbol_table);
 
-    // ── to_owned ────────────────────────────────────────────────────────
+    // ── to_owned ──────────────────────────────────────────────────────────────────────────────
+    // Detect copyability using libclang copy/move constructor detection.
+    // has_copy_constructor: Some(true) = explicit usable copy ctor,
+    //                       Some(false) = explicitly deleted/private,
+    //                       None = no explicit copy ctor (implicit may exist)
+    //
+    // Handle-able classes (inheriting from Standard_Transient) always use to_handle()
+    // instead of to_owned(), even if they have explicit copy constructors.
+    //
+    // For None (no explicit copy ctor), we fall back to a conservative module
+    // allowlist because implicit copy constructors can be silently deleted when
+    // a class has non-copyable members (e.g., algorithm classes with Extrema solvers).
+    // Clang does not enumerate implicitly-deleted copy constructors.
+    let is_handle_type = handle_able_classes.contains(&class.name);
     let copyable_modules = ["TopoDS", "gp", "TopLoc", "Bnd", "GProp"];
-    let has_to_owned = copyable_modules.contains(&class.module.as_str())
+    let is_copyable = if is_handle_type {
+        false // Transient classes use handles, not copies
+    } else {
+        match class.has_copy_constructor {
+            Some(true) => true,   // Explicit public non-deleted copy constructor
+            Some(false) => false, // Explicitly deleted or non-public copy constructor
+            None => {
+                // No explicit copy ctor. Implicit one may or may not exist.
+                // Move constructors suppress implicit copy ctors.
+                // For remaining classes, fall back to known-copyable module list.
+                !class.has_move_constructor
+                    && copyable_modules.contains(&class.module.as_str())
+            }
+        }
+    };
+    let has_to_owned = is_copyable
         && !class.has_protected_destructor
         && !effectively_abstract;
 
@@ -2072,7 +2104,6 @@ pub fn compute_class_bindings(
     // Handle<T> manages lifetime via reference counting, not direct delete.
     // However, to_handle requires constructability (it takes ownership of a raw pointer),
     // so skip for abstract classes and classes with protected destructors.
-    let is_handle_type = handle_able_classes.contains(&class.name);
     let has_to_handle =
         is_handle_type && !class.has_protected_destructor && !effectively_abstract;
 
@@ -2639,10 +2670,14 @@ fn compute_handle_upcast_bindings(
             let base_handle_name = format!("Handle{}", base_class.replace("_", ""));
             let ffi_fn_name =
                 format!("{}_to_{}", handle_type_name, base_handle_name);
+            let base_module = symbol_table.class_by_name(base_class)
+                .map(|c| c.rust_module.clone())
+                .unwrap_or_default();
 
             HandleUpcastBinding {
                 base_handle_name,
                 base_class: base_class.clone(),
+                base_module,
                 ffi_fn_name,
                 derived_handle_name: handle_type_name.clone(),
             }
@@ -2680,10 +2715,14 @@ fn compute_handle_downcast_bindings(
             let derived_handle_name = format!("Handle{}", derived_class.replace("_", ""));
             let ffi_fn_name =
                 format!("{}_downcast_to_{}", handle_type_name, derived_handle_name);
+            let derived_module = symbol_table.class_by_name(derived_class)
+                .map(|c| c.rust_module.clone())
+                .unwrap_or_default();
 
             HandleDowncastBinding {
                 derived_handle_name,
                 derived_class: derived_class.clone(),
+                derived_module,
                 base_handle_name: handle_type_name.clone(),
                 ffi_fn_name,
             }
@@ -5097,7 +5136,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         ));
         // Build upcast method names, detecting collisions and using full names for disambiguation
         let upcast_short_names: Vec<String> = bindings.handle_upcasts.iter().map(|hu| {
-            hu.base_class.split('_').skip(1).collect::<Vec<_>>().join("_").to_snake_case()
+            crate::type_mapping::short_name_for_module(&hu.base_class, &hu.base_module).to_snake_case()
         }).collect();
         let mut upcast_name_counts: HashMap<&str, usize> = HashMap::new();
         for name in &upcast_short_names {
@@ -5121,7 +5160,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         }
         // Build downcast method names, detecting collisions and using full names for disambiguation
         let downcast_short_names: Vec<String> = bindings.handle_downcasts.iter().map(|hd| {
-            hd.derived_class.split('_').skip(1).collect::<Vec<_>>().join("_").to_snake_case()
+            crate::type_mapping::short_name_for_module(&hd.derived_class, &hd.derived_module).to_snake_case()
         }).collect();
         let mut downcast_name_counts: HashMap<&str, usize> = HashMap::new();
         for name in &downcast_short_names {
@@ -5461,6 +5500,8 @@ mod tests {
             has_explicit_constructors: false,
             fields: Vec::new(),
             is_pod_struct: false,
+            has_copy_constructor: None,
+            has_move_constructor: false,
         };
 
         let all_class_names: HashSet<String> = ["gp_Pnt".to_string()].into();
@@ -5550,6 +5591,8 @@ mod tests {
             has_explicit_constructors: true,
             fields: Vec::new(),
             is_pod_struct: false,
+            has_copy_constructor: None,
+            has_move_constructor: false,
         };
 
         let all_class_names: HashSet<String> =

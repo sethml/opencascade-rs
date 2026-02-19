@@ -12034,15 +12034,6 @@ impl VectorWithNullMagnitude {
         }
     }
 
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gp_VectorWithNullMagnitude_to_owned(
-                self as *const Self,
-            ))
-        }
-    }
-
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,

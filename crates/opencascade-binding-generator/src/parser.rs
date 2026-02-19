@@ -425,6 +425,10 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Vec<Parse
     let mut is_abstract = false;
     let mut pure_virtual_methods = std::collections::HashSet::new();
     let mut has_explicit_constructors = false;
+    // Track copy constructor: None = no explicit copy ctor seen,
+    // Some(true) = public non-deleted copy ctor, Some(false) = deleted/non-public copy ctor
+    let mut has_copy_constructor: Option<bool> = None;
+    let mut has_move_constructor = false;
     let mut nested_classes: Vec<ParsedClass> = Vec::new();
 
     // Track current access level for nested type visibility.
@@ -450,6 +454,35 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Vec<Parse
             EntityKind::Constructor => {
                 // Any explicit constructor means C++ won't generate an implicit default
                 has_explicit_constructors = true;
+
+                // Detect copy constructors via libclang
+                if child.is_copy_constructor() {
+                    let is_available = child.get_availability() != Availability::Unavailable;
+                    let is_pub = is_public(&child);
+                    // Also check that the copy ctor takes a const reference (const T&),
+                    // not a mutable reference (T&). Our to_owned wrapper uses
+                    // `const T*` so non-const copy ctors won't compile.
+                    let takes_const_ref = child.get_arguments()
+                        .and_then(|args| args.first().and_then(|arg| arg.get_type()))
+                        .and_then(|ty| ty.get_pointee_type())
+                        .map(|pointee| pointee.is_const_qualified())
+                        .unwrap_or(true); // Default to true if we can't determine
+                    if is_available && is_pub && takes_const_ref {
+                        has_copy_constructor = Some(true);
+                    } else if has_copy_constructor.is_none() {
+                        // Deleted, non-public, or non-const copy constructor
+                        has_copy_constructor = Some(false);
+                    }
+                    // Don't add copy constructors to the regular constructors list
+                    return EntityVisitResult::Continue;
+                }
+
+                // Detect move constructors — these suppress implicit copy constructors
+                if child.is_move_constructor() {
+                    has_move_constructor = true;
+                    // Don't add move constructors to the regular constructors list
+                    return EntityVisitResult::Continue;
+                }
 
                 // Skip deprecated constructors
                 if child.get_availability() == Availability::Deprecated {
@@ -585,6 +618,8 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Vec<Parse
             has_explicit_constructors,
             fields,
             is_pod_struct,
+            has_copy_constructor,
+            has_move_constructor,
         },
     ];
 

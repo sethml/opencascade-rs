@@ -880,16 +880,6 @@ impl BasePointerVector {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::NCollection_BasePointerVector_ctor()) }
     }
 
-    /// **Source:** `NCollection_BasePointerVector.hxx`:41 - `NCollection_BasePointerVector::NCollection_BasePointerVector()`
-    /// Copy data from another vector
-    pub fn new_basepointervector(theOther: &BasePointerVector) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::NCollection_BasePointerVector_ctor_basepointervector(theOther),
-            )
-        }
-    }
-
     /// **Source:** `NCollection_BasePointerVector.hxx`:50 - `NCollection_BasePointerVector::IsEmpty()`
     /// Checks for an empty status
     pub fn is_empty(&self) -> bool {
@@ -921,14 +911,18 @@ impl BasePointerVector {
             crate::ffi::NCollection_BasePointerVector_clear(self as *mut Self, theReleaseMemory)
         }
     }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NCollection_BasePointerVector_to_owned(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for BasePointerVector (5 total) ──
-// SKIPPED: **Source:** `NCollection_BasePointerVector.hxx`:44 - `NCollection_BasePointerVector::NCollection_BasePointerVector`
-//   constructor: Move data from another vector
-//   Reason: has unbindable types: param 'theOther': rvalue reference (NCollection_BasePointerVector&&)
-//   // pub fn new_basepointervector(theOther: /* NCollection_BasePointerVector&& */) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for BasePointerVector (4 total) ──
 // SKIPPED: **Source:** `NCollection_BasePointerVector.hxx`:71 - `NCollection_BasePointerVector::GetArray`
 //   method: Gets array, can be null
 //   Reason: has unbindable types: return: raw pointer (void**)

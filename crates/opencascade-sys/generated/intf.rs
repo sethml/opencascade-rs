@@ -393,12 +393,6 @@ impl SectionLine {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Intf_SectionLine_ctor()) }
     }
 
-    /// **Source:** `Intf_SectionLine.hxx`:61 - `Intf_SectionLine::Intf_SectionLine()`
-    /// Copies a SectionLine.
-    pub fn new_sectionline(Other: &SectionLine) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Intf_SectionLine_ctor_sectionline(Other)) }
-    }
-
     /// **Source:** `Intf_SectionLine.hxx`:36 - `Intf_SectionLine::NumberOfPoints()`
     /// Returns number of points in this SectionLine.
     pub fn number_of_points(&self) -> i32 {
@@ -478,6 +472,13 @@ impl SectionLine {
     /// **Source:** `Intf_SectionLine.hxx`:91 - `Intf_SectionLine::Dump()`
     pub fn dump(&self, Indent: i32) {
         unsafe { crate::ffi::Intf_SectionLine_dump(self as *const Self, Indent) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Intf_SectionLine_to_owned(self as *const Self))
+        }
     }
 }
 

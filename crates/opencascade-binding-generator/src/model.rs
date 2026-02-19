@@ -139,6 +139,14 @@ pub struct ParsedClass {
     pub fields: Vec<ParsedField>,
     /// Whether this class is a POD struct (all public fields, no virtuals, trivially copyable)
     pub is_pod_struct: bool,
+    /// Whether this class has a usable (public, non-deleted) copy constructor.
+    /// - `Some(true)`: explicit public, non-deleted copy constructor found
+    /// - `Some(false)`: explicit copy constructor found but deleted or non-public
+    /// - `None`: no explicit copy constructor (implicit may exist based on C++ rules)
+    pub has_copy_constructor: Option<bool>,
+    /// Whether this class has an explicit move constructor.
+    /// A move constructor suppresses the implicit copy constructor in C++.
+    pub has_move_constructor: bool,
 }
 
 impl ParsedClass {

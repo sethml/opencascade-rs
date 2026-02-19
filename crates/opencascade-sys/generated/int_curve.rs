@@ -27,11 +27,6 @@ impl IConicTool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_IConicTool_ctor()) }
     }
 
-    /// **Source:** `IntCurve_IConicTool.hxx`:43 - `IntCurve_IConicTool::IntCurve_IConicTool()`
-    pub fn new_iconictool(IT: &IConicTool) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_IConicTool_ctor_iconictool(IT)) }
-    }
-
     /// **Source:** `IntCurve_IConicTool.hxx`:45 - `IntCurve_IConicTool::IntCurve_IConicTool()`
     pub fn new_elips2d(E: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_IConicTool_ctor_elips2d(E)) }
@@ -106,6 +101,13 @@ impl IConicTool {
     /// implicit curve must be coherent with the way of determination of the signed distance.
     pub fn find_parameter(&self, P: &crate::gp::Pnt2d) -> f64 {
         unsafe { crate::ffi::IntCurve_IConicTool_find_parameter(self as *const Self, P) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntCurve_IConicTool_to_owned(self as *const Self))
+        }
     }
 }
 

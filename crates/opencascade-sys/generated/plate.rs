@@ -30,11 +30,6 @@ impl D1 {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D1_ctor_xyz2(du, dv)) }
     }
 
-    /// **Source:** `Plate_D1.hxx`:35 - `Plate_D1::Plate_D1()`
-    pub fn new_d1(ref_: &D1) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D1_ctor_d1(ref_)) }
-    }
-
     /// **Source:** `Plate_D1.hxx`:37 - `Plate_D1::DU()`
     pub fn du(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::Plate_D1_du(self as *const Self)) }
@@ -43,6 +38,11 @@ impl D1 {
     /// **Source:** `Plate_D1.hxx`:39 - `Plate_D1::DV()`
     pub fn dv(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::Plate_D1_dv(self as *const Self)) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D1_to_owned(self as *const Self)) }
     }
 }
 
@@ -71,9 +71,9 @@ impl D2 {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D2_ctor_xyz3(duu, duv, dvv)) }
     }
 
-    /// **Source:** `Plate_D2.hxx`:35 - `Plate_D2::Plate_D2()`
-    pub fn new_d2(ref_: &D2) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D2_ctor_d2(ref_)) }
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D2_to_owned(self as *const Self)) }
     }
 }
 
@@ -103,9 +103,9 @@ impl D3 {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D3_ctor_xyz4(duuu, duuv, duvv, dvvv)) }
     }
 
-    /// **Source:** `Plate_D3.hxx`:38 - `Plate_D3::Plate_D3()`
-    pub fn new_d3(ref_: &D3) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D3_ctor_d3(ref_)) }
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D3_to_owned(self as *const Self)) }
     }
 }
 
@@ -329,13 +329,6 @@ unsafe impl crate::CppDeletable for GtoCConstraint {
 }
 
 impl GtoCConstraint {
-    /// **Source:** `Plate_GtoCConstraint.hxx`:37 - `Plate_GtoCConstraint::Plate_GtoCConstraint()`
-    pub fn new_gtocconstraint(ref_: &GtoCConstraint) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_GtoCConstraint_ctor_gtocconstraint(ref_))
-        }
-    }
-
     /// **Source:** `Plate_GtoCConstraint.hxx`:39 - `Plate_GtoCConstraint::Plate_GtoCConstraint()`
     pub fn new_xy_d12(point2d: &crate::gp::XY, D1S: &D1, D1T: &D1) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -433,6 +426,15 @@ impl GtoCConstraint {
     /// **Source:** `Plate_GtoCConstraint.hxx`:82 - `Plate_GtoCConstraint::D1SurfInit()`
     pub fn d1_surf_init(&self) -> &D1 {
         unsafe { &*(crate::ffi::Plate_GtoCConstraint_d1_surf_init(self as *const Self)) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Plate_GtoCConstraint_to_owned(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -1007,11 +1009,6 @@ impl Plate {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_Plate_ctor()) }
     }
 
-    /// **Source:** `Plate_Plate.hxx`:55 - `Plate_Plate::Plate_Plate()`
-    pub fn new_plate(Ref: &Plate) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_Plate_ctor_plate(Ref)) }
-    }
-
     /// **Source:** `Plate_Plate.hxx`:61 - `Plate_Plate::Load()`
     pub fn load_pinpointconstraint(&mut self, PConst: &PinpointConstraint) {
         unsafe { crate::ffi::Plate_Plate_load_pinpointconstraint(self as *mut Self, PConst) }
@@ -1141,6 +1138,11 @@ impl Plate {
     /// **Source:** `Plate_Plate.hxx`:111 - `Plate_Plate::UVConstraints()`
     pub fn uv_constraints(&self, Seq: &mut crate::ffi::TColgp_SequenceOfXY) {
         unsafe { crate::ffi::Plate_Plate_uv_constraints(self as *const Self, Seq) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_Plate_to_owned(self as *const Self)) }
     }
 }
 

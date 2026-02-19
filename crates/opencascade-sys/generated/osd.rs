@@ -9796,12 +9796,6 @@ impl Thread {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Thread_ctor()) }
     }
 
-    /// **Source:** `OSD_Thread.hxx`:45 - `OSD_Thread::OSD_Thread()`
-    /// Copy constructor
-    pub fn new_thread(other: &Thread) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Thread_ctor_thread(other)) }
-    }
-
     /// **Source:** `OSD_Thread.hxx`:48 - `OSD_Thread::Assign()`
     /// Copy thread handle from other OSD_Thread object.
     pub fn assign(&mut self, other: &Thread) {
@@ -9829,6 +9823,11 @@ impl Thread {
     /// Waits till the thread finishes execution.
     pub fn wait(&mut self) -> bool {
         unsafe { crate::ffi::OSD_Thread_wait(self as *mut Self) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Thread_to_owned(self as *const Self)) }
     }
 }
 

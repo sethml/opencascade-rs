@@ -1702,12 +1702,6 @@ impl Set {
         }
     }
 
-    /// **Source:** `BOPTools_Set.hxx`:38 - `BOPTools_Set::BOPTools_Set()`
-    /// Copy constructor.
-    pub fn new_set(theOther: &Set) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPTools_Set_ctor_set(theOther)) }
-    }
-
     /// **Source:** `BOPTools_Set.hxx`:44 - `BOPTools_Set::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPTools_Set_shape(self as *const Self)) }
@@ -1731,6 +1725,11 @@ impl Set {
     /// **Source:** `BOPTools_Set.hxx`:54 - `BOPTools_Set::GetSum()`
     pub fn get_sum(&self) -> usize {
         unsafe { crate::ffi::BOPTools_Set_get_sum(self as *const Self) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPTools_Set_to_owned(self as *const Self)) }
     }
 }
 

@@ -2466,16 +2466,6 @@ impl NewShapeIterator {
         }
     }
 
-    /// **Source:** `TNaming_NewShapeIterator.hxx`:50 - `TNaming_NewShapeIterator::TNaming_NewShapeIterator()`
-    /// Iterates from the current Shape in <anIterator>
-    pub fn new_newshapeiterator(anIterator: &NewShapeIterator) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TNaming_NewShapeIterator_ctor_newshapeiterator(
-                anIterator,
-            ))
-        }
-    }
-
     /// **Source:** `TNaming_NewShapeIterator.hxx`:53 - `TNaming_NewShapeIterator::TNaming_NewShapeIterator()`
     /// Iterates from the current Shape in <anIterator>
     pub fn new_iterator(anIterator: &Iterator) -> crate::OwnedPtr<Self> {
@@ -2526,6 +2516,15 @@ impl NewShapeIterator {
     pub fn is_modification(&self) -> bool {
         unsafe { crate::ffi::TNaming_NewShapeIterator_is_modification(self as *const Self) }
     }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_NewShapeIterator_to_owned(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 // ========================
@@ -2566,16 +2565,6 @@ impl OldShapeIterator {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_OldShapeIterator_ctor_shape_label(
                 aShape, access,
-            ))
-        }
-    }
-
-    /// **Source:** `TNaming_OldShapeIterator.hxx`:50 - `TNaming_OldShapeIterator::TNaming_OldShapeIterator()`
-    /// Iterates from the current Shape in <anIterator>
-    pub fn new_oldshapeiterator(anIterator: &OldShapeIterator) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TNaming_OldShapeIterator_ctor_oldshapeiterator(
-                anIterator,
             ))
         }
     }
@@ -2628,6 +2617,15 @@ impl OldShapeIterator {
     /// fuse,etc...) of the old shape.
     pub fn is_modification(&self) -> bool {
         unsafe { crate::ffi::TNaming_OldShapeIterator_is_modification(self as *const Self) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_OldShapeIterator_to_owned(
+                self as *const Self,
+            ))
+        }
     }
 }
 

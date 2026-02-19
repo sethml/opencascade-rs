@@ -2829,13 +2829,6 @@ impl TopoCurve {
         }
     }
 
-    /// **Source:** `IGESToBRep_TopoCurve.hxx`:61 - `IGESToBRep_TopoCurve::IGESToBRep_TopoCurve()`
-    /// Creates a tool TopoCurve ready to run and sets its
-    /// fields as CS's.
-    pub fn new_topocurve(CS: &TopoCurve) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_ctor_topocurve(CS)) }
-    }
-
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:64 - `IGESToBRep_TopoCurve::IGESToBRep_TopoCurve()`
     /// Creates a tool TopoCurve ready to run.
     pub fn new_real3_bool3(
@@ -2989,6 +2982,15 @@ impl TopoCurve {
         unsafe {
             &mut *(crate::ffi::IGESToBRep_TopoCurve_as_IGESToBRep_CurveAndSurface_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_to_owned(
+                self as *const Self,
             ))
         }
     }

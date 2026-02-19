@@ -240,15 +240,6 @@ impl AlertWithShape {
         }
     }
 
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_AlertWithShape_to_owned(
-                self as *const Self,
-            ))
-        }
-    }
-
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2038,13 +2029,6 @@ impl FrozenShape {
         }
     }
 
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_FrozenShape_to_owned(self as *const Self))
-        }
-    }
-
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2227,13 +2211,6 @@ impl HShape {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe { &mut *(crate::ffi::TopoDS_HShape_as_Standard_Transient_mut(self as *mut Self)) }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_HShape_to_owned(self as *const Self))
-        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -2539,13 +2516,6 @@ impl LockedShape {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *(crate::ffi::TopoDS_LockedShape_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_LockedShape_to_owned(self as *const Self))
         }
     }
 
@@ -3614,13 +3584,6 @@ impl TCompSolid {
         }
     }
 
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TCompSolid_to_owned(self as *const Self))
-        }
-    }
-
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3821,13 +3784,6 @@ impl TCompound {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe { &mut *(crate::ffi::TopoDS_TCompound_as_Standard_Transient_mut(self as *mut Self)) }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TCompound_to_owned(self as *const Self))
-        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -4233,11 +4189,6 @@ impl TFace {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe { &mut *(crate::ffi::TopoDS_TFace_as_Standard_Transient_mut(self as *mut Self)) }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TFace_to_owned(self as *const Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -4869,13 +4820,6 @@ impl TShell {
         unsafe { &mut *(crate::ffi::TopoDS_TShell_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TShell_to_owned(self as *const Self))
-        }
-    }
-
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -5075,13 +5019,6 @@ impl TSolid {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe { &mut *(crate::ffi::TopoDS_TSolid_as_Standard_Transient_mut(self as *mut Self)) }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TSolid_to_owned(self as *const Self))
-        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -5487,11 +5424,6 @@ impl TWire {
         unsafe { &mut *(crate::ffi::TopoDS_TWire_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TWire_to_owned(self as *const Self)) }
-    }
-
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTWire> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TWire_to_handle(obj.into_raw())) }
@@ -5747,15 +5679,6 @@ impl UnCompatibleShapes {
         unsafe {
             &mut *(crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_Transient_mut(
                 self as *mut Self,
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_UnCompatibleShapes_to_owned(
-                self as *const Self,
             ))
         }
     }

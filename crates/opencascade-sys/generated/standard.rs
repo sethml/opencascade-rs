@@ -3080,12 +3080,6 @@ impl Failure {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Failure_ctor()) }
     }
 
-    /// **Source:** `Standard_Failure.hxx`:37 - `Standard_Failure::Standard_Failure()`
-    /// Copy constructor
-    pub fn new_failure(f: &Failure) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Failure_ctor_failure(f)) }
-    }
-
     /// **Source:** `Standard_Failure.hxx`:41 - `Standard_Failure::Standard_Failure()`
     /// Creates a status object of type "Failure".
     /// @param[in] theDesc  exception description
@@ -4732,11 +4726,6 @@ impl GUID {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_uuid(aGuid)) }
     }
 
-    /// **Source:** `Standard_GUID.hxx`:64 - `Standard_GUID::Standard_GUID()`
-    pub fn new_guid(aGuid: &GUID) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_guid(aGuid)) }
-    }
-
     /// **Source:** `Standard_GUID.hxx`:66 - `Standard_GUID::ToUUID()`
     pub fn to_uuid(&self) -> crate::OwnedPtr<UUID> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_to_uuid(self as *const Self)) }
@@ -4768,6 +4757,13 @@ impl GUID {
     pub fn check_guid_format(aGuid: &str) -> bool {
         let c_aGuid = std::ffi::CString::new(aGuid).unwrap();
         unsafe { crate::ffi::Standard_GUID_check_guid_format(c_aGuid.as_ptr()) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_to_owned(self as *const Self))
+        }
     }
 }
 
@@ -9603,12 +9599,6 @@ impl Transient {
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Transient_ctor()) }
-    }
-
-    /// **Source:** `Standard_Transient.hxx`:49 - `Standard_Transient::Standard_Transient()`
-    /// Copy constructor -- does nothing
-    pub fn new_transient(arg0: &Transient) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Transient_ctor_transient(arg0)) }
     }
 
     /// **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`

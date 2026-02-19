@@ -344,12 +344,6 @@ impl CommonPrt {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_CommonPrt_ctor()) }
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:40 - `IntTools_CommonPrt::IntTools_CommonPrt()`
-    /// Copy  constructor
-    pub fn new_commonprt(aCPrt: &CommonPrt) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_CommonPrt_ctor_commonprt(aCPrt)) }
-    }
-
     /// **Source:** `IntTools_CommonPrt.hxx`:47 - `IntTools_CommonPrt::SetEdge1()`
     /// Sets the first edge.
     pub fn set_edge1(&mut self, anE: &crate::topo_ds::Edge) {
@@ -492,6 +486,13 @@ impl CommonPrt {
     /// Selector
     pub fn bounding_points(&self, aP1: &mut crate::gp::Pnt, aP2: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::IntTools_CommonPrt_bounding_points(self as *const Self, aP1, aP2) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntTools_CommonPrt_to_owned(self as *const Self))
+        }
     }
 }
 
@@ -2676,15 +2677,6 @@ impl SurfaceRangeLocalizeData {
         }
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:45 - `IntTools_SurfaceRangeLocalizeData::IntTools_SurfaceRangeLocalizeData()`
-    pub fn new_surfacerangelocalizedata(Other: &SurfaceRangeLocalizeData) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IntTools_SurfaceRangeLocalizeData_ctor_surfacerangelocalizedata(Other),
-            )
-        }
-    }
-
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:55 - `IntTools_SurfaceRangeLocalizeData::GetNbSampleU()`
     pub fn get_nb_sample_u(&self) -> i32 {
         unsafe {
@@ -2966,6 +2958,15 @@ impl SurfaceRangeLocalizeData {
     pub fn clear_grid(&mut self) {
         unsafe { crate::ffi::IntTools_SurfaceRangeLocalizeData_clear_grid(self as *mut Self) }
     }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntTools_SurfaceRangeLocalizeData_to_owned(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 // ── Skipped symbols for SurfaceRangeLocalizeData (1 total) ──
@@ -3018,15 +3019,6 @@ impl SurfaceRangeSample {
                 crate::ffi::IntTools_SurfaceRangeSample_ctor_curverangesample2(
                     theRangeU, theRangeV,
                 ),
-            )
-        }
-    }
-
-    /// **Source:** `IntTools_SurfaceRangeSample.hxx`:42 - `IntTools_SurfaceRangeSample::IntTools_SurfaceRangeSample()`
-    pub fn new_surfacerangesample(Other: &SurfaceRangeSample) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IntTools_SurfaceRangeSample_ctor_surfacerangesample(Other),
             )
         }
     }
@@ -3194,6 +3186,15 @@ impl SurfaceRangeSample {
                 self as *const Self,
                 theNbSampleV,
             )
+        }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntTools_SurfaceRangeSample_to_owned(
+                self as *const Self,
+            ))
         }
     }
 }

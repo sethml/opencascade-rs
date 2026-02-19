@@ -117,15 +117,6 @@ impl Geom2dEntity {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dToIGES_Geom2dEntity_ctor()) }
     }
 
-    /// **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:37 - `Geom2dToIGES_Geom2dEntity::Geom2dToIGES_Geom2dEntity()`
-    /// Creates a tool ready to run and sets its
-    /// fields as GE's.
-    pub fn new_geom2dentity(GE: &Geom2dEntity) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dToIGES_Geom2dEntity_ctor_geom2dentity(GE))
-        }
-    }
-
     /// **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:46 - `Geom2dToIGES_Geom2dEntity::SetUnit()`
     /// Sets the value of the UnitFlag
     pub fn set_unit(&mut self, unit: f64) {
@@ -137,6 +128,15 @@ impl Geom2dEntity {
     /// in millimeters.
     pub fn get_unit(&self) -> f64 {
         unsafe { crate::ffi::Geom2dToIGES_Geom2dEntity_get_unit(self as *const Self) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2dToIGES_Geom2dEntity_to_owned(
+                self as *const Self,
+            ))
+        }
     }
 }
 

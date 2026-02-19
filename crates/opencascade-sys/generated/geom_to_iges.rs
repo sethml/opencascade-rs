@@ -323,13 +323,6 @@ impl GeomEntity {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomToIGES_GeomEntity_ctor()) }
     }
 
-    /// **Source:** `GeomToIGES_GeomEntity.hxx`:38 - `GeomToIGES_GeomEntity::GeomToIGES_GeomEntity()`
-    /// Creates a tool ready to run and sets its
-    /// fields as GE's.
-    pub fn new_geomentity(GE: &GeomEntity) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomToIGES_GeomEntity_ctor_geomentity(GE)) }
-    }
-
     /// **Source:** `GeomToIGES_GeomEntity.hxx`:47 - `GeomToIGES_GeomEntity::SetUnit()`
     /// Sets the value of the UnitFlag
     pub fn set_unit(&mut self, unit: f64) {
@@ -341,6 +334,15 @@ impl GeomEntity {
     /// in meters.
     pub fn get_unit(&self) -> f64 {
         unsafe { crate::ffi::GeomToIGES_GeomEntity_get_unit(self as *const Self) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomToIGES_GeomEntity_to_owned(
+                self as *const Self,
+            ))
+        }
     }
 }
 

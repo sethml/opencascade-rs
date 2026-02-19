@@ -102,14 +102,6 @@ impl ArrayOfNodes {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_ArrayOfNodes_ctor_int(theLength)) }
     }
 
-    /// **Source:** `Poly_ArrayOfNodes.hxx`:41 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
-    /// Copy constructor
-    pub fn new_arrayofnodes(theOther: &ArrayOfNodes) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Poly_ArrayOfNodes_ctor_arrayofnodes(theOther))
-        }
-    }
-
     /// **Source:** `Poly_ArrayOfNodes.hxx`:44 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
     /// Constructor wrapping pre-allocated C-array of values without copying them.
     pub fn new_pnt_int(theBegin: &crate::gp::Pnt, theLength: i32) -> crate::OwnedPtr<Self> {
@@ -151,18 +143,20 @@ impl ArrayOfNodes {
     pub fn set_value(&mut self, theIndex: i32, theValue: &crate::gp::Pnt) {
         unsafe { crate::ffi::Poly_ArrayOfNodes_set_value(self as *mut Self, theIndex, theValue) }
     }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_ArrayOfNodes_to_owned(self as *const Self))
+        }
+    }
 }
 
-// ── Skipped symbols for ArrayOfNodes (4 total) ──
+// ── Skipped symbols for ArrayOfNodes (3 total) ──
 // SKIPPED: **Source:** `Poly_ArrayOfNodes.hxx`:51 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes`
 //   constructor: Constructor wrapping pre-allocated C-array of values without copying them.
 //   Reason: param 'theBegin' uses unknown type 'const gp_Vec3f&'
 //   // pub fn new_vec3f_int(theBegin: &Vec3f, theLength: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Poly_ArrayOfNodes.hxx`:92 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes`
-//   constructor: Move constructor
-//   Reason: has unbindable types: param 'theOther': rvalue reference (Poly_ArrayOfNodes&&)
-//   // pub fn new_arrayofnodes(theOther: /* Poly_ArrayOfNodes&& */) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `Poly_ArrayOfNodes.hxx`:79 - `Poly_ArrayOfNodes::Assign`
 //   method: Copies data of theOther array to this.
@@ -202,14 +196,6 @@ impl ArrayOfUVNodes {
     /// Constructor of double-precision array.
     pub fn new_int(theLength: i32) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_ArrayOfUVNodes_ctor_int(theLength)) }
-    }
-
-    /// **Source:** `Poly_ArrayOfUVNodes.hxx`:41 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
-    /// Copy constructor
-    pub fn new_arrayofuvnodes(theOther: &ArrayOfUVNodes) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Poly_ArrayOfUVNodes_ctor_arrayofuvnodes(theOther))
-        }
     }
 
     /// **Source:** `Poly_ArrayOfUVNodes.hxx`:44 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
@@ -253,18 +239,20 @@ impl ArrayOfUVNodes {
     pub fn set_value(&mut self, theIndex: i32, theValue: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::Poly_ArrayOfUVNodes_set_value(self as *mut Self, theIndex, theValue) }
     }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_ArrayOfUVNodes_to_owned(self as *const Self))
+        }
+    }
 }
 
-// ── Skipped symbols for ArrayOfUVNodes (4 total) ──
+// ── Skipped symbols for ArrayOfUVNodes (3 total) ──
 // SKIPPED: **Source:** `Poly_ArrayOfUVNodes.hxx`:51 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes`
 //   constructor: Constructor wrapping pre-allocated C-array of values without copying them.
 //   Reason: param 'theBegin' uses unknown type 'const gp_Vec2f&'
 //   // pub fn new_vec2f_int(theBegin: &Vec2f, theLength: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Poly_ArrayOfUVNodes.hxx`:92 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes`
-//   constructor: Move constructor
-//   Reason: has unbindable types: param 'theOther': rvalue reference (Poly_ArrayOfUVNodes&&)
-//   // pub fn new_arrayofuvnodes(theOther: /* Poly_ArrayOfUVNodes&& */) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `Poly_ArrayOfUVNodes.hxx`:79 - `Poly_ArrayOfUVNodes::Assign`
 //   method: Copies data of theOther array to this.

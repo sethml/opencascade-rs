@@ -188,11 +188,6 @@ impl Elements {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dHatch_Elements_ctor()) }
     }
 
-    /// **Source:** `Geom2dHatch_Elements.hxx`:40 - `Geom2dHatch_Elements::Geom2dHatch_Elements()`
-    pub fn new_elements(Other: &Elements) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dHatch_Elements_ctor_elements(Other)) }
-    }
-
     /// **Source:** `Geom2dHatch_Elements.hxx`:42 - `Geom2dHatch_Elements::Clear()`
     pub fn clear(&mut self) {
         unsafe { crate::ffi::Geom2dHatch_Elements_clear(self as *mut Self) }
@@ -304,6 +299,15 @@ impl Elements {
             crate::ffi::Geom2dHatch_Elements_current_edge(self as *const Self, E, &mut Or_i32_)
         };
         *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2dHatch_Elements_to_owned(
+                self as *const Self,
+            ))
+        }
     }
 }
 

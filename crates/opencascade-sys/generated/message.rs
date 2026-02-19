@@ -4116,29 +4116,19 @@ unsafe impl crate::CppDeletable for Messenger_StreamBuffer {
 }
 
 impl Messenger_StreamBuffer {
-    /// **Source:** `Message_Messenger.hxx`:93 - `Message_Messenger_StreamBuffer::Message_Messenger_StreamBuffer()`
-    /// Formal copy constructor.
-    ///
-    /// Since buffer is intended for use as temporary object or local
-    /// variable, copy (or move) is needed only formally to be able to
-    /// return the new instance from relevant creation method.
-    /// In practice it should never be called because modern compilers
-    /// create such instances in place.
-    /// However note that if this constructor is called, the buffer
-    /// content (string) will not be copied  (move is not supported for
-    /// std::stringstream class on old compilers such as gcc 4.4, msvc 9).
-    pub fn new_streambuffer(theOther: &Messenger_StreamBuffer) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Message_Messenger_StreamBuffer_ctor_streambuffer(
-                theOther,
-            ))
-        }
-    }
-
     /// **Source:** `Message_Messenger.hxx`:70 - `Message_Messenger_StreamBuffer::Flush()`
     /// Flush collected string to messenger
     pub fn flush(&mut self, doForce: bool) {
         unsafe { crate::ffi::Message_Messenger_StreamBuffer_flush(self as *mut Self, doForce) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_Messenger_StreamBuffer_to_owned(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -4192,12 +4182,6 @@ impl Msg {
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_Msg_ctor()) }
-    }
-
-    /// **Source:** `Message_Msg.hxx`:60 - `Message_Msg::Message_Msg()`
-    /// Copy constructor
-    pub fn new_msg(theMsg: &Msg) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_Msg_ctor_msg(theMsg)) }
     }
 
     /// **Source:** `Message_Msg.hxx`:63 - `Message_Msg::Message_Msg()`
@@ -4270,6 +4254,11 @@ impl Msg {
     /// the word UNKNOWN
     pub fn get(&mut self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::Message_Msg_get(self as *mut Self)) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_Msg_to_owned(self as *const Self)) }
     }
 }
 
@@ -5638,16 +5627,6 @@ impl ProgressRange {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_ProgressRange_ctor()) }
     }
 
-    /// **Source:** `Message_ProgressRange.hxx`:52 - `Message_ProgressRange::Message_ProgressRange()`
-    /// Copy constructor disarms the source
-    pub fn new_progressrange(theOther: &ProgressRange) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Message_ProgressRange_ctor_progressrange(
-                theOther,
-            ))
-        }
-    }
-
     /// **Source:** `Message_ProgressRange.hxx`:74 - `Message_ProgressRange::UserBreak()`
     /// Returns true if ProgressIndicator signals UserBreak
     pub fn user_break(&self) -> bool {
@@ -5670,6 +5649,15 @@ impl ProgressRange {
     /// Closes the current range and advances indicator
     pub fn close(&mut self) {
         unsafe { crate::ffi::Message_ProgressRange_close(self as *mut Self) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_ProgressRange_to_owned(
+                self as *const Self,
+            ))
+        }
     }
 }
 
