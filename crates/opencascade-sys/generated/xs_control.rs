@@ -3927,40 +3927,40 @@ impl Utils {
 
 // ── Skipped symbols for Utils (9 total) ──
 // SKIPPED: **Source:** `XSControl_Utils.hxx`:114 - `XSControl_Utils::ToEString`
-//   Reason: return type 'Standard_ExtString' is unknown
-//   // pub fn to_e_string(&self, strval: &HandleHExtendedString) -> OwnedPtr<Standard_ExtString>;
+//   Reason: has unbindable types: return: raw pointer (const uint16_t*)
+//   // pub fn to_e_string(&self, strval: &HandleHExtendedString) -> /* const uint16_t* */;
 //
 // SKIPPED: **Source:** `XSControl_Utils.hxx`:116 - `XSControl_Utils::ToEString`
-//   Reason: return type 'Standard_ExtString' is unknown
-//   // pub fn to_e_string(&self, strval: &ExtendedString) -> OwnedPtr<Standard_ExtString>;
+//   Reason: has unbindable types: return: raw pointer (const uint16_t*)
+//   // pub fn to_e_string(&self, strval: &ExtendedString) -> /* const uint16_t* */;
 //
 // SKIPPED: **Source:** `XSControl_Utils.hxx`:118 - `XSControl_Utils::ToHString`
-//   Reason: param 'strcon' uses unknown type 'Standard_ExtString'
-//   // pub fn to_h_string(&self, strcon: ExtString) -> OwnedPtr<Handle<TCollection_HExtendedString>>;
+//   Reason: has unbindable types: param 'strcon': raw pointer (const uint16_t*)
+//   // pub fn to_h_string(&self, strcon: /* const uint16_t* */) -> OwnedPtr<Handle<TCollection_HExtendedString>>;
 //
 // SKIPPED: **Source:** `XSControl_Utils.hxx`:121 - `XSControl_Utils::ToXString`
-//   Reason: param 'strcon' uses unknown type 'Standard_ExtString'
-//   // pub fn to_x_string(&self, strcon: ExtString) -> OwnedPtr<TCollection_ExtendedString>;
+//   Reason: has unbindable types: param 'strcon': raw pointer (const uint16_t*)
+//   // pub fn to_x_string(&self, strcon: /* const uint16_t* */) -> OwnedPtr<TCollection_ExtendedString>;
 //
 // SKIPPED: **Source:** `XSControl_Utils.hxx`:123 - `XSControl_Utils::AsciiToExtended`
-//   Reason: return type 'Standard_ExtString' is unknown
-//   // pub fn ascii_to_extended(&self, str: *const char) -> OwnedPtr<Standard_ExtString>;
+//   Reason: has unbindable types: return: raw pointer (const uint16_t*)
+//   // pub fn ascii_to_extended(&self, str: *const char) -> /* const uint16_t* */;
 //
 // SKIPPED: **Source:** `XSControl_Utils.hxx`:125 - `XSControl_Utils::IsAscii`
-//   Reason: param 'str' uses unknown type 'Standard_ExtString'
-//   // pub fn is_ascii(&self, str: ExtString) -> bool;
+//   Reason: has unbindable types: param 'str': raw pointer (const uint16_t*)
+//   // pub fn is_ascii(&self, str: /* const uint16_t* */) -> bool;
 //
 // SKIPPED: **Source:** `XSControl_Utils.hxx`:127 - `XSControl_Utils::ExtendedToAscii`
-//   Reason: param 'str' uses unknown type 'Standard_ExtString'
-//   // pub fn extended_to_ascii(&self, str: ExtString) -> *const char;
+//   Reason: has unbindable types: param 'str': raw pointer (const uint16_t*)
+//   // pub fn extended_to_ascii(&self, str: /* const uint16_t* */) -> *const char;
 //
 // SKIPPED: **Source:** `XSControl_Utils.hxx`:132 - `XSControl_Utils::EStrValue`
-//   Reason: return type 'Standard_ExtString' is unknown
-//   // pub fn e_str_value(&self, list: &HandleTransient, num: i32) -> OwnedPtr<Standard_ExtString>;
+//   Reason: has unbindable types: return: raw pointer (const uint16_t*)
+//   // pub fn e_str_value(&self, list: &HandleTransient, num: i32) -> /* const uint16_t* */;
 //
 // SKIPPED: **Source:** `XSControl_Utils.hxx`:142 - `XSControl_Utils::AppendEStr`
-//   Reason: param 'strval' uses unknown type 'Standard_ExtString'
-//   // pub fn append_e_str(&self, seqval: &HandleHSequenceOfHExtendedString, strval: ExtString);
+//   Reason: has unbindable types: param 'strval': raw pointer (const uint16_t*)
+//   // pub fn append_e_str(&self, seqval: &HandleHSequenceOfHExtendedString, strval: /* const uint16_t* */);
 //
 
 // ========================

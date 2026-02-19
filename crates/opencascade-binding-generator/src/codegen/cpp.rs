@@ -299,10 +299,10 @@ pub fn generate_wrappers(
     // Generate wrappers for ALL namespace-level free functions
     generate_function_wrappers(&mut output, function_bindings, known_headers);
 
-    // Generate destructors for nested types (e.g., Message_Messenger::StreamBuffer)
+    // Generate destructors for nested types and extra typedef types (e.g., gp_Vec3f)
     if !nested_types.is_empty() {
         writeln!(output).unwrap();
-        writeln!(output, "// Nested type destructors").unwrap();
+        writeln!(output, "// Nested type and typedef type destructors").unwrap();
         for nt in nested_types {
             writeln!(
                 output,

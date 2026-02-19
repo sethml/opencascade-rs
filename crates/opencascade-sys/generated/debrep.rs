@@ -134,6 +134,17 @@ impl ConfigurationNode {
         }
     }
 
+    /// **Source:** `DEBREP_ConfigurationNode.hxx`:80 - `DEBREP_ConfigurationNode::GetExtensions()`
+    /// Gets list of supported file extensions
+    /// @return list of extensions
+    pub fn get_extensions(&self) -> crate::OwnedPtr<crate::ffi::TColStd_ListOfAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DEBREP_ConfigurationNode_get_extensions(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `DEBREP_ConfigurationNode.hxx`:85 - `DEBREP_ConfigurationNode::CheckContent()`
     /// Checks the file content to verify a format
     /// @param[in] theBuffer read stream buffer to check content
@@ -326,14 +337,6 @@ impl HandleDEBREPConfigurationNode {
         }
     }
 }
-
-// ── Skipped symbols for ConfigurationNode (1 total) ──
-// SKIPPED: **Source:** `DEBREP_ConfigurationNode.hxx`:80 - `DEBREP_ConfigurationNode::GetExtensions`
-//   method: Gets list of supported file extensions
-//   method: @return list of extensions
-//   Reason: return type 'TColStd_ListOfAsciiString' is not CppDeletable
-//   // pub fn get_extensions(&self) -> OwnedPtr<TColStd_ListOfAsciiString>;
-//
 
 /// **Source:** `DEBREP_ConfigurationNode.hxx`:89 - `DEBREP_ConfigurationNode_DEBRep_InternalSection`
 pub use crate::ffi::DEBREP_ConfigurationNode_DEBRep_InternalSection as ConfigurationNode_DEBRep_InternalSection;

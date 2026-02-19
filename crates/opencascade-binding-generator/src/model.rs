@@ -400,6 +400,8 @@ pub enum Type {
     I32,
     /// unsigned int
     U32,
+    /// unsigned short / uint16_t / Standard_ExtCharacter
+    U16,
     /// long long / int64_t
     I64,
     /// unsigned long long / uint64_t
@@ -438,6 +440,7 @@ impl Type {
             Type::Bool => "bool".to_string(),
             Type::I32 => "int".to_string(),
             Type::U32 => "uint".to_string(),
+            Type::U16 => "u16".to_string(),
             Type::I64 => "longlong".to_string(),
             Type::U64 => "ulonglong".to_string(),
             Type::Long => "long".to_string(),
@@ -460,6 +463,7 @@ impl Type {
                 | Type::Bool
                 | Type::I32
                 | Type::U32
+                | Type::U16
                 | Type::I64
                 | Type::U64
                 | Type::Long
@@ -475,7 +479,7 @@ impl Type {
     pub fn is_pod_field_type(&self) -> bool {
         matches!(
             self,
-            Type::Bool | Type::I32 | Type::U32 | Type::I64 | Type::U64
+            Type::Bool | Type::I32 | Type::U32 | Type::U16 | Type::I64 | Type::U64
                 | Type::Long | Type::ULong | Type::Usize | Type::F32 | Type::F64
         )
     }
@@ -624,6 +628,7 @@ impl Type {
             Type::Bool => "bool".to_string(),
             Type::I32 => "int".to_string(),
             Type::U32 => "unsigned int".to_string(),
+            Type::U16 => "uint16_t".to_string(),
             Type::I64 => "long long".to_string(),
             Type::U64 => "unsigned long long".to_string(),
             Type::Long => "long".to_string(),
@@ -681,6 +686,7 @@ impl Type {
             Type::Bool => "bool".to_string(),
             Type::I32 => "i32".to_string(),
             Type::U32 => "u32".to_string(),
+            Type::U16 => "u16".to_string(),
             Type::I64 => "i64".to_string(),
             Type::U64 => "u64".to_string(),
             Type::Long => "std::ffi::c_long".to_string(),
@@ -748,6 +754,7 @@ impl Type {
             Type::Bool => "bool".to_string(),
             Type::I32 => "i32".to_string(),
             Type::U32 => "u32".to_string(),
+            Type::U16 => "u16".to_string(),
             Type::I64 => "i64".to_string(),
             Type::U64 => "u64".to_string(),
             Type::Long => "std::ffi::c_long".to_string(),

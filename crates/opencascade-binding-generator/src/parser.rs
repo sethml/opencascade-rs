@@ -37,6 +37,7 @@ fn normalize_template_spelling(s: &str) -> String {
         .replace("Standard_Boolean", "bool")
         .replace("Standard_ShortReal", "float")
         .replace("Standard_Character", "char")
+        .replace("Standard_ExtCharacter", "uint16_t")
         .replace("Standard_Byte", "unsignedchar")
         .replace("Standard_Utf8Char", "char")
 }
@@ -1369,6 +1370,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
             "bool" => return Type::Bool,
             "int" => return Type::I32,
             "unsigned int" => return Type::U32,
+            "unsigned short" | "uint16_t" | "char16_t" => return Type::U16,
             "long" => return Type::Long,
             "unsigned long" => return Type::ULong,
             "long long" => return Type::I64,
@@ -1577,6 +1579,9 @@ fn map_standard_type(type_name: &str) -> Option<Type> {
         "Standard_Size" => Some(Type::Usize),
         "Standard_ShortReal" => Some(Type::F32),
         "Standard_Utf8Char" => Some(Type::Class("char".to_string())),
+        "Standard_Character" => Some(Type::Class("char".to_string())),
+        "Standard_ExtCharacter" => Some(Type::U16),
+        "Standard_ExtString" => Some(Type::ConstPtr(Box::new(Type::U16))),
         // C++ primitive types (may appear from canonical type resolution)
         "double" => Some(Type::F64),
         "float" => Some(Type::F32),
@@ -1587,7 +1592,7 @@ fn map_standard_type(type_name: &str) -> Option<Type> {
         "long long" => Some(Type::I64),
         "unsigned long long" => Some(Type::U64),
         "short" => Some(Type::I32),  // i16 isn't available, use i32
-        "unsigned short" => Some(Type::U32),  // u16 isn't available, use u32
+        "unsigned short" | "uint16_t" | "char16_t" => Some(Type::U16),
         "bool" => Some(Type::Bool),
         // Standard_Address is void* - can't be bound through the FFI, but we need to recognize it
         // so methods using it can be filtered out. Using a special class name that is_void_ptr() checks for.

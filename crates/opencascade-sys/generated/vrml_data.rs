@@ -5962,6 +5962,20 @@ impl Scene {
         unsafe { crate::ffi::VrmlData_Scene_set_linear_scale(self as *mut Self, theScale) }
     }
 
+    /// **Source:** `VrmlData_Scene.hxx`:85 - `VrmlData_Scene::VrmlDirIterator()`
+    ///
+    /// Returns the directory iterator, to check the presence of requested VRML
+    /// file in each iterated directory.
+    pub fn vrml_dir_iterator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::TDataStd_ListIteratorOfListOfExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Scene_vrml_dir_iterator(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `VrmlData_Scene.hxx`:93 - `VrmlData_Scene::GetIterator()`
     ///
     /// Iterator of Nodes
@@ -6273,13 +6287,7 @@ impl Scene {
     }
 }
 
-// ── Skipped symbols for Scene (5 total) ──
-// SKIPPED: **Source:** `VrmlData_Scene.hxx`:85 - `VrmlData_Scene::VrmlDirIterator`
-//   method: Returns the directory iterator, to check the presence of requested VRML
-//   method: file in each iterated directory.
-//   Reason: return type 'TDataStd_ListIteratorOfListOfExtendedString' is not CppDeletable
-//   // pub fn vrml_dir_iterator(&self) -> OwnedPtr<TDataStd_ListIteratorOfListOfExtendedString>;
-//
+// ── Skipped symbols for Scene (4 total) ──
 // SKIPPED: **Source:** `VrmlData_Scene.hxx`:98 - `VrmlData_Scene::NamedNodesIterator`
 //   method: Get the iterator of named nodes.
 //   Reason: return type 'VrmlData_MapOfNode::Iterator' is not CppDeletable

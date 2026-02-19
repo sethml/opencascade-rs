@@ -355,11 +355,11 @@ pub use crate::ffi::{
     HandleInterfaceNodeOfGeneralLib, HandleInterfaceNodeOfReaderLib, HandleInterfaceParamList,
     HandleInterfaceParamSet, HandleInterfaceReportEntity, HandleInterfaceSignLabel,
     HandleInterfaceStatic, HandleInterfaceTypedValue, HandleInterfaceUndefinedContent,
-    HandleLPropBadContinuity, HandleLPropNotDefined, HandleLawBSpFunc, HandleLawBSpline,
-    HandleLawComposite, HandleLawConstant, HandleLawInterpol, HandleLawLinear, HandleLawS,
-    HandleLocOpeGluedShape, HandleLocOpeWiresOnShape, HandleMAT2dCircuit, HandleMAT2dConnexion,
-    HandleMATArc, HandleMATBasicElt, HandleMATBisector, HandleMATEdge, HandleMATGraph,
-    HandleMATListOfBisector, HandleMATListOfEdge, HandleMATNode,
+    HandleLDOMMemManager, HandleLPropBadContinuity, HandleLPropNotDefined, HandleLawBSpFunc,
+    HandleLawBSpline, HandleLawComposite, HandleLawConstant, HandleLawInterpol, HandleLawLinear,
+    HandleLawS, HandleLocOpeGluedShape, HandleLocOpeWiresOnShape, HandleMAT2dCircuit,
+    HandleMAT2dConnexion, HandleMATArc, HandleMATBasicElt, HandleMATBisector, HandleMATEdge,
+    HandleMATGraph, HandleMATListOfBisector, HandleMATListOfEdge, HandleMATNode,
     HandleMATTListNodeOfListOfBisector, HandleMATTListNodeOfListOfEdge, HandleMATZone,
     HandleMessageAlert, HandleMessageAlertExtended, HandleMessageAlgorithm, HandleMessageAttribute,
     HandleMessageAttributeMeter, HandleMessageAttributeObject, HandleMessageAttributeStream,
@@ -3403,6 +3403,18 @@ impl Dump {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Dump_ctor()) }
     }
 
+    /// **Source:** `Standard_Dump.hxx`:366 - `Standard_Dump::HierarchicalValueIndices()`
+    /// Returns container of indices in values, that has hierarchical value
+    pub fn hierarchical_value_indices(
+        theValues: &crate::ffi::TColStd_IndexedDataMapOfStringString,
+    ) -> crate::OwnedPtr<crate::ffi::TColStd_ListOfInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_Dump_hierarchical_value_indices(
+                theValues,
+            ))
+        }
+    }
+
     /// **Source:** `Standard_Dump.hxx`:370 - `Standard_Dump::HasChildKey()`
     /// Returns true if the value has bracket key
     pub fn has_child_key(theSourceValue: &crate::t_collection::AsciiString) -> bool {
@@ -3515,7 +3527,7 @@ impl Dump {
     }
 }
 
-// ── Skipped symbols for Dump (9 total) ──
+// ── Skipped symbols for Dump (8 total) ──
 // SKIPPED: **Source:** `Standard_Dump.hxx`:333 - `Standard_Dump::Text`
 //   static_method: Converts stream value to string value. The result is original stream value.
 //   static_method: @param theStream source value
@@ -3535,11 +3547,6 @@ impl Dump {
 //   static_method: The one level stream example: 'key_1: value_1, key_2: value_2'
 //   Reason: has unbindable types: param 'theKeyToValues': unresolved template/nested type (NCollection_IndexedDataMap<TCollection_AsciiString, Standard_DumpValue>&)
 //   // pub fn split_json(theStreamStr: &AsciiString, theKeyToValues: /* NCollection_IndexedDataMap<TCollection_AsciiString, Standard_DumpValue>& */) -> bool;
-//
-// SKIPPED: **Source:** `Standard_Dump.hxx`:366 - `Standard_Dump::HierarchicalValueIndices`
-//   static_method: Returns container of indices in values, that has hierarchical value
-//   Reason: return type 'TColStd_ListOfInteger' is not CppDeletable
-//   // pub fn hierarchical_value_indices(theValues: &IndexedDataMapOfStringString) -> OwnedPtr<TColStd_ListOfInteger>;
 //
 // SKIPPED: **Source:** `Standard_Dump.hxx`:380 - `Standard_Dump::AddValuesSeparator`
 //   static_method: @param theOStream source value
@@ -5532,12 +5539,12 @@ impl GUID {
 // SKIPPED: **Source:** `Standard_GUID.hxx`:49 - `Standard_GUID::Standard_GUID`
 //   constructor: build a GUID from an unicode string with the
 //   constructor: following format:
-//   Reason: param 'aGuid' uses unknown type 'Standard_ExtString'
-//   // pub fn new_extstring(aGuid: ExtString) -> OwnedPtr<Self>;
+//   Reason: has unbindable types: param 'aGuid': raw pointer (const uint16_t*)
+//   // pub fn new_u16ptr(aGuid: /* const uint16_t* */) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `Standard_GUID.hxx`:51 - `Standard_GUID::Standard_GUID`
-//   Reason: param 'a16b1' uses unknown type 'Standard_ExtCharacter'
-//   // pub fn new_int_extcharacter3_byte6(a32b: i32, a16b1: ExtCharacter, a16b2: ExtCharacter, a16b3: ExtCharacter, a8b1: Byte, a8b2: Byte, a8b3: Byte, a8b4: Byte, a8b5: Byte, a8b6: Byte) -> OwnedPtr<Self>;
+//   Reason: param 'a8b1' uses unknown type 'Standard_Byte'
+//   // pub fn new_int_u163_byte6(a32b: i32, a16b1: u16, a16b2: u16, a16b3: u16, a8b1: Byte, a8b2: Byte, a8b3: Byte, a8b4: Byte, a8b5: Byte, a8b6: Byte) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `Standard_GUID.hxx`:73 - `Standard_GUID::ToCString`
 //   method: translate the GUID into ascii string
@@ -23607,6 +23614,24 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceUndefinedContent>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceUndefinedContent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<LDOM_MemManager>
+    ///
+    /// Returns `None` if the handle does not point to a `LDOM_MemManager` (or subclass).
+    pub fn downcast_to_mem_manager(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleLDOMMemManager>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleLDOMMemManager(
                 self as *const Self,
             )
         };
@@ -49693,8 +49718,7 @@ impl HandleStandardUnderflow {
 // ========================
 
 pub use crate::ffi::{
-    Standard_Byte as Byte, Standard_Character as Character, Standard_ExtCharacter as ExtCharacter,
-    Standard_ExtString as ExtString, Standard_JmpBuf as JmpBuf, Standard_PCharacter as PCharacter,
+    Standard_Byte as Byte, Standard_JmpBuf as JmpBuf, Standard_PCharacter as PCharacter,
     Standard_PExtCharacter as PExtCharacter, Standard_SStream as SStream,
     Standard_ThreadId as ThreadId, Standard_Utf16Char as Utf16Char,
 };

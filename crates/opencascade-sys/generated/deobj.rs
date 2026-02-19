@@ -130,6 +130,17 @@ impl ConfigurationNode {
         }
     }
 
+    /// **Source:** `DEOBJ_ConfigurationNode.hxx`:78 - `DEOBJ_ConfigurationNode::GetExtensions()`
+    /// Gets list of supported file extensions
+    /// @return list of extensions
+    pub fn get_extensions(&self) -> crate::OwnedPtr<crate::ffi::TColStd_ListOfAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DEOBJ_ConfigurationNode_get_extensions(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `DEOBJ_ConfigurationNode.hxx`:32 - `DEOBJ_ConfigurationNode::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -315,14 +326,6 @@ impl HandleDEOBJConfigurationNode {
         }
     }
 }
-
-// ── Skipped symbols for ConfigurationNode (1 total) ──
-// SKIPPED: **Source:** `DEOBJ_ConfigurationNode.hxx`:78 - `DEOBJ_ConfigurationNode::GetExtensions`
-//   method: Gets list of supported file extensions
-//   method: @return list of extensions
-//   Reason: return type 'TColStd_ListOfAsciiString' is not CppDeletable
-//   // pub fn get_extensions(&self) -> OwnedPtr<TColStd_ListOfAsciiString>;
-//
 
 /// **Source:** `DEOBJ_ConfigurationNode.hxx`:81 - `DEOBJ_ConfigurationNode_RWObj_InternalSection`
 pub use crate::ffi::DEOBJ_ConfigurationNode_RWObj_InternalSection as ConfigurationNode_RWObj_InternalSection;

@@ -408,6 +408,7 @@ fn type_to_ffi_full_name(ty: &Type) -> String {
         Type::Bool => "bool".to_string(),
         Type::I32 => "i32".to_string(),
         Type::U32 => "u32".to_string(),
+        Type::U16 => "u16".to_string(),
         Type::I64 => "i64".to_string(),
         Type::U64 => "u64".to_string(),
         Type::Long => "std::ffi::c_long".to_string(),
@@ -578,6 +579,7 @@ fn type_to_cpp(ty: &Type) -> String {
         Type::Bool => "Standard_Boolean".to_string(),
         Type::I32 => "Standard_Integer".to_string(),
         Type::U32 => "unsigned int".to_string(),
+        Type::U16 => "uint16_t".to_string(),
         Type::I64 => "long long".to_string(),
         Type::U64 => "unsigned long long".to_string(),
         Type::Long => "long".to_string(),
@@ -661,6 +663,7 @@ fn type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeContext>) ->
         Type::Bool => "bool".to_string(),
         Type::I32 => "i32".to_string(),
         Type::U32 => "u32".to_string(),
+        Type::U16 => "u16".to_string(),
         Type::I64 => "i64".to_string(),
         Type::U64 => "u64".to_string(),
         Type::Long => "std::ffi::c_long".to_string(),
@@ -1881,6 +1884,7 @@ fn pod_field_rust_type(ty: &Type) -> Option<&'static str> {
         Type::Bool => Some("bool"),
         Type::I32 => Some("i32"),
         Type::U32 => Some("u32"),
+        Type::U16 => Some("u16"),
         Type::I64 => Some("i64"),
         Type::U64 => Some("u64"),
         Type::Long => Some("std::os::raw::c_long"),
@@ -1944,7 +1948,7 @@ fn adapt_default_for_rust_type(default_expr: &str, param_type: &Type) -> Option<
                 None
             }
         }
-        Type::I32 | Type::U32 | Type::I64 | Type::U64 | Type::Long | Type::ULong | Type::Usize => {
+        Type::I32 | Type::U32 | Type::U16 | Type::I64 | Type::U64 | Type::Long | Type::ULong | Type::Usize => {
             // Integer literals should work directly
             if default_expr.parse::<i64>().is_ok() || default_expr.parse::<u64>().is_ok() {
                 Some(default_expr.to_string())
@@ -2759,14 +2763,15 @@ pub fn compute_all_class_bindings(
     exclude_methods: &HashSet<(String, String)>,
 ) -> Vec<ClassBindings> {
     // Classes with CppDeletable impls: ParsedClasses (without protected dtor) +
-    // the 91 manually-specified known collections (which get generated destructors).
-    // NCollection typedef names from extra_typedef_names are NOT included here.
+    // the manually-specified known collections (which get generated destructors) +
+    // NCollection typedef names from extra_typedef_names (e.g. gp_Vec3f, gp_Pnt2f).
     // Nested types (Parent::Nested) get destructors generated, so include them too.
     let mut deletable_class_names: HashSet<String> = all_classes
         .iter()
         .filter(|c| !c.has_protected_destructor)
         .map(|c| c.name.clone())
         .chain(collection_names.iter().cloned())
+        .chain(extra_typedef_names.iter().cloned())
         .collect();
 
     // Add nested types (those with :: in their name) as deletable

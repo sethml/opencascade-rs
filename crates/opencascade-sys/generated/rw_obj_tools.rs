@@ -12,3 +12,8 @@ pub fn read_name(thePos: &str, theName: &mut crate::t_collection::AsciiString) -
     let c_thePos = std::ffi::CString::new(thePos).unwrap();
     unsafe { crate::ffi::RWObj_Tools_read_name(c_thePos.as_ptr(), theName) }
 }
+/// **Source:** `RWObj_Tools.hxx`:78 - `RWObj_Tools::isSpaceChar`
+/// Return true if specified char is a white space.
+pub fn is_space_char(theChar: std::ffi::c_char) -> bool {
+    unsafe { crate::ffi::RWObj_Tools_is_space_char(theChar) }
+}

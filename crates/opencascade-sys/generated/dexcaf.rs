@@ -134,6 +134,17 @@ impl ConfigurationNode {
         }
     }
 
+    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:79 - `DEXCAF_ConfigurationNode::GetExtensions()`
+    /// Gets list of supported file extensions
+    /// @return list of extensions
+    pub fn get_extensions(&self) -> crate::OwnedPtr<crate::ffi::TColStd_ListOfAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DEXCAF_ConfigurationNode_get_extensions(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `DEXCAF_ConfigurationNode.hxx`:84 - `DEXCAF_ConfigurationNode::CheckContent()`
     /// Checks the file content to verify a format
     /// @param[in] theBuffer read stream buffer to check content
@@ -326,14 +337,6 @@ impl HandleDEXCAFConfigurationNode {
         }
     }
 }
-
-// ── Skipped symbols for ConfigurationNode (1 total) ──
-// SKIPPED: **Source:** `DEXCAF_ConfigurationNode.hxx`:79 - `DEXCAF_ConfigurationNode::GetExtensions`
-//   method: Gets list of supported file extensions
-//   method: @return list of extensions
-//   Reason: return type 'TColStd_ListOfAsciiString' is not CppDeletable
-//   // pub fn get_extensions(&self) -> OwnedPtr<TColStd_ListOfAsciiString>;
-//
 
 /// **Source:** `DEXCAF_ConfigurationNode.hxx`:88 - `DEXCAF_ConfigurationNode_XCAFDoc_InternalSection`
 pub use crate::ffi::DEXCAF_ConfigurationNode_XCAFDoc_InternalSection as ConfigurationNode_XCAFDoc_InternalSection;

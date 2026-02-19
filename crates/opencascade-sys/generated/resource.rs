@@ -476,14 +476,14 @@ impl HandleResourceManager {
 // SKIPPED: **Source:** `Resource_Manager.hxx`:93 - `Resource_Manager::ExtValue`
 //   method: Gets the value of an ExtString resource according to its instance
 //   method: and its type.
-//   Reason: return type 'Standard_ExtString' is unknown
-//   // pub fn ext_value(&mut self, aResourceName: *const char) -> OwnedPtr<Standard_ExtString>;
+//   Reason: has unbindable types: return: raw pointer (const uint16_t*)
+//   // pub fn ext_value(&mut self, aResourceName: *const char) -> /* const uint16_t* */;
 //
 // SKIPPED: **Source:** `Resource_Manager.hxx`:112 - `Resource_Manager::SetResource`
 //   method: Sets the new value of an ExtString resource.
 //   method: If the resource does not exist, it is created.
-//   Reason: param 'aValue' uses unknown type 'Standard_ExtString'
-//   // pub fn set_resource(&mut self, aResourceName: *const char, aValue: ExtString);
+//   Reason: has unbindable types: param 'aValue': raw pointer (const uint16_t*)
+//   // pub fn set_resource(&mut self, aResourceName: *const char, aValue: /* const uint16_t* */);
 //
 // SKIPPED: **Source:** `Resource_Manager.hxx`:123 - `Resource_Manager::GetMap`
 //   method: Returns internal Ref or User map with parameters

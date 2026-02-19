@@ -78,6 +78,23 @@ impl AsciiString {
         }
     }
 
+    /// **Source:** `TCollection_AsciiString.hxx`:63 - `TCollection_AsciiString::TCollection_AsciiString()`
+    /// Initializes a AsciiString with a single character.
+    pub fn new_char(aChar: std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_char(aChar)) }
+    }
+
+    /// **Source:** `TCollection_AsciiString.hxx`:67 - `TCollection_AsciiString::TCollection_AsciiString()`
+    /// Initializes an AsciiString with <length> space allocated.
+    /// and filled with <filler>. This is useful for buffers.
+    pub fn new_int_char(length: i32, filler: std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_int_char(
+                length, filler,
+            ))
+        }
+    }
+
     /// **Source:** `TCollection_AsciiString.hxx`:71 - `TCollection_AsciiString::TCollection_AsciiString()`
     /// Initializes an AsciiString with an integer value
     pub fn new_int(value: i32) -> crate::OwnedPtr<Self> {
@@ -88,6 +105,20 @@ impl AsciiString {
     /// Initializes an AsciiString with a real value
     pub fn new_real(value: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_real(value)) }
+    }
+
+    /// **Source:** `TCollection_AsciiString.hxx`:84 - `TCollection_AsciiString::TCollection_AsciiString()`
+    /// Initializes a AsciiString with copy of another AsciiString
+    /// concatenated with the message character.
+    pub fn new_asciistring_char(
+        astring: &AsciiString,
+        message: std::ffi::c_char,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_asciistring_char(
+                astring, message,
+            ))
+        }
     }
 
     /// **Source:** `TCollection_AsciiString.hxx`:89 - `TCollection_AsciiString::TCollection_AsciiString()`
@@ -119,12 +150,22 @@ impl AsciiString {
     /// If replaceNonAscii is non-null character, it will be used
     /// in place of any non-ascii character found in the source string.
     /// Otherwise, creates UTF-8 unicode string.
-    pub fn new_extendedstring(astring: &ExtendedString) -> crate::OwnedPtr<Self> {
+    pub fn new_extendedstring_char(
+        astring: &ExtendedString,
+        replaceNonAscii: std::ffi::c_char,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_extendedstring(
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_extendedstring_char(
                 astring,
+                replaceNonAscii,
             ))
         }
+    }
+
+    /// **Source:** `TCollection_AsciiString.hxx`:114 - `TCollection_AsciiString::AssignCat()`
+    /// Appends <other>  to me. This is an unary operator.
+    pub fn assign_cat_char(&mut self, other: std::ffi::c_char) {
+        unsafe { crate::ffi::TCollection_AsciiString_assign_cat_char(self as *mut Self, other) }
     }
 
     /// **Source:** `TCollection_AsciiString.hxx`:119 - `TCollection_AsciiString::AssignCat()`
@@ -174,6 +215,26 @@ impl AsciiString {
     /// me = "Hello "
     pub fn capitalize(&mut self) {
         unsafe { crate::ffi::TCollection_AsciiString_capitalize(self as *mut Self) }
+    }
+
+    /// **Source:** `TCollection_AsciiString.hxx`:162 - `TCollection_AsciiString::Cat()`
+    /// Appends <other>  to me.
+    /// Syntax:
+    /// aString = aString + "Dummy"
+    /// Example: aString contains "I say "
+    /// aString = aString + "Hello " + "Dolly"
+    /// gives "I say Hello Dolly"
+    /// To catenate more than one CString, you must put a String before.
+    /// So the following example is WRONG !
+    /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
+    /// This rule is applicable to AssignCat (operator +=) too.
+    pub fn cat_char(&self, other: std::ffi::c_char) -> crate::OwnedPtr<AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_cat_char(
+                self as *const Self,
+                other,
+            ))
+        }
     }
 
     /// **Source:** `TCollection_AsciiString.hxx`:175 - `TCollection_AsciiString::Cat()`
@@ -244,6 +305,46 @@ impl AsciiString {
                 self as *const Self,
                 other,
             ))
+        }
+    }
+
+    /// **Source:** `TCollection_AsciiString.hxx`:226 - `TCollection_AsciiString::Center()`
+    /// Modifies this ASCII string so that its length
+    /// becomes equal to Width and the new characters
+    /// are equal to Filler. New characters are added
+    /// both at the beginning and at the end of this string.
+    /// If Width is less than the length of this ASCII string, nothing happens.
+    /// Example
+    /// TCollection_AsciiString
+    /// myAlphabet("abcdef");
+    /// myAlphabet.Center(9,' ');
+    /// assert ( myAlphabet == "
+    /// abcdef " );
+    pub fn center(&mut self, Width: i32, Filler: std::ffi::c_char) {
+        unsafe { crate::ffi::TCollection_AsciiString_center(self as *mut Self, Width, Filler) }
+    }
+
+    /// **Source:** `TCollection_AsciiString.hxx`:235 - `TCollection_AsciiString::ChangeAll()`
+    /// Substitutes all the characters equal to aChar by NewChar
+    /// in the AsciiString <me>.
+    /// The substitution can be case sensitive.
+    /// If you don't use default case sensitive, no matter whether aChar
+    /// is uppercase or not.
+    /// Example: me = "Histake" -> ChangeAll('H','M',Standard_True)
+    /// gives me = "Mistake"
+    pub fn change_all(
+        &mut self,
+        aChar: std::ffi::c_char,
+        NewChar: std::ffi::c_char,
+        CaseSensitive: bool,
+    ) {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_change_all(
+                self as *mut Self,
+                aChar,
+                NewChar,
+                CaseSensitive,
+            )
         }
     }
 
@@ -334,6 +435,21 @@ impl AsciiString {
                 FromIndex,
                 ToIndex,
             )
+        }
+    }
+
+    /// **Source:** `TCollection_AsciiString.hxx`:318 - `TCollection_AsciiString::Insert()`
+    /// Inserts a Character at position <where>.
+    /// Example:
+    /// aString contains "hy not ?"
+    /// aString.Insert(1,'W'); gives "Why not ?"
+    /// aString contains "Wh"
+    /// aString.Insert(3,'y'); gives "Why"
+    /// aString contains "Way"
+    /// aString.Insert(2,'h'); gives "Why"
+    pub fn insert_int_char(&mut self, where_: i32, what: std::ffi::c_char) {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_insert_int_char(self as *mut Self, where_, what)
         }
     }
 
@@ -544,6 +660,23 @@ impl AsciiString {
         unsafe { crate::ffi::TCollection_AsciiString_left_adjust(self as *mut Self) }
     }
 
+    /// **Source:** `TCollection_AsciiString.hxx`:451 - `TCollection_AsciiString::LeftJustify()`
+    /// left justify
+    /// Length becomes equal to Width and the new characters are
+    /// equal to Filler.
+    /// If Width < Length nothing happens.
+    /// Raises an exception if Width is less than zero.
+    /// Example:
+    /// before
+    /// me = "abcdef" , Width = 9 , Filler = ' '
+    /// after
+    /// me = "abcdef   "
+    pub fn left_justify(&mut self, Width: i32, Filler: std::ffi::c_char) {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_left_justify(self as *mut Self, Width, Filler)
+        }
+    }
+
     /// **Source:** `TCollection_AsciiString.hxx`:464 - `TCollection_AsciiString::Length()`
     /// Returns number of characters in <me>.
     /// This is the same functionality as 'strlen' in C.
@@ -573,11 +706,47 @@ impl AsciiString {
     /// me = "aabAaAa"
     /// returns
     /// 4
-    pub fn location(&self, other: &AsciiString, FromIndex: i32, ToIndex: i32) -> i32 {
+    pub fn location_asciistring_int2(
+        &self,
+        other: &AsciiString,
+        FromIndex: i32,
+        ToIndex: i32,
+    ) -> i32 {
         unsafe {
-            crate::ffi::TCollection_AsciiString_location(
+            crate::ffi::TCollection_AsciiString_location_asciistring_int2(
                 self as *const Self,
                 other,
+                FromIndex,
+                ToIndex,
+            )
+        }
+    }
+
+    /// **Source:** `TCollection_AsciiString.hxx`:494 - `TCollection_AsciiString::Location()`
+    /// Returns the index of the nth occurrence of the character C
+    /// in the string <me> from the starting index FromIndex to the
+    /// ending index ToIndex.
+    /// Returns zero if failure.
+    /// Raises an exception if FromIndex or ToIndex is out of range.
+    /// Example:
+    /// before
+    /// me = "aabAa", N = 3, C = 'a', FromIndex = 1, ToIndex = 5
+    /// after
+    /// me = "aabAa"
+    /// returns
+    /// 5
+    pub fn location_int_char_int2(
+        &self,
+        N: i32,
+        C: std::ffi::c_char,
+        FromIndex: i32,
+        ToIndex: i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_location_int_char_int2(
+                self as *const Self,
+                N,
+                C,
                 FromIndex,
                 ToIndex,
             )
@@ -616,6 +785,29 @@ impl AsciiString {
         unsafe { crate::ffi::TCollection_AsciiString_real_value(self as *const Self) }
     }
 
+    /// **Source:** `TCollection_AsciiString.hxx`:538 - `TCollection_AsciiString::RemoveAll()`
+    /// Remove all the occurrences of the character C in the string.
+    /// Example:
+    /// before
+    /// me = "HellLLo", C = 'L' , CaseSensitive = True
+    /// after
+    /// me = "Hello"
+    pub fn remove_all_char_bool(&mut self, C: std::ffi::c_char, CaseSensitive: bool) {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_remove_all_char_bool(
+                self as *mut Self,
+                C,
+                CaseSensitive,
+            )
+        }
+    }
+
+    /// **Source:** `TCollection_AsciiString.hxx`:541 - `TCollection_AsciiString::RemoveAll()`
+    /// Removes every <what> characters from <me>.
+    pub fn remove_all_char(&mut self, what: std::ffi::c_char) {
+        unsafe { crate::ffi::TCollection_AsciiString_remove_all_char(self as *mut Self, what) }
+    }
+
     /// **Source:** `TCollection_AsciiString.hxx`:549 - `TCollection_AsciiString::Remove()`
     /// Erases <ahowmany> characters from position <where>,
     /// <where> included.
@@ -631,6 +823,23 @@ impl AsciiString {
     /// Removes all space characters at the end of the string.
     pub fn right_adjust(&mut self) {
         unsafe { crate::ffi::TCollection_AsciiString_right_adjust(self as *mut Self) }
+    }
+
+    /// **Source:** `TCollection_AsciiString.hxx`:564 - `TCollection_AsciiString::RightJustify()`
+    /// Right justify.
+    /// Length becomes equal to Width and the new characters are
+    /// equal to Filler.
+    /// if Width < Length nothing happens.
+    /// Raises an exception if Width is less than zero.
+    /// Example:
+    /// before
+    /// me = "abcdef" , Width = 9 , Filler = ' '
+    /// after
+    /// me = "   abcdef"
+    pub fn right_justify(&mut self, Width: i32, Filler: std::ffi::c_char) {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_right_justify(self as *mut Self, Width, Filler)
+        }
     }
 
     /// **Source:** `TCollection_AsciiString.hxx`:572 - `TCollection_AsciiString::Search()`
@@ -682,6 +891,19 @@ impl AsciiString {
                 self as *const Self,
                 what,
             )
+        }
+    }
+
+    /// **Source:** `TCollection_AsciiString.hxx`:598 - `TCollection_AsciiString::SetValue()`
+    /// Replaces one character in the AsciiString at position <where>.
+    /// If <where> is less than zero or greater than the length of <me>
+    /// an exception is raised.
+    /// Example:
+    /// aString contains "Garbake"
+    /// astring.Replace(6,'g')  gives <me> = "Garbage"
+    pub fn set_value_int_char(&mut self, where_: i32, what: std::ffi::c_char) {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_set_value_int_char(self as *mut Self, where_, what)
         }
     }
 
@@ -866,88 +1088,17 @@ impl AsciiString {
     }
 }
 
-// ── Skipped symbols for AsciiString (20 total) ──
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:63 - `TCollection_AsciiString::TCollection_AsciiString`
-//   constructor: Initializes a AsciiString with a single character.
-//   Reason: param 'aChar' uses unknown type 'Standard_Character'
-//   // pub fn new_character(aChar: Character) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:67 - `TCollection_AsciiString::TCollection_AsciiString`
-//   constructor: Initializes an AsciiString with <length> space allocated.
-//   constructor: and filled with <filler>. This is useful for buffers.
-//   Reason: param 'filler' uses unknown type 'Standard_Character'
-//   // pub fn new_int_character(length: i32, filler: Character) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:84 - `TCollection_AsciiString::TCollection_AsciiString`
-//   constructor: Initializes a AsciiString with copy of another AsciiString
-//   constructor: concatenated with the message character.
-//   Reason: param 'message' uses unknown type 'Standard_Character'
-//   // pub fn new_asciistring_character(astring: &AsciiString, message: Character) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:101 - `TCollection_AsciiString::TCollection_AsciiString`
-//   constructor: Creation by converting an extended string to an ascii string.
-//   constructor: If replaceNonAscii is non-null character, it will be used
-//   constructor: in place of any non-ascii character found in the source string.
-//   Reason: param 'replaceNonAscii' uses unknown type 'Standard_Character'
-//   // pub fn new_extendedstring_character(astring: &ExtendedString, replaceNonAscii: Character) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for AsciiString (5 total) ──
 // SKIPPED: **Source:** `TCollection_AsciiString.hxx`:110 - `TCollection_AsciiString::TCollection_AsciiString`
 //   constructor: Initialize UTF-8 Unicode string from wide-char string considering it as Unicode string
 //   constructor: (the size of wide char is a platform-dependent - e.g. on Windows wchar_t is UTF-16).
 //   Reason: has unbindable types: param 'theStringUtf': raw pointer (const Standard_WideChar*)
 //   // pub fn new_widecharptr(theStringUtf: /* const Standard_WideChar* */) -> OwnedPtr<Self>;
 //
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:114 - `TCollection_AsciiString::AssignCat`
-//   method: Appends <other>  to me. This is an unary operator.
-//   Reason: param 'other' uses unknown type 'Standard_Character'
-//   // pub fn assign_cat(&mut self, other: Character);
-//
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:162 - `TCollection_AsciiString::Cat`
-//   method: Appends <other>  to me.
-//   method: Syntax:
-//   method: aString = aString + "Dummy"
-//   Reason: param 'other' uses unknown type 'Standard_Character'
-//   // pub fn cat(&self, other: Character) -> OwnedPtr<TCollection_AsciiString>;
-//
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:226 - `TCollection_AsciiString::Center`
-//   method: Modifies this ASCII string so that its length
-//   method: becomes equal to Width and the new characters
-//   method: are equal to Filler. New characters are added
-//   Reason: param 'Filler' uses unknown type 'Standard_Character'
-//   // pub fn center(&mut self, Width: i32, Filler: Character);
-//
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:235 - `TCollection_AsciiString::ChangeAll`
-//   method: Substitutes all the characters equal to aChar by NewChar
-//   method: in the AsciiString <me>.
-//   method: The substitution can be case sensitive.
-//   Reason: param 'aChar' uses unknown type 'Standard_Character'
-//   // pub fn change_all(&mut self, aChar: Character, NewChar: Character, CaseSensitive: bool);
-//
 // SKIPPED: **Source:** `TCollection_AsciiString.hxx`:263 - `TCollection_AsciiString::Move`
 //   method: Moves string without reallocations
 //   Reason: has unbindable types: param 'theOther': rvalue reference (TCollection_AsciiString&&)
 //   // pub fn move_(&mut self, theOther: /* TCollection_AsciiString&& */);
-//
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:318 - `TCollection_AsciiString::Insert`
-//   method: Inserts a Character at position <where>.
-//   method: Example:
-//   method: aString contains "hy not ?"
-//   Reason: param 'what' uses unknown type 'Standard_Character'
-//   // pub fn insert(&mut self, where_: i32, what: Character);
-//
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:451 - `TCollection_AsciiString::LeftJustify`
-//   method: left justify
-//   method: Length becomes equal to Width and the new characters are
-//   method: equal to Filler.
-//   Reason: param 'Filler' uses unknown type 'Standard_Character'
-//   // pub fn left_justify(&mut self, Width: i32, Filler: Character);
-//
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:494 - `TCollection_AsciiString::Location`
-//   method: Returns the index of the nth occurrence of the character C
-//   method: in the string <me> from the starting index FromIndex to the
-//   method: ending index ToIndex.
-//   Reason: param 'C' uses unknown type 'Standard_Character'
-//   // pub fn location(&self, N: i32, C: Character, FromIndex: i32, ToIndex: i32) -> i32;
 //
 // SKIPPED: **Source:** `TCollection_AsciiString.hxx`:517 - `TCollection_AsciiString::Print`
 //   method: Displays <me> on a stream.
@@ -959,38 +1110,12 @@ impl AsciiString {
 //   Reason: has unbindable types: param 'astream': stream type (Standard_IStream&)
 //   // pub fn read(&mut self, astream: /* Standard_IStream& */);
 //
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:538 - `TCollection_AsciiString::RemoveAll`
-//   method: Remove all the occurrences of the character C in the string.
-//   method: Example:
-//   method: before
-//   Reason: param 'C' uses unknown type 'Standard_Character'
-//   // pub fn remove_all(&mut self, C: Character, CaseSensitive: bool);
-//
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:541 - `TCollection_AsciiString::RemoveAll`
-//   method: Removes every <what> characters from <me>.
-//   Reason: param 'what' uses unknown type 'Standard_Character'
-//   // pub fn remove_all(&mut self, what: Character);
-//
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:564 - `TCollection_AsciiString::RightJustify`
-//   method: Right justify.
-//   method: Length becomes equal to Width and the new characters are
-//   method: equal to Filler.
-//   Reason: param 'Filler' uses unknown type 'Standard_Character'
-//   // pub fn right_justify(&mut self, Width: i32, Filler: Character);
-//
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:598 - `TCollection_AsciiString::SetValue`
-//   method: Replaces one character in the AsciiString at position <where>.
-//   method: If <where> is less than zero or greater than the length of <me>
-//   method: an exception is raised.
-//   Reason: param 'what' uses unknown type 'Standard_Character'
-//   // pub fn set_value(&mut self, where_: i32, what: Character);
-//
 // SKIPPED: **Source:** `TCollection_AsciiString.hxx`:671 - `TCollection_AsciiString::Value`
 //   method: Returns character at position <where> in <me>.
 //   method: If <where> is less than zero or greater than the length of <me>,
 //   method: an exception is raised.
-//   Reason: return type 'Standard_Character' is unknown
-//   // pub fn value(&self, where_: i32) -> OwnedPtr<Standard_Character>;
+//   Reason: return type 'char' is not CppDeletable
+//   // pub fn value(&self, where_: i32) -> char;
 //
 
 // ========================
@@ -1040,6 +1165,31 @@ impl ExtendedString {
             crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_charptr_bool(
                 c_astring.as_ptr(),
                 isMultiByte,
+            ))
+        }
+    }
+
+    /// **Source:** `TCollection_ExtendedString.hxx`:80 - `TCollection_ExtendedString::TCollection_ExtendedString()`
+    /// Initializes a AsciiString with a single character.
+    pub fn new_char(aChar: std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_char(aChar))
+        }
+    }
+
+    /// **Source:** `TCollection_ExtendedString.hxx`:83 - `TCollection_ExtendedString::TCollection_ExtendedString()`
+    /// Initializes a ExtendedString with a single character.
+    pub fn new_u16(aChar: u16) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_u16(aChar)) }
+    }
+
+    /// **Source:** `TCollection_ExtendedString.hxx`:87 - `TCollection_ExtendedString::TCollection_ExtendedString()`
+    /// Initializes a ExtendedString with <length> space allocated.
+    /// and filled with <filler>.This is useful for buffers.
+    pub fn new_int_u16(length: i32, filler: u16) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_int_u16(
+                length, filler,
             ))
         }
     }
@@ -1110,6 +1260,17 @@ impl ExtendedString {
         }
     }
 
+    /// **Source:** `TCollection_ExtendedString.hxx`:132 - `TCollection_ExtendedString::ChangeAll()`
+    /// Substitutes all the characters equal to aChar by NewChar
+    /// in the ExtendedString <me>.
+    /// The substitution can be case sensitive.
+    /// If you don't use default case sensitive, no matter whether aChar is uppercase or not.
+    pub fn change_all(&mut self, aChar: u16, NewChar: u16) {
+        unsafe {
+            crate::ffi::TCollection_ExtendedString_change_all(self as *mut Self, aChar, NewChar)
+        }
+    }
+
     /// **Source:** `TCollection_ExtendedString.hxx`:137 - `TCollection_ExtendedString::Clear()`
     /// Removes all characters contained in <me>.
     /// This produces an empty ExtendedString.
@@ -1130,10 +1291,24 @@ impl ExtendedString {
         unsafe { crate::ffi::TCollection_ExtendedString_swap(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `TCollection_ExtendedString.hxx`:167 - `TCollection_ExtendedString::Insert()`
+    /// Insert a Character at position <where>.
+    pub fn insert_int_u16(&mut self, where_: i32, what: u16) {
+        unsafe {
+            crate::ffi::TCollection_ExtendedString_insert_int_u16(self as *mut Self, where_, what)
+        }
+    }
+
     /// **Source:** `TCollection_ExtendedString.hxx`:170 - `TCollection_ExtendedString::Insert()`
     /// Insert a ExtendedString at position <where>.
-    pub fn insert(&mut self, where_: i32, what: &ExtendedString) {
-        unsafe { crate::ffi::TCollection_ExtendedString_insert(self as *mut Self, where_, what) }
+    pub fn insert_int_extendedstring(&mut self, where_: i32, what: &ExtendedString) {
+        unsafe {
+            crate::ffi::TCollection_ExtendedString_insert_int_extendedstring(
+                self as *mut Self,
+                where_,
+                what,
+            )
+        }
     }
 
     /// **Source:** `TCollection_ExtendedString.hxx`:173 - `TCollection_ExtendedString::IsEmpty()`
@@ -1200,6 +1375,12 @@ impl ExtendedString {
         unsafe { crate::ffi::TCollection_ExtendedString_length(self as *const Self) }
     }
 
+    /// **Source:** `TCollection_ExtendedString.hxx`:256 - `TCollection_ExtendedString::RemoveAll()`
+    /// Removes every <what> characters from <me>.
+    pub fn remove_all(&mut self, what: u16) {
+        unsafe { crate::ffi::TCollection_ExtendedString_remove_all(self as *mut Self, what) }
+    }
+
     /// **Source:** `TCollection_ExtendedString.hxx`:259 - `TCollection_ExtendedString::Remove()`
     /// Erases <ahowmany> characters from position <where>,<where> included.
     pub fn remove(&mut self, where_: i32, ahowmany: i32) {
@@ -1224,10 +1405,30 @@ impl ExtendedString {
         unsafe { crate::ffi::TCollection_ExtendedString_search_from_end(self as *const Self, what) }
     }
 
+    /// **Source:** `TCollection_ExtendedString.hxx`:274 - `TCollection_ExtendedString::SetValue()`
+    /// Replaces one character in the ExtendedString at position <where>.
+    /// If <where> is less than zero or greater than the length of <me>
+    /// an exception is raised.
+    pub fn set_value_int_u16(&mut self, where_: i32, what: u16) {
+        unsafe {
+            crate::ffi::TCollection_ExtendedString_set_value_int_u16(
+                self as *mut Self,
+                where_,
+                what,
+            )
+        }
+    }
+
     /// **Source:** `TCollection_ExtendedString.hxx`:277 - `TCollection_ExtendedString::SetValue()`
     /// Replaces a part of <me> by another ExtendedString see above.
-    pub fn set_value(&mut self, where_: i32, what: &ExtendedString) {
-        unsafe { crate::ffi::TCollection_ExtendedString_set_value(self as *mut Self, where_, what) }
+    pub fn set_value_int_extendedstring(&mut self, where_: i32, what: &ExtendedString) {
+        unsafe {
+            crate::ffi::TCollection_ExtendedString_set_value_int_extendedstring(
+                self as *mut Self,
+                where_,
+                what,
+            )
+        }
     }
 
     /// **Source:** `TCollection_ExtendedString.hxx`:290 - `TCollection_ExtendedString::Split()`
@@ -1258,6 +1459,20 @@ impl ExtendedString {
     /// than the length of this string.
     pub fn trunc(&mut self, ahowmany: i32) {
         unsafe { crate::ffi::TCollection_ExtendedString_trunc(self as *mut Self, ahowmany) }
+    }
+
+    /// **Source:** `TCollection_ExtendedString.hxx`:336 - `TCollection_ExtendedString::Value()`
+    /// Returns character at position <where> in <me>.
+    /// If <where> is less than zero or greater than the length of
+    /// <me>, an exception is raised.
+    /// Example:
+    /// aString contains "Hello"
+    /// aString.Value(2) returns 'e'
+    /// Exceptions
+    /// Standard_OutOfRange if where lies outside
+    /// the bounds of this extended string.
+    pub fn value(&self, where_: i32) -> u16 {
+        unsafe { crate::ffi::TCollection_ExtendedString_value(self as *const Self, where_) }
     }
 
     /// **Source:** `TCollection_ExtendedString.hxx`:343 - `TCollection_ExtendedString::HashCode()`
@@ -1301,11 +1516,11 @@ impl ExtendedString {
     }
 }
 
-// ── Skipped symbols for ExtendedString (20 total) ──
+// ── Skipped symbols for ExtendedString (12 total) ──
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:68 - `TCollection_ExtendedString::TCollection_ExtendedString`
 //   constructor: Creation by converting an ExtString to an extended string.
-//   Reason: param 'astring' uses unknown type 'Standard_ExtString'
-//   // pub fn new_extstring(astring: ExtString) -> OwnedPtr<Self>;
+//   Reason: has unbindable types: param 'astring': raw pointer (const uint16_t*)
+//   // pub fn new_u16ptr(astring: /* const uint16_t* */) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:76 - `TCollection_ExtendedString::TCollection_ExtendedString`
 //   constructor: Initialize from wide-char string considering it as Unicode string
@@ -1313,103 +1528,56 @@ impl ExtendedString {
 //   Reason: has unbindable types: param 'theStringUtf': raw pointer (const Standard_WideChar*)
 //   // pub fn new_widecharptr(theStringUtf: /* const Standard_WideChar* */) -> OwnedPtr<Self>;
 //
-// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:80 - `TCollection_ExtendedString::TCollection_ExtendedString`
-//   constructor: Initializes a AsciiString with a single character.
-//   Reason: param 'aChar' uses unknown type 'Standard_Character'
-//   // pub fn new_character(aChar: Character) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:83 - `TCollection_ExtendedString::TCollection_ExtendedString`
-//   constructor: Initializes a ExtendedString with a single character.
-//   Reason: param 'aChar' uses unknown type 'Standard_ExtCharacter'
-//   // pub fn new_extcharacter(aChar: ExtCharacter) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:87 - `TCollection_ExtendedString::TCollection_ExtendedString`
-//   constructor: Initializes a ExtendedString with <length> space allocated.
-//   constructor: and filled with <filler>.This is useful for buffers.
-//   Reason: param 'filler' uses unknown type 'Standard_ExtCharacter'
-//   // pub fn new_int_extcharacter(length: i32, filler: ExtCharacter) -> OwnedPtr<Self>;
-//
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:118 - `TCollection_ExtendedString::AssignCat`
 //   method: Appends the utf16 char to this extended string.
 //   Reason: param 'theChar' uses unknown type 'Standard_Utf16Char'
 //   // pub fn assign_cat(&mut self, theChar: Utf16Char);
-//
-// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:132 - `TCollection_ExtendedString::ChangeAll`
-//   method: Substitutes all the characters equal to aChar by NewChar
-//   method: in the ExtendedString <me>.
-//   method: The substitution can be case sensitive.
-//   Reason: param 'aChar' uses unknown type 'Standard_ExtCharacter'
-//   // pub fn change_all(&mut self, aChar: ExtCharacter, NewChar: ExtCharacter);
 //
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:151 - `TCollection_ExtendedString::Move`
 //   method: Moves string without reallocations
 //   Reason: has unbindable types: param 'theOther': rvalue reference (TCollection_ExtendedString&&)
 //   // pub fn move_(&mut self, theOther: /* TCollection_ExtendedString&& */);
 //
-// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:167 - `TCollection_ExtendedString::Insert`
-//   method: Insert a Character at position <where>.
-//   Reason: param 'what' uses unknown type 'Standard_ExtCharacter'
-//   // pub fn insert(&mut self, where_: i32, what: ExtCharacter);
-//
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:178 - `TCollection_ExtendedString::IsEqual`
 //   method: Returns true if the characters in this extended
 //   method: string are identical to the characters in the other extended string.
 //   method: Note that this method is an alias of operator ==
-//   Reason: param 'other' uses unknown type 'Standard_ExtString'
-//   // pub fn is_equal(&self, other: ExtString) -> bool;
+//   Reason: has unbindable types: param 'other': raw pointer (const uint16_t*)
+//   // pub fn is_equal(&self, other: /* const uint16_t* */) -> bool;
 //
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:195 - `TCollection_ExtendedString::IsDifferent`
 //   method: Returns true if there are differences between the
 //   method: characters in this extended string and the other extended string.
 //   method: Note that this method is an alias of operator !=.
-//   Reason: param 'other' uses unknown type 'Standard_ExtString'
-//   // pub fn is_different(&self, other: ExtString) -> bool;
+//   Reason: has unbindable types: param 'other': raw pointer (const uint16_t*)
+//   // pub fn is_different(&self, other: /* const uint16_t* */) -> bool;
 //
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:210 - `TCollection_ExtendedString::IsLess`
 //   method: Returns TRUE if <me> is less than <other>.
-//   Reason: param 'other' uses unknown type 'Standard_ExtString'
-//   // pub fn is_less(&self, other: ExtString) -> bool;
+//   Reason: has unbindable types: param 'other': raw pointer (const uint16_t*)
+//   // pub fn is_less(&self, other: /* const uint16_t* */) -> bool;
 //
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:223 - `TCollection_ExtendedString::IsGreater`
 //   method: Returns TRUE if <me> is greater than <other>.
-//   Reason: param 'other' uses unknown type 'Standard_ExtString'
-//   // pub fn is_greater(&self, other: ExtString) -> bool;
+//   Reason: has unbindable types: param 'other': raw pointer (const uint16_t*)
+//   // pub fn is_greater(&self, other: /* const uint16_t* */) -> bool;
 //
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:251 - `TCollection_ExtendedString::Print`
 //   method: Displays <me> .
 //   Reason: has unbindable types: param 'astream': stream type (Standard_OStream&)
 //   // pub fn print(&self, astream: /* Standard_OStream& */);
 //
-// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:256 - `TCollection_ExtendedString::RemoveAll`
-//   method: Removes every <what> characters from <me>.
-//   Reason: param 'what' uses unknown type 'Standard_ExtCharacter'
-//   // pub fn remove_all(&mut self, what: ExtCharacter);
-//
-// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:274 - `TCollection_ExtendedString::SetValue`
-//   method: Replaces one character in the ExtendedString at position <where>.
-//   method: If <where> is less than zero or greater than the length of <me>
-//   method: an exception is raised.
-//   Reason: param 'what' uses unknown type 'Standard_ExtCharacter'
-//   // pub fn set_value(&mut self, where_: i32, what: ExtCharacter);
-//
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:307 - `TCollection_ExtendedString::Token`
 //   method: Extracts <whichone> token from <me>.
 //   method: By default, the <separators> is set to space and tabulation.
 //   method: By default, the token extracted is the first one (whichone = 1).
-//   Reason: param 'separators' uses unknown type 'Standard_ExtString'
-//   // pub fn token(&self, separators: ExtString, whichone: i32) -> OwnedPtr<TCollection_ExtendedString>;
+//   Reason: has unbindable types: param 'separators': raw pointer (const uint16_t*)
+//   // pub fn token(&self, separators: /* const uint16_t* */, whichone: i32) -> OwnedPtr<TCollection_ExtendedString>;
 //
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:311 - `TCollection_ExtendedString::ToExtString`
 //   method: Returns pointer to ExtString
-//   Reason: return type 'Standard_ExtString' is unknown
-//   // pub fn to_ext_string(&self) -> OwnedPtr<Standard_ExtString>;
-//
-// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:336 - `TCollection_ExtendedString::Value`
-//   method: Returns character at position <where> in <me>.
-//   method: If <where> is less than zero or greater than the length of
-//   method: <me>, an exception is raised.
-//   Reason: return type 'Standard_ExtCharacter' is unknown
-//   // pub fn value(&self, where_: i32) -> OwnedPtr<Standard_ExtCharacter>;
+//   Reason: has unbindable types: return: raw pointer (const uint16_t*)
+//   // pub fn to_ext_string(&self) -> /* const uint16_t* */;
 //
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:365 - `TCollection_ExtendedString::ToUTF8CString`
 //   method: Converts the internal <mystring> to UTF8 coding and
@@ -1458,6 +1626,23 @@ impl HAsciiString {
         }
     }
 
+    /// **Source:** `TCollection_HAsciiString.hxx`:52 - `TCollection_HAsciiString::TCollection_HAsciiString()`
+    /// Initializes a HAsciiString with a single character.
+    pub fn new_char(aChar: std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_ctor_char(aChar)) }
+    }
+
+    /// **Source:** `TCollection_HAsciiString.hxx`:56 - `TCollection_HAsciiString::TCollection_HAsciiString()`
+    /// Initializes a HAsciiString with <length> space allocated.
+    /// and filled with <filler>.This is useful for buffers.
+    pub fn new_int_char(length: i32, filler: std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_ctor_int_char(
+                length, filler,
+            ))
+        }
+    }
+
     /// **Source:** `TCollection_HAsciiString.hxx`:60 - `TCollection_HAsciiString::TCollection_HAsciiString()`
     /// Initializes a HAsciiString with an integer value
     pub fn new_int(value: i32) -> crate::OwnedPtr<Self> {
@@ -1488,6 +1673,25 @@ impl HAsciiString {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::TCollection_HAsciiString_ctor_handletcollectionhasciistring(aString),
+            )
+        }
+    }
+
+    /// **Source:** `TCollection_HAsciiString.hxx`:81 - `TCollection_HAsciiString::TCollection_HAsciiString()`
+    /// Initializes a HAsciiString with a HExtendedString.
+    /// If replaceNonAscii is non-null character, it will be used
+    /// in place of any non-ascii character found in the source string.
+    /// Otherwise, creates UTF-8 unicode string.
+    pub fn new_handletcollectionhextendedstring_char(
+        aString: &crate::ffi::HandleTCollectionHExtendedString,
+        replaceNonAscii: std::ffi::c_char,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TCollection_HAsciiString_ctor_handletcollectionhextendedstring_char(
+                    aString,
+                    replaceNonAscii,
+                ),
             )
         }
     }
@@ -1575,6 +1779,57 @@ impl HAsciiString {
         }
     }
 
+    /// **Source:** `TCollection_HAsciiString.hxx`:135 - `TCollection_HAsciiString::Center()`
+    /// Modifies this ASCII string so that its length
+    /// becomes equal to Width and the new characters
+    /// are equal to Filler. New characters are added
+    /// both at the beginning and at the end of this string.
+    /// If Width is less than the length of this ASCII string, nothing happens.
+    /// Example
+    /// Handle(TCollection_HAsciiString)
+    /// myAlphabet
+    /// = new
+    /// TCollection_HAsciiString
+    /// ("abcdef");
+    /// myAlphabet->Center(9,' ');
+    /// assert ( !strcmp(
+    /// myAlphabet->ToCString(),
+    /// " abcdef ") );
+    pub fn center(&mut self, Width: i32, Filler: std::ffi::c_char) {
+        unsafe { crate::ffi::TCollection_HAsciiString_center(self as *mut Self, Width, Filler) }
+    }
+
+    /// **Source:** `TCollection_HAsciiString.hxx`:151 - `TCollection_HAsciiString::ChangeAll()`
+    /// Replaces all characters equal to aChar by
+    /// NewChar in this ASCII string. The substitution is
+    /// case sensitive if CaseSensitive is true (default value).
+    /// If you do not use the default case sensitive
+    /// option, it does not matter whether aChar is upper-case or not.
+    /// Example
+    /// Handle(TCollection_HAsciiString)
+    /// myMistake = new
+    /// TCollection_HAsciiString
+    /// ("Hather");
+    /// myMistake->ChangeAll('H','F');
+    /// assert ( !strcmp(
+    /// myMistake->ToCString(),
+    /// "Father") );
+    pub fn change_all(
+        &mut self,
+        aChar: std::ffi::c_char,
+        NewChar: std::ffi::c_char,
+        CaseSensitive: bool,
+    ) {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_change_all(
+                self as *mut Self,
+                aChar,
+                NewChar,
+                CaseSensitive,
+            )
+        }
+    }
+
     /// **Source:** `TCollection_HAsciiString.hxx`:157 - `TCollection_HAsciiString::Clear()`
     /// Removes all characters contained in <me>.
     /// This produces an empty HAsciiString.
@@ -1639,6 +1894,21 @@ impl HAsciiString {
                 FromIndex,
                 ToIndex,
             )
+        }
+    }
+
+    /// **Source:** `TCollection_HAsciiString.hxx`:202 - `TCollection_HAsciiString::Insert()`
+    /// Insert a Character at position <where>.
+    /// Example:
+    /// aString contains "hy not ?"
+    /// aString.Insert(1,'W'); gives "Why not ?"
+    /// aString contains "Wh"
+    /// aString.Insert(3,'y'); gives "Why"
+    /// aString contains "Way"
+    /// aString.Insert(2,'h'); gives "Why"
+    pub fn insert_int_char(&mut self, where_: i32, what: std::ffi::c_char) {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_insert_int_char(self as *mut Self, where_, what)
         }
     }
 
@@ -1789,6 +2059,23 @@ impl HAsciiString {
         unsafe { crate::ffi::TCollection_HAsciiString_left_adjust(self as *mut Self) }
     }
 
+    /// **Source:** `TCollection_HAsciiString.hxx`:281 - `TCollection_HAsciiString::LeftJustify()`
+    /// Left justify.
+    /// Length becomes equal to Width and the new characters are
+    /// equal to Filler
+    /// if Width < Length nothing happens
+    /// Raises an exception if Width is less than zero
+    /// Example:
+    /// before
+    /// me = "abcdef" , Width = 9 , Filler = ' '
+    /// after
+    /// me = "abcdef   "
+    pub fn left_justify(&mut self, Width: i32, Filler: std::ffi::c_char) {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_left_justify(self as *mut Self, Width, Filler)
+        }
+    }
+
     /// **Source:** `TCollection_HAsciiString.hxx`:285 - `TCollection_HAsciiString::Length()`
     /// Returns number of characters in <me>.
     /// This is the same functionality as 'strlen' in C.
@@ -1809,16 +2096,46 @@ impl HAsciiString {
     /// me = "aabAaAa"
     /// returns
     /// 4
-    pub fn location(
+    pub fn location_handletcollectionhasciistring_int2(
         &self,
         other: &crate::ffi::HandleTCollectionHAsciiString,
         FromIndex: i32,
         ToIndex: i32,
     ) -> i32 {
         unsafe {
-            crate::ffi::TCollection_HAsciiString_location(
+            crate::ffi::TCollection_HAsciiString_location_handletcollectionhasciistring_int2(
                 self as *const Self,
                 other,
+                FromIndex,
+                ToIndex,
+            )
+        }
+    }
+
+    /// **Source:** `TCollection_HAsciiString.hxx`:314 - `TCollection_HAsciiString::Location()`
+    /// Returns the index of the nth occurrence of the character C
+    /// in the string <me> from the starting index FromIndex to the
+    /// ending index ToIndex.
+    /// Returns zero if failure.
+    /// Raises an exception if FromIndex or ToIndex is out of range
+    /// Example:
+    /// before
+    /// me = "aabAa", N = 3, C = 'a', FromIndex = 1, ToIndex = 5
+    /// after
+    /// me = "aabAa"
+    /// returns 5
+    pub fn location_int_char_int2(
+        &self,
+        N: i32,
+        C: std::ffi::c_char,
+        FromIndex: i32,
+        ToIndex: i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_location_int_char_int2(
+                self as *const Self,
+                N,
+                C,
                 FromIndex,
                 ToIndex,
             )
@@ -1851,6 +2168,29 @@ impl HAsciiString {
         unsafe { crate::ffi::TCollection_HAsciiString_real_value(self as *const Self) }
     }
 
+    /// **Source:** `TCollection_HAsciiString.hxx`:345 - `TCollection_HAsciiString::RemoveAll()`
+    /// Remove all the occurrences of the character C in the string
+    /// Example:
+    /// before
+    /// me = "HellLLo", C = 'L' , CaseSensitive = True
+    /// after
+    /// me = "Hello"
+    pub fn remove_all_char_bool(&mut self, C: std::ffi::c_char, CaseSensitive: bool) {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_remove_all_char_bool(
+                self as *mut Self,
+                C,
+                CaseSensitive,
+            )
+        }
+    }
+
+    /// **Source:** `TCollection_HAsciiString.hxx`:348 - `TCollection_HAsciiString::RemoveAll()`
+    /// Removes every <what> characters from <me>
+    pub fn remove_all_char(&mut self, what: std::ffi::c_char) {
+        unsafe { crate::ffi::TCollection_HAsciiString_remove_all_char(self as *mut Self, what) }
+    }
+
     /// **Source:** `TCollection_HAsciiString.hxx`:356 - `TCollection_HAsciiString::Remove()`
     /// Erases <ahowmany> characters from position <where>,
     /// <where> included.
@@ -1866,6 +2206,23 @@ impl HAsciiString {
     /// Removes all space characters at the end of the string.
     pub fn right_adjust(&mut self) {
         unsafe { crate::ffi::TCollection_HAsciiString_right_adjust(self as *mut Self) }
+    }
+
+    /// **Source:** `TCollection_HAsciiString.hxx`:371 - `TCollection_HAsciiString::RightJustify()`
+    /// Right justify.
+    /// Length becomes equal to Width and the new characters are
+    /// equal to Filler
+    /// if Width < Length nothing happens
+    /// Raises an exception if Width is less than zero
+    /// Example:
+    /// before
+    /// me = "abcdef" , Width = 9 , Filler = ' '
+    /// after
+    /// me = "   abcdef"
+    pub fn right_justify(&mut self, Width: i32, Filler: std::ffi::c_char) {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_right_justify(self as *mut Self, Width, Filler)
+        }
     }
 
     /// **Source:** `TCollection_HAsciiString.hxx`:379 - `TCollection_HAsciiString::Search()`
@@ -1931,6 +2288,19 @@ impl HAsciiString {
                 self as *const Self,
                 what,
             )
+        }
+    }
+
+    /// **Source:** `TCollection_HAsciiString.hxx`:406 - `TCollection_HAsciiString::SetValue()`
+    /// Replaces one character in the string at position <where>.
+    /// If <where> is less than zero or greater than the length of <me>
+    /// an exception is raised.
+    /// Example:
+    /// aString contains "Garbake"
+    /// astring.Replace(6,'g')  gives <me> = "Garbage"
+    pub fn set_value_int_char(&mut self, where_: i32, what: std::ffi::c_char) {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_set_value_int_char(self as *mut Self, where_, what)
         }
     }
 
@@ -2204,102 +2574,23 @@ impl HandleTCollectionHAsciiString {
     }
 }
 
-// ── Skipped symbols for HAsciiString (15 total) ──
-// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:52 - `TCollection_HAsciiString::TCollection_HAsciiString`
-//   constructor: Initializes a HAsciiString with a single character.
-//   Reason: param 'aChar' uses unknown type 'Standard_Character'
-//   // pub fn new_character(aChar: Character) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:56 - `TCollection_HAsciiString::TCollection_HAsciiString`
-//   constructor: Initializes a HAsciiString with <length> space allocated.
-//   constructor: and filled with <filler>.This is useful for buffers.
-//   Reason: param 'filler' uses unknown type 'Standard_Character'
-//   // pub fn new_int_character(length: i32, filler: Character) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for HAsciiString (3 total) ──
 // SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:69 - `TCollection_HAsciiString::TCollection_HAsciiString`
 //   constructor: Initializes a HAsciiString with a AsciiString.
 //   Reason: has unbindable types: param 'theString': rvalue reference (TCollection_AsciiString&&)
 //   // pub fn new_asciistring(theString: /* TCollection_AsciiString&& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:81 - `TCollection_HAsciiString::TCollection_HAsciiString`
-//   constructor: Initializes a HAsciiString with a HExtendedString.
-//   constructor: If replaceNonAscii is non-null character, it will be used
-//   constructor: in place of any non-ascii character found in the source string.
-//   Reason: param 'replaceNonAscii' uses unknown type 'Standard_Character'
-//   // pub fn new_handletcollectionhextendedstring_character(aString: &HandleHExtendedString, replaceNonAscii: Character) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:135 - `TCollection_HAsciiString::Center`
-//   method: Modifies this ASCII string so that its length
-//   method: becomes equal to Width and the new characters
-//   method: are equal to Filler. New characters are added
-//   Reason: param 'Filler' uses unknown type 'Standard_Character'
-//   // pub fn center(&mut self, Width: i32, Filler: Character);
-//
-// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:151 - `TCollection_HAsciiString::ChangeAll`
-//   method: Replaces all characters equal to aChar by
-//   method: NewChar in this ASCII string. The substitution is
-//   method: case sensitive if CaseSensitive is true (default value).
-//   Reason: param 'aChar' uses unknown type 'Standard_Character'
-//   // pub fn change_all(&mut self, aChar: Character, NewChar: Character, CaseSensitive: bool);
-//
-// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:202 - `TCollection_HAsciiString::Insert`
-//   method: Insert a Character at position <where>.
-//   method: Example:
-//   method: aString contains "hy not ?"
-//   Reason: param 'what' uses unknown type 'Standard_Character'
-//   // pub fn insert(&mut self, where_: i32, what: Character);
-//
-// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:281 - `TCollection_HAsciiString::LeftJustify`
-//   method: Left justify.
-//   method: Length becomes equal to Width and the new characters are
-//   method: equal to Filler
-//   Reason: param 'Filler' uses unknown type 'Standard_Character'
-//   // pub fn left_justify(&mut self, Width: i32, Filler: Character);
-//
-// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:314 - `TCollection_HAsciiString::Location`
-//   method: Returns the index of the nth occurrence of the character C
-//   method: in the string <me> from the starting index FromIndex to the
-//   method: ending index ToIndex.
-//   Reason: param 'C' uses unknown type 'Standard_Character'
-//   // pub fn location(&self, N: i32, C: Character, FromIndex: i32, ToIndex: i32) -> i32;
 //
 // SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:331 - `TCollection_HAsciiString::Print`
 //   method: Prints this string on the stream <astream>.
 //   Reason: has unbindable types: param 'astream': stream type (Standard_OStream&)
 //   // pub fn print(&self, astream: /* Standard_OStream& */);
 //
-// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:345 - `TCollection_HAsciiString::RemoveAll`
-//   method: Remove all the occurrences of the character C in the string
-//   method: Example:
-//   method: before
-//   Reason: param 'C' uses unknown type 'Standard_Character'
-//   // pub fn remove_all(&mut self, C: Character, CaseSensitive: bool);
-//
-// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:348 - `TCollection_HAsciiString::RemoveAll`
-//   method: Removes every <what> characters from <me>
-//   Reason: param 'what' uses unknown type 'Standard_Character'
-//   // pub fn remove_all(&mut self, what: Character);
-//
-// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:371 - `TCollection_HAsciiString::RightJustify`
-//   method: Right justify.
-//   method: Length becomes equal to Width and the new characters are
-//   method: equal to Filler
-//   Reason: param 'Filler' uses unknown type 'Standard_Character'
-//   // pub fn right_justify(&mut self, Width: i32, Filler: Character);
-//
-// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:406 - `TCollection_HAsciiString::SetValue`
-//   method: Replaces one character in the string at position <where>.
-//   method: If <where> is less than zero or greater than the length of <me>
-//   method: an exception is raised.
-//   Reason: param 'what' uses unknown type 'Standard_Character'
-//   // pub fn set_value(&mut self, where_: i32, what: Character);
-//
 // SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:481 - `TCollection_HAsciiString::Value`
 //   method: Returns character at position <where> in <me>.
 //   method: If <where> is less than zero or greater than the length of
 //   method: <me>, an exception is raised.
-//   Reason: return type 'Standard_Character' is unknown
-//   // pub fn value(&self, where_: i32) -> OwnedPtr<Standard_Character>;
+//   Reason: return type 'char' is not CppDeletable
+//   // pub fn value(&self, where_: i32) -> char;
 //
 
 // ========================
@@ -2340,6 +2631,25 @@ impl HExtendedString {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_charptr(
                 c_message.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `TCollection_HExtendedString.hxx`:58 - `TCollection_HExtendedString::TCollection_HExtendedString()`
+    /// Initializes a HExtendedString with a single character.
+    pub fn new_u16(aChar: u16) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_u16(aChar))
+        }
+    }
+
+    /// **Source:** `TCollection_HExtendedString.hxx`:62 - `TCollection_HExtendedString::TCollection_HExtendedString()`
+    /// Initializes a HExtendedString with <length> space allocated.
+    /// and filled with <filler>. This is useful for buffers.
+    pub fn new_int_u16(length: i32, filler: u16) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_int_u16(
+                length, filler,
             ))
         }
     }
@@ -2400,6 +2710,15 @@ impl HExtendedString {
         }
     }
 
+    /// **Source:** `TCollection_HExtendedString.hxx`:89 - `TCollection_HExtendedString::ChangeAll()`
+    /// Substitutes all the characters equal to aChar by NewChar
+    /// in the string <me>.
+    pub fn change_all(&mut self, aChar: u16, NewChar: u16) {
+        unsafe {
+            crate::ffi::TCollection_HExtendedString_change_all(self as *mut Self, aChar, NewChar)
+        }
+    }
+
     /// **Source:** `TCollection_HExtendedString.hxx`:94 - `TCollection_HExtendedString::Clear()`
     /// Removes all characters contained in <me>.
     /// This produces an empty ExtendedString.
@@ -2413,10 +2732,35 @@ impl HExtendedString {
         unsafe { crate::ffi::TCollection_HExtendedString_is_empty(self as *const Self) }
     }
 
+    /// **Source:** `TCollection_HExtendedString.hxx`:107 - `TCollection_HExtendedString::Insert()`
+    /// Insert a ExtCharacter at position <where>.
+    /// Example:
+    /// aString contains "hy not ?"
+    /// aString.Insert(1,'W'); gives "Why not ?"
+    /// aString contains "Wh"
+    /// aString.Insert(3,'y'); gives "Why"
+    /// aString contains "Way"
+    /// aString.Insert(2,'h'); gives "Why"
+    pub fn insert_int_u16(&mut self, where_: i32, what: u16) {
+        unsafe {
+            crate::ffi::TCollection_HExtendedString_insert_int_u16(self as *mut Self, where_, what)
+        }
+    }
+
     /// **Source:** `TCollection_HExtendedString.hxx`:110 - `TCollection_HExtendedString::Insert()`
     /// Insert a HExtendedString at position <where>.
-    pub fn insert(&mut self, where_: i32, what: &crate::ffi::HandleTCollectionHExtendedString) {
-        unsafe { crate::ffi::TCollection_HExtendedString_insert(self as *mut Self, where_, what) }
+    pub fn insert_int_handletcollectionhextendedstring(
+        &mut self,
+        where_: i32,
+        what: &crate::ffi::HandleTCollectionHExtendedString,
+    ) {
+        unsafe {
+            crate::ffi::TCollection_HExtendedString_insert_int_handletcollectionhextendedstring(
+                self as *mut Self,
+                where_,
+                what,
+            )
+        }
     }
 
     /// **Source:** `TCollection_HExtendedString.hxx`:114 - `TCollection_HExtendedString::IsLess()`
@@ -2457,11 +2801,42 @@ impl HExtendedString {
         }
     }
 
+    /// **Source:** `TCollection_HExtendedString.hxx`:136 - `TCollection_HExtendedString::RemoveAll()`
+    /// Removes every <what> characters from <me>.
+    pub fn remove_all(&mut self, what: u16) {
+        unsafe { crate::ffi::TCollection_HExtendedString_remove_all(self as *mut Self, what) }
+    }
+
+    /// **Source:** `TCollection_HExtendedString.hxx`:144 - `TCollection_HExtendedString::SetValue()`
+    /// Replaces one character in the string at position <where>.
+    /// If <where> is less than zero or greater than the length of <me>
+    /// an exception is raised.
+    /// Example:
+    /// aString contains "Garbake"
+    /// astring.Replace(6,'g')  gives <me> = "Garbage"
+    pub fn set_value_int_u16(&mut self, where_: i32, what: u16) {
+        unsafe {
+            crate::ffi::TCollection_HExtendedString_set_value_int_u16(
+                self as *mut Self,
+                where_,
+                what,
+            )
+        }
+    }
+
     /// **Source:** `TCollection_HExtendedString.hxx`:147 - `TCollection_HExtendedString::SetValue()`
     /// Replaces a part of <me> by another string.
-    pub fn set_value(&mut self, where_: i32, what: &crate::ffi::HandleTCollectionHExtendedString) {
+    pub fn set_value_int_handletcollectionhextendedstring(
+        &mut self,
+        where_: i32,
+        what: &crate::ffi::HandleTCollectionHExtendedString,
+    ) {
         unsafe {
-            crate::ffi::TCollection_HExtendedString_set_value(self as *mut Self, where_, what)
+            crate::ffi::TCollection_HExtendedString_set_value_int_handletcollectionhextendedstring(
+                self as *mut Self,
+                where_,
+                what,
+            )
         }
     }
 
@@ -2505,6 +2880,17 @@ impl HExtendedString {
     /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
     pub fn trunc(&mut self, ahowmany: i32) {
         unsafe { crate::ffi::TCollection_HExtendedString_trunc(self as *mut Self, ahowmany) }
+    }
+
+    /// **Source:** `TCollection_HExtendedString.hxx`:199 - `TCollection_HExtendedString::Value()`
+    /// Returns ExtCharacter at position <where> in <me>.
+    /// If <where> is less than zero or greater than the length of
+    /// <me>, an exception is raised.
+    /// Example:
+    /// aString contains "Hello"
+    /// aString.Value(2) returns 'e'
+    pub fn value(&self, where_: i32) -> u16 {
+        unsafe { crate::ffi::TCollection_HExtendedString_value(self as *const Self, where_) }
     }
 
     /// **Source:** `TCollection_HExtendedString.hxx`:202 - `TCollection_HExtendedString::String()`
@@ -2639,71 +3025,28 @@ impl HandleTCollectionHExtendedString {
     }
 }
 
-// ── Skipped symbols for HExtendedString (12 total) ──
+// ── Skipped symbols for HExtendedString (5 total) ──
 // SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:55 - `TCollection_HExtendedString::TCollection_HExtendedString`
 //   constructor: Initializes a HExtendedString with an ExtString.
-//   Reason: param 'message' uses unknown type 'Standard_ExtString'
-//   // pub fn new_extstring(message: ExtString) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:58 - `TCollection_HExtendedString::TCollection_HExtendedString`
-//   constructor: Initializes a HExtendedString with a single character.
-//   Reason: param 'aChar' uses unknown type 'Standard_ExtCharacter'
-//   // pub fn new_extcharacter(aChar: ExtCharacter) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:62 - `TCollection_HExtendedString::TCollection_HExtendedString`
-//   constructor: Initializes a HExtendedString with <length> space allocated.
-//   constructor: and filled with <filler>. This is useful for buffers.
-//   Reason: param 'filler' uses unknown type 'Standard_ExtCharacter'
-//   // pub fn new_int_extcharacter(length: i32, filler: ExtCharacter) -> OwnedPtr<Self>;
+//   Reason: has unbindable types: param 'message': raw pointer (const uint16_t*)
+//   // pub fn new_u16ptr(message: /* const uint16_t* */) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:69 - `TCollection_HExtendedString::TCollection_HExtendedString`
 //   constructor: Initializes a HExtendedString with a ExtendedString.
 //   Reason: has unbindable types: param 'theString': rvalue reference (TCollection_ExtendedString&&)
 //   // pub fn new_extendedstring(theString: /* TCollection_ExtendedString&& */) -> OwnedPtr<Self>;
 //
-// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:89 - `TCollection_HExtendedString::ChangeAll`
-//   method: Substitutes all the characters equal to aChar by NewChar
-//   method: in the string <me>.
-//   Reason: param 'aChar' uses unknown type 'Standard_ExtCharacter'
-//   // pub fn change_all(&mut self, aChar: ExtCharacter, NewChar: ExtCharacter);
-//
-// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:107 - `TCollection_HExtendedString::Insert`
-//   method: Insert a ExtCharacter at position <where>.
-//   method: Example:
-//   method: aString contains "hy not ?"
-//   Reason: param 'what' uses unknown type 'Standard_ExtCharacter'
-//   // pub fn insert(&mut self, where_: i32, what: ExtCharacter);
-//
-// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:136 - `TCollection_HExtendedString::RemoveAll`
-//   method: Removes every <what> characters from <me>.
-//   Reason: param 'what' uses unknown type 'Standard_ExtCharacter'
-//   // pub fn remove_all(&mut self, what: ExtCharacter);
-//
-// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:144 - `TCollection_HExtendedString::SetValue`
-//   method: Replaces one character in the string at position <where>.
-//   method: If <where> is less than zero or greater than the length of <me>
-//   method: an exception is raised.
-//   Reason: param 'what' uses unknown type 'Standard_ExtCharacter'
-//   // pub fn set_value(&mut self, where_: i32, what: ExtCharacter);
-//
 // SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:168 - `TCollection_HExtendedString::ToExtString`
 //   method: Returns pointer to ExtString
-//   Reason: return type 'Standard_ExtString' is unknown
-//   // pub fn to_ext_string(&self) -> OwnedPtr<Standard_ExtString>;
+//   Reason: has unbindable types: return: raw pointer (const uint16_t*)
+//   // pub fn to_ext_string(&self) -> /* const uint16_t* */;
 //
 // SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:185 - `TCollection_HExtendedString::Token`
 //   method: Extracts <whichone> token from <me>.
 //   method: By default, the <separators> is set to space and tabulation.
 //   method: By default, the token extracted is the first one (whichone = 1).
-//   Reason: param 'separators' uses unknown type 'Standard_ExtString'
-//   // pub fn token(&self, separators: ExtString, whichone: i32) -> OwnedPtr<Handle<TCollection_HExtendedString>>;
-//
-// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:199 - `TCollection_HExtendedString::Value`
-//   method: Returns ExtCharacter at position <where> in <me>.
-//   method: If <where> is less than zero or greater than the length of
-//   method: <me>, an exception is raised.
-//   Reason: return type 'Standard_ExtCharacter' is unknown
-//   // pub fn value(&self, where_: i32) -> OwnedPtr<Standard_ExtCharacter>;
+//   Reason: has unbindable types: param 'separators': raw pointer (const uint16_t*)
+//   // pub fn token(&self, separators: /* const uint16_t* */, whichone: i32) -> OwnedPtr<Handle<TCollection_HExtendedString>>;
 //
 // SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:205 - `TCollection_HExtendedString::Print`
 //   method: Displays <me> .

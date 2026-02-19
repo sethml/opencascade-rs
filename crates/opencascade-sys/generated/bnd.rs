@@ -2783,23 +2783,24 @@ impl Tools {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_Tools_ctor()) }
     }
 
+    /// **Source:** `Bnd_Tools.hxx`:36 - `Bnd_Tools::Bnd2BVH()`
+    /// Converts the given Bnd_Box to BVH_Box
+    pub fn bnd2_bvh(theBox: &Box) -> crate::OwnedPtr<crate::ffi::Graphic3d_BndBox3d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_Tools_bnd2_bvh(theBox)) }
+    }
+
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_Tools_to_owned(self as *const Self)) }
     }
 }
 
-// ── Skipped symbols for Tools (2 total) ──
+// ── Skipped symbols for Tools (1 total) ──
 // SKIPPED: **Source:** `Bnd_Tools.hxx`:28 - `Bnd_Tools::Bnd2BVH`
 //   static_method: @name Bnd_Box to BVH_Box conversion
 //   static_method: Converts the given Bnd_Box2d to BVH_Box
 //   Reason: has unbindable types: return: unresolved template/nested type (BVH_Box<Standard_Real, 2>)
 //   // pub fn bnd2_bvh(theBox: &Box2d) -> OwnedPtr<BVH_Box<Standard_Real, 2>>;
-//
-// SKIPPED: **Source:** `Bnd_Tools.hxx`:36 - `Bnd_Tools::Bnd2BVH`
-//   static_method: Converts the given Bnd_Box to BVH_Box
-//   Reason: return type 'Graphic3d_BndBox3d' is not CppDeletable
-//   // pub fn bnd2_bvh(theBox: &Box) -> OwnedPtr<Graphic3d_BndBox3d>;
 //
 
 // ========================

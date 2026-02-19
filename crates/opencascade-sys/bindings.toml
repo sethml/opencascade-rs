@@ -96,11 +96,6 @@ exclude_modules = [
     # === Draw test harness ===
     # (no Draw* modules in OCCT include)
 
-    # === LDOM / XML core ===
-    "LDOM",                # Lightweight DOM
-    "LDOMBasicString",     # LDOM string
-    "LDOMParser",          # LDOM parser
-    "LDOMString",          # LDOM string
 
     # === Precompiled header stubs (not real modules) ===
     "TKBRep",              # PCH stub

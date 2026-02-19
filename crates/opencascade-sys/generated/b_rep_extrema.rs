@@ -1959,6 +1959,17 @@ impl TriangleSet {
         unsafe { crate::ffi::BRepExtrema_TriangleSet_size(self as *const Self) }
     }
 
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:46 - `BRepExtrema_TriangleSet::Box()`
+    /// Returns AABB of the given triangle.
+    pub fn box_(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::Graphic3d_BndBox3d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_TriangleSet_box_(
+                self as *const Self,
+                theIndex,
+            ))
+        }
+    }
+
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:53 - `BRepExtrema_TriangleSet::Center()`
     /// Returns centroid position along specified axis.
     pub fn center(&self, theIndex: i32, theAxis: i32) -> f64 {
@@ -2078,13 +2089,6 @@ impl TriangleSet {
         unsafe { &*(crate::ffi::BRepExtrema_TriangleSet_get_type_descriptor()) }
     }
 }
-
-// ── Skipped symbols for TriangleSet (1 total) ──
-// SKIPPED: **Source:** `BRepExtrema_TriangleSet.hxx`:46 - `BRepExtrema_TriangleSet::Box`
-//   method: Returns AABB of the given triangle.
-//   Reason: return type 'Graphic3d_BndBox3d' is not CppDeletable
-//   // pub fn box_(&self, theIndex: i32) -> OwnedPtr<Graphic3d_BndBox3d>;
-//
 
 // ========================
 // From BRepExtrema_UnCompatibleShape.hxx

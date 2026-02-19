@@ -318,7 +318,7 @@ See `crates/opencascade-sys/manual/` and the comments in `bindings.toml` for the
 
 ## Skipped Symbols
 
-The binding generator skips ~1,552 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
+The binding generator skips ~2,332 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
 
 - **Source location** (header file, line number, C++ symbol name)
 - **Documentation comment** from the C++ header (first 3 lines)
@@ -337,33 +337,31 @@ Example from `gp.rs`:
 
 | Count | % | Category | Description |
 |------:|----:|----------|-------------|
-| 612 | 39.4% | **Unknown/unresolved type** | Parameter or return type not in the binding set (`math_Vector`, `Standard_SStream`, `Standard_Character`, etc.) |
-| 291 | 18.8% | **Stream type** | C++ `std::istream`/`std::ostream` (`Standard_IStream`/`Standard_OStream`) — no Rust equivalent |
-| 182 | 11.7% | **Void pointer** | `Standard_Address` (typedef for `void*`) — cannot be safely expressed in Rust FFI |
-| 162 | 10.4% | **Unknown Handle type** | Handle to a class not in the binding set (`Handle(IGESData_IGESModel)`, `Handle(CDM_MetaData)`, etc.) |
-| 124 | 8.0% | **Raw pointer** | `T*`/`const T*` params or returns (non-nullable, non-defaulted) |
-| 43 | 2.8% | **Unresolved template/nested type** | Template instantiations or nested types that can't be resolved (`NCollection_DataMap<...>`, `std::pair<...>`, `math_VectorBase<>`, etc.) |
-| 38 | 2.4% | **Ambiguous lifetimes** | `&mut` return with reference params — Rust lifetime inference is ambiguous |
-| 29 | 1.9% | **Not CppDeletable** | Return type class has no destructor in the binding set (`gp_Vec3f`, `TColStd_ListOfAsciiString`, etc.) |
-| 26 | 1.7% | **Abstract class** | No constructors generated (class has unimplemented pure virtual methods) |
-| 15 | 1.0% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
-| 12 | 0.8% | **String ref param** | `const char*&` or `const char* const&` parameters — needs manual binding |
-| 12 | 0.8% | **Rvalue reference** | C++ move semantics (`T&&`) — no Rust equivalent across FFI |
-| 3 | 0.2% | **&mut enum return** | Mutable reference to enum (cxx limitation) |
+| 1,078 | 46.2% | **Unknown/unresolved type** | Parameter or return type not in the binding set (`math_Vector`, `Standard_SStream`, etc.) |
+| 546 | 23.4% | **Stream type** | C++ `std::istream`/`std::ostream` (`Standard_IStream`/`Standard_OStream`) — no Rust equivalent |
+| 250 | 10.7% | **Raw pointer** | `T*`/`const T*` params or returns (non-nullable, non-defaulted) |
+| 198 | 8.5% | **Void pointer** | `Standard_Address` (typedef for `void*`) — cannot be safely expressed in Rust FFI |
+| 76 | 3.3% | **Unresolved template/nested type** | Template instantiations or nested types that can't be resolved (`NCollection_DataMap<...>`, `std::pair<...>`, `math_VectorBase<>`, etc.) |
+| 53 | 2.3% | **Ambiguous lifetimes** | `&mut` return with reference params — Rust lifetime inference is ambiguous |
+| 43 | 1.8% | **Abstract class** | No constructors generated (class has unimplemented pure virtual methods) |
+| 33 | 1.4% | **Unknown Handle type** | Handle to a class not in the binding set (`Handle(IGESData_IGESModel)`, `Handle(CDM_MetaData)`, etc.) |
+| 16 | 0.7% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
+| 16 | 0.7% | **String ref param** | `const char*&` or `const char* const&` parameters — needs manual binding |
+| 12 | 0.5% | **Rvalue reference** | C++ move semantics (`T&&`) — no Rust equivalent across FFI |
+| 4 | 0.2% | **&mut enum return** | Mutable reference to enum (cxx limitation) |
+| 3 | 0.1% | **Nullable param** | Nullable pointer parameter without default value |
 | 2 | 0.1% | **Excluded by bindings.toml** | Explicitly excluded in config (e.g., ambiguous overload workarounds) |
-| 1 | 0.1% | **Ambiguous overload** | C++ overload that would produce identical wrapper signatures |
+| 1 | 0.0% | **Not CppDeletable** | Return type class has no destructor in the binding set — nearly eliminated by auto-generating destructors for extra typedef types |
+| 1 | 0.0% | **Ambiguous overload** | C++ overload that would produce identical wrapper signatures |
 
 ### Most Common Unknown Types
 
-The "unknown type" and "unknown Handle type" categories (50% of all skips) are dominated by a few types:
+The "unknown type" and "unknown Handle type" categories (48% of all skips) are dominated by a few types:
 
 | Count | Type | How to Unblock |
 |------:|------|----------------|
 | 175 | `math_Vector` | Add `math_Vector` class — used in numerical solvers (Extrema, Geom evaluators) |
 | 94 | `Standard_SStream` | Map `Standard_SStream` (`std::stringstream`) — mainly used in `Raise()` methods on exception classes |
-| 33 | `Standard_Character` | Map `Standard_Character` (typedef for `char`) as `i8`/`u8` |
-| 26 | `Standard_ExtString` | Map `Standard_ExtString` (wide string) — C++ `wchar_t*` |
-| 15 | `Standard_ExtCharacter` | Map `Standard_ExtCharacter` (wide char) — C++ `wchar_t` |
 | 14 | `Handle(IGESData_IGESModel)` | Add `IGESData_IGESModel` — needed for IGES model access |
 | 13 | `TColgp_SequenceOfPnt` | Add `TColgp_SequenceOfPnt` collection — used in shape analysis |
 | 12 | `IMeshData::IEdgeHandle` | Nested handle typedef in meshing internals — low priority |
@@ -371,6 +369,9 @@ The "unknown type" and "unknown Handle type" categories (50% of all skips) are d
 | 10 | `Handle(CDM_MetaData)` | Add `CDM_MetaData` — used in document management internals |
 
 Previously common unknown types that have been resolved:
+- ~~`Standard_Character`~~ (was 33 skips) — now mapped as `c_char` (`i8`)
+- ~~`Standard_ExtString`~~ (was 26 skips) — now mapped as `*const u16`
+- ~~`Standard_ExtCharacter`~~ (was 15 skips) — now mapped as `u16`
 - ~~`Interface_EntityIterator`~~ (was 59 skips) — now in the binding set
 - ~~`Handle(Interface_Protocol)`~~ (was 23 skips) — now in the binding set
 - ~~`Handle(Transfer_TransientProcess)`~~ (was 22 skips) — now in the binding set
@@ -380,7 +381,7 @@ Previously common unknown types that have been resolved:
 
 Most skipped symbols are in internal, low-use, or specialized modules. However, some affect functionality that users commonly need:
 
-**Data Exchange (44 symbols)** — Reduced from 189 after adding `Transfer_TransientProcess`, `Interface_Protocol`, and `Interface_EntityIterator` to the binding set. Remaining skips in `STEPControl_*` (8), `IGESControl_*` (7), `XSControl_*` (25), and `RWStl` (4) are mostly stream types (`Standard_OStream`/`Standard_IStream`), string ref params (`const char*&` in `XSControl_Vars`), unknown IGES-specific Handle types (`Handle(IGESData_IGESModel)`), and rvalue references (`XSAlgo_ShapeProcessor::ParameterMap&&`). The core `Read()`/`Write()` operations are fully bound. **Remaining unblock opportunity**: add `IGESData_IGESModel` (14 skips) and map `Standard_ExtString` (affects `XSControl_WorkSession` accessors).
+**Data Exchange (44 symbols)** — Reduced from 189 after adding `Transfer_TransientProcess`, `Interface_Protocol`, and `Interface_EntityIterator` to the binding set. Remaining skips in `STEPControl_*` (8), `IGESControl_*` (7), `XSControl_*` (25), and `RWStl` (4) are mostly stream types (`Standard_OStream`/`Standard_IStream`), string ref params (`const char*&` in `XSControl_Vars`), unknown IGES-specific Handle types (`Handle(IGESData_IGESModel)`), and rvalue references (`XSAlgo_ShapeProcessor::ParameterMap&&`). The core `Read()`/`Write()` operations are fully bound. **Remaining unblock opportunity**: add `IGESData_IGESModel` (14 skips).
 
 **Document Framework (59 symbols)** — `TDocStd_*` (17 skipped), `TDF_*` (18 skipped), `XCAFDoc_*` (20 skipped), `XCAFPrs_*` (4 skipped). Previously had 215+ skipped symbols due to `TDF_LabelMap` and `TDF_AttributeMap` being unknown — those are now resolved via the header text scan fallback. Remaining skips are dominated by stream types (`Standard_OStream` — 26 of 35 in TDocStd/TDF), with a few raw pointers, unknown types (`TDocStd_XLinkPtr`, `TDF_LabelNodePtr`), and XCAFDoc-specific handles.
 
@@ -390,7 +391,7 @@ Most skipped symbols are in internal, low-use, or specialized modules. However, 
 
 **Geometry (13 symbols in gp/Geom/Geom2d)** — 8 raw pointer returns (`gp_XYZ::GetData()`, `Geom_BSplineCurve::Weights()`, `Geom_BSplineSurface::Weights()`) and 5 `Standard_SStream` parameters (exception `Raise()` methods). All core geometry operations are available; only internal data access and exception-raising methods are skipped.
 
-**Poly (24 symbols)** — Raw pointers (8), ambiguous lifetimes (4), C-style arrays (3), stream types (2), void pointers (2), and misc others. `Poly_CoherentTriangulation` internal access, `Poly_MakeLoops` helper interfaces, and `gp_Vec3f` (float version not in binding set). All core triangulation access is available.
+**Poly (24 symbols)** — Raw pointers (8), ambiguous lifetimes (4), C-style arrays (3), stream types (2), void pointers (2), and misc others. `Poly_CoherentTriangulation` internal access and `Poly_MakeLoops` helper interfaces. All core triangulation access is available.
 
 ### How Skipped Symbols Are Tracked
 

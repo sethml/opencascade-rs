@@ -106,7 +106,7 @@ pub fn is_primitive_type(name: &str) -> bool {
     matches!(
         name,
         // Rust primitive names
-        "bool" | "i32" | "u32" | "i64" | "u64" | "f32" | "f64" | "char" | "c_char" |
+        "bool" | "i32" | "u32" | "u16" | "i64" | "u64" | "f32" | "f64" | "char" | "c_char" |
         "c_long" | "c_ulong" |
         // C++ primitive names (may appear from canonical type resolution)
         "double" | "float" | "int" | "unsigned int" | "long" | "unsigned long" |
@@ -137,6 +137,7 @@ pub fn generate_ffi(
     all_bindings: &[super::bindings::ClassBindings],
     function_bindings: &[super::bindings::FunctionBinding],
     handle_able_classes: &HashSet<String>,
+    extra_typedef_names: &HashSet<String>,
 ) -> (String, Vec<NestedTypeInfo>) {
     // Get all classes with protected destructors
     let protected_destructor_class_names = symbol_table.protected_destructor_class_names();
@@ -171,17 +172,18 @@ pub fn generate_ffi(
         all_enum_names,
         &protected_destructor_class_names,
         &collection_type_names,
+        extra_typedef_names,
     );
 
-    // Generate nested type destructor declarations for ffi extern block
+    // Generate destructor declarations for nested types and extra typedef types
     let nested_destructor_decls = if nested_types.is_empty() {
         String::new()
     } else {
         let mut s = String::new();
         writeln!(s).unwrap();
-        writeln!(s, "    // ========================").unwrap();
-        writeln!(s, "    // Nested type destructors").unwrap();
-        writeln!(s, "    // ========================").unwrap();
+        writeln!(s, "    // ========================================").unwrap();
+        writeln!(s, "    // Nested type & typedef type destructors").unwrap();
+        writeln!(s, "    // ========================================").unwrap();
         writeln!(s).unwrap();
         for nt in &nested_types {
             writeln!(s, "    pub fn {}_destructor(self_: *mut {});", nt.ffi_name, nt.ffi_name).unwrap();
@@ -189,13 +191,13 @@ pub fn generate_ffi(
         s
     };
 
-    // Generate CppDeletable impls for nested types
+    // Generate CppDeletable impls for nested types and extra typedef types
     let nested_deletable_impls = if nested_types.is_empty() {
         String::new()
     } else {
         let mut s = String::new();
         writeln!(s).unwrap();
-        writeln!(s, "// CppDeletable impls for nested types").unwrap();
+        writeln!(s, "// CppDeletable impls for nested and typedef types").unwrap();
         for nt in &nested_types {
             writeln!(s, "unsafe impl crate::CppDeletable for {} {{", nt.ffi_name).unwrap();
             writeln!(s, "    unsafe fn cpp_delete(ptr: *mut Self) {{").unwrap();
@@ -455,8 +457,8 @@ fn generate_handle_declarations(
 }
 
 /// Generate opaque type declarations
-/// Nested type info for destructor generation.
-/// (cpp_name with ::, ffi_name with _)
+/// Extra destructor type info for destructor generation.
+/// Covers nested types (cpp_name with ::, ffi_name with _) and extra typedef types (e.g. gp_Vec3f).
 pub struct NestedTypeInfo {
     pub cpp_name: String,
     pub ffi_name: String,
@@ -468,6 +470,7 @@ fn generate_opaque_declarations(
     all_enum_names: &HashSet<String>,
     protected_destructor_classes: &HashSet<String>,
     collection_type_names: &HashSet<String>,
+    extra_typedef_names: &HashSet<String>,
 ) -> (String, Vec<NestedTypeInfo>) {
     let defined_classes: HashSet<_> = classes.iter().map(|c| c.name.clone()).collect();
     let mut out = String::new();
@@ -514,8 +517,10 @@ fn generate_opaque_declarations(
         writeln!(out, "#[repr(C)]").unwrap();
         writeln!(out, "pub struct {} {{ _opaque: [u8; 0] }}", safe_name).unwrap();
 
-        // Track nested types for destructor generation (skip protected destructor types)
-        if is_nested && !has_protected_dtor {
+        // Track types needing destructor generation (skip protected destructor types)
+        // This includes nested types (Parent::Nested) and extra typedef types (gp_Vec3f)
+        let is_extra_typedef = extra_typedef_names.contains(type_name);
+        if (is_nested || is_extra_typedef) && !has_protected_dtor {
             nested_types.push(NestedTypeInfo {
                 cpp_name: type_name.clone(),
                 ffi_name: safe_name,

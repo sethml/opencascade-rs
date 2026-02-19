@@ -621,6 +621,7 @@ fn generate_output(
         &all_bindings,
         &all_function_bindings,
         &handle_able_classes,
+        &extra_typedef_names,
     );
     let ffi_path = args.output.join("ffi.rs");
     std::fs::write(&ffi_path, ffi_code)?;

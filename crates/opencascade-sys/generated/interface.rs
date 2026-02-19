@@ -8495,14 +8495,13 @@ impl LineBuffer {
     pub fn add_asciistring(&mut self, text: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::Interface_LineBuffer_add_asciistring(self as *mut Self, text) }
     }
-}
 
-// ── Skipped symbols for LineBuffer (1 total) ──
-// SKIPPED: **Source:** `Interface_LineBuffer.hxx`:91 - `Interface_LineBuffer::Add`
-//   method: Adds a text made of only ONE Character
-//   Reason: param 'text' uses unknown type 'Standard_Character'
-//   // pub fn add(&mut self, text: Character);
-//
+    /// **Source:** `Interface_LineBuffer.hxx`:91 - `Interface_LineBuffer::Add()`
+    /// Adds a text made of only ONE Character
+    pub fn add_char(&mut self, text: std::ffi::c_char) {
+        unsafe { crate::ffi::Interface_LineBuffer_add_char(self as *mut Self, text) }
+    }
+}
 
 // ========================
 // From Interface_MSG.hxx
@@ -12140,15 +12139,45 @@ impl Static {
     /// If this name is already taken, does nothing and returns False
     /// Else, creates it and returns True
     /// For additional definitions, get the Static then edit it
-    pub fn init(family: &str, name: &str, type_: crate::interface::ParamType, init: &str) -> bool {
+    pub fn init_charptr2_paramtype_charptr(
+        family: &str,
+        name: &str,
+        type_: crate::interface::ParamType,
+        init: &str,
+    ) -> bool {
         let c_family = std::ffi::CString::new(family).unwrap();
         let c_name = std::ffi::CString::new(name).unwrap();
         let c_init = std::ffi::CString::new(init).unwrap();
         unsafe {
-            crate::ffi::Interface_Static_init(
+            crate::ffi::Interface_Static_init_charptr2_paramtype_charptr(
                 c_family.as_ptr(),
                 c_name.as_ptr(),
                 type_.into(),
+                c_init.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `Interface_Static.hxx`:125 - `Interface_Static::Init()`
+    /// As Init with ParamType, but type is given as a character
+    /// This allows a simpler call
+    /// Types : 'i' Integer, 'r' Real, 't' Text, 'e' Enum, 'o' Object
+    /// '=' for same definition as, <init> gives the initial Static
+    /// Returns False if <type> does not match this list
+    pub fn init_charptr2_char_charptr(
+        family: &str,
+        name: &str,
+        type_: std::ffi::c_char,
+        init: &str,
+    ) -> bool {
+        let c_family = std::ffi::CString::new(family).unwrap();
+        let c_name = std::ffi::CString::new(name).unwrap();
+        let c_init = std::ffi::CString::new(init).unwrap();
+        unsafe {
+            crate::ffi::Interface_Static_init_charptr2_char_charptr(
+                c_family.as_ptr(),
+                c_name.as_ptr(),
+                type_,
                 c_init.as_ptr(),
             )
         }
@@ -12691,20 +12720,13 @@ impl HandleInterfaceStatic {
     }
 }
 
-// ── Skipped symbols for Static (2 total) ──
+// ── Skipped symbols for Static (1 total) ──
 // SKIPPED: **Source:** `Interface_Static.hxx`:89 - `Interface_Static::PrintStatic`
 //   method: Writes the properties of a
 //   method: parameter in the diagnostic file. These include:
 //   method: - Name
 //   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
 //   // pub fn print_static(&self, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `Interface_Static.hxx`:125 - `Interface_Static::Init`
-//   static_method: As Init with ParamType, but type is given as a character
-//   static_method: This allows a simpler call
-//   static_method: Types : 'i' Integer, 'r' Real, 't' Text, 'e' Enum, 'o' Object
-//   Reason: param 'type' uses unknown type 'Standard_Character'
-//   // pub fn init(family: *const char, name: *const char, type_: Character, init: *const char) -> bool;
 //
 
 // ========================

@@ -803,6 +803,18 @@ impl DatumObject {
         unsafe { crate::ffi::XCAFDimTolObjects_DatumObject_set_name(self as *mut Self, theTag) }
     }
 
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:58 - `XCAFDimTolObjects_DatumObject::GetModifiers()`
+    /// Returns a sequence of modifiers of the datum.
+    pub fn get_modifiers(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::XCAFDimTolObjects_DatumModifiersSequence> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDimTolObjects_DatumObject_get_modifiers(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:61 - `XCAFDimTolObjects_DatumObject::SetModifiers()`
     /// Sets new sequence of datum modifiers.
     pub fn set_modifiers(
@@ -1253,13 +1265,6 @@ impl HandleXCAFDimTolObjectsDatumObject {
     }
 }
 
-// ── Skipped symbols for DatumObject (1 total) ──
-// SKIPPED: **Source:** `XCAFDimTolObjects_DatumObject.hxx`:58 - `XCAFDimTolObjects_DatumObject::GetModifiers`
-//   method: Returns a sequence of modifiers of the datum.
-//   Reason: return type 'XCAFDimTolObjects_DatumModifiersSequence' is not CppDeletable
-//   // pub fn get_modifiers(&self) -> OwnedPtr<XCAFDimTolObjects_DatumModifiersSequence>;
-//
-
 // ========================
 // From XCAFDimTolObjects_DimensionObject.hxx
 // ========================
@@ -1615,6 +1620,18 @@ impl DimensionObject {
                 theL,
                 theR,
             )
+        }
+    }
+
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:169 - `XCAFDimTolObjects_DimensionObject::GetModifiers()`
+    /// Returns a sequence of modifiers of the dimension.
+    pub fn get_modifiers(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::XCAFDimTolObjects_DimensionModifiersSequence> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDimTolObjects_DimensionObject_get_modifiers(
+                self as *const Self,
+            ))
         }
     }
 
@@ -2023,13 +2040,6 @@ impl HandleXCAFDimTolObjectsDimensionObject {
     }
 }
 
-// ── Skipped symbols for DimensionObject (1 total) ──
-// SKIPPED: **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:169 - `XCAFDimTolObjects_DimensionObject::GetModifiers`
-//   method: Returns a sequence of modifiers of the dimension.
-//   Reason: return type 'XCAFDimTolObjects_DimensionModifiersSequence' is not CppDeletable
-//   // pub fn get_modifiers(&self) -> OwnedPtr<XCAFDimTolObjects_DimensionModifiersSequence>;
-//
-
 // ========================
 // From XCAFDimTolObjects_GeomToleranceObject.hxx
 // ========================
@@ -2245,6 +2255,20 @@ impl GeomToleranceObject {
             crate::ffi::XCAFDimTolObjects_GeomToleranceObject_add_modifier(
                 self as *mut Self,
                 theModifier.into(),
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:99 - `XCAFDimTolObjects_GeomToleranceObject::GetModifiers()`
+    /// Returns a sequence of modifiers of the tolerance.
+    pub fn get_modifiers(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::XCAFDimTolObjects_GeomToleranceModifiersSequence> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDimTolObjects_GeomToleranceObject_get_modifiers(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -2618,13 +2642,6 @@ impl HandleXCAFDimTolObjectsGeomToleranceObject {
         }
     }
 }
-
-// ── Skipped symbols for GeomToleranceObject (1 total) ──
-// SKIPPED: **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:99 - `XCAFDimTolObjects_GeomToleranceObject::GetModifiers`
-//   method: Returns a sequence of modifiers of the tolerance.
-//   Reason: return type 'XCAFDimTolObjects_GeomToleranceModifiersSequence' is not CppDeletable
-//   // pub fn get_modifiers(&self) -> OwnedPtr<XCAFDimTolObjects_GeomToleranceModifiersSequence>;
-//
 
 // ========================
 // From XCAFDimTolObjects_Tool.hxx

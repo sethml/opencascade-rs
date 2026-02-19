@@ -1376,6 +1376,7 @@ fn type_to_cpp_string(ty: &Type) -> String {
         Type::Bool => "bool".to_string(),
         Type::I32 => "Standard_Integer".to_string(),
         Type::U32 => "unsigned int".to_string(),
+        Type::U16 => "uint16_t".to_string(),
         Type::I64 => "long long".to_string(),
         Type::U64 => "unsigned long long".to_string(),
         Type::Long => "long".to_string(),

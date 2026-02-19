@@ -2514,6 +2514,16 @@ impl MergeNodesTool {
         unsafe { crate::ffi::Poly_MergeNodesTool_set_merge_elems(self as *mut Self, theToMerge) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:90 - `Poly_MergeNodesTool::computeTriNormal()`
+    /// Compute normal for the mesh element.
+    pub fn compute_tri_normal(&self) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_MergeNodesTool_compute_tri_normal(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `Poly_MergeNodesTool.hxx`:104 - `Poly_MergeNodesTool::AddTriangulation()`
     /// Add another triangulation to created one.
     /// @param[in] theTris triangulation to add
@@ -2737,12 +2747,7 @@ impl HandlePolyMergeNodesTool {
     }
 }
 
-// ── Skipped symbols for MergeNodesTool (4 total) ──
-// SKIPPED: **Source:** `Poly_MergeNodesTool.hxx`:90 - `Poly_MergeNodesTool::computeTriNormal`
-//   method: Compute normal for the mesh element.
-//   Reason: return type 'gp_Vec3f' is not CppDeletable
-//   // pub fn compute_tri_normal(&self) -> OwnedPtr<gp_Vec3f>;
-//
+// ── Skipped symbols for MergeNodesTool (3 total) ──
 // SKIPPED: **Source:** `Poly_MergeNodesTool.hxx`:114 - `Poly_MergeNodesTool::AddTriangle`
 //   method: Add new triangle.
 //   method: @param[in] theElemNodes 3 element nodes

@@ -1429,6 +1429,83 @@ impl Color {
         }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:242 - `Quantity_Color::Convert_sRGB_To_HLS()`
+    /// Converts sRGB components into HLS ones.
+    pub fn convert_s_rgb_to_hls(
+        theRgb: &crate::ffi::gp_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_Color_convert_s_rgb_to_hls(theRgb))
+        }
+    }
+
+    /// **Source:** `Quantity_Color.hxx`:246 - `Quantity_Color::Convert_HLS_To_sRGB()`
+    /// Converts HLS components into RGB ones.
+    pub fn convert_hls_to_s_rgb(
+        theHls: &crate::ffi::gp_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_Color_convert_hls_to_s_rgb(theHls))
+        }
+    }
+
+    /// **Source:** `Quantity_Color.hxx`:250 - `Quantity_Color::Convert_LinearRGB_To_HLS()`
+    /// Converts Linear RGB components into HLS ones.
+    pub fn convert_linear_rgb_to_hls(
+        theRgb: &crate::ffi::gp_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_Color_convert_linear_rgb_to_hls(theRgb))
+        }
+    }
+
+    /// **Source:** `Quantity_Color.hxx`:256 - `Quantity_Color::Convert_HLS_To_LinearRGB()`
+    /// Converts HLS components into linear RGB ones.
+    pub fn convert_hls_to_linear_rgb(
+        theHls: &crate::ffi::gp_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_Color_convert_hls_to_linear_rgb(theHls))
+        }
+    }
+
+    /// **Source:** `Quantity_Color.hxx`:262 - `Quantity_Color::Convert_LinearRGB_To_Lab()`
+    /// Converts linear RGB components into CIE Lab ones.
+    pub fn convert_linear_rgb_to_lab(
+        theRgb: &crate::ffi::gp_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_Color_convert_linear_rgb_to_lab(theRgb))
+        }
+    }
+
+    /// **Source:** `Quantity_Color.hxx`:266 - `Quantity_Color::Convert_Lab_To_Lch()`
+    /// Converts CIE Lab components into CIE Lch ones.
+    pub fn convert_lab_to_lch(
+        theLab: &crate::ffi::gp_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Quantity_Color_convert_lab_to_lch(theLab)) }
+    }
+
+    /// **Source:** `Quantity_Color.hxx`:271 - `Quantity_Color::Convert_Lab_To_LinearRGB()`
+    /// Converts CIE Lab components into linear RGB ones.
+    /// Note that the resulting values may be out of the valid range for RGB.
+    pub fn convert_lab_to_linear_rgb(
+        theLab: &crate::ffi::gp_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_Color_convert_lab_to_linear_rgb(theLab))
+        }
+    }
+
+    /// **Source:** `Quantity_Color.hxx`:275 - `Quantity_Color::Convert_Lch_To_Lab()`
+    /// Converts CIE Lch components into CIE Lab ones.
+    pub fn convert_lch_to_lab(
+        theLch: &crate::ffi::gp_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Quantity_Color_convert_lch_to_lab(theLch)) }
+    }
+
     /// **Source:** `Quantity_Color.hxx`:284 - `Quantity_Color::Color2argb()`
     /// Convert the color value to ARGB integer value, with alpha equals to 0.
     /// So the output is formatted as 0x00RRGGBB.
@@ -1478,14 +1555,42 @@ impl Color {
 
     /// **Source:** `Quantity_Color.hxx`:359 - `Quantity_Color::Convert_LinearRGB_To_sRGB_approx22()`
     /// Convert linear RGB component into sRGB using approximated uniform gamma coefficient 2.2.
-    pub fn convert_linear_rgb_to_s_rgb_approx22(theLinearValue: f32) -> f32 {
-        unsafe { crate::ffi::Quantity_Color_convert_linear_rgb_to_s_rgb_approx22(theLinearValue) }
+    pub fn convert_linear_rgb_to_s_rgb_approx22_float(theLinearValue: f32) -> f32 {
+        unsafe {
+            crate::ffi::Quantity_Color_convert_linear_rgb_to_s_rgb_approx22_float(theLinearValue)
+        }
     }
 
     /// **Source:** `Quantity_Color.hxx`:365 - `Quantity_Color::Convert_sRGB_To_LinearRGB_approx22()`
     /// Convert sRGB component into linear RGB using approximated uniform gamma coefficient 2.2
-    pub fn convert_s_rgb_to_linear_rgb_approx22(thesRGBValue: f32) -> f32 {
-        unsafe { crate::ffi::Quantity_Color_convert_s_rgb_to_linear_rgb_approx22(thesRGBValue) }
+    pub fn convert_s_rgb_to_linear_rgb_approx22_float(thesRGBValue: f32) -> f32 {
+        unsafe {
+            crate::ffi::Quantity_Color_convert_s_rgb_to_linear_rgb_approx22_float(thesRGBValue)
+        }
+    }
+
+    /// **Source:** `Quantity_Color.hxx`:371 - `Quantity_Color::Convert_LinearRGB_To_sRGB_approx22()`
+    /// Convert linear RGB components into sRGB using approximated uniform gamma coefficient 2.2
+    pub fn convert_linear_rgb_to_s_rgb_approx22_vec3f(
+        theRGB: &crate::ffi::gp_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Quantity_Color_convert_linear_rgb_to_s_rgb_approx22_vec3f(theRGB),
+            )
+        }
+    }
+
+    /// **Source:** `Quantity_Color.hxx`:380 - `Quantity_Color::Convert_sRGB_To_LinearRGB_approx22()`
+    /// Convert sRGB components into linear RGB using approximated uniform gamma coefficient 2.2
+    pub fn convert_s_rgb_to_linear_rgb_approx22_vec3f(
+        theRGB: &crate::ffi::gp_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Quantity_Color_convert_s_rgb_to_linear_rgb_approx22_vec3f(theRGB),
+            )
+        }
     }
 
     /// **Source:** `Quantity_Color.hxx`:389 - `Quantity_Color::HlsRgb()`
@@ -1526,59 +1631,6 @@ impl Color {
         unsafe { crate::ffi::Quantity_Color_set_epsilon(theEpsilon) }
     }
 }
-
-// ── Skipped symbols for Color (10 total) ──
-// SKIPPED: **Source:** `Quantity_Color.hxx`:242 - `Quantity_Color::Convert_sRGB_To_HLS`
-//   static_method: Converts sRGB components into HLS ones.
-//   Reason: return type 'gp_Vec3f' is not CppDeletable
-//   // pub fn convert_s_rgb_to_hls(theRgb: &Vec3f) -> OwnedPtr<gp_Vec3f>;
-//
-// SKIPPED: **Source:** `Quantity_Color.hxx`:246 - `Quantity_Color::Convert_HLS_To_sRGB`
-//   static_method: Converts HLS components into RGB ones.
-//   Reason: return type 'gp_Vec3f' is not CppDeletable
-//   // pub fn convert_hls_to_s_rgb(theHls: &Vec3f) -> OwnedPtr<gp_Vec3f>;
-//
-// SKIPPED: **Source:** `Quantity_Color.hxx`:250 - `Quantity_Color::Convert_LinearRGB_To_HLS`
-//   static_method: Converts Linear RGB components into HLS ones.
-//   Reason: return type 'gp_Vec3f' is not CppDeletable
-//   // pub fn convert_linear_rgb_to_hls(theRgb: &Vec3f) -> OwnedPtr<gp_Vec3f>;
-//
-// SKIPPED: **Source:** `Quantity_Color.hxx`:256 - `Quantity_Color::Convert_HLS_To_LinearRGB`
-//   static_method: Converts HLS components into linear RGB ones.
-//   Reason: return type 'gp_Vec3f' is not CppDeletable
-//   // pub fn convert_hls_to_linear_rgb(theHls: &Vec3f) -> OwnedPtr<gp_Vec3f>;
-//
-// SKIPPED: **Source:** `Quantity_Color.hxx`:262 - `Quantity_Color::Convert_LinearRGB_To_Lab`
-//   static_method: Converts linear RGB components into CIE Lab ones.
-//   Reason: return type 'gp_Vec3f' is not CppDeletable
-//   // pub fn convert_linear_rgb_to_lab(theRgb: &Vec3f) -> OwnedPtr<gp_Vec3f>;
-//
-// SKIPPED: **Source:** `Quantity_Color.hxx`:266 - `Quantity_Color::Convert_Lab_To_Lch`
-//   static_method: Converts CIE Lab components into CIE Lch ones.
-//   Reason: return type 'gp_Vec3f' is not CppDeletable
-//   // pub fn convert_lab_to_lch(theLab: &Vec3f) -> OwnedPtr<gp_Vec3f>;
-//
-// SKIPPED: **Source:** `Quantity_Color.hxx`:271 - `Quantity_Color::Convert_Lab_To_LinearRGB`
-//   static_method: Converts CIE Lab components into linear RGB ones.
-//   static_method: Note that the resulting values may be out of the valid range for RGB.
-//   Reason: return type 'gp_Vec3f' is not CppDeletable
-//   // pub fn convert_lab_to_linear_rgb(theLab: &Vec3f) -> OwnedPtr<gp_Vec3f>;
-//
-// SKIPPED: **Source:** `Quantity_Color.hxx`:275 - `Quantity_Color::Convert_Lch_To_Lab`
-//   static_method: Converts CIE Lch components into CIE Lab ones.
-//   Reason: return type 'gp_Vec3f' is not CppDeletable
-//   // pub fn convert_lch_to_lab(theLch: &Vec3f) -> OwnedPtr<gp_Vec3f>;
-//
-// SKIPPED: **Source:** `Quantity_Color.hxx`:371 - `Quantity_Color::Convert_LinearRGB_To_sRGB_approx22`
-//   static_method: Convert linear RGB components into sRGB using approximated uniform gamma coefficient 2.2
-//   Reason: return type 'gp_Vec3f' is not CppDeletable
-//   // pub fn convert_linear_rgb_to_s_rgb_approx22(theRGB: &Vec3f) -> OwnedPtr<gp_Vec3f>;
-//
-// SKIPPED: **Source:** `Quantity_Color.hxx`:380 - `Quantity_Color::Convert_sRGB_To_LinearRGB_approx22`
-//   static_method: Convert sRGB components into linear RGB using approximated uniform gamma coefficient 2.2
-//   Reason: return type 'gp_Vec3f' is not CppDeletable
-//   // pub fn convert_s_rgb_to_linear_rgb_approx22(theRGB: &Vec3f) -> OwnedPtr<gp_Vec3f>;
-//
 
 // ========================
 // From Quantity_ColorRGBA.hxx
@@ -1745,19 +1797,31 @@ impl ColorRGBA {
             ))
         }
     }
-}
 
-// ── Skipped symbols for ColorRGBA (2 total) ──
-// SKIPPED: **Source:** `Quantity_ColorRGBA.hxx`:154 - `Quantity_ColorRGBA::Convert_LinearRGB_To_sRGB`
-//   static_method: Convert linear RGB components into sRGB using OpenGL specs formula.
-//   Reason: return type 'Graphic3d_Vec4' is not CppDeletable
-//   // pub fn convert_linear_rgb_to_s_rgb(theRGB: &Vec4) -> OwnedPtr<Graphic3d_Vec4>;
-//
-// SKIPPED: **Source:** `Quantity_ColorRGBA.hxx`:163 - `Quantity_ColorRGBA::Convert_sRGB_To_LinearRGB`
-//   static_method: Convert sRGB components into linear RGB using OpenGL specs formula.
-//   Reason: return type 'Graphic3d_Vec4' is not CppDeletable
-//   // pub fn convert_s_rgb_to_linear_rgb(theRGB: &Vec4) -> OwnedPtr<Graphic3d_Vec4>;
-//
+    /// **Source:** `Quantity_ColorRGBA.hxx`:154 - `Quantity_ColorRGBA::Convert_LinearRGB_To_sRGB()`
+    /// Convert linear RGB components into sRGB using OpenGL specs formula.
+    pub fn convert_linear_rgb_to_s_rgb(
+        theRGB: &crate::ffi::Graphic3d_Vec4,
+    ) -> crate::OwnedPtr<crate::ffi::Graphic3d_Vec4> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_ColorRGBA_convert_linear_rgb_to_s_rgb(
+                theRGB,
+            ))
+        }
+    }
+
+    /// **Source:** `Quantity_ColorRGBA.hxx`:163 - `Quantity_ColorRGBA::Convert_sRGB_To_LinearRGB()`
+    /// Convert sRGB components into linear RGB using OpenGL specs formula.
+    pub fn convert_s_rgb_to_linear_rgb(
+        theRGB: &crate::ffi::Graphic3d_Vec4,
+    ) -> crate::OwnedPtr<crate::ffi::Graphic3d_Vec4> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_ColorRGBA_convert_s_rgb_to_linear_rgb(
+                theRGB,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Quantity_Date.hxx

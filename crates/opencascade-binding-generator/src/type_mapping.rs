@@ -47,6 +47,12 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
             needs_pin: false,
             source_module: None,
         },
+        Type::U16 => RustTypeMapping {
+            rust_type: "u16".to_string(),
+            needs_unique_ptr: false,
+            needs_pin: false,
+            source_module: None,
+        },
         Type::I64 => RustTypeMapping {
             rust_type: "i64".to_string(),
             needs_unique_ptr: false,
@@ -316,6 +322,10 @@ pub fn type_uses_unknown_class(ty: &Type, all_classes: &std::collections::HashSe
             if all_classes.contains(class_name) {
                 return false;
             }
+            // Primitive types mapped as Type::Class (e.g., "char" from Standard_Character)
+            if crate::codegen::rust::is_primitive_type(class_name) {
+                return false;
+            }
             // Nested types (Parent::Nested) are known if the parent class is known
             if let Some(parent) = class_name.split("::").next() {
                 if class_name.contains("::") && all_classes.contains(parent) {
@@ -341,6 +351,10 @@ pub fn type_uses_unknown_handle(
         Type::Handle(class_name) => !handle_able_classes.contains(class_name),
         Type::Class(class_name) => {
             if all_classes.contains(class_name) {
+                return false;
+            }
+            // Primitive types mapped as Type::Class (e.g., "char" from Standard_Character)
+            if crate::codegen::rust::is_primitive_type(class_name) {
                 return false;
             }
             // Nested types (Parent::Nested) are known if the parent class is known
@@ -473,6 +487,7 @@ pub fn map_cpp_type_string(cpp_type: &str) -> RustTypeMapping {
         "bool" | "Standard_Boolean" => return map_type_to_rust(&Type::Bool),
         "int" | "Standard_Integer" => return map_type_to_rust(&Type::I32),
         "unsigned int" => return map_type_to_rust(&Type::U32),
+        "unsigned short" | "uint16_t" | "char16_t" | "Standard_ExtCharacter" => return map_type_to_rust(&Type::U16),
         "long" => return map_type_to_rust(&Type::Long),
         "unsigned long" => return map_type_to_rust(&Type::ULong),
         "float" => return map_type_to_rust(&Type::F32),

@@ -134,6 +134,17 @@ impl ConfigurationNode {
         }
     }
 
+    /// **Source:** `DEGLTF_ConfigurationNode.hxx`:80 - `DEGLTF_ConfigurationNode::GetExtensions()`
+    /// Gets list of supported file extensions
+    /// @return list of extensions
+    pub fn get_extensions(&self) -> crate::OwnedPtr<crate::ffi::TColStd_ListOfAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DEGLTF_ConfigurationNode_get_extensions(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `DEGLTF_ConfigurationNode.hxx`:34 - `DEGLTF_ConfigurationNode::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -326,14 +337,6 @@ impl HandleDEGLTFConfigurationNode {
         }
     }
 }
-
-// ── Skipped symbols for ConfigurationNode (1 total) ──
-// SKIPPED: **Source:** `DEGLTF_ConfigurationNode.hxx`:80 - `DEGLTF_ConfigurationNode::GetExtensions`
-//   method: Gets list of supported file extensions
-//   method: @return list of extensions
-//   Reason: return type 'TColStd_ListOfAsciiString' is not CppDeletable
-//   // pub fn get_extensions(&self) -> OwnedPtr<TColStd_ListOfAsciiString>;
-//
 
 /// **Source:** `DEGLTF_ConfigurationNode.hxx`:83 - `DEGLTF_ConfigurationNode_RWGltf_InternalSection`
 pub use crate::ffi::DEGLTF_ConfigurationNode_RWGltf_InternalSection as ConfigurationNode_RWGltf_InternalSection;

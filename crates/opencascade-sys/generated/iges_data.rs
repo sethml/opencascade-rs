@@ -5094,6 +5094,16 @@ impl GlobalSection {
         unsafe { crate::ffi::IGESData_GlobalSection_unit_value(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_GlobalSection.hxx`:193 - `IGESData_GlobalSection::SetSeparator()`
+    pub fn set_separator(&mut self, val: std::ffi::c_char) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_separator(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:195 - `IGESData_GlobalSection::SetEndMark()`
+    pub fn set_end_mark(&mut self, val: std::ffi::c_char) {
+        unsafe { crate::ffi::IGESData_GlobalSection_set_end_mark(self as *mut Self, val) }
+    }
+
     /// **Source:** `IGESData_GlobalSection.hxx`:197 - `IGESData_GlobalSection::SetSendName()`
     pub fn set_send_name(&mut self, val: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe { crate::ffi::IGESData_GlobalSection_set_send_name(self as *mut Self, val) }
@@ -5282,24 +5292,16 @@ impl GlobalSection {
     }
 }
 
-// ── Skipped symbols for GlobalSection (4 total) ──
+// ── Skipped symbols for GlobalSection (2 total) ──
 // SKIPPED: **Source:** `IGESData_GlobalSection.hxx`:70 - `IGESData_GlobalSection::Separator`
 //   method: Returns the parameter delimiter character.
-//   Reason: return type 'Standard_Character' is unknown
-//   // pub fn separator(&self) -> OwnedPtr<Standard_Character>;
+//   Reason: return type 'char' is not CppDeletable
+//   // pub fn separator(&self) -> char;
 //
 // SKIPPED: **Source:** `IGESData_GlobalSection.hxx`:73 - `IGESData_GlobalSection::EndMark`
 //   method: Returns the record delimiter character.
-//   Reason: return type 'Standard_Character' is unknown
-//   // pub fn end_mark(&self) -> OwnedPtr<Standard_Character>;
-//
-// SKIPPED: **Source:** `IGESData_GlobalSection.hxx`:193 - `IGESData_GlobalSection::SetSeparator`
-//   Reason: param 'val' uses unknown type 'Standard_Character'
-//   // pub fn set_separator(&mut self, val: Character);
-//
-// SKIPPED: **Source:** `IGESData_GlobalSection.hxx`:195 - `IGESData_GlobalSection::SetEndMark`
-//   Reason: param 'val' uses unknown type 'Standard_Character'
-//   // pub fn set_end_mark(&mut self, val: Character);
+//   Reason: return type 'char' is not CppDeletable
+//   // pub fn end_mark(&self) -> char;
 //
 
 // ========================

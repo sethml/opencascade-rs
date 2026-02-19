@@ -137,6 +137,17 @@ impl ConfigurationNode {
         }
     }
 
+    /// **Source:** `DESTEP_ConfigurationNode.hxx`:81 - `DESTEP_ConfigurationNode::GetExtensions()`
+    /// Gets list of supported file extensions
+    /// @return list of extensions
+    pub fn get_extensions(&self) -> crate::OwnedPtr<crate::ffi::TColStd_ListOfAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DESTEP_ConfigurationNode_get_extensions(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `DESTEP_ConfigurationNode.hxx`:86 - `DESTEP_ConfigurationNode::CheckContent()`
     /// Checks the file content to verify a format
     /// @param[in] theBuffer read stream buffer to check content
@@ -362,14 +373,6 @@ impl HandleDESTEPConfigurationNode {
         }
     }
 }
-
-// ── Skipped symbols for ConfigurationNode (1 total) ──
-// SKIPPED: **Source:** `DESTEP_ConfigurationNode.hxx`:81 - `DESTEP_ConfigurationNode::GetExtensions`
-//   method: Gets list of supported file extensions
-//   method: @return list of extensions
-//   Reason: return type 'TColStd_ListOfAsciiString' is not CppDeletable
-//   // pub fn get_extensions(&self) -> OwnedPtr<TColStd_ListOfAsciiString>;
-//
 
 // ========================
 // From DESTEP_Parameters.hxx

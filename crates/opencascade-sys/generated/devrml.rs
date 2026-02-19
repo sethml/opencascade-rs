@@ -134,6 +134,17 @@ impl ConfigurationNode {
         }
     }
 
+    /// **Source:** `DEVRML_ConfigurationNode.hxx`:78 - `DEVRML_ConfigurationNode::GetExtensions()`
+    /// Gets list of supported file extensions
+    /// @return list of extensions
+    pub fn get_extensions(&self) -> crate::OwnedPtr<crate::ffi::TColStd_ListOfAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DEVRML_ConfigurationNode_get_extensions(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `DEVRML_ConfigurationNode.hxx`:32 - `DEVRML_ConfigurationNode::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -326,14 +337,6 @@ impl HandleDEVRMLConfigurationNode {
         }
     }
 }
-
-// ── Skipped symbols for ConfigurationNode (1 total) ──
-// SKIPPED: **Source:** `DEVRML_ConfigurationNode.hxx`:78 - `DEVRML_ConfigurationNode::GetExtensions`
-//   method: Gets list of supported file extensions
-//   method: @return list of extensions
-//   Reason: return type 'TColStd_ListOfAsciiString' is not CppDeletable
-//   // pub fn get_extensions(&self) -> OwnedPtr<TColStd_ListOfAsciiString>;
-//
 
 /// **Source:** `DEVRML_ConfigurationNode.hxx`:94 - `DEVRML_ConfigurationNode_Vrml_InternalSection`
 pub use crate::ffi::DEVRML_ConfigurationNode_Vrml_InternalSection as ConfigurationNode_Vrml_InternalSection;

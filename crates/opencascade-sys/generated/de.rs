@@ -563,6 +563,17 @@ impl ConfigurationNode {
         }
     }
 
+    /// **Source:** `DE_ConfigurationNode.hxx`:113 - `DE_ConfigurationNode::GetExtensions()`
+    /// Gets list of supported file extensions
+    /// @return list of extensions
+    pub fn get_extensions(&self) -> crate::OwnedPtr<crate::ffi::TColStd_ListOfAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DE_ConfigurationNode_get_extensions(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
     /// Checks the file extension to verify a format
     /// @param[in] theExtension input file extension
@@ -877,7 +888,7 @@ impl HandleDEConfigurationNode {
     }
 }
 
-// ── Skipped symbols for ConfigurationNode (3 total) ──
+// ── Skipped symbols for ConfigurationNode (2 total) ──
 // SKIPPED: **Source:** `DE_ConfigurationNode.hxx`:54 - `DE_ConfigurationNode::DE_ConfigurationNode`
 //   constructor: Initializes all field by default
 //   Reason: class is abstract (has unimplemented pure virtual methods)
@@ -888,12 +899,6 @@ impl HandleDEConfigurationNode {
 //   constructor: @param[in] theConfigurationNode object to copy
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new_handledeconfigurationnode(theConfigurationNode: &HandleConfigurationNode) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `DE_ConfigurationNode.hxx`:113 - `DE_ConfigurationNode::GetExtensions`
-//   method: Gets list of supported file extensions
-//   method: @return list of extensions
-//   Reason: return type 'TColStd_ListOfAsciiString' is not CppDeletable
-//   // pub fn get_extensions(&self) -> OwnedPtr<TColStd_ListOfAsciiString>;
 //
 
 /// **Source:** `DE_ConfigurationNode.hxx`:145 - `DE_ConfigurationNode_DE_SectionGlobal`
@@ -1486,6 +1491,17 @@ impl ShapeFixConfigurationNode {
             crate::OwnedPtr::from_raw(crate::ffi::DE_ShapeFixConfigurationNode_inherited_GetVendor(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:113 - `DE_ConfigurationNode::GetExtensions()`
+    pub fn get_extensions(&self) -> crate::OwnedPtr<crate::ffi::TColStd_ListOfAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::DE_ShapeFixConfigurationNode_inherited_GetExtensions(
+                    self as *const Self,
+                ),
+            )
         }
     }
 

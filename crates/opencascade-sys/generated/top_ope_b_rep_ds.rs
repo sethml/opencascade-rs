@@ -4860,6 +4860,21 @@ impl HDataStructure {
         }
     }
 
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:119 - `TopOpeBRepDS_HDataStructure::SameDomain()`
+    /// Returns an iterator on the SameDomain shapes attached
+    /// to the shape <S>.
+    pub fn same_domain(
+        &self,
+        S: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::ffi::TopTools_ListIteratorOfListOfShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_HDataStructure_same_domain(
+                self as *const Self,
+                S,
+            ))
+        }
+    }
+
     /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:123 - `TopOpeBRepDS_HDataStructure::SameDomainOrientation()`
     /// Returns orientation of shape <S> compared with its
     /// reference shape
@@ -5281,14 +5296,6 @@ impl HandleTopOpeBRepDSHDataStructure {
         }
     }
 }
-
-// ── Skipped symbols for HDataStructure (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_HDataStructure.hxx`:119 - `TopOpeBRepDS_HDataStructure::SameDomain`
-//   method: Returns an iterator on the SameDomain shapes attached
-//   method: to the shape <S>.
-//   Reason: return type 'TopTools_ListIteratorOfListOfShape' is not CppDeletable
-//   // pub fn same_domain(&self, S: &Shape) -> OwnedPtr<TopTools_ListIteratorOfListOfShape>;
-//
 
 // ========================
 // From TopOpeBRepDS_Interference.hxx

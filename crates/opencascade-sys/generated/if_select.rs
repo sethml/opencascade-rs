@@ -22319,6 +22319,16 @@ impl SessionFile {
         unsafe { crate::ffi::IFSelect_SessionFile_write_end(self as *mut Self) }
     }
 
+    /// **Source:** `IFSelect_SessionFile.hxx`:144 - `IFSelect_SessionFile::WriteLine()`
+    /// Writes a line to the File. If <follow> is given, it is added
+    /// at the following of the line. '\n' must be added for the end.
+    pub fn write_line(&mut self, line: &str, follow: std::ffi::c_char) {
+        let c_line = std::ffi::CString::new(line).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_SessionFile_write_line(self as *mut Self, c_line.as_ptr(), follow)
+        }
+    }
+
     /// **Source:** `IFSelect_SessionFile.hxx`:150 - `IFSelect_SessionFile::WriteOwn()`
     /// Writes the Parameters own to each type of Item. Uses the
     /// Library of SessionDumpers
@@ -22519,14 +22529,6 @@ impl SessionFile {
         unsafe { crate::ffi::IFSelect_SessionFile_destroy(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for SessionFile (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SessionFile.hxx`:144 - `IFSelect_SessionFile::WriteLine`
-//   method: Writes a line to the File. If <follow> is given, it is added
-//   method: at the following of the line. '\n' must be added for the end.
-//   Reason: param 'follow' uses unknown type 'Standard_Character'
-//   // pub fn write_line(&mut self, line: *const char, follow: Character);
-//
 
 // ========================
 // From IFSelect_SessionPilot.hxx
