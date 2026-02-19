@@ -196,6 +196,22 @@ impl HandleRWPlyCafWriter {
     }
 }
 
+// ── Skipped symbols for CafWriter (2 total) ──
+// SKIPPED: **Source:** `RWPly_CafWriter.hxx`:123 - `RWPly_CafWriter::Perform`
+//   method: Write PLY file and associated MTL material file.
+//   method: Triangulation data should be precomputed within shapes!
+//   method: @param[in] theDocument    input document
+//   Reason: has unbindable types: param 'theLabelFilter': raw pointer (const TColStd_MapOfAsciiString*)
+//   // pub fn perform(&mut self, theDocument: &HandleDocument, theRootLabels: &LabelSequence, theLabelFilter: /* const TColStd_MapOfAsciiString* */, theFileInfo: &IndexedDataMapOfStringString, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `RWPly_CafWriter.hxx`:135 - `RWPly_CafWriter::Perform`
+//   method: Write PLY file and associated MTL material file.
+//   method: Triangulation data should be precomputed within shapes!
+//   method: @param[in] theDocument input document
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn perform(&mut self, theDocument: &HandleDocument, theFileInfo: &IndexedDataMapOfStringString, theProgress: &ProgressRange) -> bool;
+//
+
 // ========================
 // From RWPly_PlyWriterContext.hxx
 // ========================
@@ -401,3 +417,10 @@ impl PlyWriterContext {
         unsafe { crate::ffi::RWPly_PlyWriterContext_close(self as *mut Self, theIsAborted) }
     }
 }
+
+// ── Skipped symbols for PlyWriterContext (1 total) ──
+// SKIPPED: **Source:** `RWPly_PlyWriterContext.hxx`:73 - `RWPly_PlyWriterContext::Open`
+//   method: Open file for writing.
+//   Reason: has unbindable types: param 'theStream': stream type (const std::shared_ptr<std::ostream>&)
+//   // pub fn open(&mut self, theName: &AsciiString, theStream: /* const std::shared_ptr<std::ostream>& */) -> bool;
+//

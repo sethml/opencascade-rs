@@ -167,6 +167,54 @@ impl BFGS {
     }
 }
 
+// ── Skipped symbols for BFGS (7 total) ──
+// SKIPPED: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary`
+//   method: Set boundaries for conditional optimization.
+//   method: The expected indices range of vectors is [1, NbVariables].
+//   Reason: param 'theLeftBorder' uses unknown type 'const math_Vector&'
+//   // pub fn set_boundary(&mut self, theLeftBorder: &Vector, theRightBorder: &Vector);
+//
+// SKIPPED: **Source:** `math_BFGS.hxx`:67 - `math_BFGS::Perform`
+//   method: Given the starting point StartingPoint,
+//   method: minimization is done on the function F.
+//   method: The solution F = Fi is found when :
+//   Reason: param 'StartingPoint' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, F: &mut MultipleVarFunctionWithGradient, StartingPoint: &Vector);
+//
+// SKIPPED: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location`
+//   method: returns the location vector of the minimum.
+//   method: Exception NotDone is raised if the minimum was not found.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn location(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `math_BFGS.hxx`:88 - `math_BFGS::Location`
+//   method: outputs the location vector of the minimum in Loc.
+//   method: Exception NotDone is raised if the minimum was not found.
+//   method: Exception DimensionError is raised if the range of Loc is not
+//   Reason: param 'Loc' uses unknown type 'math_Vector&'
+//   // pub fn location(&self, Loc: &mut Vector);
+//
+// SKIPPED: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient`
+//   method: Returns the gradient vector at the minimum.
+//   method: Exception NotDone is raised if the minimum was not found.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn gradient(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `math_BFGS.hxx`:102 - `math_BFGS::Gradient`
+//   method: Returns the value of the gradient vector at the minimum in Grad.
+//   method: Exception NotDone is raised if the minimum was not found.
+//   method: Exception DimensionError is raised if the range of Grad is not
+//   Reason: param 'Grad' uses unknown type 'math_Vector&'
+//   // pub fn gradient(&self, Grad: &mut Vector);
+//
+// SKIPPED: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump`
+//   method: Prints on the stream o information on the current state
+//   method: of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From math_BissecNewton.hxx
 // ========================
@@ -253,6 +301,15 @@ impl BissecNewton {
         unsafe { crate::ffi::math_BissecNewton_value(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for BissecNewton (1 total) ──
+// SKIPPED: **Source:** `math_BissecNewton.hxx`:77 - `math_BissecNewton::Dump`
+//   method: Prints on the stream o information on the current state
+//   method: of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
 
 // ========================
 // From math_BracketMinimum.hxx
@@ -380,6 +437,15 @@ impl BracketMinimum {
     }
 }
 
+// ── Skipped symbols for BracketMinimum (1 total) ──
+// SKIPPED: **Source:** `math_BracketMinimum.hxx`:109 - `math_BracketMinimum::Dump`
+//   method: Prints on the stream o information on the current state
+//   method: of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From math_BracketedRoot.hxx
 // ========================
@@ -487,6 +553,14 @@ impl BracketedRoot {
         unsafe { crate::ffi::math_BracketedRoot_nb_iterations(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for BracketedRoot (1 total) ──
+// SKIPPED: **Source:** `math_BracketedRoot.hxx`:67 - `math_BracketedRoot::Dump`
+//   method: Prints on the stream o information on the current state
+//   method: of the object.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
 
 // ========================
 // From math_BrentMinimum.hxx
@@ -615,6 +689,15 @@ impl BrentMinimum {
     }
 }
 
+// ── Skipped symbols for BrentMinimum (1 total) ──
+// SKIPPED: **Source:** `math_BrentMinimum.hxx`:87 - `math_BrentMinimum::Dump`
+//   method: Prints on the stream o information on the current state
+//   method: of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From math_BullardGenerator.hxx
 // ========================
@@ -690,6 +773,16 @@ impl ComputeGaussPointsAndWeights {
     }
 }
 
+// ── Skipped symbols for ComputeGaussPointsAndWeights (2 total) ──
+// SKIPPED: **Source:** `math_ComputeGaussPointsAndWeights.hxx`:36 - `math_ComputeGaussPointsAndWeights::Points`
+//   Reason: return type 'math_Vector' is unknown
+//   // pub fn points(&self) -> OwnedPtr<math_Vector>;
+//
+// SKIPPED: **Source:** `math_ComputeGaussPointsAndWeights.hxx`:38 - `math_ComputeGaussPointsAndWeights::Weights`
+//   Reason: return type 'math_Vector' is unknown
+//   // pub fn weights(&self) -> OwnedPtr<math_Vector>;
+//
+
 // ========================
 // From math_ComputeKronrodPointsAndWeights.hxx
 // ========================
@@ -718,6 +811,16 @@ impl ComputeKronrodPointsAndWeights {
         unsafe { crate::ffi::math_ComputeKronrodPointsAndWeights_is_done(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for ComputeKronrodPointsAndWeights (2 total) ──
+// SKIPPED: **Source:** `math_ComputeKronrodPointsAndWeights.hxx`:36 - `math_ComputeKronrodPointsAndWeights::Points`
+//   Reason: return type 'math_Vector' is unknown
+//   // pub fn points(&self) -> OwnedPtr<math_Vector>;
+//
+// SKIPPED: **Source:** `math_ComputeKronrodPointsAndWeights.hxx`:38 - `math_ComputeKronrodPointsAndWeights::Weights`
+//   Reason: return type 'math_Vector' is unknown
+//   // pub fn weights(&self) -> OwnedPtr<math_Vector>;
+//
 
 // ========================
 // From math_Crout.hxx
@@ -797,6 +900,21 @@ impl Crout {
         unsafe { crate::ffi::math_Crout_determinant(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for Crout (2 total) ──
+// SKIPPED: **Source:** `math_Crout.hxx`:58 - `math_Crout::Solve`
+//   method: Given an input vector <B>, this routine returns the
+//   method: solution of the set of linear equations A . X = B.
+//   method: Exception NotDone is raised if the decomposition was not
+//   Reason: param 'B' uses unknown type 'const math_Vector&'
+//   // pub fn solve(&self, B: &Vector, X: &mut Vector);
+//
+// SKIPPED: **Source:** `math_Crout.hxx`:78 - `math_Crout::Dump`
+//   method: Prints on the stream o information on the current state
+//   method: of the object.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
 
 // ========================
 // From math_DirectPolynomialRoots.hxx
@@ -881,6 +999,15 @@ impl DirectPolynomialRoots {
     }
 }
 
+// ── Skipped symbols for DirectPolynomialRoots (1 total) ──
+// SKIPPED: **Source:** `math_DirectPolynomialRoots.hxx`:78 - `math_DirectPolynomialRoots::Dump`
+//   method: Prints on the stream o information on the current state
+//   method: of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From math_DoubleTab.hxx
 // ========================
@@ -945,6 +1072,12 @@ impl DoubleTab {
     }
 }
 
+// ── Skipped symbols for DoubleTab (1 total) ──
+// SKIPPED: **Source:** `math_DoubleTab.hxx`:37 - `math_DoubleTab::math_DoubleTab`
+//   Reason: has unbindable types: param 'Tab': void pointer (Standard_Address)
+//   // pub fn new_address_int4(Tab: /* Standard_Address */, LowerRow: i32, UpperRow: i32, LowerCol: i32, UpperCol: i32) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From math_EigenValuesSearcher.hxx
 // ========================
@@ -994,6 +1127,14 @@ impl EigenValuesSearcher {
         unsafe { crate::ffi::math_EigenValuesSearcher_eigen_value(self as *const Self, Index) }
     }
 }
+
+// ── Skipped symbols for EigenValuesSearcher (1 total) ──
+// SKIPPED: **Source:** `math_EigenValuesSearcher.hxx`:53 - `math_EigenValuesSearcher::EigenVector`
+//   method: Returns the Index_th eigen vector of matrix
+//   method: Index must be in [1, Dimension()]
+//   Reason: return type 'math_Vector' is unknown
+//   // pub fn eigen_vector(&self, Index: i32) -> OwnedPtr<math_Vector>;
+//
 
 // ========================
 // From math_FRPR.hxx
@@ -1096,6 +1237,47 @@ impl FRPR {
         unsafe { crate::ffi::math_FRPR_nb_iterations(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for FRPR (6 total) ──
+// SKIPPED: **Source:** `math_FRPR.hxx`:48 - `math_FRPR::Perform`
+//   method: The solution F = Fi is found when
+//   method: 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS).
+//   Reason: param 'theStartingPoint' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, theFunction: &mut MultipleVarFunctionWithGradient, theStartingPoint: &Vector);
+//
+// SKIPPED: **Source:** `math_FRPR.hxx`:61 - `math_FRPR::Location`
+//   method: returns the location vector of the minimum.
+//   method: Exception NotDone is raised if the minimum was not found.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn location(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `math_FRPR.hxx`:67 - `math_FRPR::Location`
+//   method: outputs the location vector of the minimum in Loc.
+//   method: Exception NotDone is raised if the minimum was not found.
+//   method: Exception DimensionError is raised if the range of Loc is not
+//   Reason: param 'Loc' uses unknown type 'math_Vector&'
+//   // pub fn location(&self, Loc: &mut Vector);
+//
+// SKIPPED: **Source:** `math_FRPR.hxx`:75 - `math_FRPR::Gradient`
+//   method: returns the gradient vector at the minimum.
+//   method: Exception NotDone is raised if the minimum was not found.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn gradient(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `math_FRPR.hxx`:81 - `math_FRPR::Gradient`
+//   method: outputs the gradient vector at the minimum in Grad.
+//   method: Exception NotDone is raised if the minimum was not found.
+//   method: Exception DimensionError is raised if the range of Grad is not
+//   Reason: param 'Grad' uses unknown type 'math_Vector&'
+//   // pub fn gradient(&self, Grad: &mut Vector);
+//
+// SKIPPED: **Source:** `math_FRPR.hxx`:91 - `math_FRPR::Dump`
+//   method: Prints on the stream o information on the current state
+//   method: of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
 
 // ========================
 // From math_Function.hxx
@@ -1231,6 +1413,21 @@ impl FunctionAllRoots {
         unsafe { crate::ffi::math_FunctionAllRoots_get_point_state(self as *const Self, Index) }
     }
 }
+
+// ── Skipped symbols for FunctionAllRoots (2 total) ──
+// SKIPPED: **Source:** `math_FunctionAllRoots.hxx`:71 - `math_FunctionAllRoots::GetIntervalState`
+//   method: returns the State Number associated to the interval Index.
+//   method: An exception is raised if IsDone returns False;
+//   method: An exception is raised if Index<=0 or Index >Nbintervals.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_interval_state(&self, Index: i32, IFirst: &mut i32, ILast: &mut i32);
+//
+// SKIPPED: **Source:** `math_FunctionAllRoots.hxx`:91 - `math_FunctionAllRoots::Dump`
+//   method: Prints on the stream o information on the current state
+//   method: of the object.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
 
 // ========================
 // From math_FunctionRoot.hxx
@@ -1373,6 +1570,15 @@ impl FunctionRoot {
         unsafe { crate::ffi::math_FunctionRoot_nb_iterations(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for FunctionRoot (1 total) ──
+// SKIPPED: **Source:** `math_FunctionRoot.hxx`:85 - `math_FunctionRoot::Dump`
+//   method: Prints on the stream o information on the current state
+//   method: of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
 
 // ========================
 // From math_FunctionRoots.hxx
@@ -1528,6 +1734,14 @@ impl FunctionRoots {
     }
 }
 
+// ── Skipped symbols for FunctionRoots (1 total) ──
+// SKIPPED: **Source:** `math_FunctionRoots.hxx`:77 - `math_FunctionRoots::Dump`
+//   method: Prints on the stream o information on the current state
+//   method: of the object.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From math_FunctionSample.hxx
 // ========================
@@ -1620,6 +1834,15 @@ impl FunctionSet {
         unsafe { crate::ffi::math_FunctionSet_get_state_number(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for FunctionSet (1 total) ──
+// SKIPPED: **Source:** `math_FunctionSet.hxx`:43 - `math_FunctionSet::Value`
+//   method: Computes the values <F> of the functions for the
+//   method: variable <X>.
+//   method: returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
 
 // ========================
 // From math_FunctionSetRoot.hxx
@@ -1730,6 +1953,68 @@ impl FunctionSetRoot {
     }
 }
 
+// ── Skipped symbols for FunctionSetRoot (9 total) ──
+// SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:45 - `math_FunctionSetRoot::math_FunctionSetRoot`
+//   constructor: is used in a sub-class to initialize correctly all the fields
+//   constructor: of this class.
+//   constructor: The range (1, F.NbVariables()) must be especially
+//   Reason: param 'Tolerance' uses unknown type 'const math_Vector&'
+//   // pub fn new_functionsetwithderivatives_vector_int(F: &mut FunctionSetWithDerivatives, Tolerance: &Vector, NbIterations: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:62 - `math_FunctionSetRoot::SetTolerance`
+//   method: Initializes the tolerance values.
+//   Reason: param 'Tolerance' uses unknown type 'const math_Vector&'
+//   // pub fn set_tolerance(&mut self, Tolerance: &Vector);
+//
+// SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:85 - `math_FunctionSetRoot::Perform`
+//   method: Improves the root of function from the initial guess point.
+//   method: The infinum and supremum may be given to constrain the solution.
+//   method: In this case, the solution is found when: abs(Xi - Xi-1)(j) <= Tolerance(j)
+//   Reason: param 'theStartingPoint' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, theFunction: &mut FunctionSetWithDerivatives, theStartingPoint: &Vector, theStopOnDivergent: bool);
+//
+// SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:93 - `math_FunctionSetRoot::Perform`
+//   method: Improves the root of function from the initial guess point.
+//   method: The infinum and supremum may be given to constrain the solution.
+//   method: In this case, the solution is found when: abs(Xi - Xi-1) <= Tolerance
+//   Reason: param 'theStartingPoint' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, theFunction: &mut FunctionSetWithDerivatives, theStartingPoint: &Vector, theInfBound: &Vector, theSupBound: &Vector, theStopOnDivergent: bool);
+//
+// SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:121 - `math_FunctionSetRoot::Root`
+//   method: Returns the value of the root of function F.
+//   method: Exception NotDone is raised if the root was not found.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn root(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:131 - `math_FunctionSetRoot::Root`
+//   method: Outputs the root vector in Root.
+//   method: Exception NotDone is raised if the root was not found.
+//   method: Exception DimensionError is raised if the range of Root
+//   Reason: param 'Root' uses unknown type 'math_Vector&'
+//   // pub fn root(&self, Root: &mut Vector);
+//
+// SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:156 - `math_FunctionSetRoot::FunctionSetErrors`
+//   method: returns the vector value of the error done
+//   method: on the functions at the root.
+//   method: Exception NotDone is raised if the root was not found.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn function_set_errors(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:167 - `math_FunctionSetRoot::FunctionSetErrors`
+//   method: outputs the vector value of the error done
+//   method: on the functions at the root in Err.
+//   method: Exception NotDone is raised if the root was not found.
+//   Reason: param 'Err' uses unknown type 'math_Vector&'
+//   // pub fn function_set_errors(&self, Err_: &mut Vector);
+//
+// SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:172 - `math_FunctionSetRoot::Dump`
+//   method: Prints on the stream o information on the current state
+//   method: of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From math_FunctionSetWithDerivatives.hxx
 // ========================
@@ -1781,6 +2066,29 @@ impl FunctionSetWithDerivatives {
         }
     }
 }
+
+// ── Skipped symbols for FunctionSetWithDerivatives (3 total) ──
+// SKIPPED: **Source:** `math_FunctionSetWithDerivatives.hxx`:45 - `math_FunctionSetWithDerivatives::Value`
+//   method: Computes the values <F> of the Functions for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `math_FunctionSetWithDerivatives.hxx`:51 - `math_FunctionSetWithDerivatives::Derivatives`
+//   method: Returns the values <D> of the derivatives for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `math_FunctionSetWithDerivatives.hxx`:57 - `math_FunctionSetWithDerivatives::Values`
+//   method: returns the values <F> of the functions and the derivatives
+//   method: <D> for the variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
 
 // ========================
 // From math_FunctionWithDerivative.hxx
@@ -1912,6 +2220,29 @@ impl Gauss {
     }
 }
 
+// ── Skipped symbols for Gauss (3 total) ──
+// SKIPPED: **Source:** `math_Gauss.hxx`:61 - `math_Gauss::Solve`
+//   method: Given the input Vector B this routine returns the solution X of the set
+//   method: of linear equations A . X = B.
+//   method: Exception NotDone is raised if the decomposition of A was not done
+//   Reason: param 'B' uses unknown type 'const math_Vector&'
+//   // pub fn solve(&self, B: &Vector, X: &mut Vector);
+//
+// SKIPPED: **Source:** `math_Gauss.hxx`:69 - `math_Gauss::Solve`
+//   method: Given the input Vector B this routine solves the set of linear
+//   method: equations A . X = B. B is replaced by the vector solution X.
+//   method: Exception NotDone is raised if the decomposition of A was not done
+//   Reason: param 'B' uses unknown type 'math_Vector&'
+//   // pub fn solve(&self, B: &mut Vector);
+//
+// SKIPPED: **Source:** `math_Gauss.hxx`:86 - `math_Gauss::Dump`
+//   method: Prints on the stream o information on the current state
+//   method: of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From math_GaussLeastSquare.hxx
 // ========================
@@ -1966,6 +2297,22 @@ impl GaussLeastSquare {
     }
 }
 
+// ── Skipped symbols for GaussLeastSquare (2 total) ──
+// SKIPPED: **Source:** `math_GaussLeastSquare.hxx`:60 - `math_GaussLeastSquare::Solve`
+//   method: Given the input Vector <B> this routine solves the set
+//   method: of linear equations A . X = B.
+//   method: Exception NotDone is raised if the decomposition of A was
+//   Reason: param 'B' uses unknown type 'const math_Vector&'
+//   // pub fn solve(&self, B: &Vector, X: &mut Vector);
+//
+// SKIPPED: **Source:** `math_GaussLeastSquare.hxx`:65 - `math_GaussLeastSquare::Dump`
+//   method: Prints on the stream o information on the current state
+//   method: of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From math_GaussMultipleIntegration.hxx
 // ========================
@@ -1996,6 +2343,20 @@ impl GaussMultipleIntegration {
     }
 }
 
+// ── Skipped symbols for GaussMultipleIntegration (2 total) ──
+// SKIPPED: **Source:** `math_GaussMultipleIntegration.hxx`:39 - `math_GaussMultipleIntegration::math_GaussMultipleIntegration`
+//   constructor: The Gauss-Legendre integration with Order = points of
+//   constructor: integration for each unknown, is done on the function F
+//   constructor: between the bounds Lower and Upper.
+//   Reason: param 'Lower' uses unknown type 'const math_Vector&'
+//   // pub fn new_multiplevarfunction_vector2_integervector(F: &mut MultipleVarFunction, Lower: &Vector, Upper: &Vector, Order: &IntegerVector) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `math_GaussMultipleIntegration.hxx`:51 - `math_GaussMultipleIntegration::Dump`
+//   method: Prints information on the current state of the object.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From math_GaussSetIntegration.hxx
 // ========================
@@ -2020,6 +2381,25 @@ impl GaussSetIntegration {
         unsafe { crate::ffi::math_GaussSetIntegration_is_done(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for GaussSetIntegration (3 total) ──
+// SKIPPED: **Source:** `math_GaussSetIntegration.hxx`:40 - `math_GaussSetIntegration::math_GaussSetIntegration`
+//   constructor: The Gauss-Legendre integration with Order = points of
+//   constructor: integration for each unknown, is done on the function F
+//   constructor: between the bounds Lower and Upper.
+//   Reason: param 'Lower' uses unknown type 'const math_Vector&'
+//   // pub fn new_functionset_vector2_integervector(F: &mut FunctionSet, Lower: &Vector, Upper: &Vector, Order: &IntegerVector) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `math_GaussSetIntegration.hxx`:49 - `math_GaussSetIntegration::Value`
+//   method: returns the value of the integral.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn value(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `math_GaussSetIntegration.hxx`:52 - `math_GaussSetIntegration::Dump`
+//   method: Prints information on the current state of the object.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
 
 // ========================
 // From math_GaussSingleIntegration.hxx
@@ -2093,6 +2473,13 @@ impl GaussSingleIntegration {
         unsafe { crate::ffi::math_GaussSingleIntegration_value(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for GaussSingleIntegration (1 total) ──
+// SKIPPED: **Source:** `math_GaussSingleIntegration.hxx`:60 - `math_GaussSingleIntegration::Dump`
+//   method: Prints information on the current state of the object.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
 
 // ========================
 // From math_GlobOptMin.hxx
@@ -2218,6 +2605,34 @@ impl GlobOptMin {
     }
 }
 
+// ── Skipped symbols for GlobOptMin (4 total) ──
+// SKIPPED: **Source:** `math_GlobOptMin.hxx`:60 - `math_GlobOptMin::math_GlobOptMin`
+//   constructor: Constructor. Perform method is not called from it.
+//   constructor: @param theFunc - objective functional.
+//   constructor: @param theLowerBorder - lower corner of the search box.
+//   Reason: has unbindable types: param 'theFunc': raw pointer (math_MultipleVarFunction*)
+//   // pub fn new_multiplevarfunctionptr_vector2_real3(theFunc: /* math_MultipleVarFunction* */, theLowerBorder: &Vector, theUpperBorder: &Vector, theC: f64, theDiscretizationTol: f64, theSameTol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `math_GlobOptMin.hxx`:73 - `math_GlobOptMin::SetGlobalParams`
+//   method: @param theFunc - objective functional.
+//   method: @param theLowerBorder - lower corner of the search box.
+//   method: @param theUpperBorder - upper corner of the search box.
+//   Reason: has unbindable types: param 'theFunc': raw pointer (math_MultipleVarFunction*)
+//   // pub fn set_global_params(&mut self, theFunc: /* math_MultipleVarFunction* */, theLowerBorder: &Vector, theUpperBorder: &Vector, theC: f64, theDiscretizationTol: f64, theSameTol: f64);
+//
+// SKIPPED: **Source:** `math_GlobOptMin.hxx`:83 - `math_GlobOptMin::SetLocalParams`
+//   method: Method to reduce bounding box. Perform will use this box.
+//   method: @param theLocalA - lower corner of the local box.
+//   method: @param theLocalB - upper corner of the local box.
+//   Reason: param 'theLocalA' uses unknown type 'const math_Vector&'
+//   // pub fn set_local_params(&mut self, theLocalA: &Vector, theLocalB: &Vector);
+//
+// SKIPPED: **Source:** `math_GlobOptMin.hxx`:100 - `math_GlobOptMin::Points`
+//   method: Return solution theIndex, 1 <= theIndex <= NbExtrema.
+//   Reason: param 'theSol' uses unknown type 'math_Vector&'
+//   // pub fn points(&mut self, theIndex: i32, theSol: &mut Vector);
+//
+
 // ========================
 // From math_Householder.hxx
 // ========================
@@ -2326,6 +2741,27 @@ impl Householder {
     }
 }
 
+// ── Skipped symbols for Householder (3 total) ──
+// SKIPPED: **Source:** `math_Householder.hxx`:75 - `math_Householder::math_Householder`
+//   constructor: Given an input matrix A with n>= m, given an input vector B
+//   constructor: this constructor performs the least square resolution of
+//   constructor: the set of linear equations A.X = B.
+//   Reason: param 'B' uses unknown type 'const math_Vector&'
+//   // pub fn new_matrix_vector_real(A: &Matrix, B: &Vector, EPS: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `math_Householder.hxx`:88 - `math_Householder::Value`
+//   method: Given the integer Index, this routine returns the
+//   method: corresponding least square solution sol.
+//   method: Exception NotDone is raised if the resolution has not be
+//   Reason: param 'sol' uses unknown type 'math_Vector&'
+//   // pub fn value(&self, sol: &mut Vector, Index: i32);
+//
+// SKIPPED: **Source:** `math_Householder.hxx`:97 - `math_Householder::Dump`
+//   method: Prints information on the current state of the object.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From math_Jacobi.hxx
 // ========================
@@ -2373,6 +2809,27 @@ impl Jacobi {
         unsafe { &*(crate::ffi::math_Jacobi_vectors(self as *const Self)) }
     }
 }
+
+// ── Skipped symbols for Jacobi (3 total) ──
+// SKIPPED: **Source:** `math_Jacobi.hxx`:47 - `math_Jacobi::Values`
+//   method: Returns the eigenvalues vector.
+//   method: Exception NotDone is raised if calculation is not done successfully.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn values(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `math_Jacobi.hxx`:61 - `math_Jacobi::Vector`
+//   method: Returns the eigenvector V of number Num.
+//   method: Eigenvectors are in the range (1..n).
+//   method: Exception NotDone is raised if calculation is not done successfully.
+//   Reason: param 'V' uses unknown type 'math_Vector&'
+//   // pub fn vector(&self, Num: i32, V: &mut Vector);
+//
+// SKIPPED: **Source:** `math_Jacobi.hxx`:65 - `math_Jacobi::Dump`
+//   method: Prints information on the current state of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
 
 // ========================
 // From math_KronrodSingleIntegration.hxx
@@ -2539,6 +2996,12 @@ impl KronrodSingleIntegration {
         unsafe { crate::ffi::math_KronrodSingleIntegration_nb_iter_reached(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for KronrodSingleIntegration (1 total) ──
+// SKIPPED: **Source:** `math_KronrodSingleIntegration.hxx`:101 - `math_KronrodSingleIntegration::GKRule`
+//   Reason: param 'theGaussP' uses unknown type 'const math_Vector&'
+//   // pub fn gk_rule(theFunction: &mut Function, theLower: f64, theUpper: f64, theGaussP: &Vector, theGaussW: &Vector, theKronrodP: &Vector, theKronrodW: &Vector, theValue: &mut f64, theError: &mut f64) -> bool;
+//
 
 // ========================
 // From math_Matrix.hxx
@@ -2978,6 +3441,64 @@ impl Matrix {
     }
 }
 
+// ── Skipped symbols for Matrix (9 total) ──
+// SKIPPED: **Source:** `math_Matrix.hxx`:105 - `math_Matrix::math_Matrix`
+//   constructor: constructs a matrix of range [LowerRow..UpperRow,
+//   constructor: LowerCol..UpperCol]
+//   constructor: Sharing data with a "C array" pointed by Tab.
+//   Reason: has unbindable types: param 'Tab': void pointer (Standard_Address)
+//   // pub fn new_address_int4(Tab: /* Standard_Address */, LowerRow: i32, UpperRow: i32, LowerCol: i32, UpperCol: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `math_Matrix.hxx`:292 - `math_Matrix::SetRow`
+//   method: Sets the row of index Row of a matrix to the vector <V>.
+//   method: An exception is raised if the dimensions are different.
+//   method: An exception is raises if <Row> is inferior to the lower
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_row(&mut self, Row: i32, V: &i32);
+//
+// SKIPPED: **Source:** `math_Matrix.hxx`:299 - `math_Matrix::SetCol`
+//   method: Sets the column of index Col of a matrix to the vector <V>.
+//   method: An exception is raised if the dimensions are different.
+//   method: An exception is raises if <Col> is inferior to the lower
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_col(&mut self, Col: i32, V: &i32);
+//
+// SKIPPED: **Source:** `math_Matrix.hxx`:306 - `math_Matrix::Row`
+//   method: Returns the row of index Row of a matrix.
+//   Reason: excluded by bindings.toml
+//   // pub fn row(&self, Row: i32) -> i32;
+//
+// SKIPPED: **Source:** `math_Matrix.hxx`:309 - `math_Matrix::Col`
+//   method: Returns the column of index <Col> of a matrix.
+//   Reason: excluded by bindings.toml
+//   // pub fn col(&self, Col: i32) -> i32;
+//
+// SKIPPED: **Source:** `math_Matrix.hxx`:336 - `math_Matrix::Multiply`
+//   method: Computes a matrix as the product of 2 vectors.
+//   method: An exception is raised if the dimensions are different.
+//   method: <me> = <Left> * <Right>.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn multiply(&mut self, Left: &i32, Right: &i32);
+//
+// SKIPPED: **Source:** `math_Matrix.hxx`:365 - `math_Matrix::Initialized`
+//   method: Matrixes are copied through assignment.
+//   method: An exception is raised if the dimensions are different.
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn initialized(&mut self, Other: &Matrix) -> &mut Matrix;
+//
+// SKIPPED: **Source:** `math_Matrix.hxx`:386 - `math_Matrix::Multiplied`
+//   method: Returns the product of a matrix by a vector.
+//   method: An exception is raised if the dimensions are different.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn multiplied(&self, Right: &i32) -> i32;
+//
+// SKIPPED: **Source:** `math_Matrix.hxx`:399 - `math_Matrix::Dump`
+//   method: Prints information on the current state of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From math_MultipleVarFunction.hxx
 // ========================
@@ -3018,6 +3539,15 @@ impl MultipleVarFunction {
         unsafe { crate::ffi::math_MultipleVarFunction_get_state_number(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for MultipleVarFunction (1 total) ──
+// SKIPPED: **Source:** `math_MultipleVarFunction.hxx`:39 - `math_MultipleVarFunction::Value`
+//   method: Computes the values of the Functions <F> for the
+//   method: variable <X>.
+//   method: returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
+//
 
 // ========================
 // From math_MultipleVarFunctionWithGradient.hxx
@@ -3070,6 +3600,29 @@ impl MultipleVarFunctionWithGradient {
         }
     }
 }
+
+// ── Skipped symbols for MultipleVarFunctionWithGradient (3 total) ──
+// SKIPPED: **Source:** `math_MultipleVarFunctionWithGradient.hxx`:40 - `math_MultipleVarFunctionWithGradient::Value`
+//   method: Computes the values of the Functions <F> for the   variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   method: False otherwise.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
+//
+// SKIPPED: **Source:** `math_MultipleVarFunctionWithGradient.hxx`:45 - `math_MultipleVarFunctionWithGradient::Gradient`
+//   method: Computes the gradient <G> of the functions for the   variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   method: False otherwise.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `math_MultipleVarFunctionWithGradient.hxx`:51 - `math_MultipleVarFunctionWithGradient::Values`
+//   method: computes the value <F> and the gradient <G> of the
+//   method: functions for the variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
+//
 
 // ========================
 // From math_MultipleVarFunctionWithHessian.hxx
@@ -3134,6 +3687,36 @@ impl MultipleVarFunctionWithHessian {
         }
     }
 }
+
+// ── Skipped symbols for MultipleVarFunctionWithHessian (4 total) ──
+// SKIPPED: **Source:** `math_MultipleVarFunctionWithHessian.hxx`:40 - `math_MultipleVarFunctionWithHessian::Value`
+//   method: computes the values of the Functions <F> for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
+//
+// SKIPPED: **Source:** `math_MultipleVarFunctionWithHessian.hxx`:46 - `math_MultipleVarFunctionWithHessian::Gradient`
+//   method: computes the gradient <G> of the functions for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `math_MultipleVarFunctionWithHessian.hxx`:52 - `math_MultipleVarFunctionWithHessian::Values`
+//   method: computes the value <F> and the gradient <G> of the
+//   method: functions for the variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `math_MultipleVarFunctionWithHessian.hxx`:60 - `math_MultipleVarFunctionWithHessian::Values`
+//   method: computes the value  <F>, the gradient <G> and  the
+//   method: hessian   <H> of  the functions  for the  variable <X>.
+//   method: Returns  True  if  the computation  was  done
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector, H: &mut Matrix) -> bool;
+//
 
 // ========================
 // From math_NewtonFunctionRoot.hxx
@@ -3316,6 +3899,13 @@ impl NewtonFunctionRoot {
     }
 }
 
+// ── Skipped symbols for NewtonFunctionRoot (1 total) ──
+// SKIPPED: **Source:** `math_NewtonFunctionRoot.hxx`:93 - `math_NewtonFunctionRoot::Dump`
+//   method: Prints information on the current state of the object.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From math_NewtonFunctionSetRoot.hxx
 // ========================
@@ -3419,6 +4009,68 @@ impl NewtonFunctionSetRoot {
         unsafe { crate::ffi::math_NewtonFunctionSetRoot_nb_iterations(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for NewtonFunctionSetRoot (9 total) ──
+// SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:42 - `math_NewtonFunctionSetRoot::math_NewtonFunctionSetRoot`
+//   constructor: Initialize correctly all the fields of this class.
+//   constructor: The range (1, F.NbVariables()) must be especially respected for
+//   constructor: all vectors and matrix declarations.
+//   Reason: param 'theXTolerance' uses unknown type 'const math_Vector&'
+//   // pub fn new_functionsetwithderivatives_vector_real_int(theFunction: &mut FunctionSetWithDerivatives, theXTolerance: &Vector, theFTolerance: f64, tehNbIterations: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:60 - `math_NewtonFunctionSetRoot::SetTolerance`
+//   method: Initializes the tolerance values for the unknowns.
+//   Reason: param 'XTol' uses unknown type 'const math_Vector&'
+//   // pub fn set_tolerance(&mut self, XTol: &Vector);
+//
+// SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:65 - `math_NewtonFunctionSetRoot::Perform`
+//   method: The Newton method is done to improve the root of the function
+//   method: from the initial guess point. The solution is found when:
+//   method: abs(Xj - Xj-1)(i) <= XTol(i) and abs(Fi) <= FTol for all i;
+//   Reason: param 'theStartingPoint' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, theFunction: &mut FunctionSetWithDerivatives, theStartingPoint: &Vector);
+//
+// SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:72 - `math_NewtonFunctionSetRoot::Perform`
+//   method: The Newton method is done to improve the root of the function
+//   method: from the initial guess point. Bounds may be given, to constrain the solution.
+//   method: The solution is found when:
+//   Reason: param 'theStartingPoint' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, theFunction: &mut FunctionSetWithDerivatives, theStartingPoint: &Vector, theInfBound: &Vector, theSupBound: &Vector);
+//
+// SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:90 - `math_NewtonFunctionSetRoot::Root`
+//   method: Returns the value of the root of function F.
+//   method: Exceptions
+//   method: StdFail_NotDone if the algorithm fails (and IsDone returns false).
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn root(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:96 - `math_NewtonFunctionSetRoot::Root`
+//   method: outputs the root vector in Root.
+//   method: Exception NotDone is raised if the root was not found.
+//   method: Exception DimensionError is raised if the range of Root is
+//   Reason: param 'Root' uses unknown type 'math_Vector&'
+//   // pub fn root(&self, Root: &mut Vector);
+//
+// SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:116 - `math_NewtonFunctionSetRoot::FunctionSetErrors`
+//   method: Returns the vector value of the error done on the
+//   method: functions at the root.
+//   method: Exception NotDone is raised if the root was not found.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn function_set_errors(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:123 - `math_NewtonFunctionSetRoot::FunctionSetErrors`
+//   method: Outputs the vector value of the error done on the
+//   method: functions at the root in Err.
+//   method: Exception NotDone is raised if the root was not found.
+//   Reason: param 'Err' uses unknown type 'math_Vector&'
+//   // pub fn function_set_errors(&self, Err_: &mut Vector);
+//
+// SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:132 - `math_NewtonFunctionSetRoot::Dump`
+//   method: Prints information on the current state of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
 
 // ========================
 // From math_NewtonMinimum.hxx
@@ -3560,6 +4212,52 @@ impl NewtonMinimum {
     }
 }
 
+// ── Skipped symbols for NewtonMinimum (7 total) ──
+// SKIPPED: **Source:** `math_NewtonMinimum.hxx`:48 - `math_NewtonMinimum::Perform`
+//   method: Search the solution.
+//   Reason: param 'theStartingPoint' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, theFunction: &mut MultipleVarFunctionWithHessian, theStartingPoint: &Vector);
+//
+// SKIPPED: **Source:** `math_NewtonMinimum.hxx`:67 - `math_NewtonMinimum::Location`
+//   method: returns the location vector of the minimum.
+//   method: Exception NotDone is raised if an error has occurred.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn location(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `math_NewtonMinimum.hxx`:73 - `math_NewtonMinimum::Location`
+//   method: outputs the location vector of the minimum in Loc.
+//   method: Exception NotDone is raised if an error has occurred.
+//   method: Exception DimensionError is raised if the range of Loc is not
+//   Reason: param 'Loc' uses unknown type 'math_Vector&'
+//   // pub fn location(&self, Loc: &mut Vector);
+//
+// SKIPPED: **Source:** `math_NewtonMinimum.hxx`:76 - `math_NewtonMinimum::SetBoundary`
+//   method: Set boundaries.
+//   Reason: param 'theLeftBorder' uses unknown type 'const math_Vector&'
+//   // pub fn set_boundary(&mut self, theLeftBorder: &Vector, theRightBorder: &Vector);
+//
+// SKIPPED: **Source:** `math_NewtonMinimum.hxx`:86 - `math_NewtonMinimum::Gradient`
+//   method: returns the gradient vector at the minimum.
+//   method: Exception NotDone is raised if an error has occurred.
+//   method: The minimum was not found.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn gradient(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `math_NewtonMinimum.hxx`:92 - `math_NewtonMinimum::Gradient`
+//   method: outputs the gradient vector at the minimum in Grad.
+//   method: Exception NotDone is raised if the minimum was not found.
+//   method: Exception DimensionError is raised if the range of Grad is not
+//   Reason: param 'Grad' uses unknown type 'math_Vector&'
+//   // pub fn gradient(&self, Grad: &mut Vector);
+//
+// SKIPPED: **Source:** `math_NewtonMinimum.hxx`:106 - `math_NewtonMinimum::Dump`
+//   method: Prints on the stream o information on the current state
+//   method: of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From math_NotSquare.hxx
 // ========================
@@ -3627,6 +4325,20 @@ impl NotSquare {
     }
 }
 
+// ── Skipped symbols for NotSquare (3 total) ──
+// SKIPPED: **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::NewInstance`
+//   Reason: return type 'Handle(math_NotSquare)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<math_NotSquare>>;
+//
+// SKIPPED: **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::NewInstance`
+//   Reason: return type 'Handle(math_NotSquare)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<math_NotSquare>>;
+//
+
 // ========================
 // From math_PSO.hxx
 // ========================
@@ -3669,6 +4381,23 @@ unsafe impl crate::CppDeletable for PSO {
         crate::ffi::math_PSO_destructor(ptr);
     }
 }
+
+// ── Skipped symbols for PSO (3 total) ──
+// SKIPPED: **Source:** `math_PSO.hxx`:70 - `math_PSO::math_PSO`
+//   constructor: Constructor.
+//   Reason: has unbindable types: param 'theFunc': raw pointer (math_MultipleVarFunction*)
+//   // pub fn new_multiplevarfunctionptr_vector3_int2(theFunc: /* math_MultipleVarFunction* */, theLowBorder: &Vector, theUppBorder: &Vector, theSteps: &Vector, theNbParticles: i32, theNbIter: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `math_PSO.hxx`:78 - `math_PSO::Perform`
+//   method: Perform computations, particles array is constructed inside of this function.
+//   Reason: param 'theSteps' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, theSteps: &Vector, theValue: &mut f64, theOutPnt: &mut Vector, theNbIter: i32);
+//
+// SKIPPED: **Source:** `math_PSO.hxx`:84 - `math_PSO::Perform`
+//   method: Perform computations with given particles array.
+//   Reason: param 'theOutPnt' uses unknown type 'math_Vector&'
+//   // pub fn perform(&mut self, theParticles: &mut PSOParticlesPool, theNbParticles: i32, theValue: &mut f64, theOutPnt: &mut Vector, theNbIter: i32);
+//
 
 // ========================
 // From math_PSOParticlesPool.hxx
@@ -3713,6 +4442,20 @@ impl PSOParticlesPool {
         }
     }
 }
+
+// ── Skipped symbols for PSOParticlesPool (3 total) ──
+// SKIPPED: **Source:** `math_PSOParticlesPool.hxx`:53 - `math_PSOParticlesPool::GetParticle`
+//   Reason: has unbindable types: return: raw pointer (PSO_Particle*)
+//   // pub fn get_particle(&mut self, theIdx: i32) -> /* PSO_Particle* */;
+//
+// SKIPPED: **Source:** `math_PSOParticlesPool.hxx`:55 - `math_PSOParticlesPool::GetBestParticle`
+//   Reason: has unbindable types: return: raw pointer (PSO_Particle*)
+//   // pub fn get_best_particle(&mut self) -> /* PSO_Particle* */;
+//
+// SKIPPED: **Source:** `math_PSOParticlesPool.hxx`:57 - `math_PSOParticlesPool::GetWorstParticle`
+//   Reason: has unbindable types: return: raw pointer (PSO_Particle*)
+//   // pub fn get_worst_particle(&mut self) -> /* PSO_Particle* */;
+//
 
 // ========================
 // From math_Powell.hxx
@@ -3804,6 +4547,34 @@ impl Powell {
     }
 }
 
+// ── Skipped symbols for Powell (4 total) ──
+// SKIPPED: **Source:** `math_Powell.hxx`:51 - `math_Powell::Perform`
+//   method: Computes Powell minimization on the function F given
+//   method: theStartingPoint, and an initial matrix theStartingDirection
+//   method: whose columns contain the initial set of directions.
+//   Reason: param 'theStartingPoint' uses unknown type 'const math_Vector&'
+//   // pub fn perform(&mut self, theFunction: &mut MultipleVarFunction, theStartingPoint: &Vector, theStartingDirections: &Matrix);
+//
+// SKIPPED: **Source:** `math_Powell.hxx`:65 - `math_Powell::Location`
+//   method: returns the location vector of the minimum.
+//   method: Exception NotDone is raised if the minimum was not found.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn location(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `math_Powell.hxx`:71 - `math_Powell::Location`
+//   method: outputs the location vector of the minimum in Loc.
+//   method: Exception NotDone is raised if the minimum was not found.
+//   method: Exception DimensionError is raised if the range of Loc is not
+//   Reason: param 'Loc' uses unknown type 'math_Vector&'
+//   // pub fn location(&self, Loc: &mut Vector);
+//
+// SKIPPED: **Source:** `math_Powell.hxx`:84 - `math_Powell::Dump`
+//   method: Prints information on the current state of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From math_SVD.hxx
 // ========================
@@ -3846,6 +4617,21 @@ impl SVD {
         unsafe { crate::ffi::math_SVD_pseudo_inverse(self as *mut Self, Inv, Eps) }
     }
 }
+
+// ── Skipped symbols for SVD (2 total) ──
+// SKIPPED: **Source:** `math_SVD.hxx`:53 - `math_SVD::Solve`
+//   method: Given the input Vector B this routine solves the set of linear
+//   method: equations A . X = B.
+//   method: Exception NotDone is raised if the decomposition of A was not done
+//   Reason: param 'B' uses unknown type 'const math_Vector&'
+//   // pub fn solve(&mut self, B: &Vector, X: &mut Vector, Eps: f64);
+//
+// SKIPPED: **Source:** `math_SVD.hxx`:66 - `math_SVD::Dump`
+//   method: Prints information on the current state of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
 
 // ========================
 // From math_SingularMatrix.hxx
@@ -3913,6 +4699,20 @@ impl SingularMatrix {
         unsafe { &*(crate::ffi::math_SingularMatrix_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for SingularMatrix (3 total) ──
+// SKIPPED: **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::NewInstance`
+//   Reason: return type 'Handle(math_SingularMatrix)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<math_SingularMatrix>>;
+//
+// SKIPPED: **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::NewInstance`
+//   Reason: return type 'Handle(math_SingularMatrix)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<math_SingularMatrix>>;
+//
 
 // ========================
 // From math_TrigonometricEquationFunction.hxx
@@ -4099,6 +4899,13 @@ impl TrigonometricFunctionRoots {
     }
 }
 
+// ── Skipped symbols for TrigonometricFunctionRoots (1 total) ──
+// SKIPPED: **Source:** `math_TrigonometricFunctionRoots.hxx`:85 - `math_TrigonometricFunctionRoots::Dump`
+//   method: Prints information on the current state of the object.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From math_Uzawa.hxx
 // ========================
@@ -4144,6 +4951,51 @@ impl Uzawa {
         unsafe { &*(crate::ffi::math_Uzawa_inverse_cont(self as *const Self)) }
     }
 }
+
+// ── Skipped symbols for Uzawa (7 total) ──
+// SKIPPED: **Source:** `math_Uzawa.hxx`:53 - `math_Uzawa::math_Uzawa`
+//   constructor: Given an input matrix Cont, two input vectors Secont
+//   constructor: and StartingPoint, it solves Cont*X = Secont (only
+//   constructor: = equations) with a minimization of Norme(X-X0).
+//   Reason: param 'Secont' uses unknown type 'const math_Vector&'
+//   // pub fn new_matrix_vector2_real2_int(Cont: &Matrix, Secont: &Vector, StartingPoint: &Vector, EpsLix: f64, EpsLic: f64, NbIterations: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `math_Uzawa.hxx`:74 - `math_Uzawa::math_Uzawa`
+//   constructor: Given an input matrix Cont, two input vectors Secont
+//   constructor: and StartingPoint, it solves Cont*X = Secont (the Nce
+//   constructor: first equations are equal equations and the Nci last
+//   Reason: param 'Secont' uses unknown type 'const math_Vector&'
+//   // pub fn new_matrix_vector2_int2_real2_int(Cont: &Matrix, Secont: &Vector, StartingPoint: &Vector, Nci: i32, Nce: i32, EpsLix: f64, EpsLic: f64, NbIterations: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `math_Uzawa.hxx`:88 - `math_Uzawa::Value`
+//   method: Returns the vector solution of the system above.
+//   method: An exception is raised if NotDone.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn value(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `math_Uzawa.hxx`:92 - `math_Uzawa::InitialError`
+//   method: Returns the initial error Cont*StartingPoint-Secont.
+//   method: An exception is raised if NotDone.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn initial_error(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `math_Uzawa.hxx`:95 - `math_Uzawa::Duale`
+//   method: returns the duale variables V of the systeme.
+//   Reason: param 'V' uses unknown type 'math_Vector&'
+//   // pub fn duale(&self, V: &mut Vector);
+//
+// SKIPPED: **Source:** `math_Uzawa.hxx`:100 - `math_Uzawa::Error`
+//   method: Returns the difference between X solution and the
+//   method: StartingPoint.
+//   method: An exception is raised if NotDone.
+//   Reason: return type 'const math_Vector&' is unknown
+//   // pub fn error(&self) -> &Vector;
+//
+// SKIPPED: **Source:** `math_Uzawa.hxx`:112 - `math_Uzawa::Dump`
+//   method: Prints information on the current state of the object.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
 
 // ========================
 // From math_ValueAndWeight.hxx

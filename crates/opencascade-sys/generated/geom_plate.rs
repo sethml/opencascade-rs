@@ -1701,6 +1701,12 @@ impl HandleGeomPlateHSequenceOfCurveConstraint {
     }
 }
 
+// ── Skipped symbols for HSequenceOfCurveConstraint (1 total) ──
+// SKIPPED: **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
+
 // ========================
 // From GeomPlate_HSequenceOfPointConstraint.hxx
 // ========================
@@ -1816,6 +1822,12 @@ impl HandleGeomPlateHSequenceOfPointConstraint {
         }
     }
 }
+
+// ── Skipped symbols for HSequenceOfPointConstraint (1 total) ──
+// SKIPPED: **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
 
 // ========================
 // From GeomPlate_MakeApprox.hxx
@@ -2013,6 +2025,16 @@ impl PlateG0Criterion {
     }
 }
 
+// ── Skipped symbols for PlateG0Criterion (2 total) ──
+// SKIPPED: **Source:** `GeomPlate_PlateG0Criterion.hxx`:44 - `GeomPlate_PlateG0Criterion::Value`
+//   Reason: param 'P' uses unknown type 'AdvApp2Var_Patch&'
+//   // pub fn value(&self, P: &mut Patch, C: &Context);
+//
+// SKIPPED: **Source:** `GeomPlate_PlateG0Criterion.hxx`:47 - `GeomPlate_PlateG0Criterion::IsSatisfied`
+//   Reason: param 'P' uses unknown type 'const AdvApp2Var_Patch&'
+//   // pub fn is_satisfied(&self, P: &Patch) -> bool;
+//
+
 // ========================
 // From GeomPlate_PlateG1Criterion.hxx
 // ========================
@@ -2082,6 +2104,16 @@ impl PlateG1Criterion {
         }
     }
 }
+
+// ── Skipped symbols for PlateG1Criterion (2 total) ──
+// SKIPPED: **Source:** `GeomPlate_PlateG1Criterion.hxx`:44 - `GeomPlate_PlateG1Criterion::Value`
+//   Reason: param 'P' uses unknown type 'AdvApp2Var_Patch&'
+//   // pub fn value(&self, P: &mut Patch, C: &Context);
+//
+// SKIPPED: **Source:** `GeomPlate_PlateG1Criterion.hxx`:47 - `GeomPlate_PlateG1Criterion::IsSatisfied`
+//   Reason: param 'P' uses unknown type 'const AdvApp2Var_Patch&'
+//   // pub fn is_satisfied(&self, P: &Patch) -> bool;
+//
 
 // ========================
 // From GeomPlate_PointConstraint.hxx

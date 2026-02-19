@@ -2741,6 +2741,20 @@ impl NoSolution {
     }
 }
 
+// ── Skipped symbols for NoSolution (3 total) ──
+// SKIPPED: **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::NewInstance`
+//   Reason: return type 'Handle(GccAna_NoSolution)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<GccAna_NoSolution>>;
+//
+// SKIPPED: **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::NewInstance`
+//   Reason: return type 'Handle(GccAna_NoSolution)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<GccAna_NoSolution>>;
+//
+
 // ========================
 // From GccAna_Pnt2dBisec.hxx
 // ========================

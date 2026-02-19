@@ -46,6 +46,13 @@ impl BuildQueue {
     }
 }
 
+// ── Skipped symbols for BuildQueue (1 total) ──
+// SKIPPED: **Source:** `BVH_BuildQueue.hxx`:49 - `BVH_BuildQueue::Enqueue`
+//   method: Enqueues new work-item onto BVH build queue.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn enqueue(&mut self, theNode: &i32);
+//
+
 // ========================
 // From BVH_BuildThread.hxx
 // ========================
@@ -317,6 +324,18 @@ impl HandleBVHObjectTransient {
         unsafe { &mut *(crate::ffi::HandleBVHObjectTransient_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for ObjectTransient (2 total) ──
+// SKIPPED: **Source:** `BVH_Object.hxx`:29 - `BVH_ObjectTransient::Properties`
+//   method: Returns properties of the geometric object.
+//   Reason: return type 'const Handle(BVH_Properties)&' is unknown
+//   // pub fn properties(&self) -> &HandleProperties;
+//
+// SKIPPED: **Source:** `BVH_Object.hxx`:32 - `BVH_ObjectTransient::SetProperties`
+//   method: Sets properties of the geometric object.
+//   Reason: param 'theProperties' uses unknown type 'const Handle(BVH_Properties)&'
+//   // pub fn set_properties(&mut self, theProperties: &HandleProperties);
+//
 
 // ========================
 // From BVH_Tree.hxx

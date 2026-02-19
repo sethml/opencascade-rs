@@ -898,6 +898,29 @@ impl Gauss {
     }
 }
 
+// ── Skipped symbols for Gauss (3 total) ──
+// SKIPPED: **Source:** `BRepGProp_Gauss.hxx`:88 - `BRepGProp_Gauss::Compute`
+//   method: Computes the global properties of a solid region of 3D space which can be
+//   method: delimited by the surface and point or surface and plane. Surface can be closed.
+//   method: The method is quick and its precision is enough for many cases of analytical surfaces.
+//   Reason: has unbindable types: param 'theCoeff': C-style array (Standard_Real[])
+//   // pub fn compute(&mut self, theSurface: &Face, theLocation: &Pnt, theCoeff: /* Standard_Real[] */, theIsByPoint: bool, theOutMass: &mut f64, theOutGravityCenter: &mut Pnt, theOutInertia: &mut Mat);
+//
+// SKIPPED: **Source:** `BRepGProp_Gauss.hxx`:126 - `BRepGProp_Gauss::Compute`
+//   method: Computes the global properties of a region of 3D space which can be
+//   method: delimited by the surface and point or surface and plane. Surface can be closed.
+//   method: The method is quick and its precision is enough for many cases of analytical surfaces.
+//   Reason: has unbindable types: param 'theCoeff': C-style array (Standard_Real[])
+//   // pub fn compute(&mut self, theSurface: &mut Face, theDomain: &mut Domain, theLocation: &Pnt, theCoeff: /* Standard_Real[] */, theIsByPoint: bool, theOutMass: &mut f64, theOutGravityCenter: &mut Pnt, theOutInertia: &mut Mat);
+//
+// SKIPPED: **Source:** `BRepGProp_Gauss.hxx`:169 - `BRepGProp_Gauss::Compute`
+//   method: Computes the global properties of the region of 3D space which can be
+//   method: delimited by the surface and point or surface and plane.
+//   method: Adaptive 2D Gauss integration is used.
+//   Reason: has unbindable types: param 'theCoeff': C-style array (Standard_Real[])
+//   // pub fn compute(&mut self, theSurface: &mut Face, theDomain: &mut Domain, theLocation: &Pnt, theEps: f64, theCoeff: /* Standard_Real[] */, theByPoint: bool, theOutMass: &mut f64, theOutGravityCenter: &mut Pnt, theOutInertia: &mut Mat) -> f64;
+//
+
 // ========================
 // From BRepGProp_MeshCinert.hxx
 // ========================
@@ -1168,6 +1191,15 @@ impl MeshProps {
     }
 }
 
+// ── Skipped symbols for MeshProps (1 total) ──
+// SKIPPED: **Source:** `BRepGProp_MeshProps.hxx`:66 - `BRepGProp_MeshProps::CalculateProps`
+//   static_method: Computes the global properties of triangle {p1, p2, p3} relatively
+//   static_method: point Apex
+//   static_method: If isVolume = true, volume properties are calculated
+//   Reason: has unbindable types: param 'GProps': C-style array (Standard_Real[10]); param 'GaussPnts': raw pointer (const double*)
+//   // pub fn calculate_props(p1: &Pnt, p2: &Pnt, p3: &Pnt, Apex: &Pnt, isVolume: bool, GProps: /* Standard_Real[10] */, NbGaussPoints: i32, GaussPnts: /* const double* */);
+//
+
 // ========================
 // From BRepGProp_Sinert.hxx
 // ========================
@@ -1437,6 +1469,15 @@ impl TFunction {
     }
 }
 
+// ── Skipped symbols for TFunction (1 total) ──
+// SKIPPED: **Source:** `BRepGProp_TFunction.hxx`:54 - `BRepGProp_TFunction::BRepGProp_TFunction`
+//   constructor: Constructor. Initializes the function with the face, the
+//   constructor: location point, the flag IsByPoint, the coefficients
+//   constructor: theCoeff that have different meaning depending on the value
+//   Reason: has unbindable types: param 'theCoeffs': raw pointer (const double*)
+//   // pub fn new_face_pnt_bool_realptr_real2(theSurface: &Face, theVertex: &Pnt, IsByPoint: bool, theCoeffs: /* const double* */, theUMin: f64, theTolerance: f64) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From BRepGProp_UFunction.hxx
 // ========================
@@ -1504,6 +1545,15 @@ impl UFunction {
         unsafe { crate::ffi::BRepGProp_UFunction_inherited_GetStateNumber(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for UFunction (1 total) ──
+// SKIPPED: **Source:** `BRepGProp_UFunction.hxx`:66 - `BRepGProp_UFunction::BRepGProp_UFunction`
+//   constructor: Constructor. Initializes the function with the face, the
+//   constructor: location point, the flag IsByPoint and the coefficients
+//   constructor: theCoeff that have different meaning depending on the value
+//   Reason: has unbindable types: param 'theCoeffs': raw pointer (const double*)
+//   // pub fn new_face_pnt_bool_realptr(theSurface: &Face, theVertex: &Pnt, IsByPoint: bool, theCoeffs: /* const double* */) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From BRepGProp_Vinert.hxx

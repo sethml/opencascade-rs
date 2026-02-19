@@ -704,3 +704,12 @@ impl HandleShapeConstructProjectCurveOnSurface {
         }
     }
 }
+
+// ── Skipped symbols for ProjectCurveOnSurface (1 total) ──
+// SKIPPED: **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:99 - `ShapeConstruct_ProjectCurveOnSurface::AdjustOverDegenMode`
+//   method: Returns (modifiable) the flag specifying to which side of
+//   method: parametrical space adjust part of pcurve which lies on seam.
+//   method: This is required in very rare case when 3d curve which is
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn adjust_over_degen_mode(&mut self) -> &mut i32;
+//

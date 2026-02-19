@@ -233,6 +233,23 @@ impl Context {
     }
 }
 
+// ── Skipped symbols for Context (3 total) ──
+// SKIPPED: **Source:** `IMeshTools_Context.hxx`:132 - `IMeshTools_Context::GetModelBuilder`
+//   method: Gets instance of a tool to be used to build discrete model.
+//   Reason: return type 'const Handle(IMeshTools_ModelBuilder)&' is unknown
+//   // pub fn get_model_builder(&self) -> &HandleModelBuilder;
+//
+// SKIPPED: **Source:** `IMeshTools_Context.hxx`:135 - `IMeshTools_Context::SetModelBuilder`
+//   method: Sets instance of a tool to be used to build discrete model.
+//   Reason: param 'theBuilder' uses unknown type 'const Handle(IMeshTools_ModelBuilder)&'
+//   // pub fn set_model_builder(&mut self, theBuilder: &HandleModelBuilder);
+//
+// SKIPPED: **Source:** `IMeshTools_Context.hxx`:192 - `IMeshTools_Context::GetModel`
+//   method: Returns discrete model of a shape.
+//   Reason: return type 'const Handle(IMeshData_Model)&' is unknown
+//   // pub fn get_model(&self) -> &HandleModel;
+//
+
 // ========================
 // From IMeshTools_CurveTessellator.hxx
 // ========================
@@ -371,6 +388,13 @@ impl HandleIMeshToolsMeshAlgo {
     }
 }
 
+// ── Skipped symbols for MeshAlgo (1 total) ──
+// SKIPPED: **Source:** `IMeshTools_MeshAlgo.hxx`:33 - `IMeshTools_MeshAlgo::Perform`
+//   method: Performs processing of the given face.
+//   Reason: param 'theDFace' uses unknown type 'const IMeshData::IFaceHandle&'
+//   // pub fn perform(&mut self, theDFace: &IFaceHandle, theParameters: &Parameters, theRange: &ProgressRange);
+//
+
 // ========================
 // From IMeshTools_MeshAlgoFactory.hxx
 // ========================
@@ -497,6 +521,13 @@ impl HandleIMeshToolsModelAlgo {
         unsafe { &mut *(crate::ffi::HandleIMeshToolsModelAlgo_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for ModelAlgo (1 total) ──
+// SKIPPED: **Source:** `IMeshTools_ModelAlgo.hxx`:33 - `IMeshTools_ModelAlgo::Perform`
+//   method: Exceptions protected processing of the given model.
+//   Reason: param 'theModel' uses unknown type 'const Handle(IMeshData_Model)&'
+//   // pub fn perform(&mut self, theModel: &HandleModel, theParameters: &Parameters, theRange: &ProgressRange) -> bool;
+//
 
 // ========================
 // From IMeshTools_ModelBuilder.hxx
@@ -657,6 +688,14 @@ impl ModelBuilder {
         }
     }
 }
+
+// ── Skipped symbols for ModelBuilder (1 total) ──
+// SKIPPED: **Source:** `IMeshTools_ModelBuilder.hxx`:41 - `IMeshTools_ModelBuilder::Perform`
+//   method: Exceptions protected method to create discrete model for the given shape.
+//   method: Returns nullptr in case of failure.
+//   Reason: return type 'Handle(IMeshData_Model)' is unknown
+//   // pub fn perform(&mut self, theShape: &Shape, theParameters: &Parameters) -> OwnedPtr<Handle<IMeshData_Model>>;
+//
 
 // ========================
 // From IMeshTools_Parameters.hxx

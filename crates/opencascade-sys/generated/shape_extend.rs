@@ -273,6 +273,14 @@ impl HandleShapeExtendBasicMsgRegistrator {
     }
 }
 
+// ── Skipped symbols for BasicMsgRegistrator (1 total) ──
+// SKIPPED: **Source:** `ShapeExtend_BasicMsgRegistrator.hxx`:48 - `ShapeExtend_BasicMsgRegistrator::Send`
+//   method: Sends a message to be attached to the object.
+//   method: Object can be of any type interpreted by redefined MsgRegistrator.
+//   Reason: param 'object' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn send(&mut self, object: &HandleTransient, message: &Msg, gravity: Gravity);
+//
+
 // ========================
 // From ShapeExtend_ComplexCurve.hxx
 // ========================
@@ -1515,6 +1523,14 @@ impl HandleShapeExtendCompositeSurface {
     }
 }
 
+// ── Skipped symbols for CompositeSurface (1 total) ──
+// SKIPPED: **Source:** `ShapeExtend_CompositeSurface.hxx`:182 - `ShapeExtend_CompositeSurface::LocateUVPoint`
+//   method: Returns number of row and col of surface that contains
+//   method: given point
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn locate_uv_point(&self, pnt: &Pnt2d, i: &mut i32, j: &mut i32);
+//
+
 // ========================
 // From ShapeExtend_Explorer.hxx
 // ========================
@@ -1786,6 +1802,20 @@ impl MsgRegistrator {
         }
     }
 }
+
+// ── Skipped symbols for MsgRegistrator (2 total) ──
+// SKIPPED: **Source:** `ShapeExtend_MsgRegistrator.hxx`:51 - `ShapeExtend_MsgRegistrator::Send`
+//   method: Sends a message to be attached to the object.
+//   method: If the object is in the map then the message is added to the
+//   method: list, otherwise the object is firstly added to the map.
+//   Reason: param 'object' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn send(&mut self, object: &HandleTransient, message: &Msg, gravity: Gravity);
+//
+// SKIPPED: **Source:** `ShapeExtend_MsgRegistrator.hxx`:63 - `ShapeExtend_MsgRegistrator::MapTransient`
+//   method: Returns a Map of objects and message list
+//   Reason: return type 'const ShapeExtend_DataMapOfTransientListOfMsg&' is unknown
+//   // pub fn map_transient(&self) -> &DataMapOfTransientListOfMsg;
+//
 
 // ========================
 // From ShapeExtend_WireData.hxx

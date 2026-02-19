@@ -664,6 +664,15 @@ impl HandleBSplCLibCache {
     }
 }
 
+// ── Skipped symbols for Cache (1 total) ──
+// SKIPPED: **Source:** `BSplCLib_Cache.hxx`:60 - `BSplCLib_Cache::BuildCache`
+//   method: Recomputes the cache data for 2D curves. Does not verify validity of the cache
+//   method: \param theParameter  the value on the knot's axis to identify the span
+//   method: \param theFlatKnots  knots of Bezier/B-spline curve (with repetitions)
+//   Reason: has unbindable types: param 'theWeights': raw pointer (const TColStd_Array1OfReal*)
+//   // pub fn build_cache(&mut self, theParameter: &f64, theFlatKnots: &Array1OfReal, thePoles2d: &Array1OfPnt2d, theWeights: /* const TColStd_Array1OfReal* */);
+//
+
 // ========================
 // From BSplCLib_CacheParams.hxx
 // ========================
@@ -692,3 +701,15 @@ unsafe impl crate::CppDeletable for EvaluatorFunction {
         crate::ffi::BSplCLib_EvaluatorFunction_destructor(ptr);
     }
 }
+
+// ── Skipped symbols for EvaluatorFunction (2 total) ──
+// SKIPPED: **Source:** `BSplCLib_EvaluatorFunction.hxx`:32 - `BSplCLib_EvaluatorFunction::BSplCLib_EvaluatorFunction`
+//   constructor: Empty constructor
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new() -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BSplCLib_EvaluatorFunction.hxx`:38 - `BSplCLib_EvaluatorFunction::Evaluate`
+//   method: Function evaluation method to be defined by descendant
+//   Reason: has unbindable types: param 'theStartEnd': raw pointer (const double*)
+//   // pub fn evaluate(&self, theDerivativeRequest: i32, theStartEnd: /* const double* */, theParameter: f64, theResult: &mut f64, theErrorCode: &mut i32);
+//

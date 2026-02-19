@@ -959,6 +959,34 @@ impl IntImpConicParConic {
     }
 }
 
+// ── Skipped symbols for IntImpConicParConic (5 total) ──
+// SKIPPED: **Source:** `IntCurve_IntImpConicParConic.hxx`:48 - `IntCurve_IntImpConicParConic::IntCurve_IntImpConicParConic`
+//   constructor: Intersection between an implicit curve and
+//   constructor: a parametrised curve.
+//   constructor: The exception ConstructionError is raised if the domain
+//   Reason: param 'PCurve' uses unknown type 'const IntCurve_PConic&'
+//   // pub fn new_iconictool_domain_pconic_domain_real2(ITool: &IConicTool, Dom1: &Domain, PCurve: &PConic, Dom2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `IntCurve_IntImpConicParConic.hxx`:60 - `IntCurve_IntImpConicParConic::Perform`
+//   method: Intersection between an implicit curve and
+//   method: a parametrised curve.
+//   method: The exception ConstructionError is raised if the domain
+//   Reason: param 'PCurve' uses unknown type 'const IntCurve_PConic&'
+//   // pub fn perform(&mut self, ITool: &IConicTool, Dom1: &Domain, PCurve: &PConic, Dom2: &Domain, TolConf: f64, Tol: f64);
+//
+// SKIPPED: **Source:** `IntCurve_IntImpConicParConic.hxx`:67 - `IntCurve_IntImpConicParConic::FindU`
+//   Reason: param 'TheParCurev' uses unknown type 'const IntCurve_PConic&'
+//   // pub fn find_u(&self, parameter: f64, point: &mut Pnt2d, TheParCurev: &PConic, TheImpTool: &IConicTool) -> f64;
+//
+// SKIPPED: **Source:** `IntCurve_IntImpConicParConic.hxx`:72 - `IntCurve_IntImpConicParConic::FindV`
+//   Reason: param 'ParCurve' uses unknown type 'const IntCurve_PConic&'
+//   // pub fn find_v(&self, parameter: f64, point: &mut Pnt2d, TheImpTool: &IConicTool, ParCurve: &PConic, TheParCurveDomain: &Domain, V0: f64, V1: f64, Tolerance: f64) -> f64;
+//
+// SKIPPED: **Source:** `IntCurve_IntImpConicParConic.hxx`:81 - `IntCurve_IntImpConicParConic::And_Domaine_Objet1_Intersections`
+//   Reason: param 'TheParCurve' uses unknown type 'const IntCurve_PConic&'
+//   // pub fn and_domaine_objet1_intersections(&self, TheImpTool: &IConicTool, TheParCurve: &PConic, TheImpCurveDomain: &Domain, TheParCurveDomain: &Domain, NbResultats: &mut i32, Inter2_And_Domain2: &mut Array1OfReal, Inter1: &mut Array1OfReal, Resultat1: &mut Array1OfReal, Resultat2: &mut Array1OfReal, EpsNul: f64);
+//
+
 // ========================
 // Additional type re-exports
 // ========================

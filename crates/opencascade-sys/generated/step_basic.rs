@@ -209,6 +209,20 @@ impl HandleStepBasicMeasureWithUnit {
     }
 }
 
+// ── Skipped symbols for MeasureWithUnit (3 total) ──
+// SKIPPED: **Source:** `StepBasic_MeasureWithUnit.hxx`:37 - `StepBasic_MeasureWithUnit::Init`
+//   Reason: param 'aValueComponent' uses unknown type 'const Handle(StepBasic_MeasureValueMember)&'
+//   // pub fn init(&mut self, aValueComponent: &HandleMeasureValueMember, aUnitComponent: &Unit);
+//
+// SKIPPED: **Source:** `StepBasic_MeasureWithUnit.hxx`:44 - `StepBasic_MeasureWithUnit::ValueComponentMember`
+//   Reason: return type 'Handle(StepBasic_MeasureValueMember)' is unknown
+//   // pub fn value_component_member(&self) -> OwnedPtr<Handle<StepBasic_MeasureValueMember>>;
+//
+// SKIPPED: **Source:** `StepBasic_MeasureWithUnit.hxx`:46 - `StepBasic_MeasureWithUnit::SetValueComponentMember`
+//   Reason: param 'val' uses unknown type 'const Handle(StepBasic_MeasureValueMember)&'
+//   // pub fn set_value_component_member(&mut self, val: &HandleMeasureValueMember);
+//
+
 // ========================
 // From StepBasic_ProductDefinition.hxx
 // ========================
@@ -309,6 +323,28 @@ impl HandleStepBasicProductDefinition {
         unsafe { &mut *(crate::ffi::HandleStepBasicProductDefinition_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for ProductDefinition (5 total) ──
+// SKIPPED: **Source:** `StepBasic_ProductDefinition.hxx`:38 - `StepBasic_ProductDefinition::Init`
+//   Reason: param 'aFormation' uses unknown type 'const Handle(StepBasic_ProductDefinitionFormation)&'
+//   // pub fn init(&mut self, aId: &HandleHAsciiString, aDescription: &HandleHAsciiString, aFormation: &HandleProductDefinitionFormation, aFrameOfReference: &HandleProductDefinitionContext);
+//
+// SKIPPED: **Source:** `StepBasic_ProductDefinition.hxx`:51 - `StepBasic_ProductDefinition::SetFormation`
+//   Reason: param 'aFormation' uses unknown type 'const Handle(StepBasic_ProductDefinitionFormation)&'
+//   // pub fn set_formation(&mut self, aFormation: &HandleProductDefinitionFormation);
+//
+// SKIPPED: **Source:** `StepBasic_ProductDefinition.hxx`:53 - `StepBasic_ProductDefinition::Formation`
+//   Reason: return type 'Handle(StepBasic_ProductDefinitionFormation)' is unknown
+//   // pub fn formation(&self) -> OwnedPtr<Handle<StepBasic_ProductDefinitionFormation>>;
+//
+// SKIPPED: **Source:** `StepBasic_ProductDefinition.hxx`:55 - `StepBasic_ProductDefinition::SetFrameOfReference`
+//   Reason: param 'aFrameOfReference' uses unknown type 'const Handle(StepBasic_ProductDefinitionContext)&'
+//   // pub fn set_frame_of_reference(&mut self, aFrameOfReference: &HandleProductDefinitionContext);
+//
+// SKIPPED: **Source:** `StepBasic_ProductDefinition.hxx`:58 - `StepBasic_ProductDefinition::FrameOfReference`
+//   Reason: return type 'Handle(StepBasic_ProductDefinitionContext)' is unknown
+//   // pub fn frame_of_reference(&self) -> OwnedPtr<Handle<StepBasic_ProductDefinitionContext>>;
+//
 
 // ========================
 // From StepBasic_Unit.hxx
@@ -428,6 +464,25 @@ impl Unit {
         unsafe { crate::ffi::StepBasic_Unit_inherited_Real(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for Unit (3 total) ──
+// SKIPPED: **Source:** `StepBasic_Unit.hxx`:42 - `StepBasic_Unit::CaseNum`
+//   method: Recognizes a type of Unit Entity
+//   method: 1 -> NamedUnit
+//   method: 2 -> DerivedUnit
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn case_num(&self, ent: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `StepBasic_Unit.hxx`:45 - `StepBasic_Unit::NamedUnit`
+//   method: returns Value as a NamedUnit (Null if another type)
+//   Reason: return type 'Handle(StepBasic_NamedUnit)' is unknown
+//   // pub fn named_unit(&self) -> OwnedPtr<Handle<StepBasic_NamedUnit>>;
+//
+// SKIPPED: **Source:** `StepBasic_Unit.hxx`:48 - `StepBasic_Unit::DerivedUnit`
+//   method: returns Value as a DerivedUnit (Null if another type)
+//   Reason: return type 'Handle(StepBasic_DerivedUnit)' is unknown
+//   // pub fn derived_unit(&self) -> OwnedPtr<Handle<StepBasic_DerivedUnit>>;
+//
 
 // ========================
 // Additional type re-exports

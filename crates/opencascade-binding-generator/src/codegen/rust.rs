@@ -735,6 +735,7 @@ pub fn generate_module_reexports(
     symbol_table: &crate::resolver::SymbolTable,
     module_bindings: &[&super::bindings::ClassBindings],
     module_fn_bindings: &[&super::bindings::FunctionBinding],
+    module_skipped_fns: &[&super::bindings::SkippedSymbol],
     extra_types: &[(String, String)], // (ffi_name, short_name) for types not covered by ClassBindings
 ) -> String {
     let mut output = String::new();
@@ -878,6 +879,13 @@ pub fn generate_module_reexports(
             }
             output.push('\n');
         }
+    }
+
+    // Emit skipped free functions
+    if !module_skipped_fns.is_empty() {
+        output.push_str(&super::bindings::emit_skipped_functions(
+            &module_skipped_fns.iter().map(|s| (*s).clone()).collect::<Vec<_>>()
+        ));
     }
 
     output

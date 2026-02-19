@@ -316,21 +316,81 @@ See `crates/opencascade-sys/manual/` and the comments in `bindings.toml` for the
 
 ---
 
-## Methods Skipped Due to Limitations
+## Skipped Symbols
 
-The following patterns cause methods to be intentionally skipped during binding generation:
+The binding generator skips ~3,200 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
 
-1. **Methods with ambiguous lifetimes** — Methods returning mutable references when there are also reference parameters. The lifetime of the returned reference is ambiguous.
+- **Source location** (header file, line number, C++ symbol name)
+- **Documentation comment** from the C++ header (first 3 lines)
+- **Skip reason** explaining why the symbol was excluded
+- **Commented-out Rust stub** showing the best-guess declaration
 
-2. **Abstract class constructors** — Abstract classes cannot be instantiated, so constructor wrappers and `to_handle()` functions are not generated. Abstract detection walks the full inheritance hierarchy to catch classes that inherit unimplemented pure virtual methods from ancestors.
+Example from `gp.rs`:
+```rust
+// SKIPPED: **Source:** `gp_XYZ.hxx`:109 - `gp_XYZ::GetData`
+//   method: Returns a const ptr to coordinates location.
+//   Reason: has unbindable types: return: raw pointer (const double*)
+//   // pub fn get_data(&self) -> /* const double* */;
+```
 
-3. **Classes with protected destructors** — Excluded from type declarations entirely since the FFI layer auto-generates destructor code.
+### Skip Reason Breakdown
 
-4. **Raw pointer parameters** — Methods with `T*` / `const T*` parameters are excluded unless the pointer has a default value (i.e., nullable). Nullable pointer params are bound as `Option<&mut T>` / `Option<&T>` (see "Nullable Pointer Parameters" above). Non-nullable raw pointer methods are concentrated in BSplCLib and BSplSLib (internal B-spline evaluation routines). The few useful cases (e.g., `gp_XYZ::GetData()`) can be handled with handwritten wrappers if needed.
+| Count | % | Category | Description |
+|------:|----:|----------|-------------|
+| 2,083 | 65.1% | **Unknown/unresolved type** | Parameter or return type not in the binding set (NCollection map types, Handle to excluded classes, math_Vector, etc.) |
+| 282 | 8.8% | **Misresolved element type** | Clang batch-parsing artifact where template element types resolve incorrectly |
+| 278 | 8.7% | **Stream type** | C++ `std::istream`/`std::ostream` (`Standard_IStream`/`Standard_OStream`) — no Rust equivalent |
+| 209 | 6.5% | **Void pointer** | `Standard_Address` (typedef for `void*`) — cannot be safely expressed in Rust FFI |
+| 98 | 3.1% | **Raw pointer** | `T*`/`const T*` params or returns (non-nullable, non-defaulted) |
+| 86 | 2.7% | **Unknown Handle type** | Handle to a class not in the binding set |
+| 38 | 1.2% | **Ambiguous lifetimes** | `&mut` return with reference params — Rust lifetime inference is ambiguous |
+| 29 | 0.9% | **Not CppDeletable** | Return type class has no destructor in the binding set |
+| 26 | 0.8% | **Abstract class** | No constructors generated (class has unimplemented pure virtual methods) |
+| 18 | 0.6% | **Rvalue reference** | C++ move semantics (`T&&`) — no Rust equivalent across FFI |
+| 15 | 0.5% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
+| 8 | 0.2% | **Excluded by config** | Excluded in `bindings.toml` |
+| 3 | 0.1% | **&mut enum return** | Mutable reference to enum (cxx limitation) |
 
-### Filter Consistency
+### Most Common Unknown Types
 
-All filter functions are centralized in `resolver.rs`. When any method is filtered out of FFI generation, it is automatically filtered out of impl generation too, since both use the same `SymbolTable`.
+The "unknown type" category (65% of all skips) is dominated by a few types:
+
+| Count | Type | How to Unblock |
+|------:|------|----------------|
+| 234 | `Handle(Standard_Transient)` | Add `Standard_Transient` to bindings — this is the OCCT root class for all reference-counted objects |
+| 140 | `math_Vector` | Add `math_Vector` class — used in numerical solvers (Extrema, Geom evaluators) |
+| 88 | `Handle(TDocStd_Document)` | Add `TDocStd_Document` to bindings — needed for XCAF/document framework |
+| 79 | `Standard_SStream` | Map `Standard_SStream` (`std::stringstream`) — mainly used in `Raise()` methods on exception classes |
+| 54 | `Handle(Expr_NamedUnknown)` | Add `Expr_NamedUnknown` — only needed for symbolic math (`Expr_*`) |
+| 41 | `Interface_EntityIterator` | Add `Interface_EntityIterator` — used in STEP/IGES model iteration |
+| 38 | `Handle(TNaming_NamedShape)` | Add `TNaming_NamedShape` — needed for parametric naming framework |
+| 31 | `Standard_Character` | Map `Standard_Character` (typedef for `char`) as `i8`/`u8` |
+| 25 | `Standard_ExtString` | Map `Standard_ExtString` (wide string) — C++ `wchar_t*` |
+| 24 | `Handle(XSControl_WorkSession)` | Add `XSControl_WorkSession` — important for STEP/IGES read/write sessions |
+
+### Important Skipped Symbols
+
+Most skipped symbols are in internal, low-use, or specialized modules. However, some affect functionality that users commonly need:
+
+**Data Exchange (189 symbols)** — STEP/IGES controllers (`STEPControl_*`, `IGESControl_*`, `XSControl_*`) have many methods skipped because they reference `Handle(Standard_Transient)`, `Handle(Transfer_FinderProcess)`, and `Handle(XSControl_WorkSession)`. The core `Read()`/`Write()` operations are bound, but advanced session management and entity traversal are not. **Unblock by adding**: `Standard_Transient`, `XSControl_WorkSession`, `Transfer_FinderProcess`, `Transfer_TransientProcess`.
+
+**Document Framework (215 symbols)** — `TDocStd_*`, `TDF_*`, and `XCAFDoc_*` classes are heavily affected by `Handle(TDocStd_Document)`, `TDF_LabelMap`, and `TDF_AttributeMap` being unknown types. Core label/attribute operations work, but document open/save, label iteration filters, and delta tracking are affected. **Unblock by adding**: `TDocStd_Document`, `TDF_LabelMap`, `TDF_AttributeMap`.
+
+**Shape Meshing (91 symbols)** — `BRepMesh_*` classes reference `IMeshData_*` handle types that aren't in the binding set. Basic meshing APIs work but advanced mesh customization is unavailable. **Unblock by adding**: `IMeshData_Edge`, `IMeshData_Face`, `NCollection_*` allocator types.
+
+**Shape Analysis/Fix (72 symbols)** — Mostly misresolved element types (clang artifact, 54 of 72). The remaining 18 are unknown types like `Handle(ShapeBuild_ReShape)` and `Handle(GeomAdaptor_Surface)`. Core analysis/fix operations work.
+
+**Geometry (32 symbols in gp/Geom/Geom2d)** — Mostly misresolved element types and raw pointer returns (`gp_XYZ::GetData()`, `Geom_BSplineCurve::Weights()`). All core geometry operations are available; only internal data access methods are skipped.
+
+**Poly (34 symbols)** — `Poly_ArrayOfNodes` and `Poly_ArrayOfUVNodes` reference `gp_Vec3f`/`gp_Vec2f` (float versions not in binding set). Raw pointer node access and rvalue ref constructors are also skipped.
+
+### How Skipped Symbols Are Tracked
+
+All filtering decisions happen in two places:
+- `codegen/bindings.rs`: `is_method_bindable()`, `is_constructor_bindable()`, `is_static_method_bindable()` return `Result<(), String>` with a human-readable reason on `Err`
+- `compute_class_bindings()` and `compute_all_function_bindings()` collect `SkippedSymbol` structs for every rejected symbol
+
+The `emit_reexport_class()` and `emit_skipped_functions()` functions write the skip comments to the generated module files.
 
 ---
 

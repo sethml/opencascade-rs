@@ -2602,3 +2602,9 @@ impl HandleAdaptor3dTopolTool {
         unsafe { &mut *(crate::ffi::HandleAdaptor3dTopolTool_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for TopolTool (1 total) ──
+// SKIPPED: **Source:** `Adaptor3d_TopolTool.hxx`:133 - `Adaptor3d_TopolTool::Edge`
+//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   // pub fn edge(&self) -> OwnedPtr<Standard_Address>;
+//

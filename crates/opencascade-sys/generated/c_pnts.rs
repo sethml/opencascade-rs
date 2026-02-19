@@ -339,6 +339,14 @@ impl MyGaussFunction {
     }
 }
 
+// ── Skipped symbols for MyGaussFunction (1 total) ──
+// SKIPPED: **Source:** `CPnts_MyGaussFunction.hxx`:39 - `CPnts_MyGaussFunction::Init`
+//   method: F  is a pointer on a  function  D is a client data
+//   method: Each value is computed with F(D)
+//   Reason: has unbindable types: param 'D': void pointer (Standard_Address)
+//   // pub fn init(&mut self, F: &RealFunction, D: /* Standard_Address */);
+//
+
 // ========================
 // From CPnts_MyRootFunction.hxx
 // ========================
@@ -424,6 +432,14 @@ impl MyRootFunction {
         unsafe { crate::ffi::CPnts_MyRootFunction_inherited_GetStateNumber(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for MyRootFunction (1 total) ──
+// SKIPPED: **Source:** `CPnts_MyRootFunction.hxx`:41 - `CPnts_MyRootFunction::Init`
+//   method: F  is a pointer on a  function  D is a client data
+//   method: Order is the order of integration to use
+//   Reason: has unbindable types: param 'D': void pointer (Standard_Address)
+//   // pub fn init(&mut self, F: &RealFunction, D: /* Standard_Address */, Order: i32);
+//
 
 // ========================
 // From CPnts_UniformDeflection.hxx

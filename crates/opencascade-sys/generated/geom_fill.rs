@@ -456,6 +456,16 @@ impl AppSurf {
     }
 }
 
+// ── Skipped symbols for AppSurf (2 total) ──
+// SKIPPED: **Source:** `GeomFill_AppSurf.hxx`:107 - `GeomFill_AppSurf::SurfShape`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn surf_shape(&self, UDegree: &mut i32, VDegree: &mut i32, NbUPoles: &mut i32, NbVPoles: &mut i32, NbUKnots: &mut i32, NbVKnots: &mut i32);
+//
+// SKIPPED: **Source:** `GeomFill_AppSurf.hxx`:139 - `GeomFill_AppSurf::Curves2dShape`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32);
+//
+
 // ========================
 // From GeomFill_AppSweep.hxx
 // ========================
@@ -757,6 +767,16 @@ impl AppSweep {
         unsafe { &mut *(crate::ffi::GeomFill_AppSweep_as_AppBlend_Approx_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for AppSweep (2 total) ──
+// SKIPPED: **Source:** `GeomFill_AppSweep.hxx`:107 - `GeomFill_AppSweep::SurfShape`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn surf_shape(&self, UDegree: &mut i32, VDegree: &mut i32, NbUPoles: &mut i32, NbVPoles: &mut i32, NbUKnots: &mut i32, NbVKnots: &mut i32);
+//
+// SKIPPED: **Source:** `GeomFill_AppSweep.hxx`:139 - `GeomFill_AppSweep::Curves2dShape`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32);
+//
 
 // ========================
 // From GeomFill_BSplineCurves.hxx
@@ -1770,6 +1790,13 @@ impl CircularBlendFunc {
     }
 }
 
+// ── Skipped symbols for CircularBlendFunc (1 total) ──
+// SKIPPED: **Source:** `GeomFill_CircularBlendFunc.hxx`:98 - `GeomFill_CircularBlendFunc::SectionShape`
+//   method: get the format of an  section
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32);
+//
+
 // ========================
 // From GeomFill_ConstantBiNormal.hxx
 // ========================
@@ -2171,6 +2198,15 @@ impl ConstrainedFilling {
         unsafe { crate::ffi::GeomFill_ConstrainedFilling_check_result(self as *mut Self, I) }
     }
 }
+
+// ── Skipped symbols for ConstrainedFilling (1 total) ──
+// SKIPPED: **Source:** `GeomFill_ConstrainedFilling.hxx`:97 - `GeomFill_ConstrainedFilling::SetDomain`
+//   method: Allows to modify domain on witch the blending function
+//   method: associated to  the constrained boundary B  will propag
+//   method: the  influence   of the  field   of  tangency.  Can be
+//   Reason: param 'B' uses unknown type 'const Handle(GeomFill_BoundWithSurf)&'
+//   // pub fn set_domain(&mut self, l: f64, B: &HandleBoundWithSurf);
+//
 
 // ========================
 // From GeomFill_Coons.hxx
@@ -4485,6 +4521,13 @@ impl EvolvedSection {
     }
 }
 
+// ── Skipped symbols for EvolvedSection (1 total) ──
+// SKIPPED: **Source:** `GeomFill_EvolvedSection.hxx`:79 - `GeomFill_EvolvedSection::SectionShape`
+//   method: get the format of an  section
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32);
+//
+
 // ========================
 // From GeomFill_Filling.hxx
 // ========================
@@ -5043,6 +5086,47 @@ impl FunctionDraft {
     }
 }
 
+// ── Skipped symbols for FunctionDraft (6 total) ──
+// SKIPPED: **Source:** `GeomFill_FunctionDraft.hxx`:46 - `GeomFill_FunctionDraft::Value`
+//   method: computes the values <F> of the Functions for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `GeomFill_FunctionDraft.hxx`:53 - `GeomFill_FunctionDraft::Derivatives`
+//   method: returns the values <D> of the derivatives for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `GeomFill_FunctionDraft.hxx`:60 - `GeomFill_FunctionDraft::Values`
+//   method: returns the values <F> of the functions and the derivatives
+//   method: <D> for the variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `GeomFill_FunctionDraft.hxx`:66 - `GeomFill_FunctionDraft::DerivT`
+//   method: returns the values <F> of the T derivatives for
+//   method: the parameter Param .
+//   Reason: param 'F' uses unknown type 'math_Vector&'
+//   // pub fn deriv_t(&mut self, C: &HandleCurve, Param: f64, W: f64, dN: &Vec, teta: f64, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `GeomFill_FunctionDraft.hxx`:75 - `GeomFill_FunctionDraft::Deriv2T`
+//   method: returns the values <F> of the T2 derivatives for
+//   method: the parameter Param .
+//   Reason: param 'F' uses unknown type 'math_Vector&'
+//   // pub fn deriv2_t(&mut self, C: &HandleCurve, Param: f64, W: f64, d2N: &Vec, teta: f64, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `GeomFill_FunctionDraft.hxx`:90 - `GeomFill_FunctionDraft::Deriv2X`
+//   method: returns the values <T> of  the X2 derivatives for
+//   method: the parameter Param .
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn deriv2_x(&mut self, X: &Vector, T: &mut Tensor) -> bool;
+//
+
 // ========================
 // From GeomFill_FunctionGuide.hxx
 // ========================
@@ -5146,6 +5230,42 @@ impl FunctionGuide {
         unsafe { crate::ffi::GeomFill_FunctionGuide_inherited_GetStateNumber(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for FunctionGuide (5 total) ──
+// SKIPPED: **Source:** `GeomFill_FunctionGuide.hxx`:62 - `GeomFill_FunctionGuide::Value`
+//   method: computes the values <F> of the Functions for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `GeomFill_FunctionGuide.hxx`:69 - `GeomFill_FunctionGuide::Derivatives`
+//   method: returns the values <D> of the derivatives for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `GeomFill_FunctionGuide.hxx`:76 - `GeomFill_FunctionGuide::Values`
+//   method: returns the values <F> of the functions and the derivatives
+//   method: <D> for the variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `GeomFill_FunctionGuide.hxx`:82 - `GeomFill_FunctionGuide::DerivT`
+//   method: returns the values <F> of the T derivatives for
+//   method: the parameter Param .
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn deriv_t(&mut self, X: &Vector, DCentre: &XYZ, DDir: &XYZ, DFDT: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `GeomFill_FunctionGuide.hxx`:95 - `GeomFill_FunctionGuide::Deriv2T`
+//   method: returns the values <F> of the T2 derivatives for
+//   method: the parameter Param .
+//   method: returns the values <D> of  the TX derivatives for
+//   Reason: param 'DFDT' uses unknown type 'math_Vector&'
+//   // pub fn deriv2_t(&mut self, DCentre: &XYZ, DDir: &XYZ, DFDT: &mut Vector, D2FT: &mut Vector) -> bool;
+//
 
 // ========================
 // From GeomFill_Generator.hxx
@@ -6121,6 +6241,12 @@ impl HandleGeomFillHSequenceOfAx2 {
     }
 }
 
+// ── Skipped symbols for HSequenceOfAx2 (1 total) ──
+// SKIPPED: **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
+
 // ========================
 // From GeomFill_Line.hxx
 // ========================
@@ -6248,6 +6374,12 @@ impl LocFunction {
         unsafe { crate::ffi::GeomFill_LocFunction_d2(self as *mut Self, Param, First, Last) }
     }
 }
+
+// ── Skipped symbols for LocFunction (1 total) ──
+// SKIPPED: **Source:** `GeomFill_LocFunction.hxx`:53 - `GeomFill_LocFunction::DN`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn dn(&mut self, Param: f64, First: f64, Last: f64, Order: i32, Result: &mut f64, Ier: &mut i32);
+//
 
 // ========================
 // From GeomFill_LocationDraft.hxx
@@ -6972,6 +7104,12 @@ impl LocationGuide {
     }
 }
 
+// ── Skipped symbols for LocationGuide (1 total) ──
+// SKIPPED: **Source:** `GeomFill_LocationGuide.hxx`:46 - `GeomFill_LocationGuide::GeomFill_LocationGuide`
+//   Reason: param 'Triedre' uses unknown Handle type
+//   // pub fn new_handlegeomfilltrihedronwithguide(Triedre: &HandleTrihedronWithGuide) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From GeomFill_LocationLaw.hxx
 // ========================
@@ -7669,6 +7807,13 @@ impl NSections {
         }
     }
 }
+
+// ── Skipped symbols for NSections (1 total) ──
+// SKIPPED: **Source:** `GeomFill_NSections.hxx`:120 - `GeomFill_NSections::SectionShape`
+//   method: get the format of an  section
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32);
+//
 
 // ========================
 // From GeomFill_Pipe.hxx
@@ -8748,6 +8893,12 @@ impl SectionGenerator {
     }
 }
 
+// ── Skipped symbols for SectionGenerator (1 total) ──
+// SKIPPED: **Source:** `GeomFill_SectionGenerator.hxx`:46 - `GeomFill_SectionGenerator::GetShape`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32, NbPoles2d: &mut i32);
+//
+
 // ========================
 // From GeomFill_SectionLaw.hxx
 // ========================
@@ -9050,6 +9201,13 @@ impl HandleGeomFillSectionLaw {
         unsafe { &mut *(crate::ffi::HandleGeomFillSectionLaw_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for SectionLaw (1 total) ──
+// SKIPPED: **Source:** `GeomFill_SectionLaw.hxx`:73 - `GeomFill_SectionLaw::SectionShape`
+//   method: get the format of an  section
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32);
+//
 
 // ========================
 // From GeomFill_SectionPlacement.hxx
@@ -10297,6 +10455,13 @@ impl SweepFunction {
     }
 }
 
+// ── Skipped symbols for SweepFunction (1 total) ──
+// SKIPPED: **Source:** `GeomFill_SweepFunction.hxx`:92 - `GeomFill_SweepFunction::SectionShape`
+//   method: get the format of a section
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32);
+//
+
 // ========================
 // From GeomFill_SweepSectionGenerator.hxx
 // ========================
@@ -10549,6 +10714,12 @@ impl SweepSectionGenerator {
     }
 }
 
+// ── Skipped symbols for SweepSectionGenerator (1 total) ──
+// SKIPPED: **Source:** `GeomFill_SweepSectionGenerator.hxx`:91 - `GeomFill_SweepSectionGenerator::GetShape`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32, NbPoles2d: &mut i32);
+//
+
 // ========================
 // From GeomFill_Tensor.hxx
 // ========================
@@ -10597,6 +10768,12 @@ impl Tensor {
         }
     }
 }
+
+// ── Skipped symbols for Tensor (1 total) ──
+// SKIPPED: **Source:** `GeomFill_Tensor.hxx`:71 - `GeomFill_Tensor::Multiply`
+//   Reason: param 'Right' uses unknown type 'const math_Vector&'
+//   // pub fn multiply(&self, Right: &Vector, Product: &mut Matrix);
+//
 
 // ========================
 // From GeomFill_TgtField.hxx
@@ -11605,6 +11782,13 @@ impl UniformSection {
         }
     }
 }
+
+// ── Skipped symbols for UniformSection (1 total) ──
+// SKIPPED: **Source:** `GeomFill_UniformSection.hxx`:80 - `GeomFill_UniformSection::SectionShape`
+//   method: get the format of an  section
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32);
+//
 
 // ========================
 // Additional type re-exports

@@ -131,6 +131,12 @@ impl HandleGeomEvaluatorCurve {
     }
 }
 
+// ── Skipped symbols for Curve (1 total) ──
+// SKIPPED: **Source:** `GeomEvaluator_Curve.hxx`:29 - `GeomEvaluator_Curve::GeomEvaluator_Curve`
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new() -> OwnedPtr<Self>;
+//
+
 // ========================
 // From GeomEvaluator_OffsetCurve.hxx
 // ========================
@@ -294,6 +300,13 @@ impl OffsetCurve {
         }
     }
 }
+
+// ── Skipped symbols for OffsetCurve (1 total) ──
+// SKIPPED: **Source:** `GeomEvaluator_OffsetCurve.hxx`:31 - `GeomEvaluator_OffsetCurve::GeomEvaluator_OffsetCurve`
+//   constructor: Initialize evaluator by curve adaptor
+//   Reason: param 'theBase' uses unknown Handle type
+//   // pub fn new_handlegeomadaptorcurve_real_dir(theBase: &HandleCurve, theOffset: f64, theDirection: &Dir) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From GeomEvaluator_OffsetSurface.hxx
@@ -493,6 +506,13 @@ impl OffsetSurface {
     }
 }
 
+// ── Skipped symbols for OffsetSurface (1 total) ──
+// SKIPPED: **Source:** `GeomEvaluator_OffsetSurface.hxx`:33 - `GeomEvaluator_OffsetSurface::GeomEvaluator_OffsetSurface`
+//   constructor: Initialize evaluator by surface adaptor
+//   Reason: param 'theBase' uses unknown Handle type
+//   // pub fn new_handlegeomadaptorsurface_real_handlegeomosculatingsurface(theBase: &HandleSurface, theOffset: f64, theOscSurf: &HandleOsculatingSurface) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From GeomEvaluator_Surface.hxx
 // ========================
@@ -671,6 +691,12 @@ impl HandleGeomEvaluatorSurface {
         unsafe { &mut *(crate::ffi::HandleGeomEvaluatorSurface_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Surface (1 total) ──
+// SKIPPED: **Source:** `GeomEvaluator_Surface.hxx`:29 - `GeomEvaluator_Surface::GeomEvaluator_Surface`
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new() -> OwnedPtr<Self>;
+//
 
 // ========================
 // From GeomEvaluator_SurfaceOfExtrusion.hxx

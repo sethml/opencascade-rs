@@ -414,6 +414,22 @@ impl HandleRWObjCafWriter {
     }
 }
 
+// ── Skipped symbols for CafWriter (2 total) ──
+// SKIPPED: **Source:** `RWObj_CafWriter.hxx`:76 - `RWObj_CafWriter::Perform`
+//   method: Write OBJ file and associated MTL material file.
+//   method: Triangulation data should be precomputed within shapes!
+//   method: @param[in] theDocument     input document
+//   Reason: has unbindable types: param 'theLabelFilter': raw pointer (const TColStd_MapOfAsciiString*)
+//   // pub fn perform(&mut self, theDocument: &HandleDocument, theRootLabels: &LabelSequence, theLabelFilter: /* const TColStd_MapOfAsciiString* */, theFileInfo: &IndexedDataMapOfStringString, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `RWObj_CafWriter.hxx`:88 - `RWObj_CafWriter::Perform`
+//   method: Write OBJ file and associated MTL material file.
+//   method: Triangulation data should be precomputed within shapes!
+//   method: @param[in] theDocument     input document
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn perform(&mut self, theDocument: &HandleDocument, theFileInfo: &IndexedDataMapOfStringString, theProgress: &ProgressRange) -> bool;
+//
+
 // ========================
 // From RWObj_Material.hxx
 // ========================
@@ -862,6 +878,32 @@ impl HandleRWObjReader {
     }
 }
 
+// ── Skipped symbols for Reader (4 total) ──
+// SKIPPED: **Source:** `RWObj_Reader.hxx`:48 - `RWObj_Reader::RWObj_Reader`
+//   constructor: Empty constructor.
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new() -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `RWObj_Reader.hxx`:63 - `RWObj_Reader::Read`
+//   method: Reads data from OBJ file.
+//   method: Unicode paths can be given in UTF-8 encoding.
+//   method: Returns true if success, false on error or user break.
+//   Reason: has unbindable types: param 'theStream': stream type (std::istream&)
+//   // pub fn read(&mut self, theStream: /* std::istream& */, theFile: &AsciiString, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `RWObj_Reader.hxx`:91 - `RWObj_Reader::Probe`
+//   method: Probe data from OBJ file (comments, external references) without actually reading mesh data.
+//   method: Although mesh data will not be collected, the full file content will be parsed, due to OBJ
+//   method: format limitations.
+//   Reason: has unbindable types: param 'theStream': stream type (std::istream&)
+//   // pub fn probe(&mut self, theStream: /* std::istream& */, theFile: &AsciiString, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `RWObj_Reader.hxx`:102 - `RWObj_Reader::ExternalFiles`
+//   method: Return the list of external file references.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn external_files(&self) -> &i32;
+//
+
 // ========================
 // From RWObj_SubMesh.hxx
 // ========================
@@ -897,6 +939,15 @@ unsafe impl crate::CppDeletable for IShapeReceiver {
         crate::ffi::RWObj_IShapeReceiver_destructor(ptr);
     }
 }
+
+// ── Skipped symbols for IShapeReceiver (1 total) ──
+// SKIPPED: **Source:** `RWObj_TriangulationReader.hxx`:31 - `RWObj_IShapeReceiver::BindNamedShape`
+//   method: @param theShape       shape to register
+//   method: @param theName        shape name
+//   method: @param theMaterial    shape material
+//   Reason: has unbindable types: param 'theMaterial': raw pointer (const RWObj_Material*)
+//   // pub fn bind_named_shape(&mut self, theShape: &Shape, theName: &AsciiString, theMaterial: /* const RWObj_Material* */, theIsRootShape: bool);
+//
 
 /// **Source:** `RWObj_TriangulationReader.hxx`:38 - `RWObj_TriangulationReader`
 /// RWObj_Reader implementation dumping OBJ file into Poly_Triangulation.
@@ -1076,3 +1127,10 @@ impl TriangulationReader {
         }
     }
 }
+
+// ── Skipped symbols for TriangulationReader (1 total) ──
+// SKIPPED: **Source:** `RWObj_TriangulationReader.hxx`:53 - `RWObj_TriangulationReader::SetShapeReceiver`
+//   method: Set shape receiver callback.
+//   Reason: has unbindable types: param 'theReceiver': raw pointer (RWObj_IShapeReceiver*)
+//   // pub fn set_shape_receiver(&mut self, theReceiver: /* RWObj_IShapeReceiver* */);
+//

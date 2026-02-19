@@ -98,6 +98,66 @@ impl BREntity {
     }
 }
 
+// ── Skipped symbols for BREntity (11 total) ──
+// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:47 - `BRepToIGES_BREntity::SetModel`
+//   method: Set the value of "TheModel"
+//   Reason: param 'model' uses unknown type 'const Handle(IGESData_IGESModel)&'
+//   // pub fn set_model(&mut self, model: &HandleIGESModel);
+//
+// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:50 - `BRepToIGES_BREntity::GetModel`
+//   method: Returns the value of "TheModel"
+//   Reason: return type 'Handle(IGESData_IGESModel)' is unknown
+//   // pub fn get_model(&self) -> OwnedPtr<Handle<IGESData_IGESModel>>;
+//
+// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:57 - `BRepToIGES_BREntity::SetTransferProcess`
+//   method: Set the value of "TheMap"
+//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_FinderProcess)&'
+//   // pub fn set_transfer_process(&mut self, TP: &HandleFinderProcess);
+//
+// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:60 - `BRepToIGES_BREntity::GetTransferProcess`
+//   method: Returns the value of "TheMap"
+//   Reason: return type 'Handle(Transfer_FinderProcess)' is unknown
+//   // pub fn get_transfer_process(&self) -> OwnedPtr<Handle<Transfer_FinderProcess>>;
+//
+// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:75 - `BRepToIGES_BREntity::AddFail`
+//   method: Records a new Fail message
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_fail(&mut self, start: &HandleTransient, amess: *const char);
+//
+// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:79 - `BRepToIGES_BREntity::AddWarning`
+//   method: Records a new Warning message
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_warning(&mut self, start: &HandleTransient, amess: *const char);
+//
+// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:88 - `BRepToIGES_BREntity::GetShapeResult`
+//   method: Returns the result of the transfer of the Shape "start" contained
+//   method: in "TheMap" . (if HasShapeResult is True).
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn get_shape_result(&self, start: &Shape) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:91 - `BRepToIGES_BREntity::SetShapeResult`
+//   method: set in "TheMap" the result of the transfer of the Shape "start".
+//   Reason: param 'result' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn set_shape_result(&mut self, start: &Shape, result: &HandleTransient);
+//
+// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:96 - `BRepToIGES_BREntity::HasShapeResult`
+//   method: Returns True if start was already treated and has a result in "TheMap"
+//   method: else returns False.
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn has_shape_result(&self, start: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:100 - `BRepToIGES_BREntity::GetShapeResult`
+//   method: Returns the result of the transfer of the Transient "start" contained
+//   method: in "TheMap" . (if HasShapeResult is True).
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn get_shape_result(&self, start: &HandleTransient) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:104 - `BRepToIGES_BREntity::SetShapeResult`
+//   method: set in "TheMap" the result of the transfer of the Transient "start".
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn set_shape_result(&mut self, start: &HandleTransient, result: &HandleTransient);
+//
+
 // ========================
 // From BRepToIGES_BRShell.hxx
 // ========================

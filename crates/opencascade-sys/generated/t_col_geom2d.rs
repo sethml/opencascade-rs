@@ -424,6 +424,12 @@ impl HandleTColGeom2dHSequenceOfBoundedCurve {
     }
 }
 
+// ── Skipped symbols for HSequenceOfBoundedCurve (1 total) ──
+// SKIPPED: **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
+
 // ========================
 // From TColGeom2d_HSequenceOfCurve.hxx
 // ========================
@@ -521,6 +527,12 @@ impl HandleTColGeom2dHSequenceOfCurve {
         unsafe { &mut *(crate::ffi::HandleTColGeom2dHSequenceOfCurve_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for HSequenceOfCurve (1 total) ──
+// SKIPPED: **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
 
 // ========================
 // Additional type re-exports

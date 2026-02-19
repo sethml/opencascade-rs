@@ -361,6 +361,14 @@ impl Batten {
     }
 }
 
+// ── Skipped symbols for Batten (1 total) ──
+// SKIPPED: **Source:** `FairCurve_Batten.hxx`:217 - `FairCurve_Batten::Dump`
+//   method: Prints on the stream o information on the current state
+//   method: of the object.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From FairCurve_BattenLaw.hxx
 // ========================
@@ -604,6 +612,15 @@ impl DistributionOfJerk {
     }
 }
 
+// ── Skipped symbols for DistributionOfJerk (1 total) ──
+// SKIPPED: **Source:** `FairCurve_DistributionOfJerk.hxx`:48 - `FairCurve_DistributionOfJerk::Value`
+//   method: computes the values <F> of the functions for the
+//   method: variable <X>.
+//   method: returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+
 // ========================
 // From FairCurve_DistributionOfSagging.hxx
 // ========================
@@ -714,6 +731,15 @@ impl DistributionOfSagging {
         }
     }
 }
+
+// ── Skipped symbols for DistributionOfSagging (1 total) ──
+// SKIPPED: **Source:** `FairCurve_DistributionOfSagging.hxx`:48 - `FairCurve_DistributionOfSagging::Value`
+//   method: computes the values <F> of the functions for the
+//   method: variable <X>.
+//   method: returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
 
 // ========================
 // From FairCurve_DistributionOfTension.hxx
@@ -846,6 +872,15 @@ impl DistributionOfTension {
     }
 }
 
+// ── Skipped symbols for DistributionOfTension (1 total) ──
+// SKIPPED: **Source:** `FairCurve_DistributionOfTension.hxx`:53 - `FairCurve_DistributionOfTension::Value`
+//   method: computes the values <F> of the functions for the
+//   method: variable <X>.
+//   method: returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+
 // ========================
 // From FairCurve_Energy.hxx
 // ========================
@@ -934,6 +969,41 @@ impl Energy {
         unsafe { crate::ffi::FairCurve_Energy_inherited_GetStateNumber(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for Energy (5 total) ──
+// SKIPPED: **Source:** `FairCurve_Energy.hxx`:45 - `FairCurve_Energy::Value`
+//   method: computes the values of the Energys E for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, E: &mut f64) -> bool;
+//
+// SKIPPED: **Source:** `FairCurve_Energy.hxx`:52 - `FairCurve_Energy::Gradient`
+//   method: computes the gradient <G> of the energys for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `FairCurve_Energy.hxx`:59 - `FairCurve_Energy::Values`
+//   method: computes the Energy <E> and the gradient <G> of the
+//   method: energy for the variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, E: &mut f64, G: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `FairCurve_Energy.hxx`:67 - `FairCurve_Energy::Values`
+//   method: computes the Energy  <E>, the gradient <G> and the
+//   method: Hessian   <H> of  the  energy  for  the   variable <X>.
+//   method: Returns   True  if    the  computation   was  done
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, E: &mut f64, G: &mut Vector, H: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `FairCurve_Energy.hxx`:73 - `FairCurve_Energy::Variable`
+//   method: compute the variables <X> which correspond with the field <MyPoles>
+//   Reason: param 'X' uses unknown type 'math_Vector&'
+//   // pub fn variable(&self, X: &mut Vector) -> bool;
+//
 
 // ========================
 // From FairCurve_EnergyOfBatten.hxx
@@ -1120,6 +1190,13 @@ impl EnergyOfBatten {
         unsafe { crate::ffi::FairCurve_EnergyOfBatten_inherited_GetStateNumber(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for EnergyOfBatten (1 total) ──
+// SKIPPED: **Source:** `FairCurve_EnergyOfBatten.hxx`:65 - `FairCurve_EnergyOfBatten::Variable`
+//   method: compute the variables <X> which correspond with the field <MyPoles>
+//   Reason: param 'X' uses unknown type 'math_Vector&'
+//   // pub fn variable(&self, X: &mut Vector) -> bool;
+//
 
 // ========================
 // From FairCurve_EnergyOfMVC.hxx
@@ -1347,6 +1424,13 @@ impl EnergyOfMVC {
         unsafe { crate::ffi::FairCurve_EnergyOfMVC_inherited_GetStateNumber(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for EnergyOfMVC (1 total) ──
+// SKIPPED: **Source:** `FairCurve_EnergyOfMVC.hxx`:68 - `FairCurve_EnergyOfMVC::Variable`
+//   method: compute the variables <X> which correspond with the field <MyPoles>
+//   Reason: param 'X' uses unknown type 'math_Vector&'
+//   // pub fn variable(&self, X: &mut Vector) -> bool;
+//
 
 // ========================
 // From FairCurve_MinimalVariation.hxx
@@ -1731,6 +1815,15 @@ impl MinimalVariation {
         }
     }
 }
+
+// ── Skipped symbols for MinimalVariation (1 total) ──
+// SKIPPED: **Source:** `FairCurve_MinimalVariation.hxx`:109 - `FairCurve_MinimalVariation::Dump`
+//   method: Prints on the stream o information on the current state
+//   method: of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
 
 // ========================
 // From FairCurve_Newton.hxx

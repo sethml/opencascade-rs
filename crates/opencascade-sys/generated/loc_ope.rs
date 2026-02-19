@@ -226,6 +226,36 @@ impl CSIntersector {
     }
 }
 
+// ── Skipped symbols for CSIntersector (4 total) ──
+// SKIPPED: **Source:** `LocOpe_CSIntersector.hxx`:81 - `LocOpe_CSIntersector::LocalizeAfter`
+//   method: On  the element of range   <I>, searches the first
+//   method: intersection   point  located after  the parameter
+//   method: <From>,  which orientation is not TopAbs_EXTERNAL.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn localize_after(&self, I: i32, From: f64, Tol: f64, Or: &mut Orientation, IndFrom: &mut i32, IndTo: &mut i32) -> bool;
+//
+// SKIPPED: **Source:** `LocOpe_CSIntersector.hxx`:99 - `LocOpe_CSIntersector::LocalizeBefore`
+//   method: On the element  of range  <I>, searches the  first
+//   method: intersection point   located before  the parameter
+//   method: <From>,  which orientation is not TopAbs_EXTERNAL.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn localize_before(&self, I: i32, From: f64, Tol: f64, Or: &mut Orientation, IndFrom: &mut i32, IndTo: &mut i32) -> bool;
+//
+// SKIPPED: **Source:** `LocOpe_CSIntersector.hxx`:118 - `LocOpe_CSIntersector::LocalizeAfter`
+//   method: On the  element of  range <I>, searches  the first
+//   method: intersection      point  located after the   index
+//   method: <FromInd> ( >=  FromInd + 1), which orientation is
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn localize_after(&self, I: i32, FromInd: i32, Tol: f64, Or: &mut Orientation, IndFrom: &mut i32, IndTo: &mut i32) -> bool;
+//
+// SKIPPED: **Source:** `LocOpe_CSIntersector.hxx`:137 - `LocOpe_CSIntersector::LocalizeBefore`
+//   method: On  the element of  range  <I>, searches the first
+//   method: intersection  point    located  before  the  index
+//   method: <FromInd>  (  <= FromInd -1), which orientation is
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn localize_before(&self, I: i32, FromInd: i32, Tol: f64, Or: &mut Orientation, IndFrom: &mut i32, IndTo: &mut i32) -> bool;
+//
+
 // ========================
 // From LocOpe_CurveShapeIntersector.hxx
 // ========================
@@ -310,6 +340,36 @@ impl CurveShapeIntersector {
         unsafe { &*(crate::ffi::LocOpe_CurveShapeIntersector_point(self as *const Self, Index)) }
     }
 }
+
+// ── Skipped symbols for CurveShapeIntersector (4 total) ──
+// SKIPPED: **Source:** `LocOpe_CurveShapeIntersector.hxx`:79 - `LocOpe_CurveShapeIntersector::LocalizeAfter`
+//   method: Searches the   first intersection  point   located
+//   method: after the parameter  <From>, which  orientation is
+//   method: not       TopAbs_EXTERNAL.      If found,  returns
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn localize_after(&self, From: f64, Or: &mut Orientation, IndFrom: &mut i32, IndTo: &mut i32) -> bool;
+//
+// SKIPPED: **Source:** `LocOpe_CurveShapeIntersector.hxx`:94 - `LocOpe_CurveShapeIntersector::LocalizeBefore`
+//   method: Searches  the first intersection point     located
+//   method: before  the parameter <From>, which orientation is
+//   method: not      TopAbs_EXTERNAL.      If  found,  returns
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn localize_before(&self, From: f64, Or: &mut Orientation, IndFrom: &mut i32, IndTo: &mut i32) -> bool;
+//
+// SKIPPED: **Source:** `LocOpe_CurveShapeIntersector.hxx`:109 - `LocOpe_CurveShapeIntersector::LocalizeAfter`
+//   method: Searches  the first intersection point     located
+//   method: after the index <FromInd> ( >= FromInd + 1), which
+//   method: orientation   is   not TopAbs_EXTERNAL.   If found,
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn localize_after(&self, FromInd: i32, Or: &mut Orientation, IndFrom: &mut i32, IndTo: &mut i32) -> bool;
+//
+// SKIPPED: **Source:** `LocOpe_CurveShapeIntersector.hxx`:124 - `LocOpe_CurveShapeIntersector::LocalizeBefore`
+//   method: Searches the  first  intersection   point  located
+//   method: before the index <FromInd> ( <= FromInd -1), which
+//   method: orientation is   not TopAbs_EXTERNAL.   If   found,
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn localize_before(&self, FromInd: i32, Or: &mut Orientation, IndFrom: &mut i32, IndTo: &mut i32) -> bool;
+//
 
 // ========================
 // From LocOpe_DPrism.hxx
@@ -1136,6 +1196,12 @@ impl PntFace {
         unsafe { crate::ffi::LocOpe_PntFace_v_parameter(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for PntFace (1 total) ──
+// SKIPPED: **Source:** `LocOpe_PntFace.hxx`:63 - `LocOpe_PntFace::ChangeOrientation`
+//   Reason: return type is &mut enum (not representable in extern "C")
+//   // pub fn change_orientation(&mut self) -> &mut Orientation;
+//
 
 // ========================
 // From LocOpe_Prism.hxx

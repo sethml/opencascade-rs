@@ -149,6 +149,18 @@ impl HandleCDMApplication {
     }
 }
 
+// ── Skipped symbols for Application (2 total) ──
+// SKIPPED: **Source:** `CDM_Application.hxx`:58 - `CDM_Application::Write`
+//   method: writes the string in the application MessagerDriver.
+//   Reason: param 'aString' uses unknown type 'Standard_ExtString'
+//   // pub fn write(&mut self, aString: ExtString);
+//
+// SKIPPED: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable`
+//   method: Returns MetaData LookUpTable
+//   Reason: return type 'CDM_MetaDataLookUpTable&' is unknown
+//   // pub fn meta_data_look_up_table(&mut self) -> &mut MetaDataLookUpTable;
+//
+
 // ========================
 // From CDM_Document.hxx
 // ========================
@@ -744,6 +756,51 @@ impl HandleCDMDocument {
         unsafe { &mut *(crate::ffi::HandleCDMDocument_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Document (8 total) ──
+// SKIPPED: **Source:** `CDM_Document.hxx`:76 - `CDM_Document::Update`
+//   method: The Update  method  will be called  once  for each
+//   method: reference, but it  should not perform any computation,
+//   method: to avoid multiple computation of a same document.
+//   Reason: has unbindable types: param 'aModifContext': void pointer (Standard_Address)
+//   // pub fn update(&mut self, aToDocument: &HandleDocument, aReferenceIdentifier: i32, aModifContext: /* Standard_Address */);
+//
+// SKIPPED: **Source:** `CDM_Document.hxx`:148 - `CDM_Document::UpdateFromDocuments`
+//   method: call  virtual  method   Update  on  all   referencing
+//   method: documents.   This method keeps  the list  of the --
+//   method: documents  to process.It may  be the starting of an
+//   Reason: has unbindable types: param 'aModifContext': void pointer (Standard_Address)
+//   // pub fn update_from_documents(&self, aModifContext: /* Standard_Address */);
+//
+// SKIPPED: **Source:** `CDM_Document.hxx`:217 - `CDM_Document::Comment`
+//   method: Returns the first of associated comments.
+//   method: By default the comment is an empty string.
+//   Reason: return type 'Standard_ExtString' is unknown
+//   // pub fn comment(&self) -> OwnedPtr<Standard_ExtString>;
+//
+// SKIPPED: **Source:** `CDM_Document.hxx`:228 - `CDM_Document::SetMetaData`
+//   method: associates database  information to  a document which
+//   method: has been stored.  The name of the  document is now the
+//   method: name which has beenused to store the data.
+//   Reason: param 'aMetaData' uses unknown type 'const Handle(CDM_MetaData)&'
+//   // pub fn set_meta_data(&mut self, aMetaData: &HandleMetaData);
+//
+// SKIPPED: **Source:** `CDM_Document.hxx`:232 - `CDM_Document::MetaData`
+//   Reason: return type 'Handle(CDM_MetaData)' is unknown
+//   // pub fn meta_data(&self) -> OwnedPtr<Handle<CDM_MetaData>>;
+//
+// SKIPPED: **Source:** `CDM_Document.hxx`:282 - `CDM_Document::Print`
+//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `CDM_Document.hxx`:316 - `CDM_Document::CreateReference`
+//   Reason: param 'aMetaData' uses unknown type 'const Handle(CDM_MetaData)&'
+//   // pub fn create_reference(&mut self, aMetaData: &HandleMetaData, aReferenceIdentifier: i32, anApplication: &HandleApplication, aToDocumentVersion: i32, UseStorageConfiguration: bool);
+//
+// SKIPPED: **Source:** `CDM_Document.hxx`:322 - `CDM_Document::CreateReference`
+//   Reason: param 'aMetaData' uses unknown type 'const Handle(CDM_MetaData)&'
+//   // pub fn create_reference(&mut self, aMetaData: &HandleMetaData, anApplication: &HandleApplication, aDocumentVersion: i32, UseStorageConfiguration: bool) -> i32;
+//
 
 // ========================
 // From CDM_Reference.hxx

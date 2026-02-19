@@ -2823,6 +2823,18 @@ impl PackedMapOfInteger {
     }
 }
 
+// ── Skipped symbols for PackedMapOfInteger (2 total) ──
+// SKIPPED: **Source:** `TColStd_PackedMapOfInteger.hxx`:289 - `TColStd_PackedMapOfInteger::Assign`
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn assign(&mut self, arg0: &PackedMapOfInteger) -> &mut PackedMapOfInteger;
+//
+// SKIPPED: **Source:** `TColStd_PackedMapOfInteger.hxx`:321 - `TColStd_PackedMapOfInteger::Statistics`
+//   method: Prints useful statistics about the map.
+//   method: It can be used to test the quality of the hashcoding.
+//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
+//   // pub fn statistics(&self, theStream: /* Standard_OStream& */);
+//
+
 /// **Source:** `TColStd_PackedMapOfInteger.hxx`:155 - `TColStd_PackedMapOfInteger_Iterator`
 /// Iterator of class TColStd_PackedMapOfInteger.
 pub use crate::ffi::TColStd_PackedMapOfInteger_Iterator as PackedMapOfInteger_Iterator;

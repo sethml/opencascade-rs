@@ -350,6 +350,33 @@ impl Edge {
     }
 }
 
+// ── Skipped symbols for Edge (5 total) ──
+// SKIPPED: **Source:** `IMeshData_Edge.hxx`:39 - `IMeshData_Edge::AddPCurve`
+//   method: Adds discrete pcurve for the specified discrete face.
+//   Reason: param 'theDFace' uses unknown type 'const IMeshData_Face *const&'
+//   // pub fn add_p_curve(&mut self, theDFace: &Face *const, theOrientation: Orientation) -> &IPCurveHandle;
+//
+// SKIPPED: **Source:** `IMeshData_Edge.hxx`:44 - `IMeshData_Edge::GetPCurve`
+//   method: Returns pcurve for the specified discrete face.
+//   Reason: param 'theDFace' uses unknown type 'const IMeshData_Face *const&'
+//   // pub fn get_p_curve(&self, theDFace: &Face *const, theOrientation: Orientation) -> &IPCurveHandle;
+//
+// SKIPPED: **Source:** `IMeshData_Edge.hxx`:49 - `IMeshData_Edge::GetPCurve`
+//   method: Returns pcurve with the given index.
+//   Reason: return type 'const IMeshData::IPCurveHandle&' is unknown
+//   // pub fn get_p_curve(&self, theIndex: i32) -> &IPCurveHandle;
+//
+// SKIPPED: **Source:** `IMeshData_Edge.hxx`:66 - `IMeshData_Edge::SetCurve`
+//   method: Sets 3d curve associated with current edge.
+//   Reason: param 'theCurve' uses unknown type 'const IMeshData::ICurveHandle&'
+//   // pub fn set_curve(&mut self, theCurve: &ICurveHandle);
+//
+// SKIPPED: **Source:** `IMeshData_Edge.hxx`:69 - `IMeshData_Edge::GetCurve`
+//   method: Returns 3d curve associated with current edge.
+//   Reason: return type 'const IMeshData::ICurveHandle&' is unknown
+//   // pub fn get_curve(&self) -> &ICurveHandle;
+//
+
 // ========================
 // From IMeshData_Face.hxx
 // ========================
@@ -484,6 +511,23 @@ impl Face {
     }
 }
 
+// ── Skipped symbols for Face (3 total) ──
+// SKIPPED: **Source:** `IMeshData_Face.hxx`:42 - `IMeshData_Face::AddWire`
+//   method: Adds wire to discrete model of face.
+//   Reason: return type 'const IMeshData::IWireHandle&' is unknown
+//   // pub fn add_wire(&mut self, theWire: &Wire, theEdgeNb: i32) -> &IWireHandle;
+//
+// SKIPPED: **Source:** `IMeshData_Face.hxx`:47 - `IMeshData_Face::GetWire`
+//   method: Returns discrete edge with the given index.
+//   Reason: return type 'const IMeshData::IWireHandle&' is unknown
+//   // pub fn get_wire(&self, theIndex: i32) -> &IWireHandle;
+//
+// SKIPPED: **Source:** `IMeshData_Face.hxx`:51 - `IMeshData_Face::GetSurface`
+//   method: Returns face's surface.
+//   Reason: return type 'const Handle(BRepAdaptor_Surface)&' is unknown
+//   // pub fn get_surface(&self) -> &HandleSurface;
+//
+
 // ========================
 // From IMeshData_Model.hxx
 // ========================
@@ -558,6 +602,28 @@ impl Model {
         unsafe { &*(crate::ffi::IMeshData_Model_inherited_GetShape(self as *const Self)) }
     }
 }
+
+// ── Skipped symbols for Model (4 total) ──
+// SKIPPED: **Source:** `IMeshData_Model.hxx`:44 - `IMeshData_Model::AddFace`
+//   method: Adds new face to shape model.
+//   Reason: return type 'const IMeshData::IFaceHandle&' is unknown
+//   // pub fn add_face(&mut self, theFace: &Face) -> &IFaceHandle;
+//
+// SKIPPED: **Source:** `IMeshData_Model.hxx`:47 - `IMeshData_Model::GetFace`
+//   method: Gets model's face with the given index.
+//   Reason: return type 'const IMeshData::IFaceHandle&' is unknown
+//   // pub fn get_face(&self, theIndex: i32) -> &IFaceHandle;
+//
+// SKIPPED: **Source:** `IMeshData_Model.hxx`:55 - `IMeshData_Model::AddEdge`
+//   method: Adds new edge to shape model.
+//   Reason: return type 'const IMeshData::IEdgeHandle&' is unknown
+//   // pub fn add_edge(&mut self, theEdge: &Edge) -> &IEdgeHandle;
+//
+// SKIPPED: **Source:** `IMeshData_Model.hxx`:58 - `IMeshData_Model::GetEdge`
+//   method: Gets model's edge with the given index.
+//   Reason: return type 'const IMeshData::IEdgeHandle&' is unknown
+//   // pub fn get_edge(&self, theIndex: i32) -> &IEdgeHandle;
+//
 
 // ========================
 // From IMeshData_PCurve.hxx
@@ -684,6 +750,18 @@ impl PCurve {
         unsafe { crate::ffi::IMeshData_PCurve_inherited_Clear(self as *mut Self, isKeepEndPoints) }
     }
 }
+
+// ── Skipped symbols for PCurve (2 total) ──
+// SKIPPED: **Source:** `IMeshData_PCurve.hxx`:46 - `IMeshData_PCurve::GetIndex`
+//   method: Returns index in mesh corresponded to discretization point with the given index.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_index(&mut self, theIndex: i32) -> &mut i32;
+//
+// SKIPPED: **Source:** `IMeshData_PCurve.hxx`:61 - `IMeshData_PCurve::GetFace`
+//   method: Returns discrete face pcurve is associated to.
+//   Reason: return type 'const IMeshData_Face *const&' is unknown
+//   // pub fn get_face(&self) -> &Face *const;
+//
 
 // ========================
 // From IMeshData_ParametersList.hxx
@@ -1097,3 +1175,16 @@ impl Wire {
         unsafe { &*(crate::ffi::IMeshData_Wire_inherited_GetShape(self as *const Self)) }
     }
 }
+
+// ── Skipped symbols for Wire (2 total) ──
+// SKIPPED: **Source:** `IMeshData_Wire.hxx`:42 - `IMeshData_Wire::AddEdge`
+//   method: Adds new discrete edge with specified orientation to wire chain.
+//   method: @return index of added edge in wire chain.
+//   Reason: param 'theDEdge' uses unknown type 'const IMeshData_Edge *const&'
+//   // pub fn add_edge(&mut self, theDEdge: &Edge *const, theOrientation: Orientation) -> i32;
+//
+// SKIPPED: **Source:** `IMeshData_Wire.hxx`:46 - `IMeshData_Wire::GetEdge`
+//   method: Returns discrete edge with the given index.
+//   Reason: return type 'const IMeshData_Edge *const&' is unknown
+//   // pub fn get_edge(&self, theIndex: i32) -> &Edge *const;
+//

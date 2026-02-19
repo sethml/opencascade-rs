@@ -2329,6 +2329,34 @@ impl HandleGeomBSplineCurve {
     }
 }
 
+// ── Skipped symbols for BSplineCurve (4 total) ──
+// SKIPPED: **Source:** `Geom_BSplineCurve.hxx`:443 - `Geom_BSplineCurve::MovePoint`
+//   method: Moves the point of parameter U of this BSpline curve
+//   method: to P. Index1 and Index2 are the indexes in the table
+//   method: of poles of this BSpline curve of the first and last
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn move_point(&mut self, U: f64, P: &Pnt, Index1: i32, Index2: i32, FirstModifiedPole: &mut i32, LastModifiedPole: &mut i32);
+//
+// SKIPPED: **Source:** `Geom_BSplineCurve.hxx`:461 - `Geom_BSplineCurve::MovePointAndTangent`
+//   method: Move a point with parameter U to P.
+//   method: and makes it tangent at U be Tangent.
+//   method: StartingCondition = -1 means first can move
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn move_point_and_tangent(&mut self, U: f64, P: &Pnt, Tangent: &Vec, Tolerance: f64, StartingCondition: i32, EndingCondition: i32, ErrorStatus: &mut i32);
+//
+// SKIPPED: **Source:** `Geom_BSplineCurve.hxx`:752 - `Geom_BSplineCurve::LocateU`
+//   method: Locates the parametric value U in the sequence of knots.
+//   method: If "WithKnotRepetition" is True we consider the knot's
+//   method: representation with repetition of multiple knot value,
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn locate_u(&self, U: f64, ParametricTolerance: f64, I1: &mut i32, I2: &mut i32, WithKnotRepetition: bool);
+//
+// SKIPPED: **Source:** `Geom_BSplineCurve.hxx`:805 - `Geom_BSplineCurve::Weights`
+//   method: Returns the weights of the B-spline curve;
+//   Reason: has unbindable types: return: raw pointer (const TColStd_Array1OfReal*)
+//   // pub fn weights(&self) -> /* const TColStd_Array1OfReal* */;
+//
+
 // ========================
 // From Geom_BSplineSurface.hxx
 // ========================
@@ -4614,6 +4642,35 @@ impl HandleGeomBSplineSurface {
     }
 }
 
+// ── Skipped symbols for BSplineSurface (4 total) ──
+// SKIPPED: **Source:** `Geom_BSplineSurface.hxx`:687 - `Geom_BSplineSurface::LocateU`
+//   method: Locates the parametric value U in the sequence of UKnots.
+//   method: If "WithKnotRepetition" is True we consider the knot's
+//   method: representation with repetition of multiple knot value,
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn locate_u(&self, U: f64, ParametricTolerance: f64, I1: &mut i32, I2: &mut i32, WithKnotRepetition: bool);
+//
+// SKIPPED: **Source:** `Geom_BSplineSurface.hxx`:707 - `Geom_BSplineSurface::LocateV`
+//   method: Locates the parametric value V in the sequence of knots.
+//   method: If "WithKnotRepetition" is True we consider the knot's
+//   method: representation with repetition of multiple knot value,
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn locate_v(&self, V: f64, ParametricTolerance: f64, I1: &mut i32, I2: &mut i32, WithKnotRepetition: bool);
+//
+// SKIPPED: **Source:** `Geom_BSplineSurface.hxx`:826 - `Geom_BSplineSurface::MovePoint`
+//   method: Move a point with parameter U and V to P.
+//   method: given u,v  as parameters)  to  reach a  new position
+//   method: UIndex1, UIndex2, VIndex1, VIndex2:
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn move_point(&mut self, U: f64, V: f64, P: &Pnt, UIndex1: i32, UIndex2: i32, VIndex1: i32, VIndex2: i32, UFirstIndex: &mut i32, ULastIndex: &mut i32, VFirstIndex: &mut i32, VLastIndex: &mut i32);
+//
+// SKIPPED: **Source:** `Geom_BSplineSurface.hxx`:1103 - `Geom_BSplineSurface::Weights`
+//   method: Returns the weights of the B-spline surface.
+//   method: value and derivatives computation
+//   Reason: has unbindable types: return: raw pointer (const TColStd_Array2OfReal*)
+//   // pub fn weights(&self) -> /* const TColStd_Array2OfReal* */;
+//
+
 // ========================
 // From Geom_BezierCurve.hxx
 // ========================
@@ -5292,6 +5349,13 @@ impl HandleGeomBezierCurve {
         }
     }
 }
+
+// ── Skipped symbols for BezierCurve (1 total) ──
+// SKIPPED: **Source:** `Geom_BezierCurve.hxx`:305 - `Geom_BezierCurve::Weights`
+//   method: Returns all the weights of the curve.
+//   Reason: has unbindable types: return: raw pointer (const TColStd_Array1OfReal*)
+//   // pub fn weights(&self) -> /* const TColStd_Array1OfReal* */;
+//
 
 // ========================
 // From Geom_BezierSurface.hxx
@@ -6493,6 +6557,13 @@ impl HandleGeomBezierSurface {
         }
     }
 }
+
+// ── Skipped symbols for BezierSurface (1 total) ──
+// SKIPPED: **Source:** `Geom_BezierSurface.hxx`:549 - `Geom_BezierSurface::Weights`
+//   method: Returns the weights of the Bezier surface.
+//   Reason: has unbindable types: return: raw pointer (const TColStd_Array2OfReal*)
+//   // pub fn weights(&self) -> /* const TColStd_Array2OfReal* */;
+//
 
 // ========================
 // From Geom_BoundedCurve.hxx
@@ -13051,6 +13122,12 @@ impl HandleGeomHSequenceOfBSplineSurface {
         }
     }
 }
+
+// ── Skipped symbols for HSequenceOfBSplineSurface (1 total) ──
+// SKIPPED: **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
 
 // ========================
 // From Geom_Hyperbola.hxx
@@ -23055,6 +23132,20 @@ impl UndefinedDerivative {
     }
 }
 
+// ── Skipped symbols for UndefinedDerivative (3 total) ──
+// SKIPPED: **Source:** `Geom_UndefinedDerivative.hxx`:36 - `Geom_UndefinedDerivative::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Geom_UndefinedDerivative.hxx`:36 - `Geom_UndefinedDerivative::NewInstance`
+//   Reason: return type 'Handle(Geom_UndefinedDerivative)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Geom_UndefinedDerivative>>;
+//
+// SKIPPED: **Source:** `Geom_UndefinedDerivative.hxx`:36 - `Geom_UndefinedDerivative::NewInstance`
+//   Reason: return type 'Handle(Geom_UndefinedDerivative)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Geom_UndefinedDerivative>>;
+//
+
 // ========================
 // From Geom_UndefinedValue.hxx
 // ========================
@@ -23121,6 +23212,20 @@ impl UndefinedValue {
         unsafe { &*(crate::ffi::Geom_UndefinedValue_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for UndefinedValue (3 total) ──
+// SKIPPED: **Source:** `Geom_UndefinedValue.hxx`:36 - `Geom_UndefinedValue::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Geom_UndefinedValue.hxx`:36 - `Geom_UndefinedValue::NewInstance`
+//   Reason: return type 'Handle(Geom_UndefinedValue)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Geom_UndefinedValue>>;
+//
+// SKIPPED: **Source:** `Geom_UndefinedValue.hxx`:36 - `Geom_UndefinedValue::NewInstance`
+//   Reason: return type 'Handle(Geom_UndefinedValue)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Geom_UndefinedValue>>;
+//
 
 // ========================
 // From Geom_Vector.hxx

@@ -1176,6 +1176,13 @@ impl HandleXCAFDimTolObjectsDatumObject {
     }
 }
 
+// ── Skipped symbols for DatumObject (1 total) ──
+// SKIPPED: **Source:** `XCAFDimTolObjects_DatumObject.hxx`:58 - `XCAFDimTolObjects_DatumObject::GetModifiers`
+//   method: Returns a sequence of modifiers of the datum.
+//   Reason: return type 'XCAFDimTolObjects_DatumModifiersSequence' is not CppDeletable
+//   // pub fn get_modifiers(&self) -> OwnedPtr<XCAFDimTolObjects_DatumModifiersSequence>;
+//
+
 // ========================
 // From XCAFDimTolObjects_DimensionObject.hxx
 // ========================
@@ -1846,6 +1853,18 @@ impl HandleXCAFDimTolObjectsDimensionObject {
     }
 }
 
+// ── Skipped symbols for DimensionObject (2 total) ──
+// SKIPPED: **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:166 - `XCAFDimTolObjects_DimensionObject::GetNbOfDecimalPlaces`
+//   method: Returns the number of places to the left and right of the decimal point respectively.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_nb_of_decimal_places(&self, theL: &mut i32, theR: &mut i32);
+//
+// SKIPPED: **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:169 - `XCAFDimTolObjects_DimensionObject::GetModifiers`
+//   method: Returns a sequence of modifiers of the dimension.
+//   Reason: return type 'XCAFDimTolObjects_DimensionModifiersSequence' is not CppDeletable
+//   // pub fn get_modifiers(&self) -> OwnedPtr<XCAFDimTolObjects_DimensionModifiersSequence>;
+//
+
 // ========================
 // From XCAFDimTolObjects_GeomToleranceObject.hxx
 // ========================
@@ -2352,6 +2371,13 @@ impl HandleXCAFDimTolObjectsGeomToleranceObject {
     }
 }
 
+// ── Skipped symbols for GeomToleranceObject (1 total) ──
+// SKIPPED: **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:99 - `XCAFDimTolObjects_GeomToleranceObject::GetModifiers`
+//   method: Returns a sequence of modifiers of the tolerance.
+//   Reason: return type 'XCAFDimTolObjects_GeomToleranceModifiersSequence' is not CppDeletable
+//   // pub fn get_modifiers(&self) -> OwnedPtr<XCAFDimTolObjects_GeomToleranceModifiersSequence>;
+//
+
 // ========================
 // From XCAFDimTolObjects_Tool.hxx
 // ========================
@@ -2413,6 +2439,23 @@ impl Tool {
         }
     }
 }
+
+// ── Skipped symbols for Tool (3 total) ──
+// SKIPPED: **Source:** `XCAFDimTolObjects_Tool.hxx`:38 - `XCAFDimTolObjects_Tool::XCAFDimTolObjects_Tool`
+//   Reason: param 'theDoc' uses unknown Handle type
+//   // pub fn new_handletdocstddocument(theDoc: &HandleDocument) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `XCAFDimTolObjects_Tool.hxx`:52 - `XCAFDimTolObjects_Tool::GetGeomTolerances`
+//   method: Returns a sequence of Tolerances currently stored
+//   method: in the GD&T table
+//   Reason: param 'theMap' uses unknown type 'XCAFDimTolObjects_DataMapOfToleranceDatum&'
+//   // pub fn get_geom_tolerances(&self, theGeomToleranceObjectSequence: &mut GeomToleranceObjectSequence, theDatumObjectSequence: &mut DatumObjectSequence, theMap: &mut DataMapOfToleranceDatum);
+//
+// SKIPPED: **Source:** `XCAFDimTolObjects_Tool.hxx`:58 - `XCAFDimTolObjects_Tool::GetRefGeomTolerances`
+//   method: Returns all GeomTolerances defined for Shape
+//   Reason: param 'theMap' uses unknown type 'XCAFDimTolObjects_DataMapOfToleranceDatum&'
+//   // pub fn get_ref_geom_tolerances(&self, theShape: &Shape, theGeomToleranceObjectSequence: &mut GeomToleranceObjectSequence, theDatumObjectSequence: &mut DatumObjectSequence, theMap: &mut DataMapOfToleranceDatum) -> bool;
+//
 
 // ========================
 // Additional type re-exports

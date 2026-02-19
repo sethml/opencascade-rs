@@ -113,6 +113,24 @@ impl AccAllocator {
     }
 }
 
+// ── Skipped symbols for AccAllocator (3 total) ──
+// SKIPPED: **Source:** `NCollection_AccAllocator.hxx`:63 - `NCollection_AccAllocator::Allocate`
+//   method: Allocate memory with given size
+//   Reason: has unbindable types: return: raw pointer (void*)
+//   // pub fn allocate(&mut self, theSize: usize) -> /* void* */;
+//
+// SKIPPED: **Source:** `NCollection_AccAllocator.hxx`:66 - `NCollection_AccAllocator::AllocateOptimal`
+//   method: Allocate memory with given size
+//   Reason: has unbindable types: return: raw pointer (void*)
+//   // pub fn allocate_optimal(&mut self, theSize: usize) -> /* void* */;
+//
+// SKIPPED: **Source:** `NCollection_AccAllocator.hxx`:70 - `NCollection_AccAllocator::Free`
+//   method: Free a previously allocated memory;
+//   method: memory is returned to the OS when all allocations in some block are freed
+//   Reason: has unbindable types: param 'theAddress': raw pointer (void*)
+//   // pub fn free(&mut self, theAddress: /* void* */);
+//
+
 // ========================
 // From NCollection_AlignedAllocator.hxx
 // ========================
@@ -177,6 +195,23 @@ impl AlignedAllocator {
         }
     }
 }
+
+// ── Skipped symbols for AlignedAllocator (3 total) ──
+// SKIPPED: **Source:** `NCollection_AlignedAllocator.hxx`:32 - `NCollection_AlignedAllocator::Allocate`
+//   method: Allocate memory with given size. Returns NULL on failure.
+//   Reason: has unbindable types: return: raw pointer (void*)
+//   // pub fn allocate(&mut self, theSize: usize) -> /* void* */;
+//
+// SKIPPED: **Source:** `NCollection_AlignedAllocator.hxx`:35 - `NCollection_AlignedAllocator::AllocateOptimal`
+//   method: Allocate memory with given size. Returns NULL on failure.
+//   Reason: has unbindable types: return: raw pointer (void*)
+//   // pub fn allocate_optimal(&mut self, theSize: usize) -> /* void* */;
+//
+// SKIPPED: **Source:** `NCollection_AlignedAllocator.hxx`:38 - `NCollection_AlignedAllocator::Free`
+//   method: Free a previously allocated memory.
+//   Reason: has unbindable types: param 'thePtr': raw pointer (void*)
+//   // pub fn free(&mut self, thePtr: /* void* */);
+//
 
 // ========================
 // From NCollection_BaseAllocator.hxx
@@ -262,6 +297,20 @@ impl HandleNCollectionBaseAllocator {
         unsafe { &mut *(crate::ffi::HandleNCollectionBaseAllocator_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for BaseAllocator (3 total) ──
+// SKIPPED: **Source:** `NCollection_BaseAllocator.hxx`:49 - `NCollection_BaseAllocator::Allocate`
+//   Reason: has unbindable types: return: raw pointer (void*)
+//   // pub fn allocate(&mut self, theSize: usize) -> /* void* */;
+//
+// SKIPPED: **Source:** `NCollection_BaseAllocator.hxx`:50 - `NCollection_BaseAllocator::AllocateOptimal`
+//   Reason: has unbindable types: return: raw pointer (void*)
+//   // pub fn allocate_optimal(&mut self, theSize: usize) -> /* void* */;
+//
+// SKIPPED: **Source:** `NCollection_BaseAllocator.hxx`:51 - `NCollection_BaseAllocator::Free`
+//   Reason: has unbindable types: param 'theAddress': raw pointer (void*)
+//   // pub fn free(&mut self, theAddress: /* void* */);
+//
 
 // ========================
 // From NCollection_BaseList.hxx
@@ -382,6 +431,13 @@ impl BaseMap {
     }
 }
 
+// ── Skipped symbols for BaseMap (1 total) ──
+// SKIPPED: **Source:** `NCollection_BaseMap.hxx`:149 - `NCollection_BaseMap::Statistics`
+//   method: Statistics
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn statistics(&self, S: /* Standard_OStream& */);
+//
+
 /// **Source:** `NCollection_BaseMap.hxx`:46 - `NCollection_BaseMap_Iterator`
 /// Memory allocation
 pub use crate::ffi::NCollection_BaseMap_Iterator as BaseMap_Iterator;
@@ -481,6 +537,36 @@ impl BasePointerVector {
         }
     }
 }
+
+// ── Skipped symbols for BasePointerVector (5 total) ──
+// SKIPPED: **Source:** `NCollection_BasePointerVector.hxx`:44 - `NCollection_BasePointerVector::NCollection_BasePointerVector`
+//   constructor: Move data from another vector
+//   Reason: has unbindable types: param 'theOther': rvalue reference (NCollection_BasePointerVector&&)
+//   // pub fn new_basepointervector(theOther: /* NCollection_BasePointerVector&& */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `NCollection_BasePointerVector.hxx`:71 - `NCollection_BasePointerVector::GetArray`
+//   method: Gets array, can be null
+//   Reason: has unbindable types: return: raw pointer (void**)
+//   // pub fn get_array(&self) -> /* void** */;
+//
+// SKIPPED: **Source:** `NCollection_BasePointerVector.hxx`:74 - `NCollection_BasePointerVector::Value`
+//   method: Gets value by index, no access validation
+//   Reason: has unbindable types: return: raw pointer (void*)
+//   // pub fn value(&self, theInd: usize) -> /* void* */;
+//
+// SKIPPED: **Source:** `NCollection_BasePointerVector.hxx`:79 - `NCollection_BasePointerVector::Append`
+//   method: Inserts new element at the end, increase size,
+//   method: if capacity is not enough, call resize.
+//   Reason: has unbindable types: param 'thePnt': raw pointer (const void*)
+//   // pub fn append(&mut self, thePnt: /* const void* */);
+//
+// SKIPPED: **Source:** `NCollection_BasePointerVector.hxx`:84 - `NCollection_BasePointerVector::SetValue`
+//   method: Updates value of existed element,
+//   method: If index more then size, increase size of container,
+//   method: in this case capacity can be updated.
+//   Reason: has unbindable types: param 'thePnt': raw pointer (const void*)
+//   // pub fn set_value(&mut self, theInd: usize, thePnt: /* const void* */);
+//
 
 // ========================
 // From NCollection_BaseSequence.hxx
@@ -686,6 +772,25 @@ impl HandleNCollectionBuffer {
     }
 }
 
+// ── Skipped symbols for Buffer (3 total) ──
+// SKIPPED: **Source:** `NCollection_Buffer.hxx`:32 - `NCollection_Buffer::NCollection_Buffer`
+//   constructor: Default constructor.
+//   constructor: When theData is NULL but theSize is not 0 than buffer of specified size will be allocated.
+//   constructor: @param theAlloc memory allocator
+//   Reason: nullable param 'theData' inner type is unknown
+//   // pub fn new_handlencollectionbaseallocator_size_byteptr(theAlloc: &HandleBaseAllocator, theSize: usize, theData: /* Standard_Byte* */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `NCollection_Buffer.hxx`:54 - `NCollection_Buffer::Data`
+//   method: @return buffer data
+//   Reason: has unbindable types: return: raw pointer (const Standard_Byte*)
+//   // pub fn data(&self) -> /* const Standard_Byte* */;
+//
+// SKIPPED: **Source:** `NCollection_Buffer.hxx`:57 - `NCollection_Buffer::ChangeData`
+//   method: @return buffer data
+//   Reason: has unbindable types: return: raw pointer (Standard_Byte*)
+//   // pub fn change_data(&mut self) -> /* Standard_Byte* */;
+//
+
 // ========================
 // From NCollection_HeapAllocator.hxx
 // ========================
@@ -739,6 +844,24 @@ impl HeapAllocator {
         }
     }
 }
+
+// ── Skipped symbols for HeapAllocator (4 total) ──
+// SKIPPED: **Source:** `NCollection_HeapAllocator.hxx`:29 - `NCollection_HeapAllocator::Allocate`
+//   Reason: has unbindable types: return: raw pointer (void*)
+//   // pub fn allocate(&mut self, theSize: usize) -> /* void* */;
+//
+// SKIPPED: **Source:** `NCollection_HeapAllocator.hxx`:31 - `NCollection_HeapAllocator::AllocateOptimal`
+//   Reason: has unbindable types: return: raw pointer (void*)
+//   // pub fn allocate_optimal(&mut self, theSize: usize) -> /* void* */;
+//
+// SKIPPED: **Source:** `NCollection_HeapAllocator.hxx`:33 - `NCollection_HeapAllocator::Free`
+//   Reason: has unbindable types: param 'anAddress': raw pointer (void*)
+//   // pub fn free(&mut self, anAddress: /* void* */);
+//
+// SKIPPED: **Source:** `NCollection_HeapAllocator.hxx`:35 - `NCollection_HeapAllocator::GlobalHeapAllocator`
+//   Reason: return type 'const Handle(NCollection_HeapAllocator)&' is unknown
+//   // pub fn global_heap_allocator() -> &HandleHeapAllocator;
+//
 
 // ========================
 // From NCollection_IncAllocator.hxx
@@ -851,6 +974,23 @@ impl IncAllocator {
     }
 }
 
+// ── Skipped symbols for IncAllocator (3 total) ──
+// SKIPPED: **Source:** `NCollection_IncAllocator.hxx`:67 - `NCollection_IncAllocator::Allocate`
+//   method: Allocate memory with given size. Returns NULL on failure
+//   Reason: has unbindable types: return: raw pointer (void*)
+//   // pub fn allocate(&mut self, size: usize) -> /* void* */;
+//
+// SKIPPED: **Source:** `NCollection_IncAllocator.hxx`:70 - `NCollection_IncAllocator::AllocateOptimal`
+//   method: Allocate memory with given size. Returns NULL on failure
+//   Reason: has unbindable types: return: raw pointer (void*)
+//   // pub fn allocate_optimal(&mut self, size: usize) -> /* void* */;
+//
+// SKIPPED: **Source:** `NCollection_IncAllocator.hxx`:73 - `NCollection_IncAllocator::Free`
+//   method: Free a previously allocated memory. Does nothing
+//   Reason: has unbindable types: param 'arg0': raw pointer (void*)
+//   // pub fn free(&mut self, arg0: /* void* */);
+//
+
 /// **Source:** `NCollection_IncAllocator.hxx`:98 - `NCollection_IncAllocator_IBlock`
 /// Forward list to keep multi-time allocated pointers.
 /// On Reset operation objects will be reused.
@@ -861,6 +1001,12 @@ unsafe impl crate::CppDeletable for IncAllocator_IBlock {
         crate::ffi::NCollection_IncAllocator_IBlock_destructor(ptr);
     }
 }
+
+// ── Skipped symbols for IncAllocator_IBlock (1 total) ──
+// SKIPPED: **Source:** `NCollection_IncAllocator.hxx`:100 - `NCollection_IncAllocator::IBlock::NCollection_IncAllocator::IBlock`
+//   Reason: has unbindable types: param 'thePointer': raw pointer (void*)
+//   // pub fn new_voidptr_size(thePointer: /* void* */, theSize: usize) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From NCollection_SparseArrayBase.hxx
@@ -1011,3 +1157,20 @@ impl WinHeapAllocator {
         }
     }
 }
+
+// ── Skipped symbols for WinHeapAllocator (3 total) ──
+// SKIPPED: **Source:** `NCollection_WinHeapAllocator.hxx`:44 - `NCollection_WinHeapAllocator::Allocate`
+//   method: Allocate memory
+//   Reason: has unbindable types: return: raw pointer (void*)
+//   // pub fn allocate(&mut self, theSize: usize) -> /* void* */;
+//
+// SKIPPED: **Source:** `NCollection_WinHeapAllocator.hxx`:47 - `NCollection_WinHeapAllocator::AllocateOptimal`
+//   method: Allocate memory
+//   Reason: has unbindable types: return: raw pointer (void*)
+//   // pub fn allocate_optimal(&mut self, theSize: usize) -> /* void* */;
+//
+// SKIPPED: **Source:** `NCollection_WinHeapAllocator.hxx`:50 - `NCollection_WinHeapAllocator::Free`
+//   method: Release memory
+//   Reason: has unbindable types: param 'theAddress': raw pointer (void*)
+//   // pub fn free(&mut self, theAddress: /* void* */);
+//

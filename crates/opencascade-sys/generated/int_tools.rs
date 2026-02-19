@@ -492,6 +492,12 @@ impl CommonPrt {
     }
 }
 
+// ── Skipped symbols for CommonPrt (1 total) ──
+// SKIPPED: **Source:** `IntTools_CommonPrt.hxx`:42 - `IntTools_CommonPrt::Assign`
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn assign(&mut self, Other: &CommonPrt) -> &mut CommonPrt;
+//
+
 // ========================
 // From IntTools_Context.hxx
 // ========================
@@ -922,6 +928,65 @@ impl HandleIntToolsContext {
         unsafe { &mut *(crate::ffi::HandleIntToolsContext_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Context (10 total) ──
+// SKIPPED: **Source:** `IntTools_Context.hxx`:60 - `IntTools_Context::FClass2d`
+//   method: Returns a reference to point classifier
+//   method: for given face
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn f_class2d(&mut self, aF: &Face) -> &mut FClass2d;
+//
+// SKIPPED: **Source:** `IntTools_Context.hxx`:64 - `IntTools_Context::ProjPS`
+//   method: Returns a reference to point projector
+//   method: for given face
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn proj_ps(&mut self, aF: &Face) -> &mut ProjectPointOnSurf;
+//
+// SKIPPED: **Source:** `IntTools_Context.hxx`:68 - `IntTools_Context::ProjPC`
+//   method: Returns a reference to point projector
+//   method: for given edge
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn proj_pc(&mut self, aE: &Edge) -> &mut ProjectPointOnCurve;
+//
+// SKIPPED: **Source:** `IntTools_Context.hxx`:72 - `IntTools_Context::ProjPT`
+//   method: Returns a reference to point projector
+//   method: for given curve
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn proj_pt(&mut self, aC: &HandleCurve) -> &mut ProjectPointOnCurve;
+//
+// SKIPPED: **Source:** `IntTools_Context.hxx`:76 - `IntTools_Context::SurfaceData`
+//   method: Returns a reference to surface localization data
+//   method: for given face
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn surface_data(&mut self, aF: &Face) -> &mut SurfaceRangeLocalizeData;
+//
+// SKIPPED: **Source:** `IntTools_Context.hxx`:80 - `IntTools_Context::SolidClassifier`
+//   method: Returns a reference to solid classifier
+//   method: for given solid
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn solid_classifier(&mut self, aSolid: &Solid) -> &mut SolidClassifier;
+//
+// SKIPPED: **Source:** `IntTools_Context.hxx`:84 - `IntTools_Context::Hatcher`
+//   method: Returns a reference to 2D hatcher
+//   method: for given face
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn hatcher(&mut self, aF: &Face) -> &mut Hatcher;
+//
+// SKIPPED: **Source:** `IntTools_Context.hxx`:87 - `IntTools_Context::SurfaceAdaptor`
+//   method: Returns a reference to surface adaptor for given face
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn surface_adaptor(&mut self, theFace: &Face) -> &mut Surface;
+//
+// SKIPPED: **Source:** `IntTools_Context.hxx`:91 - `IntTools_Context::OBB`
+//   method: Builds and stores an Oriented Bounding Box for the shape.
+//   method: Returns a reference to OBB.
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn obb(&mut self, theShape: &Shape, theFuzzyValue: f64) -> &mut OBB;
+//
+// SKIPPED: **Source:** `IntTools_Context.hxx`:232 - `IntTools_Context::BndBox`
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn bnd_box(&mut self, theS: &Shape) -> &mut Box;
+//
 
 // ========================
 // From IntTools_Curve.hxx
@@ -2851,6 +2916,12 @@ impl SurfaceRangeLocalizeData {
     }
 }
 
+// ── Skipped symbols for SurfaceRangeLocalizeData (1 total) ──
+// SKIPPED: **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:47 - `IntTools_SurfaceRangeLocalizeData::Assign`
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn assign(&mut self, Other: &SurfaceRangeLocalizeData) -> &mut SurfaceRangeLocalizeData;
+//
+
 // ========================
 // From IntTools_SurfaceRangeSample.hxx
 // ========================
@@ -3074,6 +3145,20 @@ impl SurfaceRangeSample {
         }
     }
 }
+
+// ── Skipped symbols for SurfaceRangeSample (3 total) ──
+// SKIPPED: **Source:** `IntTools_SurfaceRangeSample.hxx`:44 - `IntTools_SurfaceRangeSample::Assign`
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn assign(&mut self, Other: &SurfaceRangeSample) -> &mut SurfaceRangeSample;
+//
+// SKIPPED: **Source:** `IntTools_SurfaceRangeSample.hxx`:58 - `IntTools_SurfaceRangeSample::GetIndexes`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_indexes(&self, theIndexU: &mut i32, theIndexV: &mut i32);
+//
+// SKIPPED: **Source:** `IntTools_SurfaceRangeSample.hxx`:60 - `IntTools_SurfaceRangeSample::GetDepths`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_depths(&self, theDepthU: &mut i32, theDepthV: &mut i32);
+//
 
 // ========================
 // From IntTools_Tools.hxx
@@ -3660,6 +3745,16 @@ impl WLineTool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_WLineTool_ctor()) }
     }
 }
+
+// ── Skipped symbols for WLineTool (2 total) ──
+// SKIPPED: **Source:** `IntTools_WLineTool.hxx`:31 - `IntTools_WLineTool::NotUseSurfacesForApprox`
+//   Reason: param 'WL' uses unknown type 'const Handle(IntPatch_WLine)&'
+//   // pub fn not_use_surfaces_for_approx(aF1: &Face, aF2: &Face, WL: &HandleWLine, ifprm: i32, ilprm: i32) -> bool;
+//
+// SKIPPED: **Source:** `IntTools_WLineTool.hxx`:37 - `IntTools_WLineTool::DecompositionOfWLine`
+//   Reason: param 'theWLine' uses unknown type 'const Handle(IntPatch_WLine)&'
+//   // pub fn decomposition_of_w_line(theWLine: &HandleWLine, theSurface1: &HandleSurface, theSurface2: &HandleSurface, theFace1: &Face, theFace2: &Face, theLConstructor: &LineConstructor, theAvoidLConstructor: bool, theTol: f64, theNewLines: &mut SequenceOfLine, arg9: &HandleContext) -> bool;
+//
 
 // ========================
 // Additional type re-exports

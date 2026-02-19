@@ -322,6 +322,40 @@ impl Application {
     }
 }
 
+// ── Skipped symbols for Application (6 total) ──
+// SKIPPED: **Source:** `CDF_Application.hxx`:140 - `CDF_Application::Read`
+//   method: Reads theDocument from standard SEEKABLE stream theIStream,
+//   method: the stream should support SEEK functionality
+//   Reason: has unbindable types: param 'theIStream': stream type (Standard_IStream&)
+//   // pub fn read(&mut self, theIStream: /* Standard_IStream& */, theDocument: &mut HandleDocument, theFilter: &HandleReaderFilter, theRange: &ProgressRange);
+//
+// SKIPPED: **Source:** `CDF_Application.hxx`:158 - `CDF_Application::ReaderFromFormat`
+//   method: Returns instance of read driver for specified format.
+//   method: Default implementation uses plugin mechanism to load reader dynamically.
+//   Reason: return type 'Handle(PCDM_Reader)' is unknown
+//   // pub fn reader_from_format(&mut self, aFormat: &ExtendedString) -> OwnedPtr<Handle<PCDM_Reader>>;
+//
+// SKIPPED: **Source:** `CDF_Application.hxx`:173 - `CDF_Application::WriterFromFormat`
+//   method: Returns instance of storage driver for specified format.
+//   method: Default implementation uses plugin mechanism to load driver dynamically.
+//   Reason: return type 'Handle(PCDM_StorageDriver)' is unknown
+//   // pub fn writer_from_format(&mut self, aFormat: &ExtendedString) -> OwnedPtr<Handle<PCDM_StorageDriver>>;
+//
+// SKIPPED: **Source:** `CDF_Application.hxx`:182 - `CDF_Application::DefaultFolder`
+//   Reason: return type 'Standard_ExtString' is unknown
+//   // pub fn default_folder(&mut self) -> OwnedPtr<Standard_ExtString>;
+//
+// SKIPPED: **Source:** `CDF_Application.hxx`:184 - `CDF_Application::SetDefaultFolder`
+//   Reason: param 'aFolder' uses unknown type 'Standard_ExtString'
+//   // pub fn set_default_folder(&mut self, aFolder: ExtString) -> bool;
+//
+// SKIPPED: **Source:** `CDF_Application.hxx`:54 - `CDF_Application::Load`
+//   static_method: plugs an application.
+//   static_method: Open is used
+//   Reason: return type 'Handle(CDF_Application)' is unknown
+//   // pub fn load(aGUID: &GUID) -> OwnedPtr<Handle<CDF_Application>>;
+//
+
 // ========================
 // From CDF_MetaDataDriver.hxx
 // ========================
@@ -490,3 +524,45 @@ impl HandleCDFMetaDataDriver {
         unsafe { &mut *(crate::ffi::HandleCDFMetaDataDriver_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for MetaDataDriver (7 total) ──
+// SKIPPED: **Source:** `CDF_MetaDataDriver.hxx`:44 - `CDF_MetaDataDriver::CreateDependsOn`
+//   method: Creates a "Depends On"  relation between two Datas.
+//   method: By default does nothing
+//   Reason: param 'aFirstData' uses unknown type 'const Handle(CDM_MetaData)&'
+//   // pub fn create_depends_on(&mut self, aFirstData: &HandleMetaData, aSecondData: &HandleMetaData);
+//
+// SKIPPED: **Source:** `CDF_MetaDataDriver.hxx`:47 - `CDF_MetaDataDriver::CreateReference`
+//   Reason: param 'aFrom' uses unknown type 'const Handle(CDM_MetaData)&'
+//   // pub fn create_reference(&mut self, aFrom: &HandleMetaData, aTo: &HandleMetaData, aReferenceIdentifier: i32, aToDocumentVersion: i32);
+//
+// SKIPPED: **Source:** `CDF_MetaDataDriver.hxx`:86 - `CDF_MetaDataDriver::MetaData`
+//   method: should return the MetaData stored in the DBMS with the meta-data
+//   method: corresponding to the Data. If the MetaDataDriver has version management capabilities
+//   method: the version has to be set in the returned MetaData.
+//   Reason: return type 'Handle(CDM_MetaData)' is unknown
+//   // pub fn meta_data(&mut self, aFolder: &ExtendedString, aName: &ExtendedString, aVersion: &ExtendedString) -> OwnedPtr<Handle<CDM_MetaData>>;
+//
+// SKIPPED: **Source:** `CDF_MetaDataDriver.hxx`:99 - `CDF_MetaDataDriver::LastVersion`
+//   method: by default returns aMetaDATA
+//   method: should return the MetaData stored in the DBMS with the meta-data
+//   method: corresponding to the path. If the MetaDataDriver has version management capabilities
+//   Reason: param 'aMetaData' uses unknown type 'const Handle(CDM_MetaData)&'
+//   // pub fn last_version(&mut self, aMetaData: &HandleMetaData) -> OwnedPtr<Handle<CDM_MetaData>>;
+//
+// SKIPPED: **Source:** `CDF_MetaDataDriver.hxx`:106 - `CDF_MetaDataDriver::CreateMetaData`
+//   method: should create meta-data corresponding to aData and maintaining a meta-link
+//   method: between these meta-data and aFileName
+//   method: CreateMetaData is called by CreateData
+//   Reason: return type 'Handle(CDM_MetaData)' is unknown
+//   // pub fn create_meta_data(&mut self, aDocument: &HandleDocument, aFileName: &ExtendedString) -> OwnedPtr<Handle<CDM_MetaData>>;
+//
+// SKIPPED: **Source:** `CDF_MetaDataDriver.hxx`:115 - `CDF_MetaDataDriver::ReferenceIterator`
+//   Reason: return type 'Handle(PCDM_ReferenceIterator)' is unknown
+//   // pub fn reference_iterator(&mut self, theMessageDriver: &HandleMessenger) -> OwnedPtr<Handle<PCDM_ReferenceIterator>>;
+//
+// SKIPPED: **Source:** `CDF_MetaDataDriver.hxx`:123 - `CDF_MetaDataDriver::MetaData`
+//   method: calls MetaData with an empty version
+//   Reason: return type 'Handle(CDM_MetaData)' is unknown
+//   // pub fn meta_data(&mut self, aFolder: &ExtendedString, aName: &ExtendedString) -> OwnedPtr<Handle<CDM_MetaData>>;
+//

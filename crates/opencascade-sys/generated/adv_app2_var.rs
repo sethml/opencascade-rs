@@ -109,6 +109,16 @@ impl Criterion {
     }
 }
 
+// ── Skipped symbols for Criterion (2 total) ──
+// SKIPPED: **Source:** `AdvApp2Var_Criterion.hxx`:39 - `AdvApp2Var_Criterion::Value`
+//   Reason: param 'P' uses unknown type 'AdvApp2Var_Patch&'
+//   // pub fn value(&self, P: &mut Patch, C: &Context);
+//
+// SKIPPED: **Source:** `AdvApp2Var_Criterion.hxx`:41 - `AdvApp2Var_Criterion::IsSatisfied`
+//   Reason: param 'P' uses unknown type 'const AdvApp2Var_Patch&'
+//   // pub fn is_satisfied(&self, P: &Patch) -> bool;
+//
+
 // ========================
 // Additional type re-exports
 // ========================

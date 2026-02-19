@@ -608,6 +608,20 @@ impl TheCSFunctionOfHInter {
     }
 }
 
+// ── Skipped symbols for TheCSFunctionOfHInter (3 total) ──
+// SKIPPED: **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:42 - `IntCurveSurface_TheCSFunctionOfHInter::Value`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:44 - `IntCurveSurface_TheCSFunctionOfHInter::Derivatives`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:46 - `IntCurveSurface_TheCSFunctionOfHInter::Values`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
+
 // ========================
 // From IntCurveSurface_TheExactHInter.hxx
 // ========================
@@ -1879,6 +1893,26 @@ impl ThePolyhedronOfHInter {
     }
 }
 
+// ── Skipped symbols for ThePolyhedronOfHInter (3 total) ──
+// SKIPPED: **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:62 - `IntCurveSurface_ThePolyhedronOfHInter::Size`
+//   method: get the size of the discretization.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn size(&self, nbdu: &mut i32, nbdv: &mut i32);
+//
+// SKIPPED: **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:69 - `IntCurveSurface_ThePolyhedronOfHInter::Triangle`
+//   method: Give the 3 points of the triangle of address Index in
+//   method: the double array of triangles.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn triangle(&self, Index: i32, P1: &mut i32, P2: &mut i32, P3: &mut i32);
+//
+// SKIPPED: **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:80 - `IntCurveSurface_ThePolyhedronOfHInter::TriConnex`
+//   method: Give the address Tricon of the triangle connexe to the
+//   method: triangle of address Triang by the edge Pivot Pedge and
+//   method: the third point of this connexe triangle. When we are
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn tri_connex(&self, Triang: i32, Pivot: i32, Pedge: i32, TriCon: &mut i32, OtherP: &mut i32) -> i32;
+//
+
 // ========================
 // From IntCurveSurface_ThePolyhedronToolOfHInter.hxx
 // ========================
@@ -1966,6 +2000,21 @@ impl ThePolyhedronToolOfHInter {
         unsafe { crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_dump(thePolyh) }
     }
 }
+
+// ── Skipped symbols for ThePolyhedronToolOfHInter (2 total) ──
+// SKIPPED: **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:53 - `IntCurveSurface_ThePolyhedronToolOfHInter::Triangle`
+//   static_method: Give the indices  of  the 3 points of  the triangle of
+//   static_method: address Index in the PolyhedronTool.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn triangle(thePolyh: &ThePolyhedronOfHInter, Index: i32, P1: &mut i32, P2: &mut i32, P3: &mut i32);
+//
+// SKIPPED: **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:69 - `IntCurveSurface_ThePolyhedronToolOfHInter::TriConnex`
+//   static_method: Give the  address Tricon of   the triangle connexe to
+//   static_method: the triangle of address Triang by the edge Pivot Pedge
+//   static_method: and the third point of this  connexe triangle. When we
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn tri_connex(thePolyh: &ThePolyhedronOfHInter, Triang: i32, Pivot: i32, Pedge: i32, TriCon: &mut i32, OtherP: &mut i32) -> i32;
+//
 
 // ========================
 // From IntCurveSurface_TheQuadCurvExactHInter.hxx

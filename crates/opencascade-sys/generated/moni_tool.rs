@@ -75,3 +75,19 @@ impl HandleMoniToolSignText {
         unsafe { &mut *(crate::ffi::HandleMoniToolSignText_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for SignText (2 total) ──
+// SKIPPED: **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone`
+//   method: Gives a text as a signature for a transient object alone, i.e.
+//   method: without defined context.
+//   method: By default, calls Text with undefined context (Null Handle) and
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn text_alone(&self, ent: &HandleTransient) -> OwnedPtr<TCollection_AsciiString>;
+//
+// SKIPPED: **Source:** `MoniTool_SignText.hxx`:53 - `MoniTool_SignText::Text`
+//   method: Gives a text as a signature for a transient object in a context
+//   method: If the context is senseless, it can be given as Null Handle
+//   method: empty result if nothing to give (at least the DynamicType could
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn text(&self, ent: &HandleTransient, context: &HandleTransient) -> OwnedPtr<TCollection_AsciiString>;
+//

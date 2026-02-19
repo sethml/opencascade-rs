@@ -58,6 +58,29 @@ pub struct ClassBindings {
     pub is_pod_struct: bool,
     /// Fields for POD structs (only populated when is_pod_struct is true)
     pub pod_fields: Vec<PodFieldBinding>,
+    /// Symbols that were skipped during binding generation, with reasons
+    pub skipped_symbols: Vec<SkippedSymbol>,
+}
+
+/// A symbol that was skipped during binding generation.
+#[derive(Debug, Clone)]
+pub struct SkippedSymbol {
+    /// Kind of symbol ("constructor", "method", "static_method", "function")
+    pub kind: &'static str,
+    /// Rust module this symbol belongs to
+    pub module: String,
+    /// C++ name of the symbol
+    pub cpp_name: String,
+    /// Source header
+    pub source_header: String,
+    /// Source line number
+    pub source_line: Option<u32>,
+    /// Documentation comment from C++ header
+    pub doc_comment: Option<String>,
+    /// Human-readable reason why the symbol was skipped
+    pub skip_reason: String,
+    /// Best-guess Rust declaration (commented out in output)
+    pub stub_rust_decl: String,
 }
 
 /// A single field in a POD struct.
@@ -986,6 +1009,113 @@ fn return_type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeConte
 
 // ── Filtering predicates ────────────────────────────────────────────────────
 
+/// Describe which types in a method's params/return are unbindable.
+fn describe_unbindable_types_method(method: &Method) -> String {
+    let mut parts = Vec::new();
+    for p in &method.params {
+        if p.ty.is_unbindable() && !p.is_nullable_ptr() {
+            parts.push(format!("param '{}': {}", p.name, describe_unbindable_reason(&p.ty)));
+        }
+    }
+    if let Some(ref ret) = method.return_type {
+        if ret.is_unbindable() {
+            parts.push(format!("return: {}", describe_unbindable_reason(ret)));
+        }
+    }
+    if parts.is_empty() { "unknown".to_string() } else { parts.join("; ") }
+}
+
+/// Describe which types in a constructor's params are unbindable.
+fn describe_unbindable_types_ctor(ctor: &Constructor) -> String {
+    let mut parts = Vec::new();
+    for p in &ctor.params {
+        if p.ty.is_unbindable() && !p.is_nullable_ptr() {
+            parts.push(format!("param '{}': {}", p.name, describe_unbindable_reason(&p.ty)));
+        }
+    }
+    if parts.is_empty() { "unknown".to_string() } else { parts.join("; ") }
+}
+
+/// Describe which types in a static method's params/return are unbindable.
+fn describe_unbindable_types_static(method: &StaticMethod) -> String {
+    let mut parts = Vec::new();
+    for p in &method.params {
+        if p.ty.is_unbindable() && !p.is_nullable_ptr() {
+            parts.push(format!("param '{}': {}", p.name, describe_unbindable_reason(&p.ty)));
+        }
+    }
+    if let Some(ref ret) = method.return_type {
+        if ret.is_unbindable() {
+            parts.push(format!("return: {}", describe_unbindable_reason(ret)));
+        }
+    }
+    if parts.is_empty() { "unknown".to_string() } else { parts.join("; ") }
+}
+
+/// Describe why a specific type is unbindable.
+fn describe_unbindable_reason(ty: &Type) -> String {
+    if ty.is_stream() { return format!("stream type ({})", ty.to_cpp_string()); }
+    if ty.is_void_ptr() { return format!("void pointer ({})", ty.to_cpp_string()); }
+    if ty.is_array() { return format!("C-style array ({})", ty.to_cpp_string()); }
+    if ty.is_raw_ptr() { return format!("raw pointer ({})", ty.to_cpp_string()); }
+    if ty.is_rvalue_ref() { return format!("rvalue reference ({})", ty.to_cpp_string()); }
+    format!("unresolved template/nested type ({})", ty.to_cpp_string())
+}
+
+/// Generate a best-guess stub Rust declaration for a skipped method.
+fn generate_method_stub(_class_name: &str, method: &Method) -> String {
+    let self_param = if method.is_const { "&self" } else { "&mut self" };
+    let params: Vec<String> = std::iter::once(self_param.to_string())
+        .chain(method.params.iter().map(|p| format!("{}: {}", safe_param_name(&p.name), p.ty.to_rust_type_string_safe())))
+        .collect();
+    let ret = method.return_type.as_ref()
+        .map(|ty| format!(" -> {}", stub_return_type_string(ty)))
+        .unwrap_or_default();
+    format!("pub fn {}({}){};", safe_method_name(&method.name), params.join(", "), ret)
+}
+
+/// Generate a best-guess stub Rust declaration for a skipped constructor.
+fn generate_ctor_stub(_class_name: &str, ctor: &Constructor) -> String {
+    let params: Vec<String> = ctor.params.iter()
+        .map(|p| format!("{}: {}", safe_param_name(&p.name), p.ty.to_rust_type_string_safe()))
+        .collect();
+    let suffix = ctor.overload_suffix();
+    let method_name = if suffix.is_empty() { "new".to_string() } else { format!("new{}", suffix) };
+    format!("pub fn {}({}) -> OwnedPtr<Self>;", method_name, params.join(", "))
+}
+
+/// Generate a best-guess stub Rust declaration for a skipped static method.
+fn generate_static_method_stub(_class_name: &str, method: &StaticMethod) -> String {
+    let params: Vec<String> = method.params.iter()
+        .map(|p| format!("{}: {}", safe_param_name(&p.name), p.ty.to_rust_type_string_safe()))
+        .collect();
+    let ret = method.return_type.as_ref()
+        .map(|ty| format!(" -> {}", stub_return_type_string(ty)))
+        .unwrap_or_default();
+    format!("pub fn {}({}){};", safe_method_name(&method.name), params.join(", "), ret)
+}
+
+/// Generate a best-guess stub Rust declaration for a skipped free function.
+fn generate_function_stub(func: &crate::resolver::ResolvedFunction) -> String {
+    let params: Vec<String> = func.params.iter()
+        .map(|p| format!("{}: {}", safe_param_name(&p.name), p.ty.original.to_rust_type_string_safe()))
+        .collect();
+    let ret = func.return_type.as_ref()
+        .map(|rt| format!(" -> {}", stub_return_type_string(&rt.original)))
+        .unwrap_or_default();
+    format!("pub fn {}({}){};", safe_method_name(&func.short_name), params.join(", "), ret)
+}
+
+/// Convert a return type to its best-guess Rust string for stub declarations.
+/// Class/Handle types get wrapped in OwnedPtr; references stay as references.
+fn stub_return_type_string(ty: &Type) -> String {
+    match ty {
+        Type::Class(name) if name != "char" => format!("OwnedPtr<{}>", name),
+        Type::Handle(name) => format!("OwnedPtr<Handle<{}>>", name),
+        _ => ty.to_rust_type_string_safe(),
+    }
+}
+
 /// Common filter for instance methods (both direct and wrapper)
 /// Methods that cause ambiguous overload errors due to multiple inheritance.
 /// Format: (class_name, method_name)
@@ -994,32 +1124,33 @@ const AMBIGUOUS_METHODS: &[(&str, &str)] = &[
     ("BOPAlgo_ParallelAlgo", "Perform"),
 ];
 
-fn is_method_bindable(method: &Method, ctx: &TypeContext, class_name: &str) -> bool {
+fn is_method_bindable(method: &Method, ctx: &TypeContext, class_name: &str) -> Result<(), String> {
     if method.has_unbindable_types() {
-        return false;
+        let unbindable_details = describe_unbindable_types_method(method);
+        return Err(format!("has unbindable types: {}", unbindable_details));
     }
     // Skip methods with const char*& or const char* const& params (need manual bindings)
-    if resolver::method_has_string_ref_param(method).is_some() {
-        return false;
+    if let Some((param_name, type_name)) = resolver::method_has_string_ref_param(method) {
+        return Err(format!("has string ref param '{}' of type '{}' (needs manual binding)", param_name, type_name));
     }
     // Skip methods that cause ambiguous call errors in C++ wrappers
     if AMBIGUOUS_METHODS.iter().any(|(c, m)| *c == class_name && *m == method.name) {
-        return false;
+        return Err("causes ambiguous overload in C++ (listed in AMBIGUOUS_METHODS)".to_string());
     }
     // Const/mut return mismatch is now handled via C++ wrappers (ConstMutReturnFix).
     // &mut enum output params are now handled via C++ wrappers (MutRefEnumParam).
     if resolver::method_needs_explicit_lifetimes(method) {
-        return false;
+        return Err("returns &mut with reference params (ambiguous lifetimes)".to_string());
     }
-    if method
+    if let Some(p) = method
         .params
         .iter()
-        .any(|p| type_uses_unknown_type(&p.ty, ctx))
+        .find(|p| type_uses_unknown_type(&p.ty, ctx))
     {
-        return false;
+        return Err(format!("param '{}' uses unknown type '{}'", p.name, p.ty.to_cpp_string()));
     }
     // Skip methods where a nullable pointer param's inner type is unknown
-    if method.params.iter().any(|p| {
+    if let Some(p) = method.params.iter().find(|p| {
         if p.is_nullable_ptr() {
             match &p.ty {
                 Type::ConstPtr(inner) | Type::MutPtr(inner) => type_uses_unknown_type(inner, ctx),
@@ -1029,11 +1160,11 @@ fn is_method_bindable(method: &Method, ctx: &TypeContext, class_name: &str) -> b
             false
         }
     }) {
-        return false;
+        return Err(format!("nullable param '{}' inner type is unknown", p.name));
     }
     if let Some(ref ret) = method.return_type {
         if type_uses_unknown_type(ret, ctx) {
-            return false;
+            return Err(format!("return type '{}' is unknown", ret.to_cpp_string()));
         }
         // OwnedPtr<T> return type requires CppDeletable for T. ParsedClasses have
         // generated destructors; the 91 known collections do too. But NCollection
@@ -1043,16 +1174,16 @@ fn is_method_bindable(method: &Method, ctx: &TypeContext, class_name: &str) -> b
         if let Type::Class(name) = ret {
             if let Some(deletable) = ctx.deletable_class_names {
                 if !deletable.contains(name.as_str()) && !ctx.all_enums.contains(name.as_str()) {
-                    return false;
+                    return Err(format!("return type '{}' is not CppDeletable", name));
                 }
             }
         }
         // MutRef to enum return type can't be bound — extern "C" expects int32_t& but C++ has EnumType&
         if return_type_is_mut_ref_enum(ret, ctx.all_enums) {
-            return false;
+            return Err("return type is &mut enum (not representable in extern \"C\")".to_string());
         }
     }
-    true
+    Ok(())
 }
 
 /// Filter for constructors
@@ -1061,31 +1192,32 @@ fn is_constructor_bindable(
     _all_enum_names: &HashSet<String>,
     handle_able_classes: &HashSet<String>,
     ctx: &TypeContext,
-) -> bool {
+) -> Result<(), String> {
     // By-value class/handle params are now supported: C++ wrappers accept const T&
     // and the C++ compiler handles the copy.
     if ctor.has_unbindable_types() {
-        return false;
+        let unbindable_details = describe_unbindable_types_ctor(ctor);
+        return Err(format!("has unbindable types: {}", unbindable_details));
     }
-    if ctor
+    if let Some(p) = ctor
         .params
         .iter()
-        .any(|p| param_uses_unknown_handle(&p.ty, handle_able_classes))
+        .find(|p| param_uses_unknown_handle(&p.ty, handle_able_classes))
     {
-        return false;
+        return Err(format!("param '{}' uses unknown Handle type", p.name));
     }
     // Also check for unknown class types in parameters.
     // This catches NCollection typedef types (e.g., TDF_LabelMap) that aren't
     // declared in the extern "C" FFI.
-    if ctor
+    if let Some(p) = ctor
         .params
         .iter()
-        .any(|p| type_uses_unknown_type(&p.ty, ctx))
+        .find(|p| type_uses_unknown_type(&p.ty, ctx))
     {
-        return false;
+        return Err(format!("param '{}' uses unknown type '{}'", p.name, p.ty.to_cpp_string()));
     }
     // Skip constructors where a nullable pointer param's inner type is unknown
-    if ctor.params.iter().any(|p| {
+    if let Some(p) = ctor.params.iter().find(|p| {
         if p.is_nullable_ptr() {
             match &p.ty {
                 Type::ConstPtr(inner) | Type::MutPtr(inner) => type_uses_unknown_type(inner, ctx),
@@ -1095,30 +1227,31 @@ fn is_constructor_bindable(
             false
         }
     }) {
-        return false;
+        return Err(format!("nullable param '{}' inner type is unknown", p.name));
     }
-    true
+    Ok(())
 }
 
 /// Filter for static methods
-fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> bool {
+fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> Result<(), String> {
     if method.has_unbindable_types() {
-        return false;
+        let unbindable_details = describe_unbindable_types_static(method);
+        return Err(format!("has unbindable types: {}", unbindable_details));
     }
     // Skip static methods with const char*& or const char* const& params (need manual bindings)
-    if resolver::static_method_has_string_ref_param(method).is_some() {
-        return false;
+    if let Some((param_name, type_name)) = resolver::static_method_has_string_ref_param(method) {
+        return Err(format!("has string ref param '{}' of type '{}' (needs manual binding)", param_name, type_name));
     }
     // &mut enum output params are now handled via C++ wrappers.
-    if method
+    if let Some(p) = method
         .params
         .iter()
-        .any(|p| type_uses_unknown_type(&p.ty, ctx))
+        .find(|p| type_uses_unknown_type(&p.ty, ctx))
     {
-        return false;
+        return Err(format!("param '{}' uses unknown type '{}'", p.name, p.ty.to_cpp_string()));
     }
     // Skip static methods where a nullable pointer param's inner type is unknown
-    if method.params.iter().any(|p| {
+    if let Some(p) = method.params.iter().find(|p| {
         if p.is_nullable_ptr() {
             match &p.ty {
                 Type::ConstPtr(inner) | Type::MutPtr(inner) => type_uses_unknown_type(inner, ctx),
@@ -1128,28 +1261,28 @@ fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> bool {
             false
         }
     }) {
-        return false;
+        return Err(format!("nullable param '{}' inner type is unknown", p.name));
     }
     if let Some(ref ret) = method.return_type {
         if type_uses_unknown_type(ret, ctx) {
-            return false;
+            return Err(format!("return type '{}' is unknown", ret.to_cpp_string()));
         }
         // Same CppDeletable check as for instance methods (see is_method_bindable).
         // Enum types are represented as Type::Class in raw parsed types — allow them.
         if let Type::Class(name) = ret {
             if let Some(deletable) = ctx.deletable_class_names {
                 if !deletable.contains(name.as_str()) && !ctx.all_enums.contains(name.as_str()) {
-                    return false;
+                    return Err(format!("return type '{}' is not CppDeletable", name));
                 }
             }
         }
         // C-string returns (const char*) are handled via C++ wrappers returning const char*.
         // MutRef to enum return type can't be bound — extern "C" expects int32_t& but C++ has EnumType&
         if return_type_is_mut_ref_enum(ret, ctx.all_enums) {
-            return false;
+            return Err("return type is &mut enum (not representable in extern \"C\")".to_string());
         }
     }
-    true
+    Ok(())
 }
 
 /// Check if a return type is a mutable reference to an enum.
@@ -1591,12 +1724,27 @@ pub fn compute_class_bindings(
 
     let effectively_abstract = is_effectively_abstract(class, all_classes_by_name, symbol_table);
 
-    // ── Constructors ────────────────────────────────────────────────────
+    let mut skipped_symbols: Vec<SkippedSymbol> = Vec::new();
+
+    // ── Constructors ────────────────────────────────────────────────────────────
     let exclude_ctors = exclude_methods.contains(&(class.name.clone(), class.name.clone()))
         || exclude_methods.contains(&(class.name.clone(), "*".to_string()));
     let constructors = if !effectively_abstract && !class.has_protected_destructor {
         let mut ctors = compute_constructor_bindings(class, ffi_ctx, handle_able_classes, ncollection_element_types, reexport_ctx);
         if exclude_ctors {
+            // Record excluded constructors from bindings.toml
+            for ctor in &class.constructors {
+                skipped_symbols.push(SkippedSymbol {
+                    kind: "constructor",
+                    module: class.module.clone(),
+                    cpp_name: format!("{}::{}", class.name, class.name),
+                    source_header: class.source_header.clone(),
+                    source_line: ctor.source_line,
+                    doc_comment: ctor.comment.clone(),
+                    skip_reason: "excluded by bindings.toml".to_string(),
+                    stub_rust_decl: generate_ctor_stub(cpp_name, ctor),
+                });
+            }
             ctors.clear();
         }
         // If no bindable constructors AND no explicit constructors at all,
@@ -1617,16 +1765,109 @@ pub fn compute_class_bindings(
         }
         ctors
     } else {
+        // Record skipped constructors for abstract/protected-destructor classes
+        if effectively_abstract {
+            for ctor in &class.constructors {
+                skipped_symbols.push(SkippedSymbol {
+                    kind: "constructor",
+                    module: class.module.clone(),
+                    cpp_name: format!("{}::{}", class.name, class.name),
+                    source_header: class.source_header.clone(),
+                    source_line: ctor.source_line,
+                    doc_comment: ctor.comment.clone(),
+                    skip_reason: "class is abstract (has unimplemented pure virtual methods)".to_string(),
+                    stub_rust_decl: generate_ctor_stub(cpp_name, ctor),
+                });
+            }
+        } else if class.has_protected_destructor {
+            for ctor in &class.constructors {
+                skipped_symbols.push(SkippedSymbol {
+                    kind: "constructor",
+                    module: class.module.clone(),
+                    cpp_name: format!("{}::{}", class.name, class.name),
+                    source_header: class.source_header.clone(),
+                    source_line: ctor.source_line,
+                    doc_comment: ctor.comment.clone(),
+                    skip_reason: "class has protected destructor".to_string(),
+                    stub_rust_decl: generate_ctor_stub(cpp_name, ctor),
+                });
+            }
+        }
         Vec::new()
     };
 
-    // ── Direct methods (extern "C" self-pointer wrappers) ──────────────────
-    let direct_methods_raw: Vec<&Method> = class
-        .methods
-        .iter()
-        .filter(|m| !exclude_methods.contains(&(class.name.clone(), m.name.clone())))
-        .filter(|m| is_method_bindable(m, ffi_ctx, cpp_name) && !needs_wrapper_function(m, all_enum_names))
-        .filter(|m| !method_has_misresolved_element_type(&m.params, m.return_type.as_ref(), cpp_name, ncollection_primitive_classes))
+    // Collect skipped constructors from bindability checks (in the pre-compute phase)
+    if !effectively_abstract && !class.has_protected_destructor && !exclude_ctors {
+        for ctor in &class.constructors {
+            if let Err(reason) = is_constructor_bindable(ctor, all_enum_names, handle_able_classes, ffi_ctx) {
+                skipped_symbols.push(SkippedSymbol {
+                    kind: "constructor",
+                    module: class.module.clone(),
+                    cpp_name: format!("{}::{}", class.name, class.name),
+                    source_header: class.source_header.clone(),
+                    source_line: ctor.source_line,
+                    doc_comment: ctor.comment.clone(),
+                    skip_reason: reason,
+                    stub_rust_decl: generate_ctor_stub(cpp_name, ctor),
+                });
+            }
+        }
+    }
+
+    // ── Instance methods (collect skipped, then partition into direct vs wrapper) ─────
+    // First pass: categorize all methods as bindable or skipped
+    let mut bindable_methods: Vec<&Method> = Vec::new();
+    for method in &class.methods {
+        if exclude_methods.contains(&(class.name.clone(), method.name.clone())) {
+            skipped_symbols.push(SkippedSymbol {
+                kind: "method",
+                module: class.module.clone(),
+                cpp_name: format!("{}::{}", class.name, method.name),
+                source_header: class.source_header.clone(),
+                source_line: method.source_line,
+                doc_comment: method.comment.clone(),
+                skip_reason: "excluded by bindings.toml".to_string(),
+                stub_rust_decl: generate_method_stub(cpp_name, method),
+            });
+            continue;
+        }
+        if let Err(reason) = is_method_bindable(method, ffi_ctx, cpp_name) {
+            skipped_symbols.push(SkippedSymbol {
+                kind: "method",
+                module: class.module.clone(),
+                cpp_name: format!("{}::{}", class.name, method.name),
+                source_header: class.source_header.clone(),
+                source_line: method.source_line,
+                doc_comment: method.comment.clone(),
+                skip_reason: reason,
+                stub_rust_decl: generate_method_stub(cpp_name, method),
+            });
+            continue;
+        }
+        if method_has_misresolved_element_type(&method.params, method.return_type.as_ref(), cpp_name, ncollection_primitive_classes) {
+            skipped_symbols.push(SkippedSymbol {
+                kind: "method",
+                module: class.module.clone(),
+                cpp_name: format!("{}::{}", class.name, method.name),
+                source_header: class.source_header.clone(),
+                source_line: method.source_line,
+                doc_comment: method.comment.clone(),
+                skip_reason: "has misresolved element type (clang batch parsing artifact)".to_string(),
+                stub_rust_decl: generate_method_stub(cpp_name, method),
+            });
+            continue;
+        }
+        bindable_methods.push(method);
+    }
+
+    // Partition into direct vs wrapper
+    let direct_methods_raw: Vec<&Method> = bindable_methods.iter()
+        .filter(|m| !needs_wrapper_function(m, all_enum_names))
+        .copied()
+        .collect();
+    let wrapper_methods_raw: Vec<&Method> = bindable_methods.iter()
+        .filter(|m| needs_wrapper_function(m, all_enum_names))
+        .copied()
         .collect();
 
     let direct_method_names = compute_direct_method_names(&direct_methods_raw);
@@ -1654,15 +1895,6 @@ pub fn compute_class_bindings(
                 source_line: method.source_line,
             }
         })
-        .collect();
-
-    // ── Wrapper methods (by-value return, const char*) ──────────────────
-    let wrapper_methods_raw: Vec<&Method> = class
-        .methods
-        .iter()
-        .filter(|m| !exclude_methods.contains(&(class.name.clone(), m.name.clone())))
-        .filter(|m| is_method_bindable(m, ffi_ctx, cpp_name) && needs_wrapper_function(m, all_enum_names))
-        .filter(|m| !method_has_misresolved_element_type(&m.params, m.return_type.as_ref(), cpp_name, ncollection_primitive_classes))
         .collect();
 
     let wrapper_fn_names = compute_wrapper_method_names(&wrapper_methods_raw);
@@ -1736,14 +1968,50 @@ pub fn compute_class_bindings(
         })
         .collect();
 
-    // ── Static methods ────────────────────────────────────────────────────
-    let static_methods_raw: Vec<&StaticMethod> = class
-        .static_methods
-        .iter()
-        .filter(|m| !exclude_methods.contains(&(class.name.clone(), m.name.clone())))
-        .filter(|m| is_static_method_bindable(m, ffi_ctx))
-        .filter(|m| !method_has_misresolved_element_type(&m.params, m.return_type.as_ref(), cpp_name, ncollection_primitive_classes))
-        .collect();
+    // ── Static methods ──────────────────────────────────────────────────────────
+    let mut static_methods_raw: Vec<&StaticMethod> = Vec::new();
+    for method in &class.static_methods {
+        if exclude_methods.contains(&(class.name.clone(), method.name.clone())) {
+            skipped_symbols.push(SkippedSymbol {
+                kind: "static_method",
+                module: class.module.clone(),
+                cpp_name: format!("{}::{}", class.name, method.name),
+                source_header: class.source_header.clone(),
+                source_line: method.source_line,
+                doc_comment: method.comment.clone(),
+                skip_reason: "excluded by bindings.toml".to_string(),
+                stub_rust_decl: generate_static_method_stub(cpp_name, method),
+            });
+            continue;
+        }
+        if let Err(reason) = is_static_method_bindable(method, ffi_ctx) {
+            skipped_symbols.push(SkippedSymbol {
+                kind: "static_method",
+                module: class.module.clone(),
+                cpp_name: format!("{}::{}", class.name, method.name),
+                source_header: class.source_header.clone(),
+                source_line: method.source_line,
+                doc_comment: method.comment.clone(),
+                skip_reason: reason,
+                stub_rust_decl: generate_static_method_stub(cpp_name, method),
+            });
+            continue;
+        }
+        if method_has_misresolved_element_type(&method.params, method.return_type.as_ref(), cpp_name, ncollection_primitive_classes) {
+            skipped_symbols.push(SkippedSymbol {
+                kind: "static_method",
+                module: class.module.clone(),
+                cpp_name: format!("{}::{}", class.name, method.name),
+                source_header: class.source_header.clone(),
+                source_line: method.source_line,
+                doc_comment: method.comment.clone(),
+                skip_reason: "has misresolved element type (clang batch parsing artifact)".to_string(),
+                stub_rust_decl: generate_static_method_stub(cpp_name, method),
+            });
+            continue;
+        }
+        static_methods_raw.push(method);
+    }
 
     let static_method_names = compute_static_method_names(
         cpp_name,
@@ -1887,6 +2155,7 @@ pub fn compute_class_bindings(
         inherited_methods,
         is_pod_struct: class.is_pod_struct,
         pod_fields,
+        skipped_symbols,
     }
 }
 
@@ -2093,7 +2362,7 @@ fn compute_constructor_bindings(
     let mut bindable_ctors: Vec<TrimmedConstructor> = class
         .constructors
         .iter()
-        .filter(|c| is_constructor_bindable(c, all_enum_names, handle_able_classes, ffi_ctx))
+        .filter(|c| is_constructor_bindable(c, all_enum_names, handle_able_classes, ffi_ctx).is_ok())
         .filter(|c| !constructor_has_misresolved_element_type(c, cpp_name, ncollection_element_types))
         .map(|c| TrimmedConstructor {
             original: c,
@@ -2107,7 +2376,7 @@ fn compute_constructor_bindings(
     // contiguous from the right, so we strip from the end until the remaining
     // params pass the filter.
     for ctor in &class.constructors {
-        if is_constructor_bindable(ctor, all_enum_names, handle_able_classes, ffi_ctx) {
+        if is_constructor_bindable(ctor, all_enum_names, handle_able_classes, ffi_ctx).is_ok() {
 
             continue; // Already included
         }
@@ -2902,10 +3171,10 @@ pub fn compute_all_function_bindings(
     collection_names: &HashSet<String>,
     extra_typedef_names: &HashSet<String>,
     known_headers: &HashSet<String>,
-) -> Vec<FunctionBinding> {
+) -> (Vec<FunctionBinding>, Vec<SkippedSymbol>) {
     let all_functions = symbol_table.all_included_functions();
     if all_functions.is_empty() {
-        return Vec::new();
+        return (Vec::new(), Vec::new());
     }
 
     // Build TypeContext
@@ -2987,23 +3256,72 @@ pub fn compute_all_function_bindings(
 
     let mut used_names: HashSet<String> = HashSet::new();
     let mut result = Vec::new();
+    let mut skipped = Vec::new();
 
     for func in &all_functions {
         // Skip functions with unbindable types
-        let has_unbindable_param = func.params.iter().any(|p| {
+        let unbindable_param = func.params.iter().find(|p| {
             p.ty.original.is_unbindable() || type_uses_unknown_type(&p.ty.original, &ffi_ctx)
         });
-        if has_unbindable_param {
+        if let Some(p) = unbindable_param {
+            let reason = if p.ty.original.is_unbindable() {
+                format!("param '{}': {}", p.name, describe_unbindable_reason(&p.ty.original))
+            } else {
+                format!("param '{}' uses unknown type '{}'", p.name, p.ty.original.to_cpp_string())
+            };
+            skipped.push(SkippedSymbol {
+                kind: "function",
+                module: func.rust_module.clone(),
+                cpp_name: format!("{}::{}", func.namespace, func.short_name),
+                source_header: func.source_header.clone(),
+                source_line: func.source_line,
+                doc_comment: func.doc_comment.clone(),
+                skip_reason: reason,
+                stub_rust_decl: generate_function_stub(func),
+            });
             continue;
         }
         if let Some(ref ret) = func.return_type {
-            if ret.original.is_unbindable() || type_uses_unknown_type(&ret.original, &ffi_ctx) {
+            if ret.original.is_unbindable() {
+                skipped.push(SkippedSymbol {
+                    kind: "function",
+                    module: func.rust_module.clone(),
+                    cpp_name: format!("{}::{}", func.namespace, func.short_name),
+                    source_header: func.source_header.clone(),
+                    source_line: func.source_line,
+                    doc_comment: func.doc_comment.clone(),
+                    skip_reason: format!("return type: {}", describe_unbindable_reason(&ret.original)),
+                    stub_rust_decl: generate_function_stub(func),
+                });
+                continue;
+            }
+            if type_uses_unknown_type(&ret.original, &ffi_ctx) {
+                skipped.push(SkippedSymbol {
+                    kind: "function",
+                    module: func.rust_module.clone(),
+                    cpp_name: format!("{}::{}", func.namespace, func.short_name),
+                    source_header: func.source_header.clone(),
+                    source_line: func.source_line,
+                    doc_comment: func.doc_comment.clone(),
+                    skip_reason: format!("return type '{}' is unknown", ret.original.to_cpp_string()),
+                    stub_rust_decl: generate_function_stub(func),
+                });
                 continue;
             }
             // CppDeletable check for return types (same as class methods)
             if let Type::Class(name) = &ret.original {
                 if let Some(ref deletable) = ffi_ctx.deletable_class_names {
                     if !deletable.contains(name.as_str()) && !ffi_ctx.all_enums.contains(name.as_str()) {
+                        skipped.push(SkippedSymbol {
+                            kind: "function",
+                            module: func.rust_module.clone(),
+                            cpp_name: format!("{}::{}", func.namespace, func.short_name),
+                            source_header: func.source_header.clone(),
+                            source_line: func.source_line,
+                            doc_comment: func.doc_comment.clone(),
+                            skip_reason: format!("return type '{}' is not CppDeletable", name),
+                            stub_rust_decl: generate_function_stub(func),
+                        });
                         continue;
                     }
                 }
@@ -3117,7 +3435,7 @@ pub fn compute_all_function_bindings(
         });
     }
 
-    result
+    (result, skipped)
 }
 
 // ── Emit functions ──────────────────────────────────────────────────────────
@@ -4785,6 +5103,61 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         output.push_str("}\n\n");
     }
 
+    // Emit skipped symbols as comments
+    if !bindings.skipped_symbols.is_empty() {
+        output.push_str(&format!("// ── Skipped symbols for {} ({} total) ──\n", short_name, bindings.skipped_symbols.len()));
+        for skip in &bindings.skipped_symbols {
+            let source_attr = format_source_attribution(
+                &skip.source_header,
+                skip.source_line,
+                &skip.cpp_name,
+            );
+            output.push_str(&format!("// SKIPPED: {}\n", source_attr));
+            if let Some(ref doc) = skip.doc_comment {
+                for line in doc.lines().take(3) {
+                    let trimmed = line.trim();
+                    if !trimmed.is_empty() {
+                        output.push_str(&format!("//   {}: {}\n", skip.kind, trimmed));
+                    }
+                }
+            }
+            output.push_str(&format!("//   Reason: {}\n", skip.skip_reason));
+            output.push_str(&format!("//   // {}\n", skip.stub_rust_decl));
+            output.push_str("//\n");
+        }
+        output.push('\n');
+    }
+
+    output
+}
+
+/// Emit comments for skipped free functions in a module's re-export file.
+pub fn emit_skipped_functions(skipped: &[SkippedSymbol]) -> String {
+    if skipped.is_empty() {
+        return String::new();
+    }
+    let mut output = String::new();
+    output.push_str(&format!("// ── Skipped free functions ({} total) ──\n", skipped.len()));
+    for skip in skipped {
+        let source_attr = format_source_attribution(
+            &skip.source_header,
+            skip.source_line,
+            &skip.cpp_name,
+        );
+        output.push_str(&format!("// SKIPPED: {}\n", source_attr));
+        if let Some(ref doc) = skip.doc_comment {
+            for line in doc.lines().take(3) {
+                let trimmed = line.trim();
+                if !trimmed.is_empty() {
+                    output.push_str(&format!("//   {}: {}\n", skip.kind, trimmed));
+                }
+            }
+        }
+        output.push_str(&format!("//   Reason: {}\n", skip.skip_reason));
+        output.push_str(&format!("//   // {}\n", skip.stub_rust_decl));
+        output.push_str("//\n");
+    }
+    output.push('\n');
     output
 }
 

@@ -202,6 +202,20 @@ impl ConfigurationNode {
     }
 }
 
+// ── Skipped symbols for ConfigurationNode (2 total) ──
+// SKIPPED: **Source:** `DEGLTF_ConfigurationNode.hxx`:41 - `DEGLTF_ConfigurationNode::DEGLTF_ConfigurationNode`
+//   constructor: Copies values of all fields
+//   constructor: @param[in] theNode object to copy
+//   Reason: param 'theNode' uses unknown Handle type
+//   // pub fn new_handledegltfconfigurationnode(theNode: &HandleConfigurationNode) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `DEGLTF_ConfigurationNode.hxx`:80 - `DEGLTF_ConfigurationNode::GetExtensions`
+//   method: Gets list of supported file extensions
+//   method: @return list of extensions
+//   Reason: return type 'TColStd_ListOfAsciiString' is not CppDeletable
+//   // pub fn get_extensions(&self) -> OwnedPtr<TColStd_ListOfAsciiString>;
+//
+
 /// **Source:** `DEGLTF_ConfigurationNode.hxx`:83 - `DEGLTF_ConfigurationNode_RWGltf_InternalSection`
 pub use crate::ffi::DEGLTF_ConfigurationNode_RWGltf_InternalSection as ConfigurationNode_RWGltf_InternalSection;
 
@@ -361,3 +375,47 @@ impl Provider {
         unsafe { crate::ffi::DEGLTF_Provider_inherited_SetNode(self as *mut Self, theNode) }
     }
 }
+
+// ── Skipped symbols for Provider (6 total) ──
+// SKIPPED: **Source:** `DEGLTF_Provider.hxx`:51 - `DEGLTF_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theDocument document to save result
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DEGLTF_Provider.hxx`:63 - `DEGLTF_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theDocument document to export
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DEGLTF_Provider.hxx`:74 - `DEGLTF_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theDocument document to save result
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DEGLTF_Provider.hxx`:84 - `DEGLTF_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theDocument document to export
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DEGLTF_Provider.hxx`:95 - `DEGLTF_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theShape shape to save result
+//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theShape: &mut Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DEGLTF_Provider.hxx`:107 - `DEGLTF_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theShape shape to export
+//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theShape: &Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//

@@ -241,6 +241,20 @@ impl Hatcher {
     }
 }
 
+// ── Skipped symbols for Hatcher (2 total) ──
+// SKIPPED: **Source:** `Hatch_Hatcher.hxx`:153 - `Hatch_Hatcher::StartIndex`
+//   method: Returns the first Index and Par2 of  interval <J>  on
+//   method: line  <I>.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn start_index(&self, I: i32, J: i32, Index: &mut i32, Par2: &mut f64);
+//
+// SKIPPED: **Source:** `Hatch_Hatcher.hxx`:164 - `Hatch_Hatcher::EndIndex`
+//   method: Returns the last Index and Par2 of  interval <J>  on
+//   method: line  <I>.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn end_index(&self, I: i32, J: i32, Index: &mut i32, Par2: &mut f64);
+//
+
 // ========================
 // From Hatch_Line.hxx
 // ========================

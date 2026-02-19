@@ -189,6 +189,12 @@ impl BoxBndTreeSelector {
     }
 }
 
+// ── Skipped symbols for BoxBndTreeSelector (1 total) ──
+// SKIPPED: **Source:** `ShapeAnalysis_BoxBndTree.hxx`:93 - `ShapeAnalysis_BoxBndTreeSelector::Accept`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn accept(&mut self, arg0: &i32) -> bool;
+//
+
 // ========================
 // From ShapeAnalysis_CanonicalRecognition.hxx
 // ========================
@@ -715,6 +721,15 @@ impl CheckSmallFace {
         }
     }
 }
+
+// ── Skipped symbols for CheckSmallFace (1 total) ──
+// SKIPPED: **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:147 - `ShapeAnalysis_CheckSmallFace::CheckPin`
+//   method: Checks if a Face has a pin, which can be edited
+//   method: No singularity : no pin, returns 0
+//   method: If there is a pin, checked topics, with returned value :
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn check_pin(&mut self, F: &Face, whatrow: &mut i32, sence: &mut i32) -> bool;
+//
 
 // ========================
 // From ShapeAnalysis_Curve.hxx
@@ -2584,6 +2599,12 @@ impl HandleShapeAnalysisHSequenceOfFreeBounds {
     }
 }
 
+// ── Skipped symbols for HSequenceOfFreeBounds (1 total) ──
+// SKIPPED: **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
+
 // ========================
 // From ShapeAnalysis_ShapeContents.hxx
 // ========================
@@ -3665,6 +3686,19 @@ impl HandleShapeAnalysisSurface {
         unsafe { &mut *(crate::ffi::HandleShapeAnalysisSurface_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Surface (2 total) ──
+// SKIPPED: **Source:** `ShapeAnalysis_Surface.hxx`:81 - `ShapeAnalysis_Surface::Adaptor3d`
+//   method: Returns the Adaptor.
+//   method: Creates it if not yet done.
+//   Reason: return type 'const Handle(GeomAdaptor_Surface)&' is unknown
+//   // pub fn adaptor3d(&mut self) -> &HandleSurface;
+//
+// SKIPPED: **Source:** `ShapeAnalysis_Surface.hxx`:84 - `ShapeAnalysis_Surface::TrueAdaptor3d`
+//   method: Returns the Adaptor (may be Null if method Adaptor() was not called)
+//   Reason: return type 'const Handle(GeomAdaptor_Surface)&' is unknown
+//   // pub fn true_adaptor3d(&self) -> &HandleSurface;
+//
 
 // ========================
 // From ShapeAnalysis_TransferParameters.hxx
@@ -5009,6 +5043,13 @@ impl HandleShapeAnalysisWire {
     }
 }
 
+// ── Skipped symbols for Wire (1 total) ──
+// SKIPPED: **Source:** `ShapeAnalysis_Wire.hxx`:459 - `ShapeAnalysis_Wire::CheckNotchedEdges`
+//   method: Detects a notch
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn check_notched_edges(&mut self, num: i32, shortNum: &mut i32, param: &mut f64, Tolerance: f64) -> bool;
+//
+
 // ========================
 // From ShapeAnalysis_WireOrder.hxx
 // ========================
@@ -5244,6 +5285,20 @@ impl WireOrder {
         unsafe { crate::ffi::ShapeAnalysis_WireOrder_nb_couples(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for WireOrder (2 total) ──
+// SKIPPED: **Source:** `ShapeAnalysis_WireOrder.hxx`:144 - `ShapeAnalysis_WireOrder::Chain`
+//   method: Returns, for the chain n0 num, starting and ending numbers of
+//   method: edges. In the list of ordered edges (see Ordered for originals)
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn chain(&self, num: i32, n1: &mut i32, n2: &mut i32);
+//
+// SKIPPED: **Source:** `ShapeAnalysis_WireOrder.hxx`:158 - `ShapeAnalysis_WireOrder::Couple`
+//   method: Returns, for the couple n0 num, the two implied edges
+//   method: In the list of ordered edges
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn couple(&self, num: i32, n1: &mut i32, n2: &mut i32);
+//
 
 // ========================
 // From ShapeAnalysis_WireVertex.hxx

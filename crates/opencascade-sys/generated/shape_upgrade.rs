@@ -1229,6 +1229,28 @@ impl EdgeDivide {
     }
 }
 
+// ── Skipped symbols for EdgeDivide (4 total) ──
+// SKIPPED: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:55 - `ShapeUpgrade_EdgeDivide::SetSplitCurve2dTool`
+//   method: Sets the tool for splitting pcurves.
+//   Reason: param 'splitCurve2dTool' uses unknown type 'const Handle(ShapeUpgrade_SplitCurve2d)&'
+//   // pub fn set_split_curve2d_tool(&mut self, splitCurve2dTool: &HandleSplitCurve2d);
+//
+// SKIPPED: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:59 - `ShapeUpgrade_EdgeDivide::SetSplitCurve3dTool`
+//   method: Sets the tool for splitting 3D curves.
+//   Reason: param 'splitCurve3dTool' uses unknown type 'const Handle(ShapeUpgrade_SplitCurve3d)&'
+//   // pub fn set_split_curve3d_tool(&mut self, splitCurve3dTool: &HandleSplitCurve3d);
+//
+// SKIPPED: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:63 - `ShapeUpgrade_EdgeDivide::GetSplitCurve2dTool`
+//   method: Returns the tool for splitting pcurves.
+//   Reason: return type 'Handle(ShapeUpgrade_SplitCurve2d)' is unknown
+//   // pub fn get_split_curve2d_tool(&self) -> OwnedPtr<Handle<ShapeUpgrade_SplitCurve2d>>;
+//
+// SKIPPED: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:66 - `ShapeUpgrade_EdgeDivide::GetSplitCurve3dTool`
+//   method: Returns the tool for splitting 3D curves.
+//   Reason: return type 'Handle(ShapeUpgrade_SplitCurve3d)' is unknown
+//   // pub fn get_split_curve3d_tool(&self) -> OwnedPtr<Handle<ShapeUpgrade_SplitCurve3d>>;
+//
+
 // ========================
 // From ShapeUpgrade_FaceDivide.hxx
 // ========================
@@ -1441,6 +1463,19 @@ impl FaceDivide {
         }
     }
 }
+
+// ── Skipped symbols for FaceDivide (2 total) ──
+// SKIPPED: **Source:** `ShapeUpgrade_FaceDivide.hxx`:106 - `ShapeUpgrade_FaceDivide::SetWireDivideTool`
+//   method: Sets the tool for dividing edges on Face.
+//   Reason: param 'wireDivideTool' uses unknown type 'const Handle(ShapeUpgrade_WireDivide)&'
+//   // pub fn set_wire_divide_tool(&mut self, wireDivideTool: &HandleWireDivide);
+//
+// SKIPPED: **Source:** `ShapeUpgrade_FaceDivide.hxx`:114 - `ShapeUpgrade_FaceDivide::GetWireDivideTool`
+//   method: Returns the tool for dividing edges on Face.
+//   method: This tool must be already initialized.
+//   Reason: return type 'Handle(ShapeUpgrade_WireDivide)' is unknown
+//   // pub fn get_wire_divide_tool(&self) -> OwnedPtr<Handle<ShapeUpgrade_WireDivide>>;
+//
 
 // ========================
 // From ShapeUpgrade_FaceDivideArea.hxx
@@ -1697,6 +1732,13 @@ impl FaceDivideArea {
         }
     }
 }
+
+// ── Skipped symbols for FaceDivideArea (1 total) ──
+// SKIPPED: **Source:** `ShapeUpgrade_FaceDivideArea.hxx`:47 - `ShapeUpgrade_FaceDivideArea::NbParts`
+//   method: Set number of parts expected
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn nb_parts(&mut self) -> &mut i32;
+//
 
 // ========================
 // From ShapeUpgrade_FixSmallBezierCurves.hxx
@@ -2042,6 +2084,18 @@ impl FixSmallCurves {
         }
     }
 }
+
+// ── Skipped symbols for FixSmallCurves (2 total) ──
+// SKIPPED: **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:55 - `ShapeUpgrade_FixSmallCurves::SetSplitCurve3dTool`
+//   method: Sets the tool for splitting 3D curves.
+//   Reason: param 'splitCurve3dTool' uses unknown type 'const Handle(ShapeUpgrade_SplitCurve3d)&'
+//   // pub fn set_split_curve3d_tool(&mut self, splitCurve3dTool: &HandleSplitCurve3d);
+//
+// SKIPPED: **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:59 - `ShapeUpgrade_FixSmallCurves::SetSplitCurve2dTool`
+//   method: Sets the tool for splitting pcurves.
+//   Reason: param 'splitCurve2dTool' uses unknown type 'const Handle(ShapeUpgrade_SplitCurve2d)&'
+//   // pub fn set_split_curve2d_tool(&mut self, splitCurve2dTool: &HandleSplitCurve2d);
+//
 
 // ========================
 // From ShapeUpgrade_RemoveInternalWires.hxx
@@ -2911,6 +2965,25 @@ impl ShapeDivide {
     }
 }
 
+// ── Skipped symbols for ShapeDivide (3 total) ──
+// SKIPPED: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:79 - `ShapeUpgrade_ShapeDivide::GetContext`
+//   method: Returns context with all the modifications made during
+//   method: last call(s) to Perform() recorded
+//   Reason: return type 'Handle(ShapeBuild_ReShape)' is unknown
+//   // pub fn get_context(&self) -> OwnedPtr<Handle<ShapeBuild_ReShape>>;
+//
+// SKIPPED: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext`
+//   method: Sets context with recorded modifications to be applied
+//   method: during next call(s) to Perform(shape,Standard_False)
+//   Reason: param 'context' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
+//   // pub fn set_context(&mut self, context: &HandleReShape);
+//
+// SKIPPED: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:106 - `ShapeUpgrade_ShapeDivide::SetSplitFaceTool`
+//   method: Sets the tool for splitting faces.
+//   Reason: param 'splitFaceTool' uses unknown type 'const Handle(ShapeUpgrade_FaceDivide)&'
+//   // pub fn set_split_face_tool(&mut self, splitFaceTool: &HandleFaceDivide);
+//
+
 // ========================
 // From ShapeUpgrade_ShapeDivideAngle.hxx
 // ========================
@@ -3314,6 +3387,14 @@ impl ShapeDivideArea {
         }
     }
 }
+
+// ── Skipped symbols for ShapeDivideArea (1 total) ──
+// SKIPPED: **Source:** `ShapeUpgrade_ShapeDivideArea.hxx`:43 - `ShapeUpgrade_ShapeDivideArea::NbParts`
+//   method: Set number of parts expected
+//   method: for the case of splitting by number
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn nb_parts(&mut self) -> &mut i32;
+//
 
 // ========================
 // From ShapeUpgrade_ShapeDivideClosed.hxx
@@ -5218,6 +5299,13 @@ impl SplitSurfaceArea {
     }
 }
 
+// ── Skipped symbols for SplitSurfaceArea (1 total) ──
+// SKIPPED: **Source:** `ShapeUpgrade_SplitSurfaceArea.hxx`:38 - `ShapeUpgrade_SplitSurfaceArea::NbParts`
+//   method: Set number of split for surfaces
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn nb_parts(&mut self) -> &mut i32;
+//
+
 // ========================
 // From ShapeUpgrade_SplitSurfaceContinuity.hxx
 // ========================
@@ -5511,6 +5599,18 @@ impl HandleShapeUpgradeTool {
         unsafe { &mut *(crate::ffi::HandleShapeUpgradeTool_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Tool (2 total) ──
+// SKIPPED: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext`
+//   method: Sets context
+//   Reason: param 'context' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
+//   // pub fn set_context(&mut self, context: &HandleReShape);
+//
+// SKIPPED: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context`
+//   method: Returns context
+//   Reason: return type 'Handle(ShapeBuild_ReShape)' is unknown
+//   // pub fn context(&self) -> OwnedPtr<Handle<ShapeBuild_ReShape>>;
+//
 
 // ========================
 // From ShapeUpgrade_UnifySameDomain.hxx
@@ -6011,3 +6111,35 @@ impl WireDivide {
         }
     }
 }
+
+// ── Skipped symbols for WireDivide (6 total) ──
+// SKIPPED: **Source:** `ShapeUpgrade_WireDivide.hxx`:105 - `ShapeUpgrade_WireDivide::SetSplitCurve3dTool`
+//   method: Sets the tool for splitting 3D curves.
+//   Reason: param 'splitCurve3dTool' uses unknown type 'const Handle(ShapeUpgrade_SplitCurve3d)&'
+//   // pub fn set_split_curve3d_tool(&mut self, splitCurve3dTool: &HandleSplitCurve3d);
+//
+// SKIPPED: **Source:** `ShapeUpgrade_WireDivide.hxx`:109 - `ShapeUpgrade_WireDivide::SetSplitCurve2dTool`
+//   method: Sets the tool for splitting pcurves.
+//   Reason: param 'splitCurve2dTool' uses unknown type 'const Handle(ShapeUpgrade_SplitCurve2d)&'
+//   // pub fn set_split_curve2d_tool(&mut self, splitCurve2dTool: &HandleSplitCurve2d);
+//
+// SKIPPED: **Source:** `ShapeUpgrade_WireDivide.hxx`:117 - `ShapeUpgrade_WireDivide::SetEdgeDivideTool`
+//   method: Sets tool for splitting edge
+//   Reason: param 'edgeDivideTool' uses unknown type 'const Handle(ShapeUpgrade_EdgeDivide)&'
+//   // pub fn set_edge_divide_tool(&mut self, edgeDivideTool: &HandleEdgeDivide);
+//
+// SKIPPED: **Source:** `ShapeUpgrade_WireDivide.hxx`:120 - `ShapeUpgrade_WireDivide::GetEdgeDivideTool`
+//   method: returns tool for splitting edges
+//   Reason: return type 'Handle(ShapeUpgrade_EdgeDivide)' is unknown
+//   // pub fn get_edge_divide_tool(&self) -> OwnedPtr<Handle<ShapeUpgrade_EdgeDivide>>;
+//
+// SKIPPED: **Source:** `ShapeUpgrade_WireDivide.hxx`:132 - `ShapeUpgrade_WireDivide::SetFixSmallCurveTool`
+//   method: Sets tool for fixing small curves with specified min tolerance;
+//   Reason: param 'FixSmallCurvesTool' uses unknown type 'const Handle(ShapeUpgrade_FixSmallCurves)&'
+//   // pub fn set_fix_small_curve_tool(&mut self, FixSmallCurvesTool: &HandleFixSmallCurves);
+//
+// SKIPPED: **Source:** `ShapeUpgrade_WireDivide.hxx`:136 - `ShapeUpgrade_WireDivide::GetFixSmallCurveTool`
+//   method: Returns tool for fixing small curves
+//   Reason: return type 'Handle(ShapeUpgrade_FixSmallCurves)' is unknown
+//   // pub fn get_fix_small_curve_tool(&self) -> OwnedPtr<Handle<ShapeUpgrade_FixSmallCurves>>;
+//

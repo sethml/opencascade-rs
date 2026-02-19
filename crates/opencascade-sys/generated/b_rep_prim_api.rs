@@ -451,6 +451,13 @@ impl MakeCone {
     }
 }
 
+// ── Skipped symbols for MakeCone (1 total) ──
+// SKIPPED: **Source:** `BRepPrimAPI_MakeCone.hxx`:104 - `BRepPrimAPI_MakeCone::OneAxis`
+//   method: Returns the algorithm.
+//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   // pub fn one_axis(&mut self) -> OwnedPtr<Standard_Address>;
+//
+
 // ========================
 // From BRepPrimAPI_MakeCylinder.hxx
 // ========================
@@ -652,6 +659,13 @@ impl MakeCylinder {
         unsafe { crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Check(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for MakeCylinder (1 total) ──
+// SKIPPED: **Source:** `BRepPrimAPI_MakeCylinder.hxx`:91 - `BRepPrimAPI_MakeCylinder::OneAxis`
+//   method: Returns the algorithm.
+//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   // pub fn one_axis(&mut self) -> OwnedPtr<Standard_Address>;
+//
 
 // ========================
 // From BRepPrimAPI_MakeHalfSpace.hxx
@@ -891,6 +905,14 @@ impl MakeOneAxis {
         unsafe { crate::ffi::BRepPrimAPI_MakeOneAxis_inherited_Check(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for MakeOneAxis (1 total) ──
+// SKIPPED: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:37 - `BRepPrimAPI_MakeOneAxis::OneAxis`
+//   method: The inherited commands should provide the algorithm.
+//   method: Returned as a pointer.
+//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   // pub fn one_axis(&mut self) -> OwnedPtr<Standard_Address>;
+//
 
 // ========================
 // From BRepPrimAPI_MakePrism.hxx
@@ -1693,6 +1715,13 @@ impl MakeRevolution {
     }
 }
 
+// ── Skipped symbols for MakeRevolution (1 total) ──
+// SKIPPED: **Source:** `BRepPrimAPI_MakeRevolution.hxx`:88 - `BRepPrimAPI_MakeRevolution::OneAxis`
+//   method: Returns the algorithm.
+//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   // pub fn one_axis(&mut self) -> OwnedPtr<Standard_Address>;
+//
+
 // ========================
 // From BRepPrimAPI_MakeSphere.hxx
 // ========================
@@ -1992,6 +2021,13 @@ impl MakeSphere {
         unsafe { crate::ffi::BRepPrimAPI_MakeSphere_inherited_Check(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for MakeSphere (1 total) ──
+// SKIPPED: **Source:** `BRepPrimAPI_MakeSphere.hxx`:140 - `BRepPrimAPI_MakeSphere::OneAxis`
+//   method: Returns the algorithm.
+//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   // pub fn one_axis(&mut self) -> OwnedPtr<Standard_Address>;
+//
 
 // ========================
 // From BRepPrimAPI_MakeSweep.hxx
@@ -2381,6 +2417,13 @@ impl MakeTorus {
         unsafe { crate::ffi::BRepPrimAPI_MakeTorus_inherited_Check(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for MakeTorus (1 total) ──
+// SKIPPED: **Source:** `BRepPrimAPI_MakeTorus.hxx`:131 - `BRepPrimAPI_MakeTorus::OneAxis`
+//   method: Returns the algorithm.
+//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   // pub fn one_axis(&mut self) -> OwnedPtr<Standard_Address>;
+//
 
 // ========================
 // From BRepPrimAPI_MakeWedge.hxx

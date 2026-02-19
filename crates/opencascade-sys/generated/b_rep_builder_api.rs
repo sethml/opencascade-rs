@@ -366,6 +366,15 @@ impl BndBoxTreeSelector {
     }
 }
 
+// ── Skipped symbols for BndBoxTreeSelector (1 total) ──
+// SKIPPED: **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:52 - `BRepBuilderAPI_BndBoxTreeSelector::Accept`
+//   method: Implementation of acceptance method
+//   method: This method is called when the bounding box intersect with the current.
+//   method: It stores the object - the index of box in the list of accepted objects.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn accept(&mut self, theObj: &i32) -> bool;
+//
+
 // ========================
 // From BRepBuilderAPI_Collect.hxx
 // ========================
@@ -762,6 +771,13 @@ impl HandleBRepBuilderAPIFastSewing {
         unsafe { &mut *(crate::ffi::HandleBRepBuilderAPIFastSewing_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for FastSewing (1 total) ──
+// SKIPPED: **Source:** `BRepBuilderAPI_FastSewing.hxx`:88 - `BRepBuilderAPI_FastSewing::GetStatuses`
+//   method: Returns list of statuses. Print message if theOS != 0
+//   Reason: nullable param 'theOS' inner type is unknown
+//   // pub fn get_statuses(&mut self, theOS: /* Standard_OStream* */) -> u32;
+//
 
 // ========================
 // From BRepBuilderAPI_FindPlane.hxx

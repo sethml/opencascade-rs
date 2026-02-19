@@ -1636,6 +1636,27 @@ impl AttributeMeter {
     }
 }
 
+// ── Skipped symbols for AttributeMeter (3 total) ──
+// SKIPPED: **Source:** `Message_AttributeMeter.hxx`:71 - `Message_AttributeMeter::StartAlert`
+//   static_method: Sets start values of default report metrics into the alert
+//   static_method: @param theAlert an alert
+//   Reason: param 'theAlert' uses unknown type 'const Handle(Message_AlertExtended)&'
+//   // pub fn start_alert(theAlert: &HandleAlertExtended);
+//
+// SKIPPED: **Source:** `Message_AttributeMeter.hxx`:78 - `Message_AttributeMeter::StopAlert`
+//   static_method: Sets stop values of default report metrics into the alert
+//   static_method: @param theAlert an alert
+//   Reason: param 'theAlert' uses unknown type 'const Handle(Message_AlertExtended)&'
+//   // pub fn stop_alert(theAlert: &HandleAlertExtended);
+//
+// SKIPPED: **Source:** `Message_AttributeMeter.hxx`:87 - `Message_AttributeMeter::SetAlertMetrics`
+//   static_method: Sets current values of default report metrics into the alert.
+//   static_method: Processed only alert with Message_AttributeMeter attribute
+//   static_method: @param theAlert an alert
+//   Reason: param 'theAlert' uses unknown type 'const Handle(Message_AlertExtended)&'
+//   // pub fn set_alert_metrics(theAlert: &HandleAlertExtended, theStartValue: bool);
+//
+
 // ========================
 // From Message_AttributeObject.hxx
 // ========================
@@ -1693,6 +1714,25 @@ impl AttributeObject {
     }
 }
 
+// ── Skipped symbols for AttributeObject (3 total) ──
+// SKIPPED: **Source:** `Message_AttributeObject.hxx`:26 - `Message_AttributeObject::Message_AttributeObject`
+//   constructor: Constructor with string argument
+//   Reason: param 'theObject' uses unknown Handle type
+//   // pub fn new_handlestandardtransient_asciistring(theObject: &HandleTransient, theName: &AsciiString) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Message_AttributeObject.hxx`:32 - `Message_AttributeObject::Object`
+//   method: Returns object
+//   method: @return the object instance
+//   Reason: return type 'const Handle(Standard_Transient)&' is unknown
+//   // pub fn object(&self) -> &HandleTransient;
+//
+// SKIPPED: **Source:** `Message_AttributeObject.hxx`:36 - `Message_AttributeObject::SetObject`
+//   method: Sets the object
+//   method: @param theObject an instance
+//   Reason: param 'theObject' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn set_object(&mut self, theObject: &HandleTransient);
+//
+
 // ========================
 // From Message_AttributeStream.hxx
 // ========================
@@ -1749,6 +1789,23 @@ impl AttributeStream {
         unsafe { crate::ffi::Message_AttributeStream_inherited_SetName(self as *mut Self, theName) }
     }
 }
+
+// ── Skipped symbols for AttributeStream (3 total) ──
+// SKIPPED: **Source:** `Message_AttributeStream.hxx`:27 - `Message_AttributeStream::Message_AttributeStream`
+//   constructor: Constructor with string argument
+//   Reason: param 'theStream' uses unknown type 'const Standard_SStream&'
+//   // pub fn new_sstream_asciistring(theStream: &SStream, theName: &AsciiString) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Message_AttributeStream.hxx`:32 - `Message_AttributeStream::Stream`
+//   method: Returns stream value
+//   Reason: return type 'const Standard_SStream&' is unknown
+//   // pub fn stream(&self) -> &SStream;
+//
+// SKIPPED: **Source:** `Message_AttributeStream.hxx`:35 - `Message_AttributeStream::SetStream`
+//   method: Sets stream value
+//   Reason: param 'theStream' uses unknown type 'const Standard_SStream&'
+//   // pub fn set_stream(&mut self, theStream: &SStream);
+//
 
 // ========================
 // From Message_CompositeAlerts.hxx
@@ -2152,6 +2209,20 @@ impl Level {
     }
 }
 
+// ── Skipped symbols for Level (2 total) ──
+// SKIPPED: **Source:** `Message_Level.hxx`:50 - `Message_Level::RootAlert`
+//   method: Returns root alert of the level
+//   method: @return alert instance or NULL
+//   Reason: return type 'const Handle(Message_AlertExtended)&' is unknown
+//   // pub fn root_alert(&self) -> &HandleAlertExtended;
+//
+// SKIPPED: **Source:** `Message_Level.hxx`:54 - `Message_Level::SetRootAlert`
+//   method: Sets the root alert. Starts collects alert metrics if active.
+//   method: @param theAlert an alert
+//   Reason: param 'theAlert' uses unknown type 'const Handle(Message_AlertExtended)&'
+//   // pub fn set_root_alert(&mut self, theAlert: &HandleAlertExtended, isRequiredToStart: bool);
+//
+
 // ========================
 // From Message_Messenger.hxx
 // ========================
@@ -2433,6 +2504,18 @@ impl HandleMessageMessenger {
     }
 }
 
+// ── Skipped symbols for Messenger (2 total) ──
+// SKIPPED: **Source:** `Message_Messenger.hxx`:182 - `Message_Messenger::Send`
+//   method: See above
+//   Reason: param 'theStream' uses unknown type 'const Standard_SStream&'
+//   // pub fn send(&self, theStream: &SStream, theGravity: Gravity);
+//
+// SKIPPED: **Source:** `Message_Messenger.hxx`:197 - `Message_Messenger::Send`
+//   method: See above
+//   Reason: param 'theObject' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn send(&self, theObject: &HandleTransient, theGravity: Gravity);
+//
+
 /// **Source:** `Message_Messenger.hxx`:63 - `Message_Messenger_StreamBuffer`
 /// Auxiliary class wrapping std::stringstream thus allowing constructing
 /// message via stream interface, and putting result into its creator
@@ -2474,6 +2557,18 @@ impl Messenger_StreamBuffer {
         unsafe { crate::ffi::Message_Messenger_StreamBuffer_flush(self as *mut Self, doForce) }
     }
 }
+
+// ── Skipped symbols for Messenger_StreamBuffer (2 total) ──
+// SKIPPED: **Source:** `Message_Messenger.hxx`:116 - `Message_Messenger::StreamBuffer::Stream`
+//   method: Access to the stream object
+//   Reason: return type 'Standard_SStream&' is unknown
+//   // pub fn stream(&mut self) -> &mut SStream;
+//
+// SKIPPED: **Source:** `Message_Messenger.hxx`:122 - `Message_Messenger::StreamBuffer::Messenger`
+//   method: Access to the messenger
+//   Reason: has unbindable types: return: raw pointer (Message_Messenger*)
+//   // pub fn messenger(&mut self) -> /* Message_Messenger* */;
+//
 
 // ========================
 // From Message_Msg.hxx
@@ -2593,6 +2688,33 @@ impl Msg {
         unsafe { &*(crate::ffi::Message_Msg_get(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Msg (5 total) ──
+// SKIPPED: **Source:** `Message_Msg.hxx`:77 - `Message_Msg::Arg`
+//   method: Set a value for %..s conversion
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn arg(&mut self, theString: *const char) -> &mut Msg;
+//
+// SKIPPED: **Source:** `Message_Msg.hxx`:82 - `Message_Msg::Arg`
+//   method: Set a value for %..s conversion
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn arg(&mut self, theString: &AsciiString) -> &mut Msg;
+//
+// SKIPPED: **Source:** `Message_Msg.hxx`:87 - `Message_Msg::Arg`
+//   method: Set a value for %..s conversion
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn arg(&mut self, theString: &HandleHAsciiString) -> &mut Msg;
+//
+// SKIPPED: **Source:** `Message_Msg.hxx`:95 - `Message_Msg::Arg`
+//   method: Set a value for %..s conversion
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn arg(&mut self, theString: &ExtendedString) -> &mut Msg;
+//
+// SKIPPED: **Source:** `Message_Msg.hxx`:100 - `Message_Msg::Arg`
+//   method: Set a value for %..s conversion
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn arg(&mut self, theString: &HandleHExtendedString) -> &mut Msg;
+//
 
 // ========================
 // From Message_MsgFile.hxx
@@ -2856,6 +2978,22 @@ impl HandleMessagePrinter {
     }
 }
 
+// ── Skipped symbols for Printer (2 total) ──
+// SKIPPED: **Source:** `Message_Printer.hxx`:69 - `Message_Printer::SendStringStream`
+//   method: Send a string message with specified trace level.
+//   method: Stream is converted to string value.
+//   method: Default implementation calls first method Send().
+//   Reason: param 'theStream' uses unknown type 'const Standard_SStream&'
+//   // pub fn send_string_stream(&self, theStream: &SStream, theGravity: Gravity);
+//
+// SKIPPED: **Source:** `Message_Printer.hxx`:75 - `Message_Printer::SendObject`
+//   method: Send a string message with specified trace level.
+//   method: The object is converted to string in format: <object kind> : <object pointer>.
+//   method: Default implementation calls first method Send().
+//   Reason: param 'theObject' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn send_object(&self, theObject: &HandleTransient, theGravity: Gravity);
+//
+
 // ========================
 // From Message_PrinterOStream.hxx
 // ========================
@@ -2992,6 +3130,19 @@ impl PrinterOStream {
         }
     }
 }
+
+// ── Skipped symbols for PrinterOStream (2 total) ──
+// SKIPPED: **Source:** `Message_PrinterOStream.hxx`:66 - `Message_PrinterOStream::GetStream`
+//   method: Returns reference to the output stream
+//   Reason: has unbindable types: return: stream type (Standard_OStream&)
+//   // pub fn get_stream(&self) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `Message_PrinterOStream.hxx`:42 - `Message_PrinterOStream::SetConsoleTextColor`
+//   static_method: Setup console text color.
+//   static_method: On Windows, this would affect active terminal color output.
+//   Reason: has unbindable types: param 'theOStream': raw pointer (Standard_OStream*)
+//   // pub fn set_console_text_color(theOStream: /* Standard_OStream* */, theTextColor: ConsoleColor, theIsIntenseText: bool);
+//
 
 // ========================
 // From Message_PrinterSystemLog.hxx
@@ -3197,6 +3348,22 @@ impl PrinterToReport {
         }
     }
 }
+
+// ── Skipped symbols for PrinterToReport (2 total) ──
+// SKIPPED: **Source:** `Message_PrinterToReport.hxx`:45 - `Message_PrinterToReport::SendStringStream`
+//   method: Send a string message with specified trace level.
+//   method: Stream is converted to string value.
+//   method: Default implementation calls first method Send().
+//   Reason: param 'theStream' uses unknown type 'const Standard_SStream&'
+//   // pub fn send_string_stream(&self, theStream: &SStream, theGravity: Gravity);
+//
+// SKIPPED: **Source:** `Message_PrinterToReport.hxx`:53 - `Message_PrinterToReport::SendObject`
+//   method: Send a string message with specified trace level.
+//   method: The object is converted to string in format: <object kind> : <object pointer>.
+//   method: The parameter theToPutEol specified whether end-of-line should be added to the end of the
+//   Reason: param 'theObject' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn send_object(&self, theObject: &HandleTransient, theGravity: Gravity);
+//
 
 // ========================
 // From Message_ProgressIndicator.hxx
@@ -3724,6 +3891,20 @@ impl ProgressScope {
     }
 }
 
+// ── Skipped symbols for ProgressScope (2 total) ──
+// SKIPPED: **Source:** `Message_ProgressScope.hxx`:261 - `Message_ProgressScope::Message_ProgressScope`
+//   constructor: Creates a new scope taking responsibility of the part of the progress
+//   constructor: scale described by theRange. The new scope has own range from 0 to
+//   constructor: theMax, which is mapped to the given range.
+//   Reason: has unbindable types: param 'theName': raw pointer (const Message_ProgressScope::NullString*)
+//   // pub fn new_progressrange_nullstringptr_real_bool(theRange: &ProgressRange, theName: /* const Message_ProgressScope::NullString* */, theMax: f64, isInfinite: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Message_ProgressScope.hxx`:325 - `Message_ProgressScope::Parent`
+//   method: Returns parent scope (null for top-level scope)
+//   Reason: has unbindable types: return: raw pointer (const Message_ProgressScope*)
+//   // pub fn parent(&self) -> /* const Message_ProgressScope* */;
+//
+
 // ========================
 // From Message_ProgressSentry.hxx
 // ========================
@@ -4172,6 +4353,34 @@ impl HandleMessageReport {
         unsafe { &mut *(crate::ffi::HandleMessageReport_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Report (5 total) ──
+// SKIPPED: **Source:** `Message_Report.hxx`:96 - `Message_Report::AddLevel`
+//   method: Add new level of alerts
+//   method: @param theLevel a level
+//   Reason: has unbindable types: param 'theLevel': raw pointer (Message_Level*)
+//   // pub fn add_level(&mut self, theLevel: /* Message_Level* */, theName: &AsciiString);
+//
+// SKIPPED: **Source:** `Message_Report.hxx`:99 - `Message_Report::RemoveLevel`
+//   method: Remove level of alerts
+//   Reason: has unbindable types: param 'theLevel': raw pointer (Message_Level*)
+//   // pub fn remove_level(&mut self, theLevel: /* Message_Level* */);
+//
+// SKIPPED: **Source:** `Message_Report.hxx`:111 - `Message_Report::ActiveMetrics`
+//   method: Returns computed metrics when alerts are performed
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn active_metrics(&self) -> &i32;
+//
+// SKIPPED: **Source:** `Message_Report.hxx`:134 - `Message_Report::Dump`
+//   method: Dumps all collected alerts to stream
+//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&)
+//   // pub fn dump(&mut self, theOS: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `Message_Report.hxx`:137 - `Message_Report::Dump`
+//   method: Dumps collected alerts with specified gravity to stream
+//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&)
+//   // pub fn dump(&mut self, theOS: /* Standard_OStream& */, theGravity: Gravity);
+//
 
 // ========================
 // Additional type re-exports

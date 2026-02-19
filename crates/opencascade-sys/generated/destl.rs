@@ -193,6 +193,20 @@ impl ConfigurationNode {
     }
 }
 
+// ── Skipped symbols for ConfigurationNode (2 total) ──
+// SKIPPED: **Source:** `DESTL_ConfigurationNode.hxx`:38 - `DESTL_ConfigurationNode::DESTL_ConfigurationNode`
+//   constructor: Copies values of all fields
+//   constructor: @param[in] theNode object to copy
+//   Reason: param 'theNode' uses unknown Handle type
+//   // pub fn new_handledestlconfigurationnode(theNode: &HandleConfigurationNode) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `DESTL_ConfigurationNode.hxx`:77 - `DESTL_ConfigurationNode::GetExtensions`
+//   method: Gets list of supported file extensions
+//   method: @return list of extensions
+//   Reason: return type 'TColStd_ListOfAsciiString' is not CppDeletable
+//   // pub fn get_extensions(&self) -> OwnedPtr<TColStd_ListOfAsciiString>;
+//
+
 /// **Source:** `DESTL_ConfigurationNode.hxx`:86 - `DESTL_ConfigurationNode_RWStl_InternalSection`
 pub use crate::ffi::DESTL_ConfigurationNode_RWStl_InternalSection as ConfigurationNode_RWStl_InternalSection;
 
@@ -340,3 +354,47 @@ impl Provider {
         unsafe { crate::ffi::DESTL_Provider_inherited_SetNode(self as *mut Self, theNode) }
     }
 }
+
+// ── Skipped symbols for Provider (6 total) ──
+// SKIPPED: **Source:** `DESTL_Provider.hxx`:49 - `DESTL_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theDocument document to save result
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DESTL_Provider.hxx`:61 - `DESTL_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theDocument document to export
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DESTL_Provider.hxx`:72 - `DESTL_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theDocument document to save result
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DESTL_Provider.hxx`:82 - `DESTL_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theDocument document to export
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DESTL_Provider.hxx`:93 - `DESTL_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theShape shape to save result
+//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theShape: &mut Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DESTL_Provider.hxx`:105 - `DESTL_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theShape shape to export
+//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theShape: &Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//

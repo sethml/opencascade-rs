@@ -636,6 +636,35 @@ impl CachedFileSystem {
     }
 }
 
+// ── Skipped symbols for CachedFileSystem (5 total) ──
+// SKIPPED: **Source:** `OSD_CachedFileSystem.hxx`:47 - `OSD_CachedFileSystem::IsOpenIStream`
+//   method: Returns TRUE if current input stream is opened for reading operations.
+//   Reason: has unbindable types: param 'theStream': stream type (const std::shared_ptr<std::istream>&)
+//   // pub fn is_open_i_stream(&self, theStream: /* const std::shared_ptr<std::istream>& */) -> bool;
+//
+// SKIPPED: **Source:** `OSD_CachedFileSystem.hxx`:51 - `OSD_CachedFileSystem::IsOpenOStream`
+//   method: Returns TRUE if current output stream is opened for writing operations.
+//   Reason: has unbindable types: param 'theStream': stream type (const std::shared_ptr<std::ostream>&)
+//   // pub fn is_open_o_stream(&self, theStream: /* const std::shared_ptr<std::ostream>& */) -> bool;
+//
+// SKIPPED: **Source:** `OSD_CachedFileSystem.hxx`:56 - `OSD_CachedFileSystem::OpenIStream`
+//   method: Opens stream for specified file URL for reading operations or returns previously created
+//   method: stream pointing to the same URL.
+//   Reason: has unbindable types: param 'theOldStream': stream type (const std::shared_ptr<std::istream>&); return: stream type (std::shared_ptr<std::istream>)
+//   // pub fn open_i_stream(&mut self, theUrl: &AsciiString, theParams: ios_base_openmode, theOffset: i64, theOldStream: /* const std::shared_ptr<std::istream>& */) -> OwnedPtr<std::shared_ptr<std::istream>>;
+//
+// SKIPPED: **Source:** `OSD_CachedFileSystem.hxx`:64 - `OSD_CachedFileSystem::OpenOStream`
+//   method: Opens stream for specified file URL for writing operations (std::ostream) by calling parent's
+//   method: method.
+//   Reason: has unbindable types: return: stream type (std::shared_ptr<std::ostream>)
+//   // pub fn open_o_stream(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode) -> OwnedPtr<std::shared_ptr<std::ostream>>;
+//
+// SKIPPED: **Source:** `OSD_CachedFileSystem.hxx`:69 - `OSD_CachedFileSystem::OpenStreamBuffer`
+//   method: Opens stream buffer for specified file URL.
+//   Reason: has unbindable types: return: unresolved template/nested type (std::shared_ptr<std::streambuf>)
+//   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode, theOffset: i64, theOutBufSize: /* long long* */) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
+//
+
 // ========================
 // From OSD_Chronometer.hxx
 // ========================
@@ -783,6 +812,15 @@ impl Chronometer {
         unsafe { crate::ffi::OSD_Chronometer_get_thread_cpu(UserSeconds, SystemSeconds) }
     }
 }
+
+// ── Skipped symbols for Chronometer (1 total) ──
+// SKIPPED: **Source:** `OSD_Chronometer.hxx`:73 - `OSD_Chronometer::Show`
+//   method: Shows the current CPU user and system time on the output
+//   method: stream <os>.
+//   method: The chronometer can be running (laps Time) or stopped.
+//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
+//   // pub fn show(&self, theOStream: /* Standard_OStream& */);
+//
 
 // ========================
 // From OSD_Directory.hxx
@@ -1351,6 +1389,20 @@ impl Exception {
     }
 }
 
+// ── Skipped symbols for Exception (3 total) ──
+// SKIPPED: **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_Exception>>;
+//
+// SKIPPED: **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_Exception>>;
+//
+
 // ========================
 // From OSD_Exception_ACCESS_VIOLATION.hxx
 // ========================
@@ -1433,6 +1485,20 @@ impl Exception_ACCESS_VIOLATION {
         }
     }
 }
+
+// ── Skipped symbols for Exception_ACCESS_VIOLATION (3 total) ──
+// SKIPPED: **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_ACCESS_VIOLATION)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_Exception_ACCESS_VIOLATION>>;
+//
+// SKIPPED: **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_ACCESS_VIOLATION)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_Exception_ACCESS_VIOLATION>>;
+//
 
 // ========================
 // From OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx
@@ -1521,6 +1587,20 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
     }
 }
 
+// ── Skipped symbols for Exception_ARRAY_BOUNDS_EXCEEDED (3 total) ──
+// SKIPPED: **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_ARRAY_BOUNDS_EXCEEDED)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_Exception_ARRAY_BOUNDS_EXCEEDED>>;
+//
+// SKIPPED: **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_ARRAY_BOUNDS_EXCEEDED)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_Exception_ARRAY_BOUNDS_EXCEEDED>>;
+//
+
 // ========================
 // From OSD_Exception_CTRL_BREAK.hxx
 // ========================
@@ -1599,6 +1679,20 @@ impl Exception_CTRL_BREAK {
         }
     }
 }
+
+// ── Skipped symbols for Exception_CTRL_BREAK (3 total) ──
+// SKIPPED: **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_CTRL_BREAK)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_Exception_CTRL_BREAK>>;
+//
+// SKIPPED: **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_CTRL_BREAK)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_Exception_CTRL_BREAK>>;
+//
 
 // ========================
 // From OSD_Exception_ILLEGAL_INSTRUCTION.hxx
@@ -1685,6 +1779,20 @@ impl Exception_ILLEGAL_INSTRUCTION {
     }
 }
 
+// ── Skipped symbols for Exception_ILLEGAL_INSTRUCTION (3 total) ──
+// SKIPPED: **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_ILLEGAL_INSTRUCTION)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_Exception_ILLEGAL_INSTRUCTION>>;
+//
+// SKIPPED: **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_ILLEGAL_INSTRUCTION)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_Exception_ILLEGAL_INSTRUCTION>>;
+//
+
 // ========================
 // From OSD_Exception_INT_OVERFLOW.hxx
 // ========================
@@ -1763,6 +1871,20 @@ impl Exception_INT_OVERFLOW {
         }
     }
 }
+
+// ── Skipped symbols for Exception_INT_OVERFLOW (3 total) ──
+// SKIPPED: **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_INT_OVERFLOW)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_Exception_INT_OVERFLOW>>;
+//
+// SKIPPED: **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_INT_OVERFLOW)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_Exception_INT_OVERFLOW>>;
+//
 
 // ========================
 // From OSD_Exception_INVALID_DISPOSITION.hxx
@@ -1849,6 +1971,20 @@ impl Exception_INVALID_DISPOSITION {
     }
 }
 
+// ── Skipped symbols for Exception_INVALID_DISPOSITION (3 total) ──
+// SKIPPED: **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_INVALID_DISPOSITION)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_Exception_INVALID_DISPOSITION>>;
+//
+// SKIPPED: **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_INVALID_DISPOSITION)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_Exception_INVALID_DISPOSITION>>;
+//
+
 // ========================
 // From OSD_Exception_IN_PAGE_ERROR.hxx
 // ========================
@@ -1927,6 +2063,20 @@ impl Exception_IN_PAGE_ERROR {
         }
     }
 }
+
+// ── Skipped symbols for Exception_IN_PAGE_ERROR (3 total) ──
+// SKIPPED: **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_IN_PAGE_ERROR)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_Exception_IN_PAGE_ERROR>>;
+//
+// SKIPPED: **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_IN_PAGE_ERROR)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_Exception_IN_PAGE_ERROR>>;
+//
 
 // ========================
 // From OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx
@@ -2023,6 +2173,20 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
     }
 }
 
+// ── Skipped symbols for Exception_NONCONTINUABLE_EXCEPTION (3 total) ──
+// SKIPPED: **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_NONCONTINUABLE_EXCEPTION)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_Exception_NONCONTINUABLE_EXCEPTION>>;
+//
+// SKIPPED: **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_NONCONTINUABLE_EXCEPTION)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_Exception_NONCONTINUABLE_EXCEPTION>>;
+//
+
 // ========================
 // From OSD_Exception_PRIV_INSTRUCTION.hxx
 // ========================
@@ -2106,6 +2270,20 @@ impl Exception_PRIV_INSTRUCTION {
     }
 }
 
+// ── Skipped symbols for Exception_PRIV_INSTRUCTION (3 total) ──
+// SKIPPED: **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_PRIV_INSTRUCTION)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_Exception_PRIV_INSTRUCTION>>;
+//
+// SKIPPED: **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_PRIV_INSTRUCTION)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_Exception_PRIV_INSTRUCTION>>;
+//
+
 // ========================
 // From OSD_Exception_STACK_OVERFLOW.hxx
 // ========================
@@ -2186,6 +2364,20 @@ impl Exception_STACK_OVERFLOW {
         }
     }
 }
+
+// ── Skipped symbols for Exception_STACK_OVERFLOW (3 total) ──
+// SKIPPED: **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_STACK_OVERFLOW)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_Exception_STACK_OVERFLOW>>;
+//
+// SKIPPED: **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_STACK_OVERFLOW)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_Exception_STACK_OVERFLOW>>;
+//
 
 // ========================
 // From OSD_Exception_STATUS_NO_MEMORY.hxx
@@ -2269,6 +2461,20 @@ impl Exception_STATUS_NO_MEMORY {
         }
     }
 }
+
+// ── Skipped symbols for Exception_STATUS_NO_MEMORY (3 total) ──
+// SKIPPED: **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_STATUS_NO_MEMORY)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_Exception_STATUS_NO_MEMORY>>;
+//
+// SKIPPED: **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::NewInstance`
+//   Reason: return type 'Handle(OSD_Exception_STATUS_NO_MEMORY)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_Exception_STATUS_NO_MEMORY>>;
+//
 
 // ========================
 // From OSD_File.hxx
@@ -2568,6 +2774,28 @@ impl File {
     }
 }
 
+// ── Skipped symbols for File (3 total) ──
+// SKIPPED: **Source:** `OSD_File.hxx`:79 - `OSD_File::ReadLine`
+//   method: Reads bytes from the data pointed to by the object file
+//   method: into the buffer <Buffer>.
+//   method: Data is read until <NByte-1> bytes have been read,
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn read_line(&mut self, Buffer: &mut AsciiString, NByte: i32, NbyteRead: &mut i32);
+//
+// SKIPPED: **Source:** `OSD_File.hxx`:105 - `OSD_File::Read`
+//   method: Attempts to read Nbyte bytes from the files associated with
+//   method: the object File.
+//   method: Upon successful completion, Read returns the number of
+//   Reason: has unbindable types: param 'Buffer': void pointer (Standard_Address)
+//   // pub fn read(&mut self, Buffer: /* Standard_Address */, Nbyte: i32, Readbyte: &mut i32);
+//
+// SKIPPED: **Source:** `OSD_File.hxx`:117 - `OSD_File::Write`
+//   method: Attempts to write theNbBytes bytes from the buffer pointed
+//   method: to by theBuffer to the file associated to the object File.
+//   Reason: has unbindable types: param 'theBuffer': void pointer (Standard_Address)
+//   // pub fn write(&mut self, theBuffer: /* Standard_Address */, theNbBytes: i32);
+//
+
 // ========================
 // From OSD_FileIterator.hxx
 // ========================
@@ -2858,6 +3086,44 @@ impl HandleOSDFileSystem {
     }
 }
 
+// ── Skipped symbols for FileSystem (6 total) ──
+// SKIPPED: **Source:** `OSD_FileSystem.hxx`:98 - `OSD_FileSystem::OSD_FileSystem`
+//   constructor: Constructor.
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new() -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `OSD_FileSystem.hxx`:49 - `OSD_FileSystem::IsOpenIStream`
+//   method: Returns TRUE if current input stream is opened for reading operations.
+//   Reason: has unbindable types: param 'theStream': stream type (const std::shared_ptr<std::istream>&)
+//   // pub fn is_open_i_stream(&self, theStream: /* const std::shared_ptr<std::istream>& */) -> bool;
+//
+// SKIPPED: **Source:** `OSD_FileSystem.hxx`:52 - `OSD_FileSystem::IsOpenOStream`
+//   method: Returns TRUE if current output stream is opened for writing operations.
+//   Reason: has unbindable types: param 'theStream': stream type (const std::shared_ptr<std::ostream>&)
+//   // pub fn is_open_o_stream(&self, theStream: /* const std::shared_ptr<std::ostream>& */) -> bool;
+//
+// SKIPPED: **Source:** `OSD_FileSystem.hxx`:68 - `OSD_FileSystem::OpenIStream`
+//   method: Opens stream for specified file URL for reading operations (std::istream).
+//   method: Default implementation create a stream from file buffer returned by
+//   method: OSD_FileSystem::OpenFileBuffer().
+//   Reason: has unbindable types: param 'theOldStream': stream type (const std::shared_ptr<std::istream>&); return: stream type (std::shared_ptr<std::istream>)
+//   // pub fn open_i_stream(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode, theOffset: i64, theOldStream: /* const std::shared_ptr<std::istream>& */) -> OwnedPtr<std::shared_ptr<std::istream>>;
+//
+// SKIPPED: **Source:** `OSD_FileSystem.hxx`:81 - `OSD_FileSystem::OpenOStream`
+//   method: Opens stream for specified file URL for writing operations (std::ostream).
+//   method: Default implementation create a stream from file buffer returned by
+//   method: OSD_FileSystem::OpenFileBuffer().
+//   Reason: has unbindable types: return: stream type (std::shared_ptr<std::ostream>)
+//   // pub fn open_o_stream(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode) -> OwnedPtr<std::shared_ptr<std::ostream>>;
+//
+// SKIPPED: **Source:** `OSD_FileSystem.hxx`:92 - `OSD_FileSystem::OpenStreamBuffer`
+//   method: Opens stream buffer for specified file URL.
+//   method: @param[in] theUrl          path to open
+//   method: @param[in] theMode         flags describing the requested input mode for the stream
+//   Reason: has unbindable types: return: unresolved template/nested type (std::shared_ptr<std::streambuf>)
+//   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode, theOffset: i64, theOutBufSize: /* long long* */) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
+//
+
 // ========================
 // From OSD_FileSystemSelector.hxx
 // ========================
@@ -2943,6 +3209,33 @@ impl FileSystemSelector {
         }
     }
 }
+
+// ── Skipped symbols for FileSystemSelector (5 total) ──
+// SKIPPED: **Source:** `OSD_FileSystemSelector.hxx`:45 - `OSD_FileSystemSelector::IsOpenIStream`
+//   method: Returns TRUE if current input stream is opened for reading operations.
+//   Reason: has unbindable types: param 'theStream': stream type (const std::shared_ptr<std::istream>&)
+//   // pub fn is_open_i_stream(&self, theStream: /* const std::shared_ptr<std::istream>& */) -> bool;
+//
+// SKIPPED: **Source:** `OSD_FileSystemSelector.hxx`:49 - `OSD_FileSystemSelector::IsOpenOStream`
+//   method: Returns TRUE if current output stream is opened for writing operations.
+//   Reason: has unbindable types: param 'theStream': stream type (const std::shared_ptr<std::ostream>&)
+//   // pub fn is_open_o_stream(&self, theStream: /* const std::shared_ptr<std::ostream>& */) -> bool;
+//
+// SKIPPED: **Source:** `OSD_FileSystemSelector.hxx`:53 - `OSD_FileSystemSelector::OpenIStream`
+//   method: Opens input stream using one of registered protocols.
+//   Reason: has unbindable types: param 'theOldStream': stream type (const std::shared_ptr<std::istream>&); return: stream type (std::shared_ptr<std::istream>)
+//   // pub fn open_i_stream(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode, theOffset: i64, theOldStream: /* const std::shared_ptr<std::istream>& */) -> OwnedPtr<std::shared_ptr<std::istream>>;
+//
+// SKIPPED: **Source:** `OSD_FileSystemSelector.hxx`:61 - `OSD_FileSystemSelector::OpenOStream`
+//   method: Opens output stream using one of registered protocols.
+//   Reason: has unbindable types: return: stream type (std::shared_ptr<std::ostream>)
+//   // pub fn open_o_stream(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode) -> OwnedPtr<std::shared_ptr<std::ostream>>;
+//
+// SKIPPED: **Source:** `OSD_FileSystemSelector.hxx`:66 - `OSD_FileSystemSelector::OpenStreamBuffer`
+//   method: Opens stream buffer using one of registered protocols.
+//   Reason: has unbindable types: return: unresolved template/nested type (std::shared_ptr<std::streambuf>)
+//   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode, theOffset: i64, theOutBufSize: /* long long* */) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
+//
 
 // ========================
 // From OSD_Host.hxx
@@ -3092,6 +3385,23 @@ impl LocalFileSystem {
     }
 }
 
+// ── Skipped symbols for LocalFileSystem (3 total) ──
+// SKIPPED: **Source:** `OSD_LocalFileSystem.hxx`:32 - `OSD_LocalFileSystem::IsOpenIStream`
+//   method: Returns TRUE if current input stream is opened for reading operations.
+//   Reason: has unbindable types: param 'theStream': stream type (const std::shared_ptr<std::istream>&)
+//   // pub fn is_open_i_stream(&self, theStream: /* const std::shared_ptr<std::istream>& */) -> bool;
+//
+// SKIPPED: **Source:** `OSD_LocalFileSystem.hxx`:36 - `OSD_LocalFileSystem::IsOpenOStream`
+//   method: Returns TRUE if current output stream is opened for writing operations.
+//   Reason: has unbindable types: param 'theStream': stream type (const std::shared_ptr<std::ostream>&)
+//   // pub fn is_open_o_stream(&self, theStream: /* const std::shared_ptr<std::ostream>& */) -> bool;
+//
+// SKIPPED: **Source:** `OSD_LocalFileSystem.hxx`:40 - `OSD_LocalFileSystem::OpenStreamBuffer`
+//   method: Opens stream buffer for specified file URL.
+//   Reason: has unbindable types: return: unresolved template/nested type (std::shared_ptr<std::streambuf>)
+//   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode, theOffset: i64, theOutBufSize: /* long long* */) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
+//
+
 // ========================
 // From OSD_MAllocHook.hxx
 // ========================
@@ -3117,6 +3427,29 @@ impl MAllocHook {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_MAllocHook_ctor()) }
     }
 }
+
+// ── Skipped symbols for MAllocHook (4 total) ──
+// SKIPPED: **Source:** `OSD_MAllocHook.hxx`:158 - `OSD_MAllocHook::SetCallback`
+//   static_method: Set handler of allocation/deallocation events
+//   static_method: You can pass here any implementation. For easy start, you can try
+//   Reason: has unbindable types: param 'theCB': raw pointer (OSD_MAllocHook::Callback*)
+//   // pub fn set_callback(theCB: /* OSD_MAllocHook::Callback* */);
+//
+// SKIPPED: **Source:** `OSD_MAllocHook.hxx`:161 - `OSD_MAllocHook::GetCallback`
+//   static_method: Get current handler of allocation/deallocation events
+//   Reason: has unbindable types: return: raw pointer (OSD_MAllocHook::Callback*)
+//   // pub fn get_callback() -> /* OSD_MAllocHook::Callback* */;
+//
+// SKIPPED: **Source:** `OSD_MAllocHook.hxx`:164 - `OSD_MAllocHook::GetLogFileHandler`
+//   static_method: Get static instance of LogFileHandler handler
+//   Reason: has unbindable types: return: raw pointer (OSD_MAllocHook::LogFileHandler*)
+//   // pub fn get_log_file_handler() -> /* OSD_MAllocHook::LogFileHandler* */;
+//
+// SKIPPED: **Source:** `OSD_MAllocHook.hxx`:167 - `OSD_MAllocHook::GetCollectBySize`
+//   static_method: Get static instance of CollectBySize handler
+//   Reason: has unbindable types: return: raw pointer (OSD_MAllocHook::CollectBySize*)
+//   // pub fn get_collect_by_size() -> /* OSD_MAllocHook::CollectBySize* */;
+//
 
 /// **Source:** `OSD_MAllocHook.hxx`:34 - `OSD_MAllocHook_Callback`
 ///
@@ -3148,6 +3481,14 @@ impl MAllocHook_Callback {
         }
     }
 }
+
+// ── Skipped symbols for MAllocHook_Callback (1 total) ──
+// SKIPPED: **Source:** `OSD_MAllocHook.hxx`:57 - `OSD_MAllocHook::Callback::FreeEvent`
+//   method: Freeing event handler
+//   method: It is called when the block is freed
+//   Reason: has unbindable types: param 'theData': raw pointer (void*)
+//   // pub fn free_event(&mut self, theData: /* void* */, theSize: usize, theRequestNum: std::ffi::c_long);
+//
 
 /// **Source:** `OSD_MAllocHook.hxx`:65 - `OSD_MAllocHook_LogFileHandler`
 ///
@@ -3215,6 +3556,12 @@ impl MAllocHook_LogFileHandler {
     }
 }
 
+// ── Skipped symbols for MAllocHook_LogFileHandler (1 total) ──
+// SKIPPED: **Source:** `OSD_MAllocHook.hxx`:94 - `OSD_MAllocHook::LogFileHandler::FreeEvent`
+//   Reason: has unbindable types: param 'arg0': raw pointer (void*)
+//   // pub fn free_event(&mut self, arg0: /* void* */, arg1: usize, arg2: std::ffi::c_long);
+//
+
 /// **Source:** `OSD_MAllocHook.hxx`:106 - `OSD_MAllocHook_CollectBySize`
 ///
 /// Implementation of the handler that collects numbers of
@@ -3259,6 +3606,12 @@ impl MAllocHook_CollectBySize {
         }
     }
 }
+
+// ── Skipped symbols for MAllocHook_CollectBySize (1 total) ──
+// SKIPPED: **Source:** `OSD_MAllocHook.hxx`:122 - `OSD_MAllocHook::CollectBySize::FreeEvent`
+//   Reason: has unbindable types: param 'arg0': raw pointer (void*)
+//   // pub fn free_event(&mut self, arg0: /* void* */, arg1: usize, arg2: std::ffi::c_long);
+//
 
 /// **Source:** `OSD_MAllocHook.hxx`:125 - `OSD_MAllocHook_CollectBySize_Numbers`
 pub use crate::ffi::OSD_MAllocHook_CollectBySize_Numbers as MAllocHook_CollectBySize_Numbers;
@@ -3467,6 +3820,20 @@ impl OSDError {
         unsafe { &*(crate::ffi::OSD_OSDError_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for OSDError (3 total) ──
+// SKIPPED: **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::NewInstance`
+//   Reason: return type 'Handle(OSD_OSDError)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_OSDError>>;
+//
+// SKIPPED: **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::NewInstance`
+//   Reason: return type 'Handle(OSD_OSDError)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_OSDError>>;
+//
 
 // ========================
 // From OSD_Parallel.hxx
@@ -4508,6 +4875,20 @@ impl SIGBUS {
     }
 }
 
+// ── Skipped symbols for SIGBUS (3 total) ──
+// SKIPPED: **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::NewInstance`
+//   Reason: return type 'Handle(OSD_SIGBUS)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_SIGBUS>>;
+//
+// SKIPPED: **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::NewInstance`
+//   Reason: return type 'Handle(OSD_SIGBUS)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_SIGBUS>>;
+//
+
 // ========================
 // From OSD_SIGHUP.hxx
 // ========================
@@ -4582,6 +4963,20 @@ impl SIGHUP {
         unsafe { &mut *(crate::ffi::OSD_SIGHUP_as_OSD_Signal_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for SIGHUP (3 total) ──
+// SKIPPED: **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::NewInstance`
+//   Reason: return type 'Handle(OSD_SIGHUP)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_SIGHUP>>;
+//
+// SKIPPED: **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::NewInstance`
+//   Reason: return type 'Handle(OSD_SIGHUP)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_SIGHUP>>;
+//
 
 // ========================
 // From OSD_SIGILL.hxx
@@ -4658,6 +5053,20 @@ impl SIGILL {
     }
 }
 
+// ── Skipped symbols for SIGILL (3 total) ──
+// SKIPPED: **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::NewInstance`
+//   Reason: return type 'Handle(OSD_SIGILL)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_SIGILL>>;
+//
+// SKIPPED: **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::NewInstance`
+//   Reason: return type 'Handle(OSD_SIGILL)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_SIGILL>>;
+//
+
 // ========================
 // From OSD_SIGINT.hxx
 // ========================
@@ -4732,6 +5141,20 @@ impl SIGINT {
         unsafe { &mut *(crate::ffi::OSD_SIGINT_as_OSD_Signal_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for SIGINT (3 total) ──
+// SKIPPED: **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::NewInstance`
+//   Reason: return type 'Handle(OSD_SIGINT)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_SIGINT>>;
+//
+// SKIPPED: **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::NewInstance`
+//   Reason: return type 'Handle(OSD_SIGINT)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_SIGINT>>;
+//
 
 // ========================
 // From OSD_SIGKILL.hxx
@@ -4808,6 +5231,20 @@ impl SIGKILL {
     }
 }
 
+// ── Skipped symbols for SIGKILL (3 total) ──
+// SKIPPED: **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::NewInstance`
+//   Reason: return type 'Handle(OSD_SIGKILL)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_SIGKILL>>;
+//
+// SKIPPED: **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::NewInstance`
+//   Reason: return type 'Handle(OSD_SIGKILL)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_SIGKILL>>;
+//
+
 // ========================
 // From OSD_SIGQUIT.hxx
 // ========================
@@ -4882,6 +5319,20 @@ impl SIGQUIT {
         unsafe { &mut *(crate::ffi::OSD_SIGQUIT_as_OSD_Signal_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for SIGQUIT (3 total) ──
+// SKIPPED: **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::NewInstance`
+//   Reason: return type 'Handle(OSD_SIGQUIT)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_SIGQUIT>>;
+//
+// SKIPPED: **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::NewInstance`
+//   Reason: return type 'Handle(OSD_SIGQUIT)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_SIGQUIT>>;
+//
 
 // ========================
 // From OSD_SIGSEGV.hxx
@@ -4958,6 +5409,20 @@ impl SIGSEGV {
     }
 }
 
+// ── Skipped symbols for SIGSEGV (3 total) ──
+// SKIPPED: **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::NewInstance`
+//   Reason: return type 'Handle(OSD_SIGSEGV)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_SIGSEGV>>;
+//
+// SKIPPED: **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::NewInstance`
+//   Reason: return type 'Handle(OSD_SIGSEGV)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_SIGSEGV>>;
+//
+
 // ========================
 // From OSD_SIGSYS.hxx
 // ========================
@@ -5032,6 +5497,20 @@ impl SIGSYS {
         unsafe { &mut *(crate::ffi::OSD_SIGSYS_as_OSD_Signal_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for SIGSYS (3 total) ──
+// SKIPPED: **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::NewInstance`
+//   Reason: return type 'Handle(OSD_SIGSYS)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_SIGSYS>>;
+//
+// SKIPPED: **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::NewInstance`
+//   Reason: return type 'Handle(OSD_SIGSYS)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_SIGSYS>>;
+//
 
 // ========================
 // From OSD_SharedLibrary.hxx
@@ -5139,6 +5618,15 @@ impl SharedLibrary {
     }
 }
 
+// ── Skipped symbols for SharedLibrary (1 total) ──
+// SKIPPED: **Source:** `OSD_SharedLibrary.hxx`:73 - `OSD_SharedLibrary::DlSymb`
+//   method: The dlsym function returns the address of the
+//   method: symbol name found in the shared library.
+//   method: If the symbol is not found, a NULL pointer is
+//   Reason: return type 'OSD_Function' is unknown
+//   // pub fn dl_symb(&self, Name: *const char) -> OwnedPtr<OSD_Function>;
+//
+
 // ========================
 // From OSD_Signal.hxx
 // ========================
@@ -5204,6 +5692,20 @@ impl Signal {
     }
 }
 
+// ── Skipped symbols for Signal (3 total) ──
+// SKIPPED: **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::NewInstance`
+//   Reason: return type 'Handle(OSD_Signal)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<OSD_Signal>>;
+//
+// SKIPPED: **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::NewInstance`
+//   Reason: return type 'Handle(OSD_Signal)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<OSD_Signal>>;
+//
+
 // ========================
 // From OSD_Thread.hxx
 // ========================
@@ -5261,6 +5763,51 @@ impl Thread {
         unsafe { crate::ffi::OSD_Thread_wait(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for Thread (7 total) ──
+// SKIPPED: **Source:** `OSD_Thread.hxx`:42 - `OSD_Thread::OSD_Thread`
+//   constructor: Initialize the tool by the thread function
+//   constructor: Note: On Windows, you might have to take an address of the thread
+//   Reason: param 'func' uses unknown type 'const OSD_ThreadFunction&'
+//   // pub fn new_threadfunction(func: &ThreadFunction) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `OSD_Thread.hxx`:62 - `OSD_Thread::SetFunction`
+//   method: Initialize the tool by the thread function.
+//   method: If the current thread handle is not null, nullifies it.
+//   Reason: param 'func' uses unknown type 'const OSD_ThreadFunction&'
+//   // pub fn set_function(&mut self, func: &ThreadFunction);
+//
+// SKIPPED: **Source:** `OSD_Thread.hxx`:70 - `OSD_Thread::Run`
+//   method: Starts a thread with thread function given in constructor,
+//   method: passing the specified input data (as void *) to it.
+//   method: The parameter \a WNTStackSize (on Windows only)
+//   Reason: has unbindable types: param 'data': void pointer (Standard_Address)
+//   // pub fn run(&mut self, data: /* Standard_Address */, WNTStackSize: i32) -> bool;
+//
+// SKIPPED: **Source:** `OSD_Thread.hxx`:98 - `OSD_Thread::Wait`
+//   method: Wait till the thread finishes execution.
+//   method: Returns True if wait was successful, False in case of error.
+//   Reason: has unbindable types: param 'theResult': void pointer (Standard_Address&)
+//   // pub fn wait(&mut self, theResult: /* Standard_Address& */) -> bool;
+//
+// SKIPPED: **Source:** `OSD_Thread.hxx`:103 - `OSD_Thread::Wait`
+//   method: Waits for some time and if the thread is finished,
+//   method: it returns the result.
+//   method: The function returns false if the thread is not finished yet.
+//   Reason: has unbindable types: param 'theResult': void pointer (Standard_Address&)
+//   // pub fn wait(&mut self, time: i32, theResult: /* Standard_Address& */) -> bool;
+//
+// SKIPPED: **Source:** `OSD_Thread.hxx`:107 - `OSD_Thread::GetId`
+//   method: Returns ID of the currently controlled thread ID,
+//   method: or 0 if no thread is run
+//   Reason: return type 'Standard_ThreadId' is unknown
+//   // pub fn get_id(&self) -> OwnedPtr<Standard_ThreadId>;
+//
+// SKIPPED: **Source:** `OSD_Thread.hxx`:110 - `OSD_Thread::Current`
+//   static_method: Auxiliary: returns ID of the current thread
+//   Reason: return type 'Standard_ThreadId' is unknown
+//   // pub fn current() -> OwnedPtr<Standard_ThreadId>;
+//
 
 // ========================
 // From OSD_ThreadPool.hxx
@@ -5656,6 +6203,20 @@ impl Timer {
         }
     }
 }
+
+// ── Skipped symbols for Timer (2 total) ──
+// SKIPPED: **Source:** `OSD_Timer.hxx`:76 - `OSD_Timer::Show`
+//   method: Shows both the elapsed time and CPU  time on the
+//   method: output stream <OS>.
+//   Reason: has unbindable types: param 'os': stream type (Standard_OStream&)
+//   // pub fn show(&self, os: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `OSD_Timer.hxx`:80 - `OSD_Timer::Show`
+//   method: returns both the elapsed time(seconds,minutes,hours)
+//   method: and CPU  time.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn show(&self, theSeconds: &mut f64, theMinutes: &mut i32, theHours: &mut i32, theCPUtime: &mut f64);
+//
 
 // ========================
 // Additional type re-exports

@@ -297,6 +297,13 @@ impl DistShapeShape {
     }
 }
 
+// ── Skipped symbols for DistShapeShape (1 total) ──
+// SKIPPED: **Source:** `BRepExtrema_DistShapeShape.hxx`:160 - `BRepExtrema_DistShapeShape::Dump`
+//   method: Prints on the stream o information on the current state of the object. <br>
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From BRepExtrema_DistanceSS.hxx
 // ========================
@@ -1010,6 +1017,39 @@ impl OverlapTool {
     }
 }
 
+// ── Skipped symbols for OverlapTool (6 total) ──
+// SKIPPED: **Source:** `BRepExtrema_OverlapTool.hxx`:45 - `BRepExtrema_OverlapTool::BRepExtrema_OverlapTool`
+//   constructor: Creates new overlap tool for the given element sets.
+//   Reason: param 'theSet1' uses unknown Handle type
+//   // pub fn new_handlebrepextrematriangleset2(theSet1: &HandleTriangleSet, theSet2: &HandleTriangleSet) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepExtrema_OverlapTool.hxx`:50 - `BRepExtrema_OverlapTool::LoadTriangleSets`
+//   method: Loads the given element sets into the overlap tool.
+//   Reason: param 'theSet1' uses unknown type 'const Handle(BRepExtrema_TriangleSet)&'
+//   // pub fn load_triangle_sets(&mut self, theSet1: &HandleTriangleSet, theSet2: &HandleTriangleSet);
+//
+// SKIPPED: **Source:** `BRepExtrema_OverlapTool.hxx`:63 - `BRepExtrema_OverlapTool::OverlapSubShapes1`
+//   method: Returns set of overlapped sub-shapes of 1st shape (currently only faces are detected).
+//   Reason: return type 'const BRepExtrema_MapOfIntegerPackedMapOfInteger&' is unknown
+//   // pub fn overlap_sub_shapes1(&self) -> &MapOfIntegerPackedMapOfInteger;
+//
+// SKIPPED: **Source:** `BRepExtrema_OverlapTool.hxx`:69 - `BRepExtrema_OverlapTool::OverlapSubShapes2`
+//   method: Returns set of overlapped sub-shapes of 2nd shape (currently only faces are detected).
+//   Reason: return type 'const BRepExtrema_MapOfIntegerPackedMapOfInteger&' is unknown
+//   // pub fn overlap_sub_shapes2(&self) -> &MapOfIntegerPackedMapOfInteger;
+//
+// SKIPPED: **Source:** `BRepExtrema_OverlapTool.hxx`:83 - `BRepExtrema_OverlapTool::SetElementFilter`
+//   method: Sets filtering tool for preliminary checking pairs of mesh elements.
+//   Reason: has unbindable types: param 'theFilter': raw pointer (BRepExtrema_ElementFilter*)
+//   // pub fn set_element_filter(&mut self, theFilter: /* BRepExtrema_ElementFilter* */);
+//
+// SKIPPED: **Source:** `BRepExtrema_OverlapTool.hxx`:87 - `BRepExtrema_OverlapTool::RejectNode`
+//   method: @name Reject/Accept implementations
+//   method: Defines the rules for node rejection by bounding box
+//   Reason: param 'theCornerMin1' uses unknown type 'const BVH_Vec3d&'
+//   // pub fn reject_node(&self, theCornerMin1: &Vec3d, theCornerMax1: &Vec3d, theCornerMin2: &Vec3d, theCornerMax2: &Vec3d, arg4: &mut f64) -> bool;
+//
+
 // ========================
 // From BRepExtrema_Poly.hxx
 // ========================
@@ -1134,6 +1174,39 @@ impl ProximityDistTool {
     }
 }
 
+// ── Skipped symbols for ProximityDistTool (6 total) ──
+// SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:95 - `BRepExtrema_ProximityDistTool::BRepExtrema_ProximityDistTool`
+//   constructor: Creates new tool for the given element sets.
+//   Reason: param 'theSet1' uses unknown Handle type
+//   // pub fn new_handlebrepextrematriangleset_int_array3d_int_handlebrepextrematriangleset_shapelist2(theSet1: &HandleTriangleSet, theNbSamples1: i32, theAddVertices1: &Array3d, theAddStatus1: &i32, theSet2: &HandleTriangleSet, theShapeList1: &ShapeList, theShapeList2: &ShapeList) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:106 - `BRepExtrema_ProximityDistTool::LoadTriangleSets`
+//   method: Loads the given element sets into the tool.
+//   Reason: param 'theSet1' uses unknown type 'const Handle(BRepExtrema_TriangleSet)&'
+//   // pub fn load_triangle_sets(&mut self, theSet1: &HandleTriangleSet, theSet2: &HandleTriangleSet);
+//
+// SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:110 - `BRepExtrema_ProximityDistTool::LoadShapeLists`
+//   method: Loads the given list of subshapes into the tool.
+//   Reason: param 'theShapeList1' uses unknown type 'const BRepExtrema_ShapeList&'
+//   // pub fn load_shape_lists(&mut self, theShapeList1: &ShapeList, theShapeList2: &ShapeList);
+//
+// SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:114 - `BRepExtrema_ProximityDistTool::LoadAdditionalPointsFirstSet`
+//   method: Loads given additional vertices and their statuses.
+//   Reason: param 'theAddVertices1' uses unknown type 'const BVH_Array3d&'
+//   // pub fn load_additional_points_first_set(&mut self, theAddVertices1: &Array3d, theAddStatus1: &i32);
+//
+// SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:122 - `BRepExtrema_ProximityDistTool::RejectNode`
+//   method: @name Reject/Accept implementations
+//   method: Defines the rules for node rejection by bounding box.
+//   Reason: param 'theCornerMin' uses unknown type 'const BVH_Vec3d&'
+//   // pub fn reject_node(&self, theCornerMin: &Vec3d, theCornerMax: &Vec3d, theMetric: &mut f64) -> bool;
+//
+// SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:145 - `BRepExtrema_ProximityDistTool::ProximityPoints`
+//   method: Returns points on triangles sets, which provide the proximity distance.
+//   Reason: param 'thePoint1' uses unknown type 'BVH_Vec3d&'
+//   // pub fn proximity_points(&self, thePoint1: &mut Vec3d, thePoint2: &mut Vec3d);
+//
+
 /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:52 - `BRepExtrema_ProximityDistTool_PrjState`
 /// Struct with information about projection point state from 2nd BVH,
 /// providing proximity point of 2nd shape
@@ -1178,6 +1251,16 @@ impl ProximityDistTool_PrjState {
         }
     }
 }
+
+// ── Skipped symbols for ProximityDistTool_PrjState (2 total) ──
+// SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:54 - `BRepExtrema_ProximityDistTool::PrjState::BRepExtrema_ProximityDistTool::PrjState`
+//   Reason: excluded by bindings.toml
+//   // pub fn new() -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:62 - `BRepExtrema_ProximityDistTool::PrjState::BRepExtrema_ProximityDistTool::PrjState`
+//   Reason: excluded by bindings.toml
+//   // pub fn new_int4(theTrgIdx: i32, thePrjState: i32, theNumberOfFirstNode: i32, theNumberOfLastNode: i32) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From BRepExtrema_ProximityValueTool.hxx
@@ -1259,6 +1342,28 @@ impl ProximityValueTool {
         }
     }
 }
+
+// ── Skipped symbols for ProximityValueTool (4 total) ──
+// SKIPPED: **Source:** `BRepExtrema_ProximityValueTool.hxx`:88 - `BRepExtrema_ProximityValueTool::BRepExtrema_ProximityValueTool`
+//   constructor: Creates new proximity tool for the given element sets.
+//   Reason: param 'theSet1' uses unknown Handle type
+//   // pub fn new_handlebrepextrematriangleset2_shapelist2(theSet1: &HandleTriangleSet, theSet2: &HandleTriangleSet, theShapeList1: &ShapeList, theShapeList2: &ShapeList) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepExtrema_ProximityValueTool.hxx`:95 - `BRepExtrema_ProximityValueTool::LoadTriangleSets`
+//   method: Loads the given element sets into the proximity tool.
+//   Reason: param 'theSet1' uses unknown type 'const Handle(BRepExtrema_TriangleSet)&'
+//   // pub fn load_triangle_sets(&mut self, theSet1: &HandleTriangleSet, theSet2: &HandleTriangleSet);
+//
+// SKIPPED: **Source:** `BRepExtrema_ProximityValueTool.hxx`:99 - `BRepExtrema_ProximityValueTool::LoadShapeLists`
+//   method: Loads the given list of subshapes into the proximity tool.
+//   Reason: param 'theShapeList1' uses unknown type 'const BRepExtrema_ShapeList&'
+//   // pub fn load_shape_lists(&mut self, theShapeList1: &ShapeList, theShapeList2: &ShapeList);
+//
+// SKIPPED: **Source:** `BRepExtrema_ProximityValueTool.hxx`:127 - `BRepExtrema_ProximityValueTool::ProximityPointsStatus`
+//   method: Returns status of points on triangles sets, which provide the proximity distance.
+//   Reason: param 'thePointStatus1' uses unknown type 'ProxPnt_Status&'
+//   // pub fn proximity_points_status(&self, thePointStatus1: &mut Status, thePointStatus2: &mut Status);
+//
 
 // ========================
 // From BRepExtrema_SelfIntersection.hxx
@@ -1379,6 +1484,18 @@ impl SelfIntersection {
         }
     }
 }
+
+// ── Skipped symbols for SelfIntersection (2 total) ──
+// SKIPPED: **Source:** `BRepExtrema_SelfIntersection.hxx`:63 - `BRepExtrema_SelfIntersection::OverlapElements`
+//   method: Returns set of IDs of overlapped sub-shapes (started from 0).
+//   Reason: return type 'const BRepExtrema_MapOfIntegerPackedMapOfInteger&' is unknown
+//   // pub fn overlap_elements(&self) -> &MapOfIntegerPackedMapOfInteger;
+//
+// SKIPPED: **Source:** `BRepExtrema_SelfIntersection.hxx`:75 - `BRepExtrema_SelfIntersection::ElementSet`
+//   method: Returns set of all the face triangles of the shape.
+//   Reason: return type 'const Handle(BRepExtrema_TriangleSet)&' is unknown
+//   // pub fn element_set(&self) -> &HandleTriangleSet;
+//
 
 // ========================
 // From BRepExtrema_ShapeProximity.hxx
@@ -1533,6 +1650,40 @@ impl ShapeProximity {
         unsafe { &*(crate::ffi::BRepExtrema_ShapeProximity_proximity_point2(self as *const Self)) }
     }
 }
+
+// ── Skipped symbols for ShapeProximity (6 total) ──
+// SKIPPED: **Source:** `BRepExtrema_ShapeProximity.hxx`:93 - `BRepExtrema_ShapeProximity::OverlapSubShapes1`
+//   method: Returns set of IDs of overlapped faces of 1st shape (started from 0).
+//   Reason: return type 'const BRepExtrema_MapOfIntegerPackedMapOfInteger&' is unknown
+//   // pub fn overlap_sub_shapes1(&self) -> &MapOfIntegerPackedMapOfInteger;
+//
+// SKIPPED: **Source:** `BRepExtrema_ShapeProximity.hxx`:99 - `BRepExtrema_ShapeProximity::OverlapSubShapes2`
+//   method: Returns set of IDs of overlapped faces of 2nd shape (started from 0).
+//   Reason: return type 'const BRepExtrema_MapOfIntegerPackedMapOfInteger&' is unknown
+//   // pub fn overlap_sub_shapes2(&self) -> &MapOfIntegerPackedMapOfInteger;
+//
+// SKIPPED: **Source:** `BRepExtrema_ShapeProximity.hxx`:117 - `BRepExtrema_ShapeProximity::ElementSet1`
+//   method: Returns set of all the face triangles of the 1st shape.
+//   Reason: return type 'const Handle(BRepExtrema_TriangleSet)&' is unknown
+//   // pub fn element_set1(&self) -> &HandleTriangleSet;
+//
+// SKIPPED: **Source:** `BRepExtrema_ShapeProximity.hxx`:120 - `BRepExtrema_ShapeProximity::ElementSet2`
+//   method: Returns set of all the face triangles of the 2nd shape.
+//   Reason: return type 'const Handle(BRepExtrema_TriangleSet)&' is unknown
+//   // pub fn element_set2(&self) -> &HandleTriangleSet;
+//
+// SKIPPED: **Source:** `BRepExtrema_ShapeProximity.hxx`:132 - `BRepExtrema_ShapeProximity::ProxPntStatus1`
+//   method: Returns the status of point on the 1st shape, which could be used as a reference point
+//   method: for the value of the proximity.
+//   Reason: return type 'const ProxPnt_Status&' is unknown
+//   // pub fn prox_pnt_status1(&self) -> &Status;
+//
+// SKIPPED: **Source:** `BRepExtrema_ShapeProximity.hxx`:136 - `BRepExtrema_ShapeProximity::ProxPntStatus2`
+//   method: Returns the status of point on the 2nd shape, which could be used as a reference point
+//   method: for the value of the proximity.
+//   Reason: return type 'const ProxPnt_Status&' is unknown
+//   // pub fn prox_pnt_status2(&self) -> &Status;
+//
 
 // ========================
 // From BRepExtrema_SolutionElem.hxx
@@ -1816,6 +1967,33 @@ impl TriangleSet {
     }
 }
 
+// ── Skipped symbols for TriangleSet (5 total) ──
+// SKIPPED: **Source:** `BRepExtrema_TriangleSet.hxx`:36 - `BRepExtrema_TriangleSet::BRepExtrema_TriangleSet`
+//   constructor: Creates triangle set from the given face.
+//   Reason: param 'theFaces' uses unknown type 'const BRepExtrema_ShapeList&'
+//   // pub fn new_shapelist(theFaces: &ShapeList) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepExtrema_TriangleSet.hxx`:46 - `BRepExtrema_TriangleSet::Box`
+//   method: Returns AABB of the given triangle.
+//   Reason: return type 'Graphic3d_BndBox3d' is not CppDeletable
+//   // pub fn box_(&self, theIndex: i32) -> OwnedPtr<Graphic3d_BndBox3d>;
+//
+// SKIPPED: **Source:** `BRepExtrema_TriangleSet.hxx`:65 - `BRepExtrema_TriangleSet::Init`
+//   method: Initializes triangle set.
+//   Reason: param 'theShapes' uses unknown type 'const BRepExtrema_ShapeList&'
+//   // pub fn init(&mut self, theShapes: &ShapeList) -> bool;
+//
+// SKIPPED: **Source:** `BRepExtrema_TriangleSet.hxx`:68 - `BRepExtrema_TriangleSet::GetVertices`
+//   method: Returns all vertices.
+//   Reason: return type 'const BVH_Array3d&' is unknown
+//   // pub fn get_vertices(&self) -> &Array3d;
+//
+// SKIPPED: **Source:** `BRepExtrema_TriangleSet.hxx`:71 - `BRepExtrema_TriangleSet::GetVertices`
+//   method: Returns vertices of the given triangle.
+//   Reason: param 'theVertex1' uses unknown type 'BVH_Vec3d&'
+//   // pub fn get_vertices(&self, theIndex: i32, theVertex1: &mut Vec3d, theVertex2: &mut Vec3d, theVertex3: &mut Vec3d);
+//
+
 // ========================
 // From BRepExtrema_UnCompatibleShape.hxx
 // ========================
@@ -1882,6 +2060,20 @@ impl UnCompatibleShape {
         unsafe { &*(crate::ffi::BRepExtrema_UnCompatibleShape_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for UnCompatibleShape (3 total) ──
+// SKIPPED: **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::NewInstance`
+//   Reason: return type 'Handle(BRepExtrema_UnCompatibleShape)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<BRepExtrema_UnCompatibleShape>>;
+//
+// SKIPPED: **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::NewInstance`
+//   Reason: return type 'Handle(BRepExtrema_UnCompatibleShape)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<BRepExtrema_UnCompatibleShape>>;
+//
 
 // ========================
 // Additional type re-exports

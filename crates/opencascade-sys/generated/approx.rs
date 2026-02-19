@@ -200,6 +200,13 @@ impl Curve3d {
     }
 }
 
+// ── Skipped symbols for Curve3d (1 total) ──
+// SKIPPED: **Source:** `Approx_Curve3d.hxx`:53 - `Approx_Curve3d::Dump`
+//   method: Print on the stream  o  information about the object
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From Approx_CurveOnSurface.hxx
 // ========================
@@ -447,6 +454,13 @@ impl CurvilinearParameter {
         unsafe { crate::ffi::Approx_CurvilinearParameter_max_error2d2(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for CurvilinearParameter (1 total) ──
+// SKIPPED: **Source:** `Approx_CurvilinearParameter.hxx`:91 - `Approx_CurvilinearParameter::Dump`
+//   method: print the maximum errors(s)
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
 
 // ========================
 // From Approx_CurvlinFunc.hxx
@@ -1397,6 +1411,14 @@ impl SameParameter {
     }
 }
 
+// ── Skipped symbols for SameParameter (1 total) ──
+// SKIPPED: **Source:** `Approx_SameParameter.hxx`:78 - `Approx_SameParameter::CurveOnSurface`
+//   method: Returns the 3D curve on surface that has the same parameter as
+//   method: the 3D curve up to the specified tolerance.
+//   Reason: return type 'Handle(Adaptor3d_CurveOnSurface)' is unknown
+//   // pub fn curve_on_surface(&self) -> OwnedPtr<Handle<Adaptor3d_CurveOnSurface>>;
+//
+
 // ========================
 // From Approx_SweepApproximation.hxx
 // ========================
@@ -1647,6 +1669,21 @@ impl SweepApproximation {
         }
     }
 }
+
+// ── Skipped symbols for SweepApproximation (3 total) ──
+// SKIPPED: **Source:** `Approx_SweepApproximation.hxx`:98 - `Approx_SweepApproximation::SurfShape`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn surf_shape(&self, UDegree: &mut i32, VDegree: &mut i32, NbUPoles: &mut i32, NbVPoles: &mut i32, NbUKnots: &mut i32, NbVKnots: &mut i32);
+//
+// SKIPPED: **Source:** `Approx_SweepApproximation.hxx`:136 - `Approx_SweepApproximation::Curves2dShape`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32);
+//
+// SKIPPED: **Source:** `Approx_SweepApproximation.hxx`:166 - `Approx_SweepApproximation::Dump`
+//   method: display information on approximation.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
 
 // ========================
 // From Approx_SweepFunction.hxx
@@ -1917,6 +1954,13 @@ impl HandleApproxSweepFunction {
         unsafe { &mut *(crate::ffi::HandleApproxSweepFunction_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for SweepFunction (1 total) ──
+// SKIPPED: **Source:** `Approx_SweepFunction.hxx`:84 - `Approx_SweepFunction::SectionShape`
+//   method: get the format of an  section
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32);
+//
 
 // ========================
 // Additional type re-exports

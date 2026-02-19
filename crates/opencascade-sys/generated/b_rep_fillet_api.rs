@@ -713,6 +713,13 @@ impl MakeChamfer {
     }
 }
 
+// ── Skipped symbols for MakeChamfer (1 total) ──
+// SKIPPED: **Source:** `BRepFilletAPI_MakeChamfer.hxx`:279 - `BRepFilletAPI_MakeChamfer::Builder`
+//   method: Returns the internal filleting algorithm.
+//   Reason: return type 'Handle(TopOpeBRepBuild_HBuilder)' is unknown
+//   // pub fn builder(&self) -> OwnedPtr<Handle<TopOpeBRepBuild_HBuilder>>;
+//
+
 // ========================
 // From BRepFilletAPI_MakeFillet.hxx
 // ========================
@@ -1449,6 +1456,13 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_inherited_Check(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for MakeFillet (1 total) ──
+// SKIPPED: **Source:** `BRepFilletAPI_MakeFillet.hxx`:328 - `BRepFilletAPI_MakeFillet::Builder`
+//   method: Returns the internal topology building algorithm.
+//   Reason: return type 'Handle(TopOpeBRepBuild_HBuilder)' is unknown
+//   // pub fn builder(&self) -> OwnedPtr<Handle<TopOpeBRepBuild_HBuilder>>;
+//
 
 // ========================
 // From BRepFilletAPI_MakeFillet2d.hxx

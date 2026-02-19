@@ -724,6 +724,19 @@ impl BuilderAlgo {
     }
 }
 
+// ── Skipped symbols for BuilderAlgo (2 total) ──
+// SKIPPED: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:185 - `BRepAlgoAPI_BuilderAlgo::DSFiller`
+//   method: @name Getting tools performing the job
+//   method: Returns the Intersection tool
+//   Reason: return type 'const BOPAlgo_PPaveFiller&' is unknown
+//   // pub fn ds_filler(&self) -> &PPaveFiller;
+//
+// SKIPPED: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:188 - `BRepAlgoAPI_BuilderAlgo::Builder`
+//   method: Returns the Building tool
+//   Reason: return type 'const BOPAlgo_PBuilder&' is unknown
+//   // pub fn builder(&self) -> &PBuilder;
+//
+
 // ========================
 // From BRepAlgoAPI_Check.hxx
 // ========================

@@ -581,7 +581,7 @@ fn generate_output(
         codegen::bindings::compute_all_class_bindings(all_classes, symbol_table, &collection_type_names, &extra_typedef_names, exclude_methods);
 
     // Compute FunctionBindings once for ALL free functions — shared by all three generators
-    let all_function_bindings = codegen::bindings::compute_all_function_bindings(
+    let (all_function_bindings, all_skipped_functions) = codegen::bindings::compute_all_function_bindings(
         symbol_table, all_classes, &collection_type_names, &extra_typedef_names, known_headers,
     );
 
@@ -640,6 +640,16 @@ fn generate_output(
             .entry(fb.module.clone())
             .or_default()
             .push(fb);
+    }
+
+    // Index skipped function symbols by module
+    let mut skipped_fns_by_module: HashMap<String, Vec<&codegen::bindings::SkippedSymbol>> =
+        HashMap::new();
+    for sf in &all_skipped_functions {
+        skipped_fns_by_module
+            .entry(sf.module.clone())
+            .or_default()
+            .push(sf);
     }
 
     // Compute ALL types that appear in ffi.rs so we can find unreexported ones
@@ -791,6 +801,10 @@ fn generate_output(
         let module_fn_bindings = fn_bindings_by_module
             .get(&module.rust_name)
             .unwrap_or(&empty_fn_bindings);
+        let empty_skipped_fns: Vec<&codegen::bindings::SkippedSymbol> = Vec::new();
+        let module_skipped_fns = skipped_fns_by_module
+            .get(&module.rust_name)
+            .unwrap_or(&empty_skipped_fns);
 
         let reexport_code = codegen::rust::generate_module_reexports(
             &module.name,
@@ -800,6 +814,7 @@ fn generate_output(
             symbol_table,
             module_bindings,
             module_fn_bindings,
+            module_skipped_fns,
             module_extra_types,
         );
 
@@ -831,6 +846,10 @@ fn generate_output(
             let module_fn_bindings = fn_bindings_by_module
                 .get(&rust_name)
                 .unwrap_or(&empty_fn_bindings);
+            let empty_skipped_fns: Vec<&codegen::bindings::SkippedSymbol> = Vec::new();
+            let module_skipped_fns = skipped_fns_by_module
+                .get(&rust_name)
+                .unwrap_or(&empty_skipped_fns);
             let reexport_code = codegen::rust::generate_module_reexports(
                 module_name,
                 &rust_name,
@@ -839,6 +858,7 @@ fn generate_output(
                 symbol_table,
                 &[],
                 module_fn_bindings,
+                module_skipped_fns,
                 types,
             );
             let module_path = args.output.join(format!("{}.rs", rust_name));
@@ -866,6 +886,10 @@ fn generate_output(
         }
         // Derive the C++ module name from the namespace of the first function
         let cpp_name = fn_bindings[0].namespace.clone();
+        let empty_skipped_fns: Vec<&codegen::bindings::SkippedSymbol> = Vec::new();
+        let module_skipped_fns = skipped_fns_by_module
+            .get(rust_module)
+            .unwrap_or(&empty_skipped_fns);
         let reexport_code = codegen::rust::generate_module_reexports(
             &cpp_name,
             rust_module,
@@ -874,6 +898,7 @@ fn generate_output(
             symbol_table,
             &[],
             fn_bindings,
+            module_skipped_fns,
             &[],
         );
         let module_path = args.output.join(format!("{}.rs", rust_module));

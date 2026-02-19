@@ -113,6 +113,13 @@ impl HandleTopLocDatum3D {
     }
 }
 
+// ── Skipped symbols for Datum3D (1 total) ──
+// SKIPPED: **Source:** `TopLoc_Datum3D.hxx`:59 - `TopLoc_Datum3D::ShallowDump`
+//   method: Writes the contents of this Datum3D to the stream S.
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn shallow_dump(&self, S: /* Standard_OStream& */);
+//
+
 // ========================
 // From TopLoc_ItemLocation.hxx
 // ========================
@@ -350,6 +357,13 @@ impl Location {
     }
 }
 
+// ── Skipped symbols for Location (1 total) ──
+// SKIPPED: **Source:** `TopLoc_Location.hxx`:141 - `TopLoc_Location::ShallowDump`
+//   method: Prints the contents of <me> on the stream <s>.
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn shallow_dump(&self, S: /* Standard_OStream& */);
+//
+
 // ========================
 // From TopLoc_SListNodeOfItemLocation.hxx
 // ========================
@@ -572,3 +586,16 @@ impl SListOfItemLocation {
         }
     }
 }
+
+// ── Skipped symbols for SListOfItemLocation (2 total) ──
+// SKIPPED: **Source:** `TopLoc_SListOfItemLocation.hxx`:72 - `TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation`
+//   constructor: Move constructor
+//   Reason: has unbindable types: param 'theOther': rvalue reference (TopLoc_SListOfItemLocation&&)
+//   // pub fn new_slistofitemlocation(theOther: /* TopLoc_SListOfItemLocation&& */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TopLoc_SListOfItemLocation.hxx`:63 - `TopLoc_SListOfItemLocation::Assign`
+//   method: Sets  a list  from  an  other  one. The  lists are
+//   method: shared. The list itself is returned.
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn assign(&mut self, Other: &SListOfItemLocation) -> &mut SListOfItemLocation;
+//

@@ -306,6 +306,13 @@ impl Builder {
     }
 }
 
+// ── Skipped symbols for Builder (1 total) ──
+// SKIPPED: **Source:** `TNaming_Builder.hxx`:74 - `TNaming_Builder::NamedShape`
+//   method: Returns the NamedShape which has been built or is under construction.
+//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
+//   // pub fn named_shape(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
+//
+
 // ========================
 // From TNaming_CopyShape.hxx
 // ========================
@@ -472,6 +479,13 @@ impl DeltaOnModification {
     }
 }
 
+// ── Skipped symbols for DeltaOnModification (1 total) ──
+// SKIPPED: **Source:** `TNaming_DeltaOnModification.hxx`:40 - `TNaming_DeltaOnModification::TNaming_DeltaOnModification`
+//   constructor: Initializes a TDF_DeltaOnModification.
+//   Reason: param 'NS' uses unknown Handle type
+//   // pub fn new_handletnamingnamedshape(NS: &HandleNamedShape) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From TNaming_DeltaOnRemoval.hxx
 // ========================
@@ -562,6 +576,13 @@ impl DeltaOnRemoval {
         }
     }
 }
+
+// ── Skipped symbols for DeltaOnRemoval (1 total) ──
+// SKIPPED: **Source:** `TNaming_DeltaOnRemoval.hxx`:35 - `TNaming_DeltaOnRemoval::TNaming_DeltaOnRemoval`
+//   constructor: Initializes a TDF_DeltaOnModification.
+//   Reason: param 'NS' uses unknown Handle type
+//   // pub fn new_handletnamingnamedshape(NS: &HandleNamedShape) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From TNaming_Identifier.hxx
@@ -663,6 +684,36 @@ impl Identifier {
     }
 }
 
+// ── Skipped symbols for Identifier (7 total) ──
+// SKIPPED: **Source:** `TNaming_Identifier.hxx`:41 - `TNaming_Identifier::TNaming_Identifier`
+//   Reason: param 'ContextNS' uses unknown Handle type
+//   // pub fn new_label_shape_handletnamingnamedshape_bool(Lab: &Label, S: &Shape, ContextNS: &HandleNamedShape, Geom: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TNaming_Identifier.hxx`:52 - `TNaming_Identifier::Feature`
+//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
+//   // pub fn feature(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
+//
+// SKIPPED: **Source:** `TNaming_Identifier.hxx`:62 - `TNaming_Identifier::FeatureArg`
+//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
+//   // pub fn feature_arg(&mut self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
+//
+// SKIPPED: **Source:** `TNaming_Identifier.hxx`:68 - `TNaming_Identifier::NamedShapeOfGeneration`
+//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
+//   // pub fn named_shape_of_generation(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
+//
+// SKIPPED: **Source:** `TNaming_Identifier.hxx`:73 - `TNaming_Identifier::PrimitiveIdentification`
+//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn primitive_identification(&mut self, Localizer: &mut Localizer, NS: &HandleNamedShape);
+//
+// SKIPPED: **Source:** `TNaming_Identifier.hxx`:76 - `TNaming_Identifier::GeneratedIdentification`
+//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn generated_identification(&mut self, Localizer: &mut Localizer, NS: &HandleNamedShape);
+//
+// SKIPPED: **Source:** `TNaming_Identifier.hxx`:79 - `TNaming_Identifier::Identification`
+//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn identification(&mut self, Localizer: &mut Localizer, NS: &HandleNamedShape);
+//
+
 // ========================
 // From TNaming_Iterator.hxx
 // ========================
@@ -745,6 +796,14 @@ impl Iterator {
         }
     }
 }
+
+// ── Skipped symbols for Iterator (1 total) ──
+// SKIPPED: **Source:** `TNaming_Iterator.hxx`:51 - `TNaming_Iterator::TNaming_Iterator`
+//   constructor: Iterates on all  the history records in
+//   constructor: <anAtt>.
+//   Reason: param 'anAtt' uses unknown Handle type
+//   // pub fn new_handletnamingnamedshape(anAtt: &HandleNamedShape) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From TNaming_IteratorOnShapesSet.hxx
@@ -885,6 +944,29 @@ impl Localizer {
     }
 }
 
+// ── Skipped symbols for Localizer (5 total) ──
+// SKIPPED: **Source:** `TNaming_Localizer.hxx`:46 - `TNaming_Localizer::Init`
+//   Reason: param 'US' uses unknown type 'const Handle(TNaming_UsedShapes)&'
+//   // pub fn init(&mut self, US: &HandleUsedShapes, CurTrans: i32);
+//
+// SKIPPED: **Source:** `TNaming_Localizer.hxx`:65 - `TNaming_Localizer::Backward`
+//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn backward(&mut self, NS: &HandleNamedShape, S: &Shape, Primitives: &mut MapOfNamedShape, ValidShapes: &mut MapOfShape);
+//
+// SKIPPED: **Source:** `TNaming_Localizer.hxx`:74 - `TNaming_Localizer::IsNew`
+//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn is_new(S: &Shape, NS: &HandleNamedShape) -> bool;
+//
+// SKIPPED: **Source:** `TNaming_Localizer.hxx`:77 - `TNaming_Localizer::FindGenerator`
+//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn find_generator(NS: &HandleNamedShape, S: &Shape, theListOfGenerators: &mut ListOfShape);
+//
+// SKIPPED: **Source:** `TNaming_Localizer.hxx`:82 - `TNaming_Localizer::FindShapeContext`
+//   static_method: Finds context of the shape <S>.
+//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn find_shape_context(NS: &HandleNamedShape, theS: &Shape, theSC: &mut Shape);
+//
+
 // ========================
 // From TNaming_Name.hxx
 // ========================
@@ -993,6 +1075,24 @@ impl Name {
         unsafe { crate::ffi::TNaming_Name_paste(self as *const Self, into, RT) }
     }
 }
+
+// ── Skipped symbols for Name (4 total) ──
+// SKIPPED: **Source:** `TNaming_Name.hxx`:49 - `TNaming_Name::Append`
+//   Reason: param 'arg' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn append(&mut self, arg: &HandleNamedShape);
+//
+// SKIPPED: **Source:** `TNaming_Name.hxx`:51 - `TNaming_Name::StopNamedShape`
+//   Reason: param 'arg' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn stop_named_shape(&mut self, arg: &HandleNamedShape);
+//
+// SKIPPED: **Source:** `TNaming_Name.hxx`:67 - `TNaming_Name::StopNamedShape`
+//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
+//   // pub fn stop_named_shape(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
+//
+// SKIPPED: **Source:** `TNaming_Name.hxx`:75 - `TNaming_Name::Solve`
+//   Reason: param 'Valid' uses unknown type 'const TDF_LabelMap&'
+//   // pub fn solve(&self, aLab: &Label, Valid: &LabelMap) -> bool;
+//
 
 // ========================
 // From TNaming_NamedShape.hxx
@@ -1316,6 +1416,30 @@ impl NamedShape {
     }
 }
 
+// ── Skipped symbols for NamedShape (4 total) ──
+// SKIPPED: **Source:** `TNaming_NamedShape.hxx`:90 - `TNaming_NamedShape::DeltaOnModification`
+//   method: Makes a DeltaOnModification between <me> and
+//   method: <anOldAttribute.
+//   Reason: return type 'Handle(TDF_DeltaOnModification)' is unknown
+//   // pub fn delta_on_modification(&self, anOldAttribute: &HandleAttribute) -> OwnedPtr<Handle<TDF_DeltaOnModification>>;
+//
+// SKIPPED: **Source:** `TNaming_NamedShape.hxx`:94 - `TNaming_NamedShape::DeltaOnModification`
+//   method: Applies a DeltaOnModification to <me>.
+//   Reason: param 'aDelta' uses unknown type 'const Handle(TDF_DeltaOnModification)&'
+//   // pub fn delta_on_modification(&mut self, aDelta: &HandleDeltaOnModification);
+//
+// SKIPPED: **Source:** `TNaming_NamedShape.hxx`:99 - `TNaming_NamedShape::DeltaOnRemoval`
+//   method: Makes a DeltaOnRemoval on <me> because <me> has
+//   method: disappeared from the DS.
+//   Reason: return type 'Handle(TDF_DeltaOnRemoval)' is unknown
+//   // pub fn delta_on_removal(&self) -> OwnedPtr<Handle<TDF_DeltaOnRemoval>>;
+//
+// SKIPPED: **Source:** `TNaming_NamedShape.hxx`:135 - `TNaming_NamedShape::Dump`
+//   method: Dumps the attribute on <aStream>.
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+
 // ========================
 // From TNaming_Naming.hxx
 // ========================
@@ -1580,6 +1704,39 @@ impl Naming {
     }
 }
 
+// ── Skipped symbols for Naming (6 total) ──
+// SKIPPED: **Source:** `TNaming_Naming.hxx`:82 - `TNaming_Naming::Regenerate`
+//   method: regenerate only the Name associated to me
+//   Reason: param 'scope' uses unknown type 'TDF_LabelMap&'
+//   // pub fn regenerate(&mut self, scope: &mut LabelMap) -> bool;
+//
+// SKIPPED: **Source:** `TNaming_Naming.hxx`:87 - `TNaming_Naming::Solve`
+//   method: Regenerate recursively the  whole name with scope.  If
+//   method: scope  is empty it  means that  all the labels  of the
+//   method: framework are valid.
+//   Reason: param 'scope' uses unknown type 'TDF_LabelMap&'
+//   // pub fn solve(&mut self, scope: &mut LabelMap) -> bool;
+//
+// SKIPPED: **Source:** `TNaming_Naming.hxx`:103 - `TNaming_Naming::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TNaming_Naming.hxx`:105 - `TNaming_Naming::ExtendedDump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
+//   // pub fn extended_dump(&self, anOS: /* Standard_OStream& */, aFilter: &IDFilter, aMap: &mut AttributeIndexedMap);
+//
+// SKIPPED: **Source:** `TNaming_Naming.hxx`:52 - `TNaming_Naming::Insert`
+//   Reason: return type 'Handle(TNaming_Naming)' is unknown
+//   // pub fn insert(under: &Label) -> OwnedPtr<Handle<TNaming_Naming>>;
+//
+// SKIPPED: **Source:** `TNaming_Naming.hxx`:65 - `TNaming_Naming::Name`
+//   static_method: Creates  a   Namimg  attribute  at  label <where>   to
+//   static_method: identify  the   shape   <Selection>.    Geometry is
+//   static_method: Standard_True  if   we  are  only  interested  by  the
+//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
+//   // pub fn name(where_: &Label, Selection: &Shape, Context: &Shape, Geometry: bool, KeepOrientation: bool, BNproblem: bool) -> OwnedPtr<Handle<TNaming_NamedShape>>;
+//
+
 // ========================
 // From TNaming_NamingTool.hxx
 // ========================
@@ -1600,6 +1757,20 @@ impl NamingTool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_NamingTool_ctor()) }
     }
 }
+
+// ── Skipped symbols for NamingTool (3 total) ──
+// SKIPPED: **Source:** `TNaming_NamingTool.hxx`:34 - `TNaming_NamingTool::CurrentShape`
+//   Reason: param 'Valid' uses unknown type 'const TDF_LabelMap&'
+//   // pub fn current_shape(Valid: &LabelMap, Forbiden: &LabelMap, NS: &HandleNamedShape, MS: &mut IndexedMapOfShape);
+//
+// SKIPPED: **Source:** `TNaming_NamingTool.hxx`:39 - `TNaming_NamingTool::CurrentShapeFromShape`
+//   Reason: param 'Valid' uses unknown type 'const TDF_LabelMap&'
+//   // pub fn current_shape_from_shape(Valid: &LabelMap, Forbiden: &LabelMap, Acces: &Label, S: &Shape, MS: &mut IndexedMapOfShape);
+//
+// SKIPPED: **Source:** `TNaming_NamingTool.hxx`:45 - `TNaming_NamingTool::BuildDescendants`
+//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn build_descendants(NS: &HandleNamedShape, Labels: &mut LabelMap);
+//
 
 // ========================
 // From TNaming_NewShapeIterator.hxx
@@ -1696,6 +1867,12 @@ impl NewShapeIterator {
     }
 }
 
+// ── Skipped symbols for NewShapeIterator (1 total) ──
+// SKIPPED: **Source:** `TNaming_NewShapeIterator.hxx`:61 - `TNaming_NewShapeIterator::NamedShape`
+//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
+//   // pub fn named_shape(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
+//
+
 // ========================
 // From TNaming_OldShapeIterator.hxx
 // ========================
@@ -1790,6 +1967,12 @@ impl OldShapeIterator {
     }
 }
 
+// ── Skipped symbols for OldShapeIterator (1 total) ──
+// SKIPPED: **Source:** `TNaming_OldShapeIterator.hxx`:61 - `TNaming_OldShapeIterator::NamedShape`
+//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
+//   // pub fn named_shape(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
+//
+
 // ========================
 // From TNaming_RefShape.hxx
 // ========================
@@ -1831,6 +2014,20 @@ impl RefShape {
         }
     }
 }
+
+// ── Skipped symbols for RefShape (3 total) ──
+// SKIPPED: **Source:** `TNaming_RefShape.hxx`:41 - `TNaming_RefShape::FirstUse`
+//   Reason: param 'aPtr' uses unknown type 'const TNaming_PtrNode&'
+//   // pub fn first_use(&mut self, aPtr: &PtrNode);
+//
+// SKIPPED: **Source:** `TNaming_RefShape.hxx`:43 - `TNaming_RefShape::FirstUse`
+//   Reason: return type 'TNaming_PtrNode' is unknown
+//   // pub fn first_use(&self) -> OwnedPtr<TNaming_PtrNode>;
+//
+// SKIPPED: **Source:** `TNaming_RefShape.hxx`:49 - `TNaming_RefShape::NamedShape`
+//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
+//   // pub fn named_shape(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
+//
 
 // ========================
 // From TNaming_SameShapeIterator.hxx
@@ -1950,6 +2147,27 @@ impl Scope {
     }
 }
 
+// ── Skipped symbols for Scope (4 total) ──
+// SKIPPED: **Source:** `TNaming_Scope.hxx`:44 - `TNaming_Scope::TNaming_Scope`
+//   constructor: create a scope with a map. WithValid = TRUE.
+//   Reason: param 'valid' uses unknown type 'TDF_LabelMap&'
+//   // pub fn new_labelmap(valid: &mut LabelMap) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TNaming_Scope.hxx`:64 - `TNaming_Scope::GetValid`
+//   Reason: return type 'const TDF_LabelMap&' is unknown
+//   // pub fn get_valid(&self) -> &LabelMap;
+//
+// SKIPPED: **Source:** `TNaming_Scope.hxx`:66 - `TNaming_Scope::ChangeValid`
+//   Reason: return type 'TDF_LabelMap&' is unknown
+//   // pub fn change_valid(&mut self) -> &mut LabelMap;
+//
+// SKIPPED: **Source:** `TNaming_Scope.hxx`:70 - `TNaming_Scope::CurrentShape`
+//   method: Returns  the current  value of  <NS> according to the
+//   method: Valid Scope.
+//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn current_shape(&self, NS: &HandleNamedShape) -> OwnedPtr<TopoDS_Shape>;
+//
+
 // ========================
 // From TNaming_Selector.hxx
 // ========================
@@ -2056,6 +2274,33 @@ impl Selector {
         }
     }
 }
+
+// ── Skipped symbols for Selector (4 total) ──
+// SKIPPED: **Source:** `TNaming_Selector.hxx`:121 - `TNaming_Selector::Solve`
+//   method: Updates the topological naming on the label
+//   method: aLabel given as an argument at construction time.
+//   method: The underlying shape returned in the method
+//   Reason: param 'Valid' uses unknown type 'TDF_LabelMap&'
+//   // pub fn solve(&self, Valid: &mut LabelMap) -> bool;
+//
+// SKIPPED: **Source:** `TNaming_Selector.hxx`:125 - `TNaming_Selector::Arguments`
+//   method: Returns the attribute list args.
+//   method: This list contains the named shape on which the topological naming was built.
+//   Reason: param 'args' uses unknown type 'TDF_AttributeMap&'
+//   // pub fn arguments(&self, args: &mut AttributeMap);
+//
+// SKIPPED: **Source:** `TNaming_Selector.hxx`:129 - `TNaming_Selector::NamedShape`
+//   method: Returns the NamedShape build or under construction,
+//   method: which contains the topological naming..
+//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
+//   // pub fn named_shape(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
+//
+// SKIPPED: **Source:** `TNaming_Selector.hxx`:79 - `TNaming_Selector::IsIdentified`
+//   static_method: To know if a shape is already identified (not selected)
+//   static_method: =======================================================
+//   Reason: param 'NS' uses unknown type 'Handle(TNaming_NamedShape)&'
+//   // pub fn is_identified(access: &Label, selection: &Shape, NS: &mut HandleNamedShape, Geometry: bool) -> bool;
+//
 
 // ========================
 // From TNaming_ShapesSet.hxx
@@ -2206,6 +2451,77 @@ impl Tool {
         unsafe { crate::ffi::TNaming_Tool_valid_until(access, S) }
     }
 }
+
+// ── Skipped symbols for Tool (11 total) ──
+// SKIPPED: **Source:** `TNaming_Tool.hxx`:51 - `TNaming_Tool::CurrentShape`
+//   static_method: Returns the last Modification of <NS>.
+//   static_method: Returns the shape CurrentShape contained in
+//   static_method: the named shape attribute NS.
+//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn current_shape(NS: &HandleNamedShape) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `TNaming_Tool.hxx`:61 - `TNaming_Tool::CurrentShape`
+//   static_method: Returns the shape CurrentShape contained in
+//   static_method: the named shape attribute NS, and present in
+//   static_method: the updated attribute map Updated.
+//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn current_shape(NS: &HandleNamedShape, Updated: &LabelMap) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `TNaming_Tool.hxx`:66 - `TNaming_Tool::CurrentNamedShape`
+//   static_method: Returns the NamedShape of the last Modification of <NS>.
+//   static_method: This shape is identified by a label.
+//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn current_named_shape(NS: &HandleNamedShape, Updated: &LabelMap) -> OwnedPtr<Handle<TNaming_NamedShape>>;
+//
+// SKIPPED: **Source:** `TNaming_Tool.hxx`:71 - `TNaming_Tool::CurrentNamedShape`
+//   static_method: Returns NamedShape the last Modification of <NS>.
+//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn current_named_shape(NS: &HandleNamedShape) -> OwnedPtr<Handle<TNaming_NamedShape>>;
+//
+// SKIPPED: **Source:** `TNaming_Tool.hxx`:112 - `TNaming_Tool::NamedShape`
+//   static_method: Returns the named shape attribute defined by
+//   static_method: the shape aShape and the label anAccess.
+//   static_method: This attribute is returned as a new shape.
+//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
+//   // pub fn named_shape(aShape: &Shape, anAcces: &Label) -> OwnedPtr<Handle<TNaming_NamedShape>>;
+//
+// SKIPPED: **Source:** `TNaming_Tool.hxx`:120 - `TNaming_Tool::GetShape`
+//   static_method: Returns the entities stored in the named shape attribute NS.
+//   static_method: If there is only one old-new pair, the new shape
+//   static_method: is returned. Otherwise, a Compound is returned.
+//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn get_shape(NS: &HandleNamedShape) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `TNaming_Tool.hxx`:123 - `TNaming_Tool::OriginalShape`
+//   static_method: Returns the shape contained as OldShape in <NS>
+//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn original_shape(NS: &HandleNamedShape) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `TNaming_Tool.hxx`:128 - `TNaming_Tool::GeneratedShape`
+//   static_method: Returns the shape generated from S or by a
+//   static_method: modification of S and contained in the named
+//   static_method: shape Generation.
+//   Reason: param 'Generation' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn generated_shape(S: &Shape, Generation: &HandleNamedShape) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `TNaming_Tool.hxx`:131 - `TNaming_Tool::Collect`
+//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn collect(NS: &HandleNamedShape, Labels: &mut MapOfNamedShape, OnlyModif: bool);
+//
+// SKIPPED: **Source:** `TNaming_Tool.hxx`:142 - `TNaming_Tool::Label`
+//   static_method: Returns  the label  of   the first apparition  of
+//   static_method: <aShape>.  Transdef  is a value of the transaction
+//   static_method: of the first apparition of <aShape>.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn label(access: &Label, aShape: &Shape, TransDef: &mut i32) -> OwnedPtr<TDF_Label>;
+//
+// SKIPPED: **Source:** `TNaming_Tool.hxx`:160 - `TNaming_Tool::FindShape`
+//   static_method: Returns the current shape (a Wire or a Shell) built (in the data framework)
+//   static_method: from the shapes of the argument named shape.
+//   static_method: It is used for IDENTITY name type computation.
+//   Reason: param 'Valid' uses unknown type 'const TDF_LabelMap&'
+//   // pub fn find_shape(Valid: &LabelMap, Forbiden: &LabelMap, Arg: &HandleNamedShape, S: &mut Shape);
+//
 
 // ========================
 // From TNaming_TranslateTool.hxx
@@ -2709,6 +3025,23 @@ impl UsedShapes {
     }
 }
 
+// ── Skipped symbols for UsedShapes (3 total) ──
+// SKIPPED: **Source:** `TNaming_UsedShapes.hxx`:74 - `TNaming_UsedShapes::DeltaOnAddition`
+//   method: this method returns a null handle (no delta).
+//   Reason: return type 'Handle(TDF_DeltaOnAddition)' is unknown
+//   // pub fn delta_on_addition(&self) -> OwnedPtr<Handle<TDF_DeltaOnAddition>>;
+//
+// SKIPPED: **Source:** `TNaming_UsedShapes.hxx`:77 - `TNaming_UsedShapes::DeltaOnRemoval`
+//   method: this method returns a null handle (no delta).
+//   Reason: return type 'Handle(TDF_DeltaOnRemoval)' is unknown
+//   // pub fn delta_on_removal(&self) -> OwnedPtr<Handle<TDF_DeltaOnRemoval>>;
+//
+// SKIPPED: **Source:** `TNaming_UsedShapes.hxx`:105 - `TNaming_UsedShapes::Dump`
+//   method: Dumps the attribute on <aStream>.
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+
 // ========================
 // Additional type re-exports
 // ========================
@@ -2718,3 +3051,12 @@ pub use crate::ffi::{
     TNaming_ListOfNamedShape as ListOfNamedShape, TNaming_MapOfNamedShape as MapOfNamedShape,
     TNaming_PtrNode as PtrNode,
 };
+
+// ── Skipped free functions (1 total) ──
+// SKIPPED: **Source:** `TNaming.hxx`:138 - `TNaming::Replicate`
+//   function: Replicates the named shape with the transformation <T>
+//   function: on the label <L> (and sub-labels if necessary)
+//   function: (TNaming_GENERATED is set)
+//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn replicate(NS: &HandleNamedShape, T: &Trsf, L: &Label);
+//

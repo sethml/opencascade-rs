@@ -131,6 +131,12 @@ impl HandleGeom2dEvaluatorCurve {
     }
 }
 
+// ── Skipped symbols for Curve (1 total) ──
+// SKIPPED: **Source:** `Geom2dEvaluator_Curve.hxx`:29 - `Geom2dEvaluator_Curve::Geom2dEvaluator_Curve`
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new() -> OwnedPtr<Self>;
+//
+
 // ========================
 // From Geom2dEvaluator_OffsetCurve.hxx
 // ========================
@@ -283,3 +289,10 @@ impl OffsetCurve {
         }
     }
 }
+
+// ── Skipped symbols for OffsetCurve (1 total) ──
+// SKIPPED: **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:29 - `Geom2dEvaluator_OffsetCurve::Geom2dEvaluator_OffsetCurve`
+//   constructor: Initialize evaluator by curve adaptor
+//   Reason: param 'theBase' uses unknown Handle type
+//   // pub fn new_handlegeom2dadaptorcurve_real(theBase: &HandleCurve, theOffset: f64) -> OwnedPtr<Self>;
+//

@@ -1655,6 +1655,12 @@ impl HandleProjLibHSequenceOfHSequenceOfPnt {
     }
 }
 
+// ── Skipped symbols for HSequenceOfHSequenceOfPnt (1 total) ──
+// SKIPPED: **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
+
 // ========================
 // From ProjLib_Plane.hxx
 // ========================
@@ -1936,6 +1942,33 @@ impl PrjFunc {
         unsafe { crate::ffi::ProjLib_PrjFunc_inherited_GetStateNumber(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for PrjFunc (4 total) ──
+// SKIPPED: **Source:** `ProjLib_PrjFunc.hxx`:34 - `ProjLib_PrjFunc::ProjLib_PrjFunc`
+//   Reason: has unbindable types: param 'C': raw pointer (const Adaptor3d_Curve*); param 'S': raw pointer (const Adaptor3d_Surface*)
+//   // pub fn new_curveptr_real_surfaceptr_int(C: /* const Adaptor3d_Curve* */, FixVal: f64, S: /* const Adaptor3d_Surface* */, Fix: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `ProjLib_PrjFunc.hxx`:49 - `ProjLib_PrjFunc::Value`
+//   method: computes the values <F> of the Functions for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `ProjLib_PrjFunc.hxx`:55 - `ProjLib_PrjFunc::Derivatives`
+//   method: returns the values <D> of the derivatives for the
+//   method: variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `ProjLib_PrjFunc.hxx`:61 - `ProjLib_PrjFunc::Values`
+//   method: returns the values <F> of the functions and the derivatives
+//   method: <D> for the variable <X>.
+//   method: Returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
 
 // ========================
 // From ProjLib_PrjResolve.hxx
@@ -2385,6 +2418,12 @@ impl ProjectOnPlane {
         }
     }
 }
+
+// ── Skipped symbols for ProjectOnPlane (1 total) ──
+// SKIPPED: **Source:** `ProjLib_ProjectOnPlane.hxx`:84 - `ProjLib_ProjectOnPlane::GetResult`
+//   Reason: return type 'const Handle(GeomAdaptor_Curve)&' is unknown
+//   // pub fn get_result(&self) -> &HandleCurve;
+//
 
 // ========================
 // From ProjLib_ProjectOnSurface.hxx

@@ -199,6 +199,20 @@ impl BadQualifier {
     }
 }
 
+// ── Skipped symbols for BadQualifier (3 total) ──
+// SKIPPED: **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::NewInstance`
+//   Reason: return type 'Handle(GccEnt_BadQualifier)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<GccEnt_BadQualifier>>;
+//
+// SKIPPED: **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::NewInstance`
+//   Reason: return type 'Handle(GccEnt_BadQualifier)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<GccEnt_BadQualifier>>;
+//
+
 // ========================
 // From GccEnt_QualifiedCirc.hxx
 // ========================

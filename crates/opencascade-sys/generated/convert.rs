@@ -1124,6 +1124,16 @@ impl ConicToBSplineCurve {
     }
 }
 
+// ── Skipped symbols for ConicToBSplineCurve (2 total) ──
+// SKIPPED: **Source:** `Convert_ConicToBSplineCurve.hxx`:103 - `Convert_ConicToBSplineCurve::BuildCosAndSin`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn build_cos_and_sin(&self, Parametrisation: ParameterisationType, CosNumerator: &mut HandleHArray1OfReal, SinNumerator: &mut HandleHArray1OfReal, Denominator: &mut HandleHArray1OfReal, Degree: &mut i32, Knots: &mut HandleHArray1OfReal, Mults: &mut HandleHArray1OfInteger);
+//
+// SKIPPED: **Source:** `Convert_ConicToBSplineCurve.hxx`:111 - `Convert_ConicToBSplineCurve::BuildCosAndSin`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn build_cos_and_sin(&self, Parametrisation: ParameterisationType, UFirst: f64, ULast: f64, CosNumerator: &mut HandleHArray1OfReal, SinNumerator: &mut HandleHArray1OfReal, Denominator: &mut HandleHArray1OfReal, Degree: &mut i32, Knots: &mut HandleHArray1OfReal, Mults: &mut HandleHArray1OfInteger);
+//
+
 // ========================
 // From Convert_CylinderToBSplineSurface.hxx
 // ========================

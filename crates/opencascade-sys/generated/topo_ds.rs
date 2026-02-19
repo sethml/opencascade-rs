@@ -1430,6 +1430,20 @@ impl FrozenShape {
     }
 }
 
+// ── Skipped symbols for FrozenShape (3 total) ──
+// SKIPPED: **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::NewInstance`
+//   Reason: return type 'Handle(TopoDS_FrozenShape)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<TopoDS_FrozenShape>>;
+//
+// SKIPPED: **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::NewInstance`
+//   Reason: return type 'Handle(TopoDS_FrozenShape)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<TopoDS_FrozenShape>>;
+//
+
 // ========================
 // From TopoDS_HShape.hxx
 // ========================
@@ -1719,6 +1733,20 @@ impl LockedShape {
         }
     }
 }
+
+// ── Skipped symbols for LockedShape (3 total) ──
+// SKIPPED: **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::NewInstance`
+//   Reason: return type 'Handle(TopoDS_LockedShape)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<TopoDS_LockedShape>>;
+//
+// SKIPPED: **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::NewInstance`
+//   Reason: return type 'Handle(TopoDS_LockedShape)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<TopoDS_LockedShape>>;
+//
 
 // ========================
 // From TopoDS_Shape.hxx
@@ -3830,6 +3858,20 @@ impl UnCompatibleShapes {
         }
     }
 }
+
+// ── Skipped symbols for UnCompatibleShapes (3 total) ──
+// SKIPPED: **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::NewInstance`
+//   Reason: return type 'Handle(TopoDS_UnCompatibleShapes)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<TopoDS_UnCompatibleShapes>>;
+//
+// SKIPPED: **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::NewInstance`
+//   Reason: return type 'Handle(TopoDS_UnCompatibleShapes)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<TopoDS_UnCompatibleShapes>>;
+//
 
 // ========================
 // From TopoDS_Vertex.hxx

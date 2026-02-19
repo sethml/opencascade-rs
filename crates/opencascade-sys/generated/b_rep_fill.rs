@@ -321,6 +321,12 @@ impl ACRLaw {
     }
 }
 
+// ── Skipped symbols for ACRLaw (1 total) ──
+// SKIPPED: **Source:** `BRepFill_ACRLaw.hxx`:38 - `BRepFill_ACRLaw::BRepFill_ACRLaw`
+//   Reason: param 'Law' uses unknown Handle type
+//   // pub fn new_wire_handlegeomfilllocationguide(Path: &Wire, Law: &HandleLocationGuide) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From BRepFill_AdvancedEvolved.hxx
 // ========================
@@ -384,6 +390,13 @@ impl AdvancedEvolved {
         unsafe { crate::ffi::BRepFill_AdvancedEvolved_set_parallel_mode(self as *mut Self, theVal) }
     }
 }
+
+// ── Skipped symbols for AdvancedEvolved (1 total) ──
+// SKIPPED: **Source:** `BRepFill_AdvancedEvolved.hxx`:64 - `BRepFill_AdvancedEvolved::SetTemporaryDirectory`
+//   method: Sets directory where the debug shapes will be saved
+//   Reason: has string ref param 'thePath' of type 'const char* const&' (needs manual binding)
+//   // pub fn set_temporary_directory(&mut self, thePath: &*const char);
+//
 
 // ========================
 // From BRepFill_ApproxSeewing.hxx
@@ -1011,6 +1024,15 @@ impl CurveConstraint {
     }
 }
 
+// ── Skipped symbols for CurveConstraint (1 total) ──
+// SKIPPED: **Source:** `BRepFill_CurveConstraint.hxx`:44 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint`
+//   constructor: Create a constraint
+//   constructor: Order is the order of the constraint. The possible values for order are -1,0,1,2.
+//   constructor: Order i means constraints Gi
+//   Reason: param 'Boundary' uses unknown Handle type
+//   // pub fn new_handleadaptor3dcurveonsurface_int2_real3(Boundary: &HandleCurveOnSurface, Order: i32, NPt: i32, TolDist: f64, TolAng: f64, TolCurv: f64) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From BRepFill_Draft.hxx
 // ========================
@@ -1307,6 +1329,12 @@ impl DraftLaw {
         unsafe { crate::ffi::BRepFill_DraftLaw_inherited_Abscissa(self as *mut Self, Index, Param) }
     }
 }
+
+// ── Skipped symbols for DraftLaw (1 total) ──
+// SKIPPED: **Source:** `BRepFill_DraftLaw.hxx`:35 - `BRepFill_DraftLaw::BRepFill_DraftLaw`
+//   Reason: param 'Law' uses unknown Handle type
+//   // pub fn new_wire_handlegeomfilllocationdraft(Path: &Wire, Law: &HandleLocationDraft) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From BRepFill_Edge3DLaw.hxx
@@ -2773,6 +2801,13 @@ impl HandleBRepFillLocationLaw {
         unsafe { &mut *(crate::ffi::HandleBRepFillLocationLaw_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for LocationLaw (1 total) ──
+// SKIPPED: **Source:** `BRepFill_LocationLaw.hxx`:115 - `BRepFill_LocationLaw::Parameter`
+//   method: Find the index Law and the parameter, for a given Curvilinear abscissa
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn parameter(&mut self, Abscissa: f64, Index: &mut i32, Param: &mut f64);
+//
 
 // ========================
 // From BRepFill_MultiLine.hxx

@@ -228,6 +228,14 @@ impl ActorWrite {
     }
 }
 
+// ── Skipped symbols for ActorWrite (1 total) ──
+// SKIPPED: **Source:** `STEPCAFControl_ActorWrite.hxx`:39 - `STEPCAFControl_ActorWrite::IsAssembly`
+//   method: Check whether shape S is assembly
+//   method: Returns True if shape is registered in assemblies map
+//   Reason: param 'theModel' uses unknown type 'const Handle(StepData_StepModel)&'
+//   // pub fn is_assembly(&self, theModel: &HandleStepModel, S: &mut Shape) -> bool;
+//
+
 // ========================
 // From STEPCAFControl_Controller.hxx
 // ========================
@@ -514,6 +522,16 @@ impl HandleSTEPCAFControlExternFile {
     }
 }
 
+// ── Skipped symbols for ExternFile (2 total) ──
+// SKIPPED: **Source:** `STEPCAFControl_ExternFile.hxx`:40 - `STEPCAFControl_ExternFile::SetWS`
+//   Reason: param 'WS' uses unknown type 'const Handle(XSControl_WorkSession)&'
+//   // pub fn set_ws(&mut self, WS: &HandleWorkSession);
+//
+// SKIPPED: **Source:** `STEPCAFControl_ExternFile.hxx`:42 - `STEPCAFControl_ExternFile::GetWS`
+//   Reason: return type 'Handle(XSControl_WorkSession)' is unknown
+//   // pub fn get_ws(&self) -> OwnedPtr<Handle<XSControl_WorkSession>>;
+//
+
 // ========================
 // From STEPCAFControl_GDTProperty.hxx
 // ========================
@@ -765,6 +783,16 @@ impl GDTProperty {
     }
 }
 
+// ── Skipped symbols for GDTProperty (2 total) ──
+// SKIPPED: **Source:** `STEPCAFControl_GDTProperty.hxx`:52 - `STEPCAFControl_GDTProperty::GetDimModifiers`
+//   Reason: param 'theCRI' uses unknown type 'const Handle(StepRepr_CompoundRepresentationItem)&'
+//   // pub fn get_dim_modifiers(theCRI: &HandleCompoundRepresentationItem, theModifiers: &mut DimensionModifiersSequence);
+//
+// SKIPPED: **Source:** `STEPCAFControl_GDTProperty.hxx`:121 - `STEPCAFControl_GDTProperty::GetTessellation`
+//   Reason: return type 'Handle(StepVisual_TessellatedGeometricSet)' is unknown
+//   // pub fn get_tessellation(theShape: &Shape) -> OwnedPtr<Handle<StepVisual_TessellatedGeometricSet>>;
+//
+
 // ========================
 // From STEPCAFControl_Reader.hxx
 // ========================
@@ -1004,6 +1032,105 @@ impl Reader {
         }
     }
 }
+
+// ── Skipped symbols for Reader (16 total) ──
+// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:73 - `STEPCAFControl_Reader::STEPCAFControl_Reader`
+//   constructor: Creates a reader tool and attaches it to an already existing Session
+//   constructor: Clears the session if it was not yet set for STEP
+//   Reason: param 'WS' uses unknown Handle type
+//   // pub fn new_handlexscontrolworksession_bool(WS: &HandleWorkSession, scratch: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:81 - `STEPCAFControl_Reader::Init`
+//   method: Clears the internal data structures and attaches to a new session
+//   method: Clears the session if it was not yet set for STEP
+//   Reason: param 'WS' uses unknown type 'const Handle(XSControl_WorkSession)&'
+//   // pub fn init(&mut self, WS: &HandleWorkSession, scratch: bool);
+//
+// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:102 - `STEPCAFControl_Reader::ReadStream`
+//   method: Loads a file from stream and returns the read status.
+//   method: @param[in] theName  auxiliary stream name
+//   method: @param[in] theIStream  stream to read from
+//   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
+//   // pub fn read_stream(&mut self, theName: *const char, theIStream: /* std::istream& */) -> OwnedPtr<IFSelect_ReturnStatus>;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:113 - `STEPCAFControl_Reader::TransferOneRoot`
+//   method: Translates currently loaded STEP file into the document
+//   method: Returns True if succeeded, and False in case of fail
+//   method: Provided for use like single-file reader
+//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn transfer_one_root(&mut self, num: i32, doc: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:121 - `STEPCAFControl_Reader::Transfer`
+//   method: Translates currently loaded STEP file into the document
+//   method: Returns True if succeeded, and False in case of fail
+//   method: Provided for use like single-file reader
+//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn transfer(&mut self, doc: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:125 - `STEPCAFControl_Reader::Perform`
+//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn perform(&mut self, filename: &AsciiString, doc: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:130 - `STEPCAFControl_Reader::Perform`
+//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn perform(&mut self, filename: &AsciiString, doc: &HandleDocument, theParams: &Parameters, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:138 - `STEPCAFControl_Reader::Perform`
+//   method: Translate STEP file given by filename into the document
+//   method: Return True if succeeded, and False in case of fail
+//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn perform(&mut self, filename: *const char, doc: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:145 - `STEPCAFControl_Reader::Perform`
+//   method: Translate STEP file given by filename into the document
+//   method: Return True if succeeded, and False in case of fail
+//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn perform(&mut self, filename: *const char, doc: &HandleDocument, theParams: &Parameters, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:154 - `STEPCAFControl_Reader::ExternFiles`
+//   method: Returns data on external files
+//   method: Returns Null handle if no external files are read
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn extern_files(&self) -> &i32;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:230 - `STEPCAFControl_Reader::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: @param theParameters the parameters for shape processing.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &i32);
+//
+// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:236 - `STEPCAFControl_Reader::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: Parameters are moved from the input map.
+//   method: @param theParameters the parameters for shape processing.
+//   Reason: has unbindable types: param 'theParameters': rvalue reference (int&&)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* int&& */);
+//
+// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:244 - `STEPCAFControl_Reader::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: Parameters from @p theParameters are copied to the internal map.
+//   method: Parameters from @p theAdditionalParameters are copied to the internal map
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &ShapeFixParameters, theAdditionalParameters: &i32);
+//
+// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:250 - `STEPCAFControl_Reader::GetShapeFixParameters`
+//   method: Returns parameters for shape processing that was set by SetParameters() method.
+//   method: @return the parameters for shape processing. Empty map if no parameters were set.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_shape_fix_parameters(&self) -> &i32;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:254 - `STEPCAFControl_Reader::SetShapeProcessFlags`
+//   method: Sets flags defining operations to be performed on shapes.
+//   method: @param theFlags The flags defining operations to be performed on shapes.
+//   Reason: param 'theFlags' uses unknown type 'const ShapeProcess::OperationsFlags&'
+//   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
+//
+// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:169 - `STEPCAFControl_Reader::FindInstance`
+//   static_method: Returns label of instance of an assembly component
+//   static_method: corresponding to a given NAUO
+//   Reason: param 'NAUO' uses unknown type 'const Handle(StepRepr_NextAssemblyUsageOccurrence)&'
+//   // pub fn find_instance(NAUO: &HandleNextAssemblyUsageOccurrence, STool: &HandleShapeTool, Tool: &Tool, ShapeLabelMap: &DataMapOfShapeLabel) -> OwnedPtr<TDF_Label>;
+//
 
 // ========================
 // From STEPCAFControl_Writer.hxx
@@ -1262,3 +1389,93 @@ impl Writer {
         }
     }
 }
+
+// ── Skipped symbols for Writer (14 total) ──
+// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:64 - `STEPCAFControl_Writer::STEPCAFControl_Writer`
+//   constructor: Creates a reader tool and attaches it to an already existing Session
+//   constructor: Clears the session if it was not yet set for STEP
+//   constructor: Clears the internal data structures
+//   Reason: param 'theWS' uses unknown Handle type
+//   // pub fn new_handlexscontrolworksession_bool(theWS: &HandleWorkSession, theScratch: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:69 - `STEPCAFControl_Writer::Init`
+//   method: Clears the internal data structures and attaches to a new session
+//   method: Clears the session if it was not yet set for STEP
+//   Reason: param 'theWS' uses unknown type 'const Handle(XSControl_WorkSession)&'
+//   // pub fn init(&mut self, theWS: &HandleWorkSession, theScratch: bool);
+//
+// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:81 - `STEPCAFControl_Writer::WriteStream`
+//   method: Writes all the produced models into the stream.
+//   method: Provided for use like single-file writer
+//   Reason: has unbindable types: param 'theStream': stream type (std::ostream&)
+//   // pub fn write_stream(&mut self, theStream: /* std::ostream& */) -> OwnedPtr<IFSelect_ReturnStatus>;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:90 - `STEPCAFControl_Writer::Transfer`
+//   method: Transfers a document (or single label) to a STEP model
+//   method: The mode of translation of shape is AsIs
+//   method: If multi is not null pointer, it switches to multifile
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn transfer(&mut self, theDoc: &HandleDocument, theMode: StepModelType, theIsMulti: *const char, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:106 - `STEPCAFControl_Writer::Transfer`
+//   method: Transfers a document (or single label) to a STEP model
+//   method: This method uses if need to set parameters avoiding
+//   method: initialization from Interface_Static
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn transfer(&mut self, theDoc: &HandleDocument, theParams: &Parameters, theMode: StepModelType, theIsMulti: *const char, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:149 - `STEPCAFControl_Writer::Perform`
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn perform(&mut self, theDoc: &HandleDocument, theFileName: &AsciiString, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:156 - `STEPCAFControl_Writer::Perform`
+//   method: Transfers a document and writes it to a STEP file
+//   method: Returns True if translation is OK
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn perform(&mut self, theDoc: &HandleDocument, theFileName: *const char, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:165 - `STEPCAFControl_Writer::Perform`
+//   method: Transfers a document and writes it to a STEP file
+//   method: This method is utilized if there's a need to set parameters avoiding
+//   method: initialization from Interface_Static
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn perform(&mut self, theDoc: &HandleDocument, theFileName: *const char, theParams: &Parameters, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:173 - `STEPCAFControl_Writer::ExternFiles`
+//   method: Returns data on external files
+//   method: Returns Null handle if no external files are read
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn extern_files(&self) -> &i32;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:231 - `STEPCAFControl_Writer::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: @param theParameters the parameters for shape processing.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &i32);
+//
+// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:237 - `STEPCAFControl_Writer::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: Parameters are moved from the input map.
+//   method: @param theParameters the parameters for shape processing.
+//   Reason: has unbindable types: param 'theParameters': rvalue reference (int&&)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* int&& */);
+//
+// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:245 - `STEPCAFControl_Writer::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: Parameters from @p theParameters are copied to the internal map.
+//   method: Parameters from @p theAdditionalParameters are copied to the internal map
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &ShapeFixParameters, theAdditionalParameters: &i32);
+//
+// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:251 - `STEPCAFControl_Writer::GetShapeFixParameters`
+//   method: Returns parameters for shape processing that was set by SetParameters() method.
+//   method: @return the parameters for shape processing. Empty map if no parameters were set.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_shape_fix_parameters(&self) -> &i32;
+//
+// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:255 - `STEPCAFControl_Writer::SetShapeProcessFlags`
+//   method: Sets flags defining operations to be performed on shapes.
+//   method: @param theFlags The flags defining operations to be performed on shapes.
+//   Reason: param 'theFlags' uses unknown type 'const ShapeProcess::OperationsFlags&'
+//   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
+//

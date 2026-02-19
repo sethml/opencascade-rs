@@ -3470,6 +3470,33 @@ impl FunctionTanCuCu {
     }
 }
 
+// ── Skipped symbols for FunctionTanCuCu (4 total) ──
+// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:45 - `Geom2dGcc_FunctionTanCuCu::InitDerivative`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn init_derivative(&mut self, X: &Vector, Point1: &mut Pnt2d, Point2: &mut Pnt2d, Tan1: &mut Vec2d, Tan2: &mut Vec2d, D21: &mut Vec2d, D22: &mut Vec2d);
+//
+// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:62 - `Geom2dGcc_FunctionTanCuCu::Value`
+//   method: Computes the value of the function F for the variable X.
+//   method: It returns True if the computation is successfully done,
+//   method: False otherwise.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:67 - `Geom2dGcc_FunctionTanCuCu::Derivatives`
+//   method: Computes the derivative of the function F for the variable X.
+//   method: It returns True if the computation is successfully done,
+//   method: False otherwise.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, Deriv: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:73 - `Geom2dGcc_FunctionTanCuCu::Values`
+//   method: Computes the value and the derivative of the function F
+//   method: for the variable X.
+//   method: It returns True if the computation is successfully done,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, Deriv: &mut Matrix) -> bool;
+//
+
 // ========================
 // From Geom2dGcc_FunctionTanCuCuCu.hxx
 // ========================
@@ -3660,6 +3687,28 @@ impl FunctionTanCuCuCu {
         }
     }
 }
+
+// ── Skipped symbols for FunctionTanCuCuCu (4 total) ──
+// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:76 - `Geom2dGcc_FunctionTanCuCuCu::InitDerivative`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn init_derivative(&mut self, X: &Vector, Point1: &mut Pnt2d, Point2: &mut Pnt2d, Point3: &mut Pnt2d, Tan1: &mut Vec2d, Tan2: &mut Vec2d, Tan3: &mut Vec2d, D21: &mut Vec2d, D22: &mut Vec2d, D23: &mut Vec2d);
+//
+// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:94 - `Geom2dGcc_FunctionTanCuCuCu::Value`
+//   method: Computes the values of the Functions for the variable <X>.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:97 - `Geom2dGcc_FunctionTanCuCuCu::Derivatives`
+//   method: Returns the values of the derivatives for the variable <X>.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:101 - `Geom2dGcc_FunctionTanCuCuCu::Values`
+//   method: Returns the values of the functions and the derivatives
+//   method: for the variable <X>.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
 
 // ========================
 // From Geom2dGcc_FunctionTanCuCuOnCu.hxx
@@ -3921,6 +3970,28 @@ impl FunctionTanCuCuOnCu {
     }
 }
 
+// ── Skipped symbols for FunctionTanCuCuOnCu (4 total) ──
+// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:100 - `Geom2dGcc_FunctionTanCuCuOnCu::InitDerivative`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn init_derivative(&mut self, X: &Vector, Point1: &mut Pnt2d, Point2: &mut Pnt2d, Point3: &mut Pnt2d, Tan1: &mut Vec2d, Tan2: &mut Vec2d, Tan3: &mut Vec2d, D21: &mut Vec2d, D22: &mut Vec2d, D23: &mut Vec2d);
+//
+// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:118 - `Geom2dGcc_FunctionTanCuCuOnCu::Value`
+//   method: Computes the values of the Functions for the variable <X>.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:121 - `Geom2dGcc_FunctionTanCuCuOnCu::Derivatives`
+//   method: Returns the values of the derivatives for the variable <X>.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:125 - `Geom2dGcc_FunctionTanCuCuOnCu::Values`
+//   method: Returns the values of the functions and the derivatives
+//   method: for the variable <X>.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
+
 // ========================
 // From Geom2dGcc_FunctionTanCuPnt.hxx
 // ========================
@@ -4171,6 +4242,20 @@ impl IsParallel {
         unsafe { &*(crate::ffi::Geom2dGcc_IsParallel_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for IsParallel (3 total) ──
+// SKIPPED: **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::NewInstance`
+//   Reason: return type 'Handle(Geom2dGcc_IsParallel)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Geom2dGcc_IsParallel>>;
+//
+// SKIPPED: **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::NewInstance`
+//   Reason: return type 'Handle(Geom2dGcc_IsParallel)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Geom2dGcc_IsParallel>>;
+//
 
 // ========================
 // From Geom2dGcc_Lin2d2Tan.hxx

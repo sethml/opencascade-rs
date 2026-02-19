@@ -354,6 +354,14 @@ impl Act {
     }
 }
 
+// ── Skipped symbols for Act (1 total) ──
+// SKIPPED: **Source:** `IFSelect_Act.hxx`:63 - `IFSelect_Act::Do`
+//   method: Execution of Command Line. remark that <number> is senseless
+//   method: because each Act brings one and only one function
+//   Reason: param 'pilot' uses unknown type 'const Handle(IFSelect_SessionPilot)&'
+//   // pub fn do_(&mut self, number: i32, pilot: &HandleSessionPilot) -> OwnedPtr<IFSelect_ReturnStatus>;
+//
+
 // ========================
 // From IFSelect_Activator.hxx
 // ========================
@@ -547,6 +555,21 @@ impl HandleIFSelectActivator {
     }
 }
 
+// ── Skipped symbols for Activator (2 total) ──
+// SKIPPED: **Source:** `IFSelect_Activator.hxx`:102 - `IFSelect_Activator::Do`
+//   method: Tries to execute a Command Line. <number> is the number of the
+//   method: command for this Activator. It Must forecast to record the
+//   method: result of the execution, for need of Undo-Redo
+//   Reason: param 'pilot' uses unknown type 'const Handle(IFSelect_SessionPilot)&'
+//   // pub fn do_(&mut self, number: i32, pilot: &HandleSessionPilot) -> OwnedPtr<IFSelect_ReturnStatus>;
+//
+// SKIPPED: **Source:** `IFSelect_Activator.hxx`:80 - `IFSelect_Activator::Select`
+//   static_method: Selects, for a Command given by its title, an actor with its
+//   static_method: command number. Returns True if found, False else
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn select(command: *const char, number: &mut i32, actor: &mut HandleActivator) -> bool;
+//
+
 // ========================
 // From IFSelect_AppliedModifiers.hxx
 // ========================
@@ -692,6 +715,15 @@ impl HandleIFSelectAppliedModifiers {
     }
 }
 
+// ── Skipped symbols for AppliedModifiers (1 total) ──
+// SKIPPED: **Source:** `IFSelect_AppliedModifiers.hxx`:80 - `IFSelect_AppliedModifiers::Item`
+//   method: Returns the description for applied modifier n0 <num> :
+//   method: the modifier itself, and the count of entities to be applied
+//   method: on. If no specific list of number has been defined, returns
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn item(&mut self, num: i32, modif: &mut HandleGeneralModifier, entcount: &mut i32) -> bool;
+//
+
 // ========================
 // From IFSelect_BasicDumper.hxx
 // ========================
@@ -759,6 +791,20 @@ impl BasicDumper {
         }
     }
 }
+
+// ── Skipped symbols for BasicDumper (2 total) ──
+// SKIPPED: **Source:** `IFSelect_BasicDumper.hxx`:44 - `IFSelect_BasicDumper::WriteOwn`
+//   method: Write the Own Parameters of Types defined in package IFSelect
+//   method: Returns True if <item> has been processed, False else
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn write_own(&self, file: &mut SessionFile, item: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_BasicDumper.hxx`:50 - `IFSelect_BasicDumper::ReadOwn`
+//   method: Recognizes and Read Own Parameters for Types of package
+//   method: IFSelect. Returns True if done and <item> created, False else
+//   Reason: param 'item' uses unknown type 'Handle(Standard_Transient)&'
+//   // pub fn read_own(&self, file: &mut SessionFile, type_: &AsciiString, item: &mut HandleTransient) -> bool;
+//
 
 // ========================
 // From IFSelect_CheckCounter.hxx
@@ -1076,6 +1122,98 @@ impl ContextModif {
     }
 }
 
+// ── Skipped symbols for ContextModif (15 total) ──
+// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:65 - `IFSelect_ContextModif::IFSelect_ContextModif`
+//   constructor: Prepares a ContextModif with these information :
+//   constructor: - the graph established from original model (target passed
+//   constructor: directly to Modifier)
+//   Reason: param 'TC' uses unknown type 'const Interface_CopyTool&'
+//   // pub fn new_graph_copytool_charptr(graph: &Graph, TC: &CopyTool, filename: *const char) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:90 - `IFSelect_ContextModif::Select`
+//   method: This method requires ContextModif to be applied with a filter.
+//   method: If a ModelModifier is defined with a Selection criterium,
+//   method: the result of this Selection is used as a filter :
+//   Reason: param 'list' uses unknown type 'Interface_EntityIterator&'
+//   // pub fn select(&mut self, list: &mut EntityIterator);
+//
+// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:100 - `IFSelect_ContextModif::SetProtocol`
+//   method: Allows to transmit a Protocol as part of a ContextModif
+//   Reason: param 'proto' uses unknown type 'const Handle(Interface_Protocol)&'
+//   // pub fn set_protocol(&mut self, proto: &HandleProtocol);
+//
+// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:103 - `IFSelect_ContextModif::Protocol`
+//   method: Returns the Protocol (Null if not set)
+//   Reason: return type 'Handle(Interface_Protocol)' is unknown
+//   // pub fn protocol(&self) -> OwnedPtr<Handle<Interface_Protocol>>;
+//
+// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:112 - `IFSelect_ContextModif::Control`
+//   method: Returns the map for a direct use, if required
+//   Reason: return type 'Handle(Interface_CopyControl)' is unknown
+//   // pub fn control(&self) -> OwnedPtr<Handle<Interface_CopyControl>>;
+//
+// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:123 - `IFSelect_ContextModif::IsTransferred`
+//   method: Returns True if a starting item has been transferred
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn is_transferred(&self, ent: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:126 - `IFSelect_ContextModif::IsSelected`
+//   method: Returns True if a starting item has been transferred and selected
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn is_selected(&self, ent: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:131 - `IFSelect_ContextModif::Search`
+//   method: Returns True if a starting entity has been transferred, and
+//   method: the result is in <res>. Returns False else
+//   method: (direct call to the map)
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn search(&self, ent: &HandleTransient, res: &mut HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:136 - `IFSelect_ContextModif::SelectedOriginal`
+//   method: Returns the list of original selected items.
+//   method: See also the iteration
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn selected_original(&self) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:140 - `IFSelect_ContextModif::SelectedResult`
+//   method: Returns the list of resulting counterparts of selected items.
+//   method: See also the iteration
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn selected_result(&self) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:156 - `IFSelect_ContextModif::ValueOriginal`
+//   method: Returns the current selected item in the original model
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn value_original(&self) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:160 - `IFSelect_ContextModif::ValueResult`
+//   method: Returns the result counterpart of current selected item
+//   method: (in the target model)
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn value_result(&self) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:185 - `IFSelect_ContextModif::AddWarning`
+//   method: Adds a Warning Message for an Entity from the original Model
+//   method: If <start> is not an Entity from the original model (e.g. the
+//   method: model itself) this message is added to Global Check.
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_warning(&mut self, start: &HandleTransient, mess: *const char, orig: *const char);
+//
+// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:192 - `IFSelect_ContextModif::AddFail`
+//   method: Adds a Fail Message for an Entity from the original Model
+//   method: If <start> is not an Entity from the original model (e.g. the
+//   method: model itself) this message is added to Global Check.
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_fail(&mut self, start: &HandleTransient, mess: *const char, orig: *const char);
+//
+// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:205 - `IFSelect_ContextModif::CCheck`
+//   method: Returns a Check attached to an Entity from the original Model
+//   method: It can then be acknowledged on the spot, in condition that the
+//   method: caller works by reference ("Interface_Check& check = ...")
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn c_check(&mut self, start: &HandleTransient) -> OwnedPtr<Handle<Interface_Check>>;
+//
+
 // ========================
 // From IFSelect_ContextWrite.hxx
 // ========================
@@ -1234,6 +1372,51 @@ impl ContextWrite {
     }
 }
 
+// ── Skipped symbols for ContextWrite (7 total) ──
+// SKIPPED: **Source:** `IFSelect_ContextWrite.hxx`:58 - `IFSelect_ContextWrite::IFSelect_ContextWrite`
+//   constructor: Prepares a ContextWrite with these information :
+//   constructor: - the model which is to be written
+//   constructor: - the protocol to be used
+//   Reason: param 'proto' uses unknown Handle type
+//   // pub fn new_handleinterfaceinterfacemodel_handleinterfaceprotocol_handleifselectappliedmodifiers_charptr(model: &HandleInterfaceModel, proto: &HandleProtocol, applieds: &HandleAppliedModifiers, filename: *const char) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `IFSelect_ContextWrite.hxx`:64 - `IFSelect_ContextWrite::IFSelect_ContextWrite`
+//   constructor: Same as above but with an already computed Graph
+//   Reason: param 'hgraph' uses unknown Handle type
+//   // pub fn new_handleinterfacehgraph_handleinterfaceprotocol_handleifselectappliedmodifiers_charptr(hgraph: &HandleHGraph, proto: &HandleProtocol, applieds: &HandleAppliedModifiers, filename: *const char) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `IFSelect_ContextWrite.hxx`:73 - `IFSelect_ContextWrite::Protocol`
+//   method: Returns the Protocol;
+//   Reason: return type 'Handle(Interface_Protocol)' is unknown
+//   // pub fn protocol(&self) -> OwnedPtr<Handle<Interface_Protocol>>;
+//
+// SKIPPED: **Source:** `IFSelect_ContextWrite.hxx`:119 - `IFSelect_ContextWrite::Value`
+//   method: Returns the current selected entity in the model
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn value(&self) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `IFSelect_ContextWrite.hxx`:130 - `IFSelect_ContextWrite::AddWarning`
+//   method: Adds a Warning Message for an Entity from the Model
+//   method: If <start> is not an Entity from the model (e.g. the
+//   method: model itself) this message is added to Global Check.
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_warning(&mut self, start: &HandleTransient, mess: *const char, orig: *const char);
+//
+// SKIPPED: **Source:** `IFSelect_ContextWrite.hxx`:137 - `IFSelect_ContextWrite::AddFail`
+//   method: Adds a Fail Message for an Entity from the Model
+//   method: If <start> is not an Entity from the model (e.g. the
+//   method: model itself) this message is added to Global Check.
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_fail(&mut self, start: &HandleTransient, mess: *const char, orig: *const char);
+//
+// SKIPPED: **Source:** `IFSelect_ContextWrite.hxx`:150 - `IFSelect_ContextWrite::CCheck`
+//   method: Returns a Check attached to an Entity from the Model
+//   method: It can then be acknowledged on the spot, in condition that the
+//   method: caller works by reference ("Interface_Check& check = ...")
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn c_check(&mut self, start: &HandleTransient) -> OwnedPtr<Handle<Interface_Check>>;
+//
+
 // ========================
 // From IFSelect_DispGlobal.hxx
 // ========================
@@ -1352,6 +1535,13 @@ impl DispGlobal {
         unsafe { crate::ffi::IFSelect_DispGlobal_inherited_CanHaveRemainder(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for DispGlobal (1 total) ──
+// SKIPPED: **Source:** `IFSelect_DispGlobal.hxx`:45 - `IFSelect_DispGlobal::LimitedMax`
+//   method: Returns True : maximum equates 1
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool;
+//
 
 // ========================
 // From IFSelect_DispPerCount.hxx
@@ -1494,6 +1684,13 @@ impl DispPerCount {
         unsafe { crate::ffi::IFSelect_DispPerCount_inherited_CanHaveRemainder(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for DispPerCount (1 total) ──
+// SKIPPED: **Source:** `IFSelect_DispPerCount.hxx`:58 - `IFSelect_DispPerCount::LimitedMax`
+//   method: Returns True, maximum count is given as <nbent>
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool;
+//
 
 // ========================
 // From IFSelect_DispPerFiles.hxx
@@ -1641,6 +1838,13 @@ impl DispPerFiles {
     }
 }
 
+// ── Skipped symbols for DispPerFiles (1 total) ──
+// SKIPPED: **Source:** `IFSelect_DispPerFiles.hxx`:61 - `IFSelect_DispPerFiles::LimitedMax`
+//   method: Returns True, maximum count is given as CountValue
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool;
+//
+
 // ========================
 // From IFSelect_DispPerOne.hxx
 // ========================
@@ -1759,6 +1963,13 @@ impl DispPerOne {
         unsafe { crate::ffi::IFSelect_DispPerOne_inherited_CanHaveRemainder(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for DispPerOne (1 total) ──
+// SKIPPED: **Source:** `IFSelect_DispPerOne.hxx`:46 - `IFSelect_DispPerOne::LimitedMax`
+//   method: Returns True, maximum limit is given as <nbent>
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool;
+//
 
 // ========================
 // From IFSelect_DispPerSignature.hxx
@@ -1905,6 +2116,24 @@ impl DispPerSignature {
         }
     }
 }
+
+// ── Skipped symbols for DispPerSignature (3 total) ──
+// SKIPPED: **Source:** `IFSelect_DispPerSignature.hxx`:44 - `IFSelect_DispPerSignature::SignCounter`
+//   method: Returns the SignCounter used for splitting
+//   Reason: return type 'Handle(IFSelect_SignCounter)' is unknown
+//   // pub fn sign_counter(&self) -> OwnedPtr<Handle<IFSelect_SignCounter>>;
+//
+// SKIPPED: **Source:** `IFSelect_DispPerSignature.hxx`:48 - `IFSelect_DispPerSignature::SetSignCounter`
+//   method: Sets a SignCounter for sort
+//   method: Remark : it is set to record lists of entities, not only counts
+//   Reason: param 'sign' uses unknown type 'const Handle(IFSelect_SignCounter)&'
+//   // pub fn set_sign_counter(&mut self, sign: &HandleSignCounter);
+//
+// SKIPPED: **Source:** `IFSelect_DispPerSignature.hxx`:58 - `IFSelect_DispPerSignature::LimitedMax`
+//   method: Returns True, maximum count is given as <nbent>
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool;
+//
 
 // ========================
 // From IFSelect_Dispatch.hxx
@@ -2058,6 +2287,36 @@ impl HandleIFSelectDispatch {
         unsafe { &mut *(crate::ffi::HandleIFSelectDispatch_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Dispatch (4 total) ──
+// SKIPPED: **Source:** `IFSelect_Dispatch.hxx`:93 - `IFSelect_Dispatch::LimitedMax`
+//   method: Returns True if a Dispatch generates a count of Packets always
+//   method: less than or equal to a maximum value : it can be computed
+//   method: from the total count of Entities to be dispatched : <nbent>.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_Dispatch.hxx`:103 - `IFSelect_Dispatch::GetEntities`
+//   method: Gets Unique Root Entities from the Final Selection, given an
+//   method: input Graph
+//   method: This the starting step for an Evaluation (Packets - Remainder)
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn get_entities(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_Dispatch.hxx`:118 - `IFSelect_Dispatch::Packeted`
+//   method: Returns the list of all Input Entities (see GetEntities) which
+//   method: are put in a Packet. That is, Entities listed in GetEntities
+//   method: but not in Remainder (see below). Input is given as a Graph.
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn packeted(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_Dispatch.hxx`:123 - `IFSelect_Dispatch::Remainder`
+//   method: Returns Remainder which is a set of Entities. Can be empty.
+//   method: Default evaluation is empty (has to be redefined if
+//   method: CanHaveRemainder is redefined to return True).
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn remainder(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
 
 // ========================
 // From IFSelect_EditForm.hxx
@@ -2530,6 +2789,50 @@ impl HandleIFSelectEditForm {
     }
 }
 
+// ── Skipped symbols for EditForm (8 total) ──
+// SKIPPED: **Source:** `IFSelect_EditForm.hxx`:83 - `IFSelect_EditForm::SetData`
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn set_data(&mut self, ent: &HandleTransient, model: &HandleInterfaceModel);
+//
+// SKIPPED: **Source:** `IFSelect_EditForm.hxx`:86 - `IFSelect_EditForm::SetEntity`
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn set_entity(&mut self, ent: &HandleTransient);
+//
+// SKIPPED: **Source:** `IFSelect_EditForm.hxx`:90 - `IFSelect_EditForm::Entity`
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn entity(&self) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `IFSelect_EditForm.hxx`:142 - `IFSelect_EditForm::LoadData`
+//   method: Loads modifications to data
+//   method: Default uses Editor. Can be redefined
+//   method: Remark that <ent> and/or <model> may be null, according to the
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn load_data(&mut self, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_EditForm.hxx`:146 - `IFSelect_EditForm::LoadEntity`
+//   method: Shortcut for LoadData when <model> is not used
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn load_entity(&mut self, ent: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_EditForm.hxx`:267 - `IFSelect_EditForm::PrintDefs`
+//   method: Prints Definitions, relative to the Editor
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_defs(&self, S: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `IFSelect_EditForm.hxx`:276 - `IFSelect_EditForm::PrintValues`
+//   method: Prints Values, according to what and alsolist
+//   method: <names> True : prints Long Names; False : prints Short Names
+//   method: <what> < 0 : prints Original Values (+ flag Modified)
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_values(&self, S: /* Standard_OStream& */, what: i32, names: bool, alsolist: bool);
+//
+// SKIPPED: **Source:** `IFSelect_EditForm.hxx`:292 - `IFSelect_EditForm::ApplyData`
+//   method: Applies modifications to data
+//   method: Default uses Editor. Can be redefined
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn apply_data(&mut self, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
+//
+
 // ========================
 // From IFSelect_Editor.hxx
 // ========================
@@ -2784,6 +3087,41 @@ impl HandleIFSelectEditor {
     }
 }
 
+// ── Skipped symbols for Editor (6 total) ──
+// SKIPPED: **Source:** `IFSelect_Editor.hxx`:53 - `IFSelect_Editor::SetValue`
+//   method: Sets a Typed Value for a given ident and short name, with an
+//   method: Edit Mode
+//   Reason: param 'typval' uses unknown type 'const Handle(Interface_TypedValue)&'
+//   // pub fn set_value(&mut self, num: i32, typval: &HandleTypedValue, shortname: *const char, accessmode: EditValue);
+//
+// SKIPPED: **Source:** `IFSelect_Editor.hxx`:68 - `IFSelect_Editor::TypedValue`
+//   method: Returns a Typed Value from its ident
+//   Reason: return type 'Handle(Interface_TypedValue)' is unknown
+//   // pub fn typed_value(&self, num: i32) -> OwnedPtr<Handle<Interface_TypedValue>>;
+//
+// SKIPPED: **Source:** `IFSelect_Editor.hxx`:90 - `IFSelect_Editor::PrintNames`
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_names(&self, S: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `IFSelect_Editor.hxx`:92 - `IFSelect_Editor::PrintDefs`
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_defs(&self, S: /* Standard_OStream& */, labels: bool);
+//
+// SKIPPED: **Source:** `IFSelect_Editor.hxx`:139 - `IFSelect_Editor::Load`
+//   method: Loads original values from some data, to an EditForm
+//   method: Remark: <ent> may be Null, this means all <model> is concerned
+//   method: Also <model> may be Null, if no context applies for <ent>
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn load(&self, form: &HandleEditForm, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_Editor.hxx`:170 - `IFSelect_Editor::Apply`
+//   method: Applies modified values of the EditForm with some data
+//   method: Remark: <ent> may be Null, this means all <model> is concerned
+//   method: Also <model> may be Null, if no context applies for <ent>
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn apply(&self, form: &HandleEditForm, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
+//
+
 // ========================
 // From IFSelect_Functions.hxx
 // ========================
@@ -2872,6 +3210,15 @@ impl Functions {
         unsafe { crate::ffi::IFSelect_Functions_init() }
     }
 }
+
+// ── Skipped symbols for Functions (1 total) ──
+// SKIPPED: **Source:** `IFSelect_Functions.hxx`:46 - `IFSelect_Functions::GiveEntity`
+//   static_method: Takes the name of an entity, either as argument,
+//   static_method: or (if <name> is empty) on keyboard, and returns the entity
+//   static_method: name can be a label or a number (in alphanumeric),
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn give_entity(WS: &HandleWorkSession, name: *const char) -> OwnedPtr<Handle<Standard_Transient>>;
+//
 
 // ========================
 // From IFSelect_GeneralModifier.hxx
@@ -3230,6 +3577,18 @@ impl GraphCounter {
     }
 }
 
+// ── Skipped symbols for GraphCounter (2 total) ──
+// SKIPPED: **Source:** `IFSelect_GraphCounter.hxx`:45 - `IFSelect_GraphCounter::Applied`
+//   method: Returns the applied selection
+//   Reason: return type 'Handle(IFSelect_SelectDeduct)' is unknown
+//   // pub fn applied(&self) -> OwnedPtr<Handle<IFSelect_SelectDeduct>>;
+//
+// SKIPPED: **Source:** `IFSelect_GraphCounter.hxx`:48 - `IFSelect_GraphCounter::SetApplied`
+//   method: Sets a new applied selection
+//   Reason: param 'sel' uses unknown type 'const Handle(IFSelect_SelectDeduct)&'
+//   // pub fn set_applied(&mut self, sel: &HandleSelectDeduct);
+//
+
 // ========================
 // From IFSelect_HSeqOfSelection.hxx
 // ========================
@@ -3325,6 +3684,12 @@ impl HandleIFSelectHSeqOfSelection {
         unsafe { &mut *(crate::ffi::HandleIFSelectHSeqOfSelection_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for HSeqOfSelection (1 total) ──
+// SKIPPED: **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
 
 // ========================
 // From IFSelect_IntParam.hxx
@@ -3685,6 +4050,15 @@ impl HandleIFSelectListEditor {
     }
 }
 
+// ── Skipped symbols for ListEditor (1 total) ──
+// SKIPPED: **Source:** `IFSelect_ListEditor.hxx`:64 - `IFSelect_ListEditor::IFSelect_ListEditor`
+//   constructor: Creates a ListEditor, for which items of the list to edit are
+//   constructor: defined by <def>, and <max> describes max length :
+//   constructor: 0 (D) means no limit
+//   Reason: param 'def' uses unknown Handle type
+//   // pub fn new_handleinterfacetypedvalue_int(def: &HandleTypedValue, max: i32) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From IFSelect_ModelCopier.hxx
 // ========================
@@ -3950,6 +4324,50 @@ impl HandleIFSelectModelCopier {
     }
 }
 
+// ── Skipped symbols for ModelCopier (6 total) ──
+// SKIPPED: **Source:** `IFSelect_ModelCopier.hxx`:129 - `IFSelect_ModelCopier::Copy`
+//   method: Performs the Copy Operations, which include the Modifications
+//   method: defined by the list of Modifiers. Memorizes the result, as a
+//   method: list of InterfaceModels with the corresponding FileNames
+//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
+//   // pub fn copy(&mut self, eval: &mut ShareOutResult, WL: &HandleWorkLibrary, protocol: &HandleProtocol) -> OwnedPtr<Interface_CheckIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_ModelCopier.hxx`:136 - `IFSelect_ModelCopier::SendCopied`
+//   method: Sends the formerly defined results (see method Copy) to files,
+//   method: then clears it
+//   method: Remark : A Null File Name cause file to be not produced
+//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
+//   // pub fn send_copied(&mut self, WL: &HandleWorkLibrary, protocol: &HandleProtocol) -> OwnedPtr<Interface_CheckIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_ModelCopier.hxx`:142 - `IFSelect_ModelCopier::Send`
+//   method: Performs the Copy Operations (which include the Modifications)
+//   method: and Sends the result on files, without memorizing it.
+//   method: (the memorized result is ignored : neither queried not filled)
+//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
+//   // pub fn send(&mut self, eval: &mut ShareOutResult, WL: &HandleWorkLibrary, protocol: &HandleProtocol) -> OwnedPtr<Interface_CheckIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_ModelCopier.hxx`:150 - `IFSelect_ModelCopier::SendAll`
+//   method: Sends a model (defined in <G>) into one file, without managing
+//   method: remaining data, already sent files, etc. Applies the Model and
+//   method: File Modifiers.
+//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
+//   // pub fn send_all(&mut self, filename: *const char, G: &Graph, WL: &HandleWorkLibrary, protocol: &HandleProtocol) -> OwnedPtr<Interface_CheckIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_ModelCopier.hxx`:159 - `IFSelect_ModelCopier::SendSelected`
+//   method: Sends a part of a model into one file. Model is gotten from
+//   method: <G>, the part is defined in <iter>.
+//   method: Remaining data are managed and can be later be worked on.
+//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
+//   // pub fn send_selected(&mut self, filename: *const char, G: &Graph, WL: &HandleWorkLibrary, protocol: &HandleProtocol, iter: &EntityIterator) -> OwnedPtr<Interface_CheckIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_ModelCopier.hxx`:170 - `IFSelect_ModelCopier::CopiedRemaining`
+//   method: Produces a Model copied from the Remaining List as <newmod>
+//   method: <newmod> is a Null Handle if this list is empty
+//   method: <WL> performs the copy by using <TC>
+//   Reason: param 'TC' uses unknown type 'Interface_CopyTool&'
+//   // pub fn copied_remaining(&mut self, G: &Graph, WL: &HandleWorkLibrary, TC: &mut CopyTool, newmod: &mut HandleInterfaceModel);
+//
+
 // ========================
 // From IFSelect_ModifEditForm.hxx
 // ========================
@@ -4091,6 +4509,13 @@ impl ModifEditForm {
     }
 }
 
+// ── Skipped symbols for ModifEditForm (1 total) ──
+// SKIPPED: **Source:** `IFSelect_ModifEditForm.hxx`:46 - `IFSelect_ModifEditForm::Perform`
+//   method: Acts by applying an EditForm to entities, selected or all model
+//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
+//   // pub fn perform(&self, ctx: &mut ContextModif, target: &HandleInterfaceModel, protocol: &HandleProtocol, TC: &mut CopyTool);
+//
+
 // ========================
 // From IFSelect_ModifReorder.hxx
 // ========================
@@ -4230,6 +4655,15 @@ impl ModifReorder {
     }
 }
 
+// ── Skipped symbols for ModifReorder (1 total) ──
+// SKIPPED: **Source:** `IFSelect_ModifReorder.hxx`:50 - `IFSelect_ModifReorder::Perform`
+//   method: Acts by computing orders (by method All from ShareTool) then
+//   method: forcing them in the model. Remark that selection is ignored :
+//   method: ALL the model is processed in once
+//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
+//   // pub fn perform(&self, ctx: &mut ContextModif, target: &HandleInterfaceModel, protocol: &HandleProtocol, TC: &mut CopyTool);
+//
+
 // ========================
 // From IFSelect_Modifier.hxx
 // ========================
@@ -4340,6 +4774,15 @@ impl Modifier {
         }
     }
 }
+
+// ── Skipped symbols for Modifier (1 total) ──
+// SKIPPED: **Source:** `IFSelect_Modifier.hxx`:54 - `IFSelect_Modifier::Perform`
+//   method: This deferred method defines the action specific to each class
+//   method: of Modifier. It is called by a ModelCopier, once the Model
+//   method: generated and filled. ModelCopier has already checked the
+//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
+//   // pub fn perform(&self, ctx: &mut ContextModif, target: &HandleInterfaceModel, protocol: &HandleProtocol, TC: &mut CopyTool);
+//
 
 // ========================
 // From IFSelect_PacketList.hxx
@@ -4493,6 +4936,26 @@ impl HandleIFSelectPacketList {
         unsafe { &mut *(crate::ffi::HandleIFSelectPacketList_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for PacketList (3 total) ──
+// SKIPPED: **Source:** `IFSelect_PacketList.hxx`:64 - `IFSelect_PacketList::Add`
+//   method: Adds an entity from the Model into the current packet for Add
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add(&mut self, ent: &HandleTransient);
+//
+// SKIPPED: **Source:** `IFSelect_PacketList.hxx`:77 - `IFSelect_PacketList::Entities`
+//   method: Returns the content of a Packet given its rank
+//   method: Null Handle if <numpack> is out of range
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn entities(&self, numpack: i32) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_PacketList.hxx`:96 - `IFSelect_PacketList::Duplicated`
+//   method: Returns a list of entities duplicated :
+//   method: <count> times, if <andmore> is False, or
+//   method: <count> or more times, if <andmore> is True
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn duplicated(&self, count: i32, andmore: bool) -> OwnedPtr<Interface_EntityIterator>;
+//
 
 // ========================
 // From IFSelect_ParamEditor.hxx
@@ -4721,6 +5184,29 @@ impl ParamEditor {
     }
 }
 
+// ── Skipped symbols for ParamEditor (4 total) ──
+// SKIPPED: **Source:** `IFSelect_ParamEditor.hxx`:56 - `IFSelect_ParamEditor::AddValue`
+//   method: Adds a TypedValue
+//   method: By default, its short name equates its complete name, it can be made explicit
+//   Reason: param 'val' uses unknown type 'const Handle(Interface_TypedValue)&'
+//   // pub fn add_value(&mut self, val: &HandleTypedValue, shortname: *const char);
+//
+// SKIPPED: **Source:** `IFSelect_ParamEditor.hxx`:75 - `IFSelect_ParamEditor::Load`
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn load(&self, form: &HandleEditForm, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_ParamEditor.hxx`:80 - `IFSelect_ParamEditor::Apply`
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn apply(&self, form: &HandleEditForm, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_ParamEditor.hxx`:87 - `IFSelect_ParamEditor::StaticEditor`
+//   static_method: Returns a ParamEditor to work on the Static Parameters of
+//   static_method: which names are listed in <list>
+//   static_method: Null Handle if <list> is null or empty
+//   Reason: return type 'Handle(IFSelect_ParamEditor)' is unknown
+//   // pub fn static_editor(list: &HandleHSequenceOfHAsciiString, label: *const char) -> OwnedPtr<Handle<IFSelect_ParamEditor>>;
+//
+
 // ========================
 // From IFSelect_SelectAnyList.hxx
 // ========================
@@ -4931,6 +5417,35 @@ impl SelectAnyList {
     }
 }
 
+// ── Skipped symbols for SelectAnyList (4 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectAnyList.hxx`:68 - `IFSelect_SelectAnyList::KeepInputEntity`
+//   method: Keeps Input Entity, as having required type. It works by
+//   method: keeping in <iter>, only suitable Entities (SelectType can be
+//   method: used). Called by RootResult (which waits for ONE ENTITY MAX)
+//   Reason: param 'iter' uses unknown type 'Interface_EntityIterator&'
+//   // pub fn keep_input_entity(&self, iter: &mut EntityIterator);
+//
+// SKIPPED: **Source:** `IFSelect_SelectAnyList.hxx`:72 - `IFSelect_SelectAnyList::NbItems`
+//   method: Returns count of Items in the list in the Entity <ent>
+//   method: If <ent> has not required type, returned value must be Zero
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn nb_items(&self, ent: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `IFSelect_SelectAnyList.hxx`:109 - `IFSelect_SelectAnyList::RootResult`
+//   method: Returns the list of selected entities (list of entities
+//   method: complying with rank criterium)
+//   method: Error if the input list has more than one Item
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectAnyList.hxx`:115 - `IFSelect_SelectAnyList::FillResult`
+//   method: Puts into <res>, the sub-entities of the list, from n1 to
+//   method: n2 included. Remark that adequation with Entity's type and
+//   method: length of list has already been made at this stage
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn fill_result(&self, n1: i32, n2: i32, ent: &HandleTransient, res: &mut EntityIterator);
+//
+
 // ========================
 // From IFSelect_SelectAnyType.hxx
 // ========================
@@ -5080,6 +5595,15 @@ impl SelectAnyType {
         }
     }
 }
+
+// ── Skipped symbols for SelectAnyType (1 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectAnyType.hxx`:46 - `IFSelect_SelectAnyType::Sort`
+//   method: Returns True for an Entity (model->Value(num)) which is kind
+//   method: of the chosen type, given by the method TypeForMatch.
+//   method: Criterium is IsKind.
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
+//
 
 // ========================
 // From IFSelect_SelectBase.hxx
@@ -5485,6 +6009,21 @@ impl SelectDeduct {
     }
 }
 
+// ── Skipped symbols for SelectDeduct (2 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate`
+//   method: Returns the Alternate Definition
+//   method: It is returned modifiable, hence an already defined
+//   method: SelectPointed can be used
+//   Reason: return type 'Handle(IFSelect_SelectPointed)&' is unknown
+//   // pub fn alternate(&mut self) -> &mut HandleSelectPointed;
+//
+// SKIPPED: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult`
+//   method: Returns the Result determined by Input Selection, as Unique
+//   method: if Input Selection is not defined, returns an empty list.
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn input_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
+
 // ========================
 // From IFSelect_SelectDiff.hxx
 // ========================
@@ -5599,6 +6138,14 @@ impl SelectDiff {
     }
 }
 
+// ── Skipped symbols for SelectDiff (1 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectDiff.hxx`:43 - `IFSelect_SelectDiff::RootResult`
+//   method: Returns the list of selected entities : they are the Entities
+//   method: gotten from the Main Input but not from the Diff Input
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
+
 // ========================
 // From IFSelect_SelectEntityNumber.hxx
 // ========================
@@ -5711,6 +6258,14 @@ impl SelectEntityNumber {
         }
     }
 }
+
+// ── Skipped symbols for SelectEntityNumber (1 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectEntityNumber.hxx`:53 - `IFSelect_SelectEntityNumber::RootResult`
+//   method: Returns the list of selected entities : the Entity having the
+//   method: specified Number (this result assures naturally uniqueness)
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
 
 // ========================
 // From IFSelect_SelectErrorEntities.hxx
@@ -5877,6 +6432,15 @@ impl SelectErrorEntities {
     }
 }
 
+// ── Skipped symbols for SelectErrorEntities (1 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectErrorEntities.hxx`:47 - `IFSelect_SelectErrorEntities::Sort`
+//   method: Returns True for an Entity which is qualified as "Error", i.e.
+//   method: if <model> explicitly knows <ent> (through its Number) as
+//   method: Erroneous
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
+//
+
 // ========================
 // From IFSelect_SelectExplore.hxx
 // ========================
@@ -6012,6 +6576,22 @@ impl SelectExplore {
     }
 }
 
+// ── Skipped symbols for SelectExplore (2 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectExplore.hxx`:63 - `IFSelect_SelectExplore::RootResult`
+//   method: Returns the list of selected entities. Works by calling the
+//   method: method Explore on each input entity : it can be rejected,
+//   method: taken for output, or to explore. If the maximum level has not
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectExplore.hxx`:76 - `IFSelect_SelectExplore::Explore`
+//   method: Analyses and, if required, Explores an entity, as follows :
+//   method: The explored list starts as empty, it has to be filled by this
+//   method: method.
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn explore(&self, level: i32, ent: &HandleTransient, G: &Graph, explored: &mut EntityIterator) -> bool;
+//
+
 // ========================
 // From IFSelect_SelectExtract.hxx
 // ========================
@@ -6143,6 +6723,29 @@ impl SelectExtract {
         }
     }
 }
+
+// ── Skipped symbols for SelectExtract (3 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectExtract.hxx`:55 - `IFSelect_SelectExtract::RootResult`
+//   method: Returns the list of selected entities. Works by calling the
+//   method: method Sort on each input Entity : the Entity is kept as
+//   method: output if Sort returns the same value as Direct status
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectExtract.hxx`:66 - `IFSelect_SelectExtract::Sort`
+//   method: Returns True for an Entity if it satisfies the Sort criterium
+//   method: It receives :
+//   method: - <rank>, the rank of the Entity in the Iteration,
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph`
+//   method: Works as Sort but works on the Graph
+//   method: Default directly calls Sort, but it can be redefined
+//   method: If SortInGraph is redefined, Sort should be defined even if
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn sort_in_graph(&self, rank: i32, ent: &HandleTransient, G: &Graph) -> bool;
+//
 
 // ========================
 // From IFSelect_SelectFlag.hxx
@@ -6300,6 +6903,19 @@ impl SelectFlag {
         unsafe { crate::ffi::IFSelect_SelectFlag_inherited_FillIterator(self as *const Self, iter) }
     }
 }
+
+// ── Skipped symbols for SelectFlag (2 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectFlag.hxx`:57 - `IFSelect_SelectFlag::RootResult`
+//   method: Returns the list of selected entities. It is redefined to
+//   method: work on the graph itself (not queried by sort)
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectFlag.hxx`:62 - `IFSelect_SelectFlag::Sort`
+//   method: Returns always False because RootResult has done the work
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
+//
 
 // ========================
 // From IFSelect_SelectInList.hxx
@@ -6505,6 +7121,20 @@ impl SelectInList {
         }
     }
 }
+
+// ── Skipped symbols for SelectInList (2 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectInList.hxx`:46 - `IFSelect_SelectInList::ListedEntity`
+//   method: Returns an Entity, given its rank in the list
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn listed_entity(&self, num: i32, ent: &HandleTransient) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectInList.hxx`:54 - `IFSelect_SelectInList::FillResult`
+//   method: Puts into the result, the sub-entities of the list, from n1 to
+//   method: n2 included. Remark that adequation with Entity's type and
+//   method: length of list has already been made at this stage
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn fill_result(&self, n1: i32, n2: i32, ent: &HandleTransient, result: &mut EntityIterator);
+//
 
 // ========================
 // From IFSelect_SelectIncorrectEntities.hxx
@@ -6833,6 +7463,14 @@ impl SelectIntersection {
     }
 }
 
+// ── Skipped symbols for SelectIntersection (1 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectIntersection.hxx`:43 - `IFSelect_SelectIntersection::RootResult`
+//   method: Returns the list of selected Entities, which is the common part
+//   method: of results from all input selections. Uniqueness is guaranteed.
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
+
 // ========================
 // From IFSelect_SelectModelEntities.hxx
 // ========================
@@ -6927,6 +7565,20 @@ impl SelectModelEntities {
     }
 }
 
+// ── Skipped symbols for SelectModelEntities (2 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectModelEntities.hxx`:43 - `IFSelect_SelectModelEntities::RootResult`
+//   method: Returns the list of selected entities : the Entities of the
+//   method: Model (note that this result assures naturally uniqueness)
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectModelEntities.hxx`:47 - `IFSelect_SelectModelEntities::CompleteResult`
+//   method: The complete list of Entities (including shared ones) ...
+//   method: is exactly identical to RootResults in this case
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn complete_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
+
 // ========================
 // From IFSelect_SelectModelRoots.hxx
 // ========================
@@ -7019,6 +7671,14 @@ impl SelectModelRoots {
         }
     }
 }
+
+// ── Skipped symbols for SelectModelRoots (1 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectModelRoots.hxx`:45 - `IFSelect_SelectModelRoots::RootResult`
+//   method: Returns the list of selected entities : the Roots of the Model
+//   method: (note that this result assures naturally uniqueness)
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
 
 // ========================
 // From IFSelect_SelectPointed.hxx
@@ -7168,6 +7828,55 @@ impl SelectPointed {
         }
     }
 }
+
+// ── Skipped symbols for SelectPointed (8 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectPointed.hxx`:59 - `IFSelect_SelectPointed::SetEntity`
+//   method: As SetList but with only one entity
+//   method: If <ent> is Null, the list is said as being set but is empty
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn set_entity(&mut self, item: &HandleTransient);
+//
+// SKIPPED: **Source:** `IFSelect_SelectPointed.hxx`:73 - `IFSelect_SelectPointed::Add`
+//   method: Adds an item. Returns True if Done, False if <item> is already
+//   method: in the selected list
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add(&mut self, item: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_SelectPointed.hxx`:77 - `IFSelect_SelectPointed::Remove`
+//   method: Removes an item. Returns True if Done, False if <item> was not
+//   method: in the selected list
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn remove(&mut self, item: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_SelectPointed.hxx`:81 - `IFSelect_SelectPointed::Toggle`
+//   method: Toggles status of an item : adds it if not pointed or removes
+//   method: it if already pointed. Returns the new status (Pointed or not)
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn toggle(&mut self, item: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_SelectPointed.hxx`:96 - `IFSelect_SelectPointed::Rank`
+//   method: Returns the rank of an item in the selected list, or 0.
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn rank(&self, item: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `IFSelect_SelectPointed.hxx`:102 - `IFSelect_SelectPointed::Item`
+//   method: Returns an item given its rank, or a Null Handle
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn item(&self, num: i32) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectPointed.hxx`:106 - `IFSelect_SelectPointed::Update`
+//   method: Rebuilds the selected list. Any selected entity which has a
+//   method: bound result is replaced by this result, else it is removed.
+//   Reason: param 'control' uses unknown type 'const Handle(Interface_CopyControl)&'
+//   // pub fn update(&mut self, control: &HandleCopyControl);
+//
+// SKIPPED: **Source:** `IFSelect_SelectPointed.hxx`:116 - `IFSelect_SelectPointed::RootResult`
+//   method: Returns the list of selected items. Only the selected entities
+//   method: which are present in the graph are given (this result assures
+//   method: uniqueness).
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
 
 // ========================
 // From IFSelect_SelectRange.hxx
@@ -7384,6 +8093,14 @@ impl SelectRange {
     }
 }
 
+// ── Skipped symbols for SelectRange (1 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectRange.hxx`:78 - `IFSelect_SelectRange::Sort`
+//   method: Returns True for an Entity of which occurrence number in the
+//   method: iteration is inside the selected Range (considers <rank>)
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
+//
+
 // ========================
 // From IFSelect_SelectRootComps.hxx
 // ========================
@@ -7543,6 +8260,20 @@ impl SelectRootComps {
     }
 }
 
+// ── Skipped symbols for SelectRootComps (2 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectRootComps.hxx`:54 - `IFSelect_SelectRootComps::RootResult`
+//   method: Returns the list of local root strong components, by one Entity per component.
+//   method: It is redefined for a purpose of efficiency : calling a Sort routine for each Entity would
+//   method: cost more resources than to work in once using a Map
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectRootComps.hxx`:59 - `IFSelect_SelectRootComps::Sort`
+//   method: Returns always True, because RootResult has done work
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
+//
+
 // ========================
 // From IFSelect_SelectRoots.hxx
 // ========================
@@ -7687,6 +8418,20 @@ impl SelectRoots {
         }
     }
 }
+
+// ── Skipped symbols for SelectRoots (2 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectRoots.hxx`:48 - `IFSelect_SelectRoots::RootResult`
+//   method: Returns the list of local roots.
+//   method: It is redefined for a purpose of efficiency:
+//   method: calling a Sort routine for each Entity would cost more resources
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectRoots.hxx`:53 - `IFSelect_SelectRoots::Sort`
+//   method: Returns always True, because RootResult has done work
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
+//
 
 // ========================
 // From IFSelect_SelectSent.hxx
@@ -7890,6 +8635,19 @@ impl SelectSent {
     }
 }
 
+// ── Skipped symbols for SelectSent (2 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectSent.hxx`:72 - `IFSelect_SelectSent::RootResult`
+//   method: Returns the list of selected entities. It is redefined to
+//   method: work on the graph itself (not queried by sort)
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectSent.hxx`:77 - `IFSelect_SelectSent::Sort`
+//   method: Returns always False because RootResult has done the work
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
+//
+
 // ========================
 // From IFSelect_SelectShared.hxx
 // ========================
@@ -7998,6 +8756,14 @@ impl SelectShared {
         }
     }
 }
+
+// ── Skipped symbols for SelectShared (1 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectShared.hxx`:43 - `IFSelect_SelectShared::RootResult`
+//   method: Returns the list of selected entities (list of entities
+//   method: shared by those of input list)
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
 
 // ========================
 // From IFSelect_SelectSharing.hxx
@@ -8109,6 +8875,14 @@ impl SelectSharing {
         }
     }
 }
+
+// ── Skipped symbols for SelectSharing (1 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectSharing.hxx`:45 - `IFSelect_SelectSharing::RootResult`
+//   method: Returns the list of selected entities (list of entities
+//   method: which share (level one) those of input list)
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
 
 // ========================
 // From IFSelect_SelectSignature.hxx
@@ -8282,6 +9056,51 @@ impl SelectSignature {
     }
 }
 
+// ── Skipped symbols for SelectSignature (7 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectSignature.hxx`:58 - `IFSelect_SelectSignature::IFSelect_SelectSignature`
+//   constructor: Creates a SelectSignature with its Signature and its Text to
+//   constructor: Match.
+//   constructor: <exact> if True requires exact match,
+//   Reason: param 'matcher' uses unknown Handle type
+//   // pub fn new_handleifselectsignature_charptr_bool(matcher: &HandleSignature, signtext: *const char, exact: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectSignature.hxx`:63 - `IFSelect_SelectSignature::IFSelect_SelectSignature`
+//   constructor: As above with an AsciiString
+//   Reason: param 'matcher' uses unknown Handle type
+//   // pub fn new_handleifselectsignature_asciistring_bool(matcher: &HandleSignature, signtext: &AsciiString, exact: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectSignature.hxx`:71 - `IFSelect_SelectSignature::IFSelect_SelectSignature`
+//   constructor: Creates a SelectSignature with a Counter, more precisely a
+//   constructor: SelectSignature. Which is used here to just give a Signature
+//   constructor: Value (by SignOnly Mode)
+//   Reason: param 'matcher' uses unknown Handle type
+//   // pub fn new_handleifselectsigncounter_charptr_bool(matcher: &HandleSignCounter, signtext: *const char, exact: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectSignature.hxx`:77 - `IFSelect_SelectSignature::Signature`
+//   method: Returns the used Signature, then it is possible to access it,
+//   method: modify it as required. Can be null, hence see Counter
+//   Reason: return type 'Handle(IFSelect_Signature)' is unknown
+//   // pub fn signature(&self) -> OwnedPtr<Handle<IFSelect_Signature>>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectSignature.hxx`:81 - `IFSelect_SelectSignature::Counter`
+//   method: Returns the used SignCounter. Can be used as alternative for
+//   method: Signature
+//   Reason: return type 'Handle(IFSelect_SignCounter)' is unknown
+//   // pub fn counter(&self) -> OwnedPtr<Handle<IFSelect_SignCounter>>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectSignature.hxx`:86 - `IFSelect_SelectSignature::SortInGraph`
+//   method: Returns True for an Entity (model->Value(num)) of which the
+//   method: signature matches the text given as creation time
+//   method: May also work with a Counter from the Graph
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn sort_in_graph(&self, rank: i32, ent: &HandleTransient, G: &Graph) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_SelectSignature.hxx`:93 - `IFSelect_SelectSignature::Sort`
+//   method: Not called, defined only to remove a deferred method here
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
+//
+
 // ========================
 // From IFSelect_SelectSignedShared.hxx
 // ========================
@@ -8447,6 +9266,27 @@ impl SelectSignedShared {
         }
     }
 }
+
+// ── Skipped symbols for SelectSignedShared (3 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectSignedShared.hxx`:43 - `IFSelect_SelectSignedShared::IFSelect_SelectSignedShared`
+//   constructor: Creates a SelectSignedShared, defaulted for any level
+//   constructor: with a given Signature and text to match
+//   Reason: param 'matcher' uses unknown Handle type
+//   // pub fn new_handleifselectsignature_charptr_bool_int(matcher: &HandleSignature, signtext: *const char, exact: bool, level: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectSignedShared.hxx`:50 - `IFSelect_SelectSignedShared::Signature`
+//   method: Returns the used Signature, then it is possible to access it,
+//   method: modify it as required
+//   Reason: return type 'Handle(IFSelect_Signature)' is unknown
+//   // pub fn signature(&self) -> OwnedPtr<Handle<IFSelect_Signature>>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectSignedShared.hxx`:62 - `IFSelect_SelectSignedShared::Explore`
+//   method: Explores an entity : its Shared entities
+//   method: <ent> to take if it matches the Signature
+//   method: At level max, filters the result. Else gives all Shareds
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn explore(&self, level: i32, ent: &HandleTransient, G: &Graph, explored: &mut EntityIterator) -> bool;
+//
 
 // ========================
 // From IFSelect_SelectSignedSharing.hxx
@@ -8614,6 +9454,27 @@ impl SelectSignedSharing {
     }
 }
 
+// ── Skipped symbols for SelectSignedSharing (3 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectSignedSharing.hxx`:43 - `IFSelect_SelectSignedSharing::IFSelect_SelectSignedSharing`
+//   constructor: Creates a SelectSignedSharing, defaulted for any level
+//   constructor: with a given Signature and text to match
+//   Reason: param 'matcher' uses unknown Handle type
+//   // pub fn new_handleifselectsignature_charptr_bool_int(matcher: &HandleSignature, signtext: *const char, exact: bool, level: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectSignedSharing.hxx`:50 - `IFSelect_SelectSignedSharing::Signature`
+//   method: Returns the used Signature, then it is possible to access it,
+//   method: modify it as required
+//   Reason: return type 'Handle(IFSelect_Signature)' is unknown
+//   // pub fn signature(&self) -> OwnedPtr<Handle<IFSelect_Signature>>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectSignedSharing.hxx`:62 - `IFSelect_SelectSignedSharing::Explore`
+//   method: Explores an entity : its sharing entities
+//   method: <ent> to take if it matches the Signature
+//   method: At level max, filters the result. Else gives all sharings
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn explore(&self, level: i32, ent: &HandleTransient, G: &Graph, explored: &mut EntityIterator) -> bool;
+//
+
 // ========================
 // From IFSelect_SelectSuite.hxx
 // ========================
@@ -8755,6 +9616,34 @@ impl SelectSuite {
         }
     }
 }
+
+// ── Skipped symbols for SelectSuite (4 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectSuite.hxx`:64 - `IFSelect_SelectSuite::AddPrevious`
+//   method: Adds a new first item (prepends to the list). The Input is not
+//   method: touched
+//   method: If <item> is null, does nothing
+//   Reason: param 'item' uses unknown type 'const Handle(IFSelect_SelectDeduct)&'
+//   // pub fn add_previous(&mut self, item: &HandleSelectDeduct);
+//
+// SKIPPED: **Source:** `IFSelect_SelectSuite.hxx`:68 - `IFSelect_SelectSuite::AddNext`
+//   method: Adds a new last item (prepends to the list)
+//   method: If <item> is null, does nothing
+//   Reason: param 'item' uses unknown type 'const Handle(IFSelect_SelectDeduct)&'
+//   // pub fn add_next(&mut self, item: &HandleSelectDeduct);
+//
+// SKIPPED: **Source:** `IFSelect_SelectSuite.hxx`:75 - `IFSelect_SelectSuite::Item`
+//   method: Returns an item from its rank in the list
+//   method: (the Input is always apart)
+//   Reason: return type 'Handle(IFSelect_SelectDeduct)' is unknown
+//   // pub fn item(&self, num: i32) -> OwnedPtr<Handle<IFSelect_SelectDeduct>>;
+//
+// SKIPPED: **Source:** `IFSelect_SelectSuite.hxx`:87 - `IFSelect_SelectSuite::RootResult`
+//   method: Returns the list of selected entities
+//   method: To do this, once InputResult has been taken (if Input or
+//   method: Alternate has been defined, else the first Item gives it) :
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
 
 // ========================
 // From IFSelect_SelectType.hxx
@@ -9051,6 +9940,14 @@ impl SelectUnion {
     }
 }
 
+// ── Skipped symbols for SelectUnion (1 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectUnion.hxx`:43 - `IFSelect_SelectUnion::RootResult`
+//   method: Returns the list of selected Entities, which is the addition
+//   method: result from all input selections. Uniqueness is guaranteed.
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
+
 // ========================
 // From IFSelect_SelectUnknownEntities.hxx
 // ========================
@@ -9223,6 +10120,14 @@ impl SelectUnknownEntities {
     }
 }
 
+// ── Skipped symbols for SelectUnknownEntities (1 total) ──
+// SKIPPED: **Source:** `IFSelect_SelectUnknownEntities.hxx`:44 - `IFSelect_SelectUnknownEntities::Sort`
+//   method: Returns True for an Entity which is qualified as "Unknown",
+//   method: i.e. if <model> known <ent> (through its Number) as Unknown
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
+//
+
 // ========================
 // From IFSelect_Selection.hxx
 // ========================
@@ -9303,6 +10208,28 @@ impl HandleIFSelectSelection {
         unsafe { &mut *(crate::ffi::HandleIFSelectSelection_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Selection (3 total) ──
+// SKIPPED: **Source:** `IFSelect_Selection.hxx`:49 - `IFSelect_Selection::RootResult`
+//   method: Returns the list of selected entities, computed from Input
+//   method: given as a Graph. Specific to each class of Selection
+//   method: Note that uniqueness of each entity is not required here
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult`
+//   method: Returns the list of selected entities, each of them being
+//   method: unique. Default definition works from RootResult. According
+//   method: HasUniqueResult, UniqueResult returns directly RootResult,
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn unique_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult`
+//   method: Returns the list of entities involved by a Selection, i.e.
+//   method: UniqueResult plus the shared entities (directly or not)
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn complete_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
+//
 
 // ========================
 // From IFSelect_SelectionIterator.hxx
@@ -9472,6 +10399,22 @@ impl HandleIFSelectSessionDumper {
         unsafe { &mut *(crate::ffi::HandleIFSelectSessionDumper_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for SessionDumper (2 total) ──
+// SKIPPED: **Source:** `IFSelect_SessionDumper.hxx`:75 - `IFSelect_SessionDumper::WriteOwn`
+//   method: Writes the Own Parameters of a given Item, if it forecast to
+//   method: manage its Type.
+//   method: Returns True if it has recognized the Type of the Item (in
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn write_own(&self, file: &mut SessionFile, item: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_SessionDumper.hxx`:87 - `IFSelect_SessionDumper::ReadOwn`
+//   method: Recognizes a Type (given as <type>) then Creates an Item of
+//   method: this Type with the Own Parameter, as required.
+//   method: Returns True if it has recognized the Type (in this case, it
+//   Reason: param 'item' uses unknown type 'Handle(Standard_Transient)&'
+//   // pub fn read_own(&self, file: &mut SessionFile, type_: &AsciiString, item: &mut HandleTransient) -> bool;
+//
 
 // ========================
 // From IFSelect_SessionFile.hxx
@@ -9798,6 +10741,55 @@ impl SessionFile {
     }
 }
 
+// ── Skipped symbols for SessionFile (7 total) ──
+// SKIPPED: **Source:** `IFSelect_SessionFile.hxx`:144 - `IFSelect_SessionFile::WriteLine`
+//   method: Writes a line to the File. If <follow> is given, it is added
+//   method: at the following of the line. '\n' must be added for the end.
+//   Reason: param 'follow' uses unknown type 'Standard_Character'
+//   // pub fn write_line(&mut self, line: *const char, follow: Character);
+//
+// SKIPPED: **Source:** `IFSelect_SessionFile.hxx`:150 - `IFSelect_SessionFile::WriteOwn`
+//   method: Writes the Parameters own to each type of Item. Uses the
+//   method: Library of SessionDumpers
+//   method: Returns True if Done, False if <item> could not be treated
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn write_own(&mut self, item: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_SessionFile.hxx`:177 - `IFSelect_SessionFile::ReadOwn`
+//   method: Tries to Read an Item, by calling the Library of Dumpers
+//   method: Sets the list of parameters of the line to be read from the
+//   method: first own one
+//   Reason: param 'item' uses unknown type 'Handle(Standard_Transient)&'
+//   // pub fn read_own(&mut self, item: &mut HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_SessionFile.hxx`:185 - `IFSelect_SessionFile::AddItem`
+//   method: Adds an Item to the WorkSession, taken as Name the first
+//   method: item of the read Line. If this Name is not a Name but a Number
+//   method: or if this Name is already recorded in the WorkSession, it
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_item(&mut self, item: &HandleTransient, active: bool);
+//
+// SKIPPED: **Source:** `IFSelect_SessionFile.hxx`:202 - `IFSelect_SessionFile::NewItem`
+//   method: At beginning of writing an Item, writes its basics :
+//   method: - either its name in the session if it has one
+//   method: - or its relative number of item in the file, else (preceded by a '_')
+//   Reason: param 'par' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn new_item(&mut self, ident: i32, par: &HandleTransient);
+//
+// SKIPPED: **Source:** `IFSelect_SessionFile.hxx`:221 - `IFSelect_SessionFile::SendItem`
+//   method: During a Write action, commands to send the identification of
+//   method: a Parameter : if it is Null (undefined) it is send as Void ($)
+//   method: if it is Named in the WorkSession, its Name is sent preceded
+//   Reason: param 'par' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn send_item(&mut self, par: &HandleTransient);
+//
+// SKIPPED: **Source:** `IFSelect_SessionFile.hxx`:260 - `IFSelect_SessionFile::ItemValue`
+//   method: Returns a Parameter as an Item. Returns a Null Handle if the
+//   method: Parameter is a Text, or if it is defined as Void
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn item_value(&self, num: i32) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+
 // ========================
 // From IFSelect_SessionPilot.hxx
 // ========================
@@ -10110,6 +11102,35 @@ impl SessionPilot {
         }
     }
 }
+
+// ── Skipped symbols for SessionPilot (4 total) ──
+// SKIPPED: **Source:** `IFSelect_SessionPilot.hxx`:136 - `IFSelect_SessionPilot::RecordItem`
+//   method: Allows to associate a Transient Value with the last execution
+//   method: as a partial result
+//   method: Returns RetDone if item is not Null, RetFail if item is Null
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn record_item(&mut self, item: &HandleTransient) -> OwnedPtr<IFSelect_ReturnStatus>;
+//
+// SKIPPED: **Source:** `IFSelect_SessionPilot.hxx`:140 - `IFSelect_SessionPilot::RecordedItem`
+//   method: Returns the Transient Object which was recorded with the
+//   method: current Line Command. If none was, returns a Null Handle
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn recorded_item(&self) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `IFSelect_SessionPilot.hxx`:181 - `IFSelect_SessionPilot::ExecuteCounter`
+//   method: Executes a Counter in a general way
+//   method: If <numword> is greater than count of command words, it counts
+//   method: all the model. Else it considers the word <numword> as the
+//   Reason: param 'counter' uses unknown type 'const Handle(IFSelect_SignCounter)&'
+//   // pub fn execute_counter(&mut self, counter: &HandleSignCounter, numword: i32, mode: PrintCount) -> OwnedPtr<IFSelect_ReturnStatus>;
+//
+// SKIPPED: **Source:** `IFSelect_SessionPilot.hxx`:201 - `IFSelect_SessionPilot::Do`
+//   method: Processes specific commands, which are :
+//   method: x or exit for end of session
+//   method: ? or help for help messages
+//   Reason: param 'session' uses unknown type 'const Handle(IFSelect_SessionPilot)&'
+//   // pub fn do_(&mut self, number: i32, session: &HandleSessionPilot) -> OwnedPtr<IFSelect_ReturnStatus>;
+//
 
 // ========================
 // From IFSelect_ShareOut.hxx
@@ -10513,6 +11534,20 @@ impl HandleIFSelectShareOut {
     }
 }
 
+// ── Skipped symbols for ShareOut (2 total) ──
+// SKIPPED: **Source:** `IFSelect_ShareOut.hxx`:86 - `IFSelect_ShareOut::RemoveItem`
+//   method: Removes an item, which can be, either a Dispatch (removed from
+//   method: the list of Dispatches), or a GeneralModifier (removed from
+//   method: the list of Model Modifiers or from the list of File Modifiers
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn remove_item(&mut self, item: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_ShareOut.hxx`:153 - `IFSelect_ShareOut::ModelModifier`
+//   method: Returns a Modifier of the list of Model Modifiers, duely casted
+//   Reason: return type 'Handle(IFSelect_Modifier)' is unknown
+//   // pub fn model_modifier(&self, num: i32) -> OwnedPtr<Handle<IFSelect_Modifier>>;
+//
+
 // ========================
 // From IFSelect_ShareOutResult.hxx
 // ========================
@@ -10718,6 +11753,27 @@ impl ShareOutResult {
     }
 }
 
+// ── Skipped symbols for ShareOutResult (3 total) ──
+// SKIPPED: **Source:** `IFSelect_ShareOutResult.hxx`:135 - `IFSelect_ShareOutResult::PacketsInDispatch`
+//   method: Returns Number (rank) of current Packet in current Dispatch,
+//   method: and total count of Packets in current Dispatch, as arguments
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn packets_in_dispatch(&self, numpack: &mut i32, nbpacks: &mut i32);
+//
+// SKIPPED: **Source:** `IFSelect_ShareOutResult.hxx`:141 - `IFSelect_ShareOutResult::PacketRoot`
+//   method: Returns the list of Roots of the current Packet (never empty)
+//   method: (i.e. the Entities to be themselves asked for transfer)
+//   method: Error if there is none (iteration finished)
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn packet_root(&mut self) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_ShareOutResult.hxx`:145 - `IFSelect_ShareOutResult::PacketContent`
+//   method: Returns the complete content of the current Packet (i.e.
+//   method: with shared entities, which will also be put in the file)
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn packet_content(&mut self) -> OwnedPtr<Interface_EntityIterator>;
+//
+
 // ========================
 // From IFSelect_SignAncestor.hxx
 // ========================
@@ -10841,6 +11897,12 @@ impl SignAncestor {
     }
 }
 
+// ── Skipped symbols for SignAncestor (1 total) ──
+// SKIPPED: **Source:** `IFSelect_SignAncestor.hxx`:36 - `IFSelect_SignAncestor::Matches`
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn matches(&self, ent: &HandleTransient, model: &HandleInterfaceModel, text: &AsciiString, exact: bool) -> bool;
+//
+
 // ========================
 // From IFSelect_SignCategory.hxx
 // ========================
@@ -10949,6 +12011,14 @@ impl SignCategory {
         }
     }
 }
+
+// ── Skipped symbols for SignCategory (1 total) ──
+// SKIPPED: **Source:** `IFSelect_SignCategory.hxx`:41 - `IFSelect_SignCategory::Value`
+//   method: Returns the Signature for a Transient object, as its Category
+//   method: recorded in the model
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn value(&self, ent: &HandleTransient, model: &HandleInterfaceModel) -> *const char;
+//
 
 // ========================
 // From IFSelect_SignCounter.hxx
@@ -11178,6 +12248,47 @@ impl SignCounter {
     }
 }
 
+// ── Skipped symbols for SignCounter (6 total) ──
+// SKIPPED: **Source:** `IFSelect_SignCounter.hxx`:71 - `IFSelect_SignCounter::IFSelect_SignCounter`
+//   constructor: Creates a SignCounter, with a predefined Signature
+//   constructor: Other arguments as for Create without Signature.
+//   Reason: param 'matcher' uses unknown Handle type
+//   // pub fn new_handleifselectsignature_bool2(matcher: &HandleSignature, withmap: bool, withlist: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `IFSelect_SignCounter.hxx`:76 - `IFSelect_SignCounter::Signature`
+//   method: Returns the Signature used to count entities. It can be null.
+//   Reason: return type 'Handle(IFSelect_Signature)' is unknown
+//   // pub fn signature(&self) -> OwnedPtr<Handle<IFSelect_Signature>>;
+//
+// SKIPPED: **Source:** `IFSelect_SignCounter.hxx`:86 - `IFSelect_SignCounter::AddEntity`
+//   method: Adds an entity by considering its signature, which is given by
+//   method: call to method AddSign
+//   method: Returns True if added, False if already in the map (and
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_entity(&mut self, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_SignCounter.hxx`:95 - `IFSelect_SignCounter::AddSign`
+//   method: Adds an entity (already filtered by Map) with its signature.
+//   method: This signature can be computed with the containing model.
+//   method: Its value is provided by the object Signature given at start,
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_sign(&mut self, ent: &HandleTransient, model: &HandleInterfaceModel);
+//
+// SKIPPED: **Source:** `IFSelect_SignCounter.hxx`:152 - `IFSelect_SignCounter::Sign`
+//   method: Determines and returns the value of the signature for an
+//   method: entity as an HAsciiString. This method works exactly as
+//   method: AddSign, which is optimized
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn sign(&self, ent: &HandleTransient, model: &HandleInterfaceModel) -> OwnedPtr<Handle<TCollection_HAsciiString>>;
+//
+// SKIPPED: **Source:** `IFSelect_SignCounter.hxx`:160 - `IFSelect_SignCounter::ComputedSign`
+//   method: Applies AddWithGraph on one entity, and returns the Signature
+//   method: Value which has been recorded
+//   method: To do this, Add is called with SignOnly Mode True during the
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn computed_sign(&mut self, ent: &HandleTransient, G: &Graph) -> *const char;
+//
+
 // ========================
 // From IFSelect_SignMultiple.hxx
 // ========================
@@ -11295,6 +12406,28 @@ impl SignMultiple {
         }
     }
 }
+
+// ── Skipped symbols for SignMultiple (3 total) ──
+// SKIPPED: **Source:** `IFSelect_SignMultiple.hxx`:50 - `IFSelect_SignMultiple::Add`
+//   method: Adds a Signature. Width, if given, gives the tabulation
+//   method: If <maxi> is True, it is a forced tabulation (overlength is
+//   method: replaced by a final dot)
+//   Reason: param 'subsign' uses unknown type 'const Handle(IFSelect_Signature)&'
+//   // pub fn add(&mut self, subsign: &HandleSignature, width: i32, maxi: bool);
+//
+// SKIPPED: **Source:** `IFSelect_SignMultiple.hxx`:57 - `IFSelect_SignMultiple::Value`
+//   method: Concatenates the values of sub-signatures, with their
+//   method: tabulations
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn value(&self, ent: &HandleTransient, model: &HandleInterfaceModel) -> *const char;
+//
+// SKIPPED: **Source:** `IFSelect_SignMultiple.hxx`:65 - `IFSelect_SignMultiple::Matches`
+//   method: Specialized Match Rule
+//   method: If <exact> is False, simply checks if at least one sub-item
+//   method: matches
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn matches(&self, ent: &HandleTransient, model: &HandleInterfaceModel, text: &AsciiString, exact: bool) -> bool;
+//
 
 // ========================
 // From IFSelect_SignType.hxx
@@ -11415,6 +12548,14 @@ impl SignType {
     }
 }
 
+// ── Skipped symbols for SignType (1 total) ──
+// SKIPPED: **Source:** `IFSelect_SignType.hxx`:45 - `IFSelect_SignType::Value`
+//   method: Returns the Signature for a Transient object, as its Dynamic
+//   method: Type, with or without package name, according starting option
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn value(&self, ent: &HandleTransient, model: &HandleInterfaceModel) -> *const char;
+//
+
 // ========================
 // From IFSelect_SignValidity.hxx
 // ========================
@@ -11525,6 +12666,22 @@ impl SignValidity {
         }
     }
 }
+
+// ── Skipped symbols for SignValidity (2 total) ──
+// SKIPPED: **Source:** `IFSelect_SignValidity.hxx`:50 - `IFSelect_SignValidity::Value`
+//   method: Returns the Signature for a Transient object, as a validity
+//   method: deducted from data (reports) stored in the model
+//   method: Calls the class method CVal
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn value(&self, ent: &HandleTransient, model: &HandleInterfaceModel) -> *const char;
+//
+// SKIPPED: **Source:** `IFSelect_SignValidity.hxx`:43 - `IFSelect_SignValidity::CVal`
+//   static_method: Returns the Signature for a Transient object, as a validity
+//   static_method: deducted from data (reports) stored in the model.
+//   static_method: Class method, can be called by any one
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn c_val(ent: &HandleTransient, model: &HandleInterfaceModel) -> *const char;
+//
 
 // ========================
 // From IFSelect_Signature.hxx
@@ -11674,6 +12831,21 @@ impl Signature {
         }
     }
 }
+
+// ── Skipped symbols for Signature (2 total) ──
+// SKIPPED: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase`
+//   method: Tells if this Signature gives integer values
+//   method: and returns values from SetIntCase if True
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn is_int_case(&self, hasmin: &mut bool, valmin: &mut i32, hasmax: &mut bool, valmax: &mut i32) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_Signature.hxx`:87 - `IFSelect_Signature::Matches`
+//   method: Tells if the value for <ent> in <model> matches a text, with
+//   method: a criterium <exact>.
+//   method: The default definition calls MatchValue
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn matches(&self, ent: &HandleTransient, model: &HandleInterfaceModel, text: &AsciiString, exact: bool) -> bool;
+//
 
 // ========================
 // From IFSelect_SignatureList.hxx
@@ -11870,6 +13042,39 @@ impl HandleIFSelectSignatureList {
     }
 }
 
+// ── Skipped symbols for SignatureList (5 total) ──
+// SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:71 - `IFSelect_SignatureList::Add`
+//   method: Adds an entity with its signature, i.e. :
+//   method: - counts an item more for <sign>
+//   method: - if record-list status is set, records the entity
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add(&mut self, ent: &HandleTransient, sign: *const char);
+//
+// SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:78 - `IFSelect_SignatureList::Init`
+//   method: Aknowledges the list in once. Name identifies the Signature
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn init(&mut self, name: *const char, count: &i32, list: &i32, nbnuls: i32);
+//
+// SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:116 - `IFSelect_SignatureList::PrintCount`
+//   method: Prints the counts of items (not the list)
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_count(&self, S: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:128 - `IFSelect_SignatureList::PrintList`
+//   method: Prints the lists of items, if they are present (else, prints
+//   method: a message "no list available")
+//   method: Uses <model> to determine for each entity to be listed, its
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_list(&self, S: /* Standard_OStream& */, model: &HandleInterfaceModel, mod_: PrintCount);
+//
+// SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:136 - `IFSelect_SignatureList::PrintSum`
+//   method: Prints a summary
+//   method: Item which has the greatest count of entities
+//   method: For items which are numeric values : their count, maximum,
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_sum(&self, S: /* Standard_OStream& */);
+//
+
 // ========================
 // From IFSelect_TransformStandard.hxx
 // ========================
@@ -12010,6 +13215,70 @@ impl TransformStandard {
     }
 }
 
+// ── Skipped symbols for TransformStandard (10 total) ──
+// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:94 - `IFSelect_TransformStandard::Modifier`
+//   method: Returns a Modifier given its rank in the list
+//   Reason: return type 'Handle(IFSelect_Modifier)' is unknown
+//   // pub fn modifier(&self, num: i32) -> OwnedPtr<Handle<IFSelect_Modifier>>;
+//
+// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:97 - `IFSelect_TransformStandard::ModifierRank`
+//   method: Returns the rank of a Modifier in the list, 0 if unknown
+//   Reason: param 'modif' uses unknown type 'const Handle(IFSelect_Modifier)&'
+//   // pub fn modifier_rank(&self, modif: &HandleModifier) -> i32;
+//
+// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:103 - `IFSelect_TransformStandard::AddModifier`
+//   method: Adds a Modifier to the list :
+//   method: - <atnum> = 0 (default) : at the end of the list
+//   method: - <atnum> > 0 : at rank <atnum>
+//   Reason: param 'modif' uses unknown type 'const Handle(IFSelect_Modifier)&'
+//   // pub fn add_modifier(&mut self, modif: &HandleModifier, atnum: i32) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:108 - `IFSelect_TransformStandard::RemoveModifier`
+//   method: Removes a Modifier from the list
+//   method: Returns True if done, False if <modif> not in the list
+//   Reason: param 'modif' uses unknown type 'const Handle(IFSelect_Modifier)&'
+//   // pub fn remove_modifier(&mut self, modif: &HandleModifier) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:116 - `IFSelect_TransformStandard::Perform`
+//   method: Performs the Standard Transformation, by calling Copy then
+//   method: ApplyModifiers (which can return an error status)
+//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
+//   // pub fn perform(&mut self, G: &Graph, protocol: &HandleProtocol, checks: &mut CheckIterator, newmod: &mut HandleInterfaceModel) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:124 - `IFSelect_TransformStandard::Copy`
+//   method: This the first operation. It calls StandardCopy or OnTheSpot
+//   method: according the option
+//   Reason: param 'TC' uses unknown type 'Interface_CopyTool&'
+//   // pub fn copy(&self, G: &Graph, TC: &mut CopyTool, newmod: &mut HandleInterfaceModel);
+//
+// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:131 - `IFSelect_TransformStandard::StandardCopy`
+//   method: This is the standard action of Copy : its takes into account
+//   method: only the remaining entities (noted by Graph Status positive)
+//   method: and their proper dependances of course. Produces a new model.
+//   Reason: param 'TC' uses unknown type 'Interface_CopyTool&'
+//   // pub fn standard_copy(&self, G: &Graph, TC: &mut CopyTool, newmod: &mut HandleInterfaceModel);
+//
+// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:137 - `IFSelect_TransformStandard::OnTheSpot`
+//   method: This is the OnTheSpot action : each entity is bound with ...
+//   method: itself. The produced model is the same as the starting one.
+//   Reason: param 'TC' uses unknown type 'Interface_CopyTool&'
+//   // pub fn on_the_spot(&self, G: &Graph, TC: &mut CopyTool, newmod: &mut HandleInterfaceModel);
+//
+// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:147 - `IFSelect_TransformStandard::ApplyModifiers`
+//   method: Applies the modifiers sequentially.
+//   method: For each one, prepares required data (if a Selection is associated as a filter).
+//   method: For the option OnTheSpot, it determines if the graph may be
+//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
+//   // pub fn apply_modifiers(&self, G: &Graph, protocol: &HandleProtocol, TC: &mut CopyTool, checks: &mut CheckIterator, newmod: &mut HandleInterfaceModel) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:157 - `IFSelect_TransformStandard::Updated`
+//   method: This methods allows to know what happened to a starting
+//   method: entity after the last Perform. It reads result from the map
+//   method: which was filled by Perform.
+//   Reason: param 'entfrom' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn updated(&self, entfrom: &HandleTransient, entto: &mut HandleTransient) -> bool;
+//
+
 // ========================
 // From IFSelect_Transformer.hxx
 // ========================
@@ -12083,6 +13352,29 @@ impl HandleIFSelectTransformer {
         unsafe { &mut *(crate::ffi::HandleIFSelectTransformer_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Transformer (3 total) ──
+// SKIPPED: **Source:** `IFSelect_Transformer.hxx`:72 - `IFSelect_Transformer::Perform`
+//   method: Performs a Transformation (defined by each sub-class) :
+//   method: <G> gives the input data (especially the starting model) and
+//   method: can be used for queries (by Selections, etc...)
+//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
+//   // pub fn perform(&mut self, G: &Graph, protocol: &HandleProtocol, checks: &mut CheckIterator, newmod: &mut HandleInterfaceModel) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_Transformer.hxx`:84 - `IFSelect_Transformer::ChangeProtocol`
+//   method: This methods allows to declare that the Protocol applied to
+//   method: the new Model has changed. It applies to the last call to
+//   method: Perform.
+//   Reason: param 'newproto' uses unknown type 'Handle(Interface_Protocol)&'
+//   // pub fn change_protocol(&self, newproto: &mut HandleProtocol) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_Transformer.hxx`:92 - `IFSelect_Transformer::Updated`
+//   method: This method allows to know what happened to a starting
+//   method: entity after the last Perform. If <entfrom> (from starting
+//   method: model) has one and only one known item which corresponds in
+//   Reason: param 'entfrom' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn updated(&self, entfrom: &HandleTransient, entto: &mut HandleTransient) -> bool;
+//
 
 // ========================
 // From IFSelect_WorkLibrary.hxx
@@ -12205,6 +13497,47 @@ impl HandleIFSelectWorkLibrary {
         unsafe { &mut *(crate::ffi::HandleIFSelectWorkLibrary_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for WorkLibrary (6 total) ──
+// SKIPPED: **Source:** `IFSelect_WorkLibrary.hxx`:57 - `IFSelect_WorkLibrary::ReadFile`
+//   method: Gives the way to Read a File and transfer it to a Model
+//   method: <mod> is the resulting Model, which has to be created by this
+//   method: method. In case of error, <mod> must be returned Null
+//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
+//   // pub fn read_file(&self, name: *const char, model: &mut HandleInterfaceModel, protocol: &HandleProtocol) -> i32;
+//
+// SKIPPED: **Source:** `IFSelect_WorkLibrary.hxx`:68 - `IFSelect_WorkLibrary::ReadStream`
+//   method: Interface to read a data from the specified stream.
+//   method: @param model is the resulting Model, which has to be created by this method.
+//   method: In case of error, model must be returned Null
+//   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
+//   // pub fn read_stream(&self, theName: *const char, theIStream: /* std::istream& */, model: &mut HandleInterfaceModel, protocol: &HandleProtocol) -> i32;
+//
+// SKIPPED: **Source:** `IFSelect_WorkLibrary.hxx`:103 - `IFSelect_WorkLibrary::CopyModel`
+//   method: Performs the copy of entities from an original model to a new
+//   method: one. It must also copy headers if any. Returns True when done.
+//   method: The provided default works by copying the individual entities
+//   Reason: param 'list' uses unknown type 'const Interface_EntityIterator&'
+//   // pub fn copy_model(&self, original: &HandleInterfaceModel, newmodel: &HandleInterfaceModel, list: &EntityIterator, TC: &mut CopyTool) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_WorkLibrary.hxx`:113 - `IFSelect_WorkLibrary::DumpEntity`
+//   method: Gives the way of dumping an entity under a form comprehensive
+//   method: for each norm. <model> helps to identify, number ... entities.
+//   method: <level> is to be interpreted for each norm (because of the
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn dump_entity(&self, model: &HandleInterfaceModel, protocol: &HandleProtocol, entity: &HandleTransient, S: /* Standard_OStream& */, level: i32);
+//
+// SKIPPED: **Source:** `IFSelect_WorkLibrary.hxx`:120 - `IFSelect_WorkLibrary::DumpEntity`
+//   method: Calls deferred DumpEntity with the recorded default level
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn dump_entity(&self, model: &HandleInterfaceModel, protocol: &HandleProtocol, entity: &HandleTransient, S: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `IFSelect_WorkLibrary.hxx`:132 - `IFSelect_WorkLibrary::DumpLevels`
+//   method: Returns the recorded default and maximum dump levels
+//   method: If none was recorded, max is returned negative, def as zero
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn dump_levels(&self, def: &mut i32, max: &mut i32);
+//
 
 // ========================
 // From IFSelect_WorkSession.hxx
@@ -13711,6 +15044,369 @@ impl HandleIFSelectWorkSession {
         unsafe { &mut *(crate::ffi::HandleIFSelectWorkSession_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for WorkSession (54 total) ──
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:108 - `IFSelect_WorkSession::SetProtocol`
+//   method: Sets a Protocol, which will be used to determine Graphs, to
+//   method: Read and to Write Files
+//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
+//   // pub fn set_protocol(&mut self, protocol: &HandleProtocol);
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:112 - `IFSelect_WorkSession::Protocol`
+//   method: Returns the Protocol. Null Handle if not yet set
+//   method: should be C++ : return const &
+//   Reason: return type 'const Handle(Interface_Protocol)&' is unknown
+//   // pub fn protocol(&self) -> &HandleProtocol;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:118 - `IFSelect_WorkSession::SetSignType`
+//   method: Sets a specific Signature to be the SignType, i.e. the
+//   method: Signature which will determine TypeName from the Model
+//   method: (basic function). It is recorded in the GTool
+//   Reason: param 'signtype' uses unknown type 'const Handle(IFSelect_Signature)&'
+//   // pub fn set_sign_type(&mut self, signtype: &HandleSignature);
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:121 - `IFSelect_WorkSession::SignType`
+//   method: Returns the current SignType
+//   Reason: return type 'Handle(IFSelect_Signature)' is unknown
+//   // pub fn sign_type(&self) -> OwnedPtr<Handle<IFSelect_Signature>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:157 - `IFSelect_WorkSession::ReadStream`
+//   method: Reads a file from stream with the WorkLibrary (sets Model and LoadedFile)
+//   method: Returns a integer status which can be :
+//   method: RetDone if OK,  RetVoid if no Protocol not defined,
+//   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
+//   // pub fn read_stream(&mut self, theName: *const char, theIStream: /* std::istream& */) -> OwnedPtr<IFSelect_ReturnStatus>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:165 - `IFSelect_WorkSession::StartingEntity`
+//   method: Returns an  Entity stored in the Model of the WorkSession
+//   method: (Null Handle is no Model or num out of range)
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn starting_entity(&self, num: i32) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:169 - `IFSelect_WorkSession::StartingNumber`
+//   method: Returns the Number of an Entity in the Model
+//   method: (0 if no Model set or <ent> not in the Model)
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn starting_number(&self, ent: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:186 - `IFSelect_WorkSession::EntityLabel`
+//   method: Returns the label for <ent>, as the Model does
+//   method: If <ent> is not in the Model or if no Model is loaded, a Null
+//   method: Handle is returned
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn entity_label(&self, ent: &HandleTransient) -> OwnedPtr<Handle<TCollection_HAsciiString>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:192 - `IFSelect_WorkSession::EntityName`
+//   method: Returns the Name of an Entity
+//   method: This Name is computed by the general service Name
+//   method: Returns a Null Handle if fails
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn entity_name(&self, ent: &HandleTransient) -> OwnedPtr<Handle<TCollection_HAsciiString>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:198 - `IFSelect_WorkSession::CategoryNumber`
+//   method: Returns the Category Number determined for an entity
+//   method: it is computed by the class Category
+//   method: An unknown entity (number 0) gives a value -1
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn category_number(&self, ent: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:203 - `IFSelect_WorkSession::CategoryName`
+//   method: Returns the Category Name determined for an entity
+//   method: it is computed by the class Category
+//   method: Remark : an unknown entity gives an empty string
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn category_name(&self, ent: &HandleTransient) -> *const char;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:208 - `IFSelect_WorkSession::ValidityName`
+//   method: Returns the Validity Name determined for an entity
+//   method: it is computed by the class SignValidity
+//   method: Remark : an unknown entity gives an empty string
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn validity_name(&self, ent: &HandleTransient) -> *const char;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:231 - `IFSelect_WorkSession::HGraph`
+//   method: Returns the Computed Graph as HGraph (Null Handle if not set)
+//   Reason: return type 'Handle(Interface_HGraph)' is unknown
+//   // pub fn h_graph(&mut self) -> OwnedPtr<Handle<Interface_HGraph>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:238 - `IFSelect_WorkSession::Shareds`
+//   method: Returns the list of entities shared by <ent> (can be empty)
+//   method: Returns a null Handle if <ent> is unknown
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn shareds(&mut self, ent: &HandleTransient) -> OwnedPtr<Handle<TColStd_HSequenceOfTransient>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:243 - `IFSelect_WorkSession::Sharings`
+//   method: Returns the list of entities sharing <ent> (can be empty)
+//   method: Returns a null Handle if <ent> is unknown
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn sharings(&mut self, ent: &HandleTransient) -> OwnedPtr<Handle<TColStd_HSequenceOfTransient>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:272 - `IFSelect_WorkSession::CheckOne`
+//   method: Returns a Check for a single entity, under the form of a
+//   method: CheckIterator (this gives only one form for the user)
+//   method: if <ent> is Null or equates the current Model, it gives the
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn check_one(&mut self, ent: &HandleTransient, complete: bool) -> OwnedPtr<Interface_CheckIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:290 - `IFSelect_WorkSession::Item`
+//   method: Returns an Item, given its Ident. Returns a Null Handle if
+//   method: no Item corresponds to this Ident.
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn item(&self, id: i32) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:294 - `IFSelect_WorkSession::ItemIdent`
+//   method: Returns the Ident attached to an Item in the WorkSession, or
+//   method: Zero if it is unknown
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn item_ident(&self, item: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:299 - `IFSelect_WorkSession::NamedItem`
+//   method: Returns the Item which corresponds to a Variable, given its
+//   method: Name (whatever the type of this Item).
+//   method: Returns a Null Handle if this Name is not recorded
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn named_item(&self, name: *const char) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:303 - `IFSelect_WorkSession::NamedItem`
+//   method: Same as above, but <name> is given through a Handle
+//   method: Especially useful with methods SelectionNames, etc...
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn named_item(&self, name: &HandleHAsciiString) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:310 - `IFSelect_WorkSession::HasName`
+//   method: Returns True if an Item of the WorkSession has an attached Name
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn has_name(&self, item: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:315 - `IFSelect_WorkSession::Name`
+//   method: Returns the Name attached to an Item as a Variable of this
+//   method: WorkSession. If <item> is Null or not recorded, returns an
+//   method: empty string.
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn name(&self, item: &HandleTransient) -> OwnedPtr<Handle<TCollection_HAsciiString>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:323 - `IFSelect_WorkSession::AddItem`
+//   method: Adds an Item and returns its attached Ident. Does nothing
+//   method: if <item> is already recorded (and returns its attached Ident)
+//   method: <active> if True commands call to SetActive (see below)
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_item(&mut self, item: &HandleTransient, active: bool) -> i32;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:333 - `IFSelect_WorkSession::AddNamedItem`
+//   method: Adds an Item with an attached Name. If the Name is already
+//   method: known in the WorkSession, the older item losts it
+//   method: Returns Ident if Done, 0 else, i.e. if <item> is null
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_named_item(&mut self, name: *const char, item: &HandleTransient, active: bool) -> i32;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:342 - `IFSelect_WorkSession::SetActive`
+//   method: Following the type of <item> :
+//   method: - Dispatch : Adds or Removes it in the ShareOut & FileNaming
+//   method: - GeneralModifier : Adds or Removes it for final sending
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn set_active(&mut self, item: &HandleTransient, mode: bool) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:357 - `IFSelect_WorkSession::RemoveItem`
+//   method: Removes an Item given its Ident. Returns False if <id> is
+//   method: attached to no Item in the WorkSession. For a Named Item,
+//   method: also removes its Name.
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn remove_item(&mut self, item: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:417 - `IFSelect_WorkSession::NewParamFromStatic`
+//   method: Creates a parameter as being bound to a Static
+//   method: If the Static is Integer, this creates an IntParam bound to
+//   method: it by its name. Else this creates a String which is the value
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn new_param_from_static(&mut self, statname: *const char, name: *const char) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:461 - `IFSelect_WorkSession::Signature`
+//   method: Returns a Signature, given its Ident in the Session
+//   method: Null result if <id> is not suitable for a Signature
+//   method: (undefined, or defined for another kind of variable)
+//   Reason: return type 'Handle(IFSelect_Signature)' is unknown
+//   // pub fn signature(&self, id: i32) -> OwnedPtr<Handle<IFSelect_Signature>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:466 - `IFSelect_WorkSession::SignValue`
+//   method: Returns the Value computed by a Signature for an Entity
+//   method: Returns an empty string if the entity does not belong to the
+//   method: loaded model
+//   Reason: param 'sign' uses unknown type 'const Handle(IFSelect_Signature)&'
+//   // pub fn sign_value(&self, sign: &HandleSignature, ent: &HandleTransient) -> *const char;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:477 - `IFSelect_WorkSession::EvalSelection`
+//   method: Evaluates the effect of a Selection applied on the input Model
+//   method: Returned Result remains empty if no input Model has been set
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn eval_selection(&self, sel: &HandleSelection) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:511 - `IFSelect_WorkSession::SetItemSelection`
+//   method: Sets a Selection as input for an item, according its type :
+//   method: if <item> is a Dispatch : as Final Selection
+//   method: if <item> is a GeneralModifier (i.e. any kind of Modifier) :
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn set_item_selection(&mut self, item: &HandleTransient, sel: &HandleSelection) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:517 - `IFSelect_WorkSession::ResetItemSelection`
+//   method: Resets input Selection which was set by SetItemSelection
+//   method: Same conditions as for SetItemSelection
+//   method: Returns True if done, False if <item> is not in the WorkSession
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn reset_item_selection(&mut self, item: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:521 - `IFSelect_WorkSession::ItemSelection`
+//   method: Returns the Selection of a Dispatch or a GeneralModifier.
+//   method: Returns a Null Handle if none is defined or <item> not good type
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn item_selection(&self, item: &HandleTransient) -> OwnedPtr<Handle<IFSelect_Selection>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:527 - `IFSelect_WorkSession::SignCounter`
+//   method: Returns a SignCounter from its ident in the Session
+//   method: Null result if <id> is not suitable for a SignCounter
+//   method: (undefined, or defined for another kind of variable)
+//   Reason: return type 'Handle(IFSelect_SignCounter)' is unknown
+//   // pub fn sign_counter(&self, id: i32) -> OwnedPtr<Handle<IFSelect_SignCounter>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:534 - `IFSelect_WorkSession::ComputeCounter`
+//   method: Computes the content of a SignCounter when it is defined with
+//   method: a Selection, then returns True
+//   method: Returns False if the SignCounter is not defined with a
+//   Reason: param 'counter' uses unknown type 'const Handle(IFSelect_SignCounter)&'
+//   // pub fn compute_counter(&mut self, counter: &HandleSignCounter, forced: bool) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:543 - `IFSelect_WorkSession::ComputeCounterFromList`
+//   method: Computes the content of a SignCounter from an input list
+//   method: If <list> is Null, uses internal definition of the Counter :
+//   method: a Selection, else the whole Model (recomputation forced)
+//   Reason: param 'counter' uses unknown type 'const Handle(IFSelect_SignCounter)&'
+//   // pub fn compute_counter_from_list(&mut self, counter: &HandleSignCounter, list: &HandleHSequenceOfTransient, clear: bool) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:592 - `IFSelect_WorkSession::ModelModifier`
+//   method: Returns a Model Modifier, given its Ident in the Session,
+//   method: i.e. typed as a Modifier (not simply a GeneralModifier)
+//   method: Null result if <id> is not suitable for a Modifier
+//   Reason: return type 'Handle(IFSelect_Modifier)' is unknown
+//   // pub fn model_modifier(&self, id: i32) -> OwnedPtr<Handle<IFSelect_Modifier>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:618 - `IFSelect_WorkSession::SetAppliedModifier`
+//   method: Sets a GeneralModifier to be applied to an item :
+//   method: - item = ShareOut : applies for final sending (all dispatches)
+//   method: - item is a Dispatch : applies for this dispatch only
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn set_applied_modifier(&mut self, modif: &HandleGeneralModifier, item: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:629 - `IFSelect_WorkSession::UsesAppliedModifier`
+//   method: Returns the item on which a GeneralModifier is applied :
+//   method: the ShareOut, or a given Dispatch
+//   method: Returns a Null Handle if <modif> is not applied
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn uses_applied_modifier(&self, modif: &HandleGeneralModifier) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:675 - `IFSelect_WorkSession::RunModifier`
+//   method: Runs a Modifier on Starting Model. It can modify entities, or
+//   method: add new ones. But the Model or the Protocol is unchanged.
+//   method: The Modifier is applied on each entity of the Model. See also
+//   Reason: param 'modif' uses unknown type 'const Handle(IFSelect_Modifier)&'
+//   // pub fn run_modifier(&mut self, modif: &HandleModifier, copy: bool) -> i32;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:681 - `IFSelect_WorkSession::RunModifierSelected`
+//   method: Acts as RunModifier, but the Modifier is applied on the list
+//   method: determined by a Selection, rather than on the whole Model
+//   method: If the selection is a null handle, the whole model is taken
+//   Reason: param 'modif' uses unknown type 'const Handle(IFSelect_Modifier)&'
+//   // pub fn run_modifier_selected(&mut self, modif: &HandleModifier, sel: &HandleSelection, copy: bool) -> i32;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:811 - `IFSelect_WorkSession::SentList`
+//   method: Returns the list of Entities sent in files, according to the
+//   method: count of files each one has been sent (these counts are reset
+//   method: by SetModel or SetRemaining(Forget) ) stored in Graph Status
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn sent_list(&self, count: i32) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:962 - `IFSelect_WorkSession::GiveList`
+//   method: Determines a list of entities from an object :
+//   method: <obj> already HSequenceOfTransient : returned itself
+//   method: <obj> Selection : its Result of Evaluation is returned
+//   Reason: param 'obj' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn give_list(&self, obj: &HandleTransient) -> OwnedPtr<Handle<TColStd_HSequenceOfTransient>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:992 - `IFSelect_WorkSession::GiveListFromList`
+//   method: Computes a List of entities from the model as follows
+//   method: <first> being a Selection or a combination of Selections,
+//   method: <ent> being an entity or a list
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn give_list_from_list(&self, selname: *const char, ent: &HandleTransient) -> OwnedPtr<Handle<TColStd_HSequenceOfTransient>>;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1016 - `IFSelect_WorkSession::QueryCheckStatus`
+//   method: Determines check status for an entity regarding last call to
+//   method: QueryCheckList :
+//   method: -1 : <ent> unknown in the model, ignored
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn query_check_status(&self, ent: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1021 - `IFSelect_WorkSession::QueryParent`
+//   method: Determines if <entdad> is parent of <entson> (in the graph),
+//   method: returns : -1 if no; 0 if <entdad> = <entson>
+//   method: 1 if immediate parent, > 1 if parent, gives count of steps
+//   Reason: param 'entdad' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn query_parent(&self, entdad: &HandleTransient, entson: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1042 - `IFSelect_WorkSession::SetParams`
+//   method: Sets a list of Parameters, i.e. TypedValue, to be handled
+//   method: through an Editor
+//   method: The two lists are parallel, if <params> is longer than <uses>,
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_params(&mut self, params: &i32, uselist: &i32);
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1079 - `IFSelect_WorkSession::DumpModel`
+//   method: Lists the content of the Input Model (if there is one)
+//   method: According level : 0 -> gives only count of Entities and Roots
+//   method: 1 -> Lists also Roots;  2 -> Lists all Entities (by TraceType)
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn dump_model(&mut self, level: i32, S: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1090 - `IFSelect_WorkSession::DumpEntity`
+//   method: Dumps a starting entity according to the current norm.
+//   method: To do this, it calls DumpEntity from WorkLibrary.
+//   method: <level> is to be interpreted for each norm : see specific
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn dump_entity(&self, ent: &HandleTransient, level: i32, S: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1097 - `IFSelect_WorkSession::PrintEntityStatus`
+//   method: Prints main information about an entity : its number, type,
+//   method: validity (and checks if any), category, shareds and sharings..
+//   method: mutable because it can recompute checks as necessary
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_entity_status(&mut self, ent: &HandleTransient, S: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1103 - `IFSelect_WorkSession::TraceDumpEntity`
+//   method: Dumps an entity from the current Model as inherited DumpEntity
+//   method: on currently defined Default Trace File
+//   method: (<level> interpreted according to the Norm, see WorkLibrary)
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn trace_dump_entity(&self, ent: &HandleTransient, level: i32);
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1114 - `IFSelect_WorkSession::PrintCheckList`
+//   method: Prints a CheckIterator to the current Trace File, controlled
+//   method: with the current Model
+//   method: complete or fails only, according to <failsonly>
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_check_list(&self, S: /* Standard_OStream& */, checklist: &CheckIterator, failsonly: bool, mode: PrintCount);
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1122 - `IFSelect_WorkSession::PrintSignatureList`
+//   method: Prints a SignatureList to the current Trace File, controlled
+//   method: with the current Model
+//   method: <mode> defines the mode of printing (see SignatureList)
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_signature_list(&self, S: /* Standard_OStream& */, signlist: &HandleSignatureList, mode: PrintCount);
+//
+// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1157 - `IFSelect_WorkSession::ListEntities`
+//   method: Internal method which displays an EntityIterator
+//   method: <mode> 0 gives short display (only entity numbers)
+//   method: 1 gives a more complete trace (1 line per Entity)
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn list_entities(&self, iter: &EntityIterator, mode: i32, S: /* Standard_OStream& */);
+//
 
 // ========================
 // Additional type re-exports

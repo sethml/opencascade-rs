@@ -221,6 +221,40 @@ impl CCLocFOfLocECC {
     }
 }
 
+// ── Skipped symbols for CCLocFOfLocECC (6 total) ──
+// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC.hxx`:59 - `Extrema_CCLocFOfLocECC::Value`
+//   method: Calculate Fi(U,V).
+//   Reason: param 'UV' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, UV: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC.hxx`:63 - `Extrema_CCLocFOfLocECC::Derivatives`
+//   method: Calculate Fi'(U,V).
+//   Reason: param 'UV' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, UV: &Vector, DF: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC.hxx`:67 - `Extrema_CCLocFOfLocECC::Values`
+//   method: Calculate Fi(U,V) and Fi'(U,V).
+//   Reason: param 'UV' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, UV: &Vector, F: &mut Vector, DF: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC.hxx`:87 - `Extrema_CCLocFOfLocECC::CurvePtr`
+//   method: Returns a pointer to the curve specified in the constructor
+//   method: or in SetCurve() method.
+//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   // pub fn curve_ptr(&self, theRank: i32) -> OwnedPtr<Standard_Address>;
+//
+// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC.hxx`:94 - `Extrema_CCLocFOfLocECC::SubIntervalInitialize`
+//   method: Determines of boundaries of subinterval for find of root.
+//   Reason: param 'theUfirst' uses unknown type 'const math_Vector&'
+//   // pub fn sub_interval_initialize(&mut self, theUfirst: &Vector, theUlast: &Vector);
+//
+// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC.hxx`:99 - `Extrema_CCLocFOfLocECC::SearchOfTolerance`
+//   method: Computes a Tol value. If 1st derivative of curve
+//   method: |D1|<Tol, it is considered D1=0.
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn search_of_tolerance(&mut self, C: /* Standard_Address */) -> f64;
+//
+
 // ========================
 // From Extrema_CCLocFOfLocECC2d.hxx
 // ========================
@@ -351,6 +385,40 @@ impl CCLocFOfLocECC2d {
         }
     }
 }
+
+// ── Skipped symbols for CCLocFOfLocECC2d (6 total) ──
+// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:59 - `Extrema_CCLocFOfLocECC2d::Value`
+//   method: Calculate Fi(U,V).
+//   Reason: param 'UV' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, UV: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:63 - `Extrema_CCLocFOfLocECC2d::Derivatives`
+//   method: Calculate Fi'(U,V).
+//   Reason: param 'UV' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, UV: &Vector, DF: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:67 - `Extrema_CCLocFOfLocECC2d::Values`
+//   method: Calculate Fi(U,V) and Fi'(U,V).
+//   Reason: param 'UV' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, UV: &Vector, F: &mut Vector, DF: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:87 - `Extrema_CCLocFOfLocECC2d::CurvePtr`
+//   method: Returns a pointer to the curve specified in the constructor
+//   method: or in SetCurve() method.
+//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   // pub fn curve_ptr(&self, theRank: i32) -> OwnedPtr<Standard_Address>;
+//
+// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:94 - `Extrema_CCLocFOfLocECC2d::SubIntervalInitialize`
+//   method: Determines of boundaries of subinterval for find of root.
+//   Reason: param 'theUfirst' uses unknown type 'const math_Vector&'
+//   // pub fn sub_interval_initialize(&mut self, theUfirst: &Vector, theUlast: &Vector);
+//
+// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:99 - `Extrema_CCLocFOfLocECC2d::SearchOfTolerance`
+//   method: Computes a Tol value. If 1st derivative of curve
+//   method: |D1|<Tol, it is considered D1=0.
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn search_of_tolerance(&mut self, C: /* Standard_Address */) -> f64;
+//
 
 // ========================
 // From Extrema_Curve2dTool.hxx
@@ -4419,6 +4487,25 @@ impl HandleExtremaExtPExtS {
     }
 }
 
+// ── Skipped symbols for ExtPExtS (3 total) ──
+// SKIPPED: **Source:** `Extrema_ExtPExtS.hxx`:40 - `Extrema_ExtPExtS::Extrema_ExtPExtS`
+//   constructor: It calculates all the distances between a point
+//   constructor: from gp and a Surface.
+//   Reason: param 'S' uses unknown Handle type
+//   // pub fn new_pnt_handlegeomadaptorsurfaceoflinearextrusion_real6(P: &Pnt, S: &HandleSurfaceOfLinearExtrusion, Umin: f64, Usup: f64, Vmin: f64, Vsup: f64, TolU: f64, TolV: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Extrema_ExtPExtS.hxx`:51 - `Extrema_ExtPExtS::Extrema_ExtPExtS`
+//   constructor: It calculates all the distances between a point
+//   constructor: from gp and a Surface.
+//   Reason: param 'S' uses unknown Handle type
+//   // pub fn new_pnt_handlegeomadaptorsurfaceoflinearextrusion_real2(P: &Pnt, S: &HandleSurfaceOfLinearExtrusion, TolU: f64, TolV: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Extrema_ExtPExtS.hxx`:57 - `Extrema_ExtPExtS::Initialize`
+//   method: Initializes the fields of the algorithm.
+//   Reason: param 'S' uses unknown type 'const Handle(GeomAdaptor_SurfaceOfLinearExtrusion)&'
+//   // pub fn initialize(&mut self, S: &HandleSurfaceOfLinearExtrusion, Uinf: f64, Usup: f64, Vinf: f64, Vsup: f64, TolU: f64, TolV: f64);
+//
+
 // ========================
 // From Extrema_ExtPRevS.hxx
 // ========================
@@ -4516,6 +4603,24 @@ impl HandleExtremaExtPRevS {
         unsafe { &mut *(crate::ffi::HandleExtremaExtPRevS_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for ExtPRevS (3 total) ──
+// SKIPPED: **Source:** `Extrema_ExtPRevS.hxx`:38 - `Extrema_ExtPRevS::Extrema_ExtPRevS`
+//   constructor: It calculates all the distances between a point
+//   constructor: from gp and a SurfacePtr from Adaptor3d.
+//   Reason: param 'S' uses unknown Handle type
+//   // pub fn new_pnt_handlegeomadaptorsurfaceofrevolution_real6(P: &Pnt, S: &HandleSurfaceOfRevolution, Umin: f64, Usup: f64, Vmin: f64, Vsup: f64, TolU: f64, TolV: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Extrema_ExtPRevS.hxx`:49 - `Extrema_ExtPRevS::Extrema_ExtPRevS`
+//   constructor: It calculates all the distances between a point
+//   constructor: from gp and a SurfacePtr from Adaptor3d.
+//   Reason: param 'S' uses unknown Handle type
+//   // pub fn new_pnt_handlegeomadaptorsurfaceofrevolution_real2(P: &Pnt, S: &HandleSurfaceOfRevolution, TolU: f64, TolV: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Extrema_ExtPRevS.hxx`:54 - `Extrema_ExtPRevS::Initialize`
+//   Reason: param 'S' uses unknown type 'const Handle(GeomAdaptor_SurfaceOfRevolution)&'
+//   // pub fn initialize(&mut self, S: &HandleSurfaceOfRevolution, Umin: f64, Usup: f64, Vmin: f64, Vsup: f64, TolU: f64, TolV: f64);
+//
 
 // ========================
 // From Extrema_ExtPS.hxx
@@ -4981,6 +5086,23 @@ impl FuncExtCS {
     }
 }
 
+// ── Skipped symbols for FuncExtCS (3 total) ──
+// SKIPPED: **Source:** `Extrema_FuncExtCS.hxx`:54 - `Extrema_FuncExtCS::Value`
+//   method: Calculation of Fi(U,V).
+//   Reason: param 'UV' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, UV: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_FuncExtCS.hxx`:57 - `Extrema_FuncExtCS::Derivatives`
+//   method: Calculation of Fi'(U,V).
+//   Reason: param 'UV' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, UV: &Vector, DF: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_FuncExtCS.hxx`:61 - `Extrema_FuncExtCS::Values`
+//   method: Calculation of Fi(U,V) and Fi'(U,V).
+//   Reason: param 'UV' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, UV: &Vector, F: &mut Vector, DF: &mut Matrix) -> bool;
+//
+
 // ========================
 // From Extrema_FuncExtSS.hxx
 // ========================
@@ -5089,6 +5211,23 @@ impl FuncExtSS {
     }
 }
 
+// ── Skipped symbols for FuncExtSS (3 total) ──
+// SKIPPED: **Source:** `Extrema_FuncExtSS.hxx`:51 - `Extrema_FuncExtSS::Value`
+//   method: Calculate Fi(U,V).
+//   Reason: param 'UV' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, UV: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_FuncExtSS.hxx`:54 - `Extrema_FuncExtSS::Derivatives`
+//   method: Calculate Fi'(U,V).
+//   Reason: param 'UV' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, UV: &Vector, DF: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_FuncExtSS.hxx`:58 - `Extrema_FuncExtSS::Values`
+//   method: Calculate Fi(U,V) and Fi'(U,V).
+//   Reason: param 'UV' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, UV: &Vector, F: &mut Vector, DF: &mut Matrix) -> bool;
+//
+
 // ========================
 // From Extrema_FuncPSDist.hxx
 // ========================
@@ -5177,6 +5316,23 @@ impl FuncPSDist {
         unsafe { crate::ffi::Extrema_FuncPSDist_inherited_GetStateNumber(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for FuncPSDist (3 total) ──
+// SKIPPED: **Source:** `Extrema_FuncPSDist.hxx`:58 - `Extrema_FuncPSDist::Value`
+//   method: Value.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_FuncPSDist.hxx`:61 - `Extrema_FuncPSDist::Gradient`
+//   method: Gradient.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_FuncPSDist.hxx`:64 - `Extrema_FuncPSDist::Values`
+//   method: Value and gradient.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
+//
 
 // ========================
 // From Extrema_FuncPSNorm.hxx
@@ -5303,6 +5459,23 @@ impl FuncPSNorm {
         unsafe { &mut *(crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSet_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for FuncPSNorm (3 total) ──
+// SKIPPED: **Source:** `Extrema_FuncPSNorm.hxx`:74 - `Extrema_FuncPSNorm::Value`
+//   method: Calculate Fi(U,V).
+//   Reason: param 'UV' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, UV: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_FuncPSNorm.hxx`:77 - `Extrema_FuncPSNorm::Derivatives`
+//   method: Calculate Fi'(U,V).
+//   Reason: param 'UV' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, UV: &Vector, DF: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_FuncPSNorm.hxx`:81 - `Extrema_FuncPSNorm::Values`
+//   method: Calculate Fi(U,V) and Fi'(U,V).
+//   Reason: param 'UV' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, UV: &Vector, F: &mut Vector, DF: &mut Matrix) -> bool;
+//
 
 // ========================
 // From Extrema_GenExtCS.hxx
@@ -6216,6 +6389,12 @@ impl GlobOptFuncCCC0 {
     }
 }
 
+// ── Skipped symbols for GlobOptFuncCCC0 (1 total) ──
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCC.hxx`:36 - `Extrema_GlobOptFuncCCC0::Value`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
+//
+
 /// **Source:** `Extrema_GlobOptFuncCC.hxx`:48 - `Extrema_GlobOptFuncCCC1`
 /// This class implements function which calculate Eucluidean distance
 /// between point on curve and point on other curve in case of C1 and C2 continuity is C1.
@@ -6296,6 +6475,20 @@ impl GlobOptFuncCCC1 {
         unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_inherited_GetStateNumber(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for GlobOptFuncCCC1 (3 total) ──
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCC.hxx`:57 - `Extrema_GlobOptFuncCCC1::Value`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCC.hxx`:59 - `Extrema_GlobOptFuncCCC1::Gradient`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCC.hxx`:61 - `Extrema_GlobOptFuncCCC1::Values`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
+//
 
 /// **Source:** `Extrema_GlobOptFuncCC.hxx`:75 - `Extrema_GlobOptFuncCCC2`
 /// This class implements function which calculate Eucluidean distance
@@ -6400,6 +6593,24 @@ impl GlobOptFuncCCC2 {
     }
 }
 
+// ── Skipped symbols for GlobOptFuncCCC2 (4 total) ──
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCC.hxx`:84 - `Extrema_GlobOptFuncCCC2::Value`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCC.hxx`:86 - `Extrema_GlobOptFuncCCC2::Gradient`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCC.hxx`:88 - `Extrema_GlobOptFuncCCC2::Values`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCC.hxx`:92 - `Extrema_GlobOptFuncCCC2::Values`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector, H: &mut Matrix) -> bool;
+//
+
 // ========================
 // From Extrema_GlobOptFuncCQuadric.hxx
 // ========================
@@ -6446,6 +6657,34 @@ impl GlobOptFuncCQuadric {
         }
     }
 }
+
+// ── Skipped symbols for GlobOptFuncCQuadric (6 total) ──
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:32 - `Extrema_GlobOptFuncCQuadric::Extrema_GlobOptFuncCQuadric`
+//   constructor: Curve and surface should exist during all the lifetime of Extrema_GlobOptFuncCQuadric.
+//   Reason: has unbindable types: param 'C': raw pointer (const Adaptor3d_Curve*)
+//   // pub fn new_curveptr(C: /* const Adaptor3d_Curve* */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:34 - `Extrema_GlobOptFuncCQuadric::Extrema_GlobOptFuncCQuadric`
+//   Reason: has unbindable types: param 'C': raw pointer (const Adaptor3d_Curve*)
+//   // pub fn new_curveptr_real2(C: /* const Adaptor3d_Curve* */, theTf: f64, theTl: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:38 - `Extrema_GlobOptFuncCQuadric::Extrema_GlobOptFuncCQuadric`
+//   Reason: has unbindable types: param 'C': raw pointer (const Adaptor3d_Curve*); param 'S': raw pointer (const Adaptor3d_Surface*)
+//   // pub fn new_curveptr_surfaceptr(C: /* const Adaptor3d_Curve* */, S: /* const Adaptor3d_Surface* */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:40 - `Extrema_GlobOptFuncCQuadric::LoadQuad`
+//   Reason: has unbindable types: param 'S': raw pointer (const Adaptor3d_Surface*)
+//   // pub fn load_quad(&mut self, S: /* const Adaptor3d_Surface* */, theUf: f64, theUl: f64, theVf: f64, theVl: f64);
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:48 - `Extrema_GlobOptFuncCQuadric::Value`
+//   Reason: param 'theX' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, theX: &Vector, theF: &mut f64) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:50 - `Extrema_GlobOptFuncCQuadric::QuadricParameters`
+//   method: Parameters of quadric for point on curve defined by theCT
+//   Reason: param 'theCT' uses unknown type 'const math_Vector&'
+//   // pub fn quadric_parameters(&self, theCT: &Vector, theUV: &mut Vector);
+//
 
 // ========================
 // From Extrema_GlobOptFuncCS.hxx
@@ -6534,6 +6773,29 @@ impl GlobOptFuncCS {
     }
 }
 
+// ── Skipped symbols for GlobOptFuncCS (5 total) ──
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCS.hxx`:30 - `Extrema_GlobOptFuncCS::Extrema_GlobOptFuncCS`
+//   constructor: Curve and surface should exist during all the lifetime of Extrema_GlobOptFuncCS.
+//   Reason: has unbindable types: param 'C': raw pointer (const Adaptor3d_Curve*); param 'S': raw pointer (const Adaptor3d_Surface*)
+//   // pub fn new_curveptr_surfaceptr(C: /* const Adaptor3d_Curve* */, S: /* const Adaptor3d_Surface* */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCS.hxx`:34 - `Extrema_GlobOptFuncCS::Value`
+//   Reason: param 'theX' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, theX: &Vector, theF: &mut f64) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCS.hxx`:36 - `Extrema_GlobOptFuncCS::Gradient`
+//   Reason: param 'theX' uses unknown type 'const math_Vector&'
+//   // pub fn gradient(&mut self, theX: &Vector, theG: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCS.hxx`:38 - `Extrema_GlobOptFuncCS::Values`
+//   Reason: param 'theX' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, theX: &Vector, theF: &mut f64, theG: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncCS.hxx`:42 - `Extrema_GlobOptFuncCS::Values`
+//   Reason: param 'theX' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, theX: &Vector, theF: &mut f64, theG: &mut Vector, theH: &mut Matrix) -> bool;
+//
+
 // ========================
 // From Extrema_GlobOptFuncConicS.hxx
 // ========================
@@ -6578,6 +6840,34 @@ impl GlobOptFuncConicS {
         unsafe { crate::ffi::Extrema_GlobOptFuncConicS_inherited_GetStateNumber(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for GlobOptFuncConicS (6 total) ──
+// SKIPPED: **Source:** `Extrema_GlobOptFuncConicS.hxx`:33 - `Extrema_GlobOptFuncConicS::Extrema_GlobOptFuncConicS`
+//   constructor: Curve and surface should exist during all the lifetime of Extrema_GlobOptFuncConicS.
+//   Reason: has unbindable types: param 'C': raw pointer (const Adaptor3d_Curve*); param 'S': raw pointer (const Adaptor3d_Surface*)
+//   // pub fn new_curveptr_surfaceptr(C: /* const Adaptor3d_Curve* */, S: /* const Adaptor3d_Surface* */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncConicS.hxx`:35 - `Extrema_GlobOptFuncConicS::Extrema_GlobOptFuncConicS`
+//   Reason: has unbindable types: param 'S': raw pointer (const Adaptor3d_Surface*)
+//   // pub fn new_surfaceptr(S: /* const Adaptor3d_Surface* */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncConicS.hxx`:37 - `Extrema_GlobOptFuncConicS::Extrema_GlobOptFuncConicS`
+//   Reason: has unbindable types: param 'S': raw pointer (const Adaptor3d_Surface*)
+//   // pub fn new_surfaceptr_real4(S: /* const Adaptor3d_Surface* */, theUf: f64, theUl: f64, theVf: f64, theVl: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncConicS.hxx`:43 - `Extrema_GlobOptFuncConicS::LoadConic`
+//   Reason: has unbindable types: param 'S': raw pointer (const Adaptor3d_Curve*)
+//   // pub fn load_conic(&mut self, S: /* const Adaptor3d_Curve* */, theTf: f64, theTl: f64);
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncConicS.hxx`:49 - `Extrema_GlobOptFuncConicS::Value`
+//   Reason: param 'theX' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, theX: &Vector, theF: &mut f64) -> bool;
+//
+// SKIPPED: **Source:** `Extrema_GlobOptFuncConicS.hxx`:52 - `Extrema_GlobOptFuncConicS::ConicParameter`
+//   method: Parameter of conic for point on surface defined by theUV
+//   Reason: param 'theUV' uses unknown type 'const math_Vector&'
+//   // pub fn conic_parameter(&self, theUV: &Vector) -> f64;
+//
 
 // ========================
 // From Extrema_HArray1OfPOnCurv.hxx
@@ -8982,6 +9272,14 @@ impl POnSurfParams {
         unsafe { crate::ffi::Extrema_POnSurfParams_inherited_Parameter(self as *const Self, U, V) }
     }
 }
+
+// ── Skipped symbols for POnSurfParams (1 total) ──
+// SKIPPED: **Source:** `Extrema_POnSurfParams.hxx`:61 - `Extrema_POnSurfParams::GetIndices`
+//   method: Query the U and V indices of an element that contains
+//   method: this point.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_indices(&self, theIndexU: &mut i32, theIndexV: &mut i32);
+//
 
 // ========================
 // Additional type re-exports

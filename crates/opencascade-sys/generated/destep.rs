@@ -222,6 +222,20 @@ impl ConfigurationNode {
     }
 }
 
+// ── Skipped symbols for ConfigurationNode (2 total) ──
+// SKIPPED: **Source:** `DESTEP_ConfigurationNode.hxx`:42 - `DESTEP_ConfigurationNode::DESTEP_ConfigurationNode`
+//   constructor: Copies values of all fields
+//   constructor: @param[in] theNode object to copy
+//   Reason: param 'theNode' uses unknown Handle type
+//   // pub fn new_handledestepconfigurationnode(theNode: &HandleConfigurationNode) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `DESTEP_ConfigurationNode.hxx`:81 - `DESTEP_ConfigurationNode::GetExtensions`
+//   method: Gets list of supported file extensions
+//   method: @return list of extensions
+//   Reason: return type 'TColStd_ListOfAsciiString' is not CppDeletable
+//   // pub fn get_extensions(&self) -> OwnedPtr<TColStd_ListOfAsciiString>;
+//
+
 // ========================
 // From DESTEP_Parameters.hxx
 // ========================
@@ -415,3 +429,47 @@ impl Provider {
         unsafe { crate::ffi::DESTEP_Provider_inherited_SetNode(self as *mut Self, theNode) }
     }
 }
+
+// ── Skipped symbols for Provider (6 total) ──
+// SKIPPED: **Source:** `DESTEP_Provider.hxx`:50 - `DESTEP_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theDocument document to save result
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DESTEP_Provider.hxx`:62 - `DESTEP_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theDocument document to export
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DESTEP_Provider.hxx`:73 - `DESTEP_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theDocument document to save result
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DESTEP_Provider.hxx`:83 - `DESTEP_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theDocument document to export
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DESTEP_Provider.hxx`:94 - `DESTEP_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theShape shape to save result
+//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theShape: &mut Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DESTEP_Provider.hxx`:106 - `DESTEP_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theShape shape to export
+//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theShape: &Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//

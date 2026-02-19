@@ -601,6 +601,15 @@ impl CheckCurveOnSurface {
     }
 }
 
+// ── Skipped symbols for CheckCurveOnSurface (1 total) ──
+// SKIPPED: **Source:** `GeomLib_CheckCurveOnSurface.hxx`:49 - `GeomLib_CheckCurveOnSurface::Perform`
+//   method: Computes the max distance for the 3d curve <myCurve>
+//   method: and 2d curve <theCurveOnSurface>
+//   method: If isMultiThread == Standard_True then computation will be performed in parallel.
+//   Reason: param 'theCurveOnSurface' uses unknown type 'const Handle(Adaptor3d_CurveOnSurface)&'
+//   // pub fn perform(&mut self, theCurveOnSurface: &HandleCurveOnSurface);
+//
+
 // ========================
 // From GeomLib_DenominatorMultiplier.hxx
 // ========================
@@ -1038,6 +1047,12 @@ impl PolyFunc {
         unsafe { crate::ffi::GeomLib_PolyFunc_inherited_GetStateNumber(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for PolyFunc (1 total) ──
+// SKIPPED: **Source:** `GeomLib_PolyFunc.hxx`:33 - `GeomLib_PolyFunc::GeomLib_PolyFunc`
+//   Reason: param 'Coeffs' uses unknown type 'const math_Vector&'
+//   // pub fn new_vector(Coeffs: &Vector) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From GeomLib_Tool.hxx

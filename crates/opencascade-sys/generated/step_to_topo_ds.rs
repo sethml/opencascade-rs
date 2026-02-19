@@ -143,6 +143,16 @@ impl NMTool {
     }
 }
 
+// ── Skipped symbols for NMTool (2 total) ──
+// SKIPPED: **Source:** `StepToTopoDS_NMTool.hxx`:40 - `StepToTopoDS_NMTool::StepToTopoDS_NMTool`
+//   Reason: param 'MapOfRI' uses unknown type 'const StepToTopoDS_DataMapOfRI&'
+//   // pub fn new_datamapofri_datamapofrinames(MapOfRI: &DataMapOfRI, MapOfRINames: &DataMapOfRINames) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `StepToTopoDS_NMTool.hxx`:43 - `StepToTopoDS_NMTool::Init`
+//   Reason: param 'MapOfRI' uses unknown type 'const StepToTopoDS_DataMapOfRI&'
+//   // pub fn init(&mut self, MapOfRI: &DataMapOfRI, MapOfRINames: &DataMapOfRINames);
+//
+
 // ========================
 // Additional type re-exports
 // ========================

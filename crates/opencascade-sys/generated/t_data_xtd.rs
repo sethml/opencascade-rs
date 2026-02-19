@@ -379,6 +379,26 @@ impl Axis {
     }
 }
 
+// ── Skipped symbols for Axis (3 total) ──
+// SKIPPED: **Source:** `TDataXtd_Axis.hxx`:57 - `TDataXtd_Axis::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataXtd_Axis.hxx`:45 - `TDataXtd_Axis::Set`
+//   static_method: Finds or creates an axis attribute defined by the  label.
+//   static_method: In the case of a creation of an axis, a compatible
+//   static_method: named shape should already be associated with label.
+//   Reason: return type 'Handle(TDataXtd_Axis)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataXtd_Axis>>;
+//
+// SKIPPED: **Source:** `TDataXtd_Axis.hxx`:51 - `TDataXtd_Axis::Set`
+//   static_method: Find,  or create,  an Axis  attribute  and set <P>  as
+//   static_method: generated in the associated NamedShape.
+//   static_method: Axis methods
+//   Reason: return type 'Handle(TDataXtd_Axis)' is unknown
+//   // pub fn set(label: &Label, L: &Lin) -> OwnedPtr<Handle<TDataXtd_Axis>>;
+//
+
 // ========================
 // From TDataXtd_Constraint.hxx
 // ========================
@@ -746,6 +766,85 @@ impl Constraint {
     }
 }
 
+// ── Skipped symbols for Constraint (12 total) ──
+// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:66 - `TDataXtd_Constraint::Set`
+//   method: Finds or creates the constraint attribute defined
+//   method: by the topological attribute G1 and the constraint type type.
+//   Reason: param 'G1' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn set(&mut self, type_: ConstraintEnum, G1: &HandleNamedShape);
+//
+// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:72 - `TDataXtd_Constraint::Set`
+//   method: Finds or creates the constraint attribute defined
+//   method: by the topological attributes G1 and G2, and by
+//   method: the constraint type type.
+//   Reason: param 'G1' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn set(&mut self, type_: ConstraintEnum, G1: &HandleNamedShape, G2: &HandleNamedShape);
+//
+// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:79 - `TDataXtd_Constraint::Set`
+//   method: Finds or creates the constraint attribute defined
+//   method: by the topological attributes G1, G2 and G3, and
+//   method: by the constraint type type.
+//   Reason: param 'G1' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn set(&mut self, type_: ConstraintEnum, G1: &HandleNamedShape, G2: &HandleNamedShape, G3: &HandleNamedShape);
+//
+// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:89 - `TDataXtd_Constraint::Set`
+//   method: Finds or creates the constraint attribute defined
+//   method: by the topological attributes G1, G2, G3 and G4,
+//   method: and by the constraint type type.
+//   Reason: param 'G1' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn set(&mut self, type_: ConstraintEnum, G1: &HandleNamedShape, G2: &HandleNamedShape, G3: &HandleNamedShape, G4: &HandleNamedShape);
+//
+// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:116 - `TDataXtd_Constraint::GetPlane`
+//   method: Returns the topological attribute of the plane
+//   method: used for planar - i.e., 2D - constraints.
+//   method: This plane is attached to another label.
+//   Reason: return type 'const Handle(TNaming_NamedShape)&' is unknown
+//   // pub fn get_plane(&self) -> &HandleNamedShape;
+//
+// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:126 - `TDataXtd_Constraint::GetValue`
+//   method: Returns the value of a dimension.
+//   method: This value is a reference to a TDataStd_Real attribute.
+//   method: If the attribute is not a dimension, this value will
+//   Reason: return type 'const Handle(TDataStd_Real)&' is unknown
+//   // pub fn get_value(&self) -> &HandleReal;
+//
+// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:137 - `TDataXtd_Constraint::GetGeometry`
+//   method: Returns the integer index Index used to access
+//   method: the array of the constraint or stored geometries of a dimension
+//   method: Index has a value between 1 and 4.
+//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
+//   // pub fn get_geometry(&self, Index: i32) -> OwnedPtr<Handle<TNaming_NamedShape>>;
+//
+// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:149 - `TDataXtd_Constraint::SetPlane`
+//   method: Finds or creates the plane of the 2D constraint
+//   method: attribute, defined by the planar topological attribute plane.
+//   Reason: param 'plane' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn set_plane(&mut self, plane: &HandleNamedShape);
+//
+// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:152 - `TDataXtd_Constraint::SetValue`
+//   method: Finds or creates the real number value V of the dimension constraint attribute.
+//   Reason: param 'V' uses unknown type 'const Handle(TDataStd_Real)&'
+//   // pub fn set_value(&mut self, V: &HandleReal);
+//
+// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:157 - `TDataXtd_Constraint::SetGeometry`
+//   method: Finds or creates the underlying geometry of the
+//   method: constraint defined by the topological attribute G
+//   method: and the integer index Index.
+//   Reason: param 'G' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn set_geometry(&mut self, Index: i32, G: &HandleNamedShape);
+//
+// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:189 - `TDataXtd_Constraint::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:60 - `TDataXtd_Constraint::Set`
+//   static_method: Finds or creates the 2D constraint attribute
+//   static_method: defined by the planar topological attribute plane
+//   static_method: and the label label.
+//   Reason: return type 'Handle(TDataXtd_Constraint)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataXtd_Constraint>>;
+//
+
 // ========================
 // From TDataXtd_Geometry.hxx
 // ========================
@@ -1080,6 +1179,63 @@ impl Geometry {
         unsafe { crate::ffi::TDataXtd_Geometry_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Geometry (10 total) ──
+// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:138 - `TDataXtd_Geometry::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:58 - `TDataXtd_Geometry::Set`
+//   static_method: API class methods
+//   static_method: =================
+//   static_method: Finds, or  creates, a Geometry attribute  defined by the label label.
+//   Reason: return type 'Handle(TDataXtd_Geometry)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataXtd_Geometry>>;
+//
+// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:66 - `TDataXtd_Geometry::Type`
+//   static_method: Returns the topological attribute S used to define
+//   static_method: the type of geometric construction for the geometry attribute.
+//   Reason: param 'S' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn type_(S: &HandleNamedShape) -> OwnedPtr<TDataXtd_GeometryEnum>;
+//
+// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:72 - `TDataXtd_Geometry::Point`
+//   static_method: Returns the point attribute defined by the topological attribute S and the point G.
+//   Reason: param 'S' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn point(S: &HandleNamedShape, G: &mut Pnt) -> bool;
+//
+// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:78 - `TDataXtd_Geometry::Axis`
+//   static_method: Returns the axis attribute defined by the topological attribute S and the axis G.
+//   Reason: param 'S' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn axis(S: &HandleNamedShape, G: &mut Ax1) -> bool;
+//
+// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:84 - `TDataXtd_Geometry::Line`
+//   static_method: Returns the line attribute defined by the topological attribute S and the line G.
+//   Reason: param 'S' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn line(S: &HandleNamedShape, G: &mut Lin) -> bool;
+//
+// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:90 - `TDataXtd_Geometry::Circle`
+//   static_method: Returns the circle attribute defined by the topological attribute S and the circle G.
+//   Reason: param 'S' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn circle(S: &HandleNamedShape, G: &mut Circ) -> bool;
+//
+// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:97 - `TDataXtd_Geometry::Ellipse`
+//   static_method: Returns the ellipse attribute defined by the
+//   static_method: topological attribute S and the ellipse G.
+//   Reason: param 'S' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn ellipse(S: &HandleNamedShape, G: &mut Elips) -> bool;
+//
+// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:104 - `TDataXtd_Geometry::Plane`
+//   static_method: Returns the plane attribute defined by the
+//   static_method: topological attribute S and the plane G.
+//   Reason: param 'S' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn plane(S: &HandleNamedShape, G: &mut Pln) -> bool;
+//
+// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:111 - `TDataXtd_Geometry::Cylinder`
+//   static_method: Returns the cylinder attribute defined by the
+//   static_method: topological attribute S and the cylinder G.
+//   Reason: param 'S' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn cylinder(S: &HandleNamedShape, G: &mut Cylinder) -> bool;
+//
 
 // ========================
 // From TDataXtd_HArray1OfTrsf.hxx
@@ -1768,6 +1924,73 @@ impl PatternStd {
     }
 }
 
+// ── Skipped symbols for PatternStd (16 total) ──
+// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:54 - `TDataXtd_PatternStd::Axis1`
+//   Reason: param 'Axis1' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn axis1(&mut self, Axis1: &HandleNamedShape);
+//
+// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:56 - `TDataXtd_PatternStd::Axis2`
+//   Reason: param 'Axis2' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn axis2(&mut self, Axis2: &HandleNamedShape);
+//
+// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:62 - `TDataXtd_PatternStd::Value1`
+//   Reason: param 'value' uses unknown type 'const Handle(TDataStd_Real)&'
+//   // pub fn value1(&mut self, value: &HandleReal);
+//
+// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:64 - `TDataXtd_PatternStd::Value2`
+//   Reason: param 'value' uses unknown type 'const Handle(TDataStd_Real)&'
+//   // pub fn value2(&mut self, value: &HandleReal);
+//
+// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:66 - `TDataXtd_PatternStd::NbInstances1`
+//   Reason: param 'NbInstances1' uses unknown type 'const Handle(TDataStd_Integer)&'
+//   // pub fn nb_instances1(&mut self, NbInstances1: &HandleInteger);
+//
+// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:68 - `TDataXtd_PatternStd::NbInstances2`
+//   Reason: param 'NbInstances2' uses unknown type 'const Handle(TDataStd_Integer)&'
+//   // pub fn nb_instances2(&mut self, NbInstances2: &HandleInteger);
+//
+// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:70 - `TDataXtd_PatternStd::Mirror`
+//   Reason: param 'plane' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   // pub fn mirror(&mut self, plane: &HandleNamedShape);
+//
+// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:74 - `TDataXtd_PatternStd::Axis1`
+//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
+//   // pub fn axis1(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
+//
+// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:76 - `TDataXtd_PatternStd::Axis2`
+//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
+//   // pub fn axis2(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
+//
+// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:82 - `TDataXtd_PatternStd::Value1`
+//   Reason: return type 'Handle(TDataStd_Real)' is unknown
+//   // pub fn value1(&self) -> OwnedPtr<Handle<TDataStd_Real>>;
+//
+// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:84 - `TDataXtd_PatternStd::Value2`
+//   Reason: return type 'Handle(TDataStd_Real)' is unknown
+//   // pub fn value2(&self) -> OwnedPtr<Handle<TDataStd_Real>>;
+//
+// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:86 - `TDataXtd_PatternStd::NbInstances1`
+//   Reason: return type 'Handle(TDataStd_Integer)' is unknown
+//   // pub fn nb_instances1(&self) -> OwnedPtr<Handle<TDataStd_Integer>>;
+//
+// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:88 - `TDataXtd_PatternStd::NbInstances2`
+//   Reason: return type 'Handle(TDataStd_Integer)' is unknown
+//   // pub fn nb_instances2(&self) -> OwnedPtr<Handle<TDataStd_Integer>>;
+//
+// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:90 - `TDataXtd_PatternStd::Mirror`
+//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
+//   // pub fn mirror(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
+//
+// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:108 - `TDataXtd_PatternStd::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:48 - `TDataXtd_PatternStd::Set`
+//   static_method: Find, or  create,  a PatternStd  attribute
+//   Reason: return type 'Handle(TDataXtd_PatternStd)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataXtd_PatternStd>>;
+//
+
 // ========================
 // From TDataXtd_Placement.hxx
 // ========================
@@ -2038,6 +2261,19 @@ impl Placement {
     }
 }
 
+// ── Skipped symbols for Placement (2 total) ──
+// SKIPPED: **Source:** `TDataXtd_Placement.hxx`:43 - `TDataXtd_Placement::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataXtd_Placement.hxx`:37 - `TDataXtd_Placement::Set`
+//   static_method: Find, or    create,   an Placement  attribute.     the
+//   static_method: Placement attribute is returned.
+//   static_method: Placement methods
+//   Reason: return type 'Handle(TDataXtd_Placement)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataXtd_Placement>>;
+//
+
 // ========================
 // From TDataXtd_Plane.hxx
 // ========================
@@ -2296,6 +2532,26 @@ impl Plane {
         unsafe { crate::ffi::TDataXtd_Plane_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Plane (3 total) ──
+// SKIPPED: **Source:** `TDataXtd_Plane.hxx`:56 - `TDataXtd_Plane::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataXtd_Plane.hxx`:44 - `TDataXtd_Plane::Set`
+//   static_method: Finds or creates the plane attribute defined by
+//   static_method: the label label.
+//   static_method: Warning
+//   Reason: return type 'Handle(TDataXtd_Plane)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataXtd_Plane>>;
+//
+// SKIPPED: **Source:** `TDataXtd_Plane.hxx`:50 - `TDataXtd_Plane::Set`
+//   static_method: Finds,  or creates,  a Plane  attribute  and sets <P>  as
+//   static_method: generated the associated NamedShape.
+//   static_method: Plane methods
+//   Reason: return type 'Handle(TDataXtd_Plane)' is unknown
+//   // pub fn set(label: &Label, P: &Pln) -> OwnedPtr<Handle<TDataXtd_Plane>>;
+//
 
 // ========================
 // From TDataXtd_Point.hxx
@@ -2558,6 +2814,25 @@ impl Point {
         unsafe { crate::ffi::TDataXtd_Point_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Point (3 total) ──
+// SKIPPED: **Source:** `TDataXtd_Point.hxx`:56 - `TDataXtd_Point::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataXtd_Point.hxx`:44 - `TDataXtd_Point::Set`
+//   static_method: Sets the label Label as a point attribute.
+//   static_method: If no object is found, a point attribute is created.
+//   Reason: return type 'Handle(TDataXtd_Point)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataXtd_Point>>;
+//
+// SKIPPED: **Source:** `TDataXtd_Point.hxx`:50 - `TDataXtd_Point::Set`
+//   static_method: Sets the label Label as a point attribute containing the point P.
+//   static_method: If no object is found, a point attribute is created.
+//   static_method: Point methods
+//   Reason: return type 'Handle(TDataXtd_Point)' is unknown
+//   // pub fn set(label: &Label, P: &Pnt) -> OwnedPtr<Handle<TDataXtd_Point>>;
+//
 
 // ========================
 // From TDataXtd_Position.hxx
@@ -2855,6 +3130,14 @@ impl Position {
         unsafe { crate::ffi::TDataXtd_Position_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Position (1 total) ──
+// SKIPPED: **Source:** `TDataXtd_Position.hxx`:41 - `TDataXtd_Position::Set`
+//   static_method: Find an existing, or create an empty, Position.
+//   static_method: the Position attribute is returned.
+//   Reason: return type 'Handle(TDataXtd_Position)' is unknown
+//   // pub fn set(aLabel: &Label) -> OwnedPtr<Handle<TDataXtd_Position>>;
+//
 
 // ========================
 // From TDataXtd_Presentation.hxx
@@ -3355,6 +3638,13 @@ impl Presentation {
     }
 }
 
+// ── Skipped symbols for Presentation (1 total) ──
+// SKIPPED: **Source:** `TDataXtd_Presentation.hxx`:45 - `TDataXtd_Presentation::Set`
+//   static_method: Create if not found the TDataXtd_Presentation attribute and set its driver GUID
+//   Reason: return type 'Handle(TDataXtd_Presentation)' is unknown
+//   // pub fn set(theLabel: &Label, theDriverId: &GUID) -> OwnedPtr<Handle<TDataXtd_Presentation>>;
+//
+
 // ========================
 // From TDataXtd_Shape.hxx
 // ========================
@@ -3617,6 +3907,31 @@ impl Shape {
         unsafe { crate::ffi::TDataXtd_Shape_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Shape (4 total) ──
+// SKIPPED: **Source:** `TDataXtd_Shape.hxx`:62 - `TDataXtd_Shape::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataXtd_Shape.hxx`:37 - `TDataXtd_Shape::Find`
+//   static_method: class methods
+//   static_method: =============
+//   static_method: try to retrieve a Shape attribute at <current> label
+//   Reason: param 'S' uses unknown type 'Handle(TDataXtd_Shape)&'
+//   // pub fn find(current: &Label, S: &mut HandleShape) -> bool;
+//
+// SKIPPED: **Source:** `TDataXtd_Shape.hxx`:41 - `TDataXtd_Shape::New`
+//   static_method: Find, or create, a Shape attribute.  the Shape attribute
+//   static_method: is returned. Raises if <label> has attribute.
+//   Reason: return type 'Handle(TDataXtd_Shape)' is unknown
+//   // pub fn new(label: &Label) -> OwnedPtr<Handle<TDataXtd_Shape>>;
+//
+// SKIPPED: **Source:** `TDataXtd_Shape.hxx`:45 - `TDataXtd_Shape::Set`
+//   static_method: Create or update associated NamedShape attribute.  the
+//   static_method: Shape attribute is returned.
+//   Reason: return type 'Handle(TDataXtd_Shape)' is unknown
+//   // pub fn set(label: &Label, shape: &Shape) -> OwnedPtr<Handle<TDataXtd_Shape>>;
+//
 
 // ========================
 // From TDataXtd_Triangulation.hxx
@@ -4042,6 +4357,23 @@ impl Triangulation {
         }
     }
 }
+
+// ── Skipped symbols for Triangulation (3 total) ──
+// SKIPPED: **Source:** `TDataXtd_Triangulation.hxx`:147 - `TDataXtd_Triangulation::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataXtd_Triangulation.hxx`:47 - `TDataXtd_Triangulation::Set`
+//   static_method: Finds or creates a triangulation attribute.
+//   Reason: return type 'Handle(TDataXtd_Triangulation)' is unknown
+//   // pub fn set(theLabel: &Label) -> OwnedPtr<Handle<TDataXtd_Triangulation>>;
+//
+// SKIPPED: **Source:** `TDataXtd_Triangulation.hxx`:51 - `TDataXtd_Triangulation::Set`
+//   static_method: Finds or creates a triangulation attribute.
+//   static_method: Initializes the attribute by a Poly_Triangulation object.
+//   Reason: return type 'Handle(TDataXtd_Triangulation)' is unknown
+//   // pub fn set(theLabel: &Label, theTriangulation: &HandleTriangulation) -> OwnedPtr<Handle<TDataXtd_Triangulation>>;
+//
 
 // ========================
 // Additional type re-exports

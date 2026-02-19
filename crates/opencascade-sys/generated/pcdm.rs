@@ -413,6 +413,13 @@ impl HandlePCDMReaderFilter {
     }
 }
 
+// ── Skipped symbols for ReaderFilter (1 total) ──
+// SKIPPED: **Source:** `PCDM_ReaderFilter.hxx`:122 - `PCDM_ReaderFilter::Down`
+//   method: Iteration to the child with defined tag.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn down(&mut self, theTag: &i32);
+//
+
 // ========================
 // Additional type re-exports
 // ========================

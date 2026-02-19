@@ -484,6 +484,57 @@ impl HandleTDFAttribute {
     }
 }
 
+// ── Skipped symbols for Attribute (8 total) ──
+// SKIPPED: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition`
+//   method: Makes an AttributeDelta because <me>
+//   method: appeared. The only known use of a redefinition of
+//   method: this method is to return a null handle (no delta).
+//   Reason: return type 'Handle(TDF_DeltaOnAddition)' is unknown
+//   // pub fn delta_on_addition(&self) -> OwnedPtr<Handle<TDF_DeltaOnAddition>>;
+//
+// SKIPPED: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget`
+//   method: Makes an AttributeDelta because <me> has been
+//   method: forgotten.
+//   Reason: return type 'Handle(TDF_DeltaOnForget)' is unknown
+//   // pub fn delta_on_forget(&self) -> OwnedPtr<Handle<TDF_DeltaOnForget>>;
+//
+// SKIPPED: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume`
+//   method: Makes an AttributeDelta because <me> has been
+//   method: resumed.
+//   Reason: return type 'Handle(TDF_DeltaOnResume)' is unknown
+//   // pub fn delta_on_resume(&self) -> OwnedPtr<Handle<TDF_DeltaOnResume>>;
+//
+// SKIPPED: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification`
+//   method: Makes a DeltaOnModification between <me> and
+//   method: <anOldAttribute.
+//   Reason: return type 'Handle(TDF_DeltaOnModification)' is unknown
+//   // pub fn delta_on_modification(&self, anOldAttribute: &HandleAttribute) -> OwnedPtr<Handle<TDF_DeltaOnModification>>;
+//
+// SKIPPED: **Source:** `TDF_Attribute.hxx`:312 - `TDF_Attribute::DeltaOnModification`
+//   method: Applies a DeltaOnModification to <me>.
+//   Reason: param 'aDelta' uses unknown type 'const Handle(TDF_DeltaOnModification)&'
+//   // pub fn delta_on_modification(&mut self, aDelta: &HandleDeltaOnModification);
+//
+// SKIPPED: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval`
+//   method: Makes a DeltaOnRemoval on <me> because <me> has
+//   method: disappeared from the DS.
+//   Reason: return type 'Handle(TDF_DeltaOnRemoval)' is unknown
+//   // pub fn delta_on_removal(&self) -> OwnedPtr<Handle<TDF_DeltaOnRemoval>>;
+//
+// SKIPPED: **Source:** `TDF_Attribute.hxx`:349 - `TDF_Attribute::Dump`
+//   method: Dumps the minimum information about <me> on
+//   method: <aStream>.
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump`
+//   method: Dumps the attribute content on <aStream>, using
+//   method: <aMap> like this: if an attribute is not in the
+//   method: map, first put add it to the map and then dump it.
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
+//   // pub fn extended_dump(&self, anOS: /* Standard_OStream& */, aFilter: &IDFilter, aMap: &mut AttributeIndexedMap);
+//
+
 // ========================
 // From TDF_AttributeDelta.hxx
 // ========================
@@ -578,6 +629,13 @@ impl HandleTDFAttributeDelta {
     }
 }
 
+// ── Skipped symbols for AttributeDelta (1 total) ──
+// SKIPPED: **Source:** `TDF_AttributeDelta.hxx`:59 - `TDF_AttributeDelta::Dump`
+//   method: Dumps the contents.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, OS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+
 // ========================
 // From TDF_AttributeIterator.hxx
 // ========================
@@ -640,6 +698,18 @@ impl AttributeIterator {
         }
     }
 }
+
+// ── Skipped symbols for AttributeIterator (2 total) ──
+// SKIPPED: **Source:** `TDF_AttributeIterator.hxx`:52 - `TDF_AttributeIterator::TDF_AttributeIterator`
+//   Reason: param 'aLabelNode' uses unknown type 'TDF_LabelNodePtr'
+//   // pub fn new_labelnodeptr_bool(aLabelNode: LabelNodePtr, withoutForgotten: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TDF_AttributeIterator.hxx`:62 - `TDF_AttributeIterator::PtrValue`
+//   method: Provides an access to the internal pointer of the current attribute.
+//   method: The method has better performance as not-creating handle.
+//   Reason: has unbindable types: return: raw pointer (const TDF_Attribute*)
+//   // pub fn ptr_value(&self) -> /* const TDF_Attribute* */;
+//
 
 // ========================
 // From TDF_ChildIDIterator.hxx
@@ -960,6 +1030,13 @@ impl ClosureTool {
     }
 }
 
+// ── Skipped symbols for ClosureTool (1 total) ──
+// SKIPPED: **Source:** `TDF_ClosureTool.hxx`:58 - `TDF_ClosureTool::Closure`
+//   static_method: Builds the transitive closure of <aLabel>.
+//   Reason: param 'aLabMap' uses unknown type 'TDF_LabelMap&'
+//   // pub fn closure(aLabel: &Label, aLabMap: &mut LabelMap, anAttMap: &mut AttributeMap, aFilter: &IDFilter, aMode: &ClosureMode);
+//
+
 // ========================
 // From TDF_ComparisonTool.hxx
 // ========================
@@ -1147,6 +1224,18 @@ impl CopyLabel {
         unsafe { &*(crate::ffi::TDF_CopyLabel_relocation_table(self as *const Self)) }
     }
 }
+
+// ── Skipped symbols for CopyLabel (2 total) ──
+// SKIPPED: **Source:** `TDF_CopyLabel.hxx`:49 - `TDF_CopyLabel::ExternalReferences`
+//   static_method: Check  external  references and  if  exist  fills  the  aExternals  Map
+//   Reason: param 'aExternals' uses unknown type 'TDF_AttributeMap&'
+//   // pub fn external_references(Lab: &Label, aExternals: &mut AttributeMap, aFilter: &IDFilter) -> bool;
+//
+// SKIPPED: **Source:** `TDF_CopyLabel.hxx`:54 - `TDF_CopyLabel::ExternalReferences`
+//   static_method: Check  external  references and  if  exist  fills  the  aExternals  Map
+//   Reason: param 'aExternals' uses unknown type 'TDF_AttributeMap&'
+//   // pub fn external_references(aRefLab: &Label, Lab: &Label, aExternals: &mut AttributeMap, aFilter: &IDFilter, aDataSet: &mut HandleDataSet);
+//
 
 // ========================
 // From TDF_CopyTool.hxx
@@ -1485,6 +1574,13 @@ impl HandleTDFData {
     }
 }
 
+// ── Skipped symbols for Data (1 total) ──
+// SKIPPED: **Source:** `TDF_Data.hxx`:81 - `TDF_Data::Dump`
+//   method: Dumps the Data on <aStream>.
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+
 // ========================
 // From TDF_DataSet.hxx
 // ========================
@@ -1599,6 +1695,26 @@ impl HandleTDFDataSet {
         unsafe { &mut *(crate::ffi::HandleTDFDataSet_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for DataSet (3 total) ──
+// SKIPPED: **Source:** `TDF_DataSet.hxx`:56 - `TDF_DataSet::Labels`
+//   method: Returns the map of labels in this data set.
+//   method: This map can be used directly, or updated.
+//   Reason: return type 'TDF_LabelMap&' is unknown
+//   // pub fn labels(&mut self) -> &mut LabelMap;
+//
+// SKIPPED: **Source:** `TDF_DataSet.hxx`:66 - `TDF_DataSet::Attributes`
+//   method: Returns the map of attributes in the  current  data   set.
+//   method: This map can be used directly, or updated.
+//   Reason: return type 'TDF_AttributeMap&' is unknown
+//   // pub fn attributes(&mut self) -> &mut AttributeMap;
+//
+// SKIPPED: **Source:** `TDF_DataSet.hxx`:76 - `TDF_DataSet::Dump`
+//   method: Dumps the minimum information about <me> on
+//   method: <aStream>.
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
 
 // ========================
 // From TDF_DefaultDeltaOnModification.hxx
@@ -1950,6 +2066,12 @@ impl HandleTDFDelta {
         unsafe { &mut *(crate::ffi::HandleTDFDelta_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Delta (1 total) ──
+// SKIPPED: **Source:** `TDF_Delta.hxx`:71 - `TDF_Delta::Dump`
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn dump(&self, OS: /* Standard_OStream& */);
+//
 
 // ========================
 // From TDF_DeltaOnAddition.hxx
@@ -2709,6 +2831,13 @@ impl IDFilter {
     }
 }
 
+// ── Skipped symbols for IDFilter (1 total) ──
+// SKIPPED: **Source:** `TDF_IDFilter.hxx`:101 - `TDF_IDFilter::Dump`
+//   method: Writes the contents of <me> to <OS>.
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */);
+//
+
 // ========================
 // From TDF_Label.hxx
 // ========================
@@ -3044,6 +3173,25 @@ impl Label {
     }
 }
 
+// ── Skipped symbols for Label (3 total) ──
+// SKIPPED: **Source:** `TDF_Label.hxx`:243 - `TDF_Label::Dump`
+//   method: Dumps the minimum information about <me> on
+//   method: <aStream>.
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDF_Label.hxx`:249 - `TDF_Label::ExtendedDump`
+//   method: Dumps the label on <aStream> and its attributes
+//   method: rank in <aMap> if their IDs are kept by <IDFilter>.
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
+//   // pub fn extended_dump(&self, anOS: /* Standard_OStream& */, aFilter: &IDFilter, aMap: &mut AttributeIndexedMap);
+//
+// SKIPPED: **Source:** `TDF_Label.hxx`:254 - `TDF_Label::EntryDump`
+//   method: Dumps the label entry.
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
+//   // pub fn entry_dump(&self, anOS: /* Standard_OStream& */);
+//
+
 // ========================
 // From TDF_Reference.hxx
 // ========================
@@ -3296,6 +3444,16 @@ impl Reference {
     }
 }
 
+// ── Skipped symbols for Reference (2 total) ──
+// SKIPPED: **Source:** `TDF_Reference.hxx`:56 - `TDF_Reference::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDF_Reference.hxx`:39 - `TDF_Reference::Set`
+//   Reason: return type 'Handle(TDF_Reference)' is unknown
+//   // pub fn set(I: &Label, Origin: &Label) -> OwnedPtr<Handle<TDF_Reference>>;
+//
+
 // ========================
 // From TDF_RelocationTable.hxx
 // ========================
@@ -3511,6 +3669,48 @@ impl HandleTDFRelocationTable {
         unsafe { &mut *(crate::ffi::HandleTDFRelocationTable_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for RelocationTable (7 total) ──
+// SKIPPED: **Source:** `TDF_RelocationTable.hxx`:116 - `TDF_RelocationTable::SetTransientRelocation`
+//   method: Sets the relocation value of <aSourceTransient> to
+//   method: <aTargetTransient>.
+//   Reason: param 'aSourceTransient' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn set_transient_relocation(&mut self, aSourceTransient: &HandleTransient, aTargetTransient: &HandleTransient);
+//
+// SKIPPED: **Source:** `TDF_RelocationTable.hxx`:125 - `TDF_RelocationTable::HasTransientRelocation`
+//   method: Finds the relocation value of <aSourceTransient>
+//   method: and returns it into <aTargetTransient>.
+//   Reason: param 'aSourceTransient' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn has_transient_relocation(&self, aSourceTransient: &HandleTransient, aTargetTransient: &mut HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `TDF_RelocationTable.hxx`:134 - `TDF_RelocationTable::TargetLabelMap`
+//   method: Fills <aLabelMap> with target relocation
+//   method: labels. <aLabelMap> is not cleared before use.
+//   Reason: param 'aLabelMap' uses unknown type 'TDF_LabelMap&'
+//   // pub fn target_label_map(&self, aLabelMap: &mut LabelMap);
+//
+// SKIPPED: **Source:** `TDF_RelocationTable.hxx`:139 - `TDF_RelocationTable::TargetAttributeMap`
+//   method: Fills <anAttributeMap> with target relocation
+//   method: attributes. <anAttributeMap> is not cleared before
+//   method: use.
+//   Reason: param 'anAttributeMap' uses unknown type 'TDF_AttributeMap&'
+//   // pub fn target_attribute_map(&self, anAttributeMap: &mut AttributeMap);
+//
+// SKIPPED: **Source:** `TDF_RelocationTable.hxx`:142 - `TDF_RelocationTable::LabelTable`
+//   method: Returns <myLabelTable> to be used or updated.
+//   Reason: return type 'TDF_LabelDataMap&' is unknown
+//   // pub fn label_table(&mut self) -> &mut LabelDataMap;
+//
+// SKIPPED: **Source:** `TDF_RelocationTable.hxx`:145 - `TDF_RelocationTable::AttributeTable`
+//   method: Returns <myAttributeTable> to be used or updated.
+//   Reason: return type 'TDF_AttributeDataMap&' is unknown
+//   // pub fn attribute_table(&mut self) -> &mut AttributeDataMap;
+//
+// SKIPPED: **Source:** `TDF_RelocationTable.hxx`:151 - `TDF_RelocationTable::Dump`
+//   method: Dumps the relocation table.
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, dumpLabels: bool, dumpAttributes: bool, dumpTransients: bool, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
 
 // ========================
 // From TDF_TagSource.hxx
@@ -3787,6 +3987,14 @@ impl TagSource {
     }
 }
 
+// ── Skipped symbols for TagSource (1 total) ──
+// SKIPPED: **Source:** `TDF_TagSource.hxx`:44 - `TDF_TagSource::Set`
+//   static_method: Find, or create, a  TagSource attribute. the TagSource
+//   static_method: attribute is returned.
+//   Reason: return type 'Handle(TDF_TagSource)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDF_TagSource>>;
+//
+
 // ========================
 // From TDF_Tool.hxx
 // ========================
@@ -3961,6 +4169,72 @@ impl Tool {
         }
     }
 }
+
+// ── Skipped symbols for Tool (10 total) ──
+// SKIPPED: **Source:** `TDF_Tool.hxx`:73 - `TDF_Tool::OutReferers`
+//   static_method: Returns in <theAtts> the attributes having out
+//   static_method: references.
+//   Reason: param 'theAtts' uses unknown type 'TDF_AttributeMap&'
+//   // pub fn out_referers(theLabel: &Label, theAtts: &mut AttributeMap);
+//
+// SKIPPED: **Source:** `TDF_Tool.hxx`:79 - `TDF_Tool::OutReferers`
+//   static_method: Returns in <atts> the attributes having out
+//   static_method: references and kept by <aFilterForReferers>.
+//   static_method: It considers only the references kept by <aFilterForReferences>.
+//   Reason: param 'atts' uses unknown type 'TDF_AttributeMap&'
+//   // pub fn out_referers(aLabel: &Label, aFilterForReferers: &IDFilter, aFilterForReferences: &IDFilter, atts: &mut AttributeMap);
+//
+// SKIPPED: **Source:** `TDF_Tool.hxx`:86 - `TDF_Tool::OutReferences`
+//   static_method: Returns in <atts> the referenced attributes.
+//   static_method: Caution: <atts> is not cleared before use!
+//   Reason: param 'atts' uses unknown type 'TDF_AttributeMap&'
+//   // pub fn out_references(aLabel: &Label, atts: &mut AttributeMap);
+//
+// SKIPPED: **Source:** `TDF_Tool.hxx`:91 - `TDF_Tool::OutReferences`
+//   static_method: Returns in <atts> the referenced attributes and kept by <aFilterForReferences>.
+//   static_method: It considers only the referrers kept by <aFilterForReferers>.
+//   static_method: Caution: <atts> is not cleared before use!
+//   Reason: param 'atts' uses unknown type 'TDF_AttributeMap&'
+//   // pub fn out_references(aLabel: &Label, aFilterForReferers: &IDFilter, aFilterForReferences: &IDFilter, atts: &mut AttributeMap);
+//
+// SKIPPED: **Source:** `TDF_Tool.hxx`:154 - `TDF_Tool::CountLabels`
+//   static_method: Adds the labels of <aLabelList> to <aLabelMap> if
+//   static_method: they are unbound, or increases their reference
+//   static_method: counters. At the end of the process, <aLabelList>
+//   Reason: param 'aLabelMap' uses unknown type 'TDF_LabelIntegerMap&'
+//   // pub fn count_labels(aLabelList: &mut LabelList, aLabelMap: &mut LabelIntegerMap);
+//
+// SKIPPED: **Source:** `TDF_Tool.hxx`:161 - `TDF_Tool::DeductLabels`
+//   static_method: Decreases the reference counters of the labels of
+//   static_method: <aLabelList> to <aLabelMap>, and removes labels
+//   static_method: with null counter. At the end of the process,
+//   Reason: param 'aLabelMap' uses unknown type 'TDF_LabelIntegerMap&'
+//   // pub fn deduct_labels(aLabelList: &mut LabelList, aLabelMap: &mut LabelIntegerMap);
+//
+// SKIPPED: **Source:** `TDF_Tool.hxx`:165 - `TDF_Tool::DeepDump`
+//   static_method: Dumps <aDF> and its labels and their attributes.
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
+//   // pub fn deep_dump(anOS: /* Standard_OStream& */, aDF: &HandleData);
+//
+// SKIPPED: **Source:** `TDF_Tool.hxx`:170 - `TDF_Tool::ExtendedDeepDump`
+//   static_method: Dumps <aDF> and its labels and their attributes,
+//   static_method: if their IDs are kept by <aFilter>. Dumps also the
+//   static_method: attributes content.
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
+//   // pub fn extended_deep_dump(anOS: /* Standard_OStream& */, aDF: &HandleData, aFilter: &IDFilter);
+//
+// SKIPPED: **Source:** `TDF_Tool.hxx`:175 - `TDF_Tool::DeepDump`
+//   static_method: Dumps <aLabel>, its children and their attributes.
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
+//   // pub fn deep_dump(anOS: /* Standard_OStream& */, aLabel: &Label);
+//
+// SKIPPED: **Source:** `TDF_Tool.hxx`:180 - `TDF_Tool::ExtendedDeepDump`
+//   static_method: Dumps <aLabel>, its children and their attributes,
+//   static_method: if their IDs are kept by <aFilter>. Dumps also the
+//   static_method: attributes content.
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
+//   // pub fn extended_deep_dump(anOS: /* Standard_OStream& */, aLabel: &Label, aFilter: &IDFilter);
+//
 
 // ========================
 // From TDF_Transaction.hxx

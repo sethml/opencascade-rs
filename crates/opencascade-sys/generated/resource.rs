@@ -417,6 +417,25 @@ impl HandleResourceManager {
     }
 }
 
+// ── Skipped symbols for Manager (3 total) ──
+// SKIPPED: **Source:** `Resource_Manager.hxx`:93 - `Resource_Manager::ExtValue`
+//   method: Gets the value of an ExtString resource according to its instance
+//   method: and its type.
+//   Reason: return type 'Standard_ExtString' is unknown
+//   // pub fn ext_value(&mut self, aResourceName: *const char) -> OwnedPtr<Standard_ExtString>;
+//
+// SKIPPED: **Source:** `Resource_Manager.hxx`:112 - `Resource_Manager::SetResource`
+//   method: Sets the new value of an ExtString resource.
+//   method: If the resource does not exist, it is created.
+//   Reason: param 'aValue' uses unknown type 'Standard_ExtString'
+//   // pub fn set_resource(&mut self, aResourceName: *const char, aValue: ExtString);
+//
+// SKIPPED: **Source:** `Resource_Manager.hxx`:123 - `Resource_Manager::GetMap`
+//   method: Returns internal Ref or User map with parameters
+//   Reason: return type 'Resource_DataMapOfAsciiStringAsciiString&' is unknown
+//   // pub fn get_map(&mut self, theRefMap: bool) -> &mut DataMapOfAsciiStringAsciiString;
+//
+
 // ========================
 // From Resource_NoSuchResource.hxx
 // ========================
@@ -483,6 +502,20 @@ impl NoSuchResource {
         unsafe { &*(crate::ffi::Resource_NoSuchResource_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for NoSuchResource (3 total) ──
+// SKIPPED: **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::NewInstance`
+//   Reason: return type 'Handle(Resource_NoSuchResource)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Resource_NoSuchResource>>;
+//
+// SKIPPED: **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::NewInstance`
+//   Reason: return type 'Handle(Resource_NoSuchResource)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Resource_NoSuchResource>>;
+//
 
 // ========================
 // From Resource_Unicode.hxx
@@ -618,6 +651,50 @@ impl Unicode {
         }
     }
 }
+
+// ── Skipped symbols for Unicode (6 total) ──
+// SKIPPED: **Source:** `Resource_Unicode.hxx`:69 - `Resource_Unicode::ConvertUnicodeToSJIS`
+//   static_method: Converts Unicode ExtendedString <fromstr> to non-ASCII
+//   static_method: CString <tostr> in SJIS format, limited to <maxsize>
+//   static_method: characters. To translate the whole <fromstr>, use more
+//   Reason: param 'tostr' uses unknown type 'Standard_PCharacter&'
+//   // pub fn convert_unicode_to_sjis(fromstr: &ExtendedString, tostr: &mut PCharacter, maxsize: i32) -> bool;
+//
+// SKIPPED: **Source:** `Resource_Unicode.hxx`:79 - `Resource_Unicode::ConvertUnicodeToEUC`
+//   static_method: Converts Unicode ExtendedString <fromstr> to non-ASCII
+//   static_method: CString <tostr> in EUC format, limited to <maxsize>
+//   static_method: characters. To translate the whole <fromstr>, use more
+//   Reason: param 'tostr' uses unknown type 'Standard_PCharacter&'
+//   // pub fn convert_unicode_to_euc(fromstr: &ExtendedString, tostr: &mut PCharacter, maxsize: i32) -> bool;
+//
+// SKIPPED: **Source:** `Resource_Unicode.hxx`:89 - `Resource_Unicode::ConvertUnicodeToGB`
+//   static_method: Converts Unicode ExtendedString <fromstr> to non-ASCII
+//   static_method: CString <tostr> in GB format, limited to <maxsize>
+//   static_method: characters. To translate the whole <fromstr>, use more
+//   Reason: param 'tostr' uses unknown type 'Standard_PCharacter&'
+//   // pub fn convert_unicode_to_gb(fromstr: &ExtendedString, tostr: &mut PCharacter, maxsize: i32) -> bool;
+//
+// SKIPPED: **Source:** `Resource_Unicode.hxx`:99 - `Resource_Unicode::ConvertUnicodeToANSI`
+//   static_method: Converts Unicode ExtendedString <fromstr> to non-ASCII
+//   static_method: CString <tostr> in ANSI format, limited to <maxsize>
+//   static_method: characters. To translate the whole <fromstr>, use more
+//   Reason: param 'tostr' uses unknown type 'Standard_PCharacter&'
+//   // pub fn convert_unicode_to_ansi(fromstr: &ExtendedString, tostr: &mut PCharacter, maxsize: i32) -> bool;
+//
+// SKIPPED: **Source:** `Resource_Unicode.hxx`:145 - `Resource_Unicode::ConvertUnicodeToFormat`
+//   static_method: Converts the Unicode string of extended characters to the non-ASCII string according to
+//   static_method: specified format. You need more than twice the length of the source string to complete the
+//   static_method: conversion. The function returns true if conversion is complete, i.e. the maximum number of
+//   Reason: param 'theToStr' uses unknown type 'Standard_PCharacter&'
+//   // pub fn convert_unicode_to_format(theFormat: FormatType, theFromStr: &ExtendedString, theToStr: &mut PCharacter, theMaxSize: i32) -> bool;
+//
+// SKIPPED: **Source:** `Resource_Unicode.hxx`:156 - `Resource_Unicode::ConvertUnicodeToFormat`
+//   static_method: Converts the Unicode string of extended characters to the non-ASCII string according to the
+//   static_method: format returned by the function GetFormat.
+//   static_method: @param[in] theFromStr  text to convert
+//   Reason: param 'theToStr' uses unknown type 'Standard_PCharacter&'
+//   // pub fn convert_unicode_to_format(theFromStr: &ExtendedString, theToStr: &mut PCharacter, theMaxSize: i32) -> bool;
+//
 
 // ========================
 // Additional type re-exports

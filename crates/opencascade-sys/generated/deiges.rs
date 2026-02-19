@@ -222,6 +222,20 @@ impl ConfigurationNode {
     }
 }
 
+// ── Skipped symbols for ConfigurationNode (2 total) ──
+// SKIPPED: **Source:** `DEIGES_ConfigurationNode.hxx`:40 - `DEIGES_ConfigurationNode::DEIGES_ConfigurationNode`
+//   constructor: Copies values of all fields
+//   constructor: @param[in] theNode object to copy
+//   Reason: param 'theNode' uses unknown Handle type
+//   // pub fn new_handledeigesconfigurationnode(theNode: &HandleConfigurationNode) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `DEIGES_ConfigurationNode.hxx`:79 - `DEIGES_ConfigurationNode::GetExtensions`
+//   method: Gets list of supported file extensions
+//   method: @return list of extensions
+//   Reason: return type 'TColStd_ListOfAsciiString' is not CppDeletable
+//   // pub fn get_extensions(&self) -> OwnedPtr<TColStd_ListOfAsciiString>;
+//
+
 // ========================
 // From DEIGES_Parameters.hxx
 // ========================
@@ -402,3 +416,47 @@ impl Provider {
         unsafe { crate::ffi::DEIGES_Provider_inherited_SetNode(self as *mut Self, theNode) }
     }
 }
+
+// ── Skipped symbols for Provider (6 total) ──
+// SKIPPED: **Source:** `DEIGES_Provider.hxx`:50 - `DEIGES_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theDocument document to save result
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DEIGES_Provider.hxx`:62 - `DEIGES_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theDocument document to export
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DEIGES_Provider.hxx`:73 - `DEIGES_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theDocument document to save result
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DEIGES_Provider.hxx`:83 - `DEIGES_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theDocument document to export
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DEIGES_Provider.hxx`:94 - `DEIGES_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theShape shape to save result
+//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theShape: &mut Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DEIGES_Provider.hxx`:106 - `DEIGES_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theShape shape to export
+//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theShape: &Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//

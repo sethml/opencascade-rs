@@ -454,6 +454,12 @@ impl Coincidence {
     }
 }
 
+// ── Skipped symbols for Coincidence (1 total) ──
+// SKIPPED: **Source:** `HLRAlgo_Coincidence.hxx`:63 - `HLRAlgo_Coincidence::Value2D`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn value2_d(&self, FE: &mut i32, Param: &mut f64);
+//
+
 // ========================
 // From HLRAlgo_EdgeIterator.hxx
 // ========================
@@ -1648,6 +1654,26 @@ impl HandleHLRAlgoPolyAlgo {
     }
 }
 
+// ── Skipped symbols for PolyAlgo (4 total) ──
+// SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:38 - `HLRAlgo_PolyAlgo::PolyShell`
+//   Reason: has unbindable types: return: unresolved template/nested type (const NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>&)
+//   // pub fn poly_shell(&self) -> /* const NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>& */;
+//
+// SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:40 - `HLRAlgo_PolyAlgo::ChangePolyShell`
+//   Reason: has unbindable types: return: unresolved template/nested type (NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>&)
+//   // pub fn change_poly_shell(&mut self) -> /* NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>& */;
+//
+// SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:58 - `HLRAlgo_PolyAlgo::Hide`
+//   method: process hiding between <Pt1> and <Pt2>.
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn hide(&mut self, status: &mut EdgeStatus, Index: &mut i32, reg1: &mut bool, regn: &mut bool, outl: &mut bool, intl: &mut bool) -> &mut BiPoint_PointsT;
+//
+// SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:76 - `HLRAlgo_PolyAlgo::Show`
+//   method: process hiding between <Pt1> and <Pt2>.
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn show(&mut self, Index: &mut i32, reg1: &mut bool, regn: &mut bool, outl: &mut bool, intl: &mut bool) -> &mut BiPoint_PointsT;
+//
+
 // ========================
 // From HLRAlgo_PolyData.hxx
 // ========================
@@ -2059,6 +2085,28 @@ impl HandleHLRAlgoPolyInternalData {
     }
 }
 
+// ── Skipped symbols for PolyInternalData (5 total) ──
+// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:43 - `HLRAlgo_PolyInternalData::AddNode`
+//   Reason: has unbindable types: param 'thePINod1': raw pointer (HLRAlgo_Array1OfPINod*&); param 'thePINod2': raw pointer (HLRAlgo_Array1OfPINod*&)
+//   // pub fn add_node(&mut self, theNod1RValues: &mut PolyInternalNode_NodeData, theNod2RValues: &mut PolyInternalNode_NodeData, thePINod1: /* HLRAlgo_Array1OfPINod*& */, thePINod2: /* HLRAlgo_Array1OfPINod*& */, theCoef1: f64, theX3: f64, theY3: f64, theZ3: f64) -> i32;
+//
+// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:52 - `HLRAlgo_PolyInternalData::UpdateLinks`
+//   Reason: has unbindable types: param 'theTData1': raw pointer (HLRAlgo_Array1OfTData*&); param 'theTData2': raw pointer (HLRAlgo_Array1OfTData*&); param 'thePISeg1': raw pointer (HLRAlgo_Array1OfPISeg*&); param 'thePISeg2': raw pointer (HLRAlgo_Array1OfPISeg*&); param 'thePINod1': raw pointer (HLRAlgo_Array1OfPINod*&); param 'thePINod2': raw pointer (HLRAlgo_Array1OfPINod*&)
+//   // pub fn update_links(&mut self, theIp1: i32, theIp2: i32, theIp3: i32, theTData1: /* HLRAlgo_Array1OfTData*& */, theTData2: /* HLRAlgo_Array1OfTData*& */, thePISeg1: /* HLRAlgo_Array1OfPISeg*& */, thePISeg2: /* HLRAlgo_Array1OfPISeg*& */, thePINod1: /* HLRAlgo_Array1OfPINod*& */, thePINod2: /* HLRAlgo_Array1OfPINod*& */);
+//
+// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:64 - `HLRAlgo_PolyInternalData::IncTData`
+//   Reason: has unbindable types: param 'TData1': raw pointer (HLRAlgo_Array1OfTData*&); param 'TData2': raw pointer (HLRAlgo_Array1OfTData*&)
+//   // pub fn inc_t_data(&mut self, TData1: /* HLRAlgo_Array1OfTData*& */, TData2: /* HLRAlgo_Array1OfTData*& */);
+//
+// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:66 - `HLRAlgo_PolyInternalData::IncPISeg`
+//   Reason: has unbindable types: param 'PISeg1': raw pointer (HLRAlgo_Array1OfPISeg*&); param 'PISeg2': raw pointer (HLRAlgo_Array1OfPISeg*&)
+//   // pub fn inc_pi_seg(&mut self, PISeg1: /* HLRAlgo_Array1OfPISeg*& */, PISeg2: /* HLRAlgo_Array1OfPISeg*& */);
+//
+// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:68 - `HLRAlgo_PolyInternalData::IncPINod`
+//   Reason: has unbindable types: param 'thePINod1': raw pointer (HLRAlgo_Array1OfPINod*&); param 'thePINod2': raw pointer (HLRAlgo_Array1OfPINod*&)
+//   // pub fn inc_pi_nod(&mut self, thePINod1: /* HLRAlgo_Array1OfPINod*& */, thePINod2: /* HLRAlgo_Array1OfPINod*& */);
+//
+
 // ========================
 // From HLRAlgo_PolyInternalNode.hxx
 // ========================
@@ -2274,6 +2322,16 @@ impl HandleHLRAlgoPolyShellData {
         unsafe { &mut *(crate::ffi::HandleHLRAlgoPolyShellData_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for PolyShellData (2 total) ──
+// SKIPPED: **Source:** `HLRAlgo_PolyShellData.hxx`:46 - `HLRAlgo_PolyShellData::PolyData`
+//   Reason: has unbindable types: return: unresolved template/nested type (NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>>&)
+//   // pub fn poly_data(&mut self) -> /* NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>>& */;
+//
+// SKIPPED: **Source:** `HLRAlgo_PolyShellData.hxx`:48 - `HLRAlgo_PolyShellData::HidingPolyData`
+//   Reason: has unbindable types: return: unresolved template/nested type (NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>>&)
+//   // pub fn hiding_poly_data(&mut self) -> /* NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>>& */;
+//
 
 /// **Source:** `HLRAlgo_PolyShellData.hxx`:33 - `HLRAlgo_PolyShellData_ShellIndices`
 pub use crate::ffi::HLRAlgo_PolyShellData_ShellIndices as PolyShellData_ShellIndices;

@@ -62,6 +62,154 @@ impl AP203Context {
     }
 }
 
+// ── Skipped symbols for AP203Context (30 total) ──
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:57 - `STEPConstruct_AP203Context::DefaultApproval`
+//   method: Returns default approval entity which
+//   method: is used when no other data are available
+//   Reason: return type 'Handle(StepBasic_Approval)' is unknown
+//   // pub fn default_approval(&mut self) -> OwnedPtr<Handle<StepBasic_Approval>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:60 - `STEPConstruct_AP203Context::SetDefaultApproval`
+//   method: Sets default approval
+//   Reason: param 'app' uses unknown type 'const Handle(StepBasic_Approval)&'
+//   // pub fn set_default_approval(&mut self, app: &HandleApproval);
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:64 - `STEPConstruct_AP203Context::DefaultDateAndTime`
+//   method: Returns default date_and_time entity which
+//   method: is used when no other data are available
+//   Reason: return type 'Handle(StepBasic_DateAndTime)' is unknown
+//   // pub fn default_date_and_time(&mut self) -> OwnedPtr<Handle<StepBasic_DateAndTime>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:67 - `STEPConstruct_AP203Context::SetDefaultDateAndTime`
+//   method: Sets default date_and_time entity
+//   Reason: param 'dt' uses unknown type 'const Handle(StepBasic_DateAndTime)&'
+//   // pub fn set_default_date_and_time(&mut self, dt: &HandleDateAndTime);
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:71 - `STEPConstruct_AP203Context::DefaultPersonAndOrganization`
+//   method: Returns default person_and_organization entity which
+//   method: is used when no other data are available
+//   Reason: return type 'Handle(StepBasic_PersonAndOrganization)' is unknown
+//   // pub fn default_person_and_organization(&mut self) -> OwnedPtr<Handle<StepBasic_PersonAndOrganization>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:74 - `STEPConstruct_AP203Context::SetDefaultPersonAndOrganization`
+//   method: Sets default person_and_organization entity
+//   Reason: param 'po' uses unknown type 'const Handle(StepBasic_PersonAndOrganization)&'
+//   // pub fn set_default_person_and_organization(&mut self, po: &HandlePersonAndOrganization);
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:80 - `STEPConstruct_AP203Context::DefaultSecurityClassificationLevel`
+//   method: Returns default security_classification_level entity which
+//   method: is used when no other data are available
+//   Reason: return type 'Handle(StepBasic_SecurityClassificationLevel)' is unknown
+//   // pub fn default_security_classification_level(&mut self) -> OwnedPtr<Handle<StepBasic_SecurityClassificationLevel>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:83 - `STEPConstruct_AP203Context::SetDefaultSecurityClassificationLevel`
+//   method: Sets default security_classification_level
+//   Reason: param 'sc' uses unknown type 'const Handle(StepBasic_SecurityClassificationLevel)&'
+//   // pub fn set_default_security_classification_level(&mut self, sc: &HandleSecurityClassificationLevel);
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:86 - `STEPConstruct_AP203Context::RoleCreator`
+//   Reason: return type 'Handle(StepBasic_PersonAndOrganizationRole)' is unknown
+//   // pub fn role_creator(&self) -> OwnedPtr<Handle<StepBasic_PersonAndOrganizationRole>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:88 - `STEPConstruct_AP203Context::RoleDesignOwner`
+//   Reason: return type 'Handle(StepBasic_PersonAndOrganizationRole)' is unknown
+//   // pub fn role_design_owner(&self) -> OwnedPtr<Handle<StepBasic_PersonAndOrganizationRole>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:90 - `STEPConstruct_AP203Context::RoleDesignSupplier`
+//   Reason: return type 'Handle(StepBasic_PersonAndOrganizationRole)' is unknown
+//   // pub fn role_design_supplier(&self) -> OwnedPtr<Handle<StepBasic_PersonAndOrganizationRole>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:92 - `STEPConstruct_AP203Context::RoleClassificationOfficer`
+//   Reason: return type 'Handle(StepBasic_PersonAndOrganizationRole)' is unknown
+//   // pub fn role_classification_officer(&self) -> OwnedPtr<Handle<StepBasic_PersonAndOrganizationRole>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:94 - `STEPConstruct_AP203Context::RoleCreationDate`
+//   Reason: return type 'Handle(StepBasic_DateTimeRole)' is unknown
+//   // pub fn role_creation_date(&self) -> OwnedPtr<Handle<StepBasic_DateTimeRole>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:96 - `STEPConstruct_AP203Context::RoleClassificationDate`
+//   Reason: return type 'Handle(StepBasic_DateTimeRole)' is unknown
+//   // pub fn role_classification_date(&self) -> OwnedPtr<Handle<StepBasic_DateTimeRole>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:102 - `STEPConstruct_AP203Context::RoleApprover`
+//   method: Return predefined PersonAndOrganizationRole and DateTimeRole
+//   method: entities named 'creator', 'design owner', 'design supplier',
+//   method: 'classification officer', 'creation date', 'classification date',
+//   Reason: return type 'Handle(StepBasic_ApprovalRole)' is unknown
+//   // pub fn role_approver(&self) -> OwnedPtr<Handle<StepBasic_ApprovalRole>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:107 - `STEPConstruct_AP203Context::Init`
+//   method: Takes SDR (part) which brings all standard data around part
+//   method: (common for AP203 and AP214) and creates all the additional
+//   method: entities required for AP203
+//   Reason: param 'sdr' uses unknown type 'const Handle(StepShape_ShapeDefinitionRepresentation)&'
+//   // pub fn init(&mut self, sdr: &HandleShapeDefinitionRepresentation);
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:119 - `STEPConstruct_AP203Context::Init`
+//   method: Takes tool which describes standard data around part
+//   method: (common for AP203 and AP214) and creates all the additional
+//   method: entities required for AP203
+//   Reason: param 'SDRTool' uses unknown type 'const STEPConstruct_Part&'
+//   // pub fn init(&mut self, SDRTool: &Part);
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:133 - `STEPConstruct_AP203Context::Init`
+//   method: Takes NAUO which describes assembly link to component
+//   method: and creates the security_classification entity associated to
+//   method: it as required by the AP203
+//   Reason: param 'nauo' uses unknown type 'const Handle(StepRepr_NextAssemblyUsageOccurrence)&'
+//   // pub fn init(&mut self, nauo: &HandleNextAssemblyUsageOccurrence);
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:135 - `STEPConstruct_AP203Context::GetCreator`
+//   Reason: return type 'Handle(StepAP203_CcDesignPersonAndOrganizationAssignment)' is unknown
+//   // pub fn get_creator(&self) -> OwnedPtr<Handle<StepAP203_CcDesignPersonAndOrganizationAssignment>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:137 - `STEPConstruct_AP203Context::GetDesignOwner`
+//   Reason: return type 'Handle(StepAP203_CcDesignPersonAndOrganizationAssignment)' is unknown
+//   // pub fn get_design_owner(&self) -> OwnedPtr<Handle<StepAP203_CcDesignPersonAndOrganizationAssignment>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:139 - `STEPConstruct_AP203Context::GetDesignSupplier`
+//   Reason: return type 'Handle(StepAP203_CcDesignPersonAndOrganizationAssignment)' is unknown
+//   // pub fn get_design_supplier(&self) -> OwnedPtr<Handle<StepAP203_CcDesignPersonAndOrganizationAssignment>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:143 - `STEPConstruct_AP203Context::GetClassificationOfficer`
+//   Reason: return type 'Handle(StepAP203_CcDesignPersonAndOrganizationAssignment)' is unknown
+//   // pub fn get_classification_officer(&self) -> OwnedPtr<Handle<StepAP203_CcDesignPersonAndOrganizationAssignment>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:145 - `STEPConstruct_AP203Context::GetSecurity`
+//   Reason: return type 'Handle(StepAP203_CcDesignSecurityClassification)' is unknown
+//   // pub fn get_security(&self) -> OwnedPtr<Handle<StepAP203_CcDesignSecurityClassification>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:147 - `STEPConstruct_AP203Context::GetCreationDate`
+//   Reason: return type 'Handle(StepAP203_CcDesignDateAndTimeAssignment)' is unknown
+//   // pub fn get_creation_date(&self) -> OwnedPtr<Handle<StepAP203_CcDesignDateAndTimeAssignment>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:149 - `STEPConstruct_AP203Context::GetClassificationDate`
+//   Reason: return type 'Handle(StepAP203_CcDesignDateAndTimeAssignment)' is unknown
+//   // pub fn get_classification_date(&self) -> OwnedPtr<Handle<StepAP203_CcDesignDateAndTimeAssignment>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:151 - `STEPConstruct_AP203Context::GetApproval`
+//   Reason: return type 'Handle(StepAP203_CcDesignApproval)' is unknown
+//   // pub fn get_approval(&self) -> OwnedPtr<Handle<StepAP203_CcDesignApproval>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:153 - `STEPConstruct_AP203Context::GetApprover`
+//   Reason: return type 'Handle(StepBasic_ApprovalPersonOrganization)' is unknown
+//   // pub fn get_approver(&self) -> OwnedPtr<Handle<StepBasic_ApprovalPersonOrganization>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:155 - `STEPConstruct_AP203Context::GetApprovalDateTime`
+//   Reason: return type 'Handle(StepBasic_ApprovalDateTime)' is unknown
+//   // pub fn get_approval_date_time(&self) -> OwnedPtr<Handle<StepBasic_ApprovalDateTime>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:158 - `STEPConstruct_AP203Context::GetProductCategoryRelationship`
+//   method: Return entities (roots) instantiated for the part by method Init
+//   Reason: return type 'Handle(StepBasic_ProductCategoryRelationship)' is unknown
+//   // pub fn get_product_category_relationship(&self) -> OwnedPtr<Handle<StepBasic_ProductCategoryRelationship>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:168 - `STEPConstruct_AP203Context::InitAssembly`
+//   method: Initializes all missing data which are required for assembly
+//   Reason: param 'nauo' uses unknown type 'const Handle(StepRepr_NextAssemblyUsageOccurrence)&'
+//   // pub fn init_assembly(&mut self, nauo: &HandleNextAssemblyUsageOccurrence);
+//
+
 // ========================
 // From STEPConstruct_ContextTool.hxx
 // ========================
@@ -239,6 +387,39 @@ impl ContextTool {
     }
 }
 
+// ── Skipped symbols for ContextTool (6 total) ──
+// SKIPPED: **Source:** `STEPConstruct_ContextTool.hxx`:50 - `STEPConstruct_ContextTool::STEPConstruct_ContextTool`
+//   Reason: param 'aStepModel' uses unknown Handle type
+//   // pub fn new_handlestepdatastepmodel(aStepModel: &HandleStepModel) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `STEPConstruct_ContextTool.hxx`:54 - `STEPConstruct_ContextTool::SetModel`
+//   method: Initialize ApplicationProtocolDefinition by the first
+//   method: entity of that type found in the model
+//   Reason: param 'aStepModel' uses unknown type 'const Handle(StepData_StepModel)&'
+//   // pub fn set_model(&mut self, aStepModel: &HandleStepModel);
+//
+// SKIPPED: **Source:** `STEPConstruct_ContextTool.hxx`:58 - `STEPConstruct_ContextTool::GetAPD`
+//   Reason: return type 'Handle(StepBasic_ApplicationProtocolDefinition)' is unknown
+//   // pub fn get_apd(&mut self) -> OwnedPtr<Handle<StepBasic_ApplicationProtocolDefinition>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_ContextTool.hxx`:88 - `STEPConstruct_ContextTool::GetDefaultAxis`
+//   method: Returns a default axis placement
+//   Reason: return type 'Handle(StepGeom_Axis2Placement3d)' is unknown
+//   // pub fn get_default_axis(&mut self) -> OwnedPtr<Handle<StepGeom_Axis2Placement3d>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_ContextTool.hxx`:119 - `STEPConstruct_ContextTool::GetRootsForPart`
+//   method: Produces and returns a full list of root entities required
+//   method: for part identified by SDRTool (including SDR itself)
+//   Reason: param 'SDRTool' uses unknown type 'const STEPConstruct_Part&'
+//   // pub fn get_roots_for_part(&mut self, SDRTool: &Part) -> OwnedPtr<Handle<TColStd_HSequenceOfTransient>>;
+//
+// SKIPPED: **Source:** `STEPConstruct_ContextTool.hxx`:124 - `STEPConstruct_ContextTool::GetRootsForAssemblyLink`
+//   method: Produces and returns a full list of root entities required
+//   method: for assembly link identified by assembly (including NAUO and CDSR)
+//   Reason: param 'assembly' uses unknown type 'const STEPConstruct_Assembly&'
+//   // pub fn get_roots_for_assembly_link(&mut self, assembly: &Assembly) -> OwnedPtr<Handle<TColStd_HSequenceOfTransient>>;
+//
+
 // ========================
 // From STEPConstruct_Tool.hxx
 // ========================
@@ -283,6 +464,28 @@ impl Tool {
         unsafe { &*(crate::ffi::STEPConstruct_Tool_graph(self as *const Self, recompute)) }
     }
 }
+
+// ── Skipped symbols for Tool (4 total) ──
+// SKIPPED: **Source:** `STEPConstruct_Tool.hxx`:50 - `STEPConstruct_Tool::STEPConstruct_Tool`
+//   constructor: Creates a tool and loads it with worksession
+//   Reason: param 'WS' uses unknown Handle type
+//   // pub fn new_handlexscontrolworksession(WS: &HandleWorkSession) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `STEPConstruct_Tool.hxx`:53 - `STEPConstruct_Tool::WS`
+//   method: Returns currently loaded WorkSession
+//   Reason: return type 'const Handle(XSControl_WorkSession)&' is unknown
+//   // pub fn ws(&self) -> &HandleWorkSession;
+//
+// SKIPPED: **Source:** `STEPConstruct_Tool.hxx`:62 - `STEPConstruct_Tool::TransientProcess`
+//   method: Returns TransientProcess (reading; Null if not loaded)
+//   Reason: return type 'const Handle(Transfer_TransientProcess)&' is unknown
+//   // pub fn transient_process(&self) -> &HandleTransientProcess;
+//
+// SKIPPED: **Source:** `STEPConstruct_Tool.hxx`:65 - `STEPConstruct_Tool::FinderProcess`
+//   method: Returns FinderProcess (writing; Null if not loaded)
+//   Reason: return type 'const Handle(Transfer_FinderProcess)&' is unknown
+//   // pub fn finder_process(&self) -> &HandleFinderProcess;
+//
 
 // ========================
 // Additional type re-exports

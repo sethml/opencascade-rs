@@ -265,6 +265,33 @@ impl BasicEditor {
     }
 }
 
+// ── Skipped symbols for BasicEditor (5 total) ──
+// SKIPPED: **Source:** `IGESData_BasicEditor.hxx`:51 - `IGESData_BasicEditor::IGESData_BasicEditor`
+//   constructor: Creates a Basic Editor, with a new IGESModel, ready to run
+//   Reason: param 'protocol' uses unknown Handle type
+//   // pub fn new_handleigesdataprotocol(protocol: &HandleProtocol) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `IGESData_BasicEditor.hxx`:54 - `IGESData_BasicEditor::IGESData_BasicEditor`
+//   constructor: Creates a Basic Editor for IGES Data, ready to run
+//   Reason: param 'model' uses unknown Handle type
+//   // pub fn new_handleigesdataigesmodel_handleigesdataprotocol(model: &HandleIGESModel, protocol: &HandleProtocol) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `IGESData_BasicEditor.hxx`:58 - `IGESData_BasicEditor::Init`
+//   method: Initialize a Basic Editor, with a new IGESModel, ready to run
+//   Reason: param 'protocol' uses unknown type 'const Handle(IGESData_Protocol)&'
+//   // pub fn init(&mut self, protocol: &HandleProtocol);
+//
+// SKIPPED: **Source:** `IGESData_BasicEditor.hxx`:61 - `IGESData_BasicEditor::Init`
+//   method: Initialize a Basic Editor for IGES Data, ready to run
+//   Reason: param 'model' uses unknown type 'const Handle(IGESData_IGESModel)&'
+//   // pub fn init(&mut self, model: &HandleIGESModel, protocol: &HandleProtocol);
+//
+// SKIPPED: **Source:** `IGESData_BasicEditor.hxx`:65 - `IGESData_BasicEditor::Model`
+//   method: Returns the designated model
+//   Reason: return type 'Handle(IGESData_IGESModel)' is unknown
+//   // pub fn model(&self) -> OwnedPtr<Handle<IGESData_IGESModel>>;
+//
+
 // ========================
 // From IGESData_DefSwitch.hxx
 // ========================
@@ -926,6 +953,111 @@ impl HandleIGESDataIGESEntity {
     }
 }
 
+// ── Skipped symbols for IGESEntity (17 total) ──
+// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType`
+//   method: gives IGES typing info (includes "Type" and "Form" data)
+//   Reason: return type 'IGESData_IGESType' is unknown
+//   // pub fn iges_type(&self) -> OwnedPtr<IGESData_IGESType>;
+//
+// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont`
+//   method: Returns LineFont as an Entity (if defined as Reference)
+//   method: Returns a Null Handle if DefLineFont is not "DefReference"
+//   Reason: return type 'Handle(IGESData_LineFontEntity)' is unknown
+//   // pub fn line_font(&self) -> OwnedPtr<Handle<IGESData_LineFontEntity>>;
+//
+// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList`
+//   method: Returns LevelList if Level is
+//   method: defined as a list. Returns a null handle if DefLevel is not DefSeveral.
+//   Reason: return type 'Handle(IGESData_LevelListEntity)' is unknown
+//   // pub fn level_list(&self) -> OwnedPtr<Handle<IGESData_LevelListEntity>>;
+//
+// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View`
+//   method: Returns the view of this IGES entity.
+//   method: This view can be a single view or a list of views.
+//   method: Warning A null handle is returned if the view is not defined.
+//   Reason: return type 'Handle(IGESData_ViewKindEntity)' is unknown
+//   // pub fn view(&self) -> OwnedPtr<Handle<IGESData_ViewKindEntity>>;
+//
+// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView`
+//   method: Returns the view as a single view
+//   method: if it was defined as such and not as a list of views.
+//   method: Warning A null handle is returned if DefView does not have the value DefOne.
+//   Reason: return type 'Handle(IGESData_ViewKindEntity)' is unknown
+//   // pub fn single_view(&self) -> OwnedPtr<Handle<IGESData_ViewKindEntity>>;
+//
+// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList`
+//   method: Returns the view of this IGES entity as a list.
+//   method: Warning A null handle is returned if the
+//   method: definition status does not have the value DefSeveral.
+//   Reason: return type 'Handle(IGESData_ViewKindEntity)' is unknown
+//   // pub fn view_list(&self) -> OwnedPtr<Handle<IGESData_ViewKindEntity>>;
+//
+// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf`
+//   method: Returns the Transformation Matrix (under IGES definition)
+//   method: Returns a Null Handle if there is none
+//   method: for a more complete use, see Location & CompoundLocation
+//   Reason: return type 'Handle(IGESData_TransfEntity)' is unknown
+//   // pub fn transf(&self) -> OwnedPtr<Handle<IGESData_TransfEntity>>;
+//
+// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay`
+//   method: Returns the Label Display
+//   method: Associativity Entity if there is one. Returns a null handle if there is none.
+//   Reason: return type 'Handle(IGESData_LabelDisplayEntity)' is unknown
+//   // pub fn label_display(&self) -> OwnedPtr<Handle<IGESData_LabelDisplayEntity>>;
+//
+// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color`
+//   method: Returns the IGES entity which
+//   method: describes the color of the entity.
+//   method: Returns a null handle if this entity was defined as an integer.
+//   Reason: return type 'Handle(IGESData_ColorEntity)' is unknown
+//   // pub fn color(&self) -> OwnedPtr<Handle<IGESData_ColorEntity>>;
+//
+// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf`
+//   method: Initializes Transf, or erases it if <ent> is given Null
+//   Reason: param 'ent' uses unknown type 'const Handle(IGESData_TransfEntity)&'
+//   // pub fn init_transf(&mut self, ent: &HandleTransfEntity);
+//
+// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView`
+//   method: Initializes View, or erases it if <ent> is given Null
+//   Reason: param 'ent' uses unknown type 'const Handle(IGESData_ViewKindEntity)&'
+//   // pub fn init_view(&mut self, ent: &HandleViewKindEntity);
+//
+// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont`
+//   method: Initializes LineFont : if <ent> is not Null, it gives LineFont,
+//   method: else <rank> gives or erases (if zero) RankLineFont
+//   Reason: param 'ent' uses unknown type 'const Handle(IGESData_LineFontEntity)&'
+//   // pub fn init_line_font(&mut self, ent: &HandleLineFontEntity, rank: i32);
+//
+// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel`
+//   method: Initializes Level : if <ent> is not Null, it gives LevelList,
+//   method: else <val> gives or erases (if zero) unique Level
+//   Reason: param 'ent' uses unknown type 'const Handle(IGESData_LevelListEntity)&'
+//   // pub fn init_level(&mut self, ent: &HandleLevelListEntity, val: i32);
+//
+// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor`
+//   method: Initializes Color data : if <ent> is not Null, it gives Color,
+//   method: else <rank> gives or erases (if zero) RankColor
+//   Reason: param 'ent' uses unknown type 'const Handle(IGESData_ColorEntity)&'
+//   // pub fn init_color(&mut self, ent: &HandleColorEntity, rank: i32);
+//
+// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc`
+//   method: Initializes various data (those not yet seen above), or erases
+//   method: them if they are given as Null (Zero for <weightnum>) :
+//   method: <str> for Structure, <lab> for LabelDisplay, and
+//   Reason: param 'lab' uses unknown type 'const Handle(IGESData_LabelDisplayEntity)&'
+//   // pub fn init_misc(&mut self, str: &HandleIGESEntity, lab: &HandleLabelDisplayEntity, weightnum: i32);
+//
+// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities`
+//   method: Returns the Associativity List under the form of an EntityIterator.
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn associativities(&self) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties`
+//   method: Returns Property List under the form of an EntityIterator
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn properties(&self) -> OwnedPtr<Interface_EntityIterator>;
+//
+
 // ========================
 // From IGESData_SpecificLib.hxx
 // ========================
@@ -981,6 +1113,45 @@ impl SpecificLib {
         unsafe { crate::ffi::IGESData_SpecificLib_next(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for SpecificLib (6 total) ──
+// SKIPPED: **Source:** `IGESData_SpecificLib.hxx`:47 - `IGESData_SpecificLib::IGESData_SpecificLib`
+//   constructor: Creates a Library which complies with a Protocol, that is :
+//   constructor: Same class (criterium IsInstance)
+//   constructor: This creation gets the Modules from the global set, those
+//   Reason: param 'aprotocol' uses unknown Handle type
+//   // pub fn new_handleigesdataprotocol(aprotocol: &HandleProtocol) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `IGESData_SpecificLib.hxx`:56 - `IGESData_SpecificLib::AddProtocol`
+//   method: Adds a couple (Module-Protocol) to the Library, given the
+//   method: class of a Protocol. Takes Resources into account.
+//   method: (if <aprotocol> is not of type TheProtocol, it is not added)
+//   Reason: param 'aprotocol' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_protocol(&mut self, aprotocol: &HandleTransient);
+//
+// SKIPPED: **Source:** `IGESData_SpecificLib.hxx`:73 - `IGESData_SpecificLib::Select`
+//   method: Selects a Module from the Library, given an Object.
+//   method: Returns True if Select has succeeded, False else.
+//   method: Also Returns (as arguments) the selected Module and the Case
+//   Reason: param 'module' uses unknown type 'Handle(IGESData_SpecificModule)&'
+//   // pub fn select(&self, obj: &HandleIGESEntity, module: &mut HandleSpecificModule, CN: &mut i32) -> bool;
+//
+// SKIPPED: **Source:** `IGESData_SpecificLib.hxx`:88 - `IGESData_SpecificLib::Module`
+//   method: Returns the current Module in the Iteration
+//   Reason: return type 'const Handle(IGESData_SpecificModule)&' is unknown
+//   // pub fn module(&self) -> &HandleSpecificModule;
+//
+// SKIPPED: **Source:** `IGESData_SpecificLib.hxx`:91 - `IGESData_SpecificLib::Protocol`
+//   method: Returns the current Protocol in the Iteration
+//   Reason: return type 'const Handle(IGESData_Protocol)&' is unknown
+//   // pub fn protocol(&self) -> &HandleProtocol;
+//
+// SKIPPED: **Source:** `IGESData_SpecificLib.hxx`:40 - `IGESData_SpecificLib::SetGlobal`
+//   static_method: Adds a couple (Module-Protocol) into the global definition set
+//   static_method: for this class of Library.
+//   Reason: param 'amodule' uses unknown type 'const Handle(IGESData_SpecificModule)&'
+//   // pub fn set_global(amodule: &HandleSpecificModule, aprotocol: &HandleProtocol);
+//
 
 // ========================
 // Additional type re-exports

@@ -626,3 +626,9 @@ impl VertexInfo {
         unsafe { &mut *(crate::ffi::Draft_VertexInfo_change_geometry(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for VertexInfo (1 total) ──
+// SKIPPED: **Source:** `Draft_VertexInfo.hxx`:53 - `Draft_VertexInfo::ChangeParameter`
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn change_parameter(&mut self, E: &Edge) -> &mut f64;
+//

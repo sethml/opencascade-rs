@@ -11966,6 +11966,20 @@ impl VectorWithNullMagnitude {
     }
 }
 
+// ── Skipped symbols for VectorWithNullMagnitude (3 total) ──
+// SKIPPED: **Source:** `gp_VectorWithNullMagnitude.hxx`:36 - `gp_VectorWithNullMagnitude::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `gp_VectorWithNullMagnitude.hxx`:36 - `gp_VectorWithNullMagnitude::NewInstance`
+//   Reason: return type 'Handle(gp_VectorWithNullMagnitude)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<gp_VectorWithNullMagnitude>>;
+//
+// SKIPPED: **Source:** `gp_VectorWithNullMagnitude.hxx`:36 - `gp_VectorWithNullMagnitude::NewInstance`
+//   Reason: return type 'Handle(gp_VectorWithNullMagnitude)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<gp_VectorWithNullMagnitude>>;
+//
+
 // ========================
 // From gp_XY.hxx
 // ========================
@@ -12834,6 +12848,22 @@ impl XYZ {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_XYZ_to_owned(self as *const Self)) }
     }
 }
+
+// ── Skipped symbols for XYZ (2 total) ──
+// SKIPPED: **Source:** `gp_XYZ.hxx`:109 - `gp_XYZ::GetData`
+//   method: Returns a const ptr to coordinates location.
+//   method: Is useful for algorithms, but DOES NOT PERFORM
+//   method: ANY CHECKS!
+//   Reason: has unbindable types: return: raw pointer (const double*)
+//   // pub fn get_data(&self) -> /* const double* */;
+//
+// SKIPPED: **Source:** `gp_XYZ.hxx`:114 - `gp_XYZ::ChangeData`
+//   method: Returns a ptr to coordinates location.
+//   method: Is useful for algorithms, but DOES NOT PERFORM
+//   method: ANY CHECKS!
+//   Reason: has unbindable types: return: raw pointer (double*)
+//   // pub fn change_data(&mut self) -> /* double* */;
+//
 
 // ========================
 // Additional type re-exports

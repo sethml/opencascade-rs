@@ -912,3 +912,21 @@ impl FilletPoint {
         unsafe { crate::ffi::FilletPoint_remove(self as *mut Self, theIndex) }
     }
 }
+
+// ── Skipped symbols for FilletPoint (3 total) ──
+// SKIPPED: **Source:** `ChFi2d_FilletAlgo.hxx`:184 - `FilletPoint::calculateDiff`
+//   method: Computes difference between this point and the given. Stores difference in myD.
+//   Reason: has unbindable types: param 'arg0': raw pointer (FilletPoint*)
+//   // pub fn calculate_diff(&mut self, arg0: /* FilletPoint* */) -> bool;
+//
+// SKIPPED: **Source:** `ChFi2d_FilletAlgo.hxx`:187 - `FilletPoint::FilterPoints`
+//   method: Filters out the values and leaves the most optimal one.
+//   Reason: has unbindable types: param 'arg0': raw pointer (FilletPoint*)
+//   // pub fn filter_points(&mut self, arg0: /* FilletPoint* */);
+//
+// SKIPPED: **Source:** `ChFi2d_FilletAlgo.hxx`:191 - `FilletPoint::Copy`
+//   method: Returns a pointer to created copy of the point
+//   method: warning: this is not the full copy! Copies only: myParam, myV, myD, myValid
+//   Reason: has unbindable types: return: raw pointer (FilletPoint*)
+//   // pub fn copy(&mut self) -> /* FilletPoint* */;
+//

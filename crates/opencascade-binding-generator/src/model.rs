@@ -611,6 +611,30 @@ impl Type {
         self.is_stream() || self.is_void_ptr() || self.is_array() || self.is_raw_ptr() || self.is_rvalue_ref() || self.is_unresolved_template_type()
     }
 
+    /// Get a human-readable C++-like type string for diagnostic messages.
+    pub fn to_cpp_string(&self) -> String {
+        match self {
+            Type::Void => "void".to_string(),
+            Type::Bool => "bool".to_string(),
+            Type::I32 => "int".to_string(),
+            Type::U32 => "unsigned int".to_string(),
+            Type::I64 => "long long".to_string(),
+            Type::U64 => "unsigned long long".to_string(),
+            Type::Long => "long".to_string(),
+            Type::ULong => "unsigned long".to_string(),
+            Type::Usize => "size_t".to_string(),
+            Type::F32 => "float".to_string(),
+            Type::F64 => "double".to_string(),
+            Type::ConstRef(inner) => format!("const {}&", inner.to_cpp_string()),
+            Type::MutRef(inner) => format!("{}&", inner.to_cpp_string()),
+            Type::RValueRef(inner) => format!("{}&&", inner.to_cpp_string()),
+            Type::ConstPtr(inner) => format!("const {}*", inner.to_cpp_string()),
+            Type::MutPtr(inner) => format!("{}*", inner.to_cpp_string()),
+            Type::Handle(name) => format!("Handle({})", name),
+            Type::Class(name) => name.clone(),
+        }
+    }
+
     /// Check if this type is an unresolved template or bare nested type that can't be
     /// represented in Rust FFI. Qualified nested types (`Parent::Nested` where parent
     /// follows OCCT naming) ARE representable.
@@ -696,6 +720,16 @@ impl Type {
                     flat
                 }
             }
+        }
+    }
+
+    /// Safe version of `to_rust_type_string()` that returns a placeholder
+    /// for unbindable types instead of panicking. Used for diagnostic stubs.
+    pub fn to_rust_type_string_safe(&self) -> String {
+        if self.is_unbindable() {
+            format!("/* {} */", self.to_cpp_string())
+        } else {
+            self.to_rust_type_string()
         }
     }
 

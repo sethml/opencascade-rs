@@ -200,6 +200,53 @@ impl ActorOfFinderProcess {
     }
 }
 
+// ── Skipped symbols for ActorOfFinderProcess (8 total) ──
+// SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:45 - `Transfer_ActorOfFinderProcess::ModeTrans`
+//   method: Returns the Transfer Mode, modifiable
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn mode_trans(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:52 - `Transfer_ActorOfFinderProcess::Transfer`
+//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_FinderProcess)&'
+//   // pub fn transfer(&mut self, start: &HandleFinder, TP: &HandleFinderProcess, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
+//
+// SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:57 - `Transfer_ActorOfFinderProcess::TransferTransient`
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn transfer_transient(&mut self, start: &HandleTransient, TP: &HandleFinderProcess, theProgress: &ProgressRange) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:64 - `Transfer_ActorOfFinderProcess::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: @param theParameters the parameters for shape processing.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &i32);
+//
+// SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:70 - `Transfer_ActorOfFinderProcess::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: Parameters are moved from the input map.
+//   method: @param theParameters the parameters for shape processing.
+//   Reason: has unbindable types: param 'theParameters': rvalue reference (int&&)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* int&& */);
+//
+// SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:78 - `Transfer_ActorOfFinderProcess::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: Parameters from @p theParameters are copied to the internal map.
+//   method: Parameters from @p theAdditionalParameters are copied to the internal map
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &ShapeFixParameters, theAdditionalParameters: &i32);
+//
+// SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:84 - `Transfer_ActorOfFinderProcess::GetShapeFixParameters`
+//   method: Returns parameters for shape processing that was set by SetParameters() method.
+//   method: @return the parameters for shape processing. Empty map if no parameters were set.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_shape_fix_parameters(&self) -> &i32;
+//
+// SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:91 - `Transfer_ActorOfFinderProcess::SetShapeProcessFlags`
+//   method: Sets flags defining operations to be performed on shapes.
+//   method: @param theFlags The flags defining operations to be performed on shapes.
+//   Reason: param 'theFlags' uses unknown type 'const ShapeProcess::OperationsFlags&'
+//   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
+//
+
 // ========================
 // From Transfer_ActorOfProcessForFinder.hxx
 // ========================
@@ -358,6 +405,14 @@ impl HandleTransferActorOfProcessForFinder {
     }
 }
 
+// ── Skipped symbols for ActorOfProcessForFinder (1 total) ──
+// SKIPPED: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:69 - `Transfer_ActorOfProcessForFinder::TransientResult`
+//   method: Prepares and Returns a Binder for a Transient Result
+//   method: Returns a Null Handle if <res> is itself Null
+//   Reason: param 'res' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn transient_result(&self, res: &HandleTransient) -> OwnedPtr<Handle<Transfer_SimpleBinderOfTransient>>;
+//
+
 // ========================
 // From Transfer_ActorOfProcessForTransient.hxx
 // ========================
@@ -476,6 +531,28 @@ impl HandleTransferActorOfProcessForTransient {
     }
 }
 
+// ── Skipped symbols for ActorOfProcessForTransient (3 total) ──
+// SKIPPED: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:54 - `Transfer_ActorOfProcessForTransient::Recognize`
+//   method: Prerequisite for Transfer : the method Transfer is
+//   method: called on a starting object only if Recognize has
+//   method: returned True on it
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn recognize(&mut self, start: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:61 - `Transfer_ActorOfProcessForTransient::Transferring`
+//   method: Specific action of Transfer. The Result is stored in
+//   method: the returned Binder, or a Null Handle for "No result"
+//   method: (Default defined as doing nothing; should be deferred)
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn transferring(&mut self, start: &HandleTransient, TP: &HandleProcessForTransient, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
+//
+// SKIPPED: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:68 - `Transfer_ActorOfProcessForTransient::TransientResult`
+//   method: Prepares and Returns a Binder for a Transient Result
+//   method: Returns a Null Handle if <res> is itself Null
+//   Reason: param 'res' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn transient_result(&self, res: &HandleTransient) -> OwnedPtr<Handle<Transfer_SimpleBinderOfTransient>>;
+//
+
 // ========================
 // From Transfer_ActorOfTransientProcess.hxx
 // ========================
@@ -587,6 +664,52 @@ impl ActorOfTransientProcess {
         }
     }
 }
+
+// ── Skipped symbols for ActorOfTransientProcess (8 total) ──
+// SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:40 - `Transfer_ActorOfTransientProcess::Transferring`
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn transferring(&mut self, start: &HandleTransient, TP: &HandleProcessForTransient, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
+//
+// SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:45 - `Transfer_ActorOfTransientProcess::Transfer`
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn transfer(&mut self, start: &HandleTransient, TP: &HandleTransientProcess, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
+//
+// SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:50 - `Transfer_ActorOfTransientProcess::TransferTransient`
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn transfer_transient(&mut self, start: &HandleTransient, TP: &HandleTransientProcess, theProgress: &ProgressRange) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:57 - `Transfer_ActorOfTransientProcess::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: @param theParameters the parameters for shape processing.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &i32);
+//
+// SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:63 - `Transfer_ActorOfTransientProcess::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: Parameters are moved from the input map.
+//   method: @param theParameters the parameters for shape processing.
+//   Reason: has unbindable types: param 'theParameters': rvalue reference (int&&)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* int&& */);
+//
+// SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:71 - `Transfer_ActorOfTransientProcess::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: Parameters from @p theParameters are copied to the internal map.
+//   method: Parameters from @p theAdditionalParameters are copied to the internal map
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &ShapeFixParameters, theAdditionalParameters: &i32);
+//
+// SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:77 - `Transfer_ActorOfTransientProcess::GetShapeFixParameters`
+//   method: Returns parameters for shape processing that was set by SetParameters() method.
+//   method: @return the parameters for shape processing. Empty map if no parameters were set.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_shape_fix_parameters(&self) -> &i32;
+//
+// SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:84 - `Transfer_ActorOfTransientProcess::SetProcessingFlags`
+//   method: Sets flags defining operations to be performed on shapes.
+//   method: @param theFlags The flags defining operations to be performed on shapes.
+//   Reason: param 'theFlags' uses unknown type 'const ShapeProcess::OperationsFlags&'
+//   // pub fn set_processing_flags(&mut self, theFlags: &OperationsFlags);
+//
 
 // ========================
 // From Transfer_Binder.hxx
@@ -1053,6 +1176,46 @@ impl HandleTransferFinder {
         unsafe { &mut *(crate::ffi::HandleTransferFinder_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Finder (6 total) ──
+// SKIPPED: **Source:** `Transfer_Finder.hxx`:61 - `Transfer_Finder::SetAttribute`
+//   method: Adds an attribute with a given name (replaces the former one
+//   method: with the same name if already exists)
+//   Reason: param 'val' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn set_attribute(&mut self, name: *const char, val: &HandleTransient);
+//
+// SKIPPED: **Source:** `Transfer_Finder.hxx`:72 - `Transfer_Finder::GetAttribute`
+//   method: Returns an attribute from its name, filtered by a type
+//   method: If no attribute has this name, or if it is not kind of this
+//   method: type, <val> is Null and returned value is False
+//   Reason: param 'val' uses unknown type 'Handle(Standard_Transient)&'
+//   // pub fn get_attribute(&self, name: *const char, type_: &HandleType, val: &mut HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `Transfer_Finder.hxx`:78 - `Transfer_Finder::Attribute`
+//   method: Returns an attribute from its name. Null Handle if not recorded
+//   method: (whatever Transient, Integer, Real ...)
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn attribute(&self, name: *const char) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `Transfer_Finder.hxx`:92 - `Transfer_Finder::GetIntegerAttribute`
+//   method: Returns an attribute from its name, as integer
+//   method: If no attribute has this name, or not an integer,
+//   method: <val> is 0 and returned value is False
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_integer_attribute(&self, name: *const char, val: &mut i32) -> bool;
+//
+// SKIPPED: **Source:** `Transfer_Finder.hxx`:118 - `Transfer_Finder::GetStringAttribute`
+//   method: Returns an attribute from its name, as String
+//   method: If no attribute has this name, or not a String
+//   method: <val> is 0.0 and returned value is False
+//   Reason: has string ref param 'val' of type 'const char*&' (needs manual binding)
+//   // pub fn get_string_attribute(&self, name: *const char, val: &mut *const char) -> bool;
+//
+// SKIPPED: **Source:** `Transfer_Finder.hxx`:126 - `Transfer_Finder::AttrList`
+//   method: Returns the exhaustive list of attributes
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn attr_list(&mut self) -> &mut i32;
+//
 
 // ========================
 // From Transfer_FinderProcess.hxx
@@ -1549,6 +1712,25 @@ impl FinderProcess {
     }
 }
 
+// ── Skipped symbols for FinderProcess (3 total) ──
+// SKIPPED: **Source:** `Transfer_FinderProcess.hxx`:67 - `Transfer_FinderProcess::TransientMapper`
+//   method: Returns a TransientMapper for a given Transient Object
+//   method: Either <obj> is already mapped, then its Mapper is returned
+//   method: Or it is not, then a new one is created then returned, BUT
+//   Reason: param 'obj' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn transient_mapper(&self, obj: &HandleTransient) -> OwnedPtr<Handle<Transfer_TransientMapper>>;
+//
+// SKIPPED: **Source:** `Transfer_FinderProcess.hxx`:71 - `Transfer_FinderProcess::PrintTrace`
+//   method: Specific printing to trace a Finder (by its method ValueType)
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_trace(&self, start: &HandleFinder, S: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `Transfer_FinderProcess.hxx`:75 - `Transfer_FinderProcess::PrintStats`
+//   method: Prints statistics on a given output, according mode
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_stats(&self, mode: i32, S: /* Standard_OStream& */);
+//
+
 // ========================
 // From Transfer_HSequenceOfFinder.hxx
 // ========================
@@ -1644,6 +1826,12 @@ impl HandleTransferHSequenceOfFinder {
         unsafe { &mut *(crate::ffi::HandleTransferHSequenceOfFinder_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for HSequenceOfFinder (1 total) ──
+// SKIPPED: **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
 
 // ========================
 // From Transfer_ProcessForFinder.hxx
@@ -2374,6 +2562,74 @@ impl HandleTransferProcessForFinder {
         unsafe { &mut *(crate::ffi::HandleTransferProcessForFinder_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for ProcessForFinder (10 total) ──
+// SKIPPED: **Source:** `Transfer_ProcessForFinder.hxx`:215 - `Transfer_ProcessForFinder::BindTransient`
+//   method: Binds a starting object with a Transient Result.
+//   method: Uses a SimpleBinderOfTransient to work. If there is already
+//   method: one but with no Result set, sets its Result.
+//   Reason: param 'res' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn bind_transient(&mut self, start: &HandleFinder, res: &HandleTransient);
+//
+// SKIPPED: **Source:** `Transfer_ProcessForFinder.hxx`:223 - `Transfer_ProcessForFinder::FindTransient`
+//   method: Returns the Result of the Transfer of an object <start> as a
+//   method: Transient Result.
+//   method: Returns a Null Handle if there is no Transient Result
+//   Reason: return type 'const Handle(Standard_Transient)&' is unknown
+//   // pub fn find_transient(&self, start: &HandleFinder) -> &HandleTransient;
+//
+// SKIPPED: **Source:** `Transfer_ProcessForFinder.hxx`:235 - `Transfer_ProcessForFinder::AddMultiple`
+//   method: Adds an item to a list of results bound to a starting object.
+//   method: Considers a category number, by default 0, for all results
+//   Reason: param 'res' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_multiple(&mut self, start: &HandleFinder, res: &HandleTransient);
+//
+// SKIPPED: **Source:** `Transfer_ProcessForFinder.hxx`:249 - `Transfer_ProcessForFinder::FindTypedTransient`
+//   method: Searches for a transient result attached to a starting object,
+//   method: according to its type, by criterium IsKind(atype)
+//   Reason: param 'val' uses unknown type 'Handle(Standard_Transient)&'
+//   // pub fn find_typed_transient(&self, start: &HandleFinder, atype: &HandleType, val: &mut HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `Transfer_ProcessForFinder.hxx`:270 - `Transfer_ProcessForFinder::GetTypedTransient`
+//   method: Searches for a transient result recorded in a Binder, whatever
+//   method: this Binder is recorded or not in <me>
+//   Reason: param 'val' uses unknown type 'Handle(Standard_Transient)&'
+//   // pub fn get_typed_transient(&self, binder: &HandleBinder, atype: &HandleType, val: &mut HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `Transfer_ProcessForFinder.hxx`:376 - `Transfer_ProcessForFinder::PrintTrace`
+//   method: Prints a short information on a starting object. By default
+//   method: prints its Dynamic Type. Can be redefined
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_trace(&self, start: &HandleFinder, S: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `Transfer_ProcessForFinder.hxx`:388 - `Transfer_ProcessForFinder::RootResult`
+//   method: Returns, as an iterator, the log of root transfer, i.e. the
+//   method: created objects and Binders bound to starting roots
+//   method: If withstart is given True, Starting Objects are also returned
+//   Reason: return type 'Transfer_IteratorOfProcessForFinder' is unknown
+//   // pub fn root_result(&self, withstart: bool) -> OwnedPtr<Transfer_IteratorOfProcessForFinder>;
+//
+// SKIPPED: **Source:** `Transfer_ProcessForFinder.hxx`:394 - `Transfer_ProcessForFinder::CompleteResult`
+//   method: Returns, as an Iterator, the entire log of transfer (list of
+//   method: created objects and Binders which can bring errors)
+//   method: If withstart is given True, Starting Objects are also returned
+//   Reason: return type 'Transfer_IteratorOfProcessForFinder' is unknown
+//   // pub fn complete_result(&self, withstart: bool) -> OwnedPtr<Transfer_IteratorOfProcessForFinder>;
+//
+// SKIPPED: **Source:** `Transfer_ProcessForFinder.hxx`:399 - `Transfer_ProcessForFinder::AbnormalResult`
+//   method: Returns Binders which are neither "Done" nor "Initial",
+//   method: that is Error,Loop or Run (abnormal states at end of Transfer)
+//   method: Starting Objects are given in correspondence in the iterator
+//   Reason: return type 'Transfer_IteratorOfProcessForFinder' is unknown
+//   // pub fn abnormal_result(&self) -> OwnedPtr<Transfer_IteratorOfProcessForFinder>;
+//
+// SKIPPED: **Source:** `Transfer_ProcessForFinder.hxx`:414 - `Transfer_ProcessForFinder::ResultOne`
+//   method: Returns, as an Iterator, the log of transfer for one object
+//   method: <level> = 0 : this object only
+//   method: and if <start> is a scope owner (else, <level> is ignored) :
+//   Reason: return type 'Transfer_IteratorOfProcessForFinder' is unknown
+//   // pub fn result_one(&self, start: &HandleFinder, level: i32, withstart: bool) -> OwnedPtr<Transfer_IteratorOfProcessForFinder>;
+//
 
 // ========================
 // Additional type re-exports

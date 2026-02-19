@@ -476,6 +476,113 @@ impl Application {
     }
 }
 
+// ── Skipped symbols for Application (17 total) ──
+// SKIPPED: **Source:** `TDocStd_Application.hxx`:140 - `TDocStd_Application::DefineFormat`
+//   method: Sets up resources and registers read and storage drivers for
+//   method: the specified format.
+//   Reason: param 'theReader' uses unknown type 'const Handle(PCDM_RetrievalDriver)&'
+//   // pub fn define_format(&mut self, theFormat: &AsciiString, theDescription: &AsciiString, theExtension: &AsciiString, theReader: &HandleRetrievalDriver, theWriter: &HandleStorageDriver);
+//
+// SKIPPED: **Source:** `TDocStd_Application.hxx`:171 - `TDocStd_Application::GetDocument`
+//   method: Constructs the new document aDoc.
+//   method: aDoc is identified by the index index which is
+//   method: any integer between 1 and n where n is the
+//   Reason: param 'aDoc' uses unknown type 'Handle(TDocStd_Document)&'
+//   // pub fn get_document(&self, index: i32, aDoc: &mut HandleDocument);
+//
+// SKIPPED: **Source:** `TDocStd_Application.hxx`:184 - `TDocStd_Application::NewDocument`
+//   method: A non-virtual method taking a TDocStd_Documment object as an input.
+//   method: Internally it calls a virtual method NewDocument() with CDM_Document object.
+//   Reason: param 'aDoc' uses unknown type 'Handle(TDocStd_Document)&'
+//   // pub fn new_document(&mut self, format: &ExtendedString, aDoc: &mut HandleDocument);
+//
+// SKIPPED: **Source:** `TDocStd_Application.hxx`:199 - `TDocStd_Application::Close`
+//   method: Close the given document. the document is not any more
+//   method: handled by the applicative session.
+//   Reason: param 'aDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn close(&mut self, aDoc: &HandleDocument);
+//
+// SKIPPED: **Source:** `TDocStd_Application.hxx`:232 - `TDocStd_Application::Open`
+//   method: Retrieves the document from specified file.
+//   method: In order not to override a version of the document which is already in memory,
+//   method: this method can be made to depend on the value returned by IsInSession.
+//   Reason: param 'theDoc' uses unknown type 'Handle(TDocStd_Document)&'
+//   // pub fn open(&mut self, thePath: &ExtendedString, theDoc: &mut HandleDocument, theFilter: &HandleReaderFilter, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
+//
+// SKIPPED: **Source:** `TDocStd_Application.hxx`:244 - `TDocStd_Application::Open`
+//   method: Retrieves the document from specified file.
+//   method: In order not to override a version of the document which is already in memory,
+//   method: this method can be made to depend on the value returned by IsInSession.
+//   Reason: param 'theDoc' uses unknown type 'Handle(TDocStd_Document)&'
+//   // pub fn open(&mut self, thePath: &ExtendedString, theDoc: &mut HandleDocument, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
+//
+// SKIPPED: **Source:** `TDocStd_Application.hxx`:258 - `TDocStd_Application::Open`
+//   method: Retrieves document from standard stream.
+//   method: @param[in,out] theIStream input seekable stream
+//   method: @param[out]    theDoc     result document
+//   Reason: has unbindable types: param 'theIStream': stream type (Standard_IStream&)
+//   // pub fn open(&mut self, theIStream: /* Standard_IStream& */, theDoc: &mut HandleDocument, theFilter: &HandleReaderFilter, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
+//
+// SKIPPED: **Source:** `TDocStd_Application.hxx`:268 - `TDocStd_Application::Open`
+//   method: Retrieves document from standard stream.
+//   method: @param[in,out] theIStream input seekable stream
+//   method: @param[out]    theDoc     result document
+//   Reason: has unbindable types: param 'theIStream': stream type (Standard_IStream&)
+//   // pub fn open(&mut self, theIStream: /* Standard_IStream& */, theDoc: &mut HandleDocument, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
+//
+// SKIPPED: **Source:** `TDocStd_Application.hxx`:278 - `TDocStd_Application::SaveAs`
+//   method: Save the  active document  in the file  <name> in the
+//   method: path <path> ; o verwrites  the file  if  it already exists.
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn save_as(&mut self, theDoc: &HandleDocument, path: &ExtendedString, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
+//
+// SKIPPED: **Source:** `TDocStd_Application.hxx`:285 - `TDocStd_Application::SaveAs`
+//   method: Save theDoc to standard SEEKABLE stream theOStream.
+//   method: the stream should support SEEK functionality
+//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
+//   // pub fn save_as(&mut self, theDoc: &HandleDocument, theOStream: /* Standard_OStream& */, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
+//
+// SKIPPED: **Source:** `TDocStd_Application.hxx`:294 - `TDocStd_Application::Save`
+//   method: Save aDoc active document.
+//   method: Exceptions:
+//   method: Standard_NotImplemented if the document
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn save(&mut self, theDoc: &HandleDocument, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
+//
+// SKIPPED: **Source:** `TDocStd_Application.hxx`:301 - `TDocStd_Application::SaveAs`
+//   method: Save the  active document  in the file  <name> in the
+//   method: path <path>  .  overwrite  the file  if  it
+//   method: already exist.
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn save_as(&mut self, theDoc: &HandleDocument, path: &ExtendedString, theStatusMessage: &mut ExtendedString, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
+//
+// SKIPPED: **Source:** `TDocStd_Application.hxx`:309 - `TDocStd_Application::SaveAs`
+//   method: Save theDoc TO standard SEEKABLE stream theOStream.
+//   method: the stream should support SEEK functionality
+//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
+//   // pub fn save_as(&mut self, theDoc: &HandleDocument, theOStream: /* Standard_OStream& */, theStatusMessage: &mut ExtendedString, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
+//
+// SKIPPED: **Source:** `TDocStd_Application.hxx`:316 - `TDocStd_Application::Save`
+//   method: Save the document overwriting the previous file
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn save(&mut self, theDoc: &HandleDocument, theStatusMessage: &mut ExtendedString, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
+//
+// SKIPPED: **Source:** `TDocStd_Application.hxx`:321 - `TDocStd_Application::OnOpenTransaction`
+//   method: Notification that is fired at each OpenTransaction event.
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn on_open_transaction(&mut self, theDoc: &HandleDocument);
+//
+// SKIPPED: **Source:** `TDocStd_Application.hxx`:324 - `TDocStd_Application::OnCommitTransaction`
+//   method: Notification that is fired at each CommitTransaction event.
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn on_commit_transaction(&mut self, theDoc: &HandleDocument);
+//
+// SKIPPED: **Source:** `TDocStd_Application.hxx`:327 - `TDocStd_Application::OnAbortTransaction`
+//   method: Notification that is fired at each AbortTransaction event.
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn on_abort_transaction(&mut self, theDoc: &HandleDocument);
+//
+
 // ========================
 // From TDocStd_ApplicationDelta.hxx
 // ========================
@@ -560,6 +667,12 @@ impl HandleTDocStdApplicationDelta {
         unsafe { &mut *(crate::ffi::HandleTDocStdApplicationDelta_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for ApplicationDelta (1 total) ──
+// SKIPPED: **Source:** `TDocStd_ApplicationDelta.hxx`:41 - `TDocStd_ApplicationDelta::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */);
+//
 
 // ========================
 // From TDocStd_CompoundDelta.hxx
@@ -1565,6 +1678,28 @@ impl Document {
     }
 }
 
+// ── Skipped symbols for Document (3 total) ──
+// SKIPPED: **Source:** `TDocStd_Document.hxx`:113 - `TDocStd_Document::GetModified`
+//   method: Returns the labels which have been modified in
+//   method: this document.
+//   Reason: return type 'const TDF_LabelMap&' is unknown
+//   // pub fn get_modified(&self) -> &LabelMap;
+//
+// SKIPPED: **Source:** `TDocStd_Document.hxx`:216 - `TDocStd_Document::Update`
+//   method: This method Update   will be called
+//   method: to signal the end   of the modified references list.
+//   method: The    document     should    be  recomputed     and
+//   Reason: has unbindable types: param 'aModifContext': void pointer (Standard_Address)
+//   // pub fn update(&mut self, aToDocument: &HandleDocument, aReferenceIdentifier: i32, aModifContext: /* Standard_Address */);
+//
+// SKIPPED: **Source:** `TDocStd_Document.hxx`:54 - `TDocStd_Document::Get`
+//   static_method: Will Abort any execution, clear fields
+//   static_method: returns the    document which contains <L>.  raises  an
+//   static_method: exception if the document is not found.
+//   Reason: return type 'Handle(TDocStd_Document)' is unknown
+//   // pub fn get(L: &Label) -> OwnedPtr<Handle<TDocStd_Document>>;
+//
+
 // ========================
 // From TDocStd_Modified.hxx
 // ========================
@@ -1865,6 +2000,22 @@ impl Modified {
     }
 }
 
+// ── Skipped symbols for Modified (3 total) ──
+// SKIPPED: **Source:** `TDocStd_Modified.hxx`:72 - `TDocStd_Modified::Get`
+//   method: returns modified label map
+//   Reason: return type 'const TDF_LabelMap&' is unknown
+//   // pub fn get(&self) -> &LabelMap;
+//
+// SKIPPED: **Source:** `TDocStd_Modified.hxx`:83 - `TDocStd_Modified::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDocStd_Modified.hxx`:50 - `TDocStd_Modified::Get`
+//   static_method: if <IsEmpty> raise an exception.
+//   Reason: return type 'const TDF_LabelMap&' is unknown
+//   // pub fn get(access: &Label) -> &LabelMap;
+//
+
 // ========================
 // From TDocStd_MultiTransactionManager.hxx
 // ========================
@@ -2116,6 +2267,24 @@ impl HandleTDocStdMultiTransactionManager {
     }
 }
 
+// ── Skipped symbols for MultiTransactionManager (3 total) ──
+// SKIPPED: **Source:** `TDocStd_MultiTransactionManager.hxx`:106 - `TDocStd_MultiTransactionManager::DumpTransaction`
+//   method: Dumps transactions in undos and redos
+//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&)
+//   // pub fn dump_transaction(&self, theOS: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `TDocStd_MultiTransactionManager.hxx`:110 - `TDocStd_MultiTransactionManager::AddDocument`
+//   method: Adds the document to the transaction manager and
+//   method: checks if it has been already added
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn add_document(&mut self, theDoc: &HandleDocument);
+//
+// SKIPPED: **Source:** `TDocStd_MultiTransactionManager.hxx`:113 - `TDocStd_MultiTransactionManager::RemoveDocument`
+//   method: Removes the document from the transaction manager.
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn remove_document(&mut self, theDoc: &HandleDocument);
+//
+
 // ========================
 // From TDocStd_Owner.hxx
 // ========================
@@ -2361,6 +2530,38 @@ impl Owner {
         unsafe { crate::ffi::TDocStd_Owner_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Owner (7 total) ──
+// SKIPPED: **Source:** `TDocStd_Owner.hxx`:56 - `TDocStd_Owner::SetDocument`
+//   Reason: param 'document' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn set_document(&mut self, document: &HandleDocument);
+//
+// SKIPPED: **Source:** `TDocStd_Owner.hxx`:58 - `TDocStd_Owner::SetDocument`
+//   Reason: has unbindable types: param 'document': raw pointer (TDocStd_Document*)
+//   // pub fn set_document(&mut self, document: /* TDocStd_Document* */);
+//
+// SKIPPED: **Source:** `TDocStd_Owner.hxx`:60 - `TDocStd_Owner::GetDocument`
+//   Reason: return type 'Handle(TDocStd_Document)' is unknown
+//   // pub fn get_document(&self) -> OwnedPtr<Handle<TDocStd_Document>>;
+//
+// SKIPPED: **Source:** `TDocStd_Owner.hxx`:71 - `TDocStd_Owner::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDocStd_Owner.hxx`:45 - `TDocStd_Owner::SetDocument`
+//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn set_document(indata: &HandleData, doc: &HandleDocument);
+//
+// SKIPPED: **Source:** `TDocStd_Owner.hxx`:48 - `TDocStd_Owner::SetDocument`
+//   Reason: has unbindable types: param 'doc': raw pointer (TDocStd_Document*)
+//   // pub fn set_document(indata: &HandleData, doc: /* TDocStd_Document* */);
+//
+// SKIPPED: **Source:** `TDocStd_Owner.hxx`:52 - `TDocStd_Owner::GetDocument`
+//   static_method: Owner methods
+//   static_method: ===============
+//   Reason: return type 'Handle(TDocStd_Document)' is unknown
+//   // pub fn get_document(ofdata: &HandleData) -> OwnedPtr<Handle<TDocStd_Document>>;
+//
 
 // ========================
 // From TDocStd_PathParser.hxx
@@ -2713,6 +2914,23 @@ impl XLink {
     }
 }
 
+// ── Skipped symbols for XLink (3 total) ──
+// SKIPPED: **Source:** `TDocStd_XLink.hxx`:49 - `TDocStd_XLink::Update`
+//   method: Updates the data referenced in this external link attribute.
+//   Reason: return type 'Handle(TDF_Reference)' is unknown
+//   // pub fn update(&mut self) -> OwnedPtr<Handle<TDF_Reference>>;
+//
+// SKIPPED: **Source:** `TDocStd_XLink.hxx`:110 - `TDocStd_XLink::Dump`
+//   method: Dumps the attribute on <aStream>.
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDocStd_XLink.hxx`:43 - `TDocStd_XLink::Set`
+//   static_method: Sets an empty external reference, at the label aLabel.
+//   Reason: return type 'Handle(TDocStd_XLink)' is unknown
+//   // pub fn set(atLabel: &Label) -> OwnedPtr<Handle<TDocStd_XLink>>;
+//
+
 // ========================
 // From TDocStd_XLinkIterator.hxx
 // ========================
@@ -2749,6 +2967,23 @@ impl XLinkIterator {
         unsafe { crate::ffi::TDocStd_XLinkIterator_next(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for XLinkIterator (3 total) ──
+// SKIPPED: **Source:** `TDocStd_XLinkIterator.hxx`:39 - `TDocStd_XLinkIterator::TDocStd_XLinkIterator`
+//   constructor: Creates an iterator on Reference of <D>.
+//   Reason: param 'D' uses unknown Handle type
+//   // pub fn new_handletdocstddocument(D: &HandleDocument) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TDocStd_XLinkIterator.hxx`:42 - `TDocStd_XLinkIterator::Initialize`
+//   method: Restarts an iteration with <D>.
+//   Reason: param 'D' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn initialize(&mut self, D: &HandleDocument);
+//
+// SKIPPED: **Source:** `TDocStd_XLinkIterator.hxx`:52 - `TDocStd_XLinkIterator::Value`
+//   method: Returns the current item; a null handle if there is none.
+//   Reason: return type 'TDocStd_XLinkPtr' is unknown
+//   // pub fn value(&self) -> OwnedPtr<TDocStd_XLinkPtr>;
+//
 
 // ========================
 // From TDocStd_XLinkRoot.hxx
@@ -3015,6 +3250,29 @@ impl XLinkRoot {
         unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for XLinkRoot (4 total) ──
+// SKIPPED: **Source:** `TDocStd_XLinkRoot.hxx`:72 - `TDocStd_XLinkRoot::Dump`
+//   method: Dumps the attribute on <aStream>.
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDocStd_XLinkRoot.hxx`:46 - `TDocStd_XLinkRoot::Set`
+//   static_method: Sets an empty XLinkRoot to Root or gets the
+//   static_method: existing one. Only one attribute per TDF_Data.
+//   Reason: return type 'Handle(TDocStd_XLinkRoot)' is unknown
+//   // pub fn set(aDF: &HandleData) -> OwnedPtr<Handle<TDocStd_XLinkRoot>>;
+//
+// SKIPPED: **Source:** `TDocStd_XLinkRoot.hxx`:49 - `TDocStd_XLinkRoot::Insert`
+//   static_method: Inserts <anXLinkPtr> at the beginning of the XLink chain.
+//   Reason: param 'anXLinkPtr' uses unknown type 'const TDocStd_XLinkPtr&'
+//   // pub fn insert(anXLinkPtr: &XLinkPtr);
+//
+// SKIPPED: **Source:** `TDocStd_XLinkRoot.hxx`:52 - `TDocStd_XLinkRoot::Remove`
+//   static_method: Removes <anXLinkPtr> from the XLink chain, if it exists.
+//   Reason: param 'anXLinkPtr' uses unknown type 'const TDocStd_XLinkPtr&'
+//   // pub fn remove(anXLinkPtr: &XLinkPtr);
+//
 
 // ========================
 // From TDocStd_XLinkTool.hxx

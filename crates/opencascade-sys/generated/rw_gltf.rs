@@ -1479,6 +1479,13 @@ impl GltfLatePrimitiveArray {
     }
 }
 
+// ── Skipped symbols for GltfLatePrimitiveArray (1 total) ──
+// SKIPPED: **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:78 - `RWGltf_GltfLatePrimitiveArray::Data`
+//   method: Return primitive array data elements.
+//   Reason: has unbindable types: return: unresolved template/nested type (const NCollection_Sequence<RWGltf_GltfPrimArrayData>&)
+//   // pub fn data(&self) -> /* const NCollection_Sequence<RWGltf_GltfPrimArrayData>& */;
+//
+
 // ========================
 // From RWGltf_GltfMaterialMap.hxx
 // ========================
@@ -1610,6 +1617,47 @@ impl GltfMaterialMap {
         unsafe { crate::ffi::RWGltf_GltfMaterialMap_inherited_IsFailed(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for GltfMaterialMap (7 total) ──
+// SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:38 - `RWGltf_GltfMaterialMap::AddGlbImages`
+//   method: Add material images into GLB stream.
+//   method: @param[in][out] theBinFile   output file stream
+//   method: @param[in] theStyle    material images to add
+//   Reason: has unbindable types: param 'theBinFile': stream type (std::ostream&)
+//   // pub fn add_glb_images(&mut self, theBinFile: /* std::ostream& */, theStyle: &Style);
+//
+// SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:42 - `RWGltf_GltfMaterialMap::FlushGlbBufferViews`
+//   method: Add bufferView's into RWGltf_GltfRootElement_BufferViews section with images collected by
+//   method: AddImagesToGlb().
+//   Reason: has unbindable types: param 'theWriter': raw pointer (RWGltf_GltfOStreamWriter*)
+//   // pub fn flush_glb_buffer_views(&mut self, theWriter: /* RWGltf_GltfOStreamWriter* */, theBinDataBufferId: i32, theBuffViewId: &mut i32);
+//
+// SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:47 - `RWGltf_GltfMaterialMap::FlushGlbImages`
+//   method: Write RWGltf_GltfRootElement_Images section with images collected by AddImagesToGlb().
+//   Reason: has unbindable types: param 'theWriter': raw pointer (RWGltf_GltfOStreamWriter*)
+//   // pub fn flush_glb_images(&mut self, theWriter: /* RWGltf_GltfOStreamWriter* */);
+//
+// SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:52 - `RWGltf_GltfMaterialMap::AddImages`
+//   method: Add material images in case of non-GLB file
+//   method: (an alternative to AddImagesToGlb() + FlushBufferViews() + FlushImagesGlb()).
+//   Reason: has unbindable types: param 'theWriter': raw pointer (RWGltf_GltfOStreamWriter*)
+//   // pub fn add_images(&mut self, theWriter: /* RWGltf_GltfOStreamWriter* */, theStyle: &Style, theIsStarted: &mut bool);
+//
+// SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:57 - `RWGltf_GltfMaterialMap::AddMaterial`
+//   method: Add material.
+//   Reason: has unbindable types: param 'theWriter': raw pointer (RWGltf_GltfOStreamWriter*)
+//   // pub fn add_material(&mut self, theWriter: /* RWGltf_GltfOStreamWriter* */, theStyle: &Style, theIsStarted: &mut bool);
+//
+// SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:61 - `RWGltf_GltfMaterialMap::AddTextures`
+//   method: Add material textures.
+//   Reason: has unbindable types: param 'theWriter': raw pointer (RWGltf_GltfOStreamWriter*)
+//   // pub fn add_textures(&mut self, theWriter: /* RWGltf_GltfOStreamWriter* */, theStyle: &Style, theIsStarted: &mut bool);
+//
+// SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:73 - `RWGltf_GltfMaterialMap::baseColorTexture`
+//   static_method: Return base color texture.
+//   Reason: param 'theMat' uses unknown type 'const Handle(XCAFDoc_VisMaterial)&'
+//   // pub fn base_color_texture(theMat: &HandleVisMaterial) -> &HandleTexture;
+//
 
 // ========================
 // From RWGltf_GltfPrimArrayData.hxx
@@ -1944,3 +1992,12 @@ impl TriangulationReader {
         }
     }
 }
+
+// ── Skipped symbols for TriangulationReader (1 total) ──
+// SKIPPED: **Source:** `RWGltf_TriangulationReader.hxx`:36 - `RWGltf_TriangulationReader::LoadStreamData`
+//   method: Loads only primitive arrays saved as stream buffer
+//   method: (it is primarily glTF data encoded in base64 saved to temporary buffer during glTF file
+//   method: reading).
+//   Reason: param 'theSourceMesh' uses unknown type 'const Handle(RWMesh_TriangulationSource)&'
+//   // pub fn load_stream_data(&self, theSourceMesh: &HandleTriangulationSource, theDestMesh: &HandleTriangulation) -> bool;
+//

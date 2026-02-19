@@ -79,6 +79,16 @@ impl Tool {
     }
 }
 
+// ── Skipped symbols for Tool (2 total) ──
+// SKIPPED: **Source:** `BRepTopAdaptor_Tool.hxx`:41 - `BRepTopAdaptor_Tool::GetTopolTool`
+//   Reason: return type 'Handle(BRepTopAdaptor_TopolTool)' is unknown
+//   // pub fn get_topol_tool(&mut self) -> OwnedPtr<Handle<BRepTopAdaptor_TopolTool>>;
+//
+// SKIPPED: **Source:** `BRepTopAdaptor_Tool.hxx`:43 - `BRepTopAdaptor_Tool::SetTopolTool`
+//   Reason: param 'TT' uses unknown type 'const Handle(BRepTopAdaptor_TopolTool)&'
+//   // pub fn set_topol_tool(&mut self, TT: &HandleTopolTool);
+//
+
 // ========================
 // Additional type re-exports
 // ========================

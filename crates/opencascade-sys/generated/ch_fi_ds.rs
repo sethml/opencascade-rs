@@ -954,6 +954,12 @@ impl HandleChFiDSHData {
     }
 }
 
+// ── Skipped symbols for HData (1 total) ──
+// SKIPPED: **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
+
 // ========================
 // From ChFiDS_Map.hxx
 // ========================
@@ -1656,6 +1662,28 @@ impl HandleChFiDSSpine {
         unsafe { &mut *(crate::ffi::HandleChFiDSSpine_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Spine (5 total) ──
+// SKIPPED: **Source:** `ChFiDS_Spine.hxx`:103 - `ChFiDS_Spine::AppendElSpine`
+//   Reason: param 'Els' uses unknown type 'const Handle(ChFiDS_ElSpine)&'
+//   // pub fn append_el_spine(&mut self, Els: &HandleElSpine);
+//
+// SKIPPED: **Source:** `ChFiDS_Spine.hxx`:105 - `ChFiDS_Spine::AppendOffsetElSpine`
+//   Reason: param 'Els' uses unknown type 'const Handle(ChFiDS_ElSpine)&'
+//   // pub fn append_offset_el_spine(&mut self, Els: &HandleElSpine);
+//
+// SKIPPED: **Source:** `ChFiDS_Spine.hxx`:107 - `ChFiDS_Spine::ElSpine`
+//   Reason: return type 'Handle(ChFiDS_ElSpine)' is unknown
+//   // pub fn el_spine(&self, IE: i32) -> OwnedPtr<Handle<ChFiDS_ElSpine>>;
+//
+// SKIPPED: **Source:** `ChFiDS_Spine.hxx`:109 - `ChFiDS_Spine::ElSpine`
+//   Reason: return type 'Handle(ChFiDS_ElSpine)' is unknown
+//   // pub fn el_spine(&self, E: &Edge) -> OwnedPtr<Handle<ChFiDS_ElSpine>>;
+//
+// SKIPPED: **Source:** `ChFiDS_Spine.hxx`:111 - `ChFiDS_Spine::ElSpine`
+//   Reason: return type 'Handle(ChFiDS_ElSpine)' is unknown
+//   // pub fn el_spine(&self, W: f64) -> OwnedPtr<Handle<ChFiDS_ElSpine>>;
+//
 
 // ========================
 // From ChFiDS_Stripe.hxx
@@ -2458,6 +2486,20 @@ impl HandleChFiDSSurfData {
         unsafe { &mut *(crate::ffi::HandleChFiDSSurfData_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for SurfData (3 total) ──
+// SKIPPED: **Source:** `ChFiDS_SurfData.hxx`:81 - `ChFiDS_SurfData::ChangeOrientation`
+//   Reason: return type is &mut enum (not representable in extern "C")
+//   // pub fn change_orientation(&mut self) -> &mut Orientation;
+//
+// SKIPPED: **Source:** `ChFiDS_SurfData.hxx`:131 - `ChFiDS_SurfData::Simul`
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn simul(&self) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `ChFiDS_SurfData.hxx`:133 - `ChFiDS_SurfData::SetSimul`
+//   Reason: param 'S' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn set_simul(&mut self, S: &HandleTransient);
+//
 
 // ========================
 // Additional type re-exports

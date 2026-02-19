@@ -344,6 +344,18 @@ impl GeomEntity {
     }
 }
 
+// ── Skipped symbols for GeomEntity (2 total) ──
+// SKIPPED: **Source:** `GeomToIGES_GeomEntity.hxx`:41 - `GeomToIGES_GeomEntity::SetModel`
+//   method: Set the value of "TheModel"
+//   Reason: param 'model' uses unknown type 'const Handle(IGESData_IGESModel)&'
+//   // pub fn set_model(&mut self, model: &HandleIGESModel);
+//
+// SKIPPED: **Source:** `GeomToIGES_GeomEntity.hxx`:44 - `GeomToIGES_GeomEntity::GetModel`
+//   method: Returns the value of "TheModel"
+//   Reason: return type 'Handle(IGESData_IGESModel)' is unknown
+//   // pub fn get_model(&self) -> OwnedPtr<Handle<IGESData_IGESModel>>;
+//
+
 // ========================
 // From GeomToIGES_GeomPoint.hxx
 // ========================
@@ -398,6 +410,20 @@ impl GeomPoint {
         unsafe { crate::ffi::GeomToIGES_GeomPoint_inherited_GetUnit(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for GeomPoint (2 total) ──
+// SKIPPED: **Source:** `GeomToIGES_GeomPoint.hxx`:46 - `GeomToIGES_GeomPoint::TransferPoint`
+//   method: Transfert  a  Point from Geom to IGES. If this
+//   method: Entity could not be converted, this member returns a NullEntity.
+//   Reason: return type 'Handle(IGESGeom_Point)' is unknown
+//   // pub fn transfer_point(&mut self, start: &HandlePoint) -> OwnedPtr<Handle<IGESGeom_Point>>;
+//
+// SKIPPED: **Source:** `GeomToIGES_GeomPoint.hxx`:50 - `GeomToIGES_GeomPoint::TransferPoint`
+//   method: Transfert  a  CartesianPoint from Geom to IGES. If this
+//   method: Entity could not be converted, this member returns a NullEntity.
+//   Reason: return type 'Handle(IGESGeom_Point)' is unknown
+//   // pub fn transfer_point(&mut self, start: &HandleCartesianPoint) -> OwnedPtr<Handle<IGESGeom_Point>>;
+//
 
 // ========================
 // From GeomToIGES_GeomSurface.hxx
@@ -958,3 +984,20 @@ impl GeomVector {
         unsafe { crate::ffi::GeomToIGES_GeomVector_inherited_GetUnit(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for GeomVector (3 total) ──
+// SKIPPED: **Source:** `GeomToIGES_GeomVector.hxx`:49 - `GeomToIGES_GeomVector::TransferVector`
+//   method: Transfert  a  GeometryEntity which  answer True  to  the
+//   method: member : BRepToIGES::IsGeomVector(Geometry).  If this
+//   method: Entity could not be converted, this member returns a NullEntity.
+//   Reason: return type 'Handle(IGESGeom_Direction)' is unknown
+//   // pub fn transfer_vector(&mut self, start: &HandleVector) -> OwnedPtr<Handle<IGESGeom_Direction>>;
+//
+// SKIPPED: **Source:** `GeomToIGES_GeomVector.hxx`:51 - `GeomToIGES_GeomVector::TransferVector`
+//   Reason: return type 'Handle(IGESGeom_Direction)' is unknown
+//   // pub fn transfer_vector(&mut self, start: &HandleVectorWithMagnitude) -> OwnedPtr<Handle<IGESGeom_Direction>>;
+//
+// SKIPPED: **Source:** `GeomToIGES_GeomVector.hxx`:54 - `GeomToIGES_GeomVector::TransferVector`
+//   Reason: return type 'Handle(IGESGeom_Direction)' is unknown
+//   // pub fn transfer_vector(&mut self, start: &HandleDirection) -> OwnedPtr<Handle<IGESGeom_Direction>>;
+//

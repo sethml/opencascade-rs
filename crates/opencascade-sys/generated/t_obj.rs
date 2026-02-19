@@ -352,6 +352,38 @@ impl Application {
     }
 }
 
+// ── Skipped symbols for Application (6 total) ──
+// SKIPPED: **Source:** `TObj_Application.hxx`:44 - `TObj_Application::SaveDocument`
+//   method: Saving the OCAF document to a file
+//   Reason: param 'theSourceDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn save_document(&mut self, theSourceDoc: &HandleDocument, theTargetFile: &ExtendedString) -> bool;
+//
+// SKIPPED: **Source:** `TObj_Application.hxx`:49 - `TObj_Application::SaveDocument`
+//   method: Saving the OCAF document to a stream
+//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
+//   // pub fn save_document(&mut self, theSourceDoc: &HandleDocument, theOStream: /* Standard_OStream& */) -> bool;
+//
+// SKIPPED: **Source:** `TObj_Application.hxx`:54 - `TObj_Application::LoadDocument`
+//   method: Loading the OCAF document from a file
+//   Reason: param 'theTargetDoc' uses unknown type 'Handle(TDocStd_Document)&'
+//   // pub fn load_document(&mut self, theSourceFile: &ExtendedString, theTargetDoc: &mut HandleDocument) -> bool;
+//
+// SKIPPED: **Source:** `TObj_Application.hxx`:59 - `TObj_Application::LoadDocument`
+//   method: Loading the OCAF document from a stream
+//   Reason: has unbindable types: param 'theIStream': stream type (Standard_IStream&)
+//   // pub fn load_document(&mut self, theIStream: /* Standard_IStream& */, theTargetDoc: &mut HandleDocument) -> bool;
+//
+// SKIPPED: **Source:** `TObj_Application.hxx`:64 - `TObj_Application::CreateNewDocument`
+//   method: Create the OCAF document from scratch
+//   Reason: param 'theDoc' uses unknown type 'Handle(TDocStd_Document)&'
+//   // pub fn create_new_document(&mut self, theDoc: &mut HandleDocument, theFormat: &ExtendedString) -> bool;
+//
+// SKIPPED: **Source:** `TObj_Application.hxx`:33 - `TObj_Application::GetInstance`
+//   static_method: Returns static instance of the application
+//   Reason: return type 'Handle(TObj_Application)' is unknown
+//   // pub fn get_instance() -> OwnedPtr<Handle<TObj_Application>>;
+//
+
 // ========================
 // From TObj_Assistant.hxx
 // ========================
@@ -1202,6 +1234,14 @@ impl LabelIterator {
     }
 }
 
+// ── Skipped symbols for LabelIterator (1 total) ──
+// SKIPPED: **Source:** `TObj_LabelIterator.hxx`:49 - `TObj_LabelIterator::TObj_LabelIterator`
+//   constructor: Creates an iterator an initialize it by theLabel and recursive flag.
+//   constructor: If isRecursive is Standard_True make recursive iterations
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new_label_bool(theLabel: &Label, isRecursive: bool) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From TObj_Model.hxx
 // ========================
@@ -1456,6 +1496,73 @@ impl HandleTObjModel {
         unsafe { &mut *(crate::ffi::HandleTObjModel_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Model (12 total) ──
+// SKIPPED: **Source:** `TObj_Model.hxx`:91 - `TObj_Model::Load`
+//   method: Load the OCAF model from a stream. If case of failure,
+//   method: it initializes the model by empty data.
+//   Reason: has unbindable types: param 'theIStream': stream type (Standard_IStream&)
+//   // pub fn load(&mut self, theIStream: /* Standard_IStream& */) -> bool;
+//
+// SKIPPED: **Source:** `TObj_Model.hxx`:97 - `TObj_Model::SaveAs`
+//   method: Save the model to a stream
+//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
+//   // pub fn save_as(&mut self, theOStream: /* Standard_OStream& */) -> bool;
+//
+// SKIPPED: **Source:** `TObj_Model.hxx`:111 - `TObj_Model::CloseDocument`
+//   method: Close Free OCAF document
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn close_document(&mut self, theDoc: &HandleDocument);
+//
+// SKIPPED: **Source:** `TObj_Model.hxx`:133 - `TObj_Model::FindObject`
+//   method: Returns an Object by given Name (or Null if not found).
+//   Reason: param 'theDictionary' uses unknown type 'const Handle(TObj_TNameContainer)&'
+//   // pub fn find_object(&self, theName: &HandleHExtendedString, theDictionary: &HandleTNameContainer) -> OwnedPtr<Handle<TObj_Object>>;
+//
+// SKIPPED: **Source:** `TObj_Model.hxx`:139 - `TObj_Model::GetChecker`
+//   method: Returns the tool checking model consistency.
+//   method: Descendant may redefine it to return its own tool.
+//   Reason: return type 'Handle(TObj_CheckModel)' is unknown
+//   // pub fn get_checker(&self) -> OwnedPtr<Handle<TObj_CheckModel>>;
+//
+// SKIPPED: **Source:** `TObj_Model.hxx`:150 - `TObj_Model::GetMainPartition`
+//   method: Returns root object of model
+//   Reason: return type 'Handle(TObj_Partition)' is unknown
+//   // pub fn get_main_partition(&self) -> OwnedPtr<Handle<TObj_Partition>>;
+//
+// SKIPPED: **Source:** `TObj_Model.hxx`:174 - `TObj_Model::IsRegisteredName`
+//   method: Returns True is name is registered in the names map
+//   method: The input argument may be NULL handle, then model check in own global container
+//   Reason: param 'theDictionary' uses unknown type 'const Handle(TObj_TNameContainer)&'
+//   // pub fn is_registered_name(&self, theName: &HandleHExtendedString, theDictionary: &HandleTNameContainer) -> bool;
+//
+// SKIPPED: **Source:** `TObj_Model.hxx`:179 - `TObj_Model::RegisterName`
+//   method: Register name in the map
+//   method: The input argument may be NULL handle, then model check in own global container
+//   Reason: param 'theDictionary' uses unknown type 'const Handle(TObj_TNameContainer)&'
+//   // pub fn register_name(&self, theName: &HandleHExtendedString, theLabel: &Label, theDictionary: &HandleTNameContainer);
+//
+// SKIPPED: **Source:** `TObj_Model.hxx`:185 - `TObj_Model::UnRegisterName`
+//   method: Unregisters name from the map
+//   method: The input argument may be NULL handle, then model check in own global container
+//   Reason: param 'theDictionary' uses unknown type 'const Handle(TObj_TNameContainer)&'
+//   // pub fn un_register_name(&self, theName: &HandleHExtendedString, theDictionary: &HandleTNameContainer);
+//
+// SKIPPED: **Source:** `TObj_Model.hxx`:220 - `TObj_Model::GetApplication`
+//   method: Returns handle to static instance of the relevant application class
+//   Reason: return type 'Handle(TObj_Application)' is unknown
+//   // pub fn get_application(&mut self) -> OwnedPtr<Handle<TObj_Application>>;
+//
+// SKIPPED: **Source:** `TObj_Model.hxx`:265 - `TObj_Model::GetDictionary`
+//   method: Returns the map of names of the objects
+//   Reason: return type 'Handle(TObj_TNameContainer)' is unknown
+//   // pub fn get_dictionary(&self) -> OwnedPtr<Handle<TObj_TNameContainer>>;
+//
+// SKIPPED: **Source:** `TObj_Model.hxx`:294 - `TObj_Model::GetDocument`
+//   method: Returns OCAF document of Model
+//   Reason: return type 'Handle(TDocStd_Document)' is unknown
+//   // pub fn get_document(&self) -> OwnedPtr<Handle<TDocStd_Document>>;
+//
 
 // ========================
 // From TObj_ModelIterator.hxx
@@ -2080,6 +2187,19 @@ impl HandleTObjObject {
         unsafe { &mut *(crate::ffi::HandleTObjObject_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Object (2 total) ──
+// SKIPPED: **Source:** `TObj_Object.hxx`:160 - `TObj_Object::GetDictionary`
+//   method: Returns the map of names of the objects
+//   method: Default implementation returns global Dictionary of the model
+//   Reason: return type 'Handle(TObj_TNameContainer)' is unknown
+//   // pub fn get_dictionary(&self) -> OwnedPtr<Handle<TObj_TNameContainer>>;
+//
+// SKIPPED: **Source:** `TObj_Object.hxx`:355 - `TObj_Object::SetOrder`
+//   method: sets order of object
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_order(&mut self, theIndx: &i32) -> bool;
+//
 
 // ========================
 // From TObj_ObjectIterator.hxx
@@ -2798,6 +2918,19 @@ impl Partition {
     }
 }
 
+// ── Skipped symbols for Partition (2 total) ──
+// SKIPPED: **Source:** `TObj_Partition.hxx`:55 - `TObj_Partition::Create`
+//   static_method: Creates a new partition on given label.
+//   Reason: return type 'Handle(TObj_Partition)' is unknown
+//   // pub fn create(theLabel: &Label, theSetName: bool) -> OwnedPtr<Handle<TObj_Partition>>;
+//
+// SKIPPED: **Source:** `TObj_Partition.hxx`:110 - `TObj_Partition::GetPartition`
+//   static_method: Returns the partition in which object is stored. Null partition
+//   static_method: returned if not found
+//   Reason: return type 'Handle(TObj_Partition)' is unknown
+//   // pub fn get_partition(theObject: &HandleObject) -> OwnedPtr<Handle<TObj_Partition>>;
+//
+
 // ========================
 // From TObj_Persistence.hxx
 // ========================
@@ -2830,6 +2963,14 @@ impl Persistence {
         }
     }
 }
+
+// ── Skipped symbols for Persistence (1 total) ──
+// SKIPPED: **Source:** `TObj_Persistence.hxx`:49 - `TObj_Persistence::DumpTypes`
+//   static_method: Dumps names of all the types registered for persistence to the
+//   static_method: specified stream
+//   Reason: has unbindable types: param 'theOs': stream type (Standard_OStream&)
+//   // pub fn dump_types(theOs: /* Standard_OStream& */);
+//
 
 // ========================
 // From TObj_ReferenceIterator.hxx
@@ -3125,6 +3266,12 @@ impl HandleTObjHSequenceOfObject {
         unsafe { &mut *(crate::ffi::HandleTObjHSequenceOfObject_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for HSequenceOfObject (1 total) ──
+// SKIPPED: **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
 
 // ========================
 // From TObj_TIntSparseArray.hxx
@@ -3449,6 +3596,23 @@ impl TIntSparseArray {
         }
     }
 }
+
+// ── Skipped symbols for TIntSparseArray (3 total) ──
+// SKIPPED: **Source:** `TObj_TIntSparseArray.hxx`:59 - `TObj_TIntSparseArray::GetIterator`
+//   method: Returns iterator on objects contained in the set
+//   Reason: excluded by bindings.toml
+//   // pub fn get_iterator(&self) -> i32;
+//
+// SKIPPED: **Source:** `TObj_TIntSparseArray.hxx`:102 - `TObj_TIntSparseArray::DeltaOnModification`
+//   method: Applies theDelta to this.
+//   Reason: param 'theDelta' uses unknown type 'const Handle(TDF_DeltaOnModification)&'
+//   // pub fn delta_on_modification(&mut self, theDelta: &HandleDeltaOnModification);
+//
+// SKIPPED: **Source:** `TObj_TIntSparseArray.hxx`:48 - `TObj_TIntSparseArray::Set`
+//   static_method: Creates TObj_TIntSparseArray attribute on given label.
+//   Reason: return type 'Handle(TObj_TIntSparseArray)' is unknown
+//   // pub fn set(theLabel: &Label) -> OwnedPtr<Handle<TObj_TIntSparseArray>>;
+//
 
 // ========================
 // From TObj_TModel.hxx
@@ -4013,6 +4177,23 @@ impl TNameContainer {
     }
 }
 
+// ── Skipped symbols for TNameContainer (3 total) ──
+// SKIPPED: **Source:** `TObj_TNameContainer.hxx`:70 - `TObj_TNameContainer::Set`
+//   method: Sets the TObj_DataMapOfNameLabel object
+//   Reason: param 'theElem' uses unknown type 'const TObj_DataMapOfNameLabel&'
+//   // pub fn set(&mut self, theElem: &DataMapOfNameLabel);
+//
+// SKIPPED: **Source:** `TObj_TNameContainer.hxx`:73 - `TObj_TNameContainer::Get`
+//   method: Returns the TObj_DataMapOfNameLabel object
+//   Reason: return type 'const TObj_DataMapOfNameLabel&' is unknown
+//   // pub fn get(&self) -> &DataMapOfNameLabel;
+//
+// SKIPPED: **Source:** `TObj_TNameContainer.hxx`:47 - `TObj_TNameContainer::Set`
+//   static_method: Creates TObj_DataMapOfNameLabel attribute on given label if not exist
+//   Reason: return type 'Handle(TObj_TNameContainer)' is unknown
+//   // pub fn set(theLabel: &Label) -> OwnedPtr<Handle<TObj_TNameContainer>>;
+//
+
 // ========================
 // From TObj_TObject.hxx
 // ========================
@@ -4277,6 +4458,13 @@ impl TObject {
         unsafe { crate::ffi::TObj_TObject_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for TObject (1 total) ──
+// SKIPPED: **Source:** `TObj_TObject.hxx`:53 - `TObj_TObject::Set`
+//   static_method: Creates TObj_TObject attribute on given label
+//   Reason: return type 'Handle(TObj_TObject)' is unknown
+//   // pub fn set(theLabel: &Label, theElem: &HandleObject) -> OwnedPtr<Handle<TObj_TObject>>;
+//
 
 // ========================
 // From TObj_TReference.hxx
@@ -4587,6 +4775,14 @@ impl TReference {
     }
 }
 
+// ── Skipped symbols for TReference (1 total) ──
+// SKIPPED: **Source:** `TObj_TReference.hxx`:55 - `TObj_TReference::Set`
+//   static_method: Creates reference on TDF_Label <theLabel> to the object <theObject> and
+//   static_method: creates backreference from the object <theObject> to <theMaster> one.
+//   Reason: return type 'Handle(TObj_TReference)' is unknown
+//   // pub fn set(theLabel: &Label, theObject: &HandleObject, theMaster: &HandleObject) -> OwnedPtr<Handle<TObj_TReference>>;
+//
+
 // ========================
 // From TObj_TXYZ.hxx
 // ========================
@@ -4838,6 +5034,18 @@ impl TXYZ {
         unsafe { crate::ffi::TObj_TXYZ_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for TXYZ (2 total) ──
+// SKIPPED: **Source:** `TObj_TXYZ.hxx`:77 - `TObj_TXYZ::Dump`
+//   method: This method dumps the attribute value into the stream
+//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, theOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TObj_TXYZ.hxx`:49 - `TObj_TXYZ::Set`
+//   static_method: Creates attribute and sets the XYZ
+//   Reason: return type 'Handle(TObj_TXYZ)' is unknown
+//   // pub fn set(theLabel: &Label, theXYZ: &XYZ) -> OwnedPtr<Handle<TObj_TXYZ>>;
+//
 
 // ========================
 // Additional type re-exports

@@ -1513,6 +1513,66 @@ impl Color {
     }
 }
 
+// ── Skipped symbols for Color (11 total) ──
+// SKIPPED: **Source:** `Quantity_Color.hxx`:242 - `Quantity_Color::Convert_sRGB_To_HLS`
+//   static_method: Converts sRGB components into HLS ones.
+//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
+//   // pub fn convert_s_rgb_to_hls(theRgb: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//
+// SKIPPED: **Source:** `Quantity_Color.hxx`:246 - `Quantity_Color::Convert_HLS_To_sRGB`
+//   static_method: Converts HLS components into RGB ones.
+//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
+//   // pub fn convert_hls_to_s_rgb(theHls: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//
+// SKIPPED: **Source:** `Quantity_Color.hxx`:250 - `Quantity_Color::Convert_LinearRGB_To_HLS`
+//   static_method: Converts Linear RGB components into HLS ones.
+//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
+//   // pub fn convert_linear_rgb_to_hls(theRgb: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//
+// SKIPPED: **Source:** `Quantity_Color.hxx`:256 - `Quantity_Color::Convert_HLS_To_LinearRGB`
+//   static_method: Converts HLS components into linear RGB ones.
+//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
+//   // pub fn convert_hls_to_linear_rgb(theHls: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//
+// SKIPPED: **Source:** `Quantity_Color.hxx`:262 - `Quantity_Color::Convert_LinearRGB_To_Lab`
+//   static_method: Converts linear RGB components into CIE Lab ones.
+//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
+//   // pub fn convert_linear_rgb_to_lab(theRgb: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//
+// SKIPPED: **Source:** `Quantity_Color.hxx`:266 - `Quantity_Color::Convert_Lab_To_Lch`
+//   static_method: Converts CIE Lab components into CIE Lch ones.
+//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
+//   // pub fn convert_lab_to_lch(theLab: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//
+// SKIPPED: **Source:** `Quantity_Color.hxx`:271 - `Quantity_Color::Convert_Lab_To_LinearRGB`
+//   static_method: Converts CIE Lab components into linear RGB ones.
+//   static_method: Note that the resulting values may be out of the valid range for RGB.
+//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
+//   // pub fn convert_lab_to_linear_rgb(theLab: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//
+// SKIPPED: **Source:** `Quantity_Color.hxx`:275 - `Quantity_Color::Convert_Lch_To_Lab`
+//   static_method: Converts CIE Lch components into CIE Lab ones.
+//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
+//   // pub fn convert_lch_to_lab(theLch: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//
+// SKIPPED: **Source:** `Quantity_Color.hxx`:284 - `Quantity_Color::Color2argb`
+//   static_method: Convert the color value to ARGB integer value, with alpha equals to 0.
+//   static_method: So the output is formatted as 0x00RRGGBB.
+//   static_method: Note that this unpacking does NOT involve non-linear sRGB -> linear RGB conversion,
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn color2argb(theColor: &Color, theARGB: &mut i32);
+//
+// SKIPPED: **Source:** `Quantity_Color.hxx`:371 - `Quantity_Color::Convert_LinearRGB_To_sRGB_approx22`
+//   static_method: Convert linear RGB components into sRGB using approximated uniform gamma coefficient 2.2
+//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
+//   // pub fn convert_linear_rgb_to_s_rgb_approx22(theRGB: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//
+// SKIPPED: **Source:** `Quantity_Color.hxx`:380 - `Quantity_Color::Convert_sRGB_To_LinearRGB_approx22`
+//   static_method: Convert sRGB components into linear RGB using approximated uniform gamma coefficient 2.2
+//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
+//   // pub fn convert_s_rgb_to_linear_rgb_approx22(theRGB: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//
+
 // ========================
 // From Quantity_ColorRGBA.hxx
 // ========================
@@ -1679,6 +1739,18 @@ impl ColorRGBA {
         }
     }
 }
+
+// ── Skipped symbols for ColorRGBA (2 total) ──
+// SKIPPED: **Source:** `Quantity_ColorRGBA.hxx`:154 - `Quantity_ColorRGBA::Convert_LinearRGB_To_sRGB`
+//   static_method: Convert linear RGB components into sRGB using OpenGL specs formula.
+//   Reason: return type 'Graphic3d_Vec4' is not CppDeletable
+//   // pub fn convert_linear_rgb_to_s_rgb(theRGB: &Vec4) -> OwnedPtr<Graphic3d_Vec4>;
+//
+// SKIPPED: **Source:** `Quantity_ColorRGBA.hxx`:163 - `Quantity_ColorRGBA::Convert_sRGB_To_LinearRGB`
+//   static_method: Convert sRGB components into linear RGB using OpenGL specs formula.
+//   Reason: return type 'Graphic3d_Vec4' is not CppDeletable
+//   // pub fn convert_s_rgb_to_linear_rgb(theRGB: &Vec4) -> OwnedPtr<Graphic3d_Vec4>;
+//
 
 // ========================
 // From Quantity_Date.hxx
@@ -1975,6 +2047,15 @@ impl Date {
     }
 }
 
+// ── Skipped symbols for Date (1 total) ──
+// SKIPPED: **Source:** `Quantity_Date.hxx`:79 - `Quantity_Date::Values`
+//   method: Gets a complete Date.
+//   method: -   in mm - the month,
+//   method: -   in dd - the day,
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn values(&self, mm: &mut i32, dd: &mut i32, yy: &mut i32, hh: &mut i32, mn: &mut i32, ss: &mut i32, mis: &mut i32, mics: &mut i32);
+//
+
 // ========================
 // From Quantity_DateDefinitionError.hxx
 // ========================
@@ -2041,6 +2122,20 @@ impl DateDefinitionError {
         unsafe { &*(crate::ffi::Quantity_DateDefinitionError_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for DateDefinitionError (3 total) ──
+// SKIPPED: **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::NewInstance`
+//   Reason: return type 'Handle(Quantity_DateDefinitionError)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Quantity_DateDefinitionError>>;
+//
+// SKIPPED: **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::NewInstance`
+//   Reason: return type 'Handle(Quantity_DateDefinitionError)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Quantity_DateDefinitionError>>;
+//
 
 // ========================
 // From Quantity_HArray1OfColor.hxx
@@ -2330,6 +2425,22 @@ impl Period {
     }
 }
 
+// ── Skipped symbols for Period (2 total) ──
+// SKIPPED: **Source:** `Quantity_Period.hxx`:66 - `Quantity_Period::Values`
+//   method: Decomposes this period into a number of days,hours,
+//   method: minutes,seconds,milliseconds and microseconds
+//   method: Example of return values:
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn values(&self, dd: &mut i32, hh: &mut i32, mn: &mut i32, ss: &mut i32, mis: &mut i32, mics: &mut i32);
+//
+// SKIPPED: **Source:** `Quantity_Period.hxx`:76 - `Quantity_Period::Values`
+//   method: Returns the number of seconds in Ss and the
+//   method: number of remainding microseconds in Mics of this period.
+//   method: Example of return values: 3600 seconds and 0 microseconds
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn values(&self, ss: &mut i32, mics: &mut i32);
+//
+
 // ========================
 // From Quantity_PeriodDefinitionError.hxx
 // ========================
@@ -2396,6 +2507,20 @@ impl PeriodDefinitionError {
         unsafe { &*(crate::ffi::Quantity_PeriodDefinitionError_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for PeriodDefinitionError (3 total) ──
+// SKIPPED: **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::NewInstance`
+//   Reason: return type 'Handle(Quantity_PeriodDefinitionError)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Quantity_PeriodDefinitionError>>;
+//
+// SKIPPED: **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::NewInstance`
+//   Reason: return type 'Handle(Quantity_PeriodDefinitionError)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Quantity_PeriodDefinitionError>>;
+//
 
 // ========================
 // Additional type re-exports

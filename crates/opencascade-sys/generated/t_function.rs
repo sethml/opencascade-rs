@@ -131,6 +131,29 @@ impl HandleTFunctionDriver {
     }
 }
 
+// ── Skipped symbols for Driver (3 total) ──
+// SKIPPED: **Source:** `TFunction_Driver.hxx`:59 - `TFunction_Driver::Validate`
+//   method: Validates labels of a function  in <log>.
+//   method: This function is the one initialized in this function driver.
+//   method: Warning
+//   Reason: param 'log' uses unknown type 'Handle(TFunction_Logbook)&'
+//   // pub fn validate(&self, log: &mut HandleLogbook);
+//
+// SKIPPED: **Source:** `TFunction_Driver.hxx`:64 - `TFunction_Driver::MustExecute`
+//   method: Analyzes the labels in the logbook log.
+//   method: Returns true if attributes have been modified.
+//   method: If the function label itself has been modified, the function must be executed.
+//   Reason: param 'log' uses unknown type 'const Handle(TFunction_Logbook)&'
+//   // pub fn must_execute(&self, log: &HandleLogbook) -> bool;
+//
+// SKIPPED: **Source:** `TFunction_Driver.hxx`:70 - `TFunction_Driver::Execute`
+//   method: Executes the function in this function driver and
+//   method: puts the impacted labels in the logbook log.
+//   method: arguments & results of functions
+//   Reason: param 'log' uses unknown type 'Handle(TFunction_Logbook)&'
+//   // pub fn execute(&self, log: &mut HandleLogbook) -> i32;
+//
+
 // ========================
 // From TFunction_DriverTable.hxx
 // ========================
@@ -253,6 +276,12 @@ impl HandleTFunctionDriverTable {
         unsafe { &mut *(crate::ffi::HandleTFunctionDriverTable_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for DriverTable (1 total) ──
+// SKIPPED: **Source:** `TFunction_DriverTable.hxx`:61 - `TFunction_DriverTable::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
 
 // ========================
 // From TFunction_Function.hxx
@@ -549,6 +578,26 @@ impl Function {
         unsafe { crate::ffi::TFunction_Function_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Function (3 total) ──
+// SKIPPED: **Source:** `TFunction_Function.hxx`:93 - `TFunction_Function::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TFunction_Function.hxx`:46 - `TFunction_Function::Set`
+//   static_method: Static methods:
+//   static_method: ==============
+//   static_method: Finds or Creates a function attribute on the label <L>.
+//   Reason: return type 'Handle(TFunction_Function)' is unknown
+//   // pub fn set(L: &Label) -> OwnedPtr<Handle<TFunction_Function>>;
+//
+// SKIPPED: **Source:** `TFunction_Function.hxx`:51 - `TFunction_Function::Set`
+//   static_method: Finds or Creates a function attribute on the label <L>.
+//   static_method: Sets a driver ID to the function.
+//   static_method: Returns the function attribute.
+//   Reason: return type 'Handle(TFunction_Function)' is unknown
+//   // pub fn set(L: &Label, DriverID: &GUID) -> OwnedPtr<Handle<TFunction_Function>>;
+//
 
 // ========================
 // From TFunction_GraphNode.hxx
@@ -904,6 +953,19 @@ impl GraphNode {
     }
 }
 
+// ── Skipped symbols for GraphNode (2 total) ──
+// SKIPPED: **Source:** `TFunction_GraphNode.hxx`:110 - `TFunction_GraphNode::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TFunction_GraphNode.hxx`:44 - `TFunction_GraphNode::Set`
+//   static_method: Static methods
+//   static_method: ==============
+//   static_method: Finds or Creates a graph node attribute at the label <L>.
+//   Reason: return type 'Handle(TFunction_GraphNode)' is unknown
+//   // pub fn set(L: &Label) -> OwnedPtr<Handle<TFunction_GraphNode>>;
+//
+
 // ========================
 // From TFunction_HArray1OfDataMapOfGUIDDriver.hxx
 // ========================
@@ -1181,6 +1243,23 @@ impl IFunction {
     }
 }
 
+// ── Skipped symbols for IFunction (3 total) ──
+// SKIPPED: **Source:** `TFunction_IFunction.hxx`:92 - `TFunction_IFunction::GetAllFunctions`
+//   method: Returns the scope of all functions.
+//   Reason: return type 'const TFunction_DoubleMapOfIntegerLabel&' is unknown
+//   // pub fn get_all_functions(&self) -> &DoubleMapOfIntegerLabel;
+//
+// SKIPPED: **Source:** `TFunction_IFunction.hxx`:95 - `TFunction_IFunction::GetLogbook`
+//   method: Returns the Logbook - keeper of modifications.
+//   Reason: return type 'Handle(TFunction_Logbook)' is unknown
+//   // pub fn get_logbook(&self) -> OwnedPtr<Handle<TFunction_Logbook>>;
+//
+// SKIPPED: **Source:** `TFunction_IFunction.hxx`:101 - `TFunction_IFunction::GetGraphNode`
+//   method: Returns a graph node of the function.
+//   Reason: return type 'Handle(TFunction_GraphNode)' is unknown
+//   // pub fn get_graph_node(&self) -> OwnedPtr<Handle<TFunction_GraphNode>>;
+//
+
 // ========================
 // From TFunction_Iterator.hxx
 // ========================
@@ -1285,6 +1364,12 @@ impl Iterator {
         }
     }
 }
+
+// ── Skipped symbols for Iterator (1 total) ──
+// SKIPPED: **Source:** `TFunction_Iterator.hxx`:84 - `TFunction_Iterator::Dump`
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, OS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
 
 // ========================
 // From TFunction_Logbook.hxx
@@ -1591,6 +1676,43 @@ impl Logbook {
     }
 }
 
+// ── Skipped symbols for Logbook (7 total) ──
+// SKIPPED: **Source:** `TFunction_Logbook.hxx`:74 - `TFunction_Logbook::SetValid`
+//   Reason: param 'Ls' uses unknown type 'const TDF_LabelMap&'
+//   // pub fn set_valid(&mut self, Ls: &LabelMap);
+//
+// SKIPPED: **Source:** `TFunction_Logbook.hxx`:85 - `TFunction_Logbook::GetTouched`
+//   method: Returns the map of touched labels in this logbook.
+//   method: A touched label is the one modified by the end user.
+//   Reason: return type 'const TDF_LabelMap&' is unknown
+//   // pub fn get_touched(&self) -> &LabelMap;
+//
+// SKIPPED: **Source:** `TFunction_Logbook.hxx`:88 - `TFunction_Logbook::GetImpacted`
+//   method: Returns the map of impacted labels contained in this logbook.
+//   Reason: return type 'const TDF_LabelMap&' is unknown
+//   // pub fn get_impacted(&self) -> &LabelMap;
+//
+// SKIPPED: **Source:** `TFunction_Logbook.hxx`:91 - `TFunction_Logbook::GetValid`
+//   method: Returns the map of valid labels in this logbook.
+//   Reason: return type 'const TDF_LabelMap&' is unknown
+//   // pub fn get_valid(&self) -> &LabelMap;
+//
+// SKIPPED: **Source:** `TFunction_Logbook.hxx`:92 - `TFunction_Logbook::GetValid`
+//   Reason: param 'Ls' uses unknown type 'TDF_LabelMap&'
+//   // pub fn get_valid(&self, Ls: &mut LabelMap);
+//
+// SKIPPED: **Source:** `TFunction_Logbook.hxx`:117 - `TFunction_Logbook::Dump`
+//   method: Prints th data of the attributes (touched, impacted and valid labels).
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TFunction_Logbook.hxx`:46 - `TFunction_Logbook::Set`
+//   static_method: Finds or Creates a TFunction_Logbook attribute at the root label accessed by <Access>.
+//   static_method: Returns the attribute.
+//   Reason: return type 'Handle(TFunction_Logbook)' is unknown
+//   // pub fn set(Access: &Label) -> OwnedPtr<Handle<TFunction_Logbook>>;
+//
+
 // ========================
 // From TFunction_Scope.hxx
 // ========================
@@ -1893,6 +2015,37 @@ impl Scope {
         unsafe { crate::ffi::TFunction_Scope_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Scope (5 total) ──
+// SKIPPED: **Source:** `TFunction_Scope.hxx`:81 - `TFunction_Scope::GetLogbook`
+//   method: Returns the Logbook used in TFunction_Driver methods.
+//   method: Implementation of Attribute methods
+//   method: ===================================
+//   Reason: return type 'Handle(TFunction_Logbook)' is unknown
+//   // pub fn get_logbook(&self) -> OwnedPtr<Handle<TFunction_Logbook>>;
+//
+// SKIPPED: **Source:** `TFunction_Scope.hxx`:92 - `TFunction_Scope::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TFunction_Scope.hxx`:95 - `TFunction_Scope::GetFunctions`
+//   method: Returns the scope of functions.
+//   Reason: return type 'const TFunction_DoubleMapOfIntegerLabel&' is unknown
+//   // pub fn get_functions(&self) -> &DoubleMapOfIntegerLabel;
+//
+// SKIPPED: **Source:** `TFunction_Scope.hxx`:99 - `TFunction_Scope::ChangeFunctions`
+//   method: Returns the scope of functions for modification.
+//   method: Warning: Don't use this method if You are not sure what You do!
+//   Reason: return type 'TFunction_DoubleMapOfIntegerLabel&' is unknown
+//   // pub fn change_functions(&mut self) -> &mut DoubleMapOfIntegerLabel;
+//
+// SKIPPED: **Source:** `TFunction_Scope.hxx`:44 - `TFunction_Scope::Set`
+//   static_method: Static methods
+//   static_method: ==============
+//   static_method: Finds or Creates a TFunction_Scope attribute at the root label accessed by <Access>.
+//   Reason: return type 'Handle(TFunction_Scope)' is unknown
+//   // pub fn set(Access: &Label) -> OwnedPtr<Handle<TFunction_Scope>>;
+//
 
 // ========================
 // Additional type re-exports

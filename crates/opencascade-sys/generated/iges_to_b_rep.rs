@@ -240,6 +240,16 @@ impl Actor {
     }
 }
 
+// ── Skipped symbols for Actor (2 total) ──
+// SKIPPED: **Source:** `IGESToBRep_Actor.hxx`:56 - `IGESToBRep_Actor::Recognize`
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn recognize(&mut self, start: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `IGESToBRep_Actor.hxx`:59 - `IGESToBRep_Actor::Transfer`
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn transfer(&mut self, start: &HandleTransient, TP: &HandleTransientProcess, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
+//
+
 // ========================
 // From IGESToBRep_AlgoContainer.hxx
 // ========================
@@ -680,6 +690,38 @@ impl BRepEntity {
     }
 }
 
+// ── Skipped symbols for BRepEntity (6 total) ──
+// SKIPPED: **Source:** `IGESToBRep_BRepEntity.hxx`:72 - `IGESToBRep_BRepEntity::TransferVertex`
+//   method: Transfer the entity number "index" of the VertexList "start"
+//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_VertexList)&'
+//   // pub fn transfer_vertex(&mut self, start: &HandleVertexList, index: i32) -> OwnedPtr<TopoDS_Vertex>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BRepEntity.hxx`:76 - `IGESToBRep_BRepEntity::TransferEdge`
+//   method: Transfer the entity number "index" of the EdgeList "start".
+//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_EdgeList)&'
+//   // pub fn transfer_edge(&mut self, start: &HandleEdgeList, index: i32) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BRepEntity.hxx`:80 - `IGESToBRep_BRepEntity::TransferLoop`
+//   method: Transfer the Loop Entity
+//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_Loop)&'
+//   // pub fn transfer_loop(&mut self, start: &HandleLoop, Face: &Face, trans: &Trsf2d, uFact: f64) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BRepEntity.hxx`:86 - `IGESToBRep_BRepEntity::TransferFace`
+//   method: Transfer the Face Entity
+//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_Face)&'
+//   // pub fn transfer_face(&mut self, start: &HandleFace) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BRepEntity.hxx`:90 - `IGESToBRep_BRepEntity::TransferShell`
+//   method: Transfer the Shell Entity
+//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_Shell)&'
+//   // pub fn transfer_shell(&mut self, start: &HandleShell, theProgress: &ProgressRange) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BRepEntity.hxx`:95 - `IGESToBRep_BRepEntity::TransferManifoldSolid`
+//   method: Transfer the ManifoldSolid Entity
+//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_ManifoldSolid)&'
+//   // pub fn transfer_manifold_solid(&mut self, start: &HandleManifoldSolid, theProgress: &ProgressRange) -> OwnedPtr<TopoDS_Shape>;
+//
+
 // ========================
 // From IGESToBRep_BasicCurve.hxx
 // ========================
@@ -1058,6 +1100,60 @@ impl BasicCurve {
     }
 }
 
+// ── Skipped symbols for BasicCurve (13 total) ──
+// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:85 - `IGESToBRep_BasicCurve::TransferBSplineCurve`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_BSplineCurve)&'
+//   // pub fn transfer_b_spline_curve(&mut self, start: &HandleBSplineCurve) -> OwnedPtr<Handle<Geom_Curve>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:88 - `IGESToBRep_BasicCurve::Transfer2dBSplineCurve`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_BSplineCurve)&'
+//   // pub fn transfer2d_b_spline_curve(&mut self, start: &HandleBSplineCurve) -> OwnedPtr<Handle<Geom2d_Curve>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:91 - `IGESToBRep_BasicCurve::TransferCircularArc`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_CircularArc)&'
+//   // pub fn transfer_circular_arc(&mut self, start: &HandleCircularArc) -> OwnedPtr<Handle<Geom_Curve>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:93 - `IGESToBRep_BasicCurve::Transfer2dCircularArc`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_CircularArc)&'
+//   // pub fn transfer2d_circular_arc(&mut self, start: &HandleCircularArc) -> OwnedPtr<Handle<Geom2d_Curve>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:96 - `IGESToBRep_BasicCurve::TransferConicArc`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_ConicArc)&'
+//   // pub fn transfer_conic_arc(&mut self, start: &HandleConicArc) -> OwnedPtr<Handle<Geom_Curve>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:98 - `IGESToBRep_BasicCurve::Transfer2dConicArc`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_ConicArc)&'
+//   // pub fn transfer2d_conic_arc(&mut self, start: &HandleConicArc) -> OwnedPtr<Handle<Geom2d_Curve>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:100 - `IGESToBRep_BasicCurve::TransferCopiousData`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_CopiousData)&'
+//   // pub fn transfer_copious_data(&mut self, start: &HandleCopiousData) -> OwnedPtr<Handle<Geom_BSplineCurve>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:103 - `IGESToBRep_BasicCurve::Transfer2dCopiousData`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_CopiousData)&'
+//   // pub fn transfer2d_copious_data(&mut self, start: &HandleCopiousData) -> OwnedPtr<Handle<Geom2d_BSplineCurve>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:106 - `IGESToBRep_BasicCurve::TransferLine`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_Line)&'
+//   // pub fn transfer_line(&mut self, start: &HandleLine) -> OwnedPtr<Handle<Geom_Curve>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:108 - `IGESToBRep_BasicCurve::Transfer2dLine`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_Line)&'
+//   // pub fn transfer2d_line(&mut self, start: &HandleLine) -> OwnedPtr<Handle<Geom2d_Curve>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:110 - `IGESToBRep_BasicCurve::TransferSplineCurve`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_SplineCurve)&'
+//   // pub fn transfer_spline_curve(&mut self, start: &HandleSplineCurve) -> OwnedPtr<Handle<Geom_BSplineCurve>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:113 - `IGESToBRep_BasicCurve::Transfer2dSplineCurve`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_SplineCurve)&'
+//   // pub fn transfer2d_spline_curve(&mut self, start: &HandleSplineCurve) -> OwnedPtr<Handle<Geom2d_BSplineCurve>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BasicCurve.hxx`:116 - `IGESToBRep_BasicCurve::TransferTransformation`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_TransformationMatrix)&'
+//   // pub fn transfer_transformation(&mut self, start: &HandleTransformationMatrix) -> OwnedPtr<Handle<Geom_Transformation>>;
+//
+
 // ========================
 // From IGESToBRep_BasicSurface.hxx
 // ========================
@@ -1429,6 +1525,43 @@ impl BasicSurface {
     }
 }
 
+// ── Skipped symbols for BasicSurface (7 total) ──
+// SKIPPED: **Source:** `IGESToBRep_BasicSurface.hxx`:73 - `IGESToBRep_BasicSurface::TransferPlaneSurface`
+//   method: Returns Plane from Geom if the transfer has succeeded.
+//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_PlaneSurface)&'
+//   // pub fn transfer_plane_surface(&mut self, start: &HandlePlaneSurface) -> OwnedPtr<Handle<Geom_Plane>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BasicSurface.hxx`:77 - `IGESToBRep_BasicSurface::TransferRigthCylindricalSurface`
+//   method: Returns CylindricalSurface from Geom if the transfer has succeeded.
+//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_CylindricalSurface)&'
+//   // pub fn transfer_rigth_cylindrical_surface(&mut self, start: &HandleCylindricalSurface) -> OwnedPtr<Handle<Geom_CylindricalSurface>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BasicSurface.hxx`:81 - `IGESToBRep_BasicSurface::TransferRigthConicalSurface`
+//   method: Returns ConicalSurface from Geom if the transfer has succeeded.
+//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_ConicalSurface)&'
+//   // pub fn transfer_rigth_conical_surface(&mut self, start: &HandleConicalSurface) -> OwnedPtr<Handle<Geom_ConicalSurface>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BasicSurface.hxx`:85 - `IGESToBRep_BasicSurface::TransferSphericalSurface`
+//   method: Returns SphericalSurface from Geom if the transfer has succeeded.
+//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_SphericalSurface)&'
+//   // pub fn transfer_spherical_surface(&mut self, start: &HandleSphericalSurface) -> OwnedPtr<Handle<Geom_SphericalSurface>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BasicSurface.hxx`:89 - `IGESToBRep_BasicSurface::TransferToroidalSurface`
+//   method: Returns SphericalSurface from Geom if the transfer has succeeded.
+//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_ToroidalSurface)&'
+//   // pub fn transfer_toroidal_surface(&mut self, start: &HandleToroidalSurface) -> OwnedPtr<Handle<Geom_ToroidalSurface>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BasicSurface.hxx`:93 - `IGESToBRep_BasicSurface::TransferSplineSurface`
+//   method: Returns BSplineSurface  from Geom if the transfer has succeeded.
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_SplineSurface)&'
+//   // pub fn transfer_spline_surface(&mut self, start: &HandleSplineSurface) -> OwnedPtr<Handle<Geom_BSplineSurface>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_BasicSurface.hxx`:97 - `IGESToBRep_BasicSurface::TransferBSplineSurface`
+//   method: Returns BSplineSurface  from Geom if the transfer has succeeded.
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_BSplineSurface)&'
+//   // pub fn transfer_b_spline_surface(&mut self, start: &HandleBSplineSurface) -> OwnedPtr<Handle<Geom_BSplineSurface>>;
+//
+
 // ========================
 // From IGESToBRep_CurveAndSurface.hxx
 // ========================
@@ -1793,6 +1926,28 @@ impl CurveAndSurface {
     }
 }
 
+// ── Skipped symbols for CurveAndSurface (4 total) ──
+// SKIPPED: **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel`
+//   method: Set the value of "myModel"
+//   Reason: param 'model' uses unknown type 'const Handle(IGESData_IGESModel)&'
+//   // pub fn set_model(&mut self, model: &HandleIGESModel);
+//
+// SKIPPED: **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel`
+//   method: Returns the value of "myModel"
+//   Reason: return type 'Handle(IGESData_IGESModel)' is unknown
+//   // pub fn get_model(&self) -> OwnedPtr<Handle<IGESData_IGESModel>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess`
+//   method: Set the value of "myMsgReg"
+//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
+//   // pub fn set_transfer_process(&mut self, TP: &HandleTransientProcess);
+//
+// SKIPPED: **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess`
+//   method: Returns the value of "myMsgReg"
+//   Reason: return type 'Handle(Transfer_TransientProcess)' is unknown
+//   // pub fn get_transfer_process(&self) -> OwnedPtr<Handle<Transfer_TransientProcess>>;
+//
+
 // ========================
 // From IGESToBRep_IGESBoundary.hxx
 // ========================
@@ -2132,6 +2287,73 @@ impl Reader {
         }
     }
 }
+
+// ── Skipped symbols for Reader (11 total) ──
+// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:54 - `IGESToBRep_Reader::SetModel`
+//   method: Specifies a Model to work on
+//   method: Also clears the result and Done status, sets TransientProcess
+//   Reason: param 'model' uses unknown type 'const Handle(IGESData_IGESModel)&'
+//   // pub fn set_model(&mut self, model: &HandleIGESModel);
+//
+// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:57 - `IGESToBRep_Reader::Model`
+//   method: Returns the Model to be worked on.
+//   Reason: return type 'Handle(IGESData_IGESModel)' is unknown
+//   // pub fn model(&self) -> OwnedPtr<Handle<IGESData_IGESModel>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:61 - `IGESToBRep_Reader::SetTransientProcess`
+//   method: Allows to set an already defined TransientProcess
+//   method: (to be called after LoadFile or SetModel)
+//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
+//   // pub fn set_transient_process(&mut self, TP: &HandleTransientProcess);
+//
+// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:64 - `IGESToBRep_Reader::TransientProcess`
+//   method: Returns the TransientProcess
+//   Reason: return type 'Handle(Transfer_TransientProcess)' is unknown
+//   // pub fn transient_process(&self) -> OwnedPtr<Handle<Transfer_TransientProcess>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:67 - `IGESToBRep_Reader::Actor`
+//   method: Returns "theActor"
+//   Reason: return type 'Handle(IGESToBRep_Actor)' is unknown
+//   // pub fn actor(&self) -> OwnedPtr<Handle<IGESToBRep_Actor>>;
+//
+// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:116 - `IGESToBRep_Reader::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: @param theParameters the parameters for shape processing.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &i32);
+//
+// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:122 - `IGESToBRep_Reader::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: Parameters are moved from the input map.
+//   method: @param theParameters the parameters for shape processing.
+//   Reason: has unbindable types: param 'theParameters': rvalue reference (int&&)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* int&& */);
+//
+// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:130 - `IGESToBRep_Reader::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: Parameters from @p theParameters are copied to the internal map.
+//   method: Parameters from @p theAdditionalParameters are copied to the internal map
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &ShapeFixParameters, theAdditionalParameters: &i32);
+//
+// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:136 - `IGESToBRep_Reader::GetShapeFixParameters`
+//   method: Returns parameters for shape processing that was set by SetParameters() method.
+//   method: @return the parameters for shape processing. Empty map if no parameters were set.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_shape_fix_parameters(&self) -> &i32;
+//
+// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:143 - `IGESToBRep_Reader::SetShapeProcessFlags`
+//   method: Sets flags defining operations to be performed on shapes.
+//   method: @param theFlags The flags defining operations to be performed on shapes.
+//   Reason: param 'theFlags' uses unknown type 'const ShapeProcess::OperationsFlags&'
+//   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
+//
+// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:147 - `IGESToBRep_Reader::GetShapeProcessFlags`
+//   method: Returns flags defining operations to be performed on shapes.
+//   method: @return The flags defining operations to be performed on shapes.
+//   Reason: return type 'const ShapeProcess::OperationsFlags&' is unknown
+//   // pub fn get_shape_process_flags(&self) -> &OperationsFlags;
+//
 
 // ========================
 // From IGESToBRep_ToolContainer.hxx
@@ -2678,6 +2900,51 @@ impl TopoCurve {
     }
 }
 
+// ── Skipped symbols for TopoCurve (10 total) ──
+// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:85 - `IGESToBRep_TopoCurve::TransferPoint`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_Point)&'
+//   // pub fn transfer_point(&mut self, start: &HandlePoint) -> OwnedPtr<TopoDS_Vertex>;
+//
+// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:87 - `IGESToBRep_TopoCurve::Transfer2dPoint`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_Point)&'
+//   // pub fn transfer2d_point(&mut self, start: &HandlePoint) -> OwnedPtr<TopoDS_Vertex>;
+//
+// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:89 - `IGESToBRep_TopoCurve::TransferCompositeCurve`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_CompositeCurve)&'
+//   // pub fn transfer_composite_curve(&mut self, start: &HandleCompositeCurve) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:92 - `IGESToBRep_TopoCurve::Transfer2dCompositeCurve`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_CompositeCurve)&'
+//   // pub fn transfer2d_composite_curve(&mut self, start: &HandleCompositeCurve, face: &Face, trans: &Trsf2d, uFact: f64) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:97 - `IGESToBRep_TopoCurve::TransferOffsetCurve`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_OffsetCurve)&'
+//   // pub fn transfer_offset_curve(&mut self, start: &HandleOffsetCurve) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:99 - `IGESToBRep_TopoCurve::Transfer2dOffsetCurve`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_OffsetCurve)&'
+//   // pub fn transfer2d_offset_curve(&mut self, start: &HandleOffsetCurve, face: &Face, trans: &Trsf2d, uFact: f64) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:104 - `IGESToBRep_TopoCurve::TransferCurveOnSurface`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_CurveOnSurface)&'
+//   // pub fn transfer_curve_on_surface(&mut self, start: &HandleCurveOnSurface) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:108 - `IGESToBRep_TopoCurve::TransferCurveOnFace`
+//   method: Transfers a CurveOnSurface directly on a face to trim it.
+//   method: The CurveOnSurface have to be defined Outer or Inner.
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_CurveOnSurface)&'
+//   // pub fn transfer_curve_on_face(&mut self, face: &mut Face, start: &HandleCurveOnSurface, trans: &Trsf2d, uFact: f64, IsCurv: bool) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:114 - `IGESToBRep_TopoCurve::TransferBoundary`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_Boundary)&'
+//   // pub fn transfer_boundary(&mut self, start: &HandleBoundary) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_TopoCurve.hxx`:117 - `IGESToBRep_TopoCurve::TransferBoundaryOnFace`
+//   method: Transfers a Boundary directly on a face to trim it.
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_Boundary)&'
+//   // pub fn transfer_boundary_on_face(&mut self, face: &mut Face, start: &HandleBoundary, trans: &Trsf2d, uFact: f64) -> OwnedPtr<TopoDS_Shape>;
+//
+
 // ========================
 // From IGESToBRep_TopoSurface.hxx
 // ========================
@@ -3064,3 +3331,41 @@ impl TopoSurface {
         unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_GetUVResolution(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for TopoSurface (9 total) ──
+// SKIPPED: **Source:** `IGESToBRep_TopoSurface.hxx`:68 - `IGESToBRep_TopoSurface::TransferRuledSurface`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_RuledSurface)&'
+//   // pub fn transfer_ruled_surface(&mut self, start: &HandleRuledSurface) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_TopoSurface.hxx`:71 - `IGESToBRep_TopoSurface::TransferSurfaceOfRevolution`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_SurfaceOfRevolution)&'
+//   // pub fn transfer_surface_of_revolution(&mut self, start: &HandleSurfaceOfRevolution) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_TopoSurface.hxx`:74 - `IGESToBRep_TopoSurface::TransferTabulatedCylinder`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_TabulatedCylinder)&'
+//   // pub fn transfer_tabulated_cylinder(&mut self, start: &HandleTabulatedCylinder) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_TopoSurface.hxx`:76 - `IGESToBRep_TopoSurface::TransferOffsetSurface`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_OffsetSurface)&'
+//   // pub fn transfer_offset_surface(&mut self, start: &HandleOffsetSurface) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_TopoSurface.hxx`:78 - `IGESToBRep_TopoSurface::TransferTrimmedSurface`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_TrimmedSurface)&'
+//   // pub fn transfer_trimmed_surface(&mut self, start: &HandleTrimmedSurface) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_TopoSurface.hxx`:80 - `IGESToBRep_TopoSurface::TransferBoundedSurface`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_BoundedSurface)&'
+//   // pub fn transfer_bounded_surface(&mut self, start: &HandleBoundedSurface) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_TopoSurface.hxx`:82 - `IGESToBRep_TopoSurface::TransferPlane`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESGeom_Plane)&'
+//   // pub fn transfer_plane(&mut self, start: &HandlePlane) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_TopoSurface.hxx`:84 - `IGESToBRep_TopoSurface::TransferPlaneSurface`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESSolid_PlaneSurface)&'
+//   // pub fn transfer_plane_surface(&mut self, start: &HandlePlaneSurface) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `IGESToBRep_TopoSurface.hxx`:86 - `IGESToBRep_TopoSurface::TransferPerforate`
+//   Reason: param 'start' uses unknown type 'const Handle(IGESBasic_SingleParent)&'
+//   // pub fn transfer_perforate(&mut self, start: &HandleSingleParent) -> OwnedPtr<TopoDS_Shape>;
+//

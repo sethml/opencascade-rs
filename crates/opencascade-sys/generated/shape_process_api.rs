@@ -80,3 +80,11 @@ impl ApplySequence {
         }
     }
 }
+
+// ── Skipped symbols for ApplySequence (1 total) ──
+// SKIPPED: **Source:** `ShapeProcessAPI_ApplySequence.hxx`:46 - `ShapeProcessAPI_ApplySequence::Context`
+//   method: Returns object for managing resource file and sequence of
+//   method: operators.
+//   Reason: return type 'Handle(ShapeProcess_ShapeContext)&' is unknown
+//   // pub fn context(&mut self) -> &mut HandleShapeContext;
+//

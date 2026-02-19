@@ -1377,6 +1377,20 @@ impl DataStructure {
     }
 }
 
+// ── Skipped symbols for DataStructure (3 total) ──
+// SKIPPED: **Source:** `TopOpeBRepDS_DataStructure.hxx`:145 - `TopOpeBRepDS_DataStructure::ChangeShapeInterferences`
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn change_shape_interferences(&mut self, S: &Shape) -> &mut ListOfInterference;
+//
+// SKIPPED: **Source:** `TopOpeBRepDS_DataStructure.hxx`:156 - `TopOpeBRepDS_DataStructure::ChangeShapeSameDomain`
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn change_shape_same_domain(&mut self, S: &Shape) -> &mut ListOfShape;
+//
+// SKIPPED: **Source:** `TopOpeBRepDS_DataStructure.hxx`:295 - `TopOpeBRepDS_DataStructure::ChangeMapOfShapeWithState`
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn change_map_of_shape_with_state(&mut self, aShape: &Shape, aFlag: &mut bool) -> &mut IndexedDataMapOfShapeWithState;
+//
+
 // ========================
 // From TopOpeBRepDS_GeometryData.hxx
 // ========================
@@ -1642,6 +1656,13 @@ impl HandleTopOpeBRepDSInterference {
     }
 }
 
+// ── Skipped symbols for Interference (1 total) ──
+// SKIPPED: **Source:** `TopOpeBRepDS_Interference.hxx`:74 - `TopOpeBRepDS_Interference::GKGSKS`
+//   method: return GeometryType + Geometry + SupportType + Support
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn gkgsks(&self, GK: &mut Kind, G: &mut i32, SK: &mut Kind, S: &mut i32);
+//
+
 // ========================
 // From TopOpeBRepDS_Point.hxx
 // ========================
@@ -1788,6 +1809,12 @@ impl PointData {
         }
     }
 }
+
+// ── Skipped symbols for PointData (1 total) ──
+// SKIPPED: **Source:** `TopOpeBRepDS_PointData.hxx`:42 - `TopOpeBRepDS_PointData::GetShapes`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_shapes(&self, I1: &mut i32, I2: &mut i32);
+//
 
 // ========================
 // From TopOpeBRepDS_ShapeData.hxx

@@ -303,6 +303,21 @@ impl HandleDEConfigurationContext {
     }
 }
 
+// ── Skipped symbols for ConfigurationContext (2 total) ──
+// SKIPPED: **Source:** `DE_ConfigurationContext.hxx`:75 - `DE_ConfigurationContext::GetInteger`
+//   method: Gets value of parameter as being of specific type
+//   method: @param[in] theParam complex parameter name
+//   method: @param[out] theValue value to get by parameter
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_integer(&self, theParam: &AsciiString, theValue: &mut i32, theScope: &AsciiString) -> bool;
+//
+// SKIPPED: **Source:** `DE_ConfigurationContext.hxx`:145 - `DE_ConfigurationContext::GetInternalMap`
+//   method: Gets internal resource map
+//   method: @return map with resource value
+//   Reason: return type 'const DE_ResourceMap&' is unknown
+//   // pub fn get_internal_map(&self) -> &ResourceMap;
+//
+
 // ========================
 // From DE_ConfigurationNode.hxx
 // ========================
@@ -539,6 +554,25 @@ impl HandleDEConfigurationNode {
     }
 }
 
+// ── Skipped symbols for ConfigurationNode (3 total) ──
+// SKIPPED: **Source:** `DE_ConfigurationNode.hxx`:54 - `DE_ConfigurationNode::DE_ConfigurationNode`
+//   constructor: Initializes all field by default
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new() -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `DE_ConfigurationNode.hxx`:58 - `DE_ConfigurationNode::DE_ConfigurationNode`
+//   constructor: Copies values of all fields
+//   constructor: @param[in] theConfigurationNode object to copy
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new_handledeconfigurationnode(theConfigurationNode: &HandleConfigurationNode) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `DE_ConfigurationNode.hxx`:113 - `DE_ConfigurationNode::GetExtensions`
+//   method: Gets list of supported file extensions
+//   method: @return list of extensions
+//   Reason: return type 'TColStd_ListOfAsciiString' is not CppDeletable
+//   // pub fn get_extensions(&self) -> OwnedPtr<TColStd_ListOfAsciiString>;
+//
+
 /// **Source:** `DE_ConfigurationNode.hxx`:145 - `DE_ConfigurationNode_DE_SectionGlobal`
 pub use crate::ffi::DE_ConfigurationNode_DE_SectionGlobal as ConfigurationNode_DE_SectionGlobal;
 
@@ -680,6 +714,62 @@ impl HandleDEProvider {
         unsafe { &mut *(crate::ffi::HandleDEProvider_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Provider (8 total) ──
+// SKIPPED: **Source:** `DE_Provider.hxx`:49 - `DE_Provider::DE_Provider`
+//   constructor: Default constructor
+//   constructor: Configure translation process with global configuration
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new() -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `DE_Provider.hxx`:53 - `DE_Provider::DE_Provider`
+//   constructor: Configure translation process
+//   constructor: @param[in] theNode object to copy
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new_handledeconfigurationnode(theNode: &HandleConfigurationNode) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `DE_Provider.hxx`:62 - `DE_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theDocument document to save result
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DE_Provider.hxx`:74 - `DE_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theDocument document to export
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DE_Provider.hxx`:85 - `DE_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theDocument document to save result
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DE_Provider.hxx`:95 - `DE_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theDocument document to export
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DE_Provider.hxx`:106 - `DE_Provider::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theShape shape to save result
+//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theShape: &mut Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DE_Provider.hxx`:118 - `DE_Provider::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theShape shape to export
+//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theShape: &Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
 
 // ========================
 // From DE_ShapeFixConfigurationNode.hxx
@@ -862,6 +952,19 @@ impl ShapeFixConfigurationNode {
         }
     }
 }
+
+// ── Skipped symbols for ShapeFixConfigurationNode (2 total) ──
+// SKIPPED: **Source:** `DE_ShapeFixConfigurationNode.hxx`:29 - `DE_ShapeFixConfigurationNode::DE_ShapeFixConfigurationNode`
+//   constructor: Initializes all field by default
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new() -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `DE_ShapeFixConfigurationNode.hxx`:33 - `DE_ShapeFixConfigurationNode::DE_ShapeFixConfigurationNode`
+//   constructor: Copies values of all fields
+//   constructor: @param[in] theConfigurationNode object to copy
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new_handledeshapefixconfigurationnode(theConfigurationNode: &HandleShapeFixConfigurationNode) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From DE_ShapeFixParameters.hxx
@@ -1234,6 +1337,56 @@ impl HandleDEWrapper {
         unsafe { &mut *(crate::ffi::HandleDEWrapper_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Wrapper (7 total) ──
+// SKIPPED: **Source:** `DE_Wrapper.hxx`:85 - `DE_Wrapper::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theDocument document to save result
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DE_Wrapper.hxx`:97 - `DE_Wrapper::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theDocument document to export
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DE_Wrapper.hxx`:108 - `DE_Wrapper::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theDocument document to save result
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DE_Wrapper.hxx`:118 - `DE_Wrapper::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theDocument document to export
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DE_Wrapper.hxx`:129 - `DE_Wrapper::Read`
+//   method: Reads a CAD file, according internal configuration
+//   method: @param[in] thePath path to the import CAD file
+//   method: @param[out] theShape shape to save result
+//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
+//   // pub fn read(&mut self, thePath: &AsciiString, theShape: &mut Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DE_Wrapper.hxx`:141 - `DE_Wrapper::Write`
+//   method: Writes a CAD file, according internal configuration
+//   method: @param[in] thePath path to the export CAD file
+//   method: @param[out] theShape shape to export
+//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
+//   // pub fn write(&mut self, thePath: &AsciiString, theShape: &Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `DE_Wrapper.hxx`:259 - `DE_Wrapper::Nodes`
+//   method: Gets format map, contains vendor map with nodes
+//   method: @return internal map of formats
+//   Reason: return type 'const DE_ConfigurationFormatMap&' is unknown
+//   // pub fn nodes(&self) -> &ConfigurationFormatMap;
+//
 
 // ========================
 // Additional type re-exports

@@ -299,6 +299,14 @@ impl Blend {
     }
 }
 
+// ── Skipped symbols for Blend (1 total) ──
+// SKIPPED: **Source:** `BiTgte_Blend.hxx`:161 - `BiTgte_Blend::IndicesOfBranche`
+//   method: Set in <From>,<To>   the indices of the faces  of
+//   method: the branche <Index>.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn indices_of_branche(&self, Index: i32, From: &mut i32, To: &mut i32);
+//
+
 // ========================
 // From BiTgte_CurveOnEdge.hxx
 // ========================

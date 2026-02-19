@@ -1072,6 +1072,22 @@ impl HandleLawBSpline {
     }
 }
 
+// ── Skipped symbols for BSpline (2 total) ──
+// SKIPPED: **Source:** `Law_BSpline.hxx`:484 - `Law_BSpline::LocateU`
+//   method: Locates the parametric value U in the sequence of knots.
+//   method: If "WithKnotRepetition" is True we consider the knot's
+//   method: representation with repetition of multiple knot value,
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn locate_u(&self, U: f64, ParametricTolerance: f64, I1: &mut i32, I2: &mut i32, WithKnotRepetition: bool);
+//
+// SKIPPED: **Source:** `Law_BSpline.hxx`:545 - `Law_BSpline::MovePointAndTangent`
+//   method: Changes the value of the Law at parameter U to NewValue.
+//   method: and makes its derivative at U be derivative.
+//   method: StartingCondition = -1 means first can move
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn move_point_and_tangent(&mut self, U: f64, NewValue: f64, Derivative: f64, Tolerance: f64, StartingCondition: i32, EndingCondition: i32, ErrorStatus: &mut i32);
+//
+
 // ========================
 // From Law_BSplineKnotSplitting.hxx
 // ========================

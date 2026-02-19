@@ -148,6 +148,30 @@ impl ArrayOfNodes {
     }
 }
 
+// ── Skipped symbols for ArrayOfNodes (4 total) ──
+// SKIPPED: **Source:** `Poly_ArrayOfNodes.hxx`:51 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes`
+//   constructor: Constructor wrapping pre-allocated C-array of values without copying them.
+//   Reason: param 'theBegin' uses unknown type 'const gp_Vec3f&'
+//   // pub fn new_vec3f_int(theBegin: &Vec3f, theLength: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Poly_ArrayOfNodes.hxx`:92 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes`
+//   constructor: Move constructor
+//   Reason: has unbindable types: param 'theOther': rvalue reference (Poly_ArrayOfNodes&&)
+//   // pub fn new_arrayofnodes(theOther: /* Poly_ArrayOfNodes&& */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Poly_ArrayOfNodes.hxx`:79 - `Poly_ArrayOfNodes::Assign`
+//   method: Copies data of theOther array to this.
+//   method: The arrays should have the same length,
+//   method: but may have different precision / number of components (data conversion will be applied in
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn assign(&mut self, theOther: &ArrayOfNodes) -> &mut ArrayOfNodes;
+//
+// SKIPPED: **Source:** `Poly_ArrayOfNodes.hxx`:82 - `Poly_ArrayOfNodes::Move`
+//   method: Move assignment.
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn move_(&mut self, theOther: &mut ArrayOfNodes) -> &mut ArrayOfNodes;
+//
+
 // ========================
 // From Poly_ArrayOfUVNodes.hxx
 // ========================
@@ -225,6 +249,30 @@ impl ArrayOfUVNodes {
         unsafe { crate::ffi::Poly_ArrayOfUVNodes_set_value(self as *mut Self, theIndex, theValue) }
     }
 }
+
+// ── Skipped symbols for ArrayOfUVNodes (4 total) ──
+// SKIPPED: **Source:** `Poly_ArrayOfUVNodes.hxx`:51 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes`
+//   constructor: Constructor wrapping pre-allocated C-array of values without copying them.
+//   Reason: param 'theBegin' uses unknown type 'const gp_Vec2f&'
+//   // pub fn new_vec2f_int(theBegin: &Vec2f, theLength: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Poly_ArrayOfUVNodes.hxx`:92 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes`
+//   constructor: Move constructor
+//   Reason: has unbindable types: param 'theOther': rvalue reference (Poly_ArrayOfUVNodes&&)
+//   // pub fn new_arrayofuvnodes(theOther: /* Poly_ArrayOfUVNodes&& */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Poly_ArrayOfUVNodes.hxx`:79 - `Poly_ArrayOfUVNodes::Assign`
+//   method: Copies data of theOther array to this.
+//   method: The arrays should have the same length,
+//   method: but may have different precision / number of components (data conversion will be applied in
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn assign(&mut self, theOther: &ArrayOfUVNodes) -> &mut ArrayOfUVNodes;
+//
+// SKIPPED: **Source:** `Poly_ArrayOfUVNodes.hxx`:82 - `Poly_ArrayOfUVNodes::Move`
+//   method: Move assignment.
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn move_(&mut self, theOther: &mut ArrayOfUVNodes) -> &mut ArrayOfUVNodes;
+//
 
 // ========================
 // From Poly_CoherentLink.hxx
@@ -324,6 +372,18 @@ impl CoherentLink {
         unsafe { crate::ffi::Poly_CoherentLink_nullify(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for CoherentLink (2 total) ──
+// SKIPPED: **Source:** `Poly_CoherentLink.hxx`:93 - `Poly_CoherentLink::GetAttribute`
+//   method: Query the attribute of the Link.
+//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   // pub fn get_attribute(&self) -> OwnedPtr<Standard_Address>;
+//
+// SKIPPED: **Source:** `Poly_CoherentLink.hxx`:98 - `Poly_CoherentLink::SetAttribute`
+//   method: Set the attribute of the Link.
+//   Reason: has unbindable types: param 'theAtt': void pointer (Standard_Address)
+//   // pub fn set_attribute(&mut self, theAtt: /* Standard_Address */);
+//
 
 // ========================
 // From Poly_CoherentNode.hxx
@@ -725,6 +785,17 @@ impl CoherentNode {
     }
 }
 
+// ── Skipped symbols for CoherentNode (2 total) ──
+// SKIPPED: **Source:** `Poly_CoherentNode.hxx`:142 - `Poly_CoherentNode::TriangleIterator`
+//   method: Create an iterator of incident triangles.
+//   Reason: return type 'Poly_CoherentTriPtr::Iterator' is unknown
+//   // pub fn triangle_iterator(&self) -> OwnedPtr<Poly_CoherentTriPtr::Iterator>;
+//
+// SKIPPED: **Source:** `Poly_CoherentNode.hxx`:144 - `Poly_CoherentNode::Dump`
+//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
+//   // pub fn dump(&self, theStream: /* Standard_OStream& */);
+//
+
 // ========================
 // From Poly_CoherentTriangle.hxx
 // ========================
@@ -867,6 +938,20 @@ impl CoherentTriangle {
         unsafe { crate::ffi::Poly_CoherentTriangle_find_connection(self as *const Self, arg0) }
     }
 }
+
+// ── Skipped symbols for CoherentTriangle (2 total) ──
+// SKIPPED: **Source:** `Poly_CoherentTriangle.hxx`:127 - `Poly_CoherentTriangle::GetConnectedTri`
+//   method: Query the connected triangle on the given side.
+//   method: Returns NULL if there is no connection on the specified side.
+//   Reason: has unbindable types: return: raw pointer (const Poly_CoherentTriangle*)
+//   // pub fn get_connected_tri(&self, iConn: i32) -> /* const Poly_CoherentTriangle* */;
+//
+// SKIPPED: **Source:** `Poly_CoherentTriangle.hxx`:136 - `Poly_CoherentTriangle::GetLink`
+//   method: Query the Link associate with the given side of the Triangle.
+//   method: May return NULL if there are no links in the triangulation.
+//   Reason: has unbindable types: return: raw pointer (const Poly_CoherentLink*)
+//   // pub fn get_link(&self, iLink: i32) -> /* const Poly_CoherentLink* */;
+//
 
 // ========================
 // From Poly_CoherentTriangulation.hxx
@@ -1213,6 +1298,37 @@ impl HandlePolyCoherentTriangulation {
     }
 }
 
+// ── Skipped symbols for CoherentTriangulation (5 total) ──
+// SKIPPED: **Source:** `Poly_CoherentTriangulation.hxx`:198 - `Poly_CoherentTriangulation::RemoveDegenerated`
+//   method: Find and remove degenerated triangles in Triangulation.
+//   method: @param theTol
+//   Reason: nullable param 'pLstRemovedNode' inner type is unknown
+//   // pub fn remove_degenerated(&mut self, theTol: f64, pLstRemovedNode: /* NCollection_List<TwoIntegers>* */) -> bool;
+//
+// SKIPPED: **Source:** `Poly_CoherentTriangulation.hxx`:293 - `Poly_CoherentTriangulation::AddTriangle`
+//   method: Add a triangle to the triangulation.
+//   method: @return
+//   Reason: has unbindable types: return: raw pointer (Poly_CoherentTriangle*)
+//   // pub fn add_triangle(&mut self, iNode0: i32, iNode1: i32, iNode2: i32) -> /* Poly_CoherentTriangle* */;
+//
+// SKIPPED: **Source:** `Poly_CoherentTriangulation.hxx`:315 - `Poly_CoherentTriangulation::AddLink`
+//   method: Add a single link to triangulation, based on a triangle and its side index.
+//   method: This method does not check for coincidence with already present links.
+//   Reason: has unbindable types: return: raw pointer (Poly_CoherentLink*)
+//   // pub fn add_link(&mut self, theTri: &CoherentTriangle, theConn: i32) -> /* Poly_CoherentLink* */;
+//
+// SKIPPED: **Source:** `Poly_CoherentTriangulation.hxx`:330 - `Poly_CoherentTriangulation::FindTriangle`
+//   method: Find one or two triangles that share the given couple of nodes.
+//   method: @param theLink
+//   Reason: has unbindable types: param 'pTri': C-style array (Poly_CoherentTriangle *[2])
+//   // pub fn find_triangle(&self, theLink: &CoherentLink, pTri: /* Poly_CoherentTriangle *[2] */) -> bool;
+//
+// SKIPPED: **Source:** `Poly_CoherentTriangulation.hxx`:358 - `Poly_CoherentTriangulation::Dump`
+//   method: Debugging output.
+//   Reason: has unbindable types: param 'arg0': stream type (Standard_OStream&)
+//   // pub fn dump(&self, arg0: /* Standard_OStream& */);
+//
+
 /// **Source:** `Poly_CoherentTriangulation.hxx`:112 - `Poly_CoherentTriangulation_IteratorOfTriangle`
 ///
 /// Subclass Iterator - allows to iterate all triangles skipping those that
@@ -1446,6 +1562,22 @@ impl Connect {
     }
 }
 
+// ── Skipped symbols for Connect (2 total) ──
+// SKIPPED: **Source:** `Poly_Connect.hxx`:92 - `Poly_Connect::Triangles`
+//   method: Returns in t1, t2 and t3, the indices of the 3 triangles
+//   method: adjacent to the triangle at index T in the triangles table
+//   method: specific to the triangulation analyzed by this tool.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn triangles(&self, T: i32, t1: &mut i32, t2: &mut i32, t3: &mut i32);
+//
+// SKIPPED: **Source:** `Poly_Connect.hxx`:108 - `Poly_Connect::Nodes`
+//   method: Returns, in n1, n2 and n3, the indices of the 3 nodes
+//   method: adjacent to the triangle referenced at index T in the
+//   method: triangles table specific to the triangulation analyzed by this tool.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn nodes(&self, T: i32, n1: &mut i32, n2: &mut i32, n3: &mut i32);
+//
+
 // ========================
 // From Poly_HArray1OfTriangle.hxx
 // ========================
@@ -1634,6 +1766,19 @@ impl MakeLoops {
     }
 }
 
+// ── Skipped symbols for MakeLoops (2 total) ──
+// SKIPPED: **Source:** `Poly_MakeLoops.hxx`:181 - `Poly_MakeLoops::Poly_MakeLoops`
+//   constructor: Constructor. If helper is NULL then the algorithm will
+//   constructor: probably return a wrong result
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new_helperptr_handlencollectionbaseallocator(theHelper: /* const Poly_MakeLoops::Helper* */, theAlloc: &HandleBaseAllocator) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Poly_MakeLoops.hxx`:185 - `Poly_MakeLoops::Reset`
+//   method: It is to reset the algorithm to the initial state.
+//   Reason: has unbindable types: param 'theHelper': raw pointer (const Poly_MakeLoops::Helper*)
+//   // pub fn reset(&mut self, theHelper: /* const Poly_MakeLoops::Helper* */, theAlloc: &HandleBaseAllocator);
+//
+
 /// **Source:** `Poly_MakeLoops.hxx`:45 - `Poly_MakeLoops_Link`
 /// The Link structure
 pub use crate::ffi::Poly_MakeLoops_Link as MakeLoops_Link;
@@ -1817,6 +1962,14 @@ impl MakeLoops3D {
     }
 }
 
+// ── Skipped symbols for MakeLoops3D (1 total) ──
+// SKIPPED: **Source:** `Poly_MakeLoops.hxx`:292 - `Poly_MakeLoops3D::Poly_MakeLoops3D`
+//   constructor: Constructor. If helper is NULL then the algorithm will
+//   constructor: probably return a wrong result
+//   Reason: has unbindable types: param 'theHelper': raw pointer (const Poly_MakeLoops3D::Helper*)
+//   // pub fn new_helperptr_handlencollectionbaseallocator(theHelper: /* const Poly_MakeLoops3D::Helper* */, theAlloc: &HandleBaseAllocator) -> OwnedPtr<Self>;
+//
+
 /// **Source:** `Poly_MakeLoops.hxx`:274 - `Poly_MakeLoops3D_Helper`
 /// The abstract helper class
 pub use crate::ffi::Poly_MakeLoops3D_Helper as MakeLoops3D_Helper;
@@ -1982,6 +2135,14 @@ impl MakeLoops2D {
         }
     }
 }
+
+// ── Skipped symbols for MakeLoops2D (1 total) ──
+// SKIPPED: **Source:** `Poly_MakeLoops.hxx`:331 - `Poly_MakeLoops2D::Poly_MakeLoops2D`
+//   constructor: Constructor. If helper is NULL then the algorithm will
+//   constructor: probably return a wrong result
+//   Reason: has unbindable types: param 'theHelper': raw pointer (const Poly_MakeLoops2D::Helper*)
+//   // pub fn new_bool_helperptr_handlencollectionbaseallocator(theLeftWay: bool, theHelper: /* const Poly_MakeLoops2D::Helper* */, theAlloc: &HandleBaseAllocator) -> OwnedPtr<Self>;
+//
 
 /// **Source:** `Poly_MakeLoops.hxx`:316 - `Poly_MakeLoops2D_Helper`
 /// The abstract helper class
@@ -2358,6 +2519,32 @@ impl HandlePolyMergeNodesTool {
         unsafe { &mut *(crate::ffi::HandlePolyMergeNodesTool_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for MergeNodesTool (4 total) ──
+// SKIPPED: **Source:** `Poly_MergeNodesTool.hxx`:90 - `Poly_MergeNodesTool::computeTriNormal`
+//   method: Compute normal for the mesh element.
+//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
+//   // pub fn compute_tri_normal(&self) -> OwnedPtr<Graphic3d_Vec3>;
+//
+// SKIPPED: **Source:** `Poly_MergeNodesTool.hxx`:114 - `Poly_MergeNodesTool::AddTriangle`
+//   method: Add new triangle.
+//   method: @param[in] theElemNodes 3 element nodes
+//   Reason: has unbindable types: param 'theElemNodes': C-style array (gp_XYZ[3])
+//   // pub fn add_triangle(&mut self, theElemNodes: /* gp_XYZ[3] */);
+//
+// SKIPPED: **Source:** `Poly_MergeNodesTool.hxx`:118 - `Poly_MergeNodesTool::AddQuad`
+//   method: Add new quad.
+//   method: @param[in] theElemNodes 4 element nodes
+//   Reason: has unbindable types: param 'theElemNodes': C-style array (gp_XYZ[4])
+//   // pub fn add_quad(&mut self, theElemNodes: /* gp_XYZ[4] */);
+//
+// SKIPPED: **Source:** `Poly_MergeNodesTool.hxx`:123 - `Poly_MergeNodesTool::AddElement`
+//   method: Add new triangle or quad.
+//   method: @param[in] theElemNodes element nodes
+//   method: @param[in] theNbNodes number of element nodes, should be 3 or 4
+//   Reason: has unbindable types: param 'theElemNodes': raw pointer (const gp_XYZ*)
+//   // pub fn add_element(&mut self, theElemNodes: /* const gp_XYZ* */, theNbNodes: i32);
+//
 
 // ========================
 // From Poly_Polygon2D.hxx
@@ -2931,6 +3118,19 @@ impl Triangle {
         unsafe { crate::ffi::Poly_Triangle_value(self as *const Self, theIndex) }
     }
 }
+
+// ── Skipped symbols for Triangle (2 total) ──
+// SKIPPED: **Source:** `Poly_Triangle.hxx`:68 - `Poly_Triangle::Get`
+//   method: Returns the node indices of this triangle.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get(&self, theN1: &mut i32, theN2: &mut i32, theN3: &mut i32);
+//
+// SKIPPED: **Source:** `Poly_Triangle.hxx`:88 - `Poly_Triangle::ChangeValue`
+//   method: Get the node of given Index.
+//   method: Raises OutOfRange if Index is not in 1,2,3
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn change_value(&mut self, theIndex: i32) -> &mut i32;
+//
 
 // ========================
 // From Poly_Triangulation.hxx
@@ -3534,6 +3734,28 @@ impl HandlePolyTriangulation {
         unsafe { &mut *(crate::ffi::HandlePolyTriangulation_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Triangulation (3 total) ──
+// SKIPPED: **Source:** `Poly_Triangulation.hxx`:194 - `Poly_Triangulation::Normal`
+//   method: Returns normal at the given index.
+//   method: @param[in]  theIndex node index within [1, NbNodes()] range
+//   method: @param[out] theVec3  3D vector defining a surface normal
+//   Reason: param 'theVec3' uses unknown type 'gp_Vec3f&'
+//   // pub fn normal(&self, theIndex: i32, theVec3: &mut Vec3f);
+//
+// SKIPPED: **Source:** `Poly_Triangulation.hxx`:202 - `Poly_Triangulation::SetNormal`
+//   method: Changes normal at the given index.
+//   method: @param[in] theIndex node index within [1, NbNodes()] range
+//   method: @param[in] theVec3  normalized 3D vector defining a surface normal
+//   Reason: param 'theNormal' uses unknown type 'const gp_Vec3f&'
+//   // pub fn set_normal(&mut self, theIndex: i32, theNormal: &Vec3f);
+//
+// SKIPPED: **Source:** `Poly_Triangulation.hxx`:332 - `Poly_Triangulation::InternalNormals`
+//   method: Return an internal array of normals.
+//   method: Normal()/SetNormal() should be used instead in portable code.
+//   Reason: has unbindable types: return: unresolved template/nested type (NCollection_Array1<gp_Vec3f>&)
+//   // pub fn internal_normals(&mut self) -> /* NCollection_Array1<gp_Vec3f>& */;
+//
 
 // ========================
 // From Poly_TriangulationParameters.hxx

@@ -653,6 +653,35 @@ impl PresentationStyleSelect {
     }
 }
 
+// ── Skipped symbols for PresentationStyleSelect (5 total) ──
+// SKIPPED: **Source:** `StepVisual_PresentationStyleSelect.hxx`:49 - `StepVisual_PresentationStyleSelect::CaseNum`
+//   method: Recognizes a PresentationStyleSelect Kind Entity that is :
+//   method: 1 -> PointStyle
+//   method: 2 -> CurveStyle
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn case_num(&self, ent: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `StepVisual_PresentationStyleSelect.hxx`:52 - `StepVisual_PresentationStyleSelect::PointStyle`
+//   method: returns Value as a PointStyle (Null if another type)
+//   Reason: return type 'Handle(StepVisual_PointStyle)' is unknown
+//   // pub fn point_style(&self) -> OwnedPtr<Handle<StepVisual_PointStyle>>;
+//
+// SKIPPED: **Source:** `StepVisual_PresentationStyleSelect.hxx`:55 - `StepVisual_PresentationStyleSelect::CurveStyle`
+//   method: returns Value as a CurveStyle (Null if another type)
+//   Reason: return type 'Handle(StepVisual_CurveStyle)' is unknown
+//   // pub fn curve_style(&self) -> OwnedPtr<Handle<StepVisual_CurveStyle>>;
+//
+// SKIPPED: **Source:** `StepVisual_PresentationStyleSelect.hxx`:58 - `StepVisual_PresentationStyleSelect::NullStyle`
+//   method: returns Value as a NullStyleMember (Null if another type)
+//   Reason: return type 'Handle(StepVisual_NullStyleMember)' is unknown
+//   // pub fn null_style(&self) -> OwnedPtr<Handle<StepVisual_NullStyleMember>>;
+//
+// SKIPPED: **Source:** `StepVisual_PresentationStyleSelect.hxx`:61 - `StepVisual_PresentationStyleSelect::SurfaceStyleUsage`
+//   method: returns Value as a SurfaceStyleUsage (Null if another type)
+//   Reason: return type 'Handle(StepVisual_SurfaceStyleUsage)' is unknown
+//   // pub fn surface_style_usage(&self) -> OwnedPtr<Handle<StepVisual_SurfaceStyleUsage>>;
+//
+
 // ========================
 // From StepVisual_TessellatedGeometricSet.hxx
 // ========================
@@ -767,6 +796,16 @@ impl TessellatedGeometricSet {
         }
     }
 }
+
+// ── Skipped symbols for TessellatedGeometricSet (2 total) ──
+// SKIPPED: **Source:** `StepVisual_TessellatedGeometricSet.hxx`:39 - `StepVisual_TessellatedGeometricSet::Init`
+//   Reason: has unbindable types: param 'theItems': unresolved template/nested type (const NCollection_Handle<StepVisual_Array1OfTessellatedItem>&)
+//   // pub fn init(&mut self, theName: &HandleHAsciiString, theItems: /* const NCollection_Handle<StepVisual_Array1OfTessellatedItem>& */);
+//
+// SKIPPED: **Source:** `StepVisual_TessellatedGeometricSet.hxx`:42 - `StepVisual_TessellatedGeometricSet::Items`
+//   Reason: has unbindable types: return: unresolved template/nested type (NCollection_Handle<StepVisual_Array1OfTessellatedItem>)
+//   // pub fn items(&self) -> OwnedPtr<NCollection_Handle<StepVisual_Array1OfTessellatedItem>>;
+//
 
 // ========================
 // From StepVisual_TessellatedItem.hxx

@@ -73,6 +73,20 @@ impl InfiniteSolutions {
     }
 }
 
+// ── Skipped symbols for InfiniteSolutions (3 total) ──
+// SKIPPED: **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::NewInstance`
+//   Reason: return type 'Handle(StdFail_InfiniteSolutions)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<StdFail_InfiniteSolutions>>;
+//
+// SKIPPED: **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::NewInstance`
+//   Reason: return type 'Handle(StdFail_InfiniteSolutions)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<StdFail_InfiniteSolutions>>;
+//
+
 // ========================
 // From StdFail_NotDone.hxx
 // ========================
@@ -139,6 +153,20 @@ impl NotDone {
         unsafe { &*(crate::ffi::StdFail_NotDone_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for NotDone (3 total) ──
+// SKIPPED: **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::NewInstance`
+//   Reason: return type 'Handle(StdFail_NotDone)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<StdFail_NotDone>>;
+//
+// SKIPPED: **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::NewInstance`
+//   Reason: return type 'Handle(StdFail_NotDone)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<StdFail_NotDone>>;
+//
 
 // ========================
 // From StdFail_Undefined.hxx
@@ -207,6 +235,20 @@ impl Undefined {
     }
 }
 
+// ── Skipped symbols for Undefined (3 total) ──
+// SKIPPED: **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::NewInstance`
+//   Reason: return type 'Handle(StdFail_Undefined)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<StdFail_Undefined>>;
+//
+// SKIPPED: **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::NewInstance`
+//   Reason: return type 'Handle(StdFail_Undefined)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<StdFail_Undefined>>;
+//
+
 // ========================
 // From StdFail_UndefinedDerivative.hxx
 // ========================
@@ -274,6 +316,20 @@ impl UndefinedDerivative {
     }
 }
 
+// ── Skipped symbols for UndefinedDerivative (3 total) ──
+// SKIPPED: **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::NewInstance`
+//   Reason: return type 'Handle(StdFail_UndefinedDerivative)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<StdFail_UndefinedDerivative>>;
+//
+// SKIPPED: **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::NewInstance`
+//   Reason: return type 'Handle(StdFail_UndefinedDerivative)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<StdFail_UndefinedDerivative>>;
+//
+
 // ========================
 // From StdFail_UndefinedValue.hxx
 // ========================
@@ -340,3 +396,17 @@ impl UndefinedValue {
         unsafe { &*(crate::ffi::StdFail_UndefinedValue_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for UndefinedValue (3 total) ──
+// SKIPPED: **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::NewInstance`
+//   Reason: return type 'Handle(StdFail_UndefinedValue)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<StdFail_UndefinedValue>>;
+//
+// SKIPPED: **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::NewInstance`
+//   Reason: return type 'Handle(StdFail_UndefinedValue)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<StdFail_UndefinedValue>>;
+//

@@ -83,3 +83,14 @@ impl Function {
         }
     }
 }
+
+// ── Skipped symbols for Function (2 total) ──
+// SKIPPED: **Source:** `AppCont_Function.hxx`:30 - `AppCont_Function::AppCont_Function`
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new() -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `AppCont_Function.hxx`:37 - `AppCont_Function::GetNumberOfPoints`
+//   method: Get number of 3d and 2d points returned by "Value" and "D1" functions.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_number_of_points(&self, theNbPnt: &mut i32, theNbPnt2d: &mut i32);
+//

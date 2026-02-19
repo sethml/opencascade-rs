@@ -1704,6 +1704,34 @@ impl HandleGeom2dBSplineCurve {
     }
 }
 
+// ── Skipped symbols for BSplineCurve (4 total) ──
+// SKIPPED: **Source:** `Geom2d_BSplineCurve.hxx`:521 - `Geom2d_BSplineCurve::MovePoint`
+//   method: Moves the point of parameter U of this BSpline
+//   method: curve to P. Index1 and Index2 are the indexes in the
+//   method: table of poles of this BSpline curve of the first and
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn move_point(&mut self, U: f64, P: &Pnt2d, Index1: i32, Index2: i32, FirstModifiedPole: &mut i32, LastModifiedPole: &mut i32);
+//
+// SKIPPED: **Source:** `Geom2d_BSplineCurve.hxx`:539 - `Geom2d_BSplineCurve::MovePointAndTangent`
+//   method: Move a point with parameter U to P.
+//   method: and makes it tangent at U be Tangent.
+//   method: StartingCondition = -1 means first can move
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn move_point_and_tangent(&mut self, U: f64, P: &Pnt2d, Tangent: &Vec2d, Tolerance: f64, StartingCondition: i32, EndingCondition: i32, ErrorStatus: &mut i32);
+//
+// SKIPPED: **Source:** `Geom2d_BSplineCurve.hxx`:787 - `Geom2d_BSplineCurve::LocateU`
+//   method: Locates the parametric value U in the sequence of knots.
+//   method: If "WithKnotRepetition" is True we consider the knot's
+//   method: representation with repetition of multiple knot value,
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn locate_u(&self, U: f64, ParametricTolerance: f64, I1: &mut i32, I2: &mut i32, WithKnotRepetition: bool);
+//
+// SKIPPED: **Source:** `Geom2d_BSplineCurve.hxx`:840 - `Geom2d_BSplineCurve::Weights`
+//   method: Returns the weights of the B-spline curve;
+//   Reason: has unbindable types: return: raw pointer (const TColStd_Array1OfReal*)
+//   // pub fn weights(&self) -> /* const TColStd_Array1OfReal* */;
+//
+
 // ========================
 // From Geom2d_BezierCurve.hxx
 // ========================
@@ -2367,6 +2395,13 @@ impl HandleGeom2dBezierCurve {
         }
     }
 }
+
+// ── Skipped symbols for BezierCurve (1 total) ──
+// SKIPPED: **Source:** `Geom2d_BezierCurve.hxx`:283 - `Geom2d_BezierCurve::Weights`
+//   method: Returns all the weights of the curve.
+//   Reason: has unbindable types: return: raw pointer (const TColStd_Array1OfReal*)
+//   // pub fn weights(&self) -> /* const TColStd_Array1OfReal* */;
+//
 
 // ========================
 // From Geom2d_BoundedCurve.hxx
@@ -9640,6 +9675,20 @@ impl UndefinedDerivative {
     }
 }
 
+// ── Skipped symbols for UndefinedDerivative (3 total) ──
+// SKIPPED: **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::NewInstance`
+//   Reason: return type 'Handle(Geom2d_UndefinedDerivative)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Geom2d_UndefinedDerivative>>;
+//
+// SKIPPED: **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::NewInstance`
+//   Reason: return type 'Handle(Geom2d_UndefinedDerivative)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Geom2d_UndefinedDerivative>>;
+//
+
 // ========================
 // From Geom2d_UndefinedValue.hxx
 // ========================
@@ -9706,6 +9755,20 @@ impl UndefinedValue {
         unsafe { &*(crate::ffi::Geom2d_UndefinedValue_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for UndefinedValue (3 total) ──
+// SKIPPED: **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::NewInstance`
+//   Reason: return type 'Handle(Geom2d_UndefinedValue)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Geom2d_UndefinedValue>>;
+//
+// SKIPPED: **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::NewInstance`
+//   Reason: return type 'Handle(Geom2d_UndefinedValue)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Geom2d_UndefinedValue>>;
+//
 
 // ========================
 // From Geom2d_Vector.hxx

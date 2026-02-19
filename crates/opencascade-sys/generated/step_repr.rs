@@ -173,6 +173,40 @@ impl CharacterizedDefinition {
     }
 }
 
+// ── Skipped symbols for CharacterizedDefinition (6 total) ──
+// SKIPPED: **Source:** `StepRepr_CharacterizedDefinition.hxx`:52 - `StepRepr_CharacterizedDefinition::CaseNum`
+//   method: Recognizes a kind of CharacterizedDefinition select type
+//   method: 1 -> CharacterizedObject from StepBasic
+//   method: 2 -> ProductDefinition from StepBasic
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn case_num(&self, ent: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `StepRepr_CharacterizedDefinition.hxx`:55 - `StepRepr_CharacterizedDefinition::CharacterizedObject`
+//   method: Returns Value as CharacterizedObject (or Null if another type)
+//   Reason: return type 'Handle(StepBasic_CharacterizedObject)' is unknown
+//   // pub fn characterized_object(&self) -> OwnedPtr<Handle<StepBasic_CharacterizedObject>>;
+//
+// SKIPPED: **Source:** `StepRepr_CharacterizedDefinition.hxx`:61 - `StepRepr_CharacterizedDefinition::ProductDefinitionRelationship`
+//   method: Returns Value as ProductDefinitionRelationship (or Null if another type)
+//   Reason: return type 'Handle(StepBasic_ProductDefinitionRelationship)' is unknown
+//   // pub fn product_definition_relationship(&self) -> OwnedPtr<Handle<StepBasic_ProductDefinitionRelationship>>;
+//
+// SKIPPED: **Source:** `StepRepr_CharacterizedDefinition.hxx`:65 - `StepRepr_CharacterizedDefinition::ProductDefinitionShape`
+//   method: Returns Value as ProductDefinitionShape (or Null if another type)
+//   Reason: return type 'Handle(StepRepr_ProductDefinitionShape)' is unknown
+//   // pub fn product_definition_shape(&self) -> OwnedPtr<Handle<StepRepr_ProductDefinitionShape>>;
+//
+// SKIPPED: **Source:** `StepRepr_CharacterizedDefinition.hxx`:71 - `StepRepr_CharacterizedDefinition::ShapeAspectRelationship`
+//   method: Returns Value as ShapeAspectRelationship (or Null if another type)
+//   Reason: return type 'Handle(StepRepr_ShapeAspectRelationship)' is unknown
+//   // pub fn shape_aspect_relationship(&self) -> OwnedPtr<Handle<StepRepr_ShapeAspectRelationship>>;
+//
+// SKIPPED: **Source:** `StepRepr_CharacterizedDefinition.hxx`:74 - `StepRepr_CharacterizedDefinition::DocumentFile`
+//   method: Returns Value as DocumentFile (or Null if another type)
+//   Reason: return type 'Handle(StepBasic_DocumentFile)' is unknown
+//   // pub fn document_file(&self) -> OwnedPtr<Handle<StepBasic_DocumentFile>>;
+//
+
 // ========================
 // From StepRepr_CompoundRepresentationItem.hxx
 // ========================
@@ -999,6 +1033,20 @@ impl HandleStepReprRepresentation {
     }
 }
 
+// ── Skipped symbols for Representation (3 total) ──
+// SKIPPED: **Source:** `StepRepr_Representation.hxx`:40 - `StepRepr_Representation::Init`
+//   Reason: param 'aContextOfItems' uses unknown type 'const Handle(StepRepr_RepresentationContext)&'
+//   // pub fn init(&mut self, aName: &HandleHAsciiString, aItems: &HandleHArray1OfRepresentationItem, aContextOfItems: &HandleRepresentationContext);
+//
+// SKIPPED: **Source:** `StepRepr_Representation.hxx`:56 - `StepRepr_Representation::SetContextOfItems`
+//   Reason: param 'aContextOfItems' uses unknown type 'const Handle(StepRepr_RepresentationContext)&'
+//   // pub fn set_context_of_items(&mut self, aContextOfItems: &HandleRepresentationContext);
+//
+// SKIPPED: **Source:** `StepRepr_Representation.hxx`:59 - `StepRepr_Representation::ContextOfItems`
+//   Reason: return type 'Handle(StepRepr_RepresentationContext)' is unknown
+//   // pub fn context_of_items(&self) -> OwnedPtr<Handle<StepRepr_RepresentationContext>>;
+//
+
 // ========================
 // From StepRepr_RepresentationItem.hxx
 // ========================
@@ -1246,6 +1294,30 @@ impl RepresentedDefinition {
     }
 }
 
+// ── Skipped symbols for RepresentedDefinition (4 total) ──
+// SKIPPED: **Source:** `StepRepr_RepresentedDefinition.hxx`:48 - `StepRepr_RepresentedDefinition::CaseNum`
+//   method: Recognizes a kind of RepresentedDefinition select type
+//   method: 1 -> GeneralProperty from StepBasic
+//   method: 2 -> PropertyDefinition from StepRepr
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn case_num(&self, ent: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `StepRepr_RepresentedDefinition.hxx`:51 - `StepRepr_RepresentedDefinition::GeneralProperty`
+//   method: Returns Value as GeneralProperty (or Null if another type)
+//   Reason: return type 'Handle(StepBasic_GeneralProperty)' is unknown
+//   // pub fn general_property(&self) -> OwnedPtr<Handle<StepBasic_GeneralProperty>>;
+//
+// SKIPPED: **Source:** `StepRepr_RepresentedDefinition.hxx`:57 - `StepRepr_RepresentedDefinition::PropertyDefinitionRelationship`
+//   method: Returns Value as PropertyDefinitionRelationship (or Null if another type)
+//   Reason: return type 'Handle(StepRepr_PropertyDefinitionRelationship)' is unknown
+//   // pub fn property_definition_relationship(&self) -> OwnedPtr<Handle<StepRepr_PropertyDefinitionRelationship>>;
+//
+// SKIPPED: **Source:** `StepRepr_RepresentedDefinition.hxx`:64 - `StepRepr_RepresentedDefinition::ShapeAspectRelationship`
+//   method: Returns Value as ShapeAspectRelationship (or Null if another type)
+//   Reason: return type 'Handle(StepRepr_ShapeAspectRelationship)' is unknown
+//   // pub fn shape_aspect_relationship(&self) -> OwnedPtr<Handle<StepRepr_ShapeAspectRelationship>>;
+//
+
 // ========================
 // From StepRepr_ShapeAspect.hxx
 // ========================
@@ -1360,6 +1432,20 @@ impl HandleStepReprShapeAspect {
         unsafe { &mut *(crate::ffi::HandleStepReprShapeAspect_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for ShapeAspect (3 total) ──
+// SKIPPED: **Source:** `StepRepr_ShapeAspect.hxx`:38 - `StepRepr_ShapeAspect::Init`
+//   Reason: param 'aOfShape' uses unknown type 'const Handle(StepRepr_ProductDefinitionShape)&'
+//   // pub fn init(&mut self, aName: &HandleHAsciiString, aDescription: &HandleHAsciiString, aOfShape: &HandleProductDefinitionShape, aProductDefinitional: Logical);
+//
+// SKIPPED: **Source:** `StepRepr_ShapeAspect.hxx`:51 - `StepRepr_ShapeAspect::SetOfShape`
+//   Reason: param 'aOfShape' uses unknown type 'const Handle(StepRepr_ProductDefinitionShape)&'
+//   // pub fn set_of_shape(&mut self, aOfShape: &HandleProductDefinitionShape);
+//
+// SKIPPED: **Source:** `StepRepr_ShapeAspect.hxx`:53 - `StepRepr_ShapeAspect::OfShape`
+//   Reason: return type 'Handle(StepRepr_ProductDefinitionShape)' is unknown
+//   // pub fn of_shape(&self) -> OwnedPtr<Handle<StepRepr_ProductDefinitionShape>>;
+//
 
 // ========================
 // Additional type re-exports

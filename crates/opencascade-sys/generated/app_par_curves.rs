@@ -508,6 +508,15 @@ impl MultiBSpCurve {
     }
 }
 
+// ── Skipped symbols for MultiBSpCurve (1 total) ──
+// SKIPPED: **Source:** `AppParCurves_MultiBSpCurve.hxx`:161 - `AppParCurves_MultiBSpCurve::Dump`
+//   method: Prints on the stream o information on the current
+//   method: state of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From AppParCurves_MultiCurve.hxx
 // ========================
@@ -835,6 +844,15 @@ impl MultiCurve {
     }
 }
 
+// ── Skipped symbols for MultiCurve (1 total) ──
+// SKIPPED: **Source:** `AppParCurves_MultiCurve.hxx`:205 - `AppParCurves_MultiCurve::Dump`
+//   method: Prints on the stream o information on the current
+//   method: state of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From AppParCurves_MultiPoint.hxx
 // ========================
@@ -1002,6 +1020,15 @@ impl MultiPoint {
         }
     }
 }
+
+// ── Skipped symbols for MultiPoint (1 total) ──
+// SKIPPED: **Source:** `AppParCurves_MultiPoint.hxx`:128 - `AppParCurves_MultiPoint::Dump`
+//   method: Prints on the stream o information on the current
+//   method: state of the object.
+//   method: Is used to redefine the operator <<.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
 
 // ========================
 // Additional type re-exports

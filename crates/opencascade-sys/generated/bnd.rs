@@ -2204,6 +2204,15 @@ impl OBB {
     }
 }
 
+// ── Skipped symbols for OBB (1 total) ──
+// SKIPPED: **Source:** `Bnd_OBB.hxx`:211 - `Bnd_OBB::GetVertex`
+//   method: Returns the array of vertices in <this>.
+//   method: The local coordinate of the vertex depending on the
+//   method: index of the array are follow:
+//   Reason: has unbindable types: param 'theP': C-style array (gp_Pnt[8])
+//   // pub fn get_vertex(&self, theP: /* gp_Pnt[8] */) -> bool;
+//
+
 // ========================
 // From Bnd_Range.hxx
 // ========================
@@ -2386,6 +2395,15 @@ impl Range {
     }
 }
 
+// ── Skipped symbols for Range (1 total) ──
+// SKIPPED: **Source:** `Bnd_Range.hxx`:65 - `Bnd_Range::Split`
+//   method: Splits <this> to several sub-ranges by theVal value
+//   method: (e.g. range [3, 15] will be split by theVal==5 to the two
+//   method: ranges: [3, 5] and [5, 15]). New ranges will be pushed to
+//   Reason: has unbindable types: param 'theList': unresolved template/nested type (NCollection_List<Bnd_Range>&)
+//   // pub fn split(&self, theVal: f64, theList: /* NCollection_List<Bnd_Range>& */, thePeriod: f64);
+//
+
 // ========================
 // From Bnd_Sphere.hxx
 // ========================
@@ -2560,6 +2578,19 @@ impl Tools {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_Tools_to_owned(self as *const Self)) }
     }
 }
+
+// ── Skipped symbols for Tools (2 total) ──
+// SKIPPED: **Source:** `Bnd_Tools.hxx`:28 - `Bnd_Tools::Bnd2BVH`
+//   static_method: @name Bnd_Box to BVH_Box conversion
+//   static_method: Converts the given Bnd_Box2d to BVH_Box
+//   Reason: has unbindable types: return: unresolved template/nested type (BVH_Box<Standard_Real, 2>)
+//   // pub fn bnd2_bvh(theBox: &Box2d) -> OwnedPtr<BVH_Box<Standard_Real, 2>>;
+//
+// SKIPPED: **Source:** `Bnd_Tools.hxx`:36 - `Bnd_Tools::Bnd2BVH`
+//   static_method: Converts the given Bnd_Box to BVH_Box
+//   Reason: return type 'Graphic3d_BndBox3d' is not CppDeletable
+//   // pub fn bnd2_bvh(theBox: &Box) -> OwnedPtr<Graphic3d_BndBox3d>;
+//
 
 // ========================
 // Additional type re-exports

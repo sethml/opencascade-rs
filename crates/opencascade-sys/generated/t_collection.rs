@@ -862,6 +862,138 @@ impl AsciiString {
     }
 }
 
+// ── Skipped symbols for AsciiString (21 total) ──
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:63 - `TCollection_AsciiString::TCollection_AsciiString`
+//   constructor: Initializes a AsciiString with a single character.
+//   Reason: param 'aChar' uses unknown type 'Standard_Character'
+//   // pub fn new_character(aChar: Character) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:67 - `TCollection_AsciiString::TCollection_AsciiString`
+//   constructor: Initializes an AsciiString with <length> space allocated.
+//   constructor: and filled with <filler>. This is useful for buffers.
+//   Reason: param 'filler' uses unknown type 'Standard_Character'
+//   // pub fn new_int_character(length: i32, filler: Character) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:80 - `TCollection_AsciiString::TCollection_AsciiString`
+//   constructor: Move constructor
+//   Reason: has unbindable types: param 'theOther': rvalue reference (TCollection_AsciiString&&)
+//   // pub fn new_asciistring(theOther: /* TCollection_AsciiString&& */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:84 - `TCollection_AsciiString::TCollection_AsciiString`
+//   constructor: Initializes a AsciiString with copy of another AsciiString
+//   constructor: concatenated with the message character.
+//   Reason: param 'message' uses unknown type 'Standard_Character'
+//   // pub fn new_asciistring_character(astring: &AsciiString, message: Character) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:101 - `TCollection_AsciiString::TCollection_AsciiString`
+//   constructor: Creation by converting an extended string to an ascii string.
+//   constructor: If replaceNonAscii is non-null character, it will be used
+//   constructor: in place of any non-ascii character found in the source string.
+//   Reason: param 'replaceNonAscii' uses unknown type 'Standard_Character'
+//   // pub fn new_extendedstring_character(astring: &ExtendedString, replaceNonAscii: Character) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:110 - `TCollection_AsciiString::TCollection_AsciiString`
+//   constructor: Initialize UTF-8 Unicode string from wide-char string considering it as Unicode string
+//   constructor: (the size of wide char is a platform-dependent - e.g. on Windows wchar_t is UTF-16).
+//   Reason: has unbindable types: param 'theStringUtf': raw pointer (const Standard_WideChar*)
+//   // pub fn new_widecharptr(theStringUtf: /* const Standard_WideChar* */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:114 - `TCollection_AsciiString::AssignCat`
+//   method: Appends <other>  to me. This is an unary operator.
+//   Reason: param 'other' uses unknown type 'Standard_Character'
+//   // pub fn assign_cat(&mut self, other: Character);
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:162 - `TCollection_AsciiString::Cat`
+//   method: Appends <other>  to me.
+//   method: Syntax:
+//   method: aString = aString + "Dummy"
+//   Reason: param 'other' uses unknown type 'Standard_Character'
+//   // pub fn cat(&self, other: Character) -> OwnedPtr<TCollection_AsciiString>;
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:226 - `TCollection_AsciiString::Center`
+//   method: Modifies this ASCII string so that its length
+//   method: becomes equal to Width and the new characters
+//   method: are equal to Filler. New characters are added
+//   Reason: param 'Filler' uses unknown type 'Standard_Character'
+//   // pub fn center(&mut self, Width: i32, Filler: Character);
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:235 - `TCollection_AsciiString::ChangeAll`
+//   method: Substitutes all the characters equal to aChar by NewChar
+//   method: in the AsciiString <me>.
+//   method: The substitution can be case sensitive.
+//   Reason: param 'aChar' uses unknown type 'Standard_Character'
+//   // pub fn change_all(&mut self, aChar: Character, NewChar: Character, CaseSensitive: bool);
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:263 - `TCollection_AsciiString::Move`
+//   method: Moves string without reallocations
+//   Reason: has unbindable types: param 'theOther': rvalue reference (TCollection_AsciiString&&)
+//   // pub fn move_(&mut self, theOther: /* TCollection_AsciiString&& */);
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:318 - `TCollection_AsciiString::Insert`
+//   method: Inserts a Character at position <where>.
+//   method: Example:
+//   method: aString contains "hy not ?"
+//   Reason: param 'what' uses unknown type 'Standard_Character'
+//   // pub fn insert(&mut self, where_: i32, what: Character);
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:451 - `TCollection_AsciiString::LeftJustify`
+//   method: left justify
+//   method: Length becomes equal to Width and the new characters are
+//   method: equal to Filler.
+//   Reason: param 'Filler' uses unknown type 'Standard_Character'
+//   // pub fn left_justify(&mut self, Width: i32, Filler: Character);
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:494 - `TCollection_AsciiString::Location`
+//   method: Returns the index of the nth occurrence of the character C
+//   method: in the string <me> from the starting index FromIndex to the
+//   method: ending index ToIndex.
+//   Reason: param 'C' uses unknown type 'Standard_Character'
+//   // pub fn location(&self, N: i32, C: Character, FromIndex: i32, ToIndex: i32) -> i32;
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:517 - `TCollection_AsciiString::Print`
+//   method: Displays <me> on a stream.
+//   Reason: has unbindable types: param 'astream': stream type (Standard_OStream&)
+//   // pub fn print(&self, astream: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:522 - `TCollection_AsciiString::Read`
+//   method: Read <me> from a stream.
+//   Reason: has unbindable types: param 'astream': stream type (Standard_IStream&)
+//   // pub fn read(&mut self, astream: /* Standard_IStream& */);
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:538 - `TCollection_AsciiString::RemoveAll`
+//   method: Remove all the occurrences of the character C in the string.
+//   method: Example:
+//   method: before
+//   Reason: param 'C' uses unknown type 'Standard_Character'
+//   // pub fn remove_all(&mut self, C: Character, CaseSensitive: bool);
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:541 - `TCollection_AsciiString::RemoveAll`
+//   method: Removes every <what> characters from <me>.
+//   Reason: param 'what' uses unknown type 'Standard_Character'
+//   // pub fn remove_all(&mut self, what: Character);
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:564 - `TCollection_AsciiString::RightJustify`
+//   method: Right justify.
+//   method: Length becomes equal to Width and the new characters are
+//   method: equal to Filler.
+//   Reason: param 'Filler' uses unknown type 'Standard_Character'
+//   // pub fn right_justify(&mut self, Width: i32, Filler: Character);
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:598 - `TCollection_AsciiString::SetValue`
+//   method: Replaces one character in the AsciiString at position <where>.
+//   method: If <where> is less than zero or greater than the length of <me>
+//   method: an exception is raised.
+//   Reason: param 'what' uses unknown type 'Standard_Character'
+//   // pub fn set_value(&mut self, where_: i32, what: Character);
+//
+// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:671 - `TCollection_AsciiString::Value`
+//   method: Returns character at position <where> in <me>.
+//   method: If <where> is less than zero or greater than the length of <me>,
+//   method: an exception is raised.
+//   Reason: return type 'Standard_Character' is unknown
+//   // pub fn value(&self, where_: i32) -> OwnedPtr<Standard_Character>;
+//
+
 // ========================
 // From TCollection_ExtendedString.hxx
 // ========================
@@ -1170,6 +1302,129 @@ impl ExtendedString {
         }
     }
 }
+
+// ── Skipped symbols for ExtendedString (21 total) ──
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:68 - `TCollection_ExtendedString::TCollection_ExtendedString`
+//   constructor: Creation by converting an ExtString to an extended string.
+//   Reason: param 'astring' uses unknown type 'Standard_ExtString'
+//   // pub fn new_extstring(astring: ExtString) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:76 - `TCollection_ExtendedString::TCollection_ExtendedString`
+//   constructor: Initialize from wide-char string considering it as Unicode string
+//   constructor: (the size of wide char is a platform-dependent - e.g. on Windows wchar_t is UTF-16).
+//   Reason: has unbindable types: param 'theStringUtf': raw pointer (const Standard_WideChar*)
+//   // pub fn new_widecharptr(theStringUtf: /* const Standard_WideChar* */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:80 - `TCollection_ExtendedString::TCollection_ExtendedString`
+//   constructor: Initializes a AsciiString with a single character.
+//   Reason: param 'aChar' uses unknown type 'Standard_Character'
+//   // pub fn new_character(aChar: Character) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:83 - `TCollection_ExtendedString::TCollection_ExtendedString`
+//   constructor: Initializes a ExtendedString with a single character.
+//   Reason: param 'aChar' uses unknown type 'Standard_ExtCharacter'
+//   // pub fn new_extcharacter(aChar: ExtCharacter) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:87 - `TCollection_ExtendedString::TCollection_ExtendedString`
+//   constructor: Initializes a ExtendedString with <length> space allocated.
+//   constructor: and filled with <filler>.This is useful for buffers.
+//   Reason: param 'filler' uses unknown type 'Standard_ExtCharacter'
+//   // pub fn new_int_extcharacter(length: i32, filler: ExtCharacter) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:100 - `TCollection_ExtendedString::TCollection_ExtendedString`
+//   constructor: Move constructor
+//   Reason: has unbindable types: param 'theOther': rvalue reference (TCollection_ExtendedString&&)
+//   // pub fn new_extendedstring(theOther: /* TCollection_ExtendedString&& */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:118 - `TCollection_ExtendedString::AssignCat`
+//   method: Appends the utf16 char to this extended string.
+//   Reason: param 'theChar' uses unknown type 'Standard_Utf16Char'
+//   // pub fn assign_cat(&mut self, theChar: Utf16Char);
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:132 - `TCollection_ExtendedString::ChangeAll`
+//   method: Substitutes all the characters equal to aChar by NewChar
+//   method: in the ExtendedString <me>.
+//   method: The substitution can be case sensitive.
+//   Reason: param 'aChar' uses unknown type 'Standard_ExtCharacter'
+//   // pub fn change_all(&mut self, aChar: ExtCharacter, NewChar: ExtCharacter);
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:151 - `TCollection_ExtendedString::Move`
+//   method: Moves string without reallocations
+//   Reason: has unbindable types: param 'theOther': rvalue reference (TCollection_ExtendedString&&)
+//   // pub fn move_(&mut self, theOther: /* TCollection_ExtendedString&& */);
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:167 - `TCollection_ExtendedString::Insert`
+//   method: Insert a Character at position <where>.
+//   Reason: param 'what' uses unknown type 'Standard_ExtCharacter'
+//   // pub fn insert(&mut self, where_: i32, what: ExtCharacter);
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:178 - `TCollection_ExtendedString::IsEqual`
+//   method: Returns true if the characters in this extended
+//   method: string are identical to the characters in the other extended string.
+//   method: Note that this method is an alias of operator ==
+//   Reason: param 'other' uses unknown type 'Standard_ExtString'
+//   // pub fn is_equal(&self, other: ExtString) -> bool;
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:195 - `TCollection_ExtendedString::IsDifferent`
+//   method: Returns true if there are differences between the
+//   method: characters in this extended string and the other extended string.
+//   method: Note that this method is an alias of operator !=.
+//   Reason: param 'other' uses unknown type 'Standard_ExtString'
+//   // pub fn is_different(&self, other: ExtString) -> bool;
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:210 - `TCollection_ExtendedString::IsLess`
+//   method: Returns TRUE if <me> is less than <other>.
+//   Reason: param 'other' uses unknown type 'Standard_ExtString'
+//   // pub fn is_less(&self, other: ExtString) -> bool;
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:223 - `TCollection_ExtendedString::IsGreater`
+//   method: Returns TRUE if <me> is greater than <other>.
+//   Reason: param 'other' uses unknown type 'Standard_ExtString'
+//   // pub fn is_greater(&self, other: ExtString) -> bool;
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:251 - `TCollection_ExtendedString::Print`
+//   method: Displays <me> .
+//   Reason: has unbindable types: param 'astream': stream type (Standard_OStream&)
+//   // pub fn print(&self, astream: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:256 - `TCollection_ExtendedString::RemoveAll`
+//   method: Removes every <what> characters from <me>.
+//   Reason: param 'what' uses unknown type 'Standard_ExtCharacter'
+//   // pub fn remove_all(&mut self, what: ExtCharacter);
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:274 - `TCollection_ExtendedString::SetValue`
+//   method: Replaces one character in the ExtendedString at position <where>.
+//   method: If <where> is less than zero or greater than the length of <me>
+//   method: an exception is raised.
+//   Reason: param 'what' uses unknown type 'Standard_ExtCharacter'
+//   // pub fn set_value(&mut self, where_: i32, what: ExtCharacter);
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:307 - `TCollection_ExtendedString::Token`
+//   method: Extracts <whichone> token from <me>.
+//   method: By default, the <separators> is set to space and tabulation.
+//   method: By default, the token extracted is the first one (whichone = 1).
+//   Reason: param 'separators' uses unknown type 'Standard_ExtString'
+//   // pub fn token(&self, separators: ExtString, whichone: i32) -> OwnedPtr<TCollection_ExtendedString>;
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:311 - `TCollection_ExtendedString::ToExtString`
+//   method: Returns pointer to ExtString
+//   Reason: return type 'Standard_ExtString' is unknown
+//   // pub fn to_ext_string(&self) -> OwnedPtr<Standard_ExtString>;
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:336 - `TCollection_ExtendedString::Value`
+//   method: Returns character at position <where> in <me>.
+//   method: If <where> is less than zero or greater than the length of
+//   method: <me>, an exception is raised.
+//   Reason: return type 'Standard_ExtCharacter' is unknown
+//   // pub fn value(&self, where_: i32) -> OwnedPtr<Standard_ExtCharacter>;
+//
+// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:365 - `TCollection_ExtendedString::ToUTF8CString`
+//   method: Converts the internal <mystring> to UTF8 coding and
+//   method: returns length of the out CString. A memory for the
+//   method: <theCString> should be allocated before call!
+//   Reason: param 'theCString' uses unknown type 'Standard_PCharacter&'
+//   // pub fn to_utf8c_string(&self, theCString: &mut PCharacter) -> i32;
+//
 
 // ========================
 // From TCollection_HAsciiString.hxx
@@ -1891,6 +2146,104 @@ impl HandleTCollectionHAsciiString {
     }
 }
 
+// ── Skipped symbols for HAsciiString (15 total) ──
+// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:52 - `TCollection_HAsciiString::TCollection_HAsciiString`
+//   constructor: Initializes a HAsciiString with a single character.
+//   Reason: param 'aChar' uses unknown type 'Standard_Character'
+//   // pub fn new_character(aChar: Character) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:56 - `TCollection_HAsciiString::TCollection_HAsciiString`
+//   constructor: Initializes a HAsciiString with <length> space allocated.
+//   constructor: and filled with <filler>.This is useful for buffers.
+//   Reason: param 'filler' uses unknown type 'Standard_Character'
+//   // pub fn new_int_character(length: i32, filler: Character) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:69 - `TCollection_HAsciiString::TCollection_HAsciiString`
+//   constructor: Initializes a HAsciiString with a AsciiString.
+//   Reason: has unbindable types: param 'theString': rvalue reference (TCollection_AsciiString&&)
+//   // pub fn new_asciistring(theString: /* TCollection_AsciiString&& */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:81 - `TCollection_HAsciiString::TCollection_HAsciiString`
+//   constructor: Initializes a HAsciiString with a HExtendedString.
+//   constructor: If replaceNonAscii is non-null character, it will be used
+//   constructor: in place of any non-ascii character found in the source string.
+//   Reason: param 'replaceNonAscii' uses unknown type 'Standard_Character'
+//   // pub fn new_handletcollectionhextendedstring_character(aString: &HandleHExtendedString, replaceNonAscii: Character) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:135 - `TCollection_HAsciiString::Center`
+//   method: Modifies this ASCII string so that its length
+//   method: becomes equal to Width and the new characters
+//   method: are equal to Filler. New characters are added
+//   Reason: param 'Filler' uses unknown type 'Standard_Character'
+//   // pub fn center(&mut self, Width: i32, Filler: Character);
+//
+// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:151 - `TCollection_HAsciiString::ChangeAll`
+//   method: Replaces all characters equal to aChar by
+//   method: NewChar in this ASCII string. The substitution is
+//   method: case sensitive if CaseSensitive is true (default value).
+//   Reason: param 'aChar' uses unknown type 'Standard_Character'
+//   // pub fn change_all(&mut self, aChar: Character, NewChar: Character, CaseSensitive: bool);
+//
+// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:202 - `TCollection_HAsciiString::Insert`
+//   method: Insert a Character at position <where>.
+//   method: Example:
+//   method: aString contains "hy not ?"
+//   Reason: param 'what' uses unknown type 'Standard_Character'
+//   // pub fn insert(&mut self, where_: i32, what: Character);
+//
+// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:281 - `TCollection_HAsciiString::LeftJustify`
+//   method: Left justify.
+//   method: Length becomes equal to Width and the new characters are
+//   method: equal to Filler
+//   Reason: param 'Filler' uses unknown type 'Standard_Character'
+//   // pub fn left_justify(&mut self, Width: i32, Filler: Character);
+//
+// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:314 - `TCollection_HAsciiString::Location`
+//   method: Returns the index of the nth occurrence of the character C
+//   method: in the string <me> from the starting index FromIndex to the
+//   method: ending index ToIndex.
+//   Reason: param 'C' uses unknown type 'Standard_Character'
+//   // pub fn location(&self, N: i32, C: Character, FromIndex: i32, ToIndex: i32) -> i32;
+//
+// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:331 - `TCollection_HAsciiString::Print`
+//   method: Prints this string on the stream <astream>.
+//   Reason: has unbindable types: param 'astream': stream type (Standard_OStream&)
+//   // pub fn print(&self, astream: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:345 - `TCollection_HAsciiString::RemoveAll`
+//   method: Remove all the occurrences of the character C in the string
+//   method: Example:
+//   method: before
+//   Reason: param 'C' uses unknown type 'Standard_Character'
+//   // pub fn remove_all(&mut self, C: Character, CaseSensitive: bool);
+//
+// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:348 - `TCollection_HAsciiString::RemoveAll`
+//   method: Removes every <what> characters from <me>
+//   Reason: param 'what' uses unknown type 'Standard_Character'
+//   // pub fn remove_all(&mut self, what: Character);
+//
+// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:371 - `TCollection_HAsciiString::RightJustify`
+//   method: Right justify.
+//   method: Length becomes equal to Width and the new characters are
+//   method: equal to Filler
+//   Reason: param 'Filler' uses unknown type 'Standard_Character'
+//   // pub fn right_justify(&mut self, Width: i32, Filler: Character);
+//
+// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:406 - `TCollection_HAsciiString::SetValue`
+//   method: Replaces one character in the string at position <where>.
+//   method: If <where> is less than zero or greater than the length of <me>
+//   method: an exception is raised.
+//   Reason: param 'what' uses unknown type 'Standard_Character'
+//   // pub fn set_value(&mut self, where_: i32, what: Character);
+//
+// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:481 - `TCollection_HAsciiString::Value`
+//   method: Returns character at position <where> in <me>.
+//   method: If <where> is less than zero or greater than the length of
+//   method: <me>, an exception is raised.
+//   Reason: return type 'Standard_Character' is unknown
+//   // pub fn value(&self, where_: i32) -> OwnedPtr<Standard_Character>;
+//
+
 // ========================
 // From TCollection_HExtendedString.hxx
 // ========================
@@ -2157,3 +2510,75 @@ impl HandleTCollectionHExtendedString {
         unsafe { &mut *(crate::ffi::HandleTCollectionHExtendedString_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for HExtendedString (12 total) ──
+// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:55 - `TCollection_HExtendedString::TCollection_HExtendedString`
+//   constructor: Initializes a HExtendedString with an ExtString.
+//   Reason: param 'message' uses unknown type 'Standard_ExtString'
+//   // pub fn new_extstring(message: ExtString) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:58 - `TCollection_HExtendedString::TCollection_HExtendedString`
+//   constructor: Initializes a HExtendedString with a single character.
+//   Reason: param 'aChar' uses unknown type 'Standard_ExtCharacter'
+//   // pub fn new_extcharacter(aChar: ExtCharacter) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:62 - `TCollection_HExtendedString::TCollection_HExtendedString`
+//   constructor: Initializes a HExtendedString with <length> space allocated.
+//   constructor: and filled with <filler>. This is useful for buffers.
+//   Reason: param 'filler' uses unknown type 'Standard_ExtCharacter'
+//   // pub fn new_int_extcharacter(length: i32, filler: ExtCharacter) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:69 - `TCollection_HExtendedString::TCollection_HExtendedString`
+//   constructor: Initializes a HExtendedString with a ExtendedString.
+//   Reason: has unbindable types: param 'theString': rvalue reference (TCollection_ExtendedString&&)
+//   // pub fn new_extendedstring(theString: /* TCollection_ExtendedString&& */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:89 - `TCollection_HExtendedString::ChangeAll`
+//   method: Substitutes all the characters equal to aChar by NewChar
+//   method: in the string <me>.
+//   Reason: param 'aChar' uses unknown type 'Standard_ExtCharacter'
+//   // pub fn change_all(&mut self, aChar: ExtCharacter, NewChar: ExtCharacter);
+//
+// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:107 - `TCollection_HExtendedString::Insert`
+//   method: Insert a ExtCharacter at position <where>.
+//   method: Example:
+//   method: aString contains "hy not ?"
+//   Reason: param 'what' uses unknown type 'Standard_ExtCharacter'
+//   // pub fn insert(&mut self, where_: i32, what: ExtCharacter);
+//
+// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:136 - `TCollection_HExtendedString::RemoveAll`
+//   method: Removes every <what> characters from <me>.
+//   Reason: param 'what' uses unknown type 'Standard_ExtCharacter'
+//   // pub fn remove_all(&mut self, what: ExtCharacter);
+//
+// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:144 - `TCollection_HExtendedString::SetValue`
+//   method: Replaces one character in the string at position <where>.
+//   method: If <where> is less than zero or greater than the length of <me>
+//   method: an exception is raised.
+//   Reason: param 'what' uses unknown type 'Standard_ExtCharacter'
+//   // pub fn set_value(&mut self, where_: i32, what: ExtCharacter);
+//
+// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:168 - `TCollection_HExtendedString::ToExtString`
+//   method: Returns pointer to ExtString
+//   Reason: return type 'Standard_ExtString' is unknown
+//   // pub fn to_ext_string(&self) -> OwnedPtr<Standard_ExtString>;
+//
+// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:185 - `TCollection_HExtendedString::Token`
+//   method: Extracts <whichone> token from <me>.
+//   method: By default, the <separators> is set to space and tabulation.
+//   method: By default, the token extracted is the first one (whichone = 1).
+//   Reason: param 'separators' uses unknown type 'Standard_ExtString'
+//   // pub fn token(&self, separators: ExtString, whichone: i32) -> OwnedPtr<Handle<TCollection_HExtendedString>>;
+//
+// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:199 - `TCollection_HExtendedString::Value`
+//   method: Returns ExtCharacter at position <where> in <me>.
+//   method: If <where> is less than zero or greater than the length of
+//   method: <me>, an exception is raised.
+//   Reason: return type 'Standard_ExtCharacter' is unknown
+//   // pub fn value(&self, where_: i32) -> OwnedPtr<Standard_ExtCharacter>;
+//
+// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:205 - `TCollection_HExtendedString::Print`
+//   method: Displays <me> .
+//   Reason: has unbindable types: param 'astream': stream type (Standard_OStream&)
+//   // pub fn print(&self, astream: /* Standard_OStream& */);
+//

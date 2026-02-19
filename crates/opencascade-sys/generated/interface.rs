@@ -829,6 +829,36 @@ impl HandleInterfaceCheck {
     }
 }
 
+// ── Skipped symbols for Check (5 total) ──
+// SKIPPED: **Source:** `Interface_Check.hxx`:57 - `Interface_Check::Interface_Check`
+//   constructor: Defines a Check on an Entity
+//   Reason: param 'anentity' uses unknown Handle type
+//   // pub fn new_handlestandardtransient(anentity: &HandleTransient) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Interface_Check.hxx`:187 - `Interface_Check::Entity`
+//   method: Returns the entity on which the Check has been defined
+//   Reason: return type 'const Handle(Standard_Transient)&' is unknown
+//   // pub fn entity(&self) -> &HandleTransient;
+//
+// SKIPPED: **Source:** `Interface_Check.hxx`:229 - `Interface_Check::SetEntity`
+//   method: Receives an entity result of a Transfer
+//   Reason: param 'anentity' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn set_entity(&mut self, anentity: &HandleTransient);
+//
+// SKIPPED: **Source:** `Interface_Check.hxx`:233 - `Interface_Check::GetEntity`
+//   method: same as SetEntity (old form kept for compatibility)
+//   method: Warning : Does nothing if Entity field is not yet clear
+//   Reason: param 'anentity' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn get_entity(&mut self, anentity: &HandleTransient);
+//
+// SKIPPED: **Source:** `Interface_Check.hxx`:253 - `Interface_Check::Print`
+//   method: Prints the messages of the check to an Messenger
+//   method: <level> = 1 : only fails
+//   method: <level> = 2 : fails and warnings
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print(&self, S: /* Standard_OStream& */, level: i32, final_: i32);
+//
+
 // ========================
 // From Interface_CheckIterator.hxx
 // ========================
@@ -1092,6 +1122,36 @@ impl CheckIterator {
     }
 }
 
+// ── Skipped symbols for CheckIterator (4 total) ──
+// SKIPPED: **Source:** `Interface_CheckIterator.hxx`:92 - `Interface_CheckIterator::Check`
+//   method: Returns the Check attached to an Entity
+//   method: If no Check was recorded for this Entity, returns an empty
+//   method: Check.
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn check(&self, ent: &HandleTransient) -> &HandleCheck;
+//
+// SKIPPED: **Source:** `Interface_CheckIterator.hxx`:104 - `Interface_CheckIterator::CCheck`
+//   method: Returns the Check bound to an Entity, in order to be consulted
+//   method: or completed on the spot
+//   method: I.e. returns the Check if is already exists, or adds it then
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn c_check(&mut self, ent: &HandleTransient) -> &mut HandleCheck;
+//
+// SKIPPED: **Source:** `Interface_CheckIterator.hxx`:185 - `Interface_CheckIterator::Print`
+//   method: Prints the list of Checks with their attached Numbers
+//   method: If <failsonly> is True, prints only Fail messages
+//   method: If <failsonly> is False, prints all messages
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print(&self, S: /* Standard_OStream& */, failsonly: bool, final_: i32);
+//
+// SKIPPED: **Source:** `Interface_CheckIterator.hxx`:192 - `Interface_CheckIterator::Print`
+//   method: Works as Print without a model, but for entities which have
+//   method: no attached number (Number not positive), tries to compute
+//   method: this Number from <model> and displays "original" or "computed"
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print(&self, S: /* Standard_OStream& */, model: &HandleInterfaceModel, failsonly: bool, final_: i32);
+//
+
 // ========================
 // From Interface_EntityList.hxx
 // ========================
@@ -1160,6 +1220,50 @@ impl EntityList {
     }
 }
 
+// ── Skipped symbols for EntityList (7 total) ──
+// SKIPPED: **Source:** `Interface_EntityList.hxx`:58 - `Interface_EntityList::Append`
+//   method: Appends an Entity, that is to the END of the list
+//   method: (keeps order, but works slowerly than Add, see below)
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn append(&mut self, ent: &HandleTransient);
+//
+// SKIPPED: **Source:** `Interface_EntityList.hxx`:62 - `Interface_EntityList::Add`
+//   method: Adds an Entity to the list, that is, with NO REGARD about the
+//   method: order (faster than Append if count becomes greater than 10)
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add(&mut self, ent: &HandleTransient);
+//
+// SKIPPED: **Source:** `Interface_EntityList.hxx`:65 - `Interface_EntityList::Remove`
+//   method: Removes an Entity from the list, if it is there
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn remove(&mut self, ent: &HandleTransient);
+//
+// SKIPPED: **Source:** `Interface_EntityList.hxx`:78 - `Interface_EntityList::Value`
+//   method: Returns an Item given its number. Beware about the way the
+//   method: list was filled (see above, Add and Append)
+//   Reason: return type 'const Handle(Standard_Transient)&' is unknown
+//   // pub fn value(&self, num: i32) -> &HandleTransient;
+//
+// SKIPPED: **Source:** `Interface_EntityList.hxx`:82 - `Interface_EntityList::SetValue`
+//   method: Returns an Item given its number. Beware about the way the
+//   method: list was filled (see above, Add and Append)
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn set_value(&mut self, num: i32, ent: &HandleTransient);
+//
+// SKIPPED: **Source:** `Interface_EntityList.hxx`:86 - `Interface_EntityList::FillIterator`
+//   method: fills an Iterator with the content of the list
+//   method: (normal way to consult a list which has been filled with Add)
+//   Reason: param 'iter' uses unknown type 'Interface_EntityIterator&'
+//   // pub fn fill_iterator(&self, iter: &mut EntityIterator);
+//
+// SKIPPED: **Source:** `Interface_EntityList.hxx`:94 - `Interface_EntityList::TypedEntity`
+//   method: Returns the Entity which is of a given type.
+//   method: If num = 0 (D), there must be ONE AND ONLY ONE
+//   method: If num > 0, returns the num-th entity of this type
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn typed_entity(&self, atype: &HandleType, num: i32) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+
 // ========================
 // From Interface_GeneralLib.hxx
 // ========================
@@ -1215,6 +1319,45 @@ impl GeneralLib {
         unsafe { crate::ffi::Interface_GeneralLib_next(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for GeneralLib (6 total) ──
+// SKIPPED: **Source:** `Interface_GeneralLib.hxx`:46 - `Interface_GeneralLib::Interface_GeneralLib`
+//   constructor: Creates a Library which complies with a Protocol, that is :
+//   constructor: Same class (criterium IsInstance)
+//   constructor: This creation gets the Modules from the global set, those
+//   Reason: param 'aprotocol' uses unknown Handle type
+//   // pub fn new_handleinterfaceprotocol(aprotocol: &HandleProtocol) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Interface_GeneralLib.hxx`:55 - `Interface_GeneralLib::AddProtocol`
+//   method: Adds a couple (Module-Protocol) to the Library, given the
+//   method: class of a Protocol. Takes Resources into account.
+//   method: (if <aprotocol> is not of type TheProtocol, it is not added)
+//   Reason: param 'aprotocol' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_protocol(&mut self, aprotocol: &HandleTransient);
+//
+// SKIPPED: **Source:** `Interface_GeneralLib.hxx`:72 - `Interface_GeneralLib::Select`
+//   method: Selects a Module from the Library, given an Object.
+//   method: Returns True if Select has succeeded, False else.
+//   method: Also Returns (as arguments) the selected Module and the Case
+//   Reason: param 'obj' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn select(&self, obj: &HandleTransient, module: &mut HandleGeneralModule, CN: &mut i32) -> bool;
+//
+// SKIPPED: **Source:** `Interface_GeneralLib.hxx`:87 - `Interface_GeneralLib::Module`
+//   method: Returns the current Module in the Iteration
+//   Reason: return type 'const Handle(Interface_GeneralModule)&' is unknown
+//   // pub fn module(&self) -> &HandleGeneralModule;
+//
+// SKIPPED: **Source:** `Interface_GeneralLib.hxx`:90 - `Interface_GeneralLib::Protocol`
+//   method: Returns the current Protocol in the Iteration
+//   Reason: return type 'const Handle(Interface_Protocol)&' is unknown
+//   // pub fn protocol(&self) -> &HandleProtocol;
+//
+// SKIPPED: **Source:** `Interface_GeneralLib.hxx`:39 - `Interface_GeneralLib::SetGlobal`
+//   static_method: Adds a couple (Module-Protocol) into the global definition set
+//   static_method: for this class of Library.
+//   Reason: param 'amodule' uses unknown type 'const Handle(Interface_GeneralModule)&'
+//   // pub fn set_global(amodule: &HandleGeneralModule, aprotocol: &HandleProtocol);
+//
 
 // ========================
 // From Interface_Graph.hxx
@@ -1442,6 +1585,115 @@ impl Graph {
     }
 }
 
+// ── Skipped symbols for Graph (17 total) ──
+// SKIPPED: **Source:** `Interface_Graph.hxx`:77 - `Interface_Graph::Interface_Graph`
+//   constructor: Same as above, but the Library is defined through a Protocol
+//   Reason: param 'protocol' uses unknown Handle type
+//   // pub fn new_handleinterfaceinterfacemodel_handleinterfaceprotocol_bool(amodel: &HandleInterfaceModel, protocol: &HandleProtocol, theModeStats: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Interface_Graph.hxx`:82 - `Interface_Graph::Interface_Graph`
+//   constructor: Same as above, but the Library is defined through a Protocol
+//   Reason: param 'gtool' uses unknown Handle type
+//   // pub fn new_handleinterfaceinterfacemodel_handleinterfacegtool_bool(amodel: &HandleInterfaceModel, gtool: &HandleGTool, theModeStats: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Interface_Graph.hxx`:117 - `Interface_Graph::EntityNumber`
+//   method: Returns the Number of the entity in the Map, computed at
+//   method: creation time (Entities loaded from the Model)
+//   method: Returns 0 if <ent> not contained by Model used to create <me>
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn entity_number(&self, ent: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `Interface_Graph.hxx`:127 - `Interface_Graph::IsPresent`
+//   method: Same as above but directly on an Entity <ent> : if it is not
+//   method: contained in the Model, returns False. Else calls
+//   method: IsPresent(num)  with <num> given by EntityNumber
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn is_present(&self, ent: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `Interface_Graph.hxx`:130 - `Interface_Graph::Entity`
+//   method: Returns mapped Entity given its no (if it is present)
+//   Reason: return type 'const Handle(Standard_Transient)&' is unknown
+//   // pub fn entity(&self, num: i32) -> &HandleTransient;
+//
+// SKIPPED: **Source:** `Interface_Graph.hxx`:164 - `Interface_Graph::GetFromEntity`
+//   method: Gets an Entity, plus its shared ones (at every level) if
+//   method: "shared" is True. New items are set to status "newstat"
+//   method: Items already present in graph remain unchanged
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn get_from_entity(&mut self, ent: &HandleTransient, shared: bool, newstat: i32);
+//
+// SKIPPED: **Source:** `Interface_Graph.hxx`:175 - `Interface_Graph::GetFromEntity`
+//   method: Gets an Entity, plus its shared ones (at every level) if
+//   method: "shared" is True. New items are set to status "newstat".
+//   method: Items already present in graph are processed as follows :
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn get_from_entity(&mut self, ent: &HandleTransient, shared: bool, newstat: i32, overlapstat: i32, cumul: bool);
+//
+// SKIPPED: **Source:** `Interface_Graph.hxx`:184 - `Interface_Graph::GetFromIter`
+//   method: Gets Entities given by an EntityIterator. Entities which were
+//   method: not yet present in the graph are mapped with status "newstat"
+//   method: Entities already present remain unchanged
+//   Reason: param 'iter' uses unknown type 'const Interface_EntityIterator&'
+//   // pub fn get_from_iter(&mut self, iter: &EntityIterator, newstat: i32);
+//
+// SKIPPED: **Source:** `Interface_Graph.hxx`:197 - `Interface_Graph::GetFromIter`
+//   method: Gets Entities given by an EntityIterator and distinguishes
+//   method: those already present in the Graph :
+//   method: - new entities added to the Graph with status "newstst"
+//   Reason: param 'iter' uses unknown type 'const Interface_EntityIterator&'
+//   // pub fn get_from_iter(&mut self, iter: &EntityIterator, newstat: i32, overlapstat: i32, cumul: bool);
+//
+// SKIPPED: **Source:** `Interface_Graph.hxx`:212 - `Interface_Graph::HasShareErrors`
+//   method: Returns True if <ent> or the list of entities shared by <ent>
+//   method: (not redefined) contains items unknown from this Graph
+//   method: Remark : apart from the status HasShareError, these items
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn has_share_errors(&self, ent: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `Interface_Graph.hxx`:215 - `Interface_Graph::GetShareds`
+//   method: Returns the sequence of Entities Shared by an Entity
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn get_shareds(&self, ent: &HandleTransient) -> OwnedPtr<Handle<TColStd_HSequenceOfTransient>>;
+//
+// SKIPPED: **Source:** `Interface_Graph.hxx`:221 - `Interface_Graph::Shareds`
+//   method: Returns the list of Entities Shared by an Entity, as recorded
+//   method: by the Graph. That is, by default Basic Shared List, else it
+//   method: can be redefined by methods SetShare, SetNoShare ... see below
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn shareds(&self, ent: &HandleTransient) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `Interface_Graph.hxx`:225 - `Interface_Graph::Sharings`
+//   method: Returns the list of Entities which Share an Entity, computed
+//   method: from the Basic or Redefined Shared Lists
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn sharings(&self, ent: &HandleTransient) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `Interface_Graph.hxx`:228 - `Interface_Graph::GetSharings`
+//   method: Returns the sequence of Entities Sharings by an Entity
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn get_sharings(&self, ent: &HandleTransient) -> OwnedPtr<Handle<TColStd_HSequenceOfTransient>>;
+//
+// SKIPPED: **Source:** `Interface_Graph.hxx`:234 - `Interface_Graph::TypedSharings`
+//   method: Returns the list of sharings entities, AT ANY LEVEL, which are
+//   method: kind of a given type. A sharing entity kind of this type
+//   method: ends the exploration of its branch
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn typed_sharings(&self, ent: &HandleTransient, type_: &HandleType) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `Interface_Graph.hxx`:239 - `Interface_Graph::RootEntities`
+//   method: Returns the Entities which are not Shared (their Sharing List
+//   method: is empty) in the Model
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn root_entities(&self) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `Interface_Graph.hxx`:245 - `Interface_Graph::Name`
+//   method: Determines the name attached to an entity, by using the
+//   method: general service Name in GeneralModule
+//   method: Returns a null handle if no name could be computed or if
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn name(&self, ent: &HandleTransient) -> OwnedPtr<Handle<TCollection_HAsciiString>>;
+//
+
 // ========================
 // From Interface_HArray1OfHAsciiString.hxx
 // ========================
@@ -1642,6 +1894,12 @@ impl HandleInterfaceHSequenceOfCheck {
     }
 }
 
+// ── Skipped symbols for HSequenceOfCheck (1 total) ──
+// SKIPPED: **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
+
 // ========================
 // From Interface_IntList.hxx
 // ========================
@@ -1815,6 +2073,13 @@ impl IntList {
         unsafe { crate::ffi::Interface_IntList_adjust_size(self as *mut Self, margin) }
     }
 }
+
+// ── Skipped symbols for IntList (1 total) ──
+// SKIPPED: **Source:** `Interface_IntList.hxx`:73 - `Interface_IntList::Internals`
+//   method: Returns internal values, used for copying
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn internals(&self, nbrefs: &mut i32, ents: &mut HandleHArray1OfInteger, refs: &mut HandleHArray1OfInteger);
+//
 
 // ========================
 // From Interface_InterfaceModel.hxx
@@ -2213,6 +2478,186 @@ impl HandleInterfaceInterfaceModel {
     }
 }
 
+// ── Skipped symbols for InterfaceModel (28 total) ──
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:78 - `Interface_InterfaceModel::SetProtocol`
+//   method: Sets a Protocol for this Model
+//   method: It is also set by a call to AddWithRefs with Protocol
+//   method: It is used for : DumpHeader (as required), ClearEntities ...
+//   Reason: param 'proto' uses unknown type 'const Handle(Interface_Protocol)&'
+//   // pub fn set_protocol(&mut self, proto: &HandleProtocol);
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:82 - `Interface_InterfaceModel::Protocol`
+//   method: Returns the Protocol which has been set by SetProtocol, or
+//   method: AddWithRefs with Protocol
+//   Reason: return type 'Handle(Interface_Protocol)' is unknown
+//   // pub fn protocol(&self) -> OwnedPtr<Handle<Interface_Protocol>>;
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:85 - `Interface_InterfaceModel::SetGTool`
+//   method: Sets a GTool for this model, which already defines a Protocol
+//   Reason: param 'gtool' uses unknown type 'const Handle(Interface_GTool)&'
+//   // pub fn set_g_tool(&mut self, gtool: &HandleGTool);
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:88 - `Interface_InterfaceModel::GTool`
+//   method: Returns the GTool, set by SetProtocol or by SetGTool
+//   Reason: return type 'Handle(Interface_GTool)' is unknown
+//   // pub fn g_tool(&self) -> OwnedPtr<Handle<Interface_GTool>>;
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:117 - `Interface_InterfaceModel::Contains`
+//   method: Returns True if a Model contains an Entity (for a ReportEntity,
+//   method: looks for the ReportEntity itself AND its Concerned Entity)
+//   Reason: param 'anentity' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn contains(&self, anentity: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:124 - `Interface_InterfaceModel::Number`
+//   method: Returns the Number of an Entity in the Model if it contains it.
+//   method: Else returns 0. For a ReportEntity, looks at Concerned Entity.
+//   method: Returns the Directory entry   Number of  an Entity in
+//   Reason: param 'anentity' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn number(&self, anentity: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:133 - `Interface_InterfaceModel::Value`
+//   method: Returns an Entity identified by its number in the Model
+//   method: Each sub-class of InterfaceModel can define its own method
+//   method: Entity to return its specific class of Entity (e.g. for VDA,
+//   Reason: return type 'const Handle(Standard_Transient)&' is unknown
+//   // pub fn value(&self, num: i32) -> &HandleTransient;
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:138 - `Interface_InterfaceModel::NbTypes`
+//   method: Returns the count of DISTINCT types under which an entity may
+//   method: be processed. Defined by the Protocol, which gives default as
+//   method: 1 (dynamic Type).
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn nb_types(&self, ent: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:142 - `Interface_InterfaceModel::Type`
+//   method: Returns a type, given its rank : defined by the Protocol
+//   method: (by default, the first one)
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn type_(&self, ent: &HandleTransient, num: i32) -> OwnedPtr<Handle<Standard_Type>>;
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:150 - `Interface_InterfaceModel::TypeName`
+//   method: Returns the type name of an entity, from the list of types
+//   method: (one or more ...)
+//   method: <complete> True (D) gives the complete type, else packages are
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn type_name(&self, ent: &HandleTransient, complete: bool) -> *const char;
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:178 - `Interface_InterfaceModel::ReportEntity`
+//   method: Returns a ReportEntity identified by its number in the Model,
+//   method: or a Null Handle If <num> does not identify a ReportEntity.
+//   Reason: return type 'Handle(Interface_ReportEntity)' is unknown
+//   // pub fn report_entity(&self, num: i32, semantic: bool) -> OwnedPtr<Handle<Interface_ReportEntity>>;
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:202 - `Interface_InterfaceModel::SetReportEntity`
+//   method: Sets or Replaces a ReportEntity for the Entity <num>. Returns
+//   method: True if Report is replaced, False if it has been replaced
+//   method: Warning : the caller must assume that this setting is meaningful
+//   Reason: param 'rep' uses unknown type 'const Handle(Interface_ReportEntity)&'
+//   // pub fn set_report_entity(&mut self, num: i32, rep: &HandleReportEntity) -> bool;
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:210 - `Interface_InterfaceModel::AddReportEntity`
+//   method: Adds a ReportEntity as such. Returns False if the concerned
+//   method: entity is not recorded in the Model
+//   method: Else, adds it into, either the main report list or the
+//   Reason: param 'rep' uses unknown type 'const Handle(Interface_ReportEntity)&'
+//   // pub fn add_report_entity(&mut self, rep: &HandleReportEntity, semantic: bool) -> bool;
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:249 - `Interface_InterfaceModel::AddEntity`
+//   method: Internal method for adding an Entity. Used by file reading
+//   method: (defined by each Interface) and Transfer tools. It adds the
+//   method: entity required to be added, not its refs : see AddWithRefs.
+//   Reason: param 'anentity' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_entity(&mut self, anentity: &HandleTransient);
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:262 - `Interface_InterfaceModel::AddWithRefs`
+//   method: Adds to the Model, an Entity with all its References, as they
+//   method: are defined by General Services FillShared and ListImplied.
+//   method: Process is recursive (any sub-levels) if <level> = 0 (Default)
+//   Reason: param 'anent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_with_refs(&mut self, anent: &HandleTransient, proto: &HandleProtocol, level: i32, listall: bool);
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:268 - `Interface_InterfaceModel::AddWithRefs`
+//   method: Same as above, but works with the Protocol of the Model
+//   Reason: param 'anent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_with_refs(&mut self, anent: &HandleTransient, level: i32, listall: bool);
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:273 - `Interface_InterfaceModel::AddWithRefs`
+//   method: Same as above, but works with an already created GeneralLib
+//   Reason: param 'anent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_with_refs(&mut self, anent: &HandleTransient, lib: &GeneralLib, level: i32, listall: bool);
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:279 - `Interface_InterfaceModel::ReplaceEntity`
+//   method: Replace Entity with Number=nument on other entity - "anent"
+//   Reason: param 'anent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn replace_entity(&mut self, nument: i32, anent: &HandleTransient);
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:300 - `Interface_InterfaceModel::GetFromTransfer`
+//   method: Gets contents from an EntityIterator, prepared by a
+//   method: Transfer tool (e.g TransferCopy). Starts from clear
+//   Reason: param 'aniter' uses unknown type 'const Interface_EntityIterator&'
+//   // pub fn get_from_transfer(&mut self, aniter: &EntityIterator);
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:322 - `Interface_InterfaceModel::FillIterator`
+//   method: Allows an EntityIterator to get a list of Entities
+//   Reason: param 'iter' uses unknown type 'Interface_EntityIterator&'
+//   // pub fn fill_iterator(&self, iter: &mut EntityIterator);
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:326 - `Interface_InterfaceModel::Entities`
+//   method: Returns the list of all Entities, as an Iterator on Entities
+//   method: (the Entities themselves, not the Reports)
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn entities(&self) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:335 - `Interface_InterfaceModel::Reports`
+//   method: Returns the list of all ReportEntities, i.e. data about
+//   method: Entities read with Error or Warning information
+//   method: (each item has to be casted to Report Entity then it can be
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn reports(&self, semantic: bool) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:340 - `Interface_InterfaceModel::Redefineds`
+//   method: Returns the list of ReportEntities which redefine data
+//   method: (generally, if concerned entity is "Error", a literal content
+//   method: is added to it : this is a "redefined entity"
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn redefineds(&self) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:360 - `Interface_InterfaceModel::DumpHeader`
+//   method: Dumps Header in a short, easy to read, form, onto a Stream
+//   method: <level> allows to print more or less parts of the header,
+//   method: if necessary. 0 for basic print
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn dump_header(&self, S: /* Standard_OStream& */, level: i32);
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:370 - `Interface_InterfaceModel::Print`
+//   method: Prints identification of a given entity in <me>, in order to
+//   method: be printed in a list or phrase
+//   method: <mode> < 0 : prints only its number
+//   Reason: has unbindable types: param 's': stream type (Standard_OStream&)
+//   // pub fn print(&self, ent: &HandleTransient, s: /* Standard_OStream& */, mode: i32);
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:377 - `Interface_InterfaceModel::PrintLabel`
+//   method: Prints label specific to each norm, for a given entity.
+//   method: Must only print label itself, in order to be included in a
+//   method: phrase. Can call the result of StringLabel, but not obliged.
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_label(&self, ent: &HandleTransient, S: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:383 - `Interface_InterfaceModel::PrintToLog`
+//   method: Prints label specific to each norm in log format, for
+//   method: a given entity.
+//   method: By default, just calls PrintLabel, can be redefined
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_to_log(&self, ent: &HandleTransient, S: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:389 - `Interface_InterfaceModel::StringLabel`
+//   method: Returns a string with the label attached to a given entity.
+//   method: Warning : While this string may be edited on the spot, if it is a read
+//   method: field, the returned value must be copied before.
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn string_label(&self, ent: &HandleTransient) -> OwnedPtr<Handle<TCollection_HAsciiString>>;
+//
+
 // ========================
 // From Interface_SignType.hxx
 // ========================
@@ -2273,6 +2718,22 @@ impl SignType {
         }
     }
 }
+
+// ── Skipped symbols for SignType (2 total) ──
+// SKIPPED: **Source:** `Interface_SignType.hxx`:42 - `Interface_SignType::Text`
+//   method: Returns an identification of the Signature (a word), given at
+//   method: initialization time
+//   method: Specialised to consider context as an InterfaceModel
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn text(&self, ent: &HandleTransient, context: &HandleTransient) -> OwnedPtr<TCollection_AsciiString>;
+//
+// SKIPPED: **Source:** `Interface_SignType.hxx`:49 - `Interface_SignType::Value`
+//   method: Returns the Signature for a Transient object. It is specific
+//   method: of each sub-class of Signature. For a Null Handle, it should
+//   method: provide ""
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn value(&self, ent: &HandleTransient, model: &HandleInterfaceModel) -> *const char;
+//
 
 // ========================
 // Additional type re-exports

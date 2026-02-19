@@ -279,3 +279,12 @@ impl Application {
         }
     }
 }
+
+// ── Skipped symbols for Application (1 total) ──
+// SKIPPED: **Source:** `XCAFApp_Application.hxx`:46 - `XCAFApp_Application::GetApplication`
+//   static_method: Initializes (for the first time) and returns the
+//   static_method: static object (XCAFApp_Application)
+//   static_method: This is the only valid method to get XCAFApp_Application
+//   Reason: return type 'Handle(XCAFApp_Application)' is unknown
+//   // pub fn get_application() -> OwnedPtr<Handle<XCAFApp_Application>>;
+//

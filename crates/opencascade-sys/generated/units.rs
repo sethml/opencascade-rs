@@ -1038,6 +1038,20 @@ impl NoSuchType {
     }
 }
 
+// ── Skipped symbols for NoSuchType (3 total) ──
+// SKIPPED: **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::NewInstance`
+//   Reason: return type 'Handle(Units_NoSuchType)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Units_NoSuchType>>;
+//
+// SKIPPED: **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::NewInstance`
+//   Reason: return type 'Handle(Units_NoSuchType)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Units_NoSuchType>>;
+//
+
 // ========================
 // From Units_NoSuchUnit.hxx
 // ========================
@@ -1104,6 +1118,20 @@ impl NoSuchUnit {
         unsafe { &*(crate::ffi::Units_NoSuchUnit_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for NoSuchUnit (3 total) ──
+// SKIPPED: **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::NewInstance`
+//   Reason: return type 'Handle(Units_NoSuchUnit)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Units_NoSuchUnit>>;
+//
+// SKIPPED: **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::NewInstance`
+//   Reason: return type 'Handle(Units_NoSuchUnit)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Units_NoSuchUnit>>;
+//
 
 // ========================
 // From Units_QuantitiesSequence.hxx
@@ -1198,6 +1226,12 @@ impl HandleUnitsQuantitiesSequence {
         unsafe { &mut *(crate::ffi::HandleUnitsQuantitiesSequence_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for QuantitiesSequence (1 total) ──
+// SKIPPED: **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
 
 // ========================
 // From Units_Quantity.hxx
@@ -2286,6 +2320,12 @@ impl HandleUnitsTokensSequence {
     }
 }
 
+// ── Skipped symbols for TokensSequence (1 total) ──
+// SKIPPED: **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
+
 // ========================
 // From Units_Unit.hxx
 // ========================
@@ -2867,6 +2907,12 @@ impl HandleUnitsUnitsSequence {
         unsafe { &mut *(crate::ffi::HandleUnitsUnitsSequence_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for UnitsSequence (1 total) ──
+// SKIPPED: **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
 
 // ========================
 // From Units_UnitsSystem.hxx

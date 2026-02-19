@@ -501,6 +501,13 @@ impl ApproxCurve {
     }
 }
 
+// ── Skipped symbols for ApproxCurve (1 total) ──
+// SKIPPED: **Source:** `GeomConvert_ApproxCurve.hxx`:80 - `GeomConvert_ApproxCurve::Dump`
+//   method: Print on the stream  o  information about the object
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From GeomConvert_ApproxSurface.hxx
 // ========================
@@ -627,6 +634,13 @@ impl ApproxSurface {
         unsafe { crate::ffi::GeomConvert_ApproxSurface_max_error(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for ApproxSurface (1 total) ──
+// SKIPPED: **Source:** `GeomConvert_ApproxSurface.hxx`:93 - `GeomConvert_ApproxSurface::Dump`
+//   method: Prints on the stream o information on the current state of the object.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
 
 // ========================
 // From GeomConvert_BSplineCurveKnotSplitting.hxx
@@ -2147,6 +2161,13 @@ impl FuncConeLSDist {
     }
 }
 
+// ── Skipped symbols for FuncConeLSDist (1 total) ──
+// SKIPPED: **Source:** `GeomConvert_FuncConeLSDist.hxx`:50 - `GeomConvert_FuncConeLSDist::Value`
+//   method: Value.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
+//
+
 // ========================
 // From GeomConvert_FuncCylinderLSDist.hxx
 // ========================
@@ -2276,6 +2297,23 @@ impl FuncCylinderLSDist {
     }
 }
 
+// ── Skipped symbols for FuncCylinderLSDist (3 total) ──
+// SKIPPED: **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:76 - `GeomConvert_FuncCylinderLSDist::Value`
+//   method: Value.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
+//
+// SKIPPED: **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:79 - `GeomConvert_FuncCylinderLSDist::Gradient`
+//   method: Gradient.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:82 - `GeomConvert_FuncCylinderLSDist::Values`
+//   method: Value and gradient.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
+//
+
 // ========================
 // From GeomConvert_FuncSphereLSDist.hxx
 // ========================
@@ -2380,6 +2418,23 @@ impl FuncSphereLSDist {
         }
     }
 }
+
+// ── Skipped symbols for FuncSphereLSDist (3 total) ──
+// SKIPPED: **Source:** `GeomConvert_FuncSphereLSDist.hxx`:60 - `GeomConvert_FuncSphereLSDist::Value`
+//   method: Value.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
+//
+// SKIPPED: **Source:** `GeomConvert_FuncSphereLSDist.hxx`:63 - `GeomConvert_FuncSphereLSDist::Gradient`
+//   method: Gradient.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `GeomConvert_FuncSphereLSDist.hxx`:66 - `GeomConvert_FuncSphereLSDist::Values`
+//   method: Value and gradient.
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
+//
 
 // ========================
 // From GeomConvert_SurfToAnaSurf.hxx

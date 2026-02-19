@@ -196,6 +196,46 @@ impl ActorRead {
     }
 }
 
+// ── Skipped symbols for ActorRead (7 total) ──
+// SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:68 - `STEPControl_ActorRead::Recognize`
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn recognize(&mut self, start: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:71 - `STEPControl_ActorRead::Transfer`
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn transfer(&mut self, start: &HandleTransient, TP: &HandleTransientProcess, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
+//
+// SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:78 - `STEPControl_ActorRead::TransferShape`
+//   method: theUseTrsf - special flag for using Axis2Placement from ShapeRepresentation for transform root
+//   method: shape
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn transfer_shape(&mut self, start: &HandleTransient, TP: &HandleTransientProcess, theLocalFactors: &Factors, isManifold: bool, theUseTrsf: bool, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
+//
+// SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:87 - `STEPControl_ActorRead::PrepareUnits`
+//   method: set units and tolerances context by given ShapeRepresentation
+//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
+//   // pub fn prepare_units(&mut self, rep: &HandleRepresentation, TP: &HandleTransientProcess, theLocalFactors: &mut Factors);
+//
+// SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:93 - `STEPControl_ActorRead::ResetUnits`
+//   method: reset units and tolerances context to default
+//   method: (mm, radians, read.precision.val, etc.)
+//   Reason: param 'theModel' uses unknown type 'Handle(StepData_StepModel)&'
+//   // pub fn reset_units(&mut self, theModel: &mut HandleStepModel, theLocalFactors: &mut Factors);
+//
+// SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:104 - `STEPControl_ActorRead::ComputeTransformation`
+//   method: Computes transformation defined by two axis placements (in MAPPED_ITEM
+//   method: or ITEM_DEFINED_TRANSFORMATION) taking into account their
+//   method: representation contexts (i.e. units, which may be different)
+//   Reason: param 'Origin' uses unknown type 'const Handle(StepGeom_Axis2Placement3d)&'
+//   // pub fn compute_transformation(&mut self, Origin: &HandleAxis2Placement3d, Target: &HandleAxis2Placement3d, OrigContext: &HandleRepresentation, TargContext: &HandleRepresentation, TP: &HandleTransientProcess, Trsf: &mut Trsf, theLocalFactors: &Factors) -> bool;
+//
+// SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:115 - `STEPControl_ActorRead::ComputeSRRWT`
+//   method: Computes transformation defined by given
+//   method: REPRESENTATION_RELATIONSHIP_WITH_TRANSFORMATION
+//   Reason: param 'SRR' uses unknown type 'const Handle(StepRepr_RepresentationRelationship)&'
+//   // pub fn compute_srrwt(&mut self, SRR: &HandleRepresentationRelationship, TP: &HandleTransientProcess, Trsf: &mut Trsf, theLocalFactors: &Factors) -> bool;
+//
+
 // ========================
 // From STEPControl_ActorWrite.hxx
 // ========================
@@ -373,6 +413,31 @@ impl ActorWrite {
     }
 }
 
+// ── Skipped symbols for ActorWrite (5 total) ──
+// SKIPPED: **Source:** `STEPControl_ActorWrite.hxx`:50 - `STEPControl_ActorWrite::Transfer`
+//   Reason: param 'FP' uses unknown type 'const Handle(Transfer_FinderProcess)&'
+//   // pub fn transfer(&mut self, start: &HandleFinder, FP: &HandleFinderProcess, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
+//
+// SKIPPED: **Source:** `STEPControl_ActorWrite.hxx`:55 - `STEPControl_ActorWrite::TransferSubShape`
+//   Reason: param 'SDR' uses unknown type 'const Handle(StepShape_ShapeDefinitionRepresentation)&'
+//   // pub fn transfer_sub_shape(&mut self, start: &HandleFinder, SDR: &HandleShapeDefinitionRepresentation, AX1: &mut HandleAxis2Placement3d, FP: &HandleFinderProcess, theLocalFactors: &Factors, shapeGroup: &HandleHSequenceOfShape, isManifold: bool, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
+//
+// SKIPPED: **Source:** `STEPControl_ActorWrite.hxx`:65 - `STEPControl_ActorWrite::TransferShape`
+//   Reason: param 'SDR' uses unknown type 'const Handle(StepShape_ShapeDefinitionRepresentation)&'
+//   // pub fn transfer_shape(&mut self, start: &HandleFinder, SDR: &HandleShapeDefinitionRepresentation, FP: &HandleFinderProcess, theLocalFactors: &Factors, shapeGroup: &HandleHSequenceOfShape, isManifold: bool, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
+//
+// SKIPPED: **Source:** `STEPControl_ActorWrite.hxx`:74 - `STEPControl_ActorWrite::TransferCompound`
+//   Reason: param 'SDR' uses unknown type 'const Handle(StepShape_ShapeDefinitionRepresentation)&'
+//   // pub fn transfer_compound(&mut self, start: &HandleFinder, SDR: &HandleShapeDefinitionRepresentation, FP: &HandleFinderProcess, theLocalFactors: &Factors, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
+//
+// SKIPPED: **Source:** `STEPControl_ActorWrite.hxx`:96 - `STEPControl_ActorWrite::IsAssembly`
+//   method: Customizable method to check whether shape S should
+//   method: be written as assembly or not
+//   method: Default implementation uses flag GroupMode and analyses
+//   Reason: param 'theModel' uses unknown type 'const Handle(StepData_StepModel)&'
+//   // pub fn is_assembly(&self, theModel: &HandleStepModel, S: &mut Shape) -> bool;
+//
+
 // ========================
 // From STEPControl_Controller.hxx
 // ========================
@@ -493,6 +558,24 @@ impl Controller {
         }
     }
 }
+
+// ── Skipped symbols for Controller (3 total) ──
+// SKIPPED: **Source:** `STEPControl_Controller.hxx`:48 - `STEPControl_Controller::ActorRead`
+//   method: Returns the Actor for Read attached to the pair (norm,appli)
+//   Reason: return type 'Handle(Transfer_ActorOfTransientProcess)' is unknown
+//   // pub fn actor_read(&self, theModel: &HandleInterfaceModel) -> OwnedPtr<Handle<Transfer_ActorOfTransientProcess>>;
+//
+// SKIPPED: **Source:** `STEPControl_Controller.hxx`:51 - `STEPControl_Controller::Customise`
+//   Reason: param 'WS' uses unknown type 'Handle(XSControl_WorkSession)&'
+//   // pub fn customise(&mut self, WS: &mut HandleWorkSession);
+//
+// SKIPPED: **Source:** `STEPControl_Controller.hxx`:59 - `STEPControl_Controller::TransferWriteShape`
+//   method: Takes one Shape and transfers it to the InterfaceModel
+//   method: (already created by NewModel for instance)
+//   method: <modeshape> is to be interpreted by each kind of XstepAdaptor
+//   Reason: param 'FP' uses unknown type 'const Handle(Transfer_FinderProcess)&'
+//   // pub fn transfer_write_shape(&self, shape: &Shape, FP: &HandleFinderProcess, model: &HandleInterfaceModel, modetrans: i32, theProgress: &ProgressRange) -> OwnedPtr<IFSelect_ReturnStatus>;
+//
 
 // ========================
 // From STEPControl_Reader.hxx
@@ -774,6 +857,30 @@ impl Reader {
     }
 }
 
+// ── Skipped symbols for Reader (4 total) ──
+// SKIPPED: **Source:** `STEPControl_Reader.hxx`:79 - `STEPControl_Reader::STEPControl_Reader`
+//   constructor: Creates a Reader for STEP from an already existing Session
+//   constructor: Clears the session if it was not yet set for STEP
+//   Reason: param 'WS' uses unknown Handle type
+//   // pub fn new_handlexscontrolworksession_bool(WS: &HandleWorkSession, scratch: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `STEPControl_Reader.hxx`:84 - `STEPControl_Reader::StepModel`
+//   method: Returns the model as a StepModel.
+//   method: It can then be consulted (header, product)
+//   Reason: return type 'Handle(StepData_StepModel)' is unknown
+//   // pub fn step_model(&self) -> OwnedPtr<Handle<StepData_StepModel>>;
+//
+// SKIPPED: **Source:** `STEPControl_Reader.hxx`:92 - `STEPControl_Reader::ReadStream`
+//   method: Loads a file from stream and returns the read status
+//   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
+//   // pub fn read_stream(&mut self, theName: *const char, theIStream: /* std::istream& */) -> OwnedPtr<IFSelect_ReturnStatus>;
+//
+// SKIPPED: **Source:** `STEPControl_Reader.hxx`:102 - `STEPControl_Reader::ReadStream`
+//   method: Loads a file from stream and returns the read status
+//   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
+//   // pub fn read_stream(&mut self, theName: *const char, theParams: &Parameters, theIStream: /* std::istream& */) -> OwnedPtr<IFSelect_ReturnStatus>;
+//
+
 // ========================
 // From STEPControl_Writer.hxx
 // ========================
@@ -910,3 +1017,65 @@ impl Writer {
         unsafe { &*(crate::ffi::STEPControl_Writer_get_shape_process_flags(self as *const Self)) }
     }
 }
+
+// ── Skipped symbols for Writer (10 total) ──
+// SKIPPED: **Source:** `STEPControl_Writer.hxx`:55 - `STEPControl_Writer::STEPControl_Writer`
+//   constructor: Creates a Writer from an already existing Session
+//   constructor: If <scratch> is True (D), clears already recorded data
+//   Reason: param 'WS' uses unknown Handle type
+//   // pub fn new_handlexscontrolworksession_bool(WS: &HandleWorkSession, scratch: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `STEPControl_Writer.hxx`:67 - `STEPControl_Writer::SetWS`
+//   method: Sets a specific session to <me>
+//   Reason: param 'WS' uses unknown type 'const Handle(XSControl_WorkSession)&'
+//   // pub fn set_ws(&mut self, WS: &HandleWorkSession, scratch: bool);
+//
+// SKIPPED: **Source:** `STEPControl_Writer.hxx`:71 - `STEPControl_Writer::WS`
+//   method: Returns the session used in <me>
+//   Reason: return type 'Handle(XSControl_WorkSession)' is unknown
+//   // pub fn ws(&self) -> OwnedPtr<Handle<XSControl_WorkSession>>;
+//
+// SKIPPED: **Source:** `STEPControl_Writer.hxx`:77 - `STEPControl_Writer::Model`
+//   method: Returns the produced model. Produces a new one if not yet done
+//   method: or if <newone> is True
+//   method: This method allows for instance to edit product or header
+//   Reason: return type 'Handle(StepData_StepModel)' is unknown
+//   // pub fn model(&mut self, newone: bool) -> OwnedPtr<Handle<StepData_StepModel>>;
+//
+// SKIPPED: **Source:** `STEPControl_Writer.hxx`:109 - `STEPControl_Writer::WriteStream`
+//   method: Writes a STEP model in the std::ostream.
+//   Reason: has unbindable types: param 'theOStream': stream type (std::ostream&)
+//   // pub fn write_stream(&mut self, theOStream: /* std::ostream& */) -> OwnedPtr<IFSelect_ReturnStatus>;
+//
+// SKIPPED: **Source:** `STEPControl_Writer.hxx`:136 - `STEPControl_Writer::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: @param theParameters the parameters for shape processing.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &i32);
+//
+// SKIPPED: **Source:** `STEPControl_Writer.hxx`:142 - `STEPControl_Writer::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: Parameters are moved from the input map.
+//   method: @param theParameters the parameters for shape processing.
+//   Reason: has unbindable types: param 'theParameters': rvalue reference (int&&)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* int&& */);
+//
+// SKIPPED: **Source:** `STEPControl_Writer.hxx`:150 - `STEPControl_Writer::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: Parameters from @p theParameters are copied to the internal map.
+//   method: Parameters from @p theAdditionalParameters are copied to the internal map
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &ShapeFixParameters, theAdditionalParameters: &i32);
+//
+// SKIPPED: **Source:** `STEPControl_Writer.hxx`:156 - `STEPControl_Writer::GetShapeFixParameters`
+//   method: Returns parameters for shape processing that was set by SetParameters() method.
+//   method: @return the parameters for shape processing. Empty map if no parameters were set.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_shape_fix_parameters(&self) -> &i32;
+//
+// SKIPPED: **Source:** `STEPControl_Writer.hxx`:160 - `STEPControl_Writer::SetShapeProcessFlags`
+//   method: Sets flags defining operations to be performed on shapes.
+//   method: @param theFlags The flags defining operations to be performed on shapes.
+//   Reason: param 'theFlags' uses unknown type 'const ShapeProcess::OperationsFlags&'
+//   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
+//

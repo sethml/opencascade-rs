@@ -324,6 +324,25 @@ impl AsciiString {
     }
 }
 
+// ── Skipped symbols for AsciiString (3 total) ──
+// SKIPPED: **Source:** `TDataStd_AsciiString.hxx`:78 - `TDataStd_AsciiString::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_AsciiString.hxx`:46 - `TDataStd_AsciiString::Set`
+//   static_method: Finds, or creates an AsciiString attribute and sets the string.
+//   static_method: the AsciiString attribute is returned.
+//   static_method: AsciiString methods
+//   Reason: return type 'Handle(TDataStd_AsciiString)' is unknown
+//   // pub fn set(label: &Label, string: &AsciiString) -> OwnedPtr<Handle<TDataStd_AsciiString>>;
+//
+// SKIPPED: **Source:** `TDataStd_AsciiString.hxx`:51 - `TDataStd_AsciiString::Set`
+//   static_method: Finds, or creates, an AsciiString attribute with explicit user defined <guid> and sets
+//   static_method: <string>. The Name attribute  is  returned.
+//   Reason: return type 'Handle(TDataStd_AsciiString)' is unknown
+//   // pub fn set(label: &Label, guid: &GUID, string: &AsciiString) -> OwnedPtr<Handle<TDataStd_AsciiString>>;
+//
+
 // ========================
 // From TDataStd_BooleanArray.hxx
 // ========================
@@ -646,6 +665,22 @@ impl BooleanArray {
         }
     }
 }
+
+// ── Skipped symbols for BooleanArray (3 total) ──
+// SKIPPED: **Source:** `TDataStd_BooleanArray.hxx`:96 - `TDataStd_BooleanArray::Dump`
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, OS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_BooleanArray.hxx`:43 - `TDataStd_BooleanArray::Set`
+//   static_method: Finds or creates an attribute with internal boolean array.
+//   Reason: return type 'Handle(TDataStd_BooleanArray)' is unknown
+//   // pub fn set(label: &Label, lower: i32, upper: i32) -> OwnedPtr<Handle<TDataStd_BooleanArray>>;
+//
+// SKIPPED: **Source:** `TDataStd_BooleanArray.hxx`:48 - `TDataStd_BooleanArray::Set`
+//   static_method: Finds or creates an attribute with the array using explicit user defined <guid>.
+//   Reason: return type 'Handle(TDataStd_BooleanArray)' is unknown
+//   // pub fn set(label: &Label, theGuid: &GUID, lower: i32, upper: i32) -> OwnedPtr<Handle<TDataStd_BooleanArray>>;
+//
 
 // ========================
 // From TDataStd_BooleanList.hxx
@@ -986,6 +1021,22 @@ impl BooleanList {
     }
 }
 
+// ── Skipped symbols for BooleanList (3 total) ──
+// SKIPPED: **Source:** `TDataStd_BooleanList.hxx`:98 - `TDataStd_BooleanList::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_BooleanList.hxx`:44 - `TDataStd_BooleanList::Set`
+//   static_method: Finds or creates a list of boolean values attribute.
+//   Reason: return type 'Handle(TDataStd_BooleanList)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_BooleanList>>;
+//
+// SKIPPED: **Source:** `TDataStd_BooleanList.hxx`:47 - `TDataStd_BooleanList::Set`
+//   static_method: Finds or creates a list of boolean values attribute with explicit user defined <guid>.
+//   Reason: return type 'Handle(TDataStd_BooleanList)' is unknown
+//   // pub fn set(label: &Label, theGuid: &GUID) -> OwnedPtr<Handle<TDataStd_BooleanList>>;
+//
+
 // ========================
 // From TDataStd_ByteArray.hxx
 // ========================
@@ -1310,6 +1361,43 @@ impl ByteArray {
     }
 }
 
+// ── Skipped symbols for ByteArray (6 total) ──
+// SKIPPED: **Source:** `TDataStd_ByteArray.hxx`:71 - `TDataStd_ByteArray::SetValue`
+//   method: Sets the <Index>th element of the array to <Value>
+//   method: OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the
+//   method: internal  array.
+//   Reason: param 'value' uses unknown type 'Standard_Byte'
+//   // pub fn set_value(&mut self, index: i32, value: Byte);
+//
+// SKIPPED: **Source:** `TDataStd_ByteArray.hxx`:80 - `TDataStd_ByteArray::Value`
+//   method: Return the value of the <Index>th element of the array.
+//   Reason: return type 'Standard_Byte' is unknown
+//   // pub fn value(&self, Index: i32) -> OwnedPtr<Standard_Byte>;
+//
+// SKIPPED: **Source:** `TDataStd_ByteArray.hxx`:120 - `TDataStd_ByteArray::Dump`
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, OS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_ByteArray.hxx`:124 - `TDataStd_ByteArray::DeltaOnModification`
+//   method: Makes a DeltaOnModification between <me> and
+//   method: <anOldAttribute>.
+//   Reason: return type 'Handle(TDF_DeltaOnModification)' is unknown
+//   // pub fn delta_on_modification(&self, anOldAttribute: &HandleAttribute) -> OwnedPtr<Handle<TDF_DeltaOnModification>>;
+//
+// SKIPPED: **Source:** `TDataStd_ByteArray.hxx`:50 - `TDataStd_ByteArray::Set`
+//   static_method: Finds or creates an attribute with the array on the specified label.
+//   static_method: If <isDelta> == False, DefaultDeltaOnModification is used.
+//   static_method: If <isDelta> == True, DeltaOnModification of the current attribute is used.
+//   Reason: return type 'Handle(TDataStd_ByteArray)' is unknown
+//   // pub fn set(label: &Label, lower: i32, upper: i32, isDelta: bool) -> OwnedPtr<Handle<TDataStd_ByteArray>>;
+//
+// SKIPPED: **Source:** `TDataStd_ByteArray.hxx`:58 - `TDataStd_ByteArray::Set`
+//   static_method: Finds or creates an attribute with byte array and explicit user defined <guid> on the
+//   static_method: specified label.
+//   Reason: return type 'Handle(TDataStd_ByteArray)' is unknown
+//   // pub fn set(label: &Label, theGuid: &GUID, lower: i32, upper: i32, isDelta: bool) -> OwnedPtr<Handle<TDataStd_ByteArray>>;
+//
+
 // ========================
 // From TDataStd_ChildNodeIterator.hxx
 // ========================
@@ -1356,6 +1444,28 @@ impl ChildNodeIterator {
         unsafe { crate::ffi::TDataStd_ChildNodeIterator_next_brother(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for ChildNodeIterator (3 total) ──
+// SKIPPED: **Source:** `TDataStd_ChildNodeIterator.hxx`:42 - `TDataStd_ChildNodeIterator::TDataStd_ChildNodeIterator`
+//   constructor: Iterates on the ChildStepren of the given Step. If
+//   constructor: <allLevels> option is set to true, it explores not
+//   constructor: only the first, but all the sub Step levels.
+//   Reason: param 'aTreeNode' uses unknown Handle type
+//   // pub fn new_handletdatastdtreenode_bool(aTreeNode: &HandleTreeNode, allLevels: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TDataStd_ChildNodeIterator.hxx`:49 - `TDataStd_ChildNodeIterator::Initialize`
+//   method: Initializes the iteration on  the Children Step of
+//   method: the  given Step. If <allLevels>  option is  set to
+//   method: true, it explores not  only the first, but all the
+//   Reason: param 'aTreeNode' uses unknown type 'const Handle(TDataStd_TreeNode)&'
+//   // pub fn initialize(&mut self, aTreeNode: &HandleTreeNode, allLevels: bool);
+//
+// SKIPPED: **Source:** `TDataStd_ChildNodeIterator.hxx`:67 - `TDataStd_ChildNodeIterator::Value`
+//   method: Returns the current item; a null Step if there is
+//   method: no one.
+//   Reason: return type 'const Handle(TDataStd_TreeNode)&' is unknown
+//   // pub fn value(&self) -> &HandleTreeNode;
+//
 
 // ========================
 // From TDataStd_Comment.hxx
@@ -1638,6 +1748,25 @@ impl Comment {
         unsafe { crate::ffi::TDataStd_Comment_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Comment (3 total) ──
+// SKIPPED: **Source:** `TDataStd_Comment.hxx`:57 - `TDataStd_Comment::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_Comment.hxx`:38 - `TDataStd_Comment::Set`
+//   static_method: Find, or create  a   Comment attribute.  the  Comment
+//   static_method: attribute is returned.
+//   Reason: return type 'Handle(TDataStd_Comment)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_Comment>>;
+//
+// SKIPPED: **Source:** `TDataStd_Comment.hxx`:44 - `TDataStd_Comment::Set`
+//   static_method: Finds, or creates a Comment attribute and sets the string.
+//   static_method: the Comment attribute is returned.
+//   static_method: Comment methods
+//   Reason: return type 'Handle(TDataStd_Comment)' is unknown
+//   // pub fn set(label: &Label, string: &ExtendedString) -> OwnedPtr<Handle<TDataStd_Comment>>;
+//
 
 // ========================
 // From TDataStd_Current.hxx
@@ -1922,6 +2051,12 @@ impl Current {
     }
 }
 
+// ── Skipped symbols for Current (1 total) ──
+// SKIPPED: **Source:** `TDataStd_Current.hxx`:69 - `TDataStd_Current::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+
 // ========================
 // From TDataStd_DeltaOnModificationOfByteArray.hxx
 // ========================
@@ -2036,6 +2171,13 @@ impl DeltaOnModificationOfByteArray {
         }
     }
 }
+
+// ── Skipped symbols for DeltaOnModificationOfByteArray (1 total) ──
+// SKIPPED: **Source:** `TDataStd_DeltaOnModificationOfByteArray.hxx`:37 - `TDataStd_DeltaOnModificationOfByteArray::TDataStd_DeltaOnModificationOfByteArray`
+//   constructor: Initializes a TDF_DeltaOnModification.
+//   Reason: param 'Arr' uses unknown Handle type
+//   // pub fn new_handletdatastdbytearray(Arr: &HandleByteArray) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From TDataStd_DeltaOnModificationOfExtStringArray.hxx
@@ -2152,6 +2294,13 @@ impl DeltaOnModificationOfExtStringArray {
     }
 }
 
+// ── Skipped symbols for DeltaOnModificationOfExtStringArray (1 total) ──
+// SKIPPED: **Source:** `TDataStd_DeltaOnModificationOfExtStringArray.hxx`:37 - `TDataStd_DeltaOnModificationOfExtStringArray::TDataStd_DeltaOnModificationOfExtStringArray`
+//   constructor: Initializes a TDF_DeltaOnModification.
+//   Reason: param 'Arr' uses unknown Handle type
+//   // pub fn new_handletdatastdextstringarray(Arr: &HandleExtStringArray) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From TDataStd_DeltaOnModificationOfIntArray.hxx
 // ========================
@@ -2264,6 +2413,13 @@ impl DeltaOnModificationOfIntArray {
         }
     }
 }
+
+// ── Skipped symbols for DeltaOnModificationOfIntArray (1 total) ──
+// SKIPPED: **Source:** `TDataStd_DeltaOnModificationOfIntArray.hxx`:36 - `TDataStd_DeltaOnModificationOfIntArray::TDataStd_DeltaOnModificationOfIntArray`
+//   constructor: Initializes a TDF_DeltaOnModification.
+//   Reason: param 'Arr' uses unknown Handle type
+//   // pub fn new_handletdatastdintegerarray(Arr: &HandleIntegerArray) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From TDataStd_DeltaOnModificationOfIntPackedMap.hxx
@@ -2380,6 +2536,13 @@ impl DeltaOnModificationOfIntPackedMap {
     }
 }
 
+// ── Skipped symbols for DeltaOnModificationOfIntPackedMap (1 total) ──
+// SKIPPED: **Source:** `TDataStd_DeltaOnModificationOfIntPackedMap.hxx`:35 - `TDataStd_DeltaOnModificationOfIntPackedMap::TDataStd_DeltaOnModificationOfIntPackedMap`
+//   constructor: Initializes a TDF_DeltaOnModification.
+//   Reason: param 'Arr' uses unknown Handle type
+//   // pub fn new_handletdatastdintpackedmap(Arr: &HandleIntPackedMap) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From TDataStd_DeltaOnModificationOfRealArray.hxx
 // ========================
@@ -2494,6 +2657,13 @@ impl DeltaOnModificationOfRealArray {
         }
     }
 }
+
+// ── Skipped symbols for DeltaOnModificationOfRealArray (1 total) ──
+// SKIPPED: **Source:** `TDataStd_DeltaOnModificationOfRealArray.hxx`:37 - `TDataStd_DeltaOnModificationOfRealArray::TDataStd_DeltaOnModificationOfRealArray`
+//   constructor: Initializes a TDF_DeltaOnModification.
+//   Reason: param 'Arr' uses unknown Handle type
+//   // pub fn new_handletdatastdrealarray(Arr: &HandleRealArray) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From TDataStd_Directory.hxx
@@ -2768,6 +2938,37 @@ impl Directory {
         unsafe { crate::ffi::TDataStd_Directory_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Directory (5 total) ──
+// SKIPPED: **Source:** `TDataStd_Directory.hxx`:70 - `TDataStd_Directory::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_Directory.hxx`:46 - `TDataStd_Directory::Find`
+//   static_method: class methods
+//   static_method: =============
+//   static_method: Searches for a directory attribute on the label
+//   Reason: param 'D' uses unknown type 'Handle(TDataStd_Directory)&'
+//   // pub fn find(current: &Label, D: &mut HandleDirectory) -> bool;
+//
+// SKIPPED: **Source:** `TDataStd_Directory.hxx`:51 - `TDataStd_Directory::New`
+//   static_method: Creates  an  empty   Directory attribute,  located  at
+//   static_method: <label>. Raises if <label> has attribute
+//   Reason: return type 'Handle(TDataStd_Directory)' is unknown
+//   // pub fn new(label: &Label) -> OwnedPtr<Handle<TDataStd_Directory>>;
+//
+// SKIPPED: **Source:** `TDataStd_Directory.hxx`:55 - `TDataStd_Directory::AddDirectory`
+//   static_method: Creates a new sub-label and sets the
+//   static_method: sub-directory dir on that label.
+//   Reason: param 'dir' uses unknown type 'const Handle(TDataStd_Directory)&'
+//   // pub fn add_directory(dir: &HandleDirectory) -> OwnedPtr<Handle<TDataStd_Directory>>;
+//
+// SKIPPED: **Source:** `TDataStd_Directory.hxx`:60 - `TDataStd_Directory::MakeObjectLabel`
+//   static_method: Makes new label and returns it to insert
+//   static_method: other object attributes (sketch,part...etc...)
+//   Reason: param 'dir' uses unknown type 'const Handle(TDataStd_Directory)&'
+//   // pub fn make_object_label(dir: &HandleDirectory) -> OwnedPtr<TDF_Label>;
+//
 
 // ========================
 // From TDataStd_Expression.hxx
@@ -3061,6 +3262,19 @@ impl Expression {
         unsafe { crate::ffi::TDataStd_Expression_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Expression (2 total) ──
+// SKIPPED: **Source:** `TDataStd_Expression.hxx`:74 - `TDataStd_Expression::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_Expression.hxx`:52 - `TDataStd_Expression::Set`
+//   static_method: Find, or create, an Expression attribute.
+//   static_method: Expressionmethods
+//   static_method: ============
+//   Reason: return type 'Handle(TDataStd_Expression)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_Expression>>;
+//
 
 // ========================
 // From TDataStd_ExtStringArray.hxx
@@ -3419,6 +3633,31 @@ impl ExtStringArray {
         }
     }
 }
+
+// ── Skipped symbols for ExtStringArray (4 total) ──
+// SKIPPED: **Source:** `TDataStd_ExtStringArray.hxx`:127 - `TDataStd_ExtStringArray::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_ExtStringArray.hxx`:131 - `TDataStd_ExtStringArray::DeltaOnModification`
+//   method: Makes a DeltaOnModification between <me> and
+//   method: <anOldAttribute>.
+//   Reason: return type 'Handle(TDF_DeltaOnModification)' is unknown
+//   // pub fn delta_on_modification(&self, anOldAttribute: &HandleAttribute) -> OwnedPtr<Handle<TDF_DeltaOnModification>>;
+//
+// SKIPPED: **Source:** `TDataStd_ExtStringArray.hxx`:53 - `TDataStd_ExtStringArray::Set`
+//   static_method: Finds, or creates, an ExtStringArray attribute with <lower>
+//   static_method: and <upper> bounds on the specified label.
+//   static_method: If <isDelta> == False, DefaultDeltaOnModification is used.
+//   Reason: return type 'Handle(TDataStd_ExtStringArray)' is unknown
+//   // pub fn set(label: &Label, lower: i32, upper: i32, isDelta: bool) -> OwnedPtr<Handle<TDataStd_ExtStringArray>>;
+//
+// SKIPPED: **Source:** `TDataStd_ExtStringArray.hxx`:61 - `TDataStd_ExtStringArray::Set`
+//   static_method: Finds, or creates, an ExtStringArray attribute with explicit user defined <guid>.
+//   static_method: The ExtStringArray attribute  is  returned.
+//   Reason: return type 'Handle(TDataStd_ExtStringArray)' is unknown
+//   // pub fn set(label: &Label, theGuid: &GUID, lower: i32, upper: i32, isDelta: bool) -> OwnedPtr<Handle<TDataStd_ExtStringArray>>;
+//
 
 // ========================
 // From TDataStd_ExtStringList.hxx
@@ -3818,6 +4057,22 @@ impl ExtStringList {
         }
     }
 }
+
+// ── Skipped symbols for ExtStringList (3 total) ──
+// SKIPPED: **Source:** `TDataStd_ExtStringList.hxx`:108 - `TDataStd_ExtStringList::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_ExtStringList.hxx`:45 - `TDataStd_ExtStringList::Set`
+//   static_method: Finds or creates a list of string values attribute with explicit user defined <guid>.
+//   Reason: return type 'Handle(TDataStd_ExtStringList)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_ExtStringList>>;
+//
+// SKIPPED: **Source:** `TDataStd_ExtStringList.hxx`:48 - `TDataStd_ExtStringList::Set`
+//   static_method: Finds or creates a list of string values attribute.
+//   Reason: return type 'Handle(TDataStd_ExtStringList)' is unknown
+//   // pub fn set(label: &Label, theGuid: &GUID) -> OwnedPtr<Handle<TDataStd_ExtStringList>>;
+//
 
 // ========================
 // From TDataStd_GenericEmpty.hxx
@@ -4441,6 +4696,20 @@ impl HandleTDataStdHDataMapOfStringByte {
     }
 }
 
+// ── Skipped symbols for HDataMapOfStringByte (3 total) ──
+// SKIPPED: **Source:** `TDataStd_HDataMapOfStringByte.hxx`:33 - `TDataStd_HDataMapOfStringByte::TDataStd_HDataMapOfStringByte`
+//   Reason: param 'theOther' uses unknown type 'const TDataStd_DataMapOfStringByte&'
+//   // pub fn new_datamapofstringbyte(theOther: &DataMapOfStringByte) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TDataStd_HDataMapOfStringByte.hxx`:35 - `TDataStd_HDataMapOfStringByte::Map`
+//   Reason: return type 'const TDataStd_DataMapOfStringByte&' is unknown
+//   // pub fn map(&self) -> &DataMapOfStringByte;
+//
+// SKIPPED: **Source:** `TDataStd_HDataMapOfStringByte.hxx`:37 - `TDataStd_HDataMapOfStringByte::ChangeMap`
+//   Reason: return type 'TDataStd_DataMapOfStringByte&' is unknown
+//   // pub fn change_map(&mut self) -> &mut DataMapOfStringByte;
+//
+
 // ========================
 // From TDataStd_HDataMapOfStringHArray1OfInteger.hxx
 // ========================
@@ -4534,6 +4803,20 @@ impl HandleTDataStdHDataMapOfStringHArray1OfInteger {
     }
 }
 
+// ── Skipped symbols for HDataMapOfStringHArray1OfInteger (3 total) ──
+// SKIPPED: **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:33 - `TDataStd_HDataMapOfStringHArray1OfInteger::TDataStd_HDataMapOfStringHArray1OfInteger`
+//   Reason: param 'theOther' uses unknown type 'const TDataStd_DataMapOfStringHArray1OfInteger&'
+//   // pub fn new_datamapofstringharray1ofinteger(theOther: &DataMapOfStringHArray1OfInteger) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:36 - `TDataStd_HDataMapOfStringHArray1OfInteger::Map`
+//   Reason: return type 'const TDataStd_DataMapOfStringHArray1OfInteger&' is unknown
+//   // pub fn map(&self) -> &DataMapOfStringHArray1OfInteger;
+//
+// SKIPPED: **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:38 - `TDataStd_HDataMapOfStringHArray1OfInteger::ChangeMap`
+//   Reason: return type 'TDataStd_DataMapOfStringHArray1OfInteger&' is unknown
+//   // pub fn change_map(&mut self) -> &mut DataMapOfStringHArray1OfInteger;
+//
+
 // ========================
 // From TDataStd_HDataMapOfStringHArray1OfReal.hxx
 // ========================
@@ -4624,6 +4907,20 @@ impl HandleTDataStdHDataMapOfStringHArray1OfReal {
         }
     }
 }
+
+// ── Skipped symbols for HDataMapOfStringHArray1OfReal (3 total) ──
+// SKIPPED: **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:33 - `TDataStd_HDataMapOfStringHArray1OfReal::TDataStd_HDataMapOfStringHArray1OfReal`
+//   Reason: param 'theOther' uses unknown type 'const TDataStd_DataMapOfStringHArray1OfReal&'
+//   // pub fn new_datamapofstringharray1ofreal(theOther: &DataMapOfStringHArray1OfReal) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:36 - `TDataStd_HDataMapOfStringHArray1OfReal::Map`
+//   Reason: return type 'const TDataStd_DataMapOfStringHArray1OfReal&' is unknown
+//   // pub fn map(&self) -> &DataMapOfStringHArray1OfReal;
+//
+// SKIPPED: **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:38 - `TDataStd_HDataMapOfStringHArray1OfReal::ChangeMap`
+//   Reason: return type 'TDataStd_DataMapOfStringHArray1OfReal&' is unknown
+//   // pub fn change_map(&mut self) -> &mut DataMapOfStringHArray1OfReal;
+//
 
 // ========================
 // From TDataStd_HDataMapOfStringInteger.hxx
@@ -4812,6 +5109,20 @@ impl HandleTDataStdHDataMapOfStringReal {
     }
 }
 
+// ── Skipped symbols for HDataMapOfStringReal (3 total) ──
+// SKIPPED: **Source:** `TDataStd_HDataMapOfStringReal.hxx`:33 - `TDataStd_HDataMapOfStringReal::TDataStd_HDataMapOfStringReal`
+//   Reason: param 'theOther' uses unknown type 'const TDataStd_DataMapOfStringReal&'
+//   // pub fn new_datamapofstringreal(theOther: &DataMapOfStringReal) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TDataStd_HDataMapOfStringReal.hxx`:35 - `TDataStd_HDataMapOfStringReal::Map`
+//   Reason: return type 'const TDataStd_DataMapOfStringReal&' is unknown
+//   // pub fn map(&self) -> &DataMapOfStringReal;
+//
+// SKIPPED: **Source:** `TDataStd_HDataMapOfStringReal.hxx`:37 - `TDataStd_HDataMapOfStringReal::ChangeMap`
+//   Reason: return type 'TDataStd_DataMapOfStringReal&' is unknown
+//   // pub fn change_map(&mut self) -> &mut DataMapOfStringReal;
+//
+
 // ========================
 // From TDataStd_HDataMapOfStringString.hxx
 // ========================
@@ -4894,6 +5205,20 @@ impl HandleTDataStdHDataMapOfStringString {
         }
     }
 }
+
+// ── Skipped symbols for HDataMapOfStringString (3 total) ──
+// SKIPPED: **Source:** `TDataStd_HDataMapOfStringString.hxx`:33 - `TDataStd_HDataMapOfStringString::TDataStd_HDataMapOfStringString`
+//   Reason: param 'theOther' uses unknown type 'const TDataStd_DataMapOfStringString&'
+//   // pub fn new_datamapofstringstring(theOther: &DataMapOfStringString) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TDataStd_HDataMapOfStringString.hxx`:35 - `TDataStd_HDataMapOfStringString::Map`
+//   Reason: return type 'const TDataStd_DataMapOfStringString&' is unknown
+//   // pub fn map(&self) -> &DataMapOfStringString;
+//
+// SKIPPED: **Source:** `TDataStd_HDataMapOfStringString.hxx`:37 - `TDataStd_HDataMapOfStringString::ChangeMap`
+//   Reason: return type 'TDataStd_DataMapOfStringString&' is unknown
+//   // pub fn change_map(&mut self) -> &mut DataMapOfStringString;
+//
 
 // ========================
 // From TDataStd_HLabelArray1.hxx
@@ -5334,6 +5659,25 @@ impl IntPackedMap {
     }
 }
 
+// ── Skipped symbols for IntPackedMap (3 total) ──
+// SKIPPED: **Source:** `TDataStd_IntPackedMap.hxx`:93 - `TDataStd_IntPackedMap::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_IntPackedMap.hxx`:97 - `TDataStd_IntPackedMap::DeltaOnModification`
+//   method: Makes a DeltaOnModification between <me> and
+//   method: <anOldAttribute>.
+//   Reason: return type 'Handle(TDF_DeltaOnModification)' is unknown
+//   // pub fn delta_on_modification(&self, anOldAttribute: &HandleAttribute) -> OwnedPtr<Handle<TDF_DeltaOnModification>>;
+//
+// SKIPPED: **Source:** `TDataStd_IntPackedMap.hxx`:53 - `TDataStd_IntPackedMap::Set`
+//   static_method: Finds or creates an integer map attribute on the given label.
+//   static_method: If <isDelta> == False, DefaultDeltaOnModification is used.
+//   static_method: If <isDelta> == True, DeltaOnModification of the current attribute is used.
+//   Reason: return type 'Handle(TDataStd_IntPackedMap)' is unknown
+//   // pub fn set(label: &Label, isDelta: bool) -> OwnedPtr<Handle<TDataStd_IntPackedMap>>;
+//
+
 // ========================
 // From TDataStd_Integer.hxx
 // ========================
@@ -5609,6 +5953,24 @@ impl Integer {
         unsafe { crate::ffi::TDataStd_Integer_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Integer (3 total) ──
+// SKIPPED: **Source:** `TDataStd_Integer.hxx`:79 - `TDataStd_Integer::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_Integer.hxx`:45 - `TDataStd_Integer::Set`
+//   static_method: Finds, or creates, an Integer attribute and sets <value>
+//   static_method: the Integer  attribute is returned.
+//   Reason: return type 'Handle(TDataStd_Integer)' is unknown
+//   // pub fn set(label: &Label, value: i32) -> OwnedPtr<Handle<TDataStd_Integer>>;
+//
+// SKIPPED: **Source:** `TDataStd_Integer.hxx`:50 - `TDataStd_Integer::Set`
+//   static_method: Finds, or creates, an Integer attribute with explicit user defined <guid> and sets <value>.
+//   static_method: The Integer attribute  is  returned.
+//   Reason: return type 'Handle(TDataStd_Integer)' is unknown
+//   // pub fn set(label: &Label, guid: &GUID, value: i32) -> OwnedPtr<Handle<TDataStd_Integer>>;
+//
 
 // ========================
 // From TDataStd_IntegerArray.hxx
@@ -5962,6 +6324,31 @@ impl IntegerArray {
         }
     }
 }
+
+// ── Skipped symbols for IntegerArray (4 total) ──
+// SKIPPED: **Source:** `TDataStd_IntegerArray.hxx`:125 - `TDataStd_IntegerArray::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_IntegerArray.hxx`:129 - `TDataStd_IntegerArray::DeltaOnModification`
+//   method: Makes a DeltaOnModification between <me> and
+//   method: <anOldAttribute>.
+//   Reason: return type 'Handle(TDF_DeltaOnModification)' is unknown
+//   // pub fn delta_on_modification(&self, anOldAttribute: &HandleAttribute) -> OwnedPtr<Handle<TDF_DeltaOnModification>>;
+//
+// SKIPPED: **Source:** `TDataStd_IntegerArray.hxx`:52 - `TDataStd_IntegerArray::Set`
+//   static_method: Finds or creates on the <label> an integer array attribute
+//   static_method: with the specified <lower> and <upper> boundaries.
+//   static_method: If <isDelta> == False, DefaultDeltaOnModification is used.
+//   Reason: return type 'Handle(TDataStd_IntegerArray)' is unknown
+//   // pub fn set(label: &Label, lower: i32, upper: i32, isDelta: bool) -> OwnedPtr<Handle<TDataStd_IntegerArray>>;
+//
+// SKIPPED: **Source:** `TDataStd_IntegerArray.hxx`:60 - `TDataStd_IntegerArray::Set`
+//   static_method: Finds, or creates, an IntegerArray attribute with explicit user defined <guid>.
+//   static_method: The IntegerArray attribute  is  returned.
+//   Reason: return type 'Handle(TDataStd_IntegerArray)' is unknown
+//   // pub fn set(label: &Label, theGuid: &GUID, lower: i32, upper: i32, isDelta: bool) -> OwnedPtr<Handle<TDataStd_IntegerArray>>;
+//
 
 // ========================
 // From TDataStd_IntegerList.hxx
@@ -6330,6 +6717,22 @@ impl IntegerList {
     }
 }
 
+// ── Skipped symbols for IntegerList (3 total) ──
+// SKIPPED: **Source:** `TDataStd_IntegerList.hxx`:107 - `TDataStd_IntegerList::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_IntegerList.hxx`:44 - `TDataStd_IntegerList::Set`
+//   static_method: Finds or creates a list of integer values attribute.
+//   Reason: return type 'Handle(TDataStd_IntegerList)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_IntegerList>>;
+//
+// SKIPPED: **Source:** `TDataStd_IntegerList.hxx`:47 - `TDataStd_IntegerList::Set`
+//   static_method: Finds or creates a list of integer values attribute with explicit user defined <guid>.
+//   Reason: return type 'Handle(TDataStd_IntegerList)' is unknown
+//   // pub fn set(label: &Label, theGuid: &GUID) -> OwnedPtr<Handle<TDataStd_IntegerList>>;
+//
+
 // ========================
 // From TDataStd_Name.hxx
 // ========================
@@ -6603,6 +7006,25 @@ impl Name {
         unsafe { crate::ffi::TDataStd_Name_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Name (3 total) ──
+// SKIPPED: **Source:** `TDataStd_Name.hxx`:81 - `TDataStd_Name::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_Name.hxx`:61 - `TDataStd_Name::Set`
+//   static_method: Creates (if does not exist) and sets the name in the name attribute.
+//   static_method: from any label <L>  search in father  labels (L is not
+//   static_method: concerned) the first name attribute.if found set it in
+//   Reason: return type 'Handle(TDataStd_Name)' is unknown
+//   // pub fn set(label: &Label, string: &ExtendedString) -> OwnedPtr<Handle<TDataStd_Name>>;
+//
+// SKIPPED: **Source:** `TDataStd_Name.hxx`:66 - `TDataStd_Name::Set`
+//   static_method: Finds, or creates, a Name attribute with explicit user defined <guid> and sets <string>.
+//   static_method: The Name attribute  is  returned.
+//   Reason: return type 'Handle(TDataStd_Name)' is unknown
+//   // pub fn set(label: &Label, guid: &GUID, string: &ExtendedString) -> OwnedPtr<Handle<TDataStd_Name>>;
+//
 
 // ========================
 // From TDataStd_NamedData.hxx
@@ -7195,6 +7617,85 @@ impl NamedData {
     }
 }
 
+// ── Skipped symbols for NamedData (15 total) ──
+// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:92 - `TDataStd_NamedData::GetRealsContainer`
+//   method: Returns the internal container of named reals.
+//   Reason: return type 'const TDataStd_DataMapOfStringReal&' is unknown
+//   // pub fn get_reals_container(&mut self) -> &DataMapOfStringReal;
+//
+// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:95 - `TDataStd_NamedData::ChangeReals`
+//   method: Replace the container content by new content of the <theReals>.
+//   Reason: param 'theReals' uses unknown type 'const TDataStd_DataMapOfStringReal&'
+//   // pub fn change_reals(&mut self, theReals: &DataMapOfStringReal);
+//
+// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:115 - `TDataStd_NamedData::GetStringsContainer`
+//   method: Returns the internal container of named strings.
+//   Reason: return type 'const TDataStd_DataMapOfStringString&' is unknown
+//   // pub fn get_strings_container(&mut self) -> &DataMapOfStringString;
+//
+// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:118 - `TDataStd_NamedData::ChangeStrings`
+//   method: Replace the container content by new content of the <theStrings>.
+//   Reason: param 'theStrings' uses unknown type 'const TDataStd_DataMapOfStringString&'
+//   // pub fn change_strings(&mut self, theStrings: &DataMapOfStringString);
+//
+// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:129 - `TDataStd_NamedData::GetByte`
+//   method: Returns the named byte.
+//   method: It returns 0 if there is no such a named byte
+//   method: (use HasByte()).
+//   Reason: return type 'Standard_Byte' is unknown
+//   // pub fn get_byte(&mut self, theName: &ExtendedString) -> OwnedPtr<Standard_Byte>;
+//
+// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:133 - `TDataStd_NamedData::SetByte`
+//   method: Defines a named byte.
+//   method: If the byte already exists, it changes its value to <theByte>.
+//   Reason: param 'theByte' uses unknown type 'Standard_Byte'
+//   // pub fn set_byte(&mut self, theName: &ExtendedString, theByte: Byte);
+//
+// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:137 - `TDataStd_NamedData::GetBytesContainer`
+//   method: Returns the internal container of named bytes.
+//   Reason: return type 'const TDataStd_DataMapOfStringByte&' is unknown
+//   // pub fn get_bytes_container(&mut self) -> &DataMapOfStringByte;
+//
+// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:140 - `TDataStd_NamedData::ChangeBytes`
+//   method: Replace the container content by new content of the <theBytes>.
+//   Reason: param 'theBytes' uses unknown type 'const TDataStd_DataMapOfStringByte&'
+//   // pub fn change_bytes(&mut self, theBytes: &DataMapOfStringByte);
+//
+// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:167 - `TDataStd_NamedData::GetArraysOfIntegersContainer`
+//   method: Returns the internal container of named arrays of integer values.
+//   Reason: return type 'const TDataStd_DataMapOfStringHArray1OfInteger&' is unknown
+//   // pub fn get_arrays_of_integers_container(&mut self) -> &DataMapOfStringHArray1OfInteger;
+//
+// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:170 - `TDataStd_NamedData::ChangeArraysOfIntegers`
+//   method: Replace the container content by new content of the <theArraysOfIntegers>.
+//   Reason: param 'theArraysOfIntegers' uses unknown type 'const TDataStd_DataMapOfStringHArray1OfInteger&'
+//   // pub fn change_arrays_of_integers(&mut self, theArraysOfIntegers: &DataMapOfStringHArray1OfInteger);
+//
+// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:197 - `TDataStd_NamedData::GetArraysOfRealsContainer`
+//   method: Returns the internal container of named arrays of real values.
+//   Reason: return type 'const TDataStd_DataMapOfStringHArray1OfReal&' is unknown
+//   // pub fn get_arrays_of_reals_container(&mut self) -> &DataMapOfStringHArray1OfReal;
+//
+// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:200 - `TDataStd_NamedData::ChangeArraysOfReals`
+//   method: Replace the container content by new content of the <theArraysOfReals>.
+//   Reason: param 'theArraysOfReals' uses unknown type 'const TDataStd_DataMapOfStringHArray1OfReal&'
+//   // pub fn change_arrays_of_reals(&mut self, theArraysOfReals: &DataMapOfStringHArray1OfReal);
+//
+// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:274 - `TDataStd_NamedData::setByte`
+//   method: Defines a named byte (without calling Backup).
+//   Reason: param 'theByte' uses unknown type 'Standard_Byte'
+//   // pub fn set_byte(&mut self, theName: &ExtendedString, theByte: Byte);
+//
+// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:296 - `TDataStd_NamedData::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:46 - `TDataStd_NamedData::Set`
+//   static_method: Finds or creates a named data attribute.
+//   Reason: return type 'Handle(TDataStd_NamedData)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_NamedData>>;
+//
+
 // ========================
 // From TDataStd_NoteBook.hxx
 // ========================
@@ -7464,6 +7965,39 @@ impl NoteBook {
     }
 }
 
+// ── Skipped symbols for NoteBook (5 total) ──
+// SKIPPED: **Source:** `TDataStd_NoteBook.hxx`:62 - `TDataStd_NoteBook::Append`
+//   method: Tool to Create  an  Integer  attribute from  <value>,
+//   method: Insert it in   a  new son  label   of <me>. The   Real
+//   method: attribute is returned.
+//   Reason: return type 'Handle(TDataStd_Real)' is unknown
+//   // pub fn append(&mut self, value: f64, isExported: bool) -> OwnedPtr<Handle<TDataStd_Real>>;
+//
+// SKIPPED: **Source:** `TDataStd_NoteBook.hxx`:68 - `TDataStd_NoteBook::Append`
+//   method: Tool to Create  an Real attribute from <value>, Insert
+//   method: it  in a new son label  of <me>. The Integer attribute
+//   method: is returned.
+//   Reason: return type 'Handle(TDataStd_Integer)' is unknown
+//   // pub fn append(&mut self, value: i32, isExported: bool) -> OwnedPtr<Handle<TDataStd_Integer>>;
+//
+// SKIPPED: **Source:** `TDataStd_NoteBook.hxx`:74 - `TDataStd_NoteBook::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_NoteBook.hxx`:46 - `TDataStd_NoteBook::Find`
+//   static_method: class methods
+//   static_method: =============
+//   static_method: try to retrieve a NoteBook attribute at <current> label
+//   Reason: param 'N' uses unknown type 'Handle(TDataStd_NoteBook)&'
+//   // pub fn find(current: &Label, N: &mut HandleNoteBook) -> bool;
+//
+// SKIPPED: **Source:** `TDataStd_NoteBook.hxx`:51 - `TDataStd_NoteBook::New`
+//   static_method: Create  an  enpty   NoteBook attribute,  located  at
+//   static_method: <label>. Raises if <label> has attribute
+//   Reason: return type 'Handle(TDataStd_NoteBook)' is unknown
+//   // pub fn new(label: &Label) -> OwnedPtr<Handle<TDataStd_NoteBook>>;
+//
+
 // ========================
 // From TDataStd_Real.hxx
 // ========================
@@ -7732,6 +8266,26 @@ impl Real {
         unsafe { crate::ffi::TDataStd_Real_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Real (3 total) ──
+// SKIPPED: **Source:** `TDataStd_Real.hxx`:98 - `TDataStd_Real::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_Real.hxx`:49 - `TDataStd_Real::Set`
+//   static_method: Finds, or creates, a Real attribute with default GUID and sets <value>.
+//   static_method: The Real attribute  is  returned. The  Real  dimension is Scalar by default.
+//   static_method: Use SetDimension to overwrite.
+//   Reason: return type 'Handle(TDataStd_Real)' is unknown
+//   // pub fn set(label: &Label, value: f64) -> OwnedPtr<Handle<TDataStd_Real>>;
+//
+// SKIPPED: **Source:** `TDataStd_Real.hxx`:56 - `TDataStd_Real::Set`
+//   static_method: Finds, or creates, a Real attribute with explicit GUID and sets <value>.
+//   static_method: The Real attribute  is  returned.
+//   static_method: Real methods
+//   Reason: return type 'Handle(TDataStd_Real)' is unknown
+//   // pub fn set(label: &Label, guid: &GUID, value: f64) -> OwnedPtr<Handle<TDataStd_Real>>;
+//
 
 // ========================
 // From TDataStd_RealArray.hxx
@@ -8073,6 +8627,31 @@ impl RealArray {
         unsafe { crate::ffi::TDataStd_RealArray_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for RealArray (4 total) ──
+// SKIPPED: **Source:** `TDataStd_RealArray.hxx`:126 - `TDataStd_RealArray::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_RealArray.hxx`:130 - `TDataStd_RealArray::DeltaOnModification`
+//   method: Makes a DeltaOnModification between <me> and
+//   method: <anOldAttribute>.
+//   Reason: return type 'Handle(TDF_DeltaOnModification)' is unknown
+//   // pub fn delta_on_modification(&self, anOldAttribute: &HandleAttribute) -> OwnedPtr<Handle<TDF_DeltaOnModification>>;
+//
+// SKIPPED: **Source:** `TDataStd_RealArray.hxx`:53 - `TDataStd_RealArray::Set`
+//   static_method: Finds or creates on the <label> a real array attribute with
+//   static_method: the specified <lower> and <upper> boundaries.
+//   static_method: If <isDelta> == False, DefaultDeltaOnModification is used.
+//   Reason: return type 'Handle(TDataStd_RealArray)' is unknown
+//   // pub fn set(label: &Label, lower: i32, upper: i32, isDelta: bool) -> OwnedPtr<Handle<TDataStd_RealArray>>;
+//
+// SKIPPED: **Source:** `TDataStd_RealArray.hxx`:61 - `TDataStd_RealArray::Set`
+//   static_method: Finds, or creates, an RealArray attribute with explicit user defined <guid>.
+//   static_method: The RealArray attribute  is  returned.
+//   Reason: return type 'Handle(TDataStd_RealArray)' is unknown
+//   // pub fn set(label: &Label, theGuid: &GUID, lower: i32, upper: i32, isDelta: bool) -> OwnedPtr<Handle<TDataStd_RealArray>>;
+//
 
 // ========================
 // From TDataStd_RealList.hxx
@@ -8431,6 +9010,22 @@ impl RealList {
     }
 }
 
+// ── Skipped symbols for RealList (3 total) ──
+// SKIPPED: **Source:** `TDataStd_RealList.hxx`:108 - `TDataStd_RealList::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_RealList.hxx`:45 - `TDataStd_RealList::Set`
+//   static_method: Finds or creates a list of double values attribute.
+//   Reason: return type 'Handle(TDataStd_RealList)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_RealList>>;
+//
+// SKIPPED: **Source:** `TDataStd_RealList.hxx`:48 - `TDataStd_RealList::Set`
+//   static_method: Finds or creates a list of double values attribute with explicit user defined <guid>.
+//   Reason: return type 'Handle(TDataStd_RealList)' is unknown
+//   // pub fn set(label: &Label, theGuid: &GUID) -> OwnedPtr<Handle<TDataStd_RealList>>;
+//
+
 // ========================
 // From TDataStd_ReferenceArray.hxx
 // ========================
@@ -8773,6 +9368,23 @@ impl ReferenceArray {
         }
     }
 }
+
+// ── Skipped symbols for ReferenceArray (3 total) ──
+// SKIPPED: **Source:** `TDataStd_ReferenceArray.hxx`:102 - `TDataStd_ReferenceArray::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_ReferenceArray.hxx`:45 - `TDataStd_ReferenceArray::Set`
+//   static_method: Finds or creates an array of reference values (labels) attribute.
+//   Reason: return type 'Handle(TDataStd_ReferenceArray)' is unknown
+//   // pub fn set(label: &Label, lower: i32, upper: i32) -> OwnedPtr<Handle<TDataStd_ReferenceArray>>;
+//
+// SKIPPED: **Source:** `TDataStd_ReferenceArray.hxx`:51 - `TDataStd_ReferenceArray::Set`
+//   static_method: Finds or creates an array of reference values (labels) attribute with explicit user defined
+//   static_method: <guid>.
+//   Reason: return type 'Handle(TDataStd_ReferenceArray)' is unknown
+//   // pub fn set(label: &Label, theGuid: &GUID, lower: i32, upper: i32) -> OwnedPtr<Handle<TDataStd_ReferenceArray>>;
+//
 
 // ========================
 // From TDataStd_ReferenceList.hxx
@@ -9165,6 +9777,23 @@ impl ReferenceList {
     }
 }
 
+// ── Skipped symbols for ReferenceList (3 total) ──
+// SKIPPED: **Source:** `TDataStd_ReferenceList.hxx`:111 - `TDataStd_ReferenceList::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_ReferenceList.hxx`:45 - `TDataStd_ReferenceList::Set`
+//   static_method: Finds or creates a list of reference values (labels) attribute.
+//   Reason: return type 'Handle(TDataStd_ReferenceList)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_ReferenceList>>;
+//
+// SKIPPED: **Source:** `TDataStd_ReferenceList.hxx`:49 - `TDataStd_ReferenceList::Set`
+//   static_method: Finds or creates a list of reference values (labels) attribute with explicit user defined
+//   static_method: <guid>.
+//   Reason: return type 'Handle(TDataStd_ReferenceList)' is unknown
+//   // pub fn set(label: &Label, theGuid: &GUID) -> OwnedPtr<Handle<TDataStd_ReferenceList>>;
+//
+
 // ========================
 // From TDataStd_Relation.hxx
 // ========================
@@ -9475,6 +10104,19 @@ impl Relation {
     }
 }
 
+// ── Skipped symbols for Relation (2 total) ──
+// SKIPPED: **Source:** `TDataStd_Relation.hxx`:54 - `TDataStd_Relation::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_Relation.hxx`:44 - `TDataStd_Relation::Set`
+//   static_method: Find, or create, an Relation attribute.
+//   static_method: Real methods
+//   static_method: ============
+//   Reason: return type 'Handle(TDataStd_Relation)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_Relation>>;
+//
+
 // ========================
 // From TDataStd_Tick.hxx
 // ========================
@@ -9729,6 +10371,19 @@ impl Tick {
         unsafe { crate::ffi::TDataStd_Tick_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Tick (2 total) ──
+// SKIPPED: **Source:** `TDataStd_Tick.hxx`:47 - `TDataStd_Tick::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_Tick.hxx`:41 - `TDataStd_Tick::Set`
+//   static_method: Find, or create, a Tick attribute.
+//   static_method: Tick methods
+//   static_method: ============
+//   Reason: return type 'Handle(TDataStd_Tick)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_Tick>>;
+//
 
 // ========================
 // From TDataStd_TreeNode.hxx
@@ -10055,6 +10710,144 @@ impl TreeNode {
     }
 }
 
+// ── Skipped symbols for TreeNode (24 total) ──
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:75 - `TDataStd_TreeNode::Append`
+//   method: Insert the TreeNode <Child> as last  child of <me>. If
+//   method: the insertion is successful <me> becomes the Father of <Child>.
+//   Reason: param 'Child' uses unknown type 'const Handle(TDataStd_TreeNode)&'
+//   // pub fn append(&mut self, Child: &HandleTreeNode) -> bool;
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:79 - `TDataStd_TreeNode::Prepend`
+//   method: Insert the   the TreeNode <Child>  as  first child of
+//   method: <me>. If the insertion is successful <me> becomes the Father of <Child>
+//   Reason: param 'Child' uses unknown type 'const Handle(TDataStd_TreeNode)&'
+//   // pub fn prepend(&mut self, Child: &HandleTreeNode) -> bool;
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:83 - `TDataStd_TreeNode::InsertBefore`
+//   method: Inserts the TreeNode  <Node> before <me>. If insertion is successful <me>
+//   method: and <Node> belongs to the same Father.
+//   Reason: param 'Node' uses unknown type 'const Handle(TDataStd_TreeNode)&'
+//   // pub fn insert_before(&mut self, Node: &HandleTreeNode) -> bool;
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:87 - `TDataStd_TreeNode::InsertAfter`
+//   method: Inserts the TreeNode <Node>  after <me>. If insertion is successful  <me>
+//   method: and <Node> belongs to the same Father.
+//   Reason: param 'Node' uses unknown type 'const Handle(TDataStd_TreeNode)&'
+//   // pub fn insert_after(&mut self, Node: &HandleTreeNode) -> bool;
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:106 - `TDataStd_TreeNode::IsAscendant`
+//   method: Returns true if this tree node attribute is an
+//   method: ascendant of of. In other words, if it is a father or
+//   method: the father of a father of of.
+//   Reason: param 'of' uses unknown type 'const Handle(TDataStd_TreeNode)&'
+//   // pub fn is_ascendant(&self, of: &HandleTreeNode) -> bool;
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:111 - `TDataStd_TreeNode::IsDescendant`
+//   method: Returns true if this tree node attribute is a
+//   method: descendant of of. In other words, if it is a child or
+//   method: the child of a child of of.
+//   Reason: param 'of' uses unknown type 'const Handle(TDataStd_TreeNode)&'
+//   // pub fn is_descendant(&self, of: &HandleTreeNode) -> bool;
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:118 - `TDataStd_TreeNode::Root`
+//   method: Returns the ultimate father of this tree node attribute.
+//   Reason: return type 'Handle(TDataStd_TreeNode)' is unknown
+//   // pub fn root(&self) -> OwnedPtr<Handle<TDataStd_TreeNode>>;
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:121 - `TDataStd_TreeNode::IsFather`
+//   method: Returns true if this tree node attribute is a father of of.
+//   Reason: param 'of' uses unknown type 'const Handle(TDataStd_TreeNode)&'
+//   // pub fn is_father(&self, of: &HandleTreeNode) -> bool;
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:124 - `TDataStd_TreeNode::IsChild`
+//   method: Returns true if this tree node attribute is a child of of.
+//   Reason: param 'of' uses unknown type 'const Handle(TDataStd_TreeNode)&'
+//   // pub fn is_child(&self, of: &HandleTreeNode) -> bool;
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:130 - `TDataStd_TreeNode::Father`
+//   method: Returns the father TreeNode of <me>. Null if root.
+//   Reason: return type 'Handle(TDataStd_TreeNode)' is unknown
+//   // pub fn father(&self) -> OwnedPtr<Handle<TDataStd_TreeNode>>;
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:139 - `TDataStd_TreeNode::Next`
+//   method: Returns the next tree node in this tree node attribute.
+//   method: Warning
+//   method: This tree node is null if it is the last one in this
+//   Reason: return type 'Handle(TDataStd_TreeNode)' is unknown
+//   // pub fn next(&self) -> OwnedPtr<Handle<TDataStd_TreeNode>>;
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:147 - `TDataStd_TreeNode::Previous`
+//   method: Returns the previous tree node of this tree node attribute.
+//   method: Warning
+//   method: This tree node is null if it is the first one in this tree node attribute.
+//   Reason: return type 'Handle(TDataStd_TreeNode)' is unknown
+//   // pub fn previous(&self) -> OwnedPtr<Handle<TDataStd_TreeNode>>;
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:153 - `TDataStd_TreeNode::First`
+//   method: Returns the first child tree node in this tree node object.
+//   Reason: return type 'Handle(TDataStd_TreeNode)' is unknown
+//   // pub fn first(&self) -> OwnedPtr<Handle<TDataStd_TreeNode>>;
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:159 - `TDataStd_TreeNode::Last`
+//   method: Returns the last child tree node in this tree node object.
+//   Reason: return type 'Handle(TDataStd_TreeNode)' is unknown
+//   // pub fn last(&mut self) -> OwnedPtr<Handle<TDataStd_TreeNode>>;
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:164 - `TDataStd_TreeNode::FindLast`
+//   method: Returns the last child tree node in this tree node object.
+//   method: to set fields
+//   method: =============
+//   Reason: return type 'Handle(TDataStd_TreeNode)' is unknown
+//   // pub fn find_last(&mut self) -> OwnedPtr<Handle<TDataStd_TreeNode>>;
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:168 - `TDataStd_TreeNode::SetFather`
+//   Reason: param 'F' uses unknown type 'const Handle(TDataStd_TreeNode)&'
+//   // pub fn set_father(&mut self, F: &HandleTreeNode);
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:170 - `TDataStd_TreeNode::SetNext`
+//   Reason: param 'F' uses unknown type 'const Handle(TDataStd_TreeNode)&'
+//   // pub fn set_next(&mut self, F: &HandleTreeNode);
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:172 - `TDataStd_TreeNode::SetPrevious`
+//   Reason: param 'F' uses unknown type 'const Handle(TDataStd_TreeNode)&'
+//   // pub fn set_previous(&mut self, F: &HandleTreeNode);
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:174 - `TDataStd_TreeNode::SetFirst`
+//   Reason: param 'F' uses unknown type 'const Handle(TDataStd_TreeNode)&'
+//   // pub fn set_first(&mut self, F: &HandleTreeNode);
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:178 - `TDataStd_TreeNode::SetLast`
+//   method: TreeNode callback:
+//   method: ==================
+//   Reason: param 'F' uses unknown type 'const Handle(TDataStd_TreeNode)&'
+//   // pub fn set_last(&mut self, F: &HandleTreeNode);
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:214 - `TDataStd_TreeNode::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:50 - `TDataStd_TreeNode::Find`
+//   static_method: class  methods working on the node
+//   static_method: ===================================
+//   static_method: Returns true if the tree node T is found on the label L.
+//   Reason: param 'T' uses unknown type 'Handle(TDataStd_TreeNode)&'
+//   // pub fn find(L: &Label, T: &mut HandleTreeNode) -> bool;
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:56 - `TDataStd_TreeNode::Set`
+//   static_method: Finds or Creates a TreeNode attribute on the label <L>
+//   static_method: with  the  default tree  ID,   returned by the method
+//   static_method: <GetDefaultTreeID>.  Returns the created/found     TreeNode
+//   Reason: return type 'Handle(TDataStd_TreeNode)' is unknown
+//   // pub fn set(L: &Label) -> OwnedPtr<Handle<TDataStd_TreeNode>>;
+//
+// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:62 - `TDataStd_TreeNode::Set`
+//   static_method: Finds  or Creates a   TreeNode attribute on  the label
+//   static_method: <L>, with an   explicit tree ID.  <ExplicitTreeID>  is
+//   static_method: the  ID   returned by    <TDF_Attribute::ID>   method.
+//   Reason: return type 'Handle(TDataStd_TreeNode)' is unknown
+//   // pub fn set(L: &Label, ExplicitTreeID: &GUID) -> OwnedPtr<Handle<TDataStd_TreeNode>>;
+//
+
 // ========================
 // From TDataStd_UAttribute.hxx
 // ========================
@@ -10307,6 +11100,19 @@ impl UAttribute {
         unsafe { crate::ffi::TDataStd_UAttribute_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for UAttribute (2 total) ──
+// SKIPPED: **Source:** `TDataStd_UAttribute.hxx`:60 - `TDataStd_UAttribute::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_UAttribute.hxx`:42 - `TDataStd_UAttribute::Set`
+//   static_method: api class methods
+//   static_method: =============
+//   static_method: Find, or create, a UAttribute attribute with <LocalID> as Local GUID.
+//   Reason: return type 'Handle(TDataStd_UAttribute)' is unknown
+//   // pub fn set(label: &Label, LocalID: &GUID) -> OwnedPtr<Handle<TDataStd_UAttribute>>;
+//
 
 // ========================
 // From TDataStd_Variable.hxx
@@ -10655,6 +11461,36 @@ impl Variable {
         unsafe { crate::ffi::TDataStd_Variable_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Variable (5 total) ──
+// SKIPPED: **Source:** `TDataStd_Variable.hxx`:90 - `TDataStd_Variable::Real`
+//   method: returns associated Real attribute.
+//   Reason: return type 'Handle(TDataStd_Real)' is unknown
+//   // pub fn real(&self) -> OwnedPtr<Handle<TDataStd_Real>>;
+//
+// SKIPPED: **Source:** `TDataStd_Variable.hxx`:99 - `TDataStd_Variable::Assign`
+//   method: create(if  doesn't exist)  and  returns  the  assigned
+//   method: expression  attribute. fill it after.
+//   Reason: return type 'Handle(TDataStd_Expression)' is unknown
+//   // pub fn assign(&self) -> OwnedPtr<Handle<TDataStd_Expression>>;
+//
+// SKIPPED: **Source:** `TDataStd_Variable.hxx`:107 - `TDataStd_Variable::Expression`
+//   method: if <me>  is  assigned, returns  associated  Expression
+//   method: attribute.
+//   Reason: return type 'Handle(TDataStd_Expression)' is unknown
+//   // pub fn expression(&self) -> OwnedPtr<Handle<TDataStd_Expression>>;
+//
+// SKIPPED: **Source:** `TDataStd_Variable.hxx`:137 - `TDataStd_Variable::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `TDataStd_Variable.hxx`:61 - `TDataStd_Variable::Set`
+//   static_method: Find, or create, a  Variable attribute.
+//   static_method: Real methods
+//   static_method: ============
+//   Reason: return type 'Handle(TDataStd_Variable)' is unknown
+//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_Variable>>;
+//
 
 // ========================
 // Additional type re-exports

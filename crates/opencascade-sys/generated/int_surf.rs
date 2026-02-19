@@ -217,6 +217,12 @@ impl HandleIntSurfLineOn2S {
     }
 }
 
+// ── Skipped symbols for LineOn2S (1 total) ──
+// SKIPPED: **Source:** `IntSurf_LineOn2S.hxx`:38 - `IntSurf_LineOn2S::IntSurf_LineOn2S`
+//   Reason: param 'theAllocator' uses unknown type 'const IntSurf_Allocator&'
+//   // pub fn new_allocator(theAllocator: &Allocator) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From IntSurf_PntOn2S.hxx
 // ========================

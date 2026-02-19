@@ -342,6 +342,13 @@ impl ApproxCurve {
     }
 }
 
+// ── Skipped symbols for ApproxCurve (1 total) ──
+// SKIPPED: **Source:** `Geom2dConvert_ApproxCurve.hxx`:79 - `Geom2dConvert_ApproxCurve::Dump`
+//   method: Print on the stream  o  information about the object
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+
 // ========================
 // From Geom2dConvert_BSplineCurveKnotSplitting.hxx
 // ========================

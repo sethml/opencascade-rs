@@ -421,6 +421,41 @@ impl HandleRWMeshCafReader {
     }
 }
 
+// ── Skipped symbols for CafReader (6 total) ──
+// SKIPPED: **Source:** `RWMesh_CafReader.hxx`:66 - `RWMesh_CafReader::RWMesh_CafReader`
+//   constructor: Empty constructor.
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new() -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document`
+//   method: Return target document.
+//   Reason: return type 'const Handle(TDocStd_Document)&' is unknown
+//   // pub fn document(&self) -> &HandleDocument;
+//
+// SKIPPED: **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument`
+//   method: Set target document.
+//   method: Set system length unit according to the units of the document
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn set_document(&mut self, theDoc: &HandleDocument);
+//
+// SKIPPED: **Source:** `RWMesh_CafReader.hxx`:202 - `RWMesh_CafReader::Perform`
+//   method: Read the data from specified file.
+//   Reason: has unbindable types: param 'theStream': stream type (std::istream&)
+//   // pub fn perform(&mut self, theStream: /* std::istream& */, theProgress: &ProgressRange, theFile: &AsciiString) -> bool;
+//
+// SKIPPED: **Source:** `RWMesh_CafReader.hxx`:218 - `RWMesh_CafReader::ExternalFiles`
+//   method: Return the list of complementary files - external references (textures, data, etc.).
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn external_files(&self) -> &i32;
+//
+// SKIPPED: **Source:** `RWMesh_CafReader.hxx`:238 - `RWMesh_CafReader::ProbeHeader`
+//   method: Read the header data from specified file without reading entire model.
+//   method: The main purpose is collecting metadata and external references - for copying model into a new
+//   method: location, for example. Can be NOT implemented (unsupported by format / reader).
+//   Reason: has unbindable types: param 'theStream': stream type (std::istream&)
+//   // pub fn probe_header(&mut self, theStream: /* std::istream& */, theFile: &AsciiString, theProgress: &ProgressRange) -> bool;
+//
+
 /// **Source:** `RWMesh_CafReader.hxx`:55 - `RWMesh_CafReader_CafDocumentTools`
 /// Structure holding tools for filling the document.
 pub use crate::ffi::RWMesh_CafReader_CafDocumentTools as CafReader_CafDocumentTools;
@@ -1287,6 +1322,13 @@ impl HandleRWMeshMaterialMap {
     }
 }
 
+// ── Skipped symbols for MaterialMap (1 total) ──
+// SKIPPED: **Source:** `RWMesh_MaterialMap.hxx`:29 - `RWMesh_MaterialMap::RWMesh_MaterialMap`
+//   constructor: Main constructor.
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new_asciistring(theFile: &AsciiString) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From RWMesh_NodeAttributes.hxx
 // ========================
@@ -1582,6 +1624,18 @@ impl HandleRWMeshTriangulationReader {
         unsafe { &mut *(crate::ffi::HandleRWMeshTriangulationReader_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for TriangulationReader (2 total) ──
+// SKIPPED: **Source:** `RWMesh_TriangulationReader.hxx`:59 - `RWMesh_TriangulationReader::RWMesh_TriangulationReader`
+//   constructor: Constructor.
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new() -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `RWMesh_TriangulationReader.hxx`:145 - `RWMesh_TriangulationReader::Load`
+//   method: Loads primitive array.
+//   Reason: param 'theSourceMesh' uses unknown type 'const Handle(RWMesh_TriangulationSource)&'
+//   // pub fn load(&self, theSourceMesh: &HandleTriangulationSource, theDestMesh: &HandleTriangulation, theFileSystem: &HandleFileSystem) -> bool;
+//
 
 /// **Source:** `RWMesh_TriangulationReader.hxx`:29 - `RWMesh_TriangulationReader_LoadingStatistic`
 pub use crate::ffi::RWMesh_TriangulationReader_LoadingStatistic as TriangulationReader_LoadingStatistic;
@@ -2117,6 +2171,13 @@ impl TriangulationSource {
         }
     }
 }
+
+// ── Skipped symbols for TriangulationSource (1 total) ──
+// SKIPPED: **Source:** `RWMesh_TriangulationSource.hxx`:46 - `RWMesh_TriangulationSource::ChangeDegeneratedTriNb`
+//   method: Gets access to number of degenerated triangles to collect them during data reading.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn change_degenerated_tri_nb(&mut self) -> &mut i32;
+//
 
 // ========================
 // From RWMesh_VertexIterator.hxx

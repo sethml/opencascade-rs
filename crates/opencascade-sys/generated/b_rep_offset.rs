@@ -460,6 +460,13 @@ impl Analyse {
     }
 }
 
+// ── Skipped symbols for Analyse (1 total) ──
+// SKIPPED: **Source:** `BRepOffset_Analyse.hxx`:149 - `BRepOffset_Analyse::Descendants`
+//   method: Returns the shape descendants.
+//   Reason: has unbindable types: return: raw pointer (const TopTools_ListOfShape*)
+//   // pub fn descendants(&self, theS: &Shape, theUpdate: bool) -> /* const TopTools_ListOfShape* */;
+//
+
 // ========================
 // From BRepOffset_Inter2d.hxx
 // ========================
@@ -492,6 +499,36 @@ impl Inter2d {
         unsafe { crate::ffi::BRepOffset_Inter2d_extent_edge(E, NE, theOffset) }
     }
 }
+
+// ── Skipped symbols for Inter2d (4 total) ──
+// SKIPPED: **Source:** `BRepOffset_Inter2d.hxx`:46 - `BRepOffset_Inter2d::Compute`
+//   static_method: Computes the intersections between the edges stored
+//   static_method: is AsDes as descendants of <F> . Intersections is computed
+//   static_method: between two edges if one of them is bound in NewEdges.
+//   Reason: param 'AsDes' uses unknown type 'const Handle(BRepAlgo_AsDes)&'
+//   // pub fn compute(AsDes: &HandleAsDes, F: &Face, NewEdges: &IndexedMapOfShape, Tol: f64, theEdgeIntEdges: &DataMapOfShapeListOfShape, theDMVV: &mut IndexedDataMapOfShapeListOfShape, theRange: &ProgressRange);
+//
+// SKIPPED: **Source:** `BRepOffset_Inter2d.hxx`:59 - `BRepOffset_Inter2d::ConnexIntByInt`
+//   static_method: Computes the intersection between the offset edges of the <FI>.
+//   static_method: All intersection vertices will be stored in AsDes2d.
+//   static_method: When all faces of the shape are treated the intersection vertices
+//   Reason: param 'theAsDes' uses unknown type 'const Handle(BRepAlgo_AsDes)&'
+//   // pub fn connex_int_by_int(FI: &Face, OFI: &mut Offset, MES: &mut DataMapOfShapeShape, Build: &DataMapOfShapeShape, theAsDes: &HandleAsDes, AsDes2d: &HandleAsDes, Offset: f64, Tol: f64, Analyse: &Analyse, FacesWithVerts: &mut IndexedMapOfShape, theImageVV: &mut Image, theEdgeIntEdges: &mut DataMapOfShapeListOfShape, theDMVV: &mut IndexedDataMapOfShapeListOfShape, theRange: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `BRepOffset_Inter2d.hxx`:81 - `BRepOffset_Inter2d::ConnexIntByIntInVert`
+//   static_method: Computes the intersection between the offset edges generated
+//   static_method: from vertices and stored into AsDes as descendants of the <FI>.
+//   static_method: All intersection vertices will be stored in AsDes2d.
+//   Reason: param 'AsDes' uses unknown type 'const Handle(BRepAlgo_AsDes)&'
+//   // pub fn connex_int_by_int_in_vert(FI: &Face, OFI: &mut Offset, MES: &mut DataMapOfShapeShape, Build: &DataMapOfShapeShape, AsDes: &HandleAsDes, AsDes2d: &HandleAsDes, Tol: f64, Analyse: &Analyse, theDMVV: &mut IndexedDataMapOfShapeListOfShape, theRange: &ProgressRange);
+//
+// SKIPPED: **Source:** `BRepOffset_Inter2d.hxx`:96 - `BRepOffset_Inter2d::FuseVertices`
+//   static_method: Fuses the chains of vertices in the theDMVV
+//   static_method: and updates AsDes by replacing the old vertices
+//   static_method: with the new ones.
+//   Reason: param 'theAsDes' uses unknown type 'const Handle(BRepAlgo_AsDes)&'
+//   // pub fn fuse_vertices(theDMVV: &IndexedDataMapOfShapeListOfShape, theAsDes: &HandleAsDes, theImageVV: &mut Image) -> bool;
+//
 
 // ========================
 // From BRepOffset_Inter3d.hxx
@@ -670,6 +707,18 @@ impl Inter3d {
     }
 }
 
+// ── Skipped symbols for Inter3d (2 total) ──
+// SKIPPED: **Source:** `BRepOffset_Inter3d.hxx`:47 - `BRepOffset_Inter3d::BRepOffset_Inter3d`
+//   constructor: Constructor
+//   Reason: param 'AsDes' uses unknown Handle type
+//   // pub fn new_handlebrepalgoasdes_state_real(AsDes: &HandleAsDes, Side: State, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepOffset_Inter3d.hxx`:108 - `BRepOffset_Inter3d::AsDes`
+//   method: Returns AsDes tool
+//   Reason: return type 'Handle(BRepAlgo_AsDes)' is unknown
+//   // pub fn as_des(&self) -> OwnedPtr<Handle<BRepAlgo_AsDes>>;
+//
+
 // ========================
 // From BRepOffset_Interval.hxx
 // ========================
@@ -759,6 +808,20 @@ impl MakeLoops {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepOffset_MakeLoops_ctor()) }
     }
 }
+
+// ── Skipped symbols for MakeLoops (3 total) ──
+// SKIPPED: **Source:** `BRepOffset_MakeLoops.hxx`:39 - `BRepOffset_MakeLoops::Build`
+//   Reason: param 'AsDes' uses unknown type 'const Handle(BRepAlgo_AsDes)&'
+//   // pub fn build(&mut self, LF: &ListOfShape, AsDes: &HandleAsDes, Image: &mut Image, theImageVV: &mut Image, theRange: &ProgressRange);
+//
+// SKIPPED: **Source:** `BRepOffset_MakeLoops.hxx`:45 - `BRepOffset_MakeLoops::BuildOnContext`
+//   Reason: param 'AsDes' uses unknown type 'const Handle(BRepAlgo_AsDes)&'
+//   // pub fn build_on_context(&mut self, LContext: &ListOfShape, Analyse: &Analyse, AsDes: &HandleAsDes, Image: &mut Image, InSide: bool, theRange: &ProgressRange);
+//
+// SKIPPED: **Source:** `BRepOffset_MakeLoops.hxx`:52 - `BRepOffset_MakeLoops::BuildFaces`
+//   Reason: param 'AsDes' uses unknown type 'const Handle(BRepAlgo_AsDes)&'
+//   // pub fn build_faces(&mut self, LF: &ListOfShape, AsDes: &HandleAsDes, Image: &mut Image, theRange: &ProgressRange);
+//
 
 // ========================
 // From BRepOffset_MakeOffset.hxx
@@ -2043,6 +2106,12 @@ impl Tool {
         unsafe { crate::ffi::BRepOffset_Tool_check_planes_normals(theFace1, theFace2, theTolAng) }
     }
 }
+
+// ── Skipped symbols for Tool (1 total) ──
+// SKIPPED: **Source:** `BRepOffset_Tool.hxx`:190 - `BRepOffset_Tool::CorrectOrientation`
+//   Reason: param 'AsDes' uses unknown type 'Handle(BRepAlgo_AsDes)&'
+//   // pub fn correct_orientation(SI: &Shape, NewEdges: &IndexedMapOfShape, AsDes: &mut HandleAsDes, InitOffset: &mut Image, Offset: f64);
+//
 
 // ========================
 // Additional type re-exports

@@ -716,3 +716,82 @@ impl ItemIdentifiedRepresentationUsageDefinition {
         }
     }
 }
+
+// ── Skipped symbols for ItemIdentifiedRepresentationUsageDefinition (15 total) ──
+// SKIPPED: **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:71 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::CaseNum`
+//   method: Recognizes a ItemIdentifiedRepresentationUsageDefinition Kind Entity that is :
+//   method: 1 -> AppliedApprovalAssignment
+//   method: 2 -> AppliedDateAndTimeAssignment
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn case_num(&self, ent: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:74 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedApprovalAssignment`
+//   method: returns Value as a AppliedApprovalAssignment (Null if another type)
+//   Reason: return type 'Handle(StepAP214_AppliedApprovalAssignment)' is unknown
+//   // pub fn applied_approval_assignment(&self) -> OwnedPtr<Handle<StepAP214_AppliedApprovalAssignment>>;
+//
+// SKIPPED: **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:77 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedDateAndTimeAssignment`
+//   method: returns Value as a AppliedDateAndTimeAssignment (Null if another type)
+//   Reason: return type 'Handle(StepAP214_AppliedDateAndTimeAssignment)' is unknown
+//   // pub fn applied_date_and_time_assignment(&self) -> OwnedPtr<Handle<StepAP214_AppliedDateAndTimeAssignment>>;
+//
+// SKIPPED: **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:81 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedDateAssignment`
+//   method: returns Value as a AppliedDateAssignment (Null if another type)
+//   Reason: return type 'Handle(StepAP214_AppliedDateAssignment)' is unknown
+//   // pub fn applied_date_assignment(&self) -> OwnedPtr<Handle<StepAP214_AppliedDateAssignment>>;
+//
+// SKIPPED: **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:84 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedDocumentReference`
+//   method: returns Value as a AppliedDocumentReference (Null if another type)
+//   Reason: return type 'Handle(StepAP214_AppliedDocumentReference)' is unknown
+//   // pub fn applied_document_reference(&self) -> OwnedPtr<Handle<StepAP214_AppliedDocumentReference>>;
+//
+// SKIPPED: **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:88 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedExternalIdentificationAssignment`
+//   method: returns Value as a AppliedExternalIdentificationAssignment (Null if another type)
+//   Reason: return type 'Handle(StepAP214_AppliedExternalIdentificationAssignment)' is unknown
+//   // pub fn applied_external_identification_assignment(&self) -> OwnedPtr<Handle<StepAP214_AppliedExternalIdentificationAssignment>>;
+//
+// SKIPPED: **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:91 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedGroupAssignment`
+//   method: returns Value as a AppliedGroupAssignment (Null if another type)
+//   Reason: return type 'Handle(StepAP214_AppliedGroupAssignment)' is unknown
+//   // pub fn applied_group_assignment(&self) -> OwnedPtr<Handle<StepAP214_AppliedGroupAssignment>>;
+//
+// SKIPPED: **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:94 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedOrganizationAssignment`
+//   method: returns Value as a AppliedOrganizationAssignment (Null if another type)
+//   Reason: return type 'Handle(StepAP214_AppliedOrganizationAssignment)' is unknown
+//   // pub fn applied_organization_assignment(&self) -> OwnedPtr<Handle<StepAP214_AppliedOrganizationAssignment>>;
+//
+// SKIPPED: **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:99 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedPersonAndOrganizationAssignment`
+//   method: returns Value as a AppliedPersonAndOrganizationAssignment (Null if another type)
+//   Reason: return type 'Handle(StepAP214_AppliedPersonAndOrganizationAssignment)' is unknown
+//   // pub fn applied_person_and_organization_assignment(&self) -> OwnedPtr<Handle<StepAP214_AppliedPersonAndOrganizationAssignment>>;
+//
+// SKIPPED: **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:103 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedSecurityClassificationAssignment`
+//   method: returns Value as a AppliedSecurityClassificationAssignment (Null if another type)
+//   Reason: return type 'Handle(StepAP214_AppliedSecurityClassificationAssignment)' is unknown
+//   // pub fn applied_security_classification_assignment(&self) -> OwnedPtr<Handle<StepAP214_AppliedSecurityClassificationAssignment>>;
+//
+// SKIPPED: **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:106 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::DimensionalSize`
+//   method: returns Value as a DimensionalSize (Null if another type)
+//   Reason: return type 'Handle(StepShape_DimensionalSize)' is unknown
+//   // pub fn dimensional_size(&self) -> OwnedPtr<Handle<StepShape_DimensionalSize>>;
+//
+// SKIPPED: **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:109 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::GeneralProperty`
+//   method: returns Value as a GeneralProperty (Null if another type)
+//   Reason: return type 'Handle(StepBasic_GeneralProperty)' is unknown
+//   // pub fn general_property(&self) -> OwnedPtr<Handle<StepBasic_GeneralProperty>>;
+//
+// SKIPPED: **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:115 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::ProductDefinitionRelationship`
+//   method: returns Value as a ProductDefinitionRelationship (Null if another type)
+//   Reason: return type 'Handle(StepBasic_ProductDefinitionRelationship)' is unknown
+//   // pub fn product_definition_relationship(&self) -> OwnedPtr<Handle<StepBasic_ProductDefinitionRelationship>>;
+//
+// SKIPPED: **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:122 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::PropertyDefinitionRelationship`
+//   method: returns Value as a PropertyDefinitionRelationship (Null if another type)
+//   Reason: return type 'Handle(StepRepr_PropertyDefinitionRelationship)' is unknown
+//   // pub fn property_definition_relationship(&self) -> OwnedPtr<Handle<StepRepr_PropertyDefinitionRelationship>>;
+//
+// SKIPPED: **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:129 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::ShapeAspectRelationship`
+//   method: returns Value as a ShapeAspectRelationship (Null if another type)
+//   Reason: return type 'Handle(StepRepr_ShapeAspectRelationship)' is unknown
+//   // pub fn shape_aspect_relationship(&self) -> OwnedPtr<Handle<StepRepr_ShapeAspectRelationship>>;
+//

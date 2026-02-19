@@ -106,6 +106,24 @@ impl Analysis {
     }
 }
 
+// ── Skipped symbols for Analysis (4 total) ──
+// SKIPPED: **Source:** `ExprIntrp_Analysis.hxx`:75 - `ExprIntrp_Analysis::Use`
+//   Reason: param 'func' uses unknown type 'const Handle(Expr_NamedFunction)&'
+//   // pub fn use_(&mut self, func: &HandleNamedFunction);
+//
+// SKIPPED: **Source:** `ExprIntrp_Analysis.hxx`:77 - `ExprIntrp_Analysis::Use`
+//   Reason: param 'named' uses unknown type 'const Handle(Expr_NamedExpression)&'
+//   // pub fn use_(&mut self, named: &HandleNamedExpression);
+//
+// SKIPPED: **Source:** `ExprIntrp_Analysis.hxx`:79 - `ExprIntrp_Analysis::GetNamed`
+//   Reason: return type 'Handle(Expr_NamedExpression)' is unknown
+//   // pub fn get_named(&mut self, name: &AsciiString) -> OwnedPtr<Handle<Expr_NamedExpression>>;
+//
+// SKIPPED: **Source:** `ExprIntrp_Analysis.hxx`:81 - `ExprIntrp_Analysis::GetFunction`
+//   Reason: return type 'Handle(Expr_NamedFunction)' is unknown
+//   // pub fn get_function(&mut self, name: &AsciiString) -> OwnedPtr<Handle<Expr_NamedFunction>>;
+//
+
 // ========================
 // From ExprIntrp_GenExp.hxx
 // ========================
@@ -188,6 +206,12 @@ impl GenExp {
     }
 }
 
+// ── Skipped symbols for GenExp (1 total) ──
+// SKIPPED: **Source:** `ExprIntrp_GenExp.hxx`:38 - `ExprIntrp_GenExp::Create`
+//   Reason: return type 'Handle(ExprIntrp_GenExp)' is unknown
+//   // pub fn create() -> OwnedPtr<Handle<ExprIntrp_GenExp>>;
+//
+
 // ========================
 // From ExprIntrp_GenFct.hxx
 // ========================
@@ -256,6 +280,12 @@ impl GenFct {
         unsafe { &*(crate::ffi::ExprIntrp_GenFct_inherited_GetFunctions(self as *const Self)) }
     }
 }
+
+// ── Skipped symbols for GenFct (1 total) ──
+// SKIPPED: **Source:** `ExprIntrp_GenFct.hxx`:35 - `ExprIntrp_GenFct::Create`
+//   Reason: return type 'Handle(ExprIntrp_GenFct)' is unknown
+//   // pub fn create() -> OwnedPtr<Handle<ExprIntrp_GenFct>>;
+//
 
 // ========================
 // From ExprIntrp_GenRel.hxx
@@ -337,6 +367,12 @@ impl GenRel {
     }
 }
 
+// ── Skipped symbols for GenRel (1 total) ──
+// SKIPPED: **Source:** `ExprIntrp_GenRel.hxx`:36 - `ExprIntrp_GenRel::Create`
+//   Reason: return type 'Handle(ExprIntrp_GenRel)' is unknown
+//   // pub fn create() -> OwnedPtr<Handle<ExprIntrp_GenRel>>;
+//
+
 // ========================
 // From ExprIntrp_Generator.hxx
 // ========================
@@ -412,6 +448,30 @@ impl HandleExprIntrpGenerator {
     }
 }
 
+// ── Skipped symbols for Generator (4 total) ──
+// SKIPPED: **Source:** `ExprIntrp_Generator.hxx`:38 - `ExprIntrp_Generator::Use`
+//   Reason: param 'func' uses unknown type 'const Handle(Expr_NamedFunction)&'
+//   // pub fn use_(&mut self, func: &HandleNamedFunction);
+//
+// SKIPPED: **Source:** `ExprIntrp_Generator.hxx`:40 - `ExprIntrp_Generator::Use`
+//   Reason: param 'named' uses unknown type 'const Handle(Expr_NamedExpression)&'
+//   // pub fn use_(&mut self, named: &HandleNamedExpression);
+//
+// SKIPPED: **Source:** `ExprIntrp_Generator.hxx`:49 - `ExprIntrp_Generator::GetNamed`
+//   method: Returns NamedExpression with name <name> already
+//   method: interpreted if it exists. Returns a null handle if
+//   method: not.
+//   Reason: return type 'Handle(Expr_NamedExpression)' is unknown
+//   // pub fn get_named(&self, name: &AsciiString) -> OwnedPtr<Handle<Expr_NamedExpression>>;
+//
+// SKIPPED: **Source:** `ExprIntrp_Generator.hxx`:54 - `ExprIntrp_Generator::GetFunction`
+//   method: Returns NamedFunction with name <name> already
+//   method: interpreted if it exists. Returns a null handle if
+//   method: not.
+//   Reason: return type 'Handle(Expr_NamedFunction)' is unknown
+//   // pub fn get_function(&self, name: &AsciiString) -> OwnedPtr<Handle<Expr_NamedFunction>>;
+//
+
 // ========================
 // From ExprIntrp_SyntaxError.hxx
 // ========================
@@ -478,6 +538,20 @@ impl SyntaxError {
         unsafe { &*(crate::ffi::ExprIntrp_SyntaxError_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for SyntaxError (3 total) ──
+// SKIPPED: **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::NewInstance`
+//   Reason: return type 'Handle(ExprIntrp_SyntaxError)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<ExprIntrp_SyntaxError>>;
+//
+// SKIPPED: **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::NewInstance`
+//   Reason: return type 'Handle(ExprIntrp_SyntaxError)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<ExprIntrp_SyntaxError>>;
+//
 
 // ========================
 // Additional type re-exports

@@ -165,6 +165,23 @@ impl HandleImageTexture {
     }
 }
 
+// ── Skipped symbols for Texture (3 total) ──
+// SKIPPED: **Source:** `Image_Texture.hxx`:66 - `Image_Texture::ReadCompressedImage`
+//   method: Image reader without decoding data for formats supported natively by GPUs.
+//   Reason: param 'theSupported' uses unknown type 'const Handle(Image_SupportedFormats)&'
+//   // pub fn read_compressed_image(&self, theSupported: &HandleSupportedFormats) -> OwnedPtr<Handle<Image_CompressedPixMap>>;
+//
+// SKIPPED: **Source:** `Image_Texture.hxx`:70 - `Image_Texture::ReadImage`
+//   method: Image reader.
+//   Reason: param 'theSupported' uses unknown type 'const Handle(Image_SupportedFormats)&'
+//   // pub fn read_image(&self, theSupported: &HandleSupportedFormats) -> OwnedPtr<Handle<Image_PixMap>>;
+//
+// SKIPPED: **Source:** `Image_Texture.hxx`:77 - `Image_Texture::WriteImage`
+//   method: Write image to specified stream without decoding data.
+//   Reason: has unbindable types: param 'theStream': stream type (std::ostream&)
+//   // pub fn write_image(&mut self, theStream: /* std::ostream& */, theFile: &AsciiString) -> bool;
+//
+
 // ========================
 // Additional type re-exports
 // ========================

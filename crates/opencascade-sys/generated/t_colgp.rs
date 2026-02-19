@@ -3245,6 +3245,12 @@ impl HandleTColgpHSequenceOfDir {
     }
 }
 
+// ── Skipped symbols for HSequenceOfDir (1 total) ──
+// SKIPPED: **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
+
 // ========================
 // From TColgp_HSequenceOfDir2d.hxx
 // ========================
@@ -3339,6 +3345,12 @@ impl HandleTColgpHSequenceOfDir2d {
     }
 }
 
+// ── Skipped symbols for HSequenceOfDir2d (1 total) ──
+// SKIPPED: **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
+
 // ========================
 // From TColgp_HSequenceOfPnt.hxx
 // ========================
@@ -3430,6 +3442,12 @@ impl HandleTColgpHSequenceOfPnt {
         unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfPnt_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for HSequenceOfPnt (1 total) ──
+// SKIPPED: **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
 
 // ========================
 // From TColgp_HSequenceOfPnt2d.hxx
@@ -3525,6 +3543,12 @@ impl HandleTColgpHSequenceOfPnt2d {
     }
 }
 
+// ── Skipped symbols for HSequenceOfPnt2d (1 total) ──
+// SKIPPED: **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
+
 // ========================
 // From TColgp_HSequenceOfVec.hxx
 // ========================
@@ -3616,6 +3640,12 @@ impl HandleTColgpHSequenceOfVec {
         unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfVec_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for HSequenceOfVec (1 total) ──
+// SKIPPED: **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
 
 // ========================
 // From TColgp_HSequenceOfVec2d.hxx
@@ -3711,6 +3741,12 @@ impl HandleTColgpHSequenceOfVec2d {
     }
 }
 
+// ── Skipped symbols for HSequenceOfVec2d (1 total) ──
+// SKIPPED: **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
+
 // ========================
 // From TColgp_HSequenceOfXY.hxx
 // ========================
@@ -3800,6 +3836,12 @@ impl HandleTColgpHSequenceOfXY {
         unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfXY_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for HSequenceOfXY (1 total) ──
+// SKIPPED: **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
 
 // ========================
 // From TColgp_HSequenceOfXYZ.hxx
@@ -3892,6 +3934,12 @@ impl HandleTColgpHSequenceOfXYZ {
         unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfXYZ_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for HSequenceOfXYZ (1 total) ──
+// SKIPPED: **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::Append`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn append(&mut self, theItem: &i32);
+//
 
 // ========================
 // Additional type re-exports

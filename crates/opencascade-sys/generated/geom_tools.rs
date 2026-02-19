@@ -68,6 +68,38 @@ impl Curve2dSet {
     }
 }
 
+// ── Skipped symbols for Curve2dSet (5 total) ──
+// SKIPPED: **Source:** `GeomTools_Curve2dSet.hxx`:55 - `GeomTools_Curve2dSet::Dump`
+//   method: Dumps the content of me on the stream <OS>.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn dump(&self, OS: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `GeomTools_Curve2dSet.hxx`:59 - `GeomTools_Curve2dSet::Write`
+//   method: Writes the content of  me  on the stream <OS> in a
+//   method: format that can be read back by Read.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn write(&self, OS: /* Standard_OStream& */, theProgress: &ProgressRange);
+//
+// SKIPPED: **Source:** `GeomTools_Curve2dSet.hxx`:65 - `GeomTools_Curve2dSet::Read`
+//   method: Reads the content of me from the  stream  <IS>. me
+//   method: is first cleared.
+//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
+//   // pub fn read(&mut self, IS: /* Standard_IStream& */, theProgress: &ProgressRange);
+//
+// SKIPPED: **Source:** `GeomTools_Curve2dSet.hxx`:70 - `GeomTools_Curve2dSet::PrintCurve2d`
+//   static_method: Dumps the curve on the stream,  if compact is True
+//   static_method: use the compact format that can be read back.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn print_curve2d(C: &HandleCurve, OS: /* Standard_OStream& */, compact: bool);
+//
+// SKIPPED: **Source:** `GeomTools_Curve2dSet.hxx`:77 - `GeomTools_Curve2dSet::ReadCurve2d`
+//   static_method: Reads the curve  from  the stream.  The  curve  is
+//   static_method: assumed   to have  been  written  with  the Print
+//   static_method: method (compact = True).
+//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
+//   // pub fn read_curve2d(IS: /* Standard_IStream& */) -> OwnedPtr<Handle<Geom2d_Curve>>;
+//
+
 // ========================
 // From GeomTools_CurveSet.hxx
 // ========================
@@ -116,6 +148,38 @@ impl CurveSet {
         unsafe { crate::ffi::GeomTools_CurveSet_index(self as *const Self, C) }
     }
 }
+
+// ── Skipped symbols for CurveSet (5 total) ──
+// SKIPPED: **Source:** `GeomTools_CurveSet.hxx`:55 - `GeomTools_CurveSet::Dump`
+//   method: Dumps the content of me on the stream <OS>.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn dump(&self, OS: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `GeomTools_CurveSet.hxx`:59 - `GeomTools_CurveSet::Write`
+//   method: Writes the content of  me  on the stream <OS> in a
+//   method: format that can be read back by Read.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn write(&self, OS: /* Standard_OStream& */, theProgress: &ProgressRange);
+//
+// SKIPPED: **Source:** `GeomTools_CurveSet.hxx`:65 - `GeomTools_CurveSet::Read`
+//   method: Reads the content of me from the  stream  <IS>. me
+//   method: is first cleared.
+//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
+//   // pub fn read(&mut self, IS: /* Standard_IStream& */, theProgress: &ProgressRange);
+//
+// SKIPPED: **Source:** `GeomTools_CurveSet.hxx`:70 - `GeomTools_CurveSet::PrintCurve`
+//   static_method: Dumps the curve on the stream,  if compact is True
+//   static_method: use the compact format that can be read back.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn print_curve(C: &HandleCurve, OS: /* Standard_OStream& */, compact: bool);
+//
+// SKIPPED: **Source:** `GeomTools_CurveSet.hxx`:77 - `GeomTools_CurveSet::ReadCurve`
+//   static_method: Reads the curve  from  the stream.  The  curve  is
+//   static_method: assumed   to have  been  written  with  the Print
+//   static_method: method (compact = True).
+//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
+//   // pub fn read_curve(IS: /* Standard_IStream& */) -> OwnedPtr<Handle<Geom_Curve>>;
+//
 
 // ========================
 // From GeomTools_SurfaceSet.hxx
@@ -168,6 +232,38 @@ impl SurfaceSet {
         unsafe { crate::ffi::GeomTools_SurfaceSet_index(self as *const Self, S) }
     }
 }
+
+// ── Skipped symbols for SurfaceSet (5 total) ──
+// SKIPPED: **Source:** `GeomTools_SurfaceSet.hxx`:55 - `GeomTools_SurfaceSet::Dump`
+//   method: Dumps the content of me on the stream <OS>.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn dump(&self, OS: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `GeomTools_SurfaceSet.hxx`:59 - `GeomTools_SurfaceSet::Write`
+//   method: Writes the content of  me  on the stream <OS> in a
+//   method: format that can be read back by Read.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn write(&self, OS: /* Standard_OStream& */, theProgress: &ProgressRange);
+//
+// SKIPPED: **Source:** `GeomTools_SurfaceSet.hxx`:65 - `GeomTools_SurfaceSet::Read`
+//   method: Reads the content of me from the  stream  <IS>. me
+//   method: is first cleared.
+//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
+//   // pub fn read(&mut self, IS: /* Standard_IStream& */, theProgress: &ProgressRange);
+//
+// SKIPPED: **Source:** `GeomTools_SurfaceSet.hxx`:70 - `GeomTools_SurfaceSet::PrintSurface`
+//   static_method: Dumps the surface on the stream,  if compact is True
+//   static_method: use the compact format that can be read back.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn print_surface(S: &HandleSurface, OS: /* Standard_OStream& */, compact: bool);
+//
+// SKIPPED: **Source:** `GeomTools_SurfaceSet.hxx`:77 - `GeomTools_SurfaceSet::ReadSurface`
+//   static_method: Reads the surface  from  the stream.  The  surface  is
+//   static_method: assumed   to have  been  written  with  the Print
+//   static_method: method (compact = True).
+//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
+//   // pub fn read_surface(IS: /* Standard_IStream& */) -> OwnedPtr<Handle<Geom_Surface>>;
+//
 
 // ========================
 // From GeomTools_UndefinedTypeHandler.hxx
@@ -240,3 +336,29 @@ impl HandleGeomToolsUndefinedTypeHandler {
         }
     }
 }
+
+// ── Skipped symbols for UndefinedTypeHandler (6 total) ──
+// SKIPPED: **Source:** `GeomTools_UndefinedTypeHandler.hxx`:40 - `GeomTools_UndefinedTypeHandler::PrintCurve`
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn print_curve(&self, C: &HandleCurve, OS: /* Standard_OStream& */, compact: bool);
+//
+// SKIPPED: **Source:** `GeomTools_UndefinedTypeHandler.hxx`:44 - `GeomTools_UndefinedTypeHandler::ReadCurve`
+//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&); return: stream type (Standard_IStream&)
+//   // pub fn read_curve(&self, ctype: i32, IS: /* Standard_IStream& */, C: &mut HandleCurve) -> /* Standard_IStream& */;
+//
+// SKIPPED: **Source:** `GeomTools_UndefinedTypeHandler.hxx`:48 - `GeomTools_UndefinedTypeHandler::PrintCurve2d`
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn print_curve2d(&self, C: &HandleCurve, OS: /* Standard_OStream& */, compact: bool);
+//
+// SKIPPED: **Source:** `GeomTools_UndefinedTypeHandler.hxx`:52 - `GeomTools_UndefinedTypeHandler::ReadCurve2d`
+//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&); return: stream type (Standard_IStream&)
+//   // pub fn read_curve2d(&self, ctype: i32, IS: /* Standard_IStream& */, C: &mut HandleCurve) -> /* Standard_IStream& */;
+//
+// SKIPPED: **Source:** `GeomTools_UndefinedTypeHandler.hxx`:56 - `GeomTools_UndefinedTypeHandler::PrintSurface`
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn print_surface(&self, S: &HandleSurface, OS: /* Standard_OStream& */, compact: bool);
+//
+// SKIPPED: **Source:** `GeomTools_UndefinedTypeHandler.hxx`:60 - `GeomTools_UndefinedTypeHandler::ReadSurface`
+//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&); return: stream type (Standard_IStream&)
+//   // pub fn read_surface(&self, ctype: i32, IS: /* Standard_IStream& */, S: &mut HandleSurface) -> /* Standard_IStream& */;
+//

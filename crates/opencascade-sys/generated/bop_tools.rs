@@ -910,6 +910,13 @@ impl AlgoTools {
     }
 }
 
+// ── Skipped symbols for AlgoTools (1 total) ──
+// SKIPPED: **Source:** `BOPTools_AlgoTools.hxx`:549 - `BOPTools_AlgoTools::Dimensions`
+//   static_method: Returns the min and max dimensions of the shape <theS>.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn dimensions(theS: &Shape, theDMin: &mut i32, theDMax: &mut i32);
+//
+
 // ========================
 // From BOPTools_AlgoTools2D.hxx
 // ========================
@@ -1726,6 +1733,12 @@ impl Set {
         unsafe { crate::ffi::BOPTools_Set_get_sum(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for Set (1 total) ──
+// SKIPPED: **Source:** `BOPTools_Set.hxx`:40 - `BOPTools_Set::Assign`
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn assign(&mut self, Other: &Set) -> &mut Set;
+//
 
 // ========================
 // Additional type re-exports

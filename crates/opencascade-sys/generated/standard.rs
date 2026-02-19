@@ -156,6 +156,20 @@ impl AbortiveTransaction {
     }
 }
 
+// ── Skipped symbols for AbortiveTransaction (3 total) ──
+// SKIPPED: **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::NewInstance`
+//   Reason: return type 'Handle(Standard_AbortiveTransaction)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_AbortiveTransaction>>;
+//
+// SKIPPED: **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::NewInstance`
+//   Reason: return type 'Handle(Standard_AbortiveTransaction)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_AbortiveTransaction>>;
+//
+
 // ========================
 // From Standard_ArrayStreamBuffer.hxx
 // ========================
@@ -222,6 +236,13 @@ impl ArrayStreamBuffer {
         }
     }
 }
+
+// ── Skipped symbols for ArrayStreamBuffer (1 total) ──
+// SKIPPED: **Source:** `Standard_ArrayStreamBuffer.hxx`:99 - `Standard_ArrayStreamBuffer::xsgetn`
+//   method: Read a bunch of bytes at once.
+//   Reason: has unbindable types: param 'thePtr': raw pointer (char*)
+//   // pub fn xsgetn(&mut self, thePtr: /* char* */, theCount: streamsize) -> OwnedPtr<std::streamsize>;
+//
 
 // ========================
 // From Standard_CLocaleSentry.hxx
@@ -396,6 +417,20 @@ impl ConstructionError {
     }
 }
 
+// ── Skipped symbols for ConstructionError (3 total) ──
+// SKIPPED: **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::NewInstance`
+//   Reason: return type 'Handle(Standard_ConstructionError)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_ConstructionError>>;
+//
+// SKIPPED: **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::NewInstance`
+//   Reason: return type 'Handle(Standard_ConstructionError)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_ConstructionError>>;
+//
+
 // ========================
 // From Standard_DimensionError.hxx
 // ========================
@@ -462,6 +497,20 @@ impl DimensionError {
         unsafe { &*(crate::ffi::Standard_DimensionError_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for DimensionError (3 total) ──
+// SKIPPED: **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::NewInstance`
+//   Reason: return type 'Handle(Standard_DimensionError)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_DimensionError>>;
+//
+// SKIPPED: **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::NewInstance`
+//   Reason: return type 'Handle(Standard_DimensionError)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_DimensionError>>;
+//
 
 // ========================
 // From Standard_DimensionMismatch.hxx
@@ -530,6 +579,20 @@ impl DimensionMismatch {
     }
 }
 
+// ── Skipped symbols for DimensionMismatch (3 total) ──
+// SKIPPED: **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::NewInstance`
+//   Reason: return type 'Handle(Standard_DimensionMismatch)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_DimensionMismatch>>;
+//
+// SKIPPED: **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::NewInstance`
+//   Reason: return type 'Handle(Standard_DimensionMismatch)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_DimensionMismatch>>;
+//
+
 // ========================
 // From Standard_DivideByZero.hxx
 // ========================
@@ -597,6 +660,20 @@ impl DivideByZero {
     }
 }
 
+// ── Skipped symbols for DivideByZero (3 total) ──
+// SKIPPED: **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::NewInstance`
+//   Reason: return type 'Handle(Standard_DivideByZero)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_DivideByZero>>;
+//
+// SKIPPED: **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::NewInstance`
+//   Reason: return type 'Handle(Standard_DivideByZero)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_DivideByZero>>;
+//
+
 // ========================
 // From Standard_DomainError.hxx
 // ========================
@@ -663,6 +740,20 @@ impl DomainError {
         unsafe { &*(crate::ffi::Standard_DomainError_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for DomainError (3 total) ──
+// SKIPPED: **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::NewInstance`
+//   Reason: return type 'Handle(Standard_DomainError)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_DomainError>>;
+//
+// SKIPPED: **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::NewInstance`
+//   Reason: return type 'Handle(Standard_DomainError)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_DomainError>>;
+//
 
 // ========================
 // From Standard_Dump.hxx
@@ -755,6 +846,101 @@ impl Dump {
     }
 }
 
+// ── Skipped symbols for Dump (14 total) ──
+// SKIPPED: **Source:** `Standard_Dump.hxx`:333 - `Standard_Dump::Text`
+//   static_method: Converts stream value to string value. The result is original stream value.
+//   static_method: @param theStream source value
+//   static_method: @return text presentation
+//   Reason: param 'theStream' uses unknown type 'const Standard_SStream&'
+//   // pub fn text(theStream: &SStream) -> OwnedPtr<TCollection_AsciiString>;
+//
+// SKIPPED: **Source:** `Standard_Dump.hxx`:345 - `Standard_Dump::FormatJson`
+//   static_method: Converts stream value to string value. Improves the text presentation with the following
+//   static_method: cases:
+//   static_method: - for '{' append after '\n' and indent to the next value, increment current indent value
+//   Reason: param 'theStream' uses unknown type 'const Standard_SStream&'
+//   // pub fn format_json(theStream: &SStream, theIndent: i32) -> OwnedPtr<TCollection_AsciiString>;
+//
+// SKIPPED: **Source:** `Standard_Dump.hxx`:361 - `Standard_Dump::SplitJson`
+//   static_method: Converts stream into map of values.
+//   static_method: The one level stream example: 'key_1: value_1, key_2: value_2'
+//   Reason: has unbindable types: param 'theKeyToValues': unresolved template/nested type (NCollection_IndexedDataMap<TCollection_AsciiString, Standard_DumpValue>&)
+//   // pub fn split_json(theStreamStr: &AsciiString, theKeyToValues: /* NCollection_IndexedDataMap<TCollection_AsciiString, Standard_DumpValue>& */) -> bool;
+//
+// SKIPPED: **Source:** `Standard_Dump.hxx`:366 - `Standard_Dump::HierarchicalValueIndices`
+//   static_method: Returns container of indices in values, that has hierarchical value
+//   Reason: return type 'TColStd_ListOfInteger' is not CppDeletable
+//   // pub fn hierarchical_value_indices(theValues: &IndexedDataMapOfStringString) -> OwnedPtr<TColStd_ListOfInteger>;
+//
+// SKIPPED: **Source:** `Standard_Dump.hxx`:380 - `Standard_Dump::AddValuesSeparator`
+//   static_method: @param theOStream source value
+//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
+//   // pub fn add_values_separator(theOStream: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `Standard_Dump.hxx`:391 - `Standard_Dump::GetPointerInfo`
+//   static_method: Convert handle pointer to address of the pointer. If the handle is NULL, the result is an
+//   static_method: empty string.
+//   static_method: @param thePointer a pointer
+//   Reason: param 'thePointer' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn get_pointer_info(thePointer: &HandleTransient, isShortInfo: bool) -> OwnedPtr<TCollection_AsciiString>;
+//
+// SKIPPED: **Source:** `Standard_Dump.hxx`:400 - `Standard_Dump::GetPointerInfo`
+//   static_method: Convert pointer to address of the pointer. If the handle is NULL, the result is an empty
+//   static_method: string.
+//   static_method: @param thePointer a pointer
+//   Reason: has unbindable types: param 'thePointer': raw pointer (const void*)
+//   // pub fn get_pointer_info(thePointer: /* const void* */, isShortInfo: bool) -> OwnedPtr<TCollection_AsciiString>;
+//
+// SKIPPED: **Source:** `Standard_Dump.hxx`:407 - `Standard_Dump::DumpKeyToClass`
+//   static_method: Append into output value: "Name": { Field }
+//   static_method: @param[out] theOStream  stream to be fill with values
+//   static_method: @param theKey a source value
+//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
+//   // pub fn dump_key_to_class(theOStream: /* Standard_OStream& */, theKey: &AsciiString, theField: &AsciiString);
+//
+// SKIPPED: **Source:** `Standard_Dump.hxx`:414 - `Standard_Dump::DumpCharacterValues`
+//   static_method: Unite values in one value using template: "value_1", "value_2", ..., "value_n"
+//   static_method: @param[out] theOStream  stream to be fill with values
+//   static_method: @param[in] theCount     number of values
+//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
+//   // pub fn dump_character_values(theOStream: /* Standard_OStream& */, theCount: i32);
+//
+// SKIPPED: **Source:** `Standard_Dump.hxx`:419 - `Standard_Dump::DumpRealValues`
+//   static_method: Unite values in one value using template: value_1, value_2, ..., value_n
+//   static_method: @param[out] theOStream  stream to be fill with values
+//   static_method: @param[in] theCount     number of values
+//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
+//   // pub fn dump_real_values(theOStream: /* Standard_OStream& */, theCount: i32);
+//
+// SKIPPED: **Source:** `Standard_Dump.hxx`:425 - `Standard_Dump::ProcessStreamName`
+//   static_method: Check whether the parameter name is equal to the name in the stream at position
+//   static_method: @param[in]  theStreamStr stream with values
+//   static_method: @param[in]  theName      stream key value
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn process_stream_name(theStreamStr: &AsciiString, theName: &AsciiString, theStreamPos: &mut i32) -> bool;
+//
+// SKIPPED: **Source:** `Standard_Dump.hxx`:434 - `Standard_Dump::ProcessFieldName`
+//   static_method: Check whether the field name is equal to the name in the stream at position
+//   static_method: @param[in]  theStreamStr stream with values
+//   static_method: @param[in]  theName      stream key field value
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn process_field_name(theStreamStr: &AsciiString, theName: &AsciiString, theStreamPos: &mut i32) -> bool;
+//
+// SKIPPED: **Source:** `Standard_Dump.hxx`:443 - `Standard_Dump::InitRealValues`
+//   static_method: Unite values in one value using template: value_1, value_2, ..., value_n
+//   static_method: @param[in]  theStreamStr stream with values
+//   static_method: @param[out] theStreamPos current position in the stream
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn init_real_values(theStreamStr: &AsciiString, theStreamPos: &mut i32, theCount: i32) -> bool;
+//
+// SKIPPED: **Source:** `Standard_Dump.hxx`:453 - `Standard_Dump::InitValue`
+//   static_method: Returns real value
+//   static_method: @param[in]  theStreamStr stream with values
+//   static_method: @param[out] theStreamPos current position in the stream
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn init_value(theStreamStr: &AsciiString, theStreamPos: &mut i32, theValue: &mut AsciiString) -> bool;
+//
+
 // ========================
 // From Standard_ErrorHandler.hxx
 // ========================
@@ -822,6 +1008,13 @@ impl ErrorHandler {
         unsafe { crate::ffi::Standard_ErrorHandler_is_in_try_block() }
     }
 }
+
+// ── Skipped symbols for ErrorHandler (1 total) ──
+// SKIPPED: **Source:** `Standard_ErrorHandler.hxx`:105 - `Standard_ErrorHandler::Label`
+//   method: Returns label for jump
+//   Reason: return type 'Standard_JmpBuf&' is unknown
+//   // pub fn label(&mut self) -> &mut JmpBuf;
+//
 
 /// **Source:** `Standard_ErrorHandler.hxx`:149 - `Standard_ErrorHandler_Callback`
 /// Defines a base class for callback objects that can be registered
@@ -1089,6 +1282,26 @@ impl HandleStandardFailure {
     }
 }
 
+// ── Skipped symbols for Failure (3 total) ──
+// SKIPPED: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print`
+//   method: Prints on the stream @p theStream the exception name followed by the error message.
+//   method: Note: there is a short-cut @c operator<< (Standard_OStream&, Handle(Standard_Failure)&)
+//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
+//   // pub fn print(&self, theStream: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `Standard_Failure.hxx`:77 - `Standard_Failure::Reraise`
+//   method: Reraises a caught exception and changes its error message.
+//   Reason: param 'aReason' uses unknown type 'const Standard_SStream&'
+//   // pub fn reraise(&mut self, aReason: &SStream);
+//
+// SKIPPED: **Source:** `Standard_Failure.hxx`:88 - `Standard_Failure::Raise`
+//   static_method: Raises an exception of type "Failure" and associates
+//   static_method: an error message to it. The message can be constructed
+//   static_method: at run-time.
+//   Reason: param 'aReason' uses unknown type 'const Standard_SStream&'
+//   // pub fn raise(aReason: &SStream);
+//
+
 // ========================
 // From Standard_GUID.hxx
 // ========================
@@ -1164,6 +1377,38 @@ impl GUID {
     }
 }
 
+// ── Skipped symbols for GUID (5 total) ──
+// SKIPPED: **Source:** `Standard_GUID.hxx`:49 - `Standard_GUID::Standard_GUID`
+//   constructor: build a GUID from an unicode string with the
+//   constructor: following format:
+//   Reason: param 'aGuid' uses unknown type 'Standard_ExtString'
+//   // pub fn new_extstring(aGuid: ExtString) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Standard_GUID.hxx`:51 - `Standard_GUID::Standard_GUID`
+//   Reason: param 'a16b1' uses unknown type 'Standard_ExtCharacter'
+//   // pub fn new_int_extcharacter3_byte6(a32b: i32, a16b1: ExtCharacter, a16b2: ExtCharacter, a16b3: ExtCharacter, a8b1: Byte, a8b2: Byte, a8b3: Byte, a8b4: Byte, a8b5: Byte, a8b6: Byte) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Standard_GUID.hxx`:73 - `Standard_GUID::ToCString`
+//   method: translate the GUID into ascii string
+//   method: the aStrGuid is allocated by user.
+//   method: the guid have the following format:
+//   Reason: param 'aStrGuid' uses unknown type 'Standard_PCharacter'
+//   // pub fn to_c_string(&self, aStrGuid: PCharacter);
+//
+// SKIPPED: **Source:** `Standard_GUID.hxx`:80 - `Standard_GUID::ToExtString`
+//   method: translate the GUID into unicode string
+//   method: the aStrGuid is allocated by user.
+//   method: the guid have the following format:
+//   Reason: param 'aStrGuid' uses unknown type 'Standard_PExtCharacter'
+//   // pub fn to_ext_string(&self, aStrGuid: PExtCharacter);
+//
+// SKIPPED: **Source:** `Standard_GUID.hxx`:101 - `Standard_GUID::ShallowDump`
+//   method: Display the GUID with the following format:
+//   method: "00000000-0000-0000-0000-000000000000"
+//   Reason: has unbindable types: param 'aStream': stream type (Standard_OStream&)
+//   // pub fn shallow_dump(&self, aStream: /* Standard_OStream& */);
+//
+
 // ========================
 // From Standard_ImmutableObject.hxx
 // ========================
@@ -1230,6 +1475,20 @@ impl ImmutableObject {
         unsafe { &*(crate::ffi::Standard_ImmutableObject_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for ImmutableObject (3 total) ──
+// SKIPPED: **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::NewInstance`
+//   Reason: return type 'Handle(Standard_ImmutableObject)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_ImmutableObject>>;
+//
+// SKIPPED: **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::NewInstance`
+//   Reason: return type 'Handle(Standard_ImmutableObject)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_ImmutableObject>>;
+//
 
 // ========================
 // From Standard_LicenseError.hxx
@@ -1298,6 +1557,20 @@ impl LicenseError {
     }
 }
 
+// ── Skipped symbols for LicenseError (3 total) ──
+// SKIPPED: **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::NewInstance`
+//   Reason: return type 'Handle(Standard_LicenseError)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_LicenseError>>;
+//
+// SKIPPED: **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::NewInstance`
+//   Reason: return type 'Handle(Standard_LicenseError)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_LicenseError>>;
+//
+
 // ========================
 // From Standard_LicenseNotFound.hxx
 // ========================
@@ -1364,6 +1637,20 @@ impl LicenseNotFound {
         unsafe { &*(crate::ffi::Standard_LicenseNotFound_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for LicenseNotFound (3 total) ──
+// SKIPPED: **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::NewInstance`
+//   Reason: return type 'Handle(Standard_LicenseNotFound)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_LicenseNotFound>>;
+//
+// SKIPPED: **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::NewInstance`
+//   Reason: return type 'Handle(Standard_LicenseNotFound)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_LicenseNotFound>>;
+//
 
 // ========================
 // From Standard_MMgrOpt.hxx
@@ -1497,6 +1784,26 @@ impl MMgrOpt {
     }
 }
 
+// ── Skipped symbols for MMgrOpt (3 total) ──
+// SKIPPED: **Source:** `Standard_MMgrOpt.hxx`:78 - `Standard_MMgrOpt::Allocate`
+//   method: Allocate aSize bytes; see class description above
+//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   // pub fn allocate(&mut self, aSize: usize) -> OwnedPtr<Standard_Address>;
+//
+// SKIPPED: **Source:** `Standard_MMgrOpt.hxx`:82 - `Standard_MMgrOpt::Reallocate`
+//   method: Reallocate previously allocated aPtr to a new size; new address is returned.
+//   method: In case that aPtr is null, the function behaves exactly as Allocate.
+//   Reason: has unbindable types: param 'thePtr': void pointer (Standard_Address); return: void pointer (Standard_Address)
+//   // pub fn reallocate(&mut self, thePtr: /* Standard_Address */, theSize: usize) -> OwnedPtr<Standard_Address>;
+//
+// SKIPPED: **Source:** `Standard_MMgrOpt.hxx`:88 - `Standard_MMgrOpt::Free`
+//   method: Free previously allocated block.
+//   method: Note that block can not all blocks are released to the OS by this
+//   method: method (see class description)
+//   Reason: has unbindable types: param 'thePtr': void pointer (Standard_Address)
+//   // pub fn free(&mut self, thePtr: /* Standard_Address */);
+//
+
 // ========================
 // From Standard_MMgrRoot.hxx
 // ========================
@@ -1533,6 +1840,26 @@ impl MMgrRoot {
         unsafe { crate::ffi::Standard_MMgrRoot_purge(self as *mut Self, isDestroyed) }
     }
 }
+
+// ── Skipped symbols for MMgrRoot (3 total) ──
+// SKIPPED: **Source:** `Standard_MMgrRoot.hxx`:36 - `Standard_MMgrRoot::Allocate`
+//   method: Allocate specified number of bytes.
+//   method: The actually allocated space should be rounded up to
+//   method: double word size (4 bytes), as this is expected by implementation
+//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   // pub fn allocate(&mut self, theSize: usize) -> OwnedPtr<Standard_Address>;
+//
+// SKIPPED: **Source:** `Standard_MMgrRoot.hxx`:40 - `Standard_MMgrRoot::Reallocate`
+//   method: Reallocate previously allocated memory to contain at least theSize bytes.
+//   method: In case of success, new pointer is returned.
+//   Reason: has unbindable types: param 'thePtr': void pointer (Standard_Address); return: void pointer (Standard_Address)
+//   // pub fn reallocate(&mut self, thePtr: /* Standard_Address */, theSize: usize) -> OwnedPtr<Standard_Address>;
+//
+// SKIPPED: **Source:** `Standard_MMgrRoot.hxx`:44 - `Standard_MMgrRoot::Free`
+//   method: Frees previously allocated memory at specified address.
+//   Reason: has unbindable types: param 'thePtr': void pointer (Standard_Address)
+//   // pub fn free(&mut self, thePtr: /* Standard_Address */);
+//
 
 // ========================
 // From Standard_MultiplyDefined.hxx
@@ -1600,6 +1927,20 @@ impl MultiplyDefined {
         unsafe { &*(crate::ffi::Standard_MultiplyDefined_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for MultiplyDefined (3 total) ──
+// SKIPPED: **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::NewInstance`
+//   Reason: return type 'Handle(Standard_MultiplyDefined)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_MultiplyDefined>>;
+//
+// SKIPPED: **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::NewInstance`
+//   Reason: return type 'Handle(Standard_MultiplyDefined)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_MultiplyDefined>>;
+//
 
 // ========================
 // From Standard_Mutex.hxx
@@ -1702,6 +2043,14 @@ impl Mutex_Sentry {
     }
 }
 
+// ── Skipped symbols for Mutex_Sentry (1 total) ──
+// SKIPPED: **Source:** `Standard_Mutex.hxx`:90 - `Standard_Mutex::Sentry::Standard_Mutex::Sentry`
+//   constructor: Constructor - initializes the sentry object by pointer to a
+//   constructor: mutex and locks the mutex if its pointer is not NULL
+//   Reason: has unbindable types: param 'theMutex': raw pointer (Standard_Mutex*)
+//   // pub fn new_mutexptr(theMutex: /* Standard_Mutex* */) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From Standard_NegativeValue.hxx
 // ========================
@@ -1768,6 +2117,20 @@ impl NegativeValue {
         unsafe { &*(crate::ffi::Standard_NegativeValue_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for NegativeValue (3 total) ──
+// SKIPPED: **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::NewInstance`
+//   Reason: return type 'Handle(Standard_NegativeValue)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_NegativeValue>>;
+//
+// SKIPPED: **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::NewInstance`
+//   Reason: return type 'Handle(Standard_NegativeValue)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_NegativeValue>>;
+//
 
 // ========================
 // From Standard_NoMoreObject.hxx
@@ -1836,6 +2199,20 @@ impl NoMoreObject {
     }
 }
 
+// ── Skipped symbols for NoMoreObject (3 total) ──
+// SKIPPED: **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::NewInstance`
+//   Reason: return type 'Handle(Standard_NoMoreObject)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_NoMoreObject>>;
+//
+// SKIPPED: **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::NewInstance`
+//   Reason: return type 'Handle(Standard_NoMoreObject)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_NoMoreObject>>;
+//
+
 // ========================
 // From Standard_NoSuchObject.hxx
 // ========================
@@ -1902,6 +2279,20 @@ impl NoSuchObject {
         unsafe { &*(crate::ffi::Standard_NoSuchObject_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for NoSuchObject (3 total) ──
+// SKIPPED: **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::NewInstance`
+//   Reason: return type 'Handle(Standard_NoSuchObject)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_NoSuchObject>>;
+//
+// SKIPPED: **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::NewInstance`
+//   Reason: return type 'Handle(Standard_NoSuchObject)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_NoSuchObject>>;
+//
 
 // ========================
 // From Standard_NotImplemented.hxx
@@ -1970,6 +2361,20 @@ impl NotImplemented {
     }
 }
 
+// ── Skipped symbols for NotImplemented (3 total) ──
+// SKIPPED: **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::NewInstance`
+//   Reason: return type 'Handle(Standard_NotImplemented)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_NotImplemented>>;
+//
+// SKIPPED: **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::NewInstance`
+//   Reason: return type 'Handle(Standard_NotImplemented)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_NotImplemented>>;
+//
+
 // ========================
 // From Standard_NullObject.hxx
 // ========================
@@ -2036,6 +2441,20 @@ impl NullObject {
         unsafe { &*(crate::ffi::Standard_NullObject_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for NullObject (3 total) ──
+// SKIPPED: **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::NewInstance`
+//   Reason: return type 'Handle(Standard_NullObject)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_NullObject>>;
+//
+// SKIPPED: **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::NewInstance`
+//   Reason: return type 'Handle(Standard_NullObject)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_NullObject>>;
+//
 
 // ========================
 // From Standard_NullValue.hxx
@@ -2104,6 +2523,20 @@ impl NullValue {
     }
 }
 
+// ── Skipped symbols for NullValue (3 total) ──
+// SKIPPED: **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::NewInstance`
+//   Reason: return type 'Handle(Standard_NullValue)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_NullValue>>;
+//
+// SKIPPED: **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::NewInstance`
+//   Reason: return type 'Handle(Standard_NullValue)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_NullValue>>;
+//
+
 // ========================
 // From Standard_NumericError.hxx
 // ========================
@@ -2170,6 +2603,20 @@ impl NumericError {
         unsafe { &*(crate::ffi::Standard_NumericError_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for NumericError (3 total) ──
+// SKIPPED: **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::NewInstance`
+//   Reason: return type 'Handle(Standard_NumericError)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_NumericError>>;
+//
+// SKIPPED: **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::NewInstance`
+//   Reason: return type 'Handle(Standard_NumericError)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_NumericError>>;
+//
 
 // ========================
 // From Standard_OutOfMemory.hxx
@@ -2260,6 +2707,23 @@ impl OutOfMemory {
     }
 }
 
+// ── Skipped symbols for OutOfMemory (3 total) ──
+// SKIPPED: **Source:** `Standard_OutOfMemory.hxx`:66 - `Standard_OutOfMemory::Raise`
+//   static_method: Raises exception with specified message string
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_OutOfMemory.hxx`:69 - `Standard_OutOfMemory::NewInstance`
+//   static_method: Returns global instance of exception
+//   Reason: return type 'Handle(Standard_OutOfMemory)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_OutOfMemory>>;
+//
+// SKIPPED: **Source:** `Standard_OutOfMemory.hxx`:72 - `Standard_OutOfMemory::NewInstance`
+//   static_method: Returns global instance of exception
+//   Reason: return type 'Handle(Standard_OutOfMemory)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_OutOfMemory>>;
+//
+
 // ========================
 // From Standard_OutOfRange.hxx
 // ========================
@@ -2327,6 +2791,20 @@ impl OutOfRange {
     }
 }
 
+// ── Skipped symbols for OutOfRange (3 total) ──
+// SKIPPED: **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::NewInstance`
+//   Reason: return type 'Handle(Standard_OutOfRange)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_OutOfRange>>;
+//
+// SKIPPED: **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::NewInstance`
+//   Reason: return type 'Handle(Standard_OutOfRange)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_OutOfRange>>;
+//
+
 // ========================
 // From Standard_Overflow.hxx
 // ========================
@@ -2393,6 +2871,20 @@ impl Overflow {
         unsafe { &*(crate::ffi::Standard_Overflow_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for Overflow (3 total) ──
+// SKIPPED: **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::NewInstance`
+//   Reason: return type 'Handle(Standard_Overflow)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_Overflow>>;
+//
+// SKIPPED: **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::NewInstance`
+//   Reason: return type 'Handle(Standard_Overflow)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_Overflow>>;
+//
 
 // ========================
 // From Standard_Persistent.hxx
@@ -2464,6 +2956,12 @@ impl HandleStandardPersistent {
     }
 }
 
+// ── Skipped symbols for Persistent (1 total) ──
+// SKIPPED: **Source:** `Standard_Persistent.hxx`:35 - `Standard_Persistent::TypeNum`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn type_num(&mut self) -> &mut i32;
+//
+
 // ========================
 // From Standard_ProgramError.hxx
 // ========================
@@ -2531,6 +3029,20 @@ impl ProgramError {
     }
 }
 
+// ── Skipped symbols for ProgramError (3 total) ──
+// SKIPPED: **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::NewInstance`
+//   Reason: return type 'Handle(Standard_ProgramError)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_ProgramError>>;
+//
+// SKIPPED: **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::NewInstance`
+//   Reason: return type 'Handle(Standard_ProgramError)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_ProgramError>>;
+//
+
 // ========================
 // From Standard_RangeError.hxx
 // ========================
@@ -2597,6 +3109,20 @@ impl RangeError {
         unsafe { &*(crate::ffi::Standard_RangeError_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for RangeError (3 total) ──
+// SKIPPED: **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::NewInstance`
+//   Reason: return type 'Handle(Standard_RangeError)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_RangeError>>;
+//
+// SKIPPED: **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::NewInstance`
+//   Reason: return type 'Handle(Standard_RangeError)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_RangeError>>;
+//
 
 // ========================
 // From Standard_ReadBuffer.hxx
@@ -2854,6 +3380,15 @@ impl Transient {
     }
 }
 
+// ── Skipped symbols for Transient (1 total) ──
+// SKIPPED: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This`
+//   method: Returns non-const pointer to this object (like const_cast).
+//   method: For protection against creating handle to objects allocated in stack
+//   method: or call from constructor, it will raise exception Standard_ProgramError
+//   Reason: has unbindable types: return: raw pointer (Standard_Transient*)
+//   // pub fn this(&self) -> /* Standard_Transient* */;
+//
+
 // ========================
 // From Standard_Type.hxx
 // ========================
@@ -2988,6 +3523,19 @@ impl HandleStandardType {
     }
 }
 
+// ── Skipped symbols for Type (2 total) ──
+// SKIPPED: **Source:** `Standard_Type.hxx`:144 - `Standard_Type::Print`
+//   method: Prints type (address of descriptor + name) to a stream
+//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
+//   // pub fn print(&self, theStream: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `Standard_Type.hxx`:165 - `Standard_Type::Register`
+//   static_method: Register a type; returns either new or existing descriptor.
+//   static_method: @param theInfo object stores system name of the class
+//   Reason: has unbindable types: return: raw pointer (Standard_Type*)
+//   // pub fn register(theInfo: &type_info, theName: *const char, theSize: usize, theParent: &HandleType) -> /* Standard_Type* */;
+//
+
 // ========================
 // From Standard_TypeMismatch.hxx
 // ========================
@@ -3054,6 +3602,20 @@ impl TypeMismatch {
         unsafe { &*(crate::ffi::Standard_TypeMismatch_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for TypeMismatch (3 total) ──
+// SKIPPED: **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::NewInstance`
+//   Reason: return type 'Handle(Standard_TypeMismatch)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_TypeMismatch>>;
+//
+// SKIPPED: **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::NewInstance`
+//   Reason: return type 'Handle(Standard_TypeMismatch)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_TypeMismatch>>;
+//
 
 // ========================
 // From Standard_UUID.hxx
@@ -3142,6 +3704,20 @@ impl Underflow {
         unsafe { &*(crate::ffi::Standard_Underflow_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for Underflow (3 total) ──
+// SKIPPED: **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::NewInstance`
+//   Reason: return type 'Handle(Standard_Underflow)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Standard_Underflow>>;
+//
+// SKIPPED: **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::NewInstance`
+//   Reason: return type 'Handle(Standard_Underflow)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Standard_Underflow>>;
+//
 
 // ========================
 // Additional type re-exports

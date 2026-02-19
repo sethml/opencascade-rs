@@ -439,6 +439,12 @@ impl DistFunctionMV {
     }
 }
 
+// ── Skipped symbols for DistFunctionMV (1 total) ──
+// SKIPPED: **Source:** `GCPnts_DistFunction.hxx`:53 - `GCPnts_DistFunctionMV::Value`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
+//
+
 // ========================
 // From GCPnts_DistFunction2d.hxx
 // ========================
@@ -548,6 +554,12 @@ impl DistFunction2dMV {
         unsafe { crate::ffi::GCPnts_DistFunction2dMV_inherited_GetStateNumber(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for DistFunction2dMV (1 total) ──
+// SKIPPED: **Source:** `GCPnts_DistFunction2d.hxx`:54 - `GCPnts_DistFunction2dMV::Value`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
+//
 
 // ========================
 // From GCPnts_QuasiUniformAbscissa.hxx

@@ -440,6 +440,17 @@ impl Area {
     }
 }
 
+// ── Skipped symbols for Area (2 total) ──
+// SKIPPED: **Source:** `XCAFDoc_Area.hxx`:56 - `XCAFDoc_Area::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `XCAFDoc_Area.hxx`:48 - `XCAFDoc_Area::Set`
+//   static_method: Find, or create, an Area attribute and set its value
+//   Reason: return type 'Handle(XCAFDoc_Area)' is unknown
+//   // pub fn set(label: &Label, area: f64) -> OwnedPtr<Handle<XCAFDoc_Area>>;
+//
+
 // ========================
 // From XCAFDoc_AssemblyGraph.hxx
 // ========================
@@ -578,6 +589,32 @@ impl HandleXCAFDocAssemblyGraph {
         unsafe { &mut *(crate::ffi::HandleXCAFDocAssemblyGraph_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for AssemblyGraph (4 total) ──
+// SKIPPED: **Source:** `XCAFDoc_AssemblyGraph.hxx`:83 - `XCAFDoc_AssemblyGraph::XCAFDoc_AssemblyGraph`
+//   constructor: \brief Constructs graph from XCAF document.
+//   constructor: Construction of a formal graph will be done immediately.
+//   constructor: \param[in]  theDoc - document to iterate.
+//   Reason: param 'theDoc' uses unknown Handle type
+//   // pub fn new_handletdocstddocument(theDoc: &HandleDocument) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `XCAFDoc_AssemblyGraph.hxx`:93 - `XCAFDoc_AssemblyGraph::GetShapeTool`
+//   method: \return Document shape tool.
+//   Reason: return type 'const Handle(XCAFDoc_ShapeTool)&' is unknown
+//   // pub fn get_shape_tool(&self) -> &HandleShapeTool;
+//
+// SKIPPED: **Source:** `XCAFDoc_AssemblyGraph.hxx`:135 - `XCAFDoc_AssemblyGraph::GetNodes`
+//   method: \brief Returns the unordered set of graph nodes.
+//   method: \return graph nodes.
+//   Reason: return type 'const TDF_LabelIndexedMap&' is unknown
+//   // pub fn get_nodes(&self) -> &LabelIndexedMap;
+//
+// SKIPPED: **Source:** `XCAFDoc_AssemblyGraph.hxx`:143 - `XCAFDoc_AssemblyGraph::GetLinks`
+//   method: \brief Returns the collection of graph links in the form of adjacency matrix.
+//   method: \return graph links.
+//   Reason: has unbindable types: return: unresolved template/nested type (const AdjacencyMap&)
+//   // pub fn get_links(&self) -> /* const AdjacencyMap& */;
+//
 
 /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:54 - `XCAFDoc_AssemblyGraph_Iterator`
 /// \brief Graph iterator.
@@ -1140,6 +1177,38 @@ impl AssemblyItemRef {
     }
 }
 
+// ── Skipped symbols for AssemblyItemRef (5 total) ──
+// SKIPPED: **Source:** `XCAFDoc_AssemblyItemRef.hxx`:146 - `XCAFDoc_AssemblyItemRef::Dump`
+//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, theOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `XCAFDoc_AssemblyItemRef.hxx`:39 - `XCAFDoc_AssemblyItemRef::Get`
+//   static_method: Finds a reference attribute on the given label and returns it, if it is found
+//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
+//   // pub fn get(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_AssemblyItemRef.hxx`:48 - `XCAFDoc_AssemblyItemRef::Set`
+//   static_method: Create (if not exist) a reference to an assembly item.
+//   static_method: \param[in]  theLabel  - label to add the attribute.
+//   static_method: \param[in]  theItemId - assembly item ID.
+//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
+//   // pub fn set(theLabel: &Label, theItemId: &AssemblyItemId) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_AssemblyItemRef.hxx`:57 - `XCAFDoc_AssemblyItemRef::Set`
+//   static_method: Create (if not exist) a reference to an assembly item's label attribute.
+//   static_method: \param[in]  theLabel  - label to add the attribute.
+//   static_method: \param[in]  theItemId - assembly item ID.
+//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
+//   // pub fn set(theLabel: &Label, theItemId: &AssemblyItemId, theGUID: &GUID) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_AssemblyItemRef.hxx`:67 - `XCAFDoc_AssemblyItemRef::Set`
+//   static_method: Create (if not exist) a reference to an assembly item's subshape.
+//   static_method: \param[in]  theLabel      - label to add the attribute.
+//   static_method: \param[in]  theItemId     - assembly item ID.
+//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
+//   // pub fn set(theLabel: &Label, theItemId: &AssemblyItemId, theShapeIndex: i32) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
+//
+
 // ========================
 // From XCAFDoc_AssemblyIterator.hxx
 // ========================
@@ -1177,6 +1246,22 @@ impl AssemblyIterator {
         }
     }
 }
+
+// ── Skipped symbols for AssemblyIterator (2 total) ──
+// SKIPPED: **Source:** `XCAFDoc_AssemblyIterator.hxx`:32 - `XCAFDoc_AssemblyIterator::XCAFDoc_AssemblyIterator`
+//   constructor: Constructs iterator starting from assembly roots.
+//   constructor: \param[in]       theDoc   - document to iterate.
+//   constructor: \param [in, opt] theLevel - max level of hierarchy to reach (INT_MAX is for no limit).
+//   Reason: param 'theDoc' uses unknown Handle type
+//   // pub fn new_handletdocstddocument_int(theDoc: &HandleDocument, theLevel: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `XCAFDoc_AssemblyIterator.hxx`:39 - `XCAFDoc_AssemblyIterator::XCAFDoc_AssemblyIterator`
+//   constructor: Constructs iterator starting from the specified position in the assembly tree.
+//   constructor: \param[in]       theDoc   - document to iterate.
+//   constructor: \param[in]       theRoot  - assembly item to start iterating from.
+//   Reason: param 'theDoc' uses unknown Handle type
+//   // pub fn new_handletdocstddocument_assemblyitemid_int(theDoc: &HandleDocument, theRoot: &AssemblyItemId, theLevel: i32) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From XCAFDoc_Centroid.hxx
@@ -1443,6 +1528,19 @@ impl Centroid {
         unsafe { crate::ffi::XCAFDoc_Centroid_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Centroid (2 total) ──
+// SKIPPED: **Source:** `XCAFDoc_Centroid.hxx`:66 - `XCAFDoc_Centroid::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `XCAFDoc_Centroid.hxx`:47 - `XCAFDoc_Centroid::Set`
+//   static_method: Find, or create, a Location attribute and set it's value
+//   static_method: the Location attribute is returned.
+//   static_method: Location methods
+//   Reason: return type 'Handle(XCAFDoc_Centroid)' is unknown
+//   // pub fn set(label: &Label, pnt: &Pnt) -> OwnedPtr<Handle<XCAFDoc_Centroid>>;
+//
 
 // ========================
 // From XCAFDoc_ClippingPlaneTool.hxx
@@ -1953,6 +2051,13 @@ impl ClippingPlaneTool {
     }
 }
 
+// ── Skipped symbols for ClippingPlaneTool (1 total) ──
+// SKIPPED: **Source:** `XCAFDoc_ClippingPlaneTool.hxx`:37 - `XCAFDoc_ClippingPlaneTool::Set`
+//   static_method: Creates (if not exist) ClippingPlaneTool.
+//   Reason: return type 'Handle(XCAFDoc_ClippingPlaneTool)' is unknown
+//   // pub fn set(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_ClippingPlaneTool>>;
+//
+
 // ========================
 // From XCAFDoc_Color.hxx
 // ========================
@@ -2243,6 +2348,26 @@ impl Color {
         unsafe { crate::ffi::XCAFDoc_Color_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Color (4 total) ──
+// SKIPPED: **Source:** `XCAFDoc_Color.hxx`:41 - `XCAFDoc_Color::Set`
+//   Reason: return type 'Handle(XCAFDoc_Color)' is unknown
+//   // pub fn set(label: &Label, C: &Color) -> OwnedPtr<Handle<XCAFDoc_Color>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_Color.hxx`:43 - `XCAFDoc_Color::Set`
+//   Reason: return type 'Handle(XCAFDoc_Color)' is unknown
+//   // pub fn set(label: &Label, C: &ColorRGBA) -> OwnedPtr<Handle<XCAFDoc_Color>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_Color.hxx`:46 - `XCAFDoc_Color::Set`
+//   Reason: return type 'Handle(XCAFDoc_Color)' is unknown
+//   // pub fn set(label: &Label, C: NameOfColor) -> OwnedPtr<Handle<XCAFDoc_Color>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_Color.hxx`:51 - `XCAFDoc_Color::Set`
+//   static_method: Find, or create, a Color attribute and set it's value
+//   static_method: the Color attribute is returned.
+//   Reason: return type 'Handle(XCAFDoc_Color)' is unknown
+//   // pub fn set(label: &Label, R: f64, G: f64, B: f64, alpha: f64) -> OwnedPtr<Handle<XCAFDoc_Color>>;
+//
 
 // ========================
 // From XCAFDoc_ColorTool.hxx
@@ -3097,6 +3222,18 @@ impl ColorTool {
     }
 }
 
+// ── Skipped symbols for ColorTool (2 total) ──
+// SKIPPED: **Source:** `XCAFDoc_ColorTool.hxx`:64 - `XCAFDoc_ColorTool::ShapeTool`
+//   method: Returns internal XCAFDoc_ShapeTool tool
+//   Reason: return type 'const Handle(XCAFDoc_ShapeTool)&' is unknown
+//   // pub fn shape_tool(&mut self) -> &HandleShapeTool;
+//
+// SKIPPED: **Source:** `XCAFDoc_ColorTool.hxx`:56 - `XCAFDoc_ColorTool::Set`
+//   static_method: Creates (if not exist) ColorTool.
+//   Reason: return type 'Handle(XCAFDoc_ColorTool)' is unknown
+//   // pub fn set(L: &Label) -> OwnedPtr<Handle<XCAFDoc_ColorTool>>;
+//
+
 // ========================
 // From XCAFDoc_Datum.hxx
 // ========================
@@ -3390,6 +3527,16 @@ impl Datum {
     }
 }
 
+// ── Skipped symbols for Datum (2 total) ──
+// SKIPPED: **Source:** `XCAFDoc_Datum.hxx`:46 - `XCAFDoc_Datum::Set`
+//   Reason: return type 'Handle(XCAFDoc_Datum)' is unknown
+//   // pub fn set(label: &Label, aName: &HandleHAsciiString, aDescription: &HandleHAsciiString, anIdentification: &HandleHAsciiString) -> OwnedPtr<Handle<XCAFDoc_Datum>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_Datum.hxx`:52 - `XCAFDoc_Datum::Set`
+//   Reason: return type 'Handle(XCAFDoc_Datum)' is unknown
+//   // pub fn set(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_Datum>>;
+//
+
 // ========================
 // From XCAFDoc_DimTol.hxx
 // ========================
@@ -3671,6 +3818,12 @@ impl DimTol {
         unsafe { crate::ffi::XCAFDoc_DimTol_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for DimTol (1 total) ──
+// SKIPPED: **Source:** `XCAFDoc_DimTol.hxx`:42 - `XCAFDoc_DimTol::Set`
+//   Reason: return type 'Handle(XCAFDoc_DimTol)' is unknown
+//   // pub fn set(label: &Label, kind: i32, aVal: &HandleHArray1OfReal, aName: &HandleHAsciiString, aDescription: &HandleHAsciiString) -> OwnedPtr<Handle<XCAFDoc_DimTol>>;
+//
 
 // ========================
 // From XCAFDoc_DimTolTool.hxx
@@ -4432,6 +4585,36 @@ impl DimTolTool {
     }
 }
 
+// ── Skipped symbols for DimTolTool (5 total) ──
+// SKIPPED: **Source:** `XCAFDoc_DimTolTool.hxx`:56 - `XCAFDoc_DimTolTool::ShapeTool`
+//   method: Returns internal XCAFDoc_ShapeTool tool
+//   Reason: return type 'const Handle(XCAFDoc_ShapeTool)&' is unknown
+//   // pub fn shape_tool(&mut self) -> &HandleShapeTool;
+//
+// SKIPPED: **Source:** `XCAFDoc_DimTolTool.hxx`:160 - `XCAFDoc_DimTolTool::GetDimTol`
+//   method: Returns dimension tolerance assigned to theDimTolL label.
+//   method: Returns False if no such dimension tolerance is assigned.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_dim_tol(&self, theDimTolL: &Label, theKind: &mut i32, theVal: &mut HandleHArray1OfReal, theName: &mut HandleHAsciiString, theDescription: &mut HandleHAsciiString) -> bool;
+//
+// SKIPPED: **Source:** `XCAFDoc_DimTolTool.hxx`:240 - `XCAFDoc_DimTolTool::GetGDTPresentations`
+//   method: fill the map GDT label -> shape presentation
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_gdt_presentations(&self, theGDTLabelToShape: &mut i32);
+//
+// SKIPPED: **Source:** `XCAFDoc_DimTolTool.hxx`:246 - `XCAFDoc_DimTolTool::SetGDTPresentations`
+//   method: Set shape presentation for GDT labels according to given map (theGDTLabelToPrs)
+//   method: theGDTLabelToPrsName map is an additional argument, can be used to set presentation names.
+//   method: If label is not in the theGDTLabelToPrsName map, the presentation name will be empty
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_gdt_presentations(&mut self, theGDTLabelToPrs: &mut i32);
+//
+// SKIPPED: **Source:** `XCAFDoc_DimTolTool.hxx`:47 - `XCAFDoc_DimTolTool::Set`
+//   static_method: Creates (if not exist) DimTolTool attribute.
+//   Reason: return type 'Handle(XCAFDoc_DimTolTool)' is unknown
+//   // pub fn set(L: &Label) -> OwnedPtr<Handle<XCAFDoc_DimTolTool>>;
+//
+
 // ========================
 // From XCAFDoc_Dimension.hxx
 // ========================
@@ -4720,6 +4903,12 @@ impl Dimension {
         unsafe { crate::ffi::XCAFDoc_Dimension_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Dimension (1 total) ──
+// SKIPPED: **Source:** `XCAFDoc_Dimension.hxx`:46 - `XCAFDoc_Dimension::Set`
+//   Reason: return type 'Handle(XCAFDoc_Dimension)' is unknown
+//   // pub fn set(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_Dimension>>;
+//
 
 // ========================
 // From XCAFDoc_DocumentTool.hxx
@@ -5135,6 +5324,87 @@ impl DocumentTool {
     }
 }
 
+// ── Skipped symbols for DocumentTool (15 total) ──
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:58 - `XCAFDoc_DocumentTool::Set`
+//   static_method: Create (if not exist) DocumentTool attribute
+//   static_method: on 0.1 label if <IsAcces> is true, else
+//   static_method: on <L> label.
+//   Reason: return type 'Handle(XCAFDoc_DocumentTool)' is unknown
+//   // pub fn set(L: &Label, IsAcces: bool) -> OwnedPtr<Handle<XCAFDoc_DocumentTool>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:62 - `XCAFDoc_DocumentTool::IsXCAFDocument`
+//   Reason: param 'Doc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn is_xcaf_document(Doc: &HandleDocument) -> bool;
+//
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:96 - `XCAFDoc_DocumentTool::ShapeTool`
+//   static_method: Creates (if it does not exist) ShapeTool attribute on ShapesLabel().
+//   Reason: return type 'Handle(XCAFDoc_ShapeTool)' is unknown
+//   // pub fn shape_tool(acces: &Label) -> OwnedPtr<Handle<XCAFDoc_ShapeTool>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:103 - `XCAFDoc_DocumentTool::ColorTool`
+//   static_method: Creates (if it does not exist) ColorTool attribute on ColorsLabel().
+//   Reason: return type 'Handle(XCAFDoc_ColorTool)' is unknown
+//   // pub fn color_tool(acces: &Label) -> OwnedPtr<Handle<XCAFDoc_ColorTool>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:111 - `XCAFDoc_DocumentTool::VisMaterialTool`
+//   static_method: Creates (if it does not exist) XCAFDoc_VisMaterialTool attribute on VisMaterialLabel().
+//   static_method: Should not be confused with MaterialTool() defining physical/manufacturing materials.
+//   Reason: return type 'Handle(XCAFDoc_VisMaterialTool)' is unknown
+//   // pub fn vis_material_tool(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_VisMaterialTool>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:118 - `XCAFDoc_DocumentTool::LayerTool`
+//   static_method: Creates (if it does not exist) LayerTool attribute on LayersLabel().
+//   Reason: return type 'Handle(XCAFDoc_LayerTool)' is unknown
+//   // pub fn layer_tool(acces: &Label) -> OwnedPtr<Handle<XCAFDoc_LayerTool>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:125 - `XCAFDoc_DocumentTool::DimTolTool`
+//   static_method: Creates (if it does not exist) DimTolTool attribute on DGTsLabel().
+//   Reason: return type 'Handle(XCAFDoc_DimTolTool)' is unknown
+//   // pub fn dim_tol_tool(acces: &Label) -> OwnedPtr<Handle<XCAFDoc_DimTolTool>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:132 - `XCAFDoc_DocumentTool::MaterialTool`
+//   static_method: Creates (if it does not exist) DimTolTool attribute on DGTsLabel().
+//   Reason: return type 'Handle(XCAFDoc_MaterialTool)' is unknown
+//   // pub fn material_tool(acces: &Label) -> OwnedPtr<Handle<XCAFDoc_MaterialTool>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:139 - `XCAFDoc_DocumentTool::ViewTool`
+//   static_method: Creates (if it does not exist) ViewTool attribute on ViewsLabel().
+//   Reason: return type 'Handle(XCAFDoc_ViewTool)' is unknown
+//   // pub fn view_tool(acces: &Label) -> OwnedPtr<Handle<XCAFDoc_ViewTool>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:146 - `XCAFDoc_DocumentTool::ClippingPlaneTool`
+//   static_method: Creates (if it does not exist) ClippingPlaneTool attribute on ClippingPlanesLabel().
+//   Reason: return type 'Handle(XCAFDoc_ClippingPlaneTool)' is unknown
+//   // pub fn clipping_plane_tool(acces: &Label) -> OwnedPtr<Handle<XCAFDoc_ClippingPlaneTool>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:154 - `XCAFDoc_DocumentTool::NotesTool`
+//   static_method: Creates (if it does not exist) NotesTool attribute on NotesLabel().
+//   Reason: return type 'Handle(XCAFDoc_NotesTool)' is unknown
+//   // pub fn notes_tool(acces: &Label) -> OwnedPtr<Handle<XCAFDoc_NotesTool>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:162 - `XCAFDoc_DocumentTool::GetLengthUnit`
+//   static_method: Returns value of current internal unit for the document
+//   static_method: converted to base unit type.
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn get_length_unit(theDoc: &HandleDocument, theResut: &mut f64, theBaseUnit: LengthUnit) -> bool;
+//
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:167 - `XCAFDoc_DocumentTool::GetLengthUnit`
+//   static_method: Returns value of current internal unit for the document in meter
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn get_length_unit(theDoc: &HandleDocument, theResut: &mut f64) -> bool;
+//
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:171 - `XCAFDoc_DocumentTool::SetLengthUnit`
+//   static_method: Sets value of current internal unit to the document in meter
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn set_length_unit(theDoc: &HandleDocument, theUnitValue: f64);
+//
+// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:176 - `XCAFDoc_DocumentTool::SetLengthUnit`
+//   static_method: Sets value of current internal unit to the document
+//   static_method: @param theUnitValue must be represented in the base unit type
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn set_length_unit(theDoc: &HandleDocument, theUnitValue: f64, theBaseUnit: LengthUnit);
+//
+
 // ========================
 // From XCAFDoc_Editor.hxx
 // ========================
@@ -5241,6 +5511,43 @@ impl Editor {
         }
     }
 }
+
+// ── Skipped symbols for Editor (5 total) ──
+// SKIPPED: **Source:** `XCAFDoc_Editor.hxx`:80 - `XCAFDoc_Editor::CloneShapeLabel`
+//   static_method: Copies shapes label with keeping of shape structure (recursively)
+//   static_method: @param[in] theSrcLabel original label to copy from
+//   static_method: @param[in] theSrcShapeTool shape tool to get
+//   Reason: param 'theSrcShapeTool' uses unknown type 'const Handle(XCAFDoc_ShapeTool)&'
+//   // pub fn clone_shape_label(theSrcLabel: &Label, theSrcShapeTool: &HandleShapeTool, theDstShapeTool: &HandleShapeTool, theMap: &mut LabelDataMap) -> OwnedPtr<TDF_Label>;
+//
+// SKIPPED: **Source:** `XCAFDoc_Editor.hxx`:97 - `XCAFDoc_Editor::CloneMetaData`
+//   static_method: Copies metadata contains from the source label to the destination label.
+//   static_method: Protected against creating a new label for non-existent tools
+//   static_method: @param[in] theSrcLabel original label to copy from
+//   Reason: has unbindable types: param 'theVisMatMap': raw pointer (int*)
+//   // pub fn clone_meta_data(theSrcLabel: &Label, theDstLabel: &Label, theVisMatMap: /* int* */, theToCopyColor: bool, theToCopyLayer: bool, theToCopyMaterial: bool, theToCopyVisMaterial: bool, theToCopyAttributes: bool);
+//
+// SKIPPED: **Source:** `XCAFDoc_Editor.hxx`:110 - `XCAFDoc_Editor::GetParentShapeLabels`
+//   static_method: Gets shape labels that has down relation with the input label.
+//   static_method: @param[in] theLabel input label
+//   static_method: @param[out] theRelatedLabels output labels
+//   Reason: param 'theRelatedLabels' uses unknown type 'TDF_LabelMap&'
+//   // pub fn get_parent_shape_labels(theLabel: &Label, theRelatedLabels: &mut LabelMap);
+//
+// SKIPPED: **Source:** `XCAFDoc_Editor.hxx`:116 - `XCAFDoc_Editor::GetChildShapeLabels`
+//   static_method: Gets shape labels that has up relation with the input label.
+//   static_method: @param[in] theLabel input label
+//   static_method: @param[out] theRelatedLabels output labels
+//   Reason: param 'theRelatedLabels' uses unknown type 'TDF_LabelMap&'
+//   // pub fn get_child_shape_labels(theLabel: &Label, theRelatedLabels: &mut LabelMap);
+//
+// SKIPPED: **Source:** `XCAFDoc_Editor.hxx`:132 - `XCAFDoc_Editor::FilterShapeTree`
+//   static_method: Filters original shape tree with keeping structure.
+//   static_method: The result will include the full label hierarchy lower then input labels.
+//   static_method: Any higher hierarchy labels will be filtered to keep only necessary labels.
+//   Reason: param 'theShapeTool' uses unknown type 'const Handle(XCAFDoc_ShapeTool)&'
+//   // pub fn filter_shape_tree(theShapeTool: &HandleShapeTool, theLabelsToKeep: &LabelMap) -> bool;
+//
 
 // ========================
 // From XCAFDoc_GeomTolerance.hxx
@@ -5549,6 +5856,16 @@ impl GeomTolerance {
     }
 }
 
+// ── Skipped symbols for GeomTolerance (2 total) ──
+// SKIPPED: **Source:** `XCAFDoc_GeomTolerance.hxx`:42 - `XCAFDoc_GeomTolerance::XCAFDoc_GeomTolerance`
+//   Reason: param 'theObj' uses unknown Handle type
+//   // pub fn new_handlexcafdocgeomtolerance(theObj: &HandleGeomTolerance) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `XCAFDoc_GeomTolerance.hxx`:46 - `XCAFDoc_GeomTolerance::Set`
+//   Reason: return type 'Handle(XCAFDoc_GeomTolerance)' is unknown
+//   // pub fn set(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_GeomTolerance>>;
+//
+
 // ========================
 // From XCAFDoc_GraphNode.hxx
 // ========================
@@ -5845,6 +6162,89 @@ impl GraphNode {
         unsafe { crate::ffi::XCAFDoc_GraphNode_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for GraphNode (14 total) ──
+// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:73 - `XCAFDoc_GraphNode::SetFather`
+//   method: Set GraphNode <F> as father of me and returns index of <F>
+//   method: in Sequence that containing Fathers GraphNodes.
+//   method: return index of <F> from GraphNodeSequnece
+//   Reason: param 'F' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
+//   // pub fn set_father(&mut self, F: &HandleGraphNode) -> i32;
+//
+// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:78 - `XCAFDoc_GraphNode::SetChild`
+//   method: Set GraphNode <Ch> as child of me and returns index of <Ch>
+//   method: in Sequence that containing Children GraphNodes.
+//   method: return index of <Ch> from GraphNodeSequnece
+//   Reason: param 'Ch' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
+//   // pub fn set_child(&mut self, Ch: &HandleGraphNode) -> i32;
+//
+// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:82 - `XCAFDoc_GraphNode::UnSetFather`
+//   method: Remove <F> from Fathers GraphNodeSequence.
+//   method: and remove link between father and child.
+//   Reason: param 'F' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
+//   // pub fn un_set_father(&mut self, F: &HandleGraphNode);
+//
+// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:90 - `XCAFDoc_GraphNode::UnSetChild`
+//   method: Remove <Ch> from GraphNodeSequence.
+//   method: and remove link between father and child.
+//   Reason: param 'Ch' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
+//   // pub fn un_set_child(&mut self, Ch: &HandleGraphNode);
+//
+// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:97 - `XCAFDoc_GraphNode::GetFather`
+//   method: Return GraphNode by index from GraphNodeSequence.
+//   Reason: return type 'Handle(XCAFDoc_GraphNode)' is unknown
+//   // pub fn get_father(&self, Findex: i32) -> OwnedPtr<Handle<XCAFDoc_GraphNode>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:100 - `XCAFDoc_GraphNode::GetChild`
+//   method: Return GraphNode by index from GraphNodeSequence.
+//   Reason: return type 'Handle(XCAFDoc_GraphNode)' is unknown
+//   // pub fn get_child(&self, Chindex: i32) -> OwnedPtr<Handle<XCAFDoc_GraphNode>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:103 - `XCAFDoc_GraphNode::FatherIndex`
+//   method: Return index of <F>, or zero if there is no such Graphnode.
+//   Reason: param 'F' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
+//   // pub fn father_index(&self, F: &HandleGraphNode) -> i32;
+//
+// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:106 - `XCAFDoc_GraphNode::ChildIndex`
+//   method: Return index of <Ch>, or zero if there is no such Graphnode.
+//   Reason: param 'Ch' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
+//   // pub fn child_index(&self, Ch: &HandleGraphNode) -> i32;
+//
+// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:109 - `XCAFDoc_GraphNode::IsFather`
+//   method: returns TRUE if <me> is father of <Ch>.
+//   Reason: param 'Ch' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
+//   // pub fn is_father(&self, Ch: &HandleGraphNode) -> bool;
+//
+// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:112 - `XCAFDoc_GraphNode::IsChild`
+//   method: returns TRUE if <me> is child of <F>.
+//   Reason: param 'F' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
+//   // pub fn is_child(&self, F: &HandleGraphNode) -> bool;
+//
+// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:136 - `XCAFDoc_GraphNode::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:45 - `XCAFDoc_GraphNode::Find`
+//   static_method: class  methods working on the node
+//   static_method: ===================================
+//   static_method: Shortcut to search  a Graph node attribute with default
+//   Reason: param 'G' uses unknown type 'Handle(XCAFDoc_GraphNode)&'
+//   // pub fn find(L: &Label, G: &mut HandleGraphNode) -> bool;
+//
+// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:51 - `XCAFDoc_GraphNode::Set`
+//   static_method: Finds or Creates a GraphNode attribute on the label <L>
+//   static_method: with  the  default Graph  ID,   returned by the method
+//   static_method: <GetDefaultGraphID>.  Returns the created/found     GraphNode
+//   Reason: return type 'Handle(XCAFDoc_GraphNode)' is unknown
+//   // pub fn set(L: &Label) -> OwnedPtr<Handle<XCAFDoc_GraphNode>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:57 - `XCAFDoc_GraphNode::Set`
+//   static_method: Finds  or Creates a   GraphNode attribute on  the label
+//   static_method: <L>, with an   explicit tree ID.  <ExplicitGraphID>  is
+//   static_method: the  ID   returned by    <TDF_Attribute::ID>   method.
+//   Reason: return type 'Handle(XCAFDoc_GraphNode)' is unknown
+//   // pub fn set(L: &Label, ExplicitGraphID: &GUID) -> OwnedPtr<Handle<XCAFDoc_GraphNode>>;
+//
 
 // ========================
 // From XCAFDoc_LayerTool.hxx
@@ -6560,6 +6960,18 @@ impl LayerTool {
     }
 }
 
+// ── Skipped symbols for LayerTool (2 total) ──
+// SKIPPED: **Source:** `XCAFDoc_LayerTool.hxx`:54 - `XCAFDoc_LayerTool::ShapeTool`
+//   method: Returns internal XCAFDoc_ShapeTool tool
+//   Reason: return type 'const Handle(XCAFDoc_ShapeTool)&' is unknown
+//   // pub fn shape_tool(&mut self) -> &HandleShapeTool;
+//
+// SKIPPED: **Source:** `XCAFDoc_LayerTool.hxx`:46 - `XCAFDoc_LayerTool::Set`
+//   static_method: Creates (if not exist) LayerTool.
+//   Reason: return type 'Handle(XCAFDoc_LayerTool)' is unknown
+//   // pub fn set(L: &Label) -> OwnedPtr<Handle<XCAFDoc_LayerTool>>;
+//
+
 // ========================
 // From XCAFDoc_LengthUnit.hxx
 // ========================
@@ -6843,6 +7255,33 @@ impl LengthUnit {
     }
 }
 
+// ── Skipped symbols for LengthUnit (4 total) ──
+// SKIPPED: **Source:** `XCAFDoc_LengthUnit.hxx`:87 - `XCAFDoc_LengthUnit::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `XCAFDoc_LengthUnit.hxx`:44 - `XCAFDoc_LengthUnit::Set`
+//   static_method: Finds or creates a LengthUnit attribute
+//   static_method: @param theUnitName - name of the unit: mm, m, cm, km, micron, in, min, nin, ft, stat.mile
+//   static_method: @param theUnitValue - length scale factor to meter
+//   Reason: return type 'Handle(XCAFDoc_LengthUnit)' is unknown
+//   // pub fn set(theLabel: &Label, theUnitName: &AsciiString, theUnitValue: f64) -> OwnedPtr<Handle<XCAFDoc_LengthUnit>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_LengthUnit.hxx`:51 - `XCAFDoc_LengthUnit::Set`
+//   static_method: Finds or creates a LengthUnit attribute
+//   static_method: @param theUnitValue - length scale factor to meter
+//   static_method: The LengthUnit attribute is returned.
+//   Reason: return type 'Handle(XCAFDoc_LengthUnit)' is unknown
+//   // pub fn set(theLabel: &Label, theUnitValue: f64) -> OwnedPtr<Handle<XCAFDoc_LengthUnit>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_LengthUnit.hxx`:58 - `XCAFDoc_LengthUnit::Set`
+//   static_method: Finds, or creates, a LengthUnit attribute with explicit user defined GUID
+//   static_method: @param theUnitName - name of the unit: mm, m, cm, km, micron, in, min, nin, ft, stat.mile
+//   static_method: @param theUnitValue - length scale factor to meter
+//   Reason: return type 'Handle(XCAFDoc_LengthUnit)' is unknown
+//   // pub fn set(theLabel: &Label, theGUID: &GUID, theUnitName: &AsciiString, theUnitValue: f64) -> OwnedPtr<Handle<XCAFDoc_LengthUnit>>;
+//
+
 // ========================
 // From XCAFDoc_Location.hxx
 // ========================
@@ -7102,6 +7541,15 @@ impl Location {
         unsafe { crate::ffi::XCAFDoc_Location_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Location (1 total) ──
+// SKIPPED: **Source:** `XCAFDoc_Location.hxx`:45 - `XCAFDoc_Location::Set`
+//   static_method: Find, or create, a Location attribute and set it's value
+//   static_method: the Location attribute is returned.
+//   static_method: Location methods
+//   Reason: return type 'Handle(XCAFDoc_Location)' is unknown
+//   // pub fn set(label: &Label, Loc: &Location) -> OwnedPtr<Handle<XCAFDoc_Location>>;
+//
 
 // ========================
 // From XCAFDoc_Material.hxx
@@ -7409,6 +7857,12 @@ impl Material {
         unsafe { crate::ffi::XCAFDoc_Material_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Material (1 total) ──
+// SKIPPED: **Source:** `XCAFDoc_Material.hxx`:41 - `XCAFDoc_Material::Set`
+//   Reason: return type 'Handle(XCAFDoc_Material)' is unknown
+//   // pub fn set(label: &Label, aName: &HandleHAsciiString, aDescription: &HandleHAsciiString, aDensity: f64, aDensName: &HandleHAsciiString, aDensValType: &HandleHAsciiString) -> OwnedPtr<Handle<XCAFDoc_Material>>;
+//
 
 // ========================
 // From XCAFDoc_MaterialTool.hxx
@@ -7792,6 +8246,18 @@ impl MaterialTool {
     }
 }
 
+// ── Skipped symbols for MaterialTool (2 total) ──
+// SKIPPED: **Source:** `XCAFDoc_MaterialTool.hxx`:54 - `XCAFDoc_MaterialTool::ShapeTool`
+//   method: Returns internal XCAFDoc_ShapeTool tool
+//   Reason: return type 'const Handle(XCAFDoc_ShapeTool)&' is unknown
+//   // pub fn shape_tool(&mut self) -> &HandleShapeTool;
+//
+// SKIPPED: **Source:** `XCAFDoc_MaterialTool.hxx`:46 - `XCAFDoc_MaterialTool::Set`
+//   static_method: Creates (if not exist) MaterialTool.
+//   Reason: return type 'Handle(XCAFDoc_MaterialTool)' is unknown
+//   // pub fn set(L: &Label) -> OwnedPtr<Handle<XCAFDoc_MaterialTool>>;
+//
+
 // ========================
 // From XCAFDoc_Note.hxx
 // ========================
@@ -8071,6 +8537,17 @@ impl Note {
         unsafe { crate::ffi::XCAFDoc_Note_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Note (2 total) ──
+// SKIPPED: **Source:** `XCAFDoc_Note.hxx`:66 - `XCAFDoc_Note::Dump`
+//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, theOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `XCAFDoc_Note.hxx`:37 - `XCAFDoc_Note::Get`
+//   static_method: Finds a reference attribute on the given label and returns it, if it is found
+//   Reason: return type 'Handle(XCAFDoc_Note)' is unknown
+//   // pub fn get(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_Note>>;
+//
 
 // ========================
 // From XCAFDoc_NoteBalloon.hxx
@@ -8393,6 +8870,20 @@ impl NoteBalloon {
         unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for NoteBalloon (2 total) ──
+// SKIPPED: **Source:** `XCAFDoc_NoteBalloon.hxx`:30 - `XCAFDoc_NoteBalloon::Get`
+//   static_method: Finds a reference attribute on the given label and returns it, if it is found
+//   Reason: return type 'Handle(XCAFDoc_NoteBalloon)' is unknown
+//   // pub fn get(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_NoteBalloon>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_NoteBalloon.hxx`:37 - `XCAFDoc_NoteBalloon::Set`
+//   static_method: Create (if not exist) a comment note on the given label.
+//   static_method: \param[in]  theLabel     - note label.
+//   static_method: \param[in]  theUserName  - the name of the user, who created the note.
+//   Reason: return type 'Handle(XCAFDoc_NoteBalloon)' is unknown
+//   // pub fn set(theLabel: &Label, theUserName: &ExtendedString, theTimeStamp: &ExtendedString, theComment: &ExtendedString) -> OwnedPtr<Handle<XCAFDoc_NoteBalloon>>;
+//
 
 // ========================
 // From XCAFDoc_NoteBinData.hxx
@@ -8756,6 +9247,31 @@ impl NoteBinData {
     }
 }
 
+// ── Skipped symbols for NoteBinData (4 total) ──
+// SKIPPED: **Source:** `XCAFDoc_NoteBinData.hxx`:115 - `XCAFDoc_NoteBinData::Dump`
+//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, theOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `XCAFDoc_NoteBinData.hxx`:33 - `XCAFDoc_NoteBinData::Get`
+//   static_method: Finds a binary data attribute on the given label and returns it, if it is found
+//   Reason: return type 'Handle(XCAFDoc_NoteBinData)' is unknown
+//   // pub fn get(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_NoteBinData>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_NoteBinData.hxx`:46 - `XCAFDoc_NoteBinData::Set`
+//   static_method: Create (if not exist) a binary note with data loaded from a binary file.
+//   static_method: \param[in]  theLabel     - label to add the attribute.
+//   static_method: \param[in]  theUserName  - the name of the user, who created the note.
+//   Reason: return type 'Handle(XCAFDoc_NoteBinData)' is unknown
+//   // pub fn set(theLabel: &Label, theUserName: &ExtendedString, theTimeStamp: &ExtendedString, theTitle: &ExtendedString, theMIMEtype: &AsciiString, theFile: &mut File) -> OwnedPtr<Handle<XCAFDoc_NoteBinData>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_NoteBinData.hxx`:62 - `XCAFDoc_NoteBinData::Set`
+//   static_method: Create (if not exist) a binary note byte data array.
+//   static_method: \param[in]  theLabel     - label to add the attribute.
+//   static_method: \param[in]  theUserName  - the name of the user, who created the note.
+//   Reason: return type 'Handle(XCAFDoc_NoteBinData)' is unknown
+//   // pub fn set(theLabel: &Label, theUserName: &ExtendedString, theTimeStamp: &ExtendedString, theTitle: &ExtendedString, theMIMEtype: &AsciiString, theData: &HandleHArray1OfByte) -> OwnedPtr<Handle<XCAFDoc_NoteBinData>>;
+//
+
 // ========================
 // From XCAFDoc_NoteComment.hxx
 // ========================
@@ -9070,6 +9586,24 @@ impl NoteComment {
         unsafe { crate::ffi::XCAFDoc_NoteComment_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for NoteComment (3 total) ──
+// SKIPPED: **Source:** `XCAFDoc_NoteComment.hxx`:59 - `XCAFDoc_NoteComment::Dump`
+//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, theOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `XCAFDoc_NoteComment.hxx`:30 - `XCAFDoc_NoteComment::Get`
+//   static_method: Finds a reference attribute on the given label and returns it, if it is found
+//   Reason: return type 'Handle(XCAFDoc_NoteComment)' is unknown
+//   // pub fn get(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_NoteComment>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_NoteComment.hxx`:37 - `XCAFDoc_NoteComment::Set`
+//   static_method: Create (if not exist) a comment note on the given label.
+//   static_method: \param[in]  theLabel     - note label.
+//   static_method: \param[in]  theUserName  - the name of the user, who created the note.
+//   Reason: return type 'Handle(XCAFDoc_NoteComment)' is unknown
+//   // pub fn set(theLabel: &Label, theUserName: &ExtendedString, theTimeStamp: &ExtendedString, theComment: &ExtendedString) -> OwnedPtr<Handle<XCAFDoc_NoteComment>>;
+//
 
 // ========================
 // From XCAFDoc_NotesTool.hxx
@@ -10011,6 +10545,87 @@ impl NotesTool {
     }
 }
 
+// ── Skipped symbols for NotesTool (12 total) ──
+// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:174 - `XCAFDoc_NotesTool::CreateComment`
+//   method: Create a new comment note.
+//   method: Creates a new label under the notes hive and attaches \ref XCAFDoc_NoteComment
+//   method: attribute (derived ftom \ref XCAFDoc_Note).
+//   Reason: return type 'Handle(XCAFDoc_Note)' is unknown
+//   // pub fn create_comment(&mut self, theUserName: &ExtendedString, theTimeStamp: &ExtendedString, theComment: &ExtendedString) -> OwnedPtr<Handle<XCAFDoc_Note>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:185 - `XCAFDoc_NotesTool::CreateBalloon`
+//   method: Create a new 'balloon' note.
+//   method: Creates a new label under the notes hive and attaches \ref XCAFDoc_NoteBalloon
+//   method: attribute (derived ftom \ref XCAFDoc_Note).
+//   Reason: return type 'Handle(XCAFDoc_Note)' is unknown
+//   // pub fn create_balloon(&mut self, theUserName: &ExtendedString, theTimeStamp: &ExtendedString, theComment: &ExtendedString) -> OwnedPtr<Handle<XCAFDoc_Note>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:198 - `XCAFDoc_NotesTool::CreateBinData`
+//   method: Create a new note with data loaded from a binary file.
+//   method: Creates a new label under the notes hive and attaches \ref XCAFDoc_NoteComment
+//   method: attribute (derived ftom \ref XCAFDoc_Note).
+//   Reason: return type 'Handle(XCAFDoc_Note)' is unknown
+//   // pub fn create_bin_data(&mut self, theUserName: &ExtendedString, theTimeStamp: &ExtendedString, theTitle: &ExtendedString, theMIMEtype: &AsciiString, theFile: &mut File) -> OwnedPtr<Handle<XCAFDoc_Note>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:213 - `XCAFDoc_NotesTool::CreateBinData`
+//   method: Create a new note with data loaded from a byte data array.
+//   method: Creates a new label under the notes hive and attaches \ref XCAFDoc_NoteComment
+//   method: attribute (derived ftom \ref XCAFDoc_Note).
+//   Reason: return type 'Handle(XCAFDoc_Note)' is unknown
+//   // pub fn create_bin_data(&mut self, theUserName: &ExtendedString, theTimeStamp: &ExtendedString, theTitle: &ExtendedString, theMIMEtype: &AsciiString, theData: &HandleHArray1OfByte) -> OwnedPtr<Handle<XCAFDoc_Note>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:284 - `XCAFDoc_NotesTool::AddNote`
+//   method: Adds the given note to the assembly item.
+//   method: \param[in]  theNoteLabel - note label.
+//   method: \param[in]  theItemId    - assembly item ID.
+//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
+//   // pub fn add_note(&mut self, theNoteLabel: &Label, theItemId: &AssemblyItemId) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:291 - `XCAFDoc_NotesTool::AddNote`
+//   method: Adds the given note to the labeled item.
+//   method: \param[in]  theNoteLabel - note label.
+//   method: \param[in]  theItemLabel - item label.
+//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
+//   // pub fn add_note(&mut self, theNoteLabel: &Label, theItemLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:299 - `XCAFDoc_NotesTool::AddNoteToAttr`
+//   method: Adds the given note to the assembly item's attribute.
+//   method: \param[in]  theNoteLabel - note label.
+//   method: \param[in]  theItemId    - assembly item ID.
+//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
+//   // pub fn add_note_to_attr(&mut self, theNoteLabel: &Label, theItemId: &AssemblyItemId, theGUID: &GUID) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:309 - `XCAFDoc_NotesTool::AddNoteToAttr`
+//   method: Adds the given note to the labeled item's attribute.
+//   method: \param[in]  theNoteLabel - note label.
+//   method: \param[in]  theItemLabel - item label.
+//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
+//   // pub fn add_note_to_attr(&mut self, theNoteLabel: &Label, theItemLabel: &Label, theGUID: &GUID) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:318 - `XCAFDoc_NotesTool::AddNoteToSubshape`
+//   method: Adds the given note to the assembly item's subshape.
+//   method: \param[in]  theNoteLabel     - note label.
+//   method: \param[in]  theItemId        - assembly item ID.
+//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
+//   // pub fn add_note_to_subshape(&mut self, theNoteLabel: &Label, theItemId: &AssemblyItemId, theSubshapeIndex: i32) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:328 - `XCAFDoc_NotesTool::AddNoteToSubshape`
+//   method: Adds the given note to the labeled item's subshape.
+//   method: \param[in]  theNoteLabel     - note label.
+//   method: \param[in]  theItemLabel     - item label.
+//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
+//   // pub fn add_note_to_subshape(&mut self, theNoteLabel: &Label, theItemLabel: &Label, theSubshapeIndex: i32) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:512 - `XCAFDoc_NotesTool::Dump`
+//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, theOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:84 - `XCAFDoc_NotesTool::Set`
+//   static_method: Create (if not exist) a notes tool from XCAFDoc on theLabel.
+//   Reason: return type 'Handle(XCAFDoc_NotesTool)' is unknown
+//   // pub fn set(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_NotesTool>>;
+//
+
 // ========================
 // From XCAFDoc_ShapeMapTool.hxx
 // ========================
@@ -10292,6 +10907,13 @@ impl ShapeMapTool {
         }
     }
 }
+
+// ── Skipped symbols for ShapeMapTool (1 total) ──
+// SKIPPED: **Source:** `XCAFDoc_ShapeMapTool.hxx`:40 - `XCAFDoc_ShapeMapTool::Set`
+//   static_method: Create (if not exist) ShapeTool from XCAFDoc on <L>.
+//   Reason: return type 'Handle(XCAFDoc_ShapeMapTool)' is unknown
+//   // pub fn set(L: &Label) -> OwnedPtr<Handle<XCAFDoc_ShapeMapTool>>;
+//
 
 // ========================
 // From XCAFDoc_ShapeTool.hxx
@@ -11268,6 +11890,81 @@ impl ShapeTool {
     }
 }
 
+// ── Skipped symbols for ShapeTool (12 total) ──
+// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:361 - `XCAFDoc_ShapeTool::Dump`
+//   Reason: has unbindable types: param 'theDumpLog': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, theDumpLog: /* Standard_OStream& */, deep: bool) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:364 - `XCAFDoc_ShapeTool::Dump`
+//   Reason: has unbindable types: param 'theDumpLog': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, theDumpLog: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:397 - `XCAFDoc_ShapeTool::SetSHUO`
+//   method: Sets the SHUO structure between upper_usage and next_usage
+//   method: create multy-level (if number of labels > 2) SHUO from first to last
+//   method: Initialise out <MainSHUOAttr> by main upper_usage SHUO attribute.
+//   Reason: param 'MainSHUOAttr' uses unknown type 'Handle(XCAFDoc_GraphNode)&'
+//   // pub fn set_shuo(&self, Labels: &LabelSequence, MainSHUOAttr: &mut HandleGraphNode) -> bool;
+//
+// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:442 - `XCAFDoc_ShapeTool::GetSHUOInstance`
+//   method: Search for the component shape that styled by shuo
+//   method: Returns null shape if no any shape is found.
+//   Reason: param 'theSHUO' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
+//   // pub fn get_shuo_instance(&self, theSHUO: &HandleGraphNode) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:447 - `XCAFDoc_ShapeTool::SetInstanceSHUO`
+//   method: Search for the component shape by labelks path
+//   method: and set SHUO structure for founded label structure
+//   method: Returns null attribute if no component in any assembly found.
+//   Reason: return type 'Handle(XCAFDoc_GraphNode)' is unknown
+//   // pub fn set_instance_shuo(&self, theShape: &Shape) -> OwnedPtr<Handle<XCAFDoc_GraphNode>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:452 - `XCAFDoc_ShapeTool::GetAllSHUOInstances`
+//   method: Searching for component shapes that styled by shuo
+//   method: Returns empty sequence of shape if no any shape is found.
+//   Reason: param 'theSHUO' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
+//   // pub fn get_all_shuo_instances(&self, theSHUO: &HandleGraphNode, theSHUOShapeSeq: &mut SequenceOfShape) -> bool;
+//
+// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:479 - `XCAFDoc_ShapeTool::GetNamedProperties`
+//   method: Method to get NamedData attribute assigned to the given shape label.
+//   method: @param[in] theLabel     the shape Label
+//   method: @param[in] theToCreate  create and assign attribute if it doesn't exist
+//   Reason: return type 'Handle(TDataStd_NamedData)' is unknown
+//   // pub fn get_named_properties(&self, theLabel: &Label, theToCreate: bool) -> OwnedPtr<Handle<TDataStd_NamedData>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:487 - `XCAFDoc_ShapeTool::GetNamedProperties`
+//   method: Method to get NamedData attribute assigned to a label of the given shape.
+//   method: @param[in] theShape     input shape
+//   method: @param[in] theToCreate  create and assign attribute if it doesn't exist
+//   Reason: return type 'Handle(TDataStd_NamedData)' is unknown
+//   // pub fn get_named_properties(&self, theShape: &Shape, theToCreate: bool) -> OwnedPtr<Handle<TDataStd_NamedData>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:109 - `XCAFDoc_ShapeTool::Set`
+//   static_method: Create (if not exist) ShapeTool from XCAFDoc on <L>.
+//   Reason: return type 'Handle(XCAFDoc_ShapeTool)' is unknown
+//   // pub fn set(L: &Label) -> OwnedPtr<Handle<XCAFDoc_ShapeTool>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:370 - `XCAFDoc_ShapeTool::DumpShape`
+//   static_method: Print to std::ostream <theDumpLog> type of shape found on <L> label
+//   static_method: and the entry of <L>, with <level> tabs before.
+//   static_method: If <deep>, print also TShape and Location addresses
+//   Reason: has unbindable types: param 'theDumpLog': stream type (Standard_OStream&)
+//   // pub fn dump_shape(theDumpLog: /* Standard_OStream& */, L: &Label, level: i32, deep: bool);
+//
+// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:402 - `XCAFDoc_ShapeTool::GetSHUO`
+//   static_method: Returns founded SHUO GraphNode attribute <aSHUOAttr>
+//   static_method: Returns false in other case
+//   Reason: param 'aSHUOAttr' uses unknown type 'Handle(XCAFDoc_GraphNode)&'
+//   // pub fn get_shuo(SHUOLabel: &Label, aSHUOAttr: &mut HandleGraphNode) -> bool;
+//
+// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:458 - `XCAFDoc_ShapeTool::FindSHUO`
+//   static_method: Searches the SHUO by labels of components
+//   static_method: from upper_usage component to next_usage
+//   static_method: Returns null attribute if no SHUO found
+//   Reason: param 'theSHUOAttr' uses unknown type 'Handle(XCAFDoc_GraphNode)&'
+//   // pub fn find_shuo(Labels: &LabelSequence, theSHUOAttr: &mut HandleGraphNode) -> bool;
+//
+
 // ========================
 // From XCAFDoc_View.hxx
 // ========================
@@ -11512,6 +12209,23 @@ impl View {
         unsafe { crate::ffi::XCAFDoc_View_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for View (3 total) ──
+// SKIPPED: **Source:** `XCAFDoc_View.hxx`:50 - `XCAFDoc_View::SetObject`
+//   method: Updates parent's label and its sub-labels with data taken from theViewObject.
+//   method: Old data associated with the label will be lost.
+//   Reason: param 'theViewObject' uses unknown type 'const Handle(XCAFView_Object)&'
+//   // pub fn set_object(&mut self, theViewObject: &HandleObject);
+//
+// SKIPPED: **Source:** `XCAFDoc_View.hxx`:53 - `XCAFDoc_View::GetObject`
+//   method: Returns view object data taken from the paren's label and its sub-labels.
+//   Reason: return type 'Handle(XCAFView_Object)' is unknown
+//   // pub fn get_object(&self) -> OwnedPtr<Handle<XCAFView_Object>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_View.hxx`:44 - `XCAFDoc_View::Set`
+//   Reason: return type 'Handle(XCAFDoc_View)' is unknown
+//   // pub fn set(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_View>>;
+//
 
 // ========================
 // From XCAFDoc_ViewTool.hxx
@@ -12074,6 +12788,13 @@ impl ViewTool {
     }
 }
 
+// ── Skipped symbols for ViewTool (1 total) ──
+// SKIPPED: **Source:** `XCAFDoc_ViewTool.hxx`:46 - `XCAFDoc_ViewTool::Set`
+//   static_method: Creates (if not exist) ViewTool.
+//   Reason: return type 'Handle(XCAFDoc_ViewTool)' is unknown
+//   // pub fn set(L: &Label) -> OwnedPtr<Handle<XCAFDoc_ViewTool>>;
+//
+
 // ========================
 // From XCAFDoc_VisMaterial.hxx
 // ========================
@@ -12526,6 +13247,24 @@ impl VisMaterial {
         unsafe { crate::ffi::XCAFDoc_VisMaterial_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for VisMaterial (3 total) ──
+// SKIPPED: **Source:** `XCAFDoc_VisMaterial.hxx`:71 - `XCAFDoc_VisMaterial::FillMaterialAspect`
+//   method: Fill in material aspect.
+//   Reason: param 'theAspect' uses unknown type 'Graphic3d_MaterialAspect&'
+//   // pub fn fill_material_aspect(&self, theAspect: &mut MaterialAspect);
+//
+// SKIPPED: **Source:** `XCAFDoc_VisMaterial.hxx`:74 - `XCAFDoc_VisMaterial::FillAspect`
+//   method: Fill in graphic aspects.
+//   Reason: param 'theAspect' uses unknown type 'const Handle(Graphic3d_Aspects)&'
+//   // pub fn fill_aspect(&self, theAspect: &HandleAspects);
+//
+// SKIPPED: **Source:** `XCAFDoc_VisMaterial.hxx`:158 - `XCAFDoc_VisMaterial::IsEqual`
+//   method: Compare two materials.
+//   method: Performs deep comparison by actual values - e.g. can be useful for merging materials.
+//   Reason: param 'theOther' uses unknown type 'const Handle(XCAFDoc_VisMaterial)&'
+//   // pub fn is_equal(&self, theOther: &HandleVisMaterial) -> bool;
+//
 
 // ========================
 // From XCAFDoc_VisMaterialCommon.hxx
@@ -13032,6 +13771,38 @@ impl VisMaterialTool {
     }
 }
 
+// ── Skipped symbols for VisMaterialTool (6 total) ──
+// SKIPPED: **Source:** `XCAFDoc_VisMaterialTool.hxx`:54 - `XCAFDoc_VisMaterialTool::ShapeTool`
+//   method: Returns internal XCAFDoc_ShapeTool tool
+//   Reason: return type 'const Handle(XCAFDoc_ShapeTool)&' is unknown
+//   // pub fn shape_tool(&mut self) -> &HandleShapeTool;
+//
+// SKIPPED: **Source:** `XCAFDoc_VisMaterialTool.hxx`:66 - `XCAFDoc_VisMaterialTool::AddMaterial`
+//   method: Adds Material definition to a Material Table and returns its Label.
+//   Reason: param 'theMat' uses unknown type 'const Handle(XCAFDoc_VisMaterial)&'
+//   // pub fn add_material(&self, theMat: &HandleVisMaterial, theName: &AsciiString) -> OwnedPtr<TDF_Label>;
+//
+// SKIPPED: **Source:** `XCAFDoc_VisMaterialTool.hxx`:121 - `XCAFDoc_VisMaterialTool::GetShapeMaterial`
+//   method: Returns material assigned to shape or NULL if not assigned.
+//   Reason: return type 'Handle(XCAFDoc_VisMaterial)' is unknown
+//   // pub fn get_shape_material(&mut self, theShape: &Shape) -> OwnedPtr<Handle<XCAFDoc_VisMaterial>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_VisMaterialTool.hxx`:42 - `XCAFDoc_VisMaterialTool::Set`
+//   static_method: Creates (if not exist) ColorTool.
+//   Reason: return type 'Handle(XCAFDoc_VisMaterialTool)' is unknown
+//   // pub fn set(L: &Label) -> OwnedPtr<Handle<XCAFDoc_VisMaterialTool>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_VisMaterialTool.hxx`:63 - `XCAFDoc_VisMaterialTool::GetMaterial`
+//   static_method: Returns Material defined by specified Label, or NULL if the label is not in Material Table.
+//   Reason: return type 'Handle(XCAFDoc_VisMaterial)' is unknown
+//   // pub fn get_material(theMatLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_VisMaterial>>;
+//
+// SKIPPED: **Source:** `XCAFDoc_VisMaterialTool.hxx`:96 - `XCAFDoc_VisMaterialTool::GetShapeMaterial`
+//   static_method: Returns material assigned to the shape label.
+//   Reason: return type 'Handle(XCAFDoc_VisMaterial)' is unknown
+//   // pub fn get_shape_material(theShapeLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_VisMaterial>>;
+//
+
 // ========================
 // From XCAFDoc_Volume.hxx
 // ========================
@@ -13307,6 +14078,17 @@ impl Volume {
         unsafe { crate::ffi::XCAFDoc_Volume_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
+
+// ── Skipped symbols for Volume (2 total) ──
+// SKIPPED: **Source:** `XCAFDoc_Volume.hxx`:56 - `XCAFDoc_Volume::Dump`
+//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
+//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//
+// SKIPPED: **Source:** `XCAFDoc_Volume.hxx`:47 - `XCAFDoc_Volume::Set`
+//   static_method: Find, or create, an Volume attribute and set its value
+//   Reason: return type 'Handle(XCAFDoc_Volume)' is unknown
+//   // pub fn set(label: &Label, vol: f64) -> OwnedPtr<Handle<XCAFDoc_Volume>>;
+//
 
 // ========================
 // Additional type re-exports

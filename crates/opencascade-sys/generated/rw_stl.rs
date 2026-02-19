@@ -223,3 +223,31 @@ impl HandleRWStlReader {
         unsafe { &mut *(crate::ffi::HandleRWStlReader_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Reader (4 total) ──
+// SKIPPED: **Source:** `RWStl_Reader.hxx`:40 - `RWStl_Reader::RWStl_Reader`
+//   constructor: Default constructor.
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new() -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `RWStl_Reader.hxx`:57 - `RWStl_Reader::IsAscii`
+//   method: Guess whether the stream is an Ascii STL file, by analysis of the first bytes (~200).
+//   method: If the stream does not support seekg() then the parameter isSeekgAvailable should
+//   method: be passed as 'false', in this case the function attempts to put back the read symbols
+//   Reason: has unbindable types: param 'theStream': stream type (Standard_IStream&)
+//   // pub fn is_ascii(&mut self, theStream: /* Standard_IStream& */, isSeekgAvailable: bool) -> bool;
+//
+// SKIPPED: **Source:** `RWStl_Reader.hxx`:64 - `RWStl_Reader::ReadBinary`
+//   method: Reads STL data from binary stream.
+//   method: The stream must be opened in binary mode.
+//   method: Stops after reading the number of triangles recorded in the file header.
+//   Reason: has unbindable types: param 'theStream': stream type (Standard_IStream&)
+//   // pub fn read_binary(&mut self, theStream: /* Standard_IStream& */, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `RWStl_Reader.hxx`:74 - `RWStl_Reader::ReadAscii`
+//   method: Reads data from the stream assumed to contain Ascii STL data.
+//   method: The stream can be opened either in binary or in Ascii mode.
+//   method: Reading stops at the position specified by theUntilPos,
+//   Reason: has unbindable types: param 'theStream': stream type (Standard_IStream&)
+//   // pub fn read_ascii(&mut self, theStream: /* Standard_IStream& */, theBuffer: &mut ReadLineBuffer, theUntilPos: streampos, theProgress: &ProgressRange) -> bool;
+//

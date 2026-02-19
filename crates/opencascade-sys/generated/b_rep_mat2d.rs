@@ -171,6 +171,15 @@ impl BisectingLocus {
     }
 }
 
+// ── Skipped symbols for BisectingLocus (1 total) ──
+// SKIPPED: **Source:** `BRepMAT2d_BisectingLocus.hxx`:84 - `BRepMAT2d_BisectingLocus::Compute`
+//   method: Computation of the Bisector_Locus in a set of Lines
+//   method: defined in <anExplo>.
+//   method: The bisecting locus are computed on the side <aSide>
+//   Reason: param 'anExplo' uses unknown type 'BRepMAT2d_Explorer&'
+//   // pub fn compute(&mut self, anExplo: &mut Explorer, LineIndex: i32, aSide: Side, aJoinType: JoinType, IsOpenResult: bool);
+//
+
 // ========================
 // From BRepMAT2d_LinkTopoBilo.hxx
 // ========================
@@ -235,6 +244,20 @@ impl LinkTopoBilo {
         }
     }
 }
+
+// ── Skipped symbols for LinkTopoBilo (2 total) ──
+// SKIPPED: **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:45 - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo`
+//   constructor: Constructs the links Between S and BiLo.
+//   constructor: raises if <S> is not a face.
+//   Reason: param 'Explo' uses unknown type 'const BRepMAT2d_Explorer&'
+//   // pub fn new_explorer_bisectinglocus(Explo: &Explorer, BiLo: &BisectingLocus) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:51 - `BRepMAT2d_LinkTopoBilo::Perform`
+//   method: Constructs the links Between S and BiLo.
+//   method: raises if <S> is not a face or a wire.
+//   Reason: param 'Explo' uses unknown type 'const BRepMAT2d_Explorer&'
+//   // pub fn perform(&mut self, Explo: &Explorer, BiLo: &BisectingLocus);
+//
 
 // ========================
 // Additional type re-exports

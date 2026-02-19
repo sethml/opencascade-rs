@@ -4160,6 +4160,13 @@ impl ParallelAlgo {
     }
 }
 
+// ── Skipped symbols for ParallelAlgo (1 total) ──
+// SKIPPED: **Source:** `BOPAlgo_Algo.hxx`:94 - `BOPAlgo_ParallelAlgo::Perform`
+//   method: The main method to implement the operation
+//   Reason: causes ambiguous overload in C++ (listed in AMBIGUOUS_METHODS)
+//   // pub fn perform(&mut self);
+//
+
 /// **Source:** `BOPAlgo_Algo.hxx`:110 - `BOPAlgo_PISteps`
 /// Class for representing the relative contribution of each step of
 /// the operation to the whole progress
@@ -4462,6 +4469,13 @@ impl ArgumentAnalyzer {
         unsafe { crate::ffi::BOPAlgo_ArgumentAnalyzer_inherited_UseOBB(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for ArgumentAnalyzer (1 total) ──
+// SKIPPED: **Source:** `BOPAlgo_ArgumentAnalyzer.hxx`:52 - `BOPAlgo_ArgumentAnalyzer::OperationType`
+//   method: returns ref
+//   Reason: return type is &mut enum (not representable in extern "C")
+//   // pub fn operation_type(&mut self) -> &mut Operation;
+//
 
 // ========================
 // From BOPAlgo_BOP.hxx
@@ -5299,6 +5313,18 @@ impl Builder {
         unsafe { crate::ffi::BOPAlgo_Builder_inherited_UseOBB(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for Builder (2 total) ──
+// SKIPPED: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller`
+//   method: Returns the PaveFiller, algorithm for sub-shapes intersection.
+//   Reason: return type 'BOPAlgo_PPaveFiller' is unknown
+//   // pub fn p_pave_filler(&mut self) -> OwnedPtr<BOPAlgo_PPaveFiller>;
+//
+// SKIPPED: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS`
+//   method: Returns the Data Structure, holder of intersection information.
+//   Reason: return type 'BOPDS_PDS' is unknown
+//   // pub fn pds(&mut self) -> OwnedPtr<BOPDS_PDS>;
+//
 
 // ========================
 // From BOPAlgo_BuilderArea.hxx
@@ -8643,6 +8669,18 @@ impl Options {
     }
 }
 
+// ── Skipped symbols for Options (2 total) ──
+// SKIPPED: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors`
+//   method: Dumps the error status into the given stream
+//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&)
+//   // pub fn dump_errors(&self, theOS: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings`
+//   method: Dumps the warning statuses into the given stream
+//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&)
+//   // pub fn dump_warnings(&self, theOS: /* Standard_OStream& */);
+//
+
 // ========================
 // From BOPAlgo_PaveFiller.hxx
 // ========================
@@ -8904,6 +8942,16 @@ impl PaveFiller {
         unsafe { crate::ffi::BOPAlgo_PaveFiller_inherited_UseOBB(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for PaveFiller (2 total) ──
+// SKIPPED: **Source:** `BOPAlgo_PaveFiller.hxx`:121 - `BOPAlgo_PaveFiller::PDS`
+//   Reason: return type 'BOPDS_PDS' is unknown
+//   // pub fn pds(&mut self) -> OwnedPtr<BOPDS_PDS>;
+//
+// SKIPPED: **Source:** `BOPAlgo_PaveFiller.hxx`:123 - `BOPAlgo_PaveFiller::Iterator`
+//   Reason: return type 'const BOPDS_PIterator&' is unknown
+//   // pub fn iterator(&mut self) -> &PIterator;
+//
 
 // ========================
 // From BOPAlgo_RemoveFeatures.hxx
@@ -10447,6 +10495,27 @@ impl Tools {
         }
     }
 }
+
+// ── Skipped symbols for Tools (4 total) ──
+// SKIPPED: **Source:** `BOPAlgo_Tools.hxx`:104 - `BOPAlgo_Tools::FillMap`
+//   Reason: param 'theMILI' uses unknown type 'BOPDS_IndexedDataMapOfPaveBlockListOfInteger&'
+//   // pub fn fill_map(thePB1: &HandlePaveBlock, theF: i32, theMILI: &mut IndexedDataMapOfPaveBlockListOfInteger, theAllocator: &HandleBaseAllocator);
+//
+// SKIPPED: **Source:** `BOPAlgo_Tools.hxx`:111 - `BOPAlgo_Tools::PerformCommonBlocks`
+//   static_method: Create Common Blocks from the groups of pave blocks of <theMBlocks>
+//   static_method: connection map.
+//   Reason: param 'theMBlocks' uses unknown type 'BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock&'
+//   // pub fn perform_common_blocks(theMBlocks: &mut IndexedDataMapOfPaveBlockListOfPaveBlock, theAllocator: &HandleBaseAllocator, theDS: &mut PDS, theContext: &HandleContext);
+//
+// SKIPPED: **Source:** `BOPAlgo_Tools.hxx`:118 - `BOPAlgo_Tools::PerformCommonBlocks`
+//   static_method: Create Common Blocks on faces using the PB->Faces connection map <theMBlocks>.
+//   Reason: param 'theMBlocks' uses unknown type 'const BOPDS_IndexedDataMapOfPaveBlockListOfInteger&'
+//   // pub fn perform_common_blocks(theMBlocks: &IndexedDataMapOfPaveBlockListOfInteger, theAllocator: &HandleBaseAllocator, pDS: &mut PDS, theContext: &HandleContext);
+//
+// SKIPPED: **Source:** `BOPAlgo_Tools.hxx`:124 - `BOPAlgo_Tools::ComputeToleranceOfCB`
+//   Reason: param 'theDS' uses unknown type 'BOPDS_PDS'
+//   // pub fn compute_tolerance_of_cb(theCB: &HandleCommonBlock, theDS: PDS, theContext: &HandleContext) -> f64;
+//
 
 // ========================
 // From BOPAlgo_ToolsProvider.hxx

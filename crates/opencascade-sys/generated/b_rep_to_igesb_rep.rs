@@ -203,3 +203,30 @@ impl Entity {
         unsafe { crate::ffi::BRepToIGESBRep_Entity_inherited_GetPCurveMode(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for Entity (4 total) ──
+// SKIPPED: **Source:** `BRepToIGESBRep_Entity.hxx`:100 - `BRepToIGESBRep_Entity::TransferWire`
+//   method: Transfert a Wire entity from TopoDS to IGES.
+//   method: Returns the curve associated to mywire in the parametric space of myface.
+//   method: If this Entity could not be converted, this member returns a NullEntity.
+//   Reason: return type 'Handle(IGESSolid_Loop)' is unknown
+//   // pub fn transfer_wire(&mut self, mywire: &Wire, myface: &Face, length: f64) -> OwnedPtr<Handle<IGESSolid_Loop>>;
+//
+// SKIPPED: **Source:** `BRepToIGESBRep_Entity.hxx`:106 - `BRepToIGESBRep_Entity::TransferFace`
+//   method: Transfert a Face entity from TopoDS to IGES
+//   method: If this Entity could not be converted, this member returns a NullEntity.
+//   Reason: return type 'Handle(IGESSolid_Face)' is unknown
+//   // pub fn transfer_face(&mut self, start: &Face) -> OwnedPtr<Handle<IGESSolid_Face>>;
+//
+// SKIPPED: **Source:** `BRepToIGESBRep_Entity.hxx`:110 - `BRepToIGESBRep_Entity::TransferShell`
+//   method: Transfert an Shell entity from TopoDS to IGES
+//   method: If this Entity could not be converted, this member returns a NullEntity.
+//   Reason: return type 'Handle(IGESSolid_Shell)' is unknown
+//   // pub fn transfer_shell(&mut self, start: &Shell, theProgress: &ProgressRange) -> OwnedPtr<Handle<IGESSolid_Shell>>;
+//
+// SKIPPED: **Source:** `BRepToIGESBRep_Entity.hxx`:116 - `BRepToIGESBRep_Entity::TransferSolid`
+//   method: Transfert a Solid entity from TopoDS to IGES
+//   method: If this Entity could not be converted, this member returns a NullEntity.
+//   Reason: return type 'Handle(IGESSolid_ManifoldSolid)' is unknown
+//   // pub fn transfer_solid(&mut self, start: &Solid, theProgress: &ProgressRange) -> OwnedPtr<Handle<IGESSolid_ManifoldSolid>>;
+//

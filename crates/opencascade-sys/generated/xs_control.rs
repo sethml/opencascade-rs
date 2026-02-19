@@ -174,6 +174,20 @@ impl ConnectedShapes {
     }
 }
 
+// ── Skipped symbols for ConnectedShapes (2 total) ──
+// SKIPPED: **Source:** `XSControl_ConnectedShapes.hxx`:60 - `XSControl_ConnectedShapes::Explore`
+//   method: Explores an entity : entities from which are connected to that
+//   method: produced by this entity, including itself
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn explore(&self, level: i32, ent: &HandleTransient, G: &Graph, explored: &mut EntityIterator) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_ConnectedShapes.hxx`:71 - `XSControl_ConnectedShapes::AdjacentEntities`
+//   static_method: This functions considers a shape from a transfer and performs
+//   static_method: the search function explained above
+//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
+//   // pub fn adjacent_entities(ashape: &Shape, TP: &HandleTransientProcess, type_: ShapeEnum) -> OwnedPtr<Handle<TColStd_HSequenceOfTransient>>;
+//
+
 // ========================
 // From XSControl_Controller.hxx
 // ========================
@@ -384,6 +398,76 @@ impl HandleXSControlController {
     }
 }
 
+// ── Skipped symbols for Controller (11 total) ──
+// SKIPPED: **Source:** `XSControl_Controller.hxx`:94 - `XSControl_Controller::Protocol`
+//   method: Returns the Protocol attached to the Norm (from field)
+//   Reason: return type 'const Handle(Interface_Protocol)&' is unknown
+//   // pub fn protocol(&self) -> &HandleProtocol;
+//
+// SKIPPED: **Source:** `XSControl_Controller.hxx`:111 - `XSControl_Controller::ActorRead`
+//   method: Returns the Actor for Read attached to the pair (norm,appli)
+//   method: It can be adapted for data of the input Model, as required
+//   method: Can be read from field then adapted with Model as required
+//   Reason: return type 'Handle(Transfer_ActorOfTransientProcess)' is unknown
+//   // pub fn actor_read(&self, model: &HandleInterfaceModel) -> OwnedPtr<Handle<Transfer_ActorOfTransientProcess>>;
+//
+// SKIPPED: **Source:** `XSControl_Controller.hxx`:116 - `XSControl_Controller::ActorWrite`
+//   method: Returns the Actor for Write attached to the pair (norm,appli)
+//   method: Read from field. Can be redefined
+//   Reason: return type 'Handle(Transfer_ActorOfFinderProcess)' is unknown
+//   // pub fn actor_write(&self) -> OwnedPtr<Handle<Transfer_ActorOfFinderProcess>>;
+//
+// SKIPPED: **Source:** `XSControl_Controller.hxx`:135 - `XSControl_Controller::ModeWriteBounds`
+//   method: Returns recorded min and max values for modetrans (write)
+//   method: Actually only for shapes
+//   method: Returns True if bounds are set, False else (then, free value)
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn mode_write_bounds(&self, modemin: &mut i32, modemax: &mut i32, shape: bool) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_Controller.hxx`:154 - `XSControl_Controller::RecognizeWriteTransient`
+//   method: Tells if <obj> (an application object) is a valid candidate
+//   method: for a transfer to a Model.
+//   method: By default, asks the ActorWrite if known (through a
+//   Reason: param 'obj' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn recognize_write_transient(&self, obj: &HandleTransient, modetrans: i32) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_Controller.hxx`:168 - `XSControl_Controller::TransferWriteTransient`
+//   method: Takes one Transient Object and transfers it to an
+//   method: InterfaceModel (already created, e.g. by NewModel)
+//   method: (result is recorded in the model by AddWithRefs)
+//   Reason: param 'obj' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn transfer_write_transient(&self, obj: &HandleTransient, FP: &HandleFinderProcess, model: &HandleInterfaceModel, modetrans: i32, theProgress: &ProgressRange) -> OwnedPtr<IFSelect_ReturnStatus>;
+//
+// SKIPPED: **Source:** `XSControl_Controller.hxx`:187 - `XSControl_Controller::TransferWriteShape`
+//   method: Takes one Shape and transfers it to an
+//   method: InterfaceModel (already created, e.g. by NewModel)
+//   method: Default uses ActorWrite; can be redefined as necessary
+//   Reason: param 'FP' uses unknown type 'const Handle(Transfer_FinderProcess)&'
+//   // pub fn transfer_write_shape(&self, shape: &Shape, FP: &HandleFinderProcess, model: &HandleInterfaceModel, modetrans: i32, theProgress: &ProgressRange) -> OwnedPtr<IFSelect_ReturnStatus>;
+//
+// SKIPPED: **Source:** `XSControl_Controller.hxx`:202 - `XSControl_Controller::AddSessionItem`
+//   method: Records a Session Item, to be added for customisation of the Work Session.
+//   method: It must have a specific name.
+//   method: <setapplied> is used if <item> is a GeneralModifier, to decide
+//   Reason: param 'theItem' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_session_item(&mut self, theItem: &HandleTransient, theName: *const char, toApply: bool);
+//
+// SKIPPED: **Source:** `XSControl_Controller.hxx`:208 - `XSControl_Controller::SessionItem`
+//   method: Returns an item given its name to record in a Session
+//   method: If <name> is unknown, returns a Null Handle
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn session_item(&self, theName: *const char) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `XSControl_Controller.hxx`:211 - `XSControl_Controller::Customise`
+//   method: Customises a WorkSession, by adding to it the recorded items (by AddSessionItem)
+//   Reason: param 'WS' uses unknown type 'Handle(XSControl_WorkSession)&'
+//   // pub fn customise(&mut self, WS: &mut HandleWorkSession);
+//
+// SKIPPED: **Source:** `XSControl_Controller.hxx`:213 - `XSControl_Controller::AdaptorSession`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn adaptor_session(&self) -> &i32;
+//
+
 // ========================
 // From XSControl_FuncShape.hxx
 // ========================
@@ -420,6 +504,22 @@ impl FuncShape {
         unsafe { crate::ffi::XSControl_FuncShape_init() }
     }
 }
+
+// ── Skipped symbols for FuncShape (2 total) ──
+// SKIPPED: **Source:** `XSControl_FuncShape.hxx`:58 - `XSControl_FuncShape::MoreShapes`
+//   static_method: Analyses a name as designating Shapes from a Vars or from
+//   static_method: XSTEP transfer (last Transfer on Reading). <name> can be :
+//   static_method: "*" : all the root shapes produced by last Transfer (Read)
+//   Reason: param 'session' uses unknown type 'const Handle(XSControl_WorkSession)&'
+//   // pub fn more_shapes(session: &HandleWorkSession, list: &mut HandleHSequenceOfShape, name: *const char) -> i32;
+//
+// SKIPPED: **Source:** `XSControl_FuncShape.hxx`:73 - `XSControl_FuncShape::FileAndVar`
+//   static_method: Analyses given file name and variable name, with a default
+//   static_method: name for variables. Returns resulting file name and variable
+//   static_method: name plus status "file to read"(True) or "already read"(False)
+//   Reason: param 'session' uses unknown type 'const Handle(XSControl_WorkSession)&'
+//   // pub fn file_and_var(session: &HandleWorkSession, file: *const char, var: *const char, def: *const char, resfile: &mut AsciiString, resvar: &mut AsciiString) -> bool;
+//
 
 // ========================
 // From XSControl_Functions.hxx
@@ -752,6 +852,104 @@ impl Reader {
     }
 }
 
+// ── Skipped symbols for Reader (16 total) ──
+// SKIPPED: **Source:** `XSControl_Reader.hxx`:88 - `XSControl_Reader::XSControl_Reader`
+//   constructor: Creates a Reader from an already existing Session, with a
+//   constructor: Controller already set
+//   constructor: Virtual destructor
+//   Reason: param 'WS' uses unknown Handle type
+//   // pub fn new_handlexscontrolworksession_bool(WS: &HandleWorkSession, scratch: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `XSControl_Reader.hxx`:99 - `XSControl_Reader::SetWS`
+//   method: Sets a specific session to <me>
+//   Reason: param 'WS' uses unknown type 'const Handle(XSControl_WorkSession)&'
+//   // pub fn set_ws(&mut self, WS: &HandleWorkSession, scratch: bool);
+//
+// SKIPPED: **Source:** `XSControl_Reader.hxx`:103 - `XSControl_Reader::WS`
+//   method: Returns the session used in <me>
+//   Reason: return type 'Handle(XSControl_WorkSession)' is unknown
+//   // pub fn ws(&self) -> OwnedPtr<Handle<XSControl_WorkSession>>;
+//
+// SKIPPED: **Source:** `XSControl_Reader.hxx`:110 - `XSControl_Reader::ReadStream`
+//   method: Loads a file from stream and returns the read status
+//   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
+//   // pub fn read_stream(&mut self, theName: *const char, theIStream: /* std::istream& */) -> OwnedPtr<IFSelect_ReturnStatus>;
+//
+// SKIPPED: **Source:** `XSControl_Reader.hxx`:151 - `XSControl_Reader::GiveList`
+//   method: Computes a List of entities from the model as follows
+//   method: <first> being a Selection, <ent> being an entity or a list
+//   method: of entities (as a HSequenceOfTransient) :
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn give_list(&mut self, first: *const char, ent: &HandleTransient) -> OwnedPtr<Handle<TColStd_HSequenceOfTransient>>;
+//
+// SKIPPED: **Source:** `XSControl_Reader.hxx`:163 - `XSControl_Reader::RootForTransfer`
+//   method: Returns an IGES or STEP root
+//   method: entity for translation. The entity is identified by its
+//   method: rank in a list.
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn root_for_transfer(&mut self, num: i32) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `XSControl_Reader.hxx`:182 - `XSControl_Reader::TransferEntity`
+//   method: Translates an IGES or STEP
+//   method: entity in the model. true is returned if a shape is
+//   method: produced; otherwise, false is returned.
+//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn transfer_entity(&mut self, start: &HandleTransient, theProgress: &ProgressRange) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_Reader.hxx`:229 - `XSControl_Reader::PrintCheckLoad`
+//   method: Prints the check list attached to loaded data.
+//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
+//   // pub fn print_check_load(&self, theStream: /* Standard_OStream& */, failsonly: bool, mode: PrintCount);
+//
+// SKIPPED: **Source:** `XSControl_Reader.hxx`:244 - `XSControl_Reader::PrintCheckTransfer`
+//   method: Displays check results for the last translation of IGES or STEP entities to Open CASCADE
+//   method: entities.
+//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
+//   // pub fn print_check_transfer(&self, theStream: /* Standard_OStream& */, failsonly: bool, mode: PrintCount);
+//
+// SKIPPED: **Source:** `XSControl_Reader.hxx`:279 - `XSControl_Reader::PrintStatsTransfer`
+//   method: Displays the statistics for the last translation.
+//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
+//   // pub fn print_stats_transfer(&self, theStream: /* Standard_OStream& */, what: i32, mode: i32);
+//
+// SKIPPED: **Source:** `XSControl_Reader.hxx`:284 - `XSControl_Reader::GetStatsTransfer`
+//   method: Gives statistics about Transfer
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_stats_transfer(&self, list: &HandleHSequenceOfTransient, nbMapped: &mut i32, nbWithResult: &mut i32, nbWithFail: &mut i32);
+//
+// SKIPPED: **Source:** `XSControl_Reader.hxx`:291 - `XSControl_Reader::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: @param theParameters the parameters for shape processing.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &i32);
+//
+// SKIPPED: **Source:** `XSControl_Reader.hxx`:297 - `XSControl_Reader::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: Parameters are moved from the input map.
+//   method: @param theParameters the parameters for shape processing.
+//   Reason: has unbindable types: param 'theParameters': rvalue reference (int&&)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* int&& */);
+//
+// SKIPPED: **Source:** `XSControl_Reader.hxx`:305 - `XSControl_Reader::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: Parameters from @p theParameters are copied to the internal map.
+//   method: Parameters from @p theAdditionalParameters are copied to the internal map
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &ShapeFixParameters, theAdditionalParameters: &i32);
+//
+// SKIPPED: **Source:** `XSControl_Reader.hxx`:311 - `XSControl_Reader::GetShapeFixParameters`
+//   method: Returns parameters for shape processing that was set by SetParameters() method.
+//   method: @return the parameters for shape processing. Empty map if no parameters were set.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_shape_fix_parameters(&self) -> &i32;
+//
+// SKIPPED: **Source:** `XSControl_Reader.hxx`:315 - `XSControl_Reader::SetShapeProcessFlags`
+//   method: Sets flags defining operations to be performed on shapes.
+//   method: @param theFlags The flags defining operations to be performed on shapes.
+//   Reason: param 'theFlags' uses unknown type 'const ShapeProcess::OperationsFlags&'
+//   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
+//
+
 // ========================
 // From XSControl_SelectForTransfer.hxx
 // ========================
@@ -958,6 +1156,27 @@ impl SelectForTransfer {
     }
 }
 
+// ── Skipped symbols for SelectForTransfer (3 total) ──
+// SKIPPED: **Source:** `XSControl_SelectForTransfer.hxx`:65 - `XSControl_SelectForTransfer::SetActor`
+//   method: Sets a precise actor to sort entities
+//   method: This definition oversedes the creation with a TransferReader
+//   Reason: param 'act' uses unknown type 'const Handle(Transfer_ActorOfTransientProcess)&'
+//   // pub fn set_actor(&mut self, act: &HandleActorOfTransientProcess);
+//
+// SKIPPED: **Source:** `XSControl_SelectForTransfer.hxx`:70 - `XSControl_SelectForTransfer::Actor`
+//   method: Returns the Actor used as precised one.
+//   method: Returns a Null Handle for a creation from a TransferReader
+//   method: without any further setting
+//   Reason: return type 'Handle(Transfer_ActorOfTransientProcess)' is unknown
+//   // pub fn actor(&self) -> OwnedPtr<Handle<Transfer_ActorOfTransientProcess>>;
+//
+// SKIPPED: **Source:** `XSControl_SelectForTransfer.hxx`:79 - `XSControl_SelectForTransfer::Sort`
+//   method: Returns True for an Entity which is recognized by the Actor,
+//   method: either the precised one, or the one defined by TransferReader
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
+//
+
 // ========================
 // From XSControl_SignTransferStatus.hxx
 // ========================
@@ -1120,6 +1339,27 @@ impl SignTransferStatus {
         }
     }
 }
+
+// ── Skipped symbols for SignTransferStatus (3 total) ──
+// SKIPPED: **Source:** `XSControl_SignTransferStatus.hxx`:62 - `XSControl_SignTransferStatus::SetMap`
+//   method: Sets a precise map to sign entities
+//   method: This definition oversedes the creation with a TransferReader
+//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
+//   // pub fn set_map(&mut self, TP: &HandleTransientProcess);
+//
+// SKIPPED: **Source:** `XSControl_SignTransferStatus.hxx`:67 - `XSControl_SignTransferStatus::Map`
+//   method: Returns the TransientProcess used as precised one
+//   method: Returns a Null Handle for a creation from a TransferReader
+//   method: without any further setting
+//   Reason: return type 'Handle(Transfer_TransientProcess)' is unknown
+//   // pub fn map(&self) -> OwnedPtr<Handle<Transfer_TransientProcess>>;
+//
+// SKIPPED: **Source:** `XSControl_SignTransferStatus.hxx`:76 - `XSControl_SignTransferStatus::Value`
+//   method: Returns the Signature for a Transient object, as its transfer
+//   method: status
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn value(&self, ent: &HandleTransient, model: &HandleInterfaceModel) -> *const char;
+//
 
 // ========================
 // From XSControl_TransferReader.hxx
@@ -1389,6 +1629,212 @@ impl HandleXSControlTransferReader {
     }
 }
 
+// ── Skipped symbols for TransferReader (32 total) ──
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:74 - `XSControl_TransferReader::SetActor`
+//   method: Sets the Actor directly : this value will be used if the
+//   method: Controller is not set
+//   Reason: param 'theActor' uses unknown type 'const Handle(Transfer_ActorOfTransientProcess)&'
+//   // pub fn set_actor(&mut self, theActor: &HandleActorOfTransientProcess);
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:79 - `XSControl_TransferReader::Actor`
+//   method: Returns the Actor, determined by the Controller, or if this
+//   method: one is unknown, directly set.
+//   method: Once it has been defined, it can then be edited.
+//   Reason: return type 'Handle(Transfer_ActorOfTransientProcess)' is unknown
+//   // pub fn actor(&mut self) -> OwnedPtr<Handle<Transfer_ActorOfTransientProcess>>;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:86 - `XSControl_TransferReader::SetGraph`
+//   method: Sets a Graph and its InterfaceModel (calls SetModel)
+//   Reason: param 'theGraph' uses unknown type 'const Handle(Interface_HGraph)&'
+//   // pub fn set_graph(&mut self, theGraph: &HandleHGraph);
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:93 - `XSControl_TransferReader::SetContext`
+//   method: Sets a Context : according to receiving appli, to be
+//   method: interpreted by the Actor
+//   Reason: param 'theCtx' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn set_context(&mut self, theName: *const char, theCtx: &HandleTransient);
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:99 - `XSControl_TransferReader::GetContext`
+//   method: Returns the Context attached to a name, if set and if it is
+//   method: Kind of the type, else a Null Handle
+//   method: Returns True if OK, False if no Context
+//   Reason: param 'theCtx' uses unknown type 'Handle(Standard_Transient)&'
+//   // pub fn get_context(&self, theName: *const char, theType: &HandleType, theCtx: &mut HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:105 - `XSControl_TransferReader::Context`
+//   method: Returns (modifiable) the whole definition of Context
+//   method: Rather for internal use (ex.: preparing and setting in once)
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn context(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:126 - `XSControl_TransferReader::TransientProcess`
+//   method: Returns the currently used TransientProcess
+//   method: It is computed from the model by TransferReadRoots, or by
+//   method: BeginTransferRead
+//   Reason: return type 'const Handle(Transfer_TransientProcess)&' is unknown
+//   // pub fn transient_process(&self) -> &HandleTransientProcess;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:131 - `XSControl_TransferReader::SetTransientProcess`
+//   method: Forces the TransientProcess
+//   method: Remark : it also changes the Model and the Actor, from those
+//   method: recorded in the new TransientProcess
+//   Reason: param 'theTP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
+//   // pub fn set_transient_process(&mut self, theTP: &HandleTransientProcess);
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:137 - `XSControl_TransferReader::RecordResult`
+//   method: Records a final result of transferring an entity
+//   method: This result is recorded as a ResultFromModel, taken from
+//   method: the TransientProcess
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn record_result(&mut self, theEnt: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:142 - `XSControl_TransferReader::IsRecorded`
+//   method: Returns True if a final result is recorded for an entity
+//   method: Remark that it can bring no effective result if transfer has
+//   method: completely failed (FinalResult brings only fail messages ...)
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn is_recorded(&self, theEnt: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:146 - `XSControl_TransferReader::HasResult`
+//   method: Returns True if a final result is recorded AND BRINGS AN
+//   method: EFFECTIVE RESULT (else, it brings only fail messages)
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn has_result(&self, theEnt: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:156 - `XSControl_TransferReader::Skip`
+//   method: Note that an entity has been required for transfer but no
+//   method: result at all is available (typically : case not implemented)
+//   method: It is not an error, but it gives a specific status : Skipped
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn skip(&mut self, theEnt: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:159 - `XSControl_TransferReader::IsSkipped`
+//   method: Returns True if an entity is noted as skipped
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn is_skipped(&self, theEnt: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:164 - `XSControl_TransferReader::IsMarked`
+//   method: Returns True if an entity has been asked for transfert, hence
+//   method: it is marked, as : Recorded (a computation has ran, with or
+//   method: without an effective result), or Skipped (case ignored)
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn is_marked(&self, theEnt: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:167 - `XSControl_TransferReader::FinalResult`
+//   method: Returns the final result recorded for an entity, as such
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn final_result(&self, theEnt: &HandleTransient) -> OwnedPtr<Handle<Transfer_ResultFromModel>>;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:172 - `XSControl_TransferReader::FinalEntityLabel`
+//   method: Returns the label attached to an entity recorded for final,
+//   method: or an empty string if not recorded
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn final_entity_label(&self, theEnt: &HandleTransient) -> *const char;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:177 - `XSControl_TransferReader::FinalEntityNumber`
+//   method: Returns the number attached to the entity recorded for final,
+//   method: or zero if not recorded (looks in the ResultFromModel)
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn final_entity_number(&self, theEnt: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:181 - `XSControl_TransferReader::ResultFromNumber`
+//   method: Returns the final result recorded for a NUMBER of entity
+//   method: (internal use). Null if out of range
+//   Reason: return type 'Handle(Transfer_ResultFromModel)' is unknown
+//   // pub fn result_from_number(&self, theNum: i32) -> OwnedPtr<Handle<Transfer_ResultFromModel>>;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:186 - `XSControl_TransferReader::TransientResult`
+//   method: Returns the resulting object as a Transient
+//   method: Null Handle if no result or result not transient
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn transient_result(&self, theEnt: &HandleTransient) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:191 - `XSControl_TransferReader::ShapeResult`
+//   method: Returns the resulting object as a Shape
+//   method: Null Shape if no result or result not a shape
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn shape_result(&self, theEnt: &HandleTransient) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:200 - `XSControl_TransferReader::ClearResult`
+//   method: Clears recorded result for an entity, according mode
+//   method: <mode> = -1 : true, complete, clearing (erasing result)
+//   method: <mode> >= 0 : simple "stripping", see ResultFromModel,
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn clear_result(&mut self, theEnt: &HandleTransient, theMode: i32) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:211 - `XSControl_TransferReader::EntityFromResult`
+//   method: Returns an entity from which a given result was produced.
+//   method: If <mode> = 0 (D), searches in last root transfers
+//   method: If <mode> = 1,     searches in last (root & sub) transfers
+//   Reason: param 'theRes' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn entity_from_result(&self, theRes: &HandleTransient, theMode: i32) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:217 - `XSControl_TransferReader::EntityFromShapeResult`
+//   method: Returns an entity from which a given shape result was produced
+//   method: Returns a Null Handle if <res> not recorded or not a Shape
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn entity_from_shape_result(&self, theRes: &Shape, theMode: i32) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:240 - `XSControl_TransferReader::CheckList`
+//   method: Returns the CheckList resulting from transferring <ent>, i.e.
+//   method: stored in its recorded form ResultFromModel
+//   method: (empty if transfer successful or not recorded ...)
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn check_list(&self, theEnt: &HandleTransient, theLevel: i32) -> OwnedPtr<Interface_CheckIterator>;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:247 - `XSControl_TransferReader::HasChecks`
+//   method: Returns True if an entity (with a final result) has checks :
+//   method: - failsonly = False : any kind of check message
+//   method: - failsonly = True  : fails only
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn has_checks(&self, theEnt: &HandleTransient, FailsOnly: bool) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:263 - `XSControl_TransferReader::CheckedList`
+//   method: Returns the list of starting entities to which a given check
+//   method: status is attached, IN FINAL RESULTS
+//   method: <ent> can be an entity, or the model to query all entities
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn checked_list(&self, theEnt: &HandleTransient, WithCheck: CheckStatus, theResult: bool) -> OwnedPtr<Handle<TColStd_HSequenceOfTransient>>;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:275 - `XSControl_TransferReader::Recognize`
+//   method: Tells if an entity is recognized as a valid candidate for
+//   method: Transfer. Calls method Recognize from the Actor (if known)
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn recognize(&mut self, theEnt: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:282 - `XSControl_TransferReader::TransferOne`
+//   method: Commands the transfer on reading for an entity to data for
+//   method: Imagine, using the selected Actor for Read
+//   method: Returns count of transferred entities, ok or with fails (0/1)
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn transfer_one(&mut self, theEnt: &HandleTransient, theRec: bool, theProgress: &ProgressRange) -> i32;
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:306 - `XSControl_TransferReader::TransferClear`
+//   method: Clears the results attached to an entity
+//   method: if <ents> equates the starting model, clears all results
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn transfer_clear(&mut self, theEnt: &HandleTransient, theLevel: i32);
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:311 - `XSControl_TransferReader::PrintStats`
+//   method: Prints statistics on current Trace File, according <what> and
+//   method: <mode>.  See PrintStatsProcess for details
+//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
+//   // pub fn print_stats(&self, theStream: /* Standard_OStream& */, theWhat: i32, theMode: i32);
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:364 - `XSControl_TransferReader::PrintStatsProcess`
+//   static_method: This routines prints statistics about a TransientProcess
+//   static_method: It can be called, by a TransferReader, or isolately
+//   static_method: Prints are done on the default trace file
+//   Reason: param 'theTP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
+//   // pub fn print_stats_process(theTP: &HandleTransientProcess, theWhat: i32, theMode: i32);
+//
+// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:370 - `XSControl_TransferReader::PrintStatsOnList`
+//   static_method: Works as PrintStatsProcess, but displays data only on the
+//   static_method: entities which are in <list> (filter)
+//   Reason: param 'theTP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
+//   // pub fn print_stats_on_list(theTP: &HandleTransientProcess, theList: &HandleHSequenceOfTransient, theWhat: i32, theMode: i32);
+//
+
 // ========================
 // From XSControl_TransferWriter.hxx
 // ========================
@@ -1571,6 +2017,32 @@ impl HandleXSControlTransferWriter {
         unsafe { &mut *(crate::ffi::HandleXSControlTransferWriter_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for TransferWriter (4 total) ──
+// SKIPPED: **Source:** `XSControl_TransferWriter.hxx`:52 - `XSControl_TransferWriter::FinderProcess`
+//   method: Returns the FinderProcess itself
+//   Reason: return type 'const Handle(Transfer_FinderProcess)&' is unknown
+//   // pub fn finder_process(&self) -> &HandleFinderProcess;
+//
+// SKIPPED: **Source:** `XSControl_TransferWriter.hxx`:55 - `XSControl_TransferWriter::SetFinderProcess`
+//   method: Sets a new FinderProcess and forgets the former one
+//   Reason: param 'theFP' uses unknown type 'const Handle(Transfer_FinderProcess)&'
+//   // pub fn set_finder_process(&mut self, theFP: &HandleFinderProcess);
+//
+// SKIPPED: **Source:** `XSControl_TransferWriter.hxx`:90 - `XSControl_TransferWriter::RecognizeTransient`
+//   method: Tells if a transient object (from an application) is a valid
+//   method: candidate for a transfer to a model
+//   method: Asks the Controller (RecognizeWriteTransient)
+//   Reason: param 'theObj' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn recognize_transient(&mut self, theObj: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_TransferWriter.hxx`:98 - `XSControl_TransferWriter::TransferWriteTransient`
+//   method: Transfers a Transient object (from an application) to a model
+//   method: of current norm, according to the last call to SetTransferMode
+//   method: Works by calling the Controller
+//   Reason: param 'theObj' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn transfer_write_transient(&mut self, theModel: &HandleInterfaceModel, theObj: &HandleTransient, theProgress: &ProgressRange) -> OwnedPtr<IFSelect_ReturnStatus>;
+//
 
 // ========================
 // From XSControl_Utils.hxx
@@ -1829,6 +2301,103 @@ impl Utils {
         unsafe { crate::ffi::XSControl_Utils_seq_int_value(self as *const Self, list, num) }
     }
 }
+
+// ── Skipped symbols for Utils (21 total) ──
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:68 - `XSControl_Utils::TraceLines`
+//   method: Just prints a line or a set of lines into the current Trace
+//   method: File. <lines> can be a HAscii/ExtendedString (produces a print
+//   method: without ending line) or a HSequence or HArray1 Of ..
+//   Reason: param 'lines' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn trace_lines(&self, lines: &HandleTransient);
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:70 - `XSControl_Utils::IsKind`
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn is_kind(&self, item: &HandleTransient, what: &HandleType) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:79 - `XSControl_Utils::TypeName`
+//   method: Returns the name of the dynamic type of an object, i.e. :
+//   method: If it is a Type, its Name
+//   method: If it is a object not a type, the Name of its DynamicType
+//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn type_name(&self, item: &HandleTransient, nopk: bool) -> *const char;
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:82 - `XSControl_Utils::TraValue`
+//   Reason: param 'list' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn tra_value(&self, list: &HandleTransient, num: i32) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:87 - `XSControl_Utils::AppendTra`
+//   Reason: param 'traval' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn append_tra(&self, seqval: &HandleHSequenceOfTransient, traval: &HandleTransient);
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:97 - `XSControl_Utils::DateValues`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn date_values(&self, text: *const char, yy: &mut i32, mm: &mut i32, dd: &mut i32, hh: &mut i32, mn: &mut i32, ss: &mut i32);
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:114 - `XSControl_Utils::ToEString`
+//   Reason: return type 'Standard_ExtString' is unknown
+//   // pub fn to_e_string(&self, strval: &HandleHExtendedString) -> OwnedPtr<Standard_ExtString>;
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:116 - `XSControl_Utils::ToEString`
+//   Reason: return type 'Standard_ExtString' is unknown
+//   // pub fn to_e_string(&self, strval: &ExtendedString) -> OwnedPtr<Standard_ExtString>;
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:118 - `XSControl_Utils::ToHString`
+//   Reason: param 'strcon' uses unknown type 'Standard_ExtString'
+//   // pub fn to_h_string(&self, strcon: ExtString) -> OwnedPtr<Handle<TCollection_HExtendedString>>;
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:121 - `XSControl_Utils::ToXString`
+//   Reason: param 'strcon' uses unknown type 'Standard_ExtString'
+//   // pub fn to_x_string(&self, strcon: ExtString) -> OwnedPtr<TCollection_ExtendedString>;
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:123 - `XSControl_Utils::AsciiToExtended`
+//   Reason: return type 'Standard_ExtString' is unknown
+//   // pub fn ascii_to_extended(&self, str: *const char) -> OwnedPtr<Standard_ExtString>;
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:125 - `XSControl_Utils::IsAscii`
+//   Reason: param 'str' uses unknown type 'Standard_ExtString'
+//   // pub fn is_ascii(&self, str: ExtString) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:127 - `XSControl_Utils::ExtendedToAscii`
+//   Reason: param 'str' uses unknown type 'Standard_ExtString'
+//   // pub fn extended_to_ascii(&self, str: ExtString) -> *const char;
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:129 - `XSControl_Utils::CStrValue`
+//   Reason: param 'list' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn c_str_value(&self, list: &HandleTransient, num: i32) -> *const char;
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:132 - `XSControl_Utils::EStrValue`
+//   Reason: param 'list' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn e_str_value(&self, list: &HandleTransient, num: i32) -> OwnedPtr<Standard_ExtString>;
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:142 - `XSControl_Utils::AppendEStr`
+//   Reason: param 'strval' uses unknown type 'Standard_ExtString'
+//   // pub fn append_e_str(&self, seqval: &HandleHSequenceOfHExtendedString, strval: ExtString);
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:183 - `XSControl_Utils::ShapeBinder`
+//   method: Creates a Transient Object from a Shape : it is either a Binder
+//   method: (used by functions which require a Transient but can process
+//   method: a Shape, such as viewing functions) or a HShape (according to hs)
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn shape_binder(&self, shape: &Shape, hs: bool) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:189 - `XSControl_Utils::BinderShape`
+//   method: From a Transient, returns a Shape.
+//   method: In fact, recognizes ShapeBinder ShapeMapper and HShape
+//   Reason: param 'tr' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn binder_shape(&self, tr: &HandleTransient) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:191 - `XSControl_Utils::SeqLength`
+//   Reason: param 'list' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn seq_length(&self, list: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:193 - `XSControl_Utils::SeqToArr`
+//   Reason: param 'seq' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn seq_to_arr(&self, seq: &HandleTransient, first: i32) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `XSControl_Utils.hxx`:196 - `XSControl_Utils::ArrToSeq`
+//   Reason: param 'arr' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn arr_to_seq(&self, arr: &HandleTransient) -> OwnedPtr<Handle<Standard_Transient>>;
+//
 
 // ========================
 // From XSControl_WorkSession.hxx
@@ -2795,6 +3364,68 @@ impl WorkSession {
     }
 }
 
+// ── Skipped symbols for WorkSession (10 total) ──
+// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:85 - `XSControl_WorkSession::Context`
+//   method: Returns the current Context List, Null if not defined
+//   method: The Context is given to the TransientProcess for TransferRead
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn context(&self) -> &i32;
+//
+// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:89 - `XSControl_WorkSession::SetAllContext`
+//   method: Sets the current Context List, as a whole
+//   method: Sets it to the TransferReader
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_all_context(&mut self, theContext: &i32);
+//
+// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:98 - `XSControl_WorkSession::PrintTransferStatus`
+//   method: Prints the transfer status of a transferred item, as being
+//   method: the Mapped n0 <num>, from MapWriter if <wri> is True, or
+//   method: from MapReader if <wri> is False
+//   Reason: has unbindable types: param 'theS': stream type (Standard_OStream&)
+//   // pub fn print_transfer_status(&self, theNum: i32, theWri: bool, theS: /* Standard_OStream& */) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:117 - `XSControl_WorkSession::MapReader`
+//   method: Returns the TransientProcess(internal data for TransferReader)
+//   Reason: return type 'Handle(Transfer_TransientProcess)' is unknown
+//   // pub fn map_reader(&self) -> OwnedPtr<Handle<Transfer_TransientProcess>>;
+//
+// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:123 - `XSControl_WorkSession::SetMapReader`
+//   method: Changes the Map Reader, i.e. considers that the new one
+//   method: defines the relevant read results (forgets the former ones)
+//   method: Returns True when done, False in case of bad definition, i.e.
+//   Reason: param 'theTP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
+//   // pub fn set_map_reader(&mut self, theTP: &HandleTransientProcess) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:134 - `XSControl_WorkSession::Result`
+//   method: Returns the result attached to a starting entity
+//   method: If <mode> = 0, returns Final Result
+//   method: If <mode> = 1, considers Last Result
+//   Reason: param 'theEnt' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn result(&self, theEnt: &HandleTransient, theMode: i32) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:146 - `XSControl_WorkSession::TransferReadOne`
+//   method: Commands the transfer of, either one entity, or a list
+//   method: I.E. calls the TransferReader after having analysed <ents>
+//   method: It is cumulated from the last BeginTransfer
+//   Reason: param 'theEnts' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn transfer_read_one(&mut self, theEnts: &HandleTransient, theProgress: &ProgressRange) -> i32;
+//
+// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:166 - `XSControl_WorkSession::SetMapWriter`
+//   method: Changes the Map Reader, i.e. considers that the new one
+//   method: defines the relevant read results (forgets the former ones)
+//   method: Returns True when done, False if <FP> is Null
+//   Reason: param 'theFP' uses unknown type 'const Handle(Transfer_FinderProcess)&'
+//   // pub fn set_map_writer(&mut self, theFP: &HandleFinderProcess) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:189 - `XSControl_WorkSession::Vars`
+//   Reason: return type 'const Handle(XSControl_Vars)&' is unknown
+//   // pub fn vars(&self) -> &HandleVars;
+//
+// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:191 - `XSControl_WorkSession::SetVars`
+//   Reason: param 'theVars' uses unknown type 'const Handle(XSControl_Vars)&'
+//   // pub fn set_vars(&mut self, theVars: &HandleVars);
+//
+
 // ========================
 // From XSControl_Writer.hxx
 // ========================
@@ -2891,8 +3522,40 @@ impl Writer {
     }
 }
 
+// ── Skipped symbols for Writer (3 total) ──
+// SKIPPED: **Source:** `XSControl_Writer.hxx`:50 - `XSControl_Writer::XSControl_Writer`
+//   constructor: Creates a Writer from an already existing Session
+//   constructor: If <scratch> is True (D), clears already recorded data
+//   Reason: param 'WS' uses unknown Handle type
+//   // pub fn new_handlexscontrolworksession_bool(WS: &HandleWorkSession, scratch: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `XSControl_Writer.hxx`:58 - `XSControl_Writer::SetWS`
+//   method: Sets a specific session to <me>
+//   Reason: param 'WS' uses unknown type 'const Handle(XSControl_WorkSession)&'
+//   // pub fn set_ws(&mut self, WS: &HandleWorkSession, scratch: bool);
+//
+// SKIPPED: **Source:** `XSControl_Writer.hxx`:62 - `XSControl_Writer::WS`
+//   method: Returns the session used in <me>
+//   Reason: return type 'Handle(XSControl_WorkSession)' is unknown
+//   // pub fn ws(&self) -> OwnedPtr<Handle<XSControl_WorkSession>>;
+//
+
 // ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::XSControl_Vars as Vars;
+
+// ── Skipped free functions (2 total) ──
+// SKIPPED: **Source:** `XSControl.hxx`:37 - `XSControl::Session`
+//   function: Returns the WorkSession of a SessionPilot, but casts it as
+//   function: from XSControl : it then gives access to Control & Transfers
+//   Reason: param 'pilot' uses unknown type 'const Handle(IFSelect_SessionPilot)&'
+//   // pub fn session(pilot: &HandleSessionPilot) -> OwnedPtr<Handle<XSControl_WorkSession>>;
+//
+// SKIPPED: **Source:** `XSControl.hxx`:42 - `XSControl::Vars`
+//   function: Returns the Vars of a SessionPilot, it is brought by Session
+//   function: it provides access to external variables
+//   Reason: param 'pilot' uses unknown type 'const Handle(IFSelect_SessionPilot)&'
+//   // pub fn vars(pilot: &HandleSessionPilot) -> OwnedPtr<Handle<XSControl_Vars>>;
+//

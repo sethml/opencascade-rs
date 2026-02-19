@@ -137,3 +137,13 @@ impl Approx {
         unsafe { crate::ffi::AppBlend_Approx_tol_curve_on_surf(self as *const Self, Index) }
     }
 }
+
+// ── Skipped symbols for Approx (2 total) ──
+// SKIPPED: **Source:** `AppBlend_Approx.hxx`:39 - `AppBlend_Approx::SurfShape`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn surf_shape(&self, UDegree: &mut i32, VDegree: &mut i32, NbUPoles: &mut i32, NbVPoles: &mut i32, NbUKnots: &mut i32, NbVKnots: &mut i32);
+//
+// SKIPPED: **Source:** `AppBlend_Approx.hxx`:71 - `AppBlend_Approx::Curves2dShape`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32);
+//

@@ -120,6 +120,18 @@ impl BaseMeshAlgo {
     }
 }
 
+// ── Skipped symbols for BaseMeshAlgo (2 total) ──
+// SKIPPED: **Source:** `BRepMesh_BaseMeshAlgo.hxx`:35 - `BRepMesh_BaseMeshAlgo::BRepMesh_BaseMeshAlgo`
+//   constructor: Constructor.
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new() -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepMesh_BaseMeshAlgo.hxx`:41 - `BRepMesh_BaseMeshAlgo::Perform`
+//   method: Performs processing of the given face.
+//   Reason: param 'theDFace' uses unknown type 'const IMeshData::IFaceHandle&'
+//   // pub fn perform(&mut self, theDFace: &IFaceHandle, theParameters: &Parameters, theRange: &ProgressRange);
+//
+
 // ========================
 // From BRepMesh_BoundaryParamsRangeSplitter.hxx
 // ========================
@@ -445,6 +457,27 @@ impl CircleTool {
     }
 }
 
+// ── Skipped symbols for CircleTool (3 total) ──
+// SKIPPED: **Source:** `BRepMesh_CircleTool.hxx`:39 - `BRepMesh_CircleTool::BRepMesh_CircleTool`
+//   constructor: Constructor.
+//   constructor: @param theAllocator memory allocator to be used by internal structures.
+//   Reason: param 'theAllocator' uses unknown Handle type
+//   // pub fn new_handlencollectionincallocator(theAllocator: &HandleIncAllocator) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepMesh_CircleTool.hxx`:44 - `BRepMesh_CircleTool::BRepMesh_CircleTool`
+//   constructor: Constructor.
+//   constructor: @param theReservedSize size to be reserved for vector of circles.
+//   constructor: @param theAllocator memory allocator to be used by internal structures.
+//   Reason: param 'theAllocator' uses unknown Handle type
+//   // pub fn new_int_handlencollectionincallocator(theReservedSize: i32, theAllocator: &HandleIncAllocator) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepMesh_CircleTool.hxx`:118 - `BRepMesh_CircleTool::Select`
+//   method: Select the circles shot by the given point.
+//   method: @param thePoint bullet point.
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn select(&mut self, thePoint: &XY) -> &mut ListOfInteger;
+//
+
 // ========================
 // From BRepMesh_Classifier.hxx
 // ========================
@@ -530,6 +563,15 @@ impl HandleBRepMeshClassifier {
     }
 }
 
+// ── Skipped symbols for Classifier (1 total) ──
+// SKIPPED: **Source:** `BRepMesh_Classifier.hxx`:51 - `BRepMesh_Classifier::RegisterWire`
+//   method: Registers wire specified by sequence of points for
+//   method: further classification of points.
+//   method: @param theWire Wire to be registered. Specified by sequence of points.
+//   Reason: has unbindable types: param 'theWire': unresolved template/nested type (const NCollection_Sequence<const gp_Pnt2d *>&); param 'theTolUV': unresolved template/nested type (const std::pair<Standard_Real, Standard_Real>&); param 'theRangeU': unresolved template/nested type (const std::pair<Standard_Real, Standard_Real>&); param 'theRangeV': unresolved template/nested type (const std::pair<Standard_Real, Standard_Real>&)
+//   // pub fn register_wire(&mut self, theWire: /* const NCollection_Sequence<const gp_Pnt2d *>& */, theTolUV: /* const std::pair<Standard_Real, Standard_Real>& */, theRangeU: /* const std::pair<Standard_Real, Standard_Real>& */, theRangeV: /* const std::pair<Standard_Real, Standard_Real>& */);
+//
+
 // ========================
 // From BRepMesh_ConeRangeSplitter.hxx
 // ========================
@@ -613,6 +655,20 @@ impl ConeRangeSplitter {
     }
 }
 
+// ── Skipped symbols for ConeRangeSplitter (2 total) ──
+// SKIPPED: **Source:** `BRepMesh_ConeRangeSplitter.hxx`:35 - `BRepMesh_ConeRangeSplitter::GetSplitSteps`
+//   method: Returns split intervals along U and V direction.
+//   method: @param theParameters meshing parameters.
+//   method: @param[out] theStepsNb number of steps along corresponding direction.
+//   Reason: has unbindable types: param 'theStepsNb': unresolved template/nested type (std::pair<Standard_Integer, Standard_Integer>&); return: unresolved template/nested type (std::pair<Standard_Real, Standard_Real>)
+//   // pub fn get_split_steps(&self, theParameters: &Parameters, theStepsNb: /* std::pair<Standard_Integer, Standard_Integer>& */) -> OwnedPtr<std::pair<Standard_Real, Standard_Real>>;
+//
+// SKIPPED: **Source:** `BRepMesh_ConeRangeSplitter.hxx`:40 - `BRepMesh_ConeRangeSplitter::GenerateSurfaceNodes`
+//   method: Returns list of nodes generated using surface data and specified parameters.
+//   Reason: return type 'Handle(IMeshData::ListOfPnt2d)' is unknown
+//   // pub fn generate_surface_nodes(&self, theParameters: &Parameters) -> OwnedPtr<Handle<IMeshData::ListOfPnt2d>>;
+//
+
 // ========================
 // From BRepMesh_ConstrainedBaseMeshAlgo.hxx
 // ========================
@@ -686,6 +742,13 @@ impl ConstrainedBaseMeshAlgo {
         }
     }
 }
+
+// ── Skipped symbols for ConstrainedBaseMeshAlgo (1 total) ──
+// SKIPPED: **Source:** `BRepMesh_ConstrainedBaseMeshAlgo.hxx`:29 - `BRepMesh_ConstrainedBaseMeshAlgo::BRepMesh_ConstrainedBaseMeshAlgo`
+//   constructor: Constructor.
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new() -> OwnedPtr<Self>;
+//
 
 // ========================
 // From BRepMesh_Context.hxx
@@ -963,6 +1026,18 @@ impl CurveTessellator {
     }
 }
 
+// ── Skipped symbols for CurveTessellator (2 total) ──
+// SKIPPED: **Source:** `BRepMesh_CurveTessellator.hxx`:34 - `BRepMesh_CurveTessellator::BRepMesh_CurveTessellator`
+//   constructor: Constructor.
+//   Reason: param 'theEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
+//   // pub fn new_iedgehandle_parameters_int(theEdge: &IEdgeHandle, theParameters: &Parameters, theMinPointsNb: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepMesh_CurveTessellator.hxx`:39 - `BRepMesh_CurveTessellator::BRepMesh_CurveTessellator`
+//   constructor: Constructor.
+//   Reason: param 'theEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
+//   // pub fn new_iedgehandle_orientation_ifacehandle_parameters_int(theEdge: &IEdgeHandle, theOrientation: Orientation, theFace: &IFaceHandle, theParameters: &Parameters, theMinPointsNb: i32) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From BRepMesh_CustomBaseMeshAlgo.hxx
 // ========================
@@ -1051,6 +1126,13 @@ impl CustomBaseMeshAlgo {
     }
 }
 
+// ── Skipped symbols for CustomBaseMeshAlgo (1 total) ──
+// SKIPPED: **Source:** `BRepMesh_CustomBaseMeshAlgo.hxx`:31 - `BRepMesh_CustomBaseMeshAlgo::BRepMesh_CustomBaseMeshAlgo`
+//   constructor: Constructor.
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new() -> OwnedPtr<Self>;
+//
+
 // ========================
 // From BRepMesh_CylinderRangeSplitter.hxx
 // ========================
@@ -1138,6 +1220,18 @@ impl CylinderRangeSplitter {
         }
     }
 }
+
+// ── Skipped symbols for CylinderRangeSplitter (2 total) ──
+// SKIPPED: **Source:** `BRepMesh_CylinderRangeSplitter.hxx`:36 - `BRepMesh_CylinderRangeSplitter::Reset`
+//   method: Resets this splitter. Must be called before first use.
+//   Reason: param 'theDFace' uses unknown type 'const IMeshData::IFaceHandle&'
+//   // pub fn reset(&mut self, theDFace: &IFaceHandle, theParameters: &Parameters);
+//
+// SKIPPED: **Source:** `BRepMesh_CylinderRangeSplitter.hxx`:40 - `BRepMesh_CylinderRangeSplitter::GenerateSurfaceNodes`
+//   method: Returns list of nodes generated using surface data and specified parameters.
+//   Reason: return type 'Handle(IMeshData::ListOfPnt2d)' is unknown
+//   // pub fn generate_surface_nodes(&self, theParameters: &Parameters) -> OwnedPtr<Handle<IMeshData::ListOfPnt2d>>;
+//
 
 // ========================
 // From BRepMesh_DataStructureOfDelaun.hxx
@@ -1442,6 +1536,51 @@ impl HandleBRepMeshDataStructureOfDelaun {
     }
 }
 
+// ── Skipped symbols for DataStructureOfDelaun (7 total) ──
+// SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:30 - `BRepMesh_DataStructureOfDelaun::BRepMesh_DataStructureOfDelaun`
+//   constructor: Constructor.
+//   constructor: @param theAllocator memory allocator to be used by internal structures.
+//   constructor: @param theReservedNodeSize presumed number of nodes in this mesh.
+//   Reason: param 'theAllocator' uses unknown Handle type
+//   // pub fn new_handlencollectionincallocator_int(theAllocator: &HandleIncAllocator, theReservedNodeSize: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:86 - `BRepMesh_DataStructureOfDelaun::LinksConnectedTo`
+//   method: Get list of links attached to the node with the given index.
+//   method: @param theIndex index of node whose links should be retrieved.
+//   method: @return list of links attached to the node.
+//   Reason: return type 'const IMeshData::ListOfInteger&' is unknown
+//   // pub fn links_connected_to(&self, theIndex: i32) -> &ListOfInteger;
+//
+// SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:117 - `BRepMesh_DataStructureOfDelaun::LinksOfDomain`
+//   method: Returns map of indices of links registered in mesh.
+//   Reason: return type 'const IMeshData::MapOfInteger&' is unknown
+//   // pub fn links_of_domain(&self) -> &MapOfInteger;
+//
+// SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:160 - `BRepMesh_DataStructureOfDelaun::ElementsOfDomain`
+//   method: Returns map of indices of elements registered in mesh.
+//   Reason: return type 'const IMeshData::MapOfInteger&' is unknown
+//   // pub fn elements_of_domain(&self) -> &MapOfInteger;
+//
+// SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:176 - `BRepMesh_DataStructureOfDelaun::ElementNodes`
+//   method: Returns indices of nodes forming the given element.
+//   method: @param theElement element which nodes should be retrieved.
+//   method: @param[out] theNodes nodes of the given element.
+//   Reason: has unbindable types: param 'theNodes': C-style array (Standard_Integer[3]&)
+//   // pub fn element_nodes(&mut self, theElement: &Triangle, theNodes: /* Standard_Integer[3]& */);
+//
+// SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:184 - `BRepMesh_DataStructureOfDelaun::Statistics`
+//   method: @name Auxiliary API
+//   method: Dumps information about this structure.
+//   method: @param theStream stream to be used for dump.
+//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
+//   // pub fn statistics(&self, theStream: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:187 - `BRepMesh_DataStructureOfDelaun::Allocator`
+//   method: Returns memory allocator used by the structure.
+//   Reason: return type 'const Handle(NCollection_IncAllocator)&' is unknown
+//   // pub fn allocator(&self) -> &HandleIncAllocator;
+//
+
 // ========================
 // From BRepMesh_DefaultRangeSplitter.hxx
 // ========================
@@ -1515,6 +1654,48 @@ impl DefaultRangeSplitter {
         }
     }
 }
+
+// ── Skipped symbols for DefaultRangeSplitter (8 total) ──
+// SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:38 - `BRepMesh_DefaultRangeSplitter::Reset`
+//   method: Resets this splitter. Must be called before first use.
+//   Reason: param 'theDFace' uses unknown type 'const IMeshData::IFaceHandle&'
+//   // pub fn reset(&mut self, theDFace: &IFaceHandle, theParameters: &Parameters);
+//
+// SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:61 - `BRepMesh_DefaultRangeSplitter::GenerateSurfaceNodes`
+//   method: Returns list of nodes generated using surface data and specified parameters.
+//   method: By default returns null ptr.
+//   Reason: return type 'Handle(IMeshData::ListOfPnt2d)' is unknown
+//   // pub fn generate_surface_nodes(&self, theParameters: &Parameters) -> OwnedPtr<Handle<IMeshData::ListOfPnt2d>>;
+//
+// SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace`
+//   method: Returns face model.
+//   Reason: return type 'const IMeshData::IFaceHandle&' is unknown
+//   // pub fn get_d_face(&self) -> &IFaceHandle;
+//
+// SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface`
+//   method: Returns surface.
+//   Reason: return type 'const Handle(BRepAdaptor_Surface)&' is unknown
+//   // pub fn get_surface(&self) -> &HandleSurface;
+//
+// SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU`
+//   method: Returns U range.
+//   Reason: has unbindable types: return: unresolved template/nested type (const std::pair<Standard_Real, Standard_Real>&)
+//   // pub fn get_range_u(&self) -> /* const std::pair<Standard_Real, Standard_Real>& */;
+//
+// SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV`
+//   method: Returns V range.
+//   Reason: has unbindable types: return: unresolved template/nested type (const std::pair<Standard_Real, Standard_Real>&)
+//   // pub fn get_range_v(&self) -> /* const std::pair<Standard_Real, Standard_Real>& */;
+//
+// SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta`
+//   method: Returns delta.
+//   Reason: has unbindable types: return: unresolved template/nested type (const std::pair<Standard_Real, Standard_Real>&)
+//   // pub fn get_delta(&self) -> /* const std::pair<Standard_Real, Standard_Real>& */;
+//
+// SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV`
+//   Reason: has unbindable types: return: unresolved template/nested type (const std::pair<Standard_Real, Standard_Real>&)
+//   // pub fn get_tolerance_uv(&self) -> /* const std::pair<Standard_Real, Standard_Real>& */;
+//
 
 // ========================
 // From BRepMesh_Deflection.hxx
@@ -1631,6 +1812,23 @@ impl HandleBRepMeshDeflection {
         unsafe { &mut *(crate::ffi::HandleBRepMeshDeflection_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Deflection (3 total) ──
+// SKIPPED: **Source:** `BRepMesh_Deflection.hxx`:41 - `BRepMesh_Deflection::ComputeDeflection`
+//   static_method: Computes and updates deflection of the given discrete edge.
+//   Reason: param 'theDEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
+//   // pub fn compute_deflection(theDEdge: &IEdgeHandle, theMaxShapeSize: f64, theParameters: &Parameters);
+//
+// SKIPPED: **Source:** `BRepMesh_Deflection.hxx`:46 - `BRepMesh_Deflection::ComputeDeflection`
+//   static_method: Computes and updates deflection of the given discrete wire.
+//   Reason: param 'theDWire' uses unknown type 'const IMeshData::IWireHandle&'
+//   // pub fn compute_deflection(theDWire: &IWireHandle, theParameters: &Parameters);
+//
+// SKIPPED: **Source:** `BRepMesh_Deflection.hxx`:50 - `BRepMesh_Deflection::ComputeDeflection`
+//   static_method: Computes and updates deflection of the given discrete face.
+//   Reason: param 'theDFace' uses unknown type 'const IMeshData::IFaceHandle&'
+//   // pub fn compute_deflection(theDFace: &IFaceHandle, theParameters: &Parameters);
+//
 
 // ========================
 // From BRepMesh_DelabellaBaseMeshAlgo.hxx
@@ -1928,6 +2126,65 @@ impl Delaun {
         unsafe { crate::ffi::BRepMesh_Delaun_remove_aux_elements(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for Delaun (11 total) ──
+// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:46 - `BRepMesh_Delaun::BRepMesh_Delaun`
+//   constructor: Creates the triangulation with an empty Mesh data structure.
+//   Reason: param 'theVertices' uses unknown type 'IMeshData::Array1OfVertexOfDelaun&'
+//   // pub fn new_array1ofvertexofdelaun(theVertices: &mut Array1OfVertexOfDelaun) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:49 - `BRepMesh_Delaun::BRepMesh_Delaun`
+//   constructor: Creates the triangulation with an existent Mesh data structure.
+//   Reason: param 'theVertices' uses unknown type 'IMeshData::Array1OfVertexOfDelaun&'
+//   // pub fn new_handlebrepmeshdatastructureofdelaun_array1ofvertexofdelaun(theOldMesh: &HandleDataStructureOfDelaun, theVertices: &mut Array1OfVertexOfDelaun) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:53 - `BRepMesh_Delaun::BRepMesh_Delaun`
+//   constructor: Creates the triangulation with an existant Mesh data structure.
+//   Reason: param 'theVertexIndices' uses unknown type 'IMeshData::VectorOfInteger&'
+//   // pub fn new_handlebrepmeshdatastructureofdelaun_vectorofinteger(theOldMesh: &HandleDataStructureOfDelaun, theVertexIndices: &mut VectorOfInteger) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:57 - `BRepMesh_Delaun::BRepMesh_Delaun`
+//   constructor: Creates the triangulation with an existant Mesh data structure.
+//   Reason: param 'theVertexIndices' uses unknown type 'IMeshData::VectorOfInteger&'
+//   // pub fn new_handlebrepmeshdatastructureofdelaun_vectorofinteger_int2(theOldMesh: &HandleDataStructureOfDelaun, theVertexIndices: &mut VectorOfInteger, theCellsCountU: i32, theCellsCountV: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:63 - `BRepMesh_Delaun::Init`
+//   method: Initializes the triangulation with an array of vertices.
+//   Reason: param 'theVertices' uses unknown type 'IMeshData::Array1OfVertexOfDelaun&'
+//   // pub fn init(&mut self, theVertices: &mut Array1OfVertexOfDelaun);
+//
+// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:73 - `BRepMesh_Delaun::AddVertices`
+//   method: Adds some vertices into the triangulation.
+//   Reason: param 'theVerticesIndices' uses unknown type 'IMeshData::VectorOfInteger&'
+//   // pub fn add_vertices(&mut self, theVerticesIndices: &mut VectorOfInteger, theRange: &ProgressRange);
+//
+// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:93 - `BRepMesh_Delaun::Frontier`
+//   method: Gives the list of frontier edges.
+//   Reason: return type 'Handle(IMeshData::MapOfInteger)' is unknown
+//   // pub fn frontier(&self) -> OwnedPtr<Handle<IMeshData::MapOfInteger>>;
+//
+// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:96 - `BRepMesh_Delaun::InternalEdges`
+//   method: Gives the list of internal edges.
+//   Reason: return type 'Handle(IMeshData::MapOfInteger)' is unknown
+//   // pub fn internal_edges(&self) -> OwnedPtr<Handle<IMeshData::MapOfInteger>>;
+//
+// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:99 - `BRepMesh_Delaun::FreeEdges`
+//   method: Gives the list of free edges used only one time
+//   Reason: return type 'Handle(IMeshData::MapOfInteger)' is unknown
+//   // pub fn free_edges(&self) -> OwnedPtr<Handle<IMeshData::MapOfInteger>>;
+//
+// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:126 - `BRepMesh_Delaun::Contains`
+//   method: Test is the given triangle contains the given vertex.
+//   method: @param theSqTolerance square tolerance to check closeness to some edge
+//   method: @param theEdgeOn If it is != 0 the vertex lies onto the edge index
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn contains(&self, theTriangleId: i32, theVertex: &Vertex, theSqTolerance: f64, theEdgeOn: &mut i32) -> bool;
+//
+// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:132 - `BRepMesh_Delaun::SetAuxVertices`
+//   method: Explicitly sets ids of auxiliary vertices used to build mesh and used by 3rd-party algorithms.
+//   Reason: param 'theSupVert' uses unknown type 'const IMeshData::VectorOfInteger&'
+//   // pub fn set_aux_vertices(&mut self, theSupVert: &VectorOfInteger);
+//
 
 // ========================
 // From BRepMesh_DelaunayBaseMeshAlgo.hxx
@@ -2351,6 +2608,33 @@ impl EdgeDiscret {
     }
 }
 
+// ── Skipped symbols for EdgeDiscret (5 total) ──
+// SKIPPED: **Source:** `BRepMesh_EdgeDiscret.hxx`:39 - `BRepMesh_EdgeDiscret::CreateEdgeTessellator`
+//   static_method: Creates instance of free edge tessellator.
+//   Reason: param 'theDEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
+//   // pub fn create_edge_tessellator(theDEdge: &IEdgeHandle, theParameters: &Parameters, theMinPointsNb: i32) -> OwnedPtr<Handle<IMeshTools_CurveTessellator>>;
+//
+// SKIPPED: **Source:** `BRepMesh_EdgeDiscret.hxx`:45 - `BRepMesh_EdgeDiscret::CreateEdgeTessellator`
+//   static_method: Creates instance of edge tessellator.
+//   Reason: param 'theDEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
+//   // pub fn create_edge_tessellator(theDEdge: &IEdgeHandle, theOrientation: Orientation, theDFace: &IFaceHandle, theParameters: &Parameters, theMinPointsNb: i32) -> OwnedPtr<Handle<IMeshTools_CurveTessellator>>;
+//
+// SKIPPED: **Source:** `BRepMesh_EdgeDiscret.hxx`:53 - `BRepMesh_EdgeDiscret::CreateEdgeTessellationExtractor`
+//   static_method: Creates instance of tessellation extractor.
+//   Reason: param 'theDEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
+//   // pub fn create_edge_tessellation_extractor(theDEdge: &IEdgeHandle, theDFace: &IFaceHandle) -> OwnedPtr<Handle<IMeshTools_CurveTessellator>>;
+//
+// SKIPPED: **Source:** `BRepMesh_EdgeDiscret.hxx`:61 - `BRepMesh_EdgeDiscret::Tessellate3d`
+//   static_method: Updates 3d discrete edge model using the given tessellation tool.
+//   Reason: param 'theDEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
+//   // pub fn tessellate3d(theDEdge: &IEdgeHandle, theTessellator: &HandleCurveTessellator, theUpdateEnds: bool);
+//
+// SKIPPED: **Source:** `BRepMesh_EdgeDiscret.hxx`:67 - `BRepMesh_EdgeDiscret::Tessellate2d`
+//   static_method: Updates 2d discrete edge model using tessellation of 3D curve.
+//   Reason: param 'theDEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
+//   // pub fn tessellate2d(theDEdge: &IEdgeHandle, theUpdateEnds: bool);
+//
+
 // ========================
 // From BRepMesh_EdgeTessellationExtractor.hxx
 // ========================
@@ -2434,6 +2718,13 @@ impl EdgeTessellationExtractor {
         }
     }
 }
+
+// ── Skipped symbols for EdgeTessellationExtractor (1 total) ──
+// SKIPPED: **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:30 - `BRepMesh_EdgeTessellationExtractor::BRepMesh_EdgeTessellationExtractor`
+//   constructor: Constructor.
+//   Reason: param 'theEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
+//   // pub fn new_iedgehandle_ifacehandle(theEdge: &IEdgeHandle, theFace: &IFaceHandle) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From BRepMesh_ExtrusionRangeSplitter.hxx
@@ -2632,6 +2923,18 @@ impl HandleBRepMeshFaceChecker {
     }
 }
 
+// ── Skipped symbols for FaceChecker (2 total) ──
+// SKIPPED: **Source:** `BRepMesh_FaceChecker.hxx`:61 - `BRepMesh_FaceChecker::BRepMesh_FaceChecker`
+//   constructor: Default constructor
+//   Reason: param 'theFace' uses unknown type 'const IMeshData::IFaceHandle&'
+//   // pub fn new_ifacehandle_parameters(theFace: &IFaceHandle, theParameters: &Parameters) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepMesh_FaceChecker.hxx`:72 - `BRepMesh_FaceChecker::GetIntersectingEdges`
+//   method: Returns intersecting edges.
+//   Reason: return type 'const Handle(IMeshData::MapOfIEdgePtr)&' is unknown
+//   // pub fn get_intersecting_edges(&self) -> &HandleIMeshData::MapOfIEdgePtr;
+//
+
 /// **Source:** `BRepMesh_FaceChecker.hxx`:33 - `BRepMesh_FaceChecker_Segment`
 /// @name mesher API
 /// Identifies segment inside face.
@@ -2649,6 +2952,12 @@ impl FaceChecker_Segment {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_FaceChecker_Segment_ctor()) }
     }
 }
+
+// ── Skipped symbols for FaceChecker_Segment (1 total) ──
+// SKIPPED: **Source:** `BRepMesh_FaceChecker.hxx`:46 - `BRepMesh_FaceChecker::Segment::BRepMesh_FaceChecker::Segment`
+//   Reason: has unbindable types: param 'thePoint1': raw pointer (gp_Pnt2d*); param 'thePoint2': raw pointer (gp_Pnt2d*)
+//   // pub fn new_edge *const_pnt2dptr2(theEdgePtr: &Edge *const, thePoint1: /* gp_Pnt2d* */, thePoint2: /* gp_Pnt2d* */) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From BRepMesh_FaceDiscret.hxx
@@ -2875,6 +3184,40 @@ impl GeomTool {
         }
     }
 }
+
+// ── Skipped symbols for GeomTool (5 total) ──
+// SKIPPED: **Source:** `BRepMesh_GeomTool.hxx`:76 - `BRepMesh_GeomTool::BRepMesh_GeomTool`
+//   constructor: Constructor.
+//   constructor: Initiates discretization of geometric curve corresponding
+//   constructor: to iso curve of the given surface.
+//   Reason: param 'theSurface' uses unknown Handle type
+//   // pub fn new_handlebrepadaptorsurface_isotype_real5_int_real(theSurface: &HandleSurface, theIsoType: IsoType, theParamIso: f64, theFirstParam: f64, theLastParam: f64, theLinDeflection: f64, theAngDeflection: f64, theMinPointsNb: i32, theMinSize: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepMesh_GeomTool.hxx`:123 - `BRepMesh_GeomTool::Value`
+//   method: Gets parameters of discretization point with the given index.
+//   method: @param theIndex index of discretization point.
+//   method: @param theSurface surface the curve is lying onto.
+//   Reason: param 'theSurface' uses unknown type 'const Handle(BRepAdaptor_Surface)&'
+//   // pub fn value(&self, theIndex: i32, theSurface: &HandleSurface, theParam: &mut f64, thePoint: &mut Pnt, theUV: &mut Pnt2d) -> bool;
+//
+// SKIPPED: **Source:** `BRepMesh_GeomTool.hxx`:138 - `BRepMesh_GeomTool::Normal`
+//   static_method: @name static API
+//   static_method: Computes normal to the given surface at the specified
+//   static_method: position in parametric space.
+//   Reason: param 'theSurface' uses unknown type 'const Handle(BRepAdaptor_Surface)&'
+//   // pub fn normal(theSurface: &HandleSurface, theParamU: f64, theParamV: f64, thePoint: &mut Pnt, theNormal: &mut Dir) -> bool;
+//
+// SKIPPED: **Source:** `BRepMesh_GeomTool.hxx`:153 - `BRepMesh_GeomTool::IntLinLin`
+//   static_method: Checks intersection between two lines defined by two points.
+//   static_method: @param theStartPnt1 start point of first line.
+//   static_method: @param theEndPnt1 end point of first line.
+//   Reason: has unbindable types: param 'theParamOnSegment': C-style array (Standard_Real[2]&)
+//   // pub fn int_lin_lin(theStartPnt1: &XY, theEndPnt1: &XY, theStartPnt2: &XY, theEndPnt2: &XY, theIntPnt: &mut XY, theParamOnSegment: /* Standard_Real[2]& */) -> OwnedPtr<BRepMesh_GeomTool::IntFlag>;
+//
+// SKIPPED: **Source:** `BRepMesh_GeomTool.hxx`:206 - `BRepMesh_GeomTool::CellsCount`
+//   Reason: has unbindable types: param 'theRangeSplitter': raw pointer (const BRepMesh_DefaultRangeSplitter*); return: unresolved template/nested type (std::pair<Standard_Integer, Standard_Integer>)
+//   // pub fn cells_count(theSurface: &HandleSurface, theVerticesNb: i32, theDeflection: f64, theRangeSplitter: /* const BRepMesh_DefaultRangeSplitter* */) -> OwnedPtr<std::pair<Standard_Integer, Standard_Integer>>;
+//
 
 // ========================
 // From BRepMesh_IncrementalMesh.hxx
@@ -3108,6 +3451,20 @@ impl IncrementalMesh {
     }
 }
 
+// ── Skipped symbols for IncrementalMesh (2 total) ──
+// SKIPPED: **Source:** `BRepMesh_IncrementalMesh.hxx`:61 - `BRepMesh_IncrementalMesh::Perform`
+//   method: Performs meshing using custom context;
+//   Reason: param 'theContext' uses unknown type 'const Handle(IMeshTools_Context)&'
+//   // pub fn perform(&mut self, theContext: &HandleContext, theRange: &ProgressRange);
+//
+// SKIPPED: **Source:** `BRepMesh_IncrementalMesh.hxx`:116 - `BRepMesh_IncrementalMesh::Discret`
+//   static_method: @name plugin API
+//   static_method: Plugin interface for the Mesh Factories.
+//   static_method: Initializes meshing algorithm with the given parameters.
+//   Reason: has unbindable types: param 'theAlgo': raw pointer (BRepMesh_DiscretRoot*&)
+//   // pub fn discret(theShape: &Shape, theLinDeflection: f64, theAngDeflection: f64, theAlgo: /* BRepMesh_DiscretRoot*& */) -> i32;
+//
+
 // ========================
 // From BRepMesh_MeshAlgoFactory.hxx
 // ========================
@@ -3311,6 +3668,46 @@ impl HandleBRepMeshMeshTool {
         unsafe { &mut *(crate::ffi::HandleBRepMeshMeshTool_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for MeshTool (7 total) ──
+// SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:86 - `BRepMesh_MeshTool::DumpTriangles`
+//   method: Dumps triangles to specified file.
+//   Reason: has unbindable types: param 'theTriangles': raw pointer (IMeshData::MapOfInteger*)
+//   // pub fn dump_triangles(&mut self, theFileName: *const char, theTriangles: /* IMeshData::MapOfInteger* */);
+//
+// SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:103 - `BRepMesh_MeshTool::AddTriangle`
+//   method: Adds new triangle with specified nodes to mesh.
+//   Reason: has unbindable types: param 'theEdges': C-style array (Standard_Integer[3]&)
+//   // pub fn add_triangle(&mut self, thePoint1: i32, thePoint2: i32, thePoint3: i32, theEdges: /* Standard_Integer[3]& */);
+//
+// SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:118 - `BRepMesh_MeshTool::AddLink`
+//   method: Adds new link to mesh.
+//   method: Updates link index and link orientation parameters.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn add_link(&mut self, theFirstNode: i32, theLastNode: i32, theLinkIndex: &mut i32, theLinkOri: &mut bool);
+//
+// SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:142 - `BRepMesh_MeshTool::EraseTriangles`
+//   method: Erases the given set of triangles.
+//   method: Fills map of loop edges forming the contour surrounding the erased triangles.
+//   Reason: param 'theTriangles' uses unknown type 'const IMeshData::MapOfInteger&'
+//   // pub fn erase_triangles(&mut self, theTriangles: &MapOfInteger, theLoopEdges: &mut MapOfIntegerInteger);
+//
+// SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:147 - `BRepMesh_MeshTool::EraseTriangle`
+//   method: Erases triangle with the given index and adds the free edges into the map.
+//   method: When an edge is suppressed more than one time it is destroyed.
+//   Reason: param 'theLoopEdges' uses unknown type 'IMeshData::MapOfIntegerInteger&'
+//   // pub fn erase_triangle(&mut self, theTriangleIndex: i32, theLoopEdges: &mut MapOfIntegerInteger);
+//
+// SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:154 - `BRepMesh_MeshTool::EraseFreeLinks`
+//   method: Erases links from the specified map that have no elements connected to them.
+//   Reason: param 'theLinks' uses unknown type 'const IMeshData::MapOfIntegerInteger&'
+//   // pub fn erase_free_links(&mut self, theLinks: &MapOfIntegerInteger);
+//
+// SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:157 - `BRepMesh_MeshTool::GetEdgesByType`
+//   method: Gives the list of edges with type defined by input parameter.
+//   Reason: return type 'Handle(IMeshData::MapOfInteger)' is unknown
+//   // pub fn get_edges_by_type(&self, theEdgeType: DegreeOfFreedom) -> OwnedPtr<Handle<IMeshData::MapOfInteger>>;
+//
 
 /// **Source:** `BRepMesh_MeshTool.hxx`:33 - `BRepMesh_MeshTool_NodeClassifier`
 /// Helper functor intended to separate points to left and right from the constraint.
@@ -3803,6 +4200,13 @@ impl NURBSRangeSplitter {
     }
 }
 
+// ── Skipped symbols for NURBSRangeSplitter (1 total) ──
+// SKIPPED: **Source:** `BRepMesh_NURBSRangeSplitter.hxx`:41 - `BRepMesh_NURBSRangeSplitter::GenerateSurfaceNodes`
+//   method: Returns list of nodes generated using surface data and specified parameters.
+//   Reason: return type 'Handle(IMeshData::ListOfPnt2d)' is unknown
+//   // pub fn generate_surface_nodes(&self, theParameters: &Parameters) -> OwnedPtr<Handle<IMeshData::ListOfPnt2d>>;
+//
+
 // ========================
 // From BRepMesh_OrientedEdge.hxx
 // ========================
@@ -4151,6 +4555,28 @@ impl HandleBRepMeshSelectorOfDataStructureOfDelaun {
     }
 }
 
+// ── Skipped symbols for SelectorOfDataStructureOfDelaun (4 total) ──
+// SKIPPED: **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:69 - `BRepMesh_SelectorOfDataStructureOfDelaun::Nodes`
+//   method: Returns selected nodes.
+//   Reason: return type 'const IMeshData::MapOfInteger&' is unknown
+//   // pub fn nodes(&self) -> &MapOfInteger;
+//
+// SKIPPED: **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:72 - `BRepMesh_SelectorOfDataStructureOfDelaun::Links`
+//   method: Returns selected links.
+//   Reason: return type 'const IMeshData::MapOfInteger&' is unknown
+//   // pub fn links(&self) -> &MapOfInteger;
+//
+// SKIPPED: **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:75 - `BRepMesh_SelectorOfDataStructureOfDelaun::Elements`
+//   method: Returns selected elements.
+//   Reason: return type 'const IMeshData::MapOfInteger&' is unknown
+//   // pub fn elements(&self) -> &MapOfInteger;
+//
+// SKIPPED: **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:78 - `BRepMesh_SelectorOfDataStructureOfDelaun::FrontierLinks`
+//   method: Gives the list of incices of frontier links.
+//   Reason: return type 'const IMeshData::MapOfInteger&' is unknown
+//   // pub fn frontier_links(&self) -> &MapOfInteger;
+//
+
 // ========================
 // From BRepMesh_ShapeTool.hxx
 // ========================
@@ -4412,6 +4838,15 @@ impl HandleBRepMeshShapeTool {
     }
 }
 
+// ── Skipped symbols for ShapeTool (1 total) ──
+// SKIPPED: **Source:** `BRepMesh_ShapeTool.hxx`:53 - `BRepMesh_ShapeTool::CheckAndUpdateFlags`
+//   static_method: Checks same parameter, same range and degenerativity attributes
+//   static_method: using geometrical data of the given edge and updates edge model
+//   static_method: by computed parameters in case of worst case - it can drop flags
+//   Reason: param 'theEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
+//   // pub fn check_and_update_flags(theEdge: &IEdgeHandle, thePCurve: &IPCurveHandle);
+//
+
 // ========================
 // From BRepMesh_ShapeVisitor.hxx
 // ========================
@@ -4477,6 +4912,13 @@ impl ShapeVisitor {
         }
     }
 }
+
+// ── Skipped symbols for ShapeVisitor (1 total) ──
+// SKIPPED: **Source:** `BRepMesh_ShapeVisitor.hxx`:38 - `BRepMesh_ShapeVisitor::BRepMesh_ShapeVisitor`
+//   constructor: Constructor.
+//   Reason: param 'theModel' uses unknown Handle type
+//   // pub fn new_handleimeshdatamodel(theModel: &HandleModel) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From BRepMesh_SphereRangeSplitter.hxx
@@ -4560,6 +5002,13 @@ impl SphereRangeSplitter {
         }
     }
 }
+
+// ── Skipped symbols for SphereRangeSplitter (1 total) ──
+// SKIPPED: **Source:** `BRepMesh_SphereRangeSplitter.hxx`:34 - `BRepMesh_SphereRangeSplitter::GenerateSurfaceNodes`
+//   method: Returns list of nodes generated using surface data and specified parameters.
+//   Reason: return type 'Handle(IMeshData::ListOfPnt2d)' is unknown
+//   // pub fn generate_surface_nodes(&self, theParameters: &Parameters) -> OwnedPtr<Handle<IMeshData::ListOfPnt2d>>;
+//
 
 // ========================
 // From BRepMesh_TorusRangeSplitter.hxx
@@ -4661,6 +5110,13 @@ impl TorusRangeSplitter {
     }
 }
 
+// ── Skipped symbols for TorusRangeSplitter (1 total) ──
+// SKIPPED: **Source:** `BRepMesh_TorusRangeSplitter.hxx`:34 - `BRepMesh_TorusRangeSplitter::GenerateSurfaceNodes`
+//   method: Returns list of nodes generated using surface data and specified parameters.
+//   Reason: return type 'Handle(IMeshData::ListOfPnt2d)' is unknown
+//   // pub fn generate_surface_nodes(&self, theParameters: &Parameters) -> OwnedPtr<Handle<IMeshData::ListOfPnt2d>>;
+//
+
 // ========================
 // From BRepMesh_Triangle.hxx
 // ========================
@@ -4711,6 +5167,29 @@ impl Triangle {
     }
 }
 
+// ── Skipped symbols for Triangle (3 total) ──
+// SKIPPED: **Source:** `BRepMesh_Triangle.hxx`:49 - `BRepMesh_Triangle::BRepMesh_Triangle`
+//   constructor: Constructor.
+//   constructor: @param theEdges array of edges of triangle.
+//   constructor: @param theOrientations array of edge's orientations.
+//   Reason: has unbindable types: param 'theEdges': C-style array (Standard_Integer[3]&); param 'theOrientations': C-style array (Standard_Boolean[3]&)
+//   // pub fn new_integer[3]_boolean[3]_degreeoffreedom(theEdges: /* Standard_Integer[3]& */, theOrientations: /* Standard_Boolean[3]& */, theMovability: DegreeOfFreedom) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepMesh_Triangle.hxx`:60 - `BRepMesh_Triangle::Initialize`
+//   method: Initializes the triangle by the given parameters.
+//   method: @param theEdges array of edges of triangle.
+//   method: @param theOrientations array of edge's orientations.
+//   Reason: has unbindable types: param 'theEdges': C-style array (Standard_Integer[3]&); param 'theOrientations': C-style array (Standard_Boolean[3]&)
+//   // pub fn initialize(&mut self, theEdges: /* Standard_Integer[3]& */, theOrientations: /* Standard_Boolean[3]& */, theMovability: DegreeOfFreedom);
+//
+// SKIPPED: **Source:** `BRepMesh_Triangle.hxx`:72 - `BRepMesh_Triangle::Edges`
+//   method: Gets edges with orientations composing the triangle.
+//   method: @param[out] theEdges array edges are stored to.
+//   method: @param[out] theOrientations array orientations are stored to.
+//   Reason: has unbindable types: param 'theEdges': C-style array (Standard_Integer[3]&); param 'theOrientations': C-style array (Standard_Boolean[3]&)
+//   // pub fn edges(&self, theEdges: /* Standard_Integer[3]& */, theOrientations: /* Standard_Boolean[3]& */);
+//
+
 // ========================
 // From BRepMesh_Triangulator.hxx
 // ========================
@@ -4733,6 +5212,23 @@ impl Triangulator {
         unsafe { crate::ffi::BRepMesh_Triangulator_set_messenger(self as *mut Self, theMess) }
     }
 }
+
+// ── Skipped symbols for Triangulator (3 total) ──
+// SKIPPED: **Source:** `BRepMesh_Triangulator.hxx`:44 - `BRepMesh_Triangulator::BRepMesh_Triangulator`
+//   constructor: Constructor. Initialized tool by the given parameters.
+//   Reason: has unbindable types: param 'theWires': unresolved template/nested type (const NCollection_List<TColStd_SequenceOfInteger>&)
+//   // pub fn new_int_list<tcolstd_sequenceofinteger>_dir(theXYZs: &i32, theWires: /* const NCollection_List<TColStd_SequenceOfInteger>& */, theNorm: &Dir) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepMesh_Triangulator.hxx`:49 - `BRepMesh_Triangulator::Perform`
+//   method: Performs triangulation of source wires and stores triangles the output list.
+//   Reason: has unbindable types: param 'thePolyTriangles': unresolved template/nested type (NCollection_List<Poly_Triangle>&)
+//   // pub fn perform(&mut self, thePolyTriangles: /* NCollection_List<Poly_Triangle>& */) -> bool;
+//
+// SKIPPED: **Source:** `BRepMesh_Triangulator.hxx`:38 - `BRepMesh_Triangulator::ToPolyTriangulation`
+//   static_method: Performs conversion of the given list of triangles to Poly_Triangulation.
+//   Reason: has unbindable types: param 'thePolyTriangles': unresolved template/nested type (const NCollection_List<Poly_Triangle>&)
+//   // pub fn to_poly_triangulation(theNodes: &Array1OfPnt, thePolyTriangles: /* const NCollection_List<Poly_Triangle>& */) -> OwnedPtr<Handle<Poly_Triangulation>>;
+//
 
 // ========================
 // From BRepMesh_UVParamRangeSplitter.hxx
@@ -4820,6 +5316,33 @@ impl UVParamRangeSplitter {
         }
     }
 }
+
+// ── Skipped symbols for UVParamRangeSplitter (5 total) ──
+// SKIPPED: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:38 - `BRepMesh_UVParamRangeSplitter::Reset`
+//   method: Resets this splitter.
+//   Reason: param 'theDFace' uses unknown type 'const IMeshData::IFaceHandle&'
+//   // pub fn reset(&mut self, theDFace: &IFaceHandle, theParameters: &Parameters);
+//
+// SKIPPED: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU`
+//   method: Returns U parameters.
+//   Reason: return type 'const IMeshData::IMapOfReal&' is unknown
+//   // pub fn get_parameters_u(&self) -> &IMapOfReal;
+//
+// SKIPPED: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:52 - `BRepMesh_UVParamRangeSplitter::GetParametersU`
+//   method: Returns U parameters.
+//   Reason: return type 'IMeshData::IMapOfReal&' is unknown
+//   // pub fn get_parameters_u(&mut self) -> &mut IMapOfReal;
+//
+// SKIPPED: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:55 - `BRepMesh_UVParamRangeSplitter::GetParametersV`
+//   method: Returns V parameters.
+//   Reason: return type 'const IMeshData::IMapOfReal&' is unknown
+//   // pub fn get_parameters_v(&self) -> &IMapOfReal;
+//
+// SKIPPED: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:58 - `BRepMesh_UVParamRangeSplitter::GetParametersV`
+//   method: Returns V parameters.
+//   Reason: return type 'IMeshData::IMapOfReal&' is unknown
+//   // pub fn get_parameters_v(&mut self) -> &mut IMapOfReal;
+//
 
 // ========================
 // From BRepMesh_UndefinedRangeSplitter.hxx
@@ -5253,3 +5776,32 @@ impl HandleBRepMeshVertexTool {
         unsafe { &mut *(crate::ffi::HandleBRepMeshVertexTool_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for VertexTool (5 total) ──
+// SKIPPED: **Source:** `BRepMesh_VertexTool.hxx`:31 - `BRepMesh_VertexTool::BRepMesh_VertexTool`
+//   constructor: Constructor.
+//   constructor: @param theAllocator memory allocator to be used by internal collections.
+//   Reason: param 'theAllocator' uses unknown Handle type
+//   // pub fn new_handlencollectionincallocator(theAllocator: &HandleIncAllocator) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `BRepMesh_VertexTool.hxx`:93 - `BRepMesh_VertexTool::Vertices`
+//   method: Returns set of mesh vertices.
+//   Reason: return type 'const Handle(IMeshData::VectorOfVertex)&' is unknown
+//   // pub fn vertices(&self) -> &HandleIMeshData::VectorOfVertex;
+//
+// SKIPPED: **Source:** `BRepMesh_VertexTool.hxx`:96 - `BRepMesh_VertexTool::ChangeVertices`
+//   method: Returns set of mesh vertices.
+//   Reason: return type 'Handle(IMeshData::VectorOfVertex)&' is unknown
+//   // pub fn change_vertices(&mut self) -> &mut HandleIMeshData::VectorOfVertex;
+//
+// SKIPPED: **Source:** `BRepMesh_VertexTool.hxx`:129 - `BRepMesh_VertexTool::GetListOfDelNodes`
+//   method: Returns the list with indexes of vertices that have movability attribute
+//   method: equal to BRepMesh_Deleted and can be replaced with another node.
+//   Reason: return type 'const IMeshData::ListOfInteger&' is unknown
+//   // pub fn get_list_of_del_nodes(&self) -> &ListOfInteger;
+//
+// SKIPPED: **Source:** `BRepMesh_VertexTool.hxx`:135 - `BRepMesh_VertexTool::Statistics`
+//   method: Prints statistics.
+//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
+//   // pub fn statistics(&self, theStream: /* Standard_OStream& */);
+//

@@ -228,6 +228,22 @@ impl ApproxAFunction {
     }
 }
 
+// ── Skipped symbols for ApproxAFunction (3 total) ──
+// SKIPPED: **Source:** `AdvApprox_ApproxAFunction.hxx`:80 - `AdvApprox_ApproxAFunction::AdvApprox_ApproxAFunction`
+//   constructor: Approximation with user methode of cutting
+//   Reason: param 'CutTool' uses unknown type 'const AdvApprox_Cutting&'
+//   // pub fn new_int3_handletcolstdharray1ofreal3_real2_shape_int2_evaluatorfunction_cutting(Num1DSS: i32, Num2DSS: i32, Num3DSS: i32, OneDTol: &HandleHArray1OfReal, TwoDTol: &HandleHArray1OfReal, ThreeDTol: &HandleHArray1OfReal, First: f64, Last: f64, Continuity: Shape, MaxDeg: i32, MaxSeg: i32, Func: &EvaluatorFunction, CutTool: &Cutting) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `AdvApprox_ApproxAFunction.hxx`:163 - `AdvApprox_ApproxAFunction::Dump`
+//   method: display information on approximation.
+//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
+//   // pub fn dump(&self, o: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `AdvApprox_ApproxAFunction.hxx`:94 - `AdvApprox_ApproxAFunction::Approximation`
+//   Reason: param 'CutTool' uses unknown type 'const AdvApprox_Cutting&'
+//   // pub fn approximation(TotalDimension: i32, TotalNumSS: i32, LocalDimension: &Array1OfInteger, First: f64, Last: f64, Evaluator: &mut EvaluatorFunction, CutTool: &Cutting, ContinuityOrder: i32, NumMaxCoeffs: i32, MaxSegments: i32, TolerancesArray: &Array1OfReal, code_precis: i32, NumCurves: &mut i32, NumCoeffPerCurveArray: &mut Array1OfInteger, LocalCoefficientArray: &mut Array1OfReal, IntervalsArray: &mut Array1OfReal, ErrorMaxArray: &mut Array1OfReal, AverageErrorArray: &mut Array1OfReal, ErrorCode: &mut i32);
+//
+
 // ========================
 // From AdvApprox_EvaluatorFunction.hxx
 // ========================
@@ -242,6 +258,18 @@ unsafe impl crate::CppDeletable for EvaluatorFunction {
         crate::ffi::AdvApprox_EvaluatorFunction_destructor(ptr);
     }
 }
+
+// ── Skipped symbols for EvaluatorFunction (2 total) ──
+// SKIPPED: **Source:** `AdvApprox_EvaluatorFunction.hxx`:31 - `AdvApprox_EvaluatorFunction::AdvApprox_EvaluatorFunction`
+//   constructor: Empty constructor
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new() -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `AdvApprox_EvaluatorFunction.hxx`:37 - `AdvApprox_EvaluatorFunction::Evaluate`
+//   method: Function evaluation method to be defined by descendant
+//   Reason: has unbindable types: param 'Dimension': raw pointer (int*); param 'StartEnd': C-style array (Standard_Real[2]); param 'Parameter': raw pointer (double*); param 'DerivativeRequest': raw pointer (int*); param 'Result': raw pointer (double*); param 'ErrorCode': raw pointer (int*)
+//   // pub fn evaluate(&mut self, Dimension: /* int* */, StartEnd: /* Standard_Real[2] */, Parameter: /* double* */, DerivativeRequest: /* int* */, Result: /* double* */, ErrorCode: /* int* */);
+//
 
 // ========================
 // Additional type re-exports

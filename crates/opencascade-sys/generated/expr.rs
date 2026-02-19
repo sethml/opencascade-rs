@@ -195,6 +195,13 @@ impl Absolute {
     }
 }
 
+// ── Skipped symbols for Absolute (1 total) ──
+// SKIPPED: **Source:** `Expr_Absolute.hxx`:55 - `Expr_Absolute::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+
 // ========================
 // From Expr_ArcCosine.hxx
 // ========================
@@ -361,6 +368,13 @@ impl ArcCosine {
     }
 }
 
+// ── Skipped symbols for ArcCosine (1 total) ──
+// SKIPPED: **Source:** `Expr_ArcCosine.hxx`:55 - `Expr_ArcCosine::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>.
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+
 // ========================
 // From Expr_ArcSine.hxx
 // ========================
@@ -524,6 +538,13 @@ impl ArcSine {
         unsafe { crate::ffi::Expr_ArcSine_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for ArcSine (1 total) ──
+// SKIPPED: **Source:** `Expr_ArcSine.hxx`:55 - `Expr_ArcSine::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>.
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
 
 // ========================
 // From Expr_ArcTangent.hxx
@@ -695,6 +716,13 @@ impl ArcTangent {
     }
 }
 
+// ── Skipped symbols for ArcTangent (1 total) ──
+// SKIPPED: **Source:** `Expr_ArcTangent.hxx`:55 - `Expr_ArcTangent::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>.
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+
 // ========================
 // From Expr_ArgCosh.hxx
 // ========================
@@ -858,6 +886,13 @@ impl ArgCosh {
         unsafe { crate::ffi::Expr_ArgCosh_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for ArgCosh (1 total) ──
+// SKIPPED: **Source:** `Expr_ArgCosh.hxx`:55 - `Expr_ArgCosh::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>.
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
 
 // ========================
 // From Expr_ArgSinh.hxx
@@ -1023,6 +1058,13 @@ impl ArgSinh {
     }
 }
 
+// ── Skipped symbols for ArgSinh (1 total) ──
+// SKIPPED: **Source:** `Expr_ArgSinh.hxx`:55 - `Expr_ArgSinh::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>.
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+
 // ========================
 // From Expr_ArgTanh.hxx
 // ========================
@@ -1186,6 +1228,13 @@ impl ArgTanh {
         unsafe { crate::ffi::Expr_ArgTanh_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for ArgTanh (1 total) ──
+// SKIPPED: **Source:** `Expr_ArgTanh.hxx`:55 - `Expr_ArgTanh::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>.
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
 
 // ========================
 // From Expr_BinaryExpression.hxx
@@ -1360,6 +1409,14 @@ impl BinaryExpression {
         }
     }
 }
+
+// ── Skipped symbols for BinaryExpression (1 total) ──
+// SKIPPED: **Source:** `Expr_BinaryExpression.hxx`:66 - `Expr_BinaryExpression::Replace`
+//   method: Replaces all occurrences of <var> with <with> in <me>.
+//   method: Raises InvalidOperand if <with> contains <me>.
+//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
+//
 
 // ========================
 // From Expr_BinaryFunction.hxx
@@ -1560,6 +1617,13 @@ impl BinaryFunction {
     }
 }
 
+// ── Skipped symbols for BinaryFunction (1 total) ──
+// SKIPPED: **Source:** `Expr_BinaryFunction.hxx`:65 - `Expr_BinaryFunction::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+
 // ========================
 // From Expr_Cosh.hxx
 // ========================
@@ -1719,6 +1783,13 @@ impl Cosh {
         unsafe { crate::ffi::Expr_Cosh_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for Cosh (1 total) ──
+// SKIPPED: **Source:** `Expr_Cosh.hxx`:56 - `Expr_Cosh::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>.
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
 
 // ========================
 // From Expr_Cosine.hxx
@@ -1881,6 +1952,13 @@ impl Cosine {
         unsafe { crate::ffi::Expr_Cosine_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for Cosine (1 total) ──
+// SKIPPED: **Source:** `Expr_Cosine.hxx`:56 - `Expr_Cosine::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
 
 // ========================
 // From Expr_Difference.hxx
@@ -2062,6 +2140,19 @@ impl Difference {
         unsafe { crate::ffi::Expr_Difference_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for Difference (2 total) ──
+// SKIPPED: **Source:** `Expr_Difference.hxx`:57 - `Expr_Difference::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+// SKIPPED: **Source:** `Expr_Difference.hxx`:62 - `Expr_Difference::NDerivative`
+//   method: Returns the <N>-th derivative on <X> unknown of <me>.
+//   method: Raises OutOfRange if <N> <= 0
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn n_derivative(&self, X: &HandleNamedUnknown, N: i32) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
 
 // ========================
 // From Expr_Different.hxx
@@ -2403,6 +2494,13 @@ impl Division {
     }
 }
 
+// ── Skipped symbols for Division (1 total) ──
+// SKIPPED: **Source:** `Expr_Division.hxx`:57 - `Expr_Division::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>.
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+
 // ========================
 // From Expr_Equal.hxx
 // ========================
@@ -2733,6 +2831,13 @@ impl Exponential {
     }
 }
 
+// ── Skipped symbols for Exponential (1 total) ──
+// SKIPPED: **Source:** `Expr_Exponential.hxx`:55 - `Expr_Exponential::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>.
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+
 // ========================
 // From Expr_Exponentiate.hxx
 // ========================
@@ -2916,6 +3021,13 @@ impl Exponentiate {
     }
 }
 
+// ── Skipped symbols for Exponentiate (1 total) ──
+// SKIPPED: **Source:** `Expr_Exponentiate.hxx`:57 - `Expr_Exponentiate::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>.
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+
 // ========================
 // From Expr_ExprFailure.hxx
 // ========================
@@ -2982,6 +3094,20 @@ impl ExprFailure {
         unsafe { &*(crate::ffi::Expr_ExprFailure_get_type_descriptor()) }
     }
 }
+
+// ── Skipped symbols for ExprFailure (3 total) ──
+// SKIPPED: **Source:** `Expr_ExprFailure.hxx`:36 - `Expr_ExprFailure::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Expr_ExprFailure.hxx`:36 - `Expr_ExprFailure::NewInstance`
+//   Reason: return type 'Handle(Expr_ExprFailure)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Expr_ExprFailure>>;
+//
+// SKIPPED: **Source:** `Expr_ExprFailure.hxx`:36 - `Expr_ExprFailure::NewInstance`
+//   Reason: return type 'Handle(Expr_ExprFailure)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Expr_ExprFailure>>;
+//
 
 // ========================
 // From Expr_FunctionDerivative.hxx
@@ -3112,6 +3238,38 @@ impl FunctionDerivative {
         }
     }
 }
+
+// ── Skipped symbols for FunctionDerivative (5 total) ──
+// SKIPPED: **Source:** `Expr_FunctionDerivative.hxx`:42 - `Expr_FunctionDerivative::Expr_FunctionDerivative`
+//   constructor: Creates a FunctionDerivative of degree <deg> relative
+//   constructor: to the <withX> variable.
+//   constructor: Raises OutOfRange if <deg> lower or equal to zero.
+//   Reason: param 'withX' uses unknown Handle type
+//   // pub fn new_handleexprgeneralfunction_handleexprnamedunknown_int(func: &HandleGeneralFunction, withX: &HandleNamedUnknown, deg: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `Expr_FunctionDerivative.hxx`:52 - `Expr_FunctionDerivative::Variable`
+//   method: Returns the variable denoted by <index> in <me>.
+//   method: Raises OutOfRange if <index> greater than
+//   method: NbOfVariables of <me>.
+//   Reason: return type 'Handle(Expr_NamedUnknown)' is unknown
+//   // pub fn variable(&self, index: i32) -> OwnedPtr<Handle<Expr_NamedUnknown>>;
+//
+// SKIPPED: **Source:** `Expr_FunctionDerivative.hxx`:66 - `Expr_FunctionDerivative::Derivative`
+//   method: Returns Derivative of <me> for variable <var>.
+//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, var: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralFunction>>;
+//
+// SKIPPED: **Source:** `Expr_FunctionDerivative.hxx`:71 - `Expr_FunctionDerivative::Derivative`
+//   method: Returns Derivative of <me> for variable <var> with
+//   method: degree <deg>.
+//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, var: &HandleNamedUnknown, deg: i32) -> OwnedPtr<Handle<Expr_GeneralFunction>>;
+//
+// SKIPPED: **Source:** `Expr_FunctionDerivative.hxx`:91 - `Expr_FunctionDerivative::DerivVariable`
+//   method: Returns the derivation variable of <me>.
+//   Reason: return type 'Handle(Expr_NamedUnknown)' is unknown
+//   // pub fn deriv_variable(&self) -> OwnedPtr<Handle<Expr_NamedUnknown>>;
+//
 
 // ========================
 // From Expr_GeneralExpression.hxx
@@ -3283,6 +3441,26 @@ impl HandleExprGeneralExpression {
     }
 }
 
+// ── Skipped symbols for GeneralExpression (3 total) ──
+// SKIPPED: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+// SKIPPED: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative`
+//   method: Returns the <N>-th derivative on <X> unknown of <me>.
+//   method: Raise OutOfRange if N <= 0
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn n_derivative(&self, X: &HandleNamedUnknown, N: i32) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+// SKIPPED: **Source:** `Expr_GeneralExpression.hxx`:98 - `Expr_GeneralExpression::Replace`
+//   method: Replaces all occurrences of <var> with copies of <with>
+//   method: in <me>. Copies of <with> are made with the Copy() method.
+//   method: Raises InvalidOperand if <with> contains <me>.
+//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
+//
+
 // ========================
 // From Expr_GeneralFunction.hxx
 // ========================
@@ -3387,6 +3565,25 @@ impl HandleExprGeneralFunction {
         unsafe { &mut *(crate::ffi::HandleExprGeneralFunction_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for GeneralFunction (3 total) ──
+// SKIPPED: **Source:** `Expr_GeneralFunction.hxx`:44 - `Expr_GeneralFunction::Variable`
+//   method: Returns the variable denoted by <index> in <me>.
+//   method: Raises OutOfRange if index > NbOfVariables.
+//   Reason: return type 'Handle(Expr_NamedUnknown)' is unknown
+//   // pub fn variable(&self, index: i32) -> OwnedPtr<Handle<Expr_NamedUnknown>>;
+//
+// SKIPPED: **Source:** `Expr_GeneralFunction.hxx`:51 - `Expr_GeneralFunction::Derivative`
+//   method: Returns Derivative of <me> for variable <var>.
+//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, var: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralFunction>>;
+//
+// SKIPPED: **Source:** `Expr_GeneralFunction.hxx`:56 - `Expr_GeneralFunction::Derivative`
+//   method: Returns Derivative of <me> for variable <var> with
+//   method: degree <deg>.
+//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, var: &HandleNamedUnknown, deg: i32) -> OwnedPtr<Handle<Expr_GeneralFunction>>;
+//
 
 // ========================
 // From Expr_GeneralRelation.hxx
@@ -3525,6 +3722,13 @@ impl HandleExprGeneralRelation {
         unsafe { &mut *(crate::ffi::HandleExprGeneralRelation_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for GeneralRelation (1 total) ──
+// SKIPPED: **Source:** `Expr_GeneralRelation.hxx`:74 - `Expr_GeneralRelation::Replace`
+//   method: Replaces all occurrences of <var> with <with> in <me>.
+//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
+//
 
 // ========================
 // From Expr_GreaterThan.hxx
@@ -3963,6 +4167,20 @@ impl InvalidAssignment {
     }
 }
 
+// ── Skipped symbols for InvalidAssignment (3 total) ──
+// SKIPPED: **Source:** `Expr_InvalidAssignment.hxx`:36 - `Expr_InvalidAssignment::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Expr_InvalidAssignment.hxx`:36 - `Expr_InvalidAssignment::NewInstance`
+//   Reason: return type 'Handle(Expr_InvalidAssignment)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Expr_InvalidAssignment>>;
+//
+// SKIPPED: **Source:** `Expr_InvalidAssignment.hxx`:36 - `Expr_InvalidAssignment::NewInstance`
+//   Reason: return type 'Handle(Expr_InvalidAssignment)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Expr_InvalidAssignment>>;
+//
+
 // ========================
 // From Expr_InvalidFunction.hxx
 // ========================
@@ -4042,6 +4260,20 @@ impl InvalidFunction {
     }
 }
 
+// ── Skipped symbols for InvalidFunction (3 total) ──
+// SKIPPED: **Source:** `Expr_InvalidFunction.hxx`:36 - `Expr_InvalidFunction::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Expr_InvalidFunction.hxx`:36 - `Expr_InvalidFunction::NewInstance`
+//   Reason: return type 'Handle(Expr_InvalidFunction)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Expr_InvalidFunction>>;
+//
+// SKIPPED: **Source:** `Expr_InvalidFunction.hxx`:36 - `Expr_InvalidFunction::NewInstance`
+//   Reason: return type 'Handle(Expr_InvalidFunction)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Expr_InvalidFunction>>;
+//
+
 // ========================
 // From Expr_InvalidOperand.hxx
 // ========================
@@ -4120,6 +4352,20 @@ impl InvalidOperand {
         }
     }
 }
+
+// ── Skipped symbols for InvalidOperand (3 total) ──
+// SKIPPED: **Source:** `Expr_InvalidOperand.hxx`:36 - `Expr_InvalidOperand::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Expr_InvalidOperand.hxx`:36 - `Expr_InvalidOperand::NewInstance`
+//   Reason: return type 'Handle(Expr_InvalidOperand)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Expr_InvalidOperand>>;
+//
+// SKIPPED: **Source:** `Expr_InvalidOperand.hxx`:36 - `Expr_InvalidOperand::NewInstance`
+//   Reason: return type 'Handle(Expr_InvalidOperand)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Expr_InvalidOperand>>;
+//
 
 // ========================
 // From Expr_LessThan.hxx
@@ -4623,6 +4869,13 @@ impl LogOf10 {
     }
 }
 
+// ── Skipped symbols for LogOf10 (1 total) ──
+// SKIPPED: **Source:** `Expr_LogOf10.hxx`:56 - `Expr_LogOf10::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>.
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+
 // ========================
 // From Expr_LogOfe.hxx
 // ========================
@@ -4784,6 +5037,13 @@ impl LogOfe {
         unsafe { crate::ffi::Expr_LogOfe_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for LogOfe (1 total) ──
+// SKIPPED: **Source:** `Expr_LogOfe.hxx`:56 - `Expr_LogOfe::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>.
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
 
 // ========================
 // From Expr_NamedConstant.hxx
@@ -4970,6 +5230,24 @@ impl NamedConstant {
         unsafe { crate::ffi::Expr_NamedConstant_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for NamedConstant (3 total) ──
+// SKIPPED: **Source:** `Expr_NamedConstant.hxx`:78 - `Expr_NamedConstant::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+// SKIPPED: **Source:** `Expr_NamedConstant.hxx`:83 - `Expr_NamedConstant::NDerivative`
+//   method: Returns the <N>-th derivative on <X> unknown of <me>.
+//   method: Raises OutOfRange if <N> <= 0
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn n_derivative(&self, X: &HandleNamedUnknown, N: i32) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+// SKIPPED: **Source:** `Expr_NamedConstant.hxx`:88 - `Expr_NamedConstant::Replace`
+//   method: Replaces all occurrences of <var> with <with> in <me>
+//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
+//
 
 // ========================
 // From Expr_NamedExpression.hxx
@@ -5267,6 +5545,26 @@ impl NamedFunction {
     }
 }
 
+// ── Skipped symbols for NamedFunction (3 total) ──
+// SKIPPED: **Source:** `Expr_NamedFunction.hxx`:56 - `Expr_NamedFunction::Variable`
+//   method: Returns the variable denoted by <index> in <me>.
+//   method: Raises OutOfRange if <index> is greater than
+//   method: NbOfVariables of <me>, or less than or equal to zero.
+//   Reason: return type 'Handle(Expr_NamedUnknown)' is unknown
+//   // pub fn variable(&self, index: i32) -> OwnedPtr<Handle<Expr_NamedUnknown>>;
+//
+// SKIPPED: **Source:** `Expr_NamedFunction.hxx`:70 - `Expr_NamedFunction::Derivative`
+//   method: Returns Derivative of <me> for variable <var>.
+//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, var: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralFunction>>;
+//
+// SKIPPED: **Source:** `Expr_NamedFunction.hxx`:75 - `Expr_NamedFunction::Derivative`
+//   method: Returns Derivative of <me> for variable <var> with
+//   method: degree <deg>.
+//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, var: &HandleNamedUnknown, deg: i32) -> OwnedPtr<Handle<Expr_GeneralFunction>>;
+//
+
 // ========================
 // From Expr_NamedUnknown.hxx
 // ========================
@@ -5465,6 +5763,19 @@ impl NamedUnknown {
     }
 }
 
+// ── Skipped symbols for NamedUnknown (2 total) ──
+// SKIPPED: **Source:** `Expr_NamedUnknown.hxx`:86 - `Expr_NamedUnknown::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+// SKIPPED: **Source:** `Expr_NamedUnknown.hxx`:91 - `Expr_NamedUnknown::Replace`
+//   method: Replaces all occurrences of <var> with <with> in <me>
+//   method: Raises InvalidOperand if <with> contains <me>.
+//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
+//
+
 // ========================
 // From Expr_NotAssigned.hxx
 // ========================
@@ -5542,6 +5853,20 @@ impl NotAssigned {
     }
 }
 
+// ── Skipped symbols for NotAssigned (3 total) ──
+// SKIPPED: **Source:** `Expr_NotAssigned.hxx`:36 - `Expr_NotAssigned::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Expr_NotAssigned.hxx`:36 - `Expr_NotAssigned::NewInstance`
+//   Reason: return type 'Handle(Expr_NotAssigned)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Expr_NotAssigned>>;
+//
+// SKIPPED: **Source:** `Expr_NotAssigned.hxx`:36 - `Expr_NotAssigned::NewInstance`
+//   Reason: return type 'Handle(Expr_NotAssigned)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Expr_NotAssigned>>;
+//
+
 // ========================
 // From Expr_NotEvaluable.hxx
 // ========================
@@ -5618,6 +5943,20 @@ impl NotEvaluable {
         unsafe { &mut *(crate::ffi::Expr_NotEvaluable_as_Expr_ExprFailure_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for NotEvaluable (3 total) ──
+// SKIPPED: **Source:** `Expr_NotEvaluable.hxx`:36 - `Expr_NotEvaluable::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `Expr_NotEvaluable.hxx`:36 - `Expr_NotEvaluable::NewInstance`
+//   Reason: return type 'Handle(Expr_NotEvaluable)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Expr_NotEvaluable>>;
+//
+// SKIPPED: **Source:** `Expr_NotEvaluable.hxx`:36 - `Expr_NotEvaluable::NewInstance`
+//   Reason: return type 'Handle(Expr_NotEvaluable)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Expr_NotEvaluable>>;
+//
 
 // ========================
 // From Expr_NumericValue.hxx
@@ -5778,6 +6117,24 @@ impl NumericValue {
         unsafe { crate::ffi::Expr_NumericValue_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for NumericValue (3 total) ──
+// SKIPPED: **Source:** `Expr_NumericValue.hxx`:82 - `Expr_NumericValue::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+// SKIPPED: **Source:** `Expr_NumericValue.hxx`:87 - `Expr_NumericValue::NDerivative`
+//   method: Returns the <N>-th derivative on <X> unknown of <me>.
+//   method: Raises OutOfRange if <N> <= 0
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn n_derivative(&self, X: &HandleNamedUnknown, N: i32) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+// SKIPPED: **Source:** `Expr_NumericValue.hxx`:92 - `Expr_NumericValue::Replace`
+//   method: Replaces all occurrences of <var> with <with> in <me>
+//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
+//
 
 // ========================
 // From Expr_PolyExpression.hxx
@@ -5943,6 +6300,14 @@ impl PolyExpression {
         }
     }
 }
+
+// ── Skipped symbols for PolyExpression (1 total) ──
+// SKIPPED: **Source:** `Expr_PolyExpression.hxx`:66 - `Expr_PolyExpression::Replace`
+//   method: Replaces all occurrences of <var> with <with> in <me>
+//   method: Raises InvalidOperand if <with> contains <me>.
+//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
+//
 
 // ========================
 // From Expr_PolyFunction.hxx
@@ -6130,6 +6495,13 @@ impl PolyFunction {
     }
 }
 
+// ── Skipped symbols for PolyFunction (1 total) ──
+// SKIPPED: **Source:** `Expr_PolyFunction.hxx`:64 - `Expr_PolyFunction::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+
 // ========================
 // From Expr_Product.hxx
 // ========================
@@ -6312,6 +6684,13 @@ impl Product {
     }
 }
 
+// ── Skipped symbols for Product (1 total) ──
+// SKIPPED: **Source:** `Expr_Product.hxx`:61 - `Expr_Product::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+
 // ========================
 // From Expr_RUIterator.hxx
 // ========================
@@ -6352,6 +6731,14 @@ impl RUIterator {
     }
 }
 
+// ── Skipped symbols for RUIterator (1 total) ──
+// SKIPPED: **Source:** `Expr_RUIterator.hxx`:46 - `Expr_RUIterator::Value`
+//   method: Returns current NamedUnknown.
+//   method: Raises exception if no more unknowns remain.
+//   Reason: return type 'Handle(Expr_NamedUnknown)' is unknown
+//   // pub fn value(&self) -> OwnedPtr<Handle<Expr_NamedUnknown>>;
+//
+
 // ========================
 // From Expr_RelationIterator.hxx
 // ========================
@@ -6390,6 +6777,14 @@ impl RelationIterator {
         unsafe { crate::ffi::Expr_RelationIterator_next(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for RelationIterator (1 total) ──
+// SKIPPED: **Source:** `Expr_RelationIterator.hxx`:46 - `Expr_RelationIterator::Value`
+//   method: Returns current basic relation.
+//   method: Exception is raised if no more relation remains.
+//   Reason: return type 'Handle(Expr_SingleRelation)' is unknown
+//   // pub fn value(&self) -> OwnedPtr<Handle<Expr_SingleRelation>>;
+//
 
 // ========================
 // From Expr_Sign.hxx
@@ -6551,6 +6946,13 @@ impl Sign {
     }
 }
 
+// ── Skipped symbols for Sign (1 total) ──
+// SKIPPED: **Source:** `Expr_Sign.hxx`:56 - `Expr_Sign::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+
 // ========================
 // From Expr_Sine.hxx
 // ========================
@@ -6711,6 +7113,13 @@ impl Sine {
     }
 }
 
+// ── Skipped symbols for Sine (1 total) ──
+// SKIPPED: **Source:** `Expr_Sine.hxx`:56 - `Expr_Sine::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+
 // ========================
 // From Expr_SingleRelation.hxx
 // ========================
@@ -6865,6 +7274,13 @@ impl SingleRelation {
         }
     }
 }
+
+// ── Skipped symbols for SingleRelation (1 total) ──
+// SKIPPED: **Source:** `Expr_SingleRelation.hxx`:67 - `Expr_SingleRelation::Replace`
+//   method: Replaces all occurrences of <var> with <with> in <me>.
+//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
+//
 
 // ========================
 // From Expr_Sinh.hxx
@@ -7025,6 +7441,13 @@ impl Sinh {
         unsafe { crate::ffi::Expr_Sinh_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for Sinh (1 total) ──
+// SKIPPED: **Source:** `Expr_Sinh.hxx`:56 - `Expr_Sinh::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
 
 // ========================
 // From Expr_Square.hxx
@@ -7187,6 +7610,13 @@ impl Square {
         unsafe { crate::ffi::Expr_Square_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for Square (1 total) ──
+// SKIPPED: **Source:** `Expr_Square.hxx`:56 - `Expr_Square::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>.
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
 
 // ========================
 // From Expr_SquareRoot.hxx
@@ -7357,6 +7787,13 @@ impl SquareRoot {
         unsafe { crate::ffi::Expr_SquareRoot_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for SquareRoot (1 total) ──
+// SKIPPED: **Source:** `Expr_SquareRoot.hxx`:56 - `Expr_SquareRoot::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>.
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
 
 // ========================
 // From Expr_Sum.hxx
@@ -7536,6 +7973,19 @@ impl Sum {
     }
 }
 
+// ── Skipped symbols for Sum (2 total) ──
+// SKIPPED: **Source:** `Expr_Sum.hxx`:62 - `Expr_Sum::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>.
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+// SKIPPED: **Source:** `Expr_Sum.hxx`:67 - `Expr_Sum::NDerivative`
+//   method: Returns the <N>-th derivative on <X> unknown of <me>.
+//   method: Raises OutOfRange if <N> <= 0
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn n_derivative(&self, X: &HandleNamedUnknown, N: i32) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+
 // ========================
 // From Expr_SystemRelation.hxx
 // ========================
@@ -7684,6 +8134,13 @@ impl SystemRelation {
         }
     }
 }
+
+// ── Skipped symbols for SystemRelation (1 total) ──
+// SKIPPED: **Source:** `Expr_SystemRelation.hxx`:79 - `Expr_SystemRelation::Replace`
+//   method: Replaces all occurrences of <var> with <with> in <me>.
+//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
+//
 
 // ========================
 // From Expr_Tangent.hxx
@@ -7849,6 +8306,13 @@ impl Tangent {
     }
 }
 
+// ── Skipped symbols for Tangent (1 total) ──
+// SKIPPED: **Source:** `Expr_Tangent.hxx`:56 - `Expr_Tangent::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+
 // ========================
 // From Expr_Tanh.hxx
 // ========================
@@ -8008,6 +8472,13 @@ impl Tanh {
         unsafe { crate::ffi::Expr_Tanh_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for Tanh (1 total) ──
+// SKIPPED: **Source:** `Expr_Tanh.hxx`:56 - `Expr_Tanh::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
 
 // ========================
 // From Expr_UnaryExpression.hxx
@@ -8169,6 +8640,14 @@ impl UnaryExpression {
         }
     }
 }
+
+// ── Skipped symbols for UnaryExpression (1 total) ──
+// SKIPPED: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace`
+//   method: Replaces all occurrences of <var> with <with> in <me>
+//   method: Raises InvalidOperand if <with> contains <me>.
+//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
+//
 
 // ========================
 // From Expr_UnaryFunction.hxx
@@ -8354,6 +8833,13 @@ impl UnaryFunction {
     }
 }
 
+// ── Skipped symbols for UnaryFunction (1 total) ──
+// SKIPPED: **Source:** `Expr_UnaryFunction.hxx`:64 - `Expr_UnaryFunction::Derivative`
+//   method: returns the derivative on <X> unknown of <me>.
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+
 // ========================
 // From Expr_UnaryMinus.hxx
 // ========================
@@ -8524,6 +9010,19 @@ impl UnaryMinus {
     }
 }
 
+// ── Skipped symbols for UnaryMinus (2 total) ──
+// SKIPPED: **Source:** `Expr_UnaryMinus.hxx`:57 - `Expr_UnaryMinus::Derivative`
+//   method: Returns the derivative on <X> unknown of <me>
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+// SKIPPED: **Source:** `Expr_UnaryMinus.hxx`:62 - `Expr_UnaryMinus::NDerivative`
+//   method: Returns the <N>-th derivative on <X> unknown of <me>.
+//   method: Raises OutOfRange if <N> <= 0
+//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
+//   // pub fn n_derivative(&self, X: &HandleNamedUnknown, N: i32) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
+//
+
 // ========================
 // From Expr_UnknownIterator.hxx
 // ========================
@@ -8561,6 +9060,12 @@ impl UnknownIterator {
         unsafe { crate::ffi::Expr_UnknownIterator_next(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for UnknownIterator (1 total) ──
+// SKIPPED: **Source:** `Expr_UnknownIterator.hxx`:42 - `Expr_UnknownIterator::Value`
+//   Reason: return type 'Handle(Expr_NamedUnknown)' is unknown
+//   // pub fn value(&self) -> OwnedPtr<Handle<Expr_NamedUnknown>>;
+//
 
 // ========================
 // Additional type re-exports

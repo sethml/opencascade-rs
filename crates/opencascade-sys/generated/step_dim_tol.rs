@@ -330,6 +330,13 @@ impl Datum {
     }
 }
 
+// ── Skipped symbols for Datum (1 total) ──
+// SKIPPED: **Source:** `StepDimTol_Datum.hxx`:39 - `StepDimTol_Datum::Init`
+//   method: Initialize all fields (own and inherited)
+//   Reason: param 'theShapeAspect_OfShape' uses unknown type 'const Handle(StepRepr_ProductDefinitionShape)&'
+//   // pub fn init(&mut self, theShapeAspect_Name: &HandleHAsciiString, theShapeAspect_Description: &HandleHAsciiString, theShapeAspect_OfShape: &HandleProductDefinitionShape, theShapeAspect_ProductDefinitional: Logical, theIdentification: &HandleHAsciiString);
+//
+
 // ========================
 // From StepDimTol_DatumReferenceModifier.hxx
 // ========================
@@ -493,6 +500,20 @@ impl DatumReferenceModifier {
     }
 }
 
+// ── Skipped symbols for DatumReferenceModifier (2 total) ──
+// SKIPPED: **Source:** `StepDimTol_DatumReferenceModifier.hxx`:41 - `StepDimTol_DatumReferenceModifier::CaseNum`
+//   method: Recognizes a DatumReferenceModifier Kind Entity that is :
+//   method: 1 -> DatumReferenceModifierWithValue
+//   method: 2 -> SimpleDatumReferenceModifierMember
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn case_num(&self, ent: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `StepDimTol_DatumReferenceModifier.hxx`:49 - `StepDimTol_DatumReferenceModifier::SimpleDatumReferenceModifierMember`
+//   method: returns Value as a SimpleDatumReferenceModifierMember (Null if another type)
+//   Reason: return type 'Handle(StepDimTol_SimpleDatumReferenceModifierMember)' is unknown
+//   // pub fn simple_datum_reference_modifier_member(&self) -> OwnedPtr<Handle<StepDimTol_SimpleDatumReferenceModifierMember>>;
+//
+
 // ========================
 // From StepDimTol_DatumReferenceModifierWithValue.hxx
 // ========================
@@ -605,6 +626,23 @@ impl HandleStepDimTolDatumReferenceModifierWithValue {
         }
     }
 }
+
+// ── Skipped symbols for DatumReferenceModifierWithValue (3 total) ──
+// SKIPPED: **Source:** `StepDimTol_DatumReferenceModifierWithValue.hxx`:39 - `StepDimTol_DatumReferenceModifierWithValue::Init`
+//   method: Initialize all fields (own and inherited)
+//   Reason: param 'theModifierValue' uses unknown type 'const Handle(StepBasic_LengthMeasureWithUnit)&'
+//   // pub fn init(&mut self, theModifierType: &DatumReferenceModifierType, theModifierValue: &HandleLengthMeasureWithUnit);
+//
+// SKIPPED: **Source:** `StepDimTol_DatumReferenceModifierWithValue.hxx`:52 - `StepDimTol_DatumReferenceModifierWithValue::ModifierValue`
+//   method: Returns field ModifierValue
+//   Reason: return type 'Handle(StepBasic_LengthMeasureWithUnit)' is unknown
+//   // pub fn modifier_value(&mut self) -> OwnedPtr<Handle<StepBasic_LengthMeasureWithUnit>>;
+//
+// SKIPPED: **Source:** `StepDimTol_DatumReferenceModifierWithValue.hxx`:55 - `StepDimTol_DatumReferenceModifierWithValue::SetModifierValue`
+//   method: Set field ModifierValue
+//   Reason: param 'theModifierValue' uses unknown type 'const Handle(StepBasic_LengthMeasureWithUnit)&'
+//   // pub fn set_modifier_value(&mut self, theModifierValue: &HandleLengthMeasureWithUnit);
+//
 
 // ========================
 // From StepDimTol_DatumSystemOrReference.hxx
@@ -754,6 +792,25 @@ impl DatumSystemOrReference {
         unsafe { crate::ffi::StepDimTol_DatumSystemOrReference_inherited_Real(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for DatumSystemOrReference (3 total) ──
+// SKIPPED: **Source:** `StepDimTol_DatumSystemOrReference.hxx`:42 - `StepDimTol_DatumSystemOrReference::CaseNum`
+//   method: Recognizes a DatumSystemOrReference Kind Entity that is :
+//   method: 1 -> DatumSystem
+//   method: 2 -> DatumReference
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn case_num(&self, ent: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `StepDimTol_DatumSystemOrReference.hxx`:45 - `StepDimTol_DatumSystemOrReference::DatumSystem`
+//   method: returns Value as a DatumSystem (Null if another type)
+//   Reason: return type 'Handle(StepDimTol_DatumSystem)' is unknown
+//   // pub fn datum_system(&self) -> OwnedPtr<Handle<StepDimTol_DatumSystem>>;
+//
+// SKIPPED: **Source:** `StepDimTol_DatumSystemOrReference.hxx`:48 - `StepDimTol_DatumSystemOrReference::DatumReference`
+//   method: returns Value as a DatumReference (Null if another type)
+//   Reason: return type 'Handle(StepDimTol_DatumReference)' is unknown
+//   // pub fn datum_reference(&self) -> OwnedPtr<Handle<StepDimTol_DatumReference>>;
+//
 
 // ========================
 // From StepDimTol_GeometricTolerance.hxx
@@ -1113,6 +1170,30 @@ impl GeometricToleranceTarget {
         }
     }
 }
+
+// ── Skipped symbols for GeometricToleranceTarget (4 total) ──
+// SKIPPED: **Source:** `StepDimTol_GeometricToleranceTarget.hxx`:46 - `StepDimTol_GeometricToleranceTarget::CaseNum`
+//   method: Recognizes a GeometricToleranceTarget Kind Entity that is :
+//   method: 1 -> DimensionalLocation
+//   method: 2 -> DimensionalSize
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn case_num(&self, ent: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `StepDimTol_GeometricToleranceTarget.hxx`:49 - `StepDimTol_GeometricToleranceTarget::DimensionalLocation`
+//   method: returns Value as a DimensionalLocation (Null if another type)
+//   Reason: return type 'Handle(StepShape_DimensionalLocation)' is unknown
+//   // pub fn dimensional_location(&self) -> OwnedPtr<Handle<StepShape_DimensionalLocation>>;
+//
+// SKIPPED: **Source:** `StepDimTol_GeometricToleranceTarget.hxx`:52 - `StepDimTol_GeometricToleranceTarget::DimensionalSize`
+//   method: returns Value as a DimensionalSize (Null if another type)
+//   Reason: return type 'Handle(StepShape_DimensionalSize)' is unknown
+//   // pub fn dimensional_size(&self) -> OwnedPtr<Handle<StepShape_DimensionalSize>>;
+//
+// SKIPPED: **Source:** `StepDimTol_GeometricToleranceTarget.hxx`:55 - `StepDimTol_GeometricToleranceTarget::ProductDefinitionShape`
+//   method: returns Value as a ProductDefinitionShape (Null if another type)
+//   Reason: return type 'Handle(StepRepr_ProductDefinitionShape)' is unknown
+//   // pub fn product_definition_shape(&self) -> OwnedPtr<Handle<StepRepr_ProductDefinitionShape>>;
+//
 
 // ========================
 // From StepDimTol_HArray1OfDatumReferenceModifier.hxx

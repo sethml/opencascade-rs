@@ -53,3 +53,101 @@ impl ShapeProcessor {
         unsafe { crate::ffi::XSAlgo_ShapeProcessor_prepare_for_transfer() }
     }
 }
+
+// ── Skipped symbols for ShapeProcessor (14 total) ──
+// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:48 - `XSAlgo_ShapeProcessor::XSAlgo_ShapeProcessor`
+//   constructor: Constructor.
+//   constructor: @param theParameters Pre-filled parameter map to be used in the processing.
+//   constructor: @param theShapeFixParameters Shape healing parameters to be used in the processing.
+//   Reason: excluded by bindings.toml
+//   // pub fn new_int_shapefixparameters(theParameters: &i32, theShapeFixParameters: &ShapeFixParameters) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:53 - `XSAlgo_ShapeProcessor::XSAlgo_ShapeProcessor`
+//   constructor: Constructor.
+//   constructor: @param theParameters Parameters to be used in the processing.
+//   Reason: excluded by bindings.toml
+//   // pub fn new_shapefixparameters(theParameters: &ShapeFixParameters) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:60 - `XSAlgo_ShapeProcessor::ProcessShape`
+//   method: Process the shape by applying the specified operations.
+//   method: @param theShape Shape to process.
+//   method: @param theOperations Operations to be performed.
+//   Reason: param 'theOperations' uses unknown type 'const ShapeProcess::OperationsFlags&'
+//   // pub fn process_shape(&mut self, theShape: &Shape, theOperations: &OperationsFlags, theProgress: &ProgressRange) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:67 - `XSAlgo_ShapeProcessor::GetContext`
+//   method: Get the context of the last processing.
+//   method: Only valid after the ProcessShape() method was called.
+//   method: @return Shape context.
+//   Reason: return type 'Handle(ShapeProcess_ShapeContext)' is unknown
+//   // pub fn get_context(&mut self) -> OwnedPtr<Handle<ShapeProcess_ShapeContext>>;
+//
+// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:72 - `XSAlgo_ShapeProcessor::MergeTransferInfo`
+//   method: Merge the results of the shape processing with the transfer process.
+//   method: @param theTransientProcess Transfer process to merge with.
+//   method: @param theFirstTPItemIndex Index of the first item in the transfer process to merge with.
+//   Reason: param 'theTransientProcess' uses unknown type 'const Handle(Transfer_TransientProcess)&'
+//   // pub fn merge_transfer_info(&self, theTransientProcess: &HandleTransientProcess, theFirstTPItemIndex: i32);
+//
+// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:78 - `XSAlgo_ShapeProcessor::MergeTransferInfo`
+//   method: Merge the results of the shape processing with the finder process.
+//   method: @param theFinderProcess Finder process to merge with.
+//   Reason: param 'theFinderProcess' uses unknown type 'const Handle(Transfer_FinderProcess)&'
+//   // pub fn merge_transfer_info(&self, theFinderProcess: &HandleFinderProcess);
+//
+// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:100 - `XSAlgo_ShapeProcessor::ReadProcessingData`
+//   static_method: Reads the parameter map from and operation flags from the file specified in static interface.
+//   static_method: @param theFileResourceName Name of the parameter in interface static that contains the name
+//   static_method: of the file. For example, parameter "read.iges.resource.name" may contain string
+//   Reason: excluded by bindings.toml
+//   // pub fn read_processing_data(theFileResourceName: &AsciiString, theScopeResourceName: &AsciiString) -> i32;
+//
+// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:109 - `XSAlgo_ShapeProcessor::FillParameterMap`
+//   static_method: Fill the parameter map with the values from the specified parameters.
+//   static_method: @param theParameters Parameters to be used in the processing.
+//   static_method: @param theIsForce Flag indicating whether parameter should be replaced if it already exists in
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fill_parameter_map(theParameters: &ShapeFixParameters, theIsReplace: bool, theMap: &mut i32);
+//
+// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:120 - `XSAlgo_ShapeProcessor::SetShapeFixParameters`
+//   static_method: Sets parameters for shape processing.
+//   static_method: Parameters from @p theParameters are copied to the output map.
+//   static_method: Parameters from @p theAdditionalParameters are copied to the output map
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_shape_fix_parameters(theParameters: &ShapeFixParameters, theAdditionalParameters: &i32, theTargetParameterMap: &mut i32);
+//
+// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:130 - `XSAlgo_ShapeProcessor::SetParameter`
+//   static_method: Set the parameter in the map.
+//   static_method: @param theKey Key of the parameter.
+//   static_method: @param theValue Value of the parameter.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_parameter(theKey: *const char, theValue: ShapeFixParameters_FixMode, theIsReplace: bool, theMap: &mut i32);
+//
+// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:141 - `XSAlgo_ShapeProcessor::SetParameter`
+//   static_method: Set the parameter in the map.
+//   static_method: @param theKey Key of the parameter.
+//   static_method: @param theValue Value of the parameter.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_parameter(theKey: *const char, theValue: f64, theIsReplace: bool, theMap: &mut i32);
+//
+// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:152 - `XSAlgo_ShapeProcessor::SetParameter`
+//   static_method: Set the parameter in the map.
+//   static_method: @param theKey Key of the parameter.
+//   static_method: @param theValue Value of the parameter.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_parameter(theKey: *const char, theValue: &AsciiString, theIsReplace: bool, theMap: &mut i32);
+//
+// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:167 - `XSAlgo_ShapeProcessor::MergeShapeTransferInfo`
+//   static_method: Merge the results of the shape processing with the finder process.
+//   static_method: @param theTransientProcess Transfer process to merge with.
+//   static_method: @param theModifiedShapesMap Map of modified shapes.
+//   Reason: param 'theFinderProcess' uses unknown type 'const Handle(Transfer_TransientProcess)&'
+//   // pub fn merge_shape_transfer_info(theFinderProcess: &HandleTransientProcess, theModifiedShapesMap: &DataMapOfShapeShape, theFirstTPItemIndex: i32, theMessages: HandleMsgRegistrator);
+//
+// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:178 - `XSAlgo_ShapeProcessor::MergeShapeTransferInfo`
+//   static_method: Merge the results of the shape processing with the transfer process.
+//   static_method: @param theTransientProcess Transfer process to merge with.
+//   static_method: @param theModifiedShapesMap Map of modified shapes.
+//   Reason: param 'theTransientProcess' uses unknown type 'const Handle(Transfer_FinderProcess)&'
+//   // pub fn merge_shape_transfer_info(theTransientProcess: &HandleFinderProcess, theModifiedShapesMap: &DataMapOfShapeShape, theMessages: HandleMsgRegistrator);
+//

@@ -252,6 +252,17 @@ impl Algo {
     }
 }
 
+// ── Skipped symbols for Algo (2 total) ──
+// SKIPPED: **Source:** `HLRBRep_Algo.hxx`:75 - `HLRBRep_Algo::HLRBRep_Algo`
+//   Reason: param 'A' uses unknown Handle type
+//   // pub fn new_handlehlrbrepalgo(A: &HandleAlgo) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_Algo.hxx`:78 - `HLRBRep_Algo::Add`
+//   method: add the Shape <S>.
+//   Reason: param 'SData' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add(&mut self, S: &Shape, SData: &HandleTransient, nbIso: i32);
+//
+
 // ========================
 // From HLRBRep_AreaLimit.hxx
 // ========================
@@ -1343,6 +1354,73 @@ impl CInter {
     }
 }
 
+// ── Skipped symbols for CInter (13 total) ──
+// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:52 - `HLRBRep_CInter::HLRBRep_CInter`
+//   constructor: Self Intersection of a curve
+//   Reason: has unbindable types: param 'C': void pointer (const Standard_Address&)
+//   // pub fn new_address_real2(C: /* const Standard_Address& */, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:55 - `HLRBRep_CInter::HLRBRep_CInter`
+//   constructor: Self Intersection of a curve with a domain.
+//   Reason: has unbindable types: param 'C': void pointer (const Standard_Address&)
+//   // pub fn new_address_domain_real2(C: /* const Standard_Address& */, D: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:61 - `HLRBRep_CInter::HLRBRep_CInter`
+//   constructor: Intersection between 2 curves.
+//   Reason: has unbindable types: param 'C1': void pointer (const Standard_Address&); param 'C2': void pointer (const Standard_Address&)
+//   // pub fn new_address2_real2(C1: /* const Standard_Address& */, C2: /* const Standard_Address& */, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:67 - `HLRBRep_CInter::HLRBRep_CInter`
+//   constructor: Intersection between 2 curves.
+//   Reason: has unbindable types: param 'C1': void pointer (const Standard_Address&); param 'C2': void pointer (const Standard_Address&)
+//   // pub fn new_address_domain_address_real2(C1: /* const Standard_Address& */, D1: &Domain, C2: /* const Standard_Address& */, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:74 - `HLRBRep_CInter::HLRBRep_CInter`
+//   constructor: Intersection between 2 curves.
+//   Reason: has unbindable types: param 'C1': void pointer (const Standard_Address&); param 'C2': void pointer (const Standard_Address&)
+//   // pub fn new_address2_domain_real2(C1: /* const Standard_Address& */, C2: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:81 - `HLRBRep_CInter::HLRBRep_CInter`
+//   constructor: Intersection between 2 curves.
+//   Reason: has unbindable types: param 'C1': void pointer (const Standard_Address&); param 'C2': void pointer (const Standard_Address&)
+//   // pub fn new_address_domain_address_domain_real2(C1: /* const Standard_Address& */, D1: &Domain, C2: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:89 - `HLRBRep_CInter::Perform`
+//   method: Intersection between 2 curves.
+//   Reason: has unbindable types: param 'C1': void pointer (const Standard_Address&); param 'C2': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, C1: /* const Standard_Address& */, D1: &Domain, C2: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64);
+//
+// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:97 - `HLRBRep_CInter::Perform`
+//   method: Intersection between 2 curves.
+//   Reason: has unbindable types: param 'C1': void pointer (const Standard_Address&); param 'C2': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, C1: /* const Standard_Address& */, C2: /* const Standard_Address& */, TolConf: f64, Tol: f64);
+//
+// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:103 - `HLRBRep_CInter::Perform`
+//   method: Intersection between 2 curves.
+//   Reason: has unbindable types: param 'C1': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, C1: /* const Standard_Address& */, D1: &Domain, TolConf: f64, Tol: f64);
+//
+// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:109 - `HLRBRep_CInter::Perform`
+//   method: Intersection between 2 curves.
+//   Reason: has unbindable types: param 'C1': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, C1: /* const Standard_Address& */, TolConf: f64, Tol: f64);
+//
+// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:114 - `HLRBRep_CInter::Perform`
+//   method: Intersection between 2 curves.
+//   Reason: has unbindable types: param 'C1': void pointer (const Standard_Address&); param 'C2': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, C1: /* const Standard_Address& */, D1: &Domain, C2: /* const Standard_Address& */, TolConf: f64, Tol: f64);
+//
+// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:121 - `HLRBRep_CInter::Perform`
+//   method: Intersection between 2 curves.
+//   Reason: has unbindable types: param 'C1': void pointer (const Standard_Address&); param 'C2': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, C1: /* const Standard_Address& */, C2: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64);
+//
+// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:128 - `HLRBRep_CInter::ComputeDomain`
+//   method: Create a domain from a curve
+//   Reason: has unbindable types: param 'C1': void pointer (const Standard_Address&)
+//   // pub fn compute_domain(&self, C1: /* const Standard_Address& */, TolDomain: f64) -> OwnedPtr<IntRes2d_Domain>;
+//
+
 // ========================
 // From HLRBRep_CLProps.hxx
 // ========================
@@ -1437,6 +1515,28 @@ impl CLProps {
     }
 }
 
+// ── Skipped symbols for CLProps (3 total) ──
+// SKIPPED: **Source:** `HLRBRep_CLProps.hxx`:52 - `HLRBRep_CLProps::HLRBRep_CLProps`
+//   constructor: Initializes the local properties of the curve <C>
+//   constructor: The current point and the derivatives are
+//   constructor: computed at the same time, which allows an
+//   Reason: has unbindable types: param 'C': raw pointer (const HLRBRep_Curve*&)
+//   // pub fn new_curveptr_int_real(C: /* const HLRBRep_Curve*& */, N: i32, Resolution: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_CLProps.hxx`:59 - `HLRBRep_CLProps::HLRBRep_CLProps`
+//   constructor: Same as previous constructor but here the parameter is
+//   constructor: set to the value <U>.
+//   constructor: All the computations done will be related to <C> and <U>.
+//   Reason: has unbindable types: param 'C': raw pointer (const HLRBRep_Curve*&)
+//   // pub fn new_curveptr_real_int_real(C: /* const HLRBRep_Curve*& */, U: f64, N: i32, Resolution: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_CLProps.hxx`:78 - `HLRBRep_CLProps::SetCurve`
+//   method: Initializes the local properties of the curve
+//   method: for the new curve.
+//   Reason: has unbindable types: param 'C': raw pointer (const HLRBRep_Curve*&)
+//   // pub fn set_curve(&mut self, C: /* const HLRBRep_Curve*& */);
+//
+
 // ========================
 // From HLRBRep_CLPropsATool.hxx
 // ========================
@@ -1457,6 +1557,52 @@ impl CLPropsATool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CLPropsATool_ctor()) }
     }
 }
+
+// ── Skipped symbols for CLPropsATool (7 total) ──
+// SKIPPED: **Source:** `HLRBRep_CLPropsATool.hxx`:35 - `HLRBRep_CLPropsATool::Value`
+//   static_method: Computes the  point <P> of  parameter <U>   on the
+//   static_method: Curve from HLRBRep <C>.
+//   Reason: has unbindable types: param 'A': raw pointer (const HLRBRep_Curve*)
+//   // pub fn value(A: /* const HLRBRep_Curve* */, U: f64, P: &mut Pnt2d);
+//
+// SKIPPED: **Source:** `HLRBRep_CLPropsATool.hxx`:39 - `HLRBRep_CLPropsATool::D1`
+//   static_method: Computes the point <P>  and  first derivative <V1>
+//   static_method: of parameter <U> on the curve <C>.
+//   Reason: has unbindable types: param 'A': raw pointer (const HLRBRep_Curve*)
+//   // pub fn d1(A: /* const HLRBRep_Curve* */, U: f64, P: &mut Pnt2d, V1: &mut Vec2d);
+//
+// SKIPPED: **Source:** `HLRBRep_CLPropsATool.hxx`:44 - `HLRBRep_CLPropsATool::D2`
+//   static_method: Computes the point <P>,  the first derivative <V1>
+//   static_method: and second derivative <V2> of parameter <U> on the
+//   static_method: curve <C>.
+//   Reason: has unbindable types: param 'A': raw pointer (const HLRBRep_Curve*)
+//   // pub fn d2(A: /* const HLRBRep_Curve* */, U: f64, P: &mut Pnt2d, V1: &mut Vec2d, V2: &mut Vec2d);
+//
+// SKIPPED: **Source:** `HLRBRep_CLPropsATool.hxx`:53 - `HLRBRep_CLPropsATool::D3`
+//   static_method: Computes the point <P>, the first derivative <V1>,
+//   static_method: the second derivative  <V2>   and third derivative
+//   static_method: <V3> of parameter <U> on the curve <C>.
+//   Reason: has unbindable types: param 'A': raw pointer (const HLRBRep_Curve*)
+//   // pub fn d3(A: /* const HLRBRep_Curve* */, U: f64, P: &mut Pnt2d, V1: &mut Vec2d, V2: &mut Vec2d, V3: &mut Vec2d);
+//
+// SKIPPED: **Source:** `HLRBRep_CLPropsATool.hxx`:65 - `HLRBRep_CLPropsATool::Continuity`
+//   static_method: returns the order  of continuity of the curve <C>.
+//   static_method: returns 1 :  first  derivative only is  computable
+//   static_method: returns 2  : first and  second derivative only are
+//   Reason: has unbindable types: param 'A': raw pointer (const HLRBRep_Curve*)
+//   // pub fn continuity(A: /* const HLRBRep_Curve* */) -> i32;
+//
+// SKIPPED: **Source:** `HLRBRep_CLPropsATool.hxx`:68 - `HLRBRep_CLPropsATool::FirstParameter`
+//   static_method: returns the first parameter bound of the curve.
+//   Reason: has unbindable types: param 'A': raw pointer (const HLRBRep_Curve*)
+//   // pub fn first_parameter(A: /* const HLRBRep_Curve* */) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_CLPropsATool.hxx`:72 - `HLRBRep_CLPropsATool::LastParameter`
+//   static_method: returns the  last  parameter bound  of  the curve.
+//   static_method: FirstParameter must be less than LastParamenter.
+//   Reason: has unbindable types: param 'A': raw pointer (const HLRBRep_Curve*)
+//   // pub fn last_parameter(A: /* const HLRBRep_Curve* */) -> f64;
+//
 
 // ========================
 // From HLRBRep_Curve.hxx
@@ -1796,6 +1942,22 @@ impl Curve {
     }
 }
 
+// ── Skipped symbols for Curve (3 total) ──
+// SKIPPED: **Source:** `HLRBRep_Curve.hxx`:57 - `HLRBRep_Curve::Projector`
+//   Reason: has unbindable types: param 'Proj': raw pointer (const HLRAlgo_Projector*)
+//   // pub fn projector(&mut self, Proj: /* const HLRAlgo_Projector* */);
+//
+// SKIPPED: **Source:** `HLRBRep_Curve.hxx`:77 - `HLRBRep_Curve::Update`
+//   method: Update the minmax and the internal data
+//   Reason: has unbindable types: param 'TotMin': C-style array (Standard_Real[16]); param 'TotMax': C-style array (Standard_Real[16])
+//   // pub fn update(&mut self, TotMin: /* Standard_Real[16] */, TotMax: /* Standard_Real[16] */) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_Curve.hxx`:80 - `HLRBRep_Curve::UpdateMinMax`
+//   method: Update the minmax returns tol for enlarge;
+//   Reason: has unbindable types: param 'TotMin': C-style array (Standard_Real[16]); param 'TotMax': C-style array (Standard_Real[16])
+//   // pub fn update_min_max(&mut self, TotMin: /* Standard_Real[16] */, TotMax: /* Standard_Real[16] */) -> f64;
+//
+
 // ========================
 // From HLRBRep_CurveTool.hxx
 // ========================
@@ -1816,6 +1978,152 @@ impl CurveTool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CurveTool_ctor()) }
     }
 }
+
+// ── Skipped symbols for CurveTool (29 total) ──
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:45 - `HLRBRep_CurveTool::FirstParameter`
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn first_parameter(C: /* Standard_Address */) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:47 - `HLRBRep_CurveTool::LastParameter`
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn last_parameter(C: /* Standard_Address */) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:49 - `HLRBRep_CurveTool::Continuity`
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn continuity(C: /* Standard_Address */) -> OwnedPtr<GeomAbs_Shape>;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:53 - `HLRBRep_CurveTool::NbIntervals`
+//   static_method: Returns  the number  of  intervals for  continuity
+//   static_method: <S>. May be one if Continuity(myclass) >= <S>
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn nb_intervals(C: /* Standard_Address */) -> i32;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:60 - `HLRBRep_CurveTool::Intervals`
+//   static_method: Stores in <T> the  parameters bounding the intervals
+//   static_method: of continuity <S>.
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn intervals(C: /* Standard_Address */, T: &mut Array1OfReal);
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:64 - `HLRBRep_CurveTool::GetInterval`
+//   static_method: output the bounds of interval of index <Index>
+//   static_method: used if Type == Composite.
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn get_interval(C: /* Standard_Address */, Index: i32, Tab: &Array1OfReal, U1: &mut f64, U2: &mut f64);
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:70 - `HLRBRep_CurveTool::IsClosed`
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn is_closed(C: /* Standard_Address */) -> bool;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:72 - `HLRBRep_CurveTool::IsPeriodic`
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn is_periodic(C: /* Standard_Address */) -> bool;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:74 - `HLRBRep_CurveTool::Period`
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn period(C: /* Standard_Address */) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:77 - `HLRBRep_CurveTool::Value`
+//   static_method: Computes the point of parameter U on the curve.
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn value(C: /* Standard_Address */, U: f64) -> OwnedPtr<gp_Pnt2d>;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:80 - `HLRBRep_CurveTool::D0`
+//   static_method: Computes the point of parameter U on the curve.
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn d0(C: /* Standard_Address */, U: f64, P: &mut Pnt2d);
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:86 - `HLRBRep_CurveTool::D1`
+//   static_method: Computes the point  of parameter U on the curve
+//   static_method: with its first derivative.
+//   static_method: Raised if the continuity of the current interval
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn d1(C: /* Standard_Address */, U: f64, P: &mut Pnt2d, V: &mut Vec2d);
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:92 - `HLRBRep_CurveTool::D2`
+//   static_method: Returns the point P of parameter U, the first and second
+//   static_method: derivatives V1 and V2.
+//   static_method: Raised if the continuity of the current interval
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn d2(C: /* Standard_Address */, U: f64, P: &mut Pnt2d, V1: &mut Vec2d, V2: &mut Vec2d);
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:102 - `HLRBRep_CurveTool::D3`
+//   static_method: Returns the point P of parameter U, the first, the second
+//   static_method: and the third derivative.
+//   static_method: Raised if the continuity of the current interval
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn d3(C: /* Standard_Address */, U: f64, P: &mut Pnt2d, V1: &mut Vec2d, V2: &mut Vec2d, V3: &mut Vec2d);
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:114 - `HLRBRep_CurveTool::DN`
+//   static_method: The returned vector gives the value of the derivative for the
+//   static_method: order of derivation N.
+//   static_method: Raised if the continuity of the current interval
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn dn(C: /* Standard_Address */, U: f64, N: i32) -> OwnedPtr<gp_Vec2d>;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:118 - `HLRBRep_CurveTool::Resolution`
+//   static_method: Returns the parametric  resolution corresponding
+//   static_method: to the real space resolution <R3d>.
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn resolution(C: /* Standard_Address */, R3d: f64) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:123 - `HLRBRep_CurveTool::GetType`
+//   static_method: Returns  the  type of the   curve  in the  current
+//   static_method: interval :   Line,   Circle,   Ellipse, Hyperbola,
+//   static_method: Parabola, BezierCurve, BSplineCurve, OtherCurve.
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn get_type(C: /* Standard_Address */) -> OwnedPtr<GeomAbs_CurveType>;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:128 - `HLRBRep_CurveTool::TheType`
+//   static_method: Returns  the  type of the   curve  in the  current
+//   static_method: interval :   Line,   Circle,   Ellipse, Hyperbola,
+//   static_method: Parabola, BezierCurve, BSplineCurve, OtherCurve.
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn the_type(C: /* Standard_Address */) -> OwnedPtr<GeomAbs_CurveType>;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:130 - `HLRBRep_CurveTool::Line`
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn line(C: /* Standard_Address */) -> OwnedPtr<gp_Lin2d>;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:132 - `HLRBRep_CurveTool::Circle`
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn circle(C: /* Standard_Address */) -> OwnedPtr<gp_Circ2d>;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:134 - `HLRBRep_CurveTool::Ellipse`
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn ellipse(C: /* Standard_Address */) -> OwnedPtr<gp_Elips2d>;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:136 - `HLRBRep_CurveTool::Hyperbola`
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn hyperbola(C: /* Standard_Address */) -> OwnedPtr<gp_Hypr2d>;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:138 - `HLRBRep_CurveTool::Parabola`
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn parabola(C: /* Standard_Address */) -> OwnedPtr<gp_Parab2d>;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:140 - `HLRBRep_CurveTool::Bezier`
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn bezier(C: /* Standard_Address */) -> OwnedPtr<Handle<Geom2d_BezierCurve>>;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:142 - `HLRBRep_CurveTool::BSpline`
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn b_spline(C: /* Standard_Address */) -> OwnedPtr<Handle<Geom2d_BSplineCurve>>;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:144 - `HLRBRep_CurveTool::EpsX`
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn eps_x(C: /* Standard_Address */) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:146 - `HLRBRep_CurveTool::NbSamples`
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn nb_samples(C: /* Standard_Address */, U0: f64, U1: f64) -> i32;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:150 - `HLRBRep_CurveTool::NbSamples`
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn nb_samples(C: /* Standard_Address */) -> i32;
+//
+// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:152 - `HLRBRep_CurveTool::Degree`
+//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
+//   // pub fn degree(C: /* Standard_Address */) -> i32;
+//
 
 // ========================
 // From HLRBRep_Data.hxx
@@ -2162,6 +2470,13 @@ impl HandleHLRBRepData {
         unsafe { &mut *(crate::ffi::HandleHLRBRepData_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for Data (1 total) ──
+// SKIPPED: **Source:** `HLRBRep_Data.hxx`:190 - `HLRBRep_Data::Classify`
+//   method: Classification of an edge.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn classify(&mut self, E: i32, ED: &EdgeData, LevelFlag: bool, Level: &mut i32, param: f64) -> OwnedPtr<TopAbs_State>;
+//
 
 // ========================
 // From HLRBRep_EdgeBuilder.hxx
@@ -2574,6 +2889,12 @@ impl EdgeData {
     }
 }
 
+// ── Skipped symbols for EdgeData (1 total) ──
+// SKIPPED: **Source:** `HLRBRep_EdgeData.hxx`:138 - `HLRBRep_EdgeData::Curve`
+//   Reason: has unbindable types: return: raw pointer (HLRBRep_Curve*)
+//   // pub fn curve(&mut self) -> /* HLRBRep_Curve* */;
+//
+
 // ========================
 // From HLRBRep_EdgeFaceTool.hxx
 // ========================
@@ -2598,6 +2919,17 @@ impl EdgeFaceTool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_EdgeFaceTool_ctor()) }
     }
 }
+
+// ── Skipped symbols for EdgeFaceTool (2 total) ──
+// SKIPPED: **Source:** `HLRBRep_EdgeFaceTool.hxx`:34 - `HLRBRep_EdgeFaceTool::CurvatureValue`
+//   Reason: has unbindable types: param 'F': void pointer (Standard_Address)
+//   // pub fn curvature_value(F: /* Standard_Address */, U: f64, V: f64, Tg: &Dir) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_EdgeFaceTool.hxx`:40 - `HLRBRep_EdgeFaceTool::UVPoint`
+//   static_method: return True if U and V are found.
+//   Reason: has unbindable types: param 'E': void pointer (Standard_Address); param 'F': void pointer (Standard_Address)
+//   // pub fn uv_point(Par: f64, E: /* Standard_Address */, F: /* Standard_Address */, U: &mut f64, V: &mut f64) -> bool;
+//
 
 // ========================
 // From HLRBRep_EdgeIList.hxx
@@ -2848,6 +3180,16 @@ impl ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
         }
     }
 }
+
+// ── Skipped symbols for ExactIntersectionPointOfTheIntPCurvePCurveOfCInter (2 total) ──
+// SKIPPED: **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:38 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter`
+//   Reason: has unbindable types: param 'C1': void pointer (const Standard_Address&); param 'C2': void pointer (const Standard_Address&)
+//   // pub fn new_address2_real(C1: /* const Standard_Address& */, C2: /* const Standard_Address& */, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:43 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Perform`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn perform(&mut self, Poly1: &ThePolygon2dOfTheIntPCurvePCurveOfCInter, Poly2: &ThePolygon2dOfTheIntPCurvePCurveOfCInter, NumSegOn1: &mut i32, NumSegOn2: &mut i32, ParamOnSeg1: &mut f64, ParamOnSeg2: &mut f64);
+//
 
 // ========================
 // From HLRBRep_FaceData.hxx
@@ -3505,6 +3847,15 @@ impl HLRToShape {
     }
 }
 
+// ── Skipped symbols for HLRToShape (1 total) ──
+// SKIPPED: **Source:** `HLRBRep_HLRToShape.hxx`:68 - `HLRBRep_HLRToShape::HLRBRep_HLRToShape`
+//   constructor: Constructs a framework for filtering the
+//   constructor: results of the HLRBRep_Algo algorithm, A.
+//   constructor: Use the extraction filters to obtain the results you want for A.
+//   Reason: param 'A' uses unknown Handle type
+//   // pub fn new_handlehlrbrepalgo(A: &HandleAlgo) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From HLRBRep_Hider.hxx
 // ========================
@@ -3626,6 +3977,60 @@ impl IntConicCurveOfCInter {
     }
 }
 
+// ── Skipped symbols for IntConicCurveOfCInter (10 total) ──
+// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:48 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter`
+//   constructor: Intersection between a line and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn new_lin2d_domain_address_domain_real2(L: &Lin2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:56 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter`
+//   constructor: Intersection between a line and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn new_circ2d_domain_address_domain_real2(C: &Circ2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:64 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter`
+//   constructor: Intersection between an ellipse and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn new_elips2d_domain_address_domain_real2(E: &Elips2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:72 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter`
+//   constructor: Intersection between a parabola and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn new_parab2d_domain_address_domain_real2(Prb: &Parab2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:81 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter`
+//   constructor: Intersection between the main branch of an hyperbola
+//   constructor: and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn new_hypr2d_domain_address_domain_real2(H: &Hypr2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:89 - `HLRBRep_IntConicCurveOfCInter::Perform`
+//   method: Intersection between a line and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, L: &Lin2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64);
+//
+// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:97 - `HLRBRep_IntConicCurveOfCInter::Perform`
+//   method: Intersection between a line and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, C: &Circ2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64);
+//
+// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:105 - `HLRBRep_IntConicCurveOfCInter::Perform`
+//   method: Intersection between an ellipse and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, E: &Elips2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64);
+//
+// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:113 - `HLRBRep_IntConicCurveOfCInter::Perform`
+//   method: Intersection between a parabola and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, Prb: &Parab2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64);
+//
+// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:122 - `HLRBRep_IntConicCurveOfCInter::Perform`
+//   method: Intersection between the main branch of an hyperbola
+//   method: and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, H: &Hypr2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64);
+//
+
 // ========================
 // From HLRBRep_InterCSurf.hxx
 // ========================
@@ -3699,6 +4104,42 @@ impl InterCSurf {
         unsafe { crate::ffi::HLRBRep_InterCSurf_inherited_Dump(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for InterCSurf (5 total) ──
+// SKIPPED: **Source:** `HLRBRep_InterCSurf.hxx`:56 - `HLRBRep_InterCSurf::Perform`
+//   method: Compute the Intersection between the curve and the
+//   method: surface
+//   Reason: has unbindable types: param 'Surface': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, Curve: &Lin, Surface: /* const Standard_Address& */);
+//
+// SKIPPED: **Source:** `HLRBRep_InterCSurf.hxx`:61 - `HLRBRep_InterCSurf::Perform`
+//   method: Compute the Intersection  between the curve  and
+//   method: the surface. The   Curve is already  sampled and
+//   method: its polygon : <Polygon> is given.
+//   Reason: has unbindable types: param 'Surface': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, Curve: &Lin, Polygon: &ThePolygonOfInterCSurf, Surface: /* const Standard_Address& */);
+//
+// SKIPPED: **Source:** `HLRBRep_InterCSurf.hxx`:69 - `HLRBRep_InterCSurf::Perform`
+//   method: Compute the Intersection  between the curve  and
+//   method: the surface. The   Curve is already  sampled and
+//   method: its polygon : <Polygon> is given. The Surface is
+//   Reason: has unbindable types: param 'Surface': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, Curve: &Lin, ThePolygon: &ThePolygonOfInterCSurf, Surface: /* const Standard_Address& */, Polyhedron: &ThePolyhedronOfInterCSurf);
+//
+// SKIPPED: **Source:** `HLRBRep_InterCSurf.hxx`:78 - `HLRBRep_InterCSurf::Perform`
+//   method: Compute the Intersection  between the curve  and
+//   method: the surface. The   Curve is already  sampled and
+//   method: its polygon : <Polygon> is given. The Surface is
+//   Reason: has unbindable types: param 'Surface': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, Curve: &Lin, ThePolygon: &ThePolygonOfInterCSurf, Surface: /* const Standard_Address& */, Polyhedron: &ThePolyhedronOfInterCSurf, BndBSB: &mut BoundSortBox);
+//
+// SKIPPED: **Source:** `HLRBRep_InterCSurf.hxx`:87 - `HLRBRep_InterCSurf::Perform`
+//   method: Compute the Intersection  between the curve  and
+//   method: the surface. The Surface is already  sampled and
+//   method: its polyhedron : <Polyhedron> is given.
+//   Reason: has unbindable types: param 'Surface': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, Curve: &Lin, Surface: /* const Standard_Address& */, Polyhedron: &ThePolyhedronOfInterCSurf);
+//
 
 // ========================
 // From HLRBRep_InternalAlgo.hxx
@@ -3917,6 +4358,29 @@ impl HandleHLRBRepInternalAlgo {
     }
 }
 
+// ── Skipped symbols for InternalAlgo (4 total) ──
+// SKIPPED: **Source:** `HLRBRep_InternalAlgo.hxx`:53 - `HLRBRep_InternalAlgo::Load`
+//   method: add the shape <S>.
+//   Reason: param 'S' uses unknown type 'const Handle(HLRTopoBRep_OutLiner)&'
+//   // pub fn load(&mut self, S: &HandleOutLiner, SData: &HandleTransient, nbIso: i32);
+//
+// SKIPPED: **Source:** `HLRBRep_InternalAlgo.hxx`:58 - `HLRBRep_InternalAlgo::Load`
+//   method: add the shape <S>.
+//   Reason: param 'S' uses unknown type 'const Handle(HLRTopoBRep_OutLiner)&'
+//   // pub fn load(&mut self, S: &HandleOutLiner, nbIso: i32);
+//
+// SKIPPED: **Source:** `HLRBRep_InternalAlgo.hxx`:63 - `HLRBRep_InternalAlgo::Index`
+//   method: return the index of the Shape <S> and  return 0 if
+//   method: the Shape <S> is not found.
+//   Reason: param 'S' uses unknown type 'const Handle(HLRTopoBRep_OutLiner)&'
+//   // pub fn index(&self, S: &HandleOutLiner) -> i32;
+//
+// SKIPPED: **Source:** `HLRBRep_InternalAlgo.hxx`:69 - `HLRBRep_InternalAlgo::ShapeData`
+//   method: Change the Shape Data of the Shape of index <I>.
+//   Reason: param 'SData' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn shape_data(&mut self, I: i32, SData: &HandleTransient);
+//
+
 // ========================
 // From HLRBRep_Intersector.hxx
 // ========================
@@ -3983,6 +4447,30 @@ impl Intersector {
         unsafe { crate::ffi::HLRBRep_Intersector_destroy(self as *mut Self) }
     }
 }
+
+// ── Skipped symbols for Intersector (4 total) ──
+// SKIPPED: **Source:** `HLRBRep_Intersector.hxx`:42 - `HLRBRep_Intersector::Perform`
+//   method: Performs the auto intersection of an edge.
+//   method: The edge domain is cut at start with da1*(b-a) and at end with db1*(b-a).
+//   Reason: has unbindable types: param 'A1': void pointer (Standard_Address)
+//   // pub fn perform(&mut self, A1: /* Standard_Address */, da1: f64, db1: f64);
+//
+// SKIPPED: **Source:** `HLRBRep_Intersector.hxx`:48 - `HLRBRep_Intersector::Perform`
+//   method: Performs the intersection between the two edges.
+//   method: The edges domains are cut at start with da*(b-a) and at end with db*(b-a).
+//   Reason: has unbindable types: param 'A1': void pointer (Standard_Address); param 'A2': void pointer (Standard_Address)
+//   // pub fn perform(&mut self, nA: i32, A1: /* Standard_Address */, da1: f64, db1: f64, nB: i32, A2: /* Standard_Address */, da2: f64, db2: f64, NoBound: bool);
+//
+// SKIPPED: **Source:** `HLRBRep_Intersector.hxx`:60 - `HLRBRep_Intersector::SimulateOnePoint`
+//   method: Create a single IntersectionPoint (U on A1) (V on A2)
+//   method: The point is middle on both curves.
+//   Reason: has unbindable types: param 'A1': void pointer (Standard_Address); param 'A2': void pointer (Standard_Address)
+//   // pub fn simulate_one_point(&mut self, A1: /* Standard_Address */, U: f64, A2: /* Standard_Address */, V: f64);
+//
+// SKIPPED: **Source:** `HLRBRep_Intersector.hxx`:65 - `HLRBRep_Intersector::Load`
+//   Reason: has unbindable types: param 'A': void pointer (Standard_Address&)
+//   // pub fn load(&mut self, A: /* Standard_Address& */);
+//
 
 // ========================
 // From HLRBRep_LineTool.hxx
@@ -4345,6 +4833,13 @@ impl MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter {
     }
 }
 
+// ── Skipped symbols for MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter (1 total) ──
+// SKIPPED: **Source:** `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter.hxx`:37 - `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter`
+//   constructor: Constructor of the class.
+//   Reason: has unbindable types: param 'PC': void pointer (const Standard_Address&)
+//   // pub fn new_iconictool_address(IT: &IConicTool, PC: /* const Standard_Address& */) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx
 // ========================
@@ -4524,6 +5019,17 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
         }
     }
 }
+
+// ── Skipped symbols for PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter (2 total) ──
+// SKIPPED: **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:44 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter`
+//   Reason: has unbindable types: param 'C': void pointer (const Standard_Address&)
+//   // pub fn new_pnt2d_address(P: &Pnt2d, C: /* const Standard_Address& */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:48 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Initialize`
+//   method: sets the field mycurve of the function.
+//   Reason: has unbindable types: param 'C': void pointer (const Standard_Address&)
+//   // pub fn initialize(&mut self, C: /* const Standard_Address& */);
+//
 
 // ========================
 // From HLRBRep_PolyAlgo.hxx
@@ -4789,6 +5295,16 @@ impl HandleHLRBRepPolyAlgo {
         unsafe { &mut *(crate::ffi::HandleHLRBRepPolyAlgo_get_mut(self as *mut Self)) }
     }
 }
+
+// ── Skipped symbols for PolyAlgo (2 total) ──
+// SKIPPED: **Source:** `HLRBRep_PolyAlgo.hxx`:157 - `HLRBRep_PolyAlgo::Hide`
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn hide(&mut self, status: &mut EdgeStatus, S: &mut Shape, reg1: &mut bool, regn: &mut bool, outl: &mut bool, intl: &mut bool) -> &mut BiPoint_PointsT;
+//
+// SKIPPED: **Source:** `HLRBRep_PolyAlgo.hxx`:170 - `HLRBRep_PolyAlgo::Show`
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn show(&mut self, S: &mut Shape, reg1: &mut bool, regn: &mut bool, outl: &mut bool, intl: &mut bool) -> &mut BiPoint_PointsT;
+//
 
 // ========================
 // From HLRBRep_PolyHLRToShape.hxx
@@ -5194,6 +5710,27 @@ impl SLProps {
     }
 }
 
+// ── Skipped symbols for SLProps (3 total) ──
+// SKIPPED: **Source:** `HLRBRep_SLProps.hxx`:52 - `HLRBRep_SLProps::HLRBRep_SLProps`
+//   constructor: Initializes the local properties of the surface <S>
+//   constructor: for the parameter values (<U>, <V>).
+//   constructor: The current point and the derivatives are
+//   Reason: has unbindable types: param 'S': void pointer (const Standard_Address&)
+//   // pub fn new_address_real2_int_real(S: /* const Standard_Address& */, U: f64, V: f64, N: i32, Resolution: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_SLProps.hxx`:60 - `HLRBRep_SLProps::HLRBRep_SLProps`
+//   constructor: idem as previous constructor but without setting the value
+//   constructor: of parameters <U> and <V>.
+//   Reason: has unbindable types: param 'S': void pointer (const Standard_Address&)
+//   // pub fn new_address_int_real(S: /* const Standard_Address& */, N: i32, Resolution: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_SLProps.hxx`:71 - `HLRBRep_SLProps::SetSurface`
+//   method: Initializes the local properties of the surface S
+//   method: for the new surface.
+//   Reason: has unbindable types: param 'S': void pointer (const Standard_Address&)
+//   // pub fn set_surface(&mut self, S: /* const Standard_Address& */);
+//
+
 // ========================
 // From HLRBRep_SLPropsATool.hxx
 // ========================
@@ -5214,6 +5751,43 @@ impl SLPropsATool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SLPropsATool_ctor()) }
     }
 }
+
+// ── Skipped symbols for SLPropsATool (6 total) ──
+// SKIPPED: **Source:** `HLRBRep_SLPropsATool.hxx`:35 - `HLRBRep_SLPropsATool::Value`
+//   static_method: Computes the point  <P> of 	parameter <U> and <V>
+//   static_method: on the Surface <A>.
+//   Reason: has unbindable types: param 'A': void pointer (Standard_Address)
+//   // pub fn value(A: /* Standard_Address */, U: f64, V: f64, P: &mut Pnt);
+//
+// SKIPPED: **Source:** `HLRBRep_SLPropsATool.hxx`:42 - `HLRBRep_SLPropsATool::D1`
+//   static_method: Computes the point <P>  and first derivative <D1*>
+//   static_method: of parameter <U> and <V> on the Surface <A>.
+//   Reason: has unbindable types: param 'A': void pointer (Standard_Address)
+//   // pub fn d1(A: /* Standard_Address */, U: f64, V: f64, P: &mut Pnt, D1U: &mut Vec, D1V: &mut Vec);
+//
+// SKIPPED: **Source:** `HLRBRep_SLPropsATool.hxx`:52 - `HLRBRep_SLPropsATool::D2`
+//   static_method: Computes the point <P>, the first derivative <D1*>
+//   static_method: and second  derivative <D2*> of parameter  <U> and
+//   static_method: <V> on the Surface <A>.
+//   Reason: has unbindable types: param 'A': void pointer (Standard_Address)
+//   // pub fn d2(A: /* Standard_Address */, U: f64, V: f64, P: &mut Pnt, D1U: &mut Vec, D1V: &mut Vec, D2U: &mut Vec, D2V: &mut Vec, DUV: &mut Vec);
+//
+// SKIPPED: **Source:** `HLRBRep_SLPropsATool.hxx`:62 - `HLRBRep_SLPropsATool::DN`
+//   Reason: has unbindable types: param 'A': void pointer (Standard_Address)
+//   // pub fn dn(A: /* Standard_Address */, U: f64, V: f64, Nu: i32, Nv: i32) -> OwnedPtr<gp_Vec>;
+//
+// SKIPPED: **Source:** `HLRBRep_SLPropsATool.hxx`:72 - `HLRBRep_SLPropsATool::Continuity`
+//   static_method: returns the order of   continuity of the   Surface
+//   static_method: <A>.  returns  1   :  first  derivative    only is
+//   static_method: computable returns 2 : first and second derivative
+//   Reason: has unbindable types: param 'A': void pointer (Standard_Address)
+//   // pub fn continuity(A: /* Standard_Address */) -> i32;
+//
+// SKIPPED: **Source:** `HLRBRep_SLPropsATool.hxx`:75 - `HLRBRep_SLPropsATool::Bounds`
+//   static_method: returns the bounds of the Surface.
+//   Reason: has unbindable types: param 'A': void pointer (Standard_Address)
+//   // pub fn bounds(A: /* Standard_Address */, U1: &mut f64, V1: &mut f64, U2: &mut f64, V2: &mut f64);
+//
 
 // ========================
 // From HLRBRep_ShapeBounds.hxx
@@ -5262,6 +5836,40 @@ impl ShapeBounds {
     }
 }
 
+// ── Skipped symbols for ShapeBounds (8 total) ──
+// SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:38 - `HLRBRep_ShapeBounds::HLRBRep_ShapeBounds`
+//   Reason: param 'S' uses unknown Handle type
+//   // pub fn new_handlehlrtopobrepoutliner_handlestandardtransient_int7(S: &HandleOutLiner, SData: &HandleTransient, nbIso: i32, V1: i32, V2: i32, E1: i32, E2: i32, F1: i32, F2: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:48 - `HLRBRep_ShapeBounds::HLRBRep_ShapeBounds`
+//   Reason: param 'S' uses unknown Handle type
+//   // pub fn new_handlehlrtopobrepoutliner_int7(S: &HandleOutLiner, nbIso: i32, V1: i32, V2: i32, E1: i32, E2: i32, F1: i32, F2: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:61 - `HLRBRep_ShapeBounds::Shape`
+//   Reason: param 'S' uses unknown type 'const Handle(HLRTopoBRep_OutLiner)&'
+//   // pub fn shape(&mut self, S: &HandleOutLiner);
+//
+// SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:63 - `HLRBRep_ShapeBounds::Shape`
+//   Reason: return type 'const Handle(HLRTopoBRep_OutLiner)&' is unknown
+//   // pub fn shape(&self) -> &HandleOutLiner;
+//
+// SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:65 - `HLRBRep_ShapeBounds::ShapeData`
+//   Reason: param 'SD' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn shape_data(&mut self, SD: &HandleTransient);
+//
+// SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:67 - `HLRBRep_ShapeBounds::ShapeData`
+//   Reason: return type 'const Handle(Standard_Transient)&' is unknown
+//   // pub fn shape_data(&self) -> &HandleTransient;
+//
+// SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:73 - `HLRBRep_ShapeBounds::Sizes`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn sizes(&self, NV: &mut i32, NE: &mut i32, NF: &mut i32);
+//
+// SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:77 - `HLRBRep_ShapeBounds::Bounds`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn bounds(&self, V1: &mut i32, V2: &mut i32, E1: &mut i32, E2: &mut i32, F1: &mut i32, F2: &mut i32);
+//
+
 // ========================
 // From HLRBRep_ShapeToHLR.hxx
 // ========================
@@ -5285,6 +5893,14 @@ impl ShapeToHLR {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_ShapeToHLR_ctor()) }
     }
 }
+
+// ── Skipped symbols for ShapeToHLR (1 total) ──
+// SKIPPED: **Source:** `HLRBRep_ShapeToHLR.hxx`:42 - `HLRBRep_ShapeToHLR::Load`
+//   static_method: Creates  a DataStructure   containing the OutLiner
+//   static_method: <S> depending on the projector <P> and nbIso.
+//   Reason: param 'S' uses unknown type 'const Handle(HLRTopoBRep_OutLiner)&'
+//   // pub fn load(S: &HandleOutLiner, P: &Projector, MST: &mut MapOfShapeTool, nbIso: i32) -> OwnedPtr<Handle<HLRBRep_Data>>;
+//
 
 // ========================
 // From HLRBRep_Surface.hxx
@@ -5618,6 +6234,16 @@ impl Surface {
     }
 }
 
+// ── Skipped symbols for Surface (2 total) ──
+// SKIPPED: **Source:** `HLRBRep_Surface.hxx`:48 - `HLRBRep_Surface::Projector`
+//   Reason: has unbindable types: param 'Proj': raw pointer (const HLRAlgo_Projector*)
+//   // pub fn projector(&mut self, Proj: /* const HLRAlgo_Projector* */);
+//
+// SKIPPED: **Source:** `HLRBRep_Surface.hxx`:60 - `HLRBRep_Surface::IsAbove`
+//   Reason: has unbindable types: param 'A': raw pointer (const HLRBRep_Curve*)
+//   // pub fn is_above(&self, back: bool, A: /* const HLRBRep_Curve* */, tolC: f64) -> bool;
+//
+
 // ========================
 // From HLRBRep_SurfaceTool.hxx
 // ========================
@@ -5638,6 +6264,174 @@ impl SurfaceTool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SurfaceTool_ctor()) }
     }
 }
+
+// ── Skipped symbols for SurfaceTool (41 total) ──
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:45 - `HLRBRep_SurfaceTool::FirstUParameter`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn first_u_parameter(S: /* Standard_Address */) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:47 - `HLRBRep_SurfaceTool::FirstVParameter`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn first_v_parameter(S: /* Standard_Address */) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:49 - `HLRBRep_SurfaceTool::LastUParameter`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn last_u_parameter(S: /* Standard_Address */) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:51 - `HLRBRep_SurfaceTool::LastVParameter`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn last_v_parameter(S: /* Standard_Address */) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:53 - `HLRBRep_SurfaceTool::NbUIntervals`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn nb_u_intervals(S: /* Standard_Address */, Sh: Shape) -> i32;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:55 - `HLRBRep_SurfaceTool::NbVIntervals`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn nb_v_intervals(S: /* Standard_Address */, Sh: Shape) -> i32;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:57 - `HLRBRep_SurfaceTool::UIntervals`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn u_intervals(S: /* Standard_Address */, T: &mut Array1OfReal, Sh: Shape);
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:59 - `HLRBRep_SurfaceTool::VIntervals`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn v_intervals(S: /* Standard_Address */, T: &mut Array1OfReal, Sh: Shape);
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:62 - `HLRBRep_SurfaceTool::UTrim`
+//   static_method: If <First> >= <Last>
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn u_trim(S: /* Standard_Address */, First: f64, Last: f64, Tol: f64) -> OwnedPtr<Handle<Adaptor3d_Surface>>;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:68 - `HLRBRep_SurfaceTool::VTrim`
+//   static_method: If <First> >= <Last>
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn v_trim(S: /* Standard_Address */, First: f64, Last: f64, Tol: f64) -> OwnedPtr<Handle<Adaptor3d_Surface>>;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:73 - `HLRBRep_SurfaceTool::IsUClosed`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn is_u_closed(S: /* Standard_Address */) -> bool;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:75 - `HLRBRep_SurfaceTool::IsVClosed`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn is_v_closed(S: /* Standard_Address */) -> bool;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:77 - `HLRBRep_SurfaceTool::IsUPeriodic`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn is_u_periodic(S: /* Standard_Address */) -> bool;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:79 - `HLRBRep_SurfaceTool::UPeriod`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn u_period(S: /* Standard_Address */) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:81 - `HLRBRep_SurfaceTool::IsVPeriodic`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn is_v_periodic(S: /* Standard_Address */) -> bool;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:83 - `HLRBRep_SurfaceTool::VPeriod`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn v_period(S: /* Standard_Address */) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:85 - `HLRBRep_SurfaceTool::Value`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn value(S: /* Standard_Address */, u: f64, v: f64) -> OwnedPtr<gp_Pnt>;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:87 - `HLRBRep_SurfaceTool::D0`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn d0(S: /* Standard_Address */, u: f64, v: f64, P: &mut Pnt);
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:89 - `HLRBRep_SurfaceTool::D1`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn d1(S: /* Standard_Address */, u: f64, v: f64, P: &mut Pnt, D1u: &mut Vec, D1v: &mut Vec);
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:96 - `HLRBRep_SurfaceTool::D2`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn d2(S: /* Standard_Address */, u: f64, v: f64, P: &mut Pnt, D1U: &mut Vec, D1V: &mut Vec, D2U: &mut Vec, D2V: &mut Vec, D2UV: &mut Vec);
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:106 - `HLRBRep_SurfaceTool::D3`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn d3(S: /* Standard_Address */, u: f64, v: f64, P: &mut Pnt, D1U: &mut Vec, D1V: &mut Vec, D2U: &mut Vec, D2V: &mut Vec, D2UV: &mut Vec, D3U: &mut Vec, D3V: &mut Vec, D3UUV: &mut Vec, D3UVV: &mut Vec);
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:120 - `HLRBRep_SurfaceTool::DN`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn dn(S: /* Standard_Address */, u: f64, v: f64, Nu: i32, Nv: i32) -> OwnedPtr<gp_Vec>;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:126 - `HLRBRep_SurfaceTool::UResolution`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn u_resolution(S: /* Standard_Address */, R3d: f64) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:128 - `HLRBRep_SurfaceTool::VResolution`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn v_resolution(S: /* Standard_Address */, R3d: f64) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:130 - `HLRBRep_SurfaceTool::GetType`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn get_type(S: /* Standard_Address */) -> OwnedPtr<GeomAbs_SurfaceType>;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:132 - `HLRBRep_SurfaceTool::Plane`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn plane(S: /* Standard_Address */) -> OwnedPtr<gp_Pln>;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:134 - `HLRBRep_SurfaceTool::Cylinder`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn cylinder(S: /* Standard_Address */) -> OwnedPtr<gp_Cylinder>;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:136 - `HLRBRep_SurfaceTool::Cone`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn cone(S: /* Standard_Address */) -> OwnedPtr<gp_Cone>;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:138 - `HLRBRep_SurfaceTool::Torus`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn torus(S: /* Standard_Address */) -> OwnedPtr<gp_Torus>;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:140 - `HLRBRep_SurfaceTool::Sphere`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn sphere(S: /* Standard_Address */) -> OwnedPtr<gp_Sphere>;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:142 - `HLRBRep_SurfaceTool::Bezier`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn bezier(S: /* Standard_Address */) -> OwnedPtr<Handle<Geom_BezierSurface>>;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:144 - `HLRBRep_SurfaceTool::BSpline`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn b_spline(S: /* Standard_Address */) -> OwnedPtr<Handle<Geom_BSplineSurface>>;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:146 - `HLRBRep_SurfaceTool::AxeOfRevolution`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn axe_of_revolution(S: /* Standard_Address */) -> OwnedPtr<gp_Ax1>;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:148 - `HLRBRep_SurfaceTool::Direction`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn direction(S: /* Standard_Address */) -> OwnedPtr<gp_Dir>;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:150 - `HLRBRep_SurfaceTool::BasisCurve`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn basis_curve(S: /* Standard_Address */) -> OwnedPtr<Handle<Adaptor3d_Curve>>;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:152 - `HLRBRep_SurfaceTool::BasisSurface`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn basis_surface(S: /* Standard_Address */) -> OwnedPtr<Handle<Adaptor3d_Surface>>;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:154 - `HLRBRep_SurfaceTool::OffsetValue`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn offset_value(S: /* Standard_Address */) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:156 - `HLRBRep_SurfaceTool::NbSamplesU`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn nb_samples_u(S: /* Standard_Address */) -> i32;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:158 - `HLRBRep_SurfaceTool::NbSamplesV`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn nb_samples_v(S: /* Standard_Address */) -> i32;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:160 - `HLRBRep_SurfaceTool::NbSamplesU`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn nb_samples_u(S: /* Standard_Address */, u1: f64, u2: f64) -> i32;
+//
+// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:164 - `HLRBRep_SurfaceTool::NbSamplesV`
+//   Reason: has unbindable types: param 'S': void pointer (Standard_Address)
+//   // pub fn nb_samples_v(S: /* Standard_Address */, v1: f64, v2: f64) -> i32;
+//
 
 // ========================
 // From HLRBRep_TheCSFunctionOfInterCSurf.hxx
@@ -5728,6 +6522,28 @@ impl TheCSFunctionOfInterCSurf {
     }
 }
 
+// ── Skipped symbols for TheCSFunctionOfInterCSurf (5 total) ──
+// SKIPPED: **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:40 - `HLRBRep_TheCSFunctionOfInterCSurf::HLRBRep_TheCSFunctionOfInterCSurf`
+//   Reason: has unbindable types: param 'S': void pointer (const Standard_Address&)
+//   // pub fn new_address_lin(S: /* const Standard_Address& */, C: &Lin) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:46 - `HLRBRep_TheCSFunctionOfInterCSurf::Value`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:48 - `HLRBRep_TheCSFunctionOfInterCSurf::Derivatives`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:50 - `HLRBRep_TheCSFunctionOfInterCSurf::Values`
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:56 - `HLRBRep_TheCSFunctionOfInterCSurf::AuxillarSurface`
+//   Reason: has unbindable types: return: void pointer (const Standard_Address&)
+//   // pub fn auxillar_surface(&self) -> /* const Standard_Address& */;
+//
+
 // ========================
 // From HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx
 // ========================
@@ -5752,6 +6568,29 @@ impl TheCurveLocatorOfTheProjPCurOfCInter {
         }
     }
 }
+
+// ── Skipped symbols for TheCurveLocatorOfTheProjPCurOfCInter (3 total) ──
+// SKIPPED: **Source:** `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx`:37 - `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::Locate`
+//   static_method: Among a set of points {C(ui),i=1,NbU}, locate the point
+//   static_method: P=C(uj) such that:
+//   static_method: distance(P,C) = Min{distance(P,C(ui))}
+//   Reason: has unbindable types: param 'C': void pointer (const Standard_Address&)
+//   // pub fn locate(P: &Pnt2d, C: /* const Standard_Address& */, NbU: i32, Papp: &mut POnCurv2d);
+//
+// SKIPPED: **Source:** `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx`:46 - `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::Locate`
+//   static_method: Among a set of points {C(ui),i=1,NbU}, locate the point
+//   static_method: P=C(uj) such that:
+//   static_method: distance(P,C) = Min{distance(P,C(ui))}
+//   Reason: has unbindable types: param 'C': void pointer (const Standard_Address&)
+//   // pub fn locate(P: &Pnt2d, C: /* const Standard_Address& */, NbU: i32, Umin: f64, Usup: f64, Papp: &mut POnCurv2d);
+//
+// SKIPPED: **Source:** `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx`:57 - `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::Locate`
+//   static_method: Among two sets of points {C1(ui),i=1,NbU} and
+//   static_method: {C2(vj),j=1,NbV}, locate the two points P1=C1(uk) and
+//   static_method: P2=C2(vl) such that:
+//   Reason: has unbindable types: param 'C1': void pointer (const Standard_Address&); param 'C2': void pointer (const Standard_Address&)
+//   // pub fn locate(C1: /* const Standard_Address& */, C2: /* const Standard_Address& */, NbU: i32, NbV: i32, Papp1: &mut POnCurv2d, Papp2: &mut POnCurv2d);
+//
 
 // ========================
 // From HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx
@@ -5826,6 +6665,33 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
         }
     }
 }
+
+// ── Skipped symbols for TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter (4 total) ──
+// SKIPPED: **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:36 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter`
+//   Reason: has unbindable types: param 'curve1': void pointer (const Standard_Address&); param 'curve2': void pointer (const Standard_Address&)
+//   // pub fn new_address2(curve1: /* const Standard_Address& */, curve2: /* const Standard_Address& */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:50 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Value`
+//   method: computes the values <F> of the Functions for the
+//   method: variable <X>.
+//   method: returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
+//
+// SKIPPED: **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:56 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Derivatives`
+//   method: returns the values <D> of the derivatives for the
+//   method: variable <X>.
+//   method: returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
+//
+// SKIPPED: **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:62 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Values`
+//   method: returns the values <F> of the functions and the derivatives
+//   method: <D> for the variable <X>.
+//   method: returns True if the computation was done successfully,
+//   Reason: param 'X' uses unknown type 'const math_Vector&'
+//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
+//
 
 // ========================
 // From HLRBRep_TheExactInterCSurf.hxx
@@ -6083,6 +6949,60 @@ impl TheIntConicCurveOfCInter {
     }
 }
 
+// ── Skipped symbols for TheIntConicCurveOfCInter (10 total) ──
+// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:45 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter`
+//   constructor: Intersection between a line and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn new_lin2d_domain_address_domain_real2(L: &Lin2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:53 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter`
+//   constructor: Intersection between a line and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn new_circ2d_domain_address_domain_real2(C: &Circ2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:61 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter`
+//   constructor: Intersection between an ellipse and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn new_elips2d_domain_address_domain_real2(E: &Elips2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:69 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter`
+//   constructor: Intersection between a parabola and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn new_parab2d_domain_address_domain_real2(Prb: &Parab2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:78 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter`
+//   constructor: Intersection between the main branch of an hyperbola
+//   constructor: and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn new_hypr2d_domain_address_domain_real2(H: &Hypr2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:86 - `HLRBRep_TheIntConicCurveOfCInter::Perform`
+//   method: Intersection between a line and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, L: &Lin2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64);
+//
+// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:94 - `HLRBRep_TheIntConicCurveOfCInter::Perform`
+//   method: Intersection between a line and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, C: &Circ2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64);
+//
+// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:102 - `HLRBRep_TheIntConicCurveOfCInter::Perform`
+//   method: Intersection between an ellipse and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, E: &Elips2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64);
+//
+// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:110 - `HLRBRep_TheIntConicCurveOfCInter::Perform`
+//   method: Intersection between a parabola and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, Prb: &Parab2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64);
+//
+// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:119 - `HLRBRep_TheIntConicCurveOfCInter::Perform`
+//   method: Intersection between the main branch of an hyperbola
+//   method: and a parametric curve.
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, H: &Hypr2d, D1: &Domain, PCurve: /* const Standard_Address& */, D2: &Domain, TolConf: f64, Tol: f64);
+//
+
 // ========================
 // From HLRBRep_TheIntPCurvePCurveOfCInter.hxx
 // ========================
@@ -6196,6 +7116,16 @@ impl TheIntPCurvePCurveOfCInter {
         }
     }
 }
+
+// ── Skipped symbols for TheIntPCurvePCurveOfCInter (2 total) ──
+// SKIPPED: **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:40 - `HLRBRep_TheIntPCurvePCurveOfCInter::Perform`
+//   Reason: has unbindable types: param 'Curve1': void pointer (const Standard_Address&); param 'Curve2': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, Curve1: /* const Standard_Address& */, Domain1: &Domain, Curve2: /* const Standard_Address& */, Domain2: &Domain, TolConf: f64, Tol: f64);
+//
+// SKIPPED: **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:47 - `HLRBRep_TheIntPCurvePCurveOfCInter::Perform`
+//   Reason: has unbindable types: param 'Curve1': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, Curve1: /* const Standard_Address& */, Domain1: &Domain, TolConf: f64, Tol: f64);
+//
 
 // ========================
 // From HLRBRep_TheInterferenceOfInterCSurf.hxx
@@ -6623,6 +7553,34 @@ impl TheIntersectorOfTheIntConicCurveOfCInter {
     }
 }
 
+// ── Skipped symbols for TheIntersectorOfTheIntConicCurveOfCInter (5 total) ──
+// SKIPPED: **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:47 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter`
+//   constructor: Intersection between an implicit curve and
+//   constructor: a parametrised curve.
+//   constructor: The exception ConstructionError is raised if the domain
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn new_iconictool_domain_address_domain_real2(ITool: &IConicTool, Dom1: &Domain, PCurve: /* const Standard_Address& */, Dom2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:59 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::Perform`
+//   method: Intersection between an implicit curve and
+//   method: a parametrised curve.
+//   method: The exception ConstructionError is raised if the domain
+//   Reason: has unbindable types: param 'PCurve': void pointer (const Standard_Address&)
+//   // pub fn perform(&mut self, ITool: &IConicTool, Dom1: &Domain, PCurve: /* const Standard_Address& */, Dom2: &Domain, TolConf: f64, Tol: f64);
+//
+// SKIPPED: **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:66 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::FindU`
+//   Reason: has unbindable types: param 'TheParCurev': void pointer (const Standard_Address&)
+//   // pub fn find_u(&self, parameter: f64, point: &mut Pnt2d, TheParCurev: /* const Standard_Address& */, IntCurve_IConicTool: &IConicTool) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:71 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::FindV`
+//   Reason: has unbindable types: param 'ParCurve': void pointer (const Standard_Address&)
+//   // pub fn find_v(&self, parameter: f64, point: &mut Pnt2d, IntCurve_IConicTool: &IConicTool, ParCurve: /* const Standard_Address& */, TheParCurveDomain: &Domain, V0: f64, V1: f64, Tolerance: f64) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:80 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::And_Domaine_Objet1_Intersections`
+//   Reason: has unbindable types: param 'TheParCurve': void pointer (const Standard_Address&)
+//   // pub fn and_domaine_objet1_intersections(&self, IntCurve_IConicTool: &IConicTool, TheParCurve: /* const Standard_Address& */, TheImpCurveDomain: &Domain, TheParCurveDomain: &Domain, NbResultats: &mut i32, Inter2_And_Domain2: &mut Array1OfReal, Inter1: &mut Array1OfReal, Resultat1: &mut Array1OfReal, Resultat2: &mut Array1OfReal, EpsNul: f64);
+//
+
 // ========================
 // From HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx
 // ========================
@@ -6692,6 +7650,27 @@ impl TheLocateExtPCOfTheProjPCurOfCInter {
         }
     }
 }
+
+// ── Skipped symbols for TheLocateExtPCOfTheProjPCurOfCInter (3 total) ──
+// SKIPPED: **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:49 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter`
+//   constructor: Calculates the distance with a close point.
+//   constructor: The close point is defined by the parameter value U0.
+//   constructor: The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0.
+//   Reason: has unbindable types: param 'C': void pointer (const Standard_Address&)
+//   // pub fn new_pnt2d_address_real2(P: &Pnt2d, C: /* const Standard_Address& */, U0: f64, TolU: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:62 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter`
+//   constructor: Calculates the distance with a close point.
+//   constructor: The close point is defined by the parameter value U0.
+//   constructor: The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0.
+//   Reason: has unbindable types: param 'C': void pointer (const Standard_Address&)
+//   // pub fn new_pnt2d_address_real4(P: &Pnt2d, C: /* const Standard_Address& */, U0: f64, Umin: f64, Usup: f64, TolU: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:70 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::Initialize`
+//   method: sets the fields of the algorithm.
+//   Reason: has unbindable types: param 'C': void pointer (const Standard_Address&)
+//   // pub fn initialize(&mut self, C: /* const Standard_Address& */, Umin: f64, Usup: f64, TolU: f64);
+//
 
 // ========================
 // From HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx
@@ -6858,6 +7837,20 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfCInter {
         }
     }
 }
+
+// ── Skipped symbols for ThePolygon2dOfTheIntPCurvePCurveOfCInter (2 total) ──
+// SKIPPED: **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:41 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter`
+//   constructor: Compute a polygon on the domain of the curve.
+//   Reason: has unbindable types: param 'Curve': void pointer (const Standard_Address&)
+//   // pub fn new_address_int_domain_real(Curve: /* const Standard_Address& */, NbPnt: i32, Domain: &Domain, Tol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:51 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::ComputeWithBox`
+//   method: The current polygon is modified if most
+//   method: of the  points of the  polygon  are
+//   method: outside  the  box  <OtherBox>.  In this
+//   Reason: has unbindable types: param 'Curve': void pointer (const Standard_Address&)
+//   // pub fn compute_with_box(&mut self, Curve: /* const Standard_Address& */, OtherBox: &Box2d);
+//
 
 // ========================
 // From HLRBRep_ThePolygonOfInterCSurf.hxx
@@ -7325,6 +8318,38 @@ impl ThePolyhedronOfInterCSurf {
     }
 }
 
+// ── Skipped symbols for ThePolyhedronOfInterCSurf (6 total) ──
+// SKIPPED: **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:39 - `HLRBRep_ThePolyhedronOfInterCSurf::HLRBRep_ThePolyhedronOfInterCSurf`
+//   Reason: has unbindable types: param 'Surface': void pointer (const Standard_Address&)
+//   // pub fn new_address_int2_real4(Surface: /* const Standard_Address& */, nbdU: i32, nbdV: i32, U1: f64, V1: f64, U2: f64, V2: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:47 - `HLRBRep_ThePolyhedronOfInterCSurf::HLRBRep_ThePolyhedronOfInterCSurf`
+//   Reason: has unbindable types: param 'Surface': void pointer (const Standard_Address&)
+//   // pub fn new_address_array1ofreal2(Surface: /* const Standard_Address& */, Upars: &Array1OfReal, Vpars: &Array1OfReal) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:57 - `HLRBRep_ThePolyhedronOfInterCSurf::DeflectionOnTriangle`
+//   Reason: has unbindable types: param 'Surface': void pointer (const Standard_Address&)
+//   // pub fn deflection_on_triangle(&self, Surface: /* const Standard_Address& */, Index: i32) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:69 - `HLRBRep_ThePolyhedronOfInterCSurf::Size`
+//   method: get the size of the discretization.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn size(&self, nbdu: &mut i32, nbdv: &mut i32);
+//
+// SKIPPED: **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:76 - `HLRBRep_ThePolyhedronOfInterCSurf::Triangle`
+//   method: Give the 3 points of the triangle of address Index in
+//   method: the double array of triangles.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn triangle(&self, Index: i32, P1: &mut i32, P2: &mut i32, P3: &mut i32);
+//
+// SKIPPED: **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:87 - `HLRBRep_ThePolyhedronOfInterCSurf::TriConnex`
+//   method: Give the address Tricon of the triangle connexe to the
+//   method: triangle of address Triang by the edge Pivot Pedge and
+//   method: the third point of this connexe triangle. When we are
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn tri_connex(&self, Triang: i32, Pivot: i32, Pedge: i32, TriCon: &mut i32, OtherP: &mut i32) -> i32;
+//
+
 // ========================
 // From HLRBRep_ThePolyhedronToolOfInterCSurf.hxx
 // ========================
@@ -7406,6 +8431,21 @@ impl ThePolyhedronToolOfInterCSurf {
     }
 }
 
+// ── Skipped symbols for ThePolyhedronToolOfInterCSurf (2 total) ──
+// SKIPPED: **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:54 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Triangle`
+//   static_method: Give the indices  of  the 3 points of  the triangle of
+//   static_method: address Index in the PolyhedronTool.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn triangle(thePolyh: &ThePolyhedronOfInterCSurf, Index: i32, P1: &mut i32, P2: &mut i32, P3: &mut i32);
+//
+// SKIPPED: **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:70 - `HLRBRep_ThePolyhedronToolOfInterCSurf::TriConnex`
+//   static_method: Give the address Tricon of the triangle connexe to
+//   static_method: the triangle of address Triang by the edge Pivot Pedge
+//   static_method: and the third point of this  connexe triangle.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn tri_connex(thePolyh: &ThePolyhedronOfInterCSurf, Triang: i32, Pivot: i32, Pedge: i32, TriCon: &mut i32, OtherP: &mut i32) -> i32;
+//
+
 // ========================
 // From HLRBRep_TheProjPCurOfCInter.hxx
 // ========================
@@ -7426,6 +8466,22 @@ impl TheProjPCurOfCInter {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_TheProjPCurOfCInter_ctor()) }
     }
 }
+
+// ── Skipped symbols for TheProjPCurOfCInter (2 total) ──
+// SKIPPED: **Source:** `HLRBRep_TheProjPCurOfCInter.hxx`:47 - `HLRBRep_TheProjPCurOfCInter::FindParameter`
+//   static_method: Returns the parameter V of the point on the
+//   static_method: parametric curve corresponding to the Point Pnt.
+//   static_method: The Correspondence between Pnt and the point P(V)
+//   Reason: has unbindable types: param 'C': void pointer (const Standard_Address&)
+//   // pub fn find_parameter(C: /* const Standard_Address& */, Pnt: &Pnt2d, Tol: f64) -> f64;
+//
+// SKIPPED: **Source:** `HLRBRep_TheProjPCurOfCInter.hxx`:65 - `HLRBRep_TheProjPCurOfCInter::FindParameter`
+//   static_method: Returns the parameter V of the point on the
+//   static_method: parametric curve corresponding to the Point Pnt.
+//   static_method: The Correspondence between Pnt and the point P(V)
+//   Reason: has unbindable types: param 'C': void pointer (const Standard_Address&)
+//   // pub fn find_parameter(C: /* const Standard_Address& */, Pnt: &Pnt2d, LowParameter: f64, HighParameter: f64, Tol: f64) -> f64;
+//
 
 // ========================
 // From HLRBRep_TheQuadCurvExactInterCSurf.hxx
@@ -7475,6 +8531,14 @@ impl TheQuadCurvExactInterCSurf {
         }
     }
 }
+
+// ── Skipped symbols for TheQuadCurvExactInterCSurf (1 total) ──
+// SKIPPED: **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:38 - `HLRBRep_TheQuadCurvExactInterCSurf::HLRBRep_TheQuadCurvExactInterCSurf`
+//   constructor: Provides the signed distance function : Q(w)
+//   constructor: and its first derivative dQ(w)/dw
+//   Reason: has unbindable types: param 'S': void pointer (const Standard_Address&)
+//   // pub fn new_address_lin(S: /* const Standard_Address& */, C: &Lin) -> OwnedPtr<Self>;
+//
 
 // ========================
 // From HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf.hxx
@@ -7677,6 +8741,12 @@ impl VertexList {
         }
     }
 }
+
+// ── Skipped symbols for VertexList (1 total) ──
+// SKIPPED: **Source:** `HLRBRep_VertexList.hxx`:35 - `HLRBRep_VertexList::HLRBRep_VertexList`
+//   Reason: param 'I' uses unknown type 'const HLRAlgo_ListIteratorOfInterferenceList&'
+//   // pub fn new_edgeinterferencetool_listiteratorofinterferencelist(T: &EdgeInterferenceTool, I: &ListIteratorOfInterferenceList) -> OwnedPtr<Self>;
+//
 
 // ========================
 // Additional type re-exports

@@ -1236,6 +1236,14 @@ impl HandleBRepToolsHistory {
     }
 }
 
+// ── Skipped symbols for History (1 total) ──
+// SKIPPED: **Source:** `BRepTools_History.hxx`:219 - `BRepTools_History::Dump`
+//   method: A method to dump a history
+//   method: Prints the brief description of the history into a stream
+//   Reason: has unbindable types: param 'theS': stream type (Standard_OStream&)
+//   // pub fn dump(&mut self, theS: /* Standard_OStream& */);
+//
+
 // ========================
 // From BRepTools_Modification.hxx
 // ========================
@@ -2444,6 +2452,98 @@ impl ShapeSet {
         unsafe { crate::ffi::BRepTools_ShapeSet_inherited_NbShapes(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for ShapeSet (15 total) ──
+// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:82 - `BRepTools_ShapeSet::DumpGeometry`
+//   method: Dumps the geometry of me on the stream <OS>.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn dump_geometry(&self, OS: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:86 - `BRepTools_ShapeSet::WriteGeometry`
+//   method: Writes the geometry of  me  on the stream <OS> in a
+//   method: format that can be read back by Read.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn write_geometry(&mut self, OS: /* Standard_OStream& */, theProgress: &ProgressRange);
+//
+// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:91 - `BRepTools_ShapeSet::ReadGeometry`
+//   method: Reads the geometry of me from the  stream  <IS>.
+//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
+//   // pub fn read_geometry(&mut self, IS: /* Standard_IStream& */, theProgress: &ProgressRange);
+//
+// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:96 - `BRepTools_ShapeSet::DumpGeometry`
+//   method: Dumps the geometry of <S> on the stream <OS>.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn dump_geometry(&self, S: &Shape, OS: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:101 - `BRepTools_ShapeSet::WriteGeometry`
+//   method: Writes the geometry of <S>  on the stream <OS> in a
+//   method: format that can be read back by Read.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn write_geometry(&self, S: &Shape, OS: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:106 - `BRepTools_ShapeSet::ReadGeometry`
+//   method: Reads the geometry of a shape of type <T> from the
+//   method: stream <IS> and returns it in <S>.
+//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
+//   // pub fn read_geometry(&mut self, T: ShapeEnum, IS: /* Standard_IStream& */, S: &mut Shape);
+//
+// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:120 - `BRepTools_ShapeSet::ReadPolygon3D`
+//   method: Reads the 3d polygons  of me
+//   method: from the  stream  <IS>.
+//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
+//   // pub fn read_polygon3_d(&mut self, IS: /* Standard_IStream& */, theProgress: &ProgressRange);
+//
+// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:127 - `BRepTools_ShapeSet::WritePolygon3D`
+//   method: Writes the 3d polygons
+//   method: on the stream <OS> in a format that can
+//   method: be read back by Read.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn write_polygon3_d(&self, OS: /* Standard_OStream& */, Compact: bool, theProgress: &ProgressRange);
+//
+// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:134 - `BRepTools_ShapeSet::DumpPolygon3D`
+//   method: Dumps the 3d polygons
+//   method: on the stream <OS>.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn dump_polygon3_d(&self, OS: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:138 - `BRepTools_ShapeSet::ReadTriangulation`
+//   method: Reads the triangulation of me
+//   method: from the  stream  <IS>.
+//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
+//   // pub fn read_triangulation(&mut self, IS: /* Standard_IStream& */, theProgress: &ProgressRange);
+//
+// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:145 - `BRepTools_ShapeSet::WriteTriangulation`
+//   method: Writes the triangulation
+//   method: on the stream <OS> in a format that can
+//   method: be read back by Read.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn write_triangulation(&self, OS: /* Standard_OStream& */, Compact: bool, theProgress: &ProgressRange);
+//
+// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:152 - `BRepTools_ShapeSet::DumpTriangulation`
+//   method: Dumps the triangulation
+//   method: on the stream <OS>.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn dump_triangulation(&self, OS: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:156 - `BRepTools_ShapeSet::ReadPolygonOnTriangulation`
+//   method: Reads the polygons on triangulation of me
+//   method: from the  stream  <IS>.
+//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
+//   // pub fn read_polygon_on_triangulation(&mut self, IS: /* Standard_IStream& */, theProgress: &ProgressRange);
+//
+// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:163 - `BRepTools_ShapeSet::WritePolygonOnTriangulation`
+//   method: Writes the polygons on triangulation
+//   method: on the stream <OS> in a format that can
+//   method: be read back by Read.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn write_polygon_on_triangulation(&self, OS: /* Standard_OStream& */, Compact: bool, theProgress: &ProgressRange);
+//
+// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:170 - `BRepTools_ShapeSet::DumpPolygonOnTriangulation`
+//   method: Dumps the polygons on triangulation
+//   method: on the stream <OS>.
+//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
+//   // pub fn dump_polygon_on_triangulation(&self, OS: /* Standard_OStream& */);
+//
 
 // ========================
 // From BRepTools_Substitution.hxx

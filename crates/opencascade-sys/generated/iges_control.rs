@@ -153,6 +153,14 @@ impl ActorWrite {
     }
 }
 
+// ── Skipped symbols for ActorWrite (1 total) ──
+// SKIPPED: **Source:** `IGESControl_ActorWrite.hxx`:46 - `IGESControl_ActorWrite::Transfer`
+//   method: Transfers Shape to IGES Entities
+//   method: ModeTrans may be : 0 -> groups of Faces
+//   Reason: param 'FP' uses unknown type 'const Handle(Transfer_FinderProcess)&'
+//   // pub fn transfer(&mut self, start: &HandleFinder, FP: &HandleFinderProcess, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
+//
+
 // ========================
 // From IGESControl_AlgoContainer.hxx
 // ========================
@@ -359,6 +367,26 @@ impl Controller {
         }
     }
 }
+
+// ── Skipped symbols for Controller (3 total) ──
+// SKIPPED: **Source:** `IGESControl_Controller.hxx`:52 - `IGESControl_Controller::ActorRead`
+//   method: Returns the Actor for Read attached to the pair (norm,appli)
+//   method: It is an Actor from IGESToBRep, adapted from an IGESModel :
+//   method: Unit, tolerances
+//   Reason: return type 'Handle(Transfer_ActorOfTransientProcess)' is unknown
+//   // pub fn actor_read(&self, model: &HandleInterfaceModel) -> OwnedPtr<Handle<Transfer_ActorOfTransientProcess>>;
+//
+// SKIPPED: **Source:** `IGESControl_Controller.hxx`:62 - `IGESControl_Controller::TransferWriteShape`
+//   method: Takes one Shape and transfers it to the InterfaceModel
+//   method: (already created by NewModel for instance)
+//   method: <modetrans> is to be interpreted by each kind of XstepAdaptor
+//   Reason: param 'FP' uses unknown type 'const Handle(Transfer_FinderProcess)&'
+//   // pub fn transfer_write_shape(&self, shape: &Shape, FP: &HandleFinderProcess, model: &HandleInterfaceModel, modetrans: i32, theProgress: &ProgressRange) -> OwnedPtr<IFSelect_ReturnStatus>;
+//
+// SKIPPED: **Source:** `IGESControl_Controller.hxx`:75 - `IGESControl_Controller::Customise`
+//   Reason: param 'WS' uses unknown type 'Handle(XSControl_WorkSession)&'
+//   // pub fn customise(&mut self, WS: &mut HandleWorkSession);
+//
 
 // ========================
 // From IGESControl_IGESBoundary.hxx
@@ -730,6 +758,19 @@ impl Reader {
     }
 }
 
+// ── Skipped symbols for Reader (2 total) ──
+// SKIPPED: **Source:** `IGESControl_Reader.hxx`:74 - `IGESControl_Reader::IGESControl_Reader`
+//   constructor: Creates a Reader from an already existing Session
+//   Reason: param 'WS' uses unknown Handle type
+//   // pub fn new_handlexscontrolworksession_bool(WS: &HandleWorkSession, scratch: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `IGESControl_Reader.hxx`:85 - `IGESControl_Reader::IGESModel`
+//   method: Returns the model as a IGESModel.
+//   method: It can then be consulted (header, product)
+//   Reason: return type 'Handle(IGESData_IGESModel)' is unknown
+//   // pub fn iges_model(&self) -> OwnedPtr<Handle<IGESData_IGESModel>>;
+//
+
 // ========================
 // From IGESControl_ToolContainer.hxx
 // ========================
@@ -899,3 +940,78 @@ impl Writer {
         unsafe { crate::ffi::IGESControl_Writer_write(self as *mut Self, c_file.as_ptr(), fnes) }
     }
 }
+
+// ── Skipped symbols for Writer (12 total) ──
+// SKIPPED: **Source:** `IGESControl_Writer.hxx`:75 - `IGESControl_Writer::IGESControl_Writer`
+//   constructor: Creates a writer object with the
+//   constructor: prepared IGES model theModel in write mode.
+//   constructor: theModecr defines the write mode and may be:
+//   Reason: param 'theModel' uses unknown Handle type
+//   // pub fn new_handleigesdataigesmodel_int(theModel: &HandleIGESModel, theModecr: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `IGESControl_Writer.hxx`:79 - `IGESControl_Writer::Model`
+//   method: Returns the IGES model to be written in output.
+//   Reason: return type 'const Handle(IGESData_IGESModel)&' is unknown
+//   // pub fn model(&self) -> &HandleIGESModel;
+//
+// SKIPPED: **Source:** `IGESControl_Writer.hxx`:81 - `IGESControl_Writer::TransferProcess`
+//   Reason: return type 'const Handle(Transfer_FinderProcess)&' is unknown
+//   // pub fn transfer_process(&self) -> &HandleFinderProcess;
+//
+// SKIPPED: **Source:** `IGESControl_Writer.hxx`:85 - `IGESControl_Writer::SetTransferProcess`
+//   method: Returns/Sets the TransferProcess : it contains final results
+//   method: and if some, check messages
+//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_FinderProcess)&'
+//   // pub fn set_transfer_process(&mut self, TP: &HandleFinderProcess);
+//
+// SKIPPED: **Source:** `IGESControl_Writer.hxx`:97 - `IGESControl_Writer::AddGeom`
+//   method: Translates a Geometry (Surface or Curve) to IGES Entities and
+//   method: adds them to the model
+//   method: Returns True if done, False if geom is neither a Surface or
+//   Reason: param 'geom' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_geom(&mut self, geom: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `IGESControl_Writer.hxx`:109 - `IGESControl_Writer::Write`
+//   method: Computes then writes the model to an OStream
+//   method: Returns True when done, false in case of error
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn write(&mut self, S: /* Standard_OStream& */, fnes: bool) -> bool;
+//
+// SKIPPED: **Source:** `IGESControl_Writer.hxx`:122 - `IGESControl_Writer::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: @param theParameters the parameters for shape processing.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &i32);
+//
+// SKIPPED: **Source:** `IGESControl_Writer.hxx`:128 - `IGESControl_Writer::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: Parameters are moved from the input map.
+//   method: @param theParameters the parameters for shape processing.
+//   Reason: has unbindable types: param 'theParameters': rvalue reference (int&&)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* int&& */);
+//
+// SKIPPED: **Source:** `IGESControl_Writer.hxx`:136 - `IGESControl_Writer::SetShapeFixParameters`
+//   method: Sets parameters for shape processing.
+//   method: Parameters from @p theParameters are copied to the internal map.
+//   method: Parameters from @p theAdditionalParameters are copied to the internal map
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &ShapeFixParameters, theAdditionalParameters: &i32);
+//
+// SKIPPED: **Source:** `IGESControl_Writer.hxx`:142 - `IGESControl_Writer::GetShapeFixParameters`
+//   method: Returns parameters for shape processing that was set by SetParameters() method.
+//   method: @return the parameters for shape processing. Empty map if no parameters were set.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_shape_fix_parameters(&self) -> &i32;
+//
+// SKIPPED: **Source:** `IGESControl_Writer.hxx`:149 - `IGESControl_Writer::SetShapeProcessFlags`
+//   method: Sets flags defining operations to be performed on shapes.
+//   method: @param theFlags The flags defining operations to be performed on shapes.
+//   Reason: param 'theFlags' uses unknown type 'const ShapeProcess::OperationsFlags&'
+//   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
+//
+// SKIPPED: **Source:** `IGESControl_Writer.hxx`:153 - `IGESControl_Writer::GetShapeProcessFlags`
+//   method: Returns flags defining operations to be performed on shapes.
+//   method: @return The flags defining operations to be performed on shapes.
+//   Reason: return type 'const ShapeProcess::OperationsFlags&' is unknown
+//   // pub fn get_shape_process_flags(&self) -> &OperationsFlags;
+//

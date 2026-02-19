@@ -1421,6 +1421,20 @@ impl UndefinedAxis {
     }
 }
 
+// ── Skipped symbols for UndefinedAxis (3 total) ──
+// SKIPPED: **Source:** `GProp_UndefinedAxis.hxx`:38 - `GProp_UndefinedAxis::Raise`
+//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
+//   // pub fn raise(theMessage: &mut SStream);
+//
+// SKIPPED: **Source:** `GProp_UndefinedAxis.hxx`:38 - `GProp_UndefinedAxis::NewInstance`
+//   Reason: return type 'Handle(GProp_UndefinedAxis)' is unknown
+//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<GProp_UndefinedAxis>>;
+//
+// SKIPPED: **Source:** `GProp_UndefinedAxis.hxx`:38 - `GProp_UndefinedAxis::NewInstance`
+//   Reason: return type 'Handle(GProp_UndefinedAxis)' is unknown
+//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<GProp_UndefinedAxis>>;
+//
+
 // ========================
 // From GProp_VelGProps.hxx
 // ========================

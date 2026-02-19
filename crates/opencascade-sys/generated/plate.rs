@@ -271,6 +271,16 @@ impl FreeGtoCConstraint {
     }
 }
 
+// ── Skipped symbols for FreeGtoCConstraint (2 total) ──
+// SKIPPED: **Source:** `Plate_FreeGtoCConstraint.hxx`:61 - `Plate_FreeGtoCConstraint::nb_PPC`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn nb_ppc(&self) -> &i32;
+//
+// SKIPPED: **Source:** `Plate_FreeGtoCConstraint.hxx`:65 - `Plate_FreeGtoCConstraint::nb_LSC`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn nb_lsc(&self) -> &i32;
+//
+
 // ========================
 // From Plate_GlobalTranslationConstraint.hxx
 // ========================
@@ -422,6 +432,12 @@ impl GtoCConstraint {
         unsafe { &*(crate::ffi::Plate_GtoCConstraint_d1_surf_init(self as *const Self)) }
     }
 }
+
+// ── Skipped symbols for GtoCConstraint (1 total) ──
+// SKIPPED: **Source:** `Plate_GtoCConstraint.hxx`:78 - `Plate_GtoCConstraint::nb_PPC`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn nb_ppc(&self) -> &i32;
+//
 
 // ========================
 // From Plate_HArray1OfPinpointConstraint.hxx
@@ -826,6 +842,16 @@ impl PinpointConstraint {
     }
 }
 
+// ── Skipped symbols for PinpointConstraint (2 total) ──
+// SKIPPED: **Source:** `Plate_PinpointConstraint.hxx`:42 - `Plate_PinpointConstraint::Idu`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn idu(&self) -> &i32;
+//
+// SKIPPED: **Source:** `Plate_PinpointConstraint.hxx`:44 - `Plate_PinpointConstraint::Idv`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn idv(&self) -> &i32;
+//
+
 // ========================
 // From Plate_PlaneConstraint.hxx
 // ========================
@@ -1033,6 +1059,12 @@ impl Plate {
         unsafe { crate::ffi::Plate_Plate_uv_constraints(self as *const Self, Seq) }
     }
 }
+
+// ── Skipped symbols for Plate (1 total) ──
+// SKIPPED: **Source:** `Plate_Plate.hxx`:57 - `Plate_Plate::Copy`
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn copy(&mut self, Ref: &Plate) -> &mut Plate;
+//
 
 // ========================
 // From Plate_SampledCurveConstraint.hxx

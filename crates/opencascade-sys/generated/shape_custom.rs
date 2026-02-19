@@ -2300,6 +2300,19 @@ impl HandleShapeCustomRestrictionParameters {
     }
 }
 
+// ── Skipped symbols for RestrictionParameters (2 total) ──
+// SKIPPED: **Source:** `ShapeCustom_RestrictionParameters.hxx`:38 - `ShapeCustom_RestrictionParameters::GMaxDegree`
+//   method: Returns (modifiable) maximal degree of approximation.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn g_max_degree(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeCustom_RestrictionParameters.hxx`:42 - `ShapeCustom_RestrictionParameters::GMaxSeg`
+//   method: Returns (modifiable) maximal number of spans of
+//   method: approximation.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn g_max_seg(&mut self) -> &mut i32;
+//
+
 // ========================
 // From ShapeCustom_Surface.hxx
 // ========================
@@ -2959,3 +2972,10 @@ impl TrsfModification {
         }
     }
 }
+
+// ── Skipped free functions (1 total) ──
+// SKIPPED: **Source:** `ShapeCustom.hxx`:55 - `ShapeCustom::ApplyModifier`
+//   function: Applies modifier to shape and checks sharing in the case assemblies.
+//   Reason: param 'aReShape' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
+//   // pub fn apply_modifier(S: &Shape, M: &HandleModification, context: &mut DataMapOfShapeShape, MD: &mut Modifier, theProgress: &ProgressRange, aReShape: &HandleReShape) -> OwnedPtr<TopoDS_Shape>;
+//

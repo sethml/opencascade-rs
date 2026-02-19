@@ -140,6 +140,18 @@ impl Geom2dEntity {
     }
 }
 
+// ── Skipped symbols for Geom2dEntity (2 total) ──
+// SKIPPED: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:40 - `Geom2dToIGES_Geom2dEntity::SetModel`
+//   method: Set the value of "TheModel"
+//   Reason: param 'model' uses unknown type 'const Handle(IGESData_IGESModel)&'
+//   // pub fn set_model(&mut self, model: &HandleIGESModel);
+//
+// SKIPPED: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:43 - `Geom2dToIGES_Geom2dEntity::GetModel`
+//   method: Returns the value of "TheModel"
+//   Reason: return type 'Handle(IGESData_IGESModel)' is unknown
+//   // pub fn get_model(&self) -> OwnedPtr<Handle<IGESData_IGESModel>>;
+//
+
 // ========================
 // From Geom2dToIGES_Geom2dPoint.hxx
 // ========================
@@ -200,6 +212,20 @@ impl Geom2dPoint {
         unsafe { crate::ffi::Geom2dToIGES_Geom2dPoint_inherited_GetUnit(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for Geom2dPoint (2 total) ──
+// SKIPPED: **Source:** `Geom2dToIGES_Geom2dPoint.hxx`:46 - `Geom2dToIGES_Geom2dPoint::Transfer2dPoint`
+//   method: Transfert  a  Point from Geom to IGES. If this
+//   method: Entity could not be converted, this member returns a NullEntity.
+//   Reason: return type 'Handle(IGESGeom_Point)' is unknown
+//   // pub fn transfer2d_point(&mut self, start: &HandlePoint) -> OwnedPtr<Handle<IGESGeom_Point>>;
+//
+// SKIPPED: **Source:** `Geom2dToIGES_Geom2dPoint.hxx`:50 - `Geom2dToIGES_Geom2dPoint::Transfer2dPoint`
+//   method: Transfert  a  CartesianPoint from Geom to IGES. If this
+//   method: Entity could not be converted, this member returns a NullEntity.
+//   Reason: return type 'Handle(IGESGeom_Point)' is unknown
+//   // pub fn transfer2d_point(&mut self, start: &HandleCartesianPoint) -> OwnedPtr<Handle<IGESGeom_Point>>;
+//
 
 // ========================
 // From Geom2dToIGES_Geom2dVector.hxx
@@ -262,3 +288,20 @@ impl Geom2dVector {
         unsafe { crate::ffi::Geom2dToIGES_Geom2dVector_inherited_GetUnit(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for Geom2dVector (3 total) ──
+// SKIPPED: **Source:** `Geom2dToIGES_Geom2dVector.hxx`:49 - `Geom2dToIGES_Geom2dVector::Transfer2dVector`
+//   method: Transfert  a  GeometryEntity which  answer True  to  the
+//   method: member : BRepToIGES::IsGeomVector(Geometry).  If this
+//   method: Entity could not be converted, this member returns a NullEntity.
+//   Reason: return type 'Handle(IGESGeom_Direction)' is unknown
+//   // pub fn transfer2d_vector(&mut self, start: &HandleVector) -> OwnedPtr<Handle<IGESGeom_Direction>>;
+//
+// SKIPPED: **Source:** `Geom2dToIGES_Geom2dVector.hxx`:51 - `Geom2dToIGES_Geom2dVector::Transfer2dVector`
+//   Reason: return type 'Handle(IGESGeom_Direction)' is unknown
+//   // pub fn transfer2d_vector(&mut self, start: &HandleVectorWithMagnitude) -> OwnedPtr<Handle<IGESGeom_Direction>>;
+//
+// SKIPPED: **Source:** `Geom2dToIGES_Geom2dVector.hxx`:54 - `Geom2dToIGES_Geom2dVector::Transfer2dVector`
+//   Reason: return type 'Handle(IGESGeom_Direction)' is unknown
+//   // pub fn transfer2d_vector(&mut self, start: &HandleDirection) -> OwnedPtr<Handle<IGESGeom_Direction>>;
+//

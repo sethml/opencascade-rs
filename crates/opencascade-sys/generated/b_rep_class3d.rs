@@ -59,6 +59,12 @@ impl BndBoxTreeSelectorPoint {
     }
 }
 
+// ── Skipped symbols for BndBoxTreeSelectorPoint (1 total) ──
+// SKIPPED: **Source:** `BRepClass3d_BndBoxTree.hxx`:44 - `BRepClass3d_BndBoxTreeSelectorPoint::Accept`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn accept(&mut self, theObj: &i32) -> bool;
+//
+
 /// **Source:** `BRepClass3d_BndBoxTree.hxx`:59 - `BRepClass3d_BndBoxTreeSelectorLine`
 pub use crate::ffi::BRepClass3d_BndBoxTreeSelectorLine as BndBoxTreeSelectorLine;
 
@@ -161,6 +167,12 @@ impl BndBoxTreeSelectorLine {
         unsafe { crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_is_correct(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for BndBoxTreeSelectorLine (1 total) ──
+// SKIPPED: **Source:** `BRepClass3d_BndBoxTree.hxx`:85 - `BRepClass3d_BndBoxTreeSelectorLine::Accept`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn accept(&mut self, theObj: &i32) -> bool;
+//
 
 /// **Source:** `BRepClass3d_BndBoxTree.hxx`:62 - `BRepClass3d_BndBoxTreeSelectorLine_EdgeParam`
 pub use crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_EdgeParam as BndBoxTreeSelectorLine_EdgeParam;
@@ -779,6 +791,31 @@ impl SolidExplorer {
         }
     }
 }
+
+// ── Skipped symbols for SolidExplorer (5 total) ──
+// SKIPPED: **Source:** `BRepClass3d_SolidExplorer.hxx`:86 - `BRepClass3d_SolidExplorer::PointInTheFace`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn point_in_the_face(&self, F: &Face, P: &mut Pnt, u: &mut f64, v: &mut f64, Param: &mut f64, Index: &mut i32) -> bool;
+//
+// SKIPPED: **Source:** `BRepClass3d_SolidExplorer.hxx`:93 - `BRepClass3d_SolidExplorer::PointInTheFace`
+//   Reason: param 'surf' uses unknown type 'const Handle(BRepAdaptor_Surface)&'
+//   // pub fn point_in_the_face(&self, F: &Face, P: &mut Pnt, u: &mut f64, v: &mut f64, Param: &mut f64, Index: &mut i32, surf: &HandleSurface, u1: f64, v1: f64, u2: f64, v2: f64) -> bool;
+//
+// SKIPPED: **Source:** `BRepClass3d_SolidExplorer.hxx`:107 - `BRepClass3d_SolidExplorer::PointInTheFace`
+//   method: <Index> gives point index  to  search from and returns
+//   method: point index of succeseful search
+//   Reason: param 'surf' uses unknown type 'const Handle(BRepAdaptor_Surface)&'
+//   // pub fn point_in_the_face(&self, F: &Face, P: &mut Pnt, u: &mut f64, v: &mut f64, Param: &mut f64, Index: &mut i32, surf: &HandleSurface, u1: f64, v1: f64, u2: f64, v2: f64, theVecD1U: &mut Vec, theVecD1V: &mut Vec) -> bool;
+//
+// SKIPPED: **Source:** `BRepClass3d_SolidExplorer.hxx`:179 - `BRepClass3d_SolidExplorer::Intersector`
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn intersector(&self, F: &Face) -> &mut Intersector;
+//
+// SKIPPED: **Source:** `BRepClass3d_SolidExplorer.hxx`:182 - `BRepClass3d_SolidExplorer::GetTree`
+//   method: Return UB-tree instance which is used for edge / vertex checks.
+//   Reason: return type 'const BRepClass3d_BndBoxTree&' is unknown
+//   // pub fn get_tree(&mut self) -> &BndBoxTree;
+//
 
 // ========================
 // From BRepClass3d_SolidPassiveClassifier.hxx

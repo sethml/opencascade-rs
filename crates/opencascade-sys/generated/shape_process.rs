@@ -283,6 +283,12 @@ impl HandleShapeProcessContext {
     }
 }
 
+// ── Skipped symbols for Context (1 total) ──
+// SKIPPED: **Source:** `ShapeProcess_Context.hxx`:76 - `ShapeProcess_Context::GetInteger`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_integer(&self, param: *const char, val: &mut i32) -> bool;
+//
+
 // ========================
 // From ShapeProcess_OperLibrary.hxx
 // ========================
@@ -327,6 +333,15 @@ impl OperLibrary {
         unsafe { crate::ffi::ShapeProcess_OperLibrary_init() }
     }
 }
+
+// ── Skipped symbols for OperLibrary (1 total) ──
+// SKIPPED: **Source:** `ShapeProcess_OperLibrary.hxx`:59 - `ShapeProcess_OperLibrary::ApplyModifier`
+//   static_method: Applies BRepTools_Modification to a shape,
+//   static_method: taking into account sharing of components of compounds.
+//   static_method: if theMutableInput vat is set to true then input shape S
+//   Reason: param 'context' uses unknown type 'const Handle(ShapeProcess_ShapeContext)&'
+//   // pub fn apply_modifier(S: &Shape, context: &HandleShapeContext, M: &HandleModification, map: &mut DataMapOfShapeShape, msg: &HandleMsgRegistrator, theMutableInput: bool) -> OwnedPtr<TopoDS_Shape>;
+//
 
 // ========================
 // From ShapeProcess_Operator.hxx
@@ -666,6 +681,38 @@ impl ShapeContext {
         unsafe { crate::ffi::ShapeProcess_ShapeContext_inherited_TraceLevel(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for ShapeContext (6 total) ──
+// SKIPPED: **Source:** `ShapeProcess_ShapeContext.hxx`:65 - `ShapeProcess_ShapeContext::Messages`
+//   Reason: return type 'const Handle(ShapeExtend_MsgRegistrator)&' is unknown
+//   // pub fn messages(&self) -> &HandleMsgRegistrator;
+//
+// SKIPPED: **Source:** `ShapeProcess_ShapeContext.hxx`:70 - `ShapeProcess_ShapeContext::Messages`
+//   method: Returns messages recorded during shape processing
+//   method: It can be nullified before processing in order to
+//   method: avoid recording messages
+//   Reason: return type 'Handle(ShapeExtend_MsgRegistrator)&' is unknown
+//   // pub fn messages(&mut self) -> &mut HandleMsgRegistrator;
+//
+// SKIPPED: **Source:** `ShapeProcess_ShapeContext.hxx`:90 - `ShapeProcess_ShapeContext::RecordModification`
+//   Reason: param 'msg' uses unknown type 'const Handle(ShapeExtend_MsgRegistrator)&'
+//   // pub fn record_modification(&mut self, repl: &DataMapOfShapeShape, msg: &HandleMsgRegistrator);
+//
+// SKIPPED: **Source:** `ShapeProcess_ShapeContext.hxx`:93 - `ShapeProcess_ShapeContext::RecordModification`
+//   Reason: param 'repl' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
+//   // pub fn record_modification(&mut self, repl: &HandleReShape, msg: &HandleMsgRegistrator);
+//
+// SKIPPED: **Source:** `ShapeProcess_ShapeContext.hxx`:96 - `ShapeProcess_ShapeContext::RecordModification`
+//   Reason: param 'repl' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
+//   // pub fn record_modification(&mut self, repl: &HandleReShape);
+//
+// SKIPPED: **Source:** `ShapeProcess_ShapeContext.hxx`:108 - `ShapeProcess_ShapeContext::RecordModification`
+//   method: Records modifications and resets result accordingly
+//   method: NOTE: modification of resulting shape should be explicitly
+//   method: defined in the maps along with modifications of subshapes
+//   Reason: param 'msg' uses unknown type 'const Handle(ShapeExtend_MsgRegistrator)&'
+//   // pub fn record_modification(&mut self, sh: &Shape, repl: &Modifier, msg: &HandleMsgRegistrator);
+//
 
 // ========================
 // From ShapeProcess_UOperator.hxx

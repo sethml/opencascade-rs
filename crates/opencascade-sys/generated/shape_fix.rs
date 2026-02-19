@@ -744,6 +744,18 @@ impl HandleShapeFixEdge {
     }
 }
 
+// ── Skipped symbols for Edge (2 total) ──
+// SKIPPED: **Source:** `ShapeFix_Edge.hxx`:242 - `ShapeFix_Edge::SetContext`
+//   method: Sets context
+//   Reason: param 'context' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
+//   // pub fn set_context(&mut self, context: &HandleReShape);
+//
+// SKIPPED: **Source:** `ShapeFix_Edge.hxx`:245 - `ShapeFix_Edge::Context`
+//   method: Returns context
+//   Reason: return type 'Handle(ShapeBuild_ReShape)' is unknown
+//   // pub fn context(&self) -> OwnedPtr<Handle<ShapeBuild_ReShape>>;
+//
+
 // ========================
 // From ShapeFix_EdgeConnect.hxx
 // ========================
@@ -1276,6 +1288,80 @@ impl Face {
         unsafe { crate::ffi::ShapeFix_Face_inherited_SendFail(self as *const Self, shape, message) }
     }
 }
+
+// ── Skipped symbols for Face (12 total) ──
+// SKIPPED: **Source:** `ShapeFix_Face.hxx`:96 - `ShapeFix_Face::FixWireMode`
+//   method: Returns (modifiable) the mode for applying fixes of
+//   method: ShapeFix_Wire, by default True.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_wire_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Face.hxx`:100 - `ShapeFix_Face::FixOrientationMode`
+//   method: Returns (modifiable) the fix orientation mode, by default
+//   method: True. If True, wires oriented to border limited square.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_orientation_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Face.hxx`:106 - `ShapeFix_Face::FixAddNaturalBoundMode`
+//   method: Returns (modifiable) the add natural bound mode.
+//   method: If true, natural boundary is added on faces that miss them.
+//   method: Default is False for faces with single wire (they are
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_add_natural_bound_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Face.hxx`:110 - `ShapeFix_Face::FixMissingSeamMode`
+//   method: Returns (modifiable) the fix missing seam mode, by default
+//   method: True. If True, tries to insert seam is missed.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_missing_seam_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Face.hxx`:114 - `ShapeFix_Face::FixSmallAreaWireMode`
+//   method: Returns (modifiable) the fix small area wire mode, by default
+//   method: False. If True, drops small wires.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_small_area_wire_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Face.hxx`:118 - `ShapeFix_Face::RemoveSmallAreaFaceMode`
+//   method: Returns (modifiable) the remove face with small area, by default
+//   method: False. If True, drops faces with small outer wires.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn remove_small_area_face_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Face.hxx`:122 - `ShapeFix_Face::FixIntersectingWiresMode`
+//   method: Returns (modifiable) the fix intersecting wires mode
+//   method: by default True.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_intersecting_wires_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Face.hxx`:126 - `ShapeFix_Face::FixLoopWiresMode`
+//   method: Returns (modifiable) the fix loop wires mode
+//   method: by default True.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_loop_wires_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Face.hxx`:130 - `ShapeFix_Face::FixSplitFaceMode`
+//   method: Returns (modifiable) the fix split face mode
+//   method: by default True.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_split_face_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Face.hxx`:134 - `ShapeFix_Face::AutoCorrectPrecisionMode`
+//   method: Returns (modifiable) the auto-correct precision mode
+//   method: by default False.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn auto_correct_precision_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Face.hxx`:138 - `ShapeFix_Face::FixPeriodicDegeneratedMode`
+//   method: Returns (modifiable) the activation flag for periodic
+//   method: degenerated fix. False by default.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_periodic_degenerated_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Face.hxx`:247 - `ShapeFix_Face::FixWireTool`
+//   method: Returns tool for fixing wires.
+//   Reason: return type 'Handle(ShapeFix_Wire)' is unknown
+//   // pub fn fix_wire_tool(&mut self) -> OwnedPtr<Handle<ShapeFix_Wire>>;
+//
 
 // ========================
 // From ShapeFix_FaceConnect.hxx
@@ -1836,6 +1922,18 @@ impl FixSmallSolid {
     }
 }
 
+// ── Skipped symbols for FixSmallSolid (2 total) ──
+// SKIPPED: **Source:** `ShapeFix_FixSmallSolid.hxx`:51 - `ShapeFix_FixSmallSolid::Remove`
+//   method: Remove small solids from the given shape
+//   Reason: param 'theContext' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
+//   // pub fn remove(&self, theShape: &Shape, theContext: &HandleReShape) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `ShapeFix_FixSmallSolid.hxx`:55 - `ShapeFix_FixSmallSolid::Merge`
+//   method: Merge small solids in the given shape to adjacent non-small ones
+//   Reason: param 'theContext' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
+//   // pub fn merge(&self, theShape: &Shape, theContext: &HandleReShape) -> OwnedPtr<TopoDS_Shape>;
+//
+
 // ========================
 // From ShapeFix_FreeBounds.hxx
 // ========================
@@ -2016,6 +2114,22 @@ impl IntersectionTool {
         }
     }
 }
+
+// ── Skipped symbols for IntersectionTool (3 total) ──
+// SKIPPED: **Source:** `ShapeFix_IntersectionTool.hxx`:41 - `ShapeFix_IntersectionTool::ShapeFix_IntersectionTool`
+//   constructor: Constructor
+//   Reason: param 'context' uses unknown Handle type
+//   // pub fn new_handleshapebuildreshape_real2(context: &HandleReShape, preci: f64, maxtol: f64) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `ShapeFix_IntersectionTool.hxx`:46 - `ShapeFix_IntersectionTool::Context`
+//   method: Returns context
+//   Reason: return type 'Handle(ShapeBuild_ReShape)' is unknown
+//   // pub fn context(&self) -> OwnedPtr<Handle<ShapeBuild_ReShape>>;
+//
+// SKIPPED: **Source:** `ShapeFix_IntersectionTool.hxx`:66 - `ShapeFix_IntersectionTool::FixSelfIntersectWire`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_self_intersect_wire(&self, sewd: &mut HandleWireData, face: &Face, NbSplit: &mut i32, NbCut: &mut i32, NbRemoved: &mut i32) -> bool;
+//
 
 // ========================
 // From ShapeFix_Root.hxx
@@ -2232,6 +2346,18 @@ impl HandleShapeFixRoot {
     }
 }
 
+// ── Skipped symbols for Root (2 total) ──
+// SKIPPED: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext`
+//   method: Sets context
+//   Reason: param 'context' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
+//   // pub fn set_context(&mut self, context: &HandleReShape);
+//
+// SKIPPED: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context`
+//   method: Returns context
+//   Reason: return type 'Handle(ShapeBuild_ReShape)' is unknown
+//   // pub fn context(&self) -> OwnedPtr<Handle<ShapeBuild_ReShape>>;
+//
+
 // ========================
 // From ShapeFix_Shape.hxx
 // ========================
@@ -2421,6 +2547,70 @@ impl Shape {
         }
     }
 }
+
+// ── Skipped symbols for Shape (11 total) ──
+// SKIPPED: **Source:** `ShapeFix_Shape.hxx`:67 - `ShapeFix_Shape::FixSolidTool`
+//   method: Returns tool for fixing solids.
+//   Reason: return type 'Handle(ShapeFix_Solid)' is unknown
+//   // pub fn fix_solid_tool(&self) -> OwnedPtr<Handle<ShapeFix_Solid>>;
+//
+// SKIPPED: **Source:** `ShapeFix_Shape.hxx`:70 - `ShapeFix_Shape::FixShellTool`
+//   method: Returns tool for fixing shells.
+//   Reason: return type 'Handle(ShapeFix_Shell)' is unknown
+//   // pub fn fix_shell_tool(&self) -> OwnedPtr<Handle<ShapeFix_Shell>>;
+//
+// SKIPPED: **Source:** `ShapeFix_Shape.hxx`:73 - `ShapeFix_Shape::FixFaceTool`
+//   method: Returns tool for fixing faces.
+//   Reason: return type 'Handle(ShapeFix_Face)' is unknown
+//   // pub fn fix_face_tool(&self) -> OwnedPtr<Handle<ShapeFix_Face>>;
+//
+// SKIPPED: **Source:** `ShapeFix_Shape.hxx`:76 - `ShapeFix_Shape::FixWireTool`
+//   method: Returns tool for fixing wires.
+//   Reason: return type 'Handle(ShapeFix_Wire)' is unknown
+//   // pub fn fix_wire_tool(&self) -> OwnedPtr<Handle<ShapeFix_Wire>>;
+//
+// SKIPPED: **Source:** `ShapeFix_Shape.hxx`:106 - `ShapeFix_Shape::FixSolidMode`
+//   method: Returns (modifiable) the mode for applying fixes of
+//   method: ShapeFix_Solid, by default True.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_solid_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Shape.hxx`:110 - `ShapeFix_Shape::FixFreeShellMode`
+//   method: Returns (modifiable) the mode for applying fixes of
+//   method: ShapeFix_Shell, by default True.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_free_shell_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Shape.hxx`:114 - `ShapeFix_Shape::FixFreeFaceMode`
+//   method: Returns (modifiable) the mode for applying fixes of
+//   method: ShapeFix_Face, by default True.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_free_face_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Shape.hxx`:118 - `ShapeFix_Shape::FixFreeWireMode`
+//   method: Returns (modifiable) the mode for applying fixes of
+//   method: ShapeFix_Wire, by default True.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_free_wire_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Shape.hxx`:122 - `ShapeFix_Shape::FixSameParameterMode`
+//   method: Returns (modifiable) the mode for applying
+//   method: ShapeFix::SameParameter after all fixes, by default True.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_same_parameter_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Shape.hxx`:126 - `ShapeFix_Shape::FixVertexPositionMode`
+//   method: Returns (modifiable) the mode for applying
+//   method: ShapeFix::FixVertexPosition before all fixes, by default False.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_vertex_position_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Shape.hxx`:130 - `ShapeFix_Shape::FixVertexTolMode`
+//   method: Returns (modifiable) the mode for fixing tolerances of vertices on whole shape
+//   method: after performing all fixes
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_vertex_tol_mode(&mut self) -> &mut i32;
+//
 
 // ========================
 // From ShapeFix_ShapeTolerance.hxx
@@ -2737,6 +2927,25 @@ impl Shell {
     }
 }
 
+// ── Skipped symbols for Shell (3 total) ──
+// SKIPPED: **Source:** `ShapeFix_Shell.hxx`:97 - `ShapeFix_Shell::FixFaceTool`
+//   method: Returns tool for fixing faces.
+//   Reason: return type 'Handle(ShapeFix_Face)' is unknown
+//   // pub fn fix_face_tool(&mut self) -> OwnedPtr<Handle<ShapeFix_Face>>;
+//
+// SKIPPED: **Source:** `ShapeFix_Shell.hxx`:114 - `ShapeFix_Shell::FixFaceMode`
+//   method: Returns (modifiable) the mode for applying fixes of
+//   method: ShapeFix_Face, by default True.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_face_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Shell.hxx`:118 - `ShapeFix_Shell::FixOrientationMode`
+//   method: Returns (modifiable) the mode for applying
+//   method: FixFaceOrientation, by default True.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_orientation_mode(&mut self) -> &mut i32;
+//
+
 // ========================
 // From ShapeFix_Solid.hxx
 // ========================
@@ -2946,6 +3155,25 @@ impl Solid {
         }
     }
 }
+
+// ── Skipped symbols for Solid (3 total) ──
+// SKIPPED: **Source:** `ShapeFix_Solid.hxx`:72 - `ShapeFix_Solid::FixShellTool`
+//   method: Returns tool for fixing shells.
+//   Reason: return type 'Handle(ShapeFix_Shell)' is unknown
+//   // pub fn fix_shell_tool(&self) -> OwnedPtr<Handle<ShapeFix_Shell>>;
+//
+// SKIPPED: **Source:** `ShapeFix_Solid.hxx`:89 - `ShapeFix_Solid::FixShellMode`
+//   method: Returns (modifiable) the mode for applying fixes of
+//   method: ShapeFix_Shell, by default True.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_shell_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Solid.hxx`:93 - `ShapeFix_Solid::FixShellOrientationMode`
+//   method: Returns (modifiable) the mode for applying analysis and fixes of
+//   method: orientation of shells in the solid; by default True.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_shell_orientation_mode(&mut self) -> &mut i32;
+//
 
 // ========================
 // From ShapeFix_SplitCommonVertex.hxx
@@ -3252,6 +3480,15 @@ impl SplitTool {
         }
     }
 }
+
+// ── Skipped symbols for SplitTool (1 total) ──
+// SKIPPED: **Source:** `ShapeFix_SplitTool.hxx`:76 - `ShapeFix_SplitTool::SplitEdge`
+//   method: Split edge on two new edges using two new vertex V1 and V2
+//   method: and two parameters for splitting - fp and lp correspondingly
+//   method: The "face" is necessary for pcurves and using TransferParameterProj
+//   Reason: param 'context' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
+//   // pub fn split_edge(&self, edge: &Edge, fp: f64, V1: &Vertex, lp: f64, V2: &Vertex, face: &Face, SeqE: &mut SequenceOfShape, aNum: &mut i32, context: &HandleReShape, tol3d: f64, tol2d: f64) -> bool;
+//
 
 // ========================
 // From ShapeFix_Wire.hxx
@@ -3958,6 +4195,112 @@ impl Wire {
     }
 }
 
+// ── Skipped symbols for Wire (24 total) ──
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:177 - `ShapeFix_Wire::ModifyRemoveLoopMode`
+//   method: Returns (modifiable) the flag which defines whether the Fix..()
+//   method: methods are allowed to modify RemoveLoop of the edges
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn modify_remove_loop_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:194 - `ShapeFix_Wire::FixReorderMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_reorder_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:196 - `ShapeFix_Wire::FixSmallMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_small_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:198 - `ShapeFix_Wire::FixConnectedMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_connected_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:200 - `ShapeFix_Wire::FixEdgeCurvesMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_edge_curves_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:202 - `ShapeFix_Wire::FixDegeneratedMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_degenerated_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:204 - `ShapeFix_Wire::FixSelfIntersectionMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_self_intersection_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:206 - `ShapeFix_Wire::FixLackingMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_lacking_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:208 - `ShapeFix_Wire::FixGaps3dMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_gaps3d_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:216 - `ShapeFix_Wire::FixGaps2dMode`
+//   method: Returns (modifiable) the flag for corresponding Fix..() method
+//   method: which defines whether this method will be called from the
+//   method: method APIFix():
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_gaps2d_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:218 - `ShapeFix_Wire::FixReversed2dMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_reversed2d_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:220 - `ShapeFix_Wire::FixRemovePCurveMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_remove_p_curve_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:222 - `ShapeFix_Wire::FixAddPCurveMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_add_p_curve_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:224 - `ShapeFix_Wire::FixRemoveCurve3dMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_remove_curve3d_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:226 - `ShapeFix_Wire::FixAddCurve3dMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_add_curve3d_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:228 - `ShapeFix_Wire::FixSeamMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_seam_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:230 - `ShapeFix_Wire::FixShiftedMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_shifted_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:232 - `ShapeFix_Wire::FixSameParameterMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_same_parameter_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:234 - `ShapeFix_Wire::FixVertexToleranceMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_vertex_tolerance_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:236 - `ShapeFix_Wire::FixNotchedEdgesMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_notched_edges_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:238 - `ShapeFix_Wire::FixSelfIntersectingEdgeMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_self_intersecting_edge_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:240 - `ShapeFix_Wire::FixIntersectingEdgesMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_intersecting_edges_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:248 - `ShapeFix_Wire::FixNonAdjacentIntersectingEdgesMode`
+//   method: Returns (modifiable) the flag for corresponding Fix..() method
+//   method: which defines whether this method will be called from the
+//   method: corresponding Fix..() method of the public level:
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_non_adjacent_intersecting_edges_mode(&mut self) -> &mut i32;
+//
+// SKIPPED: **Source:** `ShapeFix_Wire.hxx`:250 - `ShapeFix_Wire::FixTailMode`
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn fix_tail_mode(&mut self) -> &mut i32;
+//
+
 // ========================
 // From ShapeFix_WireSegment.hxx
 // ========================
@@ -4213,6 +4556,13 @@ impl WireSegment {
         unsafe { crate::ffi::ShapeFix_WireSegment_is_vertex(self as *const Self) }
     }
 }
+
+// ── Skipped symbols for WireSegment (1 total) ──
+// SKIPPED: **Source:** `ShapeFix_WireSegment.hxx`:139 - `ShapeFix_WireSegment::GetPatchIndex`
+//   method: Returns patch indices for edge i.
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn get_patch_index(&self, i: i32, iumin: &mut i32, iumax: &mut i32, ivmin: &mut i32, ivmax: &mut i32);
+//
 
 // ========================
 // From ShapeFix_WireVertex.hxx
@@ -4596,3 +4946,16 @@ impl Wireframe {
 // ========================
 
 pub use crate::ffi::ShapeFix_SequenceOfWireSegment as SequenceOfWireSegment;
+
+// ── Skipped free functions (2 total) ──
+// SKIPPED: **Source:** `ShapeFix.hxx`:70 - `ShapeFix::RemoveSmallEdges`
+//   function: Removes edges which are less than given tolerance from shape
+//   function: with help of ShapeFix_Wire::FixSmall()
+//   Reason: param 'context' uses unknown type 'Handle(ShapeBuild_ReShape)&'
+//   // pub fn remove_small_edges(shape: &mut Shape, Tolerance: f64, context: &mut HandleReShape) -> OwnedPtr<TopoDS_Shape>;
+//
+// SKIPPED: **Source:** `ShapeFix.hxx`:75 - `ShapeFix::FixVertexPosition`
+//   function: Fix position of the vertices having tolerance more tnan specified one.;
+//   Reason: param 'thecontext' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
+//   // pub fn fix_vertex_position(theshape: &mut Shape, theTolerance: f64, thecontext: &HandleReShape) -> bool;
+//

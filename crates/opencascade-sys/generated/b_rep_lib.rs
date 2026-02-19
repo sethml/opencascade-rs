@@ -962,6 +962,22 @@ impl FuseEdges {
     }
 }
 
+// ── Skipped symbols for FuseEdges (2 total) ──
+// SKIPPED: **Source:** `BRepLib_FuseEdges.hxx`:63 - `BRepLib_FuseEdges::Edges`
+//   method: returns  all the list of edges to be fused
+//   method: each list of the map represent a set of connex edges
+//   method: that can be fused.
+//   Reason: param 'theMapLstEdg' uses unknown type 'TopTools_DataMapOfIntegerListOfShape&'
+//   // pub fn edges(&mut self, theMapLstEdg: &mut DataMapOfIntegerListOfShape);
+//
+// SKIPPED: **Source:** `BRepLib_FuseEdges.hxx`:70 - `BRepLib_FuseEdges::ResultEdges`
+//   method: returns all the fused edges. each integer entry in
+//   method: the   map  corresponds  to  the  integer   in the
+//   method: DataMapOfIntegerListOfShape  we    get in  method
+//   Reason: param 'theMapEdg' uses unknown type 'TopTools_DataMapOfIntegerShape&'
+//   // pub fn result_edges(&mut self, theMapEdg: &mut DataMapOfIntegerShape);
+//
+
 // ========================
 // From BRepLib_MakeEdge.hxx
 // ========================
@@ -3901,6 +3917,13 @@ impl PointCloudShape {
     }
 }
 
+// ── Skipped symbols for PointCloudShape (1 total) ──
+// SKIPPED: **Source:** `BRepLib_PointCloudShape.hxx`:34 - `BRepLib_PointCloudShape::BRepLib_PointCloudShape`
+//   constructor: Constructor initialized by shape
+//   Reason: class is abstract (has unimplemented pure virtual methods)
+//   // pub fn new_shape_real(theShape: &Shape, theTol: f64) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From BRepLib_ToolTriangulatedShape.hxx
 // ========================
@@ -4067,3 +4090,10 @@ impl ValidateEdge {
         }
     }
 }
+
+// ── Skipped symbols for ValidateEdge (1 total) ──
+// SKIPPED: **Source:** `BRepLib_ValidateEdge.hxx`:30 - `BRepLib_ValidateEdge::BRepLib_ValidateEdge`
+//   constructor: Initialization constructor
+//   Reason: param 'theOtherCurve' uses unknown Handle type
+//   // pub fn new_handleadaptor3dcurve_handleadaptor3dcurveonsurface_bool(theReferenceCurve: HandleCurve, theOtherCurve: HandleCurveOnSurface, theSameParameter: bool) -> OwnedPtr<Self>;
+//

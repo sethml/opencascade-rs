@@ -704,6 +704,42 @@ impl SelectType {
     }
 }
 
+// ── Skipped symbols for SelectType (5 total) ──
+// SKIPPED: **Source:** `StepData_SelectType.hxx`:58 - `StepData_SelectType::CaseNum`
+//   method: Recognizes the Type of an Entity. Returns a positive Number
+//   method: which identifies the Type in the definition List of the
+//   method: SelectType. Returns Zero if its Type in not in this List.
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn case_num(&self, ent: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches`
+//   method: Returns True if the Type of an Entity complies with the
+//   method: definition list of the SelectType.
+//   method: Also checks for a SelectMember
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn matches(&self, ent: &HandleTransient) -> bool;
+//
+// SKIPPED: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue`
+//   method: Stores an Entity. This allows to define a specific SelectType
+//   method: class with one read method per member Type, which returns the
+//   method: Value casted with the good Type.
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn set_value(&mut self, ent: &HandleTransient);
+//
+// SKIPPED: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value`
+//   method: Returns the Stored Entity. Can be used to define specific
+//   method: read methods (see above)
+//   Reason: return type 'const Handle(Standard_Transient)&' is unknown
+//   // pub fn value(&self) -> &HandleTransient;
+//
+// SKIPPED: **Source:** `StepData_SelectType.hxx`:94 - `StepData_SelectType::Description`
+//   method: Returns the Description which corresponds to <me>
+//   method: Null if no specific description to give. This description is
+//   method: used to control reading an check validity.
+//   Reason: return type 'Handle(StepData_PDescr)' is unknown
+//   // pub fn description(&self) -> OwnedPtr<Handle<StepData_PDescr>>;
+//
+
 // ========================
 // From StepData_StepModel.hxx
 // ========================
@@ -998,6 +1034,60 @@ impl StepModel {
         unsafe { crate::ffi::StepData_StepModel_inherited_SetGlobalCheck(self as *mut Self, ach) }
     }
 }
+
+// ── Skipped symbols for StepModel (9 total) ──
+// SKIPPED: **Source:** `StepData_StepModel.hxx`:47 - `StepData_StepModel::Entity`
+//   method: returns entity given its rank.
+//   method: Same as InterfaceEntity, but with a shorter name
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn entity(&self, num: i32) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `StepData_StepModel.hxx`:57 - `StepData_StepModel::Header`
+//   method: returns Header entities under the form of an iterator
+//   Reason: return type 'Interface_EntityIterator' is unknown
+//   // pub fn header(&self) -> OwnedPtr<Interface_EntityIterator>;
+//
+// SKIPPED: **Source:** `StepData_StepModel.hxx`:63 - `StepData_StepModel::HeaderEntity`
+//   method: Returns Header entity with specified type, if there is
+//   Reason: return type 'Handle(Standard_Transient)' is unknown
+//   // pub fn header_entity(&self, atype: &HandleType) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `StepData_StepModel.hxx`:69 - `StepData_StepModel::AddHeaderEntity`
+//   method: Adds an Entity to the Header
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn add_header_entity(&mut self, ent: &HandleTransient);
+//
+// SKIPPED: **Source:** `StepData_StepModel.hxx`:79 - `StepData_StepModel::DumpHeader`
+//   method: Dumps the Header, with the Header Protocol of StepData.
+//   method: If the Header Protocol is not defined, for each Header Entity,
+//   method: prints its Type. Else sends the Header under the form of
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn dump_header(&self, S: /* Standard_OStream& */, level: i32);
+//
+// SKIPPED: **Source:** `StepData_StepModel.hxx`:87 - `StepData_StepModel::SetIdentLabel`
+//   method: Attaches an ident to an entity to produce a label
+//   method: (does nothing if <ent> is not in <me>)
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn set_ident_label(&mut self, ent: &HandleTransient, ident: i32);
+//
+// SKIPPED: **Source:** `StepData_StepModel.hxx`:91 - `StepData_StepModel::IdentLabel`
+//   method: returns the label ident attached to an entity, 0 if not in me
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn ident_label(&self, ent: &HandleTransient) -> i32;
+//
+// SKIPPED: **Source:** `StepData_StepModel.hxx`:96 - `StepData_StepModel::PrintLabel`
+//   method: Prints label specific to STEP norm for a given entity, i.e.
+//   method: if a LabelIdent has been recorded, its value with '#', else
+//   method: the number in the model with '#' and between ()
+//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
+//   // pub fn print_label(&self, ent: &HandleTransient, S: /* Standard_OStream& */);
+//
+// SKIPPED: **Source:** `StepData_StepModel.hxx`:101 - `StepData_StepModel::StringLabel`
+//   method: Returns a string with the label attached to a given entity,
+//   method: same form as for PrintLabel
+//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   // pub fn string_label(&self, ent: &HandleTransient) -> OwnedPtr<Handle<TCollection_HAsciiString>>;
+//
 
 // ========================
 // Additional type re-exports

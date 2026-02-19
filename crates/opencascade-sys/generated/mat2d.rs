@@ -896,6 +896,15 @@ impl Tool2d {
     }
 }
 
+// ── Skipped symbols for Tool2d (1 total) ──
+// SKIPPED: **Source:** `MAT2d_Tool2d.hxx`:109 - `MAT2d_Tool2d::IntersectBisector`
+//   method: Computes  the point  of  intersection between  the
+//   method: bisectors defined  by  <bisectorone>  and
+//   method: <bisectortwo> .
+//   Reason: has misresolved element type (clang batch parsing artifact)
+//   // pub fn intersect_bisector(&mut self, bisectorone: &HandleBisector, bisectortwo: &HandleBisector, intpnt: &mut i32) -> f64;
+//
+
 // ========================
 // Additional type re-exports
 // ========================

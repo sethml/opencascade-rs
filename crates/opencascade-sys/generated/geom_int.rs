@@ -262,6 +262,38 @@ impl IntSS {
     }
 }
 
+// ── Skipped symbols for IntSS (6 total) ──
+// SKIPPED: **Source:** `GeomInt_IntSS.hxx`:61 - `GeomInt_IntSS::Perform`
+//   method: intersection of adapted surfaces
+//   Reason: param 'HS1' uses unknown type 'const Handle(GeomAdaptor_Surface)&'
+//   // pub fn perform(&mut self, HS1: &HandleSurface, HS2: &HandleSurface, Tol: f64, Approx: bool, ApproxS1: bool, ApproxS2: bool);
+//
+// SKIPPED: **Source:** `GeomInt_IntSS.hxx`:81 - `GeomInt_IntSS::Perform`
+//   method: intersection of adapted surfaces using a starting point
+//   Reason: param 'HS1' uses unknown type 'const Handle(GeomAdaptor_Surface)&'
+//   // pub fn perform(&mut self, HS1: &HandleSurface, HS2: &HandleSurface, Tol: f64, U1: f64, V1: f64, U2: f64, V2: f64, Approx: bool, ApproxS1: bool, ApproxS2: bool);
+//
+// SKIPPED: **Source:** `GeomInt_IntSS.hxx`:127 - `GeomInt_IntSS::TreatRLine`
+//   static_method: converts RLine to Geom(2d)_Curve.
+//   Reason: param 'theRL' uses unknown type 'const Handle(IntPatch_RLine)&'
+//   // pub fn treat_r_line(theRL: &HandleRLine, theHS1: &HandleSurface, theHS2: &HandleSurface, theC3d: &mut HandleCurve, theC2d1: &mut HandleCurve, theC2d2: &mut HandleCurve, theTolReached: &mut f64);
+//
+// SKIPPED: **Source:** `GeomInt_IntSS.hxx`:158 - `GeomInt_IntSS::TrimILineOnSurfBoundaries`
+//   static_method: puts into theArrayOfParameters the parameters of intersection
+//   static_method: points of given theC2d1 and theC2d2 curves with the boundaries
+//   static_method: of the source surface.
+//   Reason: param 'theArrayOfParameters' uses unknown type 'GeomInt_VectorOfReal&'
+//   // pub fn trim_i_line_on_surf_boundaries(theC2d1: &HandleCurve, theC2d2: &HandleCurve, theBound1: &Box2d, theBound2: &Box2d, theArrayOfParameters: &mut VectorOfReal);
+//
+// SKIPPED: **Source:** `GeomInt_IntSS.hxx`:164 - `GeomInt_IntSS::MakeBSpline`
+//   Reason: param 'WL' uses unknown type 'const Handle(IntPatch_WLine)&'
+//   // pub fn make_b_spline(WL: &HandleWLine, ideb: i32, ifin: i32) -> OwnedPtr<Handle<Geom_Curve>>;
+//
+// SKIPPED: **Source:** `GeomInt_IntSS.hxx`:168 - `GeomInt_IntSS::MakeBSpline2d`
+//   Reason: param 'theWLine' uses unknown type 'const Handle(IntPatch_WLine)&'
+//   // pub fn make_b_spline2d(theWLine: &HandleWLine, ideb: i32, ifin: i32, onFirst: bool) -> OwnedPtr<Handle<Geom2d_BSplineCurve>>;
+//
+
 // ========================
 // From GeomInt_LineConstructor.hxx
 // ========================
@@ -308,6 +340,14 @@ impl LineConstructor {
         unsafe { crate::ffi::GeomInt_LineConstructor_part(self as *const Self, I, WFirst, WLast) }
     }
 }
+
+// ── Skipped symbols for LineConstructor (1 total) ──
+// SKIPPED: **Source:** `GeomInt_LineConstructor.hxx`:37 - `GeomInt_LineConstructor::Load`
+//   method: Initializes me by two surfaces and corresponding
+//   method: tools which represent boundaries of surfaces
+//   Reason: param 'S1' uses unknown type 'const Handle(GeomAdaptor_Surface)&'
+//   // pub fn load(&mut self, D1: &HandleTopolTool, D2: &HandleTopolTool, S1: &HandleSurface, S2: &HandleSurface);
+//
 
 // ========================
 // Additional type re-exports
