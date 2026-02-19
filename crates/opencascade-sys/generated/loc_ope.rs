@@ -56,6 +56,9 @@ impl TryFrom<i32> for Operation {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleStandardTransient;
+
 // ========================
 // From LocOpe_BuildShape.hxx
 // ========================
@@ -649,6 +652,54 @@ impl GeneratedShape {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::LocOpe_GeneratedShape_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::LocOpe_GeneratedShape_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::LocOpe_GeneratedShape_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::LocOpe_GeneratedShape_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::LocOpe_GeneratedShape_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::LocOpe_GeneratedShape_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::LocOpe_GeneratedShape_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::LocOpe_GeneratedShape_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::LocOpe_GeneratedShape_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleLocOpeGeneratedShape;
@@ -668,6 +719,17 @@ impl HandleLocOpeGeneratedShape {
     /// Dereference this Handle to mutably access the underlying LocOpe_GeneratedShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::LocOpe_GeneratedShape {
         unsafe { &mut *(crate::ffi::HandleLocOpeGeneratedShape_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<LocOpe_GeneratedShape> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleLocOpeGeneratedShape_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Downcast Handle<LocOpe_GeneratedShape> to Handle<LocOpe_GluedShape>
@@ -863,6 +925,18 @@ impl GluedShape {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::LocOpe_GluedShape_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::LocOpe_GluedShape_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -870,6 +944,36 @@ impl GluedShape {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LocOpe_GluedShape_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::LocOpe_GluedShape_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::LocOpe_GluedShape_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::LocOpe_GluedShape_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::LocOpe_GluedShape_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::LocOpe_GluedShape_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::LocOpe_GluedShape_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -901,6 +1005,15 @@ impl HandleLocOpeGluedShape {
                 crate::ffi::HandleLocOpeGluedShape_to_HandleLocOpeGeneratedShape(
                     self as *const Self,
                 ),
+            )
+        }
+    }
+
+    /// Upcast Handle<LocOpe_GluedShape> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleLocOpeGluedShape_to_HandleStandardTransient(self as *const Self),
             )
         }
     }
@@ -2030,6 +2143,18 @@ impl WiresOnShape {
         unsafe { &*(crate::ffi::LocOpe_WiresOnShape_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::LocOpe_WiresOnShape_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::LocOpe_WiresOnShape_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2037,6 +2162,38 @@ impl WiresOnShape {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LocOpe_WiresOnShape_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::LocOpe_WiresOnShape_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::LocOpe_WiresOnShape_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::LocOpe_WiresOnShape_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::LocOpe_WiresOnShape_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::LocOpe_WiresOnShape_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::LocOpe_WiresOnShape_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -2057,6 +2214,17 @@ impl HandleLocOpeWiresOnShape {
     /// Dereference this Handle to mutably access the underlying LocOpe_WiresOnShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::LocOpe_WiresOnShape {
         unsafe { &mut *(crate::ffi::HandleLocOpeWiresOnShape_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<LocOpe_WiresOnShape> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleLocOpeWiresOnShape_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 

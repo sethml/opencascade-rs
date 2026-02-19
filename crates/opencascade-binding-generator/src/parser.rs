@@ -436,10 +436,6 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Vec<Parse
     };
     let current_access = std::cell::Cell::new(default_access);
 
-    // Check if there's a DEFINE_STANDARD_HANDLE for this class
-    // This is typically done outside the class, so we check the name pattern
-    // and look for inheritance from Standard_Transient
-    let is_handle_type = check_is_handle_type(entity);
 
     entity.visit_children(|child, _| {
         // Track access specifiers (public:/protected:/private: sections)
@@ -582,7 +578,6 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Vec<Parse
             methods,
             static_methods,
             all_method_names,
-            is_handle_type,
             base_classes,
             has_protected_destructor,
             is_abstract,
@@ -735,29 +730,6 @@ fn parse_function(entity: &Entity, namespace: &str, source_header: &str, verbose
     })
 }
 
-/// Check if a class is a Handle type (inherits from Standard_Transient)
-/// These are classes that can be wrapped in opencascade::handle<T>
-fn check_is_handle_type(entity: &Entity) -> bool {
-    // Check base classes
-    for child in entity.get_children() {
-        if child.get_kind() == EntityKind::BaseSpecifier {
-            if let Some(base_type) = child.get_type() {
-                let base_name = base_type.get_display_name();
-                // Only classes that inherit from Standard_Transient (directly or through
-                // geometry classes) can use Handle<T>. TopoDS types are NOT Handle types -
-                // they use their own internal reference counting mechanism.
-                if base_name.contains("Standard_Transient")
-                    || base_name.starts_with("Geom_")
-                    || base_name.starts_with("Geom2d_")
-                    || base_name.starts_with("Law_")
-                {
-                    return true;
-                }
-            }
-        }
-    }
-    false
-}
 
 /// Extract direct base classes from an entity (only public base classes)
 fn extract_base_classes(entity: &Entity) -> Vec<String> {
@@ -773,8 +745,7 @@ fn extract_base_classes(entity: &Entity) -> Vec<String> {
             if let Some(base_type) = child.get_type() {
                 let base_name = base_type.get_display_name();
                 // Only include OCCT classes (those with underscore prefix pattern)
-                // Skip Standard_Transient and other non-shape base classes
-                if !base_name.contains('_') || base_name.contains("Standard_") {
+                if !base_name.contains('_') {
                     continue;
                 }
                 // Template base classes (e.g. BVH_PairTraverse<Standard_Real, 3>)

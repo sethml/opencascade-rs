@@ -93,6 +93,9 @@ impl TryFrom<i32> for PolyMask {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleStandardTransient;
+
 // ========================
 // From HLRAlgo_BiPoint.hxx
 // ========================
@@ -855,6 +858,18 @@ impl EdgesBlock {
         unsafe { &*(crate::ffi::HLRAlgo_EdgesBlock_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::HLRAlgo_EdgesBlock_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::HLRAlgo_EdgesBlock_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -862,6 +877,36 @@ impl EdgesBlock {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_EdgesBlock_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::HLRAlgo_EdgesBlock_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::HLRAlgo_EdgesBlock_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::HLRAlgo_EdgesBlock_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::HLRAlgo_EdgesBlock_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::HLRAlgo_EdgesBlock_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::HLRAlgo_EdgesBlock_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -882,6 +927,15 @@ impl HandleHLRAlgoEdgesBlock {
     /// Dereference this Handle to mutably access the underlying HLRAlgo_EdgesBlock
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_EdgesBlock {
         unsafe { &mut *(crate::ffi::HandleHLRAlgoEdgesBlock_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<HLRAlgo_EdgesBlock> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleHLRAlgoEdgesBlock_to_HandleStandardTransient(self as *const Self),
+            )
+        }
     }
 }
 
@@ -962,6 +1016,18 @@ impl HArray1OfPHDat {
         unsafe { &*(crate::ffi::HLRAlgo_HArray1OfPHDat_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::HLRAlgo_HArray1OfPHDat_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::HLRAlgo_HArray1OfPHDat_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -969,6 +1035,42 @@ impl HArray1OfPHDat {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPHDat_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::HLRAlgo_HArray1OfPHDat_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::HLRAlgo_HArray1OfPHDat_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::HLRAlgo_HArray1OfPHDat_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::HLRAlgo_HArray1OfPHDat_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::HLRAlgo_HArray1OfPHDat_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::HLRAlgo_HArray1OfPHDat_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -989,6 +1091,17 @@ impl HandleHLRAlgoHArray1OfPHDat {
     /// Dereference this Handle to mutably access the underlying HLRAlgo_HArray1OfPHDat
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_HArray1OfPHDat {
         unsafe { &mut *(crate::ffi::HandleHLRAlgoHArray1OfPHDat_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<HLRAlgo_HArray1OfPHDat> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleHLRAlgoHArray1OfPHDat_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -1060,6 +1173,18 @@ impl HArray1OfPINod {
         unsafe { &*(crate::ffi::HLRAlgo_HArray1OfPINod_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::HLRAlgo_HArray1OfPINod_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::HLRAlgo_HArray1OfPINod_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1067,6 +1192,42 @@ impl HArray1OfPINod {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPINod_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::HLRAlgo_HArray1OfPINod_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::HLRAlgo_HArray1OfPINod_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::HLRAlgo_HArray1OfPINod_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::HLRAlgo_HArray1OfPINod_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::HLRAlgo_HArray1OfPINod_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::HLRAlgo_HArray1OfPINod_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1087,6 +1248,17 @@ impl HandleHLRAlgoHArray1OfPINod {
     /// Dereference this Handle to mutably access the underlying HLRAlgo_HArray1OfPINod
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_HArray1OfPINod {
         unsafe { &mut *(crate::ffi::HandleHLRAlgoHArray1OfPINod_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<HLRAlgo_HArray1OfPINod> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleHLRAlgoHArray1OfPINod_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -1158,6 +1330,18 @@ impl HArray1OfPISeg {
         unsafe { &*(crate::ffi::HLRAlgo_HArray1OfPISeg_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::HLRAlgo_HArray1OfPISeg_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::HLRAlgo_HArray1OfPISeg_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1165,6 +1349,42 @@ impl HArray1OfPISeg {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPISeg_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::HLRAlgo_HArray1OfPISeg_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::HLRAlgo_HArray1OfPISeg_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::HLRAlgo_HArray1OfPISeg_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::HLRAlgo_HArray1OfPISeg_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::HLRAlgo_HArray1OfPISeg_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::HLRAlgo_HArray1OfPISeg_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1185,6 +1405,17 @@ impl HandleHLRAlgoHArray1OfPISeg {
     /// Dereference this Handle to mutably access the underlying HLRAlgo_HArray1OfPISeg
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_HArray1OfPISeg {
         unsafe { &mut *(crate::ffi::HandleHLRAlgoHArray1OfPISeg_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<HLRAlgo_HArray1OfPISeg> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleHLRAlgoHArray1OfPISeg_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -1256,6 +1487,18 @@ impl HArray1OfTData {
         unsafe { &*(crate::ffi::HLRAlgo_HArray1OfTData_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::HLRAlgo_HArray1OfTData_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::HLRAlgo_HArray1OfTData_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1263,6 +1506,42 @@ impl HArray1OfTData {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfTData_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::HLRAlgo_HArray1OfTData_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::HLRAlgo_HArray1OfTData_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::HLRAlgo_HArray1OfTData_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::HLRAlgo_HArray1OfTData_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::HLRAlgo_HArray1OfTData_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::HLRAlgo_HArray1OfTData_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1283,6 +1562,17 @@ impl HandleHLRAlgoHArray1OfTData {
     /// Dereference this Handle to mutably access the underlying HLRAlgo_HArray1OfTData
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_HArray1OfTData {
         unsafe { &mut *(crate::ffi::HandleHLRAlgoHArray1OfTData_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<HLRAlgo_HArray1OfTData> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleHLRAlgoHArray1OfTData_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -1626,11 +1916,51 @@ impl PolyAlgo {
         unsafe { &*(crate::ffi::HLRAlgo_PolyAlgo_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::HLRAlgo_PolyAlgo_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::HLRAlgo_PolyAlgo_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoPolyAlgo> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_PolyAlgo_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::HLRAlgo_PolyAlgo_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::HLRAlgo_PolyAlgo_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::HLRAlgo_PolyAlgo_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::HLRAlgo_PolyAlgo_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::HLRAlgo_PolyAlgo_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::HLRAlgo_PolyAlgo_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1651,6 +1981,15 @@ impl HandleHLRAlgoPolyAlgo {
     /// Dereference this Handle to mutably access the underlying HLRAlgo_PolyAlgo
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_PolyAlgo {
         unsafe { &mut *(crate::ffi::HandleHLRAlgoPolyAlgo_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<HLRAlgo_PolyAlgo> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleHLRAlgoPolyAlgo_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -1790,11 +2129,51 @@ impl PolyData {
         unsafe { &*(crate::ffi::HLRAlgo_PolyData_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::HLRAlgo_PolyData_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::HLRAlgo_PolyData_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoPolyData> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_PolyData_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::HLRAlgo_PolyData_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::HLRAlgo_PolyData_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::HLRAlgo_PolyData_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::HLRAlgo_PolyData_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::HLRAlgo_PolyData_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::HLRAlgo_PolyData_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1815,6 +2194,15 @@ impl HandleHLRAlgoPolyData {
     /// Dereference this Handle to mutably access the underlying HLRAlgo_PolyData
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_PolyData {
         unsafe { &mut *(crate::ffi::HandleHLRAlgoPolyData_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<HLRAlgo_PolyData> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleHLRAlgoPolyData_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -2053,6 +2441,22 @@ impl PolyInternalData {
         unsafe { &*(crate::ffi::HLRAlgo_PolyInternalData_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::HLRAlgo_PolyInternalData_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::HLRAlgo_PolyInternalData_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2062,6 +2466,44 @@ impl PolyInternalData {
                 obj.into_raw(),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyInternalData_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyInternalData_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::HLRAlgo_PolyInternalData_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyInternalData_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyInternalData_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::HLRAlgo_PolyInternalData_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -2082,6 +2524,17 @@ impl HandleHLRAlgoPolyInternalData {
     /// Dereference this Handle to mutably access the underlying HLRAlgo_PolyInternalData
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_PolyInternalData {
         unsafe { &mut *(crate::ffi::HandleHLRAlgoPolyInternalData_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<HLRAlgo_PolyInternalData> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleHLRAlgoPolyInternalData_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -2156,6 +2609,22 @@ impl PolyInternalNode {
         unsafe { &*(crate::ffi::HLRAlgo_PolyInternalNode_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::HLRAlgo_PolyInternalNode_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::HLRAlgo_PolyInternalNode_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2165,6 +2634,44 @@ impl PolyInternalNode {
                 obj.into_raw(),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyInternalNode_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyInternalNode_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::HLRAlgo_PolyInternalNode_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyInternalNode_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyInternalNode_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::HLRAlgo_PolyInternalNode_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -2185,6 +2692,17 @@ impl HandleHLRAlgoPolyInternalNode {
     /// Dereference this Handle to mutably access the underlying HLRAlgo_PolyInternalNode
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_PolyInternalNode {
         unsafe { &mut *(crate::ffi::HandleHLRAlgoPolyInternalNode_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<HLRAlgo_PolyInternalNode> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleHLRAlgoPolyInternalNode_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -2293,6 +2811,18 @@ impl PolyShellData {
         unsafe { &*(crate::ffi::HLRAlgo_PolyShellData_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::HLRAlgo_PolyShellData_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::HLRAlgo_PolyShellData_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2300,6 +2830,42 @@ impl PolyShellData {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_PolyShellData_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyShellData_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::HLRAlgo_PolyShellData_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::HLRAlgo_PolyShellData_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyShellData_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyShellData_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::HLRAlgo_PolyShellData_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -2320,6 +2886,17 @@ impl HandleHLRAlgoPolyShellData {
     /// Dereference this Handle to mutably access the underlying HLRAlgo_PolyShellData
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_PolyShellData {
         unsafe { &mut *(crate::ffi::HandleHLRAlgoPolyShellData_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<HLRAlgo_PolyShellData> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleHLRAlgoPolyShellData_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -2609,6 +3186,18 @@ impl WiresBlock {
         unsafe { &*(crate::ffi::HLRAlgo_WiresBlock_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::HLRAlgo_WiresBlock_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::HLRAlgo_WiresBlock_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2616,6 +3205,36 @@ impl WiresBlock {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_WiresBlock_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::HLRAlgo_WiresBlock_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::HLRAlgo_WiresBlock_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::HLRAlgo_WiresBlock_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::HLRAlgo_WiresBlock_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::HLRAlgo_WiresBlock_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::HLRAlgo_WiresBlock_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -2636,6 +3255,15 @@ impl HandleHLRAlgoWiresBlock {
     /// Dereference this Handle to mutably access the underlying HLRAlgo_WiresBlock
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_WiresBlock {
         unsafe { &mut *(crate::ffi::HandleHLRAlgoWiresBlock_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<HLRAlgo_WiresBlock> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleHLRAlgoWiresBlock_to_HandleStandardTransient(self as *const Self),
+            )
+        }
     }
 }
 

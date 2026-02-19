@@ -35,6 +35,9 @@ impl TryFrom<i32> for CellFilter_Action {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleStandardTransient;
+
 // ========================
 // From NCollection_AccAllocator.hxx
 // ========================
@@ -112,6 +115,22 @@ impl AccAllocator {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::NCollection_AccAllocator_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::NCollection_AccAllocator_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -121,6 +140,44 @@ impl AccAllocator {
                 obj.into_raw(),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NCollection_AccAllocator_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NCollection_AccAllocator_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::NCollection_AccAllocator_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::NCollection_AccAllocator_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::NCollection_AccAllocator_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::NCollection_AccAllocator_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -150,6 +207,17 @@ impl HandleNCollectionAccAllocator {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleNCollectionAccAllocator_to_HandleNCollectionBaseAllocator(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NCollection_AccAllocator> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNCollectionAccAllocator_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -239,6 +307,22 @@ impl AlignedAllocator {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::NCollection_AlignedAllocator_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::NCollection_AlignedAllocator_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -248,6 +332,53 @@ impl AlignedAllocator {
                 obj.into_raw(),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NCollection_AlignedAllocator_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NCollection_AlignedAllocator_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::NCollection_AlignedAllocator_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::NCollection_AlignedAllocator_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::NCollection_AlignedAllocator_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::NCollection_AlignedAllocator_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -277,6 +408,17 @@ impl HandleNCollectionAlignedAllocator {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleNCollectionAlignedAllocator_to_HandleNCollectionBaseAllocator(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NCollection_AlignedAllocator> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNCollectionAlignedAllocator_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -354,6 +496,22 @@ impl BaseAllocator {
         unsafe { &*(crate::ffi::NCollection_BaseAllocator_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::NCollection_BaseAllocator_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::NCollection_BaseAllocator_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -363,6 +521,44 @@ impl BaseAllocator {
                 obj.into_raw(),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NCollection_BaseAllocator_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NCollection_BaseAllocator_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::NCollection_BaseAllocator_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::NCollection_BaseAllocator_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::NCollection_BaseAllocator_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::NCollection_BaseAllocator_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -383,6 +579,17 @@ impl HandleNCollectionBaseAllocator {
     /// Dereference this Handle to mutably access the underlying NCollection_BaseAllocator
     pub fn get_mut(&mut self) -> &mut crate::ffi::NCollection_BaseAllocator {
         unsafe { &mut *(crate::ffi::HandleNCollectionBaseAllocator_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<NCollection_BaseAllocator> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNCollectionBaseAllocator_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Downcast Handle<NCollection_BaseAllocator> to Handle<NCollection_AccAllocator>
@@ -920,6 +1127,18 @@ impl Buffer {
         unsafe { &*(crate::ffi::NCollection_Buffer_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::NCollection_Buffer_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::NCollection_Buffer_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -927,6 +1146,36 @@ impl Buffer {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::NCollection_Buffer_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::NCollection_Buffer_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::NCollection_Buffer_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::NCollection_Buffer_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::NCollection_Buffer_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::NCollection_Buffer_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::NCollection_Buffer_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -947,6 +1196,15 @@ impl HandleNCollectionBuffer {
     /// Dereference this Handle to mutably access the underlying NCollection_Buffer
     pub fn get_mut(&mut self) -> &mut crate::ffi::NCollection_Buffer {
         unsafe { &mut *(crate::ffi::HandleNCollectionBuffer_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<NCollection_Buffer> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNCollectionBuffer_to_HandleStandardTransient(self as *const Self),
+            )
+        }
     }
 }
 
@@ -1027,6 +1285,22 @@ impl HeapAllocator {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::NCollection_HeapAllocator_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::NCollection_HeapAllocator_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1036,6 +1310,44 @@ impl HeapAllocator {
                 obj.into_raw(),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NCollection_HeapAllocator_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NCollection_HeapAllocator_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::NCollection_HeapAllocator_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::NCollection_HeapAllocator_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::NCollection_HeapAllocator_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::NCollection_HeapAllocator_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1065,6 +1377,17 @@ impl HandleNCollectionHeapAllocator {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleNCollectionHeapAllocator_to_HandleNCollectionBaseAllocator(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NCollection_HeapAllocator> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNCollectionHeapAllocator_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -1196,6 +1519,22 @@ impl IncAllocator {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::NCollection_IncAllocator_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::NCollection_IncAllocator_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1205,6 +1544,44 @@ impl IncAllocator {
                 obj.into_raw(),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NCollection_IncAllocator_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NCollection_IncAllocator_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::NCollection_IncAllocator_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::NCollection_IncAllocator_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::NCollection_IncAllocator_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::NCollection_IncAllocator_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1234,6 +1611,17 @@ impl HandleNCollectionIncAllocator {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleNCollectionIncAllocator_to_HandleNCollectionBaseAllocator(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NCollection_IncAllocator> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNCollectionIncAllocator_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -1424,6 +1812,22 @@ impl WinHeapAllocator {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::NCollection_WinHeapAllocator_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::NCollection_WinHeapAllocator_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1433,6 +1837,53 @@ impl WinHeapAllocator {
                 obj.into_raw(),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NCollection_WinHeapAllocator_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NCollection_WinHeapAllocator_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::NCollection_WinHeapAllocator_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::NCollection_WinHeapAllocator_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::NCollection_WinHeapAllocator_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::NCollection_WinHeapAllocator_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1462,6 +1913,17 @@ impl HandleNCollectionWinHeapAllocator {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleNCollectionWinHeapAllocator_to_HandleNCollectionBaseAllocator(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NCollection_WinHeapAllocator> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNCollectionWinHeapAllocator_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )

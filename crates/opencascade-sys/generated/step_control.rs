@@ -58,7 +58,7 @@ impl TryFrom<i32> for StepModelType {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
-    HandleSTEPCAFControlActorWrite, HandleSTEPCAFControlController,
+    HandleSTEPCAFControlActorWrite, HandleSTEPCAFControlController, HandleStandardTransient,
     HandleTransferActorOfFinderProcess, HandleTransferActorOfProcessForFinder,
     HandleTransferActorOfProcessForTransient, HandleTransferActorOfTransientProcess,
     HandleXSControlController,
@@ -185,6 +185,18 @@ impl ActorRead {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::STEPControl_ActorRead_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::STEPControl_ActorRead_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -233,6 +245,42 @@ impl ActorRead {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::STEPControl_ActorRead_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::STEPControl_ActorRead_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::STEPControl_ActorRead_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::STEPControl_ActorRead_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::STEPControl_ActorRead_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::STEPControl_ActorRead_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleSTEPControlActorRead;
@@ -274,6 +322,17 @@ impl HandleSTEPControlActorRead {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleSTEPControlActorRead_to_HandleTransferActorOfProcessForTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<STEPControl_ActorRead> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleSTEPControlActorRead_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -505,6 +564,18 @@ impl ActorWrite {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::STEPControl_ActorWrite_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::STEPControl_ActorWrite_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -591,6 +662,42 @@ impl ActorWrite {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::STEPControl_ActorWrite_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::STEPControl_ActorWrite_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::STEPControl_ActorWrite_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::STEPControl_ActorWrite_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::STEPControl_ActorWrite_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::STEPControl_ActorWrite_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleSTEPControlActorWrite;
@@ -632,6 +739,17 @@ impl HandleSTEPControlActorWrite {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleSTEPControlActorWrite_to_HandleTransferActorOfProcessForFinder(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<STEPControl_ActorWrite> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleSTEPControlActorWrite_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -788,6 +906,18 @@ impl Controller {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::STEPControl_Controller_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::STEPControl_Controller_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -888,6 +1018,42 @@ impl Controller {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::STEPControl_Controller_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::STEPControl_Controller_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::STEPControl_Controller_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::STEPControl_Controller_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::STEPControl_Controller_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::STEPControl_Controller_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleSTEPControlController;
@@ -914,6 +1080,17 @@ impl HandleSTEPControlController {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleSTEPControlController_to_HandleXSControlController(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<STEPControl_Controller> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleSTEPControlController_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )

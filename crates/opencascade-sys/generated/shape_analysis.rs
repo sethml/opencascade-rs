@@ -76,6 +76,9 @@ pub fn get_face_uv_bounds(
     unsafe { crate::ffi::ShapeAnalysis_get_face_uv_bounds(F, Umin, Umax, Vmin, Vmax) }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleStandardTransient;
+
 // ========================
 // From ShapeAnalysis_BoxBndTree.hxx
 // ========================
@@ -1766,6 +1769,22 @@ impl FreeBoundData {
         unsafe { &*(crate::ffi::ShapeAnalysis_FreeBoundData_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeAnalysis_FreeBoundData_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeAnalysis_FreeBoundData_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1775,6 +1794,49 @@ impl FreeBoundData {
                 obj.into_raw(),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundData_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundData_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundData_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundData_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundData_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeAnalysis_FreeBoundData_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1795,6 +1857,17 @@ impl HandleShapeAnalysisFreeBoundData {
     /// Dereference this Handle to mutably access the underlying ShapeAnalysis_FreeBoundData
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeAnalysis_FreeBoundData {
         unsafe { &mut *(crate::ffi::HandleShapeAnalysisFreeBoundData_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeAnalysis_FreeBoundData> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeAnalysisFreeBoundData_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -2565,6 +2638,24 @@ impl HSequenceOfFreeBounds {
         unsafe { &*(crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2573,6 +2664,60 @@ impl HSequenceOfFreeBounds {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_inherited_Delete(self as *const Self)
         }
     }
 }
@@ -2595,6 +2740,17 @@ impl HandleShapeAnalysisHSequenceOfFreeBounds {
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds {
         unsafe {
             &mut *(crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeAnalysis_HSequenceOfFreeBounds> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -3670,6 +3826,18 @@ impl Surface {
         unsafe { &*(crate::ffi::ShapeAnalysis_Surface_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::ShapeAnalysis_Surface_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeAnalysis_Surface_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3677,6 +3845,42 @@ impl Surface {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Surface_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Surface_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Surface_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_Surface_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Surface_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Surface_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeAnalysis_Surface_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -3697,6 +3901,17 @@ impl HandleShapeAnalysisSurface {
     /// Dereference this Handle to mutably access the underlying ShapeAnalysis_Surface
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeAnalysis_Surface {
         unsafe { &mut *(crate::ffi::HandleShapeAnalysisSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeAnalysis_Surface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeAnalysisSurface_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -3841,6 +4056,24 @@ impl TransferParameters {
         unsafe { &*(crate::ffi::ShapeAnalysis_TransferParameters_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeAnalysis_TransferParameters_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeAnalysis_TransferParameters_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3849,6 +4082,58 @@ impl TransferParameters {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_TransferParameters_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParameters_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParameters_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParameters_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParameters_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParameters_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParameters_inherited_Delete(self as *const Self)
         }
     }
 }
@@ -3871,6 +4156,17 @@ impl HandleShapeAnalysisTransferParameters {
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeAnalysis_TransferParameters {
         unsafe {
             &mut *(crate::ffi::HandleShapeAnalysisTransferParameters_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeAnalysis_TransferParameters> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeAnalysisTransferParameters_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4078,6 +4374,24 @@ impl TransferParametersProj {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeAnalysis_TransferParametersProj_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeAnalysis_TransferParametersProj_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -4096,6 +4410,60 @@ impl TransferParametersProj {
                 self as *mut Self,
                 maxtol,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParametersProj_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParametersProj_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParametersProj_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParametersProj_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParametersProj_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParametersProj_inherited_Delete(self as *const Self)
         }
     }
 }
@@ -4129,6 +4497,17 @@ impl HandleShapeAnalysisTransferParametersProj {
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisTransferParameters> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleShapeAnalysisTransferParametersProj_to_HandleShapeAnalysisTransferParameters(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeAnalysis_TransferParametersProj> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeAnalysisTransferParametersProj_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -5073,6 +5452,18 @@ impl Wire {
         unsafe { &*(crate::ffi::ShapeAnalysis_Wire_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::ShapeAnalysis_Wire_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeAnalysis_Wire_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -5080,6 +5471,36 @@ impl Wire {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Wire_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -5100,6 +5521,15 @@ impl HandleShapeAnalysisWire {
     /// Dereference this Handle to mutably access the underlying ShapeAnalysis_Wire
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeAnalysis_Wire {
         unsafe { &mut *(crate::ffi::HandleShapeAnalysisWire_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeAnalysis_Wire> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeAnalysisWire_to_HandleStandardTransient(self as *const Self),
+            )
+        }
     }
 }
 

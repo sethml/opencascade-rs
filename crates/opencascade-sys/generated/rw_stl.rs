@@ -97,6 +97,9 @@ pub fn read_ascii(
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWStl_read_ascii(thePath, theProgress)) }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleStandardTransient;
+
 // ========================
 // From RWStl_Reader.hxx
 // ========================
@@ -202,6 +205,46 @@ impl Reader {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::RWStl_Reader_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::RWStl_Reader_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::RWStl_Reader_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::RWStl_Reader_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::RWStl_Reader_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::RWStl_Reader_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::RWStl_Reader_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::RWStl_Reader_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::RWStl_Reader_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleRWStlReader;
@@ -221,6 +264,15 @@ impl HandleRWStlReader {
     /// Dereference this Handle to mutably access the underlying RWStl_Reader
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWStl_Reader {
         unsafe { &mut *(crate::ffi::HandleRWStlReader_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<RWStl_Reader> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleRWStlReader_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 }
 

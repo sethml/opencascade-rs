@@ -8,7 +8,8 @@
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
-    HandleTopoDSTEdge, HandleTopoDSTFace, HandleTopoDSTShape, HandleTopoDSTVertex,
+    HandleStandardTransient, HandleTopoDSTEdge, HandleTopoDSTFace, HandleTopoDSTShape,
+    HandleTopoDSTVertex,
 };
 
 // ========================
@@ -1014,6 +1015,16 @@ impl Curve3D {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRep_Curve3D_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::BRep_Curve3D_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleBRepCurve3D> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_Curve3D_to_handle(obj.into_raw())) }
@@ -1159,6 +1170,36 @@ impl Curve3D {
             .unwrap()
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_Curve3D_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_Curve3D_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRep_Curve3D_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRep_Curve3D_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRep_Curve3D_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRep_Curve3D_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepCurve3D;
@@ -1197,6 +1238,15 @@ impl HandleBRepCurve3D {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBRepCurve3D_to_HandleBRepCurveRepresentation(self as *const Self),
             )
+        }
+    }
+
+    /// Upcast Handle<BRep_Curve3D> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCurve3D_to_HandleStandardTransient(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -1342,6 +1392,18 @@ impl CurveOn2Surfaces {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRep_CurveOn2Surfaces_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRep_CurveOn2Surfaces_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1466,6 +1528,42 @@ impl CurveOn2Surfaces {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_CurveOn2Surfaces_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_CurveOn2Surfaces_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRep_CurveOn2Surfaces_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BRep_CurveOn2Surfaces_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BRep_CurveOn2Surfaces_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRep_CurveOn2Surfaces_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepCurveOn2Surfaces;
@@ -1494,6 +1592,17 @@ impl HandleBRepCurveOn2Surfaces {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBRepCurveOn2Surfaces_to_HandleBRepCurveRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRep_CurveOn2Surfaces> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepCurveOn2Surfaces_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -1697,6 +1806,22 @@ impl CurveOnClosedSurface {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BRep_CurveOnClosedSurface_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRep_CurveOnClosedSurface_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1863,6 +1988,44 @@ impl CurveOnClosedSurface {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_CurveOnClosedSurface_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_CurveOnClosedSurface_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRep_CurveOnClosedSurface_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BRep_CurveOnClosedSurface_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BRep_CurveOnClosedSurface_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRep_CurveOnClosedSurface_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepCurveOnClosedSurface;
@@ -1913,6 +2076,17 @@ impl HandleBRepCurveOnClosedSurface {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBRepCurveOnClosedSurface_to_HandleBRepCurveRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRep_CurveOnClosedSurface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepCurveOnClosedSurface_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -2061,6 +2235,18 @@ impl CurveOnSurface {
             &mut *(crate::ffi::BRep_CurveOnSurface_as_BRep_CurveRepresentation_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRep_CurveOnSurface_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRep_CurveOnSurface_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
@@ -2217,6 +2403,38 @@ impl CurveOnSurface {
             .unwrap()
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_CurveOnSurface_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_CurveOnSurface_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRep_CurveOnSurface_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRep_CurveOnSurface_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRep_CurveOnSurface_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRep_CurveOnSurface_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepCurveOnSurface;
@@ -2254,6 +2472,17 @@ impl HandleBRepCurveOnSurface {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBRepCurveOnSurface_to_HandleBRepCurveRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRep_CurveOnSurface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepCurveOnSurface_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -2615,6 +2844,60 @@ impl CurveRepresentation {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_CurveRepresentation_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BRep_CurveRepresentation_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRep_CurveRepresentation_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_CurveRepresentation_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_CurveRepresentation_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRep_CurveRepresentation_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BRep_CurveRepresentation_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BRep_CurveRepresentation_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRep_CurveRepresentation_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepCurveRepresentation;
@@ -2634,6 +2917,17 @@ impl HandleBRepCurveRepresentation {
     /// Dereference this Handle to mutably access the underlying BRep_CurveRepresentation
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_CurveRepresentation {
         unsafe { &mut *(crate::ffi::HandleBRepCurveRepresentation_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRep_CurveRepresentation> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepCurveRepresentation_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Downcast Handle<BRep_CurveRepresentation> to Handle<BRep_Curve3D>
@@ -2886,6 +3180,16 @@ impl GCurve {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRep_GCurve_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::BRep_GCurve_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `BRep_CurveRepresentation.hxx`:43 - `BRep_CurveRepresentation::IsCurve3D()`
     pub fn is_curve3_d(&self) -> bool {
         unsafe { crate::ffi::BRep_GCurve_inherited_IsCurve3D(self as *const Self) }
@@ -3016,6 +3320,36 @@ impl GCurve {
             crate::OwnedPtr::from_raw(crate::ffi::BRep_GCurve_inherited_Copy(self as *const Self))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_GCurve_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_GCurve_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRep_GCurve_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRep_GCurve_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRep_GCurve_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRep_GCurve_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepGCurve;
@@ -3045,6 +3379,15 @@ impl HandleBRepGCurve {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBRepGCurve_to_HandleBRepCurveRepresentation(self as *const Self),
             )
+        }
+    }
+
+    /// Upcast Handle<BRep_GCurve> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepGCurve_to_HandleStandardTransient(
+                self as *const Self,
+            ))
         }
     }
 
@@ -3189,6 +3532,18 @@ impl PointOnCurve {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRep_PointOnCurve_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRep_PointOnCurve_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3234,6 +3589,36 @@ impl PointOnCurve {
     pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe { &*(crate::ffi::BRep_PointOnCurve_inherited_Surface(self as *const Self)) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_PointOnCurve_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_PointOnCurve_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRep_PointOnCurve_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRep_PointOnCurve_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRep_PointOnCurve_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRep_PointOnCurve_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepPointOnCurve;
@@ -3264,6 +3649,15 @@ impl HandleBRepPointOnCurve {
                 crate::ffi::HandleBRepPointOnCurve_to_HandleBRepPointRepresentation(
                     self as *const Self,
                 ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRep_PointOnCurve> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPointOnCurve_to_HandleStandardTransient(self as *const Self),
             )
         }
     }
@@ -3382,6 +3776,22 @@ impl PointOnCurveOnSurface {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BRep_PointOnCurveOnSurface_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRep_PointOnCurveOnSurface_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3433,6 +3843,47 @@ impl PointOnCurveOnSurface {
     pub fn curve(&self) -> &crate::ffi::HandleGeomCurve {
         unsafe { &*(crate::ffi::BRep_PointOnCurveOnSurface_inherited_Curve(self as *const Self)) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_PointOnCurveOnSurface_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_PointOnCurveOnSurface_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRep_PointOnCurveOnSurface_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BRep_PointOnCurveOnSurface_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BRep_PointOnCurveOnSurface_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRep_PointOnCurveOnSurface_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepPointOnCurveOnSurface;
@@ -3474,6 +3925,17 @@ impl HandleBRepPointOnCurveOnSurface {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBRepPointOnCurveOnSurface_to_HandleBRepPointRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRep_PointOnCurveOnSurface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPointOnCurveOnSurface_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -3587,6 +4049,18 @@ impl PointOnSurface {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRep_PointOnSurface_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRep_PointOnSurface_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3632,6 +4106,38 @@ impl PointOnSurface {
     pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
         unsafe { &*(crate::ffi::BRep_PointOnSurface_inherited_PCurve(self as *const Self)) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_PointOnSurface_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_PointOnSurface_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRep_PointOnSurface_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRep_PointOnSurface_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRep_PointOnSurface_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRep_PointOnSurface_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepPointOnSurface;
@@ -3673,6 +4179,17 @@ impl HandleBRepPointOnSurface {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBRepPointOnSurface_to_HandleBRepPointRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRep_PointOnSurface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPointOnSurface_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -3844,6 +4361,22 @@ impl PointRepresentation {
         unsafe { &*(crate::ffi::BRep_PointRepresentation_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BRep_PointRepresentation_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRep_PointRepresentation_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3853,6 +4386,44 @@ impl PointRepresentation {
                 obj.into_raw(),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_PointRepresentation_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_PointRepresentation_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRep_PointRepresentation_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BRep_PointRepresentation_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BRep_PointRepresentation_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRep_PointRepresentation_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -3873,6 +4444,17 @@ impl HandleBRepPointRepresentation {
     /// Dereference this Handle to mutably access the underlying BRep_PointRepresentation
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_PointRepresentation {
         unsafe { &mut *(crate::ffi::HandleBRepPointRepresentation_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRep_PointRepresentation> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPointRepresentation_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Downcast Handle<BRep_PointRepresentation> to Handle<BRep_PointOnCurve>
@@ -4008,6 +4590,18 @@ impl PointsOnSurface {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRep_PointsOnSurface_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRep_PointsOnSurface_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -4058,6 +4652,38 @@ impl PointsOnSurface {
     pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
         unsafe { &*(crate::ffi::BRep_PointsOnSurface_inherited_PCurve(self as *const Self)) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_PointsOnSurface_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_PointsOnSurface_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRep_PointsOnSurface_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRep_PointsOnSurface_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRep_PointsOnSurface_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRep_PointsOnSurface_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepPointsOnSurface;
@@ -4086,6 +4712,17 @@ impl HandleBRepPointsOnSurface {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBRepPointsOnSurface_to_HandleBRepPointRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRep_PointsOnSurface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPointsOnSurface_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -4207,6 +4844,16 @@ impl Polygon3D {
         unsafe {
             &mut *(crate::ffi::BRep_Polygon3D_as_BRep_CurveRepresentation_mut(self as *mut Self))
         }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRep_Polygon3D_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::BRep_Polygon3D_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -4335,6 +4982,36 @@ impl Polygon3D {
             .unwrap()
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_Polygon3D_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_Polygon3D_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRep_Polygon3D_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRep_Polygon3D_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRep_Polygon3D_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRep_Polygon3D_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepPolygon3D;
@@ -4366,6 +5043,15 @@ impl HandleBRepPolygon3D {
                     self as *const Self,
                 ),
             )
+        }
+    }
+
+    /// Upcast Handle<BRep_Polygon3D> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepPolygon3D_to_HandleStandardTransient(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -4483,6 +5169,22 @@ impl PolygonOnClosedSurface {
     pub fn as_curve_representation_mut(&mut self) -> &mut CurveRepresentation {
         unsafe {
             &mut *(crate::ffi::BRep_PolygonOnClosedSurface_as_BRep_CurveRepresentation_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BRep_PolygonOnClosedSurface_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRep_PolygonOnClosedSurface_as_Standard_Transient_mut(
                 self as *mut Self,
             ))
         }
@@ -4656,6 +5358,49 @@ impl PolygonOnClosedSurface {
             .unwrap()
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_PolygonOnClosedSurface_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_PolygonOnClosedSurface_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BRep_PolygonOnClosedSurface_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BRep_PolygonOnClosedSurface_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BRep_PolygonOnClosedSurface_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRep_PolygonOnClosedSurface_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepPolygonOnClosedSurface;
@@ -4697,6 +5442,17 @@ impl HandleBRepPolygonOnClosedSurface {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBRepPolygonOnClosedSurface_to_HandleBRepCurveRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRep_PolygonOnClosedSurface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPolygonOnClosedSurface_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -4823,6 +5579,24 @@ impl PolygonOnClosedTriangulation {
     pub fn as_curve_representation_mut(&mut self) -> &mut CurveRepresentation {
         unsafe {
             &mut *(crate::ffi::BRep_PolygonOnClosedTriangulation_as_BRep_CurveRepresentation_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BRep_PolygonOnClosedTriangulation_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRep_PolygonOnClosedTriangulation_as_Standard_Transient_mut(
                 self as *mut Self,
             ))
         }
@@ -5017,6 +5791,58 @@ impl PolygonOnClosedTriangulation {
             .unwrap()
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleBRepPolygonOnClosedTriangulation;
@@ -5056,6 +5882,17 @@ impl HandleBRepPolygonOnClosedTriangulation {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBRepPolygonOnClosedTriangulation_to_HandleBRepCurveRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRep_PolygonOnClosedTriangulation> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPolygonOnClosedTriangulation_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -5171,6 +6008,18 @@ impl PolygonOnSurface {
             &mut *(crate::ffi::BRep_PolygonOnSurface_as_BRep_CurveRepresentation_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRep_PolygonOnSurface_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRep_PolygonOnSurface_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
@@ -5311,6 +6160,42 @@ impl PolygonOnSurface {
             .unwrap()
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_PolygonOnSurface_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_PolygonOnSurface_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRep_PolygonOnSurface_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BRep_PolygonOnSurface_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BRep_PolygonOnSurface_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRep_PolygonOnSurface_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepPolygonOnSurface;
@@ -5339,6 +6224,17 @@ impl HandleBRepPolygonOnSurface {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBRepPolygonOnSurface_to_HandleBRepCurveRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRep_PolygonOnSurface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPolygonOnSurface_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -5479,6 +6375,22 @@ impl PolygonOnTriangulation {
     pub fn as_curve_representation_mut(&mut self) -> &mut CurveRepresentation {
         unsafe {
             &mut *(crate::ffi::BRep_PolygonOnTriangulation_as_BRep_CurveRepresentation_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BRep_PolygonOnTriangulation_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRep_PolygonOnTriangulation_as_Standard_Transient_mut(
                 self as *mut Self,
             ))
         }
@@ -5643,6 +6555,49 @@ impl PolygonOnTriangulation {
             .unwrap()
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_PolygonOnTriangulation_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRep_PolygonOnTriangulation_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BRep_PolygonOnTriangulation_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BRep_PolygonOnTriangulation_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BRep_PolygonOnTriangulation_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRep_PolygonOnTriangulation_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepPolygonOnTriangulation;
@@ -5671,6 +6626,17 @@ impl HandleBRepPolygonOnTriangulation {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBRepPolygonOnTriangulation_to_HandleBRepCurveRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRep_PolygonOnTriangulation> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPolygonOnTriangulation_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -5830,6 +6796,16 @@ impl TEdge {
         unsafe { &mut *(crate::ffi::BRep_TEdge_as_TopoDS_TShape_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRep_TEdge_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::BRep_TEdge_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleBRepTEdge> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_TEdge_to_handle(obj.into_raw())) }
@@ -5889,6 +6865,36 @@ impl TEdge {
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::BRep_TEdge_inherited_NbChildren(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_TEdge_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_TEdge_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRep_TEdge_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRep_TEdge_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRep_TEdge_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRep_TEdge_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepTEdge;
@@ -5923,6 +6929,15 @@ impl HandleBRepTEdge {
     pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleBRepTEdge_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BRep_TEdge> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepTEdge_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -6141,6 +7156,16 @@ impl TFace {
         unsafe { &mut *(crate::ffi::BRep_TFace_as_TopoDS_TShape_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRep_TFace_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::BRep_TFace_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleBRepTFace> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_TFace_to_handle(obj.into_raw())) }
@@ -6200,6 +7225,36 @@ impl TFace {
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::BRep_TFace_inherited_NbChildren(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_TFace_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_TFace_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRep_TFace_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRep_TFace_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRep_TFace_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRep_TFace_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepTFace;
@@ -6234,6 +7289,15 @@ impl HandleBRepTFace {
     pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleBRepTFace_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BRep_TFace> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepTFace_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -6347,6 +7411,16 @@ impl TVertex {
         unsafe { &mut *(crate::ffi::BRep_TVertex_as_TopoDS_TShape_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRep_TVertex_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::BRep_TVertex_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleBRepTVertex> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_TVertex_to_handle(obj.into_raw())) }
@@ -6406,6 +7480,36 @@ impl TVertex {
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::BRep_TVertex_inherited_NbChildren(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_TVertex_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRep_TVertex_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRep_TVertex_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRep_TVertex_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRep_TVertex_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRep_TVertex_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepTVertex;
@@ -6440,6 +7544,15 @@ impl HandleBRepTVertex {
     pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleBRepTVertex_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BRep_TVertex> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepTVertex_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }

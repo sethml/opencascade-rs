@@ -171,7 +171,9 @@ impl TryFrom<i32> for ColorType {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleTDFAttribute, HandleTDataStdGenericEmpty, HandleTDataStdReal};
+pub use crate::ffi::{
+    HandleStandardTransient, HandleTDFAttribute, HandleTDataStdGenericEmpty, HandleTDataStdReal,
+};
 
 // ========================
 // From XCAFDoc_Area.hxx
@@ -276,6 +278,16 @@ impl Area {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_Area_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_Area_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::XCAFDoc_Area_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -504,6 +516,36 @@ impl Area {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Area_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Area_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Area_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_Area_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_Area_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_Area_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_Area_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocArea;
@@ -538,6 +580,15 @@ impl HandleXCAFDocArea {
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocArea_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_Area> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocArea_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -679,6 +730,18 @@ impl AssemblyGraph {
         unsafe { crate::ffi::XCAFDoc_AssemblyGraph_nb_occurrences(self as *const Self, theNode) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_AssemblyGraph_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_AssemblyGraph_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -686,6 +749,47 @@ impl AssemblyGraph {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyGraph_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XCAFDoc_AssemblyGraph_inherited_DynamicType(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_AssemblyGraph_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_AssemblyGraph_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_AssemblyGraph_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::XCAFDoc_AssemblyGraph_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::XCAFDoc_AssemblyGraph_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_AssemblyGraph_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -706,6 +810,17 @@ impl HandleXCAFDocAssemblyGraph {
     /// Dereference this Handle to mutably access the underlying XCAFDoc_AssemblyGraph
     pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_AssemblyGraph {
         unsafe { &mut *(crate::ffi::HandleXCAFDocAssemblyGraph_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_AssemblyGraph> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocAssemblyGraph_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -1162,6 +1277,20 @@ impl AssemblyItemRef {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::XCAFDoc_AssemblyItemRef_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_AssemblyItemRef_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1408,6 +1537,44 @@ impl AssemblyItemRef {
             crate::ffi::XCAFDoc_AssemblyItemRef_inherited_Forget(self as *mut Self, aTransaction)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_AssemblyItemRef_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_AssemblyItemRef_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_AssemblyItemRef_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::XCAFDoc_AssemblyItemRef_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::XCAFDoc_AssemblyItemRef_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_AssemblyItemRef_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocAssemblyItemRef;
@@ -1434,6 +1601,17 @@ impl HandleXCAFDocAssemblyItemRef {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleXCAFDocAssemblyItemRef_to_HandleTDFAttribute(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_AssemblyItemRef> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocAssemblyItemRef_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -1628,6 +1806,16 @@ impl Centroid {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_Centroid_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_Centroid_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::XCAFDoc_Centroid_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -1851,6 +2039,36 @@ impl Centroid {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Centroid_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Centroid_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Centroid_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_Centroid_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_Centroid_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_Centroid_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_Centroid_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocCentroid;
@@ -1876,6 +2094,15 @@ impl HandleXCAFDocCentroid {
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocCentroid_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_Centroid> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocCentroid_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -2193,6 +2420,22 @@ impl ClippingPlaneTool {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::XCAFDoc_ClippingPlaneTool_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_ClippingPlaneTool_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2467,6 +2710,44 @@ impl ClippingPlaneTool {
             crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_Forget(self as *mut Self, aTransaction)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocClippingPlaneTool;
@@ -2506,6 +2787,17 @@ impl HandleXCAFDocClippingPlaneTool {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleXCAFDocClippingPlaneTool_to_HandleTDFAttribute(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_ClippingPlaneTool> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocClippingPlaneTool_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -2689,6 +2981,16 @@ impl Color {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_Color_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_Color_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::XCAFDoc_Color_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -2906,6 +3208,36 @@ impl Color {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Color_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Color_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Color_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_Color_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_Color_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_Color_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_Color_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocColor;
@@ -2931,6 +3263,15 @@ impl HandleXCAFDocColor {
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocColor_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_Color> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocColor_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -3613,6 +3954,18 @@ impl ColorTool {
         unsafe { &mut *(crate::ffi::XCAFDoc_ColorTool_as_TDF_Attribute_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_ColorTool_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_ColorTool_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3858,6 +4211,36 @@ impl ColorTool {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocColorTool;
@@ -3898,6 +4281,15 @@ impl HandleXCAFDocColorTool {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocColorTool_to_HandleTDFAttribute(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_ColorTool> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocColorTool_to_HandleStandardTransient(self as *const Self),
+            )
         }
     }
 }
@@ -4058,6 +4450,16 @@ impl Datum {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_Datum_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_Datum_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::XCAFDoc_Datum_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -4275,6 +4677,36 @@ impl Datum {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Datum_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Datum_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Datum_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_Datum_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_Datum_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_Datum_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_Datum_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocDatum;
@@ -4300,6 +4732,15 @@ impl HandleXCAFDocDatum {
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocDatum_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_Datum> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocDatum_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -4438,6 +4879,16 @@ impl DimTol {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_DimTol_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_DimTol_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::XCAFDoc_DimTol_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -4655,6 +5106,36 @@ impl DimTol {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_DimTol_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_DimTol_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_DimTol_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_DimTol_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_DimTol_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_DimTol_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_DimTol_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocDimTol;
@@ -4680,6 +5161,15 @@ impl HandleXCAFDocDimTol {
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocDimTol_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_DimTol> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocDimTol_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -5267,6 +5757,18 @@ impl DimTolTool {
         unsafe { &mut *(crate::ffi::XCAFDoc_DimTolTool_as_TDF_Attribute_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_DimTolTool_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_DimTolTool_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -5514,6 +6016,36 @@ impl DimTolTool {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocDimTolTool;
@@ -5554,6 +6086,15 @@ impl HandleXCAFDocDimTolTool {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocDimTolTool_to_HandleTDFAttribute(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_DimTolTool> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocDimTolTool_to_HandleStandardTransient(self as *const Self),
+            )
         }
     }
 }
@@ -5683,6 +6224,18 @@ impl Dimension {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_Dimension_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_Dimension_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_Dimension_as_Standard_Transient_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -5930,6 +6483,36 @@ impl Dimension {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Dimension_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Dimension_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Dimension_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_Dimension_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_Dimension_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_Dimension_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_Dimension_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocDimension;
@@ -5970,6 +6553,15 @@ impl HandleXCAFDocDimension {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocDimension_to_HandleTDFAttribute(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_Dimension> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocDimension_to_HandleStandardTransient(self as *const Self),
+            )
         }
     }
 }
@@ -6358,6 +6950,18 @@ impl DocumentTool {
         unsafe { &mut *(crate::ffi::XCAFDoc_DocumentTool_as_TDF_Attribute_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_DocumentTool_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_DocumentTool_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -6604,6 +7208,38 @@ impl DocumentTool {
             crate::ffi::XCAFDoc_DocumentTool_inherited_Forget(self as *mut Self, aTransaction)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DocumentTool_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_DocumentTool_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_DocumentTool_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_DocumentTool_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_DocumentTool_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_DocumentTool_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocDocumentTool;
@@ -6644,6 +7280,17 @@ impl HandleXCAFDocDocumentTool {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocDocumentTool_to_HandleTDFAttribute(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_DocumentTool> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocDocumentTool_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -6918,6 +7565,18 @@ impl GeomTolerance {
         unsafe { &mut *(crate::ffi::XCAFDoc_GeomTolerance_as_TDF_Attribute_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_GeomTolerance_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_GeomTolerance_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -7175,6 +7834,42 @@ impl GeomTolerance {
             crate::ffi::XCAFDoc_GeomTolerance_inherited_Forget(self as *mut Self, aTransaction)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_GeomTolerance_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_GeomTolerance_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_GeomTolerance_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::XCAFDoc_GeomTolerance_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::XCAFDoc_GeomTolerance_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_GeomTolerance_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocGeomTolerance;
@@ -7215,6 +7910,17 @@ impl HandleXCAFDocGeomTolerance {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocGeomTolerance_to_HandleTDFAttribute(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_GeomTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocGeomTolerance_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -7466,6 +8172,18 @@ impl GraphNode {
         unsafe { &mut *(crate::ffi::XCAFDoc_GraphNode_as_TDF_Attribute_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_GraphNode_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_GraphNode_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -7687,6 +8405,36 @@ impl GraphNode {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_GraphNode_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_GraphNode_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_GraphNode_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_GraphNode_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_GraphNode_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_GraphNode_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_GraphNode_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocGraphNode;
@@ -7714,6 +8462,15 @@ impl HandleXCAFDocGraphNode {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocGraphNode_to_HandleTDFAttribute(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_GraphNode> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocGraphNode_to_HandleStandardTransient(self as *const Self),
+            )
         }
     }
 }
@@ -8261,6 +9018,18 @@ impl LayerTool {
         unsafe { &mut *(crate::ffi::XCAFDoc_LayerTool_as_TDF_Attribute_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_LayerTool_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_LayerTool_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -8506,6 +9275,36 @@ impl LayerTool {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocLayerTool;
@@ -8546,6 +9345,15 @@ impl HandleXCAFDocLayerTool {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocLayerTool_to_HandleTDFAttribute(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_LayerTool> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocLayerTool_to_HandleStandardTransient(self as *const Self),
+            )
         }
     }
 }
@@ -8712,6 +9520,18 @@ impl LengthUnit {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_LengthUnit_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_LengthUnit_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_LengthUnit_as_Standard_Transient_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -8947,6 +9767,36 @@ impl LengthUnit {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_LengthUnit_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_LengthUnit_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_LengthUnit_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_LengthUnit_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_LengthUnit_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_LengthUnit_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_LengthUnit_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocLengthUnit;
@@ -8974,6 +9824,15 @@ impl HandleXCAFDocLengthUnit {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocLengthUnit_to_HandleTDFAttribute(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_LengthUnit> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocLengthUnit_to_HandleStandardTransient(self as *const Self),
+            )
         }
     }
 }
@@ -9089,6 +9948,16 @@ impl Location {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_Location_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_Location_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::XCAFDoc_Location_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -9312,6 +10181,36 @@ impl Location {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Location_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Location_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Location_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_Location_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_Location_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_Location_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_Location_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocLocation;
@@ -9337,6 +10236,15 @@ impl HandleXCAFDocLocation {
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocLocation_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_Location> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocLocation_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -9495,6 +10403,16 @@ impl Material {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_Material_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_Material_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::XCAFDoc_Material_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -9718,6 +10636,36 @@ impl Material {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Material_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Material_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Material_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_Material_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_Material_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_Material_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_Material_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocMaterial;
@@ -9743,6 +10691,15 @@ impl HandleXCAFDocMaterial {
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocMaterial_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_Material> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocMaterial_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -9946,6 +10903,18 @@ impl MaterialTool {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_MaterialTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_MaterialTool_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_MaterialTool_as_Standard_Transient_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -10201,6 +11170,38 @@ impl MaterialTool {
             crate::ffi::XCAFDoc_MaterialTool_inherited_Forget(self as *mut Self, aTransaction)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_MaterialTool_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_MaterialTool_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_MaterialTool_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_MaterialTool_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_MaterialTool_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_MaterialTool_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocMaterialTool;
@@ -10241,6 +11242,17 @@ impl HandleXCAFDocMaterialTool {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocMaterialTool_to_HandleTDFAttribute(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_MaterialTool> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocMaterialTool_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -10360,6 +11372,16 @@ impl Note {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_Note_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_Note_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::XCAFDoc_Note_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:134 - `TDF_Attribute::ID()`
@@ -10578,6 +11600,36 @@ impl Note {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Note_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Note_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Note_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_Note_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_Note_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_Note_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_Note_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocNote;
@@ -10603,6 +11655,15 @@ impl HandleXCAFDocNote {
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocNote_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_Note> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocNote_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -10784,6 +11845,18 @@ impl NoteBalloon {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_NoteBalloon_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_NoteBalloon_as_Standard_Transient_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -11073,6 +12146,38 @@ impl NoteBalloon {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_NoteBalloon_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocNoteBalloon;
@@ -11120,6 +12225,17 @@ impl HandleXCAFDocNoteBalloon {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocNoteBalloon_to_HandleTDFAttribute(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_NoteBalloon> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocNoteBalloon_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -11337,6 +12453,18 @@ impl NoteBinData {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_NoteBinData_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_NoteBinData_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_NoteBinData_as_Standard_Transient_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -11605,6 +12733,38 @@ impl NoteBinData {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_NoteBinData_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_NoteBinData_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_NoteBinData_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_NoteBinData_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_NoteBinData_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_NoteBinData_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_NoteBinData_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocNoteBinData;
@@ -11641,6 +12801,17 @@ impl HandleXCAFDocNoteBinData {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocNoteBinData_to_HandleTDFAttribute(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_NoteBinData> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocNoteBinData_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -11786,6 +12957,18 @@ impl NoteComment {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_NoteComment_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_NoteComment_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_NoteComment_as_Standard_Transient_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -12054,6 +13237,38 @@ impl NoteComment {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_NoteComment_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_NoteComment_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_NoteComment_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_NoteComment_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_NoteComment_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_NoteComment_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_NoteComment_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocNoteComment;
@@ -12090,6 +13305,17 @@ impl HandleXCAFDocNoteComment {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocNoteComment_to_HandleTDFAttribute(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_NoteComment> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocNoteComment_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -13112,6 +14338,18 @@ impl NotesTool {
         unsafe { &mut *(crate::ffi::XCAFDoc_NotesTool_as_TDF_Attribute_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_NotesTool_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_NotesTool_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -13357,6 +14595,36 @@ impl NotesTool {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocNotesTool;
@@ -13397,6 +14665,15 @@ impl HandleXCAFDocNotesTool {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocNotesTool_to_HandleTDFAttribute(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_NotesTool> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocNotesTool_to_HandleStandardTransient(self as *const Self),
+            )
         }
     }
 }
@@ -13512,6 +14789,18 @@ impl ShapeMapTool {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_ShapeMapTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_ShapeMapTool_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_ShapeMapTool_as_Standard_Transient_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -13753,6 +15042,38 @@ impl ShapeMapTool {
             crate::ffi::XCAFDoc_ShapeMapTool_inherited_Forget(self as *mut Self, aTransaction)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_ShapeMapTool_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_ShapeMapTool_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_ShapeMapTool_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_ShapeMapTool_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_ShapeMapTool_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_ShapeMapTool_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocShapeMapTool;
@@ -13780,6 +15101,17 @@ impl HandleXCAFDocShapeMapTool {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocShapeMapTool_to_HandleTDFAttribute(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_ShapeMapTool> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocShapeMapTool_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -14700,6 +16032,18 @@ impl ShapeTool {
         unsafe { &mut *(crate::ffi::XCAFDoc_ShapeTool_as_TDF_Attribute_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_ShapeTool_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_ShapeTool_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -14945,6 +16289,36 @@ impl ShapeTool {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocShapeTool;
@@ -14985,6 +16359,15 @@ impl HandleXCAFDocShapeTool {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocShapeTool_to_HandleTDFAttribute(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_ShapeTool> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocShapeTool_to_HandleStandardTransient(self as *const Self),
+            )
         }
     }
 }
@@ -15085,6 +16468,16 @@ impl View {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_View_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_View_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::XCAFDoc_View_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -15308,6 +16701,36 @@ impl View {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_View_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_View_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_View_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_View_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_View_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_View_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_View_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocView;
@@ -15344,6 +16767,15 @@ impl HandleXCAFDocView {
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocView_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_View> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocView_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -15749,6 +17181,16 @@ impl ViewTool {
         unsafe { &mut *(crate::ffi::XCAFDoc_ViewTool_as_TDF_Attribute_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_ViewTool_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::XCAFDoc_ViewTool_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -15984,6 +17426,36 @@ impl ViewTool {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocViewTool;
@@ -16022,6 +17494,15 @@ impl HandleXCAFDocViewTool {
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocViewTool_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_ViewTool> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocViewTool_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -16309,6 +17790,18 @@ impl VisMaterial {
         unsafe { &mut *(crate::ffi::XCAFDoc_VisMaterial_as_TDF_Attribute_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_VisMaterial_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_VisMaterial_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -16546,6 +18039,38 @@ impl VisMaterial {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_VisMaterial_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_VisMaterial_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_VisMaterial_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_VisMaterial_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_VisMaterial_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_VisMaterial_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_VisMaterial_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocVisMaterial;
@@ -16573,6 +18098,17 @@ impl HandleXCAFDocVisMaterial {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocVisMaterial_to_HandleTDFAttribute(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_VisMaterial> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocVisMaterial_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -16966,6 +18502,20 @@ impl VisMaterialTool {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::XCAFDoc_VisMaterialTool_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_VisMaterialTool_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -17212,6 +18762,44 @@ impl VisMaterialTool {
             crate::ffi::XCAFDoc_VisMaterialTool_inherited_Forget(self as *mut Self, aTransaction)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_VisMaterialTool_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_VisMaterialTool_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_VisMaterialTool_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::XCAFDoc_VisMaterialTool_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::XCAFDoc_VisMaterialTool_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_VisMaterialTool_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocVisMaterialTool;
@@ -17238,6 +18826,17 @@ impl HandleXCAFDocVisMaterialTool {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleXCAFDocVisMaterialTool_to_HandleTDFAttribute(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_VisMaterialTool> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocVisMaterialTool_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -17346,6 +18945,16 @@ impl Volume {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_Volume_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFDoc_Volume_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::XCAFDoc_Volume_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -17582,6 +19191,36 @@ impl Volume {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Volume_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Volume_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Volume_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_Volume_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_Volume_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_Volume_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFDoc_Volume_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleXCAFDocVolume;
@@ -17616,6 +19255,15 @@ impl HandleXCAFDocVolume {
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocVolume_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_Volume> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocVolume_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }

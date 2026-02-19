@@ -76,6 +76,9 @@ pub fn scale_cub(
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleStandardTransient;
+
 // ========================
 // From Law_BSpFunc.hxx
 // ========================
@@ -219,9 +222,49 @@ impl BSpFunc {
         unsafe { &mut *(crate::ffi::Law_BSpFunc_as_Law_Function_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Law_BSpFunc_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Law_BSpFunc_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleLawBSpFunc> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_BSpFunc_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Law_BSpFunc_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Law_BSpFunc_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Law_BSpFunc_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Law_BSpFunc_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Law_BSpFunc_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Law_BSpFunc_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -248,6 +291,15 @@ impl HandleLawBSpFunc {
     pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleLawBSpFunc_to_HandleLawFunction(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Law_BSpFunc> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleLawBSpFunc_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -1046,9 +1098,49 @@ impl BSpline {
         unsafe { &*(crate::ffi::Law_BSpline_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Law_BSpline_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Law_BSpline_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleLawBSpline> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_BSpline_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Law_BSpline_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Law_BSpline_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Law_BSpline_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Law_BSpline_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Law_BSpline_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Law_BSpline_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1069,6 +1161,15 @@ impl HandleLawBSpline {
     /// Dereference this Handle to mutably access the underlying Law_BSpline
     pub fn get_mut(&mut self) -> &mut crate::ffi::Law_BSpline {
         unsafe { &mut *(crate::ffi::HandleLawBSpline_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Law_BSpline> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleLawBSpline_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -1324,11 +1425,51 @@ impl Composite {
         unsafe { &mut *(crate::ffi::Law_Composite_as_Law_Function_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Law_Composite_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Law_Composite_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleLawComposite> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_Composite_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Law_Composite_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Law_Composite_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Law_Composite_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Law_Composite_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Law_Composite_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Law_Composite_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1355,6 +1496,15 @@ impl HandleLawComposite {
     pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleLawComposite_to_HandleLawFunction(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Law_Composite> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleLawComposite_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -1480,9 +1630,49 @@ impl Constant {
         unsafe { &mut *(crate::ffi::Law_Constant_as_Law_Function_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Law_Constant_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Law_Constant_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleLawConstant> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_Constant_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Law_Constant_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Law_Constant_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Law_Constant_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Law_Constant_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Law_Constant_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Law_Constant_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1509,6 +1699,15 @@ impl HandleLawConstant {
     pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleLawConstant_to_HandleLawFunction(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Law_Constant> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleLawConstant_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -1622,6 +1821,46 @@ impl Function {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Law_Function_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Law_Function_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Law_Function_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Law_Function_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Law_Function_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Law_Function_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Law_Function_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Law_Function_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Law_Function_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleLawFunction;
@@ -1641,6 +1880,15 @@ impl HandleLawFunction {
     /// Dereference this Handle to mutably access the underlying Law_Function
     pub fn get_mut(&mut self) -> &mut crate::ffi::Law_Function {
         unsafe { &mut *(crate::ffi::HandleLawFunction_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Law_Function> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleLawFunction_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Downcast Handle<Law_Function> to Handle<Law_BSpFunc>
@@ -1889,6 +2137,16 @@ impl Interpol {
         unsafe { &mut *(crate::ffi::Law_Interpol_as_Law_Function_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Law_Interpol_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Law_Interpol_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleLawInterpol> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_Interpol_to_handle(obj.into_raw())) }
@@ -1962,6 +2220,36 @@ impl Interpol {
     pub fn set_curve(&mut self, C: &crate::ffi::HandleLawBSpline) {
         unsafe { crate::ffi::Law_Interpol_inherited_SetCurve(self as *mut Self, C) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Law_Interpol_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Law_Interpol_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Law_Interpol_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Law_Interpol_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Law_Interpol_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Law_Interpol_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleLawInterpol;
@@ -1996,6 +2284,15 @@ impl HandleLawInterpol {
     pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleLawInterpol_to_HandleLawFunction(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Law_Interpol> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleLawInterpol_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -2247,9 +2544,49 @@ impl Linear {
         unsafe { &mut *(crate::ffi::Law_Linear_as_Law_Function_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Law_Linear_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Law_Linear_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleLawLinear> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_Linear_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Law_Linear_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Law_Linear_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Law_Linear_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Law_Linear_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Law_Linear_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Law_Linear_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -2276,6 +2613,15 @@ impl HandleLawLinear {
     pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleLawLinear_to_HandleLawFunction(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Law_Linear> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleLawLinear_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -2374,6 +2720,16 @@ impl S {
         unsafe { &mut *(crate::ffi::Law_S_as_Law_Function_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Law_S_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Law_S_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleLawS> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_S_to_handle(obj.into_raw())) }
@@ -2445,6 +2801,36 @@ impl S {
     pub fn set_curve(&mut self, C: &crate::ffi::HandleLawBSpline) {
         unsafe { crate::ffi::Law_S_inherited_SetCurve(self as *mut Self, C) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Law_S_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Law_S_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Law_S_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Law_S_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Law_S_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Law_S_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleLawS;
@@ -2479,6 +2865,15 @@ impl HandleLawS {
     pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleLawS_to_HandleLawFunction(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Law_S> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleLawS_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }

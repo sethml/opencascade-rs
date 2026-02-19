@@ -6,6 +6,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleStandardFailure, HandleStandardTransient};
+
 // ========================
 // From GccAna_Circ2d2TanOn.hxx
 // ========================
@@ -2726,6 +2729,33 @@ impl NoSolution {
         unsafe { crate::ffi::GccAna_NoSolution_raise(c_theMessage.as_ptr()) }
     }
 
+    /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGccAnaNoSolution> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GccAna_NoSolution_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGccAnaNoSolution> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GccAna_NoSolution_new_instance_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
     /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -2739,20 +2769,121 @@ impl NoSolution {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GccAna_NoSolution_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe { &*(crate::ffi::GccAna_NoSolution_as_Standard_Failure(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe { &mut *(crate::ffi::GccAna_NoSolution_as_Standard_Failure_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::GccAna_NoSolution_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::GccAna_NoSolution_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGccAnaNoSolution> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GccAna_NoSolution_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::GccAna_NoSolution_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::GccAna_NoSolution_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::GccAna_NoSolution_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::GccAna_NoSolution_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::GccAna_NoSolution_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::GccAna_NoSolution_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::GccAna_NoSolution_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::GccAna_NoSolution_inherited_Delete(self as *const Self) }
+    }
 }
 
-// ── Skipped symbols for NoSolution (3 total) ──
+pub use crate::ffi::HandleGccAnaNoSolution;
+
+unsafe impl crate::CppDeletable for HandleGccAnaNoSolution {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGccAnaNoSolution_destructor(ptr);
+    }
+}
+
+impl HandleGccAnaNoSolution {
+    /// Dereference this Handle to access the underlying GccAna_NoSolution
+    pub fn get(&self) -> &crate::ffi::GccAna_NoSolution {
+        unsafe { &*(crate::ffi::HandleGccAnaNoSolution_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GccAna_NoSolution
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GccAna_NoSolution {
+        unsafe { &mut *(crate::ffi::HandleGccAnaNoSolution_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GccAna_NoSolution> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGccAnaNoSolution_to_HandleStandardFailure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<GccAna_NoSolution> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGccAnaNoSolution_to_HandleStandardTransient(self as *const Self),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for NoSolution (1 total) ──
 // SKIPPED: **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::Raise`
 //   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
 //   // pub fn raise(theMessage: &mut SStream);
-//
-// SKIPPED: **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::NewInstance`
-//   Reason: return type 'Handle(GccAna_NoSolution)' is unknown
-//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<GccAna_NoSolution>>;
-//
-// SKIPPED: **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::NewInstance`
-//   Reason: return type 'Handle(GccAna_NoSolution)' is unknown
-//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<GccAna_NoSolution>>;
 //
 
 // ========================

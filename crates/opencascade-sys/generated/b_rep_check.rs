@@ -122,6 +122,9 @@ impl TryFrom<i32> for Status {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleStandardTransient;
+
 // ========================
 // From BRepCheck_Analyzer.hxx
 // ========================
@@ -472,6 +475,16 @@ impl Edge {
         unsafe { &mut *(crate::ffi::BRepCheck_Edge_as_BRepCheck_Result_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepCheck_Edge_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::BRepCheck_Edge_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -542,6 +555,36 @@ impl Edge {
             crate::ffi::BRepCheck_Edge_inherited_IsStatusOnShape(self as *const Self, theShape)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepCheck_Edge_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepCheck_Edge_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepCheck_Edge_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Edge_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepCheck_Edge_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepCheck_Edge_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepCheckEdge;
@@ -567,6 +610,15 @@ impl HandleBRepCheckEdge {
     pub fn to_handle_result(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckResult> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckEdge_to_HandleBRepCheckResult(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BRepCheck_Edge> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckEdge_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -695,6 +747,16 @@ impl Face {
         unsafe { &mut *(crate::ffi::BRepCheck_Face_as_BRepCheck_Result_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepCheck_Face_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::BRepCheck_Face_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -765,6 +827,36 @@ impl Face {
             crate::ffi::BRepCheck_Face_inherited_IsStatusOnShape(self as *const Self, theShape)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepCheck_Face_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepCheck_Face_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepCheck_Face_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Face_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepCheck_Face_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepCheck_Face_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepCheckFace;
@@ -790,6 +882,15 @@ impl HandleBRepCheckFace {
     pub fn to_handle_result(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckResult> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckFace_to_HandleBRepCheckResult(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BRepCheck_Face> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckFace_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -913,6 +1014,46 @@ impl Result {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepCheck_Result_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepCheck_Result_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::BRepCheck_Result_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepCheck_Result_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepCheck_Result_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepCheck_Result_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Result_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepCheck_Result_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepCheck_Result_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepCheckResult;
@@ -932,6 +1073,15 @@ impl HandleBRepCheckResult {
     /// Dereference this Handle to mutably access the underlying BRepCheck_Result
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepCheck_Result {
         unsafe { &mut *(crate::ffi::HandleBRepCheckResult_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepCheck_Result> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckResult_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Downcast Handle<BRepCheck_Result> to Handle<BRepCheck_Edge>
@@ -1127,6 +1277,16 @@ impl Shell {
         unsafe { &mut *(crate::ffi::BRepCheck_Shell_as_BRepCheck_Result_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepCheck_Shell_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::BRepCheck_Shell_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1197,6 +1357,36 @@ impl Shell {
             crate::ffi::BRepCheck_Shell_inherited_IsStatusOnShape(self as *const Self, theShape)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepCheck_Shell_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepCheck_Shell_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepCheck_Shell_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Shell_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepCheck_Shell_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepCheck_Shell_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepCheckShell;
@@ -1222,6 +1412,15 @@ impl HandleBRepCheckShell {
     pub fn to_handle_result(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckResult> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckShell_to_HandleBRepCheckResult(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BRepCheck_Shell> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckShell_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -1315,6 +1514,16 @@ impl Solid {
         unsafe { &mut *(crate::ffi::BRepCheck_Solid_as_BRepCheck_Result_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepCheck_Solid_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::BRepCheck_Solid_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1385,6 +1594,36 @@ impl Solid {
             crate::ffi::BRepCheck_Solid_inherited_IsStatusOnShape(self as *const Self, theShape)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepCheck_Solid_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepCheck_Solid_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepCheck_Solid_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Solid_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepCheck_Solid_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepCheck_Solid_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepCheckSolid;
@@ -1410,6 +1649,15 @@ impl HandleBRepCheckSolid {
     pub fn to_handle_result(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckResult> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckSolid_to_HandleBRepCheckResult(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BRepCheck_Solid> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckSolid_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -1484,6 +1732,16 @@ impl Vertex {
         unsafe { &mut *(crate::ffi::BRepCheck_Vertex_as_BRepCheck_Result_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepCheck_Vertex_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::BRepCheck_Vertex_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1554,6 +1812,36 @@ impl Vertex {
             crate::ffi::BRepCheck_Vertex_inherited_IsStatusOnShape(self as *const Self, theShape)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepCheck_Vertex_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepCheck_Vertex_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepCheck_Vertex_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Vertex_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepCheck_Vertex_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepCheck_Vertex_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepCheckVertex;
@@ -1579,6 +1867,15 @@ impl HandleBRepCheckVertex {
     pub fn to_handle_result(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckResult> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckVertex_to_HandleBRepCheckResult(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BRepCheck_Vertex> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckVertex_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -1775,6 +2072,16 @@ impl Wire {
         unsafe { &mut *(crate::ffi::BRepCheck_Wire_as_BRepCheck_Result_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepCheck_Wire_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::BRepCheck_Wire_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1845,6 +2152,36 @@ impl Wire {
             crate::ffi::BRepCheck_Wire_inherited_IsStatusOnShape(self as *const Self, theShape)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepCheck_Wire_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepCheck_Wire_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepCheck_Wire_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Wire_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepCheck_Wire_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepCheck_Wire_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepCheckWire;
@@ -1870,6 +2207,15 @@ impl HandleBRepCheckWire {
     pub fn to_handle_result(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckResult> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckWire_to_HandleBRepCheckResult(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BRepCheck_Wire> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckWire_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }

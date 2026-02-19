@@ -6,6 +6,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleStandardTransient;
+
 // ========================
 // From StepAP242_GeometricItemSpecificUsage.hxx
 // ========================
@@ -64,6 +67,24 @@ impl GeometricItemSpecificUsage {
     ) -> &mut ItemIdentifiedRepresentationUsage {
         unsafe {
             &mut *(crate::ffi::StepAP242_GeometricItemSpecificUsage_as_StepAP242_ItemIdentifiedRepresentationUsage_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepAP242_GeometricItemSpecificUsage_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepAP242_GeometricItemSpecificUsage_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
     }
 
@@ -250,6 +271,60 @@ impl GeometricItemSpecificUsage {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleStepAP242GeometricItemSpecificUsage;
@@ -281,6 +356,17 @@ impl HandleStepAP242GeometricItemSpecificUsage {
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP242ItemIdentifiedRepresentationUsage> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleStepAP242GeometricItemSpecificUsage_to_HandleStepAP242ItemIdentifiedRepresentationUsage(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepAP242_GeometricItemSpecificUsage> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepAP242GeometricItemSpecificUsage_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -517,6 +603,22 @@ impl ItemIdentifiedRepresentationUsage {
         unsafe { &*(crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -524,6 +626,62 @@ impl ItemIdentifiedRepresentationUsage {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_inherited_Delete(
+                self as *const Self,
             )
         }
     }
@@ -553,6 +711,13 @@ impl HandleStepAP242ItemIdentifiedRepresentationUsage {
             &mut *(crate::ffi::HandleStepAP242ItemIdentifiedRepresentationUsage_get_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<StepAP242_ItemIdentifiedRepresentationUsage> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepAP242ItemIdentifiedRepresentationUsage_to_HandleStandardTransient(self as *const Self))
         }
     }
 

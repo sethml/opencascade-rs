@@ -143,7 +143,7 @@ impl TryFrom<i32> for TypeOfContact {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleGeomPlateCurveConstraint;
+pub use crate::ffi::{HandleGeomPlateCurveConstraint, HandleStandardTransient};
 
 // ========================
 // From BRepFill_ACRLaw.hxx
@@ -203,6 +203,16 @@ impl ACRLaw {
         unsafe {
             &mut *(crate::ffi::BRepFill_ACRLaw_as_BRepFill_LocationLaw_mut(self as *mut Self))
         }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepFill_ACRLaw_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::BRepFill_ACRLaw_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -341,6 +351,36 @@ impl ACRLaw {
     pub fn abscissa(&mut self, Index: i32, Param: f64) -> f64 {
         unsafe { crate::ffi::BRepFill_ACRLaw_inherited_Abscissa(self as *mut Self, Index, Param) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepFill_ACRLaw_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepFill_ACRLaw_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepFill_ACRLaw_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepFill_ACRLaw_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepFill_ACRLaw_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepFill_ACRLaw_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepFillACRLaw;
@@ -368,6 +408,15 @@ impl HandleBRepFillACRLaw {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBRepFillACRLaw_to_HandleBRepFillLocationLaw(self as *const Self),
             )
+        }
+    }
+
+    /// Upcast Handle<BRepFill_ACRLaw> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepFillACRLaw_to_HandleStandardTransient(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -981,6 +1030,22 @@ impl CurveConstraint {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BRepFill_CurveConstraint_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRepFill_CurveConstraint_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1176,6 +1241,44 @@ impl CurveConstraint {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepFill_CurveConstraint_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BRepFill_CurveConstraint_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepFill_CurveConstraint_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepFillCurveConstraint;
@@ -1204,6 +1307,17 @@ impl HandleBRepFillCurveConstraint {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBRepFillCurveConstraint_to_HandleGeomPlateCurveConstraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRepFill_CurveConstraint> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepFillCurveConstraint_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -1389,6 +1503,18 @@ impl DraftLaw {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepFill_DraftLaw_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRepFill_DraftLaw_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1527,6 +1653,36 @@ impl DraftLaw {
     pub fn abscissa(&mut self, Index: i32, Param: f64) -> f64 {
         unsafe { crate::ffi::BRepFill_DraftLaw_inherited_Abscissa(self as *mut Self, Index, Param) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepFill_DraftLaw_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepFill_DraftLaw_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepFill_DraftLaw_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepFill_DraftLaw_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepFill_DraftLaw_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepFill_DraftLaw_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepFillDraftLaw;
@@ -1564,6 +1720,15 @@ impl HandleBRepFillDraftLaw {
                 crate::ffi::HandleBRepFillDraftLaw_to_HandleBRepFillLocationLaw(
                     self as *const Self,
                 ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRepFill_DraftLaw> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepFillDraftLaw_to_HandleStandardTransient(self as *const Self),
             )
         }
     }
@@ -1624,6 +1789,18 @@ impl Edge3DLaw {
     pub fn as_location_law_mut(&mut self) -> &mut LocationLaw {
         unsafe {
             &mut *(crate::ffi::BRepFill_Edge3DLaw_as_BRepFill_LocationLaw_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepFill_Edge3DLaw_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRepFill_Edge3DLaw_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
@@ -1767,6 +1944,36 @@ impl Edge3DLaw {
             crate::ffi::BRepFill_Edge3DLaw_inherited_Abscissa(self as *mut Self, Index, Param)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepFill_Edge3DLaw_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepFill_Edge3DLaw_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepFill_Edge3DLaw_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepFill_Edge3DLaw_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepFill_Edge3DLaw_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepFill_Edge3DLaw_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepFillEdge3DLaw;
@@ -1795,6 +2002,15 @@ impl HandleBRepFillEdge3DLaw {
                 crate::ffi::HandleBRepFillEdge3DLaw_to_HandleBRepFillLocationLaw(
                     self as *const Self,
                 ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRepFill_Edge3DLaw> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepFillEdge3DLaw_to_HandleStandardTransient(self as *const Self),
             )
         }
     }
@@ -1920,6 +2136,18 @@ impl EdgeOnSurfLaw {
             &mut *(crate::ffi::BRepFill_EdgeOnSurfLaw_as_BRepFill_LocationLaw_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepFill_EdgeOnSurfLaw_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRepFill_EdgeOnSurfLaw_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
@@ -2065,6 +2293,42 @@ impl EdgeOnSurfLaw {
             crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Abscissa(self as *mut Self, Index, Param)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepFillEdgeOnSurfLaw;
@@ -2091,6 +2355,17 @@ impl HandleBRepFillEdgeOnSurfLaw {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBRepFillEdgeOnSurfLaw_to_HandleBRepFillLocationLaw(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRepFill_EdgeOnSurfLaw> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepFillEdgeOnSurfLaw_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -3103,6 +3378,18 @@ impl LocationLaw {
         unsafe { &*(crate::ffi::BRepFill_LocationLaw_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepFill_LocationLaw_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRepFill_LocationLaw_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3110,6 +3397,38 @@ impl LocationLaw {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_LocationLaw_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRepFill_LocationLaw_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepFill_LocationLaw_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepFill_LocationLaw_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepFill_LocationLaw_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepFill_LocationLaw_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepFill_LocationLaw_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -3130,6 +3449,17 @@ impl HandleBRepFillLocationLaw {
     /// Dereference this Handle to mutably access the underlying BRepFill_LocationLaw
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_LocationLaw {
         unsafe { &mut *(crate::ffi::HandleBRepFillLocationLaw_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepFill_LocationLaw> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepFillLocationLaw_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Downcast Handle<BRepFill_LocationLaw> to Handle<BRepFill_ACRLaw>
@@ -3566,6 +3896,18 @@ impl NSections {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepFill_NSections_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRepFill_NSections_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3613,6 +3955,36 @@ impl NSections {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepFill_NSections_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepFill_NSections_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepFill_NSections_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepFill_NSections_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepFill_NSections_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepFill_NSections_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepFillNSections;
@@ -3641,6 +4013,15 @@ impl HandleBRepFillNSections {
                 crate::ffi::HandleBRepFillNSections_to_HandleBRepFillSectionLaw(
                     self as *const Self,
                 ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRepFill_NSections> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepFillNSections_to_HandleStandardTransient(self as *const Self),
             )
         }
     }
@@ -4379,6 +4760,18 @@ impl PipeShell {
         unsafe { &*(crate::ffi::BRepFill_PipeShell_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepFill_PipeShell_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRepFill_PipeShell_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -4386,6 +4779,36 @@ impl PipeShell {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_PipeShell_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepFill_PipeShell_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepFill_PipeShell_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepFill_PipeShell_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepFill_PipeShell_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepFill_PipeShell_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepFill_PipeShell_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -4406,6 +4829,15 @@ impl HandleBRepFillPipeShell {
     /// Dereference this Handle to mutably access the underlying BRepFill_PipeShell
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_PipeShell {
         unsafe { &mut *(crate::ffi::HandleBRepFillPipeShell_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepFill_PipeShell> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepFillPipeShell_to_HandleStandardTransient(self as *const Self),
+            )
+        }
     }
 }
 
@@ -4630,6 +5062,50 @@ impl SectionLaw {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepFill_SectionLaw_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepFill_SectionLaw_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRepFill_SectionLaw_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BRepFill_SectionLaw_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepFill_SectionLaw_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepFill_SectionLaw_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepFill_SectionLaw_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepFill_SectionLaw_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepFill_SectionLaw_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepFillSectionLaw;
@@ -4649,6 +5125,17 @@ impl HandleBRepFillSectionLaw {
     /// Dereference this Handle to mutably access the underlying BRepFill_SectionLaw
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_SectionLaw {
         unsafe { &mut *(crate::ffi::HandleBRepFillSectionLaw_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepFill_SectionLaw> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepFillSectionLaw_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Downcast Handle<BRepFill_SectionLaw> to Handle<BRepFill_NSections>
@@ -4951,6 +5438,18 @@ impl ShapeLaw {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BRepFill_ShapeLaw_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BRepFill_ShapeLaw_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -4998,6 +5497,36 @@ impl ShapeLaw {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepFill_ShapeLaw_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BRepFill_ShapeLaw_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BRepFill_ShapeLaw_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BRepFill_ShapeLaw_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepFill_ShapeLaw_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BRepFill_ShapeLaw_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBRepFillShapeLaw;
@@ -5024,6 +5553,15 @@ impl HandleBRepFillShapeLaw {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBRepFillShapeLaw_to_HandleBRepFillSectionLaw(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRepFill_ShapeLaw> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepFillShapeLaw_to_HandleStandardTransient(self as *const Self),
             )
         }
     }

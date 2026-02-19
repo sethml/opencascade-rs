@@ -1117,6 +1117,9 @@ impl TryFrom<i32> for TypeOfColor {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleStandardDomainError, HandleStandardFailure, HandleStandardTransient};
+
 // ========================
 // From Quantity_Color.hxx
 // ========================
@@ -2108,6 +2111,37 @@ impl DateDefinitionError {
         unsafe { crate::ffi::Quantity_DateDefinitionError_raise(c_theMessage.as_ptr()) }
     }
 
+    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleQuantityDateDefinitionError> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Quantity_DateDefinitionError_new_instance_charptr(
+                    c_theMessage.as_ptr(),
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleQuantityDateDefinitionError> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Quantity_DateDefinitionError_new_instance_charptr2(
+                    c_theMessage.as_ptr(),
+                    c_theStackTrace.as_ptr(),
+                ),
+            )
+        }
+    }
+
     /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -2121,20 +2155,183 @@ impl DateDefinitionError {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Quantity_DateDefinitionError_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_DomainError
+    pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
+        unsafe {
+            &*(crate::ffi::Quantity_DateDefinitionError_as_Standard_DomainError(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_DomainError (mutable)
+    pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
+        unsafe {
+            &mut *(crate::ffi::Quantity_DateDefinitionError_as_Standard_DomainError_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe {
+            &*(crate::ffi::Quantity_DateDefinitionError_as_Standard_Failure(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe {
+            &mut *(crate::ffi::Quantity_DateDefinitionError_as_Standard_Failure_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::Quantity_DateDefinitionError_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Quantity_DateDefinitionError_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleQuantityDateDefinitionError> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_DateDefinitionError_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::Quantity_DateDefinitionError_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::Quantity_DateDefinitionError_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Quantity_DateDefinitionError_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Quantity_DateDefinitionError_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::Quantity_DateDefinitionError_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::Quantity_DateDefinitionError_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::Quantity_DateDefinitionError_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Quantity_DateDefinitionError_inherited_Delete(self as *const Self) }
+    }
 }
 
-// ── Skipped symbols for DateDefinitionError (3 total) ──
+pub use crate::ffi::HandleQuantityDateDefinitionError;
+
+unsafe impl crate::CppDeletable for HandleQuantityDateDefinitionError {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleQuantityDateDefinitionError_destructor(ptr);
+    }
+}
+
+impl HandleQuantityDateDefinitionError {
+    /// Dereference this Handle to access the underlying Quantity_DateDefinitionError
+    pub fn get(&self) -> &crate::ffi::Quantity_DateDefinitionError {
+        unsafe { &*(crate::ffi::HandleQuantityDateDefinitionError_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Quantity_DateDefinitionError
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Quantity_DateDefinitionError {
+        unsafe { &mut *(crate::ffi::HandleQuantityDateDefinitionError_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Quantity_DateDefinitionError> to Handle<Standard_DomainError>
+    pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleQuantityDateDefinitionError_to_HandleStandardDomainError(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Quantity_DateDefinitionError> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleQuantityDateDefinitionError_to_HandleStandardFailure(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Quantity_DateDefinitionError> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleQuantityDateDefinitionError_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for DateDefinitionError (1 total) ──
 // SKIPPED: **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::Raise`
 //   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
 //   // pub fn raise(theMessage: &mut SStream);
-//
-// SKIPPED: **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::NewInstance`
-//   Reason: return type 'Handle(Quantity_DateDefinitionError)' is unknown
-//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Quantity_DateDefinitionError>>;
-//
-// SKIPPED: **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::NewInstance`
-//   Reason: return type 'Handle(Quantity_DateDefinitionError)' is unknown
-//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Quantity_DateDefinitionError>>;
 //
 
 // ========================
@@ -2205,6 +2402,20 @@ impl HArray1OfColor {
         unsafe { &*(crate::ffi::Quantity_HArray1OfColor_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::Quantity_HArray1OfColor_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Quantity_HArray1OfColor_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2212,6 +2423,44 @@ impl HArray1OfColor {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Quantity_HArray1OfColor_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Quantity_HArray1OfColor_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Quantity_HArray1OfColor_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Quantity_HArray1OfColor_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::Quantity_HArray1OfColor_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::Quantity_HArray1OfColor_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Quantity_HArray1OfColor_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -2232,6 +2481,17 @@ impl HandleQuantityHArray1OfColor {
     /// Dereference this Handle to mutably access the underlying Quantity_HArray1OfColor
     pub fn get_mut(&mut self) -> &mut crate::ffi::Quantity_HArray1OfColor {
         unsafe { &mut *(crate::ffi::HandleQuantityHArray1OfColor_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Quantity_HArray1OfColor> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleQuantityHArray1OfColor_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -2493,6 +2753,37 @@ impl PeriodDefinitionError {
         unsafe { crate::ffi::Quantity_PeriodDefinitionError_raise(c_theMessage.as_ptr()) }
     }
 
+    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleQuantityPeriodDefinitionError> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Quantity_PeriodDefinitionError_new_instance_charptr(
+                    c_theMessage.as_ptr(),
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleQuantityPeriodDefinitionError> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Quantity_PeriodDefinitionError_new_instance_charptr2(
+                    c_theMessage.as_ptr(),
+                    c_theStackTrace.as_ptr(),
+                ),
+            )
+        }
+    }
+
     /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -2506,20 +2797,190 @@ impl PeriodDefinitionError {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Quantity_PeriodDefinitionError_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_DomainError
+    pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
+        unsafe {
+            &*(crate::ffi::Quantity_PeriodDefinitionError_as_Standard_DomainError(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_DomainError (mutable)
+    pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
+        unsafe {
+            &mut *(crate::ffi::Quantity_PeriodDefinitionError_as_Standard_DomainError_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe {
+            &*(crate::ffi::Quantity_PeriodDefinitionError_as_Standard_Failure(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe {
+            &mut *(crate::ffi::Quantity_PeriodDefinitionError_as_Standard_Failure_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::Quantity_PeriodDefinitionError_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Quantity_PeriodDefinitionError_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleQuantityPeriodDefinitionError> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_PeriodDefinitionError_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::Quantity_PeriodDefinitionError_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::Quantity_PeriodDefinitionError_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Quantity_PeriodDefinitionError_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Quantity_PeriodDefinitionError_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::Quantity_PeriodDefinitionError_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::Quantity_PeriodDefinitionError_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::Quantity_PeriodDefinitionError_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Quantity_PeriodDefinitionError_inherited_Delete(self as *const Self) }
+    }
 }
 
-// ── Skipped symbols for PeriodDefinitionError (3 total) ──
+pub use crate::ffi::HandleQuantityPeriodDefinitionError;
+
+unsafe impl crate::CppDeletable for HandleQuantityPeriodDefinitionError {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleQuantityPeriodDefinitionError_destructor(ptr);
+    }
+}
+
+impl HandleQuantityPeriodDefinitionError {
+    /// Dereference this Handle to access the underlying Quantity_PeriodDefinitionError
+    pub fn get(&self) -> &crate::ffi::Quantity_PeriodDefinitionError {
+        unsafe { &*(crate::ffi::HandleQuantityPeriodDefinitionError_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Quantity_PeriodDefinitionError
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Quantity_PeriodDefinitionError {
+        unsafe {
+            &mut *(crate::ffi::HandleQuantityPeriodDefinitionError_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<Quantity_PeriodDefinitionError> to Handle<Standard_DomainError>
+    pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleQuantityPeriodDefinitionError_to_HandleStandardDomainError(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Quantity_PeriodDefinitionError> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleQuantityPeriodDefinitionError_to_HandleStandardFailure(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Quantity_PeriodDefinitionError> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleQuantityPeriodDefinitionError_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for PeriodDefinitionError (1 total) ──
 // SKIPPED: **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::Raise`
 //   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
 //   // pub fn raise(theMessage: &mut SStream);
-//
-// SKIPPED: **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::NewInstance`
-//   Reason: return type 'Handle(Quantity_PeriodDefinitionError)' is unknown
-//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Quantity_PeriodDefinitionError>>;
-//
-// SKIPPED: **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::NewInstance`
-//   Reason: return type 'Handle(Quantity_PeriodDefinitionError)' is unknown
-//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Quantity_PeriodDefinitionError>>;
 //
 
 // ========================

@@ -176,6 +176,9 @@ impl TryFrom<i32> for StoreStatus {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleStandardTransient;
+
 // ========================
 // From PCDM_ReaderFilter.hxx
 // ========================
@@ -383,6 +386,18 @@ impl ReaderFilter {
         unsafe { &*(crate::ffi::PCDM_ReaderFilter_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::PCDM_ReaderFilter_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::PCDM_ReaderFilter_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -390,6 +405,36 @@ impl ReaderFilter {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::PCDM_ReaderFilter_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::PCDM_ReaderFilter_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::PCDM_ReaderFilter_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::PCDM_ReaderFilter_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::PCDM_ReaderFilter_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::PCDM_ReaderFilter_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::PCDM_ReaderFilter_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -410,6 +455,15 @@ impl HandlePCDMReaderFilter {
     /// Dereference this Handle to mutably access the underlying PCDM_ReaderFilter
     pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_ReaderFilter {
         unsafe { &mut *(crate::ffi::HandlePCDMReaderFilter_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<PCDM_ReaderFilter> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandlePCDMReaderFilter_to_HandleStandardTransient(self as *const Self),
+            )
+        }
     }
 }
 

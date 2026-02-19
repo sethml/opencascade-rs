@@ -59,7 +59,7 @@ impl TryFrom<i32> for SubMeshReason {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleRWMeshCafReader, HandleRWMeshMaterialMap};
+pub use crate::ffi::{HandleRWMeshCafReader, HandleRWMeshMaterialMap, HandleStandardTransient};
 
 // ========================
 // From RWObj_CafReader.hxx
@@ -126,6 +126,16 @@ impl CafReader {
     /// Upcast to RWMesh_CafReader (mutable)
     pub fn as_rw_mesh_caf_reader_mut(&mut self) -> &mut crate::rw_mesh::CafReader {
         unsafe { &mut *(crate::ffi::RWObj_CafReader_as_RWMesh_CafReader_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::RWObj_CafReader_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::RWObj_CafReader_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -319,6 +329,36 @@ impl CafReader {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::RWObj_CafReader_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::RWObj_CafReader_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::RWObj_CafReader_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::RWObj_CafReader_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::RWObj_CafReader_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::RWObj_CafReader_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleRWObjCafReader;
@@ -344,6 +384,15 @@ impl HandleRWObjCafReader {
     pub fn to_handle_caf_reader(&self) -> crate::OwnedPtr<crate::ffi::HandleRWMeshCafReader> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleRWObjCafReader_to_HandleRWMeshCafReader(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<RWObj_CafReader> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleRWObjCafReader_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -458,11 +507,51 @@ impl CafWriter {
         unsafe { &*(crate::ffi::RWObj_CafWriter_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::RWObj_CafWriter_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::RWObj_CafWriter_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleRWObjCafWriter> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWObj_CafWriter_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::RWObj_CafWriter_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::RWObj_CafWriter_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::RWObj_CafWriter_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::RWObj_CafWriter_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::RWObj_CafWriter_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::RWObj_CafWriter_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -483,6 +572,15 @@ impl HandleRWObjCafWriter {
     /// Dereference this Handle to mutably access the underlying RWObj_CafWriter
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWObj_CafWriter {
         unsafe { &mut *(crate::ffi::HandleRWObjCafWriter_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<RWObj_CafWriter> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleRWObjCafWriter_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -602,6 +700,18 @@ impl ObjMaterialMap {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::RWObj_ObjMaterialMap_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::RWObj_ObjMaterialMap_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -662,6 +772,38 @@ impl ObjMaterialMap {
     pub fn is_failed(&self) -> bool {
         unsafe { crate::ffi::RWObj_ObjMaterialMap_inherited_IsFailed(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::RWObj_ObjMaterialMap_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::RWObj_ObjMaterialMap_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::RWObj_ObjMaterialMap_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::RWObj_ObjMaterialMap_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::RWObj_ObjMaterialMap_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::RWObj_ObjMaterialMap_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleRWObjObjMaterialMap;
@@ -688,6 +830,17 @@ impl HandleRWObjObjMaterialMap {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleRWObjObjMaterialMap_to_HandleRWMeshMaterialMap(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<RWObj_ObjMaterialMap> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleRWObjObjMaterialMap_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -961,6 +1114,46 @@ impl Reader {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::RWObj_Reader_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::RWObj_Reader_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::RWObj_Reader_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::RWObj_Reader_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::RWObj_Reader_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::RWObj_Reader_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::RWObj_Reader_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::RWObj_Reader_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::RWObj_Reader_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleRWObjReader;
@@ -980,6 +1173,15 @@ impl HandleRWObjReader {
     /// Dereference this Handle to mutably access the underlying RWObj_Reader
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWObj_Reader {
         unsafe { &mut *(crate::ffi::HandleRWObjReader_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<RWObj_Reader> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleRWObjReader_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Downcast Handle<RWObj_Reader> to Handle<RWObj_TriangulationReader>
@@ -1151,6 +1353,22 @@ impl TriangulationReader {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::RWObj_TriangulationReader_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::RWObj_TriangulationReader_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1260,6 +1478,44 @@ impl TriangulationReader {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::RWObj_TriangulationReader_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::RWObj_TriangulationReader_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleRWObjTriangulationReader;
@@ -1286,6 +1542,17 @@ impl HandleRWObjTriangulationReader {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleRWObjTriangulationReader_to_HandleRWObjReader(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<RWObj_TriangulationReader> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleRWObjTriangulationReader_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )

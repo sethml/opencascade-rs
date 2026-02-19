@@ -6,6 +6,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleStandardDomainError, HandleStandardFailure, HandleStandardTransient};
+
 // ========================
 // From StdFail_InfiniteSolutions.hxx
 // ========================
@@ -58,6 +61,33 @@ impl InfiniteSolutions {
         unsafe { crate::ffi::StdFail_InfiniteSolutions_raise(c_theMessage.as_ptr()) }
     }
 
+    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStdFailInfiniteSolutions> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_InfiniteSolutions_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStdFailInfiniteSolutions> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_InfiniteSolutions_new_instance_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
     /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -71,20 +101,143 @@ impl InfiniteSolutions {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::StdFail_InfiniteSolutions_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe {
+            &*(crate::ffi::StdFail_InfiniteSolutions_as_Standard_Failure(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe {
+            &mut *(crate::ffi::StdFail_InfiniteSolutions_as_Standard_Failure_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StdFail_InfiniteSolutions_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StdFail_InfiniteSolutions_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStdFailInfiniteSolutions> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_InfiniteSolutions_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::StdFail_InfiniteSolutions_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::StdFail_InfiniteSolutions_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StdFail_InfiniteSolutions_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StdFail_InfiniteSolutions_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::StdFail_InfiniteSolutions_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StdFail_InfiniteSolutions_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StdFail_InfiniteSolutions_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StdFail_InfiniteSolutions_inherited_Delete(self as *const Self) }
+    }
 }
 
-// ── Skipped symbols for InfiniteSolutions (3 total) ──
+pub use crate::ffi::HandleStdFailInfiniteSolutions;
+
+unsafe impl crate::CppDeletable for HandleStdFailInfiniteSolutions {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStdFailInfiniteSolutions_destructor(ptr);
+    }
+}
+
+impl HandleStdFailInfiniteSolutions {
+    /// Dereference this Handle to access the underlying StdFail_InfiniteSolutions
+    pub fn get(&self) -> &crate::ffi::StdFail_InfiniteSolutions {
+        unsafe { &*(crate::ffi::HandleStdFailInfiniteSolutions_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StdFail_InfiniteSolutions
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StdFail_InfiniteSolutions {
+        unsafe { &mut *(crate::ffi::HandleStdFailInfiniteSolutions_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StdFail_InfiniteSolutions> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStdFailInfiniteSolutions_to_HandleStandardFailure(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StdFail_InfiniteSolutions> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStdFailInfiniteSolutions_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for InfiniteSolutions (1 total) ──
 // SKIPPED: **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::Raise`
 //   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
 //   // pub fn raise(theMessage: &mut SStream);
-//
-// SKIPPED: **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::NewInstance`
-//   Reason: return type 'Handle(StdFail_InfiniteSolutions)' is unknown
-//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<StdFail_InfiniteSolutions>>;
-//
-// SKIPPED: **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::NewInstance`
-//   Reason: return type 'Handle(StdFail_InfiniteSolutions)' is unknown
-//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<StdFail_InfiniteSolutions>>;
 //
 
 // ========================
@@ -139,6 +292,33 @@ impl NotDone {
         unsafe { crate::ffi::StdFail_NotDone_raise(c_theMessage.as_ptr()) }
     }
 
+    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStdFailNotDone> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_NotDone_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStdFailNotDone> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_NotDone_new_instance_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
     /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -152,20 +332,117 @@ impl NotDone {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::StdFail_NotDone_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe { &*(crate::ffi::StdFail_NotDone_as_Standard_Failure(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe { &mut *(crate::ffi::StdFail_NotDone_as_Standard_Failure_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::StdFail_NotDone_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::StdFail_NotDone_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStdFailNotDone> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StdFail_NotDone_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::StdFail_NotDone_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::StdFail_NotDone_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::StdFail_NotDone_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::StdFail_NotDone_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::StdFail_NotDone_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::StdFail_NotDone_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::StdFail_NotDone_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StdFail_NotDone_inherited_Delete(self as *const Self) }
+    }
 }
 
-// ── Skipped symbols for NotDone (3 total) ──
+pub use crate::ffi::HandleStdFailNotDone;
+
+unsafe impl crate::CppDeletable for HandleStdFailNotDone {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStdFailNotDone_destructor(ptr);
+    }
+}
+
+impl HandleStdFailNotDone {
+    /// Dereference this Handle to access the underlying StdFail_NotDone
+    pub fn get(&self) -> &crate::ffi::StdFail_NotDone {
+        unsafe { &*(crate::ffi::HandleStdFailNotDone_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StdFail_NotDone
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StdFail_NotDone {
+        unsafe { &mut *(crate::ffi::HandleStdFailNotDone_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StdFail_NotDone> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStdFailNotDone_to_HandleStandardFailure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StdFail_NotDone> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStdFailNotDone_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for NotDone (1 total) ──
 // SKIPPED: **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::Raise`
 //   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
 //   // pub fn raise(theMessage: &mut SStream);
-//
-// SKIPPED: **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::NewInstance`
-//   Reason: return type 'Handle(StdFail_NotDone)' is unknown
-//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<StdFail_NotDone>>;
-//
-// SKIPPED: **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::NewInstance`
-//   Reason: return type 'Handle(StdFail_NotDone)' is unknown
-//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<StdFail_NotDone>>;
 //
 
 // ========================
@@ -220,6 +497,33 @@ impl Undefined {
         unsafe { crate::ffi::StdFail_Undefined_raise(c_theMessage.as_ptr()) }
     }
 
+    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStdFailUndefined> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_Undefined_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStdFailUndefined> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_Undefined_new_instance_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
     /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -233,20 +537,121 @@ impl Undefined {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::StdFail_Undefined_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe { &*(crate::ffi::StdFail_Undefined_as_Standard_Failure(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe { &mut *(crate::ffi::StdFail_Undefined_as_Standard_Failure_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::StdFail_Undefined_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StdFail_Undefined_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStdFailUndefined> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_Undefined_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::StdFail_Undefined_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::StdFail_Undefined_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::StdFail_Undefined_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::StdFail_Undefined_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::StdFail_Undefined_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::StdFail_Undefined_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::StdFail_Undefined_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StdFail_Undefined_inherited_Delete(self as *const Self) }
+    }
 }
 
-// ── Skipped symbols for Undefined (3 total) ──
+pub use crate::ffi::HandleStdFailUndefined;
+
+unsafe impl crate::CppDeletable for HandleStdFailUndefined {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStdFailUndefined_destructor(ptr);
+    }
+}
+
+impl HandleStdFailUndefined {
+    /// Dereference this Handle to access the underlying StdFail_Undefined
+    pub fn get(&self) -> &crate::ffi::StdFail_Undefined {
+        unsafe { &*(crate::ffi::HandleStdFailUndefined_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StdFail_Undefined
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StdFail_Undefined {
+        unsafe { &mut *(crate::ffi::HandleStdFailUndefined_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StdFail_Undefined> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStdFailUndefined_to_HandleStandardFailure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StdFail_Undefined> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStdFailUndefined_to_HandleStandardTransient(self as *const Self),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for Undefined (1 total) ──
 // SKIPPED: **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::Raise`
 //   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
 //   // pub fn raise(theMessage: &mut SStream);
-//
-// SKIPPED: **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::NewInstance`
-//   Reason: return type 'Handle(StdFail_Undefined)' is unknown
-//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<StdFail_Undefined>>;
-//
-// SKIPPED: **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::NewInstance`
-//   Reason: return type 'Handle(StdFail_Undefined)' is unknown
-//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<StdFail_Undefined>>;
 //
 
 // ========================
@@ -301,6 +706,35 @@ impl UndefinedDerivative {
         unsafe { crate::ffi::StdFail_UndefinedDerivative_raise(c_theMessage.as_ptr()) }
     }
 
+    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStdFailUndefinedDerivative> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_UndefinedDerivative_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStdFailUndefinedDerivative> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StdFail_UndefinedDerivative_new_instance_charptr2(
+                    c_theMessage.as_ptr(),
+                    c_theStackTrace.as_ptr(),
+                ),
+            )
+        }
+    }
+
     /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -314,20 +748,177 @@ impl UndefinedDerivative {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::StdFail_UndefinedDerivative_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_DomainError
+    pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
+        unsafe {
+            &*(crate::ffi::StdFail_UndefinedDerivative_as_Standard_DomainError(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_DomainError (mutable)
+    pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
+        unsafe {
+            &mut *(crate::ffi::StdFail_UndefinedDerivative_as_Standard_DomainError_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe {
+            &*(crate::ffi::StdFail_UndefinedDerivative_as_Standard_Failure(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe {
+            &mut *(crate::ffi::StdFail_UndefinedDerivative_as_Standard_Failure_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StdFail_UndefinedDerivative_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StdFail_UndefinedDerivative_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStdFailUndefinedDerivative> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_UndefinedDerivative_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::StdFail_UndefinedDerivative_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::StdFail_UndefinedDerivative_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StdFail_UndefinedDerivative_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StdFail_UndefinedDerivative_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StdFail_UndefinedDerivative_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StdFail_UndefinedDerivative_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StdFail_UndefinedDerivative_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StdFail_UndefinedDerivative_inherited_Delete(self as *const Self) }
+    }
 }
 
-// ── Skipped symbols for UndefinedDerivative (3 total) ──
+pub use crate::ffi::HandleStdFailUndefinedDerivative;
+
+unsafe impl crate::CppDeletable for HandleStdFailUndefinedDerivative {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStdFailUndefinedDerivative_destructor(ptr);
+    }
+}
+
+impl HandleStdFailUndefinedDerivative {
+    /// Dereference this Handle to access the underlying StdFail_UndefinedDerivative
+    pub fn get(&self) -> &crate::ffi::StdFail_UndefinedDerivative {
+        unsafe { &*(crate::ffi::HandleStdFailUndefinedDerivative_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StdFail_UndefinedDerivative
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StdFail_UndefinedDerivative {
+        unsafe { &mut *(crate::ffi::HandleStdFailUndefinedDerivative_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StdFail_UndefinedDerivative> to Handle<Standard_DomainError>
+    pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStdFailUndefinedDerivative_to_HandleStandardDomainError(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StdFail_UndefinedDerivative> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStdFailUndefinedDerivative_to_HandleStandardFailure(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StdFail_UndefinedDerivative> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStdFailUndefinedDerivative_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for UndefinedDerivative (1 total) ──
 // SKIPPED: **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::Raise`
 //   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
 //   // pub fn raise(theMessage: &mut SStream);
-//
-// SKIPPED: **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::NewInstance`
-//   Reason: return type 'Handle(StdFail_UndefinedDerivative)' is unknown
-//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<StdFail_UndefinedDerivative>>;
-//
-// SKIPPED: **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::NewInstance`
-//   Reason: return type 'Handle(StdFail_UndefinedDerivative)' is unknown
-//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<StdFail_UndefinedDerivative>>;
 //
 
 // ========================
@@ -382,6 +973,33 @@ impl UndefinedValue {
         unsafe { crate::ffi::StdFail_UndefinedValue_raise(c_theMessage.as_ptr()) }
     }
 
+    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStdFailUndefinedValue> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_UndefinedValue_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStdFailUndefinedValue> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_UndefinedValue_new_instance_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
     /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -395,18 +1013,158 @@ impl UndefinedValue {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::StdFail_UndefinedValue_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_DomainError
+    pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
+        unsafe {
+            &*(crate::ffi::StdFail_UndefinedValue_as_Standard_DomainError(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_DomainError (mutable)
+    pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
+        unsafe {
+            &mut *(crate::ffi::StdFail_UndefinedValue_as_Standard_DomainError_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe { &*(crate::ffi::StdFail_UndefinedValue_as_Standard_Failure(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe {
+            &mut *(crate::ffi::StdFail_UndefinedValue_as_Standard_Failure_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::StdFail_UndefinedValue_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StdFail_UndefinedValue_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStdFailUndefinedValue> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_UndefinedValue_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::StdFail_UndefinedValue_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::StdFail_UndefinedValue_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StdFail_UndefinedValue_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::StdFail_UndefinedValue_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::StdFail_UndefinedValue_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StdFail_UndefinedValue_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StdFail_UndefinedValue_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StdFail_UndefinedValue_inherited_Delete(self as *const Self) }
+    }
 }
 
-// ── Skipped symbols for UndefinedValue (3 total) ──
+pub use crate::ffi::HandleStdFailUndefinedValue;
+
+unsafe impl crate::CppDeletable for HandleStdFailUndefinedValue {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStdFailUndefinedValue_destructor(ptr);
+    }
+}
+
+impl HandleStdFailUndefinedValue {
+    /// Dereference this Handle to access the underlying StdFail_UndefinedValue
+    pub fn get(&self) -> &crate::ffi::StdFail_UndefinedValue {
+        unsafe { &*(crate::ffi::HandleStdFailUndefinedValue_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StdFail_UndefinedValue
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StdFail_UndefinedValue {
+        unsafe { &mut *(crate::ffi::HandleStdFailUndefinedValue_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StdFail_UndefinedValue> to Handle<Standard_DomainError>
+    pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStdFailUndefinedValue_to_HandleStandardDomainError(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StdFail_UndefinedValue> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStdFailUndefinedValue_to_HandleStandardFailure(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<StdFail_UndefinedValue> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStdFailUndefinedValue_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for UndefinedValue (1 total) ──
 // SKIPPED: **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::Raise`
 //   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
 //   // pub fn raise(theMessage: &mut SStream);
-//
-// SKIPPED: **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::NewInstance`
-//   Reason: return type 'Handle(StdFail_UndefinedValue)' is unknown
-//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<StdFail_UndefinedValue>>;
-//
-// SKIPPED: **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::NewInstance`
-//   Reason: return type 'Handle(StdFail_UndefinedValue)' is unknown
-//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<StdFail_UndefinedValue>>;
 //

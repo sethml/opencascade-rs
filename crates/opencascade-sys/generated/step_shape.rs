@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStepReprPropertyDefinitionRepresentation;
+pub use crate::ffi::{HandleStandardTransient, HandleStepReprPropertyDefinitionRepresentation};
 
 // ========================
 // From StepShape_LimitsAndFits.hxx
@@ -127,6 +127,20 @@ impl LimitsAndFits {
         unsafe { &*(crate::ffi::StepShape_LimitsAndFits_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepShape_LimitsAndFits_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepShape_LimitsAndFits_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -134,6 +148,44 @@ impl LimitsAndFits {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::StepShape_LimitsAndFits_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepShape_LimitsAndFits_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepShape_LimitsAndFits_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::StepShape_LimitsAndFits_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepShape_LimitsAndFits_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepShape_LimitsAndFits_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepShape_LimitsAndFits_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -154,6 +206,17 @@ impl HandleStepShapeLimitsAndFits {
     /// Dereference this Handle to mutably access the underlying StepShape_LimitsAndFits
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepShape_LimitsAndFits {
         unsafe { &mut *(crate::ffi::HandleStepShapeLimitsAndFits_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StepShape_LimitsAndFits> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepShapeLimitsAndFits_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -220,6 +283,24 @@ impl ShapeDefinitionRepresentation {
     ) -> &mut crate::step_repr::PropertyDefinitionRepresentation {
         unsafe {
             &mut *(crate::ffi::StepShape_ShapeDefinitionRepresentation_as_StepRepr_PropertyDefinitionRepresentation_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepShape_ShapeDefinitionRepresentation_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepShape_ShapeDefinitionRepresentation_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
         }
     }
 
@@ -293,6 +374,62 @@ impl ShapeDefinitionRepresentation {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepShape_ShapeDefinitionRepresentation_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepShape_ShapeDefinitionRepresentation_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepShape_ShapeDefinitionRepresentation_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepShape_ShapeDefinitionRepresentation_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepShape_ShapeDefinitionRepresentation_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepShape_ShapeDefinitionRepresentation_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
 }
 
 pub use crate::ffi::HandleStepShapeShapeDefinitionRepresentation;
@@ -326,6 +463,17 @@ impl HandleStepShapeShapeDefinitionRepresentation {
     ) -> crate::OwnedPtr<crate::ffi::HandleStepReprPropertyDefinitionRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleStepShapeShapeDefinitionRepresentation_to_HandleStepReprPropertyDefinitionRepresentation(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepShape_ShapeDefinitionRepresentation> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepShapeShapeDefinitionRepresentation_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }

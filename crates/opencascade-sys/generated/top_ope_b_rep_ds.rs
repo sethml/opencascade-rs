@@ -81,6 +81,9 @@ impl TryFrom<i32> for Kind {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleStandardTransient;
+
 // ========================
 // From TopOpeBRepDS_Curve.hxx
 // ========================
@@ -432,6 +435,24 @@ impl CurvePointInterference {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_CurvePointInterference_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_CurvePointInterference_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -528,6 +549,60 @@ impl CurvePointInterference {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_CurvePointInterference_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_CurvePointInterference_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_CurvePointInterference_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_CurvePointInterference_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_CurvePointInterference_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_CurvePointInterference_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleTopOpeBRepDSCurvePointInterference;
@@ -557,6 +632,17 @@ impl HandleTopOpeBRepDSCurvePointInterference {
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTopOpeBRepDSCurvePointInterference_to_HandleTopOpeBRepDSInterference(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_CurvePointInterference> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopOpeBRepDSCurvePointInterference_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -1666,6 +1752,22 @@ impl Interference {
         unsafe { &*(crate::ffi::TopOpeBRepDS_Interference_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_Interference_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_Interference_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1675,6 +1777,44 @@ impl Interference {
                 obj.into_raw(),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Interference_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Interference_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopOpeBRepDS_Interference_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Interference_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Interference_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopOpeBRepDS_Interference_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1695,6 +1835,17 @@ impl HandleTopOpeBRepDSInterference {
     /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_Interference
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_Interference {
         unsafe { &mut *(crate::ffi::HandleTopOpeBRepDSInterference_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_Interference> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopOpeBRepDSInterference_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Downcast Handle<TopOpeBRepDS_Interference> to Handle<TopOpeBRepDS_CurvePointInterference>
@@ -2184,6 +2335,24 @@ impl SurfaceCurveInterference {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2282,6 +2451,60 @@ impl SurfaceCurveInterference {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference;
@@ -2315,6 +2538,17 @@ impl HandleTopOpeBRepDSSurfaceCurveInterference {
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference_to_HandleTopOpeBRepDSInterference(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_SurfaceCurveInterference> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }

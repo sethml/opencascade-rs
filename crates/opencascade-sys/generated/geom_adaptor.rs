@@ -28,7 +28,7 @@ pub fn make_surface(
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleAdaptor3dCurve, HandleAdaptor3dSurface};
+pub use crate::ffi::{HandleAdaptor3dCurve, HandleAdaptor3dSurface, HandleStandardTransient};
 
 // ========================
 // From GeomAdaptor_Curve.hxx
@@ -418,6 +418,18 @@ impl Curve {
         unsafe { &mut *(crate::ffi::GeomAdaptor_Curve_as_Adaptor3d_Curve_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::GeomAdaptor_Curve_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::GeomAdaptor_Curve_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -425,6 +437,36 @@ impl Curve {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Curve_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::GeomAdaptor_Curve_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::GeomAdaptor_Curve_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::GeomAdaptor_Curve_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::GeomAdaptor_Curve_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::GeomAdaptor_Curve_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::GeomAdaptor_Curve_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -453,6 +495,15 @@ impl HandleGeomAdaptorCurve {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeomAdaptorCurve_to_HandleAdaptor3dCurve(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<GeomAdaptor_Curve> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomAdaptorCurve_to_HandleStandardTransient(self as *const Self),
+            )
         }
     }
 }
@@ -1062,6 +1113,18 @@ impl Surface {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::GeomAdaptor_Surface_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::GeomAdaptor_Surface_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1069,6 +1132,38 @@ impl Surface {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Surface_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::GeomAdaptor_Surface_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::GeomAdaptor_Surface_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::GeomAdaptor_Surface_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::GeomAdaptor_Surface_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::GeomAdaptor_Surface_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::GeomAdaptor_Surface_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1096,6 +1191,17 @@ impl HandleGeomAdaptorSurface {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleGeomAdaptorSurface_to_HandleAdaptor3dSurface(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<GeomAdaptor_Surface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomAdaptorSurface_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -1598,6 +1704,24 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1788,6 +1912,60 @@ impl SurfaceOfLinearExtrusion {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion;
@@ -1833,6 +2011,17 @@ impl HandleGeomAdaptorSurfaceOfLinearExtrusion {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion_to_HandleAdaptor3dSurface(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<GeomAdaptor_SurfaceOfLinearExtrusion> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -2293,6 +2482,24 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::GeomAdaptor_SurfaceOfRevolution_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::GeomAdaptor_SurfaceOfRevolution_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2474,6 +2681,56 @@ impl SurfaceOfRevolution {
             crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_OffsetValue(self as *const Self)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeomAdaptorSurfaceOfRevolution;
@@ -2517,6 +2774,17 @@ impl HandleGeomAdaptorSurfaceOfRevolution {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleGeomAdaptorSurfaceOfRevolution_to_HandleAdaptor3dSurface(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<GeomAdaptor_SurfaceOfRevolution> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomAdaptorSurfaceOfRevolution_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )

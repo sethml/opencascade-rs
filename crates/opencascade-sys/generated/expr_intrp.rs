@@ -6,6 +6,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleStandardFailure, HandleStandardTransient};
+
 // ========================
 // From ExprIntrp_Analysis.hxx
 // ========================
@@ -222,6 +225,16 @@ impl GenExp {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::ExprIntrp_GenExp_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::ExprIntrp_GenExp_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -256,6 +269,36 @@ impl GenExp {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::ExprIntrp_GenExp_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::ExprIntrp_GenExp_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::ExprIntrp_GenExp_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::ExprIntrp_GenExp_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::ExprIntrp_GenExp_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ExprIntrp_GenExp_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleExprIntrpGenExp;
@@ -283,6 +326,15 @@ impl HandleExprIntrpGenExp {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleExprIntrpGenExp_to_HandleExprIntrpGenerator(self as *const Self),
             )
+        }
+    }
+
+    /// Upcast Handle<ExprIntrp_GenExp> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprIntrpGenExp_to_HandleStandardTransient(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -350,6 +402,16 @@ impl GenFct {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::ExprIntrp_GenFct_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::ExprIntrp_GenFct_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -384,6 +446,36 @@ impl GenFct {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::ExprIntrp_GenFct_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::ExprIntrp_GenFct_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::ExprIntrp_GenFct_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::ExprIntrp_GenFct_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::ExprIntrp_GenFct_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ExprIntrp_GenFct_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleExprIntrpGenFct;
@@ -411,6 +503,15 @@ impl HandleExprIntrpGenFct {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleExprIntrpGenFct_to_HandleExprIntrpGenerator(self as *const Self),
             )
+        }
+    }
+
+    /// Upcast Handle<ExprIntrp_GenFct> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprIntrpGenFct_to_HandleStandardTransient(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -489,6 +590,16 @@ impl GenRel {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::ExprIntrp_GenRel_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::ExprIntrp_GenRel_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -523,6 +634,36 @@ impl GenRel {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::ExprIntrp_GenRel_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::ExprIntrp_GenRel_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::ExprIntrp_GenRel_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::ExprIntrp_GenRel_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::ExprIntrp_GenRel_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ExprIntrp_GenRel_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleExprIntrpGenRel;
@@ -550,6 +691,15 @@ impl HandleExprIntrpGenRel {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleExprIntrpGenRel_to_HandleExprIntrpGenerator(self as *const Self),
             )
+        }
+    }
+
+    /// Upcast Handle<ExprIntrp_GenRel> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprIntrpGenRel_to_HandleStandardTransient(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -645,6 +795,18 @@ impl Generator {
         unsafe { &*(crate::ffi::ExprIntrp_Generator_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::ExprIntrp_Generator_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ExprIntrp_Generator_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -652,6 +814,38 @@ impl Generator {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_Generator_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ExprIntrp_Generator_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::ExprIntrp_Generator_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::ExprIntrp_Generator_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::ExprIntrp_Generator_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::ExprIntrp_Generator_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ExprIntrp_Generator_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -672,6 +866,17 @@ impl HandleExprIntrpGenerator {
     /// Dereference this Handle to mutably access the underlying ExprIntrp_Generator
     pub fn get_mut(&mut self) -> &mut crate::ffi::ExprIntrp_Generator {
         unsafe { &mut *(crate::ffi::HandleExprIntrpGenerator_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ExprIntrp_Generator> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprIntrpGenerator_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Downcast Handle<ExprIntrp_Generator> to Handle<ExprIntrp_GenExp>
@@ -781,6 +986,33 @@ impl SyntaxError {
         unsafe { crate::ffi::ExprIntrp_SyntaxError_raise(c_theMessage.as_ptr()) }
     }
 
+    /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpSyntaxError> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_SyntaxError_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpSyntaxError> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_SyntaxError_new_instance_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
     /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -794,20 +1026,133 @@ impl SyntaxError {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ExprIntrp_SyntaxError_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe { &*(crate::ffi::ExprIntrp_SyntaxError_as_Standard_Failure(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe {
+            &mut *(crate::ffi::ExprIntrp_SyntaxError_as_Standard_Failure_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::ExprIntrp_SyntaxError_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ExprIntrp_SyntaxError_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpSyntaxError> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_SyntaxError_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::ExprIntrp_SyntaxError_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::ExprIntrp_SyntaxError_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ExprIntrp_SyntaxError_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::ExprIntrp_SyntaxError_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::ExprIntrp_SyntaxError_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ExprIntrp_SyntaxError_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ExprIntrp_SyntaxError_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ExprIntrp_SyntaxError_inherited_Delete(self as *const Self) }
+    }
 }
 
-// ── Skipped symbols for SyntaxError (3 total) ──
+pub use crate::ffi::HandleExprIntrpSyntaxError;
+
+unsafe impl crate::CppDeletable for HandleExprIntrpSyntaxError {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprIntrpSyntaxError_destructor(ptr);
+    }
+}
+
+impl HandleExprIntrpSyntaxError {
+    /// Dereference this Handle to access the underlying ExprIntrp_SyntaxError
+    pub fn get(&self) -> &crate::ffi::ExprIntrp_SyntaxError {
+        unsafe { &*(crate::ffi::HandleExprIntrpSyntaxError_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ExprIntrp_SyntaxError
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ExprIntrp_SyntaxError {
+        unsafe { &mut *(crate::ffi::HandleExprIntrpSyntaxError_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ExprIntrp_SyntaxError> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprIntrpSyntaxError_to_HandleStandardFailure(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ExprIntrp_SyntaxError> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprIntrpSyntaxError_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for SyntaxError (1 total) ──
 // SKIPPED: **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::Raise`
 //   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
 //   // pub fn raise(theMessage: &mut SStream);
-//
-// SKIPPED: **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::NewInstance`
-//   Reason: return type 'Handle(ExprIntrp_SyntaxError)' is unknown
-//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<ExprIntrp_SyntaxError>>;
-//
-// SKIPPED: **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::NewInstance`
-//   Reason: return type 'Handle(ExprIntrp_SyntaxError)' is unknown
-//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<ExprIntrp_SyntaxError>>;
 //
 
 // ========================

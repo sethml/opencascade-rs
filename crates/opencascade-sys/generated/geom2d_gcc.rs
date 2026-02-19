@@ -190,6 +190,9 @@ impl TryFrom<i32> for Type3 {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleStandardDomainError, HandleStandardFailure, HandleStandardTransient};
+
 // ========================
 // From Geom2dGcc_Circ2d2TanOn.hxx
 // ========================
@@ -4228,6 +4231,33 @@ impl IsParallel {
         unsafe { crate::ffi::Geom2dGcc_IsParallel_raise(c_theMessage.as_ptr()) }
     }
 
+    /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGccIsParallel> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_IsParallel_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGccIsParallel> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_IsParallel_new_instance_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
     /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -4241,20 +4271,150 @@ impl IsParallel {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2dGcc_IsParallel_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_DomainError
+    pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
+        unsafe { &*(crate::ffi::Geom2dGcc_IsParallel_as_Standard_DomainError(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_DomainError (mutable)
+    pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
+        unsafe {
+            &mut *(crate::ffi::Geom2dGcc_IsParallel_as_Standard_DomainError_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe { &*(crate::ffi::Geom2dGcc_IsParallel_as_Standard_Failure(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe {
+            &mut *(crate::ffi::Geom2dGcc_IsParallel_as_Standard_Failure_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2dGcc_IsParallel_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Geom2dGcc_IsParallel_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGccIsParallel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_IsParallel_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::Geom2dGcc_IsParallel_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::Geom2dGcc_IsParallel_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Geom2dGcc_IsParallel_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2dGcc_IsParallel_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2dGcc_IsParallel_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Geom2dGcc_IsParallel_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Geom2dGcc_IsParallel_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2dGcc_IsParallel_inherited_Delete(self as *const Self) }
+    }
 }
 
-// ── Skipped symbols for IsParallel (3 total) ──
+pub use crate::ffi::HandleGeom2dGccIsParallel;
+
+unsafe impl crate::CppDeletable for HandleGeom2dGccIsParallel {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeom2dGccIsParallel_destructor(ptr);
+    }
+}
+
+impl HandleGeom2dGccIsParallel {
+    /// Dereference this Handle to access the underlying Geom2dGcc_IsParallel
+    pub fn get(&self) -> &crate::ffi::Geom2dGcc_IsParallel {
+        unsafe { &*(crate::ffi::HandleGeom2dGccIsParallel_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2dGcc_IsParallel
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2dGcc_IsParallel {
+        unsafe { &mut *(crate::ffi::HandleGeom2dGccIsParallel_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Geom2dGcc_IsParallel> to Handle<Standard_DomainError>
+    pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dGccIsParallel_to_HandleStandardDomainError(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Geom2dGcc_IsParallel> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dGccIsParallel_to_HandleStandardFailure(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<Geom2dGcc_IsParallel> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dGccIsParallel_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for IsParallel (1 total) ──
 // SKIPPED: **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::Raise`
 //   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
 //   // pub fn raise(theMessage: &mut SStream);
-//
-// SKIPPED: **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::NewInstance`
-//   Reason: return type 'Handle(Geom2dGcc_IsParallel)' is unknown
-//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Geom2dGcc_IsParallel>>;
-//
-// SKIPPED: **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::NewInstance`
-//   Reason: return type 'Handle(Geom2dGcc_IsParallel)' is unknown
-//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Geom2dGcc_IsParallel>>;
 //
 
 // ========================

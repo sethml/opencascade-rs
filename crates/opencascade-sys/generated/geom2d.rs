@@ -6,6 +6,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleStandardDomainError, HandleStandardFailure, HandleStandardTransient};
+
 // ========================
 // From Geom2d_AxisPlacement.hxx
 // ========================
@@ -166,6 +169,18 @@ impl AxisPlacement {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_AxisPlacement_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Geom2d_AxisPlacement_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -263,6 +278,38 @@ impl AxisPlacement {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Geom2d_AxisPlacement_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_AxisPlacement_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_AxisPlacement_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Geom2d_AxisPlacement_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Geom2d_AxisPlacement_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_AxisPlacement_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dAxisPlacement;
@@ -289,6 +336,17 @@ impl HandleGeom2dAxisPlacement {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleGeom2dAxisPlacement_to_HandleGeom2dGeometry(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<Geom2d_AxisPlacement> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dAxisPlacement_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -1511,6 +1569,18 @@ impl BSplineCurve {
         unsafe { &mut *(crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Geometry_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_BSplineCurve_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Geom2d_BSplineCurve_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1653,6 +1723,38 @@ impl BSplineCurve {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dBSplineCurve;
@@ -1700,6 +1802,17 @@ impl HandleGeom2dBSplineCurve {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dBSplineCurve_to_HandleGeom2dGeometry(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<Geom2d_BSplineCurve> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dBSplineCurve_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -2207,6 +2320,18 @@ impl BezierCurve {
         unsafe { &mut *(crate::ffi::Geom2d_BezierCurve_as_Geom2d_Geometry_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_BezierCurve_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Geom2d_BezierCurve_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2345,6 +2470,36 @@ impl BezierCurve {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_BezierCurve_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_BezierCurve_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_BezierCurve_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Geom2d_BezierCurve_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dBezierCurve;
@@ -2392,6 +2547,15 @@ impl HandleGeom2dBezierCurve {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dBezierCurve_to_HandleGeom2dGeometry(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<Geom2d_BezierCurve> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dBezierCurve_to_HandleStandardTransient(self as *const Self),
+            )
         }
     }
 }
@@ -2494,6 +2658,18 @@ impl BoundedCurve {
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
         unsafe { &mut *(crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Geometry_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_BoundedCurve_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Geom2d_BoundedCurve_as_Standard_Transient_mut(self as *mut Self))
+        }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:70 - `Geom2d_Curve::Reverse()`
@@ -2736,6 +2912,38 @@ impl BoundedCurve {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Geom2d_BoundedCurve_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dBoundedCurve;
@@ -2772,6 +2980,17 @@ impl HandleGeom2dBoundedCurve {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dBoundedCurve_to_HandleGeom2dGeometry(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<Geom2d_BoundedCurve> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dBoundedCurve_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2963,6 +3182,18 @@ impl CartesianPoint {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_CartesianPoint_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Geom2d_CartesianPoint_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3072,6 +3303,42 @@ impl CartesianPoint {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Geom2d_CartesianPoint_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_CartesianPoint_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_CartesianPoint_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::Geom2d_CartesianPoint_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::Geom2d_CartesianPoint_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_CartesianPoint_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dCartesianPoint;
@@ -3107,6 +3374,17 @@ impl HandleGeom2dCartesianPoint {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleGeom2dCartesianPoint_to_HandleGeom2dGeometry(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<Geom2d_CartesianPoint> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dCartesianPoint_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -3375,6 +3653,16 @@ impl Circle {
         unsafe { &mut *(crate::ffi::Geom2d_Circle_as_Geom2d_Geometry_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_Circle_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Geom2d_Circle_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3576,6 +3864,36 @@ impl Circle {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Circle_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Circle_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Circle_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Geom2d_Circle_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Circle_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_Circle_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dCircle;
@@ -3619,6 +3937,15 @@ impl HandleGeom2dCircle {
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dCircle_to_HandleGeom2dGeometry(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Geom2d_Circle> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dCircle_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -3799,6 +4126,16 @@ impl Conic {
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
         unsafe { &mut *(crate::ffi::Geom2d_Conic_as_Geom2d_Geometry_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_Conic_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Geom2d_Conic_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:83 - `Geom2d_Curve::TransformedParameter()`
@@ -4003,6 +4340,36 @@ impl Conic {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Conic_inherited_Copy(self as *const Self))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Conic_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Conic_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Conic_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Geom2d_Conic_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Conic_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_Conic_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dConic;
@@ -4037,6 +4404,15 @@ impl HandleGeom2dConic {
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dConic_to_HandleGeom2dGeometry(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Geom2d_Conic> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dConic_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -4393,6 +4769,16 @@ impl Curve {
         unsafe { &mut *(crate::ffi::Geom2d_Curve_as_Geom2d_Geometry_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_Curve_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Geom2d_Curve_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::Geom2d_Curve_inherited_Mirror(self as *mut Self, P) }
@@ -4493,6 +4879,36 @@ impl Curve {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Curve_inherited_Copy(self as *const Self))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Curve_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Curve_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Curve_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Geom2d_Curve_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Curve_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_Curve_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dCurve;
@@ -4518,6 +4934,15 @@ impl HandleGeom2dCurve {
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dCurve_to_HandleGeom2dGeometry(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Geom2d_Curve> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dCurve_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -4805,6 +5230,16 @@ impl Direction {
         unsafe { &mut *(crate::ffi::Geom2d_Direction_as_Geom2d_Geometry_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_Direction_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Geom2d_Direction_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -4948,6 +5383,36 @@ impl Direction {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Direction_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Direction_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Direction_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Geom2d_Direction_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Direction_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_Direction_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dDirection;
@@ -4982,6 +5447,15 @@ impl HandleGeom2dDirection {
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dDirection_to_HandleGeom2dGeometry(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Geom2d_Direction> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dDirection_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -5390,6 +5864,16 @@ impl Ellipse {
         unsafe { &mut *(crate::ffi::Geom2d_Ellipse_as_Geom2d_Geometry_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_Ellipse_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Geom2d_Ellipse_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -5591,6 +6075,36 @@ impl Ellipse {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Ellipse_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Ellipse_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Ellipse_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Geom2d_Ellipse_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Ellipse_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_Ellipse_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dEllipse;
@@ -5634,6 +6148,15 @@ impl HandleGeom2dEllipse {
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dEllipse_to_HandleGeom2dGeometry(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Geom2d_Ellipse> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dEllipse_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -5846,6 +6369,46 @@ impl Geometry {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Geometry_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_Geometry_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Geom2d_Geometry_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Geometry_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Geometry_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Geometry_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Geom2d_Geometry_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Geometry_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_Geometry_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dGeometry;
@@ -5865,6 +6428,15 @@ impl HandleGeom2dGeometry {
     /// Dereference this Handle to mutably access the underlying Geom2d_Geometry
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_Geometry {
         unsafe { &mut *(crate::ffi::HandleGeom2dGeometry_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Geom2d_Geometry> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dGeometry_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Downcast Handle<Geom2d_Geometry> to Handle<Geom2d_AxisPlacement>
@@ -6558,6 +7130,16 @@ impl Hyperbola {
         unsafe { &mut *(crate::ffi::Geom2d_Hyperbola_as_Geom2d_Geometry_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_Hyperbola_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Geom2d_Hyperbola_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -6759,6 +7341,36 @@ impl Hyperbola {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Hyperbola_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Hyperbola_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Hyperbola_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Geom2d_Hyperbola_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Hyperbola_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dHyperbola;
@@ -6802,6 +7414,15 @@ impl HandleGeom2dHyperbola {
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dHyperbola_to_HandleGeom2dGeometry(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Geom2d_Hyperbola> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dHyperbola_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -7092,6 +7713,16 @@ impl Line {
         unsafe { &mut *(crate::ffi::Geom2d_Line_as_Geom2d_Geometry_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_Line_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Geom2d_Line_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleGeom2dLine> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Line_to_handle(obj.into_raw())) }
@@ -7209,6 +7840,36 @@ impl Line {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Line_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Line_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Line_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Geom2d_Line_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Line_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_Line_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dLine;
@@ -7243,6 +7904,15 @@ impl HandleGeom2dLine {
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dLine_to_HandleGeom2dGeometry(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Geom2d_Line> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dLine_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -7680,6 +8350,18 @@ impl OffsetCurve {
         unsafe { &mut *(crate::ffi::Geom2d_OffsetCurve_as_Geom2d_Geometry_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_OffsetCurve_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Geom2d_OffsetCurve_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -7796,6 +8478,36 @@ impl OffsetCurve {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_OffsetCurve_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_OffsetCurve_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_OffsetCurve_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Geom2d_OffsetCurve_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Geom2d_OffsetCurve_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_OffsetCurve_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dOffsetCurve;
@@ -7832,6 +8544,15 @@ impl HandleGeom2dOffsetCurve {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dOffsetCurve_to_HandleGeom2dGeometry(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<Geom2d_OffsetCurve> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dOffsetCurve_to_HandleStandardTransient(self as *const Self),
+            )
         }
     }
 }
@@ -8172,6 +8893,16 @@ impl Parabola {
         unsafe { &mut *(crate::ffi::Geom2d_Parabola_as_Geom2d_Geometry_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_Parabola_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Geom2d_Parabola_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -8359,6 +9090,36 @@ impl Parabola {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Parabola_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Parabola_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Parabola_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Geom2d_Parabola_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Parabola_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_Parabola_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dParabola;
@@ -8402,6 +9163,15 @@ impl HandleGeom2dParabola {
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dParabola_to_HandleGeom2dGeometry(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Geom2d_Parabola> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dParabola_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -8489,6 +9259,16 @@ impl Point {
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
         unsafe { &mut *(crate::ffi::Geom2d_Point_as_Geom2d_Geometry_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_Point_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Geom2d_Point_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
@@ -8591,6 +9371,36 @@ impl Point {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Point_inherited_Copy(self as *const Self))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Point_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Point_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Point_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Geom2d_Point_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Point_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_Point_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dPoint;
@@ -8616,6 +9426,15 @@ impl HandleGeom2dPoint {
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dPoint_to_HandleGeom2dGeometry(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Geom2d_Point> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dPoint_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -8937,6 +9756,18 @@ impl Transformation {
         unsafe { &*(crate::ffi::Geom2d_Transformation_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_Transformation_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Geom2d_Transformation_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -8944,6 +9775,42 @@ impl Transformation {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Transformation_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Geom2d_Transformation_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Transformation_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Transformation_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::Geom2d_Transformation_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::Geom2d_Transformation_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_Transformation_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -8964,6 +9831,17 @@ impl HandleGeom2dTransformation {
     /// Dereference this Handle to mutably access the underlying Geom2d_Transformation
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_Transformation {
         unsafe { &mut *(crate::ffi::HandleGeom2dTransformation_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Geom2d_Transformation> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dTransformation_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -9441,6 +10319,18 @@ impl TrimmedCurve {
         unsafe { &mut *(crate::ffi::Geom2d_TrimmedCurve_as_Geom2d_Geometry_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_TrimmedCurve_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Geom2d_TrimmedCurve_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -9557,6 +10447,38 @@ impl TrimmedCurve {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Geom2d_TrimmedCurve_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_TrimmedCurve_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_TrimmedCurve_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Geom2d_TrimmedCurve_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Geom2d_TrimmedCurve_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_TrimmedCurve_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dTrimmedCurve;
@@ -9604,6 +10526,17 @@ impl HandleGeom2dTrimmedCurve {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dTrimmedCurve_to_HandleGeom2dGeometry(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<Geom2d_TrimmedCurve> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dTrimmedCurve_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -9660,6 +10593,33 @@ impl UndefinedDerivative {
         unsafe { crate::ffi::Geom2d_UndefinedDerivative_raise(c_theMessage.as_ptr()) }
     }
 
+    /// **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dUndefinedDerivative> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_UndefinedDerivative_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dUndefinedDerivative> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_UndefinedDerivative_new_instance_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
     /// **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -9673,20 +10633,175 @@ impl UndefinedDerivative {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_UndefinedDerivative_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_DomainError
+    pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
+        unsafe {
+            &*(crate::ffi::Geom2d_UndefinedDerivative_as_Standard_DomainError(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_DomainError (mutable)
+    pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
+        unsafe {
+            &mut *(crate::ffi::Geom2d_UndefinedDerivative_as_Standard_DomainError_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe {
+            &*(crate::ffi::Geom2d_UndefinedDerivative_as_Standard_Failure(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe {
+            &mut *(crate::ffi::Geom2d_UndefinedDerivative_as_Standard_Failure_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::Geom2d_UndefinedDerivative_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Geom2d_UndefinedDerivative_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dUndefinedDerivative> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_UndefinedDerivative_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::Geom2d_UndefinedDerivative_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::Geom2d_UndefinedDerivative_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Geom2d_UndefinedDerivative_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Geom2d_UndefinedDerivative_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_UndefinedDerivative_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::Geom2d_UndefinedDerivative_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::Geom2d_UndefinedDerivative_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_UndefinedDerivative_inherited_Delete(self as *const Self) }
+    }
 }
 
-// ── Skipped symbols for UndefinedDerivative (3 total) ──
+pub use crate::ffi::HandleGeom2dUndefinedDerivative;
+
+unsafe impl crate::CppDeletable for HandleGeom2dUndefinedDerivative {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeom2dUndefinedDerivative_destructor(ptr);
+    }
+}
+
+impl HandleGeom2dUndefinedDerivative {
+    /// Dereference this Handle to access the underlying Geom2d_UndefinedDerivative
+    pub fn get(&self) -> &crate::ffi::Geom2d_UndefinedDerivative {
+        unsafe { &*(crate::ffi::HandleGeom2dUndefinedDerivative_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_UndefinedDerivative
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_UndefinedDerivative {
+        unsafe { &mut *(crate::ffi::HandleGeom2dUndefinedDerivative_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Geom2d_UndefinedDerivative> to Handle<Standard_DomainError>
+    pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dUndefinedDerivative_to_HandleStandardDomainError(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Geom2d_UndefinedDerivative> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dUndefinedDerivative_to_HandleStandardFailure(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Geom2d_UndefinedDerivative> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dUndefinedDerivative_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for UndefinedDerivative (1 total) ──
 // SKIPPED: **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::Raise`
 //   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
 //   // pub fn raise(theMessage: &mut SStream);
-//
-// SKIPPED: **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::NewInstance`
-//   Reason: return type 'Handle(Geom2d_UndefinedDerivative)' is unknown
-//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Geom2d_UndefinedDerivative>>;
-//
-// SKIPPED: **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::NewInstance`
-//   Reason: return type 'Handle(Geom2d_UndefinedDerivative)' is unknown
-//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Geom2d_UndefinedDerivative>>;
 //
 
 // ========================
@@ -9741,6 +10856,33 @@ impl UndefinedValue {
         unsafe { crate::ffi::Geom2d_UndefinedValue_raise(c_theMessage.as_ptr()) }
     }
 
+    /// **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dUndefinedValue> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_UndefinedValue_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dUndefinedValue> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_UndefinedValue_new_instance_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
     /// **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -9754,20 +10896,158 @@ impl UndefinedValue {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_UndefinedValue_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_DomainError
+    pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
+        unsafe {
+            &*(crate::ffi::Geom2d_UndefinedValue_as_Standard_DomainError(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_DomainError (mutable)
+    pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
+        unsafe {
+            &mut *(crate::ffi::Geom2d_UndefinedValue_as_Standard_DomainError_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe { &*(crate::ffi::Geom2d_UndefinedValue_as_Standard_Failure(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe {
+            &mut *(crate::ffi::Geom2d_UndefinedValue_as_Standard_Failure_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_UndefinedValue_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Geom2d_UndefinedValue_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dUndefinedValue> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_UndefinedValue_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::Geom2d_UndefinedValue_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::Geom2d_UndefinedValue_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Geom2d_UndefinedValue_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_UndefinedValue_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_UndefinedValue_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::Geom2d_UndefinedValue_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::Geom2d_UndefinedValue_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_UndefinedValue_inherited_Delete(self as *const Self) }
+    }
 }
 
-// ── Skipped symbols for UndefinedValue (3 total) ──
+pub use crate::ffi::HandleGeom2dUndefinedValue;
+
+unsafe impl crate::CppDeletable for HandleGeom2dUndefinedValue {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeom2dUndefinedValue_destructor(ptr);
+    }
+}
+
+impl HandleGeom2dUndefinedValue {
+    /// Dereference this Handle to access the underlying Geom2d_UndefinedValue
+    pub fn get(&self) -> &crate::ffi::Geom2d_UndefinedValue {
+        unsafe { &*(crate::ffi::HandleGeom2dUndefinedValue_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_UndefinedValue
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_UndefinedValue {
+        unsafe { &mut *(crate::ffi::HandleGeom2dUndefinedValue_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Geom2d_UndefinedValue> to Handle<Standard_DomainError>
+    pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dUndefinedValue_to_HandleStandardDomainError(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Geom2d_UndefinedValue> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dUndefinedValue_to_HandleStandardFailure(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Geom2d_UndefinedValue> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dUndefinedValue_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for UndefinedValue (1 total) ──
 // SKIPPED: **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::Raise`
 //   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
 //   // pub fn raise(theMessage: &mut SStream);
-//
-// SKIPPED: **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::NewInstance`
-//   Reason: return type 'Handle(Geom2d_UndefinedValue)' is unknown
-//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Geom2d_UndefinedValue>>;
-//
-// SKIPPED: **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::NewInstance`
-//   Reason: return type 'Handle(Geom2d_UndefinedValue)' is unknown
-//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Geom2d_UndefinedValue>>;
 //
 
 // ========================
@@ -9891,6 +11171,16 @@ impl Vector {
         unsafe { &mut *(crate::ffi::Geom2d_Vector_as_Geom2d_Geometry_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Geom2d_Vector_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Geom2d_Vector_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::Geom2d_Vector_inherited_Mirror(self as *mut Self, P) }
@@ -9991,6 +11281,36 @@ impl Vector {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Vector_inherited_Copy(self as *const Self))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Vector_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Geom2d_Vector_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Vector_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Geom2d_Vector_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Geom2d_Vector_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_Vector_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dVector;
@@ -10016,6 +11336,15 @@ impl HandleGeom2dVector {
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dVector_to_HandleGeom2dGeometry(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Geom2d_Vector> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dVector_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -10304,6 +11633,22 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::Geom2d_VectorWithMagnitude_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Geom2d_VectorWithMagnitude_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -10455,6 +11800,47 @@ impl VectorWithMagnitude {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Geom2d_VectorWithMagnitude_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Geom2d_VectorWithMagnitude_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_VectorWithMagnitude_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::Geom2d_VectorWithMagnitude_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::Geom2d_VectorWithMagnitude_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Geom2d_VectorWithMagnitude_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleGeom2dVectorWithMagnitude;
@@ -10492,6 +11878,17 @@ impl HandleGeom2dVectorWithMagnitude {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleGeom2dVectorWithMagnitude_to_HandleGeom2dGeometry(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Geom2d_VectorWithMagnitude> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dVectorWithMagnitude_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )

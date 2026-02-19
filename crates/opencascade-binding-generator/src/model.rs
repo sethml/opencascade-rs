@@ -124,8 +124,6 @@ pub struct ParsedClass {
     pub static_methods: Vec<StaticMethod>,
     /// All method names in this class (including protected/private) - used for filtering inherited methods
     pub all_method_names: std::collections::HashSet<String>,
-    /// Whether this type has DEFINE_STANDARD_HANDLE (is a Handle type)
-    pub is_handle_type: bool,
     /// Direct base classes (for generating upcast helpers)
     pub base_classes: Vec<String>,
     /// Whether this class has a protected/private destructor (non-instantiable abstract base)

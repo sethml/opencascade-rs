@@ -114,6 +114,12 @@ impl TryFrom<i32> for FormatType {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleStandardDomainError, HandleStandardFailure, HandleStandardNoSuchObject,
+    HandleStandardTransient,
+};
+
 // ========================
 // From Resource_LexicalCompare.hxx
 // ========================
@@ -389,11 +395,51 @@ impl Manager {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Resource_Manager_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Resource_Manager_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleResourceManager> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Resource_Manager_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Resource_Manager_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Resource_Manager_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Resource_Manager_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Resource_Manager_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Resource_Manager_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Resource_Manager_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -414,6 +460,15 @@ impl HandleResourceManager {
     /// Dereference this Handle to mutably access the underlying Resource_Manager
     pub fn get_mut(&mut self) -> &mut crate::ffi::Resource_Manager {
         unsafe { &mut *(crate::ffi::HandleResourceManager_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Resource_Manager> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleResourceManager_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -488,6 +543,33 @@ impl NoSuchResource {
         unsafe { crate::ffi::Resource_NoSuchResource_raise(c_theMessage.as_ptr()) }
     }
 
+    /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleResourceNoSuchResource> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Resource_NoSuchResource_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleResourceNoSuchResource> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Resource_NoSuchResource_new_instance_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
     /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -501,20 +583,193 @@ impl NoSuchResource {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Resource_NoSuchResource_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_NoSuchObject
+    pub fn as_standard_no_such_object(&self) -> &crate::standard::NoSuchObject {
+        unsafe {
+            &*(crate::ffi::Resource_NoSuchResource_as_Standard_NoSuchObject(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_NoSuchObject (mutable)
+    pub fn as_standard_no_such_object_mut(&mut self) -> &mut crate::standard::NoSuchObject {
+        unsafe {
+            &mut *(crate::ffi::Resource_NoSuchResource_as_Standard_NoSuchObject_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_DomainError
+    pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
+        unsafe {
+            &*(crate::ffi::Resource_NoSuchResource_as_Standard_DomainError(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_DomainError (mutable)
+    pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
+        unsafe {
+            &mut *(crate::ffi::Resource_NoSuchResource_as_Standard_DomainError_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe { &*(crate::ffi::Resource_NoSuchResource_as_Standard_Failure(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe {
+            &mut *(crate::ffi::Resource_NoSuchResource_as_Standard_Failure_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::Resource_NoSuchResource_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Resource_NoSuchResource_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleResourceNoSuchResource> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Resource_NoSuchResource_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::Resource_NoSuchResource_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::Resource_NoSuchResource_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Resource_NoSuchResource_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Resource_NoSuchResource_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Resource_NoSuchResource_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::Resource_NoSuchResource_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::Resource_NoSuchResource_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Resource_NoSuchResource_inherited_Delete(self as *const Self) }
+    }
 }
 
-// ── Skipped symbols for NoSuchResource (3 total) ──
+pub use crate::ffi::HandleResourceNoSuchResource;
+
+unsafe impl crate::CppDeletable for HandleResourceNoSuchResource {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleResourceNoSuchResource_destructor(ptr);
+    }
+}
+
+impl HandleResourceNoSuchResource {
+    /// Dereference this Handle to access the underlying Resource_NoSuchResource
+    pub fn get(&self) -> &crate::ffi::Resource_NoSuchResource {
+        unsafe { &*(crate::ffi::HandleResourceNoSuchResource_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Resource_NoSuchResource
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Resource_NoSuchResource {
+        unsafe { &mut *(crate::ffi::HandleResourceNoSuchResource_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Resource_NoSuchResource> to Handle<Standard_NoSuchObject>
+    pub fn to_handle_no_such_object(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardNoSuchObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleResourceNoSuchResource_to_HandleStandardNoSuchObject(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Resource_NoSuchResource> to Handle<Standard_DomainError>
+    pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleResourceNoSuchResource_to_HandleStandardDomainError(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Resource_NoSuchResource> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleResourceNoSuchResource_to_HandleStandardFailure(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Resource_NoSuchResource> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleResourceNoSuchResource_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for NoSuchResource (1 total) ──
 // SKIPPED: **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::Raise`
 //   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
 //   // pub fn raise(theMessage: &mut SStream);
-//
-// SKIPPED: **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::NewInstance`
-//   Reason: return type 'Handle(Resource_NoSuchResource)' is unknown
-//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Resource_NoSuchResource>>;
-//
-// SKIPPED: **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::NewInstance`
-//   Reason: return type 'Handle(Resource_NoSuchResource)' is unknown
-//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Resource_NoSuchResource>>;
 //
 
 // ========================

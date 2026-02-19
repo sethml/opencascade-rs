@@ -26,6 +26,7 @@ pub struct CollectedTypes {
 /// Collect all referenced OCCT types from class methods and constructors
 pub fn collect_referenced_types(
     classes: &[&ParsedClass],
+    handle_able_classes: &HashSet<String>,
 ) -> CollectedTypes {
     let mut result = CollectedTypes {
         classes: BTreeSet::new(),
@@ -36,7 +37,7 @@ pub fn collect_referenced_types(
         // Add Handle type for classes that are transient (can be wrapped in Handle)
         // Handle types with protected destructors are included because Handle<T>
         // manages lifetime via reference counting, not direct delete.
-        if class.is_handle_type {
+        if handle_able_classes.contains(&class.name) {
             result.handles.insert(class.name.clone());
         }
 
@@ -163,7 +164,7 @@ pub fn generate_ffi(
     let handle_decls = generate_handle_declarations(all_classes, handle_able_classes, &symbol_table.handle_able_classes);
 
     // Collect opaque type declarations (types referenced but not defined)
-    let collected_types = collect_referenced_types(all_classes);
+    let collected_types = collect_referenced_types(all_classes, handle_able_classes);
     let (opaque_type_decls, nested_types) = generate_opaque_declarations(
         &collected_types,
         all_classes,

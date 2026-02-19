@@ -208,7 +208,8 @@ impl TryFrom<i32> for DatumReferenceModifierType {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
-    HandleStepDataSelectInt, HandleStepDataSelectMember, HandleStepReprShapeAspect,
+    HandleStandardTransient, HandleStepDataSelectInt, HandleStepDataSelectMember,
+    HandleStepReprShapeAspect,
 };
 
 // ========================
@@ -306,6 +307,16 @@ impl Datum {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::StepDimTol_Datum_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::StepDimTol_Datum_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -376,6 +387,36 @@ impl Datum {
             .unwrap()
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::StepDimTol_Datum_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::StepDimTol_Datum_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_Datum_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::StepDimTol_Datum_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_Datum_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_Datum_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleStepDimTolDatum;
@@ -403,6 +444,15 @@ impl HandleStepDimTolDatum {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleStepDimTolDatum_to_HandleStepReprShapeAspect(self as *const Self),
             )
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_Datum> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolDatum_to_HandleStandardTransient(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -732,6 +782,24 @@ impl DatumReferenceModifierWithValue {
         unsafe { &*(crate::ffi::StepDimTol_DatumReferenceModifierWithValue_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumReferenceModifierWithValue_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_DatumReferenceModifierWithValue_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -739,6 +807,62 @@ impl DatumReferenceModifierWithValue {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::StepDimTol_DatumReferenceModifierWithValue_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceModifierWithValue_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceModifierWithValue_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceModifierWithValue_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceModifierWithValue_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceModifierWithValue_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceModifierWithValue_inherited_Delete(
+                self as *const Self,
             )
         }
     }
@@ -766,6 +890,13 @@ impl HandleStepDimTolDatumReferenceModifierWithValue {
             &mut *(crate::ffi::HandleStepDimTolDatumReferenceModifierWithValue_get_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_DatumReferenceModifierWithValue> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolDatumReferenceModifierWithValue_to_HandleStandardTransient(self as *const Self))
         }
     }
 }
@@ -1122,6 +1253,22 @@ impl GeometricTolerance {
         unsafe { &*(crate::ffi::StepDimTol_GeometricTolerance_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricTolerance_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_GeometricTolerance_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1131,6 +1278,53 @@ impl GeometricTolerance {
                 obj.into_raw(),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricTolerance_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricTolerance_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricTolerance_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricTolerance_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricTolerance_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::StepDimTol_GeometricTolerance_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1151,6 +1345,17 @@ impl HandleStepDimTolGeometricTolerance {
     /// Dereference this Handle to mutably access the underlying StepDimTol_GeometricTolerance
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_GeometricTolerance {
         unsafe { &mut *(crate::ffi::HandleStepDimTolGeometricTolerance_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StepDimTol_GeometricTolerance> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolGeometricTolerance_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -1471,6 +1676,24 @@ impl HArray1OfDatumReferenceModifier {
         unsafe { &*(crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1478,6 +1701,62 @@ impl HArray1OfDatumReferenceModifier {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_inherited_Delete(
+                self as *const Self,
             )
         }
     }
@@ -1505,6 +1784,13 @@ impl HandleStepDimTolHArray1OfDatumReferenceModifier {
             &mut *(crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier_get_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_HArray1OfDatumReferenceModifier> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier_to_HandleStandardTransient(self as *const Self))
         }
     }
 }
@@ -1591,6 +1877,24 @@ impl HArray1OfDatumSystemOrReference {
         unsafe { &*(crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1598,6 +1902,62 @@ impl HArray1OfDatumSystemOrReference {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_inherited_Delete(
+                self as *const Self,
             )
         }
     }
@@ -1625,6 +1985,13 @@ impl HandleStepDimTolHArray1OfDatumSystemOrReference {
             &mut *(crate::ffi::HandleStepDimTolHArray1OfDatumSystemOrReference_get_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_HArray1OfDatumSystemOrReference> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolHArray1OfDatumSystemOrReference_to_HandleStandardTransient(self as *const Self))
         }
     }
 }
@@ -1796,6 +2163,22 @@ impl SimpleDatumReferenceModifierMember {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_SimpleDatumReferenceModifierMember_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_SimpleDatumReferenceModifierMember_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1935,6 +2318,62 @@ impl SimpleDatumReferenceModifierMember {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_SimpleDatumReferenceModifierMember_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_SimpleDatumReferenceModifierMember_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_SimpleDatumReferenceModifierMember_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_SimpleDatumReferenceModifierMember_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_SimpleDatumReferenceModifierMember_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::StepDimTol_SimpleDatumReferenceModifierMember_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
 }
 
 pub use crate::ffi::HandleStepDimTolSimpleDatumReferenceModifierMember;
@@ -1977,6 +2416,13 @@ impl HandleStepDimTolSimpleDatumReferenceModifierMember {
     ) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolSimpleDatumReferenceModifierMember_to_HandleStepDataSelectMember(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_SimpleDatumReferenceModifierMember> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolSimpleDatumReferenceModifierMember_to_HandleStandardTransient(self as *const Self))
         }
     }
 }

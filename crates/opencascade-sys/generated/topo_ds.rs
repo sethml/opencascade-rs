@@ -150,7 +150,8 @@ pub use crate::ffi::{
     HandleBOPAlgoAlertUnableToOrientTheShape, HandleBOPAlgoAlertUnableToRemoveTheFeature,
     HandleBOPAlgoAlertUnableToRepeat, HandleBOPAlgoAlertUnableToTrim,
     HandleBOPAlgoAlertUnknownShape, HandleBOPAlgoAlertUnsupportedType, HandleBRepTEdge,
-    HandleBRepTFace, HandleBRepTVertex, HandleMessageAlert,
+    HandleBRepTFace, HandleBRepTVertex, HandleMessageAlert, HandleStandardDomainError,
+    HandleStandardFailure, HandleStandardTransient,
 };
 
 // ========================
@@ -227,6 +228,18 @@ impl AlertWithShape {
         unsafe { &mut *(crate::ffi::TopoDS_AlertWithShape_as_Message_Alert_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TopoDS_AlertWithShape_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopoDS_AlertWithShape_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -243,6 +256,42 @@ impl AlertWithShape {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopoDS_AlertWithShape_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopoDS_AlertWithShape_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_AlertWithShape_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopoDS_AlertWithShape_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::TopoDS_AlertWithShape_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::TopoDS_AlertWithShape_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopoDS_AlertWithShape_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -271,6 +320,17 @@ impl HandleTopoDSAlertWithShape {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSAlertWithShape_to_HandleMessageAlert(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<TopoDS_AlertWithShape> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopoDSAlertWithShape_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1903,6 +1963,33 @@ impl FrozenShape {
         unsafe { crate::ffi::TopoDS_FrozenShape_raise(c_theMessage.as_ptr()) }
     }
 
+    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSFrozenShape> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_FrozenShape_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSFrozenShape> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_FrozenShape_new_instance_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
     /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -1917,26 +2004,150 @@ impl FrozenShape {
         unsafe { &*(crate::ffi::TopoDS_FrozenShape_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_DomainError
+    pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
+        unsafe { &*(crate::ffi::TopoDS_FrozenShape_as_Standard_DomainError(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_DomainError (mutable)
+    pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
+        unsafe {
+            &mut *(crate::ffi::TopoDS_FrozenShape_as_Standard_DomainError_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe { &*(crate::ffi::TopoDS_FrozenShape_as_Standard_Failure(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe { &mut *(crate::ffi::TopoDS_FrozenShape_as_Standard_Failure_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TopoDS_FrozenShape_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopoDS_FrozenShape_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopoDS_FrozenShape_to_owned(self as *const Self))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSFrozenShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_FrozenShape_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::TopoDS_FrozenShape_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::TopoDS_FrozenShape_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_FrozenShape_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_FrozenShape_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopoDS_FrozenShape_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TopoDS_FrozenShape_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TopoDS_FrozenShape_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopoDS_FrozenShape_inherited_Delete(self as *const Self) }
+    }
 }
 
-// ── Skipped symbols for FrozenShape (3 total) ──
+pub use crate::ffi::HandleTopoDSFrozenShape;
+
+unsafe impl crate::CppDeletable for HandleTopoDSFrozenShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopoDSFrozenShape_destructor(ptr);
+    }
+}
+
+impl HandleTopoDSFrozenShape {
+    /// Dereference this Handle to access the underlying TopoDS_FrozenShape
+    pub fn get(&self) -> &crate::ffi::TopoDS_FrozenShape {
+        unsafe { &*(crate::ffi::HandleTopoDSFrozenShape_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopoDS_FrozenShape
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_FrozenShape {
+        unsafe { &mut *(crate::ffi::HandleTopoDSFrozenShape_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopoDS_FrozenShape> to Handle<Standard_DomainError>
+    pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopoDSFrozenShape_to_HandleStandardDomainError(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TopoDS_FrozenShape> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSFrozenShape_to_HandleStandardFailure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TopoDS_FrozenShape> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopoDSFrozenShape_to_HandleStandardTransient(self as *const Self),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for FrozenShape (1 total) ──
 // SKIPPED: **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::Raise`
 //   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
 //   // pub fn raise(theMessage: &mut SStream);
-//
-// SKIPPED: **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::NewInstance`
-//   Reason: return type 'Handle(TopoDS_FrozenShape)' is unknown
-//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<TopoDS_FrozenShape>>;
-//
-// SKIPPED: **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::NewInstance`
-//   Reason: return type 'Handle(TopoDS_FrozenShape)' is unknown
-//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<TopoDS_FrozenShape>>;
 //
 
 // ========================
@@ -2008,6 +2219,16 @@ impl HShape {
         unsafe { &*(crate::ffi::TopoDS_HShape_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TopoDS_HShape_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TopoDS_HShape_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2020,6 +2241,36 @@ impl HShape {
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSHShape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_HShape_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_HShape_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_HShape_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopoDS_HShape_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TopoDS_HShape_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TopoDS_HShape_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopoDS_HShape_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -2040,6 +2291,15 @@ impl HandleTopoDSHShape {
     /// Dereference this Handle to mutably access the underlying TopoDS_HShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_HShape {
         unsafe { &mut *(crate::ffi::HandleTopoDSHShape_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopoDS_HShape> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSHShape_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -2207,6 +2467,33 @@ impl LockedShape {
         unsafe { crate::ffi::TopoDS_LockedShape_raise(c_theMessage.as_ptr()) }
     }
 
+    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSLockedShape> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_LockedShape_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSLockedShape> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_LockedShape_new_instance_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
     /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -2221,26 +2508,150 @@ impl LockedShape {
         unsafe { &*(crate::ffi::TopoDS_LockedShape_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_DomainError
+    pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
+        unsafe { &*(crate::ffi::TopoDS_LockedShape_as_Standard_DomainError(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_DomainError (mutable)
+    pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
+        unsafe {
+            &mut *(crate::ffi::TopoDS_LockedShape_as_Standard_DomainError_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe { &*(crate::ffi::TopoDS_LockedShape_as_Standard_Failure(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe { &mut *(crate::ffi::TopoDS_LockedShape_as_Standard_Failure_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TopoDS_LockedShape_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopoDS_LockedShape_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopoDS_LockedShape_to_owned(self as *const Self))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSLockedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_LockedShape_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::TopoDS_LockedShape_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::TopoDS_LockedShape_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_LockedShape_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_LockedShape_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopoDS_LockedShape_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TopoDS_LockedShape_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TopoDS_LockedShape_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopoDS_LockedShape_inherited_Delete(self as *const Self) }
+    }
 }
 
-// ── Skipped symbols for LockedShape (3 total) ──
+pub use crate::ffi::HandleTopoDSLockedShape;
+
+unsafe impl crate::CppDeletable for HandleTopoDSLockedShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopoDSLockedShape_destructor(ptr);
+    }
+}
+
+impl HandleTopoDSLockedShape {
+    /// Dereference this Handle to access the underlying TopoDS_LockedShape
+    pub fn get(&self) -> &crate::ffi::TopoDS_LockedShape {
+        unsafe { &*(crate::ffi::HandleTopoDSLockedShape_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopoDS_LockedShape
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_LockedShape {
+        unsafe { &mut *(crate::ffi::HandleTopoDSLockedShape_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopoDS_LockedShape> to Handle<Standard_DomainError>
+    pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopoDSLockedShape_to_HandleStandardDomainError(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TopoDS_LockedShape> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSLockedShape_to_HandleStandardFailure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TopoDS_LockedShape> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopoDSLockedShape_to_HandleStandardTransient(self as *const Self),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for LockedShape (1 total) ──
 // SKIPPED: **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::Raise`
 //   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
 //   // pub fn raise(theMessage: &mut SStream);
-//
-// SKIPPED: **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::NewInstance`
-//   Reason: return type 'Handle(TopoDS_LockedShape)' is unknown
-//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<TopoDS_LockedShape>>;
-//
-// SKIPPED: **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::NewInstance`
-//   Reason: return type 'Handle(TopoDS_LockedShape)' is unknown
-//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<TopoDS_LockedShape>>;
 //
 
 // ========================
@@ -3191,6 +3602,18 @@ impl TCompSolid {
         unsafe { &mut *(crate::ffi::TopoDS_TCompSolid_as_TopoDS_TShape_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TopoDS_TCompSolid_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopoDS_TCompSolid_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3251,6 +3674,36 @@ impl TCompSolid {
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::TopoDS_TCompSolid_inherited_NbChildren(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_TCompSolid_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_TCompSolid_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopoDS_TCompSolid_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TopoDS_TCompSolid_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TopoDS_TCompSolid_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopoDS_TCompSolid_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTopoDSTCompSolid;
@@ -3278,6 +3731,15 @@ impl HandleTopoDSTCompSolid {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTCompSolid_to_HandleTopoDSTShape(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<TopoDS_TCompSolid> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopoDSTCompSolid_to_HandleStandardTransient(self as *const Self),
+            )
         }
     }
 }
@@ -3351,6 +3813,16 @@ impl TCompound {
         unsafe { &mut *(crate::ffi::TopoDS_TCompound_as_TopoDS_TShape_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TopoDS_TCompound_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TopoDS_TCompound_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3409,6 +3881,36 @@ impl TCompound {
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::TopoDS_TCompound_inherited_NbChildren(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_TCompound_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_TCompound_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopoDS_TCompound_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TopoDS_TCompound_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TopoDS_TCompound_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopoDS_TCompound_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTopoDSTCompound;
@@ -3434,6 +3936,15 @@ impl HandleTopoDSTCompound {
     pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTCompound_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TopoDS_TCompound> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTCompound_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -3496,6 +4007,16 @@ impl TEdge {
         unsafe { &mut *(crate::ffi::TopoDS_TEdge_as_TopoDS_TShape_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TopoDS_TEdge_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TopoDS_TEdge_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         unsafe { crate::ffi::TopoDS_TEdge_inherited_Free(self as *const Self) }
@@ -3549,6 +4070,36 @@ impl TEdge {
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::TopoDS_TEdge_inherited_NbChildren(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_TEdge_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_TEdge_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopoDS_TEdge_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TopoDS_TEdge_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TopoDS_TEdge_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopoDS_TEdge_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTopoDSTEdge;
@@ -3574,6 +4125,15 @@ impl HandleTopoDSTEdge {
     pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTEdge_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TopoDS_TEdge> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTEdge_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -3665,6 +4225,16 @@ impl TFace {
         unsafe { &mut *(crate::ffi::TopoDS_TFace_as_TopoDS_TShape_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TopoDS_TFace_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TopoDS_TFace_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TFace_to_owned(self as *const Self)) }
@@ -3719,6 +4289,36 @@ impl TFace {
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::TopoDS_TFace_inherited_NbChildren(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_TFace_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_TFace_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopoDS_TFace_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TopoDS_TFace_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TopoDS_TFace_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopoDS_TFace_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTopoDSTFace;
@@ -3744,6 +4344,15 @@ impl HandleTopoDSTFace {
     pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTFace_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TopoDS_TFace> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTFace_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -3944,6 +4553,46 @@ impl TShape {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TShape_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TopoDS_TShape_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TopoDS_TShape_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_TShape_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_TShape_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopoDS_TShape_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TopoDS_TShape_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TopoDS_TShape_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopoDS_TShape_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTopoDSTShape;
@@ -3963,6 +4612,15 @@ impl HandleTopoDSTShape {
     /// Dereference this Handle to mutably access the underlying TopoDS_TShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TShape {
         unsafe { &mut *(crate::ffi::HandleTopoDSTShape_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopoDS_TShape> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTShape_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Downcast Handle<TopoDS_TShape> to Handle<BRep_TEdge>
@@ -4201,6 +4859,16 @@ impl TShell {
         unsafe { &mut *(crate::ffi::TopoDS_TShell_as_TopoDS_TShape_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TopoDS_TShell_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TopoDS_TShell_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4259,6 +4927,36 @@ impl TShell {
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::TopoDS_TShell_inherited_NbChildren(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_TShell_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_TShell_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopoDS_TShell_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TopoDS_TShell_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TopoDS_TShell_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopoDS_TShell_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTopoDSTShell;
@@ -4284,6 +4982,15 @@ impl HandleTopoDSTShell {
     pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTShell_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TopoDS_TShell> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTShell_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -4360,6 +5067,16 @@ impl TSolid {
         unsafe { &mut *(crate::ffi::TopoDS_TSolid_as_TopoDS_TShape_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TopoDS_TSolid_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TopoDS_TSolid_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4418,6 +5135,36 @@ impl TSolid {
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::TopoDS_TSolid_inherited_NbChildren(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_TSolid_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_TSolid_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopoDS_TSolid_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TopoDS_TSolid_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TopoDS_TSolid_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopoDS_TSolid_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTopoDSTSolid;
@@ -4443,6 +5190,15 @@ impl HandleTopoDSTSolid {
     pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTSolid_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TopoDS_TSolid> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTSolid_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -4505,6 +5261,16 @@ impl TVertex {
         unsafe { &mut *(crate::ffi::TopoDS_TVertex_as_TopoDS_TShape_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TopoDS_TVertex_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TopoDS_TVertex_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         unsafe { crate::ffi::TopoDS_TVertex_inherited_Free(self as *const Self) }
@@ -4558,6 +5324,36 @@ impl TVertex {
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::TopoDS_TVertex_inherited_NbChildren(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_TVertex_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_TVertex_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopoDS_TVertex_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TopoDS_TVertex_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TopoDS_TVertex_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopoDS_TVertex_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTopoDSTVertex;
@@ -4583,6 +5379,15 @@ impl HandleTopoDSTVertex {
     pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTVertex_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TopoDS_TVertex> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTVertex_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -4672,6 +5477,16 @@ impl TWire {
         unsafe { &mut *(crate::ffi::TopoDS_TWire_as_TopoDS_TShape_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TopoDS_TWire_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TopoDS_TWire_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TWire_to_owned(self as *const Self)) }
@@ -4726,6 +5541,36 @@ impl TWire {
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::TopoDS_TWire_inherited_NbChildren(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_TWire_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_TWire_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopoDS_TWire_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TopoDS_TWire_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TopoDS_TWire_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopoDS_TWire_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTopoDSTWire;
@@ -4751,6 +5596,15 @@ impl HandleTopoDSTWire {
     pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTWire_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TopoDS_TWire> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTWire_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -4810,6 +5664,33 @@ impl UnCompatibleShapes {
         unsafe { crate::ffi::TopoDS_UnCompatibleShapes_raise(c_theMessage.as_ptr()) }
     }
 
+    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSUnCompatibleShapes> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_UnCompatibleShapes_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSUnCompatibleShapes> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_UnCompatibleShapes_new_instance_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
     /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -4824,6 +5705,52 @@ impl UnCompatibleShapes {
         unsafe { &*(crate::ffi::TopoDS_UnCompatibleShapes_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_DomainError
+    pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
+        unsafe {
+            &*(crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_DomainError(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_DomainError (mutable)
+    pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
+        unsafe {
+            &mut *(crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_DomainError_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe {
+            &*(crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_Failure(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe {
+            &mut *(crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_Failure_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4832,20 +5759,124 @@ impl UnCompatibleShapes {
             ))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSUnCompatibleShapes> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_UnCompatibleShapes_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::TopoDS_UnCompatibleShapes_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::TopoDS_UnCompatibleShapes_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopoDS_UnCompatibleShapes_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopoDS_UnCompatibleShapes_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopoDS_UnCompatibleShapes_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::TopoDS_UnCompatibleShapes_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::TopoDS_UnCompatibleShapes_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopoDS_UnCompatibleShapes_inherited_Delete(self as *const Self) }
+    }
 }
 
-// ── Skipped symbols for UnCompatibleShapes (3 total) ──
+pub use crate::ffi::HandleTopoDSUnCompatibleShapes;
+
+unsafe impl crate::CppDeletable for HandleTopoDSUnCompatibleShapes {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopoDSUnCompatibleShapes_destructor(ptr);
+    }
+}
+
+impl HandleTopoDSUnCompatibleShapes {
+    /// Dereference this Handle to access the underlying TopoDS_UnCompatibleShapes
+    pub fn get(&self) -> &crate::ffi::TopoDS_UnCompatibleShapes {
+        unsafe { &*(crate::ffi::HandleTopoDSUnCompatibleShapes_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopoDS_UnCompatibleShapes
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_UnCompatibleShapes {
+        unsafe { &mut *(crate::ffi::HandleTopoDSUnCompatibleShapes_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopoDS_UnCompatibleShapes> to Handle<Standard_DomainError>
+    pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopoDSUnCompatibleShapes_to_HandleStandardDomainError(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TopoDS_UnCompatibleShapes> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopoDSUnCompatibleShapes_to_HandleStandardFailure(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TopoDS_UnCompatibleShapes> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopoDSUnCompatibleShapes_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for UnCompatibleShapes (1 total) ──
 // SKIPPED: **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::Raise`
 //   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
 //   // pub fn raise(theMessage: &mut SStream);
-//
-// SKIPPED: **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::NewInstance`
-//   Reason: return type 'Handle(TopoDS_UnCompatibleShapes)' is unknown
-//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<TopoDS_UnCompatibleShapes>>;
-//
-// SKIPPED: **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::NewInstance`
-//   Reason: return type 'Handle(TopoDS_UnCompatibleShapes)' is unknown
-//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<TopoDS_UnCompatibleShapes>>;
 //
 
 // ========================

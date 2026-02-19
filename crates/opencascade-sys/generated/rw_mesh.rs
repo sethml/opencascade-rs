@@ -146,7 +146,7 @@ impl TryFrom<i32> for NameFormat {
 pub use crate::ffi::{
     HandlePolyTriangulation, HandleRWGltfCafReader, HandleRWGltfGltfLatePrimitiveArray,
     HandleRWGltfGltfMaterialMap, HandleRWGltfTriangulationReader, HandleRWObjCafReader,
-    HandleRWObjObjMaterialMap,
+    HandleRWObjObjMaterialMap, HandleStandardTransient,
 };
 
 // ========================
@@ -419,6 +419,46 @@ impl CafReader {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::RWMesh_CafReader_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::RWMesh_CafReader_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::RWMesh_CafReader_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::RWMesh_CafReader_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::RWMesh_CafReader_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::RWMesh_CafReader_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::RWMesh_CafReader_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::RWMesh_CafReader_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::RWMesh_CafReader_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleRWMeshCafReader;
@@ -438,6 +478,15 @@ impl HandleRWMeshCafReader {
     /// Dereference this Handle to mutably access the underlying RWMesh_CafReader
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWMesh_CafReader {
         unsafe { &mut *(crate::ffi::HandleRWMeshCafReader_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<RWMesh_CafReader> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleRWMeshCafReader_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Downcast Handle<RWMesh_CafReader> to Handle<RWGltf_CafReader>
@@ -1341,6 +1390,48 @@ impl MaterialMap {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::RWMesh_MaterialMap_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::RWMesh_MaterialMap_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::RWMesh_MaterialMap_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::RWMesh_MaterialMap_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::RWMesh_MaterialMap_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::RWMesh_MaterialMap_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::RWMesh_MaterialMap_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::RWMesh_MaterialMap_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::RWMesh_MaterialMap_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleRWMeshMaterialMap;
@@ -1360,6 +1451,15 @@ impl HandleRWMeshMaterialMap {
     /// Dereference this Handle to mutably access the underlying RWMesh_MaterialMap
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWMesh_MaterialMap {
         unsafe { &mut *(crate::ffi::HandleRWMeshMaterialMap_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<RWMesh_MaterialMap> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleRWMeshMaterialMap_to_HandleStandardTransient(self as *const Self),
+            )
+        }
     }
 
     /// Downcast Handle<RWMesh_MaterialMap> to Handle<RWGltf_GltfMaterialMap>
@@ -1698,6 +1798,63 @@ impl TriangulationReader {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::RWMesh_TriangulationReader_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::RWMesh_TriangulationReader_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::RWMesh_TriangulationReader_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::RWMesh_TriangulationReader_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::RWMesh_TriangulationReader_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::RWMesh_TriangulationReader_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::RWMesh_TriangulationReader_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::RWMesh_TriangulationReader_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::RWMesh_TriangulationReader_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleRWMeshTriangulationReader;
@@ -1717,6 +1874,17 @@ impl HandleRWMeshTriangulationReader {
     /// Dereference this Handle to mutably access the underlying RWMesh_TriangulationReader
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWMesh_TriangulationReader {
         unsafe { &mut *(crate::ffi::HandleRWMeshTriangulationReader_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<RWMesh_TriangulationReader> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleRWMeshTriangulationReader_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Downcast Handle<RWMesh_TriangulationReader> to Handle<RWGltf_TriangulationReader>
@@ -1918,6 +2086,22 @@ impl TriangulationSource {
     pub fn as_poly_triangulation_mut(&mut self) -> &mut crate::poly::Triangulation {
         unsafe {
             &mut *(crate::ffi::RWMesh_TriangulationSource_as_Poly_Triangulation_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::RWMesh_TriangulationSource_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::RWMesh_TriangulationSource_as_Standard_Transient_mut(
                 self as *mut Self,
             ))
         }
@@ -2289,6 +2473,47 @@ impl TriangulationSource {
             crate::ffi::RWMesh_TriangulationSource_inherited_UnloadDeferredData(self as *mut Self)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::RWMesh_TriangulationSource_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::RWMesh_TriangulationSource_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::RWMesh_TriangulationSource_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::RWMesh_TriangulationSource_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::RWMesh_TriangulationSource_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::RWMesh_TriangulationSource_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleRWMeshTriangulationSource;
@@ -2315,6 +2540,17 @@ impl HandleRWMeshTriangulationSource {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleRWMeshTriangulationSource_to_HandlePolyTriangulation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<RWMesh_TriangulationSource> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleRWMeshTriangulationSource_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )

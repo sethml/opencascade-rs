@@ -274,6 +274,11 @@ fn main() -> Result<()> {
     let collection_type_names: HashSet<String> =
         all_collections.iter().map(|c| c.typedef_name.clone()).collect();
 
+    // Compute handle-able classes via transitive closure of inheritance graph.
+    // This is done before the symbol table so the resolver can use it instead of
+    // relying on the old per-class parser heuristic.
+    let handle_able_classes = codegen::bindings::compute_handle_able_classes(&all_classes);
+
     // Build symbol table (Pass 1 of two-pass architecture)
     // This resolves all symbols and makes binding decisions ONCE
     let ordered_modules = graph.modules_in_order();
@@ -284,6 +289,7 @@ fn main() -> Result<()> {
         &all_enums,
         &all_functions,
         &collection_type_names,
+        &handle_able_classes,
     );
 
     if args.verbose {
@@ -344,7 +350,7 @@ fn main() -> Result<()> {
     }
 
     // Generate FFI output
-    generate_output(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers, &exclude_methods)
+    generate_output(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers, &exclude_methods, &handle_able_classes)
 }
 
 /// Detect "utility namespace classes" and convert their static methods to free functions.
@@ -555,6 +561,7 @@ fn generate_output(
     symbol_table: &resolver::SymbolTable,
     known_headers: &HashSet<String>,
     exclude_methods: &HashSet<(String, String)>,
+    handle_able_classes: &HashSet<String>,
 ) -> Result<()> {
     use model::ParsedClass;
 
@@ -577,7 +584,6 @@ fn generate_output(
     let collection_type_names: std::collections::HashSet<String> =
         all_collections.iter().map(|c| c.typedef_name.clone()).collect();
     let extra_typedef_names = parser::get_collected_typedef_names();
-    let handle_able_classes = codegen::bindings::compute_handle_able_classes(all_classes);
     let all_bindings =
         codegen::bindings::compute_all_class_bindings(all_classes, symbol_table, &collection_type_names, &extra_typedef_names, exclude_methods);
 
@@ -690,7 +696,7 @@ fn generate_output(
     }
 
     // B. Opaque referenced types (types referenced in method signatures but not defined)
-    let collected_types = codegen::rust::collect_referenced_types(all_classes);
+    let collected_types = codegen::rust::collect_referenced_types(all_classes, &handle_able_classes);
     let defined_classes: HashSet<String> = all_classes.iter().map(|c| c.name.clone()).collect();
     let all_enum_names = &symbol_table.all_enum_names;
 

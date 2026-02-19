@@ -6,6 +6,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleStandardTransient;
+
 // ========================
 // From NLPlate_HGPPConstraint.hxx
 // ========================
@@ -158,6 +161,54 @@ impl HGPPConstraint {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NLPlate_HGPPConstraint_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::NLPlate_HGPPConstraint_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::NLPlate_HGPPConstraint_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NLPlate_HGPPConstraint_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::NLPlate_HGPPConstraint_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::NLPlate_HGPPConstraint_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::NLPlate_HGPPConstraint_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::NLPlate_HGPPConstraint_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::NLPlate_HGPPConstraint_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleNLPlateHGPPConstraint;
@@ -177,6 +228,17 @@ impl HandleNLPlateHGPPConstraint {
     /// Dereference this Handle to mutably access the underlying NLPlate_HGPPConstraint
     pub fn get_mut(&mut self) -> &mut crate::ffi::NLPlate_HGPPConstraint {
         unsafe { &mut *(crate::ffi::HandleNLPlateHGPPConstraint_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<NLPlate_HGPPConstraint> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHGPPConstraint_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Downcast Handle<NLPlate_HGPPConstraint> to Handle<NLPlate_HPG0Constraint>
@@ -407,6 +469,18 @@ impl HPG0Constraint {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::NLPlate_HPG0Constraint_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::NLPlate_HPG0Constraint_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -510,6 +584,42 @@ impl HPG0Constraint {
     pub fn g3_criterion(&self) -> f64 {
         unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_G3Criterion(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NLPlate_HPG0Constraint_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::NLPlate_HPG0Constraint_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::NLPlate_HPG0Constraint_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleNLPlateHPG0Constraint;
@@ -538,6 +648,17 @@ impl HandleNLPlateHPG0Constraint {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleNLPlateHPG0Constraint_to_HandleNLPlateHGPPConstraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NLPlate_HPG0Constraint> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG0Constraint_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -699,6 +820,22 @@ impl HPG0G1Constraint {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::NLPlate_HPG0G1Constraint_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::NLPlate_HPG0G1Constraint_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -837,6 +974,44 @@ impl HPG0G1Constraint {
     pub fn g3_criterion(&self) -> f64 {
         unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_G3Criterion(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NLPlate_HPG0G1Constraint_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NLPlate_HPG0G1Constraint_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::NLPlate_HPG0G1Constraint_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::NLPlate_HPG0G1Constraint_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleNLPlateHPG0G1Constraint;
@@ -878,6 +1053,17 @@ impl HandleNLPlateHPG0G1Constraint {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleNLPlateHPG0G1Constraint_to_HandleNLPlateHGPPConstraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NLPlate_HPG0G1Constraint> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG0G1Constraint_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -1025,6 +1211,22 @@ impl HPG0G2Constraint {
     pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
         unsafe {
             &mut *(crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HGPPConstraint_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::NLPlate_HPG0G2Constraint_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::NLPlate_HPG0G2Constraint_as_Standard_Transient_mut(
                 self as *mut Self,
             ))
         }
@@ -1180,6 +1382,44 @@ impl HPG0G2Constraint {
     pub fn g3_criterion(&self) -> f64 {
         unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_G3Criterion(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NLPlate_HPG0G2Constraint_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NLPlate_HPG0G2Constraint_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::NLPlate_HPG0G2Constraint_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::NLPlate_HPG0G2Constraint_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleNLPlateHPG0G2Constraint;
@@ -1234,6 +1474,17 @@ impl HandleNLPlateHPG0G2Constraint {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleNLPlateHPG0G2Constraint_to_HandleNLPlateHGPPConstraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NLPlate_HPG0G2Constraint> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG0G2Constraint_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -1382,6 +1633,22 @@ impl HPG0G3Constraint {
     pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
         unsafe {
             &mut *(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HGPPConstraint_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::NLPlate_HPG0G3Constraint_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::NLPlate_HPG0G3Constraint_as_Standard_Transient_mut(
                 self as *mut Self,
             ))
         }
@@ -1537,6 +1804,44 @@ impl HPG0G3Constraint {
     pub fn g3_criterion(&self) -> f64 {
         unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_G3Criterion(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NLPlate_HPG0G3Constraint_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NLPlate_HPG0G3Constraint_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::NLPlate_HPG0G3Constraint_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::NLPlate_HPG0G3Constraint_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleNLPlateHPG0G3Constraint;
@@ -1604,6 +1909,17 @@ impl HandleNLPlateHPG0G3Constraint {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleNLPlateHPG0G3Constraint_to_HandleNLPlateHGPPConstraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NLPlate_HPG0G3Constraint> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG0G3Constraint_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -1701,6 +2017,18 @@ impl HPG1Constraint {
             &mut *(crate::ffi::NLPlate_HPG1Constraint_as_NLPlate_HGPPConstraint_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::NLPlate_HPG1Constraint_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::NLPlate_HPG1Constraint_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
@@ -1807,6 +2135,42 @@ impl HPG1Constraint {
     pub fn g3_criterion(&self) -> f64 {
         unsafe { crate::ffi::NLPlate_HPG1Constraint_inherited_G3Criterion(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NLPlate_HPG1Constraint_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::NLPlate_HPG1Constraint_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::NLPlate_HPG1Constraint_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::NLPlate_HPG1Constraint_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::NLPlate_HPG1Constraint_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::NLPlate_HPG1Constraint_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleNLPlateHPG1Constraint;
@@ -1835,6 +2199,17 @@ impl HandleNLPlateHPG1Constraint {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleNLPlateHPG1Constraint_to_HandleNLPlateHGPPConstraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NLPlate_HPG1Constraint> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG1Constraint_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -1965,6 +2340,18 @@ impl HPG2Constraint {
             &mut *(crate::ffi::NLPlate_HPG2Constraint_as_NLPlate_HGPPConstraint_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::NLPlate_HPG2Constraint_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
@@ -2105,6 +2492,42 @@ impl HPG2Constraint {
     pub fn g3_criterion(&self) -> f64 {
         unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_G3Criterion(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NLPlate_HPG2Constraint_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::NLPlate_HPG2Constraint_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::NLPlate_HPG2Constraint_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleNLPlateHPG2Constraint;
@@ -2146,6 +2569,17 @@ impl HandleNLPlateHPG2Constraint {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleNLPlateHPG2Constraint_to_HandleNLPlateHGPPConstraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NLPlate_HPG2Constraint> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG2Constraint_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -2275,6 +2709,18 @@ impl HPG3Constraint {
             &mut *(crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HGPPConstraint_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::NLPlate_HPG3Constraint_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
@@ -2415,6 +2861,42 @@ impl HPG3Constraint {
     pub fn g3_criterion(&self) -> f64 {
         unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_G3Criterion(self as *const Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::NLPlate_HPG3Constraint_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::NLPlate_HPG3Constraint_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::NLPlate_HPG3Constraint_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleNLPlateHPG3Constraint;
@@ -2469,6 +2951,17 @@ impl HandleNLPlateHPG3Constraint {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleNLPlateHPG3Constraint_to_HandleNLPlateHGPPConstraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NLPlate_HPG3Constraint> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG3Constraint_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )

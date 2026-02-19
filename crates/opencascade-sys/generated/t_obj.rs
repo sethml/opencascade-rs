@@ -39,8 +39,8 @@ impl TryFrom<i32> for DeletingMode {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
-    HandleCDFApplication, HandleCDMApplication, HandleMessageAlgorithm, HandleTDFAttribute,
-    HandleTDocStdApplication,
+    HandleCDFApplication, HandleCDMApplication, HandleMessageAlgorithm, HandleStandardTransient,
+    HandleTDFAttribute, HandleTDocStdApplication,
 };
 
 // ========================
@@ -217,6 +217,16 @@ impl Application {
     /// Upcast to CDM_Application (mutable)
     pub fn as_cdm_application_mut(&mut self) -> &mut crate::cdm::Application {
         unsafe { &mut *(crate::ffi::TObj_Application_as_CDM_Application_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TObj_Application_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TObj_Application_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -500,6 +510,36 @@ impl Application {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_Application_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_Application_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TObj_Application_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TObj_Application_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TObj_Application_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TObj_Application_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTObjApplication;
@@ -545,6 +585,15 @@ impl HandleTObjApplication {
     pub fn to_handle_cdm_application(&self) -> crate::OwnedPtr<crate::ffi::HandleCDMApplication> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTObjApplication_to_HandleCDMApplication(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TObj_Application> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTObjApplication_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -752,6 +801,16 @@ impl CheckModel {
         unsafe { &mut *(crate::ffi::TObj_CheckModel_as_Message_Algorithm_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TObj_CheckModel_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TObj_CheckModel_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -853,6 +912,36 @@ impl CheckModel {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_CheckModel_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_CheckModel_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TObj_CheckModel_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TObj_CheckModel_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TObj_CheckModel_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TObj_CheckModel_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTObjCheckModel;
@@ -878,6 +967,15 @@ impl HandleTObjCheckModel {
     pub fn to_handle_algorithm(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlgorithm> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTObjCheckModel_to_HandleMessageAlgorithm(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TObj_CheckModel> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTObjCheckModel_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -952,6 +1050,18 @@ impl HiddenPartition {
     /// Upcast to TObj_Object (mutable)
     pub fn as_object_mut(&mut self) -> &mut Object {
         unsafe { &mut *(crate::ffi::TObj_HiddenPartition_as_TObj_Object_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TObj_HiddenPartition_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TObj_HiddenPartition_as_Standard_Transient_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -1388,6 +1498,38 @@ impl HiddenPartition {
     pub fn before_storing(&mut self) {
         unsafe { crate::ffi::TObj_HiddenPartition_inherited_BeforeStoring(self as *mut Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TObj_HiddenPartition_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTObjHiddenPartition;
@@ -1424,6 +1566,17 @@ impl HandleTObjHiddenPartition {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTObjHiddenPartition_to_HandleTObjObject(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<TObj_HiddenPartition> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTObjHiddenPartition_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -1503,6 +1656,48 @@ impl LabelIterator {
             &mut *(crate::ffi::TObj_LabelIterator_as_TObj_ObjectIterator_mut(self as *mut Self))
         }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TObj_LabelIterator_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TObj_LabelIterator_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_LabelIterator_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_LabelIterator_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TObj_LabelIterator_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TObj_LabelIterator_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TObj_LabelIterator_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TObj_LabelIterator_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTObjLabelIterator;
@@ -1533,6 +1728,15 @@ impl HandleTObjLabelIterator {
                 crate::ffi::HandleTObjLabelIterator_to_HandleTObjObjectIterator(
                     self as *const Self,
                 ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TObj_LabelIterator> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTObjLabelIterator_to_HandleStandardTransient(self as *const Self),
             )
         }
     }
@@ -1925,6 +2129,16 @@ impl Model {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TObj_Model_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TObj_Model_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TObj_Model_as_Standard_Transient_mut(self as *mut Self)) }
+    }
 }
 
 pub use crate::ffi::HandleTObjModel;
@@ -1944,6 +2158,15 @@ impl HandleTObjModel {
     /// Dereference this Handle to mutably access the underlying TObj_Model
     pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_Model {
         unsafe { &mut *(crate::ffi::HandleTObjModel_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TObj_Model> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTObjModel_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -2042,6 +2265,18 @@ impl ModelIterator {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TObj_ModelIterator_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TObj_ModelIterator_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2049,6 +2284,36 @@ impl ModelIterator {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TObj_ModelIterator_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_ModelIterator_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_ModelIterator_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TObj_ModelIterator_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TObj_ModelIterator_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TObj_ModelIterator_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TObj_ModelIterator_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -2080,6 +2345,15 @@ impl HandleTObjModelIterator {
                 crate::ffi::HandleTObjModelIterator_to_HandleTObjObjectIterator(
                     self as *const Self,
                 ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TObj_ModelIterator> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTObjModelIterator_to_HandleStandardTransient(self as *const Self),
             )
         }
     }
@@ -2609,9 +2883,49 @@ impl Object {
         unsafe { &*(crate::ffi::TObj_Object_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TObj_Object_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TObj_Object_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_Object_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_Object_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_Object_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TObj_Object_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TObj_Object_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TObj_Object_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TObj_Object_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -2632,6 +2946,15 @@ impl HandleTObjObject {
     /// Dereference this Handle to mutably access the underlying TObj_Object
     pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_Object {
         unsafe { &mut *(crate::ffi::HandleTObjObject_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TObj_Object> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTObjObject_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Downcast Handle<TObj_Object> to Handle<TObj_HiddenPartition>
@@ -2743,6 +3066,18 @@ impl ObjectIterator {
         unsafe { &*(crate::ffi::TObj_ObjectIterator_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TObj_ObjectIterator_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TObj_ObjectIterator_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2750,6 +3085,38 @@ impl ObjectIterator {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TObj_ObjectIterator_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TObj_ObjectIterator_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_ObjectIterator_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TObj_ObjectIterator_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TObj_ObjectIterator_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TObj_ObjectIterator_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TObj_ObjectIterator_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -2770,6 +3137,17 @@ impl HandleTObjObjectIterator {
     /// Dereference this Handle to mutably access the underlying TObj_ObjectIterator
     pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_ObjectIterator {
         unsafe { &mut *(crate::ffi::HandleTObjObjectIterator_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TObj_ObjectIterator> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTObjObjectIterator_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Downcast Handle<TObj_ObjectIterator> to Handle<TObj_ModelIterator>
@@ -2968,6 +3346,20 @@ impl OcafObjectIterator {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::TObj_OcafObjectIterator_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TObj_OcafObjectIterator_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2999,6 +3391,44 @@ impl OcafObjectIterator {
     /// Inherited: **Source:** `TObj_LabelIterator.hxx`:67 - `TObj_LabelIterator::LabelValue()`
     pub fn label_value(&self) -> &crate::tdf::Label {
         unsafe { &*(crate::ffi::TObj_OcafObjectIterator_inherited_LabelValue(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TObj_OcafObjectIterator_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TObj_OcafObjectIterator_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TObj_OcafObjectIterator_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::TObj_OcafObjectIterator_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::TObj_OcafObjectIterator_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TObj_OcafObjectIterator_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -3039,6 +3469,17 @@ impl HandleTObjOcafObjectIterator {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleTObjOcafObjectIterator_to_HandleTObjObjectIterator(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TObj_OcafObjectIterator> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTObjOcafObjectIterator_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -3184,6 +3625,16 @@ impl Partition {
     /// Upcast to TObj_Object (mutable)
     pub fn as_object_mut(&mut self) -> &mut Object {
         unsafe { &mut *(crate::ffi::TObj_Partition_as_TObj_Object_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TObj_Partition_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TObj_Partition_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -3550,6 +4001,36 @@ impl Partition {
     pub fn before_storing(&mut self) {
         unsafe { crate::ffi::TObj_Partition_inherited_BeforeStoring(self as *mut Self) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_Partition_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_Partition_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TObj_Partition_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TObj_Partition_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TObj_Partition_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TObj_Partition_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTObjPartition;
@@ -3575,6 +4056,15 @@ impl HandleTObjPartition {
     pub fn to_handle_object(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTObjPartition_to_HandleTObjObject(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TObj_Partition> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTObjPartition_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -3734,6 +4224,18 @@ impl ReferenceIterator {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TObj_ReferenceIterator_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TObj_ReferenceIterator_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3765,6 +4267,42 @@ impl ReferenceIterator {
     /// Inherited: **Source:** `TObj_LabelIterator.hxx`:67 - `TObj_LabelIterator::LabelValue()`
     pub fn label_value(&self) -> &crate::tdf::Label {
         unsafe { &*(crate::ffi::TObj_ReferenceIterator_inherited_LabelValue(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TObj_ReferenceIterator_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_ReferenceIterator_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TObj_ReferenceIterator_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::TObj_ReferenceIterator_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::TObj_ReferenceIterator_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TObj_ReferenceIterator_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -3805,6 +4343,17 @@ impl HandleTObjReferenceIterator {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleTObjReferenceIterator_to_HandleTObjObjectIterator(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TObj_ReferenceIterator> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTObjReferenceIterator_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -3893,6 +4442,18 @@ impl SequenceIterator {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TObj_SequenceIterator_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TObj_SequenceIterator_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3900,6 +4461,42 @@ impl SequenceIterator {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TObj_SequenceIterator_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TObj_SequenceIterator_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_SequenceIterator_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TObj_SequenceIterator_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::TObj_SequenceIterator_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::TObj_SequenceIterator_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TObj_SequenceIterator_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -3929,6 +4526,17 @@ impl HandleTObjSequenceIterator {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleTObjSequenceIterator_to_HandleTObjObjectIterator(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TObj_SequenceIterator> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTObjSequenceIterator_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -4000,6 +4608,18 @@ impl HSequenceOfObject {
         unsafe { &*(crate::ffi::TObj_HSequenceOfObject_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TObj_HSequenceOfObject_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TObj_HSequenceOfObject_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -4007,6 +4627,42 @@ impl HSequenceOfObject {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TObj_HSequenceOfObject_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TObj_HSequenceOfObject_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_HSequenceOfObject_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TObj_HSequenceOfObject_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::TObj_HSequenceOfObject_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::TObj_HSequenceOfObject_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TObj_HSequenceOfObject_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -4027,6 +4683,17 @@ impl HandleTObjHSequenceOfObject {
     /// Dereference this Handle to mutably access the underlying TObj_HSequenceOfObject
     pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_HSequenceOfObject {
         unsafe { &mut *(crate::ffi::HandleTObjHSequenceOfObject_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TObj_HSequenceOfObject> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTObjHSequenceOfObject_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -4226,6 +4893,18 @@ impl TIntSparseArray {
         unsafe { &mut *(crate::ffi::TObj_TIntSparseArray_as_TDF_Attribute_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TObj_TIntSparseArray_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TObj_TIntSparseArray_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -4419,6 +5098,38 @@ impl TIntSparseArray {
             crate::ffi::TObj_TIntSparseArray_inherited_Forget(self as *mut Self, aTransaction)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TObj_TIntSparseArray_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_TIntSparseArray_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TObj_TIntSparseArray_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TObj_TIntSparseArray_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TObj_TIntSparseArray_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TObj_TIntSparseArray_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTObjTIntSparseArray;
@@ -4446,6 +5157,17 @@ impl HandleTObjTIntSparseArray {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTObjTIntSparseArray_to_HandleTDFAttribute(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<TObj_TIntSparseArray> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTObjTIntSparseArray_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -4560,6 +5282,16 @@ impl TModel {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TObj_TModel_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TObj_TModel_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TObj_TModel_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -4769,6 +5501,36 @@ impl TModel {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TObj_TModel_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_TModel_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_TModel_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TObj_TModel_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TObj_TModel_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TObj_TModel_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TObj_TModel_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTObjTModel;
@@ -4794,6 +5556,15 @@ impl HandleTObjTModel {
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTObjTModel_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TObj_TModel> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTObjTModel_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -4930,6 +5701,18 @@ impl TNameContainer {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TObj_TNameContainer_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TObj_TNameContainer_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TObj_TNameContainer_as_Standard_Transient_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -5169,6 +5952,38 @@ impl TNameContainer {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TObj_TNameContainer_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TObj_TNameContainer_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTObjTNameContainer;
@@ -5196,6 +6011,17 @@ impl HandleTObjTNameContainer {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTObjTNameContainer_to_HandleTDFAttribute(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<TObj_TNameContainer> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTObjTNameContainer_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -5349,6 +6175,16 @@ impl TObject {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TObj_TObject_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TObj_TObject_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TObj_TObject_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -5542,6 +6378,36 @@ impl TObject {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TObj_TObject_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_TObject_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_TObject_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TObj_TObject_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TObj_TObject_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TObj_TObject_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TObj_TObject_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTObjTObject;
@@ -5567,6 +6433,15 @@ impl HandleTObjTObject {
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTObjTObject_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TObj_TObject> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTObjTObject_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -5773,6 +6648,16 @@ impl TReference {
         unsafe { &mut *(crate::ffi::TObj_TReference_as_TDF_Attribute_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TObj_TReference_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TObj_TReference_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -5951,6 +6836,36 @@ impl TReference {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TObj_TReference_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_TReference_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_TReference_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TObj_TReference_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TObj_TReference_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TObj_TReference_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TObj_TReference_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTObjTReference;
@@ -5976,6 +6891,15 @@ impl HandleTObjTReference {
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTObjTReference_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TObj_TReference> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTObjTReference_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -6091,6 +7015,16 @@ impl TXYZ {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TObj_TXYZ_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TObj_TXYZ_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TObj_TXYZ_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -6295,6 +7229,36 @@ impl TXYZ {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TObj_TXYZ_inherited_Forget(self as *mut Self, aTransaction) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_TXYZ_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TObj_TXYZ_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TObj_TXYZ_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TObj_TXYZ_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TObj_TXYZ_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TObj_TXYZ_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleTObjTXYZ;
@@ -6320,6 +7284,15 @@ impl HandleTObjTXYZ {
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleTObjTXYZ_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TObj_TXYZ> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTObjTXYZ_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }

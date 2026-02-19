@@ -32,6 +32,9 @@ pub fn c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handl
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleStandardTransient;
+
 // ========================
 // From ShapeUpgrade_ClosedEdgeDivide.hxx
 // ========================
@@ -105,6 +108,22 @@ impl ClosedEdgeDivide {
     pub fn as_tool_mut(&mut self) -> &mut Tool {
         unsafe {
             &mut *(crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_Tool_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_Standard_Transient_mut(
                 self as *mut Self,
             ))
         }
@@ -299,6 +318,53 @@ impl ClosedEdgeDivide {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeClosedEdgeDivide;
@@ -338,6 +404,17 @@ impl HandleShapeUpgradeClosedEdgeDivide {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleShapeUpgradeClosedEdgeDivide_to_HandleShapeUpgradeTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ClosedEdgeDivide> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeClosedEdgeDivide_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -448,6 +525,22 @@ impl ClosedFaceDivide {
     pub fn as_tool_mut(&mut self) -> &mut Tool {
         unsafe {
             &mut *(crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_Tool_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_Standard_Transient_mut(
                 self as *mut Self,
             ))
         }
@@ -648,6 +741,53 @@ impl ClosedFaceDivide {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeClosedFaceDivide;
@@ -687,6 +827,17 @@ impl HandleShapeUpgradeClosedFaceDivide {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleShapeUpgradeClosedFaceDivide_to_HandleShapeUpgradeTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ClosedFaceDivide> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeClosedFaceDivide_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -794,6 +945,24 @@ impl ConvertCurve2dToBezier {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -859,6 +1028,60 @@ impl ConvertCurve2dToBezier {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier;
@@ -897,6 +1120,17 @@ impl HandleShapeUpgradeConvertCurve2dToBezier {
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_to_HandleShapeUpgradeSplitCurve(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ConvertCurve2dToBezier> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -1049,6 +1283,24 @@ impl ConvertCurve3dToBezier {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1114,6 +1366,60 @@ impl ConvertCurve3dToBezier {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier;
@@ -1152,6 +1458,17 @@ impl HandleShapeUpgradeConvertCurve3dToBezier {
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_to_HandleShapeUpgradeSplitCurve(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ConvertCurve3dToBezier> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -1335,6 +1652,24 @@ impl ConvertSurfaceToBezierBasis {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1422,6 +1757,62 @@ impl ConvertSurfaceToBezierBasis {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis;
@@ -1455,6 +1846,13 @@ impl HandleShapeUpgradeConvertSurfaceToBezierBasis {
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_to_HandleShapeUpgradeSplitSurface(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ConvertSurfaceToBezierBasis> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_to_HandleStandardTransient(self as *const Self))
         }
     }
 }
@@ -1606,6 +2004,20 @@ impl EdgeDivide {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_EdgeDivide_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_EdgeDivide_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1678,6 +2090,44 @@ impl EdgeDivide {
             crate::ffi::ShapeUpgrade_EdgeDivide_inherited_LimitTolerance(self as *const Self, toler)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeEdgeDivide;
@@ -1704,6 +2154,17 @@ impl HandleShapeUpgradeEdgeDivide {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleShapeUpgradeEdgeDivide_to_HandleShapeUpgradeTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_EdgeDivide> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeEdgeDivide_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -1920,6 +2381,20 @@ impl FaceDivide {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_FaceDivide_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_FaceDivide_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1992,6 +2467,44 @@ impl FaceDivide {
             crate::ffi::ShapeUpgrade_FaceDivide_inherited_LimitTolerance(self as *const Self, toler)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivide_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivide_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::ShapeUpgrade_FaceDivide_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivide_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivide_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeUpgrade_FaceDivide_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeFaceDivide;
@@ -2018,6 +2531,17 @@ impl HandleShapeUpgradeFaceDivide {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleShapeUpgradeFaceDivide_to_HandleShapeUpgradeTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_FaceDivide> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeFaceDivide_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -2175,6 +2699,22 @@ impl FaceDivideArea {
     pub fn as_tool_mut(&mut self) -> &mut Tool {
         unsafe {
             &mut *(crate::ffi::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_Tool_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_FaceDivideArea_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_FaceDivideArea_as_Standard_Transient_mut(
                 self as *mut Self,
             ))
         }
@@ -2368,6 +2908,49 @@ impl FaceDivideArea {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeFaceDivideArea;
@@ -2407,6 +2990,17 @@ impl HandleShapeUpgradeFaceDivideArea {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleShapeUpgradeFaceDivideArea_to_HandleShapeUpgradeTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_FaceDivideArea> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeFaceDivideArea_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -2513,6 +3107,24 @@ impl FixSmallBezierCurves {
     pub fn as_tool_mut(&mut self) -> &mut Tool {
         unsafe {
             &mut *(crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_Tool_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_Standard_Transient_mut(
                 self as *mut Self,
             ))
         }
@@ -2668,6 +3280,58 @@ impl FixSmallBezierCurves {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeFixSmallBezierCurves;
@@ -2705,6 +3369,17 @@ impl HandleShapeUpgradeFixSmallBezierCurves {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_to_HandleShapeUpgradeTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_FixSmallBezierCurves> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -2832,6 +3507,22 @@ impl FixSmallCurves {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_FixSmallCurves_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_FixSmallCurves_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2919,6 +3610,49 @@ impl FixSmallCurves {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeFixSmallCurves;
@@ -2945,6 +3679,17 @@ impl HandleShapeUpgradeFixSmallCurves {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleShapeUpgradeFixSmallCurves_to_HandleShapeUpgradeTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_FixSmallCurves> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeFixSmallCurves_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -3124,6 +3869,24 @@ impl RemoveInternalWires {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_RemoveInternalWires_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_RemoveInternalWires_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3221,6 +3984,58 @@ impl RemoveInternalWires {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeRemoveInternalWires;
@@ -3249,6 +4064,17 @@ impl HandleShapeUpgradeRemoveInternalWires {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleShapeUpgradeRemoveInternalWires_to_HandleShapeUpgradeTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_RemoveInternalWires> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeRemoveInternalWires_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -3362,6 +4188,22 @@ impl RemoveLocations {
         unsafe { &*(crate::ffi::ShapeUpgrade_RemoveLocations_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_RemoveLocations_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_RemoveLocations_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3371,6 +4213,53 @@ impl RemoveLocations {
                 obj.into_raw(),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_RemoveLocations_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_RemoveLocations_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_RemoveLocations_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_RemoveLocations_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_RemoveLocations_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeUpgrade_RemoveLocations_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -3391,6 +4280,17 @@ impl HandleShapeUpgradeRemoveLocations {
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_RemoveLocations
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_RemoveLocations {
         unsafe { &mut *(crate::ffi::HandleShapeUpgradeRemoveLocations_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_RemoveLocations> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeRemoveLocations_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -5289,6 +6189,20 @@ impl SplitCurve {
         unsafe { &*(crate::ffi::ShapeUpgrade_SplitCurve_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitCurve_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_SplitCurve_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -5296,6 +6210,44 @@ impl SplitCurve {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_SplitCurve_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::ShapeUpgrade_SplitCurve_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeUpgrade_SplitCurve_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -5316,6 +6268,17 @@ impl HandleShapeUpgradeSplitCurve {
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitCurve {
         unsafe { &mut *(crate::ffi::HandleShapeUpgradeSplitCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_SplitCurve> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeSplitCurve_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Downcast Handle<ShapeUpgrade_SplitCurve> to Handle<ShapeUpgrade_ConvertCurve2dToBezier>
@@ -5517,6 +6480,22 @@ impl SplitCurve2d {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitCurve2d_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_SplitCurve2d_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -5566,6 +6545,44 @@ impl SplitCurve2d {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeSplitCurve2d;
@@ -5594,6 +6611,17 @@ impl HandleShapeUpgradeSplitCurve2d {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleShapeUpgradeSplitCurve2d_to_HandleShapeUpgradeSplitCurve(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_SplitCurve2d> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeSplitCurve2d_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -5737,6 +6765,24 @@ impl SplitCurve2dContinuity {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -5812,6 +6858,60 @@ impl SplitCurve2dContinuity {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity;
@@ -5850,6 +6950,17 @@ impl HandleShapeUpgradeSplitCurve2dContinuity {
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_to_HandleShapeUpgradeSplitCurve(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_SplitCurve2dContinuity> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -5950,6 +7061,22 @@ impl SplitCurve3d {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitCurve3d_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_SplitCurve3d_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -5999,6 +7126,44 @@ impl SplitCurve3d {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeSplitCurve3d;
@@ -6027,6 +7192,17 @@ impl HandleShapeUpgradeSplitCurve3d {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleShapeUpgradeSplitCurve3d_to_HandleShapeUpgradeSplitCurve(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_SplitCurve3d> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeSplitCurve3d_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -6177,6 +7353,24 @@ impl SplitCurve3dContinuity {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -6252,6 +7446,60 @@ impl SplitCurve3dContinuity {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity;
@@ -6290,6 +7538,17 @@ impl HandleShapeUpgradeSplitCurve3dContinuity {
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_to_HandleShapeUpgradeSplitCurve(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_SplitCurve3dContinuity> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -6440,6 +7699,22 @@ impl SplitSurface {
         unsafe { &*(crate::ffi::ShapeUpgrade_SplitSurface_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitSurface_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_SplitSurface_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -6449,6 +7724,44 @@ impl SplitSurface {
                 obj.into_raw(),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurface_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurface_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::ShapeUpgrade_SplitSurface_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurface_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurface_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeUpgrade_SplitSurface_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -6469,6 +7782,17 @@ impl HandleShapeUpgradeSplitSurface {
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitSurface
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitSurface {
         unsafe { &mut *(crate::ffi::HandleShapeUpgradeSplitSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_SplitSurface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeSplitSurface_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Downcast Handle<ShapeUpgrade_SplitSurface> to Handle<ShapeUpgrade_ConvertSurfaceToBezierBasis>
@@ -6621,6 +7945,24 @@ impl SplitSurfaceAngle {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitSurfaceAngle_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_SplitSurfaceAngle_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -6707,6 +8049,56 @@ impl SplitSurfaceAngle {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeSplitSurfaceAngle;
@@ -6737,6 +8129,17 @@ impl HandleShapeUpgradeSplitSurfaceAngle {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_to_HandleShapeUpgradeSplitSurface(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_SplitSurfaceAngle> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -6835,6 +8238,22 @@ impl SplitSurfaceArea {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitSurfaceArea_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_SplitSurfaceArea_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -6919,6 +8338,53 @@ impl SplitSurfaceArea {
             &*(crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_ResSurfaces(self as *const Self))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeSplitSurfaceArea;
@@ -6947,6 +8413,17 @@ impl HandleShapeUpgradeSplitSurfaceArea {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleShapeUpgradeSplitSurfaceArea_to_HandleShapeUpgradeSplitSurface(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_SplitSurfaceArea> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeSplitSurfaceArea_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -7049,6 +8526,24 @@ impl SplitSurfaceContinuity {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -7143,6 +8638,60 @@ impl SplitSurfaceContinuity {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity;
@@ -7172,6 +8721,17 @@ impl HandleShapeUpgradeSplitSurfaceContinuity {
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_to_HandleShapeUpgradeSplitSurface(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_SplitSurfaceContinuity> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -7281,6 +8841,18 @@ impl Tool {
         unsafe { &*(crate::ffi::ShapeUpgrade_Tool_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::ShapeUpgrade_Tool_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_Tool_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -7288,6 +8860,36 @@ impl Tool {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_Tool_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::ShapeUpgrade_Tool_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::ShapeUpgrade_Tool_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::ShapeUpgrade_Tool_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::ShapeUpgrade_Tool_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::ShapeUpgrade_Tool_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeUpgrade_Tool_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -7308,6 +8910,15 @@ impl HandleShapeUpgradeTool {
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_Tool
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_Tool {
         unsafe { &mut *(crate::ffi::HandleShapeUpgradeTool_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_Tool> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeTool_to_HandleStandardTransient(self as *const Self),
+            )
+        }
     }
 
     /// Downcast Handle<ShapeUpgrade_Tool> to Handle<ShapeUpgrade_ClosedEdgeDivide>
@@ -7706,6 +9317,22 @@ impl UnifySameDomain {
         unsafe { &*(crate::ffi::ShapeUpgrade_UnifySameDomain_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_UnifySameDomain_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_UnifySameDomain_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -7715,6 +9342,53 @@ impl UnifySameDomain {
                 obj.into_raw(),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_UnifySameDomain_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_UnifySameDomain_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_UnifySameDomain_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_UnifySameDomain_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_UnifySameDomain_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeUpgrade_UnifySameDomain_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -7735,6 +9409,17 @@ impl HandleShapeUpgradeUnifySameDomain {
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_UnifySameDomain
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_UnifySameDomain {
         unsafe { &mut *(crate::ffi::HandleShapeUpgradeUnifySameDomain_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_UnifySameDomain> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeUnifySameDomain_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -8004,6 +9689,20 @@ impl WireDivide {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_WireDivide_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_WireDivide_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -8076,6 +9775,44 @@ impl WireDivide {
             crate::ffi::ShapeUpgrade_WireDivide_inherited_LimitTolerance(self as *const Self, toler)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_WireDivide_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_WireDivide_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::ShapeUpgrade_WireDivide_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_WireDivide_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeUpgrade_WireDivide_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::ShapeUpgrade_WireDivide_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleShapeUpgradeWireDivide;
@@ -8102,6 +9839,17 @@ impl HandleShapeUpgradeWireDivide {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleShapeUpgradeWireDivide_to_HandleShapeUpgradeTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_WireDivide> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeWireDivide_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )

@@ -108,6 +108,12 @@ pub fn dimensions(aType: &str) -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensi
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_dimensions(c_aType.as_ptr())) }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleStandardDomainError, HandleStandardFailure, HandleStandardNoSuchObject,
+    HandleStandardTransient,
+};
+
 // ========================
 // From Units_Dimensions.hxx
 // ========================
@@ -365,11 +371,51 @@ impl Dimensions {
         unsafe { &*(crate::ffi::Units_Dimensions_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Units_Dimensions_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Units_Dimensions_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Dimensions_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_Dimensions_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_Dimensions_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Units_Dimensions_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Units_Dimensions_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Units_Dimensions_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Units_Dimensions_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -390,6 +436,15 @@ impl HandleUnitsDimensions {
     /// Dereference this Handle to mutably access the underlying Units_Dimensions
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_Dimensions {
         unsafe { &mut *(crate::ffi::HandleUnitsDimensions_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Units_Dimensions> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsDimensions_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -679,11 +734,51 @@ impl Lexicon {
         unsafe { &*(crate::ffi::Units_Lexicon_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Units_Lexicon_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Units_Lexicon_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsLexicon> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Lexicon_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_Lexicon_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_Lexicon_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Units_Lexicon_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Units_Lexicon_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Units_Lexicon_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Units_Lexicon_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -704,6 +799,15 @@ impl HandleUnitsLexicon {
     /// Dereference this Handle to mutably access the underlying Units_Lexicon
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_Lexicon {
         unsafe { &mut *(crate::ffi::HandleUnitsLexicon_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Units_Lexicon> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsLexicon_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Downcast Handle<Units_Lexicon> to Handle<Units_UnitsLexicon>
@@ -1039,6 +1143,33 @@ impl NoSuchType {
         unsafe { crate::ffi::Units_NoSuchType_raise(c_theMessage.as_ptr()) }
     }
 
+    /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleUnitsNoSuchType> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchType_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleUnitsNoSuchType> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchType_new_instance_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
     /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -1052,20 +1183,163 @@ impl NoSuchType {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Units_NoSuchType_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_NoSuchObject
+    pub fn as_standard_no_such_object(&self) -> &crate::standard::NoSuchObject {
+        unsafe { &*(crate::ffi::Units_NoSuchType_as_Standard_NoSuchObject(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_NoSuchObject (mutable)
+    pub fn as_standard_no_such_object_mut(&mut self) -> &mut crate::standard::NoSuchObject {
+        unsafe {
+            &mut *(crate::ffi::Units_NoSuchType_as_Standard_NoSuchObject_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_DomainError
+    pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
+        unsafe { &*(crate::ffi::Units_NoSuchType_as_Standard_DomainError(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_DomainError (mutable)
+    pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
+        unsafe {
+            &mut *(crate::ffi::Units_NoSuchType_as_Standard_DomainError_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe { &*(crate::ffi::Units_NoSuchType_as_Standard_Failure(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe { &mut *(crate::ffi::Units_NoSuchType_as_Standard_Failure_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Units_NoSuchType_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Units_NoSuchType_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleUnitsNoSuchType> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchType_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::Units_NoSuchType_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::Units_NoSuchType_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_NoSuchType_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_NoSuchType_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Units_NoSuchType_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Units_NoSuchType_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Units_NoSuchType_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Units_NoSuchType_inherited_Delete(self as *const Self) }
+    }
 }
 
-// ── Skipped symbols for NoSuchType (3 total) ──
+pub use crate::ffi::HandleUnitsNoSuchType;
+
+unsafe impl crate::CppDeletable for HandleUnitsNoSuchType {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleUnitsNoSuchType_destructor(ptr);
+    }
+}
+
+impl HandleUnitsNoSuchType {
+    /// Dereference this Handle to access the underlying Units_NoSuchType
+    pub fn get(&self) -> &crate::ffi::Units_NoSuchType {
+        unsafe { &*(crate::ffi::HandleUnitsNoSuchType_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Units_NoSuchType
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Units_NoSuchType {
+        unsafe { &mut *(crate::ffi::HandleUnitsNoSuchType_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Units_NoSuchType> to Handle<Standard_NoSuchObject>
+    pub fn to_handle_no_such_object(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardNoSuchObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleUnitsNoSuchType_to_HandleStandardNoSuchObject(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Units_NoSuchType> to Handle<Standard_DomainError>
+    pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleUnitsNoSuchType_to_HandleStandardDomainError(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<Units_NoSuchType> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsNoSuchType_to_HandleStandardFailure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Units_NoSuchType> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsNoSuchType_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for NoSuchType (1 total) ──
 // SKIPPED: **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::Raise`
 //   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
 //   // pub fn raise(theMessage: &mut SStream);
-//
-// SKIPPED: **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::NewInstance`
-//   Reason: return type 'Handle(Units_NoSuchType)' is unknown
-//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Units_NoSuchType>>;
-//
-// SKIPPED: **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::NewInstance`
-//   Reason: return type 'Handle(Units_NoSuchType)' is unknown
-//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Units_NoSuchType>>;
 //
 
 // ========================
@@ -1120,6 +1394,33 @@ impl NoSuchUnit {
         unsafe { crate::ffi::Units_NoSuchUnit_raise(c_theMessage.as_ptr()) }
     }
 
+    /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::NewInstance()`
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleUnitsNoSuchUnit> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchUnit_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::NewInstance()`
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleUnitsNoSuchUnit> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchUnit_new_instance_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
     /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -1133,20 +1434,163 @@ impl NoSuchUnit {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Units_NoSuchUnit_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_NoSuchObject
+    pub fn as_standard_no_such_object(&self) -> &crate::standard::NoSuchObject {
+        unsafe { &*(crate::ffi::Units_NoSuchUnit_as_Standard_NoSuchObject(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_NoSuchObject (mutable)
+    pub fn as_standard_no_such_object_mut(&mut self) -> &mut crate::standard::NoSuchObject {
+        unsafe {
+            &mut *(crate::ffi::Units_NoSuchUnit_as_Standard_NoSuchObject_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_DomainError
+    pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
+        unsafe { &*(crate::ffi::Units_NoSuchUnit_as_Standard_DomainError(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_DomainError (mutable)
+    pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
+        unsafe {
+            &mut *(crate::ffi::Units_NoSuchUnit_as_Standard_DomainError_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Failure
+    pub fn as_standard_failure(&self) -> &crate::standard::Failure {
+        unsafe { &*(crate::ffi::Units_NoSuchUnit_as_Standard_Failure(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Failure (mutable)
+    pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
+        unsafe { &mut *(crate::ffi::Units_NoSuchUnit_as_Standard_Failure_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Units_NoSuchUnit_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Units_NoSuchUnit_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleUnitsNoSuchUnit> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchUnit_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
+    pub fn reraise(&mut self) {
+        unsafe { crate::ffi::Units_NoSuchUnit_inherited_Reraise(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+    pub fn jump(&mut self) {
+        unsafe { crate::ffi::Units_NoSuchUnit_inherited_Jump(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_NoSuchUnit_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_NoSuchUnit_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Units_NoSuchUnit_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Units_NoSuchUnit_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Units_NoSuchUnit_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Units_NoSuchUnit_inherited_Delete(self as *const Self) }
+    }
 }
 
-// ── Skipped symbols for NoSuchUnit (3 total) ──
+pub use crate::ffi::HandleUnitsNoSuchUnit;
+
+unsafe impl crate::CppDeletable for HandleUnitsNoSuchUnit {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleUnitsNoSuchUnit_destructor(ptr);
+    }
+}
+
+impl HandleUnitsNoSuchUnit {
+    /// Dereference this Handle to access the underlying Units_NoSuchUnit
+    pub fn get(&self) -> &crate::ffi::Units_NoSuchUnit {
+        unsafe { &*(crate::ffi::HandleUnitsNoSuchUnit_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Units_NoSuchUnit
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Units_NoSuchUnit {
+        unsafe { &mut *(crate::ffi::HandleUnitsNoSuchUnit_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Units_NoSuchUnit> to Handle<Standard_NoSuchObject>
+    pub fn to_handle_no_such_object(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardNoSuchObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleUnitsNoSuchUnit_to_HandleStandardNoSuchObject(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Units_NoSuchUnit> to Handle<Standard_DomainError>
+    pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleUnitsNoSuchUnit_to_HandleStandardDomainError(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<Units_NoSuchUnit> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsNoSuchUnit_to_HandleStandardFailure(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Units_NoSuchUnit> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsNoSuchUnit_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for NoSuchUnit (1 total) ──
 // SKIPPED: **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::Raise`
 //   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
 //   // pub fn raise(theMessage: &mut SStream);
-//
-// SKIPPED: **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::NewInstance`
-//   Reason: return type 'Handle(Units_NoSuchUnit)' is unknown
-//   // pub fn new_instance(theMessage: *const char) -> OwnedPtr<Handle<Units_NoSuchUnit>>;
-//
-// SKIPPED: **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::NewInstance`
-//   Reason: return type 'Handle(Units_NoSuchUnit)' is unknown
-//   // pub fn new_instance(theMessage: *const char, theStackTrace: *const char) -> OwnedPtr<Handle<Units_NoSuchUnit>>;
 //
 
 // ========================
@@ -1211,6 +1655,22 @@ impl QuantitiesSequence {
         unsafe { &*(crate::ffi::Units_QuantitiesSequence_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::Units_QuantitiesSequence_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Units_QuantitiesSequence_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1220,6 +1680,44 @@ impl QuantitiesSequence {
                 obj.into_raw(),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Units_QuantitiesSequence_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Units_QuantitiesSequence_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Units_QuantitiesSequence_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::Units_QuantitiesSequence_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::Units_QuantitiesSequence_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Units_QuantitiesSequence_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1240,6 +1738,17 @@ impl HandleUnitsQuantitiesSequence {
     /// Dereference this Handle to mutably access the underlying Units_QuantitiesSequence
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_QuantitiesSequence {
         unsafe { &mut *(crate::ffi::HandleUnitsQuantitiesSequence_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Units_QuantitiesSequence> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleUnitsQuantitiesSequence_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -1339,11 +1848,51 @@ impl Quantity {
         unsafe { &*(crate::ffi::Units_Quantity_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Units_Quantity_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Units_Quantity_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsQuantity> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Quantity_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_Quantity_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_Quantity_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Units_Quantity_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Units_Quantity_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Units_Quantity_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Units_Quantity_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1364,6 +1913,15 @@ impl HandleUnitsQuantity {
     /// Dereference this Handle to mutably access the underlying Units_Quantity
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_Quantity {
         unsafe { &mut *(crate::ffi::HandleUnitsQuantity_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Units_Quantity> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsQuantity_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -1569,6 +2127,18 @@ impl ShiftedToken {
         unsafe { &mut *(crate::ffi::Units_ShiftedToken_as_Units_Token_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Units_ShiftedToken_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Units_ShiftedToken_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1683,6 +2253,36 @@ impl ShiftedToken {
             crate::ffi::Units_ShiftedToken_inherited_IsGreaterOrEqual(self as *const Self, atoken)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_ShiftedToken_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_ShiftedToken_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Units_ShiftedToken_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Units_ShiftedToken_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Units_ShiftedToken_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Units_ShiftedToken_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleUnitsShiftedToken;
@@ -1710,6 +2310,15 @@ impl HandleUnitsShiftedToken {
             crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsShiftedToken_to_HandleUnitsToken(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<Units_ShiftedToken> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleUnitsShiftedToken_to_HandleStandardTransient(self as *const Self),
+            )
         }
     }
 }
@@ -1844,6 +2453,18 @@ impl ShiftedUnit {
         unsafe { &mut *(crate::ffi::Units_ShiftedUnit_as_Units_Unit_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Units_ShiftedUnit_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Units_ShiftedUnit_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1886,6 +2507,36 @@ impl ShiftedUnit {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_ShiftedUnit_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_ShiftedUnit_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Units_ShiftedUnit_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Units_ShiftedUnit_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Units_ShiftedUnit_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Units_ShiftedUnit_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleUnitsShiftedUnit;
@@ -1913,6 +2564,15 @@ impl HandleUnitsShiftedUnit {
             crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsShiftedUnit_to_HandleUnitsUnit(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<Units_ShiftedUnit> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleUnitsShiftedUnit_to_HandleStandardTransient(self as *const Self),
+            )
         }
     }
 }
@@ -2296,9 +2956,49 @@ impl Token {
         unsafe { &*(crate::ffi::Units_Token_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Units_Token_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Units_Token_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Token_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_Token_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_Token_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Units_Token_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Units_Token_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Units_Token_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Units_Token_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -2319,6 +3019,15 @@ impl HandleUnitsToken {
     /// Dereference this Handle to mutably access the underlying Units_Token
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_Token {
         unsafe { &mut *(crate::ffi::HandleUnitsToken_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Units_Token> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsToken_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Downcast Handle<Units_Token> to Handle<Units_ShiftedToken>
@@ -2398,6 +3107,18 @@ impl TokensSequence {
         unsafe { &*(crate::ffi::Units_TokensSequence_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Units_TokensSequence_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Units_TokensSequence_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2405,6 +3126,38 @@ impl TokensSequence {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_TokensSequence_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Units_TokensSequence_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_TokensSequence_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Units_TokensSequence_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Units_TokensSequence_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Units_TokensSequence_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Units_TokensSequence_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -2425,6 +3178,17 @@ impl HandleUnitsTokensSequence {
     /// Dereference this Handle to mutably access the underlying Units_TokensSequence
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_TokensSequence {
         unsafe { &mut *(crate::ffi::HandleUnitsTokensSequence_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Units_TokensSequence> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleUnitsTokensSequence_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -2586,9 +3350,49 @@ impl Unit {
         unsafe { &*(crate::ffi::Units_Unit_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Units_Unit_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Units_Unit_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleUnitsUnit> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Unit_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_Unit_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_Unit_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Units_Unit_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Units_Unit_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Units_Unit_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Units_Unit_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -2609,6 +3413,15 @@ impl HandleUnitsUnit {
     /// Dereference this Handle to mutably access the underlying Units_Unit
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_Unit {
         unsafe { &mut *(crate::ffi::HandleUnitsUnit_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Units_Unit> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsUnit_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Downcast Handle<Units_Unit> to Handle<Units_ShiftedUnit>
@@ -2835,6 +3648,18 @@ impl UnitsDictionary {
         unsafe { &*(crate::ffi::Units_UnitsDictionary_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Units_UnitsDictionary_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Units_UnitsDictionary_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2842,6 +3667,42 @@ impl UnitsDictionary {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsDictionary_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Units_UnitsDictionary_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_UnitsDictionary_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Units_UnitsDictionary_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::Units_UnitsDictionary_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::Units_UnitsDictionary_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Units_UnitsDictionary_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -2862,6 +3723,17 @@ impl HandleUnitsUnitsDictionary {
     /// Dereference this Handle to mutably access the underlying Units_UnitsDictionary
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_UnitsDictionary {
         unsafe { &mut *(crate::ffi::HandleUnitsUnitsDictionary_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Units_UnitsDictionary> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleUnitsUnitsDictionary_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -2932,6 +3804,18 @@ impl UnitsLexicon {
         unsafe { &mut *(crate::ffi::Units_UnitsLexicon_as_Units_Lexicon_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Units_UnitsLexicon_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Units_UnitsLexicon_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2948,6 +3832,36 @@ impl UnitsLexicon {
                 self as *const Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_UnitsLexicon_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_UnitsLexicon_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Units_UnitsLexicon_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Units_UnitsLexicon_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Units_UnitsLexicon_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Units_UnitsLexicon_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -2976,6 +3890,15 @@ impl HandleUnitsUnitsLexicon {
             crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsUnitsLexicon_to_HandleUnitsLexicon(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<Units_UnitsLexicon> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleUnitsUnitsLexicon_to_HandleStandardTransient(self as *const Self),
+            )
         }
     }
 }
@@ -3040,6 +3963,18 @@ impl UnitsSequence {
         unsafe { &*(crate::ffi::Units_UnitsSequence_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Units_UnitsSequence_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Units_UnitsSequence_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3047,6 +3982,38 @@ impl UnitsSequence {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsSequence_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Units_UnitsSequence_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_UnitsSequence_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Units_UnitsSequence_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Units_UnitsSequence_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Units_UnitsSequence_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Units_UnitsSequence_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -3067,6 +4034,17 @@ impl HandleUnitsUnitsSequence {
     /// Dereference this Handle to mutably access the underlying Units_UnitsSequence
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_UnitsSequence {
         unsafe { &mut *(crate::ffi::HandleUnitsUnitsSequence_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Units_UnitsSequence> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleUnitsUnitsSequence_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -3300,6 +4278,18 @@ impl UnitsSystem {
         unsafe { &*(crate::ffi::Units_UnitsSystem_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Units_UnitsSystem_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Units_UnitsSystem_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3307,6 +4297,36 @@ impl UnitsSystem {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsSystem_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_UnitsSystem_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Units_UnitsSystem_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Units_UnitsSystem_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Units_UnitsSystem_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Units_UnitsSystem_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Units_UnitsSystem_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -3327,6 +4347,15 @@ impl HandleUnitsUnitsSystem {
     /// Dereference this Handle to mutably access the underlying Units_UnitsSystem
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_UnitsSystem {
         unsafe { &mut *(crate::ffi::HandleUnitsUnitsSystem_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Units_UnitsSystem> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleUnitsUnitsSystem_to_HandleStandardTransient(self as *const Self),
+            )
+        }
     }
 }
 

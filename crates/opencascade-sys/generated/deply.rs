@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleDEConfigurationNode, HandleDEProvider};
+pub use crate::ffi::{HandleDEConfigurationNode, HandleDEProvider, HandleStandardTransient};
 
 // ========================
 // From DEPLY_ConfigurationNode.hxx
@@ -168,6 +168,20 @@ impl ConfigurationNode {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::DEPLY_ConfigurationNode_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::DEPLY_ConfigurationNode_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -216,6 +230,44 @@ impl ConfigurationNode {
             crate::ffi::DEPLY_ConfigurationNode_inherited_CustomActivation(self as *mut Self, arg0)
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::DEPLY_ConfigurationNode_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::DEPLY_ConfigurationNode_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::DEPLY_ConfigurationNode_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::DEPLY_ConfigurationNode_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::DEPLY_ConfigurationNode_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::DEPLY_ConfigurationNode_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleDEPLYConfigurationNode;
@@ -244,6 +296,17 @@ impl HandleDEPLYConfigurationNode {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleDEPLYConfigurationNode_to_HandleDEConfigurationNode(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<DEPLY_ConfigurationNode> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleDEPLYConfigurationNode_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -452,6 +515,16 @@ impl Provider {
         unsafe { &mut *(crate::ffi::DEPLY_Provider_as_DE_Provider_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::DEPLY_Provider_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::DEPLY_Provider_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -491,6 +564,36 @@ impl Provider {
     pub fn set_node(&mut self, theNode: &crate::ffi::HandleDEConfigurationNode) {
         unsafe { crate::ffi::DEPLY_Provider_inherited_SetNode(self as *mut Self, theNode) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::DEPLY_Provider_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::DEPLY_Provider_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::DEPLY_Provider_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::DEPLY_Provider_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::DEPLY_Provider_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::DEPLY_Provider_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleDEPLYProvider;
@@ -516,6 +619,15 @@ impl HandleDEPLYProvider {
     pub fn to_handle_provider(&self) -> crate::OwnedPtr<crate::ffi::HandleDEProvider> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleDEPLYProvider_to_HandleDEProvider(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<DEPLY_Provider> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleDEPLYProvider_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }

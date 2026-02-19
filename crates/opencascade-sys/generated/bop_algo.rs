@@ -153,7 +153,7 @@ impl TryFrom<i32> for Operation {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleMessageAlert, HandleTopoDSAlertWithShape};
+pub use crate::ffi::{HandleMessageAlert, HandleStandardTransient, HandleTopoDSAlertWithShape};
 
 // ========================
 // From BOPAlgo_Alerts.hxx
@@ -207,6 +207,18 @@ impl AlertUserBreak {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BOPAlgo_AlertUserBreak_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertUserBreak_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -224,6 +236,42 @@ impl AlertUserBreak {
     /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe { crate::ffi::BOPAlgo_AlertUserBreak_inherited_Merge(self as *mut Self, theTarget) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUserBreak_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BOPAlgo_AlertUserBreak_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BOPAlgo_AlertUserBreak_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUserBreak_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUserBreak_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertUserBreak_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -251,6 +299,17 @@ impl HandleBOPAlgoAlertUserBreak {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertUserBreak_to_HandleMessageAlert(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUserBreak> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUserBreak_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -304,6 +363,22 @@ impl AlertBOPNotAllowed {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertBOPNotAllowed_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertBOPNotAllowed_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -327,6 +402,47 @@ impl AlertBOPNotAllowed {
         unsafe {
             crate::ffi::BOPAlgo_AlertBOPNotAllowed_inherited_Merge(self as *mut Self, theTarget)
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBOPNotAllowed_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBOPNotAllowed_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BOPAlgo_AlertBOPNotAllowed_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBOPNotAllowed_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBOPNotAllowed_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertBOPNotAllowed_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -354,6 +470,17 @@ impl HandleBOPAlgoAlertBOPNotAllowed {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertBOPNotAllowed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertBOPNotAllowed> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertBOPNotAllowed_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -409,6 +536,18 @@ impl AlertBOPNotSet {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BOPAlgo_AlertBOPNotSet_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertBOPNotSet_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -426,6 +565,42 @@ impl AlertBOPNotSet {
     /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe { crate::ffi::BOPAlgo_AlertBOPNotSet_inherited_Merge(self as *mut Self, theTarget) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBOPNotSet_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BOPAlgo_AlertBOPNotSet_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BOPAlgo_AlertBOPNotSet_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBOPNotSet_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBOPNotSet_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertBOPNotSet_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -453,6 +628,17 @@ impl HandleBOPAlgoAlertBOPNotSet {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertBOPNotSet_to_HandleMessageAlert(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertBOPNotSet> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertBOPNotSet_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -506,6 +692,22 @@ impl AlertBuilderFailed {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertBuilderFailed_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertBuilderFailed_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -529,6 +731,47 @@ impl AlertBuilderFailed {
         unsafe {
             crate::ffi::BOPAlgo_AlertBuilderFailed_inherited_Merge(self as *mut Self, theTarget)
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBuilderFailed_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBuilderFailed_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BOPAlgo_AlertBuilderFailed_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBuilderFailed_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBuilderFailed_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertBuilderFailed_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -556,6 +799,17 @@ impl HandleBOPAlgoAlertBuilderFailed {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertBuilderFailed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertBuilderFailed> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertBuilderFailed_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -615,6 +869,24 @@ impl AlertIntersectionFailed {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertIntersectionFailed_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertIntersectionFailed_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -641,6 +913,56 @@ impl AlertIntersectionFailed {
                 theTarget,
             )
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertIntersectionFailed_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertIntersectionFailed_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertIntersectionFailed_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertIntersectionFailed_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertIntersectionFailed_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertIntersectionFailed_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -670,6 +992,17 @@ impl HandleBOPAlgoAlertIntersectionFailed {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertIntersectionFailed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertIntersectionFailed> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertIntersectionFailed_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -729,6 +1062,24 @@ impl AlertMultipleArguments {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertMultipleArguments_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertMultipleArguments_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -752,6 +1103,56 @@ impl AlertMultipleArguments {
         unsafe {
             crate::ffi::BOPAlgo_AlertMultipleArguments_inherited_Merge(self as *mut Self, theTarget)
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertMultipleArguments_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertMultipleArguments_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertMultipleArguments_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertMultipleArguments_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertMultipleArguments_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertMultipleArguments_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -781,6 +1182,17 @@ impl HandleBOPAlgoAlertMultipleArguments {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertMultipleArguments_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertMultipleArguments> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertMultipleArguments_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -834,6 +1246,18 @@ impl AlertNoFiller {
         unsafe { &mut *(crate::ffi::BOPAlgo_AlertNoFiller_as_Message_Alert_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BOPAlgo_AlertNoFiller_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertNoFiller_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -851,6 +1275,42 @@ impl AlertNoFiller {
     /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe { crate::ffi::BOPAlgo_AlertNoFiller_inherited_Merge(self as *mut Self, theTarget) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNoFiller_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BOPAlgo_AlertNoFiller_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BOPAlgo_AlertNoFiller_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNoFiller_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNoFiller_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertNoFiller_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -879,6 +1339,17 @@ impl HandleBOPAlgoAlertNoFiller {
             crate::OwnedPtr::from_raw(crate::ffi::HandleBOPAlgoAlertNoFiller_to_HandleMessageAlert(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertNoFiller> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertNoFiller_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -933,6 +1404,22 @@ impl AlertNullInputShapes {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertNullInputShapes_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertNullInputShapes_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -956,6 +1443,53 @@ impl AlertNullInputShapes {
         unsafe {
             crate::ffi::BOPAlgo_AlertNullInputShapes_inherited_Merge(self as *mut Self, theTarget)
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNullInputShapes_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNullInputShapes_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNullInputShapes_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNullInputShapes_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNullInputShapes_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertNullInputShapes_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -983,6 +1517,17 @@ impl HandleBOPAlgoAlertNullInputShapes {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertNullInputShapes_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertNullInputShapes> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertNullInputShapes_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -1038,6 +1583,22 @@ impl AlertPostTreatFF {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertPostTreatFF_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertPostTreatFF_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1059,6 +1620,44 @@ impl AlertPostTreatFF {
         unsafe {
             crate::ffi::BOPAlgo_AlertPostTreatFF_inherited_Merge(self as *mut Self, theTarget)
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertPostTreatFF_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertPostTreatFF_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BOPAlgo_AlertPostTreatFF_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertPostTreatFF_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertPostTreatFF_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertPostTreatFF_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1086,6 +1685,17 @@ impl HandleBOPAlgoAlertPostTreatFF {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertPostTreatFF_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertPostTreatFF> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertPostTreatFF_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -1145,6 +1755,24 @@ impl AlertSolidBuilderFailed {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertSolidBuilderFailed_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertSolidBuilderFailed_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1171,6 +1799,56 @@ impl AlertSolidBuilderFailed {
                 theTarget,
             )
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertSolidBuilderFailed_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertSolidBuilderFailed_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertSolidBuilderFailed_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertSolidBuilderFailed_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertSolidBuilderFailed_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertSolidBuilderFailed_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1200,6 +1878,17 @@ impl HandleBOPAlgoAlertSolidBuilderFailed {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertSolidBuilderFailed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertSolidBuilderFailed> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertSolidBuilderFailed_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -1257,6 +1946,22 @@ impl AlertTooFewArguments {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertTooFewArguments_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertTooFewArguments_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1280,6 +1985,53 @@ impl AlertTooFewArguments {
         unsafe {
             crate::ffi::BOPAlgo_AlertTooFewArguments_inherited_Merge(self as *mut Self, theTarget)
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertTooFewArguments_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertTooFewArguments_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertTooFewArguments_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertTooFewArguments_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertTooFewArguments_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertTooFewArguments_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1307,6 +2059,17 @@ impl HandleBOPAlgoAlertTooFewArguments {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertTooFewArguments_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertTooFewArguments> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertTooFewArguments_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -1382,6 +2145,22 @@ impl AlertBadPositioning {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertBadPositioning_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertBadPositioning_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1419,6 +2198,49 @@ impl AlertBadPositioning {
         unsafe {
             crate::ffi::BOPAlgo_AlertBadPositioning_inherited_Merge(self as *mut Self, theTarget)
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBadPositioning_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBadPositioning_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBadPositioning_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBadPositioning_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBadPositioning_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertBadPositioning_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1459,6 +2281,17 @@ impl HandleBOPAlgoAlertBadPositioning {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertBadPositioning_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertBadPositioning> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertBadPositioning_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -1532,6 +2365,20 @@ impl AlertEmptyShape {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertEmptyShape_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertEmptyShape_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1561,6 +2408,44 @@ impl AlertEmptyShape {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe { crate::ffi::BOPAlgo_AlertEmptyShape_inherited_Merge(self as *mut Self, theTarget) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertEmptyShape_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertEmptyShape_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BOPAlgo_AlertEmptyShape_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertEmptyShape_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertEmptyShape_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertEmptyShape_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1601,6 +2486,17 @@ impl HandleBOPAlgoAlertEmptyShape {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertEmptyShape_to_HandleMessageAlert(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertEmptyShape> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertEmptyShape_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -1680,6 +2576,24 @@ impl AlertNotSplittableEdge {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertNotSplittableEdge_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertNotSplittableEdge_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1720,6 +2634,56 @@ impl AlertNotSplittableEdge {
         unsafe {
             crate::ffi::BOPAlgo_AlertNotSplittableEdge_inherited_Merge(self as *mut Self, theTarget)
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNotSplittableEdge_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNotSplittableEdge_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNotSplittableEdge_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNotSplittableEdge_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNotSplittableEdge_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertNotSplittableEdge_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1762,6 +2726,17 @@ impl HandleBOPAlgoAlertNotSplittableEdge {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertNotSplittableEdge_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertNotSplittableEdge> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertNotSplittableEdge_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -1849,6 +2824,24 @@ impl AlertRemovalOfIBForEdgesFailed {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertRemovalOfIBForEdgesFailed_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertRemovalOfIBForEdgesFailed_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1897,6 +2890,60 @@ impl AlertRemovalOfIBForEdgesFailed {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed;
@@ -1938,6 +2985,17 @@ impl HandleBOPAlgoAlertRemovalOfIBForEdgesFailed {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -2025,6 +3083,24 @@ impl AlertRemovalOfIBForFacesFailed {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertRemovalOfIBForFacesFailed_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertRemovalOfIBForFacesFailed_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2073,6 +3149,60 @@ impl AlertRemovalOfIBForFacesFailed {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleBOPAlgoAlertRemovalOfIBForFacesFailed;
@@ -2114,6 +3244,17 @@ impl HandleBOPAlgoAlertRemovalOfIBForFacesFailed {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertRemovalOfIBForFacesFailed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForFacesFailed> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertRemovalOfIBForFacesFailed_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -2201,6 +3342,24 @@ impl AlertRemovalOfIBForMDimShapes {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertRemovalOfIBForMDimShapes_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertRemovalOfIBForMDimShapes_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2249,6 +3408,60 @@ impl AlertRemovalOfIBForMDimShapes {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleBOPAlgoAlertRemovalOfIBForMDimShapes;
@@ -2290,6 +3503,17 @@ impl HandleBOPAlgoAlertRemovalOfIBForMDimShapes {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertRemovalOfIBForMDimShapes_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForMDimShapes> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertRemovalOfIBForMDimShapes_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -2379,6 +3603,24 @@ impl AlertRemovalOfIBForSolidsFailed {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertRemovalOfIBForSolidsFailed_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertRemovalOfIBForSolidsFailed_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2427,6 +3669,62 @@ impl AlertRemovalOfIBForSolidsFailed {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
 }
 
 pub use crate::ffi::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed;
@@ -2468,6 +3766,17 @@ impl HandleBOPAlgoAlertRemovalOfIBForSolidsFailed {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -2551,6 +3860,24 @@ impl AlertSelfInterferingShape {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertSelfInterferingShape_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertSelfInterferingShape_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2599,6 +3926,58 @@ impl AlertSelfInterferingShape {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertSelfInterferingShape_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertSelfInterferingShape_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertSelfInterferingShape_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertSelfInterferingShape_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertSelfInterferingShape_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertSelfInterferingShape_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleBOPAlgoAlertSelfInterferingShape;
@@ -2640,6 +4019,17 @@ impl HandleBOPAlgoAlertSelfInterferingShape {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertSelfInterferingShape_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertSelfInterferingShape> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertSelfInterferingShape_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -2723,6 +4113,24 @@ impl AlertShellSplitterFailed {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertShellSplitterFailed_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertShellSplitterFailed_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2769,6 +4177,58 @@ impl AlertShellSplitterFailed {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertShellSplitterFailed_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertShellSplitterFailed_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertShellSplitterFailed_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertShellSplitterFailed_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertShellSplitterFailed_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertShellSplitterFailed_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleBOPAlgoAlertShellSplitterFailed;
@@ -2810,6 +4270,17 @@ impl HandleBOPAlgoAlertShellSplitterFailed {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertShellSplitterFailed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertShellSplitterFailed> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertShellSplitterFailed_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -2883,6 +4354,22 @@ impl AlertTooSmallEdge {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertTooSmallEdge_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertTooSmallEdge_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -2918,6 +4405,44 @@ impl AlertTooSmallEdge {
         unsafe {
             crate::ffi::BOPAlgo_AlertTooSmallEdge_inherited_Merge(self as *mut Self, theTarget)
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertTooSmallEdge_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertTooSmallEdge_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BOPAlgo_AlertTooSmallEdge_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertTooSmallEdge_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertTooSmallEdge_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertTooSmallEdge_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -2958,6 +4483,17 @@ impl HandleBOPAlgoAlertTooSmallEdge {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertTooSmallEdge_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertTooSmallEdge> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertTooSmallEdge_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -3047,6 +4583,22 @@ impl AlertIntersectionOfPairOfShapesFailed {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3095,6 +4647,62 @@ impl AlertIntersectionOfPairOfShapesFailed {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
 }
 
 pub use crate::ffi::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed;
@@ -3137,6 +4745,13 @@ impl HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed {
     pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_to_HandleMessageAlert(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_to_HandleStandardTransient(self as *const Self))
         }
     }
 }
@@ -3217,6 +4832,24 @@ impl AlertBuildingPCurveFailed {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertBuildingPCurveFailed_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertBuildingPCurveFailed_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3265,6 +4898,58 @@ impl AlertBuildingPCurveFailed {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBuildingPCurveFailed_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBuildingPCurveFailed_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBuildingPCurveFailed_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBuildingPCurveFailed_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBuildingPCurveFailed_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertBuildingPCurveFailed_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleBOPAlgoAlertBuildingPCurveFailed;
@@ -3306,6 +4991,17 @@ impl HandleBOPAlgoAlertBuildingPCurveFailed {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertBuildingPCurveFailed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertBuildingPCurveFailed> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertBuildingPCurveFailed_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -3395,6 +5091,24 @@ impl AlertAcquiredSelfIntersection {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertAcquiredSelfIntersection_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertAcquiredSelfIntersection_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3443,6 +5157,60 @@ impl AlertAcquiredSelfIntersection {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertAcquiredSelfIntersection_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertAcquiredSelfIntersection_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertAcquiredSelfIntersection_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertAcquiredSelfIntersection_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertAcquiredSelfIntersection_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertAcquiredSelfIntersection_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleBOPAlgoAlertAcquiredSelfIntersection;
@@ -3484,6 +5252,17 @@ impl HandleBOPAlgoAlertAcquiredSelfIntersection {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertAcquiredSelfIntersection_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertAcquiredSelfIntersection> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertAcquiredSelfIntersection_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -3561,6 +5340,22 @@ impl AlertUnsupportedType {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertUnsupportedType_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertUnsupportedType_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3598,6 +5393,53 @@ impl AlertUnsupportedType {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnsupportedType_inherited_Merge(self as *mut Self, theTarget)
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnsupportedType_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnsupportedType_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnsupportedType_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnsupportedType_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnsupportedType_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertUnsupportedType_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -3638,6 +5480,17 @@ impl HandleBOPAlgoAlertUnsupportedType {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertUnsupportedType_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnsupportedType> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnsupportedType_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -3695,6 +5548,22 @@ impl AlertNoFacesToRemove {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertNoFacesToRemove_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertNoFacesToRemove_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3718,6 +5587,53 @@ impl AlertNoFacesToRemove {
         unsafe {
             crate::ffi::BOPAlgo_AlertNoFacesToRemove_inherited_Merge(self as *mut Self, theTarget)
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNoFacesToRemove_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNoFacesToRemove_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNoFacesToRemove_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNoFacesToRemove_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNoFacesToRemove_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertNoFacesToRemove_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -3745,6 +5661,17 @@ impl HandleBOPAlgoAlertNoFacesToRemove {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertNoFacesToRemove_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertNoFacesToRemove> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertNoFacesToRemove_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -3832,6 +5759,24 @@ impl AlertUnableToRemoveTheFeature {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertUnableToRemoveTheFeature_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertUnableToRemoveTheFeature_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -3880,6 +5825,60 @@ impl AlertUnableToRemoveTheFeature {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToRemoveTheFeature_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToRemoveTheFeature_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToRemoveTheFeature_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToRemoveTheFeature_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToRemoveTheFeature_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToRemoveTheFeature_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleBOPAlgoAlertUnableToRemoveTheFeature;
@@ -3921,6 +5920,17 @@ impl HandleBOPAlgoAlertUnableToRemoveTheFeature {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertUnableToRemoveTheFeature_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToRemoveTheFeature> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToRemoveTheFeature_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -3982,6 +5992,24 @@ impl AlertRemoveFeaturesFailed {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertRemoveFeaturesFailed_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertRemoveFeaturesFailed_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -4009,6 +6037,58 @@ impl AlertRemoveFeaturesFailed {
                 self as *mut Self,
                 theTarget,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemoveFeaturesFailed_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemoveFeaturesFailed_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemoveFeaturesFailed_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemoveFeaturesFailed_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemoveFeaturesFailed_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertRemoveFeaturesFailed_inherited_Delete(self as *const Self)
         }
     }
 }
@@ -4039,6 +6119,17 @@ impl HandleBOPAlgoAlertRemoveFeaturesFailed {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertRemoveFeaturesFailed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertRemoveFeaturesFailed> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertRemoveFeaturesFailed_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -4128,6 +6219,24 @@ impl AlertSolidBuilderUnusedFaces {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertSolidBuilderUnusedFaces_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertSolidBuilderUnusedFaces_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -4176,6 +6285,60 @@ impl AlertSolidBuilderUnusedFaces {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleBOPAlgoAlertSolidBuilderUnusedFaces;
@@ -4219,6 +6382,17 @@ impl HandleBOPAlgoAlertSolidBuilderUnusedFaces {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertSolidBuilderUnusedFaces_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertSolidBuilderUnusedFaces> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertSolidBuilderUnusedFaces_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -4304,6 +6478,24 @@ impl AlertFaceBuilderUnusedEdges {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertFaceBuilderUnusedEdges_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertFaceBuilderUnusedEdges_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -4352,6 +6544,60 @@ impl AlertFaceBuilderUnusedEdges {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleBOPAlgoAlertFaceBuilderUnusedEdges;
@@ -4393,6 +6639,17 @@ impl HandleBOPAlgoAlertFaceBuilderUnusedEdges {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertFaceBuilderUnusedEdges_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertFaceBuilderUnusedEdges> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertFaceBuilderUnusedEdges_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -4476,6 +6733,24 @@ impl AlertUnableToOrientTheShape {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertUnableToOrientTheShape_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertUnableToOrientTheShape_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -4524,6 +6799,60 @@ impl AlertUnableToOrientTheShape {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToOrientTheShape_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToOrientTheShape_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToOrientTheShape_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToOrientTheShape_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToOrientTheShape_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToOrientTheShape_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleBOPAlgoAlertUnableToOrientTheShape;
@@ -4565,6 +6894,17 @@ impl HandleBOPAlgoAlertUnableToOrientTheShape {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertUnableToOrientTheShape_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToOrientTheShape> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToOrientTheShape_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -4638,6 +6978,22 @@ impl AlertUnknownShape {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertUnknownShape_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertUnknownShape_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -4673,6 +7029,44 @@ impl AlertUnknownShape {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnknownShape_inherited_Merge(self as *mut Self, theTarget)
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnknownShape_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnknownShape_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BOPAlgo_AlertUnknownShape_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnknownShape_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnknownShape_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertUnknownShape_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -4713,6 +7107,17 @@ impl HandleBOPAlgoAlertUnknownShape {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertUnknownShape_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnknownShape> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnknownShape_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -4774,6 +7179,24 @@ impl AlertNoPeriodicityRequired {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertNoPeriodicityRequired_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertNoPeriodicityRequired_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -4801,6 +7224,60 @@ impl AlertNoPeriodicityRequired {
                 self as *mut Self,
                 theTarget,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNoPeriodicityRequired_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNoPeriodicityRequired_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNoPeriodicityRequired_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNoPeriodicityRequired_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNoPeriodicityRequired_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertNoPeriodicityRequired_inherited_Delete(self as *const Self)
         }
     }
 }
@@ -4831,6 +7308,17 @@ impl HandleBOPAlgoAlertNoPeriodicityRequired {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertNoPeriodicityRequired_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertNoPeriodicityRequired> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertNoPeriodicityRequired_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -4904,6 +7392,22 @@ impl AlertUnableToTrim {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertUnableToTrim_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertUnableToTrim_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -4939,6 +7443,44 @@ impl AlertUnableToTrim {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnableToTrim_inherited_Merge(self as *mut Self, theTarget)
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToTrim_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToTrim_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BOPAlgo_AlertUnableToTrim_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToTrim_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToTrim_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertUnableToTrim_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -4979,6 +7521,17 @@ impl HandleBOPAlgoAlertUnableToTrim {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertUnableToTrim_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToTrim> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToTrim_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -5062,6 +7615,24 @@ impl AlertUnableToMakeIdentical {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertUnableToMakeIdentical_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertUnableToMakeIdentical_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -5110,6 +7681,60 @@ impl AlertUnableToMakeIdentical {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToMakeIdentical_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToMakeIdentical_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToMakeIdentical_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToMakeIdentical_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToMakeIdentical_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToMakeIdentical_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleBOPAlgoAlertUnableToMakeIdentical;
@@ -5151,6 +7776,17 @@ impl HandleBOPAlgoAlertUnableToMakeIdentical {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertUnableToMakeIdentical_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToMakeIdentical> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToMakeIdentical_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -5226,6 +7862,22 @@ impl AlertUnableToRepeat {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertUnableToRepeat_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertUnableToRepeat_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -5263,6 +7915,49 @@ impl AlertUnableToRepeat {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnableToRepeat_inherited_Merge(self as *mut Self, theTarget)
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToRepeat_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToRepeat_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToRepeat_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToRepeat_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToRepeat_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertUnableToRepeat_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -5303,6 +7998,17 @@ impl HandleBOPAlgoAlertUnableToRepeat {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertUnableToRepeat_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToRepeat> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToRepeat_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -5370,6 +8076,24 @@ impl AlertMultiDimensionalArguments {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertMultiDimensionalArguments_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertMultiDimensionalArguments_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -5397,6 +8121,60 @@ impl AlertMultiDimensionalArguments {
                 self as *mut Self,
                 theTarget,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertMultiDimensionalArguments_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertMultiDimensionalArguments_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertMultiDimensionalArguments_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertMultiDimensionalArguments_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertMultiDimensionalArguments_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertMultiDimensionalArguments_inherited_Delete(self as *const Self)
         }
     }
 }
@@ -5431,6 +8209,17 @@ impl HandleBOPAlgoAlertMultiDimensionalArguments {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertMultiDimensionalArguments_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertMultiDimensionalArguments> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertMultiDimensionalArguments_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -5514,6 +8303,24 @@ impl AlertUnableToMakePeriodic {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertUnableToMakePeriodic_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertUnableToMakePeriodic_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -5562,6 +8369,58 @@ impl AlertUnableToMakePeriodic {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToMakePeriodic_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToMakePeriodic_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToMakePeriodic_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToMakePeriodic_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToMakePeriodic_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToMakePeriodic_inherited_Delete(self as *const Self)
+        }
+    }
 }
 
 pub use crate::ffi::HandleBOPAlgoAlertUnableToMakePeriodic;
@@ -5603,6 +8462,17 @@ impl HandleBOPAlgoAlertUnableToMakePeriodic {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertUnableToMakePeriodic_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToMakePeriodic> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToMakePeriodic_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -5676,6 +8546,22 @@ impl AlertUnableToGlue {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertUnableToGlue_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertUnableToGlue_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -5711,6 +8597,44 @@ impl AlertUnableToGlue {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnableToGlue_inherited_Merge(self as *mut Self, theTarget)
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToGlue_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToGlue_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BOPAlgo_AlertUnableToGlue_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToGlue_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToGlue_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertUnableToGlue_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -5751,6 +8675,17 @@ impl HandleBOPAlgoAlertUnableToGlue {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertUnableToGlue_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToGlue> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToGlue_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -5832,6 +8767,24 @@ impl AlertShapeIsNotPeriodic {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertShapeIsNotPeriodic_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertShapeIsNotPeriodic_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -5876,6 +8829,56 @@ impl AlertShapeIsNotPeriodic {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertShapeIsNotPeriodic_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertShapeIsNotPeriodic_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertShapeIsNotPeriodic_inherited_GetRefCount(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertShapeIsNotPeriodic_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertShapeIsNotPeriodic_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BOPAlgo_AlertShapeIsNotPeriodic_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleBOPAlgoAlertShapeIsNotPeriodic;
@@ -5917,6 +8920,17 @@ impl HandleBOPAlgoAlertShapeIsNotPeriodic {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleBOPAlgoAlertShapeIsNotPeriodic_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertShapeIsNotPeriodic> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertShapeIsNotPeriodic_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -6004,6 +9018,24 @@ impl AlertUnableToMakeClosedEdgeOnFace {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_as_Standard_Transient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -6052,6 +9084,62 @@ impl AlertUnableToMakeClosedEdgeOnFace {
             )
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_GetRefCount(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe {
+            crate::ffi::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_Delete(
+                self as *const Self,
+            )
+        }
+    }
 }
 
 pub use crate::ffi::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace;
@@ -6096,6 +9184,13 @@ impl HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace {
                     self as *const Self,
                 ),
             )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_to_HandleStandardTransient(self as *const Self))
         }
     }
 }

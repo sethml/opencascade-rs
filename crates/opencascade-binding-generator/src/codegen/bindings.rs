@@ -36,7 +36,6 @@ pub struct ClassBindings {
     pub short_name: String,
     pub module: String,
     pub is_abstract: bool,
-    pub is_handle_type: bool,
     pub has_protected_destructor: bool,
     pub doc_comment: Option<String>,
     pub source_header: String,
@@ -2142,7 +2141,6 @@ pub fn compute_class_bindings(
         short_name: crate::type_mapping::safe_short_name(&crate::type_mapping::short_name_for_module(cpp_name, &class.module)),
         module: class.module.clone(),
         is_abstract: effectively_abstract,
-        is_handle_type,
         has_protected_destructor: class.has_protected_destructor,
         doc_comment: class.comment.clone(),
         source_header: class.source_header.clone(),
@@ -3001,21 +2999,14 @@ fn compute_inherited_method_bindings(
 /// Compute the set of classes that can be wrapped in `Handle<T>`.
 ///
 /// A class is handle-able if it IS `Standard_Transient` or transitively inherits
-/// from `Standard_Transient` through the known class graph. This replaces the old
-/// single-level heuristic in `check_is_handle_type()` which only checked direct
-/// base classes against a few hardcoded prefixes.
+/// from `Standard_Transient` through the known class graph. The inheritance graph
+/// now includes `Standard_*` base classes, so the transitive closure naturally
+/// discovers all handle-able classes from just the `Standard_Transient` seed.
 pub fn compute_handle_able_classes(all_classes: &[&ParsedClass]) -> HashSet<String> {
     let mut handle_able = HashSet::new();
 
     // Seed: Standard_Transient is the root of the Handle hierarchy
     handle_able.insert("Standard_Transient".to_string());
-
-    // Also seed with classes the parser heuristic already marked
-    for class in all_classes {
-        if class.is_handle_type {
-            handle_able.insert(class.name.clone());
-        }
-    }
 
     // Transitive closure: any class with a handle-able base is handle-able
     loop {
@@ -5463,7 +5454,6 @@ mod tests {
             methods: Vec::new(),
             static_methods: Vec::new(),
             all_method_names: HashSet::new(),
-            is_handle_type: false,
             base_classes: Vec::new(),
             has_protected_destructor: false,
             is_abstract: false,
@@ -5553,8 +5543,7 @@ mod tests {
             methods: Vec::new(),
             static_methods: Vec::new(),
             all_method_names: HashSet::new(),
-            is_handle_type: true,
-            base_classes: Vec::new(),
+            base_classes: vec!["Standard_Transient".to_string()],
             has_protected_destructor: false,
             is_abstract: true,
             pure_virtual_methods: HashSet::new(),

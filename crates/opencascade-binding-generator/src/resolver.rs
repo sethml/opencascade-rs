@@ -114,8 +114,6 @@ pub struct ResolvedClass {
     pub doc_comment: Option<String>,
     /// Binding status
     pub status: BindingStatus,
-    /// Whether this is a Handle type
-    pub is_handle_type: bool,
     /// Whether this class is abstract
     pub is_abstract: bool,
     /// Whether this class has a protected destructor
@@ -348,7 +346,7 @@ pub struct SymbolTable {
     pub all_enum_names: HashSet<String>,
     /// All class names (including collection typedef names)
     pub all_class_names: HashSet<String>,
-    /// Classes that can have Handle<T> declarations (is_handle_type)
+    /// Classes that can have Handle<T> declarations (transitive closure + signature scanning)
     pub handle_able_classes: HashSet<String>,
     /// Cross-module type references by module
     pub cross_module_types: HashMap<String, Vec<CrossModuleType>>,
@@ -764,6 +762,7 @@ pub fn build_symbol_table(
     all_enums: &[&ParsedEnum],
     all_functions: &[&ParsedFunction],
     collection_type_names: &HashSet<String>,
+    handle_able_classes: &HashSet<String>,
 ) -> SymbolTable {
     // Collect all enum and class names first
     let all_enum_names: HashSet<String> = all_enums.iter().map(|e| e.name.clone()).collect();
@@ -771,14 +770,8 @@ pub fn build_symbol_table(
     // Collection typedefs are known types for filtering purposes
     all_class_names.extend(collection_type_names.iter().cloned());
 
-    // Compute handle-able classes (inherit from Standard_Transient)
-    // Include handle types even with protected destructors because Handle<T>
-    // manages lifetime via reference counting, not direct delete.
-    let mut handle_able_classes: HashSet<String> = all_classes
-        .iter()
-        .filter(|c| c.is_handle_type)
-        .map(|c| c.name.clone())
-        .collect();
+    // Start from the pre-computed handle-able classes (transitive closure of inheritance graph)
+    let mut handle_able_classes = handle_able_classes.clone();
 
     // Also add any class name that appears inside Type::Handle(...) in method signatures.
     // If C++ code uses Handle(X) for a type, X must inherit from Standard_Transient,
@@ -1010,7 +1003,6 @@ fn resolve_class(
         source_header: class.source_header.clone(),
         doc_comment: class.comment.clone(),
         status: class_status,
-        is_handle_type: class.is_handle_type,
         is_abstract: class.is_abstract,
         has_protected_destructor: class.has_protected_destructor,
         base_classes: class.base_classes.clone(),

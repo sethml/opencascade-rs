@@ -3467,3 +3467,735 @@ Items 1, 2, and 4 are the most actionable — they could be unified into a singl
 Completed: *Report special-case heuristics* (4/4)
 
 Made changes.
+
+User: OK, work on 1, 2, and 4. When complete, commit.
+
+GitHub Copilot: 
+
+  
+
+Created 6 todos
+
+Let me first understand the code flow by reading the relevant sections in parallel.   
+
+Reading lines 730-810 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L730-L811)
+Completed with input: {
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 730,
+  "endLine": 810
+}
+
+Reading lines 770-810 of [resolver.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L770-L811)
+Completed with input: {
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs",
+  "startLine": 770,
+  "endLine": 810
+}
+
+Reading lines 1-50 of [main.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L1-L51)
+Completed with input: {
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs",
+  "startLine": 1,
+  "endLine": 50
+}
+
+Reading lines 810-860 of [resolver.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L810-L861)
+Completed with input: {
+  "endLine": 860,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs",
+  "startLine": 810
+}
+
+Reading lines 560-620 of [main.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L560-L621)
+Completed with input: {
+  "endLine": 620,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs",
+  "startLine": 560
+}
+
+Now let me understand the full flow. Let me check what `resolver::collect_referenced_types` is called with and how its `handle_able_classes` output is used: 
+
+Searched for text `collect_referenced_types` (`**/crates/opencascade-binding-generator/src/**`), 3 results
+
+Reading lines 27-80 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L27-L81)
+Completed with input: {
+  "endLine": 80,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 27
+}
+
+Reading lines 740-765 of [resolver.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L740-L766)
+Completed with input: {
+  "endLine": 765,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs",
+  "startLine": 740
+}
+
+Reading lines 759-770 of [resolver.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L759-L771)
+Completed with input: {
+  "endLine": 770,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs",
+  "startLine": 759
+}
+
+Now let me see how the resolver's `handle_able_classes` is used in the symbol table:   
+
+Searched for text `handle_able_classes` (`**/crates/opencascade-binding-generator/src/resolver.rs`), 15 results
+
+Now let me see how the main.rs calls `build_symbol_table` and understand the execution order:   
+
+Searched for text `build_symbol_table` (`**/crates/opencascade-binding-generator/src/main.rs`), 1 result
+
+Reading lines 275-300 of [main.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L275-L301)
+Completed with input: {
+  "endLine": 300,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs",
+  "startLine": 275
+}
+
+Searched for text `pub fn compute_handle_able_classes` (`**/crates/opencascade-binding-generator/src/codegen/bindings.rs`), 1 result
+
+Reading lines 3007-3060 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L3007-L3061)
+Completed with input: {
+  "endLine": 3060,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 3007
+}
+
+Searched for text `is_handle_type` (`**/crates/opencascade-binding-generator/src/**`), 20 results
+
+Let me now look at all the places `class.is_handle_type` from the parser is used, and the resolver's usage pattern:   
+
+Reading lines 435-460 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L435-L461)
+Completed with input: {
+  "endLine": 460,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 435
+}
+
+Reading lines 575-595 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L575-L596)
+Completed with input: {
+  "endLine": 595,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 575
+}
+
+Reading lines 1005-1020 of [resolver.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L1005-L1021)
+Completed with input: {
+  "endLine": 1020,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs",
+  "startLine": 1005
+}
+
+Now let me see the `generate_handle_declarations` in rust.rs and how it uses `is_handle_type`:    
+
+Reading lines 155-200 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L155-L201)
+Completed with input: {
+  "endLine": 200,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 155
+}
+
+Searched for text `fn generate_handle_declarations` (`**/crates/opencascade-binding-generator/src/codegen/rust.rs`), 1 result
+
+Reading lines 396-445 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L396-L446)
+Completed with input: {
+  "endLine": 445,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 396
+}
+
+Now I have a complete picture. Let me also check how `collect_referenced_types` uses `is_handle_type` at line 39: 
+
+Reading lines 35-42 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L35-L43)
+Completed with input: {
+  "endLine": 42,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 35
+}
+
+Searched for text `collected_types` (`**/crates/opencascade-binding-generator/src/codegen/rust.rs`), 4 results
+
+Reading lines 460-530 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L460-L531)
+Completed with input: {
+  "endLine": 530,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 460
+}
+
+Starting: *Fix extract_base_classes Standard_ filter* (2/6)
+
+Searched for regex `resolved.*is_handle_type|\.is_handle_type(?!.*=)` (`**/crates/opencascade-binding-generator/src/**`), 4 results
+
+Good. Let me also check who reads `ResolvedClass.is_handle_type` from the symbol table: 
+
+Searched for regex `resolved_class.*is_handle|class_info.*is_handle|entry.*is_handle` (`**/crates/opencascade-binding-generator/src/**`), no results
+
+Ran terminal command:  grep -rn 'is_handle_type' crates/opencascade-binding-generator/src/ | grep -v '^\S*:.*//\|^\S*:.*fn check'
+
+Reading lines 5545-5565 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L5545-L5566)
+Completed with input: {
+  "endLine": 5565,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 5545
+}
+
+Reading lines 5455-5470 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L5455-L5471)
+Completed with input: {
+  "endLine": 5470,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 5455
+}
+
+Searched for text `handles` (`**/crates/opencascade-binding-generator/src/codegen/rust.rs`), 20 results
+
+Reading lines 75-100 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L75-L101)
+Completed with input: {
+  "endLine": 100,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 75
+}
+
+Reading lines 685-710 of [main.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L685-L711)
+Completed with input: {
+  "endLine": 710,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs",
+  "startLine": 685
+}
+
+I see: `collected_types.handles` is set but **never read** in main.rs — only `.classes` is used. Let me verify it's also not used in `generate_opaque_declarations`: 
+
+Ran terminal command:  grep -n 'collected_types\.handles\|\.handles' crates/opencascade-binding-generator/src/codegen/rust.rs | head -20
+
+The `.handles` field on `CollectedTypes` is **write-only** — populated but never read. That simplifies things: `collect_referenced_types` can simply stop using `class.is_handle_type`, and eventually we can remove the handles field.
+
+Now I have a clear plan. Let me implement all three items:
+
+**Plan:**
+1. **`extract_base_classes`** (parser.rs): Remove `base_name.contains("Standard_")` filter 
+2. **`compute_handle_able_classes`** (bindings.rs): Remove parser heuristic seeding (only need "Standard_Transient" seed)
+3. **`check_is_handle_type`** (parser.rs): Remove function, remove `is_handle_type` from `ParsedClass`
+4. **`build_symbol_table`** (resolver.rs): Accept `handle_able_classes` param, use it instead of computing from parser field
+5. **`collect_referenced_types`** (rust.rs): Accept `handle_able_classes` param
+6. **main.rs**: Compute `handle_able_classes` before resolver, pass to both
+
+Let me also check the execution order in main.rs carefully to ensure `compute_handle_able_classes` can be called before the resolver: 
+
+Reading lines 260-295 of [main.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L260-L296)
+Completed with input: {
+  "endLine": 295,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs",
+  "startLine": 260
+}
+
+`compute_handle_able_classes` only needs `all_classes` (available at line 268), so we can call it before `build_symbol_table` at line 280. 
+
+Now let me also check the model.rs `ParsedClass` struct and the test at bindings.rs:5556 more closely: 
+
+Reading lines 115-140 of [model.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/model.rs#L115-L141)
+Completed with input: {
+  "endLine": 140,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/model.rs",
+  "startLine": 115
+}
+
+Now let me see all the test code that constructs `ParsedClass` with `is_handle_type`:    
+
+Searched for regex `is_handle_type:\s*(true|false)` (`**/crates/opencascade-binding-generator/src/**`), 2 results
+
+Good — only two test sites. Now let me also check the resolver.rs `ResolvedClass` struct to see if `is_handle_type` is read after construction:  
+
+Reading lines 108-130 of [resolver.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L108-L131)
+Completed with input: {
+  "endLine": 130,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs",
+  "startLine": 108
+}
+
+Ran terminal command:  grep -rn '\.is_handle_type' crates/opencascade-binding-generator/src/ | grep -v 'pub is_handle_type\|//\|is_handle_type:' | head -20
+
+Three reads of `.is_handle_type`:
+1. `rust.rs:39` — on `ParsedClass` in `collect_referenced_types`
+2. `bindings.rs:3015` — on `ParsedClass` in `compute_handle_able_classes`  
+3. `resolver.rs:779` — on `ParsedClass` in `build_symbol_table`
+
+All three will be replaced. `ResolvedClass.is_handle_type` is stored but never read externally — it can also be removed.
+
+Now let me implement all the changes: 
+
+Updated todo list
+
+Edited: [parser.rs -5+4](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L775-L779)
+Completed with input: {
+  "edits": [
+    {
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "775:ee,776:hb,777:ru,778:hd,779:gl",
+      "content": "                // Only include OCCT classes (those with underscore prefix pattern)\n                if !base_name.contains('_') {\n                    continue;\n                }"
+    }
+  ]
+}
+
+Starting: *Remove parser check_is_handle_type heuristic* (3/6)
+
+Now remove `check_is_handle_type()` and `is_handle_type` from the parser and model:  
+
+Reading lines 438-445 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L438-L446)
+Completed with input: {
+  "endLine": 445,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 438
+}
+
+Edited: [parser.rs -4](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L439), [-3+2](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L581-L583), [-23](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L733)
+Completed with input: {
+  "edits": [
+    {
+      "content": "",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "439:ea,440:kl,441:iy,442:lt"
+    },
+    {
+      "content": "            base_classes,\n            has_protected_destructor,",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "585:dp,586:rc,587:gd"
+    },
+    {
+      "content": "",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "738:ye,739:xw,740:fh,741:si,742:kf,743:bi,744:wf,745:ls,746:jx,747:mz,748:ke,749:xc,750:gr,751:qz,752:qj,753:mn,754:qh,755:gl,756:uo,757:cy,758:ax,759:wu,760:io"
+    }
+  ]
+}
+
+Now remove `is_handle_type` from the `ParsedClass` struct in model.rs:  
+
+Reading lines 125-132 of [model.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/model.rs#L125-L133)
+Completed with input: {
+  "endLine": 132,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/model.rs",
+  "startLine": 125
+}
+
+Edited: [model.rs -6+4](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/model.rs#L125-L129)
+Completed with input: {
+  "edits": [
+    {
+      "content": "    /// All method names in this class (including protected/private) - used for filtering inherited methods\n    pub all_method_names: std::collections::HashSet<String>,\n    /// Direct base classes (for generating upcast helpers)\n    pub base_classes: Vec<String>,",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/model.rs",
+      "lineHashes": "125:cv,126:fg,127:ll,128:ai,129:he,130:dg"
+    }
+  ]
+}
+
+Now update `compute_handle_able_classes` in bindings.rs to remove the parser heuristic seeding:  
+
+Reading lines 2998-3040 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L2998-L3041)
+Completed with input: {
+  "endLine": 3040,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 2998
+}
+
+Edited: [bindings.rs -40+33](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L3001-L3034)
+Completed with input: {
+  "edits": [
+    {
+      "content": "/// Compute the set of classes that can be wrapped in `Handle<T>`.\n///\n/// A class is handle-able if it IS `Standard_Transient` or transitively inherits\n/// from `Standard_Transient` through the known class graph. The inheritance graph\n/// now includes `Standard_*` base classes, so the transitive closure naturally\n/// discovers all handle-able classes from just the `Standard_Transient` seed.\npub fn compute_handle_able_classes(all_classes: &[&ParsedClass]) -> HashSet<String> {\n    let mut handle_able = HashSet::new();\n\n    // Seed: Standard_Transient is the root of the Handle hierarchy\n    handle_able.insert(\"Standard_Transient\".to_string());\n\n    // Transitive closure: any class with a handle-able base is handle-able\n    loop {\n        let mut changed = false;\n        for class in all_classes {\n            if handle_able.contains(&class.name) {\n                continue;\n            }\n            for base in &class.base_classes {\n                if handle_able.contains(base) {\n                    handle_able.insert(class.name.clone());\n                    changed = true;\n                    break;\n                }\n            }\n        }\n        if !changed {\n            break;\n        }\n    }\n    handle_able\n}",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs",
+      "lineHashes": "3001:bw,3002:kn,3003:fa,3004:as,3005:lv,3006:lj,3007:bq,3008:qn,3009:dd,3010:eo,3011:fd,3012:dd,3013:fq,3014:yi,3015:fz,3016:qc,3017:cy,3018:ax,3019:dd,3020:vd,3021:kz,3022:pf,3023:un,3024:db,3025:fq,3026:uo,3027:rs,3028:pd,3029:gx,3030:ln,3031:ta,3032:gl,3033:uo,3034:cy,3035:oh,3036:zx,3037:cy,3038:ax,3039:ue,3040:io"
+    }
+  ]
+}
+
+Now remove `is_handle_type` from `ClassBindings` in bindings.rs and fix the test code:  
+
+Reading lines 35-45 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L35-L46)
+Completed with input: {
+  "endLine": 45,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 35
+}
+
+Edited: [bindings.rs -3+2](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L38-L40)
+Completed with input: {
+  "edits": [
+    {
+      "content": "    pub is_abstract: bool,\n    pub has_protected_destructor: bool,",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs",
+      "lineHashes": "38:ln,39:ai,40:dx"
+    }
+  ]
+}
+
+Now update `compute_class_bindings` where `is_handle_type` is set on `ClassBindings`:   
+
+Reading lines 2130-2150 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L2130-L2151)
+Completed with input: {
+  "endLine": 2150,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 2130
+}
+
+Edited: [bindings.rs -3+2](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L2143-L2145)
+Completed with input: {
+  "edits": [
+    {
+      "content": "        is_abstract: effectively_abstract,\n        has_protected_destructor: class.has_protected_destructor,",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs",
+      "lineHashes": "2143:jt,2144:fw,2145:jb"
+    }
+  ]
+}
+
+Now fix the test code that creates a dummy `ClassBindings` with `is_handle_type: false`:    
+
+Reading lines 5450-5470 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L5450-L5471)
+Completed with input: {
+  "endLine": 5470,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 5450
+}
+
+Edited: [bindings.rs -3+2](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L5456-L5458)
+Completed with input: {
+  "edits": [
+    {
+      "content": "            all_method_names: HashSet::new(),\n            base_classes: Vec::new(),",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs",
+      "lineHashes": "5456:cv,5457:sy,5458:my"
+    }
+  ]
+}
+
+Now find and fix the other test at ~5556:    
+
+Reading lines 5540-5558 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L5540-L5559)
+Completed with input: {
+  "endLine": 5558,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 5540
+}
+
+Edited: [bindings.rs -3+2](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L5545-L5547)
+Completed with input: {
+  "edits": [
+    {
+      "content": "            all_method_names: HashSet::new(),\n            base_classes: vec![\"Standard_Transient\".to_string()],",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs",
+      "lineHashes": "5545:cv,5546:fx,5547:my"
+    }
+  ]
+}
+
+Now also find the dummy ClassBindings literal (the one at ~5466 for the `emit_*` test):     
+
+Searched for text `is_handle_type: false` (`**/crates/opencascade-binding-generator/src/codegen/bindings.rs`), no results
+
+Good, the `ClassBindings` literal with `is_handle_type` has been removed. Let me also check for `is_handle_type` in ClassBindings construction elsewhere:  
+
+Searched for text `is_handle_type` (`**/crates/opencascade-binding-generator/src/codegen/bindings.rs`), 3 results
+
+Good — those 3 are local variables in `compute_class_bindings`, not struct fields. They're still used internally. That's fine.
+
+Now let's handle `emit_ffi_class` which might reference `is_handle_type` from `ClassBindings`:        
+
+Searched for regex `bindings\.is_handle|cb\.is_handle|class_binding.*is_handle` (`**/crates/opencascade-binding-generator/src/codegen/bindings.rs`), no results
+
+Good — `ClassBindings.is_handle_type` was never read anywhere. Now let me handle item 4: the resolver. 
+
+Starting: *Pass handle_able_classes to resolver* (4/6)
+
+Reading lines 759-860 of [resolver.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L759-L861)
+Completed with input: {
+  "endLine": 860,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs",
+  "startLine": 759
+}
+
+Now I'll update `build_symbol_table` to accept `handle_able_classes` and replace the inline computation with signature scanning on top: 
+
+Edited: [resolver.rs -28+23](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L759-L782)
+Completed with input: {
+  "edits": [
+    {
+      "content": "/// Build the symbol table from parsed headers and module graph\npub fn build_symbol_table(\n    modules: &[&Module],\n    graph: &ModuleGraph,\n    all_classes: &[&ParsedClass],\n    all_enums: &[&ParsedEnum],\n    all_functions: &[&ParsedFunction],\n    collection_type_names: &HashSet<String>,\n    handle_able_classes: &HashSet<String>,\n) -> SymbolTable {\n    // Collect all enum and class names first\n    let all_enum_names: HashSet<String> = all_enums.iter().map(|e| e.name.clone()).collect();\n    let mut all_class_names: HashSet<String> = all_classes.iter().map(|c| c.name.clone()).collect();\n    // Collection typedefs are known types for filtering purposes\n    all_class_names.extend(collection_type_names.iter().cloned());\n\n    // Start from the pre-computed handle-able classes (transitive closure of inheritance graph)\n    let mut handle_able_classes = handle_able_classes.clone();\n\n    // Also add any class name that appears inside Type::Handle(...) in method signatures.\n    // If C++ code uses Handle(X) for a type, X must inherit from Standard_Transient,\n    // so it's handle-able even if its own header is excluded.\n    fn collect_handle_types(ty: &crate::model::Type, set: &mut HashSet<String>) {",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs",
+      "lineHashes": "759:tr,760:qa,761:yg,762:ra,763:ue,764:th,765:fe,766:ws,767:sm,768:wx,769:rm,770:kq,771:jn,772:jd,773:dd,774:vt,775:az,776:lf,777:ec,778:cb,779:kx,780:hm,781:nj,782:dd,783:rm,784:xt,785:he,786:ei"
+    }
+  ]
+}
+
+Now remove `is_handle_type` from `ResolvedClass` and from its construction:   
+
+Reading lines 114-120 of [resolver.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L114-L121)
+Completed with input: {
+  "endLine": 120,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs",
+  "startLine": 114
+}
+
+Edited: [resolver.rs -6+4](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L115-L119)
+Completed with input: {
+  "edits": [
+    {
+      "content": "    /// Binding status\n    pub status: BindingStatus,\n    /// Whether this class is abstract\n    pub is_abstract: bool,",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs",
+      "lineHashes": "115:jn,116:vk,117:ey,118:ai,119:tt,120:ln"
+    }
+  ]
+}
+
+Now find and fix the construction of `ResolvedClass` where `is_handle_type` is set:     
+
+Searched for text `is_handle_type: class.is_handle_type` (`**/crates/opencascade-binding-generator/src/resolver.rs`), 1 result
+
+Reading lines 1002-1012 of [resolver.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L1002-L1013)
+Completed with input: {
+  "endLine": 1012,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs",
+  "startLine": 1002
+}
+
+Edited: [resolver.rs -3+2](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L1005-L1007)
+Completed with input: {
+  "edits": [
+    {
+      "content": "        status: class_status,\n        is_abstract: class.is_abstract,",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs",
+      "lineHashes": "1005:mn,1006:be,1007:no"
+    }
+  ]
+}
+
+Now update `collect_referenced_types` in rust.rs to use `handle_able_classes`:    
+
+Reading lines 27-72 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L27-L73)
+Completed with input: {
+  "endLine": 72,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 27
+}
+
+Edited: [rust.rs -15+16](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L27-L43)
+Completed with input: {
+  "edits": [
+    {
+      "content": "pub fn collect_referenced_types(\n    classes: &[&ParsedClass],\n    handle_able_classes: &HashSet<String>,\n) -> CollectedTypes {\n    let mut result = CollectedTypes {\n        classes: BTreeSet::new(),\n        handles: BTreeSet::new(),\n    };\n\n    for class in classes {\n        // Add Handle type for classes that are transient (can be wrapped in Handle)\n        // Handle types with protected destructors are included because Handle<T>\n        // manages lifetime via reference counting, not direct delete.\n        if handle_able_classes.contains(&class.name) {\n            result.handles.insert(class.name.clone());\n        }",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs",
+      "lineHashes": "27:cq,28:ih,29:qw,30:bo,31:ig,32:fu,33:jv,34:dd,35:co,36:sf,37:gi,38:ll,39:fz,40:da,41:cy"
+    }
+  ]
+}
+
+Now update the callers of `collect_referenced_types` to pass `handle_able_classes`. First the one in `generate_ffi`:    
+
+Reading lines 162-170 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L162-L171)
+Completed with input: {
+  "endLine": 170,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 162
+}
+
+Edited: [rust.rs -1+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L167-L168)
+Completed with input: {
+  "edits": [
+    {
+      "content": "    let collected_types = collect_referenced_types(all_classes, handle_able_classes);",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs",
+      "lineHashes": "167:wx"
+    }
+  ]
+}
+
+Now update the call in main.rs:     
+
+Reading lines 690-700 of [main.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L690-L701)
+Completed with input: {
+  "endLine": 700,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs",
+  "startLine": 690
+}
+
+Edited: [main.rs -1+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L693-L694)
+Completed with input: {
+  "edits": [
+    {
+      "content": "    let collected_types = codegen::rust::collect_referenced_types(all_classes, &handle_able_classes);",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs",
+      "lineHashes": "693:lf"
+    }
+  ]
+}
+
+Now update main.rs to compute `handle_able_classes` before the resolver and pass it:       
+
+Reading lines 270-290 of [main.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L270-L291)
+Completed with input: {
+  "endLine": 290,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs",
+  "startLine": 270
+}
+
+Edited: [main.rs -11+17](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L277-L294)
+Completed with input: {
+  "edits": [
+    {
+      "content": "    // Compute handle-able classes via transitive closure of inheritance graph.\n    // This is done before the symbol table so the resolver can use it instead of\n    // relying on the old per-class parser heuristic.\n    let handle_able_classes = codegen::bindings::compute_handle_able_classes(&all_classes);\n\n    // Build symbol table (Pass 1 of two-pass architecture)\n    // This resolves all symbols and makes binding decisions ONCE\n    let ordered_modules = graph.modules_in_order();\n    let symbol_table = resolver::build_symbol_table(\n        &ordered_modules,\n        &graph,\n        &all_classes,\n        &all_enums,\n        &all_functions,\n        &collection_type_names,\n        &handle_able_classes,\n    );",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs",
+      "lineHashes": "277:yn,278:zy,279:az,280:gg,281:me,282:ty,283:pc,284:pk,285:ue,286:nb,287:pd"
+    }
+  ]
+}
+
+Now remove the duplicate `compute_handle_able_classes` call that was previously done later in main.rs:     
+
+Searched for text `compute_handle_able_classes` (`**/crates/opencascade-binding-generator/src/main.rs`), 2 results
+
+Reading lines 582-592 of [main.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L582-L593)
+Completed with input: {
+  "endLine": 592,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs",
+  "startLine": 582
+}
+
+Remove the duplicate line 586:  
+
+Edited: [main.rs -3+2](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L585-L587)
+Completed with input: {
+  "edits": [
+    {
+      "content": "    let extra_typedef_names = parser::get_collected_typedef_names();\n    let all_bindings =",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs",
+      "lineHashes": "585:mc,586:cl,587:fy"
+    }
+  ]
+}
+
+Now let me also add the `use` for `HashSet` in rust.rs if not already present:       
+
+Reading lines 1-15 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L1-L16)
+Completed with input: {
+  "endLine": 15,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 1
+}
+
+Good, `HashSet` is already imported. Now let me also check for any compilation errors by examining the `SymbolTable` struct's `handle_able_classes` doc comment: 
+
+Reading lines 348-355 of [resolver.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L348-L356)
+Completed with input: {
+  "endLine": 355,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs",
+  "startLine": 348
+}
+
+Edited: [resolver.rs -1+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L349-L350)
+Completed with input: {
+  "edits": [
+    {
+      "content": "    /// Classes that can have Handle<T> declarations (transitive closure + signature scanning)",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs",
+      "lineHashes": "349:pg"
+    }
+  ]
+}
+
+Now let me try to build the generator to check for compilation errors:   
+
+Starting: *Regenerate, build, test* (5/6)
+
+Ran terminal command:  time cargo build -p opencascade-binding-generator 2>&1
+Completed with input:  time cargo build -p opencascade-binding-generator 2>&1
+
+The issue is that `handle_able_classes` is defined with `let` at line 280, but it's used later inside a function that takes `all_classes` as a function parameter (where `all_classes` is re-bound). Let me check the structure:     
+
+Reading lines 555-580 of [main.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L555-L581)
+Completed with input: {
+  "endLine": 580,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs",
+  "startLine": 555
+}
+
+I see — `generate_output` is a separate function. `handle_able_classes` is defined in `main()` before calling `build_symbol_table`, but `generate_output` is a separate function that needs to also compute or receive `handle_able_classes`. Let me check the call site:  
+
+Searched for text `generate_output(` (`**/crates/opencascade-binding-generator/src/main.rs`), 2 results
+
+Reading lines 345-360 of [main.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L345-L361)
+Completed with input: {
+  "endLine": 360,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs",
+  "startLine": 345
+}
+
+The `handle_able_classes` computed at line 280 is in `main()`, but it's not passed to `generate_output`. I need to either:
+1. Pass it through `generate_output`, or
+2. Recompute it inside `generate_output`
+
+Option 1 is cleaner. Let me add the parameter:    
+
+Edited: [main.rs -1+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L353-L354), [-9+10](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L556-L566)
+Completed with input: {
+  "edits": [
+    {
+      "content": "    generate_output(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers, &exclude_methods, &handle_able_classes)",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs",
+      "lineHashes": "353:dv"
+    },
+    {
+      "content": "fn generate_output(\n    args: &Args,\n    all_classes: &[&model::ParsedClass],\n    all_functions: &[&model::ParsedFunction],\n    graph: &module_graph::ModuleGraph,\n    symbol_table: &resolver::SymbolTable,\n    known_headers: &HashSet<String>,\n    exclude_methods: &HashSet<(String, String)>,\n    handle_able_classes: &HashSet<String>,\n) -> Result<()> {",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs",
+      "lineHashes": "556:ye,557:zb,558:pv,559:mq,560:yb,561:uu,562:ai,563:rv,564:gv"
+    }
+  ]
+}
+
+Ran terminal command:  time cargo build -p opencascade-binding-generator 2>&1
+
+Generator compiles. Now regenerate bindings and do a full build:    
+
+Ran terminal command:  time scripts/regenerate-bindings.sh 2>&1
+
+Ran terminal command:  tail -5 "/Users/sethml/Library/Application Support/Code/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/07623cc0-4928-471e-993b-0409119c507a/toolu_01PuYFSJQgpSXvEHk2iyirvh__vscode-1771312783007/content.txt"
+
+Regeneration successful. Now full build:     
+
+Ran terminal command:  time cargo build 2>&1
+
+Full build passes. Now run tests:      
+
+Ran terminal command:  time scripts/run-binding-generator-tests.sh 2>&1
+
+All 16 generator tests pass. Now workspace tests:        
+
+Ran terminal command:  time cargo test --workspace --exclude opencascade-binding-generator 2>&1
+
+Ran terminal command:  grep -E 'test result:|FAILED|error' "/Users/sethml/Library/Application Support/Code/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/07623cc0-4928-471e-993b-0409119c507a/toolu_01VusbHJ53DbWSxRqCK2oami__vscode-1771312783011/content.txt"
+
+All tests pass (33 tests, 0 failures). Let me also quickly check that the skipped symbol count is still reasonable — the `extract_base_classes` change should include more bases in the graph now:  
+
+Ran terminal command:  grep -c "SKIPPED:" crates/opencascade-sys/generated/*.rs | awk -F: '{s+=$2} END {print s}'
+
+Down from 2,217 to 2,061 — another 156 symbols unblocked (because `Standard_*` bases are now in the inheritance graph, enabling more upcasts and fixing additional type resolution). Let me commit.  
+
+Starting: *Commit* (6/6)
+
+Ran terminal command:  rm -f tmp/commit_msg.txt
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/commit_msg.txt)
+
+Ran terminal command:  git add -A && git commit -F tmp/commit_msg.txt
+
+Completed: *Commit* (6/6)
+
+Committed as `ced185f`. Summary of changes:
+
+1. **Removed `check_is_handle_type()` parser heuristic** — deleted the function and `is_handle_type` field from `ParsedClass`, `ResolvedClass`, and `ClassBindings`. Handle detection is now purely graph-based.
+
+2. **Fixed `extract_base_classes()` Standard_ filter** — removed `base_name.contains("Standard_")` exclusion so `Standard_Transient` and other `Standard_*` classes appear in the inheritance graph. The transitive closure now needs only the `"Standard_Transient"` seed.
+
+3. **Passed `handle_able_classes` to resolver** — `build_symbol_table()` now takes a pre-computed `handle_able_classes` parameter instead of building its own from the parser field. Signature scanning for `Handle(X)` types still augments this set.
+
+Skipped symbols dropped from ~2,200 → ~2,060 (156 more unblocked from the more accurate inheritance graph).
+
+Made changes.

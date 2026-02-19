@@ -40,8 +40,8 @@ impl TryFrom<i32> for CanCloseStatus {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
-    HandleCDFApplication, HandleTDocStdApplication, HandleTDocStdDocument, HandleTObjApplication,
-    HandleXCAFAppApplication,
+    HandleCDFApplication, HandleStandardTransient, HandleTDocStdApplication, HandleTDocStdDocument,
+    HandleTObjApplication, HandleXCAFAppApplication,
 };
 
 // ========================
@@ -133,6 +133,46 @@ impl Application {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::CDM_Application_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::CDM_Application_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::CDM_Application_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::CDM_Application_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::CDM_Application_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::CDM_Application_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::CDM_Application_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::CDM_Application_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::CDM_Application_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleCDMApplication;
@@ -152,6 +192,15 @@ impl HandleCDMApplication {
     /// Dereference this Handle to mutably access the underlying CDM_Application
     pub fn get_mut(&mut self) -> &mut crate::ffi::CDM_Application {
         unsafe { &mut *(crate::ffi::HandleCDMApplication_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<CDM_Application> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleCDMApplication_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Downcast Handle<CDM_Application> to Handle<CDF_Application>
@@ -809,6 +858,16 @@ impl Document {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::CDM_Document_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::CDM_Document_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::CDM_Document_as_Standard_Transient_mut(self as *mut Self)) }
+    }
 }
 
 pub use crate::ffi::HandleCDMDocument;
@@ -828,6 +887,15 @@ impl HandleCDMDocument {
     /// Dereference this Handle to mutably access the underlying CDM_Document
     pub fn get_mut(&mut self) -> &mut crate::ffi::CDM_Document {
         unsafe { &mut *(crate::ffi::HandleCDMDocument_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<CDM_Document> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleCDMDocument_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Downcast Handle<CDM_Document> to Handle<TDocStd_Document>
@@ -954,11 +1022,51 @@ impl Reference {
         unsafe { &*(crate::ffi::CDM_Reference_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::CDM_Reference_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::CDM_Reference_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleCDMReference> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::CDM_Reference_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::CDM_Reference_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::CDM_Reference_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::CDM_Reference_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::CDM_Reference_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::CDM_Reference_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::CDM_Reference_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -979,6 +1087,15 @@ impl HandleCDMReference {
     /// Dereference this Handle to mutably access the underlying CDM_Reference
     pub fn get_mut(&mut self) -> &mut crate::ffi::CDM_Reference {
         unsafe { &mut *(crate::ffi::HandleCDMReference_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<CDM_Reference> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleCDMReference_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 }
 

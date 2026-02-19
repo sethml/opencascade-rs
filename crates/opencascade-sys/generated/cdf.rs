@@ -36,7 +36,8 @@ impl TryFrom<i32> for TypeOfActivation {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
-    HandleCDMApplication, HandleTDocStdApplication, HandleTObjApplication, HandleXCAFAppApplication,
+    HandleCDMApplication, HandleStandardTransient, HandleTDocStdApplication, HandleTObjApplication,
+    HandleXCAFAppApplication,
 };
 
 // ========================
@@ -286,6 +287,16 @@ impl Application {
         unsafe { &mut *(crate::ffi::CDF_Application_as_CDM_Application_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::CDF_Application_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::CDF_Application_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `CDM_Application.hxx`:42 - `CDM_Application::Resources()`
     pub fn resources(&mut self) -> crate::OwnedPtr<crate::ffi::HandleResourceManager> {
         unsafe {
@@ -343,6 +354,36 @@ impl Application {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::CDF_Application_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::CDF_Application_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::CDF_Application_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::CDF_Application_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::CDF_Application_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::CDF_Application_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleCDFApplication;
@@ -368,6 +409,15 @@ impl HandleCDFApplication {
     pub fn to_handle_application(&self) -> crate::OwnedPtr<crate::ffi::HandleCDMApplication> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleCDFApplication_to_HandleCDMApplication(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<CDF_Application> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleCDFApplication_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -601,6 +651,48 @@ impl MetaDataDriver {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::CDF_MetaDataDriver_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::CDF_MetaDataDriver_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::CDF_MetaDataDriver_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::CDF_MetaDataDriver_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::CDF_MetaDataDriver_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::CDF_MetaDataDriver_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::CDF_MetaDataDriver_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::CDF_MetaDataDriver_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::CDF_MetaDataDriver_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleCDFMetaDataDriver;
@@ -620,6 +712,15 @@ impl HandleCDFMetaDataDriver {
     /// Dereference this Handle to mutably access the underlying CDF_MetaDataDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi::CDF_MetaDataDriver {
         unsafe { &mut *(crate::ffi::HandleCDFMetaDataDriver_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<CDF_MetaDataDriver> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleCDFMetaDataDriver_to_HandleStandardTransient(self as *const Self),
+            )
+        }
     }
 }
 

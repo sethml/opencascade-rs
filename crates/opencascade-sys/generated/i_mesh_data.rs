@@ -59,7 +59,7 @@ impl TryFrom<i32> for Status {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleBRepMeshContext, HandleIMeshToolsContext};
+pub use crate::ffi::{HandleBRepMeshContext, HandleIMeshToolsContext, HandleStandardTransient};
 
 // ========================
 // From IMeshData_Curve.hxx
@@ -146,6 +146,16 @@ impl Curve {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IMeshData_Curve_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::IMeshData_Curve_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IMeshData_ParametersList.hxx`:30 - `IMeshData_ParametersList::GetParameter()`
     pub fn get_parameter(&mut self, theIndex: i32) -> &mut f64 {
         unsafe {
@@ -161,6 +171,36 @@ impl Curve {
     /// Inherited: **Source:** `IMeshData_ParametersList.hxx`:36 - `IMeshData_ParametersList::Clear()`
     pub fn clear(&mut self, isKeepEndPoints: bool) {
         unsafe { crate::ffi::IMeshData_Curve_inherited_Clear(self as *mut Self, isKeepEndPoints) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IMeshData_Curve_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IMeshData_Curve_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IMeshData_Curve_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IMeshData_Curve_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IMeshData_Curve_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IMeshData_Curve_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -193,6 +233,15 @@ impl HandleIMeshDataCurve {
                     self as *const Self,
                 ),
             )
+        }
+    }
+
+    /// Upcast Handle<IMeshData_Curve> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataCurve_to_HandleStandardTransient(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -340,6 +389,16 @@ impl Edge {
         unsafe { &mut *(crate::ffi::IMeshData_Edge_as_IMeshData_Shape_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IMeshData_Edge_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::IMeshData_Edge_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:31 - `IMeshData_TessellatedShape::GetDeflection()`
     pub fn get_deflection(&self) -> f64 {
         unsafe { crate::ffi::IMeshData_Edge_inherited_GetDeflection(self as *const Self) }
@@ -384,6 +443,36 @@ impl Edge {
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::IMeshData_Edge_inherited_GetShape(self as *const Self)) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IMeshData_Edge_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IMeshData_Edge_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IMeshData_Edge_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IMeshData_Edge_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IMeshData_Edge_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IMeshData_Edge_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleIMeshDataEdge;
@@ -422,6 +511,15 @@ impl HandleIMeshDataEdge {
     pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataEdge_to_HandleIMeshDataShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<IMeshData_Edge> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataEdge_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -549,6 +647,16 @@ impl Face {
         unsafe { &mut *(crate::ffi::IMeshData_Face_as_IMeshData_Shape_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IMeshData_Face_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::IMeshData_Face_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:31 - `IMeshData_TessellatedShape::GetDeflection()`
     pub fn get_deflection(&self) -> f64 {
         unsafe { crate::ffi::IMeshData_Face_inherited_GetDeflection(self as *const Self) }
@@ -593,6 +701,36 @@ impl Face {
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::IMeshData_Face_inherited_GetShape(self as *const Self)) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IMeshData_Face_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IMeshData_Face_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IMeshData_Face_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IMeshData_Face_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IMeshData_Face_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IMeshData_Face_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleIMeshDataFace;
@@ -631,6 +769,15 @@ impl HandleIMeshDataFace {
     pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataFace_to_HandleIMeshDataShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<IMeshData_Face> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataFace_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -713,6 +860,16 @@ impl Model {
         unsafe { &mut *(crate::ffi::IMeshData_Model_as_IMeshData_Shape_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IMeshData_Model_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::IMeshData_Model_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::IMeshData_Model_inherited_SetShape(self as *mut Self, theShape) }
@@ -721,6 +878,36 @@ impl Model {
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::IMeshData_Model_inherited_GetShape(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IMeshData_Model_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IMeshData_Model_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IMeshData_Model_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IMeshData_Model_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IMeshData_Model_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IMeshData_Model_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -747,6 +934,15 @@ impl HandleIMeshDataModel {
     pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataModel_to_HandleIMeshDataShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<IMeshData_Model> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataModel_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -883,6 +1079,16 @@ impl PCurve {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IMeshData_PCurve_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::IMeshData_PCurve_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IMeshData_ParametersList.hxx`:30 - `IMeshData_ParametersList::GetParameter()`
     pub fn get_parameter(&mut self, theIndex: i32) -> &mut f64 {
         unsafe {
@@ -898,6 +1104,36 @@ impl PCurve {
     /// Inherited: **Source:** `IMeshData_ParametersList.hxx`:36 - `IMeshData_ParametersList::Clear()`
     pub fn clear(&mut self, isKeepEndPoints: bool) {
         unsafe { crate::ffi::IMeshData_PCurve_inherited_Clear(self as *mut Self, isKeepEndPoints) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IMeshData_PCurve_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IMeshData_PCurve_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IMeshData_PCurve_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IMeshData_PCurve_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IMeshData_PCurve_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IMeshData_PCurve_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -930,6 +1166,15 @@ impl HandleIMeshDataPCurve {
                     self as *const Self,
                 ),
             )
+        }
+    }
+
+    /// Upcast Handle<IMeshData_PCurve> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataPCurve_to_HandleStandardTransient(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -999,6 +1244,60 @@ impl ParametersList {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_ParametersList_get_type_descriptor()) }
     }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IMeshData_ParametersList_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IMeshData_ParametersList_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IMeshData_ParametersList_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IMeshData_ParametersList_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IMeshData_ParametersList_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IMeshData_ParametersList_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IMeshData_ParametersList_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IMeshData_ParametersList_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleIMeshDataParametersList;
@@ -1018,6 +1317,17 @@ impl HandleIMeshDataParametersList {
     /// Dereference this Handle to mutably access the underlying IMeshData_ParametersList
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_ParametersList {
         unsafe { &mut *(crate::ffi::HandleIMeshDataParametersList_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IMeshData_ParametersList> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIMeshDataParametersList_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -1069,11 +1379,51 @@ impl Shape {
         unsafe { &*(crate::ffi::IMeshData_Shape_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IMeshData_Shape_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::IMeshData_Shape_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IMeshData_Shape_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IMeshData_Shape_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IMeshData_Shape_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IMeshData_Shape_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IMeshData_Shape_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IMeshData_Shape_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IMeshData_Shape_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1094,6 +1444,15 @@ impl HandleIMeshDataShape {
     /// Dereference this Handle to mutably access the underlying IMeshData_Shape
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_Shape {
         unsafe { &mut *(crate::ffi::HandleIMeshDataShape_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IMeshData_Shape> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataShape_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Downcast Handle<IMeshData_Shape> to Handle<BRepMesh_Context>
@@ -1257,6 +1616,22 @@ impl TessellatedShape {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IMeshData_TessellatedShape_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IMeshData_TessellatedShape_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1280,6 +1655,47 @@ impl TessellatedShape {
         unsafe {
             &*(crate::ffi::IMeshData_TessellatedShape_inherited_GetShape(self as *const Self))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IMeshData_TessellatedShape_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IMeshData_TessellatedShape_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IMeshData_TessellatedShape_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IMeshData_TessellatedShape_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IMeshData_TessellatedShape_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IMeshData_TessellatedShape_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1307,6 +1723,17 @@ impl HandleIMeshDataTessellatedShape {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleIMeshDataTessellatedShape_to_HandleIMeshDataShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IMeshData_TessellatedShape> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIMeshDataTessellatedShape_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
@@ -1407,6 +1834,16 @@ impl Wire {
         unsafe { &mut *(crate::ffi::IMeshData_Wire_as_IMeshData_Shape_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IMeshData_Wire_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::IMeshData_Wire_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:31 - `IMeshData_TessellatedShape::GetDeflection()`
     pub fn get_deflection(&self) -> f64 {
         unsafe { crate::ffi::IMeshData_Wire_inherited_GetDeflection(self as *const Self) }
@@ -1451,6 +1888,36 @@ impl Wire {
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::IMeshData_Wire_inherited_GetShape(self as *const Self)) }
     }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IMeshData_Wire_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IMeshData_Wire_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IMeshData_Wire_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::IMeshData_Wire_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::IMeshData_Wire_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IMeshData_Wire_inherited_Delete(self as *const Self) }
+    }
 }
 
 pub use crate::ffi::HandleIMeshDataWire;
@@ -1489,6 +1956,15 @@ impl HandleIMeshDataWire {
     pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataWire_to_HandleIMeshDataShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<IMeshData_Wire> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataWire_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }

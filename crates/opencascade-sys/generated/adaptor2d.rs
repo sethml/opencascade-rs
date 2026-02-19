@@ -9,7 +9,7 @@
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
     HandleBRepAdaptorCurve2d, HandleGeom2dAdaptorCurve, HandleProjLibCompProjectedCurve,
-    HandleProjLibProjectedCurve,
+    HandleProjLibProjectedCurve, HandleStandardTransient,
 };
 
 // ========================
@@ -306,6 +306,18 @@ impl Curve2d {
         unsafe { &*(crate::ffi::Adaptor2d_Curve2d_get_type_descriptor()) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Adaptor2d_Curve2d_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Adaptor2d_Curve2d_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -313,6 +325,36 @@ impl Curve2d {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Adaptor2d_Curve2d_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Adaptor2d_Curve2d_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Adaptor2d_Curve2d_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Adaptor2d_Curve2d_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Adaptor2d_Curve2d_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Adaptor2d_Curve2d_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Adaptor2d_Curve2d_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -333,6 +375,15 @@ impl HandleAdaptor2dCurve2d {
     /// Dereference this Handle to mutably access the underlying Adaptor2d_Curve2d
     pub fn get_mut(&mut self) -> &mut crate::ffi::Adaptor2d_Curve2d {
         unsafe { &mut *(crate::ffi::HandleAdaptor2dCurve2d_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Adaptor2d_Curve2d> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleAdaptor2dCurve2d_to_HandleStandardTransient(self as *const Self),
+            )
+        }
     }
 
     /// Downcast Handle<Adaptor2d_Curve2d> to Handle<Adaptor2d_Line2d>
@@ -730,6 +781,16 @@ impl Line2d {
         unsafe { &mut *(crate::ffi::Adaptor2d_Line2d_as_Adaptor2d_Curve2d_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Adaptor2d_Line2d_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::Adaptor2d_Line2d_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -740,6 +801,36 @@ impl Line2d {
     /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:154 - `Adaptor2d_Curve2d::NbSamples()`
     pub fn nb_samples(&self) -> i32 {
         unsafe { crate::ffi::Adaptor2d_Line2d_inherited_NbSamples(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Adaptor2d_Line2d_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Adaptor2d_Line2d_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Adaptor2d_Line2d_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::Adaptor2d_Line2d_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::Adaptor2d_Line2d_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Adaptor2d_Line2d_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -766,6 +857,15 @@ impl HandleAdaptor2dLine2d {
     pub fn to_handle_curve2d(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleAdaptor2dLine2d_to_HandleAdaptor2dCurve2d(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Adaptor2d_Line2d> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleAdaptor2dLine2d_to_HandleStandardTransient(
                 self as *const Self,
             ))
         }
@@ -1159,6 +1259,18 @@ impl OffsetCurve {
         }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::Adaptor2d_OffsetCurve_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::Adaptor2d_OffsetCurve_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1166,6 +1278,42 @@ impl OffsetCurve {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Adaptor2d_OffsetCurve_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::Adaptor2d_OffsetCurve_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::Adaptor2d_OffsetCurve_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::Adaptor2d_OffsetCurve_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1193,6 +1341,17 @@ impl HandleAdaptor2dOffsetCurve {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleAdaptor2dOffsetCurve_to_HandleAdaptor2dCurve2d(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Adaptor2d_OffsetCurve> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleAdaptor2dOffsetCurve_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             )
