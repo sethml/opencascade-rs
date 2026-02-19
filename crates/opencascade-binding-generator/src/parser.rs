@@ -148,11 +148,6 @@ pub fn get_collected_typedef_names() -> HashSet<String> {
     TYPEDEF_MAP.with(|m| m.borrow().values().cloned().collect())
 }
 
-/// Get the full typedef map: template spelling → typedef name.
-/// Used by codegen to build element type maps for NCollection H-classes.
-pub fn get_typedef_map() -> HashMap<String, String> {
-    TYPEDEF_MAP.with(|m| m.borrow().clone())
-}
 
 
 /// Parse a collection of OCCT header files

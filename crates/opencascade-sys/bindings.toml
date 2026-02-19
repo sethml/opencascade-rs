@@ -285,8 +285,9 @@ include_headers = []
 # Format: "ClassName::MethodName" for methods, "ClassName::ClassName" for constructors.
 exclude_methods = [
     # BRepExtrema_ProximityDistTool::PrjState: constructor takes BVH_PrjState
-    # (a template-dependent enum typedef) misresolved to Standard_Integer.
-    # PrjState is an internal struct not exposed by public methods.
+    # (a template-dependent enum typedef) that clang can't resolve through the
+    # template specialization. PrjState is an internal struct not exposed by
+    # public methods.
     "BRepExtrema_ProximityDistTool::PrjState::*",
 ]
 

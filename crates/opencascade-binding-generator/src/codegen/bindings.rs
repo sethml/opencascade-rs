@@ -7,7 +7,6 @@
 
 use crate::model::{Constructor, Method, Param, ParsedClass, ParsedField, StaticMethod, Type};
 use crate::module_graph;
-use crate::parser;
 use crate::resolver::{self, SymbolTable};
 use crate::type_mapping::{self, map_return_type_in_context, map_type_in_context, TypeContext};
 use heck::ToSnakeCase;
@@ -470,311 +469,6 @@ fn safe_param_name(name: &str) -> String {
     } else {
         name.to_string()
     }
-}
-
-// ── NCollection H-class misresolution detection ──────────────────────────────
-
-/// Extract the first template parameter from an NCollection template spelling.
-/// E.g., "NCollection_Array1<gp_Pnt,NCollection_DefaultHasher<gp_Pnt>>" → "gp_Pnt"
-fn extract_element_type_from_template(template_spelling: &str) -> Option<String> {
-    let start = template_spelling.find('<')? + 1;
-    let rest = &template_spelling[start..];
-    // Find the end of the first template arg (handling nested < >)
-    let mut depth = 0;
-    let mut end = 0;
-    for (i, ch) in rest.char_indices() {
-        match ch {
-            '<' => depth += 1,
-            '>' => {
-                if depth == 0 {
-                    end = i;
-                    break;
-                }
-                depth -= 1;
-            }
-            ',' if depth == 0 => {
-                end = i;
-                break;
-            }
-            _ => {}
-        }
-    }
-    let elem = rest[..end].trim();
-    if elem.is_empty() {
-        None
-    } else {
-        Some(elem.to_string())
-    }
-}
-
-/// Check if an element type name represents a primitive type (int, double, etc.)
-/// that would correctly resolve to Type::I32/F64/etc.
-fn is_primitive_element_type(name: &str) -> bool {
-    matches!(name,
-        "int" | "Standard_Integer" | "Standard_Boolean" | "bool" |
-        "double" | "Standard_Real" | "float" | "Standard_ShortReal" |
-        "char" | "Standard_Character" | "unsigned" | "unsigned int" |
-        "size_t" | "long" | "long long" | "unsigned long" | "unsigned long long"
-    )
-}
-
-/// Build maps of NCollection class info.
-/// Returns:
-/// - `nonprimitive`: class→element_type for classes with non-primitive element types
-///   (used to detect misresolved constructors with all-primitive params)
-/// - `primitive`: set of classes with primitive element types
-///   (these are the ONLY classes where ConstRef(I32) methods are legitimate)
-pub fn build_ncollection_element_types(
-    all_classes: &[&ParsedClass],
-) -> (HashMap<String, String>, HashSet<String>) {
-    let typedef_map = parser::get_typedef_map();
-
-    // Build reverse map: typedef_name → element_type(s)
-    // The typedef map is: normalized_template_spelling → typedef_name
-    let mut typedef_to_element: HashMap<String, String> = HashMap::new();
-    for (template_spelling, typedef_name) in &typedef_map {
-        if let Some(elem_type) = extract_element_type_from_template(template_spelling) {
-            // Strip Handle() wrapper if present
-            let clean_elem = if elem_type.starts_with("Handle(") {
-                elem_type.trim_start_matches("Handle(").trim_end_matches(')').to_string()
-            } else if elem_type.starts_with("opencascade::handle<") {
-                elem_type.trim_start_matches("opencascade::handle<").trim_end_matches('>').to_string()
-            } else {
-                elem_type
-            };
-            typedef_to_element.insert(typedef_name.clone(), clean_elem);
-        }
-    }
-
-    // For each class, check if it inherits from an NCollection typedef
-    // or directly from an NCollection template class
-    let mut nonprimitive = HashMap::new();
-    let mut primitive = HashSet::new();
-    for class in all_classes {
-        for base in &class.base_classes {
-            // Check if base is a known typedef with element type
-            if let Some(elem_type) = typedef_to_element.get(base) {
-                if is_primitive_element_type(elem_type) {
-                    primitive.insert(class.name.clone());
-                } else {
-                    nonprimitive.insert(class.name.clone(), elem_type.clone());
-                }
-                break;
-            }
-            // Check if base is a NCollection template like
-            // NCollection_HArray1<gp_Pnt, TColgp_Array1OfPnt>
-            if base.starts_with("NCollection_") {
-                if let Some(elem_type) = extract_element_type_from_template(base) {
-                    // Strip Handle() wrapper if present
-                    let clean_elem = if elem_type.starts_with("Handle(") {
-                        elem_type.trim_start_matches("Handle(").trim_end_matches(')').to_string()
-                    } else if elem_type.starts_with("opencascade::handle<") {
-                        elem_type.trim_start_matches("opencascade::handle<").trim_end_matches('>').to_string()
-                    } else {
-                        elem_type
-                    };
-                    if is_primitive_element_type(&clean_elem) {
-                        primitive.insert(class.name.clone());
-                    } else {
-                        nonprimitive.insert(class.name.clone(), clean_elem);
-                    }
-                    break;
-                }
-            }
-        }
-    }
-
-    // Fallback: detect H-classes by DEFINE_HARRAY1/HARRAY2/HSEQUENCE name patterns
-    // When clang can't resolve the base class typedef in batch mode, the base
-    // specifier is lost. We can still identify H-classes by their naming pattern
-    // and look up the corresponding Array/Sequence typedef in the typedef map.
-    for class in all_classes {
-        if nonprimitive.contains_key(&class.name) || primitive.contains(&class.name) {
-            continue;
-        }
-        let name = &class.name;
-        // Try each DEFINE_H* pattern: HClassName -> ArrayType naming convention
-        // Standard patterns: Foo_HArray1OfBar -> Foo_Array1OfBar
-        // Non-standard patterns: Foo_HBarArray1 -> Foo_BarArray1 (strip "H" before "Array1")
-        let array_typedef_name = if let Some(pos) = name.find("HArray1Of") {
-            Some(format!("{}Array1Of{}", &name[..pos], &name[pos + "HArray1Of".len()..]))
-        } else if let Some(pos) = name.find("HArray2Of") {
-            Some(format!("{}Array2Of{}", &name[..pos], &name[pos + "HArray2Of".len()..]))
-        } else if let Some(pos) = name.find("HSequenceOf") {
-            Some(format!("{}SequenceOf{}", &name[..pos], &name[pos + "HSequenceOf".len()..]))
-        } else if let Some(pos) = name.find("HArray1") {
-            // Non-standard: TDF_HAttributeArray1 -> TDF_AttributeArray1
-            Some(format!("{}Array1{}", &name[..pos], &name[pos + "HArray1".len()..]))
-        } else if let Some(pos) = name.find("HArray2") {
-            Some(format!("{}Array2{}", &name[..pos], &name[pos + "HArray2".len()..]))
-        } else if let Some(pos) = name.find("HSequence") {
-            // Careful: "HSequence" substring also appears in "HSequenceOf" which was already matched
-            Some(format!("{}Sequence{}", &name[..pos], &name[pos + "HSequence".len()..]))
-        } else {
-            None
-        };
-        if let Some(array_name) = array_typedef_name {
-            if let Some(elem_type) = typedef_to_element.get(&array_name) {
-                if is_primitive_element_type(elem_type) {
-                    primitive.insert(name.clone());
-                } else {
-                    nonprimitive.insert(name.clone(), elem_type.clone());
-                }
-            }
-        }
-    }
-
-    // Additional fallback: OCCT H-classes where the name follows Module_H*Array1
-    // pattern (e.g., TDF_HAttributeArray1, TDataStd_HLabelArray1).
-    // The convention is that Module_H<Foo> → Module_<Foo> is the base typedef.
-    for class in all_classes {
-        if nonprimitive.contains_key(&class.name) || primitive.contains(&class.name) {
-            continue;
-        }
-        let name = &class.name;
-        if let Some(underscore_pos) = name.find('_') {
-            let after_prefix = &name[underscore_pos + 1..];
-            if after_prefix.starts_with('H') && after_prefix.len() > 1 {
-                // Strip the 'H' after module prefix: TDF_HAttributeArray1 → TDF_AttributeArray1
-                let stripped = format!("{}{}", &name[..underscore_pos + 1], &after_prefix[1..]);
-                if let Some(elem_type) = typedef_to_element.get(&stripped) {
-                    if is_primitive_element_type(elem_type) {
-                        primitive.insert(name.clone());
-                    } else {
-                        nonprimitive.insert(name.clone(), elem_type.clone());
-                    }
-                }
-            }
-        }
-    }
-
-    // Also add NCollection typedef classes themselves (Array1Of*, SequenceOf*, DataMapOf*, etc.)
-    // to the primitive set so their ConstRef(I32) methods aren't filtered
-    for (typedef_name, elem_type) in &typedef_to_element {
-        if is_primitive_element_type(elem_type) {
-            primitive.insert(typedef_name.clone());
-        }
-    }
-
-    if !nonprimitive.is_empty() {
-        eprintln!("  Detected {} NCollection classes with non-primitive element types", nonprimitive.len());
-    }
-    if !primitive.is_empty() {
-        eprintln!("  Detected {} NCollection classes with primitive element types", primitive.len());
-    }
-    (nonprimitive, primitive)
-}
-
-/// Check if a type represents a primitive value (I32, Bool, F64, etc.)
-fn is_primitive_type(ty: &Type) -> bool {
-    match ty {
-        Type::I32 | Type::U32 | Type::Bool | Type::F64 | Type::F32 |
-        Type::I64 | Type::U64 | Type::Long | Type::ULong | Type::Usize => true,
-        Type::ConstRef(inner) | Type::ConstPtr(inner) => is_primitive_type(inner),
-        _ => false,
-    }
-}
-
-/// Check if a constructor has misresolved NCollection element type params.
-/// This catches the DEFINE_HARRAY1/HARRAY2/HSEQUENCE macro-generated constructors
-/// where clang misresolves value_type to int.
-fn constructor_has_misresolved_element_type(
-    ctor: &Constructor,
-    class_name: &str,
-    ncollection_element_types: &HashMap<String, String>,
-) -> bool {
-    // Only check classes that have a known non-primitive element type
-    if !ncollection_element_types.contains_key(class_name) {
-        return false;
-    }
-
-    if ctor.params.is_empty() {
-        return false;
-    }
-
-    // Count params that are primitives vs class types
-    let primitive_count = ctor.params.iter().filter(|p| is_primitive_type(&p.ty)).count();
-    let class_count = ctor.params.len() - primitive_count;
-
-    // For NCollection H-classes, the valid all-primitive constructors are:
-    //   HArray1: () [0 params], (int, int) [2 params]
-    //   HArray2: () [0 params], (int, int, int, int) [4 params]
-    //   HSequence: () [0 params]
-    // Any constructor where ALL params are primitive and count >= 3 is misresolved
-    // (for HArray1) or >= 5 (for HArray2).
-    // Non-all-primitive constructors are fine (they have correctly-resolved class params).
-    if class_count == 0 && ctor.params.len() >= 3 {
-        return true;
-    }
-
-    false
-}
-
-/// Check if a type is a const/mut reference to I32, which in H-classes with
-/// non-primitive element types indicates a misresolved value_type.
-/// In OCCT, index params are always `Standard_Integer` (by value, I32), while
-/// element type params are `const TheItemType&` — if misresolved, they appear as
-/// `const int&` (ConstRef(I32)).
-/// Check if a type is a const reference to I32.
-/// `const Standard_Integer&` (ConstRef(I32)) almost never appears in OCCT outside
-/// NCollection containers — it's a strong signal of misresolved template element types.
-fn type_is_const_ref_i32(ty: &Type) -> bool {
-    matches!(ty, Type::ConstRef(inner) if matches!(inner.as_ref(), Type::I32))
-}
-
-/// Check if a type is a mutable reference to I32.
-/// `Standard_Integer&` (MutRef(I32)) is legitimate in many OCCT classes
-/// (e.g. ShapeFix mode accessors, out-params in analysis methods).
-fn type_is_mut_ref_i32(ty: &Type) -> bool {
-    matches!(ty, Type::MutRef(inner) if matches!(inner.as_ref(), Type::I32))
-}
-
-/// Check if a method has misresolved NCollection element type params or return type.
-///
-/// Both `ConstRef(I32)` and `MutRef(I32)` are suspicious ONLY on NCollection-derived
-/// classes with non-primitive element types. Outside NCollection:
-/// - `const Standard_Integer&` appears in various OCCT classes (e.g. BVH_BuildQueue::Enqueue,
-///   Plate_PinpointConstraint::Idu/Idv, BndBoxTreeSelector::Accept)
-/// - `Standard_Integer&` is legitimate for mode accessors and out-params
-///   (e.g. ShapeFix_Face::FixWireMode, ShapeAnalysis_WireOrder::Chain)
-///
-/// The previous broader heuristic (flagging ConstRef(I32) on ALL classes) was needed
-/// to compensate for a fatal parse error from OSD_WNT.hxx (#include <windows.h>)
-/// that corrupted libclang's type resolution across the batch. With that header
-/// excluded, the heuristic can be scoped to NCollection classes only.
-fn method_has_misresolved_element_type(
-    params: &[Param],
-    return_type: Option<&Type>,
-    class_name: &str,
-    ncollection_primitive_classes: &HashSet<String>,
-    ncollection_nonprimitive_classes: &HashMap<String, String>,
-) -> bool {
-    // NCollection containers with primitive element types legitimately have
-    // ConstRef(I32)/MutRef(I32) methods (e.g., TColStd_Array1OfInteger::Value() -> const int&)
-    if ncollection_primitive_classes.contains(class_name) {
-        return false;
-    }
-
-    // Only flag ConstRef(I32) and MutRef(I32) on NCollection-derived classes
-    // with non-primitive element types.
-    let is_ncollection_nonprimitive = ncollection_nonprimitive_classes.contains_key(class_name);
-    if !is_ncollection_nonprimitive {
-        return false;
-    }
-
-    // Check params for ConstRef(I32) or MutRef(I32)
-    if params.iter().any(|p| type_is_const_ref_i32(&p.ty) || type_is_mut_ref_i32(&p.ty)) {
-        return true;
-    }
-
-    // Check return type for ConstRef(I32) or MutRef(I32)
-    if let Some(ret) = return_type {
-        if type_is_const_ref_i32(ret) || type_is_mut_ref_i32(ret) {
-            return true;
-        }
-    }
-
-    false
 }
 
 // ── Filtering predicates ────────────────────────────────────────────────────
@@ -1728,8 +1422,6 @@ pub fn compute_class_bindings(
     symbol_table: &SymbolTable,
     handle_able_classes: &HashSet<String>,
     all_classes_by_name: &HashMap<String, &ParsedClass>,
-    ncollection_element_types: &HashMap<String, String>,
-    ncollection_primitive_classes: &HashSet<String>,
     reexport_ctx: Option<&ReexportTypeContext>,
     exclude_methods: &HashSet<(String, String)>,
 ) -> ClassBindings {
@@ -1747,7 +1439,7 @@ pub fn compute_class_bindings(
     let exclude_ctors = exclude_methods.contains(&(class.name.clone(), class.name.clone()))
         || exclude_methods.contains(&(class.name.clone(), "*".to_string()));
     let constructors = if !effectively_abstract && !class.has_protected_destructor {
-        let mut ctors = compute_constructor_bindings(class, ffi_ctx, handle_able_classes, ncollection_element_types, reexport_ctx);
+        let mut ctors = compute_constructor_bindings(class, ffi_ctx, handle_able_classes, reexport_ctx);
         if exclude_ctors {
             // Record excluded constructors from bindings.toml
             for ctor in &class.constructors {
@@ -1857,19 +1549,6 @@ pub fn compute_class_bindings(
                 source_line: method.source_line,
                 doc_comment: method.comment.clone(),
                 skip_reason: reason,
-                stub_rust_decl: generate_method_stub(cpp_name, method),
-            });
-            continue;
-        }
-        if method_has_misresolved_element_type(&method.params, method.return_type.as_ref(), cpp_name, ncollection_primitive_classes, ncollection_element_types) {
-            skipped_symbols.push(SkippedSymbol {
-                kind: "method",
-                module: class.module.clone(),
-                cpp_name: format!("{}::{}", class.name, method.name),
-                source_header: class.source_header.clone(),
-                source_line: method.source_line,
-                doc_comment: method.comment.clone(),
-                skip_reason: "has misresolved element type (clang batch parsing artifact)".to_string(),
                 stub_rust_decl: generate_method_stub(cpp_name, method),
             });
             continue;
@@ -2018,19 +1697,6 @@ pub fn compute_class_bindings(
             });
             continue;
         }
-        if method_has_misresolved_element_type(&method.params, method.return_type.as_ref(), cpp_name, ncollection_primitive_classes, ncollection_element_types) {
-            skipped_symbols.push(SkippedSymbol {
-                kind: "static_method",
-                module: class.module.clone(),
-                cpp_name: format!("{}::{}", class.name, method.name),
-                source_header: class.source_header.clone(),
-                source_line: method.source_line,
-                doc_comment: method.comment.clone(),
-                skip_reason: "has misresolved element type (clang batch parsing artifact)".to_string(),
-                stub_rust_decl: generate_static_method_stub(cpp_name, method),
-            });
-            continue;
-        }
         static_methods_raw.push(method);
     }
 
@@ -2139,9 +1805,8 @@ pub fn compute_class_bindings(
     };
 
     // ── Inherited methods ───────────────────────────────────────────────
-    let ncollection_nonprimitive_class_names: HashSet<String> = ncollection_element_types.keys().cloned().collect();
     let inherited_methods_raw =
-        compute_inherited_method_bindings(class, symbol_table, handle_able_classes, ffi_ctx.all_classes, ffi_ctx.all_enums, ncollection_primitive_classes, &ncollection_nonprimitive_class_names, ffi_ctx.deletable_class_names, reexport_ctx, exclude_methods);
+        compute_inherited_method_bindings(class, symbol_table, handle_able_classes, ffi_ctx.all_classes, ffi_ctx.all_enums, ffi_ctx.deletable_class_names, reexport_ctx, exclude_methods);
     // Filter out inherited methods whose Rust name conflicts with a constructor or direct method
     let ctor_and_method_names: std::collections::HashSet<&str> = constructors
         .iter()
@@ -2400,7 +2065,6 @@ fn compute_constructor_bindings(
     class: &ParsedClass,
     ffi_ctx: &TypeContext,
     handle_able_classes: &HashSet<String>,
-    ncollection_element_types: &HashMap<String, String>,
     reexport_ctx: Option<&ReexportTypeContext>,
 ) -> Vec<ConstructorBinding> {
     let cpp_name = class.name.replace("::", "_");
@@ -2412,7 +2076,6 @@ fn compute_constructor_bindings(
         .constructors
         .iter()
         .filter(|c| is_constructor_bindable(c, all_enum_names, handle_able_classes, ffi_ctx).is_ok())
-        .filter(|c| !constructor_has_misresolved_element_type(c, cpp_name, ncollection_element_types))
         .map(|c| TrimmedConstructor {
             original: c,
             trimmed_param_count: c.params.len(),
@@ -2752,8 +2415,6 @@ fn compute_inherited_method_bindings(
     handle_able_classes: &HashSet<String>,
     all_class_names: &HashSet<String>,
     all_enum_names: &HashSet<String>,
-    ncollection_primitive_classes: &HashSet<String>,
-    ncollection_nonprimitive_class_names: &HashSet<String>,
     deletable_class_names: Option<&HashSet<String>>,
     reexport_ctx: Option<&ReexportTypeContext>,
     exclude_methods: &HashSet<(String, String)>,
@@ -2891,32 +2552,6 @@ fn compute_inherited_method_bindings(
                     continue;
                 }
 
-                // Skip inherited methods with misresolved NCollection element types.
-                // ConstRef(I32) is always suspicious (OCCT passes integers by value).
-                // MutRef(I32) is only suspicious on NCollection-derived classes with
-                // non-primitive elements. Non-NCollection classes legitimately use
-                // Standard_Integer& for mode accessors and out-params.
-                if !ncollection_primitive_classes.contains(&class.name) {
-                    let has_const_ref_i32 = resolved_method.params.iter()
-                        .any(|p| type_is_const_ref_i32(&p.ty.original));
-                    let return_const_ref_i32 = resolved_method.return_type.as_ref()
-                        .map(|rt| type_is_const_ref_i32(&rt.original))
-                        .unwrap_or(false);
-                    if has_const_ref_i32 || return_const_ref_i32 {
-                        continue;
-                    }
-                    // MutRef(I32) is only suspicious for NCollection non-primitive classes
-                    if ncollection_nonprimitive_class_names.contains(&class.name) {
-                        let has_mut_ref_i32 = resolved_method.params.iter()
-                            .any(|p| type_is_mut_ref_i32(&p.ty.original));
-                        let return_mut_ref_i32 = resolved_method.return_type.as_ref()
-                            .map(|rt| type_is_mut_ref_i32(&rt.original))
-                            .unwrap_or(false);
-                        if has_mut_ref_i32 || return_mut_ref_i32 {
-                            continue;
-                        }
-                    }
-                }
 
                 let ffi_fn_name = format!(
                     "{}_inherited_{}",
@@ -3178,8 +2813,6 @@ pub fn compute_all_class_bindings(
         .map(|c| (c.name.clone(), *c))
         .collect();
 
-    // Build NCollection class element type maps for misresolution detection
-    let (ncollection_element_types, ncollection_primitive_classes) = build_ncollection_element_types(all_classes);
 
     let class_public_info = build_class_public_info(all_classes);
 
@@ -3190,7 +2823,7 @@ pub fn compute_all_class_bindings(
                 class_public_info: &class_public_info,
                 current_module_rust: crate::module_graph::module_to_rust_name(&class.module),
             };
-            compute_class_bindings(class, &ffi_ctx, symbol_table, &handle_able_classes, &all_classes_by_name, &ncollection_element_types, &ncollection_primitive_classes, Some(&reexport_ctx), exclude_methods)
+            compute_class_bindings(class, &ffi_ctx, symbol_table, &handle_able_classes, &all_classes_by_name, Some(&reexport_ctx), exclude_methods)
         })
         .collect()
 }
@@ -5585,8 +5218,6 @@ mod tests {
             &symbol_table,
             &handle_able_classes,
             &all_classes_by_name,
-            &HashMap::new(),
-            &HashSet::new(),
             None,
             &HashSet::new(),
         );
@@ -5677,8 +5308,6 @@ mod tests {
             &symbol_table,
             &handle_able_classes,
             &all_classes_by_name,
-            &HashMap::new(),
-            &HashSet::new(),
             None,
             &HashSet::new(),
         );

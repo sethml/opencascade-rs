@@ -339,7 +339,7 @@ Example from `gp.rs`:
 |------:|----:|----------|-------------|
 | 715 | 46.0% | **Unknown/unresolved type** | Parameter or return type not in the binding set (NCollection map types, math_Vector, etc.) |
 | 503 | 32.4% | **Unknown Handle type** | Handle to a class not in the binding set (Handle(Interface_Protocol), Handle(Transfer_TransientProcess), etc.) |
-| 0 | 0% | **Misresolved element type** | Previously ~285 — caused by OSD_WNT.hxx fatal parse error (`#include <windows.h>` on macOS) corrupting libclang type resolution. Fixed by excluding that header. |
+| ~~0~~ | ~~0%~~ | ~~**Misresolved element type**~~ | Previously ~285 — caused by OSD_WNT.hxx fatal parse error corrupting libclang type resolution. Root cause fixed (header excluded + fatal error detection added), and the entire misresolution heuristic has been removed. |
 | 278 | 17.9% | **Stream type** | C++ `std::istream`/`std::ostream` (`Standard_IStream`/`Standard_OStream`) — no Rust equivalent |
 | 182 | 11.7% | **Void pointer** | `Standard_Address` (typedef for `void*`) — cannot be safely expressed in Rust FFI |
 | 125 | 8.0% | **Raw pointer** | `T*`/`const T*` params or returns (non-nullable, non-defaulted) |
@@ -377,7 +377,7 @@ Most skipped symbols are in internal, low-use, or specialized modules. However, 
 
 **Shape Meshing (93 symbols across 3 modules)** — `BRepMesh_*` (78 skipped), `IMeshData_*` (14 skipped), `IMeshTools_*` (1 skipped). The `IMeshData` and `IMeshTools` modules are now in the binding set, unblocking 13 previously-missing BRepMesh methods. Remaining skips are mostly `NCollection_*` allocator types and internal handle types.
 
-**Shape Analysis/Fix (7 symbols)** — Reduced from 72 through a more precise misresolution heuristic: `MutRef(I32)` returns are now only treated as suspicious on NCollection-derived classes, allowing the 54 legitimate `Standard_Integer&` mode accessors in `ShapeFix_*` to be bound. Remaining 7 skips are unknown types like `Handle(ShapeBuild_ReShape)` and `Handle(GeomAdaptor_Surface)`.
+**Shape Analysis/Fix (7 symbols)** — Reduced from 72 after fixing the OSD_WNT.hxx fatal parse error root cause. The 54 legitimate `Standard_Integer&` mode accessors in `ShapeFix_*` are now bound. Remaining 7 skips are unknown types like `Handle(ShapeBuild_ReShape)` and `Handle(GeomAdaptor_Surface)`.
 
 **Geometry (32 symbols in gp/Geom/Geom2d)** — Mostly raw pointer returns (`gp_XYZ::GetData()`, `Geom_BSplineCurve::Weights()`). All core geometry operations are available; only internal data access methods are skipped.
 
