@@ -1015,6 +1015,22 @@ impl Intersector {
         }
     }
 
+    /// Upcast to IntRes2d_Intersection
+    pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
+        unsafe {
+            &*(crate::ffi::Geom2dHatch_Intersector_as_IntRes2d_Intersection(self as *const Self))
+        }
+    }
+
+    /// Upcast to IntRes2d_Intersection (mutable)
+    pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
+        unsafe {
+            &mut *(crate::ffi::Geom2dHatch_Intersector_as_IntRes2d_Intersection_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Geom2dInt_GInter.hxx`:131 - `Geom2dInt_GInter::ComputeDomain()`
     pub fn compute_domain(
         &self,

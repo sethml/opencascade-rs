@@ -273,6 +273,18 @@ impl GInter {
         unsafe { crate::ffi::Geom2dInt_GInter_get_min_nb_samples(self as *const Self) }
     }
 
+    /// Upcast to IntRes2d_Intersection
+    pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
+        unsafe { &*(crate::ffi::Geom2dInt_GInter_as_IntRes2d_Intersection(self as *const Self)) }
+    }
+
+    /// Upcast to IntRes2d_Intersection (mutable)
+    pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
+        unsafe {
+            &mut *(crate::ffi::Geom2dInt_GInter_as_IntRes2d_Intersection_mut(self as *mut Self))
+        }
+    }
+
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::Geom2dInt_GInter_inherited_IsDone(self as *const Self) }
@@ -543,6 +555,24 @@ impl IntConicCurveOfGInter {
         }
     }
 
+    /// Upcast to IntRes2d_Intersection
+    pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
+        unsafe {
+            &*(crate::ffi::Geom2dInt_IntConicCurveOfGInter_as_IntRes2d_Intersection(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IntRes2d_Intersection (mutable)
+    pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
+        unsafe {
+            &mut *(crate::ffi::Geom2dInt_IntConicCurveOfGInter_as_IntRes2d_Intersection_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::Geom2dInt_IntConicCurveOfGInter_inherited_IsDone(self as *const Self) }
@@ -782,6 +812,24 @@ impl TheIntConicCurveOfGInter {
         }
     }
 
+    /// Upcast to IntRes2d_Intersection
+    pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
+        unsafe {
+            &*(crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_as_IntRes2d_Intersection(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IntRes2d_Intersection (mutable)
+    pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
+        unsafe {
+            &mut *(crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_as_IntRes2d_Intersection_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe {
@@ -911,6 +959,24 @@ impl TheIntPCurvePCurveOfGInter {
     pub fn get_min_nb_samples(&self) -> i32 {
         unsafe {
             crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_get_min_nb_samples(self as *const Self)
+        }
+    }
+
+    /// Upcast to IntRes2d_Intersection
+    pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
+        unsafe {
+            &*(crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_as_IntRes2d_Intersection(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IntRes2d_Intersection (mutable)
+    pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
+        unsafe {
+            &mut *(crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_as_IntRes2d_Intersection_mut(
+                self as *mut Self,
+            ))
         }
     }
 

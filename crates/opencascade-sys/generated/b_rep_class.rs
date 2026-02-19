@@ -829,6 +829,22 @@ impl Intersector {
         }
     }
 
+    /// Upcast to IntRes2d_Intersection
+    pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
+        unsafe {
+            &*(crate::ffi::BRepClass_Intersector_as_IntRes2d_Intersection(self as *const Self))
+        }
+    }
+
+    /// Upcast to IntRes2d_Intersection (mutable)
+    pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
+        unsafe {
+            &mut *(crate::ffi::BRepClass_Intersector_as_IntRes2d_Intersection_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepClass_Intersector_inherited_IsDone(self as *const Self) }

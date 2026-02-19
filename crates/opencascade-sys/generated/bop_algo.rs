@@ -4005,6 +4005,29 @@ impl AlertUnableToMakeClosedEdgeOnFace {
 // From BOPAlgo_Algo.hxx
 // ========================
 
+/// **Source:** `BOPAlgo_Algo.hxx`:32 - `BOPAlgo_Algo`
+/// The class provides the root interface for the algorithms in Boolean Component.<br>
+pub use crate::ffi::BOPAlgo_Algo as Algo;
+
+impl Algo {
+    /// **Source:** `BOPAlgo_Algo.hxx`:39 - `BOPAlgo_Algo::Perform()`
+    /// The main method to implement the operation
+    /// Providing the range allows to enable Progress indicator User break functionalities.
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
+        unsafe { crate::ffi::BOPAlgo_Algo_perform(self as *mut Self, theRange) }
+    }
+
+    /// Upcast to BOPAlgo_Options
+    pub fn as_options(&self) -> &Options {
+        unsafe { &*(crate::ffi::BOPAlgo_Algo_as_BOPAlgo_Options(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Options (mutable)
+    pub fn as_options_mut(&mut self) -> &mut Options {
+        unsafe { &mut *(crate::ffi::BOPAlgo_Algo_as_BOPAlgo_Options_mut(self as *mut Self)) }
+    }
+}
+
 /// **Source:** `BOPAlgo_Algo.hxx`:88 - `BOPAlgo_ParallelAlgo`
 /// Additional root class to provide interface to be launched from parallel vector.
 /// It already has the range as a field, and has to be used with caution to create
@@ -4022,6 +4045,16 @@ impl ParallelAlgo {
     /// Sets the range for a single run
     pub fn set_progress_range(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_ParallelAlgo_set_progress_range(self as *mut Self, theRange) }
+    }
+
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BOPAlgo_ParallelAlgo_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BOPAlgo_ParallelAlgo_as_BOPAlgo_Algo_mut(self as *mut Self)) }
     }
 
     /// Upcast to BOPAlgo_Options
@@ -4308,6 +4341,18 @@ impl ArgumentAnalyzer {
         unsafe { &*(crate::ffi::BOPAlgo_ArgumentAnalyzer_get_check_result(self as *const Self)) }
     }
 
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BOPAlgo_ArgumentAnalyzer_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_ArgumentAnalyzer_as_BOPAlgo_Algo_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to BOPAlgo_Options
     pub fn as_options(&self) -> &Options {
         unsafe { &*(crate::ffi::BOPAlgo_ArgumentAnalyzer_as_BOPAlgo_Options(self as *const Self)) }
@@ -4536,6 +4581,16 @@ impl BOP {
     /// Upcast to BOPAlgo_BuilderShape (mutable)
     pub fn as_builder_shape_mut(&mut self) -> &mut BuilderShape {
         unsafe { &mut *(crate::ffi::BOPAlgo_BOP_as_BOPAlgo_BuilderShape_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BOPAlgo_BOP_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BOPAlgo_BOP_as_BOPAlgo_Algo_mut(self as *mut Self)) }
     }
 
     /// Upcast to BOPAlgo_Options
@@ -5093,6 +5148,16 @@ impl Builder {
         }
     }
 
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BOPAlgo_Builder_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BOPAlgo_Builder_as_BOPAlgo_Algo_mut(self as *mut Self)) }
+    }
+
     /// Upcast to BOPAlgo_Options
     pub fn as_options(&self) -> &Options {
         unsafe { &*(crate::ffi::BOPAlgo_Builder_as_BOPAlgo_Options(self as *const Self)) }
@@ -5236,6 +5301,85 @@ impl Builder {
 }
 
 // ========================
+// From BOPAlgo_BuilderArea.hxx
+// ========================
+
+/// **Source:** `BOPAlgo_BuilderArea.hxx`:33 - `BOPAlgo_BuilderArea`
+/// The root class for algorithms to build
+/// faces/solids from set of edges/faces
+pub use crate::ffi::BOPAlgo_BuilderArea as BuilderArea;
+
+impl BuilderArea {
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:39 - `BOPAlgo_BuilderArea::SetContext()`
+    /// Sets the context for the algorithms
+    pub fn set_context(&mut self, theContext: &crate::ffi::HandleIntToolsContext) {
+        unsafe { crate::ffi::BOPAlgo_BuilderArea_set_context(self as *mut Self, theContext) }
+    }
+
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:42 - `BOPAlgo_BuilderArea::Shapes()`
+    /// Returns the input shapes
+    pub fn shapes(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderArea_shapes(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:45 - `BOPAlgo_BuilderArea::SetShapes()`
+    /// Sets the shapes for building areas
+    pub fn set_shapes(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
+        unsafe { crate::ffi::BOPAlgo_BuilderArea_set_shapes(self as *mut Self, theLS) }
+    }
+
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:48 - `BOPAlgo_BuilderArea::Loops()`
+    /// Returns the found loops
+    pub fn loops(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderArea_loops(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:51 - `BOPAlgo_BuilderArea::Areas()`
+    /// Returns the found areas
+    pub fn areas(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderArea_areas(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:55 - `BOPAlgo_BuilderArea::SetAvoidInternalShapes()`
+    /// Defines the preventing of addition of internal parts into result.
+    /// The default value is FALSE, i.e. the internal parts are added into result.
+    pub fn set_avoid_internal_shapes(&mut self, theAvoidInternal: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_BuilderArea_set_avoid_internal_shapes(
+                self as *mut Self,
+                theAvoidInternal,
+            )
+        }
+    }
+
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:61 - `BOPAlgo_BuilderArea::IsAvoidInternalShapes()`
+    /// Returns the AvoidInternalShapes flag
+    pub fn is_avoid_internal_shapes(&self) -> bool {
+        unsafe { crate::ffi::BOPAlgo_BuilderArea_is_avoid_internal_shapes(self as *const Self) }
+    }
+
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderArea_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BOPAlgo_BuilderArea_as_BOPAlgo_Algo_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Options
+    pub fn as_options(&self) -> &Options {
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderArea_as_BOPAlgo_Options(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Options (mutable)
+    pub fn as_options_mut(&mut self) -> &mut Options {
+        unsafe { &mut *(crate::ffi::BOPAlgo_BuilderArea_as_BOPAlgo_Options_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From BOPAlgo_BuilderFace.hxx
 // ========================
 
@@ -5296,6 +5440,28 @@ impl BuilderFace {
             ))
             .unwrap()
         }
+    }
+
+    /// Upcast to BOPAlgo_BuilderArea
+    pub fn as_builder_area(&self) -> &BuilderArea {
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderFace_as_BOPAlgo_BuilderArea(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_BuilderArea (mutable)
+    pub fn as_builder_area_mut(&mut self) -> &mut BuilderArea {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_BuilderFace_as_BOPAlgo_BuilderArea_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderFace_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BOPAlgo_BuilderFace_as_BOPAlgo_Algo_mut(self as *mut Self)) }
     }
 
     /// Upcast to BOPAlgo_Options
@@ -5528,6 +5694,16 @@ impl BuilderShape {
         unsafe { crate::ffi::BOPAlgo_BuilderShape_has_history(self as *const Self) }
     }
 
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderShape_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BOPAlgo_BuilderShape_as_BOPAlgo_Algo_mut(self as *mut Self)) }
+    }
+
     /// Upcast to BOPAlgo_Options
     pub fn as_options(&self) -> &Options {
         unsafe { &*(crate::ffi::BOPAlgo_BuilderShape_as_BOPAlgo_Options(self as *const Self)) }
@@ -5727,6 +5903,28 @@ impl BuilderSolid {
     /// for all created solids. This method returns the data map of solid - box pairs.
     pub fn get_boxes_map(&self) -> &crate::ffi::TopTools_DataMapOfShapeBox {
         unsafe { &*(crate::ffi::BOPAlgo_BuilderSolid_get_boxes_map(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_BuilderArea
+    pub fn as_builder_area(&self) -> &BuilderArea {
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderSolid_as_BOPAlgo_BuilderArea(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_BuilderArea (mutable)
+    pub fn as_builder_area_mut(&mut self) -> &mut BuilderArea {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_BuilderSolid_as_BOPAlgo_BuilderArea_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderSolid_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BOPAlgo_BuilderSolid_as_BOPAlgo_Algo_mut(self as *mut Self)) }
     }
 
     /// Upcast to BOPAlgo_Options
@@ -6165,6 +6363,16 @@ impl CellsBuilder {
         unsafe {
             &mut *(crate::ffi::BOPAlgo_CellsBuilder_as_BOPAlgo_BuilderShape_mut(self as *mut Self))
         }
+    }
+
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BOPAlgo_CellsBuilder_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BOPAlgo_CellsBuilder_as_BOPAlgo_Algo_mut(self as *mut Self)) }
     }
 
     /// Upcast to BOPAlgo_Options
@@ -6646,6 +6854,16 @@ impl CheckerSI {
         unsafe {
             &mut *(crate::ffi::BOPAlgo_CheckerSI_as_BOPAlgo_PaveFiller_mut(self as *mut Self))
         }
+    }
+
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BOPAlgo_CheckerSI_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BOPAlgo_CheckerSI_as_BOPAlgo_Algo_mut(self as *mut Self)) }
     }
 
     /// Upcast to BOPAlgo_Options
@@ -7990,6 +8208,16 @@ impl MakerVolume {
         }
     }
 
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BOPAlgo_MakerVolume_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BOPAlgo_MakerVolume_as_BOPAlgo_Algo_mut(self as *mut Self)) }
+    }
+
     /// Upcast to BOPAlgo_Options
     pub fn as_options(&self) -> &Options {
         unsafe { &*(crate::ffi::BOPAlgo_MakerVolume_as_BOPAlgo_Options(self as *const Self)) }
@@ -8577,6 +8805,16 @@ impl PaveFiller {
         unsafe { crate::ffi::BOPAlgo_PaveFiller_is_avoid_build_p_curve(self as *const Self) }
     }
 
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BOPAlgo_PaveFiller_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BOPAlgo_PaveFiller_as_BOPAlgo_Algo_mut(self as *mut Self)) }
+    }
+
     /// Upcast to BOPAlgo_Options
     pub fn as_options(&self) -> &Options {
         unsafe { &*(crate::ffi::BOPAlgo_PaveFiller_as_BOPAlgo_Options(self as *const Self)) }
@@ -8873,6 +9111,16 @@ impl RemoveFeatures {
         }
     }
 
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BOPAlgo_RemoveFeatures_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BOPAlgo_RemoveFeatures_as_BOPAlgo_Algo_mut(self as *mut Self)) }
+    }
+
     /// Upcast to BOPAlgo_Options
     pub fn as_options(&self) -> &Options {
         unsafe { &*(crate::ffi::BOPAlgo_RemoveFeatures_as_BOPAlgo_Options(self as *const Self)) }
@@ -9097,6 +9345,16 @@ impl Section {
         unsafe {
             &mut *(crate::ffi::BOPAlgo_Section_as_BOPAlgo_BuilderShape_mut(self as *mut Self))
         }
+    }
+
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BOPAlgo_Section_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BOPAlgo_Section_as_BOPAlgo_Algo_mut(self as *mut Self)) }
     }
 
     /// Upcast to BOPAlgo_Options
@@ -9517,6 +9775,16 @@ impl ShellSplitter {
         unsafe { crate::ffi::BOPAlgo_ShellSplitter_split_block(theCB) }
     }
 
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BOPAlgo_ShellSplitter_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BOPAlgo_ShellSplitter_as_BOPAlgo_Algo_mut(self as *mut Self)) }
+    }
+
     /// Upcast to BOPAlgo_Options
     pub fn as_options(&self) -> &Options {
         unsafe { &*(crate::ffi::BOPAlgo_ShellSplitter_as_BOPAlgo_Options(self as *const Self)) }
@@ -9717,6 +9985,16 @@ impl Splitter {
         unsafe {
             &mut *(crate::ffi::BOPAlgo_Splitter_as_BOPAlgo_BuilderShape_mut(self as *mut Self))
         }
+    }
+
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BOPAlgo_Splitter_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BOPAlgo_Splitter_as_BOPAlgo_Algo_mut(self as *mut Self)) }
     }
 
     /// Upcast to BOPAlgo_Options
@@ -10252,6 +10530,16 @@ impl ToolsProvider {
         }
     }
 
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BOPAlgo_ToolsProvider_as_BOPAlgo_Algo_mut(self as *mut Self)) }
+    }
+
     /// Upcast to BOPAlgo_Options
     pub fn as_options(&self) -> &Options {
         unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_as_BOPAlgo_Options(self as *const Self)) }
@@ -10688,6 +10976,16 @@ impl WireSplitter {
         theContext: &crate::ffi::HandleIntToolsContext,
     ) {
         unsafe { crate::ffi::BOPAlgo_WireSplitter_split_block(theF, theCB, theContext) }
+    }
+
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BOPAlgo_WireSplitter_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BOPAlgo_WireSplitter_as_BOPAlgo_Algo_mut(self as *mut Self)) }
     }
 
     /// Upcast to BOPAlgo_Options

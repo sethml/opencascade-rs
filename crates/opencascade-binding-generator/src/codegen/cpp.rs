@@ -18,7 +18,9 @@ fn collect_handle_types(classes: &[&ParsedClass]) -> Vec<(String, String)> {
 
     for class in classes {
         // Add Handle type for classes that are transient (can be wrapped in Handle)
-        if class.is_handle_type && !class.has_protected_destructor {
+        // Handle types with protected destructors are included because Handle<T>
+        // manages lifetime via reference counting, not direct delete.
+        if class.is_handle_type {
             handles.insert(class.name.clone());
         }
 
@@ -290,9 +292,6 @@ pub fn generate_wrappers(
 
     // Generate wrapper functions for ALL classes from pre-computed ClassBindings
     for bindings in all_bindings {
-        if bindings.has_protected_destructor {
-            continue;
-        }
         output.push_str(&super::bindings::emit_cpp_class(bindings));
     }
 

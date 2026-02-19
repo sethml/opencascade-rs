@@ -7,6 +7,49 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From BRepAlgoAPI_Algo.hxx
+// ========================
+
+/// **Source:** `BRepAlgoAPI_Algo.hxx`:30 - `BRepAlgoAPI_Algo`
+/// Provides the root interface for the API algorithms
+pub use crate::ffi::BRepAlgoAPI_Algo as Algo;
+
+impl Algo {
+    /// **Source:** `BRepAlgoAPI_Algo.hxx`:37 - `BRepAlgoAPI_Algo::Shape()`
+    /// Returns a shape built by the shape construction algorithm.
+    /// Does not check if the shape is built.
+    pub fn shape(&mut self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::BRepAlgoAPI_Algo_shape(self as *mut Self)) }
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        unsafe { &*(crate::ffi::BRepAlgoAPI_Algo_as_BRepBuilderAPI_MakeShape(self as *const Self)) }
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        &mut self,
+    ) -> &mut crate::b_rep_builder_api::MakeShape {
+        unsafe {
+            &mut *(crate::ffi::BRepAlgoAPI_Algo_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        unsafe { &*(crate::ffi::BRepAlgoAPI_Algo_as_BRepBuilderAPI_Command(self as *const Self)) }
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepAlgoAPI_Algo_as_BRepBuilderAPI_Command_mut(self as *mut Self))
+        }
+    }
+}
+
+// ========================
 // From BRepAlgoAPI_BooleanOperation.hxx
 // ========================
 
@@ -126,6 +169,22 @@ impl BooleanOperation {
     pub fn as_builder_algo_mut(&mut self) -> &mut BuilderAlgo {
         unsafe {
             &mut *(crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_BuilderAlgo_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to BRepAlgoAPI_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe {
+            &*(crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_Algo(self as *const Self))
+        }
+    }
+
+    /// Upcast to BRepAlgoAPI_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe {
+            &mut *(crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_Algo_mut(
                 self as *mut Self,
             ))
         }
@@ -603,6 +662,18 @@ impl BuilderAlgo {
         }
     }
 
+    /// Upcast to BRepAlgoAPI_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BRepAlgoAPI_BuilderAlgo_as_BRepAlgoAPI_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BRepAlgoAPI_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe {
+            &mut *(crate::ffi::BRepAlgoAPI_BuilderAlgo_as_BRepAlgoAPI_Algo_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
@@ -1021,6 +1092,16 @@ impl Common {
         }
     }
 
+    /// Upcast to BRepAlgoAPI_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BRepAlgoAPI_Common_as_BRepAlgoAPI_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BRepAlgoAPI_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BRepAlgoAPI_Common_as_BRepAlgoAPI_Algo_mut(self as *mut Self)) }
+    }
+
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
@@ -1332,6 +1413,16 @@ impl Cut {
         unsafe {
             &mut *(crate::ffi::BRepAlgoAPI_Cut_as_BRepAlgoAPI_BuilderAlgo_mut(self as *mut Self))
         }
+    }
+
+    /// Upcast to BRepAlgoAPI_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BRepAlgoAPI_Cut_as_BRepAlgoAPI_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BRepAlgoAPI_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BRepAlgoAPI_Cut_as_BRepAlgoAPI_Algo_mut(self as *mut Self)) }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
@@ -1745,6 +1836,18 @@ impl Defeaturing {
         }
     }
 
+    /// Upcast to BRepAlgoAPI_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BRepAlgoAPI_Defeaturing_as_BRepAlgoAPI_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BRepAlgoAPI_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe {
+            &mut *(crate::ffi::BRepAlgoAPI_Defeaturing_as_BRepAlgoAPI_Algo_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
@@ -1890,6 +1993,16 @@ impl Fuse {
         unsafe {
             &mut *(crate::ffi::BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BuilderAlgo_mut(self as *mut Self))
         }
+    }
+
+    /// Upcast to BRepAlgoAPI_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BRepAlgoAPI_Fuse_as_BRepAlgoAPI_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BRepAlgoAPI_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe { &mut *(crate::ffi::BRepAlgoAPI_Fuse_as_BRepAlgoAPI_Algo_mut(self as *mut Self)) }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
@@ -2499,6 +2612,18 @@ impl Section {
         }
     }
 
+    /// Upcast to BRepAlgoAPI_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BRepAlgoAPI_Section_as_BRepAlgoAPI_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BRepAlgoAPI_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe {
+            &mut *(crate::ffi::BRepAlgoAPI_Section_as_BRepAlgoAPI_Algo_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
@@ -2802,6 +2927,18 @@ impl Splitter {
             &mut *(crate::ffi::BRepAlgoAPI_Splitter_as_BRepAlgoAPI_BuilderAlgo_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast to BRepAlgoAPI_Algo
+    pub fn as_algo(&self) -> &Algo {
+        unsafe { &*(crate::ffi::BRepAlgoAPI_Splitter_as_BRepAlgoAPI_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BRepAlgoAPI_Algo (mutable)
+    pub fn as_algo_mut(&mut self) -> &mut Algo {
+        unsafe {
+            &mut *(crate::ffi::BRepAlgoAPI_Splitter_as_BRepAlgoAPI_Algo_mut(self as *mut Self))
         }
     }
 

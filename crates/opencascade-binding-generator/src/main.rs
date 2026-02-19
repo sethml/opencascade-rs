@@ -646,17 +646,15 @@ fn generate_output(
     // 1. Class types from ClassBindings (already re-exported via emit_reexport_class)
     let mut already_reexported: HashSet<String> = HashSet::new();
     for b in &all_bindings {
-        if !b.has_protected_destructor {
-            already_reexported.insert(b.cpp_name.clone());
-            // Handle types generated for this class
-            if b.has_to_handle {
-                let handle_name = format!("Handle{}", b.cpp_name.replace('_', ""));
-                already_reexported.insert(handle_name);
-            }
-            // Handle upcasts reference base handle types
-            for hu in &b.handle_upcasts {
-                already_reexported.insert(hu.base_handle_name.clone());
-            }
+        already_reexported.insert(b.cpp_name.clone());
+        // Handle types generated for this class
+        if b.has_to_handle || b.has_handle_get {
+            let handle_name = format!("Handle{}", b.cpp_name.replace('_', ""));
+            already_reexported.insert(handle_name);
+        }
+        // Handle upcasts reference base handle types
+        for hu in &b.handle_upcasts {
+            already_reexported.insert(hu.base_handle_name.clone());
         }
     }
 
@@ -669,7 +667,7 @@ fn generate_output(
     // A. Handle types for all transient classes
     let mut all_ffi_types: Vec<(String, String)> = Vec::new(); // (ffi_name, module_prefix)
     for class in all_classes {
-        if class.is_handle_type && !class.has_protected_destructor {
+        if class.is_handle_type {
             let handle_name = format!("Handle{}", class.name.replace('_', ""));
             if !already_reexported.contains(&handle_name) {
                 // Use the class's actual module (not derived from handle name)

@@ -2024,6 +2024,107 @@ impl DelaunayBaseMeshAlgo {
 }
 
 // ========================
+// From BRepMesh_DiscretFactory.hxx
+// ========================
+
+/// **Source:** `BRepMesh_DiscretFactory.hxx`:32 - `BRepMesh_DiscretFactory`
+/// This class intended to setup / retrieve default triangulation algorithm. <br>
+/// Use BRepMesh_DiscretFactory::Get() static method to retrieve global Factory instance. <br>
+/// Use BRepMesh_DiscretFactory::Discret() method to retrieve meshing tool. <br>
+pub use crate::ffi::BRepMesh_DiscretFactory as DiscretFactory;
+
+impl DiscretFactory {
+    /// **Source:** `BRepMesh_DiscretFactory.hxx`:41 - `BRepMesh_DiscretFactory::Names()`
+    /// Returns the list of registered meshing algorithms.
+    pub fn names(&self) -> &crate::ffi::TColStd_MapOfAsciiString {
+        unsafe { &*(crate::ffi::BRepMesh_DiscretFactory_names(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepMesh_DiscretFactory.hxx`:46 - `BRepMesh_DiscretFactory::SetDefaultName()`
+    /// Setup meshing algorithm by name. <br>
+    /// Returns TRUE if requested tool is available. <br>
+    /// On fail Factory will continue to use previous algo.
+    pub fn set_default_name(&mut self, theName: &crate::t_collection::AsciiString) -> bool {
+        unsafe { crate::ffi::BRepMesh_DiscretFactory_set_default_name(self as *mut Self, theName) }
+    }
+
+    /// **Source:** `BRepMesh_DiscretFactory.hxx`:52 - `BRepMesh_DiscretFactory::DefaultName()`
+    /// Returns name for current meshing algorithm.
+    pub fn default_name(&self) -> &crate::t_collection::AsciiString {
+        unsafe { &*(crate::ffi::BRepMesh_DiscretFactory_default_name(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepMesh_DiscretFactory.hxx`:57 - `BRepMesh_DiscretFactory::SetFunctionName()`
+    /// Advanced function. Changes function name to retrieve from plugin. <br>
+    /// Returns TRUE if requested tool is available. <br>
+    /// On fail Factory will continue to use previous algo.
+    pub fn set_function_name(&mut self, theFuncName: &crate::t_collection::AsciiString) -> bool {
+        unsafe {
+            crate::ffi::BRepMesh_DiscretFactory_set_function_name(self as *mut Self, theFuncName)
+        }
+    }
+
+    /// **Source:** `BRepMesh_DiscretFactory.hxx`:63 - `BRepMesh_DiscretFactory::FunctionName()`
+    /// Returns function name that should be exported by plugin.
+    pub fn function_name(&self) -> &crate::t_collection::AsciiString {
+        unsafe { &*(crate::ffi::BRepMesh_DiscretFactory_function_name(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepMesh_DiscretFactory.hxx`:66 - `BRepMesh_DiscretFactory::ErrorStatus()`
+    /// Returns error status for last meshing algorithm switch.
+    pub fn error_status(&self) -> crate::b_rep_mesh::FactoryError {
+        unsafe {
+            crate::b_rep_mesh::FactoryError::try_from(
+                crate::ffi::BRepMesh_DiscretFactory_error_status(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepMesh_DiscretFactory.hxx`:73 - `BRepMesh_DiscretFactory::SetDefault()`
+    /// Setup meshing algorithm that should be created by this Factory. <br>
+    /// Returns TRUE if requested tool is available. <br>
+    /// On fail Factory will continue to use previous algo. <br>
+    /// Call ::ErrorStatus() method to retrieve fault reason.
+    pub fn set_default(
+        &mut self,
+        theName: &crate::t_collection::AsciiString,
+        theFuncName: &crate::t_collection::AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepMesh_DiscretFactory_set_default(self as *mut Self, theName, theFuncName)
+        }
+    }
+
+    /// **Source:** `BRepMesh_DiscretFactory.hxx`:80 - `BRepMesh_DiscretFactory::Discret()`
+    /// Returns triangulation algorithm instance.
+    /// @param theShape shape to be meshed.
+    /// @param theLinDeflection linear deflection to be used for meshing.
+    /// @param theAngDeflection angular deflection to be used for meshing.
+    pub fn discret(
+        &mut self,
+        theShape: &crate::topo_ds::Shape,
+        theLinDeflection: f64,
+        theAngDeflection: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshDiscretRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DiscretFactory_discret(
+                self as *mut Self,
+                theShape,
+                theLinDeflection,
+                theAngDeflection,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepMesh_DiscretFactory.hxx`:38 - `BRepMesh_DiscretFactory::Get()`
+    /// Returns the global factory instance.
+    pub fn get() -> &'static mut DiscretFactory {
+        unsafe { &mut *(crate::ffi::BRepMesh_DiscretFactory_get()) }
+    }
+}
+
+// ========================
 // From BRepMesh_DiscretRoot.hxx
 // ========================
 

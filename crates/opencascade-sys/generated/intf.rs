@@ -66,6 +66,93 @@ impl TryFrom<i32> for PIType {
 }
 
 // ========================
+// From Intf_Interference.hxx
+// ========================
+
+/// **Source:** `Intf_Interference.hxx`:36 - `Intf_Interference`
+/// Describes the   Interference  computation    result
+/// between polygon2d or polygon3d or polyhedron
+/// (as  three sequences   of  points  of  intersection,
+/// polylines of intersection and zones de tangence).
+pub use crate::ffi::Intf_Interference as Interference;
+
+impl Interference {
+    /// **Source:** `Intf_Interference.hxx`:43 - `Intf_Interference::NbSectionPoints()`
+    /// Gives the number   of  points of  intersection  in the
+    /// interference.
+    pub fn nb_section_points(&self) -> i32 {
+        unsafe { crate::ffi::Intf_Interference_nb_section_points(self as *const Self) }
+    }
+
+    /// **Source:** `Intf_Interference.hxx`:47 - `Intf_Interference::PntValue()`
+    /// Gives the point of  intersection of address  Index in
+    /// the interference.
+    pub fn pnt_value(&self, Index: i32) -> &SectionPoint {
+        unsafe { &*(crate::ffi::Intf_Interference_pnt_value(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `Intf_Interference.hxx`:51 - `Intf_Interference::NbSectionLines()`
+    /// Gives the number  of polylines of  intersection in the
+    /// interference.
+    pub fn nb_section_lines(&self) -> i32 {
+        unsafe { crate::ffi::Intf_Interference_nb_section_lines(self as *const Self) }
+    }
+
+    /// **Source:** `Intf_Interference.hxx`:55 - `Intf_Interference::LineValue()`
+    /// Gives the polyline of intersection at address <Index> in
+    /// the interference.
+    pub fn line_value(&self, Index: i32) -> &SectionLine {
+        unsafe { &*(crate::ffi::Intf_Interference_line_value(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `Intf_Interference.hxx`:58 - `Intf_Interference::NbTangentZones()`
+    /// Gives the number of zones of tangence in the interference.
+    pub fn nb_tangent_zones(&self) -> i32 {
+        unsafe { crate::ffi::Intf_Interference_nb_tangent_zones(self as *const Self) }
+    }
+
+    /// **Source:** `Intf_Interference.hxx`:62 - `Intf_Interference::ZoneValue()`
+    /// Gives  the zone of  tangence at address   Index in the
+    /// interference.
+    pub fn zone_value(&self, Index: i32) -> &TangentZone {
+        unsafe { &*(crate::ffi::Intf_Interference_zone_value(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `Intf_Interference.hxx`:65 - `Intf_Interference::GetTolerance()`
+    /// Gives the tolerance used for the calculation.
+    pub fn get_tolerance(&self) -> f64 {
+        unsafe { crate::ffi::Intf_Interference_get_tolerance(self as *const Self) }
+    }
+
+    /// **Source:** `Intf_Interference.hxx`:69 - `Intf_Interference::Contains()`
+    /// Tests if the polylines of  intersection or the zones of
+    /// tangence contain the point of intersection <ThePnt>.
+    pub fn contains(&self, ThePnt: &SectionPoint) -> bool {
+        unsafe { crate::ffi::Intf_Interference_contains(self as *const Self, ThePnt) }
+    }
+
+    /// **Source:** `Intf_Interference.hxx`:74 - `Intf_Interference::Insert()`
+    /// Inserts a new zone of tangence in  the current list of
+    /// tangent zones of  the interference  and  returns  True
+    /// when done.
+    pub fn insert_tangentzone(&mut self, TheZone: &TangentZone) -> bool {
+        unsafe { crate::ffi::Intf_Interference_insert_tangentzone(self as *mut Self, TheZone) }
+    }
+
+    /// **Source:** `Intf_Interference.hxx`:78 - `Intf_Interference::Insert()`
+    /// Insert a new segment of intersection in the current  list of
+    /// polylines of intersection of the interference.
+    pub fn insert_sectionpoint2(&mut self, pdeb: &SectionPoint, pfin: &SectionPoint) {
+        unsafe { crate::ffi::Intf_Interference_insert_sectionpoint2(self as *mut Self, pdeb, pfin) }
+    }
+
+    /// **Source:** `Intf_Interference.hxx`:80 - `Intf_Interference::Dump()`
+    pub fn dump(&self) {
+        unsafe { crate::ffi::Intf_Interference_dump(self as *const Self) }
+    }
+}
+
+// ========================
 // From Intf_InterferencePolygon2d.hxx
 // ========================
 
@@ -132,6 +219,22 @@ impl InterferencePolygon2d {
             crate::OwnedPtr::from_raw(crate::ffi::Intf_InterferencePolygon2d_pnt2d_value(
                 self as *const Self,
                 Index,
+            ))
+        }
+    }
+
+    /// Upcast to Intf_Interference
+    pub fn as_interference(&self) -> &Interference {
+        unsafe {
+            &*(crate::ffi::Intf_InterferencePolygon2d_as_Intf_Interference(self as *const Self))
+        }
+    }
+
+    /// Upcast to Intf_Interference (mutable)
+    pub fn as_interference_mut(&mut self) -> &mut Interference {
+        unsafe {
+            &mut *(crate::ffi::Intf_InterferencePolygon2d_as_Intf_Interference_mut(
+                self as *mut Self,
             ))
         }
     }

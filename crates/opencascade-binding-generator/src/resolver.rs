@@ -56,8 +56,6 @@ pub enum ExclusionReason {
     UsesEnum { enum_name: String },
     /// Class is abstract (has pure virtual methods)
     AbstractClass,
-    /// Class has protected/private destructor
-    ProtectedDestructor,
     /// Method needs explicit lifetimes (&mut self return with reference params)
     NeedsExplicitLifetimes,
     /// Method has unsupported by-value parameter (class or handle type)
@@ -350,7 +348,7 @@ pub struct SymbolTable {
     pub all_enum_names: HashSet<String>,
     /// All class names (including collection typedef names)
     pub all_class_names: HashSet<String>,
-    /// Classes that can have Handle<T> declarations (is_handle_type && !has_protected_destructor)
+    /// Classes that can have Handle<T> declarations (is_handle_type)
     pub handle_able_classes: HashSet<String>,
     /// Cross-module type references by module
     pub cross_module_types: HashMap<String, Vec<CrossModuleType>>,
@@ -773,10 +771,12 @@ pub fn build_symbol_table(
     // Collection typedefs are known types for filtering purposes
     all_class_names.extend(collection_type_names.iter().cloned());
 
-    // Compute handle-able classes (inherit from Standard_Transient and no protected destructor)
+    // Compute handle-able classes (inherit from Standard_Transient)
+    // Include handle types even with protected destructors because Handle<T>
+    // manages lifetime via reference counting, not direct delete.
     let mut handle_able_classes: HashSet<String> = all_classes
         .iter()
-        .filter(|c| c.is_handle_type && !c.has_protected_destructor)
+        .filter(|c| c.is_handle_type)
         .map(|c| c.name.clone())
         .collect();
 
@@ -947,11 +947,9 @@ fn resolve_class(
     let rust_ffi_name = safe_short_name(&short_name);
     
     // Determine class binding status
-    let class_status = if class.has_protected_destructor {
-        BindingStatus::Excluded(ExclusionReason::ProtectedDestructor)
-    } else {
-        BindingStatus::Included
-    };
+    // Protected-destructor classes are now included (methods, statics, handles)
+    // with only ctor/dtor generation skipped.
+    let class_status = BindingStatus::Included;
     
     // Resolve constructors
     let mut constructor_ids = Vec::new();

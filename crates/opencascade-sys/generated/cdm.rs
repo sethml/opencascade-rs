@@ -69,6 +69,32 @@ impl Application {
         }
     }
 
+    /// **Source:** `CDM_Application.hxx`:49 - `CDM_Application::BeginOfUpdate()`
+    /// this method is called before the update of a document.
+    /// By default, writes in MessageDriver().
+    pub fn begin_of_update(&mut self, aDocument: &crate::ffi::HandleCDMDocument) {
+        unsafe { crate::ffi::CDM_Application_begin_of_update(self as *mut Self, aDocument) }
+    }
+
+    /// **Source:** `CDM_Application.hxx`:53 - `CDM_Application::EndOfUpdate()`
+    /// this method is called after the update of a document.
+    /// By default, writes in MessageDriver().
+    pub fn end_of_update(
+        &mut self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+        theStatus: bool,
+        ErrorString: &crate::t_collection::ExtendedString,
+    ) {
+        unsafe {
+            crate::ffi::CDM_Application_end_of_update(
+                self as *mut Self,
+                aDocument,
+                theStatus,
+                ErrorString,
+            )
+        }
+    }
+
     /// **Source:** `CDM_Application.hxx`:61 - `CDM_Application::Name()`
     /// Returns the application name.
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
@@ -124,6 +150,602 @@ impl HandleCDMApplication {
 }
 
 // ========================
+// From CDM_Document.hxx
+// ========================
+
+/// **Source:** `CDM_Document.hxx`:69 - `CDM_Document`
+/// An applicative document is an instance of a class inheriting CDM_Document.
+/// These documents have the following properties:
+/// - they can have references to other documents.
+/// - the modifications of a document are propagated to the referencing
+/// documents.
+/// - a  document can be   stored in different formats, with  or
+/// without a persistent model.
+/// - the drivers  for  storing  and retrieving documents  are
+/// plugged in when necessary.
+/// - a  document has a modification counter. This counter is
+/// incremented when the document is  modified.  When a document
+/// is stored,  the current  counter  value is memorized as the
+/// last storage  version of the   document.  A document  is
+/// considered to be  modified   when the  counter value  is
+/// different from the storage version.  Once  the document is
+/// saved  the storage  version  and the  counter  value are
+/// identical.  The document  is  now  not considered  to  be
+/// modified.
+/// - a reference is a link between two documents. A reference has two
+/// components: the "From Document" and the "To Document". When
+/// a reference is created, an identifier of the reference is generated.
+/// This identifier is unique in the scope of the From Document and
+/// is conserved during storage and retrieval. This means that the
+/// referenced document will be always accessible through this
+/// identifier.
+/// - a reference memorizes the counter value of the To Document when
+/// the reference is created. The From Document is considered to
+/// be up to date relative to the To Document when the
+/// reference counter value is equal to the To Document counter value.
+/// -  retrieval of a document  having references does not imply
+/// the retrieving of the referenced documents.
+pub use crate::ffi::CDM_Document as Document;
+
+impl Document {
+    /// **Source:** `CDM_Document.hxx`:87 - `CDM_Document::Update()`
+    /// This method Update   will be called
+    /// to signal the end   of the modified references list.
+    /// The    document     should    be  recomputed     and
+    /// UpdateFromDocuments  should be called.  Update should
+    /// returns True in case  of success, false otherwise.  In
+    /// case of Failure, additional information can be given in
+    /// ErrorString.
+    pub fn update_extendedstring(
+        &mut self,
+        ErrorString: &mut crate::t_collection::ExtendedString,
+    ) -> bool {
+        unsafe { crate::ffi::CDM_Document_update_extendedstring(self as *mut Self, ErrorString) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:92 - `CDM_Document::StorageFormat()`
+    /// The Storage Format is the key which is used to determine in the
+    /// application resources the storage driver plugin, the file
+    /// extension and other data used to store the document.
+    pub fn storage_format(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDM_Document_storage_format(self as *const Self))
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:95 - `CDM_Document::Extensions()`
+    /// by default empties the extensions.
+    pub fn extensions(&self, Extensions: &mut crate::ffi::TColStd_SequenceOfExtendedString) {
+        unsafe { crate::ffi::CDM_Document_extensions(self as *const Self, Extensions) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:100 - `CDM_Document::GetAlternativeDocument()`
+    /// This method can be redefined to extract another document in
+    /// a different format. For example, to extract a Shape
+    /// from an applicative document.
+    pub fn get_alternative_document(
+        &mut self,
+        aFormat: &crate::t_collection::ExtendedString,
+        anAlternativeDocument: &mut crate::ffi::HandleCDMDocument,
+    ) -> bool {
+        unsafe {
+            crate::ffi::CDM_Document_get_alternative_document(
+                self as *mut Self,
+                aFormat,
+                anAlternativeDocument,
+            )
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:111 - `CDM_Document::CreateReference()`
+    /// Creates a reference from this document to {anOtherDocument}.
+    /// Returns a reference identifier. This reference identifier
+    /// is unique in the document and will not be used for the
+    /// next references, even after the storing of the document.
+    /// If there is already a reference between the two documents,
+    /// the reference is not created, but its reference identifier
+    /// is returned.
+    pub fn create_reference(&mut self, anOtherDocument: &crate::ffi::HandleCDMDocument) -> i32 {
+        unsafe { crate::ffi::CDM_Document_create_reference(self as *mut Self, anOtherDocument) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:115 - `CDM_Document::RemoveReference()`
+    /// Removes the reference between the From Document and the
+    /// To Document identified by a reference identifier.
+    pub fn remove_reference(&mut self, aReferenceIdentifier: i32) {
+        unsafe {
+            crate::ffi::CDM_Document_remove_reference(self as *mut Self, aReferenceIdentifier)
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:118 - `CDM_Document::RemoveAllReferences()`
+    /// Removes all references having this document for From Document.
+    pub fn remove_all_references(&mut self) {
+        unsafe { crate::ffi::CDM_Document_remove_all_references(self as *mut Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:123 - `CDM_Document::Document()`
+    /// Returns the To Document  of the reference identified by
+    /// aReferenceIdentifier. If the ToDocument is stored and
+    /// has not yet been retrieved, this method will retrieve it.
+    pub fn document(
+        &self,
+        aReferenceIdentifier: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDM_Document_document(
+                self as *const Self,
+                aReferenceIdentifier,
+            ))
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:128 - `CDM_Document::IsInSession()`
+    /// returns True if   the  To Document of the  reference
+    /// identified by aReferenceIdentifier is in session,  False
+    /// if it corresponds to a not yet retrieved document.
+    pub fn is_in_session(&self, aReferenceIdentifier: i32) -> bool {
+        unsafe { crate::ffi::CDM_Document_is_in_session(self as *const Self, aReferenceIdentifier) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:133 - `CDM_Document::IsStored()`
+    /// returns True if   the  To Document of the  reference
+    /// identified by aReferenceIdentifier has already been stored,
+    /// False  otherwise.
+    pub fn is_stored_int(&self, aReferenceIdentifier: i32) -> bool {
+        unsafe { crate::ffi::CDM_Document_is_stored_int(self as *const Self, aReferenceIdentifier) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:138 - `CDM_Document::Name()`
+    /// returns the name of the metadata of the To Document of
+    /// the reference identified by aReferenceIdentifier.
+    pub fn name(
+        &self,
+        aReferenceIdentifier: i32,
+    ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDM_Document_name(
+                self as *const Self,
+                aReferenceIdentifier,
+            ))
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:152 - `CDM_Document::ToReferencesNumber()`
+    /// returns the number of references having this document as
+    /// From Document.
+    pub fn to_references_number(&self) -> i32 {
+        unsafe { crate::ffi::CDM_Document_to_references_number(self as *const Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:156 - `CDM_Document::FromReferencesNumber()`
+    /// returns the number of references having this document as
+    /// To Document.
+    pub fn from_references_number(&self) -> i32 {
+        unsafe { crate::ffi::CDM_Document_from_references_number(self as *const Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:159 - `CDM_Document::ShallowReferences()`
+    /// returns True is this document references aDocument;
+    pub fn shallow_references(&self, aDocument: &crate::ffi::HandleCDMDocument) -> bool {
+        unsafe { crate::ffi::CDM_Document_shallow_references(self as *const Self, aDocument) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:162 - `CDM_Document::DeepReferences()`
+    /// returns True is this document references aDocument;
+    pub fn deep_references(&self, aDocument: &crate::ffi::HandleCDMDocument) -> bool {
+        unsafe { crate::ffi::CDM_Document_deep_references(self as *const Self, aDocument) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:168 - `CDM_Document::CopyReference()`
+    /// Copies a  reference  to  this document.   This  method
+    /// avoid retrieval of referenced document.  The arguments
+    /// are  the  original  document  and a  valid  reference
+    /// identifier Returns the  local identifier.
+    pub fn copy_reference(
+        &mut self,
+        aFromDocument: &crate::ffi::HandleCDMDocument,
+        aReferenceIdentifier: i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::CDM_Document_copy_reference(
+                self as *mut Self,
+                aFromDocument,
+                aReferenceIdentifier,
+            )
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:172 - `CDM_Document::IsReadOnly()`
+    /// indicates  that  this document cannot be   modified.
+    pub fn is_read_only(&self) -> bool {
+        unsafe { crate::ffi::CDM_Document_is_read_only(self as *const Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:175 - `CDM_Document::IsReadOnly()`
+    /// indicates that the referenced document cannot be modified,
+    pub fn is_read_only_int(&self, aReferenceIdentifier: i32) -> bool {
+        unsafe {
+            crate::ffi::CDM_Document_is_read_only_int(self as *const Self, aReferenceIdentifier)
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:177 - `CDM_Document::SetIsReadOnly()`
+    pub fn set_is_read_only(&mut self) {
+        unsafe { crate::ffi::CDM_Document_set_is_read_only(self as *mut Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:179 - `CDM_Document::UnsetIsReadOnly()`
+    pub fn unset_is_read_only(&mut self) {
+        unsafe { crate::ffi::CDM_Document_unset_is_read_only(self as *mut Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:183 - `CDM_Document::Modify()`
+    /// Indicates that this document has been modified.
+    /// This method increments the modification counter.
+    pub fn modify(&mut self) {
+        unsafe { crate::ffi::CDM_Document_modify(self as *mut Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:186 - `CDM_Document::Modifications()`
+    /// returns the current modification counter.
+    pub fn modifications(&self) -> i32 {
+        unsafe { crate::ffi::CDM_Document_modifications(self as *const Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:188 - `CDM_Document::UnModify()`
+    pub fn un_modify(&mut self) {
+        unsafe { crate::ffi::CDM_Document_un_modify(self as *mut Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:194 - `CDM_Document::IsUpToDate()`
+    /// returns true if the modification counter found in the given
+    /// reference is equal to the actual modification counter of
+    /// the To Document. This method is able to deal with a reference
+    /// to a not retrieved document.
+    pub fn is_up_to_date(&self, aReferenceIdentifier: i32) -> bool {
+        unsafe { crate::ffi::CDM_Document_is_up_to_date(self as *const Self, aReferenceIdentifier) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:200 - `CDM_Document::SetIsUpToDate()`
+    /// Resets the modification counter in the given reference
+    /// to the actual modification counter of its To Document.
+    /// This method should be called after the application has updated
+    /// this document.
+    pub fn set_is_up_to_date(&mut self, aReferenceIdentifier: i32) {
+        unsafe {
+            crate::ffi::CDM_Document_set_is_up_to_date(self as *mut Self, aReferenceIdentifier)
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:203 - `CDM_Document::SetComment()`
+    /// associates a comment with this document.
+    pub fn set_comment(&mut self, aComment: &crate::t_collection::ExtendedString) {
+        unsafe { crate::ffi::CDM_Document_set_comment(self as *mut Self, aComment) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:206 - `CDM_Document::AddComment()`
+    /// appends a comment into comments of this document.
+    pub fn add_comment(&mut self, aComment: &crate::t_collection::ExtendedString) {
+        unsafe { crate::ffi::CDM_Document_add_comment(self as *mut Self, aComment) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:209 - `CDM_Document::SetComments()`
+    /// associates a comments with this document.
+    pub fn set_comments(&mut self, aComments: &crate::ffi::TColStd_SequenceOfExtendedString) {
+        unsafe { crate::ffi::CDM_Document_set_comments(self as *mut Self, aComments) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:213 - `CDM_Document::Comments()`
+    /// returns the associated comments through <aComments>.
+    /// Returns empty sequence if no comments are associated.
+    pub fn comments(&self, aComments: &mut crate::ffi::TColStd_SequenceOfExtendedString) {
+        unsafe { crate::ffi::CDM_Document_comments(self as *const Self, aComments) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:219 - `CDM_Document::IsStored()`
+    pub fn is_stored(&self) -> bool {
+        unsafe { crate::ffi::CDM_Document_is_stored(self as *const Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:223 - `CDM_Document::StorageVersion()`
+    /// returns  the value of  the modification counter at the
+    /// time of storage. By default returns 0.
+    pub fn storage_version(&self) -> i32 {
+        unsafe { crate::ffi::CDM_Document_storage_version(self as *const Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:230 - `CDM_Document::UnsetIsStored()`
+    pub fn unset_is_stored(&mut self) {
+        unsafe { crate::ffi::CDM_Document_unset_is_stored(self as *mut Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:234 - `CDM_Document::Folder()`
+    pub fn folder(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::CDM_Document_folder(self as *const Self)) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:237 - `CDM_Document::SetRequestedFolder()`
+    /// defines the folder in which the object should be stored.
+    pub fn set_requested_folder(&mut self, aFolder: &crate::t_collection::ExtendedString) {
+        unsafe { crate::ffi::CDM_Document_set_requested_folder(self as *mut Self, aFolder) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:239 - `CDM_Document::RequestedFolder()`
+    pub fn requested_folder(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDM_Document_requested_folder(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:241 - `CDM_Document::HasRequestedFolder()`
+    pub fn has_requested_folder(&self) -> bool {
+        unsafe { crate::ffi::CDM_Document_has_requested_folder(self as *const Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:244 - `CDM_Document::SetRequestedName()`
+    /// defines the name under which the object should be stored.
+    pub fn set_requested_name(&mut self, aName: &crate::t_collection::ExtendedString) {
+        unsafe { crate::ffi::CDM_Document_set_requested_name(self as *mut Self, aName) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:249 - `CDM_Document::RequestedName()`
+    /// Determines under which the document is going to be store.
+    /// By default the name of the document will be used.
+    /// If the document has no name its presentation will be used.
+    pub fn requested_name(&mut self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDM_Document_requested_name(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:251 - `CDM_Document::SetRequestedPreviousVersion()`
+    pub fn set_requested_previous_version(
+        &mut self,
+        aPreviousVersion: &crate::t_collection::ExtendedString,
+    ) {
+        unsafe {
+            crate::ffi::CDM_Document_set_requested_previous_version(
+                self as *mut Self,
+                aPreviousVersion,
+            )
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:254 - `CDM_Document::UnsetRequestedPreviousVersion()`
+    pub fn unset_requested_previous_version(&mut self) {
+        unsafe { crate::ffi::CDM_Document_unset_requested_previous_version(self as *mut Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:256 - `CDM_Document::HasRequestedPreviousVersion()`
+    pub fn has_requested_previous_version(&self) -> bool {
+        unsafe { crate::ffi::CDM_Document_has_requested_previous_version(self as *const Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:258 - `CDM_Document::RequestedPreviousVersion()`
+    pub fn requested_previous_version(
+        &self,
+    ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDM_Document_requested_previous_version(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:261 - `CDM_Document::SetRequestedComment()`
+    /// defines the Comment with  which the object should be stored.
+    pub fn set_requested_comment(&mut self, aComment: &crate::t_collection::ExtendedString) {
+        unsafe { crate::ffi::CDM_Document_set_requested_comment(self as *mut Self, aComment) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:263 - `CDM_Document::RequestedComment()`
+    pub fn requested_comment(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDM_Document_requested_comment(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:266 - `CDM_Document::LoadResources()`
+    /// read (or rereads) the following resource.
+    pub fn load_resources(&mut self) {
+        unsafe { crate::ffi::CDM_Document_load_resources(self as *mut Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:268 - `CDM_Document::FindFileExtension()`
+    pub fn find_file_extension(&mut self) -> bool {
+        unsafe { crate::ffi::CDM_Document_find_file_extension(self as *mut Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:271 - `CDM_Document::FileExtension()`
+    /// gets the Desktop.Domain.Application.`FileFormat`.FileExtension resource.
+    pub fn file_extension(&mut self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDM_Document_file_extension(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:273 - `CDM_Document::FindDescription()`
+    pub fn find_description(&mut self) -> bool {
+        unsafe { crate::ffi::CDM_Document_find_description(self as *mut Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:276 - `CDM_Document::Description()`
+    /// gets the `FileFormat`.Description resource.
+    pub fn description(&mut self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDM_Document_description(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:280 - `CDM_Document::IsModified()`
+    /// returns  true  if the   version is greater  than   the
+    /// storage version
+    pub fn is_modified(&self) -> bool {
+        unsafe { crate::ffi::CDM_Document_is_modified(self as *const Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:285 - `CDM_Document::IsOpened()`
+    pub fn is_opened(&self) -> bool {
+        unsafe { crate::ffi::CDM_Document_is_opened(self as *const Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:287 - `CDM_Document::Open()`
+    pub fn open(&mut self, anApplication: &crate::ffi::HandleCDMApplication) {
+        unsafe { crate::ffi::CDM_Document_open(self as *mut Self, anApplication) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:289 - `CDM_Document::CanClose()`
+    pub fn can_close(&self) -> crate::cdm::CanCloseStatus {
+        unsafe {
+            crate::cdm::CanCloseStatus::try_from(crate::ffi::CDM_Document_can_close(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:291 - `CDM_Document::Close()`
+    pub fn close(&mut self) {
+        unsafe { crate::ffi::CDM_Document_close(self as *mut Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:293 - `CDM_Document::Application()`
+    pub fn application(&self) -> &crate::ffi::HandleCDMApplication {
+        unsafe { &*(crate::ffi::CDM_Document_application(self as *const Self)) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:299 - `CDM_Document::CanCloseReference()`
+    /// A  referenced  document  may  indicate   through  this
+    /// virtual  method that it does  not allow the closing of
+    /// aDocument  which  it references through  the reference
+    /// aReferenceIdentifier. By default returns Standard_True.
+    pub fn can_close_reference(
+        &self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+        aReferenceIdentifier: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::CDM_Document_can_close_reference(
+                self as *const Self,
+                aDocument,
+                aReferenceIdentifier,
+            )
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:307 - `CDM_Document::CloseReference()`
+    /// A referenced document may update its internal
+    /// data structure when {aDocument} which it references
+    /// through the reference {aReferenceIdentifier} is being closed.
+    /// By default this method does nothing.
+    pub fn close_reference(
+        &mut self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+        aReferenceIdentifier: i32,
+    ) {
+        unsafe {
+            crate::ffi::CDM_Document_close_reference(
+                self as *mut Self,
+                aDocument,
+                aReferenceIdentifier,
+            )
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:314 - `CDM_Document::IsOpened()`
+    /// returns true if  the   document corresponding to  the
+    /// given   reference has    been retrieved  and  opened.
+    /// Otherwise returns false. This method does not retrieve
+    /// the referenced document
+    pub fn is_opened_int(&self, aReferenceIdentifier: i32) -> bool {
+        unsafe { crate::ffi::CDM_Document_is_opened_int(self as *const Self, aReferenceIdentifier) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:327 - `CDM_Document::ReferenceCounter()`
+    pub fn reference_counter(&self) -> i32 {
+        unsafe { crate::ffi::CDM_Document_reference_counter(self as *const Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:333 - `CDM_Document::Update()`
+    /// the following method should be used instead:
+    ///
+    /// Update(me:mutable; ErrorString: out ExtendedString from TCollection)
+    /// returns Boolean from Standard
+    pub fn update(&mut self) {
+        unsafe { crate::ffi::CDM_Document_update(self as *mut Self) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:335 - `CDM_Document::Reference()`
+    pub fn reference(
+        &self,
+        aReferenceIdentifier: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleCDMReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDM_Document_reference(
+                self as *const Self,
+                aReferenceIdentifier,
+            ))
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:338 - `CDM_Document::SetModifications()`
+    pub fn set_modifications(&mut self, Modifications: i32) {
+        unsafe { crate::ffi::CDM_Document_set_modifications(self as *mut Self, Modifications) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:340 - `CDM_Document::SetReferenceCounter()`
+    pub fn set_reference_counter(&mut self, aReferenceCounter: i32) {
+        unsafe {
+            crate::ffi::CDM_Document_set_reference_counter(self as *mut Self, aReferenceCounter)
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:349 - `CDM_Document::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::CDM_Document_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:349 - `CDM_Document::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::CDM_Document_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:349 - `CDM_Document::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::CDM_Document_get_type_descriptor()) }
+    }
+}
+
+pub use crate::ffi::HandleCDMDocument;
+
+unsafe impl crate::CppDeletable for HandleCDMDocument {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleCDMDocument_destructor(ptr);
+    }
+}
+
+impl HandleCDMDocument {
+    /// Dereference this Handle to access the underlying CDM_Document
+    pub fn get(&self) -> &crate::ffi::CDM_Document {
+        unsafe { &*(crate::ffi::HandleCDMDocument_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying CDM_Document
+    pub fn get_mut(&mut self) -> &mut crate::ffi::CDM_Document {
+        unsafe { &mut *(crate::ffi::HandleCDMDocument_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From CDM_Reference.hxx
 // ========================
 
@@ -137,6 +759,20 @@ unsafe impl crate::CppDeletable for Reference {
 }
 
 impl Reference {
+    /// **Source:** `CDM_Reference.hxx`:37 - `CDM_Reference::FromDocument()`
+    pub fn from_document(&mut self) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDM_Reference_from_document(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `CDM_Reference.hxx`:39 - `CDM_Reference::ToDocument()`
+    pub fn to_document(&mut self) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDM_Reference_to_document(self as *mut Self))
+        }
+    }
+
     /// **Source:** `CDM_Reference.hxx`:41 - `CDM_Reference::ReferenceIdentifier()`
     pub fn reference_identifier(&mut self) -> i32 {
         unsafe { crate::ffi::CDM_Reference_reference_identifier(self as *mut Self) }

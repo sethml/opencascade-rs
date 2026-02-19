@@ -1290,6 +1290,18 @@ impl CInter {
         unsafe { crate::ffi::HLRBRep_CInter_get_min_nb_samples(self as *const Self) }
     }
 
+    /// Upcast to IntRes2d_Intersection
+    pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
+        unsafe { &*(crate::ffi::HLRBRep_CInter_as_IntRes2d_Intersection(self as *const Self)) }
+    }
+
+    /// Upcast to IntRes2d_Intersection (mutable)
+    pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
+        unsafe {
+            &mut *(crate::ffi::HLRBRep_CInter_as_IntRes2d_Intersection_mut(self as *mut Self))
+        }
+    }
+
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::HLRBRep_CInter_inherited_IsDone(self as *const Self) }
@@ -3549,6 +3561,24 @@ impl IntConicCurveOfCInter {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor()) }
     }
 
+    /// Upcast to IntRes2d_Intersection
+    pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
+        unsafe {
+            &*(crate::ffi::HLRBRep_IntConicCurveOfCInter_as_IntRes2d_Intersection(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IntRes2d_Intersection (mutable)
+    pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
+        unsafe {
+            &mut *(crate::ffi::HLRBRep_IntConicCurveOfCInter_as_IntRes2d_Intersection_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_IsDone(self as *const Self) }
@@ -3614,6 +3644,24 @@ impl InterCSurf {
     /// Empty Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_InterCSurf_ctor()) }
+    }
+
+    /// Upcast to IntCurveSurface_Intersection
+    pub fn as_int_curve_surface_intersection(&self) -> &crate::int_curve_surface::Intersection {
+        unsafe {
+            &*(crate::ffi::HLRBRep_InterCSurf_as_IntCurveSurface_Intersection(self as *const Self))
+        }
+    }
+
+    /// Upcast to IntCurveSurface_Intersection (mutable)
+    pub fn as_int_curve_surface_intersection_mut(
+        &mut self,
+    ) -> &mut crate::int_curve_surface::Intersection {
+        unsafe {
+            &mut *(crate::ffi::HLRBRep_InterCSurf_as_IntCurveSurface_Intersection_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:36 - `IntCurveSurface_Intersection::IsDone()`
@@ -5961,6 +6009,24 @@ impl TheIntConicCurveOfCInter {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor()) }
     }
 
+    /// Upcast to IntRes2d_Intersection
+    pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
+        unsafe {
+            &*(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_as_IntRes2d_Intersection(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IntRes2d_Intersection (mutable)
+    pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
+        unsafe {
+            &mut *(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_as_IntRes2d_Intersection_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe {
@@ -6051,6 +6117,24 @@ impl TheIntPCurvePCurveOfCInter {
     pub fn get_min_nb_samples(&self) -> i32 {
         unsafe {
             crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_get_min_nb_samples(self as *const Self)
+        }
+    }
+
+    /// Upcast to IntRes2d_Intersection
+    pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
+        unsafe {
+            &*(crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_as_IntRes2d_Intersection(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IntRes2d_Intersection (mutable)
+    pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
+        unsafe {
+            &mut *(crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_as_IntRes2d_Intersection_mut(
+                self as *mut Self,
+            ))
         }
     }
 
@@ -6325,6 +6409,24 @@ impl TheInterferenceOfInterCSurf {
         }
     }
 
+    /// Upcast to Intf_Interference
+    pub fn as_intf_interference(&self) -> &crate::intf::Interference {
+        unsafe {
+            &*(crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_as_Intf_Interference(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Intf_Interference (mutable)
+    pub fn as_intf_interference_mut(&mut self) -> &mut crate::intf::Interference {
+        unsafe {
+            &mut *(crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_as_Intf_Interference_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Intf_Interference.hxx`:43 - `Intf_Interference::NbSectionPoints()`
     pub fn nb_section_points(&self) -> i32 {
         unsafe {
@@ -6440,6 +6542,20 @@ impl TheIntersectorOfTheIntConicCurveOfCInter {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_ctor(),
             )
+        }
+    }
+
+    /// Upcast to IntRes2d_Intersection
+    pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
+        unsafe {
+            &*(crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_as_IntRes2d_Intersection(self as *const Self))
+        }
+    }
+
+    /// Upcast to IntRes2d_Intersection (mutable)
+    pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
+        unsafe {
+            &mut *(crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_as_IntRes2d_Intersection_mut(self as *mut Self))
         }
     }
 

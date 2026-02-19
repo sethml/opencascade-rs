@@ -223,7 +223,6 @@ modules = [
 
 # Exclude specific headers (even if their module is in `modules` above).
 exclude_headers = [
-
     # Protected inheritance from Message_ProgressScope makes operator new/delete
     # protected; the class cannot be heap-allocated via std::make_unique.
     # This is intentional to hide the parent API. The class is stack-only by design.
@@ -246,8 +245,9 @@ exclude_headers = [
     # that the generator can't resolve correctly.
     "BVH_Properties.hxx",
 
-
-    # Protected operator delete (TDF_LabelNode).
+    # Internal-only class: all constructors/destructors are private, accessible only
+    # to friend classes TDF_Data and TDF_Label. No public API returns TDF_LabelNode*;
+    # it's entirely hidden behind the TDF_Label value-type facade.
     "TDF_LabelNode.hxx",
 
     # RWObj_MtlReader: constructor takes OSD_OpenFile_Mode not available.

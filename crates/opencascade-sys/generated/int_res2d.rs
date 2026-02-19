@@ -303,6 +303,78 @@ impl Domain {
 }
 
 // ========================
+// From IntRes2d_Intersection.hxx
+// ========================
+
+/// **Source:** `IntRes2d_Intersection.hxx`:33 - `IntRes2d_Intersection`
+/// Defines  the root   class  of  all  the  Intersections
+/// between  two 2D-Curves, and  provides all  the methods
+/// about the results of the Intersections Algorithms.
+pub use crate::ffi::IntRes2d_Intersection as Intersection;
+
+impl Intersection {
+    /// **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
+    /// returns TRUE when the computation was successful.
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::IntRes2d_Intersection_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
+    /// Returns TRUE if there is no intersection between the
+    /// given arguments.
+    /// The exception NotDone is raised if IsDone returns FALSE.
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::IntRes2d_Intersection_is_empty(self as *const Self) }
+    }
+
+    /// **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
+    /// This function returns the number of intersection
+    /// points between the 2 curves.
+    /// The exception NotDone is raised if IsDone returns FALSE.
+    pub fn nb_points(&self) -> i32 {
+        unsafe { crate::ffi::IntRes2d_Intersection_nb_points(self as *const Self) }
+    }
+
+    /// **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
+    /// This function returns the intersection point
+    /// of range N;
+    /// The exception NotDone is raised if IsDone returns FALSE.
+    /// The exception OutOfRange is raised if (N <= 0)
+    /// or (N > NbPoints).
+    pub fn point(&self, N: i32) -> &IntersectionPoint {
+        unsafe { &*(crate::ffi::IntRes2d_Intersection_point(self as *const Self, N)) }
+    }
+
+    /// **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
+    /// This function returns the number of intersection
+    /// segments between the two curves.
+    /// The exception NotDone is raised if IsDone returns FALSE.
+    pub fn nb_segments(&self) -> i32 {
+        unsafe { crate::ffi::IntRes2d_Intersection_nb_segments(self as *const Self) }
+    }
+
+    /// **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
+    /// This function returns the intersection segment
+    /// of range N;
+    /// The exception NotDone is raised if IsDone returns FALSE.
+    /// The exception OutOfRange is raised if (N <= 0)
+    /// or (N > NbPoints).
+    pub fn segment(&self, N: i32) -> &IntersectionSegment {
+        unsafe { &*(crate::ffi::IntRes2d_Intersection_segment(self as *const Self, N)) }
+    }
+
+    /// **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
+    pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
+        unsafe {
+            crate::ffi::IntRes2d_Intersection_set_reversed_parameters(
+                self as *mut Self,
+                Reverseflag,
+            )
+        }
+    }
+}
+
+// ========================
 // From IntRes2d_IntersectionPoint.hxx
 // ========================
 

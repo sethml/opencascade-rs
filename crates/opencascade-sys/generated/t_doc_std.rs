@@ -246,6 +246,32 @@ impl Application {
         unsafe { crate::ffi::TDocStd_Application_nb_documents(self as *const Self) }
     }
 
+    /// **Source:** `TDocStd_Application.hxx`:179 - `TDocStd_Application::NewDocument()`
+    /// Constructs the empty new document aDoc.
+    /// This document will have the format format.
+    /// If InitDocument is redefined for a specific
+    /// application, the new document is handled by the
+    /// applicative session.
+    pub fn new_document(
+        &mut self,
+        format: &crate::t_collection::ExtendedString,
+        aDoc: &mut crate::ffi::HandleCDMDocument,
+    ) {
+        unsafe { crate::ffi::TDocStd_Application_new_document(self as *mut Self, format, aDoc) }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:194 - `TDocStd_Application::InitDocument()`
+    /// Initialize the document aDoc for the applicative session.
+    /// This virtual function is called by NewDocument
+    /// and is to be redefined for each specific application.
+    /// Modified flag (different of disk version)
+    /// =============
+    /// to open/save a document
+    /// =======================
+    pub fn init_document(&self, aDoc: &crate::ffi::HandleCDMDocument) {
+        unsafe { crate::ffi::TDocStd_Application_init_document(self as *const Self, aDoc) }
+    }
+
     /// **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
     /// Returns an index for the document found in the
     /// path path in this applicative session.
@@ -310,6 +336,40 @@ impl Application {
         unsafe { &mut *(crate::ffi::TDocStd_Application_as_CDM_Application_mut(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `CDF_Application.hxx`:73 - `CDF_Application::CanClose()`
+    pub fn can_close(
+        &mut self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+    ) -> crate::cdm::CanCloseStatus {
+        unsafe {
+            crate::cdm::CanCloseStatus::try_from(
+                crate::ffi::TDocStd_Application_inherited_CanClose(self as *mut Self, aDocument),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:97 - `CDF_Application::Retrieve()`
+    pub fn retrieve(
+        &mut self,
+        aFolder: &crate::t_collection::ExtendedString,
+        aName: &crate::t_collection::ExtendedString,
+        UseStorageConfiguration: bool,
+        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_inherited_Retrieve(
+                self as *mut Self,
+                aFolder,
+                aName,
+                UseStorageConfiguration,
+                theFilter,
+                theRange,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `CDF_Application.hxx`:126 - `CDF_Application::CanRetrieve()`
     pub fn can_retrieve(
         &mut self,
@@ -370,6 +430,30 @@ impl Application {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_inherited_MessageDriver(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:49 - `CDM_Application::BeginOfUpdate()`
+    pub fn begin_of_update(&mut self, aDocument: &crate::ffi::HandleCDMDocument) {
+        unsafe {
+            crate::ffi::TDocStd_Application_inherited_BeginOfUpdate(self as *mut Self, aDocument)
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:53 - `CDM_Application::EndOfUpdate()`
+    pub fn end_of_update(
+        &mut self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+        theStatus: bool,
+        ErrorString: &crate::t_collection::ExtendedString,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_Application_inherited_EndOfUpdate(
+                self as *mut Self,
+                aDocument,
+                theStatus,
+                ErrorString,
+            )
         }
     }
 
@@ -1022,10 +1106,45 @@ impl Document {
         unsafe { &*(crate::ffi::TDocStd_Document_get_type_descriptor()) }
     }
 
+    /// Upcast to CDM_Document
+    pub fn as_cdm_document(&self) -> &crate::cdm::Document {
+        unsafe { &*(crate::ffi::TDocStd_Document_as_CDM_Document(self as *const Self)) }
+    }
+
+    /// Upcast to CDM_Document (mutable)
+    pub fn as_cdm_document_mut(&mut self) -> &mut crate::cdm::Document {
+        unsafe { &mut *(crate::ffi::TDocStd_Document_as_CDM_Document_mut(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `CDM_Document.hxx`:95 - `CDM_Document::Extensions()`
     pub fn extensions(&self, Extensions: &mut crate::ffi::TColStd_SequenceOfExtendedString) {
         unsafe {
             crate::ffi::TDocStd_Document_inherited_Extensions(self as *const Self, Extensions)
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:100 - `CDM_Document::GetAlternativeDocument()`
+    pub fn get_alternative_document(
+        &mut self,
+        aFormat: &crate::t_collection::ExtendedString,
+        anAlternativeDocument: &mut crate::ffi::HandleCDMDocument,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_GetAlternativeDocument(
+                self as *mut Self,
+                aFormat,
+                anAlternativeDocument,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:111 - `CDM_Document::CreateReference()`
+    pub fn create_reference(&mut self, anOtherDocument: &crate::ffi::HandleCDMDocument) -> i32 {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_CreateReference(
+                self as *mut Self,
+                anOtherDocument,
+            )
         }
     }
 
@@ -1042,6 +1161,19 @@ impl Document {
     /// Inherited: **Source:** `CDM_Document.hxx`:118 - `CDM_Document::RemoveAllReferences()`
     pub fn remove_all_references(&mut self) {
         unsafe { crate::ffi::TDocStd_Document_inherited_RemoveAllReferences(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:123 - `CDM_Document::Document()`
+    pub fn document(
+        &self,
+        aReferenceIdentifier: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_Document(
+                self as *const Self,
+                aReferenceIdentifier,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:128 - `CDM_Document::IsInSession()`
@@ -1085,6 +1217,35 @@ impl Document {
     /// Inherited: **Source:** `CDM_Document.hxx`:156 - `CDM_Document::FromReferencesNumber()`
     pub fn from_references_number(&self) -> i32 {
         unsafe { crate::ffi::TDocStd_Document_inherited_FromReferencesNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:159 - `CDM_Document::ShallowReferences()`
+    pub fn shallow_references(&self, aDocument: &crate::ffi::HandleCDMDocument) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_ShallowReferences(self as *const Self, aDocument)
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:162 - `CDM_Document::DeepReferences()`
+    pub fn deep_references(&self, aDocument: &crate::ffi::HandleCDMDocument) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_DeepReferences(self as *const Self, aDocument)
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:168 - `CDM_Document::CopyReference()`
+    pub fn copy_reference(
+        &mut self,
+        aFromDocument: &crate::ffi::HandleCDMDocument,
+        aReferenceIdentifier: i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_CopyReference(
+                self as *mut Self,
+                aFromDocument,
+                aReferenceIdentifier,
+            )
+        }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:172 - `CDM_Document::IsReadOnly()`
@@ -1333,6 +1494,36 @@ impl Document {
     /// Inherited: **Source:** `CDM_Document.hxx`:293 - `CDM_Document::Application()`
     pub fn application(&self) -> &crate::ffi::HandleCDMApplication {
         unsafe { &*(crate::ffi::TDocStd_Document_inherited_Application(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:299 - `CDM_Document::CanCloseReference()`
+    pub fn can_close_reference(
+        &self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+        aReferenceIdentifier: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_CanCloseReference(
+                self as *const Self,
+                aDocument,
+                aReferenceIdentifier,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:307 - `CDM_Document::CloseReference()`
+    pub fn close_reference(
+        &mut self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+        aReferenceIdentifier: i32,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_CloseReference(
+                self as *mut Self,
+                aDocument,
+                aReferenceIdentifier,
+            )
+        }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:327 - `CDM_Document::ReferenceCounter()`

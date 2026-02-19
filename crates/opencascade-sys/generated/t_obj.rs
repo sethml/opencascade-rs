@@ -196,9 +196,60 @@ impl Application {
         unsafe { crate::ffi::TObj_Application_inherited_NbDocuments(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:179 - `TDocStd_Application::NewDocument()`
+    pub fn new_document(
+        &mut self,
+        format: &crate::t_collection::ExtendedString,
+        aDoc: &mut crate::ffi::HandleCDMDocument,
+    ) {
+        unsafe {
+            crate::ffi::TObj_Application_inherited_NewDocument(self as *mut Self, format, aDoc)
+        }
+    }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:194 - `TDocStd_Application::InitDocument()`
+    pub fn init_document(&self, aDoc: &crate::ffi::HandleCDMDocument) {
+        unsafe { crate::ffi::TObj_Application_inherited_InitDocument(self as *const Self, aDoc) }
+    }
+
     /// Inherited: **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
     pub fn is_in_session(&self, path: &crate::t_collection::ExtendedString) -> i32 {
         unsafe { crate::ffi::TObj_Application_inherited_IsInSession(self as *const Self, path) }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:73 - `CDF_Application::CanClose()`
+    pub fn can_close(
+        &mut self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+    ) -> crate::cdm::CanCloseStatus {
+        unsafe {
+            crate::cdm::CanCloseStatus::try_from(crate::ffi::TObj_Application_inherited_CanClose(
+                self as *mut Self,
+                aDocument,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:97 - `CDF_Application::Retrieve()`
+    pub fn retrieve(
+        &mut self,
+        aFolder: &crate::t_collection::ExtendedString,
+        aName: &crate::t_collection::ExtendedString,
+        UseStorageConfiguration: bool,
+        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Application_inherited_Retrieve(
+                self as *mut Self,
+                aFolder,
+                aName,
+                UseStorageConfiguration,
+                theFilter,
+                theRange,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:126 - `CDF_Application::CanRetrieve()`
@@ -258,6 +309,30 @@ impl Application {
         }
     }
 
+    /// Inherited: **Source:** `CDM_Application.hxx`:49 - `CDM_Application::BeginOfUpdate()`
+    pub fn begin_of_update(&mut self, aDocument: &crate::ffi::HandleCDMDocument) {
+        unsafe {
+            crate::ffi::TObj_Application_inherited_BeginOfUpdate(self as *mut Self, aDocument)
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:53 - `CDM_Application::EndOfUpdate()`
+    pub fn end_of_update(
+        &mut self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+        theStatus: bool,
+        ErrorString: &crate::t_collection::ExtendedString,
+    ) {
+        unsafe {
+            crate::ffi::TObj_Application_inherited_EndOfUpdate(
+                self as *mut Self,
+                aDocument,
+                theStatus,
+                ErrorString,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `CDM_Application.hxx`:61 - `CDM_Application::Name()`
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
@@ -304,6 +379,21 @@ impl Assistant {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_Assistant_ctor()) }
     }
 
+    /// **Source:** `TObj_Assistant.hxx`:42 - `TObj_Assistant::FindModel()`
+    /// Finds model by name
+    pub fn find_model(theName: &str) -> crate::OwnedPtr<crate::ffi::HandleTObjModel> {
+        let c_theName = std::ffi::CString::new(theName).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Assistant_find_model(c_theName.as_ptr()))
+        }
+    }
+
+    /// **Source:** `TObj_Assistant.hxx`:45 - `TObj_Assistant::BindModel()`
+    /// Binds model to the map
+    pub fn bind_model(theModel: &crate::ffi::HandleTObjModel) {
+        unsafe { crate::ffi::TObj_Assistant_bind_model(theModel) }
+    }
+
     /// **Source:** `TObj_Assistant.hxx`:48 - `TObj_Assistant::ClearModelMap()`
     /// Clears all records from the model map
     pub fn clear_model_map() {
@@ -335,6 +425,18 @@ impl Assistant {
     /// Clears map of types
     pub fn clear_type_map() {
         unsafe { crate::ffi::TObj_Assistant_clear_type_map() }
+    }
+
+    /// **Source:** `TObj_Assistant.hxx`:76 - `TObj_Assistant::SetCurrentModel()`
+    /// Sets current model
+    pub fn set_current_model(theModel: &crate::ffi::HandleTObjModel) {
+        unsafe { crate::ffi::TObj_Assistant_set_current_model(theModel) }
+    }
+
+    /// **Source:** `TObj_Assistant.hxx`:79 - `TObj_Assistant::GetCurrentModel()`
+    /// Returns current model
+    pub fn get_current_model() -> crate::OwnedPtr<crate::ffi::HandleTObjModel> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_Assistant_get_current_model()) }
     }
 
     /// **Source:** `TObj_Assistant.hxx`:82 - `TObj_Assistant::UnSetCurrentModel()`
@@ -371,6 +473,14 @@ unsafe impl crate::CppDeletable for CheckModel {
 }
 
 impl CheckModel {
+    /// **Source:** `TObj_CheckModel.hxx`:36 - `TObj_CheckModel::TObj_CheckModel()`
+    /// Initialize checker by model
+    pub fn new_handletobjmodel(theModel: &crate::ffi::HandleTObjModel) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_CheckModel_ctor_handletobjmodel(theModel))
+        }
+    }
+
     /// **Source:** `TObj_CheckModel.hxx`:43 - `TObj_CheckModel::SetToFix()`
     /// Sets flag allowing fixing inconsistencies
     pub fn set_to_fix(&mut self, theToFix: bool) {
@@ -381,6 +491,12 @@ impl CheckModel {
     /// Returns true if it is allowed to fix inconsistencies
     pub fn is_to_fix(&self) -> bool {
         unsafe { crate::ffi::TObj_CheckModel_is_to_fix(self as *const Self) }
+    }
+
+    /// **Source:** `TObj_CheckModel.hxx`:49 - `TObj_CheckModel::GetModel()`
+    /// Returns the checked model
+    pub fn get_model(&self) -> &crate::ffi::HandleTObjModel {
+        unsafe { &*(crate::ffi::TObj_CheckModel_get_model(self as *const Self)) }
     }
 
     /// **Source:** `TObj_CheckModel.hxx`:59 - `TObj_CheckModel::Perform()`
@@ -645,6 +761,15 @@ impl HiddenPartition {
     /// Inherited: **Source:** `TObj_Partition.hxx`:118 - `TObj_Partition::Update()`
     pub fn update(&mut self) -> bool {
         unsafe { crate::ffi::TObj_HiddenPartition_inherited_Update(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:122 - `TObj_Object::GetModel()`
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_HiddenPartition_inherited_GetModel(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:130 - `TObj_Object::GetChildren()`
@@ -1078,6 +1203,261 @@ impl LabelIterator {
 }
 
 // ========================
+// From TObj_Model.hxx
+// ========================
+
+/// **Source:** `TObj_Model.hxx`:42 - `TObj_Model`
+///
+/// Base class for OCAF based models.
+/// Defines common behaviour for all models based on TObject
+/// classes, basic services to access model objects and common
+/// operations with the model.
+/// Provides default implementation for many methods.
+pub use crate::ffi::TObj_Model as Model;
+
+impl Model {
+    /// **Source:** `TObj_Model.hxx`:74 - `TObj_Model::SetMessenger()`
+    /// Set messenger to use for messages output
+    pub fn set_messenger(&mut self, theMsgr: &crate::ffi::HandleMessageMessenger) {
+        unsafe { crate::ffi::TObj_Model_set_messenger(self as *mut Self, theMsgr) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:78 - `TObj_Model::Messenger()`
+    /// Get messenger used for messages output (by default, the messenger from
+    /// application is used)
+    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_Model_messenger(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:87 - `TObj_Model::Load()`
+    /// Load the OCAF model from a file. If the filename is empty or file does
+    /// not exists, it just initializes model by empty data.
+    pub fn load(&mut self, theFile: &crate::t_collection::ExtendedString) -> bool {
+        unsafe { crate::ffi::TObj_Model_load(self as *mut Self, theFile) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:94 - `TObj_Model::SaveAs()`
+    /// Save the model to a file
+    pub fn save_as(&mut self, theFile: &crate::t_collection::ExtendedString) -> bool {
+        unsafe { crate::ffi::TObj_Model_save_as(self as *mut Self, theFile) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:100 - `TObj_Model::Save()`
+    /// Save the model to the same file
+    pub fn save(&mut self) -> bool {
+        unsafe { crate::ffi::TObj_Model_save(self as *mut Self) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:108 - `TObj_Model::Close()`
+    /// Close the model
+    pub fn close(&mut self) -> bool {
+        unsafe { crate::ffi::TObj_Model_close(self as *mut Self) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:119 - `TObj_Model::GetFile()`
+    /// Returns the full file name this model is to be saved to,
+    /// or null if the model was not saved yet
+    pub fn get_file(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_Model_get_file(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:127 - `TObj_Model::GetObjects()`
+    /// Returns an Iterator on all objects in the Model
+    pub fn get_objects(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Model_get_objects(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:130 - `TObj_Model::GetChildren()`
+    /// Returns an Iterator on objects in the main partition
+    pub fn get_children(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Model_get_children(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:147 - `TObj_Model::GetRoot()`
+    /// Returns root object of model
+    pub fn get_root(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_Model_get_root(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:158 - `TObj_Model::GetLabel()`
+    /// Returns OCAF label on which model data are stored.
+    pub fn get_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_Model_get_label(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:166 - `TObj_Model::GetModelName()`
+    /// Returns the name of the model
+    pub fn get_model_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Model_get_model_name(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:195 - `TObj_Model::HasOpenCommand()`
+    /// Returns True if a Command transaction is open
+    /// Starting, finishing the transaction
+    pub fn has_open_command(&self) -> bool {
+        unsafe { crate::ffi::TObj_Model_has_open_command(self as *const Self) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:198 - `TObj_Model::OpenCommand()`
+    /// Open a new command transaction.
+    pub fn open_command(&self) {
+        unsafe { crate::ffi::TObj_Model_open_command(self as *const Self) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:202 - `TObj_Model::CommitCommand()`
+    /// Commit the Command transaction. Do nothing If there is no Command
+    /// transaction open.
+    pub fn commit_command(&self) {
+        unsafe { crate::ffi::TObj_Model_commit_command(self as *const Self) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:206 - `TObj_Model::AbortCommand()`
+    /// Abort the  Command  transaction. Do nothing If there is no Command
+    /// transaction open.
+    pub fn abort_command(&self) {
+        unsafe { crate::ffi::TObj_Model_abort_command(self as *const Self) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:209 - `TObj_Model::IsModified()`
+    /// Modification status
+    pub fn is_modified(&self) -> bool {
+        unsafe { crate::ffi::TObj_Model_is_modified(self as *const Self) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:212 - `TObj_Model::SetModified()`
+    /// Sets modification status
+    pub fn set_modified(&mut self, theModified: bool) {
+        unsafe { crate::ffi::TObj_Model_set_modified(self as *mut Self, theModified) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:230 - `TObj_Model::GetFormat()`
+    /// Returns the format for save/restore.
+    /// This implementation returns "BinOcaf". The method should be redefined
+    /// for those models that should use another format.
+    pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_Model_get_format(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:233 - `TObj_Model::GetFormatVersion()`
+    /// Returns the version of format stored in TObj file
+    pub fn get_format_version(&self) -> i32 {
+        unsafe { crate::ffi::TObj_Model_get_format_version(self as *const Self) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:249 - `TObj_Model::Update()`
+    /// this method is called before activating this model
+    pub fn update(&mut self) -> bool {
+        unsafe { crate::ffi::TObj_Model_update(self as *mut Self) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:257 - `TObj_Model::GetGUID()`
+    /// Defines interface GUID for TObj_Model
+    pub fn get_guid(&self) -> crate::OwnedPtr<crate::standard::GUID> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_Model_get_guid(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:306 - `TObj_Model::SetLabel()`
+    /// Sets OCAF label on which model data are stored.
+    /// Used by persistence mechanism.
+    pub fn set_label(&mut self, theLabel: &crate::tdf::Label) {
+        unsafe { crate::ffi::TObj_Model_set_label(self as *mut Self, theLabel) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:333 - `TObj_Model::Paste()`
+    /// Pastes me to the new model
+    /// references will not be copied if theRelocTable is not 0
+    /// if theRelocTable is not NULL theRelocTable is filled by objects
+    pub fn paste(
+        &mut self,
+        theModel: &crate::ffi::HandleTObjModel,
+        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+    ) -> bool {
+        unsafe { crate::ffi::TObj_Model_paste(self as *mut Self, theModel, theRelocTable) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:337 - `TObj_Model::NewEmpty()`
+    /// This function have to create a new model with type like me
+    pub fn new_empty(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTObjModel> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_Model_new_empty(self as *mut Self)) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:340 - `TObj_Model::CopyReferences()`
+    /// Copy references from me to the other
+    pub fn copy_references(
+        &mut self,
+        theTarget: &crate::ffi::HandleTObjModel,
+        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TObj_Model_copy_references(self as *mut Self, theTarget, theRelocTable)
+        }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:353 - `TObj_Model::DynamicType()`
+    /// CASCADE RTTI
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TObj_Model_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:115 - `TObj_Model::GetDocumentModel()`
+    /// Returns model which contains a document with the label,
+    /// or NULL handle if label is NULL
+    pub fn get_document_model(
+        theLabel: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjModel> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_Model_get_document_model(theLabel)) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:169 - `TObj_Model::SetNewName()`
+    /// Sets new unique name for the object
+    pub fn set_new_name(theObject: &crate::ffi::HandleTObjObject) {
+        unsafe { crate::ffi::TObj_Model_set_new_name(theObject) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:353 - `TObj_Model::get_type_name()`
+    /// CASCADE RTTI
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TObj_Model_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:353 - `TObj_Model::get_type_descriptor()`
+    /// CASCADE RTTI
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TObj_Model_get_type_descriptor()) }
+    }
+}
+
+pub use crate::ffi::HandleTObjModel;
+
+unsafe impl crate::CppDeletable for HandleTObjModel {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTObjModel_destructor(ptr);
+    }
+}
+
+impl HandleTObjModel {
+    /// Dereference this Handle to access the underlying TObj_Model
+    pub fn get(&self) -> &crate::ffi::TObj_Model {
+        unsafe { &*(crate::ffi::HandleTObjModel_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TObj_Model
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_Model {
+        unsafe { &mut *(crate::ffi::HandleTObjModel_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From TObj_ModelIterator.hxx
 // ========================
 
@@ -1093,6 +1473,17 @@ unsafe impl crate::CppDeletable for ModelIterator {
 }
 
 impl ModelIterator {
+    /// **Source:** `TObj_ModelIterator.hxx`:35 - `TObj_ModelIterator::TObj_ModelIterator()`
+    ///
+    /// Constructor
+    ///
+    /// Creates Iterator and initialize it by Model`s label
+    pub fn new_handletobjmodel(theModel: &crate::ffi::HandleTObjModel) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_ModelIterator_ctor_handletobjmodel(theModel))
+        }
+    }
+
     /// **Source:** `TObj_ModelIterator.hxx`:44 - `TObj_ModelIterator::More()`
     /// Returns True if iteration is not finished and method Value()
     /// will give the object
@@ -1164,6 +1555,12 @@ unsafe impl crate::CppDeletable for Object {
 }
 
 impl Object {
+    /// **Source:** `TObj_Object.hxx`:122 - `TObj_Object::GetModel()`
+    /// Returns the model to which the object belongs
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjModel> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_Object_get_model(self as *const Self)) }
+    }
+
     /// **Source:** `TObj_Object.hxx`:130 - `TObj_Object::GetChildren()`
     /// Returns iterator for the child objects.
     /// This method provides tree-like view of the objects hierarchy.
@@ -2051,6 +2448,15 @@ impl Partition {
         unsafe { &mut *(crate::ffi::TObj_Partition_as_TObj_Object_mut(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `TObj_Object.hxx`:122 - `TObj_Object::GetModel()`
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Partition_inherited_GetModel(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TObj_Object.hxx`:130 - `TObj_Object::GetChildren()`
     pub fn get_children(
         &self,
@@ -2389,6 +2795,39 @@ impl Partition {
     /// Inherited: **Source:** `TObj_Object.hxx`:412 - `TObj_Object::BeforeStoring()`
     pub fn before_storing(&mut self) {
         unsafe { crate::ffi::TObj_Partition_inherited_BeforeStoring(self as *mut Self) }
+    }
+}
+
+// ========================
+// From TObj_Persistence.hxx
+// ========================
+
+/// **Source:** `TObj_Persistence.hxx`:35 - `TObj_Persistence`
+/// This class is intended to be a root of tools (one per class)
+/// to manage persistence of objects inherited from TObj_Object
+/// It provides a mechanism to recover correctly typed
+/// objects (subtypes of TObj_Object) out of their persistent names
+///
+/// This is a special kind of object, it automatically registers itself
+/// in a global map when created, and the only thing it does is to
+/// create a new object of the type that it manages, by request
+pub use crate::ffi::TObj_Persistence as Persistence;
+
+impl Persistence {
+    /// **Source:** `TObj_Persistence.hxx`:44 - `TObj_Persistence::CreateNewObject()`
+    /// Creates and returns a new object of the registered type
+    /// If the type is not registered, returns Null handle
+    pub fn create_new_object(
+        theType: &str,
+        theLabel: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        let c_theType = std::ffi::CString::new(theType).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Persistence_create_new_object(
+                c_theType.as_ptr(),
+                theLabel,
+            ))
+        }
     }
 }
 
@@ -3039,6 +3478,18 @@ impl TModel {
     /// Returns the ID of TObj_TModel attribute.
     pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TObj_TModel_id(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_TModel.hxx`:51 - `TObj_TModel::Set()`
+    /// Sets the Model object
+    pub fn set(&mut self, theModel: &crate::ffi::HandleTObjModel) {
+        unsafe { crate::ffi::TObj_TModel_set(self as *mut Self, theModel) }
+    }
+
+    /// **Source:** `TObj_TModel.hxx`:54 - `TObj_TModel::Model()`
+    /// Returns the Model object
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjModel> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_TModel_model(self as *const Self)) }
     }
 
     /// **Source:** `TObj_TModel.hxx`:61 - `TObj_TModel::NewEmpty()`

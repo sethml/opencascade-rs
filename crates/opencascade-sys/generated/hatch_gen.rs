@@ -193,6 +193,130 @@ impl Domain {
 }
 
 // ========================
+// From HatchGen_IntersectionPoint.hxx
+// ========================
+
+/// **Source:** `HatchGen_IntersectionPoint.hxx`:29 - `HatchGen_IntersectionPoint`
+pub use crate::ffi::HatchGen_IntersectionPoint as IntersectionPoint;
+
+impl IntersectionPoint {
+    /// **Source:** `HatchGen_IntersectionPoint.hxx`:35 - `HatchGen_IntersectionPoint::SetIndex()`
+    /// Sets the index of the supporting curve.
+    pub fn set_index(&mut self, Index: i32) {
+        unsafe { crate::ffi::HatchGen_IntersectionPoint_set_index(self as *mut Self, Index) }
+    }
+
+    /// **Source:** `HatchGen_IntersectionPoint.hxx`:38 - `HatchGen_IntersectionPoint::Index()`
+    /// Returns the index of the supporting curve.
+    pub fn index(&self) -> i32 {
+        unsafe { crate::ffi::HatchGen_IntersectionPoint_index(self as *const Self) }
+    }
+
+    /// **Source:** `HatchGen_IntersectionPoint.hxx`:41 - `HatchGen_IntersectionPoint::SetParameter()`
+    /// Sets the parameter on the curve.
+    pub fn set_parameter(&mut self, Parameter: f64) {
+        unsafe {
+            crate::ffi::HatchGen_IntersectionPoint_set_parameter(self as *mut Self, Parameter)
+        }
+    }
+
+    /// **Source:** `HatchGen_IntersectionPoint.hxx`:44 - `HatchGen_IntersectionPoint::Parameter()`
+    /// Returns the parameter on the curve.
+    pub fn parameter(&self) -> f64 {
+        unsafe { crate::ffi::HatchGen_IntersectionPoint_parameter(self as *const Self) }
+    }
+
+    /// **Source:** `HatchGen_IntersectionPoint.hxx`:47 - `HatchGen_IntersectionPoint::SetPosition()`
+    /// Sets the position of the point on the curve.
+    pub fn set_position(&mut self, Position: crate::top_abs::Orientation) {
+        unsafe {
+            crate::ffi::HatchGen_IntersectionPoint_set_position(self as *mut Self, Position.into())
+        }
+    }
+
+    /// **Source:** `HatchGen_IntersectionPoint.hxx`:50 - `HatchGen_IntersectionPoint::Position()`
+    /// Returns the position of the point on the curve.
+    pub fn position(&self) -> crate::top_abs::Orientation {
+        unsafe {
+            crate::top_abs::Orientation::try_from(crate::ffi::HatchGen_IntersectionPoint_position(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `HatchGen_IntersectionPoint.hxx`:53 - `HatchGen_IntersectionPoint::SetStateBefore()`
+    /// Sets the transition state before the intersection.
+    pub fn set_state_before(&mut self, State: crate::top_abs::State) {
+        unsafe {
+            crate::ffi::HatchGen_IntersectionPoint_set_state_before(self as *mut Self, State.into())
+        }
+    }
+
+    /// **Source:** `HatchGen_IntersectionPoint.hxx`:56 - `HatchGen_IntersectionPoint::StateBefore()`
+    /// Returns the transition state before the intersection.
+    pub fn state_before(&self) -> crate::top_abs::State {
+        unsafe {
+            crate::top_abs::State::try_from(crate::ffi::HatchGen_IntersectionPoint_state_before(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `HatchGen_IntersectionPoint.hxx`:59 - `HatchGen_IntersectionPoint::SetStateAfter()`
+    /// Sets the transition state after the intersection.
+    pub fn set_state_after(&mut self, State: crate::top_abs::State) {
+        unsafe {
+            crate::ffi::HatchGen_IntersectionPoint_set_state_after(self as *mut Self, State.into())
+        }
+    }
+
+    /// **Source:** `HatchGen_IntersectionPoint.hxx`:62 - `HatchGen_IntersectionPoint::StateAfter()`
+    /// Returns the transition state after of the intersection.
+    pub fn state_after(&self) -> crate::top_abs::State {
+        unsafe {
+            crate::top_abs::State::try_from(crate::ffi::HatchGen_IntersectionPoint_state_after(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `HatchGen_IntersectionPoint.hxx`:65 - `HatchGen_IntersectionPoint::SetSegmentBeginning()`
+    /// Sets the flag that the point is the beginning of a segment.
+    pub fn set_segment_beginning(&mut self, State: bool) {
+        unsafe {
+            crate::ffi::HatchGen_IntersectionPoint_set_segment_beginning(self as *mut Self, State)
+        }
+    }
+
+    /// **Source:** `HatchGen_IntersectionPoint.hxx`:68 - `HatchGen_IntersectionPoint::SegmentBeginning()`
+    /// Returns the flag that the point is the beginning of a segment.
+    pub fn segment_beginning(&self) -> bool {
+        unsafe { crate::ffi::HatchGen_IntersectionPoint_segment_beginning(self as *const Self) }
+    }
+
+    /// **Source:** `HatchGen_IntersectionPoint.hxx`:71 - `HatchGen_IntersectionPoint::SetSegmentEnd()`
+    /// Sets the flag that the point is the end of a segment.
+    pub fn set_segment_end(&mut self, State: bool) {
+        unsafe { crate::ffi::HatchGen_IntersectionPoint_set_segment_end(self as *mut Self, State) }
+    }
+
+    /// **Source:** `HatchGen_IntersectionPoint.hxx`:74 - `HatchGen_IntersectionPoint::SegmentEnd()`
+    /// Returns the flag that the point is the end of a segment.
+    pub fn segment_end(&self) -> bool {
+        unsafe { crate::ffi::HatchGen_IntersectionPoint_segment_end(self as *const Self) }
+    }
+
+    /// **Source:** `HatchGen_IntersectionPoint.hxx`:77 - `HatchGen_IntersectionPoint::Dump()`
+    /// Dump of the point on element.
+    pub fn dump(&self, Index: i32) {
+        unsafe { crate::ffi::HatchGen_IntersectionPoint_dump(self as *const Self, Index) }
+    }
+}
+
+// ========================
 // From HatchGen_PointOnElement.hxx
 // ========================
 
@@ -275,6 +399,24 @@ impl PointOnElement {
     /// Dump of the point on element.
     pub fn dump(&self, Index: i32) {
         unsafe { crate::ffi::HatchGen_PointOnElement_dump(self as *const Self, Index) }
+    }
+
+    /// Upcast to HatchGen_IntersectionPoint
+    pub fn as_intersection_point(&self) -> &IntersectionPoint {
+        unsafe {
+            &*(crate::ffi::HatchGen_PointOnElement_as_HatchGen_IntersectionPoint(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to HatchGen_IntersectionPoint (mutable)
+    pub fn as_intersection_point_mut(&mut self) -> &mut IntersectionPoint {
+        unsafe {
+            &mut *(crate::ffi::HatchGen_PointOnElement_as_HatchGen_IntersectionPoint_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:35 - `HatchGen_IntersectionPoint::SetIndex()`
@@ -495,6 +637,24 @@ impl PointOnHatching {
     /// Dump of the point.
     pub fn dump(&self, Index: i32) {
         unsafe { crate::ffi::HatchGen_PointOnHatching_dump(self as *const Self, Index) }
+    }
+
+    /// Upcast to HatchGen_IntersectionPoint
+    pub fn as_intersection_point(&self) -> &IntersectionPoint {
+        unsafe {
+            &*(crate::ffi::HatchGen_PointOnHatching_as_HatchGen_IntersectionPoint(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to HatchGen_IntersectionPoint (mutable)
+    pub fn as_intersection_point_mut(&mut self) -> &mut IntersectionPoint {
+        unsafe {
+            &mut *(crate::ffi::HatchGen_PointOnHatching_as_HatchGen_IntersectionPoint_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:35 - `HatchGen_IntersectionPoint::SetIndex()`

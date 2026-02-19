@@ -345,6 +345,43 @@ impl BaseList_Iterator {
 // From NCollection_BaseMap.hxx
 // ========================
 
+/// **Source:** `NCollection_BaseMap.hxx`:37 - `NCollection_BaseMap`
+///
+/// Purpose:     This is a base class for all Maps:
+/// Map
+/// DataMap
+/// DoubleMap
+/// IndexedMap
+/// IndexedDataMap
+/// Provides utilitites for managing the buckets.
+pub use crate::ffi::NCollection_BaseMap as BaseMap;
+
+impl BaseMap {
+    /// **Source:** `NCollection_BaseMap.hxx`:140 - `NCollection_BaseMap::NbBuckets()`
+    /// NbBuckets
+    pub fn nb_buckets(&self) -> i32 {
+        unsafe { crate::ffi::NCollection_BaseMap_nb_buckets(self as *const Self) }
+    }
+
+    /// **Source:** `NCollection_BaseMap.hxx`:143 - `NCollection_BaseMap::Extent()`
+    /// Extent
+    pub fn extent(&self) -> i32 {
+        unsafe { crate::ffi::NCollection_BaseMap_extent(self as *const Self) }
+    }
+
+    /// **Source:** `NCollection_BaseMap.hxx`:146 - `NCollection_BaseMap::IsEmpty()`
+    /// IsEmpty
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::NCollection_BaseMap_is_empty(self as *const Self) }
+    }
+
+    /// **Source:** `NCollection_BaseMap.hxx`:152 - `NCollection_BaseMap::Allocator()`
+    /// Returns attached allocator
+    pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
+        unsafe { &*(crate::ffi::NCollection_BaseMap_allocator(self as *const Self)) }
+    }
+}
+
 /// **Source:** `NCollection_BaseMap.hxx`:46 - `NCollection_BaseMap_Iterator`
 /// Memory allocation
 pub use crate::ffi::NCollection_BaseMap_Iterator as BaseMap_Iterator;
@@ -358,7 +395,7 @@ unsafe impl crate::CppDeletable for BaseMap_Iterator {
 impl BaseMap_Iterator {
     /// **Source:** `NCollection_BaseMap.hxx`:79 - `NCollection_BaseMap_Iterator::Initialize()`
     /// Initialize
-    pub fn initialize(&mut self, theMap: &crate::ffi::NCollection_BaseMap) {
+    pub fn initialize(&mut self, theMap: &BaseMap) {
         unsafe { crate::ffi::NCollection_BaseMap_Iterator_initialize(self as *mut Self, theMap) }
     }
 
@@ -449,6 +486,30 @@ impl BasePointerVector {
 // From NCollection_BaseSequence.hxx
 // ========================
 
+/// **Source:** `NCollection_BaseSequence.hxx`:57 - `NCollection_BaseSequence`
+///
+/// Purpose:     This  is  a base  class  for  the  Sequence.  It  deals with
+/// an indexed bidirectional list of NCollection_SeqNode's.
+pub use crate::ffi::NCollection_BaseSequence as BaseSequence;
+
+impl BaseSequence {
+    /// **Source:** `NCollection_BaseSequence.hxx`:106 - `NCollection_BaseSequence::IsEmpty()`
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::NCollection_BaseSequence_is_empty(self as *const Self) }
+    }
+
+    /// **Source:** `NCollection_BaseSequence.hxx`:108 - `NCollection_BaseSequence::Length()`
+    pub fn length(&self) -> i32 {
+        unsafe { crate::ffi::NCollection_BaseSequence_length(self as *const Self) }
+    }
+
+    /// **Source:** `NCollection_BaseSequence.hxx`:111 - `NCollection_BaseSequence::Allocator()`
+    /// Returns attached allocator
+    pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
+        unsafe { &*(crate::ffi::NCollection_BaseSequence_allocator(self as *const Self)) }
+    }
+}
+
 /// **Source:** `NCollection_BaseSequence.hxx`:65 - `NCollection_BaseSequence_Iterator`
 /// Memory allocation
 pub use crate::ffi::NCollection_BaseSequence_Iterator as BaseSequence_Iterator;
@@ -468,10 +529,7 @@ impl BaseSequence_Iterator {
 
     /// **Source:** `NCollection_BaseSequence.hxx`:76 - `NCollection_BaseSequence_Iterator::NCollection_BaseSequence_Iterator()`
     /// Constructor with initialisation
-    pub fn new_basesequence_bool(
-        theSeq: &crate::ffi::NCollection_BaseSequence,
-        isStart: bool,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_basesequence_bool(theSeq: &BaseSequence, isStart: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::NCollection_BaseSequence_Iterator_ctor_basesequence_bool(
@@ -483,7 +541,7 @@ impl BaseSequence_Iterator {
 
     /// **Source:** `NCollection_BaseSequence.hxx`:82 - `NCollection_BaseSequence_Iterator::Init()`
     /// Initialisation
-    pub fn init(&mut self, theSeq: &crate::ffi::NCollection_BaseSequence, isStart: bool) {
+    pub fn init(&mut self, theSeq: &BaseSequence, isStart: bool) {
         unsafe {
             crate::ffi::NCollection_BaseSequence_Iterator_init(self as *mut Self, theSeq, isStart)
         }
@@ -807,6 +865,40 @@ unsafe impl crate::CppDeletable for IncAllocator_IBlock {
 // ========================
 // From NCollection_SparseArrayBase.hxx
 // ========================
+
+/// **Source:** `NCollection_SparseArrayBase.hxx`:30 - `NCollection_SparseArrayBase`
+///
+/// Base class for NCollection_SparseArray;
+/// provides non-template implementation of general mechanics
+/// of block allocation, items creation / deletion etc.
+pub use crate::ffi::NCollection_SparseArrayBase as SparseArrayBase;
+
+impl SparseArrayBase {
+    /// **Source:** `NCollection_SparseArrayBase.hxx`:37 - `NCollection_SparseArrayBase::Clear()`
+    /// Clears all the data
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::NCollection_SparseArrayBase_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `NCollection_SparseArrayBase.hxx`:40 - `NCollection_SparseArrayBase::Size()`
+    /// Returns number of currently contained items
+    pub fn size(&self) -> usize {
+        unsafe { crate::ffi::NCollection_SparseArrayBase_size(self as *const Self) }
+    }
+
+    /// **Source:** `NCollection_SparseArrayBase.hxx`:43 - `NCollection_SparseArrayBase::HasValue()`
+    /// Check whether the value at given index is set
+    pub fn has_value(&self, theIndex: usize) -> bool {
+        unsafe { crate::ffi::NCollection_SparseArrayBase_has_value(self as *const Self, theIndex) }
+    }
+
+    /// **Source:** `NCollection_SparseArrayBase.hxx`:47 - `NCollection_SparseArrayBase::UnsetValue()`
+    /// Deletes the item from the array;
+    /// returns True if that item was defined
+    pub fn unset_value(&mut self, theIndex: usize) -> bool {
+        unsafe { crate::ffi::NCollection_SparseArrayBase_unset_value(self as *mut Self, theIndex) }
+    }
+}
 
 /// **Source:** `NCollection_SparseArrayBase.hxx`:146 - `NCollection_SparseArrayBase_Iterator`
 ///

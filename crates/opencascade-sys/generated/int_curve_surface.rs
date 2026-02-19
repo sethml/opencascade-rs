@@ -153,6 +153,24 @@ impl HInter {
         }
     }
 
+    /// Upcast to IntCurveSurface_Intersection
+    pub fn as_intersection(&self) -> &Intersection {
+        unsafe {
+            &*(crate::ffi::IntCurveSurface_HInter_as_IntCurveSurface_Intersection(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IntCurveSurface_Intersection (mutable)
+    pub fn as_intersection_mut(&mut self) -> &mut Intersection {
+        unsafe {
+            &mut *(crate::ffi::IntCurveSurface_HInter_as_IntCurveSurface_Intersection_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:36 - `IntCurveSurface_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::IntCurveSurface_HInter_inherited_IsDone(self as *const Self) }
@@ -190,6 +208,69 @@ impl HInter {
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:68 - `IntCurveSurface_Intersection::Dump()`
     pub fn dump(&self) {
         unsafe { crate::ffi::IntCurveSurface_HInter_inherited_Dump(self as *const Self) }
+    }
+}
+
+// ========================
+// From IntCurveSurface_Intersection.hxx
+// ========================
+
+/// **Source:** `IntCurveSurface_Intersection.hxx`:30 - `IntCurveSurface_Intersection`
+pub use crate::ffi::IntCurveSurface_Intersection as Intersection;
+
+impl Intersection {
+    /// **Source:** `IntCurveSurface_Intersection.hxx`:36 - `IntCurveSurface_Intersection::IsDone()`
+    /// returns the <done> field.
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::IntCurveSurface_Intersection_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `IntCurveSurface_Intersection.hxx`:41 - `IntCurveSurface_Intersection::NbPoints()`
+    /// returns the number of IntersectionPoint
+    /// if IsDone returns True.
+    /// else NotDone is raised.
+    pub fn nb_points(&self) -> i32 {
+        unsafe { crate::ffi::IntCurveSurface_Intersection_nb_points(self as *const Self) }
+    }
+
+    /// **Source:** `IntCurveSurface_Intersection.hxx`:47 - `IntCurveSurface_Intersection::Point()`
+    /// returns the IntersectionPoint of range <Index>
+    /// raises NotDone if the computation has failed or if
+    /// the computation has not been done
+    /// raises OutOfRange if Index is not in the range <1..NbPoints>
+    pub fn point(&self, Index: i32) -> &IntersectionPoint {
+        unsafe { &*(crate::ffi::IntCurveSurface_Intersection_point(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `IntCurveSurface_Intersection.hxx`:53 - `IntCurveSurface_Intersection::NbSegments()`
+    /// returns the number of IntersectionSegment
+    /// if IsDone returns True.
+    /// else NotDone is raised.
+    pub fn nb_segments(&self) -> i32 {
+        unsafe { crate::ffi::IntCurveSurface_Intersection_nb_segments(self as *const Self) }
+    }
+
+    /// **Source:** `IntCurveSurface_Intersection.hxx`:59 - `IntCurveSurface_Intersection::Segment()`
+    /// returns the IntersectionSegment of range <Index>
+    /// raises NotDone if the computation has failed or if
+    /// the computation has not been done
+    /// raises OutOfRange if Index is not in the range <1..NbSegment>
+    pub fn segment(&self, Index: i32) -> &IntersectionSegment {
+        unsafe { &*(crate::ffi::IntCurveSurface_Intersection_segment(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `IntCurveSurface_Intersection.hxx`:65 - `IntCurveSurface_Intersection::IsParallel()`
+    /// Returns true if curve is parallel or belongs surface
+    /// This case is recognized only for some pairs
+    /// of analytical curves and surfaces (plane - line, ...)
+    pub fn is_parallel(&self) -> bool {
+        unsafe { crate::ffi::IntCurveSurface_Intersection_is_parallel(self as *const Self) }
+    }
+
+    /// **Source:** `IntCurveSurface_Intersection.hxx`:68 - `IntCurveSurface_Intersection::Dump()`
+    /// Dump all the fields.
+    pub fn dump(&self) {
+        unsafe { crate::ffi::IntCurveSurface_Intersection_dump(self as *const Self) }
     }
 }
 
@@ -1132,6 +1213,24 @@ impl TheInterferenceOfHInter {
     ) {
         unsafe {
             crate::ffi::IntCurveSurface_TheInterferenceOfHInter_interference_thepolygonofhinter_thepolyhedronofhinter(self as *mut Self, thePolyg, thePolyh)
+        }
+    }
+
+    /// Upcast to Intf_Interference
+    pub fn as_intf_interference(&self) -> &crate::intf::Interference {
+        unsafe {
+            &*(crate::ffi::IntCurveSurface_TheInterferenceOfHInter_as_Intf_Interference(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Intf_Interference (mutable)
+    pub fn as_intf_interference_mut(&mut self) -> &mut crate::intf::Interference {
+        unsafe {
+            &mut *(crate::ffi::IntCurveSurface_TheInterferenceOfHInter_as_Intf_Interference_mut(
+                self as *mut Self,
+            ))
         }
     }
 

@@ -34,6 +34,12 @@ impl Application {
         }
     }
 
+    /// **Source:** `XCAFApp_Application.hxx`:38 - `XCAFApp_Application::InitDocument()`
+    /// Set XCAFDoc_DocumentTool attribute
+    pub fn init_document(&self, aDoc: &crate::ffi::HandleCDMDocument) {
+        unsafe { crate::ffi::XCAFApp_Application_init_document(self as *const Self, aDoc) }
+    }
+
     /// **Source:** `XCAFApp_Application.hxx`:51 - `XCAFApp_Application::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::XCAFApp_Application_dynamic_type(self as *const Self)) }
@@ -118,9 +124,54 @@ impl Application {
         unsafe { crate::ffi::XCAFApp_Application_inherited_NbDocuments(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:179 - `TDocStd_Application::NewDocument()`
+    pub fn new_document(
+        &mut self,
+        format: &crate::t_collection::ExtendedString,
+        aDoc: &mut crate::ffi::HandleCDMDocument,
+    ) {
+        unsafe {
+            crate::ffi::XCAFApp_Application_inherited_NewDocument(self as *mut Self, format, aDoc)
+        }
+    }
+
     /// Inherited: **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
     pub fn is_in_session(&self, path: &crate::t_collection::ExtendedString) -> i32 {
         unsafe { crate::ffi::XCAFApp_Application_inherited_IsInSession(self as *const Self, path) }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:73 - `CDF_Application::CanClose()`
+    pub fn can_close(
+        &mut self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+    ) -> crate::cdm::CanCloseStatus {
+        unsafe {
+            crate::cdm::CanCloseStatus::try_from(
+                crate::ffi::XCAFApp_Application_inherited_CanClose(self as *mut Self, aDocument),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:97 - `CDF_Application::Retrieve()`
+    pub fn retrieve(
+        &mut self,
+        aFolder: &crate::t_collection::ExtendedString,
+        aName: &crate::t_collection::ExtendedString,
+        UseStorageConfiguration: bool,
+        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFApp_Application_inherited_Retrieve(
+                self as *mut Self,
+                aFolder,
+                aName,
+                UseStorageConfiguration,
+                theFilter,
+                theRange,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:126 - `CDF_Application::CanRetrieve()`
@@ -183,6 +234,30 @@ impl Application {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFApp_Application_inherited_MessageDriver(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:49 - `CDM_Application::BeginOfUpdate()`
+    pub fn begin_of_update(&mut self, aDocument: &crate::ffi::HandleCDMDocument) {
+        unsafe {
+            crate::ffi::XCAFApp_Application_inherited_BeginOfUpdate(self as *mut Self, aDocument)
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:53 - `CDM_Application::EndOfUpdate()`
+    pub fn end_of_update(
+        &mut self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+        theStatus: bool,
+        ErrorString: &crate::t_collection::ExtendedString,
+    ) {
+        unsafe {
+            crate::ffi::XCAFApp_Application_inherited_EndOfUpdate(
+                self as *mut Self,
+                aDocument,
+                theStatus,
+                ErrorString,
+            )
         }
     }
 

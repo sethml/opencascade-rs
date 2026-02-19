@@ -908,11 +908,9 @@ impl<'a> ReexportTypeContext<'a> {
 
 /// Build the class_public_info map from a list of parsed classes.
 /// Maps C++ class name → (rust_module_name, short_name).
-/// Only includes classes that get `pub use` re-exports (excludes protected-destructor classes).
 pub(crate) fn build_class_public_info(all_classes: &[&ParsedClass]) -> HashMap<String, (String, String)> {
     all_classes
         .iter()
-        .filter(|c| !c.has_protected_destructor)
         .map(|c| {
             let ffi_name = c.name.replace("::", "_");
             let module_rust = crate::module_graph::module_to_rust_name(&c.module);
@@ -1799,11 +1797,16 @@ pub fn compute_class_bindings(
         && !effectively_abstract;
 
     // ── to_handle ───────────────────────────────────────────────────────
+    // Handle types with protected destructors can still use to_handle because
+    // Handle<T> manages lifetime via reference counting, not direct delete.
+    // However, to_handle requires constructability (it takes ownership of a raw pointer),
+    // so skip for abstract classes and classes with protected destructors.
     let has_to_handle =
         class.is_handle_type && !class.has_protected_destructor && !effectively_abstract;
 
     // ── Handle get/get_mut (works for abstract classes too) ─────────────
-    let has_handle_get = class.is_handle_type && !class.has_protected_destructor;
+    // Also works for protected-destructor classes since we're just dereferencing the Handle.
+    let has_handle_get = class.is_handle_type;
 
     // ── Handle upcasts ──────────────────────────────────────────────────
     let handle_upcasts = if has_handle_get {
@@ -2301,7 +2304,6 @@ fn compute_upcast_bindings(
     class: &ParsedClass,
     symbol_table: &SymbolTable,
 ) -> Vec<UpcastBinding> {
-    let protected_destructor_classes = symbol_table.protected_destructor_class_names();
     let all_ancestors = symbol_table.get_all_ancestors_by_name(&class.name);
     let cpp_name = class.name.replace("::", "_");
     let cpp_name = &cpp_name;
@@ -2309,8 +2311,7 @@ fn compute_upcast_bindings(
     all_ancestors
         .iter()
         .filter(|base| {
-            !protected_destructor_classes.contains(*base)
-                && symbol_table.all_class_names.contains(*base)
+            symbol_table.all_class_names.contains(*base)
         })
         .map(|base_class| {
             let base_ffi_name = base_class.replace("::", "_");
@@ -2351,7 +2352,6 @@ fn compute_handle_upcast_bindings(
     symbol_table: &SymbolTable,
     handle_able_classes: &HashSet<String>,
 ) -> Vec<HandleUpcastBinding> {
-    let protected_destructor_classes = symbol_table.protected_destructor_class_names();
     let all_ancestors = symbol_table.get_all_ancestors_by_name(&class.name);
     let cpp_name = class.name.replace("::", "_");
     let cpp_name = &cpp_name;
@@ -2361,9 +2361,6 @@ fn compute_handle_upcast_bindings(
     all_ancestors
         .iter()
         .filter(|base| {
-            if protected_destructor_classes.contains(*base) {
-                return false;
-            }
             if !handle_able_classes.contains(*base) {
                 return false;
             }
@@ -2395,7 +2392,6 @@ fn compute_handle_downcast_bindings(
     symbol_table: &SymbolTable,
     handle_able_classes: &HashSet<String>,
 ) -> Vec<HandleDowncastBinding> {
-    let protected_destructor_classes = symbol_table.protected_destructor_class_names();
     let all_descendants = symbol_table.get_all_descendants_by_name(&class.name);
     let cpp_name = class.name.replace("::", "_");
     let cpp_name = &cpp_name;
@@ -2405,9 +2401,6 @@ fn compute_handle_downcast_bindings(
     all_descendants
         .iter()
         .filter(|desc| {
-            if protected_destructor_classes.contains(*desc) {
-                return false;
-            }
             if !handle_able_classes.contains(*desc) {
                 return false;
             }
@@ -2793,7 +2786,7 @@ pub fn compute_all_class_bindings(
 
     let handle_able_classes: HashSet<String> = all_classes
         .iter()
-        .filter(|c| c.is_handle_type && !c.has_protected_destructor)
+        .filter(|c| c.is_handle_type)
         .map(|c| c.name.clone())
         .collect();
 
@@ -2942,7 +2935,7 @@ pub fn compute_all_function_bindings(
 
     let handle_able_classes: HashSet<String> = all_classes
         .iter()
-        .filter(|c| c.is_handle_type && !c.has_protected_destructor)
+        .filter(|c| c.is_handle_type)
         .map(|c| c.name.clone())
         .collect();
 

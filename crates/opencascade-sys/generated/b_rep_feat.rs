@@ -390,6 +390,16 @@ impl Builder {
         }
     }
 
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_bop_algo_algo(&self) -> &crate::bop_algo::Algo {
+        unsafe { &*(crate::ffi::BRepFeat_Builder_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_bop_algo_algo_mut(&mut self) -> &mut crate::bop_algo::Algo {
+        unsafe { &mut *(crate::ffi::BRepFeat_Builder_as_BOPAlgo_Algo_mut(self as *mut Self)) }
+    }
+
     /// Upcast to BOPAlgo_Options
     pub fn as_bop_algo_options(&self) -> &crate::bop_algo::Options {
         unsafe { &*(crate::ffi::BRepFeat_Builder_as_BOPAlgo_Options(self as *const Self)) }
@@ -1263,6 +1273,18 @@ impl MakeCylindricalHole {
             &mut *(crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_BuilderShape_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast to BOPAlgo_Algo
+    pub fn as_bop_algo_algo(&self) -> &crate::bop_algo::Algo {
+        unsafe { &*(crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_Algo(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Algo (mutable)
+    pub fn as_bop_algo_algo_mut(&mut self) -> &mut crate::bop_algo::Algo {
+        unsafe {
+            &mut *(crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_Algo_mut(self as *mut Self))
         }
     }
 

@@ -48,6 +48,117 @@ unsafe impl crate::CppDeletable for Application {
 }
 
 impl Application {
+    /// **Source:** `CDF_Application.hxx`:61 - `CDF_Application::NewDocument()`
+    /// Constructs an new empty document.
+    /// This document will have the specified format.
+    /// If InitDocument() is redefined for a specific
+    /// application, the new document is handled by the
+    /// applicative session.
+    pub fn new_document(
+        &mut self,
+        theFormat: &crate::t_collection::ExtendedString,
+        theDoc: &mut crate::ffi::HandleCDMDocument,
+    ) {
+        unsafe { crate::ffi::CDF_Application_new_document(self as *mut Self, theFormat, theDoc) }
+    }
+
+    /// **Source:** `CDF_Application.hxx`:67 - `CDF_Application::InitDocument()`
+    /// Initialize a document for the applicative session.
+    /// This virtual function is called by NewDocument
+    /// and should be redefined for each specific application.
+    pub fn init_document(&self, theDoc: &crate::ffi::HandleCDMDocument) {
+        unsafe { crate::ffi::CDF_Application_init_document(self as *const Self, theDoc) }
+    }
+
+    /// **Source:** `CDF_Application.hxx`:71 - `CDF_Application::Open()`
+    /// puts the document in the current session directory
+    /// and calls the virtual method Activate on it.
+    pub fn open(&mut self, aDocument: &crate::ffi::HandleCDMDocument) {
+        unsafe { crate::ffi::CDF_Application_open(self as *mut Self, aDocument) }
+    }
+
+    /// **Source:** `CDF_Application.hxx`:73 - `CDF_Application::CanClose()`
+    pub fn can_close(
+        &mut self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+    ) -> crate::cdm::CanCloseStatus {
+        unsafe {
+            crate::cdm::CanCloseStatus::try_from(crate::ffi::CDF_Application_can_close(
+                self as *mut Self,
+                aDocument,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `CDF_Application.hxx`:77 - `CDF_Application::Close()`
+    /// removes the document of the current session directory
+    /// and closes the document;
+    pub fn close(&mut self, aDocument: &crate::ffi::HandleCDMDocument) {
+        unsafe { crate::ffi::CDF_Application_close(self as *mut Self, aDocument) }
+    }
+
+    /// **Source:** `CDF_Application.hxx`:97 - `CDF_Application::Retrieve()`
+    /// This method retrieves a document from the database.
+    /// If the Document references other documents which have
+    /// been updated, the latest version of these documents will
+    /// be used if {UseStorageConfiguration} is Standard_True.
+    /// The content of {aFolder}, {aName} and {aVersion} depends on
+    /// the Database Manager system. If the DBMS is only based on
+    /// the OS, {aFolder} is a directory and {aName} is the name of a
+    /// file. In this case the use of the syntax with {aVersion}
+    /// has no sense. For example:
+    ///
+    /// Handle(CDM_Document) theDocument=myApplication->Retrieve("/home/cascade","box.dsg");
+    /// If the DBMS is EUCLID/Design Manager, {aFolder}, {aName}
+    /// have the form they have in EUCLID/Design Manager. For example:
+    ///
+    /// Handle(CDM_Document) theDocument=myApplication->Retrieve("|user|cascade","box");
+    ///
+    /// Since  the version is not specified in  this syntax, the  latest will be used.
+    /// A link is kept with the database through an instance of CDM_MetaData
+    pub fn retrieve_extendedstring2_bool_handlepcdmreaderfilter_progressrange(
+        &mut self,
+        aFolder: &crate::t_collection::ExtendedString,
+        aName: &crate::t_collection::ExtendedString,
+        UseStorageConfiguration: bool,
+        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDF_Application_retrieve_extendedstring2_bool_handlepcdmreaderfilter_progressrange(self as *mut Self, aFolder, aName, UseStorageConfiguration, theFilter, theRange))
+        }
+    }
+
+    /// **Source:** `CDF_Application.hxx`:118 - `CDF_Application::Retrieve()`
+    /// This method retrieves  a  document from the database.
+    /// If the  Document references other documents which have
+    /// been  updated, the  latest version of  these documents
+    /// will    be   used  if   {UseStorageConfiguration}  is
+    /// Standard_True.  --  If the DBMS is  only  based on the
+    /// OS, this syntax  should not be used.
+    ///
+    /// If the DBMS is EUCLID/Design Manager, {aFolder}, {aName}
+    /// and  {aVersion} have the form they have in
+    /// EUCLID/Design Manager. For example:
+    ///
+    /// Handle(CDM_Document) theDocument=myApplication->Retrieve("|user|cascade","box","2");
+    /// A link is kept with the database through an instance
+    /// of CDM_MetaData
+    pub fn retrieve_extendedstring3_bool_handlepcdmreaderfilter_progressrange(
+        &mut self,
+        aFolder: &crate::t_collection::ExtendedString,
+        aName: &crate::t_collection::ExtendedString,
+        aVersion: &crate::t_collection::ExtendedString,
+        UseStorageConfiguration: bool,
+        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDF_Application_retrieve_extendedstring3_bool_handlepcdmreaderfilter_progressrange(self as *mut Self, aFolder, aName, aVersion, UseStorageConfiguration, theFilter, theRange))
+        }
+    }
+
     /// **Source:** `CDF_Application.hxx`:126 - `CDF_Application::CanRetrieve()`
     pub fn can_retrieve_extendedstring2_bool(
         &mut self,
@@ -170,6 +281,28 @@ impl Application {
         }
     }
 
+    /// Inherited: **Source:** `CDM_Application.hxx`:49 - `CDM_Application::BeginOfUpdate()`
+    pub fn begin_of_update(&mut self, aDocument: &crate::ffi::HandleCDMDocument) {
+        unsafe { crate::ffi::CDF_Application_inherited_BeginOfUpdate(self as *mut Self, aDocument) }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:53 - `CDM_Application::EndOfUpdate()`
+    pub fn end_of_update(
+        &mut self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+        theStatus: bool,
+        ErrorString: &crate::t_collection::ExtendedString,
+    ) {
+        unsafe {
+            crate::ffi::CDF_Application_inherited_EndOfUpdate(
+                self as *mut Self,
+                aDocument,
+                theStatus,
+                ErrorString,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `CDM_Application.hxx`:61 - `CDM_Application::Name()`
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
@@ -221,6 +354,38 @@ impl MetaDataDriver {
         aName: &crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe { crate::ffi::CDF_MetaDataDriver_has_version(self as *mut Self, aFolder, aName) }
+    }
+
+    /// **Source:** `CDF_MetaDataDriver.hxx`:56 - `CDF_MetaDataDriver::BuildFileName()`
+    pub fn build_file_name(
+        &mut self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+    ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDF_MetaDataDriver_build_file_name(
+                self as *mut Self,
+                aDocument,
+            ))
+        }
+    }
+
+    /// **Source:** `CDF_MetaDataDriver.hxx`:63 - `CDF_MetaDataDriver::SetName()`
+    /// this method is useful if the name of an object --
+    /// depends on the metadatadriver. For  example a Driver
+    /// -- based  on the operating  system can choose to  add
+    /// the extension of file to create to the object.
+    pub fn set_name(
+        &mut self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+        aName: &crate::t_collection::ExtendedString,
+    ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDF_MetaDataDriver_set_name(
+                self as *mut Self,
+                aDocument,
+                aName,
+            ))
+        }
     }
 
     /// **Source:** `CDF_MetaDataDriver.hxx`:70 - `CDF_MetaDataDriver::Find()`

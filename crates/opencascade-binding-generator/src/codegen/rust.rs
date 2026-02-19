@@ -34,8 +34,9 @@ pub fn collect_referenced_types(
 
     for class in classes {
         // Add Handle type for classes that are transient (can be wrapped in Handle)
-        // This ensures the Handle type is declared even if not used in method signatures
-        if class.is_handle_type && !class.has_protected_destructor {
+        // Handle types with protected destructors are included because Handle<T>
+        // manages lifetime via reference counting, not direct delete.
+        if class.is_handle_type {
             result.handles.insert(class.name.clone());
         }
 
@@ -150,7 +151,6 @@ pub fn generate_ffi(
     // Emit ffi declarations from pre-computed ClassBindings
     let class_items: String = all_bindings
         .iter()
-        .filter(|b| !b.has_protected_destructor)
         .filter(|b| !collection_type_names.contains(&b.cpp_name))
         .map(|b| super::bindings::emit_ffi_class(b))
         .collect();
@@ -396,9 +396,11 @@ fn generate_handle_declarations(classes: &[&ParsedClass], extra_handle_able: &Ha
     let mut handles = BTreeSet::new();
 
     // Classes parsed from non-excluded headers
+    // Include handle types even with protected destructors since Handle<T>
+    // manages lifetime via reference counting, not direct delete.
     let mut defined_handles = BTreeSet::new();
     for class in classes {
-        if class.is_handle_type && !class.has_protected_destructor {
+        if class.is_handle_type {
             handles.insert(class.name.clone());
             defined_handles.insert(class.name.clone());
         }
@@ -791,9 +793,6 @@ pub fn generate_module_reexports(
     let mut bindings_by_header: BTreeMap<String, Vec<&super::bindings::ClassBindings>> =
         BTreeMap::new();
     for b in module_bindings {
-        if b.has_protected_destructor {
-            continue;
-        }
         bindings_by_header
             .entry(b.source_header.clone())
             .or_default()
@@ -805,9 +804,6 @@ pub fn generate_module_reexports(
     // so we can avoid duplicating their re-export when they appear as upcast targets.
     let mut directly_exported_handles: std::collections::HashSet<String> = std::collections::HashSet::new();
     for b in module_bindings {
-        if b.has_protected_destructor {
-            continue;
-        }
         if b.has_to_handle || b.has_handle_get {
             let handle_type_name = format!("Handle{}", b.cpp_name.replace("_", ""));
             directly_exported_handles.insert(handle_type_name);
@@ -819,9 +815,6 @@ pub fn generate_module_reexports(
     // that external crates need to name.
     let mut base_handle_reexports: std::collections::BTreeSet<String> = std::collections::BTreeSet::new();
     for b in module_bindings {
-        if b.has_protected_destructor {
-            continue;
-        }
         for hu in &b.handle_upcasts {
             if !directly_exported_handles.contains(&hu.base_handle_name) {
                 base_handle_reexports.insert(hu.base_handle_name.clone());

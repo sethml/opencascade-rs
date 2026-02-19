@@ -289,7 +289,7 @@ pub struct TypeContext<'a> {
     pub all_enums: &'a std::collections::HashSet<String>,
     /// All class names across all modules (full C++ names like "gp_Pnt")
     pub all_classes: &'a std::collections::HashSet<String>,
-    /// Classes that can have Handle<T> declarations (is_handle_type && !has_protected_destructor)
+    /// Classes that can have Handle<T> declarations (is_handle_type)
     /// If None, falls back to all_classes for Handle type checking
     pub handle_able_classes: Option<&'a std::collections::HashSet<String>>,
     /// Authoritative type→module mapping (from resolver's SymbolTable)
@@ -329,7 +329,7 @@ pub fn type_uses_unknown_class(ty: &Type, all_classes: &std::collections::HashSe
 
 /// Check if a type references a Handle to a class that won't have a Handle declaration generated
 /// This is more strict than type_uses_unknown_class - it checks that Handle types are for
-/// classes that will actually have Handle<T> declarations generated (is_handle_type && !has_protected_destructor)
+/// classes that will actually have Handle<T> declarations generated (is_handle_type)
 pub fn type_uses_unknown_handle(
     ty: &Type,
     all_classes: &std::collections::HashSet<String>,

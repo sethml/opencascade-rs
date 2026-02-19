@@ -830,6 +830,16 @@ impl Directory {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Directory_build_temporary()) }
     }
 
+    /// Upcast to OSD_FileNode
+    pub fn as_file_node(&self) -> &FileNode {
+        unsafe { &*(crate::ffi::OSD_Directory_as_OSD_FileNode(self as *const Self)) }
+    }
+
+    /// Upcast to OSD_FileNode (mutable)
+    pub fn as_file_node_mut(&mut self) -> &mut FileNode {
+        unsafe { &mut *(crate::ffi::OSD_Directory_as_OSD_FileNode_mut(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `OSD_FileNode.hxx`:38 - `OSD_FileNode::Path()`
     pub fn path(&self, Name: &mut Path) {
         unsafe { crate::ffi::OSD_Directory_inherited_Path(self as *const Self, Name) }
@@ -2467,6 +2477,16 @@ impl File {
         unsafe { crate::ffi::OSD_File_rewind(self as *mut Self) }
     }
 
+    /// Upcast to OSD_FileNode
+    pub fn as_file_node(&self) -> &FileNode {
+        unsafe { &*(crate::ffi::OSD_File_as_OSD_FileNode(self as *const Self)) }
+    }
+
+    /// Upcast to OSD_FileNode (mutable)
+    pub fn as_file_node_mut(&mut self) -> &mut FileNode {
+        unsafe { &mut *(crate::ffi::OSD_File_as_OSD_FileNode_mut(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `OSD_FileNode.hxx`:38 - `OSD_FileNode::Path()`
     pub fn path(&self, Name: &mut Path) {
         unsafe { crate::ffi::OSD_File_inherited_Path(self as *const Self, Name) }
@@ -2639,6 +2659,112 @@ impl FileIterator {
     /// Returns error number if 'Failed' is TRUE.
     pub fn error(&self) -> i32 {
         unsafe { crate::ffi::OSD_FileIterator_error(self as *const Self) }
+    }
+}
+
+// ========================
+// From OSD_FileNode.hxx
+// ========================
+
+/// **Source:** `OSD_FileNode.hxx`:32 - `OSD_FileNode`
+/// A class for 'File' and 'Directory' grouping common
+/// methods (file/directory manipulation tools).
+/// The "file oriented" name means files or directories which are
+/// in fact hard coded as files.
+pub use crate::ffi::OSD_FileNode as FileNode;
+
+impl FileNode {
+    /// **Source:** `OSD_FileNode.hxx`:38 - `OSD_FileNode::Path()`
+    /// Gets file name and path.
+    pub fn path(&self, Name: &mut Path) {
+        unsafe { crate::ffi::OSD_FileNode_path(self as *const Self, Name) }
+    }
+
+    /// **Source:** `OSD_FileNode.hxx`:42 - `OSD_FileNode::SetPath()`
+    /// Sets file name and path.
+    /// If a name is not found, it raises a program error.
+    pub fn set_path(&mut self, Name: &Path) {
+        unsafe { crate::ffi::OSD_FileNode_set_path(self as *mut Self, Name) }
+    }
+
+    /// **Source:** `OSD_FileNode.hxx`:45 - `OSD_FileNode::Exists()`
+    /// Returns TRUE if <me> exists.
+    pub fn exists(&mut self) -> bool {
+        unsafe { crate::ffi::OSD_FileNode_exists(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_FileNode.hxx`:48 - `OSD_FileNode::Remove()`
+    /// Erases the FileNode from directory
+    pub fn remove(&mut self) {
+        unsafe { crate::ffi::OSD_FileNode_remove(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_FileNode.hxx`:51 - `OSD_FileNode::Move()`
+    /// Moves <me> into another directory
+    pub fn move_(&mut self, NewPath: &Path) {
+        unsafe { crate::ffi::OSD_FileNode_move_(self as *mut Self, NewPath) }
+    }
+
+    /// **Source:** `OSD_FileNode.hxx`:54 - `OSD_FileNode::Copy()`
+    /// Copies <me> to another FileNode
+    pub fn copy(&mut self, ToPath: &Path) {
+        unsafe { crate::ffi::OSD_FileNode_copy(self as *mut Self, ToPath) }
+    }
+
+    /// **Source:** `OSD_FileNode.hxx`:58 - `OSD_FileNode::Protection()`
+    /// Returns access mode of <me>.
+    pub fn protection(&mut self) -> crate::OwnedPtr<Protection> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_FileNode_protection(self as *mut Self)) }
+    }
+
+    /// **Source:** `OSD_FileNode.hxx`:61 - `OSD_FileNode::SetProtection()`
+    /// Changes protection of the FileNode
+    pub fn set_protection(&mut self, Prot: &Protection) {
+        unsafe { crate::ffi::OSD_FileNode_set_protection(self as *mut Self, Prot) }
+    }
+
+    /// **Source:** `OSD_FileNode.hxx`:66 - `OSD_FileNode::AccessMoment()`
+    /// Returns last write access.
+    /// On UNIX, AccessMoment and CreationMoment return the
+    /// same value.
+    pub fn access_moment(&mut self) -> crate::OwnedPtr<crate::quantity::Date> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_FileNode_access_moment(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `OSD_FileNode.hxx`:71 - `OSD_FileNode::CreationMoment()`
+    /// Returns creation date.
+    /// On UNIX, AccessMoment and CreationMoment return the
+    /// same value.
+    pub fn creation_moment(&mut self) -> crate::OwnedPtr<crate::quantity::Date> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_FileNode_creation_moment(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `OSD_FileNode.hxx`:74 - `OSD_FileNode::Failed()`
+    /// Returns TRUE if an error occurs
+    pub fn failed(&self) -> bool {
+        unsafe { crate::ffi::OSD_FileNode_failed(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_FileNode.hxx`:77 - `OSD_FileNode::Reset()`
+    /// Resets error counter to zero
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::OSD_FileNode_reset(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_FileNode.hxx`:80 - `OSD_FileNode::Perror()`
+    /// Raises OSD_Error
+    pub fn perror(&mut self) {
+        unsafe { crate::ffi::OSD_FileNode_perror(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_FileNode.hxx`:83 - `OSD_FileNode::Error()`
+    /// Returns error number if 'Failed' is TRUE.
+    pub fn error(&self) -> i32 {
+        unsafe { crate::ffi::OSD_FileNode_error(self as *const Self) }
     }
 }
 
