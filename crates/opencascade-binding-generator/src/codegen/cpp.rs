@@ -80,8 +80,9 @@ fn collect_type_handles(ty: &Option<Type>, handles: &mut HashSet<String>) {
 /// Collect headers needed for a type
 fn collect_type_headers(ty: &Option<Type>, headers: &mut HashSet<String>, known_headers: &HashSet<String>) {
     if let Some(ty) = ty {
-        // Skip unbindable types (arrays, streams, void pointers, raw pointers, etc.)
-        if ty.is_unbindable() {
+        // Skip unbindable types (arrays, streams, void pointers, etc.)
+        // But allow class raw pointers — they're bindable as &T / &mut T
+        if ty.is_unbindable() && ty.class_ptr_inner_name().is_none() {
             return;
         }
 

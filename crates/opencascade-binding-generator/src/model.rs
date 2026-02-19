@@ -47,7 +47,7 @@ pub struct ParsedFunction {
 impl ParsedFunction {
     /// Check if this function has any unbindable types
     pub fn has_unbindable_types(&self) -> bool {
-        if self.params.iter().any(|p| p.ty.is_unbindable() && !p.is_nullable_ptr()) {
+        if self.params.iter().any(|p| p.ty.is_unbindable() && !p.is_nullable_ptr() && p.ty.class_ptr_inner_name().is_none()) {
             return true;
         }
         if let Some(ref ret) = self.return_type {
@@ -214,7 +214,7 @@ impl Constructor {
     /// Check if this constructor has any unbindable types (C strings, streams, void pointers, etc.)
     /// Nullable pointer params are NOT considered unbindable.
     pub fn has_unbindable_types(&self) -> bool {
-        self.params.iter().any(|p| p.ty.is_unbindable() && !p.is_nullable_ptr())
+        self.params.iter().any(|p| p.ty.is_unbindable() && !p.is_nullable_ptr() && p.ty.class_ptr_inner_name().is_none())
     }
 }
 
@@ -245,7 +245,8 @@ impl Method {
     /// in parameters or return type. Nullable pointer params are NOT considered unbindable.
     pub fn has_unbindable_types(&self) -> bool {
         // Check params (skip nullable pointer params — they're handled as Option<&T>)
-        if self.params.iter().any(|p| p.ty.is_unbindable() && !p.is_nullable_ptr()) {
+        // Also skip class raw pointer params — they're handled as &T / &mut T
+        if self.params.iter().any(|p| p.ty.is_unbindable() && !p.is_nullable_ptr() && p.ty.class_ptr_inner_name().is_none()) {
             return true;
         }
         // Check return type
@@ -312,7 +313,8 @@ impl StaticMethod {
     /// in parameters or return type. Nullable pointer params are NOT considered unbindable.
     pub fn has_unbindable_types(&self) -> bool {
         // Check params (skip nullable pointer params — they're handled as Option<&T>)
-        if self.params.iter().any(|p| p.ty.is_unbindable() && !p.is_nullable_ptr()) {
+        // Also skip class raw pointer params — they're handled as &T / &mut T
+        if self.params.iter().any(|p| p.ty.is_unbindable() && !p.is_nullable_ptr() && p.ty.class_ptr_inner_name().is_none()) {
             return true;
         }
         // Check return type
@@ -560,7 +562,25 @@ impl Type {
         }
     }
 
-    /// Check if this type is a pointer type suitable for nullable parameter binding.
+    /// Check if this type is a raw pointer to a class type (e.g., `const SomeClass*` or `SomeClass*`).
+    /// Returns the inner class name if so. Excludes:
+    /// - `const char*` (handled as strings)
+    /// - Pointer-to-pointer (`T**`)
+    /// - Reference-to-pointer (`T*&`)
+    /// - Primitive type pointers (`int*`, `double*`, etc.)
+    pub fn class_ptr_inner_name(&self) -> Option<&str> {
+        match self {
+            Type::ConstPtr(inner) | Type::MutPtr(inner) => {
+                match inner.as_ref() {
+                    Type::Class(name) if name != "char" => Some(name.as_str()),
+                    _ => None,
+                }
+            }
+            _ => None,
+        }
+    }
+
+
     /// Similar to `Param::is_nullable_ptr()` but operates on a bare `Type` without
     /// requiring a `has_default` check. Excludes `const char*` (handled as strings).
     pub fn is_nullable_ptr(&self) -> bool {

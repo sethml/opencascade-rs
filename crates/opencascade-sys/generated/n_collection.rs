@@ -239,7 +239,7 @@ impl HandleNCollectionAccAllocator {
 // SKIPPED: **Source:** `NCollection_AccAllocator.hxx`:70 - `NCollection_AccAllocator::Free`
 //   method: Free a previously allocated memory;
 //   method: memory is returned to the OS when all allocations in some block are freed
-//   Reason: has unbindable types: param 'theAddress': raw pointer (void*)
+//   Reason: param 'theAddress' uses unknown type 'void*'
 //   // pub fn free(&mut self, theAddress: /* void* */);
 //
 
@@ -439,7 +439,7 @@ impl HandleNCollectionAlignedAllocator {
 //
 // SKIPPED: **Source:** `NCollection_AlignedAllocator.hxx`:38 - `NCollection_AlignedAllocator::Free`
 //   method: Free a previously allocated memory.
-//   Reason: has unbindable types: param 'thePtr': raw pointer (void*)
+//   Reason: param 'thePtr' uses unknown type 'void*'
 //   // pub fn free(&mut self, thePtr: /* void* */);
 //
 
@@ -693,7 +693,7 @@ impl HandleNCollectionBaseAllocator {
 //   // pub fn allocate_optimal(&mut self, theSize: usize) -> /* void* */;
 //
 // SKIPPED: **Source:** `NCollection_BaseAllocator.hxx`:51 - `NCollection_BaseAllocator::Free`
-//   Reason: has unbindable types: param 'theAddress': raw pointer (void*)
+//   Reason: param 'theAddress' uses unknown type 'void*'
 //   // pub fn free(&mut self, theAddress: /* void* */);
 //
 
@@ -936,14 +936,14 @@ impl BasePointerVector {
 // SKIPPED: **Source:** `NCollection_BasePointerVector.hxx`:79 - `NCollection_BasePointerVector::Append`
 //   method: Inserts new element at the end, increase size,
 //   method: if capacity is not enough, call resize.
-//   Reason: has unbindable types: param 'thePnt': raw pointer (const void*)
+//   Reason: param 'thePnt' uses unknown type 'const void*'
 //   // pub fn append(&mut self, thePnt: /* const void* */);
 //
 // SKIPPED: **Source:** `NCollection_BasePointerVector.hxx`:84 - `NCollection_BasePointerVector::SetValue`
 //   method: Updates value of existed element,
 //   method: If index more then size, increase size of container,
 //   method: in this case capacity can be updated.
-//   Reason: has unbindable types: param 'thePnt': raw pointer (const void*)
+//   Reason: param 'thePnt' uses unknown type 'const void*'
 //   // pub fn set_value(&mut self, theInd: usize, thePnt: /* const void* */);
 //
 
@@ -1207,7 +1207,7 @@ impl HandleNCollectionBuffer {
 //   constructor: Default constructor.
 //   constructor: When theData is NULL but theSize is not 0 than buffer of specified size will be allocated.
 //   constructor: @param theAlloc memory allocator
-//   Reason: nullable param 'theData' inner type is unknown
+//   Reason: param 'theData' uses unknown type 'Standard_Byte*'
 //   // pub fn new_handlencollectionbaseallocator_size_byteptr(theAlloc: &HandleBaseAllocator, theSize: usize, theData: /* Standard_Byte* */) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `NCollection_Buffer.hxx`:54 - `NCollection_Buffer::Data`
@@ -1399,7 +1399,7 @@ impl HandleNCollectionHeapAllocator {
 //   // pub fn allocate_optimal(&mut self, theSize: usize) -> /* void* */;
 //
 // SKIPPED: **Source:** `NCollection_HeapAllocator.hxx`:33 - `NCollection_HeapAllocator::Free`
-//   Reason: has unbindable types: param 'anAddress': raw pointer (void*)
+//   Reason: param 'anAddress' uses unknown type 'void*'
 //   // pub fn free(&mut self, anAddress: /* void* */);
 //
 
@@ -1636,7 +1636,7 @@ impl HandleNCollectionIncAllocator {
 //
 // SKIPPED: **Source:** `NCollection_IncAllocator.hxx`:73 - `NCollection_IncAllocator::Free`
 //   method: Free a previously allocated memory. Does nothing
-//   Reason: has unbindable types: param 'arg0': raw pointer (void*)
+//   Reason: param 'arg0' uses unknown type 'void*'
 //   // pub fn free(&mut self, arg0: /* void* */);
 //
 
@@ -1653,7 +1653,7 @@ unsafe impl crate::CppDeletable for IncAllocator_IBlock {
 
 // ── Skipped symbols for IncAllocator_IBlock (1 total) ──
 // SKIPPED: **Source:** `NCollection_IncAllocator.hxx`:100 - `NCollection_IncAllocator::IBlock::NCollection_IncAllocator::IBlock`
-//   Reason: has unbindable types: param 'thePointer': raw pointer (void*)
+//   Reason: param 'thePointer' uses unknown type 'void*'
 //   // pub fn new_voidptr_size(thePointer: /* void* */, theSize: usize) -> OwnedPtr<Self>;
 //
 
@@ -1938,6 +1938,6 @@ impl HandleNCollectionWinHeapAllocator {
 //
 // SKIPPED: **Source:** `NCollection_WinHeapAllocator.hxx`:50 - `NCollection_WinHeapAllocator::Free`
 //   method: Release memory
-//   Reason: has unbindable types: param 'theAddress': raw pointer (void*)
+//   Reason: param 'theAddress' uses unknown type 'void*'
 //   // pub fn free(&mut self, theAddress: /* void* */);
 //

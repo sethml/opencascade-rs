@@ -2070,6 +2070,11 @@ impl Owner {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Owner_ctor()) }
     }
 
+    /// **Source:** `TDocStd_Owner.hxx`:58 - `TDocStd_Owner::SetDocument()`
+    pub fn set_document(&mut self, document: &mut Document) {
+        unsafe { crate::ffi::TDocStd_Owner_set_document(self as *mut Self, document as *mut _) }
+    }
+
     /// **Source:** `TDocStd_Owner.hxx`:62 - `TDocStd_Owner::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDocStd_Owner_id(self as *const Self)) }
@@ -2106,6 +2111,16 @@ impl Owner {
     /// =============
     pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDocStd_Owner_get_id()) }
+    }
+
+    /// **Source:** `TDocStd_Owner.hxx`:48 - `TDocStd_Owner::SetDocument()`
+    pub fn set_document_handletdfdata_documentptr(
+        indata: &crate::ffi::HandleTDFData,
+        doc: &mut Document,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_Owner_set_document_handletdfdata_documentptr(indata, doc as *mut _)
+        }
     }
 
     /// **Source:** `TDocStd_Owner.hxx`:77 - `TDocStd_Owner::get_type_name()`
@@ -2427,14 +2442,10 @@ impl HandleTDocStdOwner {
     }
 }
 
-// ── Skipped symbols for Owner (7 total) ──
+// ── Skipped symbols for Owner (5 total) ──
 // SKIPPED: **Source:** `TDocStd_Owner.hxx`:56 - `TDocStd_Owner::SetDocument`
 //   Reason: param 'document' uses unknown type 'const Handle(TDocStd_Document)&'
 //   // pub fn set_document(&mut self, document: &HandleDocument);
-//
-// SKIPPED: **Source:** `TDocStd_Owner.hxx`:58 - `TDocStd_Owner::SetDocument`
-//   Reason: has unbindable types: param 'document': raw pointer (TDocStd_Document*)
-//   // pub fn set_document(&mut self, document: /* TDocStd_Document* */);
 //
 // SKIPPED: **Source:** `TDocStd_Owner.hxx`:60 - `TDocStd_Owner::GetDocument`
 //   Reason: return type 'Handle(TDocStd_Document)' is unknown
@@ -2447,10 +2458,6 @@ impl HandleTDocStdOwner {
 // SKIPPED: **Source:** `TDocStd_Owner.hxx`:45 - `TDocStd_Owner::SetDocument`
 //   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
 //   // pub fn set_document(indata: &HandleData, doc: &HandleDocument);
-//
-// SKIPPED: **Source:** `TDocStd_Owner.hxx`:48 - `TDocStd_Owner::SetDocument`
-//   Reason: has unbindable types: param 'doc': raw pointer (TDocStd_Document*)
-//   // pub fn set_document(indata: &HandleData, doc: /* TDocStd_Document* */);
 //
 // SKIPPED: **Source:** `TDocStd_Owner.hxx`:52 - `TDocStd_Owner::GetDocument`
 //   static_method: Owner methods

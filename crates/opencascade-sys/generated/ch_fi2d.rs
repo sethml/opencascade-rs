@@ -894,6 +894,18 @@ impl FilletPoint {
         unsafe { crate::ffi::FilletPoint_append_value(self as *mut Self, theValue, theValid) }
     }
 
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:184 - `FilletPoint::calculateDiff()`
+    /// Computes difference between this point and the given. Stores difference in myD.
+    pub fn calculate_diff(&mut self, arg0: &mut FilletPoint) -> bool {
+        unsafe { crate::ffi::FilletPoint_calculate_diff(self as *mut Self, arg0 as *mut _) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:187 - `FilletPoint::FilterPoints()`
+    /// Filters out the values and leaves the most optimal one.
+    pub fn filter_points(&mut self, arg0: &mut FilletPoint) {
+        unsafe { crate::ffi::FilletPoint_filter_points(self as *mut Self, arg0 as *mut _) }
+    }
+
     /// **Source:** `ChFi2d_FilletAlgo.hxx`:194 - `FilletPoint::hasSolution()`
     /// Returns the index of the solution or zero if there is no solution
     pub fn has_solution(&mut self, theRadius: f64) -> i32 {
@@ -913,17 +925,7 @@ impl FilletPoint {
     }
 }
 
-// ── Skipped symbols for FilletPoint (3 total) ──
-// SKIPPED: **Source:** `ChFi2d_FilletAlgo.hxx`:184 - `FilletPoint::calculateDiff`
-//   method: Computes difference between this point and the given. Stores difference in myD.
-//   Reason: has unbindable types: param 'arg0': raw pointer (FilletPoint*)
-//   // pub fn calculate_diff(&mut self, arg0: /* FilletPoint* */) -> bool;
-//
-// SKIPPED: **Source:** `ChFi2d_FilletAlgo.hxx`:187 - `FilletPoint::FilterPoints`
-//   method: Filters out the values and leaves the most optimal one.
-//   Reason: has unbindable types: param 'arg0': raw pointer (FilletPoint*)
-//   // pub fn filter_points(&mut self, arg0: /* FilletPoint* */);
-//
+// ── Skipped symbols for FilletPoint (1 total) ──
 // SKIPPED: **Source:** `ChFi2d_FilletAlgo.hxx`:191 - `FilletPoint::Copy`
 //   method: Returns a pointer to created copy of the point
 //   method: warning: this is not the full copy! Copies only: myParam, myV, myD, myValid

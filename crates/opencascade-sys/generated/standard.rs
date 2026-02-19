@@ -3557,7 +3557,7 @@ impl Dump {
 //   static_method: Convert pointer to address of the pointer. If the handle is NULL, the result is an empty
 //   static_method: string.
 //   static_method: @param thePointer a pointer
-//   Reason: has unbindable types: param 'thePointer': raw pointer (const void*)
+//   Reason: param 'thePointer' uses unknown type 'const void*'
 //   // pub fn get_pointer_info(thePointer: /* const void* */, isShortInfo: bool) -> OwnedPtr<TCollection_AsciiString>;
 //
 // SKIPPED: **Source:** `Standard_Dump.hxx`:407 - `Standard_Dump::DumpKeyToClass`
@@ -6920,15 +6920,18 @@ impl Mutex_Sentry {
     pub fn new_mutex(theMutex: &mut Mutex) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Mutex_Sentry_ctor_mutex(theMutex)) }
     }
-}
 
-// ── Skipped symbols for Mutex_Sentry (1 total) ──
-// SKIPPED: **Source:** `Standard_Mutex.hxx`:90 - `Standard_Mutex::Sentry::Standard_Mutex::Sentry`
-//   constructor: Constructor - initializes the sentry object by pointer to a
-//   constructor: mutex and locks the mutex if its pointer is not NULL
-//   Reason: has unbindable types: param 'theMutex': raw pointer (Standard_Mutex*)
-//   // pub fn new_mutexptr(theMutex: /* Standard_Mutex* */) -> OwnedPtr<Self>;
-//
+    /// **Source:** `Standard_Mutex.hxx`:90 - `Standard_Mutex_Sentry::Standard_Mutex_Sentry()`
+    /// Constructor - initializes the sentry object by pointer to a
+    /// mutex and locks the mutex if its pointer is not NULL
+    pub fn new_mutexptr(theMutex: &mut Mutex) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_Mutex_Sentry_ctor_mutexptr(
+                theMutex as *mut _,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Standard_NegativeValue.hxx

@@ -311,6 +311,8 @@ pub struct ParamBinding {
     pub mut_ref_enum_rust_type: Option<String>,
     /// If this is a nullable pointer param (T* = NULL or const T* = NULL)
     pub is_nullable_ptr: bool,
+    /// If this is a non-nullable class pointer param (const T* / T* where T is a known class)
+    pub is_class_ptr: bool,
 }
 
 /// A return type binding with info for all three output targets.
@@ -328,6 +330,8 @@ pub struct ReturnTypeBinding {
     pub enum_cpp_name: Option<String>,
     /// If this is a value enum return, the qualified Rust enum type
     pub enum_rust_type: Option<String>,
+    /// If this is a raw pointer return to a known class type (const T* / T*)
+    pub is_class_ptr_return: bool,
 }
 
 /// A resolved parameter binding (from SymbolTable, for inherited methods).
@@ -349,6 +353,8 @@ pub struct ResolvedParamBinding {
     pub mut_ref_enum_rust_type: Option<String>,
     /// If this is a nullable pointer param (T* = NULL or const T* = NULL)
     pub is_nullable_ptr: bool,
+    /// If this is a non-nullable class pointer param (const T* / T* where T is a known class)
+    pub is_class_ptr: bool,
 }
 
 /// A resolved return type binding (from SymbolTable, for inherited methods).
@@ -363,6 +369,8 @@ pub struct ResolvedReturnTypeBinding {
     pub enum_cpp_name: Option<String>,
     /// If this is a value enum return, the qualified Rust enum type
     pub enum_rust_type: Option<String>,
+    /// If this is a raw pointer return to a known class type (const T* / T*)
+    pub is_class_ptr_return: bool,
 }
 
 /// Pre-computed binding decisions for a single free function.
@@ -727,7 +735,7 @@ fn return_type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeConte
 fn describe_unbindable_types_method(method: &Method) -> String {
     let mut parts = Vec::new();
     for p in &method.params {
-        if p.ty.is_unbindable() && !p.is_nullable_ptr() {
+        if p.ty.is_unbindable() && !p.is_nullable_ptr() && p.ty.class_ptr_inner_name().is_none() {
             parts.push(format!("param '{}': {}", p.name, describe_unbindable_reason(&p.ty)));
         }
     }
@@ -743,7 +751,7 @@ fn describe_unbindable_types_method(method: &Method) -> String {
 fn describe_unbindable_types_ctor(ctor: &Constructor) -> String {
     let mut parts = Vec::new();
     for p in &ctor.params {
-        if p.ty.is_unbindable() && !p.is_nullable_ptr() {
+        if p.ty.is_unbindable() && !p.is_nullable_ptr() && p.ty.class_ptr_inner_name().is_none() {
             parts.push(format!("param '{}': {}", p.name, describe_unbindable_reason(&p.ty)));
         }
     }
@@ -754,7 +762,7 @@ fn describe_unbindable_types_ctor(ctor: &Constructor) -> String {
 fn describe_unbindable_types_static(method: &StaticMethod) -> String {
     let mut parts = Vec::new();
     for p in &method.params {
-        if p.ty.is_unbindable() && !p.is_nullable_ptr() {
+        if p.ty.is_unbindable() && !p.is_nullable_ptr() && p.ty.class_ptr_inner_name().is_none() {
             parts.push(format!("param '{}': {}", p.name, describe_unbindable_reason(&p.ty)));
         }
     }
@@ -876,6 +884,19 @@ fn is_method_bindable(method: &Method, ctx: &TypeContext, class_name: &str) -> R
     }) {
         return Err(format!("nullable param '{}' inner type is unknown", p.name));
     }
+    // Skip methods where a class pointer param's inner type is unknown.
+    // We check all_classes directly (not type_uses_unknown_type) because nested types
+    // like Parent::Nested are considered "known" by type_uses_unknown_type if the parent
+    // is known, but they don't have their own FFI type declarations.
+    if let Some(p) = method.params.iter().find(|p| {
+        if let Some(class_name) = p.ty.class_ptr_inner_name() {
+            !ctx.all_classes.contains(class_name) && !ctx.all_enums.contains(class_name)
+        } else {
+            false
+        }
+    }) {
+        return Err(format!("class pointer param '{}' inner type '{}' is unknown", p.name, p.ty.to_cpp_string()));
+    }
     if let Some(ref ret) = method.return_type {
         if type_uses_unknown_type(ret, ctx) {
             return Err(format!("return type '{}' is unknown", ret.to_cpp_string()));
@@ -943,6 +964,17 @@ fn is_constructor_bindable(
     }) {
         return Err(format!("nullable param '{}' inner type is unknown", p.name));
     }
+    // Skip constructors where a class pointer param's inner type is unknown.
+    // Check all_classes directly — nested types don't have FFI declarations.
+    if let Some(p) = ctor.params.iter().find(|p| {
+        if let Some(class_name) = p.ty.class_ptr_inner_name() {
+            !ctx.all_classes.contains(class_name) && !ctx.all_enums.contains(class_name)
+        } else {
+            false
+        }
+    }) {
+        return Err(format!("class pointer param '{}' inner type '{}' is unknown", p.name, p.ty.to_cpp_string()));
+    }
     Ok(())
 }
 
@@ -976,6 +1008,17 @@ fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> Result
         }
     }) {
         return Err(format!("nullable param '{}' inner type is unknown", p.name));
+    }
+    // Skip static methods where a class pointer param's inner type is unknown.
+    // Check all_classes directly — nested types don't have FFI declarations.
+    if let Some(p) = method.params.iter().find(|p| {
+        if let Some(class_name) = p.ty.class_ptr_inner_name() {
+            !ctx.all_classes.contains(class_name) && !ctx.all_enums.contains(class_name)
+        } else {
+            false
+        }
+    }) {
+        return Err(format!("class pointer param '{}' inner type '{}' is unknown", p.name, p.ty.to_cpp_string()));
     }
     if let Some(ref ret) = method.return_type {
         if type_uses_unknown_type(ret, ctx) {
@@ -1052,6 +1095,7 @@ fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeC
                     mut_ref_enum_cpp_name: Some(enum_name.clone()),
                     mut_ref_enum_rust_type: enum_rust_type,
                     is_nullable_ptr: false,
+                    is_class_ptr: false,
                 };
             }
         }
@@ -1075,6 +1119,7 @@ fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeC
             mut_ref_enum_cpp_name: None,
             mut_ref_enum_rust_type: None,
             is_nullable_ptr: false,
+            is_class_ptr: false,
         };
     }
 
@@ -1119,6 +1164,52 @@ fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeC
             mut_ref_enum_cpp_name: None,
             mut_ref_enum_rust_type: None,
             is_nullable_ptr: true,
+            is_class_ptr: false,
+        };
+    }
+
+    // Non-nullable class pointer params: const T* -> &T, T* -> &mut T
+    // In ffi.rs: *const T / *mut T (raw pointers)
+    // In re-export: &T / &mut T
+    // In C++: const T* / T* (passed through directly)
+    if let Some(_class_name) = ty.class_ptr_inner_name() {
+        let (rust_ffi_type, rust_reexport_type, cpp_type, cpp_arg_expr) = match ty {
+            Type::ConstPtr(inner) => {
+                let inner_rust = type_to_rust_string(inner, reexport_ctx);
+                let inner_ffi = map_type_in_context(inner, ffi_ctx).rust_type;
+                let cpp_inner = type_to_cpp(inner);
+                (
+                    format!("*const {}", inner_ffi),
+                    format!("&{}", inner_rust),
+                    format!("const {}*", cpp_inner),
+                    name.to_string(),
+                )
+            }
+            Type::MutPtr(inner) => {
+                let inner_rust = type_to_rust_string(inner, reexport_ctx);
+                let inner_ffi = map_type_in_context(inner, ffi_ctx).rust_type;
+                let cpp_inner = type_to_cpp(inner);
+                (
+                    format!("*mut {}", inner_ffi),
+                    format!("&mut {}", inner_rust),
+                    format!("{}*", cpp_inner),
+                    name.to_string(),
+                )
+            }
+            _ => unreachable!("class_ptr_inner_name() returned Some for non-pointer type"),
+        };
+        return ParamBinding {
+            cpp_name,
+            rust_name,
+            rust_ffi_type,
+            rust_reexport_type,
+            cpp_type,
+            cpp_arg_expr,
+            enum_rust_type: None,
+            mut_ref_enum_cpp_name: None,
+            mut_ref_enum_rust_type: None,
+            is_nullable_ptr: false,
+            is_class_ptr: true,
         };
     }
 
@@ -1153,6 +1244,7 @@ fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeC
         mut_ref_enum_cpp_name: None,
         mut_ref_enum_rust_type: None,
         is_nullable_ptr: false,
+        is_class_ptr: false,
     }
 }
 
@@ -1170,6 +1262,7 @@ fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext, reexport_ctx: Opt
             needs_unique_ptr: false,
             enum_cpp_name: Some(enum_cpp_name),
             enum_rust_type,
+            is_class_ptr_return: false,
         };
     }
 
@@ -1186,6 +1279,7 @@ fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext, reexport_ctx: Opt
         needs_unique_ptr,
         enum_cpp_name: None,
         enum_rust_type: None,
+        is_class_ptr_return: false,
     }
 }
 
@@ -1985,7 +2079,7 @@ fn is_params_bindable(
     ctx: &TypeContext,
 ) -> bool {
     // By-value class/handle params are now supported via C++ wrappers (const T& conversion).
-    if params.iter().any(|p| p.ty.is_unbindable() && !p.is_nullable_ptr()) {
+    if params.iter().any(|p| p.ty.is_unbindable() && !p.is_nullable_ptr() && p.ty.class_ptr_inner_name().is_none()) {
         return false;
     }
     if params
@@ -1999,6 +2093,17 @@ fn is_params_bindable(
         .iter()
         .any(|p| type_uses_unknown_type(&p.ty, ctx))
     {
+        return false;
+    }
+    // Check for class pointer params whose inner type is unknown.
+    // Check all_classes directly — nested types don't have FFI declarations.
+    if params.iter().any(|p| {
+        if let Some(class_name) = p.ty.class_ptr_inner_name() {
+            !ctx.all_classes.contains(class_name) && !ctx.all_enums.contains(class_name)
+        } else {
+            false
+        }
+    }) {
         return false;
     }
     true
@@ -2490,6 +2595,7 @@ fn compute_inherited_method_bindings(
                     (p.ty.rust_ffi_type.contains("*const")
                         || p.ty.rust_ffi_type.contains("*mut"))
                         && !p.is_nullable_ptr()
+                        && p.ty.original.class_ptr_inner_name().is_none()
                 })
                     || resolved_method
                         .return_type
@@ -2560,6 +2666,19 @@ fn compute_inherited_method_bindings(
                     continue;
                 }
 
+                // Skip class pointer params whose inner type is unknown.
+                // Check all_class_names directly — nested types don't have FFI declarations.
+                let class_ptr_uses_unknown = resolved_method.params.iter().any(|p| {
+                    if let Some(class_name) = p.ty.original.class_ptr_inner_name() {
+                        !all_class_names.contains(class_name) && !all_enum_names.contains(class_name)
+                    } else {
+                        false
+                    }
+                });
+                if class_ptr_uses_unknown {
+                    continue;
+                }
+
 
                 let ffi_fn_name = format!(
                     "{}_inherited_{}",
@@ -2610,6 +2729,47 @@ fn compute_inherited_method_bindings(
                                 mut_ref_enum_cpp_name: None,
                                 mut_ref_enum_rust_type: None,
                                 is_nullable_ptr: true,
+                                is_class_ptr: false,
+                            };
+                        }
+
+                        // Non-nullable class pointer params: const T* -> &T, T* -> &mut T
+                        if let Some(_class_name) = p.ty.original.class_ptr_inner_name() {
+                            let (rust_ffi_type, rust_reexport_type, cpp_type) = match &p.ty.original {
+                                Type::ConstPtr(inner) => {
+                                    let inner_ffi = type_to_ffi_full_name(inner);
+                                    let inner_rust = type_to_rust_string(inner, reexport_ctx);
+                                    let inner_cpp = type_to_cpp(inner);
+                                    (
+                                        format!("*const {}", inner_ffi),
+                                        format!("&{}", inner_rust),
+                                        format!("const {}*", inner_cpp),
+                                    )
+                                }
+                                Type::MutPtr(inner) => {
+                                    let inner_ffi = type_to_ffi_full_name(inner);
+                                    let inner_rust = type_to_rust_string(inner, reexport_ctx);
+                                    let inner_cpp = type_to_cpp(inner);
+                                    (
+                                        format!("*mut {}", inner_ffi),
+                                        format!("&mut {}", inner_rust),
+                                        format!("{}*", inner_cpp),
+                                    )
+                                }
+                                _ => unreachable!("class_ptr_inner_name() returned Some for non-pointer type"),
+                            };
+                            return ResolvedParamBinding {
+                                name: p.name.clone(),
+                                rust_name: p.rust_name.clone(),
+                                rust_ffi_type,
+                                rust_reexport_type,
+                                cpp_type,
+                                cpp_arg_expr: p.name.clone(),
+                                enum_rust_type: None,
+                                mut_ref_enum_cpp_name: None,
+                                mut_ref_enum_rust_type: None,
+                                is_nullable_ptr: false,
+                                is_class_ptr: true,
                             };
                         }
 
@@ -2632,6 +2792,7 @@ fn compute_inherited_method_bindings(
                                         mut_ref_enum_cpp_name: Some(enum_name.clone()),
                                         mut_ref_enum_rust_type: enum_rust_type,
                                         is_nullable_ptr: false,
+                                        is_class_ptr: false,
                                     };
                                 }
                             }
@@ -2674,6 +2835,7 @@ fn compute_inherited_method_bindings(
                             mut_ref_enum_cpp_name: None,
                             mut_ref_enum_rust_type: None,
                             is_nullable_ptr: false,
+                            is_class_ptr: false,
                         }
                     })
                     .collect();
@@ -2694,6 +2856,7 @@ fn compute_inherited_method_bindings(
                             needs_unique_ptr: rt.needs_unique_ptr,
                             enum_cpp_name: rt.enum_cpp_name.clone(),
                             enum_rust_type,
+                            is_class_ptr_return: false,
                         }
                     });
 
@@ -4289,6 +4452,12 @@ fn convert_arg(p: &ParamBinding) -> String {
         } else {
             format!("{}.map_or(std::ptr::null_mut(), |r| r as *mut _)", p.rust_name)
         }
+    } else if p.is_class_ptr {
+        if p.rust_ffi_type.starts_with("*const") {
+            format!("{} as *const _", p.rust_name)
+        } else {
+            format!("{} as *mut _", p.rust_name)
+        }
     } else if p.mut_ref_enum_rust_type.is_some() {
         format!("&mut {}_i32_", p.rust_name)
     } else if p.rust_reexport_type == "&str" {
@@ -4306,6 +4475,12 @@ fn convert_arg_resolved(name: &str, p: &ResolvedParamBinding) -> String {
             format!("{}.map_or(std::ptr::null(), |r| r as *const _)", name)
         } else {
             format!("{}.map_or(std::ptr::null_mut(), |r| r as *mut _)", name)
+        }
+    } else if p.is_class_ptr {
+        if p.rust_ffi_type.starts_with("*const") {
+            format!("{} as *const _", name)
+        } else {
+            format!("{} as *mut _", name)
         }
     } else if p.mut_ref_enum_rust_type.is_some() {
         format!("&mut {}_i32_", name)

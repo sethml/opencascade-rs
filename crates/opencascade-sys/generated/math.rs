@@ -2626,14 +2626,14 @@ impl GlobOptMin {
 //   constructor: Constructor. Perform method is not called from it.
 //   constructor: @param theFunc - objective functional.
 //   constructor: @param theLowerBorder - lower corner of the search box.
-//   Reason: has unbindable types: param 'theFunc': raw pointer (math_MultipleVarFunction*)
+//   Reason: param 'theLowerBorder' uses unknown type 'const math_Vector&'
 //   // pub fn new_multiplevarfunctionptr_vector2_real3(theFunc: /* math_MultipleVarFunction* */, theLowerBorder: &Vector, theUpperBorder: &Vector, theC: f64, theDiscretizationTol: f64, theSameTol: f64) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `math_GlobOptMin.hxx`:73 - `math_GlobOptMin::SetGlobalParams`
 //   method: @param theFunc - objective functional.
 //   method: @param theLowerBorder - lower corner of the search box.
 //   method: @param theUpperBorder - upper corner of the search box.
-//   Reason: has unbindable types: param 'theFunc': raw pointer (math_MultipleVarFunction*)
+//   Reason: param 'theLowerBorder' uses unknown type 'const math_Vector&'
 //   // pub fn set_global_params(&mut self, theFunc: /* math_MultipleVarFunction* */, theLowerBorder: &Vector, theUpperBorder: &Vector, theC: f64, theDiscretizationTol: f64, theSameTol: f64);
 //
 // SKIPPED: **Source:** `math_GlobOptMin.hxx`:83 - `math_GlobOptMin::SetLocalParams`
@@ -4567,7 +4567,7 @@ unsafe impl crate::CppDeletable for PSO {
 // ── Skipped symbols for PSO (3 total) ──
 // SKIPPED: **Source:** `math_PSO.hxx`:70 - `math_PSO::math_PSO`
 //   constructor: Constructor.
-//   Reason: has unbindable types: param 'theFunc': raw pointer (math_MultipleVarFunction*)
+//   Reason: param 'theLowBorder' uses unknown type 'const math_Vector&'
 //   // pub fn new_multiplevarfunctionptr_vector3_int2(theFunc: /* math_MultipleVarFunction* */, theLowBorder: &Vector, theUppBorder: &Vector, theSteps: &Vector, theNbParticles: i32, theNbIter: i32) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `math_PSO.hxx`:78 - `math_PSO::Perform`

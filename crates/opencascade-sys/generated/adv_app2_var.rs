@@ -2318,11 +2318,11 @@ impl SysBase {
 
 // ── Skipped symbols for SysBase (15 total) ──
 // SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:32 - `AdvApp2Var_SysBase::mcrdelt_`
-//   Reason: has unbindable types: param 'iunit': raw pointer (int*); param 'isize': raw pointer (int*); param 't': raw pointer (void*); param 'iofset': raw pointer (long*); param 'iercod': raw pointer (int*)
+//   Reason: has unbindable types: param 'iunit': raw pointer (int*); param 'isize': raw pointer (int*); param 'iofset': raw pointer (long*); param 'iercod': raw pointer (int*)
 //   // pub fn mcrdelt(&mut self, iunit: /* int* */, isize: /* int* */, t: /* void* */, iofset: /* long* */, iercod: /* int* */) -> i32;
 //
 // SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:40 - `AdvApp2Var_SysBase::mcrrqst_`
-//   Reason: has unbindable types: param 'iunit': raw pointer (int*); param 'isize': raw pointer (int*); param 't': raw pointer (void*); param 'iofset': raw pointer (long*); param 'iercod': raw pointer (int*)
+//   Reason: has unbindable types: param 'iunit': raw pointer (int*); param 'isize': raw pointer (int*); param 'iofset': raw pointer (long*); param 'iercod': raw pointer (int*)
 //   // pub fn mcrrqst(&mut self, iunit: /* int* */, isize: /* int* */, t: /* void* */, iofset: /* long* */, iercod: /* int* */) -> i32;
 //
 // SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:49 - `AdvApp2Var_SysBase::macrai4_`
@@ -2346,7 +2346,7 @@ impl SysBase {
 //   // pub fn macinit(arg0: /* int* */, arg1: /* int* */) -> i32;
 //
 // SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:38 - `AdvApp2Var_SysBase::mcrfill_`
-//   Reason: has unbindable types: param 'size': raw pointer (int*); param 'tin': raw pointer (void*); param 'tout': raw pointer (void*)
+//   Reason: has unbindable types: param 'size': raw pointer (int*)
 //   // pub fn mcrfill(size: /* int* */, tin: /* void* */, tout: /* void* */) -> i32;
 //
 // SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:70 - `AdvApp2Var_SysBase::maermsg_`
@@ -2362,7 +2362,7 @@ impl SysBase {
 //   // pub fn maovsr8(ivalcs: /* int* */) -> i32;
 //
 // SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:76 - `AdvApp2Var_SysBase::miraz_`
-//   Reason: has unbindable types: param 'taille': raw pointer (int*); param 'adt': raw pointer (void*)
+//   Reason: has unbindable types: param 'taille': raw pointer (int*)
 //   // pub fn miraz(taille: /* int* */, adt: /* void* */);
 //
 // SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:77 - `AdvApp2Var_SysBase::msifill_`
@@ -2374,7 +2374,7 @@ impl SysBase {
 //   // pub fn msrfill(nbreel: /* int* */, vecent: /* double* */, vecsor: /* double* */) -> i32;
 //
 // SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:80 - `AdvApp2Var_SysBase::mvriraz_`
-//   Reason: has unbindable types: param 'taille': raw pointer (int*); param 'adt': raw pointer (void*)
+//   Reason: has unbindable types: param 'taille': raw pointer (int*)
 //   // pub fn mvriraz(taille: /* int* */, adt: /* void* */);
 //
 

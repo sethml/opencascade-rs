@@ -1373,7 +1373,7 @@ impl HandlePolyCoherentTriangulation {
 // SKIPPED: **Source:** `Poly_CoherentTriangulation.hxx`:198 - `Poly_CoherentTriangulation::RemoveDegenerated`
 //   method: Find and remove degenerated triangles in Triangulation.
 //   method: @param theTol
-//   Reason: nullable param 'pLstRemovedNode' inner type is unknown
+//   Reason: param 'pLstRemovedNode' uses unknown type 'NCollection_List<TwoIntegers>*'
 //   // pub fn remove_degenerated(&mut self, theTol: f64, pLstRemovedNode: /* NCollection_List<TwoIntegers>* */) -> bool;
 //
 // SKIPPED: **Source:** `Poly_CoherentTriangulation.hxx`:293 - `Poly_CoherentTriangulation::AddTriangle`
@@ -1855,6 +1855,18 @@ unsafe impl crate::CppDeletable for MakeLoops {
 }
 
 impl MakeLoops {
+    /// **Source:** `Poly_MakeLoops.hxx`:185 - `Poly_MakeLoops::Reset()`
+    /// It is to reset the algorithm to the initial state.
+    pub fn reset(
+        &mut self,
+        theHelper: &MakeLoops_Helper,
+        theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) {
+        unsafe {
+            crate::ffi::Poly_MakeLoops_reset(self as *mut Self, theHelper as *const _, theAlloc)
+        }
+    }
+
     /// **Source:** `Poly_MakeLoops.hxx`:190 - `Poly_MakeLoops::AddLink()`
     /// Adds a link to the set. theOrient defines which orientations of the link
     /// are allowed.
@@ -1928,17 +1940,12 @@ impl MakeLoops {
     }
 }
 
-// ── Skipped symbols for MakeLoops (2 total) ──
+// ── Skipped symbols for MakeLoops (1 total) ──
 // SKIPPED: **Source:** `Poly_MakeLoops.hxx`:181 - `Poly_MakeLoops::Poly_MakeLoops`
 //   constructor: Constructor. If helper is NULL then the algorithm will
 //   constructor: probably return a wrong result
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new_helperptr_handlencollectionbaseallocator(theHelper: /* const Poly_MakeLoops::Helper* */, theAlloc: &HandleBaseAllocator) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Poly_MakeLoops.hxx`:185 - `Poly_MakeLoops::Reset`
-//   method: It is to reset the algorithm to the initial state.
-//   Reason: has unbindable types: param 'theHelper': raw pointer (const Poly_MakeLoops::Helper*)
-//   // pub fn reset(&mut self, theHelper: /* const Poly_MakeLoops::Helper* */, theAlloc: &HandleBaseAllocator);
 //
 
 /// **Source:** `Poly_MakeLoops.hxx`:45 - `Poly_MakeLoops_Link`
@@ -2045,6 +2052,23 @@ unsafe impl crate::CppDeletable for MakeLoops3D {
 }
 
 impl MakeLoops3D {
+    /// **Source:** `Poly_MakeLoops.hxx`:292 - `Poly_MakeLoops3D::Poly_MakeLoops3D()`
+    /// Constructor. If helper is NULL then the algorithm will
+    /// probably return a wrong result
+    pub fn new_helperptr_handlencollectionbaseallocator(
+        theHelper: &MakeLoops3D_Helper,
+        theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Poly_MakeLoops3D_ctor_helperptr_handlencollectionbaseallocator(
+                    theHelper as *const _,
+                    theAlloc,
+                ),
+            )
+        }
+    }
+
     /// Upcast to Poly_MakeLoops
     pub fn as_make_loops(&self) -> &MakeLoops {
         unsafe { &*(crate::ffi::Poly_MakeLoops3D_as_Poly_MakeLoops(self as *const Self)) }
@@ -2053,6 +2077,21 @@ impl MakeLoops3D {
     /// Upcast to Poly_MakeLoops (mutable)
     pub fn as_make_loops_mut(&mut self) -> &mut MakeLoops {
         unsafe { &mut *(crate::ffi::Poly_MakeLoops3D_as_Poly_MakeLoops_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:185 - `Poly_MakeLoops::Reset()`
+    pub fn reset(
+        &mut self,
+        theHelper: &MakeLoops_Helper,
+        theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) {
+        unsafe {
+            crate::ffi::Poly_MakeLoops3D_inherited_Reset(
+                self as *mut Self,
+                theHelper as *const _,
+                theAlloc,
+            )
+        }
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:190 - `Poly_MakeLoops::AddLink()`
@@ -2123,14 +2162,6 @@ impl MakeLoops3D {
         }
     }
 }
-
-// ── Skipped symbols for MakeLoops3D (1 total) ──
-// SKIPPED: **Source:** `Poly_MakeLoops.hxx`:292 - `Poly_MakeLoops3D::Poly_MakeLoops3D`
-//   constructor: Constructor. If helper is NULL then the algorithm will
-//   constructor: probably return a wrong result
-//   Reason: has unbindable types: param 'theHelper': raw pointer (const Poly_MakeLoops3D::Helper*)
-//   // pub fn new_helperptr_handlencollectionbaseallocator(theHelper: /* const Poly_MakeLoops3D::Helper* */, theAlloc: &HandleBaseAllocator) -> OwnedPtr<Self>;
-//
 
 /// **Source:** `Poly_MakeLoops.hxx`:274 - `Poly_MakeLoops3D_Helper`
 /// The abstract helper class
@@ -2219,6 +2250,25 @@ unsafe impl crate::CppDeletable for MakeLoops2D {
 }
 
 impl MakeLoops2D {
+    /// **Source:** `Poly_MakeLoops.hxx`:331 - `Poly_MakeLoops2D::Poly_MakeLoops2D()`
+    /// Constructor. If helper is NULL then the algorithm will
+    /// probably return a wrong result
+    pub fn new_bool_helperptr_handlencollectionbaseallocator(
+        theLeftWay: bool,
+        theHelper: &MakeLoops2D_Helper,
+        theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Poly_MakeLoops2D_ctor_bool_helperptr_handlencollectionbaseallocator(
+                    theLeftWay,
+                    theHelper as *const _,
+                    theAlloc,
+                ),
+            )
+        }
+    }
+
     /// Upcast to Poly_MakeLoops
     pub fn as_make_loops(&self) -> &MakeLoops {
         unsafe { &*(crate::ffi::Poly_MakeLoops2D_as_Poly_MakeLoops(self as *const Self)) }
@@ -2227,6 +2277,21 @@ impl MakeLoops2D {
     /// Upcast to Poly_MakeLoops (mutable)
     pub fn as_make_loops_mut(&mut self) -> &mut MakeLoops {
         unsafe { &mut *(crate::ffi::Poly_MakeLoops2D_as_Poly_MakeLoops_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:185 - `Poly_MakeLoops::Reset()`
+    pub fn reset(
+        &mut self,
+        theHelper: &MakeLoops_Helper,
+        theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) {
+        unsafe {
+            crate::ffi::Poly_MakeLoops2D_inherited_Reset(
+                self as *mut Self,
+                theHelper as *const _,
+                theAlloc,
+            )
+        }
     }
 
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:190 - `Poly_MakeLoops::AddLink()`
@@ -2297,14 +2362,6 @@ impl MakeLoops2D {
         }
     }
 }
-
-// ── Skipped symbols for MakeLoops2D (1 total) ──
-// SKIPPED: **Source:** `Poly_MakeLoops.hxx`:331 - `Poly_MakeLoops2D::Poly_MakeLoops2D`
-//   constructor: Constructor. If helper is NULL then the algorithm will
-//   constructor: probably return a wrong result
-//   Reason: has unbindable types: param 'theHelper': raw pointer (const Poly_MakeLoops2D::Helper*)
-//   // pub fn new_bool_helperptr_handlencollectionbaseallocator(theLeftWay: bool, theHelper: /* const Poly_MakeLoops2D::Helper* */, theAlloc: &HandleBaseAllocator) -> OwnedPtr<Self>;
-//
 
 /// **Source:** `Poly_MakeLoops.hxx`:316 - `Poly_MakeLoops2D_Helper`
 /// The abstract helper class
@@ -2553,6 +2610,20 @@ impl MergeNodesTool {
         }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:123 - `Poly_MergeNodesTool::AddElement()`
+    /// Add new triangle or quad.
+    /// @param[in] theElemNodes element nodes
+    /// @param[in] theNbNodes number of element nodes, should be 3 or 4
+    pub fn add_element(&mut self, theElemNodes: &crate::gp::XYZ, theNbNodes: i32) {
+        unsafe {
+            crate::ffi::Poly_MergeNodesTool_add_element(
+                self as *mut Self,
+                theElemNodes as *const _,
+                theNbNodes,
+            )
+        }
+    }
+
     /// **Source:** `Poly_MergeNodesTool.hxx`:127 - `Poly_MergeNodesTool::ChangeElementNode()`
     /// Change node coordinates of element to be pushed.
     /// @param[in] theIndex node index within current element, in 0..3 range
@@ -2747,7 +2818,7 @@ impl HandlePolyMergeNodesTool {
     }
 }
 
-// ── Skipped symbols for MergeNodesTool (3 total) ──
+// ── Skipped symbols for MergeNodesTool (2 total) ──
 // SKIPPED: **Source:** `Poly_MergeNodesTool.hxx`:114 - `Poly_MergeNodesTool::AddTriangle`
 //   method: Add new triangle.
 //   method: @param[in] theElemNodes 3 element nodes
@@ -2759,13 +2830,6 @@ impl HandlePolyMergeNodesTool {
 //   method: @param[in] theElemNodes 4 element nodes
 //   Reason: has unbindable types: param 'theElemNodes': C-style array (gp_XYZ[4])
 //   // pub fn add_quad(&mut self, theElemNodes: /* gp_XYZ[4] */);
-//
-// SKIPPED: **Source:** `Poly_MergeNodesTool.hxx`:123 - `Poly_MergeNodesTool::AddElement`
-//   method: Add new triangle or quad.
-//   method: @param[in] theElemNodes element nodes
-//   method: @param[in] theNbNodes number of element nodes, should be 3 or 4
-//   Reason: has unbindable types: param 'theElemNodes': raw pointer (const gp_XYZ*)
-//   // pub fn add_element(&mut self, theElemNodes: /* const gp_XYZ* */, theNbNodes: i32);
 //
 
 // ========================

@@ -559,7 +559,7 @@ impl HandleRWObjCafWriter {
 //   method: Write OBJ file and associated MTL material file.
 //   method: Triangulation data should be precomputed within shapes!
 //   method: @param[in] theDocument     input document
-//   Reason: has unbindable types: param 'theLabelFilter': raw pointer (const TColStd_MapOfAsciiString*)
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
 //   // pub fn perform(&mut self, theDocument: &HandleDocument, theRootLabels: &LabelSequence, theLabelFilter: /* const TColStd_MapOfAsciiString* */, theFileInfo: &IndexedDataMapOfStringString, theProgress: &ProgressRange) -> bool;
 //
 // SKIPPED: **Source:** `RWObj_CafWriter.hxx`:88 - `RWObj_CafWriter::Perform`
@@ -1180,14 +1180,30 @@ unsafe impl crate::CppDeletable for IShapeReceiver {
     }
 }
 
-// ── Skipped symbols for IShapeReceiver (1 total) ──
-// SKIPPED: **Source:** `RWObj_TriangulationReader.hxx`:31 - `RWObj_IShapeReceiver::BindNamedShape`
-//   method: @param theShape       shape to register
-//   method: @param theName        shape name
-//   method: @param theMaterial    shape material
-//   Reason: has unbindable types: param 'theMaterial': raw pointer (const RWObj_Material*)
-//   // pub fn bind_named_shape(&mut self, theShape: &Shape, theName: &AsciiString, theMaterial: /* const RWObj_Material* */, theIsRootShape: bool);
-//
+impl IShapeReceiver {
+    /// **Source:** `RWObj_TriangulationReader.hxx`:31 - `RWObj_IShapeReceiver::BindNamedShape()`
+    /// @param theShape       shape to register
+    /// @param theName        shape name
+    /// @param theMaterial    shape material
+    /// @param theIsRootShape indicates that this is a root object (free shape)
+    pub fn bind_named_shape(
+        &mut self,
+        theShape: &crate::topo_ds::Shape,
+        theName: &crate::t_collection::AsciiString,
+        theMaterial: &Material,
+        theIsRootShape: bool,
+    ) {
+        unsafe {
+            crate::ffi::RWObj_IShapeReceiver_bind_named_shape(
+                self as *mut Self,
+                theShape,
+                theName,
+                theMaterial as *const _,
+                theIsRootShape,
+            )
+        }
+    }
+}
 
 /// **Source:** `RWObj_TriangulationReader.hxx`:38 - `RWObj_TriangulationReader`
 /// RWObj_Reader implementation dumping OBJ file into Poly_Triangulation.
@@ -1218,6 +1234,17 @@ impl TriangulationReader {
             crate::ffi::RWObj_TriangulationReader_set_create_shapes(
                 self as *mut Self,
                 theToCreateShapes,
+            )
+        }
+    }
+
+    /// **Source:** `RWObj_TriangulationReader.hxx`:53 - `RWObj_TriangulationReader::SetShapeReceiver()`
+    /// Set shape receiver callback.
+    pub fn set_shape_receiver(&mut self, theReceiver: &mut IShapeReceiver) {
+        unsafe {
+            crate::ffi::RWObj_TriangulationReader_set_shape_receiver(
+                self as *mut Self,
+                theReceiver as *mut _,
             )
         }
     }
@@ -1481,10 +1508,3 @@ impl HandleRWObjTriangulationReader {
         }
     }
 }
-
-// ── Skipped symbols for TriangulationReader (1 total) ──
-// SKIPPED: **Source:** `RWObj_TriangulationReader.hxx`:53 - `RWObj_TriangulationReader::SetShapeReceiver`
-//   method: Set shape receiver callback.
-//   Reason: has unbindable types: param 'theReceiver': raw pointer (RWObj_IShapeReceiver*)
-//   // pub fn set_shape_receiver(&mut self, theReceiver: /* RWObj_IShapeReceiver* */);
-//

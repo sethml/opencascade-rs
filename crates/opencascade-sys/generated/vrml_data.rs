@@ -389,6 +389,19 @@ impl ArrayVec3d {
         unsafe { crate::ffi::VrmlData_ArrayVec3d_allocate_values(self as *mut Self, theLength) }
     }
 
+    /// **Source:** `VrmlData_ArrayVec3d.hxx`:73 - `VrmlData_ArrayVec3d::SetValues()`
+    ///
+    /// Set the array data
+    pub fn set_values(&mut self, nValues: usize, arrValues: &crate::gp::XYZ) {
+        unsafe {
+            crate::ffi::VrmlData_ArrayVec3d_set_values(
+                self as *mut Self,
+                nValues,
+                arrValues as *const _,
+            )
+        }
+    }
+
     /// **Source:** `VrmlData_ArrayVec3d.hxx`:90 - `VrmlData_ArrayVec3d::ReadArray()`
     ///
     /// Read the Node from input stream.
@@ -655,7 +668,7 @@ impl HandleVrmlDataArrayVec3d {
     }
 }
 
-// ── Skipped symbols for ArrayVec3d (4 total) ──
+// ── Skipped symbols for ArrayVec3d (3 total) ──
 // SKIPPED: **Source:** `VrmlData_ArrayVec3d.hxx`:34 - `VrmlData_ArrayVec3d::VrmlData_ArrayVec3d`
 //   constructor: Empty constructor
 //   Reason: class is abstract (has unimplemented pure virtual methods)
@@ -670,11 +683,6 @@ impl HandleVrmlDataArrayVec3d {
 //   method: Query the array
 //   Reason: has unbindable types: return: raw pointer (const gp_XYZ*)
 //   // pub fn values(&self) -> /* const gp_XYZ* */;
-//
-// SKIPPED: **Source:** `VrmlData_ArrayVec3d.hxx`:73 - `VrmlData_ArrayVec3d::SetValues`
-//   method: Set the array data
-//   Reason: has unbindable types: param 'arrValues': raw pointer (const gp_XYZ*)
-//   // pub fn set_values(&mut self, nValues: usize, arrValues: /* const gp_XYZ* */);
 //
 
 // ========================
@@ -1043,6 +1051,15 @@ impl Color {
         }
     }
 
+    /// **Source:** `VrmlData_Color.hxx`:62 - `VrmlData_Color::SetColors()`
+    ///
+    /// Set the array data
+    pub fn set_colors(&mut self, nColors: usize, arrColors: &crate::gp::XYZ) {
+        unsafe {
+            crate::ffi::VrmlData_Color_set_colors(self as *mut Self, nColors, arrColors as *const _)
+        }
+    }
+
     /// **Source:** `VrmlData_Color.hxx`:73 - `VrmlData_Color::Clone()`
     ///
     /// Create a copy of this node.
@@ -1151,6 +1168,17 @@ impl Color {
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:68 - `VrmlData_ArrayVec3d::AllocateValues()`
     pub fn allocate_values(&mut self, theLength: usize) -> bool {
         unsafe { crate::ffi::VrmlData_Color_inherited_AllocateValues(self as *mut Self, theLength) }
+    }
+
+    /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:73 - `VrmlData_ArrayVec3d::SetValues()`
+    pub fn set_values(&mut self, nValues: usize, arrValues: &crate::gp::XYZ) {
+        unsafe {
+            crate::ffi::VrmlData_Color_inherited_SetValues(
+                self as *mut Self,
+                nValues,
+                arrValues as *const _,
+            )
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:103 - `VrmlData_ArrayVec3d::IsDefault()`
@@ -1268,13 +1296,6 @@ impl HandleVrmlDataColor {
         }
     }
 }
-
-// ── Skipped symbols for Color (1 total) ──
-// SKIPPED: **Source:** `VrmlData_Color.hxx`:62 - `VrmlData_Color::SetColors`
-//   method: Set the array data
-//   Reason: has unbindable types: param 'arrColors': raw pointer (const gp_XYZ*)
-//   // pub fn set_colors(&mut self, nColors: usize, arrColors: /* const gp_XYZ* */);
-//
 
 // ========================
 // From VrmlData_Cone.hxx
@@ -1783,6 +1804,17 @@ impl Coordinate {
     pub fn allocate_values(&mut self, theLength: usize) -> bool {
         unsafe {
             crate::ffi::VrmlData_Coordinate_inherited_AllocateValues(self as *mut Self, theLength)
+        }
+    }
+
+    /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:73 - `VrmlData_ArrayVec3d::SetValues()`
+    pub fn set_values(&mut self, nValues: usize, arrValues: &crate::gp::XYZ) {
+        unsafe {
+            crate::ffi::VrmlData_Coordinate_inherited_SetValues(
+                self as *mut Self,
+                nValues,
+                arrValues as *const _,
+            )
         }
     }
 
@@ -3079,6 +3111,17 @@ impl Group {
         }
     }
 
+    /// **Source:** `VrmlData_Group.hxx`:139 - `VrmlData_Group::Shape()`
+    ///
+    /// Get the shape representing the group geometry.
+    pub fn shape(
+        &mut self,
+        theShape: &mut crate::topo_ds::Shape,
+        pMapApp: &mut crate::ffi::VrmlData_DataMapOfShapeAppearance,
+    ) {
+        unsafe { crate::ffi::VrmlData_Group_shape(self as *mut Self, theShape, pMapApp as *mut _) }
+    }
+
     /// **Source:** `VrmlData_Group.hxx`:161 - `VrmlData_Group::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::VrmlData_Group_dynamic_type(self as *const Self)) }
@@ -3232,16 +3275,11 @@ impl HandleVrmlDataGroup {
     }
 }
 
-// ── Skipped symbols for Group (2 total) ──
+// ── Skipped symbols for Group (1 total) ──
 // SKIPPED: **Source:** `VrmlData_Group.hxx`:65 - `VrmlData_Group::AddNode`
 //   method: Add one node to the Group.
 //   Reason: returns &mut with reference params (ambiguous lifetimes)
 //   // pub fn add_node(&mut self, theNode: &HandleNode) -> &mut HandleNode;
-//
-// SKIPPED: **Source:** `VrmlData_Group.hxx`:139 - `VrmlData_Group::Shape`
-//   method: Get the shape representing the group geometry.
-//   Reason: has unbindable types: param 'pMapApp': raw pointer (VrmlData_DataMapOfShapeAppearance*)
-//   // pub fn shape(&mut self, theShape: &mut Shape, pMapApp: /* VrmlData_DataMapOfShapeAppearance* */);
 //
 
 // ========================
@@ -5782,6 +5820,17 @@ impl Normal {
         }
     }
 
+    /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:73 - `VrmlData_ArrayVec3d::SetValues()`
+    pub fn set_values(&mut self, nValues: usize, arrValues: &crate::gp::XYZ) {
+        unsafe {
+            crate::ffi::VrmlData_Normal_inherited_SetValues(
+                self as *mut Self,
+                nValues,
+                arrValues as *const _,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:103 - `VrmlData_ArrayVec3d::IsDefault()`
     pub fn is_default(&self) -> bool {
         unsafe { crate::ffi::VrmlData_Normal_inherited_IsDefault(self as *const Self) }
@@ -7289,6 +7338,19 @@ impl TextureCoordinate {
         unsafe { crate::ffi::VrmlData_TextureCoordinate_length(self as *mut Self) }
     }
 
+    /// **Source:** `VrmlData_TextureCoordinate.hxx`:72 - `VrmlData_TextureCoordinate::SetPoints()`
+    ///
+    /// Set the points array
+    pub fn set_points(&mut self, nPoints: usize, arrPoints: &crate::gp::XY) {
+        unsafe {
+            crate::ffi::VrmlData_TextureCoordinate_set_points(
+                self as *mut Self,
+                nPoints,
+                arrPoints as *const _,
+            )
+        }
+    }
+
     /// **Source:** `VrmlData_TextureCoordinate.hxx`:83 - `VrmlData_TextureCoordinate::Clone()`
     ///
     /// Create a copy of this node.
@@ -7501,16 +7563,11 @@ impl HandleVrmlDataTextureCoordinate {
     }
 }
 
-// ── Skipped symbols for TextureCoordinate (2 total) ──
+// ── Skipped symbols for TextureCoordinate (1 total) ──
 // SKIPPED: **Source:** `VrmlData_TextureCoordinate.hxx`:67 - `VrmlData_TextureCoordinate::Points`
 //   method: Query the points
 //   Reason: has unbindable types: return: raw pointer (const gp_XY*)
 //   // pub fn points(&mut self) -> /* const gp_XY* */;
-//
-// SKIPPED: **Source:** `VrmlData_TextureCoordinate.hxx`:72 - `VrmlData_TextureCoordinate::SetPoints`
-//   method: Set the points array
-//   Reason: has unbindable types: param 'arrPoints': raw pointer (const gp_XY*)
-//   // pub fn set_points(&mut self, nPoints: usize, arrPoints: /* const gp_XY* */);
 //
 
 // ========================

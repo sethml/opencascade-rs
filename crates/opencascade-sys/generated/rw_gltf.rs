@@ -1980,28 +1980,28 @@ impl HandleRWGltfGltfMaterialMap {
 // SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:42 - `RWGltf_GltfMaterialMap::FlushGlbBufferViews`
 //   method: Add bufferView's into RWGltf_GltfRootElement_BufferViews section with images collected by
 //   method: AddImagesToGlb().
-//   Reason: has unbindable types: param 'theWriter': raw pointer (RWGltf_GltfOStreamWriter*)
+//   Reason: param 'theWriter' uses unknown type 'RWGltf_GltfOStreamWriter*'
 //   // pub fn flush_glb_buffer_views(&mut self, theWriter: /* RWGltf_GltfOStreamWriter* */, theBinDataBufferId: i32, theBuffViewId: &mut i32);
 //
 // SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:47 - `RWGltf_GltfMaterialMap::FlushGlbImages`
 //   method: Write RWGltf_GltfRootElement_Images section with images collected by AddImagesToGlb().
-//   Reason: has unbindable types: param 'theWriter': raw pointer (RWGltf_GltfOStreamWriter*)
+//   Reason: param 'theWriter' uses unknown type 'RWGltf_GltfOStreamWriter*'
 //   // pub fn flush_glb_images(&mut self, theWriter: /* RWGltf_GltfOStreamWriter* */);
 //
 // SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:52 - `RWGltf_GltfMaterialMap::AddImages`
 //   method: Add material images in case of non-GLB file
 //   method: (an alternative to AddImagesToGlb() + FlushBufferViews() + FlushImagesGlb()).
-//   Reason: has unbindable types: param 'theWriter': raw pointer (RWGltf_GltfOStreamWriter*)
+//   Reason: param 'theWriter' uses unknown type 'RWGltf_GltfOStreamWriter*'
 //   // pub fn add_images(&mut self, theWriter: /* RWGltf_GltfOStreamWriter* */, theStyle: &Style, theIsStarted: &mut bool);
 //
 // SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:57 - `RWGltf_GltfMaterialMap::AddMaterial`
 //   method: Add material.
-//   Reason: has unbindable types: param 'theWriter': raw pointer (RWGltf_GltfOStreamWriter*)
+//   Reason: param 'theWriter' uses unknown type 'RWGltf_GltfOStreamWriter*'
 //   // pub fn add_material(&mut self, theWriter: /* RWGltf_GltfOStreamWriter* */, theStyle: &Style, theIsStarted: &mut bool);
 //
 // SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:61 - `RWGltf_GltfMaterialMap::AddTextures`
 //   method: Add material textures.
-//   Reason: has unbindable types: param 'theWriter': raw pointer (RWGltf_GltfOStreamWriter*)
+//   Reason: param 'theWriter' uses unknown type 'RWGltf_GltfOStreamWriter*'
 //   // pub fn add_textures(&mut self, theWriter: /* RWGltf_GltfOStreamWriter* */, theStyle: &Style, theIsStarted: &mut bool);
 //
 // SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:73 - `RWGltf_GltfMaterialMap::baseColorTexture`

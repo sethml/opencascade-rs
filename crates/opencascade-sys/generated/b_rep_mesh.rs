@@ -4687,7 +4687,7 @@ impl FaceChecker_Segment {
 
 // ── Skipped symbols for FaceChecker_Segment (1 total) ──
 // SKIPPED: **Source:** `BRepMesh_FaceChecker.hxx`:46 - `BRepMesh_FaceChecker::Segment::BRepMesh_FaceChecker::Segment`
-//   Reason: has unbindable types: param 'thePoint1': raw pointer (gp_Pnt2d*); param 'thePoint2': raw pointer (gp_Pnt2d*)
+//   Reason: param 'theEdgePtr' uses unknown type 'const IMeshData_Edge *const&'
 //   // pub fn new_edge *const_pnt2dptr2(theEdgePtr: &Edge *const, thePoint1: /* gp_Pnt2d* */, thePoint2: /* gp_Pnt2d* */) -> OwnedPtr<Self>;
 //
 
@@ -5130,7 +5130,7 @@ impl GeomTool {
 //   // pub fn int_lin_lin(theStartPnt1: &XY, theEndPnt1: &XY, theStartPnt2: &XY, theEndPnt2: &XY, theIntPnt: &mut XY, theParamOnSegment: /* Standard_Real[2]& */) -> OwnedPtr<BRepMesh_GeomTool::IntFlag>;
 //
 // SKIPPED: **Source:** `BRepMesh_GeomTool.hxx`:206 - `BRepMesh_GeomTool::CellsCount`
-//   Reason: has unbindable types: param 'theRangeSplitter': raw pointer (const BRepMesh_DefaultRangeSplitter*); return: unresolved template/nested type (std::pair<Standard_Integer, Standard_Integer>)
+//   Reason: has unbindable types: return: unresolved template/nested type (std::pair<Standard_Integer, Standard_Integer>)
 //   // pub fn cells_count(theSurface: &HandleSurface, theVerticesNb: i32, theDeflection: f64, theRangeSplitter: /* const BRepMesh_DefaultRangeSplitter* */) -> OwnedPtr<std::pair<Standard_Integer, Standard_Integer>>;
 //
 
@@ -5888,7 +5888,7 @@ impl HandleBRepMeshMeshTool {
 // ── Skipped symbols for MeshTool (6 total) ──
 // SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:86 - `BRepMesh_MeshTool::DumpTriangles`
 //   method: Dumps triangles to specified file.
-//   Reason: has unbindable types: param 'theTriangles': raw pointer (IMeshData::MapOfInteger*)
+//   Reason: param 'theTriangles' uses unknown type 'IMeshData::MapOfInteger*'
 //   // pub fn dump_triangles(&mut self, theFileName: *const char, theTriangles: /* IMeshData::MapOfInteger* */);
 //
 // SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:103 - `BRepMesh_MeshTool::AddTriangle`

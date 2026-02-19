@@ -4995,7 +4995,7 @@ impl HandleMessagePrinterOStream {
 // SKIPPED: **Source:** `Message_PrinterOStream.hxx`:42 - `Message_PrinterOStream::SetConsoleTextColor`
 //   static_method: Setup console text color.
 //   static_method: On Windows, this would affect active terminal color output.
-//   Reason: has unbindable types: param 'theOStream': raw pointer (Standard_OStream*)
+//   Reason: param 'theOStream' uses unknown type 'Standard_OStream*'
 //   // pub fn set_console_text_color(theOStream: /* Standard_OStream* */, theTextColor: ConsoleColor, theIsIntenseText: bool);
 //
 
@@ -6052,7 +6052,7 @@ impl ProgressScope {
 //   constructor: Creates a new scope taking responsibility of the part of the progress
 //   constructor: scale described by theRange. The new scope has own range from 0 to
 //   constructor: theMax, which is mapped to the given range.
-//   Reason: has unbindable types: param 'theName': raw pointer (const Message_ProgressScope::NullString*)
+//   Reason: class pointer param 'theName' inner type 'const Message_ProgressScope::NullString*' is unknown
 //   // pub fn new_progressrange_nullstringptr_real_bool(theRange: &ProgressRange, theName: /* const Message_ProgressScope::NullString* */, theMax: f64, isInfinite: bool) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `Message_ProgressScope.hxx`:325 - `Message_ProgressScope::Parent`
@@ -6353,6 +6353,21 @@ impl Report {
         }
     }
 
+    /// **Source:** `Message_Report.hxx`:96 - `Message_Report::AddLevel()`
+    /// Add new level of alerts
+    /// @param theLevel a level
+    pub fn add_level(&mut self, theLevel: &mut Level, theName: &crate::t_collection::AsciiString) {
+        unsafe {
+            crate::ffi::Message_Report_add_level(self as *mut Self, theLevel as *mut _, theName)
+        }
+    }
+
+    /// **Source:** `Message_Report.hxx`:99 - `Message_Report::RemoveLevel()`
+    /// Remove level of alerts
+    pub fn remove_level(&mut self, theLevel: &mut Level) {
+        unsafe { crate::ffi::Message_Report_remove_level(self as *mut Self, theLevel as *mut _) }
+    }
+
     /// **Source:** `Message_Report.hxx`:102 - `Message_Report::Clear()`
     /// Clears all collected alerts
     pub fn clear(&mut self) {
@@ -6559,18 +6574,7 @@ impl HandleMessageReport {
     }
 }
 
-// ── Skipped symbols for Report (5 total) ──
-// SKIPPED: **Source:** `Message_Report.hxx`:96 - `Message_Report::AddLevel`
-//   method: Add new level of alerts
-//   method: @param theLevel a level
-//   Reason: has unbindable types: param 'theLevel': raw pointer (Message_Level*)
-//   // pub fn add_level(&mut self, theLevel: /* Message_Level* */, theName: &AsciiString);
-//
-// SKIPPED: **Source:** `Message_Report.hxx`:99 - `Message_Report::RemoveLevel`
-//   method: Remove level of alerts
-//   Reason: has unbindable types: param 'theLevel': raw pointer (Message_Level*)
-//   // pub fn remove_level(&mut self, theLevel: /* Message_Level* */);
-//
+// ── Skipped symbols for Report (3 total) ──
 // SKIPPED: **Source:** `Message_Report.hxx`:111 - `Message_Report::ActiveMetrics`
 //   method: Returns computed metrics when alerts are performed
 //   Reason: has unbindable types: return: unresolved template/nested type (const NCollection_IndexedMap<Message_MetricType>&)

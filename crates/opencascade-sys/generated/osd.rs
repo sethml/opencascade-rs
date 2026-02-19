@@ -6136,15 +6136,20 @@ impl MAllocHook {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_MAllocHook_ctor()) }
     }
+
+    /// **Source:** `OSD_MAllocHook.hxx`:158 - `OSD_MAllocHook::SetCallback()`
+    /// Set handler of allocation/deallocation events
+    ///
+    /// You can pass here any implementation. For easy start, you can try
+    /// with the predefined handler LogFileHandler, which static instance
+    /// is returned by GetLogFileHandler().
+    /// To clear the handler, pass NULL here.
+    pub fn set_callback(theCB: &mut MAllocHook_Callback) {
+        unsafe { crate::ffi::OSD_MAllocHook_set_callback(theCB as *mut _) }
+    }
 }
 
-// ── Skipped symbols for MAllocHook (4 total) ──
-// SKIPPED: **Source:** `OSD_MAllocHook.hxx`:158 - `OSD_MAllocHook::SetCallback`
-//   static_method: Set handler of allocation/deallocation events
-//   static_method: You can pass here any implementation. For easy start, you can try
-//   Reason: has unbindable types: param 'theCB': raw pointer (OSD_MAllocHook::Callback*)
-//   // pub fn set_callback(theCB: /* OSD_MAllocHook::Callback* */);
-//
+// ── Skipped symbols for MAllocHook (3 total) ──
 // SKIPPED: **Source:** `OSD_MAllocHook.hxx`:161 - `OSD_MAllocHook::GetCallback`
 //   static_method: Get current handler of allocation/deallocation events
 //   Reason: has unbindable types: return: raw pointer (OSD_MAllocHook::Callback*)
@@ -6196,7 +6201,7 @@ impl MAllocHook_Callback {
 // SKIPPED: **Source:** `OSD_MAllocHook.hxx`:57 - `OSD_MAllocHook::Callback::FreeEvent`
 //   method: Freeing event handler
 //   method: It is called when the block is freed
-//   Reason: has unbindable types: param 'theData': raw pointer (void*)
+//   Reason: param 'theData' uses unknown type 'void*'
 //   // pub fn free_event(&mut self, theData: /* void* */, theSize: usize, theRequestNum: std::ffi::c_long);
 //
 
@@ -6268,7 +6273,7 @@ impl MAllocHook_LogFileHandler {
 
 // ── Skipped symbols for MAllocHook_LogFileHandler (1 total) ──
 // SKIPPED: **Source:** `OSD_MAllocHook.hxx`:94 - `OSD_MAllocHook::LogFileHandler::FreeEvent`
-//   Reason: has unbindable types: param 'arg0': raw pointer (void*)
+//   Reason: param 'arg0' uses unknown type 'void*'
 //   // pub fn free_event(&mut self, arg0: /* void* */, arg1: usize, arg2: std::ffi::c_long);
 //
 
@@ -6319,7 +6324,7 @@ impl MAllocHook_CollectBySize {
 
 // ── Skipped symbols for MAllocHook_CollectBySize (1 total) ──
 // SKIPPED: **Source:** `OSD_MAllocHook.hxx`:122 - `OSD_MAllocHook::CollectBySize::FreeEvent`
-//   Reason: has unbindable types: param 'arg0': raw pointer (void*)
+//   Reason: param 'arg0' uses unknown type 'void*'
 //   // pub fn free_event(&mut self, arg0: /* void* */, arg1: usize, arg2: std::ffi::c_long);
 //
 

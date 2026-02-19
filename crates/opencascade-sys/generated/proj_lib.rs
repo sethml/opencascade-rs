@@ -2091,6 +2091,25 @@ unsafe impl crate::CppDeletable for PrjFunc {
 }
 
 impl PrjFunc {
+    /// **Source:** `ProjLib_PrjFunc.hxx`:34 - `ProjLib_PrjFunc::ProjLib_PrjFunc()`
+    pub fn new_curveptr_real_surfaceptr_int(
+        C: &crate::adaptor3d::Curve,
+        FixVal: f64,
+        S: &crate::adaptor3d::Surface,
+        Fix: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ProjLib_PrjFunc_ctor_curveptr_real_surfaceptr_int(
+                    C as *const _,
+                    FixVal,
+                    S as *const _,
+                    Fix,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `ProjLib_PrjFunc.hxx`:40 - `ProjLib_PrjFunc::NbVariables()`
     /// returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
@@ -2147,11 +2166,7 @@ impl PrjFunc {
     }
 }
 
-// ── Skipped symbols for PrjFunc (4 total) ──
-// SKIPPED: **Source:** `ProjLib_PrjFunc.hxx`:34 - `ProjLib_PrjFunc::ProjLib_PrjFunc`
-//   Reason: has unbindable types: param 'C': raw pointer (const Adaptor3d_Curve*); param 'S': raw pointer (const Adaptor3d_Surface*)
-//   // pub fn new_curveptr_real_surfaceptr_int(C: /* const Adaptor3d_Curve* */, FixVal: f64, S: /* const Adaptor3d_Surface* */, Fix: i32) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for PrjFunc (3 total) ──
 // SKIPPED: **Source:** `ProjLib_PrjFunc.hxx`:49 - `ProjLib_PrjFunc::Value`
 //   method: computes the values <F> of the Functions for the
 //   method: variable <X>.

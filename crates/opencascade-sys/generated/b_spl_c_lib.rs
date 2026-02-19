@@ -447,13 +447,37 @@ impl Cache {
         unsafe { crate::ffi::BSplCLib_Cache_is_cache_valid(self as *const Self, theParameter) }
     }
 
+    /// **Source:** `BSplCLib_Cache.hxx`:60 - `BSplCLib_Cache::BuildCache()`
+    /// Recomputes the cache data for 2D curves. Does not verify validity of the cache
+    /// \param theParameter  the value on the knot's axis to identify the span
+    /// \param theFlatKnots  knots of Bezier/B-spline curve (with repetitions)
+    /// \param thePoles2d    array of poles of 2D curve
+    /// \param theWeights    array of weights of corresponding poles
+    pub fn build_cache_real_array1ofreal_array1ofpnt2d_array1ofrealptr(
+        &mut self,
+        theParameter: &f64,
+        theFlatKnots: &crate::ffi::TColStd_Array1OfReal,
+        thePoles2d: &crate::ffi::TColgp_Array1OfPnt2d,
+        theWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::BSplCLib_Cache_build_cache_real_array1ofreal_array1ofpnt2d_array1ofrealptr(
+                self as *mut Self,
+                theParameter,
+                theFlatKnots,
+                thePoles2d,
+                theWeights as *const _,
+            )
+        }
+    }
+
     /// **Source:** `BSplCLib_Cache.hxx`:70 - `BSplCLib_Cache::BuildCache()`
     /// Recomputes the cache data for 3D curves. Does not verify validity of the cache
     /// \param theParameter  the value on the knot's axis to identify the span
     /// \param theFlatKnots  knots of Bezier/B-spline curve (with repetitions)
     /// \param thePoles      array of poles of 3D curve
     /// \param theWeights    array of weights of corresponding poles
-    pub fn build_cache(
+    pub fn build_cache_real_array1ofreal_array1ofpnt_array1ofrealptr(
         &mut self,
         theParameter: &f64,
         theFlatKnots: &crate::ffi::TColStd_Array1OfReal,
@@ -461,7 +485,7 @@ impl Cache {
         theWeights: Option<&crate::ffi::TColStd_Array1OfReal>,
     ) {
         unsafe {
-            crate::ffi::BSplCLib_Cache_build_cache(
+            crate::ffi::BSplCLib_Cache_build_cache_real_array1ofreal_array1ofpnt_array1ofrealptr(
                 self as *mut Self,
                 theParameter,
                 theFlatKnots,
@@ -715,15 +739,6 @@ impl HandleBSplCLibCache {
         }
     }
 }
-
-// ── Skipped symbols for Cache (1 total) ──
-// SKIPPED: **Source:** `BSplCLib_Cache.hxx`:60 - `BSplCLib_Cache::BuildCache`
-//   method: Recomputes the cache data for 2D curves. Does not verify validity of the cache
-//   method: \param theParameter  the value on the knot's axis to identify the span
-//   method: \param theFlatKnots  knots of Bezier/B-spline curve (with repetitions)
-//   Reason: has unbindable types: param 'theWeights': raw pointer (const TColStd_Array1OfReal*)
-//   // pub fn build_cache(&mut self, theParameter: &f64, theFlatKnots: &Array1OfReal, thePoles2d: &Array1OfPnt2d, theWeights: /* const TColStd_Array1OfReal* */);
-//
 
 // ========================
 // From BSplCLib_CacheParams.hxx

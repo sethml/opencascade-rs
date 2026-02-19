@@ -7427,7 +7427,7 @@ impl Editor {
 //   static_method: Copies metadata contains from the source label to the destination label.
 //   static_method: Protected against creating a new label for non-existent tools
 //   static_method: @param[in] theSrcLabel original label to copy from
-//   Reason: has unbindable types: param 'theVisMatMap': raw pointer (NCollection_DataMap<opencascade::handle<XCAFDoc_VisMaterial>, opencascade::handle<XCAFDoc_VisMaterial>>*)
+//   Reason: param 'theVisMatMap' uses unknown type 'NCollection_DataMap<opencascade::handle<XCAFDoc_VisMaterial>, opencascade::handle<XCAFDoc_VisMaterial>>*'
 //   // pub fn clone_meta_data(theSrcLabel: &Label, theDstLabel: &Label, theVisMatMap: /* NCollection_DataMap<opencascade::handle<XCAFDoc_VisMaterial>, opencascade::handle<XCAFDoc_VisMaterial>>* */, theToCopyColor: bool, theToCopyLayer: bool, theToCopyMaterial: bool, theToCopyVisMaterial: bool, theToCopyAttributes: bool);
 //
 

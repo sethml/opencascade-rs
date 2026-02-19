@@ -192,7 +192,7 @@ impl ReadData {
 // ── Skipped symbols for ReadData (3 total) ──
 // SKIPPED: **Source:** `StepFile_ReadData.hxx`:169 - `StepFile_ReadData::GetArgDescription`
 //   method: Returns a value of fields of current argument
-//   Reason: has unbindable types: param 'theType': raw pointer (Interface_ParamType*); param 'theValue': raw pointer (char**)
+//   Reason: has unbindable types: param 'theValue': raw pointer (char**)
 //   // pub fn get_arg_description(&mut self, theType: /* Interface_ParamType* */, theValue: /* char** */) -> bool;
 //
 // SKIPPED: **Source:** `StepFile_ReadData.hxx`:172 - `StepFile_ReadData::GetFileNbR`

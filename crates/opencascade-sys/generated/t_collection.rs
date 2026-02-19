@@ -1092,7 +1092,7 @@ impl AsciiString {
 // SKIPPED: **Source:** `TCollection_AsciiString.hxx`:110 - `TCollection_AsciiString::TCollection_AsciiString`
 //   constructor: Initialize UTF-8 Unicode string from wide-char string considering it as Unicode string
 //   constructor: (the size of wide char is a platform-dependent - e.g. on Windows wchar_t is UTF-16).
-//   Reason: has unbindable types: param 'theStringUtf': raw pointer (const Standard_WideChar*)
+//   Reason: param 'theStringUtf' uses unknown type 'const Standard_WideChar*'
 //   // pub fn new_widecharptr(theStringUtf: /* const Standard_WideChar* */) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `TCollection_AsciiString.hxx`:263 - `TCollection_AsciiString::Move`
@@ -1525,7 +1525,7 @@ impl ExtendedString {
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:76 - `TCollection_ExtendedString::TCollection_ExtendedString`
 //   constructor: Initialize from wide-char string considering it as Unicode string
 //   constructor: (the size of wide char is a platform-dependent - e.g. on Windows wchar_t is UTF-16).
-//   Reason: has unbindable types: param 'theStringUtf': raw pointer (const Standard_WideChar*)
+//   Reason: param 'theStringUtf' uses unknown type 'const Standard_WideChar*'
 //   // pub fn new_widecharptr(theStringUtf: /* const Standard_WideChar* */) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:118 - `TCollection_ExtendedString::AssignCat`

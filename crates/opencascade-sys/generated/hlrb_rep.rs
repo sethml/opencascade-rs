@@ -1722,53 +1722,73 @@ impl CLPropsATool {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CLPropsATool_ctor()) }
     }
-}
 
-// ── Skipped symbols for CLPropsATool (7 total) ──
-// SKIPPED: **Source:** `HLRBRep_CLPropsATool.hxx`:35 - `HLRBRep_CLPropsATool::Value`
-//   static_method: Computes the  point <P> of  parameter <U>   on the
-//   static_method: Curve from HLRBRep <C>.
-//   Reason: has unbindable types: param 'A': raw pointer (const HLRBRep_Curve*)
-//   // pub fn value(A: /* const HLRBRep_Curve* */, U: f64, P: &mut Pnt2d);
-//
-// SKIPPED: **Source:** `HLRBRep_CLPropsATool.hxx`:39 - `HLRBRep_CLPropsATool::D1`
-//   static_method: Computes the point <P>  and  first derivative <V1>
-//   static_method: of parameter <U> on the curve <C>.
-//   Reason: has unbindable types: param 'A': raw pointer (const HLRBRep_Curve*)
-//   // pub fn d1(A: /* const HLRBRep_Curve* */, U: f64, P: &mut Pnt2d, V1: &mut Vec2d);
-//
-// SKIPPED: **Source:** `HLRBRep_CLPropsATool.hxx`:44 - `HLRBRep_CLPropsATool::D2`
-//   static_method: Computes the point <P>,  the first derivative <V1>
-//   static_method: and second derivative <V2> of parameter <U> on the
-//   static_method: curve <C>.
-//   Reason: has unbindable types: param 'A': raw pointer (const HLRBRep_Curve*)
-//   // pub fn d2(A: /* const HLRBRep_Curve* */, U: f64, P: &mut Pnt2d, V1: &mut Vec2d, V2: &mut Vec2d);
-//
-// SKIPPED: **Source:** `HLRBRep_CLPropsATool.hxx`:53 - `HLRBRep_CLPropsATool::D3`
-//   static_method: Computes the point <P>, the first derivative <V1>,
-//   static_method: the second derivative  <V2>   and third derivative
-//   static_method: <V3> of parameter <U> on the curve <C>.
-//   Reason: has unbindable types: param 'A': raw pointer (const HLRBRep_Curve*)
-//   // pub fn d3(A: /* const HLRBRep_Curve* */, U: f64, P: &mut Pnt2d, V1: &mut Vec2d, V2: &mut Vec2d, V3: &mut Vec2d);
-//
-// SKIPPED: **Source:** `HLRBRep_CLPropsATool.hxx`:65 - `HLRBRep_CLPropsATool::Continuity`
-//   static_method: returns the order  of continuity of the curve <C>.
-//   static_method: returns 1 :  first  derivative only is  computable
-//   static_method: returns 2  : first and  second derivative only are
-//   Reason: has unbindable types: param 'A': raw pointer (const HLRBRep_Curve*)
-//   // pub fn continuity(A: /* const HLRBRep_Curve* */) -> i32;
-//
-// SKIPPED: **Source:** `HLRBRep_CLPropsATool.hxx`:68 - `HLRBRep_CLPropsATool::FirstParameter`
-//   static_method: returns the first parameter bound of the curve.
-//   Reason: has unbindable types: param 'A': raw pointer (const HLRBRep_Curve*)
-//   // pub fn first_parameter(A: /* const HLRBRep_Curve* */) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_CLPropsATool.hxx`:72 - `HLRBRep_CLPropsATool::LastParameter`
-//   static_method: returns the  last  parameter bound  of  the curve.
-//   static_method: FirstParameter must be less than LastParamenter.
-//   Reason: has unbindable types: param 'A': raw pointer (const HLRBRep_Curve*)
-//   // pub fn last_parameter(A: /* const HLRBRep_Curve* */) -> f64;
-//
+    /// **Source:** `HLRBRep_CLPropsATool.hxx`:35 - `HLRBRep_CLPropsATool::Value()`
+    /// Computes the  point <P> of  parameter <U>   on the
+    /// Curve from HLRBRep <C>.
+    pub fn value(A: &Curve, U: f64, P: &mut crate::gp::Pnt2d) {
+        unsafe { crate::ffi::HLRBRep_CLPropsATool_value(A as *const _, U, P) }
+    }
+
+    /// **Source:** `HLRBRep_CLPropsATool.hxx`:39 - `HLRBRep_CLPropsATool::D1()`
+    /// Computes the point <P>  and  first derivative <V1>
+    /// of parameter <U> on the curve <C>.
+    pub fn d1(A: &Curve, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
+        unsafe { crate::ffi::HLRBRep_CLPropsATool_d1(A as *const _, U, P, V1) }
+    }
+
+    /// **Source:** `HLRBRep_CLPropsATool.hxx`:44 - `HLRBRep_CLPropsATool::D2()`
+    /// Computes the point <P>,  the first derivative <V1>
+    /// and second derivative <V2> of parameter <U> on the
+    /// curve <C>.
+    pub fn d2(
+        A: &Curve,
+        U: f64,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
+    ) {
+        unsafe { crate::ffi::HLRBRep_CLPropsATool_d2(A as *const _, U, P, V1, V2) }
+    }
+
+    /// **Source:** `HLRBRep_CLPropsATool.hxx`:53 - `HLRBRep_CLPropsATool::D3()`
+    /// Computes the point <P>, the first derivative <V1>,
+    /// the second derivative  <V2>   and third derivative
+    /// <V3> of parameter <U> on the curve <C>.
+    pub fn d3(
+        A: &Curve,
+        U: f64,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
+        V3: &mut crate::gp::Vec2d,
+    ) {
+        unsafe { crate::ffi::HLRBRep_CLPropsATool_d3(A as *const _, U, P, V1, V2, V3) }
+    }
+
+    /// **Source:** `HLRBRep_CLPropsATool.hxx`:65 - `HLRBRep_CLPropsATool::Continuity()`
+    /// returns the order  of continuity of the curve <C>.
+    /// returns 1 :  first  derivative only is  computable
+    /// returns 2  : first and  second derivative only are
+    /// computable.  returns  3 : first,  second and third
+    /// are computable.
+    pub fn continuity(A: &Curve) -> i32 {
+        unsafe { crate::ffi::HLRBRep_CLPropsATool_continuity(A as *const _) }
+    }
+
+    /// **Source:** `HLRBRep_CLPropsATool.hxx`:68 - `HLRBRep_CLPropsATool::FirstParameter()`
+    /// returns the first parameter bound of the curve.
+    pub fn first_parameter(A: &Curve) -> f64 {
+        unsafe { crate::ffi::HLRBRep_CLPropsATool_first_parameter(A as *const _) }
+    }
+
+    /// **Source:** `HLRBRep_CLPropsATool.hxx`:72 - `HLRBRep_CLPropsATool::LastParameter()`
+    /// returns the  last  parameter bound  of  the curve.
+    /// FirstParameter must be less than LastParamenter.
+    pub fn last_parameter(A: &Curve) -> f64 {
+        unsafe { crate::ffi::HLRBRep_CLPropsATool_last_parameter(A as *const _) }
+    }
+}
 
 // ========================
 // From HLRBRep_Curve.hxx
@@ -1791,6 +1811,11 @@ impl Curve {
     /// Creates an undefined Curve.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_Curve_ctor()) }
+    }
+
+    /// **Source:** `HLRBRep_Curve.hxx`:57 - `HLRBRep_Curve::Projector()`
+    pub fn projector(&mut self, Proj: &crate::hlr_algo::Projector) {
+        unsafe { crate::ffi::HLRBRep_Curve_projector(self as *mut Self, Proj as *const _) }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:60 - `HLRBRep_Curve::Curve()`
@@ -2108,11 +2133,7 @@ impl Curve {
     }
 }
 
-// ── Skipped symbols for Curve (3 total) ──
-// SKIPPED: **Source:** `HLRBRep_Curve.hxx`:57 - `HLRBRep_Curve::Projector`
-//   Reason: has unbindable types: param 'Proj': raw pointer (const HLRAlgo_Projector*)
-//   // pub fn projector(&mut self, Proj: /* const HLRAlgo_Projector* */);
-//
+// ── Skipped symbols for Curve (2 total) ──
 // SKIPPED: **Source:** `HLRBRep_Curve.hxx`:77 - `HLRBRep_Curve::Update`
 //   method: Update the minmax and the internal data
 //   Reason: has unbindable types: param 'TotMin': C-style array (Standard_Real[16]); param 'TotMax': C-style array (Standard_Real[16])
@@ -6356,6 +6377,11 @@ impl Surface {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_Surface_ctor()) }
     }
 
+    /// **Source:** `HLRBRep_Surface.hxx`:48 - `HLRBRep_Surface::Projector()`
+    pub fn projector(&mut self, Proj: &crate::hlr_algo::Projector) {
+        unsafe { crate::ffi::HLRBRep_Surface_projector(self as *mut Self, Proj as *const _) }
+    }
+
     /// **Source:** `HLRBRep_Surface.hxx`:51 - `HLRBRep_Surface::Surface()`
     /// Returns the 3D Surface.
     pub fn surface(&mut self) -> &mut crate::b_rep_adaptor::Surface {
@@ -6372,6 +6398,13 @@ impl Surface {
     /// returns true if it is a side face
     pub fn is_side(&self, tolf: f64, toler: f64) -> bool {
         unsafe { crate::ffi::HLRBRep_Surface_is_side(self as *const Self, tolf, toler) }
+    }
+
+    /// **Source:** `HLRBRep_Surface.hxx`:60 - `HLRBRep_Surface::IsAbove()`
+    pub fn is_above(&self, back: bool, A: &Curve, tolC: f64) -> bool {
+        unsafe {
+            crate::ffi::HLRBRep_Surface_is_above(self as *const Self, back, A as *const _, tolC)
+        }
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:64 - `HLRBRep_Surface::FirstUParameter()`
@@ -6667,16 +6700,6 @@ impl Surface {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_Surface_axis(self as *const Self)) }
     }
 }
-
-// ── Skipped symbols for Surface (2 total) ──
-// SKIPPED: **Source:** `HLRBRep_Surface.hxx`:48 - `HLRBRep_Surface::Projector`
-//   Reason: has unbindable types: param 'Proj': raw pointer (const HLRAlgo_Projector*)
-//   // pub fn projector(&mut self, Proj: /* const HLRAlgo_Projector* */);
-//
-// SKIPPED: **Source:** `HLRBRep_Surface.hxx`:60 - `HLRBRep_Surface::IsAbove`
-//   Reason: has unbindable types: param 'A': raw pointer (const HLRBRep_Curve*)
-//   // pub fn is_above(&self, back: bool, A: /* const HLRBRep_Curve* */, tolC: f64) -> bool;
-//
 
 // ========================
 // From HLRBRep_SurfaceTool.hxx

@@ -334,7 +334,7 @@ pub fn type_uses_unknown_class(ty: &Type, all_classes: &std::collections::HashSe
             }
             true
         }
-        Type::ConstRef(inner) | Type::MutRef(inner) => type_uses_unknown_class(inner, all_classes),
+        Type::ConstRef(inner) | Type::MutRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => type_uses_unknown_class(inner, all_classes),
         _ => false,
     }
 }
@@ -365,7 +365,7 @@ pub fn type_uses_unknown_handle(
             }
             true
         }
-        Type::ConstRef(inner) | Type::MutRef(inner) => {
+        Type::ConstRef(inner) | Type::MutRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
             type_uses_unknown_handle(inner, all_classes, handle_able_classes)
         }
         _ => false,

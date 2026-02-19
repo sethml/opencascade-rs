@@ -6814,6 +6814,67 @@ unsafe impl crate::CppDeletable for GlobOptFuncCQuadric {
 }
 
 impl GlobOptFuncCQuadric {
+    /// **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:32 - `Extrema_GlobOptFuncCQuadric::Extrema_GlobOptFuncCQuadric()`
+    /// Curve and surface should exist during all the lifetime of Extrema_GlobOptFuncCQuadric.
+    pub fn new_curveptr(C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GlobOptFuncCQuadric_ctor_curveptr(
+                C as *const _,
+            ))
+        }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:34 - `Extrema_GlobOptFuncCQuadric::Extrema_GlobOptFuncCQuadric()`
+    pub fn new_curveptr_real2(
+        C: &crate::adaptor3d::Curve,
+        theTf: f64,
+        theTl: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GlobOptFuncCQuadric_ctor_curveptr_real2(
+                C as *const _,
+                theTf,
+                theTl,
+            ))
+        }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:38 - `Extrema_GlobOptFuncCQuadric::Extrema_GlobOptFuncCQuadric()`
+    pub fn new_curveptr_surfaceptr(
+        C: &crate::adaptor3d::Curve,
+        S: &crate::adaptor3d::Surface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Extrema_GlobOptFuncCQuadric_ctor_curveptr_surfaceptr(
+                    C as *const _,
+                    S as *const _,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:40 - `Extrema_GlobOptFuncCQuadric::LoadQuad()`
+    pub fn load_quad(
+        &mut self,
+        S: &crate::adaptor3d::Surface,
+        theUf: f64,
+        theUl: f64,
+        theVf: f64,
+        theVl: f64,
+    ) {
+        unsafe {
+            crate::ffi::Extrema_GlobOptFuncCQuadric_load_quad(
+                self as *mut Self,
+                S as *const _,
+                theUf,
+                theUl,
+                theVf,
+                theVl,
+            )
+        }
+    }
+
     /// **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:46 - `Extrema_GlobOptFuncCQuadric::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::Extrema_GlobOptFuncCQuadric_nb_variables(self as *const Self) }
@@ -6845,24 +6906,7 @@ impl GlobOptFuncCQuadric {
     }
 }
 
-// ── Skipped symbols for GlobOptFuncCQuadric (6 total) ──
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:32 - `Extrema_GlobOptFuncCQuadric::Extrema_GlobOptFuncCQuadric`
-//   constructor: Curve and surface should exist during all the lifetime of Extrema_GlobOptFuncCQuadric.
-//   Reason: has unbindable types: param 'C': raw pointer (const Adaptor3d_Curve*)
-//   // pub fn new_curveptr(C: /* const Adaptor3d_Curve* */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:34 - `Extrema_GlobOptFuncCQuadric::Extrema_GlobOptFuncCQuadric`
-//   Reason: has unbindable types: param 'C': raw pointer (const Adaptor3d_Curve*)
-//   // pub fn new_curveptr_real2(C: /* const Adaptor3d_Curve* */, theTf: f64, theTl: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:38 - `Extrema_GlobOptFuncCQuadric::Extrema_GlobOptFuncCQuadric`
-//   Reason: has unbindable types: param 'C': raw pointer (const Adaptor3d_Curve*); param 'S': raw pointer (const Adaptor3d_Surface*)
-//   // pub fn new_curveptr_surfaceptr(C: /* const Adaptor3d_Curve* */, S: /* const Adaptor3d_Surface* */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:40 - `Extrema_GlobOptFuncCQuadric::LoadQuad`
-//   Reason: has unbindable types: param 'S': raw pointer (const Adaptor3d_Surface*)
-//   // pub fn load_quad(&mut self, S: /* const Adaptor3d_Surface* */, theUf: f64, theUl: f64, theVf: f64, theVl: f64);
-//
+// ── Skipped symbols for GlobOptFuncCQuadric (2 total) ──
 // SKIPPED: **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:48 - `Extrema_GlobOptFuncCQuadric::Value`
 //   Reason: param 'theX' uses unknown type 'const math_Vector&'
 //   // pub fn value(&mut self, theX: &Vector, theF: &mut f64) -> bool;
@@ -6889,6 +6933,20 @@ unsafe impl crate::CppDeletable for GlobOptFuncCS {
 }
 
 impl GlobOptFuncCS {
+    /// **Source:** `Extrema_GlobOptFuncCS.hxx`:30 - `Extrema_GlobOptFuncCS::Extrema_GlobOptFuncCS()`
+    /// Curve and surface should exist during all the lifetime of Extrema_GlobOptFuncCS.
+    pub fn new_curveptr_surfaceptr(
+        C: &crate::adaptor3d::Curve,
+        S: &crate::adaptor3d::Surface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GlobOptFuncCS_ctor_curveptr_surfaceptr(
+                C as *const _,
+                S as *const _,
+            ))
+        }
+    }
+
     /// **Source:** `Extrema_GlobOptFuncCS.hxx`:32 - `Extrema_GlobOptFuncCS::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::Extrema_GlobOptFuncCS_nb_variables(self as *const Self) }
@@ -6960,12 +7018,7 @@ impl GlobOptFuncCS {
     }
 }
 
-// ── Skipped symbols for GlobOptFuncCS (5 total) ──
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCS.hxx`:30 - `Extrema_GlobOptFuncCS::Extrema_GlobOptFuncCS`
-//   constructor: Curve and surface should exist during all the lifetime of Extrema_GlobOptFuncCS.
-//   Reason: has unbindable types: param 'C': raw pointer (const Adaptor3d_Curve*); param 'S': raw pointer (const Adaptor3d_Surface*)
-//   // pub fn new_curveptr_surfaceptr(C: /* const Adaptor3d_Curve* */, S: /* const Adaptor3d_Surface* */) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for GlobOptFuncCS (4 total) ──
 // SKIPPED: **Source:** `Extrema_GlobOptFuncCS.hxx`:34 - `Extrema_GlobOptFuncCS::Value`
 //   Reason: param 'theX' uses unknown type 'const math_Vector&'
 //   // pub fn value(&mut self, theX: &Vector, theF: &mut f64) -> bool;
@@ -6999,6 +7052,62 @@ unsafe impl crate::CppDeletable for GlobOptFuncConicS {
 }
 
 impl GlobOptFuncConicS {
+    /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:33 - `Extrema_GlobOptFuncConicS::Extrema_GlobOptFuncConicS()`
+    /// Curve and surface should exist during all the lifetime of Extrema_GlobOptFuncConicS.
+    pub fn new_curveptr_surfaceptr(
+        C: &crate::adaptor3d::Curve,
+        S: &crate::adaptor3d::Surface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Extrema_GlobOptFuncConicS_ctor_curveptr_surfaceptr(
+                    C as *const _,
+                    S as *const _,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:35 - `Extrema_GlobOptFuncConicS::Extrema_GlobOptFuncConicS()`
+    pub fn new_surfaceptr(S: &crate::adaptor3d::Surface) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GlobOptFuncConicS_ctor_surfaceptr(
+                S as *const _,
+            ))
+        }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:37 - `Extrema_GlobOptFuncConicS::Extrema_GlobOptFuncConicS()`
+    pub fn new_surfaceptr_real4(
+        S: &crate::adaptor3d::Surface,
+        theUf: f64,
+        theUl: f64,
+        theVf: f64,
+        theVl: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GlobOptFuncConicS_ctor_surfaceptr_real4(
+                S as *const _,
+                theUf,
+                theUl,
+                theVf,
+                theVl,
+            ))
+        }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:43 - `Extrema_GlobOptFuncConicS::LoadConic()`
+    pub fn load_conic(&mut self, S: &crate::adaptor3d::Curve, theTf: f64, theTl: f64) {
+        unsafe {
+            crate::ffi::Extrema_GlobOptFuncConicS_load_conic(
+                self as *mut Self,
+                S as *const _,
+                theTf,
+                theTl,
+            )
+        }
+    }
+
     /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:47 - `Extrema_GlobOptFuncConicS::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::Extrema_GlobOptFuncConicS_nb_variables(self as *const Self) }
@@ -7028,24 +7137,7 @@ impl GlobOptFuncConicS {
     }
 }
 
-// ── Skipped symbols for GlobOptFuncConicS (6 total) ──
-// SKIPPED: **Source:** `Extrema_GlobOptFuncConicS.hxx`:33 - `Extrema_GlobOptFuncConicS::Extrema_GlobOptFuncConicS`
-//   constructor: Curve and surface should exist during all the lifetime of Extrema_GlobOptFuncConicS.
-//   Reason: has unbindable types: param 'C': raw pointer (const Adaptor3d_Curve*); param 'S': raw pointer (const Adaptor3d_Surface*)
-//   // pub fn new_curveptr_surfaceptr(C: /* const Adaptor3d_Curve* */, S: /* const Adaptor3d_Surface* */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Extrema_GlobOptFuncConicS.hxx`:35 - `Extrema_GlobOptFuncConicS::Extrema_GlobOptFuncConicS`
-//   Reason: has unbindable types: param 'S': raw pointer (const Adaptor3d_Surface*)
-//   // pub fn new_surfaceptr(S: /* const Adaptor3d_Surface* */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Extrema_GlobOptFuncConicS.hxx`:37 - `Extrema_GlobOptFuncConicS::Extrema_GlobOptFuncConicS`
-//   Reason: has unbindable types: param 'S': raw pointer (const Adaptor3d_Surface*)
-//   // pub fn new_surfaceptr_real4(S: /* const Adaptor3d_Surface* */, theUf: f64, theUl: f64, theVf: f64, theVl: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Extrema_GlobOptFuncConicS.hxx`:43 - `Extrema_GlobOptFuncConicS::LoadConic`
-//   Reason: has unbindable types: param 'S': raw pointer (const Adaptor3d_Curve*)
-//   // pub fn load_conic(&mut self, S: /* const Adaptor3d_Curve* */, theTf: f64, theTl: f64);
-//
+// ── Skipped symbols for GlobOptFuncConicS (2 total) ──
 // SKIPPED: **Source:** `Extrema_GlobOptFuncConicS.hxx`:49 - `Extrema_GlobOptFuncConicS::Value`
 //   Reason: param 'theX' uses unknown type 'const math_Vector&'
 //   // pub fn value(&mut self, theX: &Vector, theF: &mut f64) -> bool;

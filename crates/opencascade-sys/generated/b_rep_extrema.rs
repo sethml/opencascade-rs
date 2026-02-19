@@ -1013,6 +1013,17 @@ impl OverlapTool {
         unsafe { crate::ffi::BRepExtrema_OverlapTool_mark_dirty(self as *mut Self) }
     }
 
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:83 - `BRepExtrema_OverlapTool::SetElementFilter()`
+    /// Sets filtering tool for preliminary checking pairs of mesh elements.
+    pub fn set_element_filter(&mut self, theFilter: &mut ElementFilter) {
+        unsafe {
+            crate::ffi::BRepExtrema_OverlapTool_set_element_filter(
+                self as *mut Self,
+                theFilter as *mut _,
+            )
+        }
+    }
+
     /// **Source:** `BRepExtrema_OverlapTool.hxx`:87 - `BRepExtrema_OverlapTool::RejectNode()`
     /// @name Reject/Accept implementations
     /// Defines the rules for node rejection by bounding box
@@ -1043,7 +1054,7 @@ impl OverlapTool {
     }
 }
 
-// ── Skipped symbols for OverlapTool (5 total) ──
+// ── Skipped symbols for OverlapTool (4 total) ──
 // SKIPPED: **Source:** `BRepExtrema_OverlapTool.hxx`:45 - `BRepExtrema_OverlapTool::BRepExtrema_OverlapTool`
 //   constructor: Creates new overlap tool for the given element sets.
 //   Reason: param 'theSet1' uses unknown Handle type
@@ -1063,11 +1074,6 @@ impl OverlapTool {
 //   method: Returns set of overlapped sub-shapes of 2nd shape (currently only faces are detected).
 //   Reason: return type 'const BRepExtrema_MapOfIntegerPackedMapOfInteger&' is unknown
 //   // pub fn overlap_sub_shapes2(&self) -> &MapOfIntegerPackedMapOfInteger;
-//
-// SKIPPED: **Source:** `BRepExtrema_OverlapTool.hxx`:83 - `BRepExtrema_OverlapTool::SetElementFilter`
-//   method: Sets filtering tool for preliminary checking pairs of mesh elements.
-//   Reason: has unbindable types: param 'theFilter': raw pointer (BRepExtrema_ElementFilter*)
-//   // pub fn set_element_filter(&mut self, theFilter: /* BRepExtrema_ElementFilter* */);
 //
 
 // ========================

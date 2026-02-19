@@ -251,7 +251,7 @@ impl HandleRWPlyCafWriter {
 //   method: Write PLY file and associated MTL material file.
 //   method: Triangulation data should be precomputed within shapes!
 //   method: @param[in] theDocument    input document
-//   Reason: has unbindable types: param 'theLabelFilter': raw pointer (const TColStd_MapOfAsciiString*)
+//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
 //   // pub fn perform(&mut self, theDocument: &HandleDocument, theRootLabels: &LabelSequence, theLabelFilter: /* const TColStd_MapOfAsciiString* */, theFileInfo: &IndexedDataMapOfStringString, theProgress: &ProgressRange) -> bool;
 //
 // SKIPPED: **Source:** `RWPly_CafWriter.hxx`:135 - `RWPly_CafWriter::Perform`

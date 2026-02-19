@@ -176,6 +176,17 @@ obb.re_build(&points, Some(&tolerances), true);
 obb.re_build(&points, None, false);  // pass NULL for tolerances
 ```
 
+### Non-Nullable Class Pointer Parameters
+
+Methods with non-nullable `const T*` or `T*` parameters (where `T` is a known class type) are bound as `&T` or `&mut T` in Rust. The C++ wrapper passes the raw pointer through. This is safe because these parameters are documented as non-nullable in OCCT. Primitive pointer types (`int*`, `double*`) are NOT bound this way since they typically represent C-style arrays.
+
+```rust
+use opencascade_sys::adaptor3d::Surface;
+
+// const Adaptor3d_Surface* in C++ → &Surface in Rust
+fn example(surface: &Surface) { /* ... */ }
+```
+
 ### Collection Iterators
 
 OCCT collection types (NCollection_List, NCollection_Sequence, NCollection_IndexedMap, etc.) get Rust iterator support. Each collection has a C++ iterator wrapper struct and Rust `Iterator` trait impl.
@@ -318,7 +329,7 @@ See `crates/opencascade-sys/manual/` and the comments in `bindings.toml` for the
 
 ## Skipped Symbols
 
-The binding generator skips ~2,332 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
+The binding generator skips ~2,259 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
 
 - **Source location** (header file, line number, C++ symbol name)
 - **Documentation comment** from the C++ header (first 3 lines)
@@ -339,7 +350,7 @@ Example from `gp.rs`:
 |------:|----:|----------|-------------|
 | 1,078 | 46.2% | **Unknown/unresolved type** | Parameter or return type not in the binding set (`math_Vector`, `Standard_SStream`, etc.) |
 | 546 | 23.4% | **Stream type** | C++ `std::istream`/`std::ostream` (`Standard_IStream`/`Standard_OStream`) — no Rust equivalent |
-| 250 | 10.7% | **Raw pointer** | `T*`/`const T*` params or returns (non-nullable, non-defaulted) |
+| 178 | 7.9% | **Raw pointer** | `T*`/`const T*` returns or primitive pointer params (`int*`, `double*`) — class pointer params are now bound as `&T`/`&mut T` |
 | 198 | 8.5% | **Void pointer** | `Standard_Address` (typedef for `void*`) — cannot be safely expressed in Rust FFI |
 | 76 | 3.3% | **Unresolved template/nested type** | Template instantiations or nested types that can't be resolved (`NCollection_DataMap<...>`, `std::pair<...>`, `math_VectorBase<>`, etc.) |
 | 53 | 2.3% | **Ambiguous lifetimes** | `&mut` return with reference params — Rust lifetime inference is ambiguous |
@@ -353,6 +364,7 @@ Example from `gp.rs`:
 | 2 | 0.1% | **Excluded by bindings.toml** | Explicitly excluded in config (e.g., ambiguous overload workarounds) |
 | 1 | 0.0% | **Not CppDeletable** | Return type class has no destructor in the binding set — nearly eliminated by auto-generating destructors for extra typedef types |
 | 1 | 0.0% | **Ambiguous overload** | C++ overload that would produce identical wrapper signatures |
+| 1 | 0.0% | **Class pointer to nested type** | `const T*` param where `T` is a nested class type without its own FFI declaration |
 
 ### Most Common Unknown Types
 

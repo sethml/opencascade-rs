@@ -844,7 +844,7 @@ impl HandleBRepBuilderAPIFastSewing {
 // ── Skipped symbols for FastSewing (1 total) ──
 // SKIPPED: **Source:** `BRepBuilderAPI_FastSewing.hxx`:88 - `BRepBuilderAPI_FastSewing::GetStatuses`
 //   method: Returns list of statuses. Print message if theOS != 0
-//   Reason: nullable param 'theOS' inner type is unknown
+//   Reason: param 'theOS' uses unknown type 'Standard_OStream*'
 //   // pub fn get_statuses(&mut self, theOS: /* Standard_OStream* */) -> u32;
 //
 

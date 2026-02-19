@@ -262,7 +262,7 @@ impl BasicElement {
 //   // pub fn get_last_child(&self) -> /* const LDOM_BasicNode* */;
 //
 // SKIPPED: **Source:** `LDOM_BasicElement.hxx`:66 - `LDOM_BasicElement::GetAttribute`
-//   Reason: has unbindable types: param 'aName': unresolved template/nested type (const LDOMBasicString&); param 'aLastCh': raw pointer (const LDOM_BasicNode*)
+//   Reason: has unbindable types: param 'aName': unresolved template/nested type (const LDOMBasicString&)
 //   // pub fn get_attribute(&self, aName: /* const LDOMBasicString& */, aLastCh: /* const LDOM_BasicNode* */) -> &BasicAttribute;
 //
 
