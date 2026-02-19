@@ -708,6 +708,13 @@ impl AssemblyGraph {
         unsafe { &*(crate::ffi::XCAFDoc_AssemblyGraph_get_node(self as *const Self, theNode)) }
     }
 
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:135 - `XCAFDoc_AssemblyGraph::GetNodes()`
+    /// \brief Returns the unordered set of graph nodes.
+    /// \return graph nodes.
+    pub fn get_nodes(&self) -> &crate::ffi::TDF_LabelIndexedMap {
+        unsafe { &*(crate::ffi::XCAFDoc_AssemblyGraph_get_nodes(self as *const Self)) }
+    }
+
     /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:139 - `XCAFDoc_AssemblyGraph::NbNodes()`
     /// \brief Returns the number of graph nodes.
     /// \return number of graph nodes.
@@ -824,13 +831,7 @@ impl HandleXCAFDocAssemblyGraph {
     }
 }
 
-// ── Skipped symbols for AssemblyGraph (2 total) ──
-// SKIPPED: **Source:** `XCAFDoc_AssemblyGraph.hxx`:135 - `XCAFDoc_AssemblyGraph::GetNodes`
-//   method: \brief Returns the unordered set of graph nodes.
-//   method: \return graph nodes.
-//   Reason: return type 'const TDF_LabelIndexedMap&' is unknown
-//   // pub fn get_nodes(&self) -> &LabelIndexedMap;
-//
+// ── Skipped symbols for AssemblyGraph (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_AssemblyGraph.hxx`:143 - `XCAFDoc_AssemblyGraph::GetLinks`
 //   method: \brief Returns the collection of graph links in the form of adjacency matrix.
 //   method: \return graph links.
@@ -7377,6 +7378,72 @@ impl Editor {
         }
     }
 
+    /// **Source:** `XCAFDoc_Editor.hxx`:80 - `XCAFDoc_Editor::CloneShapeLabel()`
+    /// Copies shapes label with keeping of shape structure (recursively)
+    /// @param[in] theSrcLabel original label to copy from
+    /// @param[in] theSrcShapeTool shape tool to get
+    /// @param[in] theDstShapeTool shape tool to set
+    /// @param[out] theMap relating map of the original shapes label and labels created from them
+    /// @return result shape label
+    pub fn clone_shape_label(
+        theSrcLabel: &crate::tdf::Label,
+        theSrcShapeTool: &crate::ffi::HandleXCAFDocShapeTool,
+        theDstShapeTool: &crate::ffi::HandleXCAFDocShapeTool,
+        theMap: &mut crate::ffi::TDF_LabelDataMap,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Editor_clone_shape_label(
+                theSrcLabel,
+                theSrcShapeTool,
+                theDstShapeTool,
+                theMap,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_Editor.hxx`:110 - `XCAFDoc_Editor::GetParentShapeLabels()`
+    /// Gets shape labels that has down relation with the input label.
+    /// @param[in] theLabel input label
+    /// @param[out] theRelatedLabels output labels
+    pub fn get_parent_shape_labels(
+        theLabel: &crate::tdf::Label,
+        theRelatedLabels: &mut crate::ffi::TDF_LabelMap,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_Editor_get_parent_shape_labels(theLabel, theRelatedLabels) }
+    }
+
+    /// **Source:** `XCAFDoc_Editor.hxx`:116 - `XCAFDoc_Editor::GetChildShapeLabels()`
+    /// Gets shape labels that has up relation with the input label.
+    /// @param[in] theLabel input label
+    /// @param[out] theRelatedLabels output labels
+    pub fn get_child_shape_labels(
+        theLabel: &crate::tdf::Label,
+        theRelatedLabels: &mut crate::ffi::TDF_LabelMap,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_Editor_get_child_shape_labels(theLabel, theRelatedLabels) }
+    }
+
+    /// **Source:** `XCAFDoc_Editor.hxx`:132 - `XCAFDoc_Editor::FilterShapeTree()`
+    /// Filters original shape tree with keeping structure.
+    /// The result will include the full label hierarchy lower then input labels.
+    /// Any higher hierarchy labels will be filtered to keep only necessary labels.
+    /// All not related shape labels with input will be cleared (all attributes will be removed).
+    ///
+    /// The result impact directly into original document and existed shape labels.
+    /// Attributes related to removed shape can became invalide.
+    /// For example, GDT with relation on removed shape label(s) and without
+    /// attachment point(s) became invalid for visualization.
+    ///
+    /// @param[in] theShapeTool shape tool to extract from
+    /// @param[in] theLabelsToKeep labels to keep
+    /// @return true if the tree was filtered successfully.
+    pub fn filter_shape_tree(
+        theShapeTool: &crate::ffi::HandleXCAFDocShapeTool,
+        theLabelsToKeep: &crate::ffi::TDF_LabelMap,
+    ) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Editor_filter_shape_tree(theShapeTool, theLabelsToKeep) }
+    }
+
     /// **Source:** `XCAFDoc_Editor.hxx`:148 - `XCAFDoc_Editor::RescaleGeometry()`
     /// Applies geometrical scaling to the following assembly components:
     /// - part geometry
@@ -7402,41 +7469,13 @@ impl Editor {
     }
 }
 
-// ── Skipped symbols for Editor (5 total) ──
-// SKIPPED: **Source:** `XCAFDoc_Editor.hxx`:80 - `XCAFDoc_Editor::CloneShapeLabel`
-//   static_method: Copies shapes label with keeping of shape structure (recursively)
-//   static_method: @param[in] theSrcLabel original label to copy from
-//   static_method: @param[in] theSrcShapeTool shape tool to get
-//   Reason: param 'theMap' uses unknown type 'TDF_LabelDataMap&'
-//   // pub fn clone_shape_label(theSrcLabel: &Label, theSrcShapeTool: &HandleShapeTool, theDstShapeTool: &HandleShapeTool, theMap: &mut LabelDataMap) -> OwnedPtr<TDF_Label>;
-//
+// ── Skipped symbols for Editor (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_Editor.hxx`:97 - `XCAFDoc_Editor::CloneMetaData`
 //   static_method: Copies metadata contains from the source label to the destination label.
 //   static_method: Protected against creating a new label for non-existent tools
 //   static_method: @param[in] theSrcLabel original label to copy from
 //   Reason: has unbindable types: param 'theVisMatMap': raw pointer (int*)
 //   // pub fn clone_meta_data(theSrcLabel: &Label, theDstLabel: &Label, theVisMatMap: /* int* */, theToCopyColor: bool, theToCopyLayer: bool, theToCopyMaterial: bool, theToCopyVisMaterial: bool, theToCopyAttributes: bool);
-//
-// SKIPPED: **Source:** `XCAFDoc_Editor.hxx`:110 - `XCAFDoc_Editor::GetParentShapeLabels`
-//   static_method: Gets shape labels that has down relation with the input label.
-//   static_method: @param[in] theLabel input label
-//   static_method: @param[out] theRelatedLabels output labels
-//   Reason: param 'theRelatedLabels' uses unknown type 'TDF_LabelMap&'
-//   // pub fn get_parent_shape_labels(theLabel: &Label, theRelatedLabels: &mut LabelMap);
-//
-// SKIPPED: **Source:** `XCAFDoc_Editor.hxx`:116 - `XCAFDoc_Editor::GetChildShapeLabels`
-//   static_method: Gets shape labels that has up relation with the input label.
-//   static_method: @param[in] theLabel input label
-//   static_method: @param[out] theRelatedLabels output labels
-//   Reason: param 'theRelatedLabels' uses unknown type 'TDF_LabelMap&'
-//   // pub fn get_child_shape_labels(theLabel: &Label, theRelatedLabels: &mut LabelMap);
-//
-// SKIPPED: **Source:** `XCAFDoc_Editor.hxx`:132 - `XCAFDoc_Editor::FilterShapeTree`
-//   static_method: Filters original shape tree with keeping structure.
-//   static_method: The result will include the full label hierarchy lower then input labels.
-//   static_method: Any higher hierarchy labels will be filtered to keep only necessary labels.
-//   Reason: param 'theLabelsToKeep' uses unknown type 'const TDF_LabelMap&'
-//   // pub fn filter_shape_tree(theShapeTool: &HandleShapeTool, theLabelsToKeep: &LabelMap) -> bool;
 //
 
 // ========================

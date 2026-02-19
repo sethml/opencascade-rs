@@ -1352,6 +1352,13 @@ impl Document {
         unsafe { crate::ffi::TDocStd_Document_purge_modified(self as *mut Self) }
     }
 
+    /// **Source:** `TDocStd_Document.hxx`:113 - `TDocStd_Document::GetModified()`
+    /// Returns the labels which have been modified in
+    /// this document.
+    pub fn get_modified(&self) -> &crate::ffi::TDF_LabelMap {
+        unsafe { &*(crate::ffi::TDocStd_Document_get_modified(self as *const Self)) }
+    }
+
     /// **Source:** `TDocStd_Document.hxx`:116 - `TDocStd_Document::NewCommand()`
     /// Launches a new command. This command may be undone.
     pub fn new_command(&mut self) {
@@ -2174,13 +2181,7 @@ impl HandleTDocStdDocument {
     }
 }
 
-// ── Skipped symbols for Document (2 total) ──
-// SKIPPED: **Source:** `TDocStd_Document.hxx`:113 - `TDocStd_Document::GetModified`
-//   method: Returns the labels which have been modified in
-//   method: this document.
-//   Reason: return type 'const TDF_LabelMap&' is unknown
-//   // pub fn get_modified(&self) -> &LabelMap;
-//
+// ── Skipped symbols for Document (1 total) ──
 // SKIPPED: **Source:** `TDocStd_Document.hxx`:216 - `TDocStd_Document::Update`
 //   method: This method Update   will be called
 //   method: to signal the end   of the modified references list.
@@ -2230,6 +2231,12 @@ impl Modified {
     /// remove  <L> as modified
     pub fn remove_label(&mut self, L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TDocStd_Modified_remove_label(self as *mut Self, L) }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:72 - `TDocStd_Modified::Get()`
+    /// returns modified label map
+    pub fn get(&self) -> &crate::ffi::TDF_LabelMap {
+        unsafe { &*(crate::ffi::TDocStd_Modified_get(self as *const Self)) }
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:74 - `TDocStd_Modified::ID()`
@@ -2283,6 +2290,12 @@ impl Modified {
     /// **Source:** `TDocStd_Modified.hxx`:47 - `TDocStd_Modified::Contains()`
     pub fn contains(alabel: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TDocStd_Modified_contains(alabel) }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:50 - `TDocStd_Modified::Get()`
+    /// if <IsEmpty> raise an exception.
+    pub fn get_label(access: &crate::tdf::Label) -> &'static crate::ffi::TDF_LabelMap {
+        unsafe { &*(crate::ffi::TDocStd_Modified_get_label(access)) }
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:53 - `TDocStd_Modified::Clear()`
@@ -2623,20 +2636,10 @@ impl HandleTDocStdModified {
     }
 }
 
-// ── Skipped symbols for Modified (3 total) ──
-// SKIPPED: **Source:** `TDocStd_Modified.hxx`:72 - `TDocStd_Modified::Get`
-//   method: returns modified label map
-//   Reason: return type 'const TDF_LabelMap&' is unknown
-//   // pub fn get(&self) -> &LabelMap;
-//
+// ── Skipped symbols for Modified (1 total) ──
 // SKIPPED: **Source:** `TDocStd_Modified.hxx`:83 - `TDocStd_Modified::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDocStd_Modified.hxx`:50 - `TDocStd_Modified::Get`
-//   static_method: if <IsEmpty> raise an exception.
-//   Reason: return type 'const TDF_LabelMap&' is unknown
-//   // pub fn get(access: &Label) -> &LabelMap;
 //
 
 // ========================

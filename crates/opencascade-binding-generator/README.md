@@ -360,7 +360,7 @@ The "unknown type" categories (55% of all skips) are dominated by a few types:
 | 89 | `Standard_SStream` | Map `Standard_SStream` (`std::stringstream`) — mainly used in `Raise()` methods on exception classes |
 | 59 | `Interface_EntityIterator` | Add `Interface_EntityIterator` — used in STEP/IGES model iteration |
 | 31 | `Standard_Character` | Map `Standard_Character` (typedef for `char`) as `i8`/`u8` |
-| 27 | `TDF_LabelMap` | Add `TDF_LabelMap` — used by document framework label iteration |
+| 27 | `TDF_LabelMap` | ~~Fixed~~ — now detected via header text scan fallback |
 | 26 | `Standard_ExtString` | Map `Standard_ExtString` (wide string) — C++ `wchar_t*` |
 | 23 | `Handle(Interface_Protocol)` | Add `Interface_Protocol` — used in STEP/IGES protocol dispatch |
 | 22 | `Handle(Transfer_TransientProcess)` | Add `Transfer_TransientProcess` — important for STEP/IGES read/write sessions |
@@ -373,7 +373,7 @@ Most skipped symbols are in internal, low-use, or specialized modules. However, 
 
 **Data Exchange (189 symbols)** — STEP/IGES controllers (`STEPControl_*`, `IGESControl_*`, `XSControl_*`) have many methods skipped because they reference `Handle(Transfer_TransientProcess)`, `Handle(Interface_Protocol)`, and `Interface_EntityIterator`. The core `Read()`/`Write()` operations are bound, but advanced session management and entity traversal are not. **Unblock by adding**: `Transfer_TransientProcess`, `Interface_Protocol`, `Interface_EntityIterator`.
 
-**Document Framework (215 symbols)** — `TDocStd_*`, `TDF_*`, and `XCAFDoc_*` classes are heavily affected by `TDF_LabelMap` and `TDF_AttributeMap` being unknown types. Core label/attribute operations work, but document open/save, label iteration filters, and delta tracking are affected. **Unblock by adding**: `TDF_LabelMap`, `TDF_AttributeMap`.
+**Document Framework (57 symbols)** — `TDocStd_*`, `TDF_*`, and `XCAFDoc_*` classes previously had 215 skipped symbols due to `TDF_LabelMap` and `TDF_AttributeMap` being unknown types. These are now resolved via the header text scan fallback for NCollection typedefs that clang misresolves. Remaining skips are mostly stream types (`Standard_OStream`) and other unrelated issues.
 
 **Shape Meshing (91 symbols)** — `BRepMesh_*` classes reference `IMeshData_*` handle types that aren't in the binding set. Basic meshing APIs work but advanced mesh customization is unavailable. **Unblock by adding**: `IMeshData_Edge`, `IMeshData_Face`, `NCollection_*` allocator types.
 

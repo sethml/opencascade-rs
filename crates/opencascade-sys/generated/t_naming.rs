@@ -1260,6 +1260,25 @@ impl Localizer {
         }
     }
 
+    /// **Source:** `TNaming_Localizer.hxx`:65 - `TNaming_Localizer::Backward()`
+    pub fn backward(
+        &mut self,
+        NS: &crate::ffi::HandleTNamingNamedShape,
+        S: &crate::topo_ds::Shape,
+        Primitives: &mut crate::ffi::TNaming_MapOfNamedShape,
+        ValidShapes: &mut crate::ffi::TopTools_MapOfShape,
+    ) {
+        unsafe {
+            crate::ffi::TNaming_Localizer_backward(
+                self as *mut Self,
+                NS,
+                S,
+                Primitives,
+                ValidShapes,
+            )
+        }
+    }
+
     /// **Source:** `TNaming_Localizer.hxx`:70 - `TNaming_Localizer::FindNeighbourg()`
     pub fn find_neighbourg(
         &mut self,
@@ -1296,12 +1315,6 @@ impl Localizer {
         unsafe { crate::ffi::TNaming_Localizer_find_shape_context(NS, theS, theSC) }
     }
 }
-
-// ── Skipped symbols for Localizer (1 total) ──
-// SKIPPED: **Source:** `TNaming_Localizer.hxx`:65 - `TNaming_Localizer::Backward`
-//   Reason: param 'Primitives' uses unknown type 'TNaming_MapOfNamedShape&'
-//   // pub fn backward(&mut self, NS: &HandleNamedShape, S: &Shape, Primitives: &mut MapOfNamedShape, ValidShapes: &mut MapOfShape);
-//
 
 // ========================
 // From TNaming_Name.hxx
@@ -1433,17 +1446,16 @@ impl Name {
         }
     }
 
+    /// **Source:** `TNaming_Name.hxx`:75 - `TNaming_Name::Solve()`
+    pub fn solve(&self, aLab: &crate::tdf::Label, Valid: &crate::ffi::TDF_LabelMap) -> bool {
+        unsafe { crate::ffi::TNaming_Name_solve(self as *const Self, aLab, Valid) }
+    }
+
     /// **Source:** `TNaming_Name.hxx`:77 - `TNaming_Name::Paste()`
     pub fn paste(&self, into: &mut Name, RT: &crate::ffi::HandleTDFRelocationTable) {
         unsafe { crate::ffi::TNaming_Name_paste(self as *const Self, into, RT) }
     }
 }
-
-// ── Skipped symbols for Name (1 total) ──
-// SKIPPED: **Source:** `TNaming_Name.hxx`:75 - `TNaming_Name::Solve`
-//   Reason: param 'Valid' uses unknown type 'const TDF_LabelMap&'
-//   // pub fn solve(&self, aLab: &Label, Valid: &LabelMap) -> bool;
-//
 
 // ========================
 // From TNaming_NamedShape.hxx
@@ -1971,6 +1983,20 @@ impl Naming {
         unsafe { &mut *(crate::ffi::TNaming_Naming_change_name(self as *mut Self)) }
     }
 
+    /// **Source:** `TNaming_Naming.hxx`:82 - `TNaming_Naming::Regenerate()`
+    /// regenerate only the Name associated to me
+    pub fn regenerate(&mut self, scope: &mut crate::ffi::TDF_LabelMap) -> bool {
+        unsafe { crate::ffi::TNaming_Naming_regenerate(self as *mut Self, scope) }
+    }
+
+    /// **Source:** `TNaming_Naming.hxx`:87 - `TNaming_Naming::Solve()`
+    /// Regenerate recursively the  whole name with scope.  If
+    /// scope  is empty it  means that  all the labels  of the
+    /// framework are valid.
+    pub fn solve(&mut self, scope: &mut crate::ffi::TDF_LabelMap) -> bool {
+        unsafe { crate::ffi::TNaming_Naming_solve(self as *mut Self, scope) }
+    }
+
     /// **Source:** `TNaming_Naming.hxx`:91 - `TNaming_Naming::ID()`
     /// Deferred methods from TDF_Attribute
     /// ===================================
@@ -2367,19 +2393,7 @@ impl HandleTNamingNaming {
     }
 }
 
-// ── Skipped symbols for Naming (4 total) ──
-// SKIPPED: **Source:** `TNaming_Naming.hxx`:82 - `TNaming_Naming::Regenerate`
-//   method: regenerate only the Name associated to me
-//   Reason: param 'scope' uses unknown type 'TDF_LabelMap&'
-//   // pub fn regenerate(&mut self, scope: &mut LabelMap) -> bool;
-//
-// SKIPPED: **Source:** `TNaming_Naming.hxx`:87 - `TNaming_Naming::Solve`
-//   method: Regenerate recursively the  whole name with scope.  If
-//   method: scope  is empty it  means that  all the labels  of the
-//   method: framework are valid.
-//   Reason: param 'scope' uses unknown type 'TDF_LabelMap&'
-//   // pub fn solve(&mut self, scope: &mut LabelMap) -> bool;
-//
+// ── Skipped symbols for Naming (2 total) ──
 // SKIPPED: **Source:** `TNaming_Naming.hxx`:103 - `TNaming_Naming::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
@@ -2408,21 +2422,38 @@ impl NamingTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_NamingTool_ctor()) }
     }
-}
 
-// ── Skipped symbols for NamingTool (3 total) ──
-// SKIPPED: **Source:** `TNaming_NamingTool.hxx`:34 - `TNaming_NamingTool::CurrentShape`
-//   Reason: param 'Valid' uses unknown type 'const TDF_LabelMap&'
-//   // pub fn current_shape(Valid: &LabelMap, Forbiden: &LabelMap, NS: &HandleNamedShape, MS: &mut IndexedMapOfShape);
-//
-// SKIPPED: **Source:** `TNaming_NamingTool.hxx`:39 - `TNaming_NamingTool::CurrentShapeFromShape`
-//   Reason: param 'Valid' uses unknown type 'const TDF_LabelMap&'
-//   // pub fn current_shape_from_shape(Valid: &LabelMap, Forbiden: &LabelMap, Acces: &Label, S: &Shape, MS: &mut IndexedMapOfShape);
-//
-// SKIPPED: **Source:** `TNaming_NamingTool.hxx`:45 - `TNaming_NamingTool::BuildDescendants`
-//   Reason: param 'Labels' uses unknown type 'TDF_LabelMap&'
-//   // pub fn build_descendants(NS: &HandleNamedShape, Labels: &mut LabelMap);
-//
+    /// **Source:** `TNaming_NamingTool.hxx`:34 - `TNaming_NamingTool::CurrentShape()`
+    pub fn current_shape(
+        Valid: &crate::ffi::TDF_LabelMap,
+        Forbiden: &crate::ffi::TDF_LabelMap,
+        NS: &crate::ffi::HandleTNamingNamedShape,
+        MS: &mut crate::ffi::TopTools_IndexedMapOfShape,
+    ) {
+        unsafe { crate::ffi::TNaming_NamingTool_current_shape(Valid, Forbiden, NS, MS) }
+    }
+
+    /// **Source:** `TNaming_NamingTool.hxx`:39 - `TNaming_NamingTool::CurrentShapeFromShape()`
+    pub fn current_shape_from_shape(
+        Valid: &crate::ffi::TDF_LabelMap,
+        Forbiden: &crate::ffi::TDF_LabelMap,
+        Acces: &crate::tdf::Label,
+        S: &crate::topo_ds::Shape,
+        MS: &mut crate::ffi::TopTools_IndexedMapOfShape,
+    ) {
+        unsafe {
+            crate::ffi::TNaming_NamingTool_current_shape_from_shape(Valid, Forbiden, Acces, S, MS)
+        }
+    }
+
+    /// **Source:** `TNaming_NamingTool.hxx`:45 - `TNaming_NamingTool::BuildDescendants()`
+    pub fn build_descendants(
+        NS: &crate::ffi::HandleTNamingNamedShape,
+        Labels: &mut crate::ffi::TDF_LabelMap,
+    ) {
+        unsafe { crate::ffi::TNaming_NamingTool_build_descendants(NS, Labels) }
+    }
+}
 
 // ========================
 // From TNaming_NewShapeIterator.hxx
@@ -2765,6 +2796,12 @@ impl Scope {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_Scope_ctor_bool(WithValid)) }
     }
 
+    /// **Source:** `TNaming_Scope.hxx`:44 - `TNaming_Scope::TNaming_Scope()`
+    /// create a scope with a map. WithValid = TRUE.
+    pub fn new_labelmap(valid: &mut crate::ffi::TDF_LabelMap) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_Scope_ctor_labelmap(valid)) }
+    }
+
     /// **Source:** `TNaming_Scope.hxx`:46 - `TNaming_Scope::WithValid()`
     pub fn with_valid(&self) -> bool {
         unsafe { crate::ffi::TNaming_Scope_with_valid(self as *const Self) }
@@ -2805,6 +2842,16 @@ impl Scope {
         unsafe { crate::ffi::TNaming_Scope_is_valid(self as *const Self, L) }
     }
 
+    /// **Source:** `TNaming_Scope.hxx`:64 - `TNaming_Scope::GetValid()`
+    pub fn get_valid(&self) -> &crate::ffi::TDF_LabelMap {
+        unsafe { &*(crate::ffi::TNaming_Scope_get_valid(self as *const Self)) }
+    }
+
+    /// **Source:** `TNaming_Scope.hxx`:66 - `TNaming_Scope::ChangeValid()`
+    pub fn change_valid(&mut self) -> &mut crate::ffi::TDF_LabelMap {
+        unsafe { &mut *(crate::ffi::TNaming_Scope_change_valid(self as *mut Self)) }
+    }
+
     /// **Source:** `TNaming_Scope.hxx`:70 - `TNaming_Scope::CurrentShape()`
     /// Returns  the current  value of  <NS> according to the
     /// Valid Scope.
@@ -2820,21 +2867,6 @@ impl Scope {
         }
     }
 }
-
-// ── Skipped symbols for Scope (3 total) ──
-// SKIPPED: **Source:** `TNaming_Scope.hxx`:44 - `TNaming_Scope::TNaming_Scope`
-//   constructor: create a scope with a map. WithValid = TRUE.
-//   Reason: param 'valid' uses unknown type 'TDF_LabelMap&'
-//   // pub fn new_labelmap(valid: &mut LabelMap) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TNaming_Scope.hxx`:64 - `TNaming_Scope::GetValid`
-//   Reason: return type 'const TDF_LabelMap&' is unknown
-//   // pub fn get_valid(&self) -> &LabelMap;
-//
-// SKIPPED: **Source:** `TNaming_Scope.hxx`:66 - `TNaming_Scope::ChangeValid`
-//   Reason: return type 'TDF_LabelMap&' is unknown
-//   // pub fn change_valid(&mut self) -> &mut LabelMap;
-//
 
 // ========================
 // From TNaming_Selector.hxx
@@ -2942,6 +2974,23 @@ impl Selector {
         }
     }
 
+    /// **Source:** `TNaming_Selector.hxx`:121 - `TNaming_Selector::Solve()`
+    /// Updates the topological naming on the label
+    /// aLabel given as an argument at construction time.
+    /// The underlying shape returned in the method
+    /// NamedShape is updated.
+    /// To read this shape, use the method TNaming_Tool::GetShape
+    pub fn solve(&self, Valid: &mut crate::ffi::TDF_LabelMap) -> bool {
+        unsafe { crate::ffi::TNaming_Selector_solve(self as *const Self, Valid) }
+    }
+
+    /// **Source:** `TNaming_Selector.hxx`:125 - `TNaming_Selector::Arguments()`
+    /// Returns the attribute list args.
+    /// This list contains the named shape on which the topological naming was built.
+    pub fn arguments(&self, args: &mut crate::ffi::TDF_AttributeMap) {
+        unsafe { crate::ffi::TNaming_Selector_arguments(self as *const Self, args) }
+    }
+
     /// **Source:** `TNaming_Selector.hxx`:129 - `TNaming_Selector::NamedShape()`
     /// Returns the NamedShape build or under construction,
     /// which contains the topological naming..
@@ -2972,21 +3021,6 @@ impl Selector {
         unsafe { crate::ffi::TNaming_Selector_is_identified(access, selection, NS, Geometry) }
     }
 }
-
-// ── Skipped symbols for Selector (2 total) ──
-// SKIPPED: **Source:** `TNaming_Selector.hxx`:121 - `TNaming_Selector::Solve`
-//   method: Updates the topological naming on the label
-//   method: aLabel given as an argument at construction time.
-//   method: The underlying shape returned in the method
-//   Reason: param 'Valid' uses unknown type 'TDF_LabelMap&'
-//   // pub fn solve(&self, Valid: &mut LabelMap) -> bool;
-//
-// SKIPPED: **Source:** `TNaming_Selector.hxx`:125 - `TNaming_Selector::Arguments`
-//   method: Returns the attribute list args.
-//   method: This list contains the named shape on which the topological naming was built.
-//   Reason: param 'args' uses unknown type 'TDF_AttributeMap&'
-//   // pub fn arguments(&self, args: &mut AttributeMap);
-//
 
 // ========================
 // From TNaming_ShapesSet.hxx
@@ -3116,18 +3150,64 @@ impl Tool {
     /// CurrentShape is the current state of the entities
     /// if they have been modified in other attributes of the same data structure.
     /// Each call to this function creates a new compound.
-    pub fn current_shape(
+    pub fn current_shape_handletnamingnamedshape(
         NS: &crate::ffi::HandleTNamingNamedShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_Tool_current_shape(NS)) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TNaming_Tool_current_shape_handletnamingnamedshape(NS),
+            )
+        }
+    }
+
+    /// **Source:** `TNaming_Tool.hxx`:61 - `TNaming_Tool::CurrentShape()`
+    /// Returns the shape CurrentShape contained in
+    /// the named shape attribute NS, and present in
+    /// the updated attribute map Updated.
+    /// CurrentShape is the current state of the entities
+    /// if they have been modified in other attributes of the same data structure.
+    /// Each call to this function creates a new compound.
+    /// Warning
+    /// Only the contents of Updated are searched.R
+    pub fn current_shape_handletnamingnamedshape_labelmap(
+        NS: &crate::ffi::HandleTNamingNamedShape,
+        Updated: &crate::ffi::TDF_LabelMap,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TNaming_Tool_current_shape_handletnamingnamedshape_labelmap(
+                    NS, Updated,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TNaming_Tool.hxx`:66 - `TNaming_Tool::CurrentNamedShape()`
+    /// Returns the NamedShape of the last Modification of <NS>.
+    /// This shape is identified by a label.
+    pub fn current_named_shape_handletnamingnamedshape_labelmap(
+        NS: &crate::ffi::HandleTNamingNamedShape,
+        Updated: &crate::ffi::TDF_LabelMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TNaming_Tool_current_named_shape_handletnamingnamedshape_labelmap(
+                    NS, Updated,
+                ),
+            )
+        }
     }
 
     /// **Source:** `TNaming_Tool.hxx`:71 - `TNaming_Tool::CurrentNamedShape()`
     /// Returns NamedShape the last Modification of <NS>.
-    pub fn current_named_shape(
+    pub fn current_named_shape_handletnamingnamedshape(
         NS: &crate::ffi::HandleTNamingNamedShape,
     ) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_Tool_current_named_shape(NS)) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TNaming_Tool_current_named_shape_handletnamingnamedshape(NS),
+            )
+        }
     }
 
     /// **Source:** `TNaming_Tool.hxx`:112 - `TNaming_Tool::NamedShape()`
@@ -3209,6 +3289,15 @@ impl Tool {
         }
     }
 
+    /// **Source:** `TNaming_Tool.hxx`:131 - `TNaming_Tool::Collect()`
+    pub fn collect(
+        NS: &crate::ffi::HandleTNamingNamedShape,
+        Labels: &mut crate::ffi::TNaming_MapOfNamedShape,
+        OnlyModif: bool,
+    ) {
+        unsafe { crate::ffi::TNaming_Tool_collect(NS, Labels, OnlyModif) }
+    }
+
     /// **Source:** `TNaming_Tool.hxx`:136 - `TNaming_Tool::HasLabel()`
     /// Returns True if <aShape> appears under a label.(DP)
     pub fn has_label(access: &crate::tdf::Label, aShape: &crate::topo_ds::Shape) -> bool {
@@ -3236,39 +3325,28 @@ impl Tool {
     pub fn valid_until(access: &crate::tdf::Label, S: &crate::topo_ds::Shape) -> i32 {
         unsafe { crate::ffi::TNaming_Tool_valid_until(access, S) }
     }
+
+    /// **Source:** `TNaming_Tool.hxx`:160 - `TNaming_Tool::FindShape()`
+    /// Returns the current shape (a Wire or a Shell) built (in the data framework)
+    /// from the shapes of the argument named shape.
+    /// It is used for IDENTITY name type computation.
+    pub fn find_shape(
+        Valid: &crate::ffi::TDF_LabelMap,
+        Forbiden: &crate::ffi::TDF_LabelMap,
+        Arg: &crate::ffi::HandleTNamingNamedShape,
+        S: &mut crate::topo_ds::Shape,
+    ) {
+        unsafe { crate::ffi::TNaming_Tool_find_shape(Valid, Forbiden, Arg, S) }
+    }
 }
 
-// ── Skipped symbols for Tool (5 total) ──
-// SKIPPED: **Source:** `TNaming_Tool.hxx`:61 - `TNaming_Tool::CurrentShape`
-//   static_method: Returns the shape CurrentShape contained in
-//   static_method: the named shape attribute NS, and present in
-//   static_method: the updated attribute map Updated.
-//   Reason: param 'Updated' uses unknown type 'const TDF_LabelMap&'
-//   // pub fn current_shape(NS: &HandleNamedShape, Updated: &LabelMap) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `TNaming_Tool.hxx`:66 - `TNaming_Tool::CurrentNamedShape`
-//   static_method: Returns the NamedShape of the last Modification of <NS>.
-//   static_method: This shape is identified by a label.
-//   Reason: param 'Updated' uses unknown type 'const TDF_LabelMap&'
-//   // pub fn current_named_shape(NS: &HandleNamedShape, Updated: &LabelMap) -> OwnedPtr<Handle<TNaming_NamedShape>>;
-//
-// SKIPPED: **Source:** `TNaming_Tool.hxx`:131 - `TNaming_Tool::Collect`
-//   Reason: param 'Labels' uses unknown type 'TNaming_MapOfNamedShape&'
-//   // pub fn collect(NS: &HandleNamedShape, Labels: &mut MapOfNamedShape, OnlyModif: bool);
-//
+// ── Skipped symbols for Tool (1 total) ──
 // SKIPPED: **Source:** `TNaming_Tool.hxx`:142 - `TNaming_Tool::Label`
 //   static_method: Returns  the label  of   the first apparition  of
 //   static_method: <aShape>.  Transdef  is a value of the transaction
 //   static_method: of the first apparition of <aShape>.
 //   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn label(access: &Label, aShape: &Shape, TransDef: &mut i32) -> OwnedPtr<TDF_Label>;
-//
-// SKIPPED: **Source:** `TNaming_Tool.hxx`:160 - `TNaming_Tool::FindShape`
-//   static_method: Returns the current shape (a Wire or a Shell) built (in the data framework)
-//   static_method: from the shapes of the argument named shape.
-//   static_method: It is used for IDENTITY name type computation.
-//   Reason: param 'Valid' uses unknown type 'const TDF_LabelMap&'
-//   // pub fn find_shape(Valid: &LabelMap, Forbiden: &LabelMap, Arg: &HandleNamedShape, S: &mut Shape);
 //
 
 // ========================

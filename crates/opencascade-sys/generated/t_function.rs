@@ -1699,6 +1699,12 @@ impl IFunction {
         unsafe { crate::ffi::TFunction_IFunction_set_status(self as *const Self, status.into()) }
     }
 
+    /// **Source:** `TFunction_IFunction.hxx`:92 - `TFunction_IFunction::GetAllFunctions()`
+    /// Returns the scope of all functions.
+    pub fn get_all_functions(&self) -> &crate::ffi::TFunction_DoubleMapOfIntegerLabel {
+        unsafe { &*(crate::ffi::TFunction_IFunction_get_all_functions(self as *const Self)) }
+    }
+
     /// **Source:** `TFunction_IFunction.hxx`:95 - `TFunction_IFunction::GetLogbook()`
     /// Returns the Logbook - keeper of modifications.
     pub fn get_logbook(&self) -> crate::OwnedPtr<crate::ffi::HandleTFunctionLogbook> {
@@ -1756,13 +1762,6 @@ impl IFunction {
         unsafe { crate::ffi::TFunction_IFunction_update_dependencies_label(Access) }
     }
 }
-
-// ── Skipped symbols for IFunction (1 total) ──
-// SKIPPED: **Source:** `TFunction_IFunction.hxx`:92 - `TFunction_IFunction::GetAllFunctions`
-//   method: Returns the scope of all functions.
-//   Reason: return type 'const TFunction_DoubleMapOfIntegerLabel&' is unknown
-//   // pub fn get_all_functions(&self) -> &DoubleMapOfIntegerLabel;
-//
 
 // ========================
 // From TFunction_Iterator.hxx
@@ -1929,8 +1928,15 @@ impl Logbook {
 
     /// **Source:** `TFunction_Logbook.hxx`:72 - `TFunction_Logbook::SetValid()`
     /// Sets the label L as a valid label in this logbook.
-    pub fn set_valid(&mut self, L: &crate::tdf::Label, WithChildren: bool) {
-        unsafe { crate::ffi::TFunction_Logbook_set_valid(self as *mut Self, L, WithChildren) }
+    pub fn set_valid_label_bool(&mut self, L: &crate::tdf::Label, WithChildren: bool) {
+        unsafe {
+            crate::ffi::TFunction_Logbook_set_valid_label_bool(self as *mut Self, L, WithChildren)
+        }
+    }
+
+    /// **Source:** `TFunction_Logbook.hxx`:74 - `TFunction_Logbook::SetValid()`
+    pub fn set_valid_labelmap(&mut self, Ls: &crate::ffi::TDF_LabelMap) {
+        unsafe { crate::ffi::TFunction_Logbook_set_valid_labelmap(self as *mut Self, Ls) }
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:81 - `TFunction_Logbook::IsModified()`
@@ -1940,6 +1946,30 @@ impl Logbook {
     /// all the sublabels of <L> too.
     pub fn is_modified(&self, L: &crate::tdf::Label, WithChildren: bool) -> bool {
         unsafe { crate::ffi::TFunction_Logbook_is_modified(self as *const Self, L, WithChildren) }
+    }
+
+    /// **Source:** `TFunction_Logbook.hxx`:85 - `TFunction_Logbook::GetTouched()`
+    /// Returns the map of touched labels in this logbook.
+    /// A touched label is the one modified by the end user.
+    pub fn get_touched(&self) -> &crate::ffi::TDF_LabelMap {
+        unsafe { &*(crate::ffi::TFunction_Logbook_get_touched(self as *const Self)) }
+    }
+
+    /// **Source:** `TFunction_Logbook.hxx`:88 - `TFunction_Logbook::GetImpacted()`
+    /// Returns the map of impacted labels contained in this logbook.
+    pub fn get_impacted(&self) -> &crate::ffi::TDF_LabelMap {
+        unsafe { &*(crate::ffi::TFunction_Logbook_get_impacted(self as *const Self)) }
+    }
+
+    /// **Source:** `TFunction_Logbook.hxx`:91 - `TFunction_Logbook::GetValid()`
+    /// Returns the map of valid labels in this logbook.
+    pub fn get_valid(&self) -> &crate::ffi::TDF_LabelMap {
+        unsafe { &*(crate::ffi::TFunction_Logbook_get_valid(self as *const Self)) }
+    }
+
+    /// **Source:** `TFunction_Logbook.hxx`:92 - `TFunction_Logbook::GetValid()`
+    pub fn get_valid_labelmap(&self, Ls: &mut crate::ffi::TDF_LabelMap) {
+        unsafe { crate::ffi::TFunction_Logbook_get_valid_labelmap(self as *const Self, Ls) }
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:95 - `TFunction_Logbook::Done()`
@@ -2325,31 +2355,7 @@ impl HandleTFunctionLogbook {
     }
 }
 
-// ── Skipped symbols for Logbook (6 total) ──
-// SKIPPED: **Source:** `TFunction_Logbook.hxx`:74 - `TFunction_Logbook::SetValid`
-//   Reason: param 'Ls' uses unknown type 'const TDF_LabelMap&'
-//   // pub fn set_valid(&mut self, Ls: &LabelMap);
-//
-// SKIPPED: **Source:** `TFunction_Logbook.hxx`:85 - `TFunction_Logbook::GetTouched`
-//   method: Returns the map of touched labels in this logbook.
-//   method: A touched label is the one modified by the end user.
-//   Reason: return type 'const TDF_LabelMap&' is unknown
-//   // pub fn get_touched(&self) -> &LabelMap;
-//
-// SKIPPED: **Source:** `TFunction_Logbook.hxx`:88 - `TFunction_Logbook::GetImpacted`
-//   method: Returns the map of impacted labels contained in this logbook.
-//   Reason: return type 'const TDF_LabelMap&' is unknown
-//   // pub fn get_impacted(&self) -> &LabelMap;
-//
-// SKIPPED: **Source:** `TFunction_Logbook.hxx`:91 - `TFunction_Logbook::GetValid`
-//   method: Returns the map of valid labels in this logbook.
-//   Reason: return type 'const TDF_LabelMap&' is unknown
-//   // pub fn get_valid(&self) -> &LabelMap;
-//
-// SKIPPED: **Source:** `TFunction_Logbook.hxx`:92 - `TFunction_Logbook::GetValid`
-//   Reason: param 'Ls' uses unknown type 'TDF_LabelMap&'
-//   // pub fn get_valid(&self, Ls: &mut LabelMap);
-//
+// ── Skipped symbols for Logbook (1 total) ──
 // SKIPPED: **Source:** `TFunction_Logbook.hxx`:117 - `TFunction_Logbook::Dump`
 //   method: Prints th data of the attributes (touched, impacted and valid labels).
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
@@ -2458,6 +2464,19 @@ impl Scope {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TFunction_Scope_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `TFunction_Scope.hxx`:95 - `TFunction_Scope::GetFunctions()`
+    /// Returns the scope of functions.
+    pub fn get_functions(&self) -> &crate::ffi::TFunction_DoubleMapOfIntegerLabel {
+        unsafe { &*(crate::ffi::TFunction_Scope_get_functions(self as *const Self)) }
+    }
+
+    /// **Source:** `TFunction_Scope.hxx`:99 - `TFunction_Scope::ChangeFunctions()`
+    /// Returns the scope of functions for modification.
+    /// Warning: Don't use this method if You are not sure what You do!
+    pub fn change_functions(&mut self) -> &mut crate::ffi::TFunction_DoubleMapOfIntegerLabel {
+        unsafe { &mut *(crate::ffi::TFunction_Scope_change_functions(self as *mut Self)) }
     }
 
     /// **Source:** `TFunction_Scope.hxx`:101 - `TFunction_Scope::SetFreeID()`
@@ -2812,21 +2831,10 @@ impl HandleTFunctionScope {
     }
 }
 
-// ── Skipped symbols for Scope (3 total) ──
+// ── Skipped symbols for Scope (1 total) ──
 // SKIPPED: **Source:** `TFunction_Scope.hxx`:92 - `TFunction_Scope::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TFunction_Scope.hxx`:95 - `TFunction_Scope::GetFunctions`
-//   method: Returns the scope of functions.
-//   Reason: return type 'const TFunction_DoubleMapOfIntegerLabel&' is unknown
-//   // pub fn get_functions(&self) -> &DoubleMapOfIntegerLabel;
-//
-// SKIPPED: **Source:** `TFunction_Scope.hxx`:99 - `TFunction_Scope::ChangeFunctions`
-//   method: Returns the scope of functions for modification.
-//   method: Warning: Don't use this method if You are not sure what You do!
-//   Reason: return type 'TFunction_DoubleMapOfIntegerLabel&' is unknown
-//   // pub fn change_functions(&mut self) -> &mut DoubleMapOfIntegerLabel;
 //
 
 // ========================

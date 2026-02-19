@@ -349,18 +349,6 @@ pub fn ensure_normal_consistency(
 pub fn update_deflection(S: &crate::topo_ds::Shape) {
     unsafe { crate::ffi::BRepLib_update_deflection(S) }
 }
-/// **Source:** `BRepLib.hxx`:289 - `BRepLib::BoundingVertex`
-/// Calculates the bounding sphere around the set of vertexes from the theLV list.
-/// Returns the center (theNewCenter) and the radius (theNewTol) of this sphere.
-/// This can be used to construct the new vertex which covers the given set of
-/// other vertices.
-pub fn bounding_vertex(
-    theLV: &crate::ffi::TopTools_ListOfShape,
-    theNewCenter: &mut crate::gp::Pnt,
-    theNewTol: &mut f64,
-) {
-    unsafe { crate::ffi::BRepLib_bounding_vertex(theLV, theNewCenter, theNewTol) }
-}
 /// **Source:** `BRepLib.hxx`:298 - `BRepLib::FindValidRange`
 /// For an edge defined by 3d curve and tolerance and vertices defined by points,
 /// parameters on curve and tolerances,
@@ -935,6 +923,16 @@ impl FuseEdges {
         unsafe { crate::ffi::BRepLib_FuseEdges_set_concat_b_spl(self as *mut Self, theConcatBSpl) }
     }
 
+    /// **Source:** `BRepLib_FuseEdges.hxx`:70 - `BRepLib_FuseEdges::ResultEdges()`
+    /// returns all the fused edges. each integer entry in
+    /// the   map  corresponds  to  the  integer   in the
+    /// DataMapOfIntegerListOfShape  we    get in  method
+    /// Edges.   That is to say, to  the list  of edges in
+    /// theMapLstEdg(i) corresponds the resulting edge theMapEdge(i)
+    pub fn result_edges(&mut self, theMapEdg: &mut crate::ffi::TopTools_DataMapOfIntegerShape) {
+        unsafe { crate::ffi::BRepLib_FuseEdges_result_edges(self as *mut Self, theMapEdg) }
+    }
+
     /// **Source:** `BRepLib_FuseEdges.hxx`:73 - `BRepLib_FuseEdges::Faces()`
     /// returns the map of modified faces.
     pub fn faces(&mut self, theMapFac: &mut crate::ffi::TopTools_DataMapOfShapeShape) {
@@ -962,20 +960,13 @@ impl FuseEdges {
     }
 }
 
-// ── Skipped symbols for FuseEdges (2 total) ──
+// ── Skipped symbols for FuseEdges (1 total) ──
 // SKIPPED: **Source:** `BRepLib_FuseEdges.hxx`:63 - `BRepLib_FuseEdges::Edges`
 //   method: returns  all the list of edges to be fused
 //   method: each list of the map represent a set of connex edges
 //   method: that can be fused.
 //   Reason: param 'theMapLstEdg' uses unknown type 'TopTools_DataMapOfIntegerListOfShape&'
 //   // pub fn edges(&mut self, theMapLstEdg: &mut DataMapOfIntegerListOfShape);
-//
-// SKIPPED: **Source:** `BRepLib_FuseEdges.hxx`:70 - `BRepLib_FuseEdges::ResultEdges`
-//   method: returns all the fused edges. each integer entry in
-//   method: the   map  corresponds  to  the  integer   in the
-//   method: DataMapOfIntegerListOfShape  we    get in  method
-//   Reason: param 'theMapEdg' uses unknown type 'TopTools_DataMapOfIntegerShape&'
-//   // pub fn result_edges(&mut self, theMapEdg: &mut DataMapOfIntegerShape);
 //
 
 // ========================

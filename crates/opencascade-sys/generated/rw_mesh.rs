@@ -782,17 +782,6 @@ impl CoordinateSystemConverter {
         }
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:172 - `RWMesh_CoordinateSystemConverter::TransformNormal()`
-    /// Transform normal (e.g. exclude translation/scale part of transformation).
-    pub fn transform_normal(&self, theNorm: &mut crate::ffi::Graphic3d_Vec3) {
-        unsafe {
-            crate::ffi::RWMesh_CoordinateSystemConverter_transform_normal(
-                self as *const Self,
-                theNorm,
-            )
-        }
-    }
-
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:53 - `RWMesh_CoordinateSystemConverter::StandardCoordinateSystem()`
     /// Return a standard coordinate system definition.
     pub fn standard_coordinate_system(
@@ -807,6 +796,13 @@ impl CoordinateSystemConverter {
         }
     }
 }
+
+// ── Skipped symbols for CoordinateSystemConverter (1 total) ──
+// SKIPPED: **Source:** `RWMesh_CoordinateSystemConverter.hxx`:172 - `RWMesh_CoordinateSystemConverter::TransformNormal`
+//   method: Transform normal (e.g. exclude translation/scale part of transformation).
+//   Reason: param 'theNorm' uses unknown type 'Graphic3d_Vec3&'
+//   // pub fn transform_normal(&self, theNorm: &mut Vec3);
+//
 
 // ========================
 // From RWMesh_EdgeIterator.hxx
@@ -2234,6 +2230,17 @@ impl TriangulationSource {
                 self as *const Self,
                 theIndex,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:202 - `Poly_Triangulation::SetNormal()`
+    pub fn set_normal(&mut self, theIndex: i32, theNormal: &crate::ffi::gp_Vec3f) {
+        unsafe {
+            crate::ffi::RWMesh_TriangulationSource_inherited_SetNormal(
+                self as *mut Self,
+                theIndex,
+                theNormal,
+            )
         }
     }
 

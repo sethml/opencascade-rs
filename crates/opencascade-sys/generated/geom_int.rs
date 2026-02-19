@@ -317,6 +317,28 @@ impl IntSS {
         }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:158 - `GeomInt_IntSS::TrimILineOnSurfBoundaries()`
+    /// puts into theArrayOfParameters the parameters of intersection
+    /// points of given theC2d1 and theC2d2 curves with the boundaries
+    /// of the source surface.
+    pub fn trim_i_line_on_surf_boundaries(
+        theC2d1: &crate::ffi::HandleGeom2dCurve,
+        theC2d2: &crate::ffi::HandleGeom2dCurve,
+        theBound1: &crate::bnd::Box2d,
+        theBound2: &crate::bnd::Box2d,
+        theArrayOfParameters: &mut crate::ffi::GeomInt_VectorOfReal,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_IntSS_trim_i_line_on_surf_boundaries(
+                theC2d1,
+                theC2d2,
+                theBound1,
+                theBound2,
+                theArrayOfParameters,
+            )
+        }
+    }
+
     /// **Source:** `GeomInt_IntSS.hxx`:164 - `GeomInt_IntSS::MakeBSpline()`
     pub fn make_b_spline(
         WL: &crate::ffi::HandleIntPatchWLine,
@@ -343,18 +365,11 @@ impl IntSS {
     }
 }
 
-// ── Skipped symbols for IntSS (2 total) ──
+// ── Skipped symbols for IntSS (1 total) ──
 // SKIPPED: **Source:** `GeomInt_IntSS.hxx`:127 - `GeomInt_IntSS::TreatRLine`
 //   static_method: converts RLine to Geom(2d)_Curve.
 //   Reason: param 'theRL' uses unknown type 'const Handle(IntPatch_RLine)&'
 //   // pub fn treat_r_line(theRL: &HandleRLine, theHS1: &HandleSurface, theHS2: &HandleSurface, theC3d: &mut HandleCurve, theC2d1: &mut HandleCurve, theC2d2: &mut HandleCurve, theTolReached: &mut f64);
-//
-// SKIPPED: **Source:** `GeomInt_IntSS.hxx`:158 - `GeomInt_IntSS::TrimILineOnSurfBoundaries`
-//   static_method: puts into theArrayOfParameters the parameters of intersection
-//   static_method: points of given theC2d1 and theC2d2 curves with the boundaries
-//   static_method: of the source surface.
-//   Reason: param 'theArrayOfParameters' uses unknown type 'GeomInt_VectorOfReal&'
-//   // pub fn trim_i_line_on_surf_boundaries(theC2d1: &HandleCurve, theC2d2: &HandleCurve, theBound1: &Box2d, theBound2: &Box2d, theArrayOfParameters: &mut VectorOfReal);
 //
 
 // ========================

@@ -795,6 +795,20 @@ impl DS {
         unsafe { crate::ffi::BOPDS_DS_index(self as *const Self, theS) }
     }
 
+    /// **Source:** `BOPDS_DS.hxx`:165 - `BOPDS_DS::PaveBlocksPool()`
+    /// Selector
+    /// Returns the information about pave blocks on source edges
+    pub fn pave_blocks_pool(&self) -> &crate::ffi::BOPDS_VectorOfListOfPaveBlock {
+        unsafe { &*(crate::ffi::BOPDS_DS_pave_blocks_pool(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:169 - `BOPDS_DS::ChangePaveBlocksPool()`
+    /// Selector/Modifier
+    /// Returns the information about pave blocks on source edges
+    pub fn change_pave_blocks_pool(&mut self) -> &mut crate::ffi::BOPDS_VectorOfListOfPaveBlock {
+        unsafe { &mut *(crate::ffi::BOPDS_DS_change_pave_blocks_pool(self as *mut Self)) }
+    }
+
     /// **Source:** `BOPDS_DS.hxx`:174 - `BOPDS_DS::HasPaveBlocks()`
     /// Query
     /// Returns true if the shape with index theIndex has the
@@ -891,6 +905,13 @@ impl DS {
         unsafe { crate::ffi::BOPDS_DS_is_common_block_on_edge(self as *const Self, thePB) }
     }
 
+    /// **Source:** `BOPDS_DS.hxx`:217 - `BOPDS_DS::FaceInfoPool()`
+    /// Selector
+    /// Returns the information about state of faces
+    pub fn face_info_pool(&self) -> &crate::ffi::BOPDS_VectorOfFaceInfo {
+        unsafe { &*(crate::ffi::BOPDS_DS_face_info_pool(self as *const Self)) }
+    }
+
     /// **Source:** `BOPDS_DS.hxx`:222 - `BOPDS_DS::HasFaceInfo()`
     /// Query
     /// Returns true if the shape with index theIndex has the
@@ -947,6 +968,32 @@ impl DS {
         }
     }
 
+    /// **Source:** `BOPDS_DS.hxx`:247 - `BOPDS_DS::FaceInfoOn()`
+    /// Selector
+    /// Returns the state On
+    /// [theMPB,theMVP] of face with index theIndex
+    pub fn face_info_on(
+        &mut self,
+        theIndex: i32,
+        theMPB: &mut crate::ffi::BOPDS_IndexedMapOfPaveBlock,
+        theMVP: &mut crate::ffi::TColStd_MapOfInteger,
+    ) {
+        unsafe { crate::ffi::BOPDS_DS_face_info_on(self as *mut Self, theIndex, theMPB, theMVP) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:254 - `BOPDS_DS::FaceInfoIn()`
+    /// Selector
+    /// Returns the state In
+    /// [theMPB,theMVP] of face with index theIndex
+    pub fn face_info_in(
+        &mut self,
+        theIndex: i32,
+        theMPB: &mut crate::ffi::BOPDS_IndexedMapOfPaveBlock,
+        theMVP: &mut crate::ffi::TColStd_MapOfInteger,
+    ) {
+        unsafe { crate::ffi::BOPDS_DS_face_info_in(self as *mut Self, theIndex, theMPB, theMVP) }
+    }
+
     /// **Source:** `BOPDS_DS.hxx`:261 - `BOPDS_DS::AloneVertices()`
     /// Selector
     /// Returns the indices of alone vertices
@@ -968,6 +1015,34 @@ impl DS {
     /// Removes any pave block from list of having IN state if it has also the state ON.
     pub fn refine_face_info_in(&mut self) {
         unsafe { crate::ffi::BOPDS_DS_refine_face_info_in(self as *mut Self) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:278 - `BOPDS_DS::SubShapesOnIn()`
+    /// Returns information about ON/IN sub-shapes of the given faces.
+    /// @param theMVOnIn  the indices of ON/IN vertices from both faces
+    /// @param theMVCommon the indices of common vertices for both faces
+    /// @param thePBOnIn  all On/In pave blocks from both faces
+    /// @param theCommonPB  the common pave blocks (that are shared by both faces).
+    pub fn sub_shapes_on_in(
+        &self,
+        theNF1: i32,
+        theNF2: i32,
+        theMVOnIn: &mut crate::ffi::TColStd_MapOfInteger,
+        theMVCommon: &mut crate::ffi::TColStd_MapOfInteger,
+        thePBOnIn: &mut crate::ffi::BOPDS_IndexedMapOfPaveBlock,
+        theCommonPB: &mut crate::ffi::BOPDS_MapOfPaveBlock,
+    ) {
+        unsafe {
+            crate::ffi::BOPDS_DS_sub_shapes_on_in(
+                self as *const Self,
+                theNF1,
+                theNF2,
+                theMVOnIn,
+                theMVCommon,
+                thePBOnIn,
+                theCommonPB,
+            )
+        }
     }
 
     /// **Source:** `BOPDS_DS.hxx`:289 - `BOPDS_DS::SharedEdges()`
@@ -1000,6 +1075,76 @@ impl DS {
     /// with indices theIndex, theIndexSD
     pub fn add_shape_sd(&mut self, theIndex: i32, theIndexSD: i32) {
         unsafe { crate::ffi::BOPDS_DS_add_shape_sd(self as *mut Self, theIndex, theIndexSD) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:315 - `BOPDS_DS::InterfVV()`
+    /// Selector/Modifier
+    /// Returns the collection of interferences Vertex/Vertex
+    pub fn interf_vv(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfVV {
+        unsafe { &mut *(crate::ffi::BOPDS_DS_interf_vv(self as *mut Self)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:319 - `BOPDS_DS::InterfVE()`
+    /// Selector/Modifier
+    /// Returns the collection of interferences Vertex/Edge
+    pub fn interf_ve(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfVE {
+        unsafe { &mut *(crate::ffi::BOPDS_DS_interf_ve(self as *mut Self)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:323 - `BOPDS_DS::InterfVF()`
+    /// Selector/Modifier
+    /// Returns the collection of interferences Vertex/Face
+    pub fn interf_vf(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfVF {
+        unsafe { &mut *(crate::ffi::BOPDS_DS_interf_vf(self as *mut Self)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:327 - `BOPDS_DS::InterfEE()`
+    /// Selector/Modifier
+    /// Returns the collection of interferences Edge/Edge
+    pub fn interf_ee(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfEE {
+        unsafe { &mut *(crate::ffi::BOPDS_DS_interf_ee(self as *mut Self)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:331 - `BOPDS_DS::InterfEF()`
+    /// Selector/Modifier
+    /// Returns the collection of interferences Edge/Face
+    pub fn interf_ef(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfEF {
+        unsafe { &mut *(crate::ffi::BOPDS_DS_interf_ef(self as *mut Self)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:335 - `BOPDS_DS::InterfFF()`
+    /// Selector/Modifier
+    /// Returns the collection of interferences Face/Face
+    pub fn interf_ff(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfFF {
+        unsafe { &mut *(crate::ffi::BOPDS_DS_interf_ff(self as *mut Self)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:339 - `BOPDS_DS::InterfVZ()`
+    /// Selector/Modifier
+    /// Returns the collection of interferences Vertex/Solid
+    pub fn interf_vz(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfVZ {
+        unsafe { &mut *(crate::ffi::BOPDS_DS_interf_vz(self as *mut Self)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:343 - `BOPDS_DS::InterfEZ()`
+    /// Selector/Modifier
+    /// Returns the collection of interferences Edge/Solid
+    pub fn interf_ez(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfEZ {
+        unsafe { &mut *(crate::ffi::BOPDS_DS_interf_ez(self as *mut Self)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:347 - `BOPDS_DS::InterfFZ()`
+    /// Selector/Modifier
+    /// Returns the collection of interferences Face/Solid
+    pub fn interf_fz(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfFZ {
+        unsafe { &mut *(crate::ffi::BOPDS_DS_interf_fz(self as *mut Self)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:351 - `BOPDS_DS::InterfZZ()`
+    /// Selector/Modifier
+    /// Returns the collection of interferences Solid/Solid
+    pub fn interf_zz(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfZZ {
+        unsafe { &mut *(crate::ffi::BOPDS_DS_interf_zz(self as *mut Self)) }
     }
 
     /// **Source:** `BOPDS_DS.hxx`:360 - `BOPDS_DS::AddInterf()`
@@ -1050,6 +1195,15 @@ impl DS {
     /// have interferred sub-shapes
     pub fn has_interf_sub_shapes(&self, theI1: i32, theI2: i32) -> bool {
         unsafe { crate::ffi::BOPDS_DS_has_interf_sub_shapes(self as *const Self, theI1, theI2) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:392 - `BOPDS_DS::Interferences()`
+    /// Selector
+    /// Returns the table of interferences
+    ///
+    /// debug
+    pub fn interferences(&self) -> &crate::ffi::BOPDS_MapOfPair {
+        unsafe { &*(crate::ffi::BOPDS_DS_interferences(self as *const Self)) }
     }
 
     /// **Source:** `BOPDS_DS.hxx`:394 - `BOPDS_DS::Dump()`
@@ -1139,118 +1293,13 @@ impl DS {
     }
 }
 
-// ── Skipped symbols for DS (18 total) ──
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:165 - `BOPDS_DS::PaveBlocksPool`
-//   method: Selector
-//   method: Returns the information about pave blocks on source edges
-//   Reason: return type 'const BOPDS_VectorOfListOfPaveBlock&' is unknown
-//   // pub fn pave_blocks_pool(&self) -> &VectorOfListOfPaveBlock;
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:169 - `BOPDS_DS::ChangePaveBlocksPool`
-//   method: Selector/Modifier
-//   method: Returns the information about pave blocks on source edges
-//   Reason: return type 'BOPDS_VectorOfListOfPaveBlock&' is unknown
-//   // pub fn change_pave_blocks_pool(&mut self) -> &mut VectorOfListOfPaveBlock;
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:217 - `BOPDS_DS::FaceInfoPool`
-//   method: Selector
-//   method: Returns the information about state of faces
-//   Reason: return type 'const BOPDS_VectorOfFaceInfo&' is unknown
-//   // pub fn face_info_pool(&self) -> &VectorOfFaceInfo;
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:247 - `BOPDS_DS::FaceInfoOn`
-//   method: Selector
-//   method: Returns the state On
-//   method: [theMPB,theMVP] of face with index theIndex
-//   Reason: param 'theMPB' uses unknown type 'BOPDS_IndexedMapOfPaveBlock&'
-//   // pub fn face_info_on(&mut self, theIndex: i32, theMPB: &mut IndexedMapOfPaveBlock, theMVP: &mut MapOfInteger);
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:254 - `BOPDS_DS::FaceInfoIn`
-//   method: Selector
-//   method: Returns the state In
-//   method: [theMPB,theMVP] of face with index theIndex
-//   Reason: param 'theMPB' uses unknown type 'BOPDS_IndexedMapOfPaveBlock&'
-//   // pub fn face_info_in(&mut self, theIndex: i32, theMPB: &mut IndexedMapOfPaveBlock, theMVP: &mut MapOfInteger);
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:278 - `BOPDS_DS::SubShapesOnIn`
-//   method: Returns information about ON/IN sub-shapes of the given faces.
-//   method: @param theMVOnIn  the indices of ON/IN vertices from both faces
-//   method: @param theMVCommon the indices of common vertices for both faces
-//   Reason: param 'thePBOnIn' uses unknown type 'BOPDS_IndexedMapOfPaveBlock&'
-//   // pub fn sub_shapes_on_in(&self, theNF1: i32, theNF2: i32, theMVOnIn: &mut MapOfInteger, theMVCommon: &mut MapOfInteger, thePBOnIn: &mut IndexedMapOfPaveBlock, theCommonPB: &mut MapOfPaveBlock);
-//
+// ── Skipped symbols for DS (1 total) ──
 // SKIPPED: **Source:** `BOPDS_DS.hxx`:310 - `BOPDS_DS::HasShapeSD`
 //   method: Query
 //   method: Returns true if the shape with index theIndex has the
 //   method: same domain shape. In this case theIndexSD will contain
 //   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn has_shape_sd(&self, theIndex: i32, theIndexSD: &mut i32) -> bool;
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:315 - `BOPDS_DS::InterfVV`
-//   method: Selector/Modifier
-//   method: Returns the collection of interferences Vertex/Vertex
-//   Reason: return type 'BOPDS_VectorOfInterfVV&' is unknown
-//   // pub fn interf_vv(&mut self) -> &mut VectorOfInterfVV;
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:319 - `BOPDS_DS::InterfVE`
-//   method: Selector/Modifier
-//   method: Returns the collection of interferences Vertex/Edge
-//   Reason: return type 'BOPDS_VectorOfInterfVE&' is unknown
-//   // pub fn interf_ve(&mut self) -> &mut VectorOfInterfVE;
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:323 - `BOPDS_DS::InterfVF`
-//   method: Selector/Modifier
-//   method: Returns the collection of interferences Vertex/Face
-//   Reason: return type 'BOPDS_VectorOfInterfVF&' is unknown
-//   // pub fn interf_vf(&mut self) -> &mut VectorOfInterfVF;
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:327 - `BOPDS_DS::InterfEE`
-//   method: Selector/Modifier
-//   method: Returns the collection of interferences Edge/Edge
-//   Reason: return type 'BOPDS_VectorOfInterfEE&' is unknown
-//   // pub fn interf_ee(&mut self) -> &mut VectorOfInterfEE;
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:331 - `BOPDS_DS::InterfEF`
-//   method: Selector/Modifier
-//   method: Returns the collection of interferences Edge/Face
-//   Reason: return type 'BOPDS_VectorOfInterfEF&' is unknown
-//   // pub fn interf_ef(&mut self) -> &mut VectorOfInterfEF;
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:335 - `BOPDS_DS::InterfFF`
-//   method: Selector/Modifier
-//   method: Returns the collection of interferences Face/Face
-//   Reason: return type 'BOPDS_VectorOfInterfFF&' is unknown
-//   // pub fn interf_ff(&mut self) -> &mut VectorOfInterfFF;
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:339 - `BOPDS_DS::InterfVZ`
-//   method: Selector/Modifier
-//   method: Returns the collection of interferences Vertex/Solid
-//   Reason: return type 'BOPDS_VectorOfInterfVZ&' is unknown
-//   // pub fn interf_vz(&mut self) -> &mut VectorOfInterfVZ;
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:343 - `BOPDS_DS::InterfEZ`
-//   method: Selector/Modifier
-//   method: Returns the collection of interferences Edge/Solid
-//   Reason: return type 'BOPDS_VectorOfInterfEZ&' is unknown
-//   // pub fn interf_ez(&mut self) -> &mut VectorOfInterfEZ;
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:347 - `BOPDS_DS::InterfFZ`
-//   method: Selector/Modifier
-//   method: Returns the collection of interferences Face/Solid
-//   Reason: return type 'BOPDS_VectorOfInterfFZ&' is unknown
-//   // pub fn interf_fz(&mut self) -> &mut VectorOfInterfFZ;
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:351 - `BOPDS_DS::InterfZZ`
-//   method: Selector/Modifier
-//   method: Returns the collection of interferences Solid/Solid
-//   Reason: return type 'BOPDS_VectorOfInterfZZ&' is unknown
-//   // pub fn interf_zz(&mut self) -> &mut VectorOfInterfZZ;
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:392 - `BOPDS_DS::Interferences`
-//   method: Selector
-//   method: Returns the table of interferences
-//   Reason: return type 'const BOPDS_MapOfPair&' is unknown
-//   // pub fn interferences(&self) -> &MapOfPair;
 //
 
 // ========================
@@ -1310,6 +1359,23 @@ impl FaceInfo {
         unsafe { crate::ffi::BOPDS_FaceInfo_index(self as *const Self) }
     }
 
+    /// **Source:** `BOPDS_FaceInfo.hxx`:62 - `BOPDS_FaceInfo::PaveBlocksIn()`
+    /// Selector
+    /// Returns the pave blocks of the face
+    /// that  have state In
+    pub fn pave_blocks_in(&self) -> &crate::ffi::BOPDS_IndexedMapOfPaveBlock {
+        unsafe { &*(crate::ffi::BOPDS_FaceInfo_pave_blocks_in(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPDS_FaceInfo.hxx`:68 - `BOPDS_FaceInfo::ChangePaveBlocksIn()`
+    /// Selector/Modifier
+    /// Returns the pave blocks
+    /// of the face
+    /// that  have state In
+    pub fn change_pave_blocks_in(&mut self) -> &mut crate::ffi::BOPDS_IndexedMapOfPaveBlock {
+        unsafe { &mut *(crate::ffi::BOPDS_FaceInfo_change_pave_blocks_in(self as *mut Self)) }
+    }
+
     /// **Source:** `BOPDS_FaceInfo.hxx`:74 - `BOPDS_FaceInfo::VerticesIn()`
     /// Selector
     /// Returns the list of indices for vertices
@@ -1328,6 +1394,23 @@ impl FaceInfo {
     /// On
     pub fn change_vertices_in(&mut self) -> &mut crate::ffi::TColStd_MapOfInteger {
         unsafe { &mut *(crate::ffi::BOPDS_FaceInfo_change_vertices_in(self as *mut Self)) }
+    }
+
+    /// **Source:** `BOPDS_FaceInfo.hxx`:87 - `BOPDS_FaceInfo::PaveBlocksOn()`
+    /// Selector
+    /// Returns the pave blocks of the face
+    /// that  have state On
+    pub fn pave_blocks_on(&self) -> &crate::ffi::BOPDS_IndexedMapOfPaveBlock {
+        unsafe { &*(crate::ffi::BOPDS_FaceInfo_pave_blocks_on(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPDS_FaceInfo.hxx`:93 - `BOPDS_FaceInfo::ChangePaveBlocksOn()`
+    /// Selector/Modifier
+    /// Returns the pave blocks
+    /// of the face
+    /// that  have state On
+    pub fn change_pave_blocks_on(&mut self) -> &mut crate::ffi::BOPDS_IndexedMapOfPaveBlock {
+        unsafe { &mut *(crate::ffi::BOPDS_FaceInfo_change_pave_blocks_on(self as *mut Self)) }
     }
 
     /// **Source:** `BOPDS_FaceInfo.hxx`:99 - `BOPDS_FaceInfo::VerticesOn()`
@@ -1350,6 +1433,19 @@ impl FaceInfo {
         unsafe { &mut *(crate::ffi::BOPDS_FaceInfo_change_vertices_on(self as *mut Self)) }
     }
 
+    /// **Source:** `BOPDS_FaceInfo.hxx`:112 - `BOPDS_FaceInfo::PaveBlocksSc()`
+    /// Selector
+    /// Returns the pave blocks of the face
+    /// that are  pave blocks of section edges
+    pub fn pave_blocks_sc(&self) -> &crate::ffi::BOPDS_IndexedMapOfPaveBlock {
+        unsafe { &*(crate::ffi::BOPDS_FaceInfo_pave_blocks_sc(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPDS_FaceInfo.hxx`:114 - `BOPDS_FaceInfo::ChangePaveBlocksSc()`
+    pub fn change_pave_blocks_sc(&mut self) -> &mut crate::ffi::BOPDS_IndexedMapOfPaveBlock {
+        unsafe { &mut *(crate::ffi::BOPDS_FaceInfo_change_pave_blocks_sc(self as *mut Self)) }
+    }
+
     /// **Source:** `BOPDS_FaceInfo.hxx`:119 - `BOPDS_FaceInfo::VerticesSc()`
     /// Selector
     /// Returns the list of indices for section  vertices
@@ -1368,47 +1464,6 @@ impl FaceInfo {
         unsafe { &mut *(crate::ffi::BOPDS_FaceInfo_change_vertices_sc(self as *mut Self)) }
     }
 }
-
-// ── Skipped symbols for FaceInfo (6 total) ──
-// SKIPPED: **Source:** `BOPDS_FaceInfo.hxx`:62 - `BOPDS_FaceInfo::PaveBlocksIn`
-//   method: Selector
-//   method: Returns the pave blocks of the face
-//   method: that  have state In
-//   Reason: return type 'const BOPDS_IndexedMapOfPaveBlock&' is unknown
-//   // pub fn pave_blocks_in(&self) -> &IndexedMapOfPaveBlock;
-//
-// SKIPPED: **Source:** `BOPDS_FaceInfo.hxx`:68 - `BOPDS_FaceInfo::ChangePaveBlocksIn`
-//   method: Selector/Modifier
-//   method: Returns the pave blocks
-//   method: of the face
-//   Reason: return type 'BOPDS_IndexedMapOfPaveBlock&' is unknown
-//   // pub fn change_pave_blocks_in(&mut self) -> &mut IndexedMapOfPaveBlock;
-//
-// SKIPPED: **Source:** `BOPDS_FaceInfo.hxx`:87 - `BOPDS_FaceInfo::PaveBlocksOn`
-//   method: Selector
-//   method: Returns the pave blocks of the face
-//   method: that  have state On
-//   Reason: return type 'const BOPDS_IndexedMapOfPaveBlock&' is unknown
-//   // pub fn pave_blocks_on(&self) -> &IndexedMapOfPaveBlock;
-//
-// SKIPPED: **Source:** `BOPDS_FaceInfo.hxx`:93 - `BOPDS_FaceInfo::ChangePaveBlocksOn`
-//   method: Selector/Modifier
-//   method: Returns the pave blocks
-//   method: of the face
-//   Reason: return type 'BOPDS_IndexedMapOfPaveBlock&' is unknown
-//   // pub fn change_pave_blocks_on(&mut self) -> &mut IndexedMapOfPaveBlock;
-//
-// SKIPPED: **Source:** `BOPDS_FaceInfo.hxx`:112 - `BOPDS_FaceInfo::PaveBlocksSc`
-//   method: Selector
-//   method: Returns the pave blocks of the face
-//   method: that are  pave blocks of section edges
-//   Reason: return type 'const BOPDS_IndexedMapOfPaveBlock&' is unknown
-//   // pub fn pave_blocks_sc(&self) -> &IndexedMapOfPaveBlock;
-//
-// SKIPPED: **Source:** `BOPDS_FaceInfo.hxx`:114 - `BOPDS_FaceInfo::ChangePaveBlocksSc`
-//   Reason: return type 'BOPDS_IndexedMapOfPaveBlock&' is unknown
-//   // pub fn change_pave_blocks_sc(&mut self) -> &mut IndexedMapOfPaveBlock;
-//
 
 // ========================
 // From BOPDS_IndexRange.hxx
@@ -2224,6 +2279,46 @@ impl InterfFF {
         unsafe { crate::ffi::BOPDS_InterfFF_tangent_faces(self as *const Self) }
     }
 
+    /// **Source:** `BOPDS_Interf.hxx`:585 - `BOPDS_InterfFF::Curves()`
+    ///
+    /// Selector
+    /// Returns the intersection curves
+    /// @return
+    /// intersection curves
+    pub fn curves(&self) -> &crate::ffi::BOPDS_VectorOfCurve {
+        unsafe { &*(crate::ffi::BOPDS_InterfFF_curves(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:594 - `BOPDS_InterfFF::ChangeCurves()`
+    ///
+    /// Selector/Modifier
+    /// Returns the intersection curves
+    /// @return
+    /// intersection curves
+    pub fn change_curves(&mut self) -> &mut crate::ffi::BOPDS_VectorOfCurve {
+        unsafe { &mut *(crate::ffi::BOPDS_InterfFF_change_curves(self as *mut Self)) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:603 - `BOPDS_InterfFF::Points()`
+    ///
+    /// Selector
+    /// Returns the intersection points
+    /// @return
+    /// intersection points
+    pub fn points(&self) -> &crate::ffi::BOPDS_VectorOfPoint {
+        unsafe { &*(crate::ffi::BOPDS_InterfFF_points(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:612 - `BOPDS_InterfFF::ChangePoints()`
+    ///
+    /// Selector/Modifier
+    /// Returns the intersection points
+    /// @return
+    /// intersection points
+    pub fn change_points(&mut self) -> &mut crate::ffi::BOPDS_VectorOfPoint {
+        unsafe { &mut *(crate::ffi::BOPDS_InterfFF_change_points(self as *mut Self)) }
+    }
+
     /// Upcast to BOPDS_Interf
     pub fn as_interf(&self) -> &Interf {
         unsafe { &*(crate::ffi::BOPDS_InterfFF_as_BOPDS_Interf(self as *const Self)) }
@@ -2281,32 +2376,6 @@ impl InterfFF {
         unsafe { crate::ffi::BOPDS_InterfFF_inherited_IndexNew(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for InterfFF (4 total) ──
-// SKIPPED: **Source:** `BOPDS_Interf.hxx`:585 - `BOPDS_InterfFF::Curves`
-//   method: Selector
-//   method: Returns the intersection curves
-//   Reason: return type 'const BOPDS_VectorOfCurve&' is unknown
-//   // pub fn curves(&self) -> &VectorOfCurve;
-//
-// SKIPPED: **Source:** `BOPDS_Interf.hxx`:594 - `BOPDS_InterfFF::ChangeCurves`
-//   method: Selector/Modifier
-//   method: Returns the intersection curves
-//   Reason: return type 'BOPDS_VectorOfCurve&' is unknown
-//   // pub fn change_curves(&mut self) -> &mut VectorOfCurve;
-//
-// SKIPPED: **Source:** `BOPDS_Interf.hxx`:603 - `BOPDS_InterfFF::Points`
-//   method: Selector
-//   method: Returns the intersection points
-//   Reason: return type 'const BOPDS_VectorOfPoint&' is unknown
-//   // pub fn points(&self) -> &VectorOfPoint;
-//
-// SKIPPED: **Source:** `BOPDS_Interf.hxx`:612 - `BOPDS_InterfFF::ChangePoints`
-//   method: Selector/Modifier
-//   method: Returns the intersection points
-//   Reason: return type 'BOPDS_VectorOfPoint&' is unknown
-//   // pub fn change_points(&mut self) -> &mut VectorOfPoint;
-//
 
 /// **Source:** `BOPDS_Interf.hxx`:629 - `BOPDS_InterfVZ`
 ///

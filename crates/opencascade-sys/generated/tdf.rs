@@ -2869,14 +2869,23 @@ impl ClosureTool {
             )
         }
     }
-}
 
-// ── Skipped symbols for ClosureTool (1 total) ──
-// SKIPPED: **Source:** `TDF_ClosureTool.hxx`:58 - `TDF_ClosureTool::Closure`
-//   static_method: Builds the transitive closure of <aLabel>.
-//   Reason: param 'aLabMap' uses unknown type 'TDF_LabelMap&'
-//   // pub fn closure(aLabel: &Label, aLabMap: &mut LabelMap, anAttMap: &mut AttributeMap, aFilter: &IDFilter, aMode: &ClosureMode);
-//
+    /// **Source:** `TDF_ClosureTool.hxx`:58 - `TDF_ClosureTool::Closure()`
+    /// Builds the transitive closure of <aLabel>.
+    pub fn closure_label_labelmap_attributemap_idfilter_closuremode(
+        aLabel: &Label,
+        aLabMap: &mut crate::ffi::TDF_LabelMap,
+        anAttMap: &mut crate::ffi::TDF_AttributeMap,
+        aFilter: &IDFilter,
+        aMode: &ClosureMode,
+    ) {
+        unsafe {
+            crate::ffi::TDF_ClosureTool_closure_label_labelmap_attributemap_idfilter_closuremode(
+                aLabel, aLabMap, anAttMap, aFilter, aMode,
+            )
+        }
+    }
+}
 
 // ========================
 // From TDF_ComparisonTool.hxx
@@ -3064,19 +3073,35 @@ impl CopyLabel {
     pub fn relocation_table(&self) -> &crate::ffi::HandleTDFRelocationTable {
         unsafe { &*(crate::ffi::TDF_CopyLabel_relocation_table(self as *const Self)) }
     }
-}
 
-// ── Skipped symbols for CopyLabel (2 total) ──
-// SKIPPED: **Source:** `TDF_CopyLabel.hxx`:49 - `TDF_CopyLabel::ExternalReferences`
-//   static_method: Check  external  references and  if  exist  fills  the  aExternals  Map
-//   Reason: param 'aExternals' uses unknown type 'TDF_AttributeMap&'
-//   // pub fn external_references(Lab: &Label, aExternals: &mut AttributeMap, aFilter: &IDFilter) -> bool;
-//
-// SKIPPED: **Source:** `TDF_CopyLabel.hxx`:54 - `TDF_CopyLabel::ExternalReferences`
-//   static_method: Check  external  references and  if  exist  fills  the  aExternals  Map
-//   Reason: param 'aExternals' uses unknown type 'TDF_AttributeMap&'
-//   // pub fn external_references(aRefLab: &Label, Lab: &Label, aExternals: &mut AttributeMap, aFilter: &IDFilter, aDataSet: &mut HandleDataSet);
-//
+    /// **Source:** `TDF_CopyLabel.hxx`:49 - `TDF_CopyLabel::ExternalReferences()`
+    /// Check  external  references and  if  exist  fills  the  aExternals  Map
+    pub fn external_references_label_attributemap_idfilter(
+        Lab: &Label,
+        aExternals: &mut crate::ffi::TDF_AttributeMap,
+        aFilter: &IDFilter,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TDF_CopyLabel_external_references_label_attributemap_idfilter(
+                Lab, aExternals, aFilter,
+            )
+        }
+    }
+
+    /// **Source:** `TDF_CopyLabel.hxx`:54 - `TDF_CopyLabel::ExternalReferences()`
+    /// Check  external  references and  if  exist  fills  the  aExternals  Map
+    pub fn external_references_label2_attributemap_idfilter_handletdfdataset(
+        aRefLab: &Label,
+        Lab: &Label,
+        aExternals: &mut crate::ffi::TDF_AttributeMap,
+        aFilter: &IDFilter,
+        aDataSet: &mut crate::ffi::HandleTDFDataSet,
+    ) {
+        unsafe {
+            crate::ffi::TDF_CopyLabel_external_references_label2_attributemap_idfilter_handletdfdataset(aRefLab, Lab, aExternals, aFilter, aDataSet)
+        }
+    }
+}
 
 // ========================
 // From TDF_CopyTool.hxx
@@ -3517,6 +3542,13 @@ impl DataSet {
         unsafe { crate::ffi::TDF_DataSet_contains_label(self as *const Self, aLabel) }
     }
 
+    /// **Source:** `TDF_DataSet.hxx`:56 - `TDF_DataSet::Labels()`
+    /// Returns the map of labels in this data set.
+    /// This map can be used directly, or updated.
+    pub fn labels(&mut self) -> &mut crate::ffi::TDF_LabelMap {
+        unsafe { &mut *(crate::ffi::TDF_DataSet_labels(self as *mut Self)) }
+    }
+
     /// **Source:** `TDF_DataSet.hxx`:59 - `TDF_DataSet::AddAttribute()`
     /// Adds <anAttribute> into the current data  set.
     pub fn add_attribute(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
@@ -3527,6 +3559,13 @@ impl DataSet {
     /// Returns true if <anAttribute> is in the data set.
     pub fn contains_attribute(&self, anAttribute: &crate::ffi::HandleTDFAttribute) -> bool {
         unsafe { crate::ffi::TDF_DataSet_contains_attribute(self as *const Self, anAttribute) }
+    }
+
+    /// **Source:** `TDF_DataSet.hxx`:66 - `TDF_DataSet::Attributes()`
+    /// Returns the map of attributes in the  current  data   set.
+    /// This map can be used directly, or updated.
+    pub fn attributes(&mut self) -> &mut crate::ffi::TDF_AttributeMap {
+        unsafe { &mut *(crate::ffi::TDF_DataSet_attributes(self as *mut Self)) }
     }
 
     /// **Source:** `TDF_DataSet.hxx`:69 - `TDF_DataSet::AddRoot()`
@@ -3635,19 +3674,7 @@ impl HandleTDFDataSet {
     }
 }
 
-// ── Skipped symbols for DataSet (3 total) ──
-// SKIPPED: **Source:** `TDF_DataSet.hxx`:56 - `TDF_DataSet::Labels`
-//   method: Returns the map of labels in this data set.
-//   method: This map can be used directly, or updated.
-//   Reason: return type 'TDF_LabelMap&' is unknown
-//   // pub fn labels(&mut self) -> &mut LabelMap;
-//
-// SKIPPED: **Source:** `TDF_DataSet.hxx`:66 - `TDF_DataSet::Attributes`
-//   method: Returns the map of attributes in the  current  data   set.
-//   method: This map can be used directly, or updated.
-//   Reason: return type 'TDF_AttributeMap&' is unknown
-//   // pub fn attributes(&mut self) -> &mut AttributeMap;
-//
+// ── Skipped symbols for DataSet (1 total) ──
 // SKIPPED: **Source:** `TDF_DataSet.hxx`:76 - `TDF_DataSet::Dump`
 //   method: Dumps the minimum information about <me> on
 //   method: <aStream>.
@@ -6726,6 +6753,38 @@ impl RelocationTable {
         unsafe { crate::ffi::TDF_RelocationTable_clear(self as *mut Self) }
     }
 
+    /// **Source:** `TDF_RelocationTable.hxx`:134 - `TDF_RelocationTable::TargetLabelMap()`
+    /// Fills <aLabelMap> with target relocation
+    /// labels. <aLabelMap> is not cleared before use.
+    pub fn target_label_map(&self, aLabelMap: &mut crate::ffi::TDF_LabelMap) {
+        unsafe { crate::ffi::TDF_RelocationTable_target_label_map(self as *const Self, aLabelMap) }
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:139 - `TDF_RelocationTable::TargetAttributeMap()`
+    /// Fills <anAttributeMap> with target relocation
+    /// attributes. <anAttributeMap> is not cleared before
+    /// use.
+    pub fn target_attribute_map(&self, anAttributeMap: &mut crate::ffi::TDF_AttributeMap) {
+        unsafe {
+            crate::ffi::TDF_RelocationTable_target_attribute_map(
+                self as *const Self,
+                anAttributeMap,
+            )
+        }
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:142 - `TDF_RelocationTable::LabelTable()`
+    /// Returns <myLabelTable> to be used or updated.
+    pub fn label_table(&mut self) -> &mut crate::ffi::TDF_LabelDataMap {
+        unsafe { &mut *(crate::ffi::TDF_RelocationTable_label_table(self as *mut Self)) }
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:145 - `TDF_RelocationTable::AttributeTable()`
+    /// Returns <myAttributeTable> to be used or updated.
+    pub fn attribute_table(&mut self) -> &mut crate::ffi::TDF_AttributeDataMap {
+        unsafe { &mut *(crate::ffi::TDF_RelocationTable_attribute_table(self as *mut Self)) }
+    }
+
     /// **Source:** `TDF_RelocationTable.hxx`:148 - `TDF_RelocationTable::TransientTable()`
     /// Returns <myTransientTable> to be used or updated.
     pub fn transient_table(
@@ -6838,30 +6897,7 @@ impl HandleTDFRelocationTable {
     }
 }
 
-// ── Skipped symbols for RelocationTable (5 total) ──
-// SKIPPED: **Source:** `TDF_RelocationTable.hxx`:134 - `TDF_RelocationTable::TargetLabelMap`
-//   method: Fills <aLabelMap> with target relocation
-//   method: labels. <aLabelMap> is not cleared before use.
-//   Reason: param 'aLabelMap' uses unknown type 'TDF_LabelMap&'
-//   // pub fn target_label_map(&self, aLabelMap: &mut LabelMap);
-//
-// SKIPPED: **Source:** `TDF_RelocationTable.hxx`:139 - `TDF_RelocationTable::TargetAttributeMap`
-//   method: Fills <anAttributeMap> with target relocation
-//   method: attributes. <anAttributeMap> is not cleared before
-//   method: use.
-//   Reason: param 'anAttributeMap' uses unknown type 'TDF_AttributeMap&'
-//   // pub fn target_attribute_map(&self, anAttributeMap: &mut AttributeMap);
-//
-// SKIPPED: **Source:** `TDF_RelocationTable.hxx`:142 - `TDF_RelocationTable::LabelTable`
-//   method: Returns <myLabelTable> to be used or updated.
-//   Reason: return type 'TDF_LabelDataMap&' is unknown
-//   // pub fn label_table(&mut self) -> &mut LabelDataMap;
-//
-// SKIPPED: **Source:** `TDF_RelocationTable.hxx`:145 - `TDF_RelocationTable::AttributeTable`
-//   method: Returns <myAttributeTable> to be used or updated.
-//   Reason: return type 'TDF_AttributeDataMap&' is unknown
-//   // pub fn attribute_table(&mut self) -> &mut AttributeDataMap;
-//
+// ── Skipped symbols for RelocationTable (1 total) ──
 // SKIPPED: **Source:** `TDF_RelocationTable.hxx`:151 - `TDF_RelocationTable::Dump`
 //   method: Dumps the relocation table.
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
@@ -7346,6 +7382,69 @@ impl Tool {
         unsafe { crate::ffi::TDF_Tool_is_self_contained_label_idfilter(aLabel, aFilter) }
     }
 
+    /// **Source:** `TDF_Tool.hxx`:73 - `TDF_Tool::OutReferers()`
+    /// Returns in <theAtts> the attributes having out
+    /// references.
+    ///
+    /// Caution: <theAtts> is not cleared before use!
+    pub fn out_referers_label_attributemap(
+        theLabel: &Label,
+        theAtts: &mut crate::ffi::TDF_AttributeMap,
+    ) {
+        unsafe { crate::ffi::TDF_Tool_out_referers_label_attributemap(theLabel, theAtts) }
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:79 - `TDF_Tool::OutReferers()`
+    /// Returns in <atts> the attributes having out
+    /// references and kept by <aFilterForReferers>.
+    /// It considers only the references kept by <aFilterForReferences>.
+    /// Caution: <atts> is not cleared before use!
+    pub fn out_referers_label_idfilter2_attributemap(
+        aLabel: &Label,
+        aFilterForReferers: &IDFilter,
+        aFilterForReferences: &IDFilter,
+        atts: &mut crate::ffi::TDF_AttributeMap,
+    ) {
+        unsafe {
+            crate::ffi::TDF_Tool_out_referers_label_idfilter2_attributemap(
+                aLabel,
+                aFilterForReferers,
+                aFilterForReferences,
+                atts,
+            )
+        }
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:86 - `TDF_Tool::OutReferences()`
+    /// Returns in <atts> the referenced attributes.
+    /// Caution: <atts> is not cleared before use!
+    pub fn out_references_label_attributemap(
+        aLabel: &Label,
+        atts: &mut crate::ffi::TDF_AttributeMap,
+    ) {
+        unsafe { crate::ffi::TDF_Tool_out_references_label_attributemap(aLabel, atts) }
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:91 - `TDF_Tool::OutReferences()`
+    /// Returns in <atts> the referenced attributes and kept by <aFilterForReferences>.
+    /// It considers only the referrers kept by <aFilterForReferers>.
+    /// Caution: <atts> is not cleared before use!
+    pub fn out_references_label_idfilter2_attributemap(
+        aLabel: &Label,
+        aFilterForReferers: &IDFilter,
+        aFilterForReferences: &IDFilter,
+        atts: &mut crate::ffi::TDF_AttributeMap,
+    ) {
+        unsafe {
+            crate::ffi::TDF_Tool_out_references_label_idfilter2_attributemap(
+                aLabel,
+                aFilterForReferers,
+                aFilterForReferences,
+                atts,
+            )
+        }
+    }
+
     /// **Source:** `TDF_Tool.hxx`:106 - `TDF_Tool::RelocateLabel()`
     /// Returns the label having the same sub-entry as
     /// <aLabel> but located as descendant as <toRoot>
@@ -7457,49 +7556,33 @@ impl Tool {
             )
         }
     }
+
+    /// **Source:** `TDF_Tool.hxx`:154 - `TDF_Tool::CountLabels()`
+    /// Adds the labels of <aLabelList> to <aLabelMap> if
+    /// they are unbound, or increases their reference
+    /// counters. At the end of the process, <aLabelList>
+    /// contains only the ADDED labels.
+    pub fn count_labels(
+        aLabelList: &mut crate::ffi::TDF_LabelList,
+        aLabelMap: &mut crate::ffi::TDF_LabelIntegerMap,
+    ) {
+        unsafe { crate::ffi::TDF_Tool_count_labels(aLabelList, aLabelMap) }
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:161 - `TDF_Tool::DeductLabels()`
+    /// Decreases the reference counters of the labels of
+    /// <aLabelList> to <aLabelMap>, and removes labels
+    /// with null counter. At the end of the process,
+    /// <aLabelList> contains only the SUPPRESSED labels.
+    pub fn deduct_labels(
+        aLabelList: &mut crate::ffi::TDF_LabelList,
+        aLabelMap: &mut crate::ffi::TDF_LabelIntegerMap,
+    ) {
+        unsafe { crate::ffi::TDF_Tool_deduct_labels(aLabelList, aLabelMap) }
+    }
 }
 
-// ── Skipped symbols for Tool (10 total) ──
-// SKIPPED: **Source:** `TDF_Tool.hxx`:73 - `TDF_Tool::OutReferers`
-//   static_method: Returns in <theAtts> the attributes having out
-//   static_method: references.
-//   Reason: param 'theAtts' uses unknown type 'TDF_AttributeMap&'
-//   // pub fn out_referers(theLabel: &Label, theAtts: &mut AttributeMap);
-//
-// SKIPPED: **Source:** `TDF_Tool.hxx`:79 - `TDF_Tool::OutReferers`
-//   static_method: Returns in <atts> the attributes having out
-//   static_method: references and kept by <aFilterForReferers>.
-//   static_method: It considers only the references kept by <aFilterForReferences>.
-//   Reason: param 'atts' uses unknown type 'TDF_AttributeMap&'
-//   // pub fn out_referers(aLabel: &Label, aFilterForReferers: &IDFilter, aFilterForReferences: &IDFilter, atts: &mut AttributeMap);
-//
-// SKIPPED: **Source:** `TDF_Tool.hxx`:86 - `TDF_Tool::OutReferences`
-//   static_method: Returns in <atts> the referenced attributes.
-//   static_method: Caution: <atts> is not cleared before use!
-//   Reason: param 'atts' uses unknown type 'TDF_AttributeMap&'
-//   // pub fn out_references(aLabel: &Label, atts: &mut AttributeMap);
-//
-// SKIPPED: **Source:** `TDF_Tool.hxx`:91 - `TDF_Tool::OutReferences`
-//   static_method: Returns in <atts> the referenced attributes and kept by <aFilterForReferences>.
-//   static_method: It considers only the referrers kept by <aFilterForReferers>.
-//   static_method: Caution: <atts> is not cleared before use!
-//   Reason: param 'atts' uses unknown type 'TDF_AttributeMap&'
-//   // pub fn out_references(aLabel: &Label, aFilterForReferers: &IDFilter, aFilterForReferences: &IDFilter, atts: &mut AttributeMap);
-//
-// SKIPPED: **Source:** `TDF_Tool.hxx`:154 - `TDF_Tool::CountLabels`
-//   static_method: Adds the labels of <aLabelList> to <aLabelMap> if
-//   static_method: they are unbound, or increases their reference
-//   static_method: counters. At the end of the process, <aLabelList>
-//   Reason: param 'aLabelMap' uses unknown type 'TDF_LabelIntegerMap&'
-//   // pub fn count_labels(aLabelList: &mut LabelList, aLabelMap: &mut LabelIntegerMap);
-//
-// SKIPPED: **Source:** `TDF_Tool.hxx`:161 - `TDF_Tool::DeductLabels`
-//   static_method: Decreases the reference counters of the labels of
-//   static_method: <aLabelList> to <aLabelMap>, and removes labels
-//   static_method: with null counter. At the end of the process,
-//   Reason: param 'aLabelMap' uses unknown type 'TDF_LabelIntegerMap&'
-//   // pub fn deduct_labels(aLabelList: &mut LabelList, aLabelMap: &mut LabelIntegerMap);
-//
+// ── Skipped symbols for Tool (4 total) ──
 // SKIPPED: **Source:** `TDF_Tool.hxx`:165 - `TDF_Tool::DeepDump`
 //   static_method: Dumps <aDF> and its labels and their attributes.
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)

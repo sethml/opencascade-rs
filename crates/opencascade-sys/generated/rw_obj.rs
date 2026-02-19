@@ -958,24 +958,6 @@ impl ObjWriterContext {
         unsafe { crate::ffi::RWObj_ObjWriterContext_write_quad(self as *mut Self, theQuad) }
     }
 
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:68 - `RWObj_ObjWriterContext::WriteVertex()`
-    /// Writing a vector
-    pub fn write_vertex(&mut self, theValue: &crate::ffi::Graphic3d_Vec3) -> bool {
-        unsafe { crate::ffi::RWObj_ObjWriterContext_write_vertex(self as *mut Self, theValue) }
-    }
-
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:71 - `RWObj_ObjWriterContext::WriteNormal()`
-    /// Writing a vector
-    pub fn write_normal(&mut self, theValue: &crate::ffi::Graphic3d_Vec3) -> bool {
-        unsafe { crate::ffi::RWObj_ObjWriterContext_write_normal(self as *mut Self, theValue) }
-    }
-
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:74 - `RWObj_ObjWriterContext::WriteTexCoord()`
-    /// Writing a vector
-    pub fn write_tex_coord(&mut self, theValue: &crate::ffi::Graphic3d_Vec2) -> bool {
-        unsafe { crate::ffi::RWObj_ObjWriterContext_write_tex_coord(self as *mut Self, theValue) }
-    }
-
     /// **Source:** `RWObj_ObjWriterContext.hxx`:77 - `RWObj_ObjWriterContext::WriteGroup()`
     /// Writing a group name
     pub fn write_group(&mut self, theValue: &crate::t_collection::AsciiString) -> bool {
@@ -988,6 +970,23 @@ impl ObjWriterContext {
         unsafe { crate::ffi::RWObj_ObjWriterContext_flush_face(self as *mut Self, theNbNodes) }
     }
 }
+
+// ── Skipped symbols for ObjWriterContext (3 total) ──
+// SKIPPED: **Source:** `RWObj_ObjWriterContext.hxx`:68 - `RWObj_ObjWriterContext::WriteVertex`
+//   method: Writing a vector
+//   Reason: param 'theValue' uses unknown type 'const Graphic3d_Vec3&'
+//   // pub fn write_vertex(&mut self, theValue: &Vec3) -> bool;
+//
+// SKIPPED: **Source:** `RWObj_ObjWriterContext.hxx`:71 - `RWObj_ObjWriterContext::WriteNormal`
+//   method: Writing a vector
+//   Reason: param 'theValue' uses unknown type 'const Graphic3d_Vec3&'
+//   // pub fn write_normal(&mut self, theValue: &Vec3) -> bool;
+//
+// SKIPPED: **Source:** `RWObj_ObjWriterContext.hxx`:74 - `RWObj_ObjWriterContext::WriteTexCoord`
+//   method: Writing a vector
+//   Reason: param 'theValue' uses unknown type 'const Graphic3d_Vec2&'
+//   // pub fn write_tex_coord(&mut self, theValue: &Vec2) -> bool;
+//
 
 // ========================
 // From RWObj_Reader.hxx

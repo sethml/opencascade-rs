@@ -52,6 +52,12 @@ fn collect_ncollection_typedefs(root: &Entity) {
             || entity.get_kind() == EntityKind::TypeAliasDecl
         {
             if let Some(name) = entity.get_name() {
+                // Only record if the typedef name looks like an OCCT type
+                // (starts with uppercase, contains underscore)
+                if !name.starts_with(|c: char| c.is_ascii_uppercase()) || !name.contains('_') {
+                    return EntityVisitResult::Recurse;
+                }
+
                 if let Some(underlying) = entity.get_typedef_underlying_type() {
                     let display = underlying.get_display_name();
                     // Check if this typedef resolves to an NCollection template,
@@ -59,13 +65,7 @@ fn collect_ncollection_typedefs(root: &Entity) {
                     // clang might misresolve.
                     if display.contains('<') {
                         let key = normalize_template_spelling(&display);
-                        // Only record if the typedef name looks like an OCCT type
-                        // (starts with uppercase, contains underscore)
-                        if name.starts_with(|c: char| c.is_ascii_uppercase())
-                            && name.contains('_')
-                        {
-                            map.insert(key, name.clone());
-                        }
+                        map.insert(key, name.clone());
                     }
                 }
             }
@@ -77,6 +77,62 @@ fn collect_ncollection_typedefs(root: &Entity) {
     TYPEDEF_MAP.with(|m| {
         *m.borrow_mut() = map;
     });
+}
+
+/// Supplement the typedef map by text-scanning header files for NCollection typedef
+/// patterns. This catches typedefs that clang misresolves (e.g., returning "int"
+/// instead of the actual NCollection template type).
+///
+/// Scans for patterns like:
+///   typedef NCollection_Map<TDF_Label> TDF_LabelMap;
+///   typedef NCollection_List<TopoDS_Shape> TopTools_ListOfShape;
+fn supplement_typedefs_from_headers(include_dirs: &[impl AsRef<Path>]) {
+    use std::io::BufRead;
+
+    // Regex: typedef <template_type> <typedef_name>;
+    // where <template_type> contains '<' (i.e., is a template instantiation)
+    let re = regex::Regex::new(
+        r"^\s*typedef\s+((?:NCollection_|TCollection_H)\w+<[^;]+>)\s+(\w+)\s*;"
+    ).unwrap();
+
+    let mut count = 0;
+    TYPEDEF_MAP.with(|m| {
+        let mut map = m.borrow_mut();
+        let existing_values: HashSet<String> = map.values().cloned().collect();
+
+        for dir in include_dirs {
+            let dir_path = dir.as_ref();
+            let entries = match std::fs::read_dir(dir_path) {
+                Ok(e) => e,
+                Err(_) => continue,
+            };
+            for entry in entries.flatten() {
+                let path = entry.path();
+                if path.extension().and_then(|s| s.to_str()) != Some("hxx") {
+                    continue;
+                }
+                let file = match std::fs::File::open(&path) {
+                    Ok(f) => f,
+                    Err(_) => continue,
+                };
+                for line in std::io::BufReader::new(file).lines().flatten() {
+                    if let Some(caps) = re.captures(&line) {
+                        let template_type = &caps[1];
+                        let typedef_name = &caps[2];
+                        // Only add if not already collected by clang scan
+                        if !existing_values.contains(typedef_name) {
+                            let key = normalize_template_spelling(template_type);
+                            map.insert(key, typedef_name.to_string());
+                            count += 1;
+                        }
+                    }
+                }
+            }
+        }
+    });
+    if count > 0 {
+        eprintln!("  Supplemented {} additional NCollection typedefs from header text scan", count);
+    }
 }
 
 /// Look up a type's display name in the typedef map.
@@ -210,6 +266,12 @@ pub fn parse_headers(
     // This must happen before class/method parsing so parse_type() can
     // resolve misresolved NCollection template types back to their typedef names.
     collect_ncollection_typedefs(&root);
+
+    // Supplement with text-scanned typedefs from header files.
+    // Clang sometimes misresolves NCollection template typedefs (e.g., returning
+    // "int" instead of "NCollection_Map<TDF_Label>"), so we scan the raw header
+    // text as a fallback.
+    supplement_typedefs_from_headers(include_dirs);
 
     root.visit_children(|entity, _parent| {
         visit_top_level_batch(&entity, &header_set, &filename_to_index, &mut results, verbose)

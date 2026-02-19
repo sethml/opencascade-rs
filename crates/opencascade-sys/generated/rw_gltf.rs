@@ -1414,6 +1414,17 @@ impl GltfLatePrimitiveArray {
         }
     }
 
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:202 - `Poly_Triangulation::SetNormal()`
+    pub fn set_normal(&mut self, theIndex: i32, theNormal: &crate::ffi::gp_Vec3f) {
+        unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetNormal(
+                self as *mut Self,
+                theIndex,
+                theNormal,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:216 - `Poly_Triangulation::MeshPurpose()`
     pub fn mesh_purpose(&self) -> u32 {
         unsafe {

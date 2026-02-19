@@ -1020,31 +1020,13 @@ impl Curve {
     /// of the2d curve in range (first, last)
     /// The distribution of sample points is consystent with
     /// what is used by BRepTopAdaptor_FClass2d
-    pub fn get_sample_points_handlegeom2dcurve_real2_sequenceofpnt2d(
+    pub fn get_sample_points(
         curve: &crate::ffi::HandleGeom2dCurve,
         first: f64,
         last: f64,
         seq: &mut crate::ffi::TColgp_SequenceOfPnt2d,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeAnalysis_Curve_get_sample_points_handlegeom2dcurve_real2_sequenceofpnt2d(curve, first, last, seq)
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_Curve.hxx`:174 - `ShapeAnalysis_Curve::GetSamplePoints()`
-    /// Returns sample points which will serve as linearisation
-    /// of the curve in range (first, last)
-    pub fn get_sample_points_handlegeomcurve_real2_sequenceofpnt(
-        curve: &crate::ffi::HandleGeomCurve,
-        first: f64,
-        last: f64,
-        seq: &mut crate::ffi::TColgp_SequenceOfPnt,
-    ) -> bool {
-        unsafe {
-            crate::ffi::ShapeAnalysis_Curve_get_sample_points_handlegeomcurve_real2_sequenceofpnt(
-                curve, first, last, seq,
-            )
-        }
+        unsafe { crate::ffi::ShapeAnalysis_Curve_get_sample_points(curve, first, last, seq) }
     }
 
     /// **Source:** `ShapeAnalysis_Curve.hxx`:181 - `ShapeAnalysis_Curve::IsClosed()`
@@ -1069,6 +1051,14 @@ impl Curve {
         unsafe { crate::ffi::ShapeAnalysis_Curve_is_periodic_handlegeom2dcurve(curve) }
     }
 }
+
+// ── Skipped symbols for Curve (1 total) ──
+// SKIPPED: **Source:** `ShapeAnalysis_Curve.hxx`:174 - `ShapeAnalysis_Curve::GetSamplePoints`
+//   static_method: Returns sample points which will serve as linearisation
+//   static_method: of the curve in range (first, last)
+//   Reason: param 'seq' uses unknown type 'TColgp_SequenceOfPnt&'
+//   // pub fn get_sample_points(curve: &HandleCurve, first: f64, last: f64, seq: &mut SequenceOfPnt) -> bool;
+//
 
 // ========================
 // From ShapeAnalysis_Edge.hxx
@@ -3555,7 +3545,7 @@ impl Surface {
     /// resolution (computed from <preci> by Geom_Adaptor).
     /// Then sets not yet computed <result>'s coordinate taking it
     /// from <neighbour> and returns True.
-    pub fn project_degenerated_pnt_real_pnt2d2(
+    pub fn project_degenerated(
         &mut self,
         P3d: &crate::gp::Pnt,
         preci: f64,
@@ -3563,32 +3553,13 @@ impl Surface {
         result: &mut crate::gp::Pnt2d,
     ) -> bool {
         unsafe {
-            crate::ffi::ShapeAnalysis_Surface_project_degenerated_pnt_real_pnt2d2(
+            crate::ffi::ShapeAnalysis_Surface_project_degenerated(
                 self as *mut Self,
                 P3d,
                 preci,
                 neighbour,
                 result,
             )
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:182 - `ShapeAnalysis_Surface::ProjectDegenerated()`
-    /// Checks points at the beginning (direct is True) or end
-    /// (direct is False) of array <points> to lie in singularity of
-    /// surface, and if yes, adjusts the indeterminate 2d coordinate
-    /// of these points by nearest point which is not in singularity.
-    /// Returns True if some points were adjusted.
-    pub fn project_degenerated_int_sequenceofpnt_sequenceofpnt2d_real_bool(
-        &mut self,
-        nbrPnt: i32,
-        points: &crate::ffi::TColgp_SequenceOfPnt,
-        pnt2d: &mut crate::ffi::TColgp_SequenceOfPnt2d,
-        preci: f64,
-        direct: bool,
-    ) -> bool {
-        unsafe {
-            crate::ffi::ShapeAnalysis_Surface_project_degenerated_int_sequenceofpnt_sequenceofpnt2d_real_bool(self as *mut Self, nbrPnt, points, pnt2d, preci, direct)
         }
     }
 
@@ -3914,6 +3885,15 @@ impl HandleShapeAnalysisSurface {
         }
     }
 }
+
+// ── Skipped symbols for Surface (1 total) ──
+// SKIPPED: **Source:** `ShapeAnalysis_Surface.hxx`:182 - `ShapeAnalysis_Surface::ProjectDegenerated`
+//   method: Checks points at the beginning (direct is True) or end
+//   method: (direct is False) of array <points> to lie in singularity of
+//   method: surface, and if yes, adjusts the indeterminate 2d coordinate
+//   Reason: param 'points' uses unknown type 'const TColgp_SequenceOfPnt&'
+//   // pub fn project_degenerated(&mut self, nbrPnt: i32, points: &SequenceOfPnt, pnt2d: &mut SequenceOfPnt2d, preci: f64, direct: bool) -> bool;
+//
 
 // ========================
 // From ShapeAnalysis_TransferParameters.hxx
@@ -5039,56 +5019,10 @@ impl Wire {
         unsafe { crate::ffi::ShapeAnalysis_Wire_check_curve_gap(self as *mut Self, num) }
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:374 - `ShapeAnalysis_Wire::CheckSelfIntersectingEdge()`
-    /// Checks if num-th edge is self-intersecting.
-    /// Self-intersection is reported only if intersection point lies outside
-    /// of both end vertices of the edge.
-    /// Returns: True if edge is self-intersecting.
-    /// If returns True it also fills the sequences of intersection points
-    /// and corresponding 3d points (only that are not enclosed by a vertices)
-    /// Status:
-    /// FAIL1 : No pcurve
-    /// FAIL2 : No vertices
-    /// DONE1 : Self-intersection found
-    pub fn check_self_intersecting_edge_int_sequenceofintersectionpoint_sequenceofpnt(
-        &mut self,
-        num: i32,
-        points2d: &mut crate::ffi::IntRes2d_SequenceOfIntersectionPoint,
-        points3d: &mut crate::ffi::TColgp_SequenceOfPnt,
-    ) -> bool {
-        unsafe {
-            crate::ffi::ShapeAnalysis_Wire_check_self_intersecting_edge_int_sequenceofintersectionpoint_sequenceofpnt(self as *mut Self, num, points2d, points3d)
-        }
-    }
-
     /// **Source:** `ShapeAnalysis_Wire.hxx`:378 - `ShapeAnalysis_Wire::CheckSelfIntersectingEdge()`
-    pub fn check_self_intersecting_edge_int(&mut self, num: i32) -> bool {
+    pub fn check_self_intersecting_edge(&mut self, num: i32) -> bool {
         unsafe {
-            crate::ffi::ShapeAnalysis_Wire_check_self_intersecting_edge_int(self as *mut Self, num)
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:392 - `ShapeAnalysis_Wire::CheckIntersectingEdges()`
-    /// Checks two adjacent edges for intersecting.
-    /// Intersection is reported only if intersection point is not enclosed
-    /// by the common end vertex of the edges.
-    /// Returns: True if intersection is found.
-    /// If returns True it also fills the sequences of intersection points,
-    /// corresponding 3d points, and errors for them (half-distances between
-    /// intersection points in 3d calculated from one and from another edge)
-    /// Status:
-    /// FAIL1 : No pcurve
-    /// FAIL2 : No vertices
-    /// DONE1 : Self-intersection found
-    pub fn check_intersecting_edges_int_sequenceofintersectionpoint_sequenceofpnt_sequenceofreal(
-        &mut self,
-        num: i32,
-        points2d: &mut crate::ffi::IntRes2d_SequenceOfIntersectionPoint,
-        points3d: &mut crate::ffi::TColgp_SequenceOfPnt,
-        errors: &mut crate::ffi::TColStd_SequenceOfReal,
-    ) -> bool {
-        unsafe {
-            crate::ffi::ShapeAnalysis_Wire_check_intersecting_edges_int_sequenceofintersectionpoint_sequenceofpnt_sequenceofreal(self as *mut Self, num, points2d, points3d, errors)
+            crate::ffi::ShapeAnalysis_Wire_check_self_intersecting_edge(self as *mut Self, num)
         }
     }
 
@@ -5099,22 +5033,6 @@ impl Wire {
     pub fn check_intersecting_edges_int(&mut self, num: i32) -> bool {
         unsafe {
             crate::ffi::ShapeAnalysis_Wire_check_intersecting_edges_int(self as *mut Self, num)
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:405 - `ShapeAnalysis_Wire::CheckIntersectingEdges()`
-    /// Checks i-th and j-th edges for intersecting.
-    /// Remark : See the previous method for details
-    pub fn check_intersecting_edges_int2_sequenceofintersectionpoint_sequenceofpnt_sequenceofreal(
-        &mut self,
-        num1: i32,
-        num2: i32,
-        points2d: &mut crate::ffi::IntRes2d_SequenceOfIntersectionPoint,
-        points3d: &mut crate::ffi::TColgp_SequenceOfPnt,
-        errors: &mut crate::ffi::TColStd_SequenceOfReal,
-    ) -> bool {
-        unsafe {
-            crate::ffi::ShapeAnalysis_Wire_check_intersecting_edges_int2_sequenceofintersectionpoint_sequenceofpnt_sequenceofreal(self as *mut Self, num1, num2, points2d, points3d, errors)
         }
     }
 
@@ -5533,7 +5451,27 @@ impl HandleShapeAnalysisWire {
     }
 }
 
-// ── Skipped symbols for Wire (1 total) ──
+// ── Skipped symbols for Wire (4 total) ──
+// SKIPPED: **Source:** `ShapeAnalysis_Wire.hxx`:374 - `ShapeAnalysis_Wire::CheckSelfIntersectingEdge`
+//   method: Checks if num-th edge is self-intersecting.
+//   method: Self-intersection is reported only if intersection point lies outside
+//   method: of both end vertices of the edge.
+//   Reason: param 'points3d' uses unknown type 'TColgp_SequenceOfPnt&'
+//   // pub fn check_self_intersecting_edge(&mut self, num: i32, points2d: &mut SequenceOfIntersectionPoint, points3d: &mut SequenceOfPnt) -> bool;
+//
+// SKIPPED: **Source:** `ShapeAnalysis_Wire.hxx`:392 - `ShapeAnalysis_Wire::CheckIntersectingEdges`
+//   method: Checks two adjacent edges for intersecting.
+//   method: Intersection is reported only if intersection point is not enclosed
+//   method: by the common end vertex of the edges.
+//   Reason: param 'points3d' uses unknown type 'TColgp_SequenceOfPnt&'
+//   // pub fn check_intersecting_edges(&mut self, num: i32, points2d: &mut SequenceOfIntersectionPoint, points3d: &mut SequenceOfPnt, errors: &mut SequenceOfReal) -> bool;
+//
+// SKIPPED: **Source:** `ShapeAnalysis_Wire.hxx`:405 - `ShapeAnalysis_Wire::CheckIntersectingEdges`
+//   method: Checks i-th and j-th edges for intersecting.
+//   method: Remark : See the previous method for details
+//   Reason: param 'points3d' uses unknown type 'TColgp_SequenceOfPnt&'
+//   // pub fn check_intersecting_edges(&mut self, num1: i32, num2: i32, points2d: &mut SequenceOfIntersectionPoint, points3d: &mut SequenceOfPnt, errors: &mut SequenceOfReal) -> bool;
+//
 // SKIPPED: **Source:** `ShapeAnalysis_Wire.hxx`:459 - `ShapeAnalysis_Wire::CheckNotchedEdges`
 //   method: Detects a notch
 //   Reason: has misresolved element type (clang batch parsing artifact)

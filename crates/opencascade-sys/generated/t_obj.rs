@@ -5628,6 +5628,18 @@ impl TNameContainer {
         unsafe { crate::ffi::TObj_TNameContainer_clear(self as *mut Self) }
     }
 
+    /// **Source:** `TObj_TNameContainer.hxx`:70 - `TObj_TNameContainer::Set()`
+    /// Sets the TObj_DataMapOfNameLabel object
+    pub fn set(&mut self, theElem: &crate::ffi::TObj_DataMapOfNameLabel) {
+        unsafe { crate::ffi::TObj_TNameContainer_set(self as *mut Self, theElem) }
+    }
+
+    /// **Source:** `TObj_TNameContainer.hxx`:73 - `TObj_TNameContainer::Get()`
+    /// Returns the TObj_DataMapOfNameLabel object
+    pub fn get(&self) -> &crate::ffi::TObj_DataMapOfNameLabel {
+        unsafe { &*(crate::ffi::TObj_TNameContainer_get(self as *const Self)) }
+    }
+
     /// **Source:** `TObj_TNameContainer.hxx`:80 - `TObj_TNameContainer::NewEmpty()`
     /// Returns an new empty TObj_TNameContainer attribute. It is used by the
     /// copy algorithm.
@@ -5671,10 +5683,10 @@ impl TNameContainer {
 
     /// **Source:** `TObj_TNameContainer.hxx`:47 - `TObj_TNameContainer::Set()`
     /// Creates TObj_DataMapOfNameLabel attribute on given label if not exist
-    pub fn set(
+    pub fn set_label(
         theLabel: &crate::tdf::Label,
     ) -> crate::OwnedPtr<crate::ffi::HandleTObjTNameContainer> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_TNameContainer_set(theLabel)) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_TNameContainer_set_label(theLabel)) }
     }
 
     /// **Source:** `TObj_TNameContainer.hxx`:97 - `TObj_TNameContainer::get_type_name()`
@@ -6025,18 +6037,6 @@ impl HandleTObjTNameContainer {
         }
     }
 }
-
-// ── Skipped symbols for TNameContainer (2 total) ──
-// SKIPPED: **Source:** `TObj_TNameContainer.hxx`:70 - `TObj_TNameContainer::Set`
-//   method: Sets the TObj_DataMapOfNameLabel object
-//   Reason: param 'theElem' uses unknown type 'const TObj_DataMapOfNameLabel&'
-//   // pub fn set(&mut self, theElem: &DataMapOfNameLabel);
-//
-// SKIPPED: **Source:** `TObj_TNameContainer.hxx`:73 - `TObj_TNameContainer::Get`
-//   method: Returns the TObj_DataMapOfNameLabel object
-//   Reason: return type 'const TObj_DataMapOfNameLabel&' is unknown
-//   // pub fn get(&self) -> &DataMapOfNameLabel;
-//
 
 // ========================
 // From TObj_TObject.hxx

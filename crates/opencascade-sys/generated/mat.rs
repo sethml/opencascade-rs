@@ -1006,6 +1006,11 @@ impl Graph {
         unsafe { crate::ffi::MAT_Graph_compact_nodes(self as *mut Self) }
     }
 
+    /// **Source:** `MAT_Graph.hxx`:107 - `MAT_Graph::ChangeBasicElts()`
+    pub fn change_basic_elts(&mut self, NewMap: &crate::ffi::MAT_DataMapOfIntegerBasicElt) {
+        unsafe { crate::ffi::MAT_Graph_change_basic_elts(self as *mut Self, NewMap) }
+    }
+
     /// **Source:** `MAT_Graph.hxx`:109 - `MAT_Graph::ChangeBasicElt()`
     pub fn change_basic_elt(
         &mut self,
@@ -1113,17 +1118,13 @@ impl HandleMATGraph {
     }
 }
 
-// ── Skipped symbols for Graph (2 total) ──
+// ── Skipped symbols for Graph (1 total) ──
 // SKIPPED: **Source:** `MAT_Graph.hxx`:94 - `MAT_Graph::FusionOfBasicElts`
 //   method: Merge two BasicElts.  The End of the BasicElt Elt1
 //   method: of  IndexElt1 becomes The End of the BasicElt Elt2
 //   method: of  IndexElt2.   Elt2 is replaced in  the  arcs  by
 //   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn fusion_of_basic_elts(&mut self, IndexElt1: i32, IndexElt2: i32, MergeArc1: &mut bool, GeomIndexArc1: &mut i32, GeomIndexArc2: &mut i32, MergeArc2: &mut bool, GeomIndexArc3: &mut i32, GeomIndexArc4: &mut i32);
-//
-// SKIPPED: **Source:** `MAT_Graph.hxx`:107 - `MAT_Graph::ChangeBasicElts`
-//   Reason: param 'NewMap' uses unknown type 'const MAT_DataMapOfIntegerBasicElt&'
-//   // pub fn change_basic_elts(&mut self, NewMap: &DataMapOfIntegerBasicElt);
 //
 
 // ========================

@@ -1177,8 +1177,8 @@ impl Color {
 
     /// **Source:** `Quantity_Color.hxx`:62 - `Quantity_Color::Quantity_Color()`
     /// Define color from linear RGB values.
-    pub fn new_vec3(theRgb: &crate::ffi::Graphic3d_Vec3) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Quantity_Color_ctor_vec3(theRgb)) }
+    pub fn new_vec3f(theRgb: &crate::ffi::gp_Vec3f) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Quantity_Color_ctor_vec3f(theRgb)) }
     }
 
     /// **Source:** `Quantity_Color.hxx`:65 - `Quantity_Color::Name()`
@@ -1202,7 +1202,7 @@ impl Color {
 
     /// **Source:** `Quantity_Color.hxx`:74 - `Quantity_Color::Rgb()`
     /// Return the color as vector of 3 float elements.
-    pub fn rgb(&self) -> &crate::ffi::Graphic3d_Vec3 {
+    pub fn rgb(&self) -> &crate::ffi::gp_Vec3f {
         unsafe { &*(crate::ffi::Quantity_Color_rgb(self as *const Self)) }
     }
 
@@ -1519,44 +1519,44 @@ impl Color {
 // ── Skipped symbols for Color (11 total) ──
 // SKIPPED: **Source:** `Quantity_Color.hxx`:242 - `Quantity_Color::Convert_sRGB_To_HLS`
 //   static_method: Converts sRGB components into HLS ones.
-//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
-//   // pub fn convert_s_rgb_to_hls(theRgb: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//   Reason: return type 'gp_Vec3f' is not CppDeletable
+//   // pub fn convert_s_rgb_to_hls(theRgb: &Vec3f) -> OwnedPtr<gp_Vec3f>;
 //
 // SKIPPED: **Source:** `Quantity_Color.hxx`:246 - `Quantity_Color::Convert_HLS_To_sRGB`
 //   static_method: Converts HLS components into RGB ones.
-//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
-//   // pub fn convert_hls_to_s_rgb(theHls: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//   Reason: return type 'gp_Vec3f' is not CppDeletable
+//   // pub fn convert_hls_to_s_rgb(theHls: &Vec3f) -> OwnedPtr<gp_Vec3f>;
 //
 // SKIPPED: **Source:** `Quantity_Color.hxx`:250 - `Quantity_Color::Convert_LinearRGB_To_HLS`
 //   static_method: Converts Linear RGB components into HLS ones.
-//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
-//   // pub fn convert_linear_rgb_to_hls(theRgb: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//   Reason: return type 'gp_Vec3f' is not CppDeletable
+//   // pub fn convert_linear_rgb_to_hls(theRgb: &Vec3f) -> OwnedPtr<gp_Vec3f>;
 //
 // SKIPPED: **Source:** `Quantity_Color.hxx`:256 - `Quantity_Color::Convert_HLS_To_LinearRGB`
 //   static_method: Converts HLS components into linear RGB ones.
-//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
-//   // pub fn convert_hls_to_linear_rgb(theHls: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//   Reason: return type 'gp_Vec3f' is not CppDeletable
+//   // pub fn convert_hls_to_linear_rgb(theHls: &Vec3f) -> OwnedPtr<gp_Vec3f>;
 //
 // SKIPPED: **Source:** `Quantity_Color.hxx`:262 - `Quantity_Color::Convert_LinearRGB_To_Lab`
 //   static_method: Converts linear RGB components into CIE Lab ones.
-//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
-//   // pub fn convert_linear_rgb_to_lab(theRgb: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//   Reason: return type 'gp_Vec3f' is not CppDeletable
+//   // pub fn convert_linear_rgb_to_lab(theRgb: &Vec3f) -> OwnedPtr<gp_Vec3f>;
 //
 // SKIPPED: **Source:** `Quantity_Color.hxx`:266 - `Quantity_Color::Convert_Lab_To_Lch`
 //   static_method: Converts CIE Lab components into CIE Lch ones.
-//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
-//   // pub fn convert_lab_to_lch(theLab: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//   Reason: return type 'gp_Vec3f' is not CppDeletable
+//   // pub fn convert_lab_to_lch(theLab: &Vec3f) -> OwnedPtr<gp_Vec3f>;
 //
 // SKIPPED: **Source:** `Quantity_Color.hxx`:271 - `Quantity_Color::Convert_Lab_To_LinearRGB`
 //   static_method: Converts CIE Lab components into linear RGB ones.
 //   static_method: Note that the resulting values may be out of the valid range for RGB.
-//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
-//   // pub fn convert_lab_to_linear_rgb(theLab: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//   Reason: return type 'gp_Vec3f' is not CppDeletable
+//   // pub fn convert_lab_to_linear_rgb(theLab: &Vec3f) -> OwnedPtr<gp_Vec3f>;
 //
 // SKIPPED: **Source:** `Quantity_Color.hxx`:275 - `Quantity_Color::Convert_Lch_To_Lab`
 //   static_method: Converts CIE Lch components into CIE Lab ones.
-//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
-//   // pub fn convert_lch_to_lab(theLch: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//   Reason: return type 'gp_Vec3f' is not CppDeletable
+//   // pub fn convert_lch_to_lab(theLch: &Vec3f) -> OwnedPtr<gp_Vec3f>;
 //
 // SKIPPED: **Source:** `Quantity_Color.hxx`:284 - `Quantity_Color::Color2argb`
 //   static_method: Convert the color value to ARGB integer value, with alpha equals to 0.
@@ -1567,13 +1567,13 @@ impl Color {
 //
 // SKIPPED: **Source:** `Quantity_Color.hxx`:371 - `Quantity_Color::Convert_LinearRGB_To_sRGB_approx22`
 //   static_method: Convert linear RGB components into sRGB using approximated uniform gamma coefficient 2.2
-//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
-//   // pub fn convert_linear_rgb_to_s_rgb_approx22(theRGB: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//   Reason: return type 'gp_Vec3f' is not CppDeletable
+//   // pub fn convert_linear_rgb_to_s_rgb_approx22(theRGB: &Vec3f) -> OwnedPtr<gp_Vec3f>;
 //
 // SKIPPED: **Source:** `Quantity_Color.hxx`:380 - `Quantity_Color::Convert_sRGB_To_LinearRGB_approx22`
 //   static_method: Convert sRGB components into linear RGB using approximated uniform gamma coefficient 2.2
-//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
-//   // pub fn convert_s_rgb_to_linear_rgb_approx22(theRGB: &Vec3) -> OwnedPtr<Graphic3d_Vec3>;
+//   Reason: return type 'gp_Vec3f' is not CppDeletable
+//   // pub fn convert_s_rgb_to_linear_rgb_approx22(theRGB: &Vec3f) -> OwnedPtr<gp_Vec3f>;
 //
 
 // ========================

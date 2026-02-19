@@ -699,6 +699,12 @@ impl SolidExplorer {
         unsafe { &*(crate::ffi::BRepClass3d_SolidExplorer_get_shape(self as *const Self)) }
     }
 
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:182 - `BRepClass3d_SolidExplorer::GetTree()`
+    /// Return UB-tree instance which is used for edge / vertex checks.
+    pub fn get_tree(&mut self) -> &crate::ffi::BRepClass3d_BndBoxTree {
+        unsafe { &*(crate::ffi::BRepClass3d_SolidExplorer_get_tree(self as *mut Self)) }
+    }
+
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:185 - `BRepClass3d_SolidExplorer::GetMapEV()`
     /// Return edge/vertices map for current shape.
     pub fn get_map_ev(&mut self) -> &crate::ffi::TopTools_IndexedMapOfShape {
@@ -792,7 +798,7 @@ impl SolidExplorer {
     }
 }
 
-// ── Skipped symbols for SolidExplorer (5 total) ──
+// ── Skipped symbols for SolidExplorer (4 total) ──
 // SKIPPED: **Source:** `BRepClass3d_SolidExplorer.hxx`:86 - `BRepClass3d_SolidExplorer::PointInTheFace`
 //   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn point_in_the_face(&self, F: &Face, P: &mut Pnt, u: &mut f64, v: &mut f64, Param: &mut f64, Index: &mut i32) -> bool;
@@ -810,11 +816,6 @@ impl SolidExplorer {
 // SKIPPED: **Source:** `BRepClass3d_SolidExplorer.hxx`:179 - `BRepClass3d_SolidExplorer::Intersector`
 //   Reason: returns &mut with reference params (ambiguous lifetimes)
 //   // pub fn intersector(&self, F: &Face) -> &mut Intersector;
-//
-// SKIPPED: **Source:** `BRepClass3d_SolidExplorer.hxx`:182 - `BRepClass3d_SolidExplorer::GetTree`
-//   method: Return UB-tree instance which is used for edge / vertex checks.
-//   Reason: return type 'const BRepClass3d_BndBoxTree&' is unknown
-//   // pub fn get_tree(&mut self) -> &BndBoxTree;
 //
 
 // ========================

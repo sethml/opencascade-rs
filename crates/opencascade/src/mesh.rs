@@ -95,7 +95,7 @@ impl Mesher {
             triangulation.compute_normals();
 
             for i in 1..=face_point_count {
-                let normal = triangulation.normal(i);
+                let normal = triangulation.normal_int(i);
                 normals.push(dvec3(normal.x(), normal.y(), normal.z()));
             }
 

@@ -112,6 +112,16 @@ impl ArrayOfNodes {
         }
     }
 
+    /// **Source:** `Poly_ArrayOfNodes.hxx`:51 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
+    /// Constructor wrapping pre-allocated C-array of values without copying them.
+    pub fn new_vec3f_int(theBegin: &crate::ffi::gp_Vec3f, theLength: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_ArrayOfNodes_ctor_vec3f_int(
+                theBegin, theLength,
+            ))
+        }
+    }
+
     /// **Source:** `Poly_ArrayOfNodes.hxx`:61 - `Poly_ArrayOfNodes::IsDoublePrecision()`
     /// Returns TRUE if array defines nodes with double precision.
     pub fn is_double_precision(&self) -> bool {
@@ -152,12 +162,7 @@ impl ArrayOfNodes {
     }
 }
 
-// ── Skipped symbols for ArrayOfNodes (3 total) ──
-// SKIPPED: **Source:** `Poly_ArrayOfNodes.hxx`:51 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes`
-//   constructor: Constructor wrapping pre-allocated C-array of values without copying them.
-//   Reason: param 'theBegin' uses unknown type 'const gp_Vec3f&'
-//   // pub fn new_vec3f_int(theBegin: &Vec3f, theLength: i32) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for ArrayOfNodes (2 total) ──
 // SKIPPED: **Source:** `Poly_ArrayOfNodes.hxx`:79 - `Poly_ArrayOfNodes::Assign`
 //   method: Copies data of theOther array to this.
 //   method: The arrays should have the same length,
@@ -208,6 +213,16 @@ impl ArrayOfUVNodes {
         }
     }
 
+    /// **Source:** `Poly_ArrayOfUVNodes.hxx`:51 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
+    /// Constructor wrapping pre-allocated C-array of values without copying them.
+    pub fn new_vec2f_int(theBegin: &crate::ffi::gp_Vec2f, theLength: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_ArrayOfUVNodes_ctor_vec2f_int(
+                theBegin, theLength,
+            ))
+        }
+    }
+
     /// **Source:** `Poly_ArrayOfUVNodes.hxx`:61 - `Poly_ArrayOfUVNodes::IsDoublePrecision()`
     /// Returns TRUE if array defines nodes with double precision.
     pub fn is_double_precision(&self) -> bool {
@@ -248,12 +263,7 @@ impl ArrayOfUVNodes {
     }
 }
 
-// ── Skipped symbols for ArrayOfUVNodes (3 total) ──
-// SKIPPED: **Source:** `Poly_ArrayOfUVNodes.hxx`:51 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes`
-//   constructor: Constructor wrapping pre-allocated C-array of values without copying them.
-//   Reason: param 'theBegin' uses unknown type 'const gp_Vec2f&'
-//   // pub fn new_vec2f_int(theBegin: &Vec2f, theLength: i32) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for ArrayOfUVNodes (2 total) ──
 // SKIPPED: **Source:** `Poly_ArrayOfUVNodes.hxx`:79 - `Poly_ArrayOfUVNodes::Assign`
 //   method: Copies data of theOther array to this.
 //   method: The arrays should have the same length,
@@ -2698,8 +2708,8 @@ impl HandlePolyMergeNodesTool {
 // ── Skipped symbols for MergeNodesTool (4 total) ──
 // SKIPPED: **Source:** `Poly_MergeNodesTool.hxx`:90 - `Poly_MergeNodesTool::computeTriNormal`
 //   method: Compute normal for the mesh element.
-//   Reason: return type 'Graphic3d_Vec3' is not CppDeletable
-//   // pub fn compute_tri_normal(&self) -> OwnedPtr<Graphic3d_Vec3>;
+//   Reason: return type 'gp_Vec3f' is not CppDeletable
+//   // pub fn compute_tri_normal(&self) -> OwnedPtr<gp_Vec3f>;
 //
 // SKIPPED: **Source:** `Poly_MergeNodesTool.hxx`:114 - `Poly_MergeNodesTool::AddTriangle`
 //   method: Add new triangle.
@@ -3757,12 +3767,36 @@ impl Triangulation {
     /// Returns normal at the given index.
     /// @param[in] theIndex node index within [1, NbNodes()] range
     /// @return normalized 3D vector defining a surface normal
-    pub fn normal(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Dir> {
+    pub fn normal_int(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Poly_Triangulation_normal(
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_Triangulation_normal_int(
                 self as *const Self,
                 theIndex,
             ))
+        }
+    }
+
+    /// **Source:** `Poly_Triangulation.hxx`:194 - `Poly_Triangulation::Normal()`
+    /// Returns normal at the given index.
+    /// @param[in]  theIndex node index within [1, NbNodes()] range
+    /// @param[out] theVec3  3D vector defining a surface normal
+    pub fn normal_int_vec3f(&self, theIndex: i32, theVec3: &mut crate::ffi::gp_Vec3f) {
+        unsafe {
+            crate::ffi::Poly_Triangulation_normal_int_vec3f(self as *const Self, theIndex, theVec3)
+        }
+    }
+
+    /// **Source:** `Poly_Triangulation.hxx`:202 - `Poly_Triangulation::SetNormal()`
+    /// Changes normal at the given index.
+    /// @param[in] theIndex node index within [1, NbNodes()] range
+    /// @param[in] theVec3  normalized 3D vector defining a surface normal
+    pub fn set_normal_int_vec3f(&mut self, theIndex: i32, theNormal: &crate::ffi::gp_Vec3f) {
+        unsafe {
+            crate::ffi::Poly_Triangulation_set_normal_int_vec3f(
+                self as *mut Self,
+                theIndex,
+                theNormal,
+            )
         }
     }
 
@@ -3770,8 +3804,14 @@ impl Triangulation {
     /// Changes normal at the given index.
     /// @param[in] theIndex  node index within [1, NbNodes()] range
     /// @param[in] theNormal normalized 3D vector defining a surface normal
-    pub fn set_normal(&mut self, theIndex: i32, theNormal: &crate::gp::Dir) {
-        unsafe { crate::ffi::Poly_Triangulation_set_normal(self as *mut Self, theIndex, theNormal) }
+    pub fn set_normal_int_dir(&mut self, theIndex: i32, theNormal: &crate::gp::Dir) {
+        unsafe {
+            crate::ffi::Poly_Triangulation_set_normal_int_dir(
+                self as *mut Self,
+                theIndex,
+                theNormal,
+            )
+        }
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:216 - `Poly_Triangulation::MeshPurpose()`
@@ -4165,21 +4205,7 @@ impl HandlePolyTriangulation {
     }
 }
 
-// ── Skipped symbols for Triangulation (3 total) ──
-// SKIPPED: **Source:** `Poly_Triangulation.hxx`:194 - `Poly_Triangulation::Normal`
-//   method: Returns normal at the given index.
-//   method: @param[in]  theIndex node index within [1, NbNodes()] range
-//   method: @param[out] theVec3  3D vector defining a surface normal
-//   Reason: param 'theVec3' uses unknown type 'gp_Vec3f&'
-//   // pub fn normal(&self, theIndex: i32, theVec3: &mut Vec3f);
-//
-// SKIPPED: **Source:** `Poly_Triangulation.hxx`:202 - `Poly_Triangulation::SetNormal`
-//   method: Changes normal at the given index.
-//   method: @param[in] theIndex node index within [1, NbNodes()] range
-//   method: @param[in] theVec3  normalized 3D vector defining a surface normal
-//   Reason: param 'theNormal' uses unknown type 'const gp_Vec3f&'
-//   // pub fn set_normal(&mut self, theIndex: i32, theNormal: &Vec3f);
-//
+// ── Skipped symbols for Triangulation (1 total) ──
 // SKIPPED: **Source:** `Poly_Triangulation.hxx`:332 - `Poly_Triangulation::InternalNormals`
 //   method: Return an internal array of normals.
 //   method: Normal()/SetNormal() should be used instead in portable code.

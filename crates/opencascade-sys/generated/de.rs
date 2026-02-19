@@ -270,6 +270,13 @@ impl ConfigurationContext {
         }
     }
 
+    /// **Source:** `DE_ConfigurationContext.hxx`:145 - `DE_ConfigurationContext::GetInternalMap()`
+    /// Gets internal resource map
+    /// @return map with resource value
+    pub fn get_internal_map(&self) -> &crate::ffi::DE_ResourceMap {
+        unsafe { &*(crate::ffi::DE_ConfigurationContext_get_internal_map(self as *const Self)) }
+    }
+
     /// **Source:** `DE_ConfigurationContext.hxx`:31 - `DE_ConfigurationContext::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -377,19 +384,13 @@ impl HandleDEConfigurationContext {
     }
 }
 
-// ── Skipped symbols for ConfigurationContext (2 total) ──
+// ── Skipped symbols for ConfigurationContext (1 total) ──
 // SKIPPED: **Source:** `DE_ConfigurationContext.hxx`:75 - `DE_ConfigurationContext::GetInteger`
 //   method: Gets value of parameter as being of specific type
 //   method: @param[in] theParam complex parameter name
 //   method: @param[out] theValue value to get by parameter
 //   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn get_integer(&self, theParam: &AsciiString, theValue: &mut i32, theScope: &AsciiString) -> bool;
-//
-// SKIPPED: **Source:** `DE_ConfigurationContext.hxx`:145 - `DE_ConfigurationContext::GetInternalMap`
-//   method: Gets internal resource map
-//   method: @return map with resource value
-//   Reason: return type 'const DE_ResourceMap&' is unknown
-//   // pub fn get_internal_map(&self) -> &ResourceMap;
 //
 
 // ========================
