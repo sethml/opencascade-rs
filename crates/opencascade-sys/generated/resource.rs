@@ -388,6 +388,15 @@ impl Manager {
         }
     }
 
+    /// **Source:** `Resource_Manager.hxx`:123 - `Resource_Manager::GetMap()`
+    /// Returns internal Ref or User map with parameters
+    pub fn get_map(
+        &mut self,
+        theRefMap: bool,
+    ) -> &mut crate::ffi::Resource_DataMapOfAsciiStringAsciiString {
+        unsafe { &mut *(crate::ffi::Resource_Manager_get_map(self as *mut Self, theRefMap)) }
+    }
+
     /// **Source:** `Resource_Manager.hxx`:127 - `Resource_Manager::IsInitialized()`
     /// Returns true if Resource have been found
     pub fn is_initialized(&self) -> bool {
@@ -511,13 +520,6 @@ impl HandleResourceManager {
         }
     }
 }
-
-// ── Skipped symbols for Manager (1 total) ──
-// SKIPPED: **Source:** `Resource_Manager.hxx`:123 - `Resource_Manager::GetMap`
-//   method: Returns internal Ref or User map with parameters
-//   Reason: return type 'Resource_DataMapOfAsciiStringAsciiString&' is unknown
-//   // pub fn get_map(&mut self, theRefMap: bool) -> &mut DataMapOfAsciiStringAsciiString;
-//
 
 // ========================
 // From Resource_NoSuchResource.hxx

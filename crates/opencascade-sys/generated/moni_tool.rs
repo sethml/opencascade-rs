@@ -262,7 +262,7 @@ impl AttrList {
 
     /// **Source:** `MoniTool_AttrList.hxx`:116 - `MoniTool_AttrList::AttrList()`
     /// Returns the exhaustive list of attributes
-    pub fn attr_list(&self) -> &crate::ffi::STEPConstruct_DataMapOfAsciiStringTransient {
+    pub fn attr_list(&self) -> &crate::ffi::XSControl_WorkSessionMap {
         unsafe { &*(crate::ffi::MoniTool_AttrList_attr_list(self as *const Self)) }
     }
 
@@ -3289,6 +3289,18 @@ impl TypedValue {
         unsafe { crate::ffi::MoniTool_TypedValue_has_interpret(self as *const Self) }
     }
 
+    /// **Source:** `MoniTool_TypedValue.hxx`:211 - `MoniTool_TypedValue::SetSatisfies()`
+    /// Sets a specific Satisfies function : it is added to the
+    /// already defined criteria
+    /// It must match the form :
+    /// satisfies (val : HAsciiString) returns Boolean
+    pub fn set_satisfies(&mut self, func: &crate::ffi::MoniTool_ValueSatisfies, name: &str) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::MoniTool_TypedValue_set_satisfies(self as *mut Self, func, c_name.as_ptr())
+        }
+    }
+
     /// **Source:** `MoniTool_TypedValue.hxx`:215 - `MoniTool_TypedValue::SatisfiesName()`
     /// Returns name of specific satisfy, empty string if none
     pub fn satisfies_name(&self) -> String {
@@ -3667,18 +3679,11 @@ impl HandleMoniToolTypedValue {
     }
 }
 
-// ── Skipped symbols for TypedValue (2 total) ──
+// ── Skipped symbols for TypedValue (1 total) ──
 // SKIPPED: **Source:** `MoniTool_TypedValue.hxx`:70 - `MoniTool_TypedValue::Internals`
 //   method: Access to internal data which have no other access
 //   Reason: has string ref param 'satisname' of type 'const char*&' (needs manual binding)
 //   // pub fn internals(&self, interp: &mut ValueInterpret, satisf: &mut ValueSatisfies, satisname: &mut *const char, enums: &mut DataMapOfAsciiStringInteger);
-//
-// SKIPPED: **Source:** `MoniTool_TypedValue.hxx`:211 - `MoniTool_TypedValue::SetSatisfies`
-//   method: Sets a specific Satisfies function : it is added to the
-//   method: already defined criteria
-//   method: It must match the form :
-//   Reason: param 'func' uses unknown type 'MoniTool_ValueSatisfies'
-//   // pub fn set_satisfies(&mut self, func: ValueSatisfies, name: *const char);
 //
 
 // ========================

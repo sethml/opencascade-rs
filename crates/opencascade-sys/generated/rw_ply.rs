@@ -396,6 +396,30 @@ impl PlyWriterContext {
         }
     }
 
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:90 - `RWPly_PlyWriterContext::WriteVertex()`
+    /// Write single point with all attributes.
+    /// @param[in] thePoint 3D point coordinates
+    /// @param[in] theNorm  surface normal direction at the point
+    /// @param[in] theUV    surface/texture UV coordinates
+    /// @param[in] theColor RGB color values
+    pub fn write_vertex(
+        &mut self,
+        thePoint: &crate::gp::Pnt,
+        theNorm: &crate::ffi::Graphic3d_Vec3,
+        theUV: &crate::ffi::Graphic3d_Vec2,
+        theColor: &crate::ffi::Graphic3d_Vec4ub,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWPly_PlyWriterContext_write_vertex(
+                self as *mut Self,
+                thePoint,
+                theNorm,
+                theUV,
+                theColor,
+            )
+        }
+    }
+
     /// **Source:** `RWPly_PlyWriterContext.hxx`:96 - `RWPly_PlyWriterContext::NbWrittenVertices()`
     /// Return number of written vertices.
     pub fn nb_written_vertices(&self) -> i32 {
@@ -456,16 +480,9 @@ impl PlyWriterContext {
     }
 }
 
-// ── Skipped symbols for PlyWriterContext (2 total) ──
+// ── Skipped symbols for PlyWriterContext (1 total) ──
 // SKIPPED: **Source:** `RWPly_PlyWriterContext.hxx`:73 - `RWPly_PlyWriterContext::Open`
 //   method: Open file for writing.
 //   Reason: has unbindable types: param 'theStream': stream type (const std::shared_ptr<std::ostream>&)
 //   // pub fn open(&mut self, theName: &AsciiString, theStream: /* const std::shared_ptr<std::ostream>& */) -> bool;
-//
-// SKIPPED: **Source:** `RWPly_PlyWriterContext.hxx`:90 - `RWPly_PlyWriterContext::WriteVertex`
-//   method: Write single point with all attributes.
-//   method: @param[in] thePoint 3D point coordinates
-//   method: @param[in] theNorm  surface normal direction at the point
-//   Reason: param 'theNorm' uses unknown type 'const Graphic3d_Vec3&'
-//   // pub fn write_vertex(&mut self, thePoint: &Pnt, theNorm: &Vec3, theUV: &Vec2, theColor: &Vec4ub) -> bool;
 //

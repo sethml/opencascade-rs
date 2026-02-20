@@ -3664,11 +3664,42 @@ impl Matrix {
         unsafe { crate::ffi::math_Matrix_set(self as *mut Self, I1, I2, J1, J2, M) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:292 - `math_Matrix::SetRow()`
+    /// Sets the row of index Row of a matrix to the vector <V>.
+    /// An exception is raised if the dimensions are different.
+    /// An exception is raises if <Row> is inferior to the lower
+    /// row of the matrix or <Row> is superior to the upper row.
+    pub fn set_row(&mut self, Row: i32, V: &crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_Matrix_set_row(self as *mut Self, Row, V) }
+    }
+
+    /// **Source:** `math_Matrix.hxx`:299 - `math_Matrix::SetCol()`
+    /// Sets the column of index Col of a matrix to the vector <V>.
+    /// An exception is raised if the dimensions are different.
+    /// An exception is raises if <Col> is inferior to the lower
+    /// column of the matrix or <Col> is superior to the upper
+    /// column.
+    pub fn set_col(&mut self, Col: i32, V: &crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_Matrix_set_col(self as *mut Self, Col, V) }
+    }
+
     /// **Source:** `math_Matrix.hxx`:303 - `math_Matrix::SetDiag()`
     /// Sets the diagonal of a matrix to the value <Value>.
     /// An exception is raised if the matrix is not square.
     pub fn set_diag(&mut self, Value: f64) {
         unsafe { crate::ffi::math_Matrix_set_diag(self as *mut Self, Value) }
+    }
+
+    /// **Source:** `math_Matrix.hxx`:306 - `math_Matrix::Row()`
+    /// Returns the row of index Row of a matrix.
+    pub fn row(&self, Row: i32) -> crate::OwnedPtr<crate::ffi::math_Vector> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_row(self as *const Self, Row)) }
+    }
+
+    /// **Source:** `math_Matrix.hxx`:309 - `math_Matrix::Col()`
+    /// Returns the column of index <Col> of a matrix.
+    pub fn col(&self, Col: i32) -> crate::OwnedPtr<crate::ffi::math_Vector> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_col(self as *const Self, Col)) }
     }
 
     /// **Source:** `math_Matrix.hxx`:313 - `math_Matrix::SwapRow()`
@@ -3713,6 +3744,18 @@ impl Matrix {
                 Right,
             ))
         }
+    }
+
+    /// **Source:** `math_Matrix.hxx`:336 - `math_Matrix::Multiply()`
+    /// Computes a matrix as the product of 2 vectors.
+    /// An exception is raised if the dimensions are different.
+    /// <me> = <Left> * <Right>.
+    pub fn multiply_vector2(
+        &mut self,
+        Left: &crate::ffi::math_Vector,
+        Right: &crate::ffi::math_Vector,
+    ) {
+        unsafe { crate::ffi::math_Matrix_multiply_vector2(self as *mut Self, Left, Right) }
     }
 
     /// **Source:** `math_Matrix.hxx`:340 - `math_Matrix::Multiply()`
@@ -3766,6 +3809,21 @@ impl Matrix {
         }
     }
 
+    /// **Source:** `math_Matrix.hxx`:386 - `math_Matrix::Multiplied()`
+    /// Returns the product of a matrix by a vector.
+    /// An exception is raised if the dimensions are different.
+    pub fn multiplied_vector(
+        &self,
+        Right: &crate::ffi::math_Vector,
+    ) -> crate::OwnedPtr<crate::ffi::math_Vector> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_multiplied_vector(
+                self as *const Self,
+                Right,
+            ))
+        }
+    }
+
     /// **Source:** `math_Matrix.hxx`:393 - `math_Matrix::Opposite()`
     /// Returns the opposite of a matrix.
     /// An exception is raised if the dimensions are different.
@@ -3786,7 +3844,7 @@ impl Matrix {
     }
 }
 
-// ── Skipped symbols for Matrix (8 total) ──
+// ── Skipped symbols for Matrix (2 total) ──
 // SKIPPED: **Source:** `math_Matrix.hxx`:105 - `math_Matrix::math_Matrix`
 //   constructor: constructs a matrix of range [LowerRow..UpperRow,
 //   constructor: LowerCol..UpperCol]
@@ -3794,48 +3852,11 @@ impl Matrix {
 //   Reason: param 'Tab' uses unknown type 'Standard_Address'
 //   // pub fn new_address_int4(Tab: Address, LowerRow: i32, UpperRow: i32, LowerCol: i32, UpperCol: i32) -> OwnedPtr<Self>;
 //
-// SKIPPED: **Source:** `math_Matrix.hxx`:292 - `math_Matrix::SetRow`
-//   method: Sets the row of index Row of a matrix to the vector <V>.
-//   method: An exception is raised if the dimensions are different.
-//   method: An exception is raises if <Row> is inferior to the lower
-//   Reason: has unbindable types: param 'V': unresolved template type (const math_VectorBase<>&)
-//   // pub fn set_row(&mut self, Row: i32, V: /* const math_VectorBase<>& */);
-//
-// SKIPPED: **Source:** `math_Matrix.hxx`:299 - `math_Matrix::SetCol`
-//   method: Sets the column of index Col of a matrix to the vector <V>.
-//   method: An exception is raised if the dimensions are different.
-//   method: An exception is raises if <Col> is inferior to the lower
-//   Reason: has unbindable types: param 'V': unresolved template type (const math_VectorBase<>&)
-//   // pub fn set_col(&mut self, Col: i32, V: /* const math_VectorBase<>& */);
-//
-// SKIPPED: **Source:** `math_Matrix.hxx`:306 - `math_Matrix::Row`
-//   method: Returns the row of index Row of a matrix.
-//   Reason: has unbindable types: return: unresolved template type (math_VectorBase<>)
-//   // pub fn row(&self, Row: i32) -> OwnedPtr<math_VectorBase<>>;
-//
-// SKIPPED: **Source:** `math_Matrix.hxx`:309 - `math_Matrix::Col`
-//   method: Returns the column of index <Col> of a matrix.
-//   Reason: has unbindable types: return: unresolved template type (math_VectorBase<>)
-//   // pub fn col(&self, Col: i32) -> OwnedPtr<math_VectorBase<>>;
-//
-// SKIPPED: **Source:** `math_Matrix.hxx`:336 - `math_Matrix::Multiply`
-//   method: Computes a matrix as the product of 2 vectors.
-//   method: An exception is raised if the dimensions are different.
-//   method: <me> = <Left> * <Right>.
-//   Reason: has unbindable types: param 'Left': unresolved template type (const math_VectorBase<>&); param 'Right': unresolved template type (const math_VectorBase<>&)
-//   // pub fn multiply(&mut self, Left: /* const math_VectorBase<>& */, Right: /* const math_VectorBase<>& */);
-//
 // SKIPPED: **Source:** `math_Matrix.hxx`:365 - `math_Matrix::Initialized`
 //   method: Matrixes are copied through assignment.
 //   method: An exception is raised if the dimensions are different.
 //   Reason: returns &mut with reference params (ambiguous lifetimes)
 //   // pub fn initialized(&mut self, Other: &Matrix) -> &mut Matrix;
-//
-// SKIPPED: **Source:** `math_Matrix.hxx`:386 - `math_Matrix::Multiplied`
-//   method: Returns the product of a matrix by a vector.
-//   method: An exception is raised if the dimensions are different.
-//   Reason: has unbindable types: param 'Right': unresolved template type (const math_VectorBase<>&); return: unresolved template type (math_VectorBase<>)
-//   // pub fn multiplied(&self, Right: /* const math_VectorBase<>& */) -> OwnedPtr<math_VectorBase<>>;
 //
 
 // ========================

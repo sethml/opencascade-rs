@@ -3338,7 +3338,7 @@ impl Finder {
 
     /// **Source:** `Transfer_Finder.hxx`:126 - `Transfer_Finder::AttrList()`
     /// Returns the exhaustive list of attributes
-    pub fn attr_list(&mut self) -> &mut crate::ffi::STEPConstruct_DataMapOfAsciiStringTransient {
+    pub fn attr_list(&mut self) -> &mut crate::ffi::XSControl_WorkSessionMap {
         unsafe { &mut *(crate::ffi::Transfer_Finder_attr_list(self as *mut Self)) }
     }
 
@@ -10587,7 +10587,7 @@ impl TransientMapper {
     }
 
     /// Inherited: **Source:** `Transfer_Finder.hxx`:126 - `Transfer_Finder::AttrList()`
-    pub fn attr_list(&mut self) -> &mut crate::ffi::STEPConstruct_DataMapOfAsciiStringTransient {
+    pub fn attr_list(&mut self) -> &mut crate::ffi::XSControl_WorkSessionMap {
         unsafe {
             &mut *(crate::ffi::Transfer_TransientMapper_inherited_AttrList(self as *mut Self))
         }
@@ -10806,7 +10806,7 @@ impl TransientProcess {
     /// **Source:** `Transfer_TransientProcess.hxx`:82 - `Transfer_TransientProcess::Context()`
     /// Returns (modifiable) the whole definition of Context
     /// Rather for internal use (ex.: preparing and setting in once)
-    pub fn context(&mut self) -> &mut crate::ffi::STEPConstruct_DataMapOfAsciiStringTransient {
+    pub fn context(&mut self) -> &mut crate::ffi::XSControl_WorkSessionMap {
         unsafe { &mut *(crate::ffi::Transfer_TransientProcess_context(self as *mut Self)) }
     }
 

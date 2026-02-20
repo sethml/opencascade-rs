@@ -1275,7 +1275,7 @@ impl Controller {
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:213 - `XSControl_Controller::AdaptorSession()`
-    pub fn adaptor_session(&self) -> &crate::ffi::STEPConstruct_DataMapOfAsciiStringTransient {
+    pub fn adaptor_session(&self) -> &crate::ffi::XSControl_WorkSessionMap {
         unsafe {
             &*(crate::ffi::STEPControl_Controller_inherited_AdaptorSession(self as *const Self))
         }

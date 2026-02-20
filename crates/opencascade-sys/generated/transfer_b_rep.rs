@@ -2094,7 +2094,7 @@ impl ShapeMapper {
     }
 
     /// Inherited: **Source:** `Transfer_Finder.hxx`:126 - `Transfer_Finder::AttrList()`
-    pub fn attr_list(&mut self) -> &mut crate::ffi::STEPConstruct_DataMapOfAsciiStringTransient {
+    pub fn attr_list(&mut self) -> &mut crate::ffi::XSControl_WorkSessionMap {
         unsafe {
             &mut *(crate::ffi::TransferBRep_ShapeMapper_inherited_AttrList(self as *mut Self))
         }

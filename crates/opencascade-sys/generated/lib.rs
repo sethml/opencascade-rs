@@ -217,7 +217,6 @@ pub mod shape_process_api;
 pub mod shape_upgrade;
 pub mod standard;
 pub mod std_fail;
-pub mod std_storage;
 pub mod step_ap203;
 pub mod step_ap209;
 pub mod step_ap214;

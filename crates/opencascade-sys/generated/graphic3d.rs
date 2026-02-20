@@ -14,6 +14,6 @@ pub use crate::ffi::{
     Graphic3d_AlphaMode as AlphaMode, Graphic3d_Aspects as Aspects, Graphic3d_BndBox3d as BndBox3d,
     Graphic3d_MaterialAspect as MaterialAspect,
     Graphic3d_TypeOfBackfacingModel as TypeOfBackfacingModel, Graphic3d_Vec2 as Vec2,
-    Graphic3d_Vec3 as Vec3, Graphic3d_Vec3i as Vec3i, Graphic3d_Vec4 as Vec4,
-    Graphic3d_Vec4i as Vec4i, Graphic3d_Vec4ub as Vec4ub,
+    Graphic3d_Vec3 as Vec3, Graphic3d_Vec3i as Vec3i, Graphic3d_Vec4i as Vec4i,
+    Graphic3d_Vec4ub as Vec4ub,
 };

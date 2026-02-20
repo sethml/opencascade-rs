@@ -15,40 +15,40 @@ use std::path::Path;
 use std::time::Instant;
 
 thread_local! {
-    /// Map from NCollection template display names to their typedef names.
+    /// Map from NCollection template spellings to their typedef names.
     /// Populated by `collect_ncollection_typedefs()` before type parsing begins.
-    /// Key: normalized template spelling (whitespace-stripped), e.g.
+    /// Key: whitespace-stripped template spelling, e.g.
     ///   "NCollection_Map<TDF_Label,NCollection_DefaultHasher<TDF_Label>>"
-    /// Value: typedef name, e.g. "TDF_LabelMap"
-    static TYPEDEF_MAP: RefCell<HashMap<String, String>> = RefCell::new(HashMap::new());
+    /// Value: all typedef names that alias this template, e.g. ["TDF_LabelMap"]
+    /// Multiple typedefs can alias the same template (e.g. gp_Vec3f and Graphic3d_Vec3
+    /// both alias NCollection_Vec3<Standard_ShortReal>).
+    ///
+    /// Both the display-name form (with OCCT aliases like Standard_ShortReal) and
+    /// the canonical form (with C++ primitives like float) are stored as keys,
+    /// so lookups work regardless of which spelling clang uses.
+    static TYPEDEF_MAP: RefCell<HashMap<String, Vec<String>>> = RefCell::new(HashMap::new());
 }
 
-/// Normalize a C++ type spelling for typedef map lookup.
-/// Removes whitespace AND normalizes Standard_* type aliases to their C++ equivalents
-/// (e.g. Standard_Integer → int) so that typedef keys match canonical names even when
-/// clang uses different spellings (display names use OCCT aliases, canonical names
-/// use C++ primitives).
+/// Strip whitespace from a C++ type spelling for typedef map key/lookup.
 fn normalize_template_spelling(s: &str) -> String {
-    let no_ws: String = s.chars().filter(|c| !c.is_whitespace()).collect();
-    // Normalize OCCT type aliases to C++ primitives for consistent matching.
-    // Order matters: longer names first to avoid partial matches.
-    no_ws
-        .replace("Standard_Integer", "int")
-        .replace("Standard_Real", "double")
-        .replace("Standard_Boolean", "bool")
-        .replace("Standard_ShortReal", "float")
-        .replace("Standard_Character", "char")
-        .replace("Standard_ExtCharacter", "char16_t")
-        .replace("Standard_Byte", "unsignedchar")
-        .replace("Standard_Utf8Char", "char")
+    s.chars().filter(|c| !c.is_whitespace()).collect()
 }
 
 
 /// Walk the AST to collect all typedef/using declarations that resolve to
 /// template specializations (NCollection, math_VectorBase, etc.).
 /// Populates the thread-local TYPEDEF_MAP.
-fn collect_ncollection_typedefs(root: &Entity) {
-    let mut map = HashMap::new();
+///
+/// For each typedef, we insert keys for BOTH the display-name spelling
+/// (e.g. NCollection_Vec3<Standard_ShortReal>) and the canonical spelling
+/// (e.g. NCollection_Vec3<float>). This handles OCCT headers that use
+/// C++ primitives directly in method signatures rather than the OCCT aliases.
+///
+/// `included_modules` is the set of module prefixes (e.g. "gp", "Geom") that
+/// are included in the binding generation. When multiple typedefs alias the
+/// same template, we prefer names from included modules.
+fn collect_ncollection_typedefs(root: &Entity, included_modules: &HashSet<String>) {
+    let mut map: HashMap<String, Vec<String>> = HashMap::new();
 
     root.visit_children(|entity, _| {
         if entity.get_kind() == EntityKind::TypedefDecl
@@ -63,12 +63,19 @@ fn collect_ncollection_typedefs(root: &Entity) {
 
                 if let Some(underlying) = entity.get_typedef_underlying_type() {
                     let display = underlying.get_display_name();
-                    // Check if this typedef resolves to an NCollection template,
-                    // math_VectorBase, math_Matrix, or another template type that
-                    // clang might misresolve.
+                    // Record typedefs that resolve to template specializations.
                     if display.contains('<') {
-                        let key = normalize_template_spelling(&display);
-                        map.insert(key, name.clone());
+                        let display_key = normalize_template_spelling(&display);
+                        map.entry(display_key.clone()).or_default().push(name.clone());
+
+                        // Also insert under the canonical spelling so lookups
+                        // work when OCCT headers use C++ primitives (e.g. float)
+                        // instead of Standard_* aliases.
+                        let canonical = underlying.get_canonical_type().get_display_name();
+                        let canonical_key = normalize_template_spelling(&canonical);
+                        if canonical_key != display_key && canonical.contains('<') {
+                            map.entry(canonical_key).or_default().push(name.clone());
+                        }
                     }
                 }
             }
@@ -76,86 +83,43 @@ fn collect_ncollection_typedefs(root: &Entity) {
         EntityVisitResult::Recurse
     });
 
-    eprintln!("  Collected {} NCollection/template typedefs", map.len());
+    // Deduplicate and sort each Vec for deterministic lookup.
+    // Prefer typedefs from included modules (not excluded), then shortest
+    // module prefix, then alphabetically. This ensures e.g. gp_Vec3f (included)
+    // is preferred over BVH_Vec3f or Graphic3d_Vec3 (excluded).
+    for names in map.values_mut() {
+        names.sort_by(|a, b| {
+            let module_a = a.split('_').next().unwrap_or(a);
+            let module_b = b.split('_').next().unwrap_or(b);
+            let inc_a = included_modules.contains(module_a);
+            let inc_b = included_modules.contains(module_b);
+            // Included first (true > false, so reverse)
+            inc_b.cmp(&inc_a)
+                .then_with(|| module_a.len().cmp(&module_b.len()))
+                .then_with(|| a.cmp(b))
+        });
+        names.dedup();
+    }
+
+    let num_typedefs: usize = map.values().map(|v| v.len()).sum();
+    eprintln!("  Collected {} NCollection/template typedef entries ({} unique template spellings)", num_typedefs, map.len());
     TYPEDEF_MAP.with(|m| {
         *m.borrow_mut() = map;
     });
 }
 
-/// Supplement the typedef map by text-scanning header files for NCollection typedef
-/// patterns. This catches typedefs that clang misresolves (e.g., returning "int"
-/// instead of the actual NCollection template type).
-///
-/// Scans for patterns like:
-///   typedef NCollection_Map<TDF_Label> TDF_LabelMap;
-///   typedef NCollection_List<TopoDS_Shape> TopTools_ListOfShape;
-fn supplement_typedefs_from_headers(include_dirs: &[impl AsRef<Path>]) {
-    use std::io::BufRead;
-
-    // Regex: typedef <template_type> <typedef_name>;
-    // where <template_type> contains '<' (i.e., is a template instantiation)
-    let re = regex::Regex::new(
-        r"^\s*typedef\s+((?:NCollection_|TCollection_H)\w+<[^;]+>)\s+(\w+)\s*;"
-    ).unwrap();
-
-    let mut count = 0;
-    TYPEDEF_MAP.with(|m| {
-        let mut map = m.borrow_mut();
-        let existing_values: HashSet<String> = map.values().cloned().collect();
-
-        for dir in include_dirs {
-            let dir_path = dir.as_ref();
-            let entries = match std::fs::read_dir(dir_path) {
-                Ok(e) => e,
-                Err(_) => continue,
-            };
-            for entry in entries.flatten() {
-                let path = entry.path();
-                if path.extension().and_then(|s| s.to_str()) != Some("hxx") {
-                    continue;
-                }
-                let file = match std::fs::File::open(&path) {
-                    Ok(f) => f,
-                    Err(_) => continue,
-                };
-                for line in std::io::BufReader::new(file).lines().flatten() {
-                    if let Some(caps) = re.captures(&line) {
-                        let template_type = &caps[1];
-                        let typedef_name = &caps[2];
-                        // Skip typedef names without underscore — they're likely
-                        // private nested typedefs inside class bodies (e.g.,
-                        // Express_Entity::DataMapOfStringInteger). Same filter
-                        // as collect_ncollection_typedefs.
-                        if !typedef_name.contains('_') {
-                            continue;
-                        }
-                        // Only add if not already collected by clang scan
-                        if !existing_values.contains(typedef_name) {
-                            let key = normalize_template_spelling(template_type);
-                            map.insert(key, typedef_name.to_string());
-                            count += 1;
-                        }
-                    }
-                }
-            }
-        }
-    });
-    if count > 0 {
-        eprintln!("  Supplemented {} additional NCollection typedefs from header text scan", count);
-    }
-}
-
 /// Look up a type's display name in the typedef map.
-/// Returns the typedef name if found.
+/// Returns one of the typedef names if found (there may be multiple aliases
+/// for the same template; any one is valid for type resolution).
 fn lookup_typedef(display_name: &str) -> Option<String> {
     let key = normalize_template_spelling(display_name);
-    TYPEDEF_MAP.with(|m| m.borrow().get(&key).cloned())
+    TYPEDEF_MAP.with(|m| m.borrow().get(&key).and_then(|v| v.first()).cloned())
 }
 /// Get all typedef names collected during the last `parse_headers` call.
 /// Returns the set of OCCT typedef names that resolve to template specializations.
 /// Used by the resolver to register these as known class types.
 pub fn get_collected_typedef_names() -> HashSet<String> {
-    TYPEDEF_MAP.with(|m| m.borrow().values().cloned().collect())
+    TYPEDEF_MAP.with(|m| m.borrow().values().flat_map(|v| v.iter()).cloned().collect())
 }
 
 
@@ -286,16 +250,22 @@ pub fn parse_headers(
     let root = tu.get_entity();
     
 
+    // Extract included module names from the headers list.
+    // Module name is the prefix before the first underscore in the filename
+    // (e.g. "gp" from "gp_Vec3f.hxx", "Geom" from "Geom_Curve.hxx").
+    let included_modules: HashSet<String> = headers
+        .iter()
+        .filter_map(|h| {
+            let filename = h.as_ref().file_name()?.to_str()?;
+            let stem = filename.strip_suffix(".hxx").unwrap_or(filename);
+            stem.split('_').next().map(|s| s.to_string())
+        })
+        .collect();
+
     // Pre-scan AST to collect NCollection template typedef mappings.
     // This must happen before class/method parsing so parse_type() can
-    // resolve misresolved NCollection template types back to their typedef names.
-    collect_ncollection_typedefs(&root);
-
-    // Supplement with text-scanned typedefs from header files.
-    // Clang sometimes misresolves NCollection template typedefs (e.g., returning
-    // "int" instead of "NCollection_Map<TDF_Label>"), so we scan the raw header
-    // text as a fallback.
-    supplement_typedefs_from_headers(include_dirs);
+    // resolve template types back to their typedef names.
+    collect_ncollection_typedefs(&root, &included_modules);
 
     root.visit_children(|entity, _parent| {
         visit_top_level_batch(&entity, &header_set, &filename_to_index, &mut results, verbose)
@@ -1309,18 +1279,10 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         .trim_start_matches("const ")
         .trim_start_matches("volatile ")
         .trim();
-    // Guard against clang misresolving NCollection template specializations.
-    // When clang can't fully instantiate templates like NCollection_DataMap<A,B>,
-    // it falls back to canonical type "int". Detect this by checking if the
-    // display name is clearly a class/typedef (not a known primitive typedef)
-    // while the canonical says it's a primitive.
-    //
-    // However, legitimate typedefs to primitives (e.g., `typedef unsigned int Poly_MeshPurpose`)
-    // must still resolve to their canonical primitive type. We distinguish these by
-    // checking the typedef's underlying type: if it's a builtin primitive or another
-    // typedef (i.e., a chain like Graphic3d_ZLayerId -> Standard_Integer -> int),
-    // it's a genuine primitive typedef. NCollection typedefs have underlying types
-    // that are template specializations (Record/Elaborated/Unexposed), not primitives.
+    // Defense-in-depth: detect when clang's canonical type is a primitive (int, double, etc.)
+    // but the display name clearly identifies a class/typedef. This can happen if a template
+    // type fails to instantiate. Legitimate typedefs to primitives (e.g.,
+    // `typedef unsigned int Poly_MeshPurpose`) use a typedef chain to a builtin type.
     let spelling_looks_like_class = {
         let s = trimmed_spelling
             .trim_start_matches("const ")
@@ -1338,8 +1300,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
             false
         } else {
             // Check if this is a typedef whose underlying type is a primitive.
-            // If so, it's a genuine typedef-to-primitive (like Poly_MeshPurpose = unsigned int),
-            // not an NCollection template misresolution.
+            // If so, it's a genuine typedef-to-primitive (like Poly_MeshPurpose = unsigned int).
             // Note: clang wraps typedefs in Elaborated sugar, so check both Typedef and Elaborated kinds.
             let is_primitive_typedef = matches!(kind, TypeKind::Typedef | TypeKind::Elaborated)
                 && clang_type.get_declaration()
@@ -1364,8 +1325,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     // Skip this if:
     // 1. The spelling clearly identifies a class type (spelling_looks_like_class), OR
     // 2. The spelling contains '<' or '::' — template or namespace-scoped types
-    //    whose canonical resolves to int/double/etc. are template misresolutions,
-    //    not genuine primitives.
+    //    whose canonical resolves to int/double/etc. should not be treated as primitives.
     let spelling_is_template_or_namespaced = {
         let s = trimmed_spelling
             .trim_start_matches("const ")
@@ -1393,9 +1353,9 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     }
 
     // Guard: when the OUTER type's display name identifies an OCCT class but the
-    // canonical type is "int" (template misresolution), construct the class type
-    // directly instead of recursing into the pointee (whose display name might
-    // already be "int", losing the typedef info).
+    // canonical type is "int", construct the class type directly instead of recursing
+    // into the pointee (whose display name might already be "int", losing the
+    // typedef info).
     if kind == TypeKind::LValueReference || kind == TypeKind::RValueReference || kind == TypeKind::Pointer
 
     {
@@ -1520,10 +1480,9 @@ fn parse_type(clang_type: &clang::Type) -> Type {
             .trim();
         
         // Only use canonical if it's simpler (no :: or <) AND still looks like a class name.
-        // When clang misresolves NCollection templates, canonical becomes "int" or another
-        // primitive — using that would produce Type::Class("int") which is nonsensical. By
-        // keeping the template/namespaced spelling, type_uses_unknown_type() will properly
-        // filter methods with unresolvable types.
+        // If canonical is a primitive like "int", that would produce Type::Class("int")
+        // which is nonsensical. By keeping the template/namespaced spelling,
+        // type_uses_unknown_type() will properly filter methods with unresolvable types.
         let canonical_looks_like_class = canonical_clean
             .starts_with(|c: char| c.is_ascii_uppercase());
         if !canonical_clean.contains("::") && !canonical_clean.contains('<') && !canonical_clean.is_empty() && canonical_looks_like_class {

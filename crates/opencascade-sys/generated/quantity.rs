@@ -1671,8 +1671,8 @@ impl ColorRGBA {
 
     /// **Source:** `Quantity_ColorRGBA.hxx`:45 - `Quantity_ColorRGBA::Quantity_ColorRGBA()`
     /// Creates the color from RGBA vector.
-    pub fn new_vec4(theRgba: &crate::ffi::Graphic3d_Vec4) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Quantity_ColorRGBA_ctor_vec4(theRgba)) }
+    pub fn new_vec4f(theRgba: &crate::ffi::BVH_Vec4f) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Quantity_ColorRGBA_ctor_vec4f(theRgba)) }
     }
 
     /// **Source:** `Quantity_ColorRGBA.hxx`:52 - `Quantity_ColorRGBA::Quantity_ColorRGBA()`
@@ -1801,8 +1801,8 @@ impl ColorRGBA {
     /// **Source:** `Quantity_ColorRGBA.hxx`:154 - `Quantity_ColorRGBA::Convert_LinearRGB_To_sRGB()`
     /// Convert linear RGB components into sRGB using OpenGL specs formula.
     pub fn convert_linear_rgb_to_s_rgb(
-        theRGB: &crate::ffi::Graphic3d_Vec4,
-    ) -> crate::OwnedPtr<crate::ffi::Graphic3d_Vec4> {
+        theRGB: &crate::ffi::BVH_Vec4f,
+    ) -> crate::OwnedPtr<crate::ffi::BVH_Vec4f> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Quantity_ColorRGBA_convert_linear_rgb_to_s_rgb(
                 theRGB,
@@ -1813,8 +1813,8 @@ impl ColorRGBA {
     /// **Source:** `Quantity_ColorRGBA.hxx`:163 - `Quantity_ColorRGBA::Convert_sRGB_To_LinearRGB()`
     /// Convert sRGB components into linear RGB using OpenGL specs formula.
     pub fn convert_s_rgb_to_linear_rgb(
-        theRGB: &crate::ffi::Graphic3d_Vec4,
-    ) -> crate::OwnedPtr<crate::ffi::Graphic3d_Vec4> {
+        theRGB: &crate::ffi::BVH_Vec4f,
+    ) -> crate::OwnedPtr<crate::ffi::BVH_Vec4f> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Quantity_ColorRGBA_convert_s_rgb_to_linear_rgb(
                 theRGB,
