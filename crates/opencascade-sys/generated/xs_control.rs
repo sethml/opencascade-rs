@@ -3868,12 +3868,12 @@ impl Utils {
     }
 
     /// **Source:** `XSControl_Utils.hxx`:118 - `XSControl_Utils::ToHString()`
-    pub unsafe fn to_h_string_u16ptr(
+    pub unsafe fn to_h_string_char16ptr(
         &self,
         strcon: *const u16,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Utils_to_h_string_u16ptr(
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Utils_to_h_string_char16ptr(
                 self as *const Self,
                 strcon,
             ))

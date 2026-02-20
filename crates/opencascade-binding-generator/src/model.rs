@@ -449,7 +449,7 @@ pub enum Type {
     I32,
     /// unsigned int
     U32,
-    /// unsigned short / uint16_t / Standard_ExtCharacter
+    /// unsigned short / uint16_t
     U16,
     /// short / int16_t
     I16,
@@ -467,6 +467,8 @@ pub enum Type {
     F32,
     /// double / Standard_Real
     F64,
+    /// char16_t / Standard_ExtCharacter
+    CHAR16,
     /// const T&
     ConstRef(Box<Type>),
     /// T& (mutable reference)
@@ -504,6 +506,7 @@ impl Type {
             Type::ConstPtr(inner) | Type::MutPtr(inner) => format!("{}ptr", inner.short_name()),
             Type::Handle(name) => format!("handle{}", name.to_lowercase().replace('_', "")),
             Type::Class(name) => extract_short_name(name),
+            Type::CHAR16 => "char16".to_string(),
         }
     }
 
@@ -524,6 +527,7 @@ impl Type {
                 | Type::Usize
                 | Type::F32
                 | Type::F64
+                | Type::CHAR16
         )
     }
 
@@ -533,7 +537,7 @@ impl Type {
         matches!(
             self,
             Type::Bool | Type::I32 | Type::U32 | Type::U16 | Type::I16 | Type::I64 | Type::U64
-                | Type::Long | Type::ULong | Type::Usize | Type::F32 | Type::F64
+                | Type::Long | Type::ULong | Type::Usize | Type::F32 | Type::F64 | Type::CHAR16
         )
     }
 
@@ -701,22 +705,36 @@ impl Type {
         self.is_void_ptr() || self.is_raw_ptr()
     }
 
+    /// Convert this type to a C++ parameter type for extern "C" wrapper functions.
+    /// References become pointers (const T& → const T*, T& → T*).
+    pub fn to_cpp_extern_c_param(&self) -> String {
+        match self {
+            Type::ConstRef(inner) => format!("const {}*", inner.to_cpp_string()),
+            Type::MutRef(inner) => format!("{}*", inner.to_cpp_string()),
+            Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
+                "const char*".to_string()
+            }
+            _ => self.to_cpp_string(),
+        }
+    }
+
     /// Get a human-readable C++-like type string for diagnostic messages.
     pub fn to_cpp_string(&self) -> String {
         match self {
             Type::Void => "void".to_string(),
             Type::Bool => "bool".to_string(),
-            Type::I32 => "int".to_string(),
-            Type::U32 => "unsigned int".to_string(),
-            Type::U16 => "char16_t".to_string(),
+            Type::I32 => "int32_t".to_string(),
+            Type::U32 => "uint32_t".to_string(),
+            Type::U16 => "uint16_t".to_string(),
             Type::I16 => "int16_t".to_string(),
-            Type::I64 => "long long".to_string(),
-            Type::U64 => "unsigned long long".to_string(),
+            Type::I64 => "int64_t".to_string(),
+            Type::U64 => "uint64_t".to_string(),
             Type::Long => "long".to_string(),
             Type::ULong => "unsigned long".to_string(),
             Type::Usize => "size_t".to_string(),
             Type::F32 => "float".to_string(),
             Type::F64 => "double".to_string(),
+            Type::CHAR16 => "char16_t".to_string(),
             Type::ConstRef(inner) => format!("const {}&", inner.to_cpp_string()),
             Type::MutRef(inner) => format!("{}&", inner.to_cpp_string()),
             Type::RValueRef(inner) => format!("{}&&", inner.to_cpp_string()),
@@ -761,6 +779,7 @@ impl Type {
             Type::Usize => "usize".to_string(),
             Type::F32 => "f32".to_string(),
             Type::F64 => "f64".to_string(),
+            Type::CHAR16 => "u16".to_string(), // Rust doesn't have char16, so we use u16 and rely on callers to convert
             Type::ConstRef(inner) => {
                 let inner_str = inner.to_rust_type_string();
                 format!("&{}", inner_str)
@@ -830,6 +849,7 @@ impl Type {
             Type::Usize => "usize".to_string(),
             Type::F32 => "f32".to_string(),
             Type::F64 => "f64".to_string(),
+            Type::CHAR16 => "u16".to_string(), // Rust doesn't have char16, so we use u16 and rely on callers to convert
             Type::ConstRef(inner) => {
                 let inner_str = inner.to_rust_ffi_type_string();
                 format!("&{}", inner_str)

@@ -1173,9 +1173,11 @@ impl ExtendedString {
 
     /// **Source:** `TCollection_ExtendedString.hxx`:68 - `TCollection_ExtendedString::TCollection_ExtendedString()`
     /// Creation by converting an ExtString to an extended string.
-    pub unsafe fn new_u16ptr(astring: *const u16) -> crate::OwnedPtr<Self> {
+    pub unsafe fn new_char16ptr(astring: *const u16) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_u16ptr(astring))
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_char16ptr(
+                astring,
+            ))
         }
     }
 
@@ -1189,16 +1191,18 @@ impl ExtendedString {
 
     /// **Source:** `TCollection_ExtendedString.hxx`:83 - `TCollection_ExtendedString::TCollection_ExtendedString()`
     /// Initializes a ExtendedString with a single character.
-    pub fn new_u16(aChar: u16) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_u16(aChar)) }
+    pub fn new_char16(aChar: u16) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_char16(aChar))
+        }
     }
 
     /// **Source:** `TCollection_ExtendedString.hxx`:87 - `TCollection_ExtendedString::TCollection_ExtendedString()`
     /// Initializes a ExtendedString with <length> space allocated.
     /// and filled with <filler>.This is useful for buffers.
-    pub fn new_int_u16(length: i32, filler: u16) -> crate::OwnedPtr<Self> {
+    pub fn new_int_char16(length: i32, filler: u16) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_int_u16(
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_int_char16(
                 length, filler,
             ))
         }
@@ -1303,9 +1307,13 @@ impl ExtendedString {
 
     /// **Source:** `TCollection_ExtendedString.hxx`:167 - `TCollection_ExtendedString::Insert()`
     /// Insert a Character at position <where>.
-    pub fn insert_int_u16(&mut self, where_: i32, what: u16) {
+    pub fn insert_int_char16(&mut self, where_: i32, what: u16) {
         unsafe {
-            crate::ffi::TCollection_ExtendedString_insert_int_u16(self as *mut Self, where_, what)
+            crate::ffi::TCollection_ExtendedString_insert_int_char16(
+                self as *mut Self,
+                where_,
+                what,
+            )
         }
     }
 
@@ -1331,9 +1339,9 @@ impl ExtendedString {
     /// Returns true if the characters in this extended
     /// string are identical to the characters in the other extended string.
     /// Note that this method is an alias of operator ==
-    pub unsafe fn is_equal_u16ptr(&self, other: *const u16) -> bool {
+    pub unsafe fn is_equal_char16ptr(&self, other: *const u16) -> bool {
         unsafe {
-            crate::ffi::TCollection_ExtendedString_is_equal_u16ptr(self as *const Self, other)
+            crate::ffi::TCollection_ExtendedString_is_equal_char16ptr(self as *const Self, other)
         }
     }
 
@@ -1354,9 +1362,12 @@ impl ExtendedString {
     /// Returns true if there are differences between the
     /// characters in this extended string and the other extended string.
     /// Note that this method is an alias of operator !=.
-    pub unsafe fn is_different_u16ptr(&self, other: *const u16) -> bool {
+    pub unsafe fn is_different_char16ptr(&self, other: *const u16) -> bool {
         unsafe {
-            crate::ffi::TCollection_ExtendedString_is_different_u16ptr(self as *const Self, other)
+            crate::ffi::TCollection_ExtendedString_is_different_char16ptr(
+                self as *const Self,
+                other,
+            )
         }
     }
 
@@ -1375,8 +1386,10 @@ impl ExtendedString {
 
     /// **Source:** `TCollection_ExtendedString.hxx`:210 - `TCollection_ExtendedString::IsLess()`
     /// Returns TRUE if <me> is less than <other>.
-    pub unsafe fn is_less_u16ptr(&self, other: *const u16) -> bool {
-        unsafe { crate::ffi::TCollection_ExtendedString_is_less_u16ptr(self as *const Self, other) }
+    pub unsafe fn is_less_char16ptr(&self, other: *const u16) -> bool {
+        unsafe {
+            crate::ffi::TCollection_ExtendedString_is_less_char16ptr(self as *const Self, other)
+        }
     }
 
     /// **Source:** `TCollection_ExtendedString.hxx`:215 - `TCollection_ExtendedString::IsLess()`
@@ -1392,9 +1405,9 @@ impl ExtendedString {
 
     /// **Source:** `TCollection_ExtendedString.hxx`:223 - `TCollection_ExtendedString::IsGreater()`
     /// Returns TRUE if <me> is greater than <other>.
-    pub unsafe fn is_greater_u16ptr(&self, other: *const u16) -> bool {
+    pub unsafe fn is_greater_char16ptr(&self, other: *const u16) -> bool {
         unsafe {
-            crate::ffi::TCollection_ExtendedString_is_greater_u16ptr(self as *const Self, other)
+            crate::ffi::TCollection_ExtendedString_is_greater_char16ptr(self as *const Self, other)
         }
     }
 
@@ -1479,9 +1492,9 @@ impl ExtendedString {
     /// Replaces one character in the ExtendedString at position <where>.
     /// If <where> is less than zero or greater than the length of <me>
     /// an exception is raised.
-    pub fn set_value_int_u16(&mut self, where_: i32, what: u16) {
+    pub fn set_value_int_char16(&mut self, where_: i32, what: u16) {
         unsafe {
-            crate::ffi::TCollection_ExtendedString_set_value_int_u16(
+            crate::ffi::TCollection_ExtendedString_set_value_int_char16(
                 self as *mut Self,
                 where_,
                 what,
@@ -2706,26 +2719,28 @@ impl HExtendedString {
 
     /// **Source:** `TCollection_HExtendedString.hxx`:55 - `TCollection_HExtendedString::TCollection_HExtendedString()`
     /// Initializes a HExtendedString with an ExtString.
-    pub unsafe fn new_u16ptr(message: *const u16) -> crate::OwnedPtr<Self> {
+    pub unsafe fn new_char16ptr(message: *const u16) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_u16ptr(message))
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_char16ptr(
+                message,
+            ))
         }
     }
 
     /// **Source:** `TCollection_HExtendedString.hxx`:58 - `TCollection_HExtendedString::TCollection_HExtendedString()`
     /// Initializes a HExtendedString with a single character.
-    pub fn new_u16(aChar: u16) -> crate::OwnedPtr<Self> {
+    pub fn new_char16(aChar: u16) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_u16(aChar))
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_char16(aChar))
         }
     }
 
     /// **Source:** `TCollection_HExtendedString.hxx`:62 - `TCollection_HExtendedString::TCollection_HExtendedString()`
     /// Initializes a HExtendedString with <length> space allocated.
     /// and filled with <filler>. This is useful for buffers.
-    pub fn new_int_u16(length: i32, filler: u16) -> crate::OwnedPtr<Self> {
+    pub fn new_int_char16(length: i32, filler: u16) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_int_u16(
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_int_char16(
                 length, filler,
             ))
         }
@@ -2818,9 +2833,13 @@ impl HExtendedString {
     /// aString.Insert(3,'y'); gives "Why"
     /// aString contains "Way"
     /// aString.Insert(2,'h'); gives "Why"
-    pub fn insert_int_u16(&mut self, where_: i32, what: u16) {
+    pub fn insert_int_char16(&mut self, where_: i32, what: u16) {
         unsafe {
-            crate::ffi::TCollection_HExtendedString_insert_int_u16(self as *mut Self, where_, what)
+            crate::ffi::TCollection_HExtendedString_insert_int_char16(
+                self as *mut Self,
+                where_,
+                what,
+            )
         }
     }
 
@@ -2891,9 +2910,9 @@ impl HExtendedString {
     /// Example:
     /// aString contains "Garbake"
     /// astring.Replace(6,'g')  gives <me> = "Garbage"
-    pub fn set_value_int_u16(&mut self, where_: i32, what: u16) {
+    pub fn set_value_int_char16(&mut self, where_: i32, what: u16) {
         unsafe {
-            crate::ffi::TCollection_HExtendedString_set_value_int_u16(
+            crate::ffi::TCollection_HExtendedString_set_value_int_char16(
                 self as *mut Self,
                 where_,
                 what,

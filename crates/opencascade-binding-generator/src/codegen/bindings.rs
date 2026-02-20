@@ -8,7 +8,7 @@
 use crate::model::{Constructor, Method, Param, ParsedClass, ParsedField, StaticMethod, Type};
 use crate::module_graph;
 use crate::resolver::{self, SymbolTable};
-use crate::type_mapping::{self, map_return_type_in_context, map_type_in_context, TypeContext};
+use crate::type_mapping::{self, map_return_type, map_return_type_in_context, map_type_in_context, map_type_to_rust, TypeContext};
 use heck::ToSnakeCase;
 use std::fmt::Write as _;
 use std::collections::{HashMap, HashSet};
@@ -416,62 +416,6 @@ pub struct FunctionBinding {
 
 // ── Helper functions ────────────────────────────────────────────────────────
 
-/// Convert a Type to Rust FFI type string using full C++ names.
-///
-/// Unlike `to_rust_type_string()` which uses short names for same-module types,
-/// this always uses the full C++ name (e.g. `gp_Pnt` not `Pnt`). This is
-/// needed for inherited methods which are declared in the derived class's FFI
-/// block but reference types from the ancestor's module.
-fn type_to_ffi_full_name(ty: &Type) -> String {
-    match ty {
-        Type::Void => "()".to_string(),
-        Type::Bool => "bool".to_string(),
-        Type::I32 => "i32".to_string(),
-        Type::U32 => "u32".to_string(),
-        Type::U16 => "u16".to_string(),
-        Type::I16 => "i16".to_string(),
-        Type::I64 => "i64".to_string(),
-        Type::U64 => "u64".to_string(),
-        Type::Long => "std::ffi::c_long".to_string(),
-        Type::ULong => "std::ffi::c_ulong".to_string(),
-        Type::Usize => "usize".to_string(),
-        Type::F32 => "f32".to_string(),
-        Type::F64 => "f64".to_string(),
-        Type::Class(name) => {
-            if name == "char" {
-                "std::ffi::c_char".to_string()
-            } else {
-                Type::ffi_safe_class_name(name) // Parent::Nested -> Parent_Nested
-            }
-        }
-        Type::Handle(name) => format!("Handle{}", name.replace("_", "")),
-        Type::ConstRef(inner) => format!("*const {}", type_to_ffi_full_name(inner)),
-        Type::MutRef(inner) => format!("*mut {}", type_to_ffi_full_name(inner)),
-        Type::RValueRef(_) => "()".to_string(),
-        Type::ConstPtr(inner) => {
-            if matches!(inner.as_ref(), Type::Class(name) if name == "char") {
-                "*const std::ffi::c_char".to_string()
-            } else {
-                format!("*const {}", type_to_ffi_full_name(inner))
-            }
-        }
-        Type::MutPtr(inner) => format!("*mut {}", type_to_ffi_full_name(inner)),
-    }
-}
-
-/// Convert a return Type to Rust FFI type string using full C++ names.
-fn return_type_to_ffi_full_name(ty: &Type) -> String {
-    match ty {
-        Type::Class(name) if name != "char" => {
-            format!("*mut {}", Type::ffi_safe_class_name(name))
-        }
-        Type::Handle(name) => {
-            format!("*mut Handle{}", name.replace("_", ""))
-        }
-        _ => type_to_ffi_full_name(ty),
-    }
-}
-
 fn safe_method_name(name: &str) -> String {
     let snake_name = name.to_snake_case();
     if RUST_KEYWORDS.contains(&snake_name.as_str()) {
@@ -593,44 +537,6 @@ fn classify_wrapper_kind(method: &Method, all_enums: &HashSet<String>) -> Wrappe
     }
 }
 
-/// Convert a Type to C++ type string
-fn type_to_cpp(ty: &Type) -> String {
-    match ty {
-        Type::Void => "void".to_string(),
-        Type::Bool => "Standard_Boolean".to_string(),
-        Type::I32 => "Standard_Integer".to_string(),
-        Type::U32 => "unsigned int".to_string(),
-            Type::U16 => "char16_t".to_string(),
-        Type::I16 => "int16_t".to_string(),
-        Type::I64 => "long long".to_string(),
-        Type::U64 => "unsigned long long".to_string(),
-        Type::Long => "long".to_string(),
-        Type::ULong => "unsigned long".to_string(),
-        Type::Usize => "size_t".to_string(),
-        Type::F32 => "float".to_string(),
-        Type::F64 => "Standard_Real".to_string(),
-        Type::ConstRef(inner) => format!("const {}&", type_to_cpp(inner)),
-        Type::MutRef(inner) => format!("{}&", type_to_cpp(inner)),
-        Type::RValueRef(inner) => format!("{}&&", type_to_cpp(inner)),
-        Type::ConstPtr(inner) => format!("const {}*", type_to_cpp(inner)),
-        Type::MutPtr(inner) => format!("{}*", type_to_cpp(inner)),
-        Type::Handle(name) => format!("opencascade::handle<{}>", name),
-        Type::Class(name) => name.clone(),
-    }
-}
-
-
-/// Convert a Type to C++ parameter type for extern "C" wrapper functions (pointers instead of references)
-fn type_to_cpp_extern_c_param(ty: &Type) -> String {
-    match ty {
-        Type::ConstRef(inner) => format!("const {}*", type_to_cpp(inner)),
-        Type::MutRef(inner) => format!("{}*", type_to_cpp(inner)),
-        Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
-            "const char*".to_string()
-        }
-        _ => type_to_cpp(ty),
-    }
-}
 
 /// Convert a parameter to C++ argument expression for extern "C" wrappers.
 /// Dereferences pointers to match C++ method signatures (which take references).
@@ -694,6 +600,7 @@ fn type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeContext>) ->
         Type::Usize => "usize".to_string(),
         Type::F32 => "f32".to_string(),
         Type::F64 => "f64".to_string(),
+        Type::CHAR16 => "u16".to_string(),
         Type::Class(name) => {
             if name == "char" {
                 "std::ffi::c_char".to_string()
@@ -1180,7 +1087,7 @@ fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeC
             Type::ConstPtr(inner) => {
                 let inner_rust = type_to_rust_string(inner, reexport_ctx);
                 let inner_ffi = map_type_in_context(inner, ffi_ctx).rust_type;
-                let cpp_inner = type_to_cpp(inner);
+                let cpp_inner = inner.to_cpp_string();
                 (
                     format!("*const {}", inner_ffi),
                     format!("Option<&{}>", inner_rust),
@@ -1191,7 +1098,7 @@ fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeC
             Type::MutPtr(inner) => {
                 let inner_rust = type_to_rust_string(inner, reexport_ctx);
                 let inner_ffi = map_type_in_context(inner, ffi_ctx).rust_type;
-                let cpp_inner = type_to_cpp(inner);
+                let cpp_inner = inner.to_cpp_string();
                 (
                     format!("*mut {}", inner_ffi),
                     format!("Option<&mut {}>", inner_rust),
@@ -1225,7 +1132,7 @@ fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeC
             Type::ConstPtr(inner) => {
                 let inner_rust = type_to_rust_string(inner, reexport_ctx);
                 let inner_ffi = map_type_in_context(inner, ffi_ctx).rust_type;
-                let cpp_inner = type_to_cpp(inner);
+                let cpp_inner = inner.to_cpp_string();
                 (
                     format!("*const {}", inner_ffi),
                     format!("&{}", inner_rust),
@@ -1236,7 +1143,7 @@ fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeC
             Type::MutPtr(inner) => {
                 let inner_rust = type_to_rust_string(inner, reexport_ctx);
                 let inner_ffi = map_type_in_context(inner, ffi_ctx).rust_type;
-                let cpp_inner = type_to_cpp(inner);
+                let cpp_inner = inner.to_cpp_string();
                 (
                     format!("*mut {}", inner_ffi),
                     format!("&mut {}", inner_rust),
@@ -1278,7 +1185,7 @@ fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeC
     let mapped = map_type_in_context(&effective_ty, ffi_ctx);
     let rust_ffi_type = mapped.rust_type;
     let rust_reexport_type = type_to_rust_string(&effective_ty, reexport_ctx);
-    let cpp_type = type_to_cpp_extern_c_param(&effective_ty);
+    let cpp_type = effective_ty.to_cpp_extern_c_param();
     let cpp_arg_expr = param_to_cpp_extern_c_arg(name, &effective_ty);
 
     ParamBinding {
@@ -1319,7 +1226,7 @@ fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext, reexport_ctx: Opt
     if let Some(class_name) = ty.class_ptr_inner_name() {
         let mapped = map_return_type_in_context(ty, ffi_ctx);
         let rust_ffi_type = mapped.rust_type;
-        let cpp_type = type_to_cpp(ty);
+        let cpp_type = ty.to_cpp_string();
         // Build the reexport type as Option<&T> or Option<&mut T>
         let is_const = matches!(ty, Type::ConstPtr(_));
         let inner_rust_type = if let Some(ctx) = reexport_ctx {
@@ -1346,7 +1253,7 @@ fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext, reexport_ctx: Opt
     let mapped = map_return_type_in_context(ty, ffi_ctx);
     let rust_ffi_type = mapped.rust_type;
     let rust_reexport_type = return_type_to_rust_string(ty, reexport_ctx);
-    let cpp_type = type_to_cpp(ty);
+    let cpp_type = ty.to_cpp_string();
     let needs_unique_ptr = (ty.is_class() && !ty.is_void_ptr()) || ty.is_handle();
 
     ReturnTypeBinding {
@@ -2811,9 +2718,9 @@ fn compute_inherited_method_bindings(
                         if is_nullable {
                             let (rust_ffi_type, rust_reexport_type, cpp_type) = match &p.ty.original {
                                 Type::ConstPtr(inner) => {
-                                    let inner_ffi = type_to_ffi_full_name(inner);
+                                    let inner_ffi = map_type_to_rust(inner).rust_type;
                                     let inner_rust = type_to_rust_string(inner, reexport_ctx);
-                                    let inner_cpp = type_to_cpp(inner);
+                                    let inner_cpp = inner.to_cpp_string();
                                     (
                                         format!("*const {}", inner_ffi),
                                         format!("Option<&{}>", inner_rust),
@@ -2821,9 +2728,9 @@ fn compute_inherited_method_bindings(
                                     )
                                 }
                                 Type::MutPtr(inner) => {
-                                    let inner_ffi = type_to_ffi_full_name(inner);
+                                    let inner_ffi = map_type_to_rust(inner).rust_type;
                                     let inner_rust = type_to_rust_string(inner, reexport_ctx);
-                                    let inner_cpp = type_to_cpp(inner);
+                                    let inner_cpp = inner.to_cpp_string();
                                     (
                                         format!("*mut {}", inner_ffi),
                                         format!("Option<&mut {}>", inner_rust),
@@ -2851,9 +2758,9 @@ fn compute_inherited_method_bindings(
                         if let Some(_class_name) = p.ty.original.class_ptr_inner_name() {
                             let (rust_ffi_type, rust_reexport_type, cpp_type) = match &p.ty.original {
                                 Type::ConstPtr(inner) => {
-                                    let inner_ffi = type_to_ffi_full_name(inner);
+                                    let inner_ffi = map_type_to_rust(inner).rust_type;
                                     let inner_rust = type_to_rust_string(inner, reexport_ctx);
-                                    let inner_cpp = type_to_cpp(inner);
+                                    let inner_cpp = inner.to_cpp_string();
                                     (
                                         format!("*const {}", inner_ffi),
                                         format!("&{}", inner_rust),
@@ -2861,9 +2768,9 @@ fn compute_inherited_method_bindings(
                                     )
                                 }
                                 Type::MutPtr(inner) => {
-                                    let inner_ffi = type_to_ffi_full_name(inner);
+                                    let inner_ffi = map_type_to_rust(inner).rust_type;
                                     let inner_rust = type_to_rust_string(inner, reexport_ctx);
-                                    let inner_cpp = type_to_cpp(inner);
+                                    let inner_cpp = inner.to_cpp_string();
                                     (
                                         format!("*mut {}", inner_ffi),
                                         format!("&mut {}", inner_rust),
@@ -2932,12 +2839,12 @@ fn compute_inherited_method_bindings(
                             // the static_cast in cpp_arg_expr converts to the actual enum type.
                             "int32_t".to_string()
                         } else {
-                            type_to_cpp(&effective_ty)
+                            effective_ty.to_cpp_string()
                         };
                         ResolvedParamBinding {
                             name: p.name.clone(),
                             rust_name: p.rust_name.clone(),
-                            rust_ffi_type: if p.ty.enum_cpp_name.is_some() { "i32".to_string() } else { type_to_ffi_full_name(&effective_ty) },
+                            rust_ffi_type: if p.ty.enum_cpp_name.is_some() { "i32".to_string() } else { map_type_to_rust(&effective_ty).rust_type },
                             rust_reexport_type: if let Some(ref enum_name) = p.ty.enum_cpp_name {
                                 symbol_table.enum_rust_types.get(enum_name).cloned().unwrap_or_else(|| "i32".to_string())
                             } else {
@@ -2960,7 +2867,7 @@ fn compute_inherited_method_bindings(
                             .and_then(|n| symbol_table.enum_rust_types.get(n))
                             .cloned();
                         ResolvedReturnTypeBinding {
-                            rust_ffi_type: if rt.enum_cpp_name.is_some() { "i32".to_string() } else { return_type_to_ffi_full_name(&rt.original) },
+                            rust_ffi_type: if rt.enum_cpp_name.is_some() { "i32".to_string() } else { map_return_type(&rt.original).rust_type },
                             rust_reexport_type: if let Some(ref enum_name) = rt.enum_cpp_name {
                                 symbol_table.enum_rust_types.get(enum_name).cloned().unwrap_or_else(|| "i32".to_string())
                             } else {

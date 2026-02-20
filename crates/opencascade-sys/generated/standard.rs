@@ -5646,8 +5646,8 @@ impl GUID {
     /// following format:
     ///
     /// "00000000-0000-0000-0000-000000000000"
-    pub unsafe fn new_u16ptr(aGuid: *const u16) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_u16ptr(aGuid)) }
+    pub unsafe fn new_char16ptr(aGuid: *const u16) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_char16ptr(aGuid)) }
     }
 
     /// **Source:** `Standard_GUID.hxx`:62 - `Standard_GUID::Standard_GUID()`
@@ -5707,7 +5707,7 @@ impl GUID {
 // ── Skipped symbols for GUID (3 total) ──
 // SKIPPED: **Source:** `Standard_GUID.hxx`:51 - `Standard_GUID::Standard_GUID`
 //   Reason: param 'a8b1' uses unknown type 'Standard_Byte'
-//   // pub fn new_int_u163_byte6(a32b: i32, a16b1: u16, a16b2: u16, a16b3: u16, a8b1: Byte, a8b2: Byte, a8b3: Byte, a8b4: Byte, a8b5: Byte, a8b6: Byte) -> OwnedPtr<Self>;
+//   // pub fn new_int_char163_byte6(a32b: i32, a16b1: u16, a16b2: u16, a16b3: u16, a8b1: Byte, a8b2: Byte, a8b3: Byte, a8b4: Byte, a8b5: Byte, a8b6: Byte) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `Standard_GUID.hxx`:73 - `Standard_GUID::ToCString`
 //   method: translate the GUID into ascii string

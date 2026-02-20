@@ -1341,7 +1341,7 @@ fn resolve_type(ty: &Type, all_enum_names: &HashSet<String>, type_to_module: &Ha
     ResolvedType {
         original: ty.clone(),
         rust_ffi_type,
-        cpp_type: type_to_cpp_string(ty),
+        cpp_type: ty.to_cpp_string(),
         needs_unique_ptr: matches!(ty, Type::Class(_) | Type::Handle(_)),
         needs_pin: matches!(ty, Type::MutRef(inner) if !inner.is_primitive()),
         source_module: lookup_type_module(ty, type_to_module),
@@ -1372,31 +1372,6 @@ fn extract_enum_name_from_type(ty: &Type, all_enums: &HashSet<String>) -> Option
     }
 }
 
-/// Convert a Type to C++ type string
-fn type_to_cpp_string(ty: &Type) -> String {
-    match ty {
-        Type::Void => "void".to_string(),
-        Type::Bool => "bool".to_string(),
-        Type::I32 => "Standard_Integer".to_string(),
-        Type::U32 => "unsigned int".to_string(),
-            Type::U16 => "char16_t".to_string(),
-        Type::I16 => "int16_t".to_string(),
-        Type::I64 => "long long".to_string(),
-        Type::U64 => "unsigned long long".to_string(),
-        Type::Long => "long".to_string(),
-        Type::ULong => "unsigned long".to_string(),
-        Type::Usize => "size_t".to_string(),
-        Type::F32 => "float".to_string(),
-        Type::F64 => "Standard_Real".to_string(),
-        Type::ConstRef(inner) => format!("const {}&", type_to_cpp_string(inner)),
-        Type::MutRef(inner) => format!("{}&", type_to_cpp_string(inner)),
-        Type::RValueRef(inner) => format!("{}&&", type_to_cpp_string(inner)),
-        Type::ConstPtr(inner) => format!("const {}*", type_to_cpp_string(inner)),
-        Type::MutPtr(inner) => format!("{}*", type_to_cpp_string(inner)),
-        Type::Handle(name) => format!("Handle({})", name),
-        Type::Class(name) => name.clone(),
-    }
-}
 
 #[cfg(test)]
 mod tests {

@@ -373,10 +373,14 @@ impl Manager {
     /// **Source:** `Resource_Manager.hxx`:112 - `Resource_Manager::SetResource()`
     /// Sets the new value of an ExtString resource.
     /// If the resource does not exist, it is created.
-    pub unsafe fn set_resource_charptr_u16ptr(&mut self, aResourceName: &str, aValue: *const u16) {
+    pub unsafe fn set_resource_charptr_char16ptr(
+        &mut self,
+        aResourceName: &str,
+        aValue: *const u16,
+    ) {
         let c_aResourceName = std::ffi::CString::new(aResourceName).unwrap();
         unsafe {
-            crate::ffi::Resource_Manager_set_resource_charptr_u16ptr(
+            crate::ffi::Resource_Manager_set_resource_charptr_char16ptr(
                 self as *mut Self,
                 c_aResourceName.as_ptr(),
                 aValue,

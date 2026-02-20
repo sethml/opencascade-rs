@@ -24,10 +24,23 @@ thread_local! {
 }
 
 /// Normalize a C++ type spelling for typedef map lookup.
-/// Removes whitespace so that typedef keys match display names even when
-/// clang uses different whitespace conventions.
+/// Removes whitespace AND normalizes Standard_* type aliases to their C++ equivalents
+/// (e.g. Standard_Integer → int) so that typedef keys match canonical names even when
+/// clang uses different spellings (display names use OCCT aliases, canonical names
+/// use C++ primitives).
 fn normalize_template_spelling(s: &str) -> String {
-    s.chars().filter(|c| !c.is_whitespace()).collect()
+    let no_ws: String = s.chars().filter(|c| !c.is_whitespace()).collect();
+    // Normalize OCCT type aliases to C++ primitives for consistent matching.
+    // Order matters: longer names first to avoid partial matches.
+    no_ws
+        .replace("Standard_Integer", "int")
+        .replace("Standard_Real", "double")
+        .replace("Standard_Boolean", "bool")
+        .replace("Standard_ShortReal", "float")
+        .replace("Standard_Character", "char")
+        .replace("Standard_ExtCharacter", "char16_t")
+        .replace("Standard_Byte", "unsignedchar")
+        .replace("Standard_Utf8Char", "char")
 }
 
 
@@ -1366,7 +1379,8 @@ fn parse_type(clang_type: &clang::Type) -> Type {
             "bool" => return Type::Bool,
             "int" => return Type::I32,
             "unsigned int" => return Type::U32,
-            "unsigned short" | "uint16_t" | "char16_t" => return Type::U16,
+            "unsigned short" | "uint16_t" => return Type::U16,
+            "char16_t" => return Type::CHAR16,
             "short" | "int16_t" => return Type::I16,
             "long" => return Type::Long,
             "unsigned long" => return Type::ULong,
@@ -1577,8 +1591,8 @@ fn map_standard_type(type_name: &str) -> Option<Type> {
         "Standard_ShortReal" => Some(Type::F32),
         "Standard_Utf8Char" => Some(Type::Class("char".to_string())),
         "Standard_Character" => Some(Type::Class("char".to_string())),
-        "Standard_ExtCharacter" => Some(Type::U16),
-        "Standard_ExtString" => Some(Type::ConstPtr(Box::new(Type::U16))),
+        "Standard_ExtCharacter" => Some(Type::CHAR16),
+        "Standard_ExtString" => Some(Type::ConstPtr(Box::new(Type::CHAR16))),
         // C++ primitive types (may appear from canonical type resolution)
         "double" => Some(Type::F64),
         "float" => Some(Type::F32),
@@ -1590,7 +1604,8 @@ fn map_standard_type(type_name: &str) -> Option<Type> {
         "unsigned long long" => Some(Type::U64),
         "short" => Some(Type::I16),
         "int16_t" => Some(Type::I16),
-        "unsigned short" | "uint16_t" | "char16_t" => Some(Type::U16),
+        "unsigned short" | "uint16_t" => Some(Type::U16),
+        "char16_t" => Some(Type::CHAR16),
         "bool" => Some(Type::Bool),
         // Standard_Address is void* - can't be bound through the FFI, but we need to recognize it
         // so methods using it can be filtered out. Using a special class name that is_void_ptr() checks for.
