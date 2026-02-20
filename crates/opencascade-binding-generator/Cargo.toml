@@ -14,7 +14,12 @@ name = "occt-bindgen"
 path = "src/main.rs"
 
 [dependencies]
-# C++ parsing via libclang
+# C++ parsing via libclang.
+# NOTE: The published v2.0.0 has a UB bug in SourceRange::tokenize() that causes
+# a crash in debug builds on Rust >= 1.78 (KyleMayes/clang-rs#47, fixed in PR #58).
+# The fix has not been released to crates.io. As a workaround, regenerate-bindings.sh
+# builds in --release mode (which disables the UB check). If/when v2.0.1 is published,
+# remove the --release flag from that script.
 clang = { version = "2.0", features = ["clang_3_9"] }
 
 # CLI argument parsing

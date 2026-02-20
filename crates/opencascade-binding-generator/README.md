@@ -584,3 +584,27 @@ The current `StringRefParam` detection automatically catches `const char*&` case
 
 - **Handle type detection**: Unified through a single transitive closure algorithm (`compute_handle_able_classes()`) that walks the full inheritance graph starting from `Standard_Transient`. This replaces the old parser heuristic with hardcoded prefixes (`"Geom_*"`, `"Geom2d_*"`, `"Law_*"`) and fixes the inheritance graph by including `Standard_*` base classes.
 - **Inheritance graph**: Fixed `extract_base_classes()` to include `Standard_*` classes, so the full inheritance hierarchy is now represented, enabling more accurate dependency analysis and upcasts.
+
+## Known Issues
+
+### UB crash in `clang` crate (v2.0.0) — worked around via `--release` build
+
+The published `clang` crate (v2.0.0) has a bug in `SourceRange::tokenize()`: it
+passes the pointer returned by `clang_tokenize` directly to
+`slice::from_raw_parts` without a null check. When `clang_tokenize` returns a
+null pointer (which happens for some macro-expanded expressions and compiler
+builtins), this is undefined behavior. Starting with Rust 1.78, debug builds
+include UB precondition checks that detect this and abort the process:
+
+```
+unsafe precondition(s) violated: slice::from_raw_parts requires the pointer to
+be aligned and non-null
+```
+
+The fix was merged in [PR #58](https://github.com/KyleMayes/clang-rs/pull/58)
+([issue #47](https://github.com/KyleMayes/clang-rs/issues/47)) but has not been
+released to crates.io, and later commits in the git repository no longer compile
+with current Rust. As a workaround, `scripts/regenerate-bindings.sh` builds the
+generator in `--release` mode, which disables the debug UB checks. If/when a
+v2.0.1 is released on crates.io, remove the `--release` flag from that script
+and update `Cargo.toml` to use `version = "2.0"`.

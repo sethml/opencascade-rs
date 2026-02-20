@@ -34,7 +34,9 @@ if [[ ! -f "$CONFIG_FILE" ]]; then
     exit 1
 fi
 
-# Build the generator
+# Build the generator in release mode to avoid a UB crash in the `clang` crate
+# (v2.0.0) that only manifests in debug builds on Rust >= 1.78. See
+# crates/opencascade-binding-generator/Cargo.toml for details.
 echo "Building binding generator..."
 cargo build --release -p opencascade-binding-generator
 
