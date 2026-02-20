@@ -5954,21 +5954,59 @@ impl TrimEdgeTool {
         }
     }
 
+    /// **Source:** `BRepFill_TrimEdgeTool.hxx`:48 - `BRepFill_TrimEdgeTool::IntersectWith()`
+    pub fn intersect_with(
+        &mut self,
+        Edge1: &crate::topo_ds::Edge,
+        Edge2: &crate::topo_ds::Edge,
+        InitShape1: &crate::topo_ds::Shape,
+        InitShape2: &crate::topo_ds::Shape,
+        End1: &crate::topo_ds::Vertex,
+        End2: &crate::topo_ds::Vertex,
+        theJoinType: crate::geom_abs::JoinType,
+        IsOpenResult: bool,
+        Params: &mut crate::ffi::TColgp_SequenceOfPnt,
+    ) {
+        unsafe {
+            crate::ffi::BRepFill_TrimEdgeTool_intersect_with(
+                self as *mut Self,
+                Edge1,
+                Edge2,
+                InitShape1,
+                InitShape2,
+                End1,
+                End2,
+                theJoinType.into(),
+                IsOpenResult,
+                Params,
+            )
+        }
+    }
+
+    /// **Source:** `BRepFill_TrimEdgeTool.hxx`:58 - `BRepFill_TrimEdgeTool::AddOrConfuse()`
+    pub fn add_or_confuse(
+        &self,
+        Start: bool,
+        Edge1: &crate::topo_ds::Edge,
+        Edge2: &crate::topo_ds::Edge,
+        Params: &mut crate::ffi::TColgp_SequenceOfPnt,
+    ) {
+        unsafe {
+            crate::ffi::BRepFill_TrimEdgeTool_add_or_confuse(
+                self as *const Self,
+                Start,
+                Edge1,
+                Edge2,
+                Params,
+            )
+        }
+    }
+
     /// **Source:** `BRepFill_TrimEdgeTool.hxx`:63 - `BRepFill_TrimEdgeTool::IsInside()`
     pub fn is_inside(&self, P: &crate::gp::Pnt2d) -> bool {
         unsafe { crate::ffi::BRepFill_TrimEdgeTool_is_inside(self as *const Self, P) }
     }
 }
-
-// ── Skipped symbols for TrimEdgeTool (2 total) ──
-// SKIPPED: **Source:** `BRepFill_TrimEdgeTool.hxx`:48 - `BRepFill_TrimEdgeTool::IntersectWith`
-//   Reason: param 'Params' uses unknown type 'TColgp_SequenceOfPnt&'
-//   // pub fn intersect_with(&mut self, Edge1: &Edge, Edge2: &Edge, InitShape1: &Shape, InitShape2: &Shape, End1: &Vertex, End2: &Vertex, theJoinType: JoinType, IsOpenResult: bool, Params: &mut SequenceOfPnt);
-//
-// SKIPPED: **Source:** `BRepFill_TrimEdgeTool.hxx`:58 - `BRepFill_TrimEdgeTool::AddOrConfuse`
-//   Reason: param 'Params' uses unknown type 'TColgp_SequenceOfPnt&'
-//   // pub fn add_or_confuse(&self, Start: bool, Edge1: &Edge, Edge2: &Edge, Params: &mut SequenceOfPnt);
-//
 
 // ========================
 // From BRepFill_TrimShellCorner.hxx
@@ -6084,6 +6122,30 @@ impl TrimSurfaceTool {
         }
     }
 
+    /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:54 - `BRepFill_TrimSurfaceTool::IntersectWith()`
+    /// Intersect <Bis>  with the  projection of the edges
+    /// <EdgeOnFi> and returns the intersecting parameters
+    /// on Bis and on the edges
+    /// P.X() : Parameter on Bis
+    /// P.Y() : Parameter on EdgeOnF1
+    /// P.Z() : Parameter on EdgeOnF2
+    /// raises if <Edge> is not a edge of Face1 or Face2.
+    pub fn intersect_with(
+        &self,
+        EdgeOnF1: &crate::topo_ds::Edge,
+        EdgeOnF2: &crate::topo_ds::Edge,
+        Points: &mut crate::ffi::TColgp_SequenceOfPnt,
+    ) {
+        unsafe {
+            crate::ffi::BRepFill_TrimSurfaceTool_intersect_with(
+                self as *const Self,
+                EdgeOnF1,
+                EdgeOnF2,
+                Points,
+            )
+        }
+    }
+
     /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:59 - `BRepFill_TrimSurfaceTool::IsOnFace()`
     /// returns True if the Line (P, DZ) intersect the Faces
     pub fn is_on_face(&self, Point: &crate::gp::Pnt2d) -> bool {
@@ -6122,15 +6184,6 @@ impl TrimSurfaceTool {
         *myCont = crate::geom_abs::Shape::try_from(myCont_i32_).unwrap();
     }
 }
-
-// ── Skipped symbols for TrimSurfaceTool (1 total) ──
-// SKIPPED: **Source:** `BRepFill_TrimSurfaceTool.hxx`:54 - `BRepFill_TrimSurfaceTool::IntersectWith`
-//   method: Intersect <Bis>  with the  projection of the edges
-//   method: <EdgeOnFi> and returns the intersecting parameters
-//   method: on Bis and on the edges
-//   Reason: param 'Points' uses unknown type 'TColgp_SequenceOfPnt&'
-//   // pub fn intersect_with(&self, EdgeOnF1: &Edge, EdgeOnF2: &Edge, Points: &mut SequenceOfPnt);
-//
 
 // ========================
 // Additional type re-exports

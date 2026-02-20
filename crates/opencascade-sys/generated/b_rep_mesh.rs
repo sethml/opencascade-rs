@@ -8528,8 +8528,8 @@ impl Triangulator {
 // ── Skipped symbols for Triangulator (3 total) ──
 // SKIPPED: **Source:** `BRepMesh_Triangulator.hxx`:44 - `BRepMesh_Triangulator::BRepMesh_Triangulator`
 //   constructor: Constructor. Initialized tool by the given parameters.
-//   Reason: has unbindable types: param 'theXYZs': unresolved template type (const VectorOfPoint&); param 'theWires': unresolved template type (const NCollection_List<TColStd_SequenceOfInteger>&)
-//   // pub fn new_vectorofpoint_list<tcolstd_sequenceofinteger>_dir(theXYZs: /* const VectorOfPoint& */, theWires: /* const NCollection_List<TColStd_SequenceOfInteger>& */, theNorm: &Dir) -> OwnedPtr<Self>;
+//   Reason: has unbindable types: param 'theXYZs': unresolved template type (const NCollection_Vector<gp_XYZ>&); param 'theWires': unresolved template type (const NCollection_List<TColStd_SequenceOfInteger>&)
+//   // pub fn new_vector<gp_xyz>_list<tcolstd_sequenceofinteger>_dir(theXYZs: /* const NCollection_Vector<gp_XYZ>& */, theWires: /* const NCollection_List<TColStd_SequenceOfInteger>& */, theNorm: &Dir) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `BRepMesh_Triangulator.hxx`:49 - `BRepMesh_Triangulator::Perform`
 //   method: Performs triangulation of source wires and stores triangles the output list.

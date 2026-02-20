@@ -5740,6 +5740,37 @@ impl HSequenceOfPnt {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfPnt_ctor()) }
     }
 
+    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::TColgp_HSequenceOfPnt()`
+    pub fn new_sequenceofpnt(theOther: &crate::ffi::TColgp_SequenceOfPnt) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfPnt_ctor_sequenceofpnt(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfPnt {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfPnt_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::Append()`
+    pub fn append_type(&mut self, theItem: &crate::ffi::TColgp_SequenceOfPnt_value_type) {
+        unsafe { crate::ffi::TColgp_HSequenceOfPnt_append_type(self as *mut Self, theItem) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::Append()`
+    pub fn append_sequenceofpnt(&mut self, theSequence: &mut crate::ffi::TColgp_SequenceOfPnt) {
+        unsafe {
+            crate::ffi::TColgp_HSequenceOfPnt_append_sequenceofpnt(self as *mut Self, theSequence)
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColgp_SequenceOfPnt {
+        unsafe { &mut *(crate::ffi::TColgp_HSequenceOfPnt_change_sequence(self as *mut Self)) }
+    }
+
     /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColgp_HSequenceOfPnt_dynamic_type(self as *const Self)) }
@@ -5860,28 +5891,6 @@ impl HandleTColgpHSequenceOfPnt {
         }
     }
 }
-
-// ── Skipped symbols for HSequenceOfPnt (5 total) ──
-// SKIPPED: **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::TColgp_HSequenceOfPnt`
-//   Reason: param 'theOther' uses unknown type 'const TColgp_SequenceOfPnt&'
-//   // pub fn new_sequenceofpnt(theOther: &SequenceOfPnt) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::Sequence`
-//   Reason: return type 'const TColgp_SequenceOfPnt&' is unknown
-//   // pub fn sequence(&self) -> &SequenceOfPnt;
-//
-// SKIPPED: **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::Append`
-//   Reason: param 'theItem' uses unknown type 'const TColgp_SequenceOfPnt::value_type&'
-//   // pub fn append(&mut self, theItem: &SequenceOfPnt_value_type);
-//
-// SKIPPED: **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::Append`
-//   Reason: param 'theSequence' uses unknown type 'TColgp_SequenceOfPnt&'
-//   // pub fn append(&mut self, theSequence: &mut SequenceOfPnt);
-//
-// SKIPPED: **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::ChangeSequence`
-//   Reason: return type 'TColgp_SequenceOfPnt&' is unknown
-//   // pub fn change_sequence(&mut self) -> &mut SequenceOfPnt;
-//
 
 // ========================
 // From TColgp_HSequenceOfPnt2d.hxx

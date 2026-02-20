@@ -28,6 +28,21 @@ impl Attr {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LDOM_Attr_ctor()) }
     }
 
+    /// **Source:** `LDOM_Attr.hxx`:56 - `LDOM_Attr::getName()`
+    pub fn get_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::LDOM_Attr_get_name(self as *const Self)) }
+    }
+
+    /// **Source:** `LDOM_Attr.hxx`:58 - `LDOM_Attr::getValue()`
+    pub fn get_value(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::LDOM_Attr_get_value(self as *const Self)) }
+    }
+
+    /// **Source:** `LDOM_Attr.hxx`:60 - `LDOM_Attr::setValue()`
+    pub fn set_value(&mut self, aValue: &crate::ldom_string::LDOMString) {
+        unsafe { crate::ffi::LDOM_Attr_set_value(self as *mut Self, aValue) }
+    }
+
     /// Upcast to LDOM_Node
     pub fn as_node(&self) -> &Node {
         unsafe { &*(crate::ffi::LDOM_Attr_as_LDOM_Node(self as *const Self)) }
@@ -57,6 +72,24 @@ impl Attr {
     pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LDOM_Attr_inherited_getNodeType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `LDOM_Node.hxx`:84 - `LDOM_Node::getNodeName()`
+    pub fn get_node_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Attr_inherited_getNodeName(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `LDOM_Node.hxx`:86 - `LDOM_Node::getNodeValue()`
+    pub fn get_node_value(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Attr_inherited_getNodeValue(
                 self as *const Self,
             ))
         }
@@ -110,20 +143,6 @@ impl Attr {
     }
 }
 
-// ── Skipped symbols for Attr (3 total) ──
-// SKIPPED: **Source:** `LDOM_Attr.hxx`:56 - `LDOM_Attr::getName`
-//   Reason: has unbindable types: return: unresolved template type (LDOMString)
-//   // pub fn get_name(&self) -> OwnedPtr<LDOMString>;
-//
-// SKIPPED: **Source:** `LDOM_Attr.hxx`:58 - `LDOM_Attr::getValue`
-//   Reason: has unbindable types: return: unresolved template type (LDOMString)
-//   // pub fn get_value(&self) -> OwnedPtr<LDOMString>;
-//
-// SKIPPED: **Source:** `LDOM_Attr.hxx`:60 - `LDOM_Attr::setValue`
-//   Reason: has unbindable types: param 'aValue': unresolved template type (const LDOMString&)
-//   // pub fn set_value(&mut self, aValue: /* const LDOMString& */);
-//
-
 // ========================
 // From LDOM_BasicAttribute.hxx
 // ========================
@@ -150,6 +169,20 @@ impl BasicAttribute {
                 .to_string_lossy()
                 .into_owned()
         }
+    }
+
+    /// **Source:** `LDOM_BasicAttribute.hxx`:46 - `LDOM_BasicAttribute::GetValue()`
+    pub fn get_value(&self) -> &crate::ldom_basic_string::LDOMBasicString {
+        unsafe { &*(crate::ffi::LDOM_BasicAttribute_get_value(self as *const Self)) }
+    }
+
+    /// **Source:** `LDOM_BasicAttribute.hxx`:48 - `LDOM_BasicAttribute::SetValue()`
+    pub fn set_value(
+        &mut self,
+        aValue: &crate::ldom_basic_string::LDOMBasicString,
+        aDoc: &crate::ffi::HandleLDOMMemManager,
+    ) {
+        unsafe { crate::ffi::LDOM_BasicAttribute_set_value(self as *mut Self, aValue, aDoc) }
     }
 
     /// Upcast to LDOM_BasicNode
@@ -190,16 +223,6 @@ impl BasicAttribute {
         }
     }
 }
-
-// ── Skipped symbols for BasicAttribute (2 total) ──
-// SKIPPED: **Source:** `LDOM_BasicAttribute.hxx`:46 - `LDOM_BasicAttribute::GetValue`
-//   Reason: has unbindable types: return: unresolved template type (const LDOMBasicString&)
-//   // pub fn get_value(&self) -> /* const LDOMBasicString& */;
-//
-// SKIPPED: **Source:** `LDOM_BasicAttribute.hxx`:48 - `LDOM_BasicAttribute::SetValue`
-//   Reason: has unbindable types: param 'aValue': unresolved template type (const LDOMBasicString&)
-//   // pub fn set_value(&mut self, aValue: /* const LDOMBasicString& */, aDoc: &HandleMemManager);
-//
 
 // ========================
 // From LDOM_BasicElement.hxx
@@ -255,6 +278,21 @@ impl BasicElement {
         }
     }
 
+    /// **Source:** `LDOM_BasicElement.hxx`:66 - `LDOM_BasicElement::GetAttribute()`
+    pub fn get_attribute(
+        &self,
+        aName: &crate::ldom_basic_string::LDOMBasicString,
+        aLastCh: &BasicNode,
+    ) -> &BasicAttribute {
+        unsafe {
+            &*(crate::ffi::LDOM_BasicElement_get_attribute(
+                self as *const Self,
+                aName,
+                aLastCh as *const _,
+            ))
+        }
+    }
+
     /// **Source:** `LDOM_BasicElement.hxx`:46 - `LDOM_BasicElement::Create()`
     pub fn create(
         aName: &str,
@@ -302,12 +340,6 @@ impl BasicElement {
         }
     }
 }
-
-// ── Skipped symbols for BasicElement (1 total) ──
-// SKIPPED: **Source:** `LDOM_BasicElement.hxx`:66 - `LDOM_BasicElement::GetAttribute`
-//   Reason: has unbindable types: param 'aName': unresolved template type (const LDOMBasicString&)
-//   // pub fn get_attribute(&self, aName: /* const LDOMBasicString& */, aLastCh: /* const LDOM_BasicNode* */) -> &BasicAttribute;
-//
 
 // ========================
 // From LDOM_BasicNode.hxx
@@ -367,6 +399,20 @@ impl BasicText {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LDOM_BasicText_ctor()) }
     }
 
+    /// **Source:** `LDOM_BasicText.hxx`:43 - `LDOM_BasicText::GetData()`
+    pub fn get_data(&self) -> &crate::ldom_basic_string::LDOMBasicString {
+        unsafe { &*(crate::ffi::LDOM_BasicText_get_data(self as *const Self)) }
+    }
+
+    /// **Source:** `LDOM_BasicText.hxx`:45 - `LDOM_BasicText::SetData()`
+    pub fn set_data(
+        &mut self,
+        aValue: &crate::ldom_basic_string::LDOMBasicString,
+        aDoc: &crate::ffi::HandleLDOMMemManager,
+    ) {
+        unsafe { crate::ffi::LDOM_BasicText_set_data(self as *mut Self, aValue, aDoc) }
+    }
+
     /// Upcast to LDOM_BasicNode
     pub fn as_basic_node(&self) -> &BasicNode {
         unsafe { &*(crate::ffi::LDOM_BasicText_as_LDOM_BasicNode(self as *const Self)) }
@@ -404,16 +450,6 @@ impl BasicText {
         }
     }
 }
-
-// ── Skipped symbols for BasicText (2 total) ──
-// SKIPPED: **Source:** `LDOM_BasicText.hxx`:43 - `LDOM_BasicText::GetData`
-//   Reason: has unbindable types: return: unresolved template type (const LDOMBasicString&)
-//   // pub fn get_data(&self) -> /* const LDOMBasicString& */;
-//
-// SKIPPED: **Source:** `LDOM_BasicText.hxx`:45 - `LDOM_BasicText::SetData`
-//   Reason: has unbindable types: param 'aValue': unresolved template type (const LDOMBasicString&)
-//   // pub fn set_data(&mut self, aValue: /* const LDOMBasicString& */, aDoc: &HandleMemManager);
-//
 
 // ========================
 // From LDOM_CDATASection.hxx
@@ -473,6 +509,20 @@ impl CDATASection {
         }
     }
 
+    /// Inherited: **Source:** `LDOM_CharacterData.hxx`:53 - `LDOM_CharacterData::getData()`
+    pub fn get_data(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_CDATASection_inherited_getData(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `LDOM_CharacterData.hxx`:57 - `LDOM_CharacterData::setData()`
+    pub fn set_data(&mut self, aValue: &crate::ldom_string::LDOMString) {
+        unsafe { crate::ffi::LDOM_CDATASection_inherited_setData(self as *mut Self, aValue) }
+    }
+
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:60 - `LDOM_CharacterData::getLength()`
     pub fn get_length(&self) -> i32 {
         unsafe { crate::ffi::LDOM_CDATASection_inherited_getLength(self as *const Self) }
@@ -492,6 +542,24 @@ impl CDATASection {
     pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LDOM_CDATASection_inherited_getNodeType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `LDOM_Node.hxx`:84 - `LDOM_Node::getNodeName()`
+    pub fn get_node_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_CDATASection_inherited_getNodeName(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `LDOM_Node.hxx`:86 - `LDOM_Node::getNodeValue()`
+    pub fn get_node_value(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_CDATASection_inherited_getNodeValue(
                 self as *const Self,
             ))
         }
@@ -595,6 +663,18 @@ impl CharacterData {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LDOM_CharacterData_ctor()) }
     }
 
+    /// **Source:** `LDOM_CharacterData.hxx`:53 - `LDOM_CharacterData::getData()`
+    pub fn get_data(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_CharacterData_get_data(self as *const Self))
+        }
+    }
+
+    /// **Source:** `LDOM_CharacterData.hxx`:57 - `LDOM_CharacterData::setData()`
+    pub fn set_data(&mut self, aValue: &crate::ldom_string::LDOMString) {
+        unsafe { crate::ffi::LDOM_CharacterData_set_data(self as *mut Self, aValue) }
+    }
+
     /// **Source:** `LDOM_CharacterData.hxx`:60 - `LDOM_CharacterData::getLength()`
     pub fn get_length(&self) -> i32 {
         unsafe { crate::ffi::LDOM_CharacterData_get_length(self as *const Self) }
@@ -633,6 +713,24 @@ impl CharacterData {
     pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LDOM_CharacterData_inherited_getNodeType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `LDOM_Node.hxx`:84 - `LDOM_Node::getNodeName()`
+    pub fn get_node_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_CharacterData_inherited_getNodeName(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `LDOM_Node.hxx`:86 - `LDOM_Node::getNodeValue()`
+    pub fn get_node_value(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_CharacterData_inherited_getNodeValue(
                 self as *const Self,
             ))
         }
@@ -686,16 +784,6 @@ impl CharacterData {
     }
 }
 
-// ── Skipped symbols for CharacterData (2 total) ──
-// SKIPPED: **Source:** `LDOM_CharacterData.hxx`:53 - `LDOM_CharacterData::getData`
-//   Reason: has unbindable types: return: unresolved template type (LDOMString)
-//   // pub fn get_data(&self) -> OwnedPtr<LDOMString>;
-//
-// SKIPPED: **Source:** `LDOM_CharacterData.hxx`:57 - `LDOM_CharacterData::setData`
-//   Reason: has unbindable types: param 'aValue': unresolved template type (const LDOMString&)
-//   // pub fn set_data(&mut self, aValue: /* const LDOMString& */);
-//
-
 // ========================
 // From LDOM_Comment.hxx
 // ========================
@@ -740,6 +828,20 @@ impl Comment {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LDOM_Comment_to_owned(self as *const Self)) }
     }
 
+    /// Inherited: **Source:** `LDOM_CharacterData.hxx`:53 - `LDOM_CharacterData::getData()`
+    pub fn get_data(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Comment_inherited_getData(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `LDOM_CharacterData.hxx`:57 - `LDOM_CharacterData::setData()`
+    pub fn set_data(&mut self, aValue: &crate::ldom_string::LDOMString) {
+        unsafe { crate::ffi::LDOM_Comment_inherited_setData(self as *mut Self, aValue) }
+    }
+
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:60 - `LDOM_CharacterData::getLength()`
     pub fn get_length(&self) -> i32 {
         unsafe { crate::ffi::LDOM_Comment_inherited_getLength(self as *const Self) }
@@ -759,6 +861,24 @@ impl Comment {
     pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LDOM_Comment_inherited_getNodeType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `LDOM_Node.hxx`:84 - `LDOM_Node::getNodeName()`
+    pub fn get_node_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Comment_inherited_getNodeName(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `LDOM_Node.hxx`:86 - `LDOM_Node::getNodeValue()`
+    pub fn get_node_value(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Comment_inherited_getNodeValue(
                 self as *const Self,
             ))
         }
@@ -836,6 +956,58 @@ impl Document {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LDOM_Document_ctor_memmanager(aMemManager)) }
     }
 
+    /// **Source:** `LDOM_Document.hxx`:46 - `LDOM_Document::createElement()`
+    pub fn create_element(
+        &mut self,
+        theTagName: &crate::ldom_string::LDOMString,
+    ) -> crate::OwnedPtr<Element> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Document_create_element(
+                self as *mut Self,
+                theTagName,
+            ))
+        }
+    }
+
+    /// **Source:** `LDOM_Document.hxx`:52 - `LDOM_Document::createCDATASection()`
+    pub fn create_cdata_section(
+        &mut self,
+        theData: &crate::ldom_string::LDOMString,
+    ) -> crate::OwnedPtr<CDATASection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Document_create_cdata_section(
+                self as *mut Self,
+                theData,
+            ))
+        }
+    }
+
+    /// **Source:** `LDOM_Document.hxx`:54 - `LDOM_Document::createComment()`
+    pub fn create_comment(
+        &mut self,
+        theData: &crate::ldom_string::LDOMString,
+    ) -> crate::OwnedPtr<Comment> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Document_create_comment(
+                self as *mut Self,
+                theData,
+            ))
+        }
+    }
+
+    /// **Source:** `LDOM_Document.hxx`:56 - `LDOM_Document::createTextNode()`
+    pub fn create_text_node(
+        &mut self,
+        theData: &crate::ldom_string::LDOMString,
+    ) -> crate::OwnedPtr<Text> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Document_create_text_node(
+                self as *mut Self,
+                theData,
+            ))
+        }
+    }
+
     /// **Source:** `LDOM_Document.hxx`:60 - `LDOM_Document::getDocumentElement()`
     pub fn get_document_element(&self) -> crate::OwnedPtr<Element> {
         unsafe {
@@ -845,37 +1017,33 @@ impl Document {
         }
     }
 
+    /// **Source:** `LDOM_Document.hxx`:62 - `LDOM_Document::getElementsByTagName()`
+    pub fn get_elements_by_tag_name(
+        &self,
+        theTagName: &crate::ldom_string::LDOMString,
+    ) -> crate::OwnedPtr<NodeList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Document_get_elements_by_tag_name(
+                self as *const Self,
+                theTagName,
+            ))
+        }
+    }
+
     /// **Source:** `LDOM_Document.hxx`:79 - `LDOM_Document::isNull()`
     pub fn is_null(&self) -> bool {
         unsafe { crate::ffi::LDOM_Document_is_null(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for Document (6 total) ──
-// SKIPPED: **Source:** `LDOM_Document.hxx`:46 - `LDOM_Document::createElement`
-//   Reason: has unbindable types: param 'theTagName': unresolved template type (const LDOMString&)
-//   // pub fn create_element(&mut self, theTagName: /* const LDOMString& */) -> OwnedPtr<LDOM_Element>;
-//
-// SKIPPED: **Source:** `LDOM_Document.hxx`:52 - `LDOM_Document::createCDATASection`
-//   Reason: has unbindable types: param 'theData': unresolved template type (const LDOMString&)
-//   // pub fn create_cdata_section(&mut self, theData: /* const LDOMString& */) -> OwnedPtr<LDOM_CDATASection>;
-//
-// SKIPPED: **Source:** `LDOM_Document.hxx`:54 - `LDOM_Document::createComment`
-//   Reason: has unbindable types: param 'theData': unresolved template type (const LDOMString&)
-//   // pub fn create_comment(&mut self, theData: /* const LDOMString& */) -> OwnedPtr<LDOM_Comment>;
-//
-// SKIPPED: **Source:** `LDOM_Document.hxx`:56 - `LDOM_Document::createTextNode`
-//   Reason: has unbindable types: param 'theData': unresolved template type (const LDOMString&)
-//   // pub fn create_text_node(&mut self, theData: /* const LDOMString& */) -> OwnedPtr<LDOM_Text>;
-//
-// SKIPPED: **Source:** `LDOM_Document.hxx`:62 - `LDOM_Document::getElementsByTagName`
-//   Reason: has unbindable types: param 'theTagName': unresolved template type (const LDOMString&)
-//   // pub fn get_elements_by_tag_name(&self, theTagName: /* const LDOMString& */) -> OwnedPtr<LDOM_NodeList>;
-//
-// SKIPPED: **Source:** `LDOM_Document.hxx`:43 - `LDOM_Document::createDocument`
-//   Reason: has unbindable types: param 'theQualifiedName': unresolved template type (const LDOMString&)
-//   // pub fn create_document(theQualifiedName: /* const LDOMString& */) -> OwnedPtr<LDOM_Document>;
-//
+    /// **Source:** `LDOM_Document.hxx`:43 - `LDOM_Document::createDocument()`
+    pub fn create_document(
+        theQualifiedName: &crate::ldom_string::LDOMString,
+    ) -> crate::OwnedPtr<Document> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Document_create_document(theQualifiedName))
+        }
+    }
+}
 
 // ========================
 // From LDOM_DocumentType.hxx
@@ -916,9 +1084,82 @@ impl Element {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LDOM_Element_ctor()) }
     }
 
+    /// **Source:** `LDOM_Element.hxx`:57 - `LDOM_Element::getTagName()`
+    pub fn get_tag_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Element_get_tag_name(self as *const Self))
+        }
+    }
+
+    /// **Source:** `LDOM_Element.hxx`:59 - `LDOM_Element::getAttribute()`
+    pub fn get_attribute(
+        &self,
+        aName: &crate::ldom_string::LDOMString,
+    ) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Element_get_attribute(
+                self as *const Self,
+                aName,
+            ))
+        }
+    }
+
+    /// **Source:** `LDOM_Element.hxx`:61 - `LDOM_Element::getAttributeNode()`
+    pub fn get_attribute_node(
+        &self,
+        aName: &crate::ldom_string::LDOMString,
+    ) -> crate::OwnedPtr<Attr> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Element_get_attribute_node(
+                self as *const Self,
+                aName,
+            ))
+        }
+    }
+
+    /// **Source:** `LDOM_Element.hxx`:63 - `LDOM_Element::getElementsByTagName()`
+    pub fn get_elements_by_tag_name(
+        &self,
+        aName: &crate::ldom_string::LDOMString,
+    ) -> crate::OwnedPtr<NodeList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Element_get_elements_by_tag_name(
+                self as *const Self,
+                aName,
+            ))
+        }
+    }
+
+    /// **Source:** `LDOM_Element.hxx`:65 - `LDOM_Element::setAttribute()`
+    pub fn set_attribute(
+        &mut self,
+        aName: &crate::ldom_string::LDOMString,
+        aValue: &crate::ldom_string::LDOMString,
+    ) {
+        unsafe { crate::ffi::LDOM_Element_set_attribute(self as *mut Self, aName, aValue) }
+    }
+
     /// **Source:** `LDOM_Element.hxx`:67 - `LDOM_Element::setAttributeNode()`
     pub fn set_attribute_node(&mut self, aNewAttr: &Attr) {
         unsafe { crate::ffi::LDOM_Element_set_attribute_node(self as *mut Self, aNewAttr) }
+    }
+
+    /// **Source:** `LDOM_Element.hxx`:69 - `LDOM_Element::removeAttribute()`
+    pub fn remove_attribute(&mut self, aName: &crate::ldom_string::LDOMString) {
+        unsafe { crate::ffi::LDOM_Element_remove_attribute(self as *mut Self, aName) }
+    }
+
+    /// **Source:** `LDOM_Element.hxx`:72 - `LDOM_Element::GetChildByTagName()`
+    pub fn get_child_by_tag_name(
+        &self,
+        aTagName: &crate::ldom_string::LDOMString,
+    ) -> crate::OwnedPtr<Element> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Element_get_child_by_tag_name(
+                self as *const Self,
+                aTagName,
+            ))
+        }
     }
 
     /// **Source:** `LDOM_Element.hxx`:74 - `LDOM_Element::GetSiblingByTagName()`
@@ -978,6 +1219,24 @@ impl Element {
         }
     }
 
+    /// Inherited: **Source:** `LDOM_Node.hxx`:84 - `LDOM_Node::getNodeName()`
+    pub fn get_node_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Element_inherited_getNodeName(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `LDOM_Node.hxx`:86 - `LDOM_Node::getNodeValue()`
+    pub fn get_node_value(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Element_inherited_getNodeValue(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `LDOM_Node.hxx`:88 - `LDOM_Node::getFirstChild()`
     pub fn get_first_child(&self) -> crate::OwnedPtr<Node> {
         unsafe {
@@ -1026,36 +1285,6 @@ impl Element {
     }
 }
 
-// ── Skipped symbols for Element (7 total) ──
-// SKIPPED: **Source:** `LDOM_Element.hxx`:57 - `LDOM_Element::getTagName`
-//   Reason: has unbindable types: return: unresolved template type (LDOMString)
-//   // pub fn get_tag_name(&self) -> OwnedPtr<LDOMString>;
-//
-// SKIPPED: **Source:** `LDOM_Element.hxx`:59 - `LDOM_Element::getAttribute`
-//   Reason: has unbindable types: param 'aName': unresolved template type (const LDOMString&); return: unresolved template type (LDOMString)
-//   // pub fn get_attribute(&self, aName: /* const LDOMString& */) -> OwnedPtr<LDOMString>;
-//
-// SKIPPED: **Source:** `LDOM_Element.hxx`:61 - `LDOM_Element::getAttributeNode`
-//   Reason: has unbindable types: param 'aName': unresolved template type (const LDOMString&)
-//   // pub fn get_attribute_node(&self, aName: /* const LDOMString& */) -> OwnedPtr<LDOM_Attr>;
-//
-// SKIPPED: **Source:** `LDOM_Element.hxx`:63 - `LDOM_Element::getElementsByTagName`
-//   Reason: has unbindable types: param 'aName': unresolved template type (const LDOMString&)
-//   // pub fn get_elements_by_tag_name(&self, aName: /* const LDOMString& */) -> OwnedPtr<LDOM_NodeList>;
-//
-// SKIPPED: **Source:** `LDOM_Element.hxx`:65 - `LDOM_Element::setAttribute`
-//   Reason: has unbindable types: param 'aName': unresolved template type (const LDOMString&); param 'aValue': unresolved template type (const LDOMString&)
-//   // pub fn set_attribute(&mut self, aName: /* const LDOMString& */, aValue: /* const LDOMString& */);
-//
-// SKIPPED: **Source:** `LDOM_Element.hxx`:69 - `LDOM_Element::removeAttribute`
-//   Reason: has unbindable types: param 'aName': unresolved template type (const LDOMString&)
-//   // pub fn remove_attribute(&mut self, aName: /* const LDOMString& */);
-//
-// SKIPPED: **Source:** `LDOM_Element.hxx`:72 - `LDOM_Element::GetChildByTagName`
-//   Reason: has unbindable types: param 'aTagName': unresolved template type (const LDOMString&)
-//   // pub fn get_child_by_tag_name(&self, aTagName: /* const LDOMString& */) -> OwnedPtr<LDOM_Element>;
-//
-
 // ========================
 // From LDOM_LDOMImplementation.hxx
 // ========================
@@ -1075,13 +1304,22 @@ impl LDOMImplementation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LDOM_LDOMImplementation_ctor()) }
     }
-}
 
-// ── Skipped symbols for LDOMImplementation (1 total) ──
-// SKIPPED: **Source:** `LDOM_LDOMImplementation.hxx`:31 - `LDOM_LDOMImplementation::createDocument`
-//   Reason: has unbindable types: param 'aNamespaceURI': unresolved template type (const LDOMString&); param 'aQualifiedName': unresolved template type (const LDOMString&)
-//   // pub fn create_document(aNamespaceURI: /* const LDOMString& */, aQualifiedName: /* const LDOMString& */, aDocType: &DocumentType) -> OwnedPtr<LDOM_Document>;
-//
+    /// **Source:** `LDOM_LDOMImplementation.hxx`:31 - `LDOM_LDOMImplementation::createDocument()`
+    pub fn create_document(
+        aNamespaceURI: &crate::ldom_string::LDOMString,
+        aQualifiedName: &crate::ldom_string::LDOMString,
+        aDocType: &DocumentType,
+    ) -> crate::OwnedPtr<Document> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_LDOMImplementation_create_document(
+                aNamespaceURI,
+                aQualifiedName,
+                aDocType,
+            ))
+        }
+    }
+}
 
 // ========================
 // From LDOM_MemManager.hxx
@@ -1103,10 +1341,15 @@ impl MemManager {
     }
 
     /// **Source:** `LDOM_MemManager.hxx`:46 - `LDOM_MemManager::HashedAllocate()`
-    pub fn hashed_allocate(&mut self, aString: &str, theLen: i32, theHash: &mut i32) -> String {
+    pub fn hashed_allocate_charptr_int2(
+        &mut self,
+        aString: &str,
+        theLen: i32,
+        theHash: &mut i32,
+    ) -> String {
         let c_aString = std::ffi::CString::new(aString).unwrap();
         unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::LDOM_MemManager_hashed_allocate(
+            std::ffi::CStr::from_ptr(crate::ffi::LDOM_MemManager_hashed_allocate_charptr_int2(
                 self as *mut Self,
                 c_aString.as_ptr(),
                 theLen,
@@ -1114,6 +1357,24 @@ impl MemManager {
             ))
             .to_string_lossy()
             .into_owned()
+        }
+    }
+
+    /// **Source:** `LDOM_MemManager.hxx`:52 - `LDOM_MemManager::HashedAllocate()`
+    pub fn hashed_allocate_charptr_int_ldombasicstring(
+        &mut self,
+        aString: &str,
+        theLen: i32,
+        theResult: &mut crate::ldom_basic_string::LDOMBasicString,
+    ) {
+        let c_aString = std::ffi::CString::new(aString).unwrap();
+        unsafe {
+            crate::ffi::LDOM_MemManager_hashed_allocate_charptr_int_ldombasicstring(
+                self as *mut Self,
+                c_aString.as_ptr(),
+                theLen,
+                theResult,
+            )
         }
     }
 
@@ -1261,14 +1522,10 @@ impl HandleLDOMMemManager {
     }
 }
 
-// ── Skipped symbols for MemManager (2 total) ──
+// ── Skipped symbols for MemManager (1 total) ──
 // SKIPPED: **Source:** `LDOM_MemManager.hxx`:43 - `LDOM_MemManager::Allocate`
 //   Reason: return type 'void*' is unknown
 //   // pub fn allocate(&mut self, aSize: i32) -> /* void* */;
-//
-// SKIPPED: **Source:** `LDOM_MemManager.hxx`:52 - `LDOM_MemManager::HashedAllocate`
-//   Reason: has unbindable types: param 'theResult': unresolved template type (LDOMBasicString&)
-//   // pub fn hashed_allocate(&mut self, aString: *const char, theLen: i32, theResult: /* LDOMBasicString& */);
 //
 
 // ========================
@@ -1304,6 +1561,20 @@ impl Node {
     pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LDOM_Node_get_node_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `LDOM_Node.hxx`:84 - `LDOM_Node::getNodeName()`
+    pub fn get_node_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Node_get_node_name(self as *const Self))
+        }
+    }
+
+    /// **Source:** `LDOM_Node.hxx`:86 - `LDOM_Node::getNodeValue()`
+    pub fn get_node_value(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Node_get_node_value(self as *const Self))
         }
     }
 
@@ -1353,16 +1624,6 @@ impl Node {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LDOM_Node_to_owned(self as *const Self)) }
     }
 }
-
-// ── Skipped symbols for Node (2 total) ──
-// SKIPPED: **Source:** `LDOM_Node.hxx`:84 - `LDOM_Node::getNodeName`
-//   Reason: has unbindable types: return: unresolved template type (LDOMString)
-//   // pub fn get_node_name(&self) -> OwnedPtr<LDOMString>;
-//
-// SKIPPED: **Source:** `LDOM_Node.hxx`:86 - `LDOM_Node::getNodeValue`
-//   Reason: has unbindable types: return: unresolved template type (LDOMString)
-//   // pub fn get_node_value(&self) -> OwnedPtr<LDOMString>;
-//
 
 // ========================
 // From LDOM_NodeList.hxx
@@ -1558,6 +1819,18 @@ impl Text {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LDOM_Text_to_owned(self as *const Self)) }
     }
 
+    /// Inherited: **Source:** `LDOM_CharacterData.hxx`:53 - `LDOM_CharacterData::getData()`
+    pub fn get_data(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Text_inherited_getData(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `LDOM_CharacterData.hxx`:57 - `LDOM_CharacterData::setData()`
+    pub fn set_data(&mut self, aValue: &crate::ldom_string::LDOMString) {
+        unsafe { crate::ffi::LDOM_Text_inherited_setData(self as *mut Self, aValue) }
+    }
+
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:60 - `LDOM_CharacterData::getLength()`
     pub fn get_length(&self) -> i32 {
         unsafe { crate::ffi::LDOM_Text_inherited_getLength(self as *const Self) }
@@ -1577,6 +1850,24 @@ impl Text {
     pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LDOM_Text_inherited_getNodeType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `LDOM_Node.hxx`:84 - `LDOM_Node::getNodeName()`
+    pub fn get_node_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Text_inherited_getNodeName(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `LDOM_Node.hxx`:86 - `LDOM_Node::getNodeValue()`
+    pub fn get_node_value(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_Text_inherited_getNodeValue(
                 self as *const Self,
             ))
         }
@@ -1688,16 +1979,25 @@ impl XmlReader {
             crate::OwnedPtr::from_raw(crate::ffi::LDOM_XmlReader_get_bom(self as *const Self))
         }
     }
+
+    /// **Source:** `LDOM_XmlReader.hxx`:69 - `LDOM_XmlReader::getInteger()`
+    pub fn get_integer(
+        theValue: &mut crate::ldom_basic_string::LDOMBasicString,
+        theStart: &str,
+        theEnd: &str,
+    ) -> bool {
+        let c_theStart = std::ffi::CString::new(theStart).unwrap();
+        let c_theEnd = std::ffi::CString::new(theEnd).unwrap();
+        unsafe {
+            crate::ffi::LDOM_XmlReader_get_integer(theValue, c_theStart.as_ptr(), c_theEnd.as_ptr())
+        }
+    }
 }
 
-// ── Skipped symbols for XmlReader (2 total) ──
+// ── Skipped symbols for XmlReader (1 total) ──
 // SKIPPED: **Source:** `LDOM_XmlReader.hxx`:57 - `LDOM_XmlReader::ReadRecord`
 //   Reason: has unbindable types: param 'theIStream': stream type (Standard_IStream&)
 //   // pub fn read_record(&mut self, theIStream: /* Standard_IStream& */, theData: &mut OSStream, theDocStart: &mut bool) -> OwnedPtr<LDOM_XmlReader::RecordType>;
-//
-// SKIPPED: **Source:** `LDOM_XmlReader.hxx`:69 - `LDOM_XmlReader::getInteger`
-//   Reason: has unbindable types: param 'theValue': unresolved template type (LDOMBasicString&)
-//   // pub fn get_integer(theValue: /* LDOMBasicString& */, theStart: *const char, theEnd: *const char) -> bool;
 //
 
 // ========================

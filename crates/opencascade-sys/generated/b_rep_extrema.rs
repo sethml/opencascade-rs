@@ -1013,6 +1013,18 @@ impl OverlapTool {
         unsafe { crate::ffi::BRepExtrema_OverlapTool_mark_dirty(self as *mut Self) }
     }
 
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:63 - `BRepExtrema_OverlapTool::OverlapSubShapes1()`
+    /// Returns set of overlapped sub-shapes of 1st shape (currently only faces are detected).
+    pub fn overlap_sub_shapes1(&self) -> &crate::ffi::BRepExtrema_MapOfIntegerPackedMapOfInteger {
+        unsafe { &*(crate::ffi::BRepExtrema_OverlapTool_overlap_sub_shapes1(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:69 - `BRepExtrema_OverlapTool::OverlapSubShapes2()`
+    /// Returns set of overlapped sub-shapes of 2nd shape (currently only faces are detected).
+    pub fn overlap_sub_shapes2(&self) -> &crate::ffi::BRepExtrema_MapOfIntegerPackedMapOfInteger {
+        unsafe { &*(crate::ffi::BRepExtrema_OverlapTool_overlap_sub_shapes2(self as *const Self)) }
+    }
+
     /// **Source:** `BRepExtrema_OverlapTool.hxx`:83 - `BRepExtrema_OverlapTool::SetElementFilter()`
     /// Sets filtering tool for preliminary checking pairs of mesh elements.
     pub fn set_element_filter(&mut self, theFilter: &mut ElementFilter) {
@@ -1054,7 +1066,7 @@ impl OverlapTool {
     }
 }
 
-// ── Skipped symbols for OverlapTool (4 total) ──
+// ── Skipped symbols for OverlapTool (2 total) ──
 // SKIPPED: **Source:** `BRepExtrema_OverlapTool.hxx`:45 - `BRepExtrema_OverlapTool::BRepExtrema_OverlapTool`
 //   constructor: Creates new overlap tool for the given element sets.
 //   Reason: param 'theSet1' uses unknown Handle type
@@ -1064,16 +1076,6 @@ impl OverlapTool {
 //   method: Loads the given element sets into the overlap tool.
 //   Reason: param 'theSet1' uses unknown type 'const Handle(BRepExtrema_TriangleSet)&'
 //   // pub fn load_triangle_sets(&mut self, theSet1: &HandleTriangleSet, theSet2: &HandleTriangleSet);
-//
-// SKIPPED: **Source:** `BRepExtrema_OverlapTool.hxx`:63 - `BRepExtrema_OverlapTool::OverlapSubShapes1`
-//   method: Returns set of overlapped sub-shapes of 1st shape (currently only faces are detected).
-//   Reason: return type 'const BRepExtrema_MapOfIntegerPackedMapOfInteger&' is unknown
-//   // pub fn overlap_sub_shapes1(&self) -> &MapOfIntegerPackedMapOfInteger;
-//
-// SKIPPED: **Source:** `BRepExtrema_OverlapTool.hxx`:69 - `BRepExtrema_OverlapTool::OverlapSubShapes2`
-//   method: Returns set of overlapped sub-shapes of 2nd shape (currently only faces are detected).
-//   Reason: return type 'const BRepExtrema_MapOfIntegerPackedMapOfInteger&' is unknown
-//   // pub fn overlap_sub_shapes2(&self) -> &MapOfIntegerPackedMapOfInteger;
 //
 
 // ========================
@@ -1536,6 +1538,14 @@ impl SelfIntersection {
         unsafe { crate::ffi::BRepExtrema_SelfIntersection_is_done(self as *const Self) }
     }
 
+    /// **Source:** `BRepExtrema_SelfIntersection.hxx`:63 - `BRepExtrema_SelfIntersection::OverlapElements()`
+    /// Returns set of IDs of overlapped sub-shapes (started from 0).
+    pub fn overlap_elements(&self) -> &crate::ffi::BRepExtrema_MapOfIntegerPackedMapOfInteger {
+        unsafe {
+            &*(crate::ffi::BRepExtrema_SelfIntersection_overlap_elements(self as *const Self))
+        }
+    }
+
     /// **Source:** `BRepExtrema_SelfIntersection.hxx`:69 - `BRepExtrema_SelfIntersection::GetSubShape()`
     /// Returns sub-shape from the shape for the given index (started from 0).
     pub fn get_sub_shape(&self, theID: i32) -> &crate::topo_ds::Face {
@@ -1563,12 +1573,7 @@ impl SelfIntersection {
     }
 }
 
-// ── Skipped symbols for SelfIntersection (2 total) ──
-// SKIPPED: **Source:** `BRepExtrema_SelfIntersection.hxx`:63 - `BRepExtrema_SelfIntersection::OverlapElements`
-//   method: Returns set of IDs of overlapped sub-shapes (started from 0).
-//   Reason: return type 'const BRepExtrema_MapOfIntegerPackedMapOfInteger&' is unknown
-//   // pub fn overlap_elements(&self) -> &MapOfIntegerPackedMapOfInteger;
-//
+// ── Skipped symbols for SelfIntersection (1 total) ──
 // SKIPPED: **Source:** `BRepExtrema_SelfIntersection.hxx`:75 - `BRepExtrema_SelfIntersection::ElementSet`
 //   method: Returns set of all the face triangles of the shape.
 //   Reason: return type 'const Handle(BRepExtrema_TriangleSet)&' is unknown
@@ -1698,6 +1703,22 @@ impl ShapeProximity {
         unsafe { crate::ffi::BRepExtrema_ShapeProximity_is_done(self as *const Self) }
     }
 
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:93 - `BRepExtrema_ShapeProximity::OverlapSubShapes1()`
+    /// Returns set of IDs of overlapped faces of 1st shape (started from 0).
+    pub fn overlap_sub_shapes1(&self) -> &crate::ffi::BRepExtrema_MapOfIntegerPackedMapOfInteger {
+        unsafe {
+            &*(crate::ffi::BRepExtrema_ShapeProximity_overlap_sub_shapes1(self as *const Self))
+        }
+    }
+
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:99 - `BRepExtrema_ShapeProximity::OverlapSubShapes2()`
+    /// Returns set of IDs of overlapped faces of 2nd shape (started from 0).
+    pub fn overlap_sub_shapes2(&self) -> &crate::ffi::BRepExtrema_MapOfIntegerPackedMapOfInteger {
+        unsafe {
+            &*(crate::ffi::BRepExtrema_ShapeProximity_overlap_sub_shapes2(self as *const Self))
+        }
+    }
+
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:105 - `BRepExtrema_ShapeProximity::GetSubShape1()`
     /// Returns sub-shape from 1st shape with the given index (started from 0).
     pub fn get_sub_shape1(&self, theID: i32) -> &crate::topo_ds::Shape {
@@ -1729,17 +1750,7 @@ impl ShapeProximity {
     }
 }
 
-// ── Skipped symbols for ShapeProximity (6 total) ──
-// SKIPPED: **Source:** `BRepExtrema_ShapeProximity.hxx`:93 - `BRepExtrema_ShapeProximity::OverlapSubShapes1`
-//   method: Returns set of IDs of overlapped faces of 1st shape (started from 0).
-//   Reason: return type 'const BRepExtrema_MapOfIntegerPackedMapOfInteger&' is unknown
-//   // pub fn overlap_sub_shapes1(&self) -> &MapOfIntegerPackedMapOfInteger;
-//
-// SKIPPED: **Source:** `BRepExtrema_ShapeProximity.hxx`:99 - `BRepExtrema_ShapeProximity::OverlapSubShapes2`
-//   method: Returns set of IDs of overlapped faces of 2nd shape (started from 0).
-//   Reason: return type 'const BRepExtrema_MapOfIntegerPackedMapOfInteger&' is unknown
-//   // pub fn overlap_sub_shapes2(&self) -> &MapOfIntegerPackedMapOfInteger;
-//
+// ── Skipped symbols for ShapeProximity (4 total) ──
 // SKIPPED: **Source:** `BRepExtrema_ShapeProximity.hxx`:117 - `BRepExtrema_ShapeProximity::ElementSet1`
 //   method: Returns set of all the face triangles of the 1st shape.
 //   Reason: return type 'const Handle(BRepExtrema_TriangleSet)&' is unknown

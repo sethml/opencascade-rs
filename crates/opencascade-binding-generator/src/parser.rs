@@ -121,6 +121,13 @@ fn supplement_typedefs_from_headers(include_dirs: &[impl AsRef<Path>]) {
                     if let Some(caps) = re.captures(&line) {
                         let template_type = &caps[1];
                         let typedef_name = &caps[2];
+                        // Skip typedef names without underscore — they're likely
+                        // private nested typedefs inside class bodies (e.g.,
+                        // Express_Entity::DataMapOfStringInteger). Same filter
+                        // as collect_ncollection_typedefs.
+                        if !typedef_name.contains('_') {
+                            continue;
+                        }
                         // Only add if not already collected by clang scan
                         if !existing_values.contains(typedef_name) {
                             let key = normalize_template_spelling(template_type);

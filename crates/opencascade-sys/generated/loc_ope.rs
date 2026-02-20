@@ -1522,17 +1522,19 @@ impl Pipe {
         unsafe { &*(crate::ffi::LocOpe_Pipe_shapes(self as *mut Self, S)) }
     }
 
+    /// **Source:** `LocOpe_Pipe.hxx`:54 - `LocOpe_Pipe::Curves()`
+    pub fn curves(
+        &mut self,
+        Spt: &crate::ffi::TColgp_SequenceOfPnt,
+    ) -> &crate::ffi::TColGeom_SequenceOfCurve {
+        unsafe { &*(crate::ffi::LocOpe_Pipe_curves(self as *mut Self, Spt)) }
+    }
+
     /// **Source:** `LocOpe_Pipe.hxx`:56 - `LocOpe_Pipe::BarycCurve()`
     pub fn baryc_curve(&mut self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LocOpe_Pipe_baryc_curve(self as *mut Self)) }
     }
 }
-
-// ── Skipped symbols for Pipe (1 total) ──
-// SKIPPED: **Source:** `LocOpe_Pipe.hxx`:54 - `LocOpe_Pipe::Curves`
-//   Reason: param 'Spt' uses unknown type 'const TColgp_SequenceOfPnt&'
-//   // pub fn curves(&mut self, Spt: &SequenceOfPnt) -> &SequenceOfCurve;
-//
 
 // ========================
 // From LocOpe_PntFace.hxx

@@ -666,31 +666,16 @@ impl Type {
         }
     }
 
-    /// Check if this type is an unresolved template or bare unqualified type that can't be
-    /// represented in Rust FFI. Qualified nested types (`Parent::Nested` where parent
-    /// follows OCCT naming) ARE representable.
+    /// Check if this type is an unresolved template instantiation that can't be
+    /// represented in Rust FFI. Only catches template types with `<>`.
+    /// Non-underscore class names (e.g., `LDOMString`) are NOT caught here —
+    /// they are handled by `type_uses_unknown_class()` in the binding layer
+    /// which checks against the symbol table.
     fn is_unresolved_template_type(&self) -> bool {
         match self {
             Type::Class(name) => {
                 // Template types with angle brackets are not representable
-                if name.contains('<') || name.contains('>') {
-                    return true;
-                }
-                // Qualified nested types (Parent::Nested) are representable if
-                // the parent follows OCCT naming (contains '_')
-                if name.contains("::") {
-                    return false;
-                }
-                // Types without underscore that aren't primitives are likely
-                // unqualified nested types (e.g., StreamBuffer from
-                // Message_Messenger::StreamBuffer resolved by clang to bare name)
-                if !name.contains('_') {
-                    if matches!(name.as_str(), "bool" | "char" | "int" | "unsigned" | "float" | "double" | "void" | "size_t") {
-                        return false;
-                    }
-                    return true;
-                }
-                false
+                name.contains('<') || name.contains('>')
             }
             Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
                 inner.is_unresolved_template_type()

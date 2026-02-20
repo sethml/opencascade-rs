@@ -3658,8 +3658,8 @@ impl HandleMoniToolTypedValue {
 // ── Skipped symbols for TypedValue (4 total) ──
 // SKIPPED: **Source:** `MoniTool_TypedValue.hxx`:70 - `MoniTool_TypedValue::Internals`
 //   method: Access to internal data which have no other access
-//   Reason: has unbindable types: param 'enums': unresolved template type (DataMapOfStringInteger&)
-//   // pub fn internals(&self, interp: &mut ValueInterpret, satisf: &mut ValueSatisfies, satisname: &mut *const char, enums: /* DataMapOfStringInteger& */);
+//   Reason: has string ref param 'satisname' of type 'const char*&' (needs manual binding)
+//   // pub fn internals(&self, interp: &mut ValueInterpret, satisf: &mut ValueSatisfies, satisname: &mut *const char, enums: &mut DataMapOfAsciiStringInteger);
 //
 // SKIPPED: **Source:** `MoniTool_TypedValue.hxx`:91 - `MoniTool_TypedValue::Print`
 //   method: Prints definition, specification, and actual status and value

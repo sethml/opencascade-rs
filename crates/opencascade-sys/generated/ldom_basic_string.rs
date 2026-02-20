@@ -91,6 +91,11 @@ impl LDOMBasicString {
         }
     }
 
+    /// **Source:** `LDOMBasicString.hxx`:63 - `LDOMBasicString::equals()`
+    pub fn equals(&self, anOther: &LDOMBasicString) -> bool {
+        unsafe { crate::ffi::LDOMBasicString_equals(self as *const Self, anOther) }
+    }
+
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -98,9 +103,3 @@ impl LDOMBasicString {
         }
     }
 }
-
-// ── Skipped symbols for LDOMBasicString (1 total) ──
-// SKIPPED: **Source:** `LDOMBasicString.hxx`:63 - `LDOMBasicString::equals`
-//   Reason: has unbindable types: param 'anOther': unresolved template type (const LDOMBasicString&)
-//   // pub fn equals(&self, anOther: /* const LDOMBasicString& */) -> bool;
-//

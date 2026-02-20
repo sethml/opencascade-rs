@@ -4762,6 +4762,7 @@ pub use crate::ffi::{
     TColStd_Array1OfTransient as Array1OfTransient, TColStd_Array2OfBoolean as Array2OfBoolean,
     TColStd_Array2OfCharacter as Array2OfCharacter, TColStd_Array2OfInteger as Array2OfInteger,
     TColStd_Array2OfReal as Array2OfReal, TColStd_Array2OfTransient as Array2OfTransient,
+    TColStd_DataMapOfAsciiStringInteger as DataMapOfAsciiStringInteger,
     TColStd_DataMapOfIntegerInteger as DataMapOfIntegerInteger,
     TColStd_DataMapOfStringInteger as DataMapOfStringInteger,
     TColStd_DataMapOfTransientTransient as DataMapOfTransientTransient,
