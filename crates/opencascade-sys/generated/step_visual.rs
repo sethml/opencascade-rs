@@ -29671,7 +29671,7 @@ impl HandleStepVisualRepositionedTessellatedGeometricSet {
 // ── Skipped symbols for RepositionedTessellatedGeometricSet (1 total) ──
 // SKIPPED: **Source:** `StepVisual_RepositionedTessellatedGeometricSet.hxx`:37 - `StepVisual_RepositionedTessellatedGeometricSet::Init`
 //   method: Initialize all fields (own and inherited)
-//   Reason: has unbindable types: param 'theItems': unresolved template/nested type (const NCollection_Handle<StepVisual_Array1OfTessellatedItem>&)
+//   Reason: has unbindable types: param 'theItems': unresolved template type (const NCollection_Handle<StepVisual_Array1OfTessellatedItem>&)
 //   // pub fn init(&mut self, theName: &HandleHAsciiString, theItems: /* const NCollection_Handle<StepVisual_Array1OfTessellatedItem>& */, theLocation: &HandleAxis2Placement3d);
 //
 
@@ -35553,11 +35553,11 @@ impl HandleStepVisualTessellatedCurveSet {
 
 // ── Skipped symbols for TessellatedCurveSet (2 total) ──
 // SKIPPED: **Source:** `StepVisual_TessellatedCurveSet.hxx`:42 - `StepVisual_TessellatedCurveSet::Init`
-//   Reason: has unbindable types: param 'theCurves': unresolved template/nested type (const NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger>&)
+//   Reason: has unbindable types: param 'theCurves': unresolved template type (const NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger>&)
 //   // pub fn init(&mut self, theName: &HandleHAsciiString, theCoordList: &HandleCoordinatesList, theCurves: /* const NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger>& */);
 //
 // SKIPPED: **Source:** `StepVisual_TessellatedCurveSet.hxx`:48 - `StepVisual_TessellatedCurveSet::Curves`
-//   Reason: has unbindable types: return: unresolved template/nested type (NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger>)
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger>)
 //   // pub fn curves(&self) -> OwnedPtr<NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger>>;
 //
 
@@ -36950,11 +36950,11 @@ impl HandleStepVisualTessellatedGeometricSet {
 
 // ── Skipped symbols for TessellatedGeometricSet (2 total) ──
 // SKIPPED: **Source:** `StepVisual_TessellatedGeometricSet.hxx`:39 - `StepVisual_TessellatedGeometricSet::Init`
-//   Reason: has unbindable types: param 'theItems': unresolved template/nested type (const NCollection_Handle<StepVisual_Array1OfTessellatedItem>&)
+//   Reason: has unbindable types: param 'theItems': unresolved template type (const NCollection_Handle<StepVisual_Array1OfTessellatedItem>&)
 //   // pub fn init(&mut self, theName: &HandleHAsciiString, theItems: /* const NCollection_Handle<StepVisual_Array1OfTessellatedItem>& */);
 //
 // SKIPPED: **Source:** `StepVisual_TessellatedGeometricSet.hxx`:42 - `StepVisual_TessellatedGeometricSet::Items`
-//   Reason: has unbindable types: return: unresolved template/nested type (NCollection_Handle<StepVisual_Array1OfTessellatedItem>)
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Handle<StepVisual_Array1OfTessellatedItem>)
 //   // pub fn items(&self) -> OwnedPtr<NCollection_Handle<StepVisual_Array1OfTessellatedItem>>;
 //
 

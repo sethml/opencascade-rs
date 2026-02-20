@@ -770,7 +770,7 @@ impl HandleOSDCachedFileSystem {
 //
 // SKIPPED: **Source:** `OSD_CachedFileSystem.hxx`:69 - `OSD_CachedFileSystem::OpenStreamBuffer`
 //   method: Opens stream buffer for specified file URL.
-//   Reason: has unbindable types: return: unresolved template/nested type (std::shared_ptr<std::streambuf>)
+//   Reason: has unbindable types: return: unresolved template type (std::shared_ptr<std::streambuf>)
 //   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode, theOffset: i64, theOutBufSize: /* long long* */) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
 //
 
@@ -5832,7 +5832,7 @@ impl HandleOSDFileSystem {
 //   method: Opens stream buffer for specified file URL.
 //   method: @param[in] theUrl          path to open
 //   method: @param[in] theMode         flags describing the requested input mode for the stream
-//   Reason: has unbindable types: return: unresolved template/nested type (std::shared_ptr<std::streambuf>)
+//   Reason: has unbindable types: return: unresolved template type (std::shared_ptr<std::streambuf>)
 //   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode, theOffset: i64, theOutBufSize: /* long long* */) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
 //
 
@@ -6055,7 +6055,7 @@ impl HandleOSDFileSystemSelector {
 //
 // SKIPPED: **Source:** `OSD_FileSystemSelector.hxx`:66 - `OSD_FileSystemSelector::OpenStreamBuffer`
 //   method: Opens stream buffer using one of registered protocols.
-//   Reason: has unbindable types: return: unresolved template/nested type (std::shared_ptr<std::streambuf>)
+//   Reason: has unbindable types: return: unresolved template type (std::shared_ptr<std::streambuf>)
 //   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode, theOffset: i64, theOutBufSize: /* long long* */) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
 //
 
@@ -6326,7 +6326,7 @@ impl HandleOSDLocalFileSystem {
 //
 // SKIPPED: **Source:** `OSD_LocalFileSystem.hxx`:40 - `OSD_LocalFileSystem::OpenStreamBuffer`
 //   method: Opens stream buffer for specified file URL.
-//   Reason: has unbindable types: return: unresolved template/nested type (std::shared_ptr<std::streambuf>)
+//   Reason: has unbindable types: return: unresolved template type (std::shared_ptr<std::streambuf>)
 //   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode, theOffset: i64, theOutBufSize: /* long long* */) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
 //
 

@@ -1819,7 +1819,7 @@ impl HandleRWGltfGltfLatePrimitiveArray {
 // ── Skipped symbols for GltfLatePrimitiveArray (1 total) ──
 // SKIPPED: **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:78 - `RWGltf_GltfLatePrimitiveArray::Data`
 //   method: Return primitive array data elements.
-//   Reason: has unbindable types: return: unresolved template/nested type (const NCollection_Sequence<RWGltf_GltfPrimArrayData>&)
+//   Reason: has unbindable types: return: unresolved template type (const NCollection_Sequence<RWGltf_GltfPrimArrayData>&)
 //   // pub fn data(&self) -> /* const NCollection_Sequence<RWGltf_GltfPrimArrayData>& */;
 //
 

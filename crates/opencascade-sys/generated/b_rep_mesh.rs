@@ -828,7 +828,7 @@ impl HandleBRepMeshClassifier {
 //   method: Registers wire specified by sequence of points for
 //   method: further classification of points.
 //   method: @param theWire Wire to be registered. Specified by sequence of points.
-//   Reason: has unbindable types: param 'theWire': unresolved template/nested type (const NCollection_Sequence<const gp_Pnt2d *>&); param 'theTolUV': unresolved template/nested type (const std::pair<Standard_Real, Standard_Real>&); param 'theRangeU': unresolved template/nested type (const std::pair<Standard_Real, Standard_Real>&); param 'theRangeV': unresolved template/nested type (const std::pair<Standard_Real, Standard_Real>&)
+//   Reason: has unbindable types: param 'theWire': unresolved template type (const NCollection_Sequence<const gp_Pnt2d *>&); param 'theTolUV': unresolved template type (const std::pair<Standard_Real, Standard_Real>&); param 'theRangeU': unresolved template type (const std::pair<Standard_Real, Standard_Real>&); param 'theRangeV': unresolved template type (const std::pair<Standard_Real, Standard_Real>&)
 //   // pub fn register_wire(&mut self, theWire: /* const NCollection_Sequence<const gp_Pnt2d *>& */, theTolUV: /* const std::pair<Standard_Real, Standard_Real>& */, theRangeU: /* const std::pair<Standard_Real, Standard_Real>& */, theRangeV: /* const std::pair<Standard_Real, Standard_Real>& */);
 //
 
@@ -927,7 +927,7 @@ impl ConeRangeSplitter {
 //   method: Returns split intervals along U and V direction.
 //   method: @param theParameters meshing parameters.
 //   method: @param[out] theStepsNb number of steps along corresponding direction.
-//   Reason: has unbindable types: param 'theStepsNb': unresolved template/nested type (std::pair<Standard_Integer, Standard_Integer>&); return: unresolved template/nested type (std::pair<Standard_Real, Standard_Real>)
+//   Reason: has unbindable types: param 'theStepsNb': unresolved template type (std::pair<Standard_Integer, Standard_Integer>&); return: unresolved template type (std::pair<Standard_Real, Standard_Real>)
 //   // pub fn get_split_steps(&self, theParameters: &Parameters, theStepsNb: /* std::pair<Standard_Integer, Standard_Integer>& */) -> OwnedPtr<std::pair<Standard_Real, Standard_Real>>;
 //
 // SKIPPED: **Source:** `BRepMesh_ConeRangeSplitter.hxx`:40 - `BRepMesh_ConeRangeSplitter::GenerateSurfaceNodes`
@@ -2641,21 +2641,21 @@ impl DefaultRangeSplitter {
 //
 // SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU`
 //   method: Returns U range.
-//   Reason: has unbindable types: return: unresolved template/nested type (const std::pair<Standard_Real, Standard_Real>&)
+//   Reason: has unbindable types: return: unresolved template type (const std::pair<Standard_Real, Standard_Real>&)
 //   // pub fn get_range_u(&self) -> /* const std::pair<Standard_Real, Standard_Real>& */;
 //
 // SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV`
 //   method: Returns V range.
-//   Reason: has unbindable types: return: unresolved template/nested type (const std::pair<Standard_Real, Standard_Real>&)
+//   Reason: has unbindable types: return: unresolved template type (const std::pair<Standard_Real, Standard_Real>&)
 //   // pub fn get_range_v(&self) -> /* const std::pair<Standard_Real, Standard_Real>& */;
 //
 // SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta`
 //   method: Returns delta.
-//   Reason: has unbindable types: return: unresolved template/nested type (const std::pair<Standard_Real, Standard_Real>&)
+//   Reason: has unbindable types: return: unresolved template type (const std::pair<Standard_Real, Standard_Real>&)
 //   // pub fn get_delta(&self) -> /* const std::pair<Standard_Real, Standard_Real>& */;
 //
 // SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV`
-//   Reason: has unbindable types: return: unresolved template/nested type (const std::pair<Standard_Real, Standard_Real>&)
+//   Reason: has unbindable types: return: unresolved template type (const std::pair<Standard_Real, Standard_Real>&)
 //   // pub fn get_tolerance_uv(&self) -> /* const std::pair<Standard_Real, Standard_Real>& */;
 //
 
@@ -5345,7 +5345,7 @@ impl GeomTool {
 //   // pub fn int_lin_lin(theStartPnt1: &XY, theEndPnt1: &XY, theStartPnt2: &XY, theEndPnt2: &XY, theIntPnt: &mut XY, theParamOnSegment: /* Standard_Real[2]& */) -> OwnedPtr<BRepMesh_GeomTool::IntFlag>;
 //
 // SKIPPED: **Source:** `BRepMesh_GeomTool.hxx`:206 - `BRepMesh_GeomTool::CellsCount`
-//   Reason: has unbindable types: return: unresolved template/nested type (std::pair<Standard_Integer, Standard_Integer>)
+//   Reason: has unbindable types: return: unresolved template type (std::pair<Standard_Integer, Standard_Integer>)
 //   // pub fn cells_count(theSurface: &HandleSurface, theVerticesNb: i32, theDeflection: f64, theRangeSplitter: /* const BRepMesh_DefaultRangeSplitter* */) -> OwnedPtr<std::pair<Standard_Integer, Standard_Integer>>;
 //
 
@@ -8528,17 +8528,17 @@ impl Triangulator {
 // ── Skipped symbols for Triangulator (3 total) ──
 // SKIPPED: **Source:** `BRepMesh_Triangulator.hxx`:44 - `BRepMesh_Triangulator::BRepMesh_Triangulator`
 //   constructor: Constructor. Initialized tool by the given parameters.
-//   Reason: has unbindable types: param 'theXYZs': unresolved template/nested type (const VectorOfPoint&); param 'theWires': unresolved template/nested type (const NCollection_List<TColStd_SequenceOfInteger>&)
+//   Reason: has unbindable types: param 'theXYZs': unresolved template type (const VectorOfPoint&); param 'theWires': unresolved template type (const NCollection_List<TColStd_SequenceOfInteger>&)
 //   // pub fn new_vectorofpoint_list<tcolstd_sequenceofinteger>_dir(theXYZs: /* const VectorOfPoint& */, theWires: /* const NCollection_List<TColStd_SequenceOfInteger>& */, theNorm: &Dir) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `BRepMesh_Triangulator.hxx`:49 - `BRepMesh_Triangulator::Perform`
 //   method: Performs triangulation of source wires and stores triangles the output list.
-//   Reason: has unbindable types: param 'thePolyTriangles': unresolved template/nested type (NCollection_List<Poly_Triangle>&)
+//   Reason: has unbindable types: param 'thePolyTriangles': unresolved template type (NCollection_List<Poly_Triangle>&)
 //   // pub fn perform(&mut self, thePolyTriangles: /* NCollection_List<Poly_Triangle>& */) -> bool;
 //
 // SKIPPED: **Source:** `BRepMesh_Triangulator.hxx`:38 - `BRepMesh_Triangulator::ToPolyTriangulation`
 //   static_method: Performs conversion of the given list of triangles to Poly_Triangulation.
-//   Reason: has unbindable types: param 'thePolyTriangles': unresolved template/nested type (const NCollection_List<Poly_Triangle>&)
+//   Reason: has unbindable types: param 'thePolyTriangles': unresolved template type (const NCollection_List<Poly_Triangle>&)
 //   // pub fn to_poly_triangulation(theNodes: &Array1OfPnt, thePolyTriangles: /* const NCollection_List<Poly_Triangle>& */) -> OwnedPtr<Handle<Poly_Triangulation>>;
 //
 

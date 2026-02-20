@@ -8702,7 +8702,7 @@ impl HandleVrmlDataWorldInfo {
 // ── Skipped symbols for WorldInfo (1 total) ──
 // SKIPPED: **Source:** `VrmlData_WorldInfo.hxx`:63 - `VrmlData_WorldInfo::InfoIterator`
 //   method: Return the iterator of Info strings.
-//   Reason: has unbindable types: return: unresolved template/nested type (NCollection_List<const char *>::Iterator)
+//   Reason: has unbindable types: return: unresolved template type (NCollection_List<const char *>::Iterator)
 //   // pub fn info_iterator(&self) -> OwnedPtr<NCollection_List<const char *>::Iterator>;
 //
 

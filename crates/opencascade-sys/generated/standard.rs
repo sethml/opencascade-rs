@@ -3626,7 +3626,7 @@ impl Dump {
 // SKIPPED: **Source:** `Standard_Dump.hxx`:361 - `Standard_Dump::SplitJson`
 //   static_method: Converts stream into map of values.
 //   static_method: The one level stream example: 'key_1: value_1, key_2: value_2'
-//   Reason: has unbindable types: param 'theKeyToValues': unresolved template/nested type (NCollection_IndexedDataMap<TCollection_AsciiString, Standard_DumpValue>&)
+//   Reason: has unbindable types: param 'theKeyToValues': unresolved template type (NCollection_IndexedDataMap<TCollection_AsciiString, Standard_DumpValue>&)
 //   // pub fn split_json(theStreamStr: &AsciiString, theKeyToValues: /* NCollection_IndexedDataMap<TCollection_AsciiString, Standard_DumpValue>& */) -> bool;
 //
 // SKIPPED: **Source:** `Standard_Dump.hxx`:380 - `Standard_Dump::AddValuesSeparator`

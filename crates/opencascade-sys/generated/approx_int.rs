@@ -67,12 +67,12 @@ impl KnotTools {
 //   static_method: Main function to build optimal knot sequence.
 //   static_method: At least one set from (thePntsXYZ, thePntsU1V1, thePntsU2V2) should exist.
 //   static_method: @param thePntsXYZ - Set of 3d points.
-//   Reason: has unbindable types: param 'theKnots': unresolved template/nested type (NCollection_Vector<Standard_Integer>&)
+//   Reason: has unbindable types: param 'theKnots': unresolved template type (NCollection_Vector<Standard_Integer>&)
 //   // pub fn build_knots(thePntsXYZ: &Array1OfPnt, thePntsU1V1: &Array1OfPnt2d, thePntsU2V2: &Array1OfPnt2d, thePars: &Vector, theApproxXYZ: bool, theApproxU1V1: bool, theApproxU2V2: bool, theMinNbPnts: i32, theKnots: /* NCollection_Vector<Standard_Integer>& */);
 //
 // SKIPPED: **Source:** `ApproxInt_KnotTools.hxx`:75 - `ApproxInt_KnotTools::BuildCurvature`
 //   static_method: Builds discrete curvature
-//   Reason: has unbindable types: param 'theCoords': unresolved template/nested type (const NCollection_LocalArray<Standard_Real>&)
+//   Reason: has unbindable types: param 'theCoords': unresolved template type (const NCollection_LocalArray<Standard_Real>&)
 //   // pub fn build_curvature(theCoords: /* const NCollection_LocalArray<Standard_Real>& */, theDim: i32, thePars: &Vector, theCurv: &mut Array1OfReal, theMaxCurv: &mut f64);
 //
 

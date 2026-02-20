@@ -666,7 +666,7 @@ impl Type {
         }
     }
 
-    /// Check if this type is an unresolved template or bare nested type that can't be
+    /// Check if this type is an unresolved template or bare unqualified type that can't be
     /// represented in Rust FFI. Qualified nested types (`Parent::Nested` where parent
     /// follows OCCT naming) ARE representable.
     fn is_unresolved_template_type(&self) -> bool {

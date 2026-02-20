@@ -112,15 +112,15 @@ impl Attr {
 
 // ── Skipped symbols for Attr (3 total) ──
 // SKIPPED: **Source:** `LDOM_Attr.hxx`:56 - `LDOM_Attr::getName`
-//   Reason: has unbindable types: return: unresolved template/nested type (LDOMString)
+//   Reason: has unbindable types: return: unresolved template type (LDOMString)
 //   // pub fn get_name(&self) -> OwnedPtr<LDOMString>;
 //
 // SKIPPED: **Source:** `LDOM_Attr.hxx`:58 - `LDOM_Attr::getValue`
-//   Reason: has unbindable types: return: unresolved template/nested type (LDOMString)
+//   Reason: has unbindable types: return: unresolved template type (LDOMString)
 //   // pub fn get_value(&self) -> OwnedPtr<LDOMString>;
 //
 // SKIPPED: **Source:** `LDOM_Attr.hxx`:60 - `LDOM_Attr::setValue`
-//   Reason: has unbindable types: param 'aValue': unresolved template/nested type (const LDOMString&)
+//   Reason: has unbindable types: param 'aValue': unresolved template type (const LDOMString&)
 //   // pub fn set_value(&mut self, aValue: /* const LDOMString& */);
 //
 
@@ -193,11 +193,11 @@ impl BasicAttribute {
 
 // ── Skipped symbols for BasicAttribute (2 total) ──
 // SKIPPED: **Source:** `LDOM_BasicAttribute.hxx`:46 - `LDOM_BasicAttribute::GetValue`
-//   Reason: has unbindable types: return: unresolved template/nested type (const LDOMBasicString&)
+//   Reason: has unbindable types: return: unresolved template type (const LDOMBasicString&)
 //   // pub fn get_value(&self) -> /* const LDOMBasicString& */;
 //
 // SKIPPED: **Source:** `LDOM_BasicAttribute.hxx`:48 - `LDOM_BasicAttribute::SetValue`
-//   Reason: has unbindable types: param 'aValue': unresolved template/nested type (const LDOMBasicString&)
+//   Reason: has unbindable types: param 'aValue': unresolved template type (const LDOMBasicString&)
 //   // pub fn set_value(&mut self, aValue: /* const LDOMBasicString& */, aDoc: &HandleMemManager);
 //
 
@@ -305,7 +305,7 @@ impl BasicElement {
 
 // ── Skipped symbols for BasicElement (1 total) ──
 // SKIPPED: **Source:** `LDOM_BasicElement.hxx`:66 - `LDOM_BasicElement::GetAttribute`
-//   Reason: has unbindable types: param 'aName': unresolved template/nested type (const LDOMBasicString&)
+//   Reason: has unbindable types: param 'aName': unresolved template type (const LDOMBasicString&)
 //   // pub fn get_attribute(&self, aName: /* const LDOMBasicString& */, aLastCh: /* const LDOM_BasicNode* */) -> &BasicAttribute;
 //
 
@@ -407,11 +407,11 @@ impl BasicText {
 
 // ── Skipped symbols for BasicText (2 total) ──
 // SKIPPED: **Source:** `LDOM_BasicText.hxx`:43 - `LDOM_BasicText::GetData`
-//   Reason: has unbindable types: return: unresolved template/nested type (const LDOMBasicString&)
+//   Reason: has unbindable types: return: unresolved template type (const LDOMBasicString&)
 //   // pub fn get_data(&self) -> /* const LDOMBasicString& */;
 //
 // SKIPPED: **Source:** `LDOM_BasicText.hxx`:45 - `LDOM_BasicText::SetData`
-//   Reason: has unbindable types: param 'aValue': unresolved template/nested type (const LDOMBasicString&)
+//   Reason: has unbindable types: param 'aValue': unresolved template type (const LDOMBasicString&)
 //   // pub fn set_data(&mut self, aValue: /* const LDOMBasicString& */, aDoc: &HandleMemManager);
 //
 
@@ -688,11 +688,11 @@ impl CharacterData {
 
 // ── Skipped symbols for CharacterData (2 total) ──
 // SKIPPED: **Source:** `LDOM_CharacterData.hxx`:53 - `LDOM_CharacterData::getData`
-//   Reason: has unbindable types: return: unresolved template/nested type (LDOMString)
+//   Reason: has unbindable types: return: unresolved template type (LDOMString)
 //   // pub fn get_data(&self) -> OwnedPtr<LDOMString>;
 //
 // SKIPPED: **Source:** `LDOM_CharacterData.hxx`:57 - `LDOM_CharacterData::setData`
-//   Reason: has unbindable types: param 'aValue': unresolved template/nested type (const LDOMString&)
+//   Reason: has unbindable types: param 'aValue': unresolved template type (const LDOMString&)
 //   // pub fn set_data(&mut self, aValue: /* const LDOMString& */);
 //
 
@@ -853,27 +853,27 @@ impl Document {
 
 // ── Skipped symbols for Document (6 total) ──
 // SKIPPED: **Source:** `LDOM_Document.hxx`:46 - `LDOM_Document::createElement`
-//   Reason: has unbindable types: param 'theTagName': unresolved template/nested type (const LDOMString&)
+//   Reason: has unbindable types: param 'theTagName': unresolved template type (const LDOMString&)
 //   // pub fn create_element(&mut self, theTagName: /* const LDOMString& */) -> OwnedPtr<LDOM_Element>;
 //
 // SKIPPED: **Source:** `LDOM_Document.hxx`:52 - `LDOM_Document::createCDATASection`
-//   Reason: has unbindable types: param 'theData': unresolved template/nested type (const LDOMString&)
+//   Reason: has unbindable types: param 'theData': unresolved template type (const LDOMString&)
 //   // pub fn create_cdata_section(&mut self, theData: /* const LDOMString& */) -> OwnedPtr<LDOM_CDATASection>;
 //
 // SKIPPED: **Source:** `LDOM_Document.hxx`:54 - `LDOM_Document::createComment`
-//   Reason: has unbindable types: param 'theData': unresolved template/nested type (const LDOMString&)
+//   Reason: has unbindable types: param 'theData': unresolved template type (const LDOMString&)
 //   // pub fn create_comment(&mut self, theData: /* const LDOMString& */) -> OwnedPtr<LDOM_Comment>;
 //
 // SKIPPED: **Source:** `LDOM_Document.hxx`:56 - `LDOM_Document::createTextNode`
-//   Reason: has unbindable types: param 'theData': unresolved template/nested type (const LDOMString&)
+//   Reason: has unbindable types: param 'theData': unresolved template type (const LDOMString&)
 //   // pub fn create_text_node(&mut self, theData: /* const LDOMString& */) -> OwnedPtr<LDOM_Text>;
 //
 // SKIPPED: **Source:** `LDOM_Document.hxx`:62 - `LDOM_Document::getElementsByTagName`
-//   Reason: has unbindable types: param 'theTagName': unresolved template/nested type (const LDOMString&)
+//   Reason: has unbindable types: param 'theTagName': unresolved template type (const LDOMString&)
 //   // pub fn get_elements_by_tag_name(&self, theTagName: /* const LDOMString& */) -> OwnedPtr<LDOM_NodeList>;
 //
 // SKIPPED: **Source:** `LDOM_Document.hxx`:43 - `LDOM_Document::createDocument`
-//   Reason: has unbindable types: param 'theQualifiedName': unresolved template/nested type (const LDOMString&)
+//   Reason: has unbindable types: param 'theQualifiedName': unresolved template type (const LDOMString&)
 //   // pub fn create_document(theQualifiedName: /* const LDOMString& */) -> OwnedPtr<LDOM_Document>;
 //
 
@@ -1028,31 +1028,31 @@ impl Element {
 
 // ── Skipped symbols for Element (7 total) ──
 // SKIPPED: **Source:** `LDOM_Element.hxx`:57 - `LDOM_Element::getTagName`
-//   Reason: has unbindable types: return: unresolved template/nested type (LDOMString)
+//   Reason: has unbindable types: return: unresolved template type (LDOMString)
 //   // pub fn get_tag_name(&self) -> OwnedPtr<LDOMString>;
 //
 // SKIPPED: **Source:** `LDOM_Element.hxx`:59 - `LDOM_Element::getAttribute`
-//   Reason: has unbindable types: param 'aName': unresolved template/nested type (const LDOMString&); return: unresolved template/nested type (LDOMString)
+//   Reason: has unbindable types: param 'aName': unresolved template type (const LDOMString&); return: unresolved template type (LDOMString)
 //   // pub fn get_attribute(&self, aName: /* const LDOMString& */) -> OwnedPtr<LDOMString>;
 //
 // SKIPPED: **Source:** `LDOM_Element.hxx`:61 - `LDOM_Element::getAttributeNode`
-//   Reason: has unbindable types: param 'aName': unresolved template/nested type (const LDOMString&)
+//   Reason: has unbindable types: param 'aName': unresolved template type (const LDOMString&)
 //   // pub fn get_attribute_node(&self, aName: /* const LDOMString& */) -> OwnedPtr<LDOM_Attr>;
 //
 // SKIPPED: **Source:** `LDOM_Element.hxx`:63 - `LDOM_Element::getElementsByTagName`
-//   Reason: has unbindable types: param 'aName': unresolved template/nested type (const LDOMString&)
+//   Reason: has unbindable types: param 'aName': unresolved template type (const LDOMString&)
 //   // pub fn get_elements_by_tag_name(&self, aName: /* const LDOMString& */) -> OwnedPtr<LDOM_NodeList>;
 //
 // SKIPPED: **Source:** `LDOM_Element.hxx`:65 - `LDOM_Element::setAttribute`
-//   Reason: has unbindable types: param 'aName': unresolved template/nested type (const LDOMString&); param 'aValue': unresolved template/nested type (const LDOMString&)
+//   Reason: has unbindable types: param 'aName': unresolved template type (const LDOMString&); param 'aValue': unresolved template type (const LDOMString&)
 //   // pub fn set_attribute(&mut self, aName: /* const LDOMString& */, aValue: /* const LDOMString& */);
 //
 // SKIPPED: **Source:** `LDOM_Element.hxx`:69 - `LDOM_Element::removeAttribute`
-//   Reason: has unbindable types: param 'aName': unresolved template/nested type (const LDOMString&)
+//   Reason: has unbindable types: param 'aName': unresolved template type (const LDOMString&)
 //   // pub fn remove_attribute(&mut self, aName: /* const LDOMString& */);
 //
 // SKIPPED: **Source:** `LDOM_Element.hxx`:72 - `LDOM_Element::GetChildByTagName`
-//   Reason: has unbindable types: param 'aTagName': unresolved template/nested type (const LDOMString&)
+//   Reason: has unbindable types: param 'aTagName': unresolved template type (const LDOMString&)
 //   // pub fn get_child_by_tag_name(&self, aTagName: /* const LDOMString& */) -> OwnedPtr<LDOM_Element>;
 //
 
@@ -1079,7 +1079,7 @@ impl LDOMImplementation {
 
 // ── Skipped symbols for LDOMImplementation (1 total) ──
 // SKIPPED: **Source:** `LDOM_LDOMImplementation.hxx`:31 - `LDOM_LDOMImplementation::createDocument`
-//   Reason: has unbindable types: param 'aNamespaceURI': unresolved template/nested type (const LDOMString&); param 'aQualifiedName': unresolved template/nested type (const LDOMString&)
+//   Reason: has unbindable types: param 'aNamespaceURI': unresolved template type (const LDOMString&); param 'aQualifiedName': unresolved template type (const LDOMString&)
 //   // pub fn create_document(aNamespaceURI: /* const LDOMString& */, aQualifiedName: /* const LDOMString& */, aDocType: &DocumentType) -> OwnedPtr<LDOM_Document>;
 //
 
@@ -1267,7 +1267,7 @@ impl HandleLDOMMemManager {
 //   // pub fn allocate(&mut self, aSize: i32) -> /* void* */;
 //
 // SKIPPED: **Source:** `LDOM_MemManager.hxx`:52 - `LDOM_MemManager::HashedAllocate`
-//   Reason: has unbindable types: param 'theResult': unresolved template/nested type (LDOMBasicString&)
+//   Reason: has unbindable types: param 'theResult': unresolved template type (LDOMBasicString&)
 //   // pub fn hashed_allocate(&mut self, aString: *const char, theLen: i32, theResult: /* LDOMBasicString& */);
 //
 
@@ -1356,11 +1356,11 @@ impl Node {
 
 // ── Skipped symbols for Node (2 total) ──
 // SKIPPED: **Source:** `LDOM_Node.hxx`:84 - `LDOM_Node::getNodeName`
-//   Reason: has unbindable types: return: unresolved template/nested type (LDOMString)
+//   Reason: has unbindable types: return: unresolved template type (LDOMString)
 //   // pub fn get_node_name(&self) -> OwnedPtr<LDOMString>;
 //
 // SKIPPED: **Source:** `LDOM_Node.hxx`:86 - `LDOM_Node::getNodeValue`
-//   Reason: has unbindable types: return: unresolved template/nested type (LDOMString)
+//   Reason: has unbindable types: return: unresolved template type (LDOMString)
 //   // pub fn get_node_value(&self) -> OwnedPtr<LDOMString>;
 //
 
@@ -1696,7 +1696,7 @@ impl XmlReader {
 //   // pub fn read_record(&mut self, theIStream: /* Standard_IStream& */, theData: &mut OSStream, theDocStart: &mut bool) -> OwnedPtr<LDOM_XmlReader::RecordType>;
 //
 // SKIPPED: **Source:** `LDOM_XmlReader.hxx`:69 - `LDOM_XmlReader::getInteger`
-//   Reason: has unbindable types: param 'theValue': unresolved template/nested type (LDOMBasicString&)
+//   Reason: has unbindable types: param 'theValue': unresolved template type (LDOMBasicString&)
 //   // pub fn get_integer(theValue: /* LDOMBasicString& */, theStart: *const char, theEnd: *const char) -> bool;
 //
 

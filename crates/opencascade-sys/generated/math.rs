@@ -3810,31 +3810,31 @@ impl Matrix {
 //   method: Sets the row of index Row of a matrix to the vector <V>.
 //   method: An exception is raised if the dimensions are different.
 //   method: An exception is raises if <Row> is inferior to the lower
-//   Reason: has unbindable types: param 'V': unresolved template/nested type (const math_VectorBase<>&)
+//   Reason: has unbindable types: param 'V': unresolved template type (const math_VectorBase<>&)
 //   // pub fn set_row(&mut self, Row: i32, V: /* const math_VectorBase<>& */);
 //
 // SKIPPED: **Source:** `math_Matrix.hxx`:299 - `math_Matrix::SetCol`
 //   method: Sets the column of index Col of a matrix to the vector <V>.
 //   method: An exception is raised if the dimensions are different.
 //   method: An exception is raises if <Col> is inferior to the lower
-//   Reason: has unbindable types: param 'V': unresolved template/nested type (const math_VectorBase<>&)
+//   Reason: has unbindable types: param 'V': unresolved template type (const math_VectorBase<>&)
 //   // pub fn set_col(&mut self, Col: i32, V: /* const math_VectorBase<>& */);
 //
 // SKIPPED: **Source:** `math_Matrix.hxx`:306 - `math_Matrix::Row`
 //   method: Returns the row of index Row of a matrix.
-//   Reason: has unbindable types: return: unresolved template/nested type (math_VectorBase<>)
+//   Reason: has unbindable types: return: unresolved template type (math_VectorBase<>)
 //   // pub fn row(&self, Row: i32) -> OwnedPtr<math_VectorBase<>>;
 //
 // SKIPPED: **Source:** `math_Matrix.hxx`:309 - `math_Matrix::Col`
 //   method: Returns the column of index <Col> of a matrix.
-//   Reason: has unbindable types: return: unresolved template/nested type (math_VectorBase<>)
+//   Reason: has unbindable types: return: unresolved template type (math_VectorBase<>)
 //   // pub fn col(&self, Col: i32) -> OwnedPtr<math_VectorBase<>>;
 //
 // SKIPPED: **Source:** `math_Matrix.hxx`:336 - `math_Matrix::Multiply`
 //   method: Computes a matrix as the product of 2 vectors.
 //   method: An exception is raised if the dimensions are different.
 //   method: <me> = <Left> * <Right>.
-//   Reason: has unbindable types: param 'Left': unresolved template/nested type (const math_VectorBase<>&); param 'Right': unresolved template/nested type (const math_VectorBase<>&)
+//   Reason: has unbindable types: param 'Left': unresolved template type (const math_VectorBase<>&); param 'Right': unresolved template type (const math_VectorBase<>&)
 //   // pub fn multiply(&mut self, Left: /* const math_VectorBase<>& */, Right: /* const math_VectorBase<>& */);
 //
 // SKIPPED: **Source:** `math_Matrix.hxx`:365 - `math_Matrix::Initialized`
@@ -3846,7 +3846,7 @@ impl Matrix {
 // SKIPPED: **Source:** `math_Matrix.hxx`:386 - `math_Matrix::Multiplied`
 //   method: Returns the product of a matrix by a vector.
 //   method: An exception is raised if the dimensions are different.
-//   Reason: has unbindable types: param 'Right': unresolved template/nested type (const math_VectorBase<>&); return: unresolved template/nested type (math_VectorBase<>)
+//   Reason: has unbindable types: param 'Right': unresolved template type (const math_VectorBase<>&); return: unresolved template type (math_VectorBase<>)
 //   // pub fn multiplied(&self, Right: /* const math_VectorBase<>& */) -> OwnedPtr<math_VectorBase<>>;
 //
 // SKIPPED: **Source:** `math_Matrix.hxx`:399 - `math_Matrix::Dump`

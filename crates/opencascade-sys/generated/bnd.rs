@@ -2647,7 +2647,7 @@ impl Range {
 //   method: Splits <this> to several sub-ranges by theVal value
 //   method: (e.g. range [3, 15] will be split by theVal==5 to the two
 //   method: ranges: [3, 5] and [5, 15]). New ranges will be pushed to
-//   Reason: has unbindable types: param 'theList': unresolved template/nested type (NCollection_List<Bnd_Range>&)
+//   Reason: has unbindable types: param 'theList': unresolved template type (NCollection_List<Bnd_Range>&)
 //   // pub fn split(&self, theVal: f64, theList: /* NCollection_List<Bnd_Range>& */, thePeriod: f64);
 //
 
@@ -2836,7 +2836,7 @@ impl Tools {
 // SKIPPED: **Source:** `Bnd_Tools.hxx`:28 - `Bnd_Tools::Bnd2BVH`
 //   static_method: @name Bnd_Box to BVH_Box conversion
 //   static_method: Converts the given Bnd_Box2d to BVH_Box
-//   Reason: has unbindable types: return: unresolved template/nested type (BVH_Box<Standard_Real, 2>)
+//   Reason: has unbindable types: return: unresolved template type (BVH_Box<Standard_Real, 2>)
 //   // pub fn bnd2_bvh(theBox: &Box2d) -> OwnedPtr<BVH_Box<Standard_Real, 2>>;
 //
 

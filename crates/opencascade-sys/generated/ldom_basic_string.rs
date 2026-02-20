@@ -101,6 +101,6 @@ impl LDOMBasicString {
 
 // ── Skipped symbols for LDOMBasicString (1 total) ──
 // SKIPPED: **Source:** `LDOMBasicString.hxx`:63 - `LDOMBasicString::equals`
-//   Reason: has unbindable types: param 'anOther': unresolved template/nested type (const LDOMBasicString&)
+//   Reason: has unbindable types: param 'anOther': unresolved template type (const LDOMBasicString&)
 //   // pub fn equals(&self, anOther: /* const LDOMBasicString& */) -> bool;
 //

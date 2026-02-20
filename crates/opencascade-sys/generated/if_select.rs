@@ -27595,7 +27595,7 @@ impl HandleIFSelectSignatureList {
 // ── Skipped symbols for SignatureList (4 total) ──
 // SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:78 - `IFSelect_SignatureList::Init`
 //   method: Aknowledges the list in once. Name identifies the Signature
-//   Reason: has unbindable types: param 'list': unresolved template/nested type (const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>>&)
+//   Reason: has unbindable types: param 'list': unresolved template type (const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>>&)
 //   // pub fn init(&mut self, name: *const char, count: &MapOfTypes, list: /* const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>>& */, nbnuls: i32);
 //
 // SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:116 - `IFSelect_SignatureList::PrintCount`
@@ -30855,7 +30855,7 @@ impl HandleIFSelectWorkSession {
 //   method: Sets a list of Parameters, i.e. TypedValue, to be handled
 //   method: through an Editor
 //   method: The two lists are parallel, if <params> is longer than <uses>,
-//   Reason: has unbindable types: param 'params': unresolved template/nested type (const NCollection_Vector<opencascade::handle<Standard_Transient>>&); param 'uselist': unresolved template/nested type (const NCollection_Vector<Standard_Integer>&)
+//   Reason: has unbindable types: param 'params': unresolved template type (const NCollection_Vector<opencascade::handle<Standard_Transient>>&); param 'uselist': unresolved template type (const NCollection_Vector<Standard_Integer>&)
 //   // pub fn set_params(&mut self, params: /* const NCollection_Vector<opencascade::handle<Standard_Transient>>& */, uselist: /* const NCollection_Vector<Standard_Integer>& */);
 //
 // SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1079 - `IFSelect_WorkSession::DumpModel`

@@ -2705,7 +2705,7 @@ impl Intersection {
 // ── Skipped symbols for Intersection (1 total) ──
 // SKIPPED: **Source:** `IntPatch_Intersection.hxx`:194 - `IntPatch_Intersection::PrepareSurfaces`
 //   static_method: Prepares surfaces for intersection
-//   Reason: has unbindable types: param 'theSeqHS1': unresolved template/nested type (NCollection_Vector<opencascade::handle<Adaptor3d_Surface>>&); param 'theSeqHS2': unresolved template/nested type (NCollection_Vector<opencascade::handle<Adaptor3d_Surface>>&)
+//   Reason: has unbindable types: param 'theSeqHS1': unresolved template type (NCollection_Vector<opencascade::handle<Adaptor3d_Surface>>&); param 'theSeqHS2': unresolved template type (NCollection_Vector<opencascade::handle<Adaptor3d_Surface>>&)
 //   // pub fn prepare_surfaces(theS1: &HandleSurface, theD1: &HandleTopolTool, theS2: &HandleSurface, theD2: &HandleTopolTool, Tol: f64, theSeqHS1: /* NCollection_Vector<opencascade::handle<Adaptor3d_Surface>>& */, theSeqHS2: /* NCollection_Vector<opencascade::handle<Adaptor3d_Surface>>& */);
 //
 
@@ -7313,7 +7313,7 @@ impl WLineTool {
 //   static_method: Extends every line from theSlin (if it is possible) to be started/finished
 //   static_method: in strictly determined point (in the place of joint of two lines).
 //   static_method: As result, some gaps between two lines will vanish.
-//   Reason: has unbindable types: param 'theArrPeriods': raw pointer (const double*); param 'theListOfCriticalPoints': unresolved template/nested type (const NCollection_List<gp_Pnt>&)
+//   Reason: has unbindable types: param 'theArrPeriods': raw pointer (const double*); param 'theListOfCriticalPoints': unresolved template type (const NCollection_List<gp_Pnt>&)
 //   // pub fn extend_two_w_lines(theSlin: &mut SequenceOfLine, theS1: &HandleSurface, theS2: &HandleSurface, theToler3D: f64, theArrPeriods: /* const double* */, theBoxS1: &Box2d, theBoxS2: &Box2d, theListOfCriticalPoints: /* const NCollection_List<gp_Pnt>& */);
 //
 

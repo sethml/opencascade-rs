@@ -1830,7 +1830,7 @@ impl Reader {
 // SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:154 - `STEPCAFControl_Reader::ExternFiles`
 //   method: Returns data on external files
 //   method: Returns Null handle if no external files are read
-//   Reason: has unbindable types: return: unresolved template/nested type (const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>>&)
+//   Reason: has unbindable types: return: unresolved template type (const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>>&)
 //   // pub fn extern_files(&self) -> /* const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>>& */;
 //
 // SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:236 - `STEPCAFControl_Reader::SetShapeFixParameters`
@@ -2221,7 +2221,7 @@ impl Writer {
 // SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:173 - `STEPCAFControl_Writer::ExternFiles`
 //   method: Returns data on external files
 //   method: Returns Null handle if no external files are read
-//   Reason: has unbindable types: return: unresolved template/nested type (const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>>&)
+//   Reason: has unbindable types: return: unresolved template type (const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>>&)
 //   // pub fn extern_files(&self) -> /* const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>>& */;
 //
 // SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:237 - `STEPCAFControl_Writer::SetShapeFixParameters`

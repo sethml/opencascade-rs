@@ -366,7 +366,7 @@ Example from `gp.rs`:
 | 451 | 28.7% | **Unknown/unresolved type** | Parameter or return type not in the binding set (`Standard_SStream`, `Handle(TDocStd_Document)`, etc.) |
 | 199 | 12.7% | **Void pointer** | `Standard_Address` (typedef for `void*`) — cannot be safely expressed in Rust FFI |
 | 135 | 8.6% | **Raw pointer** | `T*`/`const T*` returns (static/free fn) or primitive pointer params (`int*`, `double*`) — class pointer returns on instance methods are now bound as `Option<&T>`/`Option<&mut T>` |
-| 79 | 5.0% | **Unresolved template/nested type** | Template instantiations or nested types that can't be resolved (`NCollection_DataMap<...>`, `std::pair<...>`, `math_VectorBase<>`, etc.) |
+| 79 | 5.0% | **Unresolved template type** | Template instantiations or unqualified types that can't be resolved (`NCollection_DataMap<...>`, `std::pair<...>`, `LDOMString`, etc.) |
 | 53 | 3.4% | **Ambiguous lifetimes** | `&mut` return with reference params — Rust lifetime inference is ambiguous |
 | 43 | 2.7% | **Abstract class** | No constructors generated (class has unimplemented pure virtual methods) |
 | 18 | 1.1% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |

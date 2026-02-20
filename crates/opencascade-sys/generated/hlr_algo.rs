@@ -2186,11 +2186,11 @@ impl HandleHLRAlgoPolyAlgo {
 
 // ── Skipped symbols for PolyAlgo (4 total) ──
 // SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:38 - `HLRAlgo_PolyAlgo::PolyShell`
-//   Reason: has unbindable types: return: unresolved template/nested type (const NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>&)
+//   Reason: has unbindable types: return: unresolved template type (const NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>&)
 //   // pub fn poly_shell(&self) -> /* const NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>& */;
 //
 // SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:40 - `HLRAlgo_PolyAlgo::ChangePolyShell`
-//   Reason: has unbindable types: return: unresolved template/nested type (NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>&)
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>&)
 //   // pub fn change_poly_shell(&mut self) -> /* NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>& */;
 //
 // SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:58 - `HLRAlgo_PolyAlgo::Hide`
@@ -3144,11 +3144,11 @@ impl HandleHLRAlgoPolyShellData {
 
 // ── Skipped symbols for PolyShellData (2 total) ──
 // SKIPPED: **Source:** `HLRAlgo_PolyShellData.hxx`:46 - `HLRAlgo_PolyShellData::PolyData`
-//   Reason: has unbindable types: return: unresolved template/nested type (NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>>&)
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>>&)
 //   // pub fn poly_data(&mut self) -> /* NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>>& */;
 //
 // SKIPPED: **Source:** `HLRAlgo_PolyShellData.hxx`:48 - `HLRAlgo_PolyShellData::HidingPolyData`
-//   Reason: has unbindable types: return: unresolved template/nested type (NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>>&)
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>>&)
 //   // pub fn hiding_poly_data(&mut self) -> /* NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>>& */;
 //
 

@@ -6797,7 +6797,7 @@ impl HandleMessageReport {
 // ── Skipped symbols for Report (3 total) ──
 // SKIPPED: **Source:** `Message_Report.hxx`:111 - `Message_Report::ActiveMetrics`
 //   method: Returns computed metrics when alerts are performed
-//   Reason: has unbindable types: return: unresolved template/nested type (const NCollection_IndexedMap<Message_MetricType>&)
+//   Reason: has unbindable types: return: unresolved template type (const NCollection_IndexedMap<Message_MetricType>&)
 //   // pub fn active_metrics(&self) -> /* const NCollection_IndexedMap<Message_MetricType>& */;
 //
 // SKIPPED: **Source:** `Message_Report.hxx`:134 - `Message_Report::Dump`

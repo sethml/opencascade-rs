@@ -6224,14 +6224,14 @@ impl HandleXCAFDocDimTolTool {
 // ── Skipped symbols for DimTolTool (2 total) ──
 // SKIPPED: **Source:** `XCAFDoc_DimTolTool.hxx`:240 - `XCAFDoc_DimTolTool::GetGDTPresentations`
 //   method: fill the map GDT label -> shape presentation
-//   Reason: has unbindable types: param 'theGDTLabelToShape': unresolved template/nested type (NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>&)
+//   Reason: has unbindable types: param 'theGDTLabelToShape': unresolved template type (NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>&)
 //   // pub fn get_gdt_presentations(&self, theGDTLabelToShape: /* NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>& */);
 //
 // SKIPPED: **Source:** `XCAFDoc_DimTolTool.hxx`:246 - `XCAFDoc_DimTolTool::SetGDTPresentations`
 //   method: Set shape presentation for GDT labels according to given map (theGDTLabelToPrs)
 //   method: theGDTLabelToPrsName map is an additional argument, can be used to set presentation names.
 //   method: If label is not in the theGDTLabelToPrsName map, the presentation name will be empty
-//   Reason: has unbindable types: param 'theGDTLabelToPrs': unresolved template/nested type (NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>&)
+//   Reason: has unbindable types: param 'theGDTLabelToPrs': unresolved template type (NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>&)
 //   // pub fn set_gdt_presentations(&mut self, theGDTLabelToPrs: /* NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>& */);
 //
 

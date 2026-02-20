@@ -806,7 +806,7 @@ fn describe_unbindable_reason(ty: &Type) -> String {
     if ty.is_array() { return format!("C-style array ({})", ty.to_cpp_string()); }
     if ty.is_raw_ptr() { return format!("raw pointer ({})", ty.to_cpp_string()); }
     if ty.is_rvalue_ref() { return format!("rvalue reference ({})", ty.to_cpp_string()); }
-    format!("unresolved template/nested type ({})", ty.to_cpp_string())
+    format!("unresolved template type ({})", ty.to_cpp_string())
 }
 
 /// Generate a best-guess stub Rust declaration for a skipped method.

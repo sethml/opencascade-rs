@@ -4460,7 +4460,7 @@ impl HandlePolyTriangulation {
 // SKIPPED: **Source:** `Poly_Triangulation.hxx`:332 - `Poly_Triangulation::InternalNormals`
 //   method: Return an internal array of normals.
 //   method: Normal()/SetNormal() should be used instead in portable code.
-//   Reason: has unbindable types: return: unresolved template/nested type (NCollection_Array1<gp_Vec3f>&)
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<gp_Vec3f>&)
 //   // pub fn internal_normals(&mut self) -> /* NCollection_Array1<gp_Vec3f>& */;
 //
 
