@@ -145,6 +145,49 @@ impl CafWriter {
         unsafe { crate::ffi::RWPly_CafWriter_set_face_id(self as *mut Self, theSurfId) }
     }
 
+    /// **Source:** `RWPly_CafWriter.hxx`:123 - `RWPly_CafWriter::Perform()`
+    /// Write PLY file and associated MTL material file.
+    /// Triangulation data should be precomputed within shapes!
+    /// @param[in] theDocument    input document
+    /// @param[in] theRootLabels  list of root shapes to export
+    /// @param[in] theLabelFilter optional filter with document nodes to export,
+    /// with keys defined by XCAFPrs_DocumentExplorer::DefineChildId() and
+    /// filled recursively (leaves and parent assembly nodes at all levels);
+    /// when not NULL, all nodes not included into the map will be ignored
+    /// @param[in] theFileInfo    map with file metadata to put into PLY header section
+    /// @param[in] theProgress    optional progress indicator
+    /// @return FALSE on file writing failure
+    pub fn perform_handletdocstddocument_labelsequence_mapofasciistringptr_indexeddatamapofstringstring_progressrange(
+        &mut self,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theRootLabels: &crate::ffi::TDF_LabelSequence,
+        theLabelFilter: &crate::ffi::TColStd_MapOfAsciiString,
+        theFileInfo: &crate::ffi::TColStd_IndexedDataMapOfStringString,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWPly_CafWriter_perform_handletdocstddocument_labelsequence_mapofasciistringptr_indexeddatamapofstringstring_progressrange(self as *mut Self, theDocument, theRootLabels, theLabelFilter as *const _, theFileInfo, theProgress)
+        }
+    }
+
+    /// **Source:** `RWPly_CafWriter.hxx`:135 - `RWPly_CafWriter::Perform()`
+    /// Write PLY file and associated MTL material file.
+    /// Triangulation data should be precomputed within shapes!
+    /// @param[in] theDocument input document
+    /// @param[in] theFileInfo map with file metadata to put into PLY header section
+    /// @param[in] theProgress optional progress indicator
+    /// @return FALSE on file writing failure
+    pub fn perform_handletdocstddocument_indexeddatamapofstringstring_progressrange(
+        &mut self,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theFileInfo: &crate::ffi::TColStd_IndexedDataMapOfStringString,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWPly_CafWriter_perform_handletdocstddocument_indexeddatamapofstringstring_progressrange(self as *mut Self, theDocument, theFileInfo, theProgress)
+        }
+    }
+
     /// **Source:** `RWPly_CafWriter.hxx`:36 - `RWPly_CafWriter::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -248,7 +291,7 @@ impl HandleRWPlyCafWriter {
     }
 }
 
-// ── Skipped symbols for CafWriter (4 total) ──
+// ── Skipped symbols for CafWriter (2 total) ──
 // SKIPPED: **Source:** `RWPly_CafWriter.hxx`:58 - `RWPly_CafWriter::DefaultStyle`
 //   method: Return default material definition to be used for nodes with only color defined.
 //   Reason: return type 'const XCAFPrs_Style&' is unknown
@@ -258,20 +301,6 @@ impl HandleRWPlyCafWriter {
 //   method: Set default material definition to be used for nodes with only color defined.
 //   Reason: param 'theStyle' uses unknown type 'const XCAFPrs_Style&'
 //   // pub fn set_default_style(&mut self, theStyle: &Style);
-//
-// SKIPPED: **Source:** `RWPly_CafWriter.hxx`:123 - `RWPly_CafWriter::Perform`
-//   method: Write PLY file and associated MTL material file.
-//   method: Triangulation data should be precomputed within shapes!
-//   method: @param[in] theDocument    input document
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, theDocument: &HandleDocument, theRootLabels: &LabelSequence, theLabelFilter: *const MapOfAsciiString, theFileInfo: &IndexedDataMapOfStringString, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `RWPly_CafWriter.hxx`:135 - `RWPly_CafWriter::Perform`
-//   method: Write PLY file and associated MTL material file.
-//   method: Triangulation data should be precomputed within shapes!
-//   method: @param[in] theDocument input document
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, theDocument: &HandleDocument, theFileInfo: &IndexedDataMapOfStringString, theProgress: &ProgressRange) -> bool;
 //
 
 // ========================

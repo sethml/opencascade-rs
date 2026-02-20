@@ -6,6 +6,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleTDocStdApplication;
+
 // ========================
 // From XCAFApp_Application.hxx
 // ========================
@@ -39,6 +42,16 @@ impl Application {
         unsafe { &*(crate::ffi::XCAFApp_Application_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `XCAFApp_Application.hxx`:46 - `XCAFApp_Application::GetApplication()`
+    /// Initializes (for the first time) and returns the
+    /// static object (XCAFApp_Application)
+    /// This is the only valid method to get XCAFApp_Application
+    /// object, and it should be called at least once before
+    /// any actions with documents in order to init application
+    pub fn get_application() -> crate::OwnedPtr<crate::ffi::HandleXCAFAppApplication> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFApp_Application_get_application()) }
+    }
+
     /// **Source:** `XCAFApp_Application.hxx`:51 - `XCAFApp_Application::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -62,6 +75,15 @@ impl Application {
     pub fn as_t_doc_std_application_mut(&mut self) -> &mut crate::t_doc_std::Application {
         unsafe {
             &mut *(crate::ffi::XCAFApp_Application_as_TDocStd_Application_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFAppApplication> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFApp_Application_to_handle(obj.into_raw()))
         }
     }
 
@@ -98,22 +120,79 @@ impl Application {
         unsafe { crate::ffi::XCAFApp_Application_inherited_NbDocuments(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:171 - `TDocStd_Application::GetDocument()`
+    pub fn get_document(&self, index: i32, aDoc: &mut crate::ffi::HandleTDocStdDocument) {
+        unsafe {
+            crate::ffi::XCAFApp_Application_inherited_GetDocument(self as *const Self, index, aDoc)
+        }
+    }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:199 - `TDocStd_Application::Close()`
+    pub fn close(&mut self, aDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::XCAFApp_Application_inherited_Close(self as *mut Self, aDoc) }
+    }
+
     /// Inherited: **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
     pub fn is_in_session(&self, path: &crate::t_collection::ExtendedString) -> i32 {
         unsafe { crate::ffi::XCAFApp_Application_inherited_IsInSession(self as *const Self, path) }
     }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:321 - `TDocStd_Application::OnOpenTransaction()`
+    pub fn on_open_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe {
+            crate::ffi::XCAFApp_Application_inherited_OnOpenTransaction(self as *mut Self, theDoc)
+        }
+    }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:324 - `TDocStd_Application::OnCommitTransaction()`
+    pub fn on_commit_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe {
+            crate::ffi::XCAFApp_Application_inherited_OnCommitTransaction(self as *mut Self, theDoc)
+        }
+    }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:327 - `TDocStd_Application::OnAbortTransaction()`
+    pub fn on_abort_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe {
+            crate::ffi::XCAFApp_Application_inherited_OnAbortTransaction(self as *mut Self, theDoc)
+        }
+    }
 }
 
-// ── Skipped symbols for Application (2 total) ──
+pub use crate::ffi::HandleXCAFAppApplication;
+
+unsafe impl crate::CppDeletable for HandleXCAFAppApplication {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFAppApplication_destructor(ptr);
+    }
+}
+
+impl HandleXCAFAppApplication {
+    /// Dereference this Handle to access the underlying XCAFApp_Application
+    pub fn get(&self) -> &crate::ffi::XCAFApp_Application {
+        unsafe { &*(crate::ffi::HandleXCAFAppApplication_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFApp_Application
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFApp_Application {
+        unsafe { &mut *(crate::ffi::HandleXCAFAppApplication_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFApp_Application> to Handle<TDocStd_Application>
+    pub fn to_handle_application(&self) -> crate::OwnedPtr<crate::ffi::HandleTDocStdApplication> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFAppApplication_to_HandleTDocStdApplication(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for Application (1 total) ──
 // SKIPPED: **Source:** `XCAFApp_Application.hxx`:38 - `XCAFApp_Application::InitDocument`
 //   method: Set XCAFDoc_DocumentTool attribute
 //   Reason: param 'aDoc' uses unknown type 'const Handle(CDM_Document)&'
 //   // pub fn init_document(&self, aDoc: &HandleDocument);
-//
-// SKIPPED: **Source:** `XCAFApp_Application.hxx`:46 - `XCAFApp_Application::GetApplication`
-//   static_method: Initializes (for the first time) and returns the
-//   static_method: static object (XCAFApp_Application)
-//   static_method: This is the only valid method to get XCAFApp_Application
-//   Reason: return type 'Handle(XCAFApp_Application)' is unknown
-//   // pub fn get_application() -> OwnedPtr<Handle<XCAFApp_Application>>;
 //

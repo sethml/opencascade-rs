@@ -105,7 +105,10 @@ impl TryFrom<i32> for FormatVersion {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleStandardTransient, HandleTDFAttribute, HandleTDFDelta};
+pub use crate::ffi::{
+    HandleAppStdApplication, HandleAppStdLApplication, HandleStandardTransient, HandleTDFAttribute,
+    HandleTDFDelta, HandleTObjApplication, HandleXCAFAppApplication,
+};
 
 // ========================
 // From TDocStd_Application.hxx
@@ -249,6 +252,41 @@ impl Application {
         unsafe { crate::ffi::TDocStd_Application_nb_documents(self as *const Self) }
     }
 
+    /// **Source:** `TDocStd_Application.hxx`:171 - `TDocStd_Application::GetDocument()`
+    /// Constructs the new document aDoc.
+    /// aDoc is identified by the index index which is
+    /// any integer between 1 and n where n is the
+    /// number of documents returned by NbDocument.
+    /// Example
+    /// Handle(TDocStd_Application)
+    /// anApp;
+    /// if (!CafTest::Find(A)) return 1;
+    /// Handle(TDocStd) aDoc;
+    /// Standard_Integer nbdoc = anApp->NbDocuments();
+    /// for (Standard_Integer i = 1; i <= nbdoc; i++) {
+    /// aApp->GetDocument(i,aDoc);
+    pub fn get_document(&self, index: i32, aDoc: &mut crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::TDocStd_Application_get_document(self as *const Self, index, aDoc) }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:184 - `TDocStd_Application::NewDocument()`
+    /// A non-virtual method taking a TDocStd_Documment object as an input.
+    /// Internally it calls a virtual method NewDocument() with CDM_Document object.
+    pub fn new_document(
+        &mut self,
+        format: &crate::t_collection::ExtendedString,
+        aDoc: &mut crate::ffi::HandleTDocStdDocument,
+    ) {
+        unsafe { crate::ffi::TDocStd_Application_new_document(self as *mut Self, format, aDoc) }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:199 - `TDocStd_Application::Close()`
+    /// Close the given document. the document is not any more
+    /// handled by the applicative session.
+    pub fn close(&mut self, aDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::TDocStd_Application_close(self as *mut Self, aDoc) }
+    }
+
     /// **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
     /// Returns an index for the document found in the
     /// path path in this applicative session.
@@ -274,6 +312,24 @@ impl Application {
         unsafe { crate::ffi::TDocStd_Application_is_in_session(self as *const Self, path) }
     }
 
+    /// **Source:** `TDocStd_Application.hxx`:321 - `TDocStd_Application::OnOpenTransaction()`
+    /// Notification that is fired at each OpenTransaction event.
+    pub fn on_open_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::TDocStd_Application_on_open_transaction(self as *mut Self, theDoc) }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:324 - `TDocStd_Application::OnCommitTransaction()`
+    /// Notification that is fired at each CommitTransaction event.
+    pub fn on_commit_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::TDocStd_Application_on_commit_transaction(self as *mut Self, theDoc) }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:327 - `TDocStd_Application::OnAbortTransaction()`
+    /// Notification that is fired at each AbortTransaction event.
+    pub fn on_abort_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::TDocStd_Application_on_abort_transaction(self as *mut Self, theDoc) }
+    }
+
     /// **Source:** `TDocStd_Application.hxx`:332 - `TDocStd_Application::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDocStd_Application_dynamic_type(self as *const Self)) }
@@ -292,33 +348,121 @@ impl Application {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDocStd_Application_get_type_descriptor()) }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdApplication> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_to_handle(obj.into_raw()))
+        }
+    }
 }
 
-// ── Skipped symbols for Application (19 total) ──
+pub use crate::ffi::HandleTDocStdApplication;
+
+unsafe impl crate::CppDeletable for HandleTDocStdApplication {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDocStdApplication_destructor(ptr);
+    }
+}
+
+impl HandleTDocStdApplication {
+    /// Dereference this Handle to access the underlying TDocStd_Application
+    pub fn get(&self) -> &crate::ffi::TDocStd_Application {
+        unsafe { &*(crate::ffi::HandleTDocStdApplication_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDocStd_Application
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_Application {
+        unsafe { &mut *(crate::ffi::HandleTDocStdApplication_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<TDocStd_Application> to Handle<AppStdL_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `AppStdL_Application` (or subclass).
+    pub fn downcast_to_app_std_l_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAppStdLApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDocStdApplication_downcast_to_HandleAppStdLApplication(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDocStd_Application> to Handle<AppStd_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `AppStd_Application` (or subclass).
+    pub fn downcast_to_app_std_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAppStdApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDocStdApplication_downcast_to_HandleAppStdApplication(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDocStd_Application> to Handle<TObj_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `TObj_Application` (or subclass).
+    pub fn downcast_to_t_obj_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDocStdApplication_downcast_to_HandleTObjApplication(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDocStd_Application> to Handle<XCAFApp_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFApp_Application` (or subclass).
+    pub fn downcast_to_xcaf_app_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFAppApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDocStdApplication_downcast_to_HandleXCAFAppApplication(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ── Skipped symbols for Application (13 total) ──
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:140 - `TDocStd_Application::DefineFormat`
 //   method: Sets up resources and registers read and storage drivers for
 //   method: the specified format.
 //   Reason: param 'theReader' uses unknown type 'const Handle(PCDM_RetrievalDriver)&'
 //   // pub fn define_format(&mut self, theFormat: &AsciiString, theDescription: &AsciiString, theExtension: &AsciiString, theReader: &HandleRetrievalDriver, theWriter: &HandleStorageDriver);
 //
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:171 - `TDocStd_Application::GetDocument`
-//   method: Constructs the new document aDoc.
-//   method: aDoc is identified by the index index which is
-//   method: any integer between 1 and n where n is the
-//   Reason: param 'aDoc' uses unknown type 'Handle(TDocStd_Document)&'
-//   // pub fn get_document(&self, index: i32, aDoc: &mut HandleDocument);
-//
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:179 - `TDocStd_Application::NewDocument`
 //   method: Constructs the empty new document aDoc.
 //   method: This document will have the format format.
 //   method: If InitDocument is redefined for a specific
 //   Reason: param 'aDoc' uses unknown type 'Handle(CDM_Document)&'
-//   // pub fn new_document(&mut self, format: &ExtendedString, aDoc: &mut HandleDocument);
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:184 - `TDocStd_Application::NewDocument`
-//   method: A non-virtual method taking a TDocStd_Documment object as an input.
-//   method: Internally it calls a virtual method NewDocument() with CDM_Document object.
-//   Reason: param 'aDoc' uses unknown type 'Handle(TDocStd_Document)&'
 //   // pub fn new_document(&mut self, format: &ExtendedString, aDoc: &mut HandleDocument);
 //
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:194 - `TDocStd_Application::InitDocument`
@@ -328,91 +472,70 @@ impl Application {
 //   Reason: param 'aDoc' uses unknown type 'const Handle(CDM_Document)&'
 //   // pub fn init_document(&self, aDoc: &HandleDocument);
 //
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:199 - `TDocStd_Application::Close`
-//   method: Close the given document. the document is not any more
-//   method: handled by the applicative session.
-//   Reason: param 'aDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn close(&mut self, aDoc: &HandleDocument);
-//
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:232 - `TDocStd_Application::Open`
 //   method: Retrieves the document from specified file.
 //   method: In order not to override a version of the document which is already in memory,
 //   method: this method can be made to depend on the value returned by IsInSession.
-//   Reason: param 'theDoc' uses unknown type 'Handle(TDocStd_Document)&'
+//   Reason: param 'theFilter' uses unknown type 'const Handle(PCDM_ReaderFilter)&'
 //   // pub fn open(&mut self, thePath: &ExtendedString, theDoc: &mut HandleDocument, theFilter: &HandleReaderFilter, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
 //
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:244 - `TDocStd_Application::Open`
 //   method: Retrieves the document from specified file.
 //   method: In order not to override a version of the document which is already in memory,
 //   method: this method can be made to depend on the value returned by IsInSession.
-//   Reason: param 'theDoc' uses unknown type 'Handle(TDocStd_Document)&'
+//   Reason: return type 'PCDM_ReaderStatus' is unknown
 //   // pub fn open(&mut self, thePath: &ExtendedString, theDoc: &mut HandleDocument, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
 //
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:258 - `TDocStd_Application::Open`
 //   method: Retrieves document from standard stream.
 //   method: @param[in,out] theIStream input seekable stream
 //   method: @param[out]    theDoc     result document
-//   Reason: param 'theDoc' uses unknown type 'Handle(TDocStd_Document)&'
+//   Reason: param 'theFilter' uses unknown type 'const Handle(PCDM_ReaderFilter)&'
 //   // pub fn open(&mut self, theIStream: &mut IStream, theDoc: &mut HandleDocument, theFilter: &HandleReaderFilter, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
 //
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:268 - `TDocStd_Application::Open`
 //   method: Retrieves document from standard stream.
 //   method: @param[in,out] theIStream input seekable stream
 //   method: @param[out]    theDoc     result document
-//   Reason: param 'theDoc' uses unknown type 'Handle(TDocStd_Document)&'
+//   Reason: return type 'PCDM_ReaderStatus' is unknown
 //   // pub fn open(&mut self, theIStream: &mut IStream, theDoc: &mut HandleDocument, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
 //
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:278 - `TDocStd_Application::SaveAs`
 //   method: Save the  active document  in the file  <name> in the
 //   method: path <path> ; o verwrites  the file  if  it already exists.
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   Reason: return type 'PCDM_StoreStatus' is unknown
 //   // pub fn save_as(&mut self, theDoc: &HandleDocument, path: &ExtendedString, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
 //
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:285 - `TDocStd_Application::SaveAs`
 //   method: Save theDoc to standard SEEKABLE stream theOStream.
 //   method: the stream should support SEEK functionality
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   Reason: return type 'PCDM_StoreStatus' is unknown
 //   // pub fn save_as(&mut self, theDoc: &HandleDocument, theOStream: &mut OStream, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
 //
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:294 - `TDocStd_Application::Save`
 //   method: Save aDoc active document.
 //   method: Exceptions:
 //   method: Standard_NotImplemented if the document
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   Reason: return type 'PCDM_StoreStatus' is unknown
 //   // pub fn save(&mut self, theDoc: &HandleDocument, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
 //
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:301 - `TDocStd_Application::SaveAs`
 //   method: Save the  active document  in the file  <name> in the
 //   method: path <path>  .  overwrite  the file  if  it
 //   method: already exist.
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   Reason: return type 'PCDM_StoreStatus' is unknown
 //   // pub fn save_as(&mut self, theDoc: &HandleDocument, path: &ExtendedString, theStatusMessage: &mut ExtendedString, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
 //
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:309 - `TDocStd_Application::SaveAs`
 //   method: Save theDoc TO standard SEEKABLE stream theOStream.
 //   method: the stream should support SEEK functionality
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   Reason: return type 'PCDM_StoreStatus' is unknown
 //   // pub fn save_as(&mut self, theDoc: &HandleDocument, theOStream: &mut OStream, theStatusMessage: &mut ExtendedString, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
 //
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:316 - `TDocStd_Application::Save`
 //   method: Save the document overwriting the previous file
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   Reason: return type 'PCDM_StoreStatus' is unknown
 //   // pub fn save(&mut self, theDoc: &HandleDocument, theStatusMessage: &mut ExtendedString, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:321 - `TDocStd_Application::OnOpenTransaction`
-//   method: Notification that is fired at each OpenTransaction event.
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn on_open_transaction(&mut self, theDoc: &HandleDocument);
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:324 - `TDocStd_Application::OnCommitTransaction`
-//   method: Notification that is fired at each CommitTransaction event.
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn on_commit_transaction(&mut self, theDoc: &HandleDocument);
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:327 - `TDocStd_Application::OnAbortTransaction`
-//   method: Notification that is fired at each AbortTransaction event.
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn on_abort_transaction(&mut self, theDoc: &HandleDocument);
 //
 
 // ========================
@@ -1225,6 +1348,14 @@ impl Document {
         unsafe { &*(crate::ffi::TDocStd_Document_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TDocStd_Document.hxx`:54 - `TDocStd_Document::Get()`
+    /// Will Abort any execution, clear fields
+    /// returns the    document which contains <L>.  raises  an
+    /// exception if the document is not found.
+    pub fn get(L: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDocStdDocument> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_get(L)) }
+    }
+
     /// **Source:** `TDocStd_Document.hxx`:254 - `TDocStd_Document::CurrentStorageFormatVersion()`
     /// Returns current storage format version of the document.
     pub fn current_storage_format_version() -> crate::t_doc_std::FormatVersion {
@@ -1259,22 +1390,42 @@ impl Document {
     pub fn as_cdm_document_mut(&mut self) -> &mut crate::cdm::Document {
         unsafe { &mut *(crate::ffi::TDocStd_Document_as_CDM_Document_mut(self as *mut Self)) }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdDocument> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_to_handle(obj.into_raw())) }
+    }
 }
 
-// ── Skipped symbols for Document (2 total) ──
+pub use crate::ffi::HandleTDocStdDocument;
+
+unsafe impl crate::CppDeletable for HandleTDocStdDocument {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDocStdDocument_destructor(ptr);
+    }
+}
+
+impl HandleTDocStdDocument {
+    /// Dereference this Handle to access the underlying TDocStd_Document
+    pub fn get(&self) -> &crate::ffi::TDocStd_Document {
+        unsafe { &*(crate::ffi::HandleTDocStdDocument_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDocStd_Document
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_Document {
+        unsafe { &mut *(crate::ffi::HandleTDocStdDocument_get_mut(self as *mut Self)) }
+    }
+}
+
+// ── Skipped symbols for Document (1 total) ──
 // SKIPPED: **Source:** `TDocStd_Document.hxx`:216 - `TDocStd_Document::Update`
 //   method: This method Update   will be called
 //   method: to signal the end   of the modified references list.
 //   method: The    document     should    be  recomputed     and
 //   Reason: param 'aToDocument' uses unknown type 'const Handle(CDM_Document)&'
 //   // pub fn update(&mut self, aToDocument: &HandleDocument, aReferenceIdentifier: i32, aModifContext: Address);
-//
-// SKIPPED: **Source:** `TDocStd_Document.hxx`:54 - `TDocStd_Document::Get`
-//   static_method: Will Abort any execution, clear fields
-//   static_method: returns the    document which contains <L>.  raises  an
-//   static_method: exception if the document is not found.
-//   Reason: return type 'Handle(TDocStd_Document)' is unknown
-//   // pub fn get(L: &Label) -> OwnedPtr<Handle<TDocStd_Document>>;
 //
 
 // ========================
@@ -1902,6 +2053,23 @@ impl MultiTransactionManager {
         }
     }
 
+    /// **Source:** `TDocStd_MultiTransactionManager.hxx`:110 - `TDocStd_MultiTransactionManager::AddDocument()`
+    /// Adds the document to the transaction manager and
+    /// checks if it has been already added
+    pub fn add_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_add_document(self as *mut Self, theDoc)
+        }
+    }
+
+    /// **Source:** `TDocStd_MultiTransactionManager.hxx`:113 - `TDocStd_MultiTransactionManager::RemoveDocument()`
+    /// Removes the document from the transaction manager.
+    pub fn remove_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_remove_document(self as *mut Self, theDoc)
+        }
+    }
+
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:116 - `TDocStd_MultiTransactionManager::Documents()`
     /// Returns the added documents to the transaction manager.
     pub fn documents(&self) -> &crate::ffi::TDocStd_SequenceOfDocument {
@@ -2110,19 +2278,6 @@ impl HandleTDocStdMultiTransactionManager {
     }
 }
 
-// ── Skipped symbols for MultiTransactionManager (2 total) ──
-// SKIPPED: **Source:** `TDocStd_MultiTransactionManager.hxx`:110 - `TDocStd_MultiTransactionManager::AddDocument`
-//   method: Adds the document to the transaction manager and
-//   method: checks if it has been already added
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn add_document(&mut self, theDoc: &HandleDocument);
-//
-// SKIPPED: **Source:** `TDocStd_MultiTransactionManager.hxx`:113 - `TDocStd_MultiTransactionManager::RemoveDocument`
-//   method: Removes the document from the transaction manager.
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn remove_document(&mut self, theDoc: &HandleDocument);
-//
-
 // ========================
 // From TDocStd_Owner.hxx
 // ========================
@@ -2146,9 +2301,34 @@ impl Owner {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Owner_ctor()) }
     }
 
+    /// **Source:** `TDocStd_Owner.hxx`:56 - `TDocStd_Owner::SetDocument()`
+    pub fn set_document_handletdocstddocument(
+        &mut self,
+        document: &crate::ffi::HandleTDocStdDocument,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_Owner_set_document_handletdocstddocument(
+                self as *mut Self,
+                document,
+            )
+        }
+    }
+
     /// **Source:** `TDocStd_Owner.hxx`:58 - `TDocStd_Owner::SetDocument()`
-    pub fn set_document(&mut self, document: &mut Document) {
-        unsafe { crate::ffi::TDocStd_Owner_set_document(self as *mut Self, document as *mut _) }
+    pub fn set_document_documentptr(&mut self, document: &mut Document) {
+        unsafe {
+            crate::ffi::TDocStd_Owner_set_document_documentptr(
+                self as *mut Self,
+                document as *mut _,
+            )
+        }
+    }
+
+    /// **Source:** `TDocStd_Owner.hxx`:60 - `TDocStd_Owner::GetDocument()`
+    pub fn get_document(&self) -> crate::OwnedPtr<crate::ffi::HandleTDocStdDocument> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Owner_get_document(self as *const Self))
+        }
     }
 
     /// **Source:** `TDocStd_Owner.hxx`:62 - `TDocStd_Owner::ID()`
@@ -2189,6 +2369,16 @@ impl Owner {
         unsafe { &*(crate::ffi::TDocStd_Owner_get_id()) }
     }
 
+    /// **Source:** `TDocStd_Owner.hxx`:45 - `TDocStd_Owner::SetDocument()`
+    pub fn set_document_handletdfdata_handletdocstddocument(
+        indata: &crate::ffi::HandleTDFData,
+        doc: &crate::ffi::HandleTDocStdDocument,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_Owner_set_document_handletdfdata_handletdocstddocument(indata, doc)
+        }
+    }
+
     /// **Source:** `TDocStd_Owner.hxx`:48 - `TDocStd_Owner::SetDocument()`
     pub fn set_document_handletdfdata_documentptr(
         indata: &crate::ffi::HandleTDFData,
@@ -2196,6 +2386,17 @@ impl Owner {
     ) {
         unsafe {
             crate::ffi::TDocStd_Owner_set_document_handletdfdata_documentptr(indata, doc as *mut _)
+        }
+    }
+
+    /// **Source:** `TDocStd_Owner.hxx`:52 - `TDocStd_Owner::GetDocument()`
+    /// Owner methods
+    /// ===============
+    pub fn get_document_handletdfdata(
+        ofdata: &crate::ffi::HandleTDFData,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdDocument> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Owner_get_document_handletdfdata(ofdata))
         }
     }
 
@@ -2547,28 +2748,10 @@ impl HandleTDocStdOwner {
     }
 }
 
-// ── Skipped symbols for Owner (5 total) ──
-// SKIPPED: **Source:** `TDocStd_Owner.hxx`:56 - `TDocStd_Owner::SetDocument`
-//   Reason: param 'document' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn set_document(&mut self, document: &HandleDocument);
-//
-// SKIPPED: **Source:** `TDocStd_Owner.hxx`:60 - `TDocStd_Owner::GetDocument`
-//   Reason: return type 'Handle(TDocStd_Document)' is unknown
-//   // pub fn get_document(&self) -> OwnedPtr<Handle<TDocStd_Document>>;
-//
+// ── Skipped symbols for Owner (1 total) ──
 // SKIPPED: **Source:** `TDocStd_Owner.hxx`:71 - `TDocStd_Owner::Dump`
 //   Reason: returns &mut with reference params (ambiguous lifetimes)
 //   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-// SKIPPED: **Source:** `TDocStd_Owner.hxx`:45 - `TDocStd_Owner::SetDocument`
-//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn set_document(indata: &HandleData, doc: &HandleDocument);
-//
-// SKIPPED: **Source:** `TDocStd_Owner.hxx`:52 - `TDocStd_Owner::GetDocument`
-//   static_method: Owner methods
-//   static_method: ===============
-//   Reason: return type 'Handle(TDocStd_Document)' is unknown
-//   // pub fn get_document(ofdata: &HandleData) -> OwnedPtr<Handle<TDocStd_Document>>;
 //
 
 // ========================
@@ -3127,6 +3310,24 @@ impl XLinkIterator {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLinkIterator_ctor()) }
     }
 
+    /// **Source:** `TDocStd_XLinkIterator.hxx`:39 - `TDocStd_XLinkIterator::TDocStd_XLinkIterator()`
+    /// Creates an iterator on Reference of <D>.
+    pub fn new_handletdocstddocument(
+        D: &crate::ffi::HandleTDocStdDocument,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLinkIterator_ctor_handletdocstddocument(
+                D,
+            ))
+        }
+    }
+
+    /// **Source:** `TDocStd_XLinkIterator.hxx`:42 - `TDocStd_XLinkIterator::Initialize()`
+    /// Restarts an iteration with <D>.
+    pub fn initialize(&mut self, D: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::TDocStd_XLinkIterator_initialize(self as *mut Self, D) }
+    }
+
     /// **Source:** `TDocStd_XLinkIterator.hxx`:46 - `TDocStd_XLinkIterator::More()`
     /// Returns True if there is a current Item in the
     /// iteration.
@@ -3141,17 +3342,7 @@ impl XLinkIterator {
     }
 }
 
-// ── Skipped symbols for XLinkIterator (3 total) ──
-// SKIPPED: **Source:** `TDocStd_XLinkIterator.hxx`:39 - `TDocStd_XLinkIterator::TDocStd_XLinkIterator`
-//   constructor: Creates an iterator on Reference of <D>.
-//   Reason: param 'D' uses unknown Handle type
-//   // pub fn new_handletdocstddocument(D: &HandleDocument) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TDocStd_XLinkIterator.hxx`:42 - `TDocStd_XLinkIterator::Initialize`
-//   method: Restarts an iteration with <D>.
-//   Reason: param 'D' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn initialize(&mut self, D: &HandleDocument);
-//
+// ── Skipped symbols for XLinkIterator (1 total) ──
 // SKIPPED: **Source:** `TDocStd_XLinkIterator.hxx`:52 - `TDocStd_XLinkIterator::Value`
 //   method: Returns the current item; a null handle if there is none.
 //   Reason: return type 'TDocStd_XLinkPtr' is unknown

@@ -130,6 +130,16 @@ impl CafReader {
         }
     }
 
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
+    pub fn document(&self) -> &crate::ffi::HandleTDocStdDocument {
+        unsafe { &*(crate::ffi::VrmlAPI_CafReader_inherited_Document(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
+    pub fn set_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::VrmlAPI_CafReader_inherited_SetDocument(self as *mut Self, theDoc) }
+    }
+
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
     pub fn root_prefix(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::VrmlAPI_CafReader_inherited_RootPrefix(self as *const Self)) }
@@ -647,12 +657,24 @@ impl Writer {
             )
         }
     }
-}
 
-// ── Skipped symbols for Writer (1 total) ──
-// SKIPPED: **Source:** `VrmlAPI_Writer.hxx`:115 - `VrmlAPI_Writer::WriteDoc`
-//   method: Converts the document to VRML format of the passed version
-//   method: and writes it to the file identified by aFile.
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn write_doc(&self, theDoc: &HandleDocument, theFile: *const char, theScale: f64) -> bool;
-//
+    /// **Source:** `VrmlAPI_Writer.hxx`:115 - `VrmlAPI_Writer::WriteDoc()`
+    /// Converts the document to VRML format of the passed version
+    /// and writes it to the file identified by aFile.
+    pub fn write_doc(
+        &self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theFile: &str,
+        theScale: f64,
+    ) -> bool {
+        let c_theFile = std::ffi::CString::new(theFile).unwrap();
+        unsafe {
+            crate::ffi::VrmlAPI_Writer_write_doc(
+                self as *const Self,
+                theDoc,
+                c_theFile.as_ptr(),
+                theScale,
+            )
+        }
+    }
+}

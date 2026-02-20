@@ -145,6 +145,16 @@ impl CafReader {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWObj_CafReader_to_handle(obj.into_raw())) }
     }
 
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
+    pub fn document(&self) -> &crate::ffi::HandleTDocStdDocument {
+        unsafe { &*(crate::ffi::RWObj_CafReader_inherited_Document(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
+    pub fn set_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::RWObj_CafReader_inherited_SetDocument(self as *mut Self, theDoc) }
+    }
+
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
     pub fn root_prefix(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::RWObj_CafReader_inherited_RootPrefix(self as *const Self)) }
@@ -465,6 +475,50 @@ impl CafWriter {
         }
     }
 
+    /// **Source:** `RWObj_CafWriter.hxx`:76 - `RWObj_CafWriter::Perform()`
+    /// Write OBJ file and associated MTL material file.
+    /// Triangulation data should be precomputed within shapes!
+    /// @param[in] theDocument     input document
+    /// @param[in] theRootLabels   list of root shapes to export
+    /// @param[in] theLabelFilter  optional filter with document nodes to export,
+    /// with keys defined by XCAFPrs_DocumentExplorer::DefineChildId() and
+    /// filled recursively (leaves and parent assembly nodes at all
+    /// levels); when not NULL, all nodes not included into the map will be
+    /// ignored
+    /// @param[in] theFileInfo     map with file metadata to put into OBJ header section
+    /// @param[in] theProgress     optional progress indicator
+    /// @return FALSE on file writing failure
+    pub fn perform_handletdocstddocument_labelsequence_mapofasciistringptr_indexeddatamapofstringstring_progressrange(
+        &mut self,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theRootLabels: &crate::ffi::TDF_LabelSequence,
+        theLabelFilter: &crate::ffi::TColStd_MapOfAsciiString,
+        theFileInfo: &crate::ffi::TColStd_IndexedDataMapOfStringString,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWObj_CafWriter_perform_handletdocstddocument_labelsequence_mapofasciistringptr_indexeddatamapofstringstring_progressrange(self as *mut Self, theDocument, theRootLabels, theLabelFilter as *const _, theFileInfo, theProgress)
+        }
+    }
+
+    /// **Source:** `RWObj_CafWriter.hxx`:88 - `RWObj_CafWriter::Perform()`
+    /// Write OBJ file and associated MTL material file.
+    /// Triangulation data should be precomputed within shapes!
+    /// @param[in] theDocument     input document
+    /// @param[in] theFileInfo     map with file metadata to put into glTF header section
+    /// @param[in] theProgress     optional progress indicator
+    /// @return FALSE on file writing failure
+    pub fn perform_handletdocstddocument_indexeddatamapofstringstring_progressrange(
+        &mut self,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theFileInfo: &crate::ffi::TColStd_IndexedDataMapOfStringString,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWObj_CafWriter_perform_handletdocstddocument_indexeddatamapofstringstring_progressrange(self as *mut Self, theDocument, theFileInfo, theProgress)
+        }
+    }
+
     /// **Source:** `RWObj_CafWriter.hxx`:37 - `RWObj_CafWriter::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -568,7 +622,7 @@ impl HandleRWObjCafWriter {
     }
 }
 
-// ── Skipped symbols for CafWriter (4 total) ──
+// ── Skipped symbols for CafWriter (2 total) ──
 // SKIPPED: **Source:** `RWObj_CafWriter.hxx`:59 - `RWObj_CafWriter::DefaultStyle`
 //   method: Return default material definition to be used for nodes with only color defined.
 //   Reason: return type 'const XCAFPrs_Style&' is unknown
@@ -578,20 +632,6 @@ impl HandleRWObjCafWriter {
 //   method: Set default material definition to be used for nodes with only color defined.
 //   Reason: param 'theStyle' uses unknown type 'const XCAFPrs_Style&'
 //   // pub fn set_default_style(&mut self, theStyle: &Style);
-//
-// SKIPPED: **Source:** `RWObj_CafWriter.hxx`:76 - `RWObj_CafWriter::Perform`
-//   method: Write OBJ file and associated MTL material file.
-//   method: Triangulation data should be precomputed within shapes!
-//   method: @param[in] theDocument     input document
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, theDocument: &HandleDocument, theRootLabels: &LabelSequence, theLabelFilter: *const MapOfAsciiString, theFileInfo: &IndexedDataMapOfStringString, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `RWObj_CafWriter.hxx`:88 - `RWObj_CafWriter::Perform`
-//   method: Write OBJ file and associated MTL material file.
-//   method: Triangulation data should be precomputed within shapes!
-//   method: @param[in] theDocument     input document
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, theDocument: &HandleDocument, theFileInfo: &IndexedDataMapOfStringString, theProgress: &ProgressRange) -> bool;
 //
 
 // ========================

@@ -1567,6 +1567,99 @@ impl Reader {
         unsafe { crate::ffi::STEPCAFControl_Reader_nb_roots_for_transfer(self as *mut Self) }
     }
 
+    /// **Source:** `STEPCAFControl_Reader.hxx`:113 - `STEPCAFControl_Reader::TransferOneRoot()`
+    /// Translates currently loaded STEP file into the document
+    /// Returns True if succeeded, and False in case of fail
+    /// Provided for use like single-file reader
+    pub fn transfer_one_root(
+        &mut self,
+        num: i32,
+        doc: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::STEPCAFControl_Reader_transfer_one_root(
+                self as *mut Self,
+                num,
+                doc,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:121 - `STEPCAFControl_Reader::Transfer()`
+    /// Translates currently loaded STEP file into the document
+    /// Returns True if succeeded, and False in case of fail
+    /// Provided for use like single-file reader
+    pub fn transfer(
+        &mut self,
+        doc: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Reader_transfer(self as *mut Self, doc, theProgress) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:125 - `STEPCAFControl_Reader::Perform()`
+    pub fn perform_asciistring_handletdocstddocument_progressrange(
+        &mut self,
+        filename: &crate::t_collection::AsciiString,
+        doc: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::STEPCAFControl_Reader_perform_asciistring_handletdocstddocument_progressrange(self as *mut Self, filename, doc, theProgress)
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:130 - `STEPCAFControl_Reader::Perform()`
+    pub fn perform_asciistring_handletdocstddocument_parameters_progressrange(
+        &mut self,
+        filename: &crate::t_collection::AsciiString,
+        doc: &crate::ffi::HandleTDocStdDocument,
+        theParams: &crate::destep::Parameters,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::STEPCAFControl_Reader_perform_asciistring_handletdocstddocument_parameters_progressrange(self as *mut Self, filename, doc, theParams, theProgress)
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:138 - `STEPCAFControl_Reader::Perform()`
+    /// Translate STEP file given by filename into the document
+    /// Return True if succeeded, and False in case of fail
+    pub fn perform_charptr_handletdocstddocument_progressrange(
+        &mut self,
+        filename: &str,
+        doc: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
+        unsafe {
+            crate::ffi::STEPCAFControl_Reader_perform_charptr_handletdocstddocument_progressrange(
+                self as *mut Self,
+                c_filename.as_ptr(),
+                doc,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:145 - `STEPCAFControl_Reader::Perform()`
+    /// Translate STEP file given by filename into the document
+    /// Return True if succeeded, and False in case of fail
+    pub fn perform_charptr_handletdocstddocument_parameters_progressrange(
+        &mut self,
+        filename: &str,
+        doc: &crate::ffi::HandleTDocStdDocument,
+        theParams: &crate::destep::Parameters,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
+        unsafe {
+            crate::ffi::STEPCAFControl_Reader_perform_charptr_handletdocstddocument_parameters_progressrange(self as *mut Self, c_filename.as_ptr(), doc, theParams, theProgress)
+        }
+    }
+
     /// **Source:** `STEPCAFControl_Reader.hxx`:158 - `STEPCAFControl_Reader::ExternFile()`
     /// Returns data on external file by its name
     /// Returns False if no external file with given name is read
@@ -1785,47 +1878,13 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (10 total) ──
+// ── Skipped symbols for Reader (4 total) ──
 // SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:102 - `STEPCAFControl_Reader::ReadStream`
 //   method: Loads a file from stream and returns the read status.
 //   method: @param[in] theName  auxiliary stream name
 //   method: @param[in] theIStream  stream to read from
 //   Reason: param 'theIStream' uses unknown type 'std::istream&'
 //   // pub fn read_stream(&mut self, theName: *const char, theIStream: &mut istream) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:113 - `STEPCAFControl_Reader::TransferOneRoot`
-//   method: Translates currently loaded STEP file into the document
-//   method: Returns True if succeeded, and False in case of fail
-//   method: Provided for use like single-file reader
-//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn transfer_one_root(&mut self, num: i32, doc: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:121 - `STEPCAFControl_Reader::Transfer`
-//   method: Translates currently loaded STEP file into the document
-//   method: Returns True if succeeded, and False in case of fail
-//   method: Provided for use like single-file reader
-//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn transfer(&mut self, doc: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:125 - `STEPCAFControl_Reader::Perform`
-//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, filename: &AsciiString, doc: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:130 - `STEPCAFControl_Reader::Perform`
-//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, filename: &AsciiString, doc: &HandleDocument, theParams: &Parameters, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:138 - `STEPCAFControl_Reader::Perform`
-//   method: Translate STEP file given by filename into the document
-//   method: Return True if succeeded, and False in case of fail
-//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, filename: *const char, doc: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:145 - `STEPCAFControl_Reader::Perform`
-//   method: Translate STEP file given by filename into the document
-//   method: Return True if succeeded, and False in case of fail
-//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, filename: *const char, doc: &HandleDocument, theParams: &Parameters, theProgress: &ProgressRange) -> bool;
 //
 // SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:154 - `STEPCAFControl_Reader::ExternFiles`
 //   method: Returns data on external files
@@ -1926,6 +1985,51 @@ impl Writer {
         }
     }
 
+    /// **Source:** `STEPCAFControl_Writer.hxx`:90 - `STEPCAFControl_Writer::Transfer()`
+    /// Transfers a document (or single label) to a STEP model
+    /// The mode of translation of shape is AsIs
+    /// If multi is not null pointer, it switches to multifile
+    /// mode (with external refs), and string pointed by <multi>
+    /// gives prefix for names of extern files (can be empty string)
+    /// Returns True if translation is OK
+    pub fn transfer_handletdocstddocument_stepmodeltype_charptr_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theMode: crate::step_control::StepModelType,
+        theIsMulti: &str,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_transfer_handletdocstddocument_stepmodeltype_charptr_progressrange(self as *mut Self, theDoc, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:106 - `STEPCAFControl_Writer::Transfer()`
+    /// Transfers a document (or single label) to a STEP model
+    /// This method uses if need to set parameters avoiding
+    /// initialization from Interface_Static
+    /// @param theParams  configuration parameters
+    /// @param theMode    mode of translation of shape is AsIs
+    /// @param theIsMulti if multi is not null pointer, it switches to multifile
+    /// mode (with external refs), and string pointed by <multi>
+    /// gives prefix for names of extern files (can be empty string)
+    /// @param theProgress progress indicator
+    /// Returns True if translation is OK
+    pub fn transfer_handletdocstddocument_parameters_stepmodeltype_charptr_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theParams: &crate::destep::Parameters,
+        theMode: crate::step_control::StepModelType,
+        theIsMulti: &str,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_transfer_handletdocstddocument_parameters_stepmodeltype_charptr_progressrange(self as *mut Self, theDoc, theParams, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
+        }
+    }
+
     /// **Source:** `STEPCAFControl_Writer.hxx`:114 - `STEPCAFControl_Writer::Transfer()`
     /// Method to transfer part of the document specified by label
     pub fn transfer_label_stepmodeltype_charptr_progressrange(
@@ -1997,6 +2101,56 @@ impl Writer {
         let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
         unsafe {
             crate::ffi::STEPCAFControl_Writer_transfer_labelsequence_parameters_stepmodeltype_charptr_progressrange(self as *mut Self, theLabelSeq, theParams, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:149 - `STEPCAFControl_Writer::Perform()`
+    pub fn perform_handletdocstddocument_asciistring_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theFileName: &crate::t_collection::AsciiString,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_perform_handletdocstddocument_asciistring_progressrange(self as *mut Self, theDoc, theFileName, theProgress)
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:156 - `STEPCAFControl_Writer::Perform()`
+    /// Transfers a document and writes it to a STEP file
+    /// Returns True if translation is OK
+    pub fn perform_handletdocstddocument_charptr_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theFileName: &str,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_perform_handletdocstddocument_charptr_progressrange(
+                self as *mut Self,
+                theDoc,
+                c_theFileName.as_ptr(),
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:165 - `STEPCAFControl_Writer::Perform()`
+    /// Transfers a document and writes it to a STEP file
+    /// This method is utilized if there's a need to set parameters avoiding
+    /// initialization from Interface_Static
+    /// Returns True if translation is OK
+    pub fn perform_handletdocstddocument_charptr_parameters_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theFileName: &str,
+        theParams: &crate::destep::Parameters,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_perform_handletdocstddocument_charptr_parameters_progressrange(self as *mut Self, theDoc, c_theFileName.as_ptr(), theParams, theProgress)
         }
     }
 
@@ -2180,43 +2334,12 @@ impl Writer {
     }
 }
 
-// ── Skipped symbols for Writer (9 total) ──
+// ── Skipped symbols for Writer (4 total) ──
 // SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:81 - `STEPCAFControl_Writer::WriteStream`
 //   method: Writes all the produced models into the stream.
 //   method: Provided for use like single-file writer
 //   Reason: param 'theStream' uses unknown type 'std::ostream&'
 //   // pub fn write_stream(&mut self, theStream: &mut ostream) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:90 - `STEPCAFControl_Writer::Transfer`
-//   method: Transfers a document (or single label) to a STEP model
-//   method: The mode of translation of shape is AsIs
-//   method: If multi is not null pointer, it switches to multifile
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn transfer(&mut self, theDoc: &HandleDocument, theMode: StepModelType, theIsMulti: *const char, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:106 - `STEPCAFControl_Writer::Transfer`
-//   method: Transfers a document (or single label) to a STEP model
-//   method: This method uses if need to set parameters avoiding
-//   method: initialization from Interface_Static
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn transfer(&mut self, theDoc: &HandleDocument, theParams: &Parameters, theMode: StepModelType, theIsMulti: *const char, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:149 - `STEPCAFControl_Writer::Perform`
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, theDoc: &HandleDocument, theFileName: &AsciiString, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:156 - `STEPCAFControl_Writer::Perform`
-//   method: Transfers a document and writes it to a STEP file
-//   method: Returns True if translation is OK
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, theDoc: &HandleDocument, theFileName: *const char, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:165 - `STEPCAFControl_Writer::Perform`
-//   method: Transfers a document and writes it to a STEP file
-//   method: This method is utilized if there's a need to set parameters avoiding
-//   method: initialization from Interface_Static
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, theDoc: &HandleDocument, theFileName: *const char, theParams: &Parameters, theProgress: &ProgressRange) -> bool;
 //
 // SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:173 - `STEPCAFControl_Writer::ExternFiles`
 //   method: Returns data on external files

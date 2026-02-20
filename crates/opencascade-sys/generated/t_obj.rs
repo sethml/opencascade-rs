@@ -38,7 +38,9 @@ impl TryFrom<i32> for DeletingMode {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleMessageAlgorithm, HandleStandardTransient, HandleTDFAttribute};
+pub use crate::ffi::{
+    HandleMessageAlgorithm, HandleStandardTransient, HandleTDFAttribute, HandleTDocStdApplication,
+};
 
 // ========================
 // From TObj_Application.hxx
@@ -61,6 +63,82 @@ impl Application {
     /// Returns reference to associated messenger handle
     pub fn messenger(&mut self) -> &mut crate::ffi::HandleMessageMessenger {
         unsafe { &mut *(crate::ffi::TObj_Application_messenger(self as *mut Self)) }
+    }
+
+    /// **Source:** `TObj_Application.hxx`:44 - `TObj_Application::SaveDocument()`
+    /// Saving the OCAF document to a file
+    pub fn save_document_handletdocstddocument_extendedstring(
+        &mut self,
+        theSourceDoc: &crate::ffi::HandleTDocStdDocument,
+        theTargetFile: &crate::t_collection::ExtendedString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_Application_save_document_handletdocstddocument_extendedstring(
+                self as *mut Self,
+                theSourceDoc,
+                theTargetFile,
+            )
+        }
+    }
+
+    /// **Source:** `TObj_Application.hxx`:49 - `TObj_Application::SaveDocument()`
+    /// Saving the OCAF document to a stream
+    pub fn save_document_handletdocstddocument_ostream(
+        &mut self,
+        theSourceDoc: &crate::ffi::HandleTDocStdDocument,
+        theOStream: &mut crate::ffi::Standard_OStream,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_Application_save_document_handletdocstddocument_ostream(
+                self as *mut Self,
+                theSourceDoc,
+                theOStream,
+            )
+        }
+    }
+
+    /// **Source:** `TObj_Application.hxx`:54 - `TObj_Application::LoadDocument()`
+    /// Loading the OCAF document from a file
+    pub fn load_document_extendedstring_handletdocstddocument(
+        &mut self,
+        theSourceFile: &crate::t_collection::ExtendedString,
+        theTargetDoc: &mut crate::ffi::HandleTDocStdDocument,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_Application_load_document_extendedstring_handletdocstddocument(
+                self as *mut Self,
+                theSourceFile,
+                theTargetDoc,
+            )
+        }
+    }
+
+    /// **Source:** `TObj_Application.hxx`:59 - `TObj_Application::LoadDocument()`
+    /// Loading the OCAF document from a stream
+    pub fn load_document_istream_handletdocstddocument(
+        &mut self,
+        theIStream: &mut crate::ffi::Standard_IStream,
+        theTargetDoc: &mut crate::ffi::HandleTDocStdDocument,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_Application_load_document_istream_handletdocstddocument(
+                self as *mut Self,
+                theIStream,
+                theTargetDoc,
+            )
+        }
+    }
+
+    /// **Source:** `TObj_Application.hxx`:64 - `TObj_Application::CreateNewDocument()`
+    /// Create the OCAF document from scratch
+    pub fn create_new_document(
+        &mut self,
+        theDoc: &mut crate::ffi::HandleTDocStdDocument,
+        theFormat: &crate::t_collection::ExtendedString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_Application_create_new_document(self as *mut Self, theDoc, theFormat)
+        }
     }
 
     /// **Source:** `TObj_Application.hxx`:69 - `TObj_Application::ErrorMessage()`
@@ -118,6 +196,12 @@ impl Application {
         unsafe { &*(crate::ffi::TObj_Application_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TObj_Application.hxx`:33 - `TObj_Application::GetInstance()`
+    /// Returns static instance of the application
+    pub fn get_instance() -> crate::OwnedPtr<crate::ffi::HandleTObjApplication> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_Application_get_instance()) }
+    }
+
     /// **Source:** `TObj_Application.hxx`:123 - `TObj_Application::get_type_name()`
     /// CASCADE RTTI
     pub fn get_type_name() -> String {
@@ -144,6 +228,13 @@ impl Application {
         unsafe {
             &mut *(crate::ffi::TObj_Application_as_TDocStd_Application_mut(self as *mut Self))
         }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjApplication> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_Application_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:76 - `TDocStd_Application::IsDriverLoaded()`
@@ -179,43 +270,73 @@ impl Application {
         unsafe { crate::ffi::TObj_Application_inherited_NbDocuments(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:171 - `TDocStd_Application::GetDocument()`
+    pub fn get_document(&self, index: i32, aDoc: &mut crate::ffi::HandleTDocStdDocument) {
+        unsafe {
+            crate::ffi::TObj_Application_inherited_GetDocument(self as *const Self, index, aDoc)
+        }
+    }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:199 - `TDocStd_Application::Close()`
+    pub fn close(&mut self, aDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::TObj_Application_inherited_Close(self as *mut Self, aDoc) }
+    }
+
     /// Inherited: **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
     pub fn is_in_session(&self, path: &crate::t_collection::ExtendedString) -> i32 {
         unsafe { crate::ffi::TObj_Application_inherited_IsInSession(self as *const Self, path) }
     }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:321 - `TDocStd_Application::OnOpenTransaction()`
+    pub fn on_open_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe {
+            crate::ffi::TObj_Application_inherited_OnOpenTransaction(self as *mut Self, theDoc)
+        }
+    }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:324 - `TDocStd_Application::OnCommitTransaction()`
+    pub fn on_commit_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe {
+            crate::ffi::TObj_Application_inherited_OnCommitTransaction(self as *mut Self, theDoc)
+        }
+    }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:327 - `TDocStd_Application::OnAbortTransaction()`
+    pub fn on_abort_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe {
+            crate::ffi::TObj_Application_inherited_OnAbortTransaction(self as *mut Self, theDoc)
+        }
+    }
 }
 
-// ── Skipped symbols for Application (6 total) ──
-// SKIPPED: **Source:** `TObj_Application.hxx`:44 - `TObj_Application::SaveDocument`
-//   method: Saving the OCAF document to a file
-//   Reason: param 'theSourceDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn save_document(&mut self, theSourceDoc: &HandleDocument, theTargetFile: &ExtendedString) -> bool;
-//
-// SKIPPED: **Source:** `TObj_Application.hxx`:49 - `TObj_Application::SaveDocument`
-//   method: Saving the OCAF document to a stream
-//   Reason: param 'theSourceDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn save_document(&mut self, theSourceDoc: &HandleDocument, theOStream: &mut OStream) -> bool;
-//
-// SKIPPED: **Source:** `TObj_Application.hxx`:54 - `TObj_Application::LoadDocument`
-//   method: Loading the OCAF document from a file
-//   Reason: param 'theTargetDoc' uses unknown type 'Handle(TDocStd_Document)&'
-//   // pub fn load_document(&mut self, theSourceFile: &ExtendedString, theTargetDoc: &mut HandleDocument) -> bool;
-//
-// SKIPPED: **Source:** `TObj_Application.hxx`:59 - `TObj_Application::LoadDocument`
-//   method: Loading the OCAF document from a stream
-//   Reason: param 'theTargetDoc' uses unknown type 'Handle(TDocStd_Document)&'
-//   // pub fn load_document(&mut self, theIStream: &mut IStream, theTargetDoc: &mut HandleDocument) -> bool;
-//
-// SKIPPED: **Source:** `TObj_Application.hxx`:64 - `TObj_Application::CreateNewDocument`
-//   method: Create the OCAF document from scratch
-//   Reason: param 'theDoc' uses unknown type 'Handle(TDocStd_Document)&'
-//   // pub fn create_new_document(&mut self, theDoc: &mut HandleDocument, theFormat: &ExtendedString) -> bool;
-//
-// SKIPPED: **Source:** `TObj_Application.hxx`:33 - `TObj_Application::GetInstance`
-//   static_method: Returns static instance of the application
-//   Reason: return type 'Handle(TObj_Application)' is unknown
-//   // pub fn get_instance() -> OwnedPtr<Handle<TObj_Application>>;
-//
+pub use crate::ffi::HandleTObjApplication;
+
+unsafe impl crate::CppDeletable for HandleTObjApplication {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTObjApplication_destructor(ptr);
+    }
+}
+
+impl HandleTObjApplication {
+    /// Dereference this Handle to access the underlying TObj_Application
+    pub fn get(&self) -> &crate::ffi::TObj_Application {
+        unsafe { &*(crate::ffi::HandleTObjApplication_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TObj_Application
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_Application {
+        unsafe { &mut *(crate::ffi::HandleTObjApplication_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TObj_Application> to Handle<TDocStd_Application>
+    pub fn to_handle_application(&self) -> crate::OwnedPtr<crate::ffi::HandleTDocStdApplication> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTObjApplication_to_HandleTDocStdApplication(self as *const Self),
+            )
+        }
+    }
+}
 
 // ========================
 // From TObj_Assistant.hxx
@@ -1501,6 +1622,12 @@ impl Model {
         unsafe { crate::ffi::TObj_Model_close(self as *mut Self) }
     }
 
+    /// **Source:** `TObj_Model.hxx`:111 - `TObj_Model::CloseDocument()`
+    /// Close Free OCAF document
+    pub fn close_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::TObj_Model_close_document(self as *mut Self, theDoc) }
+    }
+
     /// **Source:** `TObj_Model.hxx`:119 - `TObj_Model::GetFile()`
     /// Returns the full file name this model is to be saved to,
     /// or null if the model was not saved yet
@@ -1663,6 +1790,14 @@ impl Model {
         unsafe { crate::ffi::TObj_Model_set_modified(self as *mut Self, theModified) }
     }
 
+    /// **Source:** `TObj_Model.hxx`:220 - `TObj_Model::GetApplication()`
+    /// Returns handle to static instance of the relevant application class
+    pub fn get_application(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTObjApplication> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Model_get_application(self as *mut Self))
+        }
+    }
+
     /// **Source:** `TObj_Model.hxx`:230 - `TObj_Model::GetFormat()`
     /// Returns the format for save/restore.
     /// This implementation returns "BinOcaf". The method should be redefined
@@ -1694,6 +1829,14 @@ impl Model {
     pub fn get_dictionary(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjTNameContainer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TObj_Model_get_dictionary(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:294 - `TObj_Model::GetDocument()`
+    /// Returns OCAF document of Model
+    pub fn get_document(&self) -> crate::OwnedPtr<crate::ffi::HandleTDocStdDocument> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Model_get_document(self as *const Self))
         }
     }
 
@@ -1810,23 +1953,6 @@ impl HandleTObjModel {
         }
     }
 }
-
-// ── Skipped symbols for Model (3 total) ──
-// SKIPPED: **Source:** `TObj_Model.hxx`:111 - `TObj_Model::CloseDocument`
-//   method: Close Free OCAF document
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn close_document(&mut self, theDoc: &HandleDocument);
-//
-// SKIPPED: **Source:** `TObj_Model.hxx`:220 - `TObj_Model::GetApplication`
-//   method: Returns handle to static instance of the relevant application class
-//   Reason: return type 'Handle(TObj_Application)' is unknown
-//   // pub fn get_application(&mut self) -> OwnedPtr<Handle<TObj_Application>>;
-//
-// SKIPPED: **Source:** `TObj_Model.hxx`:294 - `TObj_Model::GetDocument`
-//   method: Returns OCAF document of Model
-//   Reason: return type 'Handle(TDocStd_Document)' is unknown
-//   // pub fn get_document(&self) -> OwnedPtr<Handle<TDocStd_Document>>;
-//
 
 // ========================
 // From TObj_ModelIterator.hxx

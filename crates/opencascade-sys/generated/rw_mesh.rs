@@ -179,6 +179,19 @@ impl CafReader {
         unsafe { &*(crate::ffi::RWMesh_CafReader_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
+    /// Return target document.
+    pub fn document(&self) -> &crate::ffi::HandleTDocStdDocument {
+        unsafe { &*(crate::ffi::RWMesh_CafReader_document(self as *const Self)) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
+    /// Set target document.
+    /// Set system length unit according to the units of the document
+    pub fn set_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::RWMesh_CafReader_set_document(self as *mut Self, theDoc) }
+    }
+
     /// **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
     /// Return prefix for generating root labels names.
     pub fn root_prefix(&self) -> &crate::t_collection::AsciiString {
@@ -545,22 +558,11 @@ impl HandleRWMeshCafReader {
     }
 }
 
-// ── Skipped symbols for CafReader (5 total) ──
+// ── Skipped symbols for CafReader (3 total) ──
 // SKIPPED: **Source:** `RWMesh_CafReader.hxx`:66 - `RWMesh_CafReader::RWMesh_CafReader`
 //   constructor: Empty constructor.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document`
-//   method: Return target document.
-//   Reason: return type 'const Handle(TDocStd_Document)&' is unknown
-//   // pub fn document(&self) -> &HandleDocument;
-//
-// SKIPPED: **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument`
-//   method: Set target document.
-//   method: Set system length unit according to the units of the document
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn set_document(&mut self, theDoc: &HandleDocument);
 //
 // SKIPPED: **Source:** `RWMesh_CafReader.hxx`:202 - `RWMesh_CafReader::Perform`
 //   method: Read the data from specified file.

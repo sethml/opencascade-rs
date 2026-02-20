@@ -994,6 +994,37 @@ impl OverlapTool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_OverlapTool_ctor()) }
     }
 
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:45 - `BRepExtrema_OverlapTool::BRepExtrema_OverlapTool()`
+    /// Creates new overlap tool for the given element sets.
+    pub fn new_handlebrepextrematriangleset2(
+        theSet1: &crate::ffi::HandleBRepExtremaTriangleSet,
+        theSet2: &crate::ffi::HandleBRepExtremaTriangleSet,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepExtrema_OverlapTool_ctor_handlebrepextrematriangleset2(
+                    theSet1, theSet2,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:50 - `BRepExtrema_OverlapTool::LoadTriangleSets()`
+    /// Loads the given element sets into the overlap tool.
+    pub fn load_triangle_sets(
+        &mut self,
+        theSet1: &crate::ffi::HandleBRepExtremaTriangleSet,
+        theSet2: &crate::ffi::HandleBRepExtremaTriangleSet,
+    ) {
+        unsafe {
+            crate::ffi::BRepExtrema_OverlapTool_load_triangle_sets(
+                self as *mut Self,
+                theSet1,
+                theSet2,
+            )
+        }
+    }
+
     /// **Source:** `BRepExtrema_OverlapTool.hxx`:54 - `BRepExtrema_OverlapTool::Perform()`
     /// Performs searching of overlapped mesh elements.
     pub fn perform(&mut self, theTolerance: f64) {
@@ -1065,18 +1096,6 @@ impl OverlapTool {
     }
 }
 
-// ── Skipped symbols for OverlapTool (2 total) ──
-// SKIPPED: **Source:** `BRepExtrema_OverlapTool.hxx`:45 - `BRepExtrema_OverlapTool::BRepExtrema_OverlapTool`
-//   constructor: Creates new overlap tool for the given element sets.
-//   Reason: param 'theSet1' uses unknown Handle type
-//   // pub fn new_handlebrepextrematriangleset2(theSet1: &HandleTriangleSet, theSet2: &HandleTriangleSet) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepExtrema_OverlapTool.hxx`:50 - `BRepExtrema_OverlapTool::LoadTriangleSets`
-//   method: Loads the given element sets into the overlap tool.
-//   Reason: param 'theSet1' uses unknown type 'const Handle(BRepExtrema_TriangleSet)&'
-//   // pub fn load_triangle_sets(&mut self, theSet1: &HandleTriangleSet, theSet2: &HandleTriangleSet);
-//
-
 // ========================
 // From BRepExtrema_Poly.hxx
 // ========================
@@ -1138,6 +1157,22 @@ impl ProximityDistTool {
     /// Creates new uninitialized tool.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ProximityDistTool_ctor()) }
+    }
+
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:106 - `BRepExtrema_ProximityDistTool::LoadTriangleSets()`
+    /// Loads the given element sets into the tool.
+    pub fn load_triangle_sets(
+        &mut self,
+        theSet1: &crate::ffi::HandleBRepExtremaTriangleSet,
+        theSet2: &crate::ffi::HandleBRepExtremaTriangleSet,
+    ) {
+        unsafe {
+            crate::ffi::BRepExtrema_ProximityDistTool_load_triangle_sets(
+                self as *mut Self,
+                theSet1,
+                theSet2,
+            )
+        }
     }
 
     /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:110 - `BRepExtrema_ProximityDistTool::LoadShapeLists()`
@@ -1252,16 +1287,11 @@ impl ProximityDistTool {
     }
 }
 
-// ── Skipped symbols for ProximityDistTool (3 total) ──
+// ── Skipped symbols for ProximityDistTool (2 total) ──
 // SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:95 - `BRepExtrema_ProximityDistTool::BRepExtrema_ProximityDistTool`
 //   constructor: Creates new tool for the given element sets.
 //   Reason: has unbindable types: param 'theAddStatus1': unresolved template type (const NCollection_Vector<ProxPnt_Status>&)
 //   // pub fn new_handlebrepextrematriangleset_int_array3d_vector<proxpnt_status>_handlebrepextrematriangleset_shapelist2(theSet1: &HandleTriangleSet, theNbSamples1: i32, theAddVertices1: &Array3d, theAddStatus1: /* const NCollection_Vector<ProxPnt_Status>& */, theSet2: &HandleTriangleSet, theShapeList1: &ShapeList, theShapeList2: &ShapeList) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:106 - `BRepExtrema_ProximityDistTool::LoadTriangleSets`
-//   method: Loads the given element sets into the tool.
-//   Reason: param 'theSet1' uses unknown type 'const Handle(BRepExtrema_TriangleSet)&'
-//   // pub fn load_triangle_sets(&mut self, theSet1: &HandleTriangleSet, theSet2: &HandleTriangleSet);
 //
 // SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:114 - `BRepExtrema_ProximityDistTool::LoadAdditionalPointsFirstSet`
 //   method: Loads given additional vertices and their statuses.
@@ -1359,6 +1389,35 @@ impl ProximityValueTool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ProximityValueTool_ctor()) }
     }
 
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:88 - `BRepExtrema_ProximityValueTool::BRepExtrema_ProximityValueTool()`
+    /// Creates new proximity tool for the given element sets.
+    pub fn new_handlebrepextrematriangleset2_shapelist2(
+        theSet1: &crate::ffi::HandleBRepExtremaTriangleSet,
+        theSet2: &crate::ffi::HandleBRepExtremaTriangleSet,
+        theShapeList1: &crate::ffi::BRepExtrema_ShapeList,
+        theShapeList2: &crate::ffi::BRepExtrema_ShapeList,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ProximityValueTool_ctor_handlebrepextrematriangleset2_shapelist2(theSet1, theSet2, theShapeList1, theShapeList2))
+        }
+    }
+
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:95 - `BRepExtrema_ProximityValueTool::LoadTriangleSets()`
+    /// Loads the given element sets into the proximity tool.
+    pub fn load_triangle_sets(
+        &mut self,
+        theSet1: &crate::ffi::HandleBRepExtremaTriangleSet,
+        theSet2: &crate::ffi::HandleBRepExtremaTriangleSet,
+    ) {
+        unsafe {
+            crate::ffi::BRepExtrema_ProximityValueTool_load_triangle_sets(
+                self as *mut Self,
+                theSet1,
+                theSet2,
+            )
+        }
+    }
+
     /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:99 - `BRepExtrema_ProximityValueTool::LoadShapeLists()`
     /// Loads the given list of subshapes into the proximity tool.
     pub fn load_shape_lists(
@@ -1427,17 +1486,7 @@ impl ProximityValueTool {
     }
 }
 
-// ── Skipped symbols for ProximityValueTool (3 total) ──
-// SKIPPED: **Source:** `BRepExtrema_ProximityValueTool.hxx`:88 - `BRepExtrema_ProximityValueTool::BRepExtrema_ProximityValueTool`
-//   constructor: Creates new proximity tool for the given element sets.
-//   Reason: param 'theSet1' uses unknown Handle type
-//   // pub fn new_handlebrepextrematriangleset2_shapelist2(theSet1: &HandleTriangleSet, theSet2: &HandleTriangleSet, theShapeList1: &ShapeList, theShapeList2: &ShapeList) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepExtrema_ProximityValueTool.hxx`:95 - `BRepExtrema_ProximityValueTool::LoadTriangleSets`
-//   method: Loads the given element sets into the proximity tool.
-//   Reason: param 'theSet1' uses unknown type 'const Handle(BRepExtrema_TriangleSet)&'
-//   // pub fn load_triangle_sets(&mut self, theSet1: &HandleTriangleSet, theSet2: &HandleTriangleSet);
-//
+// ── Skipped symbols for ProximityValueTool (1 total) ──
 // SKIPPED: **Source:** `BRepExtrema_ProximityValueTool.hxx`:127 - `BRepExtrema_ProximityValueTool::ProximityPointsStatus`
 //   method: Returns status of points on triangles sets, which provide the proximity distance.
 //   Reason: param 'thePointStatus1' uses unknown type 'ProxPnt_Status&'
@@ -1553,6 +1602,12 @@ impl SelfIntersection {
         }
     }
 
+    /// **Source:** `BRepExtrema_SelfIntersection.hxx`:75 - `BRepExtrema_SelfIntersection::ElementSet()`
+    /// Returns set of all the face triangles of the shape.
+    pub fn element_set(&self) -> &crate::ffi::HandleBRepExtremaTriangleSet {
+        unsafe { &*(crate::ffi::BRepExtrema_SelfIntersection_element_set(self as *const Self)) }
+    }
+
     /// Upcast to BRepExtrema_ElementFilter
     pub fn as_element_filter(&self) -> &ElementFilter {
         unsafe {
@@ -1571,13 +1626,6 @@ impl SelfIntersection {
         }
     }
 }
-
-// ── Skipped symbols for SelfIntersection (1 total) ──
-// SKIPPED: **Source:** `BRepExtrema_SelfIntersection.hxx`:75 - `BRepExtrema_SelfIntersection::ElementSet`
-//   method: Returns set of all the face triangles of the shape.
-//   Reason: return type 'const Handle(BRepExtrema_TriangleSet)&' is unknown
-//   // pub fn element_set(&self) -> &HandleTriangleSet;
-//
 
 // ========================
 // From BRepExtrema_ShapeProximity.hxx
@@ -1734,6 +1782,18 @@ impl ShapeProximity {
         }
     }
 
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:117 - `BRepExtrema_ShapeProximity::ElementSet1()`
+    /// Returns set of all the face triangles of the 1st shape.
+    pub fn element_set1(&self) -> &crate::ffi::HandleBRepExtremaTriangleSet {
+        unsafe { &*(crate::ffi::BRepExtrema_ShapeProximity_element_set1(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:120 - `BRepExtrema_ShapeProximity::ElementSet2()`
+    /// Returns set of all the face triangles of the 2nd shape.
+    pub fn element_set2(&self) -> &crate::ffi::HandleBRepExtremaTriangleSet {
+        unsafe { &*(crate::ffi::BRepExtrema_ShapeProximity_element_set2(self as *const Self)) }
+    }
+
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:124 - `BRepExtrema_ShapeProximity::ProximityPoint1()`
     /// Returns the point on the 1st shape, which could be used as a reference point
     /// for the value of the proximity.
@@ -1749,17 +1809,7 @@ impl ShapeProximity {
     }
 }
 
-// ── Skipped symbols for ShapeProximity (4 total) ──
-// SKIPPED: **Source:** `BRepExtrema_ShapeProximity.hxx`:117 - `BRepExtrema_ShapeProximity::ElementSet1`
-//   method: Returns set of all the face triangles of the 1st shape.
-//   Reason: return type 'const Handle(BRepExtrema_TriangleSet)&' is unknown
-//   // pub fn element_set1(&self) -> &HandleTriangleSet;
-//
-// SKIPPED: **Source:** `BRepExtrema_ShapeProximity.hxx`:120 - `BRepExtrema_ShapeProximity::ElementSet2`
-//   method: Returns set of all the face triangles of the 2nd shape.
-//   Reason: return type 'const Handle(BRepExtrema_TriangleSet)&' is unknown
-//   // pub fn element_set2(&self) -> &HandleTriangleSet;
-//
+// ── Skipped symbols for ShapeProximity (2 total) ──
 // SKIPPED: **Source:** `BRepExtrema_ShapeProximity.hxx`:132 - `BRepExtrema_ShapeProximity::ProxPntStatus1`
 //   method: Returns the status of point on the 1st shape, which could be used as a reference point
 //   method: for the value of the proximity.
@@ -2103,6 +2153,35 @@ impl TriangleSet {
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:127 - `BRepExtrema_TriangleSet::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepExtrema_TriangleSet_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepExtremaTriangleSet> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_TriangleSet_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepExtremaTriangleSet;
+
+unsafe impl crate::CppDeletable for HandleBRepExtremaTriangleSet {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepExtremaTriangleSet_destructor(ptr);
+    }
+}
+
+impl HandleBRepExtremaTriangleSet {
+    /// Dereference this Handle to access the underlying BRepExtrema_TriangleSet
+    pub fn get(&self) -> &crate::ffi::BRepExtrema_TriangleSet {
+        unsafe { &*(crate::ffi::HandleBRepExtremaTriangleSet_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepExtrema_TriangleSet
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepExtrema_TriangleSet {
+        unsafe { &mut *(crate::ffi::HandleBRepExtremaTriangleSet_get_mut(self as *mut Self)) }
     }
 }
 

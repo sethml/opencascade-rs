@@ -644,6 +644,20 @@ unsafe impl crate::CppDeletable for AssemblyGraph {
 }
 
 impl AssemblyGraph {
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:83 - `XCAFDoc_AssemblyGraph::XCAFDoc_AssemblyGraph()`
+    /// \brief Constructs graph from XCAF document.
+    /// Construction of a formal graph will be done immediately.
+    /// \param[in]  theDoc - document to iterate.
+    pub fn new_handletdocstddocument(
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyGraph_ctor_handletdocstddocument(
+                theDoc,
+            ))
+        }
+    }
+
     /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:90 - `XCAFDoc_AssemblyGraph::XCAFDoc_AssemblyGraph()`
     /// \brief Constructs graph from XCAF label.
     /// Construction of a formal graph will be done immediately. The specified
@@ -865,15 +879,6 @@ impl HandleXCAFDocAssemblyGraph {
         }
     }
 }
-
-// ── Skipped symbols for AssemblyGraph (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_AssemblyGraph.hxx`:83 - `XCAFDoc_AssemblyGraph::XCAFDoc_AssemblyGraph`
-//   constructor: \brief Constructs graph from XCAF document.
-//   constructor: Construction of a formal graph will be done immediately.
-//   constructor: \param[in]  theDoc - document to iterate.
-//   Reason: param 'theDoc' uses unknown Handle type
-//   // pub fn new_handletdocstddocument(theDoc: &HandleDocument) -> OwnedPtr<Self>;
-//
 
 /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:54 - `XCAFDoc_AssemblyGraph_Iterator`
 /// \brief Graph iterator.
@@ -1705,6 +1710,42 @@ unsafe impl crate::CppDeletable for AssemblyIterator {
 }
 
 impl AssemblyIterator {
+    /// **Source:** `XCAFDoc_AssemblyIterator.hxx`:32 - `XCAFDoc_AssemblyIterator::XCAFDoc_AssemblyIterator()`
+    /// Constructs iterator starting from assembly roots.
+    /// \param[in]       theDoc   - document to iterate.
+    /// \param [in, opt] theLevel - max level of hierarchy to reach (INT_MAX is for no limit).
+    pub fn new_handletdocstddocument_int(
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theLevel: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_AssemblyIterator_ctor_handletdocstddocument_int(
+                    theDoc, theLevel,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyIterator.hxx`:39 - `XCAFDoc_AssemblyIterator::XCAFDoc_AssemblyIterator()`
+    /// Constructs iterator starting from the specified position in the assembly tree.
+    /// \param[in]       theDoc   - document to iterate.
+    /// \param[in]       theRoot  - assembly item to start iterating from.
+    /// \param [in, opt] theLevel - max level of hierarchy to reach (INT_MAX is for no limit).
+    pub fn new_handletdocstddocument_assemblyitemid_int(
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theRoot: &AssemblyItemId,
+        theLevel: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_AssemblyIterator_ctor_handletdocstddocument_assemblyitemid_int(
+                    theDoc, theRoot, theLevel,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `XCAFDoc_AssemblyIterator.hxx`:44 - `XCAFDoc_AssemblyIterator::More()`
     /// \return true if there is still something to iterate, false -- otherwise.
     pub fn more(&self) -> bool {
@@ -1727,22 +1768,6 @@ impl AssemblyIterator {
         }
     }
 }
-
-// ── Skipped symbols for AssemblyIterator (2 total) ──
-// SKIPPED: **Source:** `XCAFDoc_AssemblyIterator.hxx`:32 - `XCAFDoc_AssemblyIterator::XCAFDoc_AssemblyIterator`
-//   constructor: Constructs iterator starting from assembly roots.
-//   constructor: \param[in]       theDoc   - document to iterate.
-//   constructor: \param [in, opt] theLevel - max level of hierarchy to reach (INT_MAX is for no limit).
-//   Reason: param 'theDoc' uses unknown Handle type
-//   // pub fn new_handletdocstddocument_int(theDoc: &HandleDocument, theLevel: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `XCAFDoc_AssemblyIterator.hxx`:39 - `XCAFDoc_AssemblyIterator::XCAFDoc_AssemblyIterator`
-//   constructor: Constructs iterator starting from the specified position in the assembly tree.
-//   constructor: \param[in]       theDoc   - document to iterate.
-//   constructor: \param[in]       theRoot  - assembly item to start iterating from.
-//   Reason: param 'theDoc' uses unknown Handle type
-//   // pub fn new_handletdocstddocument_assemblyitemid_int(theDoc: &HandleDocument, theRoot: &AssemblyItemId, theLevel: i32) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From XCAFDoc_Centroid.hxx
@@ -6937,6 +6962,11 @@ impl DocumentTool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_set(L, IsAcces)) }
     }
 
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:62 - `XCAFDoc_DocumentTool::IsXCAFDocument()`
+    pub fn is_xcaf_document(Doc: &crate::ffi::HandleTDocStdDocument) -> bool {
+        unsafe { crate::ffi::XCAFDoc_DocumentTool_is_xcaf_document(Doc) }
+    }
+
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:66 - `XCAFDoc_DocumentTool::DocLabel()`
     /// Returns label where the DocumentTool attribute is or
     /// 0.1 if DocumentTool is not yet set.
@@ -7142,6 +7172,67 @@ impl DocumentTool {
     /// Returns TRUE if Tool exists, ELSE if it has not been created
     pub fn check_notes_tool(theAcces: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_notes_tool(theAcces) }
+    }
+
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:162 - `XCAFDoc_DocumentTool::GetLengthUnit()`
+    /// Returns value of current internal unit for the document
+    /// converted to base unit type.
+    pub fn get_length_unit_handletdocstddocument_real_lengthunit(
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theResut: &mut f64,
+        theBaseUnit: crate::units_methods::LengthUnit,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DocumentTool_get_length_unit_handletdocstddocument_real_lengthunit(
+                theDoc,
+                theResut,
+                theBaseUnit.into(),
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:167 - `XCAFDoc_DocumentTool::GetLengthUnit()`
+    /// Returns value of current internal unit for the document in meter
+    pub fn get_length_unit_handletdocstddocument_real(
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theResut: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DocumentTool_get_length_unit_handletdocstddocument_real(
+                theDoc, theResut,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:171 - `XCAFDoc_DocumentTool::SetLengthUnit()`
+    /// Sets value of current internal unit to the document in meter
+    pub fn set_length_unit_handletdocstddocument_real(
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theUnitValue: f64,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DocumentTool_set_length_unit_handletdocstddocument_real(
+                theDoc,
+                theUnitValue,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:176 - `XCAFDoc_DocumentTool::SetLengthUnit()`
+    /// Sets value of current internal unit to the document
+    /// @param theUnitValue must be represented in the base unit type
+    pub fn set_length_unit_handletdocstddocument_real_lengthunit(
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theUnitValue: f64,
+        theBaseUnit: crate::units_methods::LengthUnit,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DocumentTool_set_length_unit_handletdocstddocument_real_lengthunit(
+                theDoc,
+                theUnitValue,
+                theBaseUnit.into(),
+            )
+        }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:192 - `XCAFDoc_DocumentTool::get_type_name()`
@@ -7556,34 +7647,6 @@ impl HandleXCAFDocDocumentTool {
         }
     }
 }
-
-// ── Skipped symbols for DocumentTool (5 total) ──
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:62 - `XCAFDoc_DocumentTool::IsXCAFDocument`
-//   Reason: param 'Doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn is_xcaf_document(Doc: &HandleDocument) -> bool;
-//
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:162 - `XCAFDoc_DocumentTool::GetLengthUnit`
-//   static_method: Returns value of current internal unit for the document
-//   static_method: converted to base unit type.
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn get_length_unit(theDoc: &HandleDocument, theResut: &mut f64, theBaseUnit: LengthUnit) -> bool;
-//
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:167 - `XCAFDoc_DocumentTool::GetLengthUnit`
-//   static_method: Returns value of current internal unit for the document in meter
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn get_length_unit(theDoc: &HandleDocument, theResut: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:171 - `XCAFDoc_DocumentTool::SetLengthUnit`
-//   static_method: Sets value of current internal unit to the document in meter
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn set_length_unit(theDoc: &HandleDocument, theUnitValue: f64);
-//
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:176 - `XCAFDoc_DocumentTool::SetLengthUnit`
-//   static_method: Sets value of current internal unit to the document
-//   static_method: @param theUnitValue must be represented in the base unit type
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn set_length_unit(theDoc: &HandleDocument, theUnitValue: f64, theBaseUnit: LengthUnit);
-//
 
 // ========================
 // From XCAFDoc_Editor.hxx

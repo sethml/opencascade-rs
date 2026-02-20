@@ -555,6 +555,16 @@ impl CafReader {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWGltf_CafReader_to_handle(obj.into_raw())) }
     }
 
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
+    pub fn document(&self) -> &crate::ffi::HandleTDocStdDocument {
+        unsafe { &*(crate::ffi::RWGltf_CafReader_inherited_Document(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
+    pub fn set_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::RWGltf_CafReader_inherited_SetDocument(self as *mut Self, theDoc) }
+    }
+
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
     pub fn root_prefix(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::RWGltf_CafReader_inherited_RootPrefix(self as *const Self)) }

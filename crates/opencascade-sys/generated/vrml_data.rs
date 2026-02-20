@@ -6826,14 +6826,14 @@ impl ShapeConvert {
             )
         }
     }
-}
 
-// ── Skipped symbols for ShapeConvert (1 total) ──
-// SKIPPED: **Source:** `VrmlData_ShapeConvert.hxx`:96 - `VrmlData_ShapeConvert::ConvertDocument`
-//   method: Add all shapes start from given document with colors and names to the internal structure
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn convert_document(&mut self, theDoc: &HandleDocument);
-//
+    /// **Source:** `VrmlData_ShapeConvert.hxx`:96 - `VrmlData_ShapeConvert::ConvertDocument()`
+    ///
+    /// Add all shapes start from given document with colors and names to the internal structure
+    pub fn convert_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::VrmlData_ShapeConvert_convert_document(self as *mut Self, theDoc) }
+    }
+}
 
 /// **Source:** `VrmlData_ShapeConvert.hxx`:41 - `VrmlData_ShapeConvert_ShapeData`
 pub use crate::ffi::VrmlData_ShapeConvert_ShapeData as ShapeConvert_ShapeData;

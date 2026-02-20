@@ -6,6 +6,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleTDocStdApplication;
+
 // ========================
 // From AppStd_Application.hxx
 // ========================
@@ -71,6 +74,15 @@ impl Application {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleAppStdApplication> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppStd_Application_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `TDocStd_Application.hxx`:76 - `TDocStd_Application::IsDriverLoaded()`
     pub fn is_driver_loaded(&self) -> bool {
         unsafe { crate::ffi::AppStd_Application_inherited_IsDriverLoaded(self as *const Self) }
@@ -104,8 +116,72 @@ impl Application {
         unsafe { crate::ffi::AppStd_Application_inherited_NbDocuments(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:171 - `TDocStd_Application::GetDocument()`
+    pub fn get_document(&self, index: i32, aDoc: &mut crate::ffi::HandleTDocStdDocument) {
+        unsafe {
+            crate::ffi::AppStd_Application_inherited_GetDocument(self as *const Self, index, aDoc)
+        }
+    }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:199 - `TDocStd_Application::Close()`
+    pub fn close(&mut self, aDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::AppStd_Application_inherited_Close(self as *mut Self, aDoc) }
+    }
+
     /// Inherited: **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
     pub fn is_in_session(&self, path: &crate::t_collection::ExtendedString) -> i32 {
         unsafe { crate::ffi::AppStd_Application_inherited_IsInSession(self as *const Self, path) }
+    }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:321 - `TDocStd_Application::OnOpenTransaction()`
+    pub fn on_open_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe {
+            crate::ffi::AppStd_Application_inherited_OnOpenTransaction(self as *mut Self, theDoc)
+        }
+    }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:324 - `TDocStd_Application::OnCommitTransaction()`
+    pub fn on_commit_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe {
+            crate::ffi::AppStd_Application_inherited_OnCommitTransaction(self as *mut Self, theDoc)
+        }
+    }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:327 - `TDocStd_Application::OnAbortTransaction()`
+    pub fn on_abort_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe {
+            crate::ffi::AppStd_Application_inherited_OnAbortTransaction(self as *mut Self, theDoc)
+        }
+    }
+}
+
+pub use crate::ffi::HandleAppStdApplication;
+
+unsafe impl crate::CppDeletable for HandleAppStdApplication {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleAppStdApplication_destructor(ptr);
+    }
+}
+
+impl HandleAppStdApplication {
+    /// Dereference this Handle to access the underlying AppStd_Application
+    pub fn get(&self) -> &crate::ffi::AppStd_Application {
+        unsafe { &*(crate::ffi::HandleAppStdApplication_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying AppStd_Application
+    pub fn get_mut(&mut self) -> &mut crate::ffi::AppStd_Application {
+        unsafe { &mut *(crate::ffi::HandleAppStdApplication_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<AppStd_Application> to Handle<TDocStd_Application>
+    pub fn to_handle_application(&self) -> crate::OwnedPtr<crate::ffi::HandleTDocStdApplication> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleAppStdApplication_to_HandleTDocStdApplication(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
