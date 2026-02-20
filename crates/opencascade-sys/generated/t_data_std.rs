@@ -1663,6 +1663,14 @@ impl ByteArray {
         unsafe { crate::ffi::TDataStd_ByteArray_init(self as *mut Self, lower, upper) }
     }
 
+    /// **Source:** `TDataStd_ByteArray.hxx`:71 - `TDataStd_ByteArray::SetValue()`
+    /// Sets the <Index>th element of the array to <Value>
+    /// OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the
+    /// internal  array.
+    pub fn set_value(&mut self, index: i32, value: u8) {
+        unsafe { crate::ffi::TDataStd_ByteArray_set_value(self as *mut Self, index, value) }
+    }
+
     /// **Source:** `TDataStd_ByteArray.hxx`:74 - `TDataStd_ByteArray::SetID()`
     /// Sets the explicit GUID (user defined) for the attribute.
     pub fn set_id_guid(&mut self, theGuid: &crate::standard::GUID) {
@@ -1673,6 +1681,12 @@ impl ByteArray {
     /// Sets default GUID for the attribute.
     pub fn set_id(&mut self) {
         unsafe { crate::ffi::TDataStd_ByteArray_set_id(self as *mut Self) }
+    }
+
+    /// **Source:** `TDataStd_ByteArray.hxx`:80 - `TDataStd_ByteArray::Value()`
+    /// Return the value of the <Index>th element of the array.
+    pub fn value(&self, Index: i32) -> u8 {
+        unsafe { crate::ffi::TDataStd_ByteArray_value(self as *const Self, Index) }
     }
 
     /// **Source:** `TDataStd_ByteArray.hxx`:85 - `TDataStd_ByteArray::Lower()`
@@ -2161,19 +2175,7 @@ impl HandleTDataStdByteArray {
     }
 }
 
-// ── Skipped symbols for ByteArray (3 total) ──
-// SKIPPED: **Source:** `TDataStd_ByteArray.hxx`:71 - `TDataStd_ByteArray::SetValue`
-//   method: Sets the <Index>th element of the array to <Value>
-//   method: OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the
-//   method: internal  array.
-//   Reason: param 'value' uses unknown type 'Standard_Byte'
-//   // pub fn set_value(&mut self, index: i32, value: Byte);
-//
-// SKIPPED: **Source:** `TDataStd_ByteArray.hxx`:80 - `TDataStd_ByteArray::Value`
-//   method: Return the value of the <Index>th element of the array.
-//   Reason: return type 'Standard_Byte' is unknown
-//   // pub fn value(&self, Index: i32) -> OwnedPtr<Standard_Byte>;
-//
+// ── Skipped symbols for ByteArray (1 total) ──
 // SKIPPED: **Source:** `TDataStd_ByteArray.hxx`:120 - `TDataStd_ByteArray::Dump`
 //   Reason: returns &mut with reference params (ambiguous lifetimes)
 //   // pub fn dump(&self, OS: &mut OStream) -> &mut OStream;
@@ -12309,6 +12311,21 @@ impl NamedData {
         unsafe { crate::ffi::TDataStd_NamedData_has_byte(self as *const Self, theName) }
     }
 
+    /// **Source:** `TDataStd_NamedData.hxx`:129 - `TDataStd_NamedData::GetByte()`
+    /// Returns the named byte.
+    /// It returns 0 if there is no such a named byte
+    /// (use HasByte()).
+    pub fn get_byte(&mut self, theName: &crate::t_collection::ExtendedString) -> u8 {
+        unsafe { crate::ffi::TDataStd_NamedData_get_byte(self as *mut Self, theName) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:133 - `TDataStd_NamedData::SetByte()`
+    /// Defines a named byte.
+    /// If the byte already exists, it changes its value to <theByte>.
+    pub fn set_byte(&mut self, theName: &crate::t_collection::ExtendedString, theByte: u8) {
+        unsafe { crate::ffi::TDataStd_NamedData_set_byte(self as *mut Self, theName, theByte) }
+    }
+
     /// **Source:** `TDataStd_NamedData.hxx`:137 - `TDataStd_NamedData::GetBytesContainer()`
     /// Returns the internal container of named bytes.
     pub fn get_bytes_container(&mut self) -> &crate::ffi::TDataStd_DataMapOfStringByte {
@@ -12551,6 +12568,12 @@ impl NamedData {
         unsafe {
             crate::ffi::TDataStd_NamedData_set_string_2(self as *mut Self, theName, theString)
         }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:274 - `TDataStd_NamedData::setByte()`
+    /// Defines a named byte (without calling Backup).
+    pub fn set_byte_2(&mut self, theName: &crate::t_collection::ExtendedString, theByte: u8) {
+        unsafe { crate::ffi::TDataStd_NamedData_set_byte_2(self as *mut Self, theName, theByte) }
     }
 
     /// **Source:** `TDataStd_NamedData.hxx`:278 - `TDataStd_NamedData::setArrayOfIntegers()`
@@ -12997,25 +13020,7 @@ impl HandleTDataStdNamedData {
     }
 }
 
-// ── Skipped symbols for NamedData (4 total) ──
-// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:129 - `TDataStd_NamedData::GetByte`
-//   method: Returns the named byte.
-//   method: It returns 0 if there is no such a named byte
-//   method: (use HasByte()).
-//   Reason: return type 'Standard_Byte' is unknown
-//   // pub fn get_byte(&mut self, theName: &ExtendedString) -> OwnedPtr<Standard_Byte>;
-//
-// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:133 - `TDataStd_NamedData::SetByte`
-//   method: Defines a named byte.
-//   method: If the byte already exists, it changes its value to <theByte>.
-//   Reason: param 'theByte' uses unknown type 'Standard_Byte'
-//   // pub fn set_byte(&mut self, theName: &ExtendedString, theByte: Byte);
-//
-// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:274 - `TDataStd_NamedData::setByte`
-//   method: Defines a named byte (without calling Backup).
-//   Reason: param 'theByte' uses unknown type 'Standard_Byte'
-//   // pub fn set_byte(&mut self, theName: &ExtendedString, theByte: Byte);
-//
+// ── Skipped symbols for NamedData (1 total) ──
 // SKIPPED: **Source:** `TDataStd_NamedData.hxx`:296 - `TDataStd_NamedData::Dump`
 //   Reason: returns &mut with reference params (ambiguous lifetimes)
 //   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;

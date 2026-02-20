@@ -1080,29 +1080,32 @@ impl Buffer {
     /// @param theAlloc memory allocator
     /// @param theSize  buffer size
     /// @param theData  buffer data allocated by theAlloc
-    pub fn new_handlencollectionbaseallocator_size(
+    pub fn new_handlencollectionbaseallocator_size_u8ptr(
         theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
         theSize: usize,
+        theData: Option<&mut u8>,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
-                crate::ffi::NCollection_Buffer_ctor_handlencollectionbaseallocator_size(
-                    theAlloc, theSize,
+                crate::ffi::NCollection_Buffer_ctor_handlencollectionbaseallocator_size_u8ptr(
+                    theAlloc,
+                    theSize,
+                    theData.map_or(std::ptr::null_mut(), |r| r as *mut _),
                 ),
             )
         }
     }
 
-    /// **Source:** `NCollection_Buffer.hxx`:32 - `NCollection_Buffer::NCollection_Buffer()`
-    /// Default constructor.
-    /// When theData is NULL but theSize is not 0 than buffer of specified size will be allocated.
-    /// @param theAlloc memory allocator
-    /// @param theSize  buffer size
-    /// @param theData  buffer data allocated by theAlloc
-    pub fn new_handlencollectionbaseallocator(
-        theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_handlencollectionbaseallocator_size(theAlloc, 0)
+    /// **Source:** `NCollection_Buffer.hxx`:54 - `NCollection_Buffer::Data()`
+    /// @return buffer data
+    pub unsafe fn data(&self) -> *const u8 {
+        unsafe { crate::ffi::NCollection_Buffer_data(self as *const Self) }
+    }
+
+    /// **Source:** `NCollection_Buffer.hxx`:57 - `NCollection_Buffer::ChangeData()`
+    /// @return buffer data
+    pub unsafe fn change_data(&mut self) -> *mut u8 {
+        unsafe { crate::ffi::NCollection_Buffer_change_data(self as *mut Self) }
     }
 
     /// **Source:** `NCollection_Buffer.hxx`:60 - `NCollection_Buffer::IsEmpty()`
@@ -1253,25 +1256,6 @@ impl HandleNCollectionBuffer {
         }
     }
 }
-
-// ── Skipped symbols for Buffer (3 total) ──
-// SKIPPED: **Source:** `NCollection_Buffer.hxx`:32 - `NCollection_Buffer::NCollection_Buffer`
-//   constructor: Default constructor.
-//   constructor: When theData is NULL but theSize is not 0 than buffer of specified size will be allocated.
-//   constructor: @param theAlloc memory allocator
-//   Reason: param 'theData' uses unknown type 'Standard_Byte*'
-//   // pub fn new_handlencollectionbaseallocator_size_byteptr(theAlloc: &HandleBaseAllocator, theSize: usize, theData: *mut Byte) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `NCollection_Buffer.hxx`:54 - `NCollection_Buffer::Data`
-//   method: @return buffer data
-//   Reason: return type 'const Standard_Byte*' is unknown
-//   // pub fn data(&self) -> *const Byte;
-//
-// SKIPPED: **Source:** `NCollection_Buffer.hxx`:57 - `NCollection_Buffer::ChangeData`
-//   method: @return buffer data
-//   Reason: return type 'Standard_Byte*' is unknown
-//   // pub fn change_data(&mut self) -> *mut Byte;
-//
 
 // ========================
 // From NCollection_HeapAllocator.hxx

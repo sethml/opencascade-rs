@@ -1341,6 +1341,8 @@ fn parse_type(clang_type: &clang::Type) -> Type {
             "unsigned int" => return Type::U32,
             "unsigned short" | "uint16_t" => return Type::U16,
             "char16_t" => return Type::CHAR16,
+            "unsigned char" | "uint8_t" => return Type::U8,
+            "signed char" | "int8_t" => return Type::I8,
             "short" | "int16_t" => return Type::I16,
             "long" => return Type::Long,
             "unsigned long" => return Type::ULong,
@@ -1565,6 +1567,8 @@ fn map_standard_type(type_name: &str) -> Option<Type> {
         "int16_t" => Some(Type::I16),
         "unsigned short" | "uint16_t" => Some(Type::U16),
         "char16_t" => Some(Type::CHAR16),
+        "unsigned char" | "uint8_t" | "Standard_Byte" | "Standard_Utf8UChar" => Some(Type::U8),
+        "signed char" | "int8_t" => Some(Type::I8),
         "bool" => Some(Type::Bool),
         // Standard_Address is void* - can't be bound through the FFI, but we need to recognize it
         // so methods using it can be filtered out. Using a special class name that is_void_ptr() checks for.

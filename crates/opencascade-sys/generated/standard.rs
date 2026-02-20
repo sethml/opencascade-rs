@@ -5650,6 +5650,26 @@ impl GUID {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_char16ptr(aGuid)) }
     }
 
+    /// **Source:** `Standard_GUID.hxx`:51 - `Standard_GUID::Standard_GUID()`
+    pub fn new_int_char163_u86(
+        a32b: i32,
+        a16b1: u16,
+        a16b2: u16,
+        a16b3: u16,
+        a8b1: u8,
+        a8b2: u8,
+        a8b3: u8,
+        a8b4: u8,
+        a8b5: u8,
+        a8b6: u8,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_int_char163_u86(
+                a32b, a16b1, a16b2, a16b3, a8b1, a8b2, a8b3, a8b4, a8b5, a8b6,
+            ))
+        }
+    }
+
     /// **Source:** `Standard_GUID.hxx`:62 - `Standard_GUID::Standard_GUID()`
     pub fn new_uuid(aGuid: &UUID) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_uuid(aGuid)) }
@@ -5704,11 +5724,7 @@ impl GUID {
     }
 }
 
-// ── Skipped symbols for GUID (3 total) ──
-// SKIPPED: **Source:** `Standard_GUID.hxx`:51 - `Standard_GUID::Standard_GUID`
-//   Reason: param 'a8b1' uses unknown type 'Standard_Byte'
-//   // pub fn new_int_char163_byte6(a32b: i32, a16b1: u16, a16b2: u16, a16b3: u16, a8b1: Byte, a8b2: Byte, a8b3: Byte, a8b4: Byte, a8b5: Byte, a8b6: Byte) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for GUID (2 total) ──
 // SKIPPED: **Source:** `Standard_GUID.hxx`:73 - `Standard_GUID::ToCString`
 //   method: translate the GUID into ascii string
 //   method: the aStrGuid is allocated by user.
@@ -49961,14 +49977,6 @@ unsafe impl crate::CppDeletable for UUID {
     }
 }
 
-impl UUID {
-    /// **Source:** `Standard_UUID.hxx` - `Standard_UUID::Standard_UUID()`
-    /// Default constructor
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_UUID_ctor()) }
-    }
-}
-
 // ========================
 // From Standard_Underflow.hxx
 // ========================
@@ -50224,8 +50232,8 @@ impl HandleStandardUnderflow {
 // ========================
 
 pub use crate::ffi::{
-    Standard_Address as Address, Standard_Byte as Byte, Standard_IStream as IStream,
-    Standard_JmpBuf as JmpBuf, Standard_OStream as OStream, Standard_PCharacter as PCharacter,
+    Standard_Address as Address, Standard_IStream as IStream, Standard_JmpBuf as JmpBuf,
+    Standard_OStream as OStream, Standard_PCharacter as PCharacter,
     Standard_PExtCharacter as PExtCharacter, Standard_SStream as SStream,
     Standard_ThreadId as ThreadId, Standard_Utf16Char as Utf16Char, Standard_WideChar as WideChar,
 };

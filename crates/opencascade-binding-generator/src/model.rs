@@ -469,6 +469,10 @@ pub enum Type {
     F64,
     /// char16_t / Standard_ExtCharacter
     CHAR16,
+    /// unsigned char / Standard_Byte / uint8_t
+    U8,
+    /// signed char / int8_t
+    I8,
     /// const T&
     ConstRef(Box<Type>),
     /// T& (mutable reference)
@@ -507,6 +511,8 @@ impl Type {
             Type::Handle(name) => format!("handle{}", name.to_lowercase().replace('_', "")),
             Type::Class(name) => extract_short_name(name),
             Type::CHAR16 => "char16".to_string(),
+            Type::U8 => "u8".to_string(),
+            Type::I8 => "i8".to_string(),
         }
     }
 
@@ -528,6 +534,8 @@ impl Type {
                 | Type::F32
                 | Type::F64
                 | Type::CHAR16
+                | Type::U8
+                | Type::I8
         )
     }
 
@@ -538,6 +546,7 @@ impl Type {
             self,
             Type::Bool | Type::I32 | Type::U32 | Type::U16 | Type::I16 | Type::I64 | Type::U64
                 | Type::Long | Type::ULong | Type::Usize | Type::F32 | Type::F64 | Type::CHAR16
+                | Type::U8 | Type::I8
         )
     }
 
@@ -735,6 +744,8 @@ impl Type {
             Type::F32 => "float".to_string(),
             Type::F64 => "double".to_string(),
             Type::CHAR16 => "char16_t".to_string(),
+            Type::U8 => "uint8_t".to_string(),
+            Type::I8 => "int8_t".to_string(),
             Type::ConstRef(inner) => format!("const {}&", inner.to_cpp_string()),
             Type::MutRef(inner) => format!("{}&", inner.to_cpp_string()),
             Type::RValueRef(inner) => format!("{}&&", inner.to_cpp_string()),
@@ -780,6 +791,8 @@ impl Type {
             Type::F32 => "f32".to_string(),
             Type::F64 => "f64".to_string(),
             Type::CHAR16 => "u16".to_string(), // Rust doesn't have char16, so we use u16 and rely on callers to convert
+            Type::U8 => "u8".to_string(),
+            Type::I8 => "i8".to_string(),
             Type::ConstRef(inner) => {
                 let inner_str = inner.to_rust_type_string();
                 format!("&{}", inner_str)
@@ -850,6 +863,8 @@ impl Type {
             Type::F32 => "f32".to_string(),
             Type::F64 => "f64".to_string(),
             Type::CHAR16 => "u16".to_string(), // Rust doesn't have char16, so we use u16 and rely on callers to convert
+            Type::U8 => "u8".to_string(),
+            Type::I8 => "i8".to_string(),
             Type::ConstRef(inner) => {
                 let inner_str = inner.to_rust_ffi_type_string();
                 format!("&{}", inner_str)

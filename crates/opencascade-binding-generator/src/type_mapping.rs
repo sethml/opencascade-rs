@@ -107,6 +107,18 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
             needs_pin: false,
             source_module: None,
         },
+        Type::U8 => RustTypeMapping {
+            rust_type: "u8".to_string(),
+            needs_unique_ptr: false,
+            needs_pin: false,
+            source_module: None,
+        },
+        Type::I8 => RustTypeMapping {
+            rust_type: "i8".to_string(),
+            needs_unique_ptr: false,
+            needs_pin: false,
+            source_module: None,
+        },
         Type::ConstRef(inner) => {
             let inner_mapping = map_type_to_rust(inner);
             RustTypeMapping {
@@ -510,6 +522,8 @@ pub fn map_cpp_type_string(cpp_type: &str) -> RustTypeMapping {
         "unsigned int" => return map_type_to_rust(&Type::U32),
         "unsigned short" | "uint16_t" => return map_type_to_rust(&Type::U16),
         "char16_t" | "Standard_ExtCharacter" => return map_type_to_rust(&Type::CHAR16),
+        "unsigned char" | "uint8_t" | "Standard_Byte" | "Standard_Utf8UChar" => return map_type_to_rust(&Type::U8),
+        "signed char" | "int8_t" => return map_type_to_rust(&Type::I8),
         "short" | "int16_t" => return map_type_to_rust(&Type::I16),
         "long" => return map_type_to_rust(&Type::Long),
         "unsigned long" => return map_type_to_rust(&Type::ULong),

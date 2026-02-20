@@ -601,6 +601,8 @@ fn type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeContext>) ->
         Type::F32 => "f32".to_string(),
         Type::F64 => "f64".to_string(),
         Type::CHAR16 => "u16".to_string(),
+        Type::U8 => "u8".to_string(),
+        Type::I8 => "i8".to_string(),
         Type::Class(name) => {
             if name == "char" {
                 "std::ffi::c_char".to_string()
