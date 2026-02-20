@@ -1256,6 +1256,32 @@ impl SurfFunction {
         unsafe { crate::ffi::Contap_SurfFunction_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `Contap_SurfFunction.hxx`:61 - `Contap_SurfFunction::Value()`
+    /// The dimension of F is 1.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::Contap_SurfFunction_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `Contap_SurfFunction.hxx`:64 - `Contap_SurfFunction::Derivatives()`
+    /// The dimension of D is (1,2).
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Contap_SurfFunction_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `Contap_SurfFunction.hxx`:66 - `Contap_SurfFunction::Values()`
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Contap_SurfFunction_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `Contap_SurfFunction.hxx`:70 - `Contap_SurfFunction::Root()`
     /// Root is the value of the function at the solution.
     /// It is a vector of dimension 1, i-e a real.
@@ -1366,22 +1392,6 @@ impl SurfFunction {
         unsafe { crate::ffi::Contap_SurfFunction_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for SurfFunction (3 total) ──
-// SKIPPED: **Source:** `Contap_SurfFunction.hxx`:61 - `Contap_SurfFunction::Value`
-//   method: The dimension of F is 1.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Contap_SurfFunction.hxx`:64 - `Contap_SurfFunction::Derivatives`
-//   method: The dimension of D is (1,2).
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Contap_SurfFunction.hxx`:66 - `Contap_SurfFunction::Values`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
 
 // ========================
 // From Contap_SurfProps.hxx

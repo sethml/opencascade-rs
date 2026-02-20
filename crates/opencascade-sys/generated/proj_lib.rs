@@ -2150,6 +2150,42 @@ impl PrjFunc {
         unsafe { crate::ffi::ProjLib_PrjFunc_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `ProjLib_PrjFunc.hxx`:49 - `ProjLib_PrjFunc::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::ProjLib_PrjFunc_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `ProjLib_PrjFunc.hxx`:55 - `ProjLib_PrjFunc::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::ProjLib_PrjFunc_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `ProjLib_PrjFunc.hxx`:61 - `ProjLib_PrjFunc::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::ProjLib_PrjFunc_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `ProjLib_PrjFunc.hxx`:64 - `ProjLib_PrjFunc::Solution()`
     /// returns  point  on  surface
     pub fn solution(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
@@ -2193,29 +2229,6 @@ impl PrjFunc {
         unsafe { crate::ffi::ProjLib_PrjFunc_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for PrjFunc (3 total) ──
-// SKIPPED: **Source:** `ProjLib_PrjFunc.hxx`:49 - `ProjLib_PrjFunc::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `ProjLib_PrjFunc.hxx`:55 - `ProjLib_PrjFunc::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `ProjLib_PrjFunc.hxx`:61 - `ProjLib_PrjFunc::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
 
 // ========================
 // From ProjLib_PrjResolve.hxx

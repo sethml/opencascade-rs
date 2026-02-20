@@ -158,6 +158,33 @@ impl CCLocFOfLocECC {
         unsafe { crate::ffi::Extrema_CCLocFOfLocECC_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:59 - `Extrema_CCLocFOfLocECC::Value()`
+    /// Calculate Fi(U,V).
+    pub fn value(&mut self, UV: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_value(self as *mut Self, UV, F) }
+    }
+
+    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:63 - `Extrema_CCLocFOfLocECC::Derivatives()`
+    /// Calculate Fi'(U,V).
+    pub fn derivatives(
+        &mut self,
+        UV: &crate::ffi::math_Vector,
+        DF: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_derivatives(self as *mut Self, UV, DF) }
+    }
+
+    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:67 - `Extrema_CCLocFOfLocECC::Values()`
+    /// Calculate Fi(U,V) and Fi'(U,V).
+    pub fn values(
+        &mut self,
+        UV: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        DF: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_values(self as *mut Self, UV, F, DF) }
+    }
+
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:72 - `Extrema_CCLocFOfLocECC::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
@@ -187,6 +214,22 @@ impl CCLocFOfLocECC {
     /// or in SetTolerance() method.
     pub fn tolerance(&self) -> f64 {
         unsafe { crate::ffi::Extrema_CCLocFOfLocECC_tolerance(self as *const Self) }
+    }
+
+    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:94 - `Extrema_CCLocFOfLocECC::SubIntervalInitialize()`
+    /// Determines of boundaries of subinterval for find of root.
+    pub fn sub_interval_initialize(
+        &mut self,
+        theUfirst: &crate::ffi::math_Vector,
+        theUlast: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::Extrema_CCLocFOfLocECC_sub_interval_initialize(
+                self as *mut Self,
+                theUfirst,
+                theUlast,
+            )
+        }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
@@ -224,32 +267,12 @@ impl CCLocFOfLocECC {
     }
 }
 
-// ── Skipped symbols for CCLocFOfLocECC (6 total) ──
-// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC.hxx`:59 - `Extrema_CCLocFOfLocECC::Value`
-//   method: Calculate Fi(U,V).
-//   Reason: param 'UV' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, UV: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC.hxx`:63 - `Extrema_CCLocFOfLocECC::Derivatives`
-//   method: Calculate Fi'(U,V).
-//   Reason: param 'UV' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, UV: &Vector, DF: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC.hxx`:67 - `Extrema_CCLocFOfLocECC::Values`
-//   method: Calculate Fi(U,V) and Fi'(U,V).
-//   Reason: param 'UV' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, UV: &Vector, F: &mut Vector, DF: &mut Matrix) -> bool;
-//
+// ── Skipped symbols for CCLocFOfLocECC (2 total) ──
 // SKIPPED: **Source:** `Extrema_CCLocFOfLocECC.hxx`:87 - `Extrema_CCLocFOfLocECC::CurvePtr`
 //   method: Returns a pointer to the curve specified in the constructor
 //   method: or in SetCurve() method.
 //   Reason: has unbindable types: return: void pointer (Standard_Address)
 //   // pub fn curve_ptr(&self, theRank: i32) -> OwnedPtr<Standard_Address>;
-//
-// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC.hxx`:94 - `Extrema_CCLocFOfLocECC::SubIntervalInitialize`
-//   method: Determines of boundaries of subinterval for find of root.
-//   Reason: param 'theUfirst' uses unknown type 'const math_Vector&'
-//   // pub fn sub_interval_initialize(&mut self, theUfirst: &Vector, theUlast: &Vector);
 //
 // SKIPPED: **Source:** `Extrema_CCLocFOfLocECC.hxx`:99 - `Extrema_CCLocFOfLocECC::SearchOfTolerance`
 //   method: Computes a Tol value. If 1st derivative of curve
@@ -323,6 +346,33 @@ impl CCLocFOfLocECC2d {
         unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:59 - `Extrema_CCLocFOfLocECC2d::Value()`
+    /// Calculate Fi(U,V).
+    pub fn value(&mut self, UV: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_value(self as *mut Self, UV, F) }
+    }
+
+    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:63 - `Extrema_CCLocFOfLocECC2d::Derivatives()`
+    /// Calculate Fi'(U,V).
+    pub fn derivatives(
+        &mut self,
+        UV: &crate::ffi::math_Vector,
+        DF: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_derivatives(self as *mut Self, UV, DF) }
+    }
+
+    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:67 - `Extrema_CCLocFOfLocECC2d::Values()`
+    /// Calculate Fi(U,V) and Fi'(U,V).
+    pub fn values(
+        &mut self,
+        UV: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        DF: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_values(self as *mut Self, UV, F, DF) }
+    }
+
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:72 - `Extrema_CCLocFOfLocECC2d::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
@@ -352,6 +402,22 @@ impl CCLocFOfLocECC2d {
     /// or in SetTolerance() method.
     pub fn tolerance(&self) -> f64 {
         unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_tolerance(self as *const Self) }
+    }
+
+    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:94 - `Extrema_CCLocFOfLocECC2d::SubIntervalInitialize()`
+    /// Determines of boundaries of subinterval for find of root.
+    pub fn sub_interval_initialize(
+        &mut self,
+        theUfirst: &crate::ffi::math_Vector,
+        theUlast: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::Extrema_CCLocFOfLocECC2d_sub_interval_initialize(
+                self as *mut Self,
+                theUfirst,
+                theUlast,
+            )
+        }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
@@ -389,32 +455,12 @@ impl CCLocFOfLocECC2d {
     }
 }
 
-// ── Skipped symbols for CCLocFOfLocECC2d (6 total) ──
-// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:59 - `Extrema_CCLocFOfLocECC2d::Value`
-//   method: Calculate Fi(U,V).
-//   Reason: param 'UV' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, UV: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:63 - `Extrema_CCLocFOfLocECC2d::Derivatives`
-//   method: Calculate Fi'(U,V).
-//   Reason: param 'UV' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, UV: &Vector, DF: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:67 - `Extrema_CCLocFOfLocECC2d::Values`
-//   method: Calculate Fi(U,V) and Fi'(U,V).
-//   Reason: param 'UV' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, UV: &Vector, F: &mut Vector, DF: &mut Matrix) -> bool;
-//
+// ── Skipped symbols for CCLocFOfLocECC2d (2 total) ──
 // SKIPPED: **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:87 - `Extrema_CCLocFOfLocECC2d::CurvePtr`
 //   method: Returns a pointer to the curve specified in the constructor
 //   method: or in SetCurve() method.
 //   Reason: has unbindable types: return: void pointer (Standard_Address)
 //   // pub fn curve_ptr(&self, theRank: i32) -> OwnedPtr<Standard_Address>;
-//
-// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:94 - `Extrema_CCLocFOfLocECC2d::SubIntervalInitialize`
-//   method: Determines of boundaries of subinterval for find of root.
-//   Reason: param 'theUfirst' uses unknown type 'const math_Vector&'
-//   // pub fn sub_interval_initialize(&mut self, theUfirst: &Vector, theUlast: &Vector);
 //
 // SKIPPED: **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:99 - `Extrema_CCLocFOfLocECC2d::SearchOfTolerance`
 //   method: Computes a Tol value. If 1st derivative of curve
@@ -5216,6 +5262,33 @@ impl FuncExtCS {
         unsafe { crate::ffi::Extrema_FuncExtCS_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `Extrema_FuncExtCS.hxx`:54 - `Extrema_FuncExtCS::Value()`
+    /// Calculation of Fi(U,V).
+    pub fn value(&mut self, UV: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::Extrema_FuncExtCS_value(self as *mut Self, UV, F) }
+    }
+
+    /// **Source:** `Extrema_FuncExtCS.hxx`:57 - `Extrema_FuncExtCS::Derivatives()`
+    /// Calculation of Fi'(U,V).
+    pub fn derivatives(
+        &mut self,
+        UV: &crate::ffi::math_Vector,
+        DF: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Extrema_FuncExtCS_derivatives(self as *mut Self, UV, DF) }
+    }
+
+    /// **Source:** `Extrema_FuncExtCS.hxx`:61 - `Extrema_FuncExtCS::Values()`
+    /// Calculation of Fi(U,V) and Fi'(U,V).
+    pub fn values(
+        &mut self,
+        UV: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        DF: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Extrema_FuncExtCS_values(self as *mut Self, UV, F, DF) }
+    }
+
     /// **Source:** `Extrema_FuncExtCS.hxx`:66 - `Extrema_FuncExtCS::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
@@ -5297,23 +5370,6 @@ impl FuncExtCS {
     }
 }
 
-// ── Skipped symbols for FuncExtCS (3 total) ──
-// SKIPPED: **Source:** `Extrema_FuncExtCS.hxx`:54 - `Extrema_FuncExtCS::Value`
-//   method: Calculation of Fi(U,V).
-//   Reason: param 'UV' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, UV: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_FuncExtCS.hxx`:57 - `Extrema_FuncExtCS::Derivatives`
-//   method: Calculation of Fi'(U,V).
-//   Reason: param 'UV' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, UV: &Vector, DF: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_FuncExtCS.hxx`:61 - `Extrema_FuncExtCS::Values`
-//   method: Calculation of Fi(U,V) and Fi'(U,V).
-//   Reason: param 'UV' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, UV: &Vector, F: &mut Vector, DF: &mut Matrix) -> bool;
-//
-
 // ========================
 // From Extrema_FuncExtSS.hxx
 // ========================
@@ -5357,6 +5413,33 @@ impl FuncExtSS {
     /// **Source:** `Extrema_FuncExtSS.hxx`:48 - `Extrema_FuncExtSS::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
         unsafe { crate::ffi::Extrema_FuncExtSS_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `Extrema_FuncExtSS.hxx`:51 - `Extrema_FuncExtSS::Value()`
+    /// Calculate Fi(U,V).
+    pub fn value(&mut self, UV: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::Extrema_FuncExtSS_value(self as *mut Self, UV, F) }
+    }
+
+    /// **Source:** `Extrema_FuncExtSS.hxx`:54 - `Extrema_FuncExtSS::Derivatives()`
+    /// Calculate Fi'(U,V).
+    pub fn derivatives(
+        &mut self,
+        UV: &crate::ffi::math_Vector,
+        DF: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Extrema_FuncExtSS_derivatives(self as *mut Self, UV, DF) }
+    }
+
+    /// **Source:** `Extrema_FuncExtSS.hxx`:58 - `Extrema_FuncExtSS::Values()`
+    /// Calculate Fi(U,V) and Fi'(U,V).
+    pub fn values(
+        &mut self,
+        UV: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        DF: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Extrema_FuncExtSS_values(self as *mut Self, UV, F, DF) }
     }
 
     /// **Source:** `Extrema_FuncExtSS.hxx`:63 - `Extrema_FuncExtSS::GetStateNumber()`
@@ -5422,23 +5505,6 @@ impl FuncExtSS {
     }
 }
 
-// ── Skipped symbols for FuncExtSS (3 total) ──
-// SKIPPED: **Source:** `Extrema_FuncExtSS.hxx`:51 - `Extrema_FuncExtSS::Value`
-//   method: Calculate Fi(U,V).
-//   Reason: param 'UV' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, UV: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_FuncExtSS.hxx`:54 - `Extrema_FuncExtSS::Derivatives`
-//   method: Calculate Fi'(U,V).
-//   Reason: param 'UV' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, UV: &Vector, DF: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_FuncExtSS.hxx`:58 - `Extrema_FuncExtSS::Values`
-//   method: Calculate Fi(U,V) and Fi'(U,V).
-//   Reason: param 'UV' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, UV: &Vector, F: &mut Vector, DF: &mut Matrix) -> bool;
-//
-
 // ========================
 // From Extrema_FuncPSDist.hxx
 // ========================
@@ -5484,6 +5550,33 @@ impl FuncPSDist {
         unsafe { crate::ffi::Extrema_FuncPSDist_nb_variables(self as *const Self) }
     }
 
+    /// **Source:** `Extrema_FuncPSDist.hxx`:58 - `Extrema_FuncPSDist::Value()`
+    /// Value.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+        unsafe { crate::ffi::Extrema_FuncPSDist_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `Extrema_FuncPSDist.hxx`:61 - `Extrema_FuncPSDist::Gradient()`
+    /// Gradient.
+    pub fn gradient(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::Extrema_FuncPSDist_gradient(self as *mut Self, X, G) }
+    }
+
+    /// **Source:** `Extrema_FuncPSDist.hxx`:64 - `Extrema_FuncPSDist::Values()`
+    /// Value and gradient.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::Extrema_FuncPSDist_values(self as *mut Self, X, F, G) }
+    }
+
     /// Upcast to math_MultipleVarFunctionWithGradient
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
@@ -5527,23 +5620,6 @@ impl FuncPSDist {
         unsafe { crate::ffi::Extrema_FuncPSDist_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for FuncPSDist (3 total) ──
-// SKIPPED: **Source:** `Extrema_FuncPSDist.hxx`:58 - `Extrema_FuncPSDist::Value`
-//   method: Value.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_FuncPSDist.hxx`:61 - `Extrema_FuncPSDist::Gradient`
-//   method: Gradient.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_FuncPSDist.hxx`:64 - `Extrema_FuncPSDist::Values`
-//   method: Value and gradient.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
-//
 
 // ========================
 // From Extrema_FuncPSNorm.hxx
@@ -5614,6 +5690,33 @@ impl FuncPSNorm {
         unsafe { crate::ffi::Extrema_FuncPSNorm_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `Extrema_FuncPSNorm.hxx`:74 - `Extrema_FuncPSNorm::Value()`
+    /// Calculate Fi(U,V).
+    pub fn value(&mut self, UV: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::Extrema_FuncPSNorm_value(self as *mut Self, UV, F) }
+    }
+
+    /// **Source:** `Extrema_FuncPSNorm.hxx`:77 - `Extrema_FuncPSNorm::Derivatives()`
+    /// Calculate Fi'(U,V).
+    pub fn derivatives(
+        &mut self,
+        UV: &crate::ffi::math_Vector,
+        DF: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Extrema_FuncPSNorm_derivatives(self as *mut Self, UV, DF) }
+    }
+
+    /// **Source:** `Extrema_FuncPSNorm.hxx`:81 - `Extrema_FuncPSNorm::Values()`
+    /// Calculate Fi(U,V) and Fi'(U,V).
+    pub fn values(
+        &mut self,
+        UV: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        DF: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Extrema_FuncPSNorm_values(self as *mut Self, UV, F, DF) }
+    }
+
     /// **Source:** `Extrema_FuncPSNorm.hxx`:86 - `Extrema_FuncPSNorm::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
@@ -5670,23 +5773,6 @@ impl FuncPSNorm {
         unsafe { &mut *(crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSet_mut(self as *mut Self)) }
     }
 }
-
-// ── Skipped symbols for FuncPSNorm (3 total) ──
-// SKIPPED: **Source:** `Extrema_FuncPSNorm.hxx`:74 - `Extrema_FuncPSNorm::Value`
-//   method: Calculate Fi(U,V).
-//   Reason: param 'UV' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, UV: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_FuncPSNorm.hxx`:77 - `Extrema_FuncPSNorm::Derivatives`
-//   method: Calculate Fi'(U,V).
-//   Reason: param 'UV' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, UV: &Vector, DF: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_FuncPSNorm.hxx`:81 - `Extrema_FuncPSNorm::Values`
-//   method: Calculate Fi(U,V) and Fi'(U,V).
-//   Reason: param 'UV' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, UV: &Vector, F: &mut Vector, DF: &mut Matrix) -> bool;
-//
 
 // ========================
 // From Extrema_GenExtCS.hxx
@@ -6578,6 +6664,11 @@ impl GlobOptFuncCCC0 {
         unsafe { crate::ffi::Extrema_GlobOptFuncCCC0_nb_variables(self as *const Self) }
     }
 
+    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:36 - `Extrema_GlobOptFuncCCC0::Value()`
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+        unsafe { crate::ffi::Extrema_GlobOptFuncCCC0_value(self as *mut Self, X, F) }
+    }
+
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
         unsafe {
@@ -6599,12 +6690,6 @@ impl GlobOptFuncCCC0 {
         unsafe { crate::ffi::Extrema_GlobOptFuncCCC0_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for GlobOptFuncCCC0 (1 total) ──
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCC.hxx`:36 - `Extrema_GlobOptFuncCCC0::Value`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
-//
 
 /// **Source:** `Extrema_GlobOptFuncCC.hxx`:48 - `Extrema_GlobOptFuncCCC1`
 /// This class implements function which calculate Eucluidean distance
@@ -6641,6 +6726,30 @@ impl GlobOptFuncCCC1 {
     /// **Source:** `Extrema_GlobOptFuncCC.hxx`:55 - `Extrema_GlobOptFuncCCC1::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_nb_variables(self as *const Self) }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:57 - `Extrema_GlobOptFuncCCC1::Value()`
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+        unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:59 - `Extrema_GlobOptFuncCCC1::Gradient()`
+    pub fn gradient(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_gradient(self as *mut Self, X, G) }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:61 - `Extrema_GlobOptFuncCCC1::Values()`
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_values(self as *mut Self, X, F, G) }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient
@@ -6687,20 +6796,6 @@ impl GlobOptFuncCCC1 {
     }
 }
 
-// ── Skipped symbols for GlobOptFuncCCC1 (3 total) ──
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCC.hxx`:57 - `Extrema_GlobOptFuncCCC1::Value`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCC.hxx`:59 - `Extrema_GlobOptFuncCCC1::Gradient`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCC.hxx`:61 - `Extrema_GlobOptFuncCCC1::Values`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
-//
-
 /// **Source:** `Extrema_GlobOptFuncCC.hxx`:75 - `Extrema_GlobOptFuncCCC2`
 /// This class implements function which calculate Eucluidean distance
 /// between point on curve and point on other curve in case of C1 and C2 continuity is C2.
@@ -6736,6 +6831,56 @@ impl GlobOptFuncCCC2 {
     /// **Source:** `Extrema_GlobOptFuncCC.hxx`:82 - `Extrema_GlobOptFuncCCC2::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_nb_variables(self as *const Self) }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:84 - `Extrema_GlobOptFuncCCC2::Value()`
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+        unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:86 - `Extrema_GlobOptFuncCCC2::Gradient()`
+    pub fn gradient(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_gradient(self as *mut Self, X, G) }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:88 - `Extrema_GlobOptFuncCCC2::Values()`
+    pub fn values_vector_real_vector(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Extrema_GlobOptFuncCCC2_values_vector_real_vector(
+                self as *mut Self,
+                X,
+                F,
+                G,
+            )
+        }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:92 - `Extrema_GlobOptFuncCCC2::Values()`
+    pub fn values_vector_real_vector_matrix(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+        H: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Extrema_GlobOptFuncCCC2_values_vector_real_vector_matrix(
+                self as *mut Self,
+                X,
+                F,
+                G,
+                H,
+            )
+        }
     }
 
     /// Upcast to math_MultipleVarFunctionWithHessian
@@ -6803,24 +6948,6 @@ impl GlobOptFuncCCC2 {
         unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for GlobOptFuncCCC2 (4 total) ──
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCC.hxx`:84 - `Extrema_GlobOptFuncCCC2::Value`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCC.hxx`:86 - `Extrema_GlobOptFuncCCC2::Gradient`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCC.hxx`:88 - `Extrema_GlobOptFuncCCC2::Values`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCC.hxx`:92 - `Extrema_GlobOptFuncCCC2::Values`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector, H: &mut Matrix) -> bool;
-//
 
 // ========================
 // From Extrema_GlobOptFuncCQuadric.hxx
@@ -6904,6 +7031,27 @@ impl GlobOptFuncCQuadric {
         unsafe { crate::ffi::Extrema_GlobOptFuncCQuadric_nb_variables(self as *const Self) }
     }
 
+    /// **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:48 - `Extrema_GlobOptFuncCQuadric::Value()`
+    pub fn value(&mut self, theX: &crate::ffi::math_Vector, theF: &mut f64) -> bool {
+        unsafe { crate::ffi::Extrema_GlobOptFuncCQuadric_value(self as *mut Self, theX, theF) }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:50 - `Extrema_GlobOptFuncCQuadric::QuadricParameters()`
+    /// Parameters of quadric for point on curve defined by theCT
+    pub fn quadric_parameters(
+        &self,
+        theCT: &crate::ffi::math_Vector,
+        theUV: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::Extrema_GlobOptFuncCQuadric_quadric_parameters(
+                self as *const Self,
+                theCT,
+                theUV,
+            )
+        }
+    }
+
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
         unsafe {
@@ -6929,17 +7077,6 @@ impl GlobOptFuncCQuadric {
         }
     }
 }
-
-// ── Skipped symbols for GlobOptFuncCQuadric (2 total) ──
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:48 - `Extrema_GlobOptFuncCQuadric::Value`
-//   Reason: param 'theX' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, theX: &Vector, theF: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:50 - `Extrema_GlobOptFuncCQuadric::QuadricParameters`
-//   method: Parameters of quadric for point on curve defined by theCT
-//   Reason: param 'theCT' uses unknown type 'const math_Vector&'
-//   // pub fn quadric_parameters(&self, theCT: &Vector, theUV: &mut Vector);
-//
 
 // ========================
 // From Extrema_GlobOptFuncCS.hxx
@@ -6974,6 +7111,56 @@ impl GlobOptFuncCS {
     /// **Source:** `Extrema_GlobOptFuncCS.hxx`:32 - `Extrema_GlobOptFuncCS::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::Extrema_GlobOptFuncCS_nb_variables(self as *const Self) }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncCS.hxx`:34 - `Extrema_GlobOptFuncCS::Value()`
+    pub fn value(&mut self, theX: &crate::ffi::math_Vector, theF: &mut f64) -> bool {
+        unsafe { crate::ffi::Extrema_GlobOptFuncCS_value(self as *mut Self, theX, theF) }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncCS.hxx`:36 - `Extrema_GlobOptFuncCS::Gradient()`
+    pub fn gradient(
+        &mut self,
+        theX: &crate::ffi::math_Vector,
+        theG: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::Extrema_GlobOptFuncCS_gradient(self as *mut Self, theX, theG) }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncCS.hxx`:38 - `Extrema_GlobOptFuncCS::Values()`
+    pub fn values_vector_real_vector(
+        &mut self,
+        theX: &crate::ffi::math_Vector,
+        theF: &mut f64,
+        theG: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Extrema_GlobOptFuncCS_values_vector_real_vector(
+                self as *mut Self,
+                theX,
+                theF,
+                theG,
+            )
+        }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncCS.hxx`:42 - `Extrema_GlobOptFuncCS::Values()`
+    pub fn values_vector_real_vector_matrix(
+        &mut self,
+        theX: &crate::ffi::math_Vector,
+        theF: &mut f64,
+        theG: &mut crate::ffi::math_Vector,
+        theH: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Extrema_GlobOptFuncCS_values_vector_real_vector_matrix(
+                self as *mut Self,
+                theX,
+                theF,
+                theG,
+                theH,
+            )
+        }
     }
 
     /// Upcast to math_MultipleVarFunctionWithHessian
@@ -7041,24 +7228,6 @@ impl GlobOptFuncCS {
         unsafe { crate::ffi::Extrema_GlobOptFuncCS_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for GlobOptFuncCS (4 total) ──
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCS.hxx`:34 - `Extrema_GlobOptFuncCS::Value`
-//   Reason: param 'theX' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, theX: &Vector, theF: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCS.hxx`:36 - `Extrema_GlobOptFuncCS::Gradient`
-//   Reason: param 'theX' uses unknown type 'const math_Vector&'
-//   // pub fn gradient(&mut self, theX: &Vector, theG: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCS.hxx`:38 - `Extrema_GlobOptFuncCS::Values`
-//   Reason: param 'theX' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, theX: &Vector, theF: &mut f64, theG: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_GlobOptFuncCS.hxx`:42 - `Extrema_GlobOptFuncCS::Values`
-//   Reason: param 'theX' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, theX: &Vector, theF: &mut f64, theG: &mut Vector, theH: &mut Matrix) -> bool;
-//
 
 // ========================
 // From Extrema_GlobOptFuncConicS.hxx
@@ -7137,6 +7306,17 @@ impl GlobOptFuncConicS {
         unsafe { crate::ffi::Extrema_GlobOptFuncConicS_nb_variables(self as *const Self) }
     }
 
+    /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:49 - `Extrema_GlobOptFuncConicS::Value()`
+    pub fn value(&mut self, theX: &crate::ffi::math_Vector, theF: &mut f64) -> bool {
+        unsafe { crate::ffi::Extrema_GlobOptFuncConicS_value(self as *mut Self, theX, theF) }
+    }
+
+    /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:52 - `Extrema_GlobOptFuncConicS::ConicParameter()`
+    /// Parameter of conic for point on surface defined by theUV
+    pub fn conic_parameter(&self, theUV: &crate::ffi::math_Vector) -> f64 {
+        unsafe { crate::ffi::Extrema_GlobOptFuncConicS_conic_parameter(self as *const Self, theUV) }
+    }
+
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
         unsafe {
@@ -7160,17 +7340,6 @@ impl GlobOptFuncConicS {
         unsafe { crate::ffi::Extrema_GlobOptFuncConicS_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for GlobOptFuncConicS (2 total) ──
-// SKIPPED: **Source:** `Extrema_GlobOptFuncConicS.hxx`:49 - `Extrema_GlobOptFuncConicS::Value`
-//   Reason: param 'theX' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, theX: &Vector, theF: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `Extrema_GlobOptFuncConicS.hxx`:52 - `Extrema_GlobOptFuncConicS::ConicParameter`
-//   method: Parameter of conic for point on surface defined by theUV
-//   Reason: param 'theUV' uses unknown type 'const math_Vector&'
-//   // pub fn conic_parameter(&self, theUV: &Vector) -> f64;
-//
 
 // ========================
 // From Extrema_HArray1OfPOnCurv.hxx

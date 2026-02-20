@@ -593,6 +593,261 @@ impl ChBuilder {
         }
     }
 
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:143 - `ChFi3d_ChBuilder::SimulSurf()`
+    pub fn simul_surf_handlechfidssurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_real4_bool6_vector(
+        &mut self,
+        Data: &mut crate::ffi::HandleChFiDSSurfData,
+        Guide: &crate::ffi::HandleChFiDSElSpine,
+        Spine: &crate::ffi::HandleChFiDSSpine,
+        Choix: i32,
+        S1: &crate::ffi::HandleBRepAdaptorSurface,
+        I1: &crate::ffi::HandleAdaptor3dTopolTool,
+        PC1: &crate::ffi::HandleBRepAdaptorCurve2d,
+        Sref1: &crate::ffi::HandleBRepAdaptorSurface,
+        PCref1: &crate::ffi::HandleBRepAdaptorCurve2d,
+        Decroch1: &mut bool,
+        S2: &crate::ffi::HandleBRepAdaptorSurface,
+        I2: &crate::ffi::HandleAdaptor3dTopolTool,
+        Or2: crate::top_abs::Orientation,
+        Fleche: f64,
+        TolGuide: f64,
+        First: &mut f64,
+        Last: &mut f64,
+        Inside: bool,
+        Appro: bool,
+        Forward: bool,
+        RecP: bool,
+        RecS: bool,
+        RecRst: bool,
+        Soldep: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::ChFi3d_ChBuilder_simul_surf_handlechfidssurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_real4_bool6_vector(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, PC1, Sref1, PCref1, Decroch1, S2, I2, Or2.into(), Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecP, RecS, RecRst, Soldep)
+        }
+    }
+
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:168 - `ChFi3d_ChBuilder::SimulSurf()`
+    pub fn simul_surf_handlechfidssurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_real4_bool6_vector(
+        &mut self,
+        Data: &mut crate::ffi::HandleChFiDSSurfData,
+        Guide: &crate::ffi::HandleChFiDSElSpine,
+        Spine: &crate::ffi::HandleChFiDSSpine,
+        Choix: i32,
+        S1: &crate::ffi::HandleBRepAdaptorSurface,
+        I1: &crate::ffi::HandleAdaptor3dTopolTool,
+        Or1: crate::top_abs::Orientation,
+        S2: &crate::ffi::HandleBRepAdaptorSurface,
+        I2: &crate::ffi::HandleAdaptor3dTopolTool,
+        PC2: &crate::ffi::HandleBRepAdaptorCurve2d,
+        Sref2: &crate::ffi::HandleBRepAdaptorSurface,
+        PCref2: &crate::ffi::HandleBRepAdaptorCurve2d,
+        Decroch2: &mut bool,
+        Fleche: f64,
+        TolGuide: f64,
+        First: &mut f64,
+        Last: &mut f64,
+        Inside: bool,
+        Appro: bool,
+        Forward: bool,
+        RecP: bool,
+        RecS: bool,
+        RecRst: bool,
+        Soldep: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::ChFi3d_ChBuilder_simul_surf_handlechfidssurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_real4_bool6_vector(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, Or1.into(), S2, I2, PC2, Sref2, PCref2, Decroch2, Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecP, RecS, RecRst, Soldep)
+        }
+    }
+
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:193 - `ChFi3d_ChBuilder::SimulSurf()`
+    pub fn simul_surf_handlechfidssurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_real4_bool7_vector(
+        &mut self,
+        Data: &mut crate::ffi::HandleChFiDSSurfData,
+        Guide: &crate::ffi::HandleChFiDSElSpine,
+        Spine: &crate::ffi::HandleChFiDSSpine,
+        Choix: i32,
+        S1: &crate::ffi::HandleBRepAdaptorSurface,
+        I1: &crate::ffi::HandleAdaptor3dTopolTool,
+        PC1: &crate::ffi::HandleBRepAdaptorCurve2d,
+        Sref1: &crate::ffi::HandleBRepAdaptorSurface,
+        PCref1: &crate::ffi::HandleBRepAdaptorCurve2d,
+        Decroch1: &mut bool,
+        Or1: crate::top_abs::Orientation,
+        S2: &crate::ffi::HandleBRepAdaptorSurface,
+        I2: &crate::ffi::HandleAdaptor3dTopolTool,
+        PC2: &crate::ffi::HandleBRepAdaptorCurve2d,
+        Sref2: &crate::ffi::HandleBRepAdaptorSurface,
+        PCref2: &crate::ffi::HandleBRepAdaptorCurve2d,
+        Decroch2: &mut bool,
+        Or2: crate::top_abs::Orientation,
+        Fleche: f64,
+        TolGuide: f64,
+        First: &mut f64,
+        Last: &mut f64,
+        Inside: bool,
+        Appro: bool,
+        Forward: bool,
+        RecP1: bool,
+        RecRst1: bool,
+        RecP2: bool,
+        RecRst2: bool,
+        Soldep: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::ChFi3d_ChBuilder_simul_surf_handlechfidssurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_real4_bool7_vector(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, PC1, Sref1, PCref1, Decroch1, Or1.into(), S2, I2, PC2, Sref2, PCref2, Decroch2, Or2.into(), Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecP1, RecRst1, RecP2, RecRst2, Soldep)
+        }
+    }
+
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:227 - `ChFi3d_ChBuilder::PerformSurf()`
+    /// Methode, implemented in inheritants, calculates
+    /// the elements of construction of  the surface (fillet
+    /// or chamfer).
+    pub fn perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorsurface_handleadaptor3dtopoltool_real5_bool5_vector_int2(
+        &mut self,
+        Data: &mut crate::ffi::ChFiDS_SequenceOfSurfData,
+        Guide: &crate::ffi::HandleChFiDSElSpine,
+        Spine: &crate::ffi::HandleChFiDSSpine,
+        Choix: i32,
+        S1: &crate::ffi::HandleBRepAdaptorSurface,
+        I1: &crate::ffi::HandleAdaptor3dTopolTool,
+        S2: &crate::ffi::HandleBRepAdaptorSurface,
+        I2: &crate::ffi::HandleAdaptor3dTopolTool,
+        MaxStep: f64,
+        Fleche: f64,
+        TolGuide: f64,
+        First: &mut f64,
+        Last: &mut f64,
+        Inside: bool,
+        Appro: bool,
+        Forward: bool,
+        RecOnS1: bool,
+        RecOnS2: bool,
+        Soldep: &crate::ffi::math_Vector,
+        Intf: &mut i32,
+        Intl: &mut i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorsurface_handleadaptor3dtopoltool_real5_bool5_vector_int2(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, S2, I2, MaxStep, Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecOnS1, RecOnS2, Soldep, Intf, Intl)
+        }
+    }
+
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:252 - `ChFi3d_ChBuilder::PerformSurf()`
+    /// Method, implemented in  the inheritants, calculates
+    /// the elements of construction of  the surface (fillet
+    /// or chamfer) contact edge/face.
+    pub fn perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_real5_bool6_vector(
+        &mut self,
+        Data: &mut crate::ffi::ChFiDS_SequenceOfSurfData,
+        Guide: &crate::ffi::HandleChFiDSElSpine,
+        Spine: &crate::ffi::HandleChFiDSSpine,
+        Choix: i32,
+        S1: &crate::ffi::HandleBRepAdaptorSurface,
+        I1: &crate::ffi::HandleAdaptor3dTopolTool,
+        PC1: &crate::ffi::HandleBRepAdaptorCurve2d,
+        Sref1: &crate::ffi::HandleBRepAdaptorSurface,
+        PCref1: &crate::ffi::HandleBRepAdaptorCurve2d,
+        Decroch1: &mut bool,
+        S2: &crate::ffi::HandleBRepAdaptorSurface,
+        I2: &crate::ffi::HandleAdaptor3dTopolTool,
+        Or2: crate::top_abs::Orientation,
+        MaxStep: f64,
+        Fleche: f64,
+        TolGuide: f64,
+        First: &mut f64,
+        Last: &mut f64,
+        Inside: bool,
+        Appro: bool,
+        Forward: bool,
+        RecP: bool,
+        RecS: bool,
+        RecRst: bool,
+        Soldep: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_real5_bool6_vector(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, PC1, Sref1, PCref1, Decroch1, S2, I2, Or2.into(), MaxStep, Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecP, RecS, RecRst, Soldep)
+        }
+    }
+
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:281 - `ChFi3d_ChBuilder::PerformSurf()`
+    /// Method, implemented in inheritants, calculates
+    /// the elements of construction of  the surface (fillet
+    /// or chamfer) contact edge/face.
+    pub fn perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_real5_bool6_vector(
+        &mut self,
+        Data: &mut crate::ffi::ChFiDS_SequenceOfSurfData,
+        Guide: &crate::ffi::HandleChFiDSElSpine,
+        Spine: &crate::ffi::HandleChFiDSSpine,
+        Choix: i32,
+        S1: &crate::ffi::HandleBRepAdaptorSurface,
+        I1: &crate::ffi::HandleAdaptor3dTopolTool,
+        Or1: crate::top_abs::Orientation,
+        S2: &crate::ffi::HandleBRepAdaptorSurface,
+        I2: &crate::ffi::HandleAdaptor3dTopolTool,
+        PC2: &crate::ffi::HandleBRepAdaptorCurve2d,
+        Sref2: &crate::ffi::HandleBRepAdaptorSurface,
+        PCref2: &crate::ffi::HandleBRepAdaptorCurve2d,
+        Decroch2: &mut bool,
+        MaxStep: f64,
+        Fleche: f64,
+        TolGuide: f64,
+        First: &mut f64,
+        Last: &mut f64,
+        Inside: bool,
+        Appro: bool,
+        Forward: bool,
+        RecP: bool,
+        RecS: bool,
+        RecRst: bool,
+        Soldep: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_real5_bool6_vector(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, Or1.into(), S2, I2, PC2, Sref2, PCref2, Decroch2, MaxStep, Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecP, RecS, RecRst, Soldep)
+        }
+    }
+
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:310 - `ChFi3d_ChBuilder::PerformSurf()`
+    /// Method, implemented in  inheritants, calculates
+    /// the elements of construction of  the surface (fillet
+    /// or chamfer) contact edge/edge.
+    pub fn perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_real5_bool7_vector(
+        &mut self,
+        Data: &mut crate::ffi::ChFiDS_SequenceOfSurfData,
+        Guide: &crate::ffi::HandleChFiDSElSpine,
+        Spine: &crate::ffi::HandleChFiDSSpine,
+        Choix: i32,
+        S1: &crate::ffi::HandleBRepAdaptorSurface,
+        I1: &crate::ffi::HandleAdaptor3dTopolTool,
+        PC1: &crate::ffi::HandleBRepAdaptorCurve2d,
+        Sref1: &crate::ffi::HandleBRepAdaptorSurface,
+        PCref1: &crate::ffi::HandleBRepAdaptorCurve2d,
+        Decroch1: &mut bool,
+        Or1: crate::top_abs::Orientation,
+        S2: &crate::ffi::HandleBRepAdaptorSurface,
+        I2: &crate::ffi::HandleAdaptor3dTopolTool,
+        PC2: &crate::ffi::HandleBRepAdaptorCurve2d,
+        Sref2: &crate::ffi::HandleBRepAdaptorSurface,
+        PCref2: &crate::ffi::HandleBRepAdaptorCurve2d,
+        Decroch2: &mut bool,
+        Or2: crate::top_abs::Orientation,
+        MaxStep: f64,
+        Fleche: f64,
+        TolGuide: f64,
+        First: &mut f64,
+        Last: &mut f64,
+        Inside: bool,
+        Appro: bool,
+        Forward: bool,
+        RecP1: bool,
+        RecRst1: bool,
+        RecP2: bool,
+        RecRst2: bool,
+        Soldep: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_real5_bool7_vector(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, PC1, Sref1, PCref1, Decroch1, Or1.into(), S2, I2, PC2, Sref2, PCref2, Decroch2, Or2.into(), MaxStep, Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecP1, RecRst1, RecP2, RecRst2, Soldep)
+        }
+    }
+
     /// Upcast to ChFi3d_Builder
     pub fn as_builder(&self) -> &Builder {
         unsafe { &*(crate::ffi::ChFi3d_ChBuilder_as_ChFi3d_Builder(self as *const Self)) }
@@ -860,48 +1115,6 @@ impl ChBuilder {
         }
     }
 }
-
-// ── Skipped symbols for ChBuilder (7 total) ──
-// SKIPPED: **Source:** `ChFi3d_ChBuilder.hxx`:143 - `ChFi3d_ChBuilder::SimulSurf`
-//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
-//   // pub fn simul_surf(&mut self, Data: &mut HandleSurfData, Guide: &HandleElSpine, Spine: &HandleSpine, Choix: i32, S1: &HandleSurface, I1: &HandleTopolTool, PC1: &HandleCurve2d, Sref1: &HandleSurface, PCref1: &HandleCurve2d, Decroch1: &mut bool, S2: &HandleSurface, I2: &HandleTopolTool, Or2: Orientation, Fleche: f64, TolGuide: f64, First: &mut f64, Last: &mut f64, Inside: bool, Appro: bool, Forward: bool, RecP: bool, RecS: bool, RecRst: bool, Soldep: &Vector);
-//
-// SKIPPED: **Source:** `ChFi3d_ChBuilder.hxx`:168 - `ChFi3d_ChBuilder::SimulSurf`
-//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
-//   // pub fn simul_surf(&mut self, Data: &mut HandleSurfData, Guide: &HandleElSpine, Spine: &HandleSpine, Choix: i32, S1: &HandleSurface, I1: &HandleTopolTool, Or1: Orientation, S2: &HandleSurface, I2: &HandleTopolTool, PC2: &HandleCurve2d, Sref2: &HandleSurface, PCref2: &HandleCurve2d, Decroch2: &mut bool, Fleche: f64, TolGuide: f64, First: &mut f64, Last: &mut f64, Inside: bool, Appro: bool, Forward: bool, RecP: bool, RecS: bool, RecRst: bool, Soldep: &Vector);
-//
-// SKIPPED: **Source:** `ChFi3d_ChBuilder.hxx`:193 - `ChFi3d_ChBuilder::SimulSurf`
-//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
-//   // pub fn simul_surf(&mut self, Data: &mut HandleSurfData, Guide: &HandleElSpine, Spine: &HandleSpine, Choix: i32, S1: &HandleSurface, I1: &HandleTopolTool, PC1: &HandleCurve2d, Sref1: &HandleSurface, PCref1: &HandleCurve2d, Decroch1: &mut bool, Or1: Orientation, S2: &HandleSurface, I2: &HandleTopolTool, PC2: &HandleCurve2d, Sref2: &HandleSurface, PCref2: &HandleCurve2d, Decroch2: &mut bool, Or2: Orientation, Fleche: f64, TolGuide: f64, First: &mut f64, Last: &mut f64, Inside: bool, Appro: bool, Forward: bool, RecP1: bool, RecRst1: bool, RecP2: bool, RecRst2: bool, Soldep: &Vector);
-//
-// SKIPPED: **Source:** `ChFi3d_ChBuilder.hxx`:227 - `ChFi3d_ChBuilder::PerformSurf`
-//   method: Methode, implemented in inheritants, calculates
-//   method: the elements of construction of  the surface (fillet
-//   method: or chamfer).
-//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
-//   // pub fn perform_surf(&mut self, Data: &mut SequenceOfSurfData, Guide: &HandleElSpine, Spine: &HandleSpine, Choix: i32, S1: &HandleSurface, I1: &HandleTopolTool, S2: &HandleSurface, I2: &HandleTopolTool, MaxStep: f64, Fleche: f64, TolGuide: f64, First: &mut f64, Last: &mut f64, Inside: bool, Appro: bool, Forward: bool, RecOnS1: bool, RecOnS2: bool, Soldep: &Vector, Intf: &mut i32, Intl: &mut i32) -> bool;
-//
-// SKIPPED: **Source:** `ChFi3d_ChBuilder.hxx`:252 - `ChFi3d_ChBuilder::PerformSurf`
-//   method: Method, implemented in  the inheritants, calculates
-//   method: the elements of construction of  the surface (fillet
-//   method: or chamfer) contact edge/face.
-//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
-//   // pub fn perform_surf(&mut self, Data: &mut SequenceOfSurfData, Guide: &HandleElSpine, Spine: &HandleSpine, Choix: i32, S1: &HandleSurface, I1: &HandleTopolTool, PC1: &HandleCurve2d, Sref1: &HandleSurface, PCref1: &HandleCurve2d, Decroch1: &mut bool, S2: &HandleSurface, I2: &HandleTopolTool, Or2: Orientation, MaxStep: f64, Fleche: f64, TolGuide: f64, First: &mut f64, Last: &mut f64, Inside: bool, Appro: bool, Forward: bool, RecP: bool, RecS: bool, RecRst: bool, Soldep: &Vector);
-//
-// SKIPPED: **Source:** `ChFi3d_ChBuilder.hxx`:281 - `ChFi3d_ChBuilder::PerformSurf`
-//   method: Method, implemented in inheritants, calculates
-//   method: the elements of construction of  the surface (fillet
-//   method: or chamfer) contact edge/face.
-//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
-//   // pub fn perform_surf(&mut self, Data: &mut SequenceOfSurfData, Guide: &HandleElSpine, Spine: &HandleSpine, Choix: i32, S1: &HandleSurface, I1: &HandleTopolTool, Or1: Orientation, S2: &HandleSurface, I2: &HandleTopolTool, PC2: &HandleCurve2d, Sref2: &HandleSurface, PCref2: &HandleCurve2d, Decroch2: &mut bool, MaxStep: f64, Fleche: f64, TolGuide: f64, First: &mut f64, Last: &mut f64, Inside: bool, Appro: bool, Forward: bool, RecP: bool, RecS: bool, RecRst: bool, Soldep: &Vector);
-//
-// SKIPPED: **Source:** `ChFi3d_ChBuilder.hxx`:310 - `ChFi3d_ChBuilder::PerformSurf`
-//   method: Method, implemented in  inheritants, calculates
-//   method: the elements of construction of  the surface (fillet
-//   method: or chamfer) contact edge/edge.
-//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
-//   // pub fn perform_surf(&mut self, Data: &mut SequenceOfSurfData, Guide: &HandleElSpine, Spine: &HandleSpine, Choix: i32, S1: &HandleSurface, I1: &HandleTopolTool, PC1: &HandleCurve2d, Sref1: &HandleSurface, PCref1: &HandleCurve2d, Decroch1: &mut bool, Or1: Orientation, S2: &HandleSurface, I2: &HandleTopolTool, PC2: &HandleCurve2d, Sref2: &HandleSurface, PCref2: &HandleCurve2d, Decroch2: &mut bool, Or2: Orientation, MaxStep: f64, Fleche: f64, TolGuide: f64, First: &mut f64, Last: &mut f64, Inside: bool, Appro: bool, Forward: bool, RecP1: bool, RecRst1: bool, RecP2: bool, RecRst2: bool, Soldep: &Vector);
-//
 
 // ========================
 // From ChFi3d_FilBuilder.hxx

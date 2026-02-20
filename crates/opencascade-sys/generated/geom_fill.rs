@@ -6680,6 +6680,84 @@ impl FunctionDraft {
         unsafe { crate::ffi::GeomFill_FunctionDraft_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `GeomFill_FunctionDraft.hxx`:46 - `GeomFill_FunctionDraft::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::GeomFill_FunctionDraft_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `GeomFill_FunctionDraft.hxx`:53 - `GeomFill_FunctionDraft::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::GeomFill_FunctionDraft_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `GeomFill_FunctionDraft.hxx`:60 - `GeomFill_FunctionDraft::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::GeomFill_FunctionDraft_values(self as *mut Self, X, F, D) }
+    }
+
+    /// **Source:** `GeomFill_FunctionDraft.hxx`:66 - `GeomFill_FunctionDraft::DerivT()`
+    /// returns the values <F> of the T derivatives for
+    /// the parameter Param .
+    pub fn deriv_t(
+        &mut self,
+        C: &crate::ffi::HandleAdaptor3dCurve,
+        Param: f64,
+        W: f64,
+        dN: &crate::gp::Vec,
+        teta: f64,
+        F: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_FunctionDraft_deriv_t(self as *mut Self, C, Param, W, dN, teta, F)
+        }
+    }
+
+    /// **Source:** `GeomFill_FunctionDraft.hxx`:75 - `GeomFill_FunctionDraft::Deriv2T()`
+    /// returns the values <F> of the T2 derivatives for
+    /// the parameter Param .
+    pub fn deriv2_t(
+        &mut self,
+        C: &crate::ffi::HandleAdaptor3dCurve,
+        Param: f64,
+        W: f64,
+        d2N: &crate::gp::Vec,
+        teta: f64,
+        F: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_FunctionDraft_deriv2_t(
+                self as *mut Self,
+                C,
+                Param,
+                W,
+                d2N,
+                teta,
+                F,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_FunctionDraft.hxx`:84 - `GeomFill_FunctionDraft::DerivTX()`
     /// returns the values <D> of  the TX derivatives for
     /// the parameter Param .
@@ -6690,6 +6768,13 @@ impl FunctionDraft {
         D: &mut crate::math::Matrix,
     ) -> bool {
         unsafe { crate::ffi::GeomFill_FunctionDraft_deriv_tx(self as *mut Self, dN, teta, D) }
+    }
+
+    /// **Source:** `GeomFill_FunctionDraft.hxx`:90 - `GeomFill_FunctionDraft::Deriv2X()`
+    /// returns the values <T> of  the X2 derivatives for
+    /// the parameter Param .
+    pub fn deriv2_x(&mut self, X: &crate::ffi::math_Vector, T: &mut Tensor) -> bool {
+        unsafe { crate::ffi::GeomFill_FunctionDraft_deriv2_x(self as *mut Self, X, T) }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
@@ -6731,47 +6816,6 @@ impl FunctionDraft {
         unsafe { crate::ffi::GeomFill_FunctionDraft_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for FunctionDraft (6 total) ──
-// SKIPPED: **Source:** `GeomFill_FunctionDraft.hxx`:46 - `GeomFill_FunctionDraft::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `GeomFill_FunctionDraft.hxx`:53 - `GeomFill_FunctionDraft::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `GeomFill_FunctionDraft.hxx`:60 - `GeomFill_FunctionDraft::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `GeomFill_FunctionDraft.hxx`:66 - `GeomFill_FunctionDraft::DerivT`
-//   method: returns the values <F> of the T derivatives for
-//   method: the parameter Param .
-//   Reason: param 'F' uses unknown type 'math_Vector&'
-//   // pub fn deriv_t(&mut self, C: &HandleCurve, Param: f64, W: f64, dN: &Vec, teta: f64, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `GeomFill_FunctionDraft.hxx`:75 - `GeomFill_FunctionDraft::Deriv2T`
-//   method: returns the values <F> of the T2 derivatives for
-//   method: the parameter Param .
-//   Reason: param 'F' uses unknown type 'math_Vector&'
-//   // pub fn deriv2_t(&mut self, C: &HandleCurve, Param: f64, W: f64, d2N: &Vec, teta: f64, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `GeomFill_FunctionDraft.hxx`:90 - `GeomFill_FunctionDraft::Deriv2X`
-//   method: returns the values <T> of  the X2 derivatives for
-//   method: the parameter Param .
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn deriv2_x(&mut self, X: &Vector, T: &mut Tensor) -> bool;
-//
 
 // ========================
 // From GeomFill_FunctionGuide.hxx
@@ -6837,6 +6881,84 @@ impl FunctionGuide {
         unsafe { crate::ffi::GeomFill_FunctionGuide_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `GeomFill_FunctionGuide.hxx`:62 - `GeomFill_FunctionGuide::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::GeomFill_FunctionGuide_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `GeomFill_FunctionGuide.hxx`:69 - `GeomFill_FunctionGuide::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::GeomFill_FunctionGuide_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `GeomFill_FunctionGuide.hxx`:76 - `GeomFill_FunctionGuide::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::GeomFill_FunctionGuide_values(self as *mut Self, X, F, D) }
+    }
+
+    /// **Source:** `GeomFill_FunctionGuide.hxx`:82 - `GeomFill_FunctionGuide::DerivT()`
+    /// returns the values <F> of the T derivatives for
+    /// the parameter Param .
+    pub fn deriv_t(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        DCentre: &crate::gp::XYZ,
+        DDir: &crate::gp::XYZ,
+        DFDT: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_FunctionGuide_deriv_t(self as *mut Self, X, DCentre, DDir, DFDT)
+        }
+    }
+
+    /// **Source:** `GeomFill_FunctionGuide.hxx`:95 - `GeomFill_FunctionGuide::Deriv2T()`
+    /// returns the values <F> of the T2 derivatives for
+    /// the parameter Param .
+    /// returns the values <D> of  the TX derivatives for
+    /// the parameter Param .
+    /// returns Boolean  is static;
+    /// returns the values <T> of  the X2 derivatives for
+    /// the parameter Param .
+    /// returns Boolean  is static;
+    pub fn deriv2_t(
+        &mut self,
+        DCentre: &crate::gp::XYZ,
+        DDir: &crate::gp::XYZ,
+        DFDT: &mut crate::ffi::math_Vector,
+        D2FT: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_FunctionGuide_deriv2_t(
+                self as *mut Self,
+                DCentre,
+                DDir,
+                DFDT,
+                D2FT,
+            )
+        }
+    }
+
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
@@ -6876,42 +6998,6 @@ impl FunctionGuide {
         unsafe { crate::ffi::GeomFill_FunctionGuide_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for FunctionGuide (5 total) ──
-// SKIPPED: **Source:** `GeomFill_FunctionGuide.hxx`:62 - `GeomFill_FunctionGuide::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `GeomFill_FunctionGuide.hxx`:69 - `GeomFill_FunctionGuide::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `GeomFill_FunctionGuide.hxx`:76 - `GeomFill_FunctionGuide::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `GeomFill_FunctionGuide.hxx`:82 - `GeomFill_FunctionGuide::DerivT`
-//   method: returns the values <F> of the T derivatives for
-//   method: the parameter Param .
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn deriv_t(&mut self, X: &Vector, DCentre: &XYZ, DDir: &XYZ, DFDT: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `GeomFill_FunctionGuide.hxx`:95 - `GeomFill_FunctionGuide::Deriv2T`
-//   method: returns the values <F> of the T2 derivatives for
-//   method: the parameter Param .
-//   method: returns the values <D> of  the TX derivatives for
-//   Reason: param 'DFDT' uses unknown type 'math_Vector&'
-//   // pub fn deriv2_t(&mut self, DCentre: &XYZ, DDir: &XYZ, DFDT: &mut Vector, D2FT: &mut Vector) -> bool;
-//
 
 // ========================
 // From GeomFill_Generator.hxx
@@ -14020,13 +14106,12 @@ impl Tensor {
             &mut *(crate::ffi::GeomFill_Tensor_change_value(self as *mut Self, Row, Col, Mat))
         }
     }
-}
 
-// ── Skipped symbols for Tensor (1 total) ──
-// SKIPPED: **Source:** `GeomFill_Tensor.hxx`:71 - `GeomFill_Tensor::Multiply`
-//   Reason: param 'Right' uses unknown type 'const math_Vector&'
-//   // pub fn multiply(&self, Right: &Vector, Product: &mut Matrix);
-//
+    /// **Source:** `GeomFill_Tensor.hxx`:71 - `GeomFill_Tensor::Multiply()`
+    pub fn multiply(&self, Right: &crate::ffi::math_Vector, Product: &mut crate::math::Matrix) {
+        unsafe { crate::ffi::GeomFill_Tensor_multiply(self as *const Self, Right, Product) }
+    }
+}
 
 // ========================
 // From GeomFill_TgtField.hxx

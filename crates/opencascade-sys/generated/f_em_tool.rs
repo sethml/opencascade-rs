@@ -71,6 +71,14 @@ impl Assembly {
         unsafe { crate::ffi::FEmTool_Assembly_nullify_vector(self as *mut Self) }
     }
 
+    /// **Source:** `FEmTool_Assembly.hxx`:57 - `FEmTool_Assembly::AddVector()`
+    /// Add an elementary Vector in the assembly Vector (second member)
+    pub fn add_vector(&mut self, Element: i32, Dimension: i32, Vec: &crate::ffi::math_Vector) {
+        unsafe {
+            crate::ffi::FEmTool_Assembly_add_vector(self as *mut Self, Element, Dimension, Vec)
+        }
+    }
+
     /// **Source:** `FEmTool_Assembly.hxx`:62 - `FEmTool_Assembly::ResetConstraint()`
     /// Delete all Constraints.
     pub fn reset_constraint(&mut self) {
@@ -83,11 +91,37 @@ impl Assembly {
         unsafe { crate::ffi::FEmTool_Assembly_nullify_constraint(self as *mut Self) }
     }
 
+    /// **Source:** `FEmTool_Assembly.hxx`:67 - `FEmTool_Assembly::AddConstraint()`
+    pub fn add_constraint(
+        &mut self,
+        IndexofConstraint: i32,
+        Element: i32,
+        Dimension: i32,
+        LinearForm: &crate::ffi::math_Vector,
+        Value: f64,
+    ) {
+        unsafe {
+            crate::ffi::FEmTool_Assembly_add_constraint(
+                self as *mut Self,
+                IndexofConstraint,
+                Element,
+                Dimension,
+                LinearForm,
+                Value,
+            )
+        }
+    }
+
     /// **Source:** `FEmTool_Assembly.hxx`:75 - `FEmTool_Assembly::Solve()`
     /// Solve the assembly system
     /// Returns Standard_False if the computation failed.
     pub fn solve(&mut self) -> bool {
         unsafe { crate::ffi::FEmTool_Assembly_solve(self as *mut Self) }
+    }
+
+    /// **Source:** `FEmTool_Assembly.hxx`:77 - `FEmTool_Assembly::Solution()`
+    pub fn solution(&self, Solution: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::FEmTool_Assembly_solution(self as *const Self, Solution) }
     }
 
     /// **Source:** `FEmTool_Assembly.hxx`:79 - `FEmTool_Assembly::NbGlobVar()`
@@ -100,21 +134,6 @@ impl Assembly {
         unsafe { crate::ffi::FEmTool_Assembly_get_assembly_table(self as *const Self, AssTable) }
     }
 }
-
-// ── Skipped symbols for Assembly (3 total) ──
-// SKIPPED: **Source:** `FEmTool_Assembly.hxx`:57 - `FEmTool_Assembly::AddVector`
-//   method: Add an elementary Vector in the assembly Vector (second member)
-//   Reason: param 'Vec' uses unknown type 'const math_Vector&'
-//   // pub fn add_vector(&mut self, Element: i32, Dimension: i32, Vec: &Vector);
-//
-// SKIPPED: **Source:** `FEmTool_Assembly.hxx`:67 - `FEmTool_Assembly::AddConstraint`
-//   Reason: param 'LinearForm' uses unknown type 'const math_Vector&'
-//   // pub fn add_constraint(&mut self, IndexofConstraint: i32, Element: i32, Dimension: i32, LinearForm: &Vector, Value: f64);
-//
-// SKIPPED: **Source:** `FEmTool_Assembly.hxx`:77 - `FEmTool_Assembly::Solution`
-//   Reason: param 'Solution' uses unknown type 'math_Vector&'
-//   // pub fn solution(&self, Solution: &mut Vector);
-//
 
 // ========================
 // From FEmTool_Curve.hxx
@@ -408,6 +427,13 @@ impl ElementaryCriterion {
         unsafe { crate::ffi::FEmTool_ElementaryCriterion_hessian(self as *mut Self, Dim1, Dim2, H) }
     }
 
+    /// **Source:** `FEmTool_ElementaryCriterion.hxx`:63 - `FEmTool_ElementaryCriterion::Gradient()`
+    /// To Compute the  coefficients in the dimension <dim>
+    /// of  the  J(E)'s  Gradient where E  is  the current  Element
+    pub fn gradient(&mut self, Dim: i32, G: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::FEmTool_ElementaryCriterion_gradient(self as *mut Self, Dim, G) }
+    }
+
     /// **Source:** `FEmTool_ElementaryCriterion.hxx`:65 - `FEmTool_ElementaryCriterion::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::FEmTool_ElementaryCriterion_dynamic_type(self as *const Self)) }
@@ -586,17 +612,11 @@ impl HandleFEmToolElementaryCriterion {
     }
 }
 
-// ── Skipped symbols for ElementaryCriterion (2 total) ──
+// ── Skipped symbols for ElementaryCriterion (1 total) ──
 // SKIPPED: **Source:** `FEmTool_ElementaryCriterion.hxx`:39 - `FEmTool_ElementaryCriterion::FEmTool_ElementaryCriterion`
 //   constructor: Empty constructor
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `FEmTool_ElementaryCriterion.hxx`:63 - `FEmTool_ElementaryCriterion::Gradient`
-//   method: To Compute the  coefficients in the dimension <dim>
-//   method: of  the  J(E)'s  Gradient where E  is  the current  Element
-//   Reason: param 'G' uses unknown type 'math_Vector&'
-//   // pub fn gradient(&mut self, Dim: i32, G: &mut Vector);
 //
 
 // ========================
@@ -645,6 +665,18 @@ impl ElementsOfRefMatrix {
         unsafe { crate::ffi::FEmTool_ElementsOfRefMatrix_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `FEmTool_ElementsOfRefMatrix.hxx`:58 - `FEmTool_ElementsOfRefMatrix::Value()`
+    /// computes the values <F> of the functions for the
+    /// variable <X>.
+    /// returns True if the computation was done successfully,
+    /// False otherwise.
+    /// F  contains  results  only  for  i<=j  in  following  order:
+    /// P0*P0,  P0*P1,  P0*P2...  P1*P1,  P1*P2,...  (upper  triangle of
+    /// matrix  {PiPj})
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::FEmTool_ElementsOfRefMatrix_value(self as *mut Self, X, F) }
+    }
+
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
@@ -668,15 +700,6 @@ impl ElementsOfRefMatrix {
         }
     }
 }
-
-// ── Skipped symbols for ElementsOfRefMatrix (1 total) ──
-// SKIPPED: **Source:** `FEmTool_ElementsOfRefMatrix.hxx`:58 - `FEmTool_ElementsOfRefMatrix::Value`
-//   method: computes the values <F> of the functions for the
-//   method: variable <X>.
-//   method: returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
 
 // ========================
 // From FEmTool_HAssemblyTable.hxx
@@ -912,6 +935,11 @@ impl LinearFlexion {
         }
     }
 
+    /// **Source:** `FEmTool_LinearFlexion.hxx`:50 - `FEmTool_LinearFlexion::Gradient()`
+    pub fn gradient(&mut self, Dimension: i32, G: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::FEmTool_LinearFlexion_gradient(self as *mut Self, Dimension, G) }
+    }
+
     /// **Source:** `FEmTool_LinearFlexion.hxx`:53 - `FEmTool_LinearFlexion::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::FEmTool_LinearFlexion_dynamic_type(self as *const Self)) }
@@ -1069,12 +1097,6 @@ impl HandleFEmToolLinearFlexion {
     }
 }
 
-// ── Skipped symbols for LinearFlexion (1 total) ──
-// SKIPPED: **Source:** `FEmTool_LinearFlexion.hxx`:50 - `FEmTool_LinearFlexion::Gradient`
-//   Reason: param 'G' uses unknown type 'math_Vector&'
-//   // pub fn gradient(&mut self, Dimension: i32, G: &mut Vector);
-//
-
 // ========================
 // From FEmTool_LinearJerk.hxx
 // ========================
@@ -1122,6 +1144,11 @@ impl LinearJerk {
         unsafe {
             crate::ffi::FEmTool_LinearJerk_hessian(self as *mut Self, Dimension1, Dimension2, H)
         }
+    }
+
+    /// **Source:** `FEmTool_LinearJerk.hxx`:50 - `FEmTool_LinearJerk::Gradient()`
+    pub fn gradient(&mut self, Dimension: i32, G: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::FEmTool_LinearJerk_gradient(self as *mut Self, Dimension, G) }
     }
 
     /// **Source:** `FEmTool_LinearJerk.hxx`:53 - `FEmTool_LinearJerk::DynamicType()`
@@ -1270,12 +1297,6 @@ impl HandleFEmToolLinearJerk {
     }
 }
 
-// ── Skipped symbols for LinearJerk (1 total) ──
-// SKIPPED: **Source:** `FEmTool_LinearJerk.hxx`:50 - `FEmTool_LinearJerk::Gradient`
-//   Reason: param 'G' uses unknown type 'math_Vector&'
-//   // pub fn gradient(&mut self, Dimension: i32, G: &mut Vector);
-//
-
 // ========================
 // From FEmTool_LinearTension.hxx
 // ========================
@@ -1323,6 +1344,11 @@ impl LinearTension {
         unsafe {
             crate::ffi::FEmTool_LinearTension_hessian(self as *mut Self, Dimension1, Dimension2, H)
         }
+    }
+
+    /// **Source:** `FEmTool_LinearTension.hxx`:50 - `FEmTool_LinearTension::Gradient()`
+    pub fn gradient(&mut self, Dimension: i32, G: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::FEmTool_LinearTension_gradient(self as *mut Self, Dimension, G) }
     }
 
     /// **Source:** `FEmTool_LinearTension.hxx`:53 - `FEmTool_LinearTension::DynamicType()`
@@ -1482,12 +1508,6 @@ impl HandleFEmToolLinearTension {
     }
 }
 
-// ── Skipped symbols for LinearTension (1 total) ──
-// SKIPPED: **Source:** `FEmTool_LinearTension.hxx`:50 - `FEmTool_LinearTension::Gradient`
-//   Reason: param 'G' uses unknown type 'math_Vector&'
-//   // pub fn gradient(&mut self, Dimension: i32, G: &mut Vector);
-//
-
 // ========================
 // From FEmTool_ProfileMatrix.hxx
 // ========================
@@ -1531,10 +1551,47 @@ impl ProfileMatrix {
         unsafe { crate::ffi::FEmTool_ProfileMatrix_decompose(self as *mut Self) }
     }
 
+    /// **Source:** `FEmTool_ProfileMatrix.hxx`:51 - `FEmTool_ProfileMatrix::Solve()`
+    /// Direct Solve of AX = B
+    pub fn solve_vector2(&self, B: &crate::ffi::math_Vector, X: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::FEmTool_ProfileMatrix_solve_vector2(self as *const Self, B, X) }
+    }
+
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:54 - `FEmTool_ProfileMatrix::Prepare()`
     /// Make Preparation to iterative solve
     pub fn prepare(&mut self) -> bool {
         unsafe { crate::ffi::FEmTool_ProfileMatrix_prepare(self as *mut Self) }
+    }
+
+    /// **Source:** `FEmTool_ProfileMatrix.hxx`:57 - `FEmTool_ProfileMatrix::Solve()`
+    /// Iterative solve  of AX = B
+    pub fn solve_vector4_real_int(
+        &self,
+        B: &crate::ffi::math_Vector,
+        Init: &crate::ffi::math_Vector,
+        X: &mut crate::ffi::math_Vector,
+        Residual: &mut crate::ffi::math_Vector,
+        Tolerance: f64,
+        NbIterations: i32,
+    ) {
+        unsafe {
+            crate::ffi::FEmTool_ProfileMatrix_solve_vector4_real_int(
+                self as *const Self,
+                B,
+                Init,
+                X,
+                Residual,
+                Tolerance,
+                NbIterations,
+            )
+        }
+    }
+
+    /// **Source:** `FEmTool_ProfileMatrix.hxx`:66 - `FEmTool_ProfileMatrix::Multiplied()`
+    /// returns the product of a SparseMatrix by a vector.
+    /// An exception is raised if the dimensions are different
+    pub fn multiplied(&self, X: &crate::ffi::math_Vector, MX: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::FEmTool_ProfileMatrix_multiplied(self as *const Self, X, MX) }
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:69 - `FEmTool_ProfileMatrix::RowNumber()`
@@ -1712,24 +1769,6 @@ impl HandleFEmToolProfileMatrix {
     }
 }
 
-// ── Skipped symbols for ProfileMatrix (3 total) ──
-// SKIPPED: **Source:** `FEmTool_ProfileMatrix.hxx`:51 - `FEmTool_ProfileMatrix::Solve`
-//   method: Direct Solve of AX = B
-//   Reason: param 'B' uses unknown type 'const math_Vector&'
-//   // pub fn solve(&self, B: &Vector, X: &mut Vector);
-//
-// SKIPPED: **Source:** `FEmTool_ProfileMatrix.hxx`:57 - `FEmTool_ProfileMatrix::Solve`
-//   method: Iterative solve  of AX = B
-//   Reason: param 'B' uses unknown type 'const math_Vector&'
-//   // pub fn solve(&self, B: &Vector, Init: &Vector, X: &mut Vector, Residual: &mut Vector, Tolerance: f64, NbIterations: i32);
-//
-// SKIPPED: **Source:** `FEmTool_ProfileMatrix.hxx`:66 - `FEmTool_ProfileMatrix::Multiplied`
-//   method: returns the product of a SparseMatrix by a vector.
-//   method: An exception is raised if the dimensions are different
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn multiplied(&self, X: &Vector, MX: &mut Vector);
-//
-
 // ========================
 // From FEmTool_SparseMatrix.hxx
 // ========================
@@ -1761,10 +1800,47 @@ impl SparseMatrix {
         unsafe { crate::ffi::FEmTool_SparseMatrix_decompose(self as *mut Self) }
     }
 
+    /// **Source:** `FEmTool_SparseMatrix.hxx`:44 - `FEmTool_SparseMatrix::Solve()`
+    /// Direct Solve of AX = B
+    pub fn solve_vector2(&self, B: &crate::ffi::math_Vector, X: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::FEmTool_SparseMatrix_solve_vector2(self as *const Self, B, X) }
+    }
+
     /// **Source:** `FEmTool_SparseMatrix.hxx`:47 - `FEmTool_SparseMatrix::Prepare()`
     /// Make Preparation to iterative solve
     pub fn prepare(&mut self) -> bool {
         unsafe { crate::ffi::FEmTool_SparseMatrix_prepare(self as *mut Self) }
+    }
+
+    /// **Source:** `FEmTool_SparseMatrix.hxx`:50 - `FEmTool_SparseMatrix::Solve()`
+    /// Iterative solve  of AX = B
+    pub fn solve_vector4_real_int(
+        &self,
+        B: &crate::ffi::math_Vector,
+        Init: &crate::ffi::math_Vector,
+        X: &mut crate::ffi::math_Vector,
+        Residual: &mut crate::ffi::math_Vector,
+        Tolerance: f64,
+        NbIterations: i32,
+    ) {
+        unsafe {
+            crate::ffi::FEmTool_SparseMatrix_solve_vector4_real_int(
+                self as *const Self,
+                B,
+                Init,
+                X,
+                Residual,
+                Tolerance,
+                NbIterations,
+            )
+        }
+    }
+
+    /// **Source:** `FEmTool_SparseMatrix.hxx`:59 - `FEmTool_SparseMatrix::Multiplied()`
+    /// returns the product of a SparseMatrix by a vector.
+    /// An exception is raised if the dimensions are different
+    pub fn multiplied(&self, X: &crate::ffi::math_Vector, MX: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::FEmTool_SparseMatrix_multiplied(self as *const Self, X, MX) }
     }
 
     /// **Source:** `FEmTool_SparseMatrix.hxx`:62 - `FEmTool_SparseMatrix::RowNumber()`
@@ -1904,24 +1980,6 @@ impl HandleFEmToolSparseMatrix {
         }
     }
 }
-
-// ── Skipped symbols for SparseMatrix (3 total) ──
-// SKIPPED: **Source:** `FEmTool_SparseMatrix.hxx`:44 - `FEmTool_SparseMatrix::Solve`
-//   method: Direct Solve of AX = B
-//   Reason: param 'B' uses unknown type 'const math_Vector&'
-//   // pub fn solve(&self, B: &Vector, X: &mut Vector);
-//
-// SKIPPED: **Source:** `FEmTool_SparseMatrix.hxx`:50 - `FEmTool_SparseMatrix::Solve`
-//   method: Iterative solve  of AX = B
-//   Reason: param 'B' uses unknown type 'const math_Vector&'
-//   // pub fn solve(&self, B: &Vector, Init: &Vector, X: &mut Vector, Residual: &mut Vector, Tolerance: f64, NbIterations: i32);
-//
-// SKIPPED: **Source:** `FEmTool_SparseMatrix.hxx`:59 - `FEmTool_SparseMatrix::Multiplied`
-//   method: returns the product of a SparseMatrix by a vector.
-//   method: An exception is raised if the dimensions are different
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn multiplied(&self, X: &Vector, MX: &mut Vector);
-//
 
 // ========================
 // Additional type re-exports

@@ -23,6 +23,38 @@ unsafe impl crate::CppDeletable for BSpGradient_BFGSOfMyBSplGradientOfBSplineCom
 }
 
 impl BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute {
+    /// **Source:** `AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute.hxx`:38 - `AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute()`
+    pub fn new_multiplevarfunctionwithgradient_vector_real3_int(
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        Eps: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations))
+        }
+    }
+
+    /// **Source:** `AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute.hxx`:38 - `AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute()`
+    pub fn new_multiplevarfunctionwithgradient_vector_real3(
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        Eps: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiplevarfunctionwithgradient_vector_real3_int(
+            F,
+            StartingPoint,
+            Tolerance3d,
+            Tolerance2d,
+            Eps,
+            200,
+        )
+    }
+
     /// **Source:** `AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute.hxx`:46 - `AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute::IsSolutionReached()`
     pub fn is_solution_reached(
         &self,
@@ -52,12 +84,45 @@ impl BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute {
         }
     }
 
+    /// Inherited: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary()`
+    pub fn set_boundary(
+        &mut self,
+        theLeftBorder: &crate::ffi::math_Vector,
+        theRightBorder: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:67 - `math_BFGS::Perform()`
+    pub fn perform(
+        &mut self,
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Perform(
+                self as *mut Self,
+                F,
+                StartingPoint,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe {
             crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_IsDone(
                 self as *const Self,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
+    pub fn location(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Location(self as *const Self))
         }
     }
 
@@ -70,6 +135,13 @@ impl BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute {
         }
     }
 
+    /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
+    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Gradient(self as *const Self))
+        }
+    }
+
     /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
     pub fn nb_iterations(&self) -> i32 {
         unsafe {
@@ -77,12 +149,6 @@ impl BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute {
         }
     }
 }
-
-// ── Skipped symbols for BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute (1 total) ──
-// SKIPPED: **Source:** `AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute.hxx`:38 - `AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute`
-//   Reason: param 'StartingPoint' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiplevarfunctionwithgradient_vector_real3_int(F: &mut MultipleVarFunctionWithGradient, StartingPoint: &Vector, Tolerance3d: f64, Tolerance2d: f64, Eps: f64, NbIterations: i32) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx
@@ -98,6 +164,24 @@ unsafe impl crate::CppDeletable for BSpParFunctionOfMyBSplGradientOfBSplineCompu
 }
 
 impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
+    /// **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:49 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute()`
+    /// initializes the fields of the function. The approximating
+    /// curve has <NbPol> control points.
+    pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &crate::ffi::math_Vector,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, NbPol))
+        }
+    }
+
     /// **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:61 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::NbVariables()`
     /// returns the number of variables of the function. It
     /// corresponds to the number of MultiPoints.
@@ -106,6 +190,67 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
             crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_nb_variables(
                 self as *const Self,
             )
+        }
+    }
+
+    /// **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:67 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::Value()`
+    /// this method computes the new approximation of the
+    /// MultiLine
+    /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
+    /// point of the MultiLine.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+        unsafe {
+            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_value(
+                self as *mut Self,
+                X,
+                F,
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:71 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::Gradient()`
+    /// returns the gradient G of the sum above for the
+    /// parameters Xi.
+    pub fn gradient(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_gradient(
+                self as *mut Self,
+                X,
+                G,
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:75 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::Values()`
+    /// returns the value F=sum(||Pui - Bi*Pi||)2.
+    /// returns the value G = grad(F) for the parameters Xi.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_values(
+                self as *mut Self,
+                X,
+                F,
+                G,
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:78 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::NewParameters()`
+    /// returns the new parameters of the MultiLine.
+    pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_new_parameters(
+                self as *const Self,
+            ))
         }
     }
 
@@ -174,6 +319,19 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
             &*(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_derivative_function_matrix(self as *const Self))
+        }
+    }
+
+    /// **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:109 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::Index()`
+    /// Returns the indexes of the first non null values of
+    /// A and DA.
+    /// The values are non null from Index(ieme point) +1
+    /// to Index(ieme point) + degree +1.
+    pub fn index(&self) -> &crate::ffi::math_IntegerVector {
+        unsafe {
+            &*(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_index(
+                self as *const Self,
+            ))
         }
     }
 
@@ -273,45 +431,6 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     }
 }
 
-// ── Skipped symbols for BSpParFunctionOfMyBSplGradientOfBSplineCompute (6 total) ──
-// SKIPPED: **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:49 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute`
-//   constructor: initializes the fields of the function. The approximating
-//   constructor: curve has <NbPol> control points.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int(SSP: &MultiLine, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &Vector, Knots: &Array1OfReal, Mults: &Array1OfInteger, NbPol: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:67 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::Value`
-//   method: this method computes the new approximation of the
-//   method: MultiLine
-//   method: SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:71 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::Gradient`
-//   method: returns the gradient G of the sum above for the
-//   method: parameters Xi.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:75 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::Values`
-//   method: returns the value F=sum(||Pui - Bi*Pi||)2.
-//   method: returns the value G = grad(F) for the parameters Xi.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:78 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::NewParameters`
-//   method: returns the new parameters of the MultiLine.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn new_parameters(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:109 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::Index`
-//   method: Returns the indexes of the first non null values of
-//   method: A and DA.
-//   method: The values are non null from Index(ieme point) +1
-//   Reason: return type 'const math_IntegerVector&' is unknown
-//   // pub fn index(&self) -> &IntegerVector;
-//
-
 // ========================
 // From AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx
 // ========================
@@ -326,6 +445,37 @@ unsafe impl crate::CppDeletable for BSpParLeastSquareOfMyBSplGradientOfBSplineCo
 }
 
 impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
+    /// **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:65 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute()`
+    /// given a MultiLine, this algorithm computes the least
+    /// square resolution using the Householder-QR method.
+    /// If the first and/or the last point is a constraint
+    /// point, the value of the tangency or curvature is
+    /// computed in the resolution.
+    /// NbPol is the number of control points wanted
+    /// for the approximating curves.
+    /// The system to solve is the following:
+    /// A X = B.
+    /// Where A is the Bernstein matrix computed with the
+    /// parameters, B the points coordinates and X the poles
+    /// solutions.
+    /// The matrix A is the same for each coordinate x, y and z
+    /// and is also the same for each MultiLine point because
+    /// they are approximated in parallel(so with the same
+    /// parameter, only the vector B changes).
+    pub fn new_multiline_int2_constraint2_vector_int(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        Parameters: &crate::ffi::math_Vector,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
+        }
+    }
+
     /// **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:75 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute()`
     /// Initializes the fields of the object.
     pub fn new_multiline_int2_constraint2_int(
@@ -338,6 +488,38 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:98 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute()`
+    /// given a MultiLine, this algorithm computes the least
+    /// square resolution using the Householder-QR method.
+    /// If the first and/or the last point is a constraint
+    /// point, the value of the tangency or curvature is
+    /// computed in the resolution.
+    /// Deg is the degree wanted for the approximating curves.
+    /// The system to solve is the following:
+    /// A X = B.
+    /// Where A is the BSpline functions matrix computed with
+    /// <parameters>, B the points coordinates and X the poles
+    /// solutions.
+    /// The matrix A is the same for each coordinate x, y and z
+    /// and is also the same for each MultiLine point because
+    /// they are approximated in parallel(so with the same
+    /// parameter, only the vector B changes).
+    pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
+        SSP: &MultiLine,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        Parameters: &crate::ffi::math_Vector,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
         }
     }
 
@@ -355,6 +537,64 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:122 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Perform()`
+    /// Is used after having initialized the fields.
+    /// The case "CurvaturePoint" is not treated in this method.
+    pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
+        unsafe {
+            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector(
+                self as *mut Self,
+                Parameters,
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:125 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Perform()`
+    /// Is used after having initialized the fields.
+    pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
+        unsafe {
+            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
+        }
+    }
+
+    /// **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:132 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Perform()`
+    /// Is used after having initialized the fields.
+    /// <V1t> is the tangent vector at the first point.
+    /// <V2t> is the tangent vector at the last point.
+    pub fn perform_vector3_real2(
+        &mut self,
+        Parameters: &crate::ffi::math_Vector,
+        V1t: &crate::ffi::math_Vector,
+        V2t: &crate::ffi::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
+        }
+    }
+
+    /// **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:143 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Perform()`
+    /// Is used after having initialized the fields.
+    /// <V1t> is the tangent vector at the first point.
+    /// <V2t> is the tangent vector at the last point.
+    /// <V1c> is the tangent vector at the first point.
+    /// <V2c> is the tangent vector at the last point.
+    pub fn perform_vector5_real2(
+        &mut self,
+        Parameters: &crate::ffi::math_Vector,
+        V1t: &crate::ffi::math_Vector,
+        V2t: &crate::ffi::math_Vector,
+        V1c: &crate::ffi::math_Vector,
+        V2c: &crate::ffi::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
         }
     }
 
@@ -411,6 +651,29 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
             &*(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_derivative_function_matrix(self as *const Self))
+        }
+    }
+
+    /// **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:176 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::ErrorGradient()`
+    /// returns the maximum errors between the MultiLine
+    /// and the approximation curves. F is the sum of the square
+    /// distances. Grad is the derivative vector of the
+    /// function F.
+    pub fn error_gradient(
+        &mut self,
+        Grad: &mut crate::ffi::math_Vector,
+        F: &mut f64,
+        MaxE3d: &mut f64,
+        MaxE2d: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_error_gradient(
+                self as *mut Self,
+                Grad,
+                F,
+                MaxE3d,
+                MaxE2d,
+            )
         }
     }
 
@@ -481,62 +744,20 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
             ))
         }
     }
-}
 
-// ── Skipped symbols for BSpParLeastSquareOfMyBSplGradientOfBSplineCompute (8 total) ──
-// SKIPPED: **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:65 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute`
-//   constructor: given a MultiLine, this algorithm computes the least
-//   constructor: square resolution using the Householder-QR method.
-//   constructor: If the first and/or the last point is a constraint
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiline_int2_constraint2_vector_int(SSP: &MultiLine, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:98 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute`
-//   constructor: given a MultiLine, this algorithm computes the least
-//   constructor: square resolution using the Householder-QR method.
-//   constructor: If the first and/or the last point is a constraint
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP: &MultiLine, Knots: &Array1OfReal, Mults: &Array1OfInteger, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:122 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Perform`
-//   method: Is used after having initialized the fields.
-//   method: The case "CurvaturePoint" is not treated in this method.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector);
-//
-// SKIPPED: **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:125 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Perform`
-//   method: Is used after having initialized the fields.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:132 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Perform`
-//   method: Is used after having initialized the fields.
-//   method: <V1t> is the tangent vector at the first point.
-//   method: <V2t> is the tangent vector at the last point.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:143 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Perform`
-//   method: Is used after having initialized the fields.
-//   method: <V1t> is the tangent vector at the first point.
-//   method: <V2t> is the tangent vector at the last point.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, V1c: &Vector, V2c: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:176 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::ErrorGradient`
-//   method: returns the maximum errors between the MultiLine
-//   method: and the approximation curves. F is the sum of the square
-//   method: distances. Grad is the derivative vector of the
-//   Reason: param 'Grad' uses unknown type 'math_Vector&'
-//   // pub fn error_gradient(&mut self, Grad: &mut Vector, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64);
-//
-// SKIPPED: **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:208 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::KIndex`
-//   method: Returns the indexes of the first non null values of
-//   method: A and DA.
-//   method: The values are non null from Index(ieme point) +1
-//   Reason: return type 'const math_IntegerVector&' is unknown
-//   // pub fn k_index(&self) -> &IntegerVector;
-//
+    /// **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:208 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::KIndex()`
+    /// Returns the indexes of the first non null values of
+    /// A and DA.
+    /// The values are non null from Index(ieme point) +1
+    /// to Index(ieme point) + degree +1.
+    pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
+        unsafe {
+            &*(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_k_index(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From AppDef_BSplineCompute.hxx
@@ -575,6 +796,69 @@ impl BSplineCompute {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::AppDef_BSplineCompute_ctor_multiline_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares))
+        }
+    }
+
+    /// **Source:** `AppDef_BSplineCompute.hxx`:80 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_multiline_vector_int2_real2_int_bool2(
+        Line: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+        Squares: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::AppDef_BSplineCompute_ctor_multiline_vector_int2_real2_int_bool2(
+                    Line,
+                    Parameters,
+                    degreemin,
+                    degreemax,
+                    Tolerance3d,
+                    Tolerance2d,
+                    NbIterations,
+                    cutting,
+                    Squares,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_BSplineCompute.hxx`:91 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real2_int_bool2(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+        Squares: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::AppDef_BSplineCompute_ctor_vector_int2_real2_int_bool2(
+                    Parameters,
+                    degreemin,
+                    degreemax,
+                    Tolerance3d,
+                    Tolerance2d,
+                    NbIterations,
+                    cutting,
+                    Squares,
+                ),
+            )
         }
     }
 
@@ -639,6 +923,286 @@ impl BSplineCompute {
         )
     }
 
+    /// **Source:** `AppDef_BSplineCompute.hxx`:80 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_multiline_vector_int2_real2_int_bool(
+        Line: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiline_vector_int2_real2_int_bool2(
+            Line,
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            cutting,
+            false,
+        )
+    }
+
+    /// **Source:** `AppDef_BSplineCompute.hxx`:80 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_multiline_vector_int2_real2_int(
+        Line: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiline_vector_int2_real2_int_bool2(
+            Line,
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `AppDef_BSplineCompute.hxx`:80 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_multiline_vector_int2_real2(
+        Line: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiline_vector_int2_real2_int_bool2(
+            Line,
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            5,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `AppDef_BSplineCompute.hxx`:80 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_multiline_vector_int2_real(
+        Line: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiline_vector_int2_real2_int_bool2(
+            Line,
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            1.0e-06,
+            5,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `AppDef_BSplineCompute.hxx`:80 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_multiline_vector_int2(
+        Line: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiline_vector_int2_real2_int_bool2(
+            Line, Parameters, degreemin, degreemax, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `AppDef_BSplineCompute.hxx`:80 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_multiline_vector_int(
+        Line: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiline_vector_int2_real2_int_bool2(
+            Line, Parameters, degreemin, 8, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `AppDef_BSplineCompute.hxx`:80 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_multiline_vector(
+        Line: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiline_vector_int2_real2_int_bool2(
+            Line, Parameters, 4, 8, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `AppDef_BSplineCompute.hxx`:91 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real2_int_bool(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            cutting,
+            false,
+        )
+    }
+
+    /// **Source:** `AppDef_BSplineCompute.hxx`:91 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real2_int(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `AppDef_BSplineCompute.hxx`:91 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real2(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            5,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `AppDef_BSplineCompute.hxx`:91 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            1.0e-06,
+            5,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `AppDef_BSplineCompute.hxx`:91 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters, degreemin, degreemax, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `AppDef_BSplineCompute.hxx`:91 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters, degreemin, 8, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `AppDef_BSplineCompute.hxx`:91 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector(Parameters: &crate::ffi::math_Vector) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(Parameters, 4, 8, 1.0e-03, 1.0e-06, 5, true, false)
+    }
+
     /// **Source:** `AppDef_BSplineCompute.hxx`:101 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
     /// Initializes the fields of the algorithm.
     pub fn new_int2_real2_int_bool_parametrizationtype(
@@ -701,6 +1265,13 @@ impl BSplineCompute {
     /// runs the algorithm after having initialized the fields.
     pub fn perform(&mut self, Line: &MultiLine) {
         unsafe { crate::ffi::AppDef_BSplineCompute_perform(self as *mut Self, Line) }
+    }
+
+    /// **Source:** `AppDef_BSplineCompute.hxx`:130 - `AppDef_BSplineCompute::SetParameters()`
+    /// The approximation will begin with the
+    /// set of  parameters <ThePar>.
+    pub fn set_parameters(&mut self, ThePar: &crate::ffi::math_Vector) {
+        unsafe { crate::ffi::AppDef_BSplineCompute_set_parameters(self as *mut Self, ThePar) }
     }
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:135 - `AppDef_BSplineCompute::SetKnots()`
@@ -820,26 +1391,6 @@ impl BSplineCompute {
     }
 }
 
-// ── Skipped symbols for BSplineCompute (3 total) ──
-// SKIPPED: **Source:** `AppDef_BSplineCompute.hxx`:80 - `AppDef_BSplineCompute::AppDef_BSplineCompute`
-//   constructor: The MultiLine <Line> will be approximated until tolerances
-//   constructor: will be reached.
-//   constructor: The approximation will be done from degreemin to degreemax
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiline_vector_int2_real2_int_bool2(Line: &MultiLine, Parameters: &Vector, degreemin: i32, degreemax: i32, Tolerance3d: f64, Tolerance2d: f64, NbIterations: i32, cutting: bool, Squares: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_BSplineCompute.hxx`:91 - `AppDef_BSplineCompute::AppDef_BSplineCompute`
-//   constructor: Initializes the fields of the algorithm.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_vector_int2_real2_int_bool2(Parameters: &Vector, degreemin: i32, degreemax: i32, Tolerance3d: f64, Tolerance2d: f64, NbIterations: i32, cutting: bool, Squares: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_BSplineCompute.hxx`:130 - `AppDef_BSplineCompute::SetParameters`
-//   method: The approximation will begin with the
-//   method: set of  parameters <ThePar>.
-//   Reason: param 'ThePar' uses unknown type 'const math_Vector&'
-//   // pub fn set_parameters(&mut self, ThePar: &Vector);
-//
-
 // ========================
 // From AppDef_Compute.hxx
 // ========================
@@ -874,6 +1425,67 @@ impl Compute {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::AppDef_Compute_ctor_multiline_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares))
+        }
+    }
+
+    /// **Source:** `AppDef_Compute.hxx`:74 - `AppDef_Compute::AppDef_Compute()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_multiline_vector_int2_real2_int_bool2(
+        Line: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+        Squares: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::AppDef_Compute_ctor_multiline_vector_int2_real2_int_bool2(
+                    Line,
+                    Parameters,
+                    degreemin,
+                    degreemax,
+                    Tolerance3d,
+                    Tolerance2d,
+                    NbIterations,
+                    cutting,
+                    Squares,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_Compute.hxx`:85 - `AppDef_Compute::AppDef_Compute()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real2_int_bool2(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+        Squares: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_Compute_ctor_vector_int2_real2_int_bool2(
+                Parameters,
+                degreemin,
+                degreemax,
+                Tolerance3d,
+                Tolerance2d,
+                NbIterations,
+                cutting,
+                Squares,
+            ))
         }
     }
 
@@ -933,6 +1545,286 @@ impl Compute {
             parametrization,
             false,
         )
+    }
+
+    /// **Source:** `AppDef_Compute.hxx`:74 - `AppDef_Compute::AppDef_Compute()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_multiline_vector_int2_real2_int_bool(
+        Line: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiline_vector_int2_real2_int_bool2(
+            Line,
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            cutting,
+            false,
+        )
+    }
+
+    /// **Source:** `AppDef_Compute.hxx`:74 - `AppDef_Compute::AppDef_Compute()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_multiline_vector_int2_real2_int(
+        Line: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiline_vector_int2_real2_int_bool2(
+            Line,
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `AppDef_Compute.hxx`:74 - `AppDef_Compute::AppDef_Compute()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_multiline_vector_int2_real2(
+        Line: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiline_vector_int2_real2_int_bool2(
+            Line,
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            5,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `AppDef_Compute.hxx`:74 - `AppDef_Compute::AppDef_Compute()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_multiline_vector_int2_real(
+        Line: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiline_vector_int2_real2_int_bool2(
+            Line,
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            1.0e-06,
+            5,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `AppDef_Compute.hxx`:74 - `AppDef_Compute::AppDef_Compute()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_multiline_vector_int2(
+        Line: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiline_vector_int2_real2_int_bool2(
+            Line, Parameters, degreemin, degreemax, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `AppDef_Compute.hxx`:74 - `AppDef_Compute::AppDef_Compute()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_multiline_vector_int(
+        Line: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiline_vector_int2_real2_int_bool2(
+            Line, Parameters, degreemin, 8, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `AppDef_Compute.hxx`:74 - `AppDef_Compute::AppDef_Compute()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_multiline_vector(
+        Line: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiline_vector_int2_real2_int_bool2(
+            Line, Parameters, 4, 8, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `AppDef_Compute.hxx`:85 - `AppDef_Compute::AppDef_Compute()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real2_int_bool(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            cutting,
+            false,
+        )
+    }
+
+    /// **Source:** `AppDef_Compute.hxx`:85 - `AppDef_Compute::AppDef_Compute()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real2_int(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `AppDef_Compute.hxx`:85 - `AppDef_Compute::AppDef_Compute()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real2(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            5,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `AppDef_Compute.hxx`:85 - `AppDef_Compute::AppDef_Compute()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            1.0e-06,
+            5,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `AppDef_Compute.hxx`:85 - `AppDef_Compute::AppDef_Compute()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters, degreemin, degreemax, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `AppDef_Compute.hxx`:85 - `AppDef_Compute::AppDef_Compute()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters, degreemin, 8, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `AppDef_Compute.hxx`:85 - `AppDef_Compute::AppDef_Compute()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector(Parameters: &crate::ffi::math_Vector) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(Parameters, 4, 8, 1.0e-03, 1.0e-06, 5, true, false)
     }
 
     /// **Source:** `AppDef_Compute.hxx`:95 - `AppDef_Compute::AppDef_Compute()`
@@ -1086,20 +1978,6 @@ impl Compute {
     }
 }
 
-// ── Skipped symbols for Compute (2 total) ──
-// SKIPPED: **Source:** `AppDef_Compute.hxx`:74 - `AppDef_Compute::AppDef_Compute`
-//   constructor: The MultiLine <Line> will be approximated until tolerances
-//   constructor: will be reached.
-//   constructor: The approximation will be done from degreemin to degreemax
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiline_vector_int2_real2_int_bool2(Line: &MultiLine, Parameters: &Vector, degreemin: i32, degreemax: i32, Tolerance3d: f64, Tolerance2d: f64, NbIterations: i32, cutting: bool, Squares: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_Compute.hxx`:85 - `AppDef_Compute::AppDef_Compute`
-//   constructor: Initializes the fields of the algorithm.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_vector_int2_real2_int_bool2(Parameters: &Vector, degreemin: i32, degreemax: i32, Tolerance3d: f64, Tolerance2d: f64, NbIterations: i32, cutting: bool, Squares: bool) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From AppDef_Gradient_BFGSOfMyGradientOfCompute.hxx
 // ========================
@@ -1114,6 +1992,38 @@ unsafe impl crate::CppDeletable for Gradient_BFGSOfMyGradientOfCompute {
 }
 
 impl Gradient_BFGSOfMyGradientOfCompute {
+    /// **Source:** `AppDef_Gradient_BFGSOfMyGradientOfCompute.hxx`:39 - `AppDef_Gradient_BFGSOfMyGradientOfCompute::AppDef_Gradient_BFGSOfMyGradientOfCompute()`
+    pub fn new_multiplevarfunctionwithgradient_vector_real3_int(
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        Eps: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations))
+        }
+    }
+
+    /// **Source:** `AppDef_Gradient_BFGSOfMyGradientOfCompute.hxx`:39 - `AppDef_Gradient_BFGSOfMyGradientOfCompute::AppDef_Gradient_BFGSOfMyGradientOfCompute()`
+    pub fn new_multiplevarfunctionwithgradient_vector_real3(
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        Eps: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiplevarfunctionwithgradient_vector_real3_int(
+            F,
+            StartingPoint,
+            Tolerance3d,
+            Tolerance2d,
+            Eps,
+            200,
+        )
+    }
+
     /// **Source:** `AppDef_Gradient_BFGSOfMyGradientOfCompute.hxx`:47 - `AppDef_Gradient_BFGSOfMyGradientOfCompute::IsSolutionReached()`
     pub fn is_solution_reached(
         &self,
@@ -1145,12 +2055,51 @@ impl Gradient_BFGSOfMyGradientOfCompute {
         }
     }
 
+    /// Inherited: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary()`
+    pub fn set_boundary(
+        &mut self,
+        theLeftBorder: &crate::ffi::math_Vector,
+        theRightBorder: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_SetBoundary(
+                self as *mut Self,
+                theLeftBorder,
+                theRightBorder,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:67 - `math_BFGS::Perform()`
+    pub fn perform(
+        &mut self,
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Perform(
+                self as *mut Self,
+                F,
+                StartingPoint,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe {
             crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_IsDone(
                 self as *const Self,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
+    pub fn location(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Location(
+                self as *const Self,
+            ))
         }
     }
 
@@ -1163,6 +2112,15 @@ impl Gradient_BFGSOfMyGradientOfCompute {
         }
     }
 
+    /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
+    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Gradient(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
     pub fn nb_iterations(&self) -> i32 {
         unsafe {
@@ -1172,12 +2130,6 @@ impl Gradient_BFGSOfMyGradientOfCompute {
         }
     }
 }
-
-// ── Skipped symbols for Gradient_BFGSOfMyGradientOfCompute (1 total) ──
-// SKIPPED: **Source:** `AppDef_Gradient_BFGSOfMyGradientOfCompute.hxx`:39 - `AppDef_Gradient_BFGSOfMyGradientOfCompute::AppDef_Gradient_BFGSOfMyGradientOfCompute`
-//   Reason: param 'StartingPoint' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiplevarfunctionwithgradient_vector_real3_int(F: &mut MultipleVarFunctionWithGradient, StartingPoint: &Vector, Tolerance3d: f64, Tolerance2d: f64, Eps: f64, NbIterations: i32) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute.hxx
@@ -1193,6 +2145,38 @@ unsafe impl crate::CppDeletable for Gradient_BFGSOfMyGradientbisOfBSplineCompute
 }
 
 impl Gradient_BFGSOfMyGradientbisOfBSplineCompute {
+    /// **Source:** `AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute.hxx`:39 - `AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute()`
+    pub fn new_multiplevarfunctionwithgradient_vector_real3_int(
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        Eps: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations))
+        }
+    }
+
+    /// **Source:** `AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute.hxx`:39 - `AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute()`
+    pub fn new_multiplevarfunctionwithgradient_vector_real3(
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        Eps: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiplevarfunctionwithgradient_vector_real3_int(
+            F,
+            StartingPoint,
+            Tolerance3d,
+            Tolerance2d,
+            Eps,
+            200,
+        )
+    }
+
     /// **Source:** `AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute.hxx`:47 - `AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute::IsSolutionReached()`
     pub fn is_solution_reached(
         &self,
@@ -1224,12 +2208,51 @@ impl Gradient_BFGSOfMyGradientbisOfBSplineCompute {
         }
     }
 
+    /// Inherited: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary()`
+    pub fn set_boundary(
+        &mut self,
+        theLeftBorder: &crate::ffi::math_Vector,
+        theRightBorder: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_SetBoundary(
+                self as *mut Self,
+                theLeftBorder,
+                theRightBorder,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:67 - `math_BFGS::Perform()`
+    pub fn perform(
+        &mut self,
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Perform(
+                self as *mut Self,
+                F,
+                StartingPoint,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe {
             crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_IsDone(
                 self as *const Self,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
+    pub fn location(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Location(
+                self as *const Self,
+            ))
         }
     }
 
@@ -1242,6 +2265,15 @@ impl Gradient_BFGSOfMyGradientbisOfBSplineCompute {
         }
     }
 
+    /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
+    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Gradient(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
     pub fn nb_iterations(&self) -> i32 {
         unsafe {
@@ -1251,12 +2283,6 @@ impl Gradient_BFGSOfMyGradientbisOfBSplineCompute {
         }
     }
 }
-
-// ── Skipped symbols for Gradient_BFGSOfMyGradientbisOfBSplineCompute (1 total) ──
-// SKIPPED: **Source:** `AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute.hxx`:39 - `AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute`
-//   Reason: param 'StartingPoint' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiplevarfunctionwithgradient_vector_real3_int(F: &mut MultipleVarFunctionWithGradient, StartingPoint: &Vector, Tolerance3d: f64, Tolerance2d: f64, Eps: f64, NbIterations: i32) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From AppDef_Gradient_BFGSOfTheGradient.hxx
@@ -1272,6 +2298,38 @@ unsafe impl crate::CppDeletable for Gradient_BFGSOfTheGradient {
 }
 
 impl Gradient_BFGSOfTheGradient {
+    /// **Source:** `AppDef_Gradient_BFGSOfTheGradient.hxx`:39 - `AppDef_Gradient_BFGSOfTheGradient::AppDef_Gradient_BFGSOfTheGradient()`
+    pub fn new_multiplevarfunctionwithgradient_vector_real3_int(
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        Eps: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_Gradient_BFGSOfTheGradient_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations))
+        }
+    }
+
+    /// **Source:** `AppDef_Gradient_BFGSOfTheGradient.hxx`:39 - `AppDef_Gradient_BFGSOfTheGradient::AppDef_Gradient_BFGSOfTheGradient()`
+    pub fn new_multiplevarfunctionwithgradient_vector_real3(
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        Eps: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiplevarfunctionwithgradient_vector_real3_int(
+            F,
+            StartingPoint,
+            Tolerance3d,
+            Tolerance2d,
+            Eps,
+            200,
+        )
+    }
+
     /// **Source:** `AppDef_Gradient_BFGSOfTheGradient.hxx`:46 - `AppDef_Gradient_BFGSOfTheGradient::IsSolutionReached()`
     pub fn is_solution_reached(
         &self,
@@ -1301,6 +2359,36 @@ impl Gradient_BFGSOfTheGradient {
         }
     }
 
+    /// Inherited: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary()`
+    pub fn set_boundary(
+        &mut self,
+        theLeftBorder: &crate::ffi::math_Vector,
+        theRightBorder: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_SetBoundary(
+                self as *mut Self,
+                theLeftBorder,
+                theRightBorder,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:67 - `math_BFGS::Perform()`
+    pub fn perform(
+        &mut self,
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Perform(
+                self as *mut Self,
+                F,
+                StartingPoint,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe {
@@ -1308,10 +2396,28 @@ impl Gradient_BFGSOfTheGradient {
         }
     }
 
+    /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
+    pub fn location(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Location(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
     pub fn minimum(&self) -> f64 {
         unsafe {
             crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Minimum(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
+    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Gradient(
+                self as *const Self,
+            ))
         }
     }
 
@@ -1324,12 +2430,6 @@ impl Gradient_BFGSOfTheGradient {
         }
     }
 }
-
-// ── Skipped symbols for Gradient_BFGSOfTheGradient (1 total) ──
-// SKIPPED: **Source:** `AppDef_Gradient_BFGSOfTheGradient.hxx`:39 - `AppDef_Gradient_BFGSOfTheGradient::AppDef_Gradient_BFGSOfTheGradient`
-//   Reason: param 'StartingPoint' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiplevarfunctionwithgradient_vector_real3_int(F: &mut MultipleVarFunctionWithGradient, StartingPoint: &Vector, Tolerance3d: f64, Tolerance2d: f64, Eps: f64, NbIterations: i32) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From AppDef_HArray1OfMultiPointConstraint.hxx
@@ -1707,6 +2807,23 @@ impl LinearCriteria {
         }
     }
 
+    /// **Source:** `AppDef_LinearCriteria.hxx`:83 - `AppDef_LinearCriteria::Gradient()`
+    pub fn gradient(&mut self, Element: i32, Dimension: i32, G: &mut crate::ffi::math_Vector) {
+        unsafe {
+            crate::ffi::AppDef_LinearCriteria_gradient(self as *mut Self, Element, Dimension, G)
+        }
+    }
+
+    /// **Source:** `AppDef_LinearCriteria.hxx`:88 - `AppDef_LinearCriteria::InputVector()`
+    /// Convert the assembly Vector in an Curve;
+    pub fn input_vector(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        AssTable: &crate::ffi::HandleFEmToolHAssemblyTable,
+    ) {
+        unsafe { crate::ffi::AppDef_LinearCriteria_input_vector(self as *mut Self, X, AssTable) }
+    }
+
     /// **Source:** `AppDef_LinearCriteria.hxx`:92 - `AppDef_LinearCriteria::SetWeight()`
     pub fn set_weight_real5(
         &mut self,
@@ -1895,17 +3012,6 @@ impl HandleAppDefLinearCriteria {
         }
     }
 }
-
-// ── Skipped symbols for LinearCriteria (2 total) ──
-// SKIPPED: **Source:** `AppDef_LinearCriteria.hxx`:83 - `AppDef_LinearCriteria::Gradient`
-//   Reason: param 'G' uses unknown type 'math_Vector&'
-//   // pub fn gradient(&mut self, Element: i32, Dimension: i32, G: &mut Vector);
-//
-// SKIPPED: **Source:** `AppDef_LinearCriteria.hxx`:88 - `AppDef_LinearCriteria::InputVector`
-//   method: Convert the assembly Vector in an Curve;
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn input_vector(&mut self, X: &Vector, AssTable: &HandleHAssemblyTable);
-//
 
 // ========================
 // From AppDef_MultiLine.hxx
@@ -2477,6 +3583,80 @@ unsafe impl crate::CppDeletable for MyBSplGradientOfBSplineCompute {
 }
 
 impl MyBSplGradientOfBSplineCompute {
+    /// **Source:** `AppDef_MyBSplGradientOfBSplineCompute.hxx`:51 - `AppDef_MyBSplGradientOfBSplineCompute::AppDef_MyBSplGradientOfBSplineCompute()`
+    /// Tries to minimize the sum (square(||Qui - Bi*Pi||))
+    /// where Pui describe the approximating BSpline curves'Poles
+    /// and Qi the MultiLine points with a parameter ui.
+    /// In this algorithm, the parameters ui are the unknowns.
+    /// The tolerance required on this sum is given by Tol.
+    /// The desired degree of the resulting curve is Deg.
+    pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi::math_Vector,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Deg: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, NbIterations))
+        }
+    }
+
+    /// **Source:** `AppDef_MyBSplGradientOfBSplineCompute.hxx`:70 - `AppDef_MyBSplGradientOfBSplineCompute::AppDef_MyBSplGradientOfBSplineCompute()`
+    /// Tries to minimize the sum (square(||Qui - Bi*Pi||))
+    /// where Pui describe the approximating BSpline curves'Poles
+    /// and Qi the MultiLine points with a parameter ui.
+    /// In this algorithm, the parameters ui are the unknowns.
+    /// The tolerance required on this sum is given by Tol.
+    /// The desired degree of the resulting curve is Deg.
+    pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int_real2(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi::math_Vector,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Deg: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+        NbIterations: i32,
+        lambda1: f64,
+        lambda2: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int_real2(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, NbIterations, lambda1, lambda2))
+        }
+    }
+
+    /// **Source:** `AppDef_MyBSplGradientOfBSplineCompute.hxx`:51 - `AppDef_MyBSplGradientOfBSplineCompute::AppDef_MyBSplGradientOfBSplineCompute()`
+    /// Tries to minimize the sum (square(||Qui - Bi*Pi||))
+    /// where Pui describe the approximating BSpline curves'Poles
+    /// and Qi the MultiLine points with a parameter ui.
+    /// In this algorithm, the parameters ui are the unknowns.
+    /// The tolerance required on this sum is given by Tol.
+    /// The desired degree of the resulting curve is Deg.
+    pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi::math_Vector,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Deg: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, 1)
+    }
+
     /// **Source:** `AppDef_MyBSplGradientOfBSplineCompute.hxx`:86 - `AppDef_MyBSplGradientOfBSplineCompute::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
@@ -2533,22 +3713,6 @@ impl MyBSplGradientOfBSplineCompute {
     }
 }
 
-// ── Skipped symbols for MyBSplGradientOfBSplineCompute (2 total) ──
-// SKIPPED: **Source:** `AppDef_MyBSplGradientOfBSplineCompute.hxx`:51 - `AppDef_MyBSplGradientOfBSplineCompute::AppDef_MyBSplGradientOfBSplineCompute`
-//   constructor: Tries to minimize the sum (square(||Qui - Bi*Pi||))
-//   constructor: where Pui describe the approximating BSpline curves'Poles
-//   constructor: and Qi the MultiLine points with a parameter ui.
-//   Reason: param 'Parameters' uses unknown type 'math_Vector&'
-//   // pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int(SSP: &MultiLine, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &mut Vector, Knots: &Array1OfReal, Mults: &Array1OfInteger, Deg: i32, Tol3d: f64, Tol2d: f64, NbIterations: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_MyBSplGradientOfBSplineCompute.hxx`:70 - `AppDef_MyBSplGradientOfBSplineCompute::AppDef_MyBSplGradientOfBSplineCompute`
-//   constructor: Tries to minimize the sum (square(||Qui - Bi*Pi||))
-//   constructor: where Pui describe the approximating BSpline curves'Poles
-//   constructor: and Qi the MultiLine points with a parameter ui.
-//   Reason: param 'Parameters' uses unknown type 'math_Vector&'
-//   // pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int_real2(SSP: &MultiLine, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &mut Vector, Knots: &Array1OfReal, Mults: &Array1OfInteger, Deg: i32, Tol3d: f64, Tol2d: f64, NbIterations: i32, lambda1: f64, lambda2: f64) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From AppDef_MyGradientOfCompute.hxx
 // ========================
@@ -2563,6 +3727,59 @@ unsafe impl crate::CppDeletable for MyGradientOfCompute {
 }
 
 impl MyGradientOfCompute {
+    /// **Source:** `AppDef_MyGradientOfCompute.hxx`:50 - `AppDef_MyGradientOfCompute::AppDef_MyGradientOfCompute()`
+    /// Tries to minimize the sum (square(||Qui - Bi*Pi||))
+    /// where Pui describe the approximating Bezier curves'Poles
+    /// and Qi the MultiLine points with a parameter ui.
+    /// In this algorithm, the parameters ui are the unknowns.
+    /// The tolerance required on this sum is given by Tol.
+    /// The desired degree of the resulting curve is Deg.
+    pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi::math_Vector,
+        Deg: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MyGradientOfCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations))
+        }
+    }
+
+    /// **Source:** `AppDef_MyGradientOfCompute.hxx`:50 - `AppDef_MyGradientOfCompute::AppDef_MyGradientOfCompute()`
+    /// Tries to minimize the sum (square(||Qui - Bi*Pi||))
+    /// where Pui describe the approximating Bezier curves'Poles
+    /// and Qi the MultiLine points with a parameter ui.
+    /// In this algorithm, the parameters ui are the unknowns.
+    /// The tolerance required on this sum is given by Tol.
+    /// The desired degree of the resulting curve is Deg.
+    pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi::math_Vector,
+        Deg: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(
+            SSP,
+            FirstPoint,
+            LastPoint,
+            TheConstraints,
+            Parameters,
+            Deg,
+            Tol3d,
+            Tol2d,
+            200,
+        )
+    }
+
     /// **Source:** `AppDef_MyGradientOfCompute.hxx`:62 - `AppDef_MyGradientOfCompute::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
@@ -2611,15 +3828,6 @@ impl MyGradientOfCompute {
     }
 }
 
-// ── Skipped symbols for MyGradientOfCompute (1 total) ──
-// SKIPPED: **Source:** `AppDef_MyGradientOfCompute.hxx`:50 - `AppDef_MyGradientOfCompute::AppDef_MyGradientOfCompute`
-//   constructor: Tries to minimize the sum (square(||Qui - Bi*Pi||))
-//   constructor: where Pui describe the approximating Bezier curves'Poles
-//   constructor: and Qi the MultiLine points with a parameter ui.
-//   Reason: param 'Parameters' uses unknown type 'math_Vector&'
-//   // pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP: &MultiLine, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &mut Vector, Deg: i32, Tol3d: f64, Tol2d: f64, NbIterations: i32) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From AppDef_MyGradientbisOfBSplineCompute.hxx
 // ========================
@@ -2634,6 +3842,59 @@ unsafe impl crate::CppDeletable for MyGradientbisOfBSplineCompute {
 }
 
 impl MyGradientbisOfBSplineCompute {
+    /// **Source:** `AppDef_MyGradientbisOfBSplineCompute.hxx`:50 - `AppDef_MyGradientbisOfBSplineCompute::AppDef_MyGradientbisOfBSplineCompute()`
+    /// Tries to minimize the sum (square(||Qui - Bi*Pi||))
+    /// where Pui describe the approximating Bezier curves'Poles
+    /// and Qi the MultiLine points with a parameter ui.
+    /// In this algorithm, the parameters ui are the unknowns.
+    /// The tolerance required on this sum is given by Tol.
+    /// The desired degree of the resulting curve is Deg.
+    pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi::math_Vector,
+        Deg: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MyGradientbisOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations))
+        }
+    }
+
+    /// **Source:** `AppDef_MyGradientbisOfBSplineCompute.hxx`:50 - `AppDef_MyGradientbisOfBSplineCompute::AppDef_MyGradientbisOfBSplineCompute()`
+    /// Tries to minimize the sum (square(||Qui - Bi*Pi||))
+    /// where Pui describe the approximating Bezier curves'Poles
+    /// and Qi the MultiLine points with a parameter ui.
+    /// In this algorithm, the parameters ui are the unknowns.
+    /// The tolerance required on this sum is given by Tol.
+    /// The desired degree of the resulting curve is Deg.
+    pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi::math_Vector,
+        Deg: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(
+            SSP,
+            FirstPoint,
+            LastPoint,
+            TheConstraints,
+            Parameters,
+            Deg,
+            Tol3d,
+            Tol2d,
+            200,
+        )
+    }
+
     /// **Source:** `AppDef_MyGradientbisOfBSplineCompute.hxx`:62 - `AppDef_MyGradientbisOfBSplineCompute::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
@@ -2685,15 +3946,6 @@ impl MyGradientbisOfBSplineCompute {
         }
     }
 }
-
-// ── Skipped symbols for MyGradientbisOfBSplineCompute (1 total) ──
-// SKIPPED: **Source:** `AppDef_MyGradientbisOfBSplineCompute.hxx`:50 - `AppDef_MyGradientbisOfBSplineCompute::AppDef_MyGradientbisOfBSplineCompute`
-//   constructor: Tries to minimize the sum (square(||Qui - Bi*Pi||))
-//   constructor: where Pui describe the approximating Bezier curves'Poles
-//   constructor: and Qi the MultiLine points with a parameter ui.
-//   Reason: param 'Parameters' uses unknown type 'math_Vector&'
-//   // pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP: &MultiLine, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &mut Vector, Deg: i32, Tol3d: f64, Tol2d: f64, NbIterations: i32) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From AppDef_MyLineTool.hxx
@@ -2943,12 +4195,76 @@ unsafe impl crate::CppDeletable for ParFunctionOfMyGradientOfCompute {
 }
 
 impl ParFunctionOfMyGradientOfCompute {
+    /// **Source:** `AppDef_ParFunctionOfMyGradientOfCompute.hxx`:45 - `AppDef_ParFunctionOfMyGradientOfCompute::AppDef_ParFunctionOfMyGradientOfCompute()`
+    /// initializes the fields of the function. The approximating
+    /// curve has the desired degree Deg.
+    pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &crate::ffi::math_Vector,
+        Deg: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg))
+        }
+    }
+
     /// **Source:** `AppDef_ParFunctionOfMyGradientOfCompute.hxx`:55 - `AppDef_ParFunctionOfMyGradientOfCompute::NbVariables()`
     /// returns the number of variables of the function. It
     /// corresponds to the number of MultiPoints.
     pub fn nb_variables(&self) -> i32 {
         unsafe {
             crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_nb_variables(self as *const Self)
+        }
+    }
+
+    /// **Source:** `AppDef_ParFunctionOfMyGradientOfCompute.hxx`:61 - `AppDef_ParFunctionOfMyGradientOfCompute::Value()`
+    /// this method computes the new approximation of the
+    /// MultiLine
+    /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
+    /// point of the MultiLine.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+        unsafe {
+            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_value(self as *mut Self, X, F)
+        }
+    }
+
+    /// **Source:** `AppDef_ParFunctionOfMyGradientOfCompute.hxx`:65 - `AppDef_ParFunctionOfMyGradientOfCompute::Gradient()`
+    /// returns the gradient G of the sum above for the
+    /// parameters Xi.
+    pub fn gradient(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_gradient(self as *mut Self, X, G)
+        }
+    }
+
+    /// **Source:** `AppDef_ParFunctionOfMyGradientOfCompute.hxx`:69 - `AppDef_ParFunctionOfMyGradientOfCompute::Values()`
+    /// returns the value F=sum(||Pui - Bi*Pi||)2.
+    /// returns the value G = grad(F) for the parameters Xi.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_values(self as *mut Self, X, F, G)
+        }
+    }
+
+    /// **Source:** `AppDef_ParFunctionOfMyGradientOfCompute.hxx`:72 - `AppDef_ParFunctionOfMyGradientOfCompute::NewParameters()`
+    /// returns the new parameters of the MultiLine.
+    pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_new_parameters(
+                self as *const Self,
+            ))
         }
     }
 
@@ -3072,38 +4388,6 @@ impl ParFunctionOfMyGradientOfCompute {
     }
 }
 
-// ── Skipped symbols for ParFunctionOfMyGradientOfCompute (5 total) ──
-// SKIPPED: **Source:** `AppDef_ParFunctionOfMyGradientOfCompute.hxx`:45 - `AppDef_ParFunctionOfMyGradientOfCompute::AppDef_ParFunctionOfMyGradientOfCompute`
-//   constructor: initializes the fields of the function. The approximating
-//   constructor: curve has the desired degree Deg.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP: &MultiLine, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &Vector, Deg: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_ParFunctionOfMyGradientOfCompute.hxx`:61 - `AppDef_ParFunctionOfMyGradientOfCompute::Value`
-//   method: this method computes the new approximation of the
-//   method: MultiLine
-//   method: SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `AppDef_ParFunctionOfMyGradientOfCompute.hxx`:65 - `AppDef_ParFunctionOfMyGradientOfCompute::Gradient`
-//   method: returns the gradient G of the sum above for the
-//   method: parameters Xi.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `AppDef_ParFunctionOfMyGradientOfCompute.hxx`:69 - `AppDef_ParFunctionOfMyGradientOfCompute::Values`
-//   method: returns the value F=sum(||Pui - Bi*Pi||)2.
-//   method: returns the value G = grad(F) for the parameters Xi.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `AppDef_ParFunctionOfMyGradientOfCompute.hxx`:72 - `AppDef_ParFunctionOfMyGradientOfCompute::NewParameters`
-//   method: returns the new parameters of the MultiLine.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn new_parameters(&self) -> &Vector;
-//
-
 // ========================
 // From AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx
 // ========================
@@ -3118,6 +4402,22 @@ unsafe impl crate::CppDeletable for ParFunctionOfMyGradientbisOfBSplineCompute {
 }
 
 impl ParFunctionOfMyGradientbisOfBSplineCompute {
+    /// **Source:** `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx`:46 - `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute()`
+    /// initializes the fields of the function. The approximating
+    /// curve has the desired degree Deg.
+    pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &crate::ffi::math_Vector,
+        Deg: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg))
+        }
+    }
+
     /// **Source:** `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx`:56 - `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::NbVariables()`
     /// returns the number of variables of the function. It
     /// corresponds to the number of MultiPoints.
@@ -3126,6 +4426,67 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
             crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_nb_variables(
                 self as *const Self,
             )
+        }
+    }
+
+    /// **Source:** `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx`:62 - `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::Value()`
+    /// this method computes the new approximation of the
+    /// MultiLine
+    /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
+    /// point of the MultiLine.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+        unsafe {
+            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_value(
+                self as *mut Self,
+                X,
+                F,
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx`:66 - `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::Gradient()`
+    /// returns the gradient G of the sum above for the
+    /// parameters Xi.
+    pub fn gradient(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_gradient(
+                self as *mut Self,
+                X,
+                G,
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx`:70 - `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::Values()`
+    /// returns the value F=sum(||Pui - Bi*Pi||)2.
+    /// returns the value G = grad(F) for the parameters Xi.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_values(
+                self as *mut Self,
+                X,
+                F,
+                G,
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx`:73 - `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::NewParameters()`
+    /// returns the new parameters of the MultiLine.
+    pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_new_parameters(
+                self as *const Self,
+            ))
         }
     }
 
@@ -3253,38 +4614,6 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
     }
 }
 
-// ── Skipped symbols for ParFunctionOfMyGradientbisOfBSplineCompute (5 total) ──
-// SKIPPED: **Source:** `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx`:46 - `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute`
-//   constructor: initializes the fields of the function. The approximating
-//   constructor: curve has the desired degree Deg.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP: &MultiLine, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &Vector, Deg: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx`:62 - `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::Value`
-//   method: this method computes the new approximation of the
-//   method: MultiLine
-//   method: SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx`:66 - `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::Gradient`
-//   method: returns the gradient G of the sum above for the
-//   method: parameters Xi.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx`:70 - `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::Values`
-//   method: returns the value F=sum(||Pui - Bi*Pi||)2.
-//   method: returns the value G = grad(F) for the parameters Xi.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx`:73 - `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::NewParameters`
-//   method: returns the new parameters of the MultiLine.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn new_parameters(&self) -> &Vector;
-//
-
 // ========================
 // From AppDef_ParFunctionOfTheGradient.hxx
 // ========================
@@ -3299,11 +4628,67 @@ unsafe impl crate::CppDeletable for ParFunctionOfTheGradient {
 }
 
 impl ParFunctionOfTheGradient {
+    /// **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:45 - `AppDef_ParFunctionOfTheGradient::AppDef_ParFunctionOfTheGradient()`
+    /// initializes the fields of the function. The approximating
+    /// curve has the desired degree Deg.
+    pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &crate::ffi::math_Vector,
+        Deg: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParFunctionOfTheGradient_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg))
+        }
+    }
+
     /// **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:55 - `AppDef_ParFunctionOfTheGradient::NbVariables()`
     /// returns the number of variables of the function. It
     /// corresponds to the number of MultiPoints.
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::AppDef_ParFunctionOfTheGradient_nb_variables(self as *const Self) }
+    }
+
+    /// **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:61 - `AppDef_ParFunctionOfTheGradient::Value()`
+    /// this method computes the new approximation of the
+    /// MultiLine
+    /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
+    /// point of the MultiLine.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+        unsafe { crate::ffi::AppDef_ParFunctionOfTheGradient_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:65 - `AppDef_ParFunctionOfTheGradient::Gradient()`
+    /// returns the gradient G of the sum above for the
+    /// parameters Xi.
+    pub fn gradient(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::AppDef_ParFunctionOfTheGradient_gradient(self as *mut Self, X, G) }
+    }
+
+    /// **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:69 - `AppDef_ParFunctionOfTheGradient::Values()`
+    /// returns the value F=sum(||Pui - Bi*Pi||)2.
+    /// returns the value G = grad(F) for the parameters Xi.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::AppDef_ParFunctionOfTheGradient_values(self as *mut Self, X, F, G) }
+    }
+
+    /// **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:72 - `AppDef_ParFunctionOfTheGradient::NewParameters()`
+    /// returns the new parameters of the MultiLine.
+    pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::AppDef_ParFunctionOfTheGradient_new_parameters(self as *const Self))
+        }
     }
 
     /// **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:76 - `AppDef_ParFunctionOfTheGradient::CurveValue()`
@@ -3422,38 +4807,6 @@ impl ParFunctionOfTheGradient {
     }
 }
 
-// ── Skipped symbols for ParFunctionOfTheGradient (5 total) ──
-// SKIPPED: **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:45 - `AppDef_ParFunctionOfTheGradient::AppDef_ParFunctionOfTheGradient`
-//   constructor: initializes the fields of the function. The approximating
-//   constructor: curve has the desired degree Deg.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP: &MultiLine, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &Vector, Deg: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:61 - `AppDef_ParFunctionOfTheGradient::Value`
-//   method: this method computes the new approximation of the
-//   method: MultiLine
-//   method: SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:65 - `AppDef_ParFunctionOfTheGradient::Gradient`
-//   method: returns the gradient G of the sum above for the
-//   method: parameters Xi.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:69 - `AppDef_ParFunctionOfTheGradient::Values`
-//   method: returns the value F=sum(||Pui - Bi*Pi||)2.
-//   method: returns the value G = grad(F) for the parameters Xi.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:72 - `AppDef_ParFunctionOfTheGradient::NewParameters`
-//   method: returns the new parameters of the MultiLine.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn new_parameters(&self) -> &Vector;
-//
-
 // ========================
 // From AppDef_ParLeastSquareOfMyGradientOfCompute.hxx
 // ========================
@@ -3468,6 +4821,37 @@ unsafe impl crate::CppDeletable for ParLeastSquareOfMyGradientOfCompute {
 }
 
 impl ParLeastSquareOfMyGradientOfCompute {
+    /// **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:66 - `AppDef_ParLeastSquareOfMyGradientOfCompute::AppDef_ParLeastSquareOfMyGradientOfCompute()`
+    /// given a MultiLine, this algorithm computes the least
+    /// square resolution using the Householder-QR method.
+    /// If the first and/or the last point is a constraint
+    /// point, the value of the tangency or curvature is
+    /// computed in the resolution.
+    /// NbPol is the number of control points wanted
+    /// for the approximating curves.
+    /// The system to solve is the following:
+    /// A X = B.
+    /// Where A is the Bernstein matrix computed with the
+    /// parameters, B the points coordinates and X the poles
+    /// solutions.
+    /// The matrix A is the same for each coordinate x, y and z
+    /// and is also the same for each MultiLine point because
+    /// they are approximated in parallel(so with the same
+    /// parameter, only the vector B changes).
+    pub fn new_multiline_int2_constraint2_vector_int(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        Parameters: &crate::ffi::math_Vector,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
+        }
+    }
+
     /// **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:76 - `AppDef_ParLeastSquareOfMyGradientOfCompute::AppDef_ParLeastSquareOfMyGradientOfCompute()`
     /// Initializes the fields of the object.
     pub fn new_multiline_int2_constraint2_int(
@@ -3480,6 +4864,38 @@ impl ParLeastSquareOfMyGradientOfCompute {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:99 - `AppDef_ParLeastSquareOfMyGradientOfCompute::AppDef_ParLeastSquareOfMyGradientOfCompute()`
+    /// given a MultiLine, this algorithm computes the least
+    /// square resolution using the Householder-QR method.
+    /// If the first and/or the last point is a constraint
+    /// point, the value of the tangency or curvature is
+    /// computed in the resolution.
+    /// Deg is the degree wanted for the approximating curves.
+    /// The system to solve is the following:
+    /// A X = B.
+    /// Where A is the BSpline functions matrix computed with
+    /// <parameters>, B the points coordinates and X the poles
+    /// solutions.
+    /// The matrix A is the same for each coordinate x, y and z
+    /// and is also the same for each MultiLine point because
+    /// they are approximated in parallel(so with the same
+    /// parameter, only the vector B changes).
+    pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
+        SSP: &MultiLine,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        Parameters: &crate::ffi::math_Vector,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
         }
     }
 
@@ -3497,6 +4913,85 @@ impl ParLeastSquareOfMyGradientOfCompute {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:123 - `AppDef_ParLeastSquareOfMyGradientOfCompute::Perform()`
+    /// Is used after having initialized the fields.
+    /// The case "CurvaturePoint" is not treated in this method.
+    pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
+        unsafe {
+            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector(
+                self as *mut Self,
+                Parameters,
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:126 - `AppDef_ParLeastSquareOfMyGradientOfCompute::Perform()`
+    /// Is used after having initialized the fields.
+    pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
+        unsafe {
+            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector_real2(
+                self as *mut Self,
+                Parameters,
+                l1,
+                l2,
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:133 - `AppDef_ParLeastSquareOfMyGradientOfCompute::Perform()`
+    /// Is used after having initialized the fields.
+    /// <V1t> is the tangent vector at the first point.
+    /// <V2t> is the tangent vector at the last point.
+    pub fn perform_vector3_real2(
+        &mut self,
+        Parameters: &crate::ffi::math_Vector,
+        V1t: &crate::ffi::math_Vector,
+        V2t: &crate::ffi::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector3_real2(
+                self as *mut Self,
+                Parameters,
+                V1t,
+                V2t,
+                l1,
+                l2,
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:144 - `AppDef_ParLeastSquareOfMyGradientOfCompute::Perform()`
+    /// Is used after having initialized the fields.
+    /// <V1t> is the tangent vector at the first point.
+    /// <V2t> is the tangent vector at the last point.
+    /// <V1c> is the tangent vector at the first point.
+    /// <V2c> is the tangent vector at the last point.
+    pub fn perform_vector5_real2(
+        &mut self,
+        Parameters: &crate::ffi::math_Vector,
+        V1t: &crate::ffi::math_Vector,
+        V2t: &crate::ffi::math_Vector,
+        V1c: &crate::ffi::math_Vector,
+        V2c: &crate::ffi::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector5_real2(
+                self as *mut Self,
+                Parameters,
+                V1t,
+                V2t,
+                V1c,
+                V2c,
+                l1,
+                l2,
+            )
         }
     }
 
@@ -3553,6 +5048,29 @@ impl ParLeastSquareOfMyGradientOfCompute {
             &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_derivative_function_matrix(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:177 - `AppDef_ParLeastSquareOfMyGradientOfCompute::ErrorGradient()`
+    /// returns the maximum errors between the MultiLine
+    /// and the approximation curves. F is the sum of the square
+    /// distances. Grad is the derivative vector of the
+    /// function F.
+    pub fn error_gradient(
+        &mut self,
+        Grad: &mut crate::ffi::math_Vector,
+        F: &mut f64,
+        MaxE3d: &mut f64,
+        MaxE2d: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_error_gradient(
+                self as *mut Self,
+                Grad,
+                F,
+                MaxE3d,
+                MaxE2d,
+            )
         }
     }
 
@@ -3613,62 +5131,18 @@ impl ParLeastSquareOfMyGradientOfCompute {
             &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_poles(self as *const Self))
         }
     }
-}
 
-// ── Skipped symbols for ParLeastSquareOfMyGradientOfCompute (8 total) ──
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:66 - `AppDef_ParLeastSquareOfMyGradientOfCompute::AppDef_ParLeastSquareOfMyGradientOfCompute`
-//   constructor: given a MultiLine, this algorithm computes the least
-//   constructor: square resolution using the Householder-QR method.
-//   constructor: If the first and/or the last point is a constraint
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiline_int2_constraint2_vector_int(SSP: &MultiLine, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:99 - `AppDef_ParLeastSquareOfMyGradientOfCompute::AppDef_ParLeastSquareOfMyGradientOfCompute`
-//   constructor: given a MultiLine, this algorithm computes the least
-//   constructor: square resolution using the Householder-QR method.
-//   constructor: If the first and/or the last point is a constraint
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP: &MultiLine, Knots: &Array1OfReal, Mults: &Array1OfInteger, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:123 - `AppDef_ParLeastSquareOfMyGradientOfCompute::Perform`
-//   method: Is used after having initialized the fields.
-//   method: The case "CurvaturePoint" is not treated in this method.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector);
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:126 - `AppDef_ParLeastSquareOfMyGradientOfCompute::Perform`
-//   method: Is used after having initialized the fields.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:133 - `AppDef_ParLeastSquareOfMyGradientOfCompute::Perform`
-//   method: Is used after having initialized the fields.
-//   method: <V1t> is the tangent vector at the first point.
-//   method: <V2t> is the tangent vector at the last point.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:144 - `AppDef_ParLeastSquareOfMyGradientOfCompute::Perform`
-//   method: Is used after having initialized the fields.
-//   method: <V1t> is the tangent vector at the first point.
-//   method: <V2t> is the tangent vector at the last point.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, V1c: &Vector, V2c: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:177 - `AppDef_ParLeastSquareOfMyGradientOfCompute::ErrorGradient`
-//   method: returns the maximum errors between the MultiLine
-//   method: and the approximation curves. F is the sum of the square
-//   method: distances. Grad is the derivative vector of the
-//   Reason: param 'Grad' uses unknown type 'math_Vector&'
-//   // pub fn error_gradient(&mut self, Grad: &mut Vector, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64);
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:209 - `AppDef_ParLeastSquareOfMyGradientOfCompute::KIndex`
-//   method: Returns the indexes of the first non null values of
-//   method: A and DA.
-//   method: The values are non null from Index(ieme point) +1
-//   Reason: return type 'const math_IntegerVector&' is unknown
-//   // pub fn k_index(&self) -> &IntegerVector;
-//
+    /// **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:209 - `AppDef_ParLeastSquareOfMyGradientOfCompute::KIndex()`
+    /// Returns the indexes of the first non null values of
+    /// A and DA.
+    /// The values are non null from Index(ieme point) +1
+    /// to Index(ieme point) + degree +1.
+    pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
+        unsafe {
+            &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_k_index(self as *const Self))
+        }
+    }
+}
 
 // ========================
 // From AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx
@@ -3684,6 +5158,37 @@ unsafe impl crate::CppDeletable for ParLeastSquareOfMyGradientbisOfBSplineComput
 }
 
 impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
+    /// **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:66 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute()`
+    /// given a MultiLine, this algorithm computes the least
+    /// square resolution using the Householder-QR method.
+    /// If the first and/or the last point is a constraint
+    /// point, the value of the tangency or curvature is
+    /// computed in the resolution.
+    /// NbPol is the number of control points wanted
+    /// for the approximating curves.
+    /// The system to solve is the following:
+    /// A X = B.
+    /// Where A is the Bernstein matrix computed with the
+    /// parameters, B the points coordinates and X the poles
+    /// solutions.
+    /// The matrix A is the same for each coordinate x, y and z
+    /// and is also the same for each MultiLine point because
+    /// they are approximated in parallel(so with the same
+    /// parameter, only the vector B changes).
+    pub fn new_multiline_int2_constraint2_vector_int(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        Parameters: &crate::ffi::math_Vector,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
+        }
+    }
+
     /// **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:76 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute()`
     /// Initializes the fields of the object.
     pub fn new_multiline_int2_constraint2_int(
@@ -3696,6 +5201,38 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:99 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute()`
+    /// given a MultiLine, this algorithm computes the least
+    /// square resolution using the Householder-QR method.
+    /// If the first and/or the last point is a constraint
+    /// point, the value of the tangency or curvature is
+    /// computed in the resolution.
+    /// Deg is the degree wanted for the approximating curves.
+    /// The system to solve is the following:
+    /// A X = B.
+    /// Where A is the BSpline functions matrix computed with
+    /// <parameters>, B the points coordinates and X the poles
+    /// solutions.
+    /// The matrix A is the same for each coordinate x, y and z
+    /// and is also the same for each MultiLine point because
+    /// they are approximated in parallel(so with the same
+    /// parameter, only the vector B changes).
+    pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
+        SSP: &MultiLine,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        Parameters: &crate::ffi::math_Vector,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
         }
     }
 
@@ -3713,6 +5250,85 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:123 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Perform()`
+    /// Is used after having initialized the fields.
+    /// The case "CurvaturePoint" is not treated in this method.
+    pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
+        unsafe {
+            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector(
+                self as *mut Self,
+                Parameters,
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:126 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Perform()`
+    /// Is used after having initialized the fields.
+    pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
+        unsafe {
+            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector_real2(
+                self as *mut Self,
+                Parameters,
+                l1,
+                l2,
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:133 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Perform()`
+    /// Is used after having initialized the fields.
+    /// <V1t> is the tangent vector at the first point.
+    /// <V2t> is the tangent vector at the last point.
+    pub fn perform_vector3_real2(
+        &mut self,
+        Parameters: &crate::ffi::math_Vector,
+        V1t: &crate::ffi::math_Vector,
+        V2t: &crate::ffi::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector3_real2(
+                self as *mut Self,
+                Parameters,
+                V1t,
+                V2t,
+                l1,
+                l2,
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:144 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Perform()`
+    /// Is used after having initialized the fields.
+    /// <V1t> is the tangent vector at the first point.
+    /// <V2t> is the tangent vector at the last point.
+    /// <V1c> is the tangent vector at the first point.
+    /// <V2c> is the tangent vector at the last point.
+    pub fn perform_vector5_real2(
+        &mut self,
+        Parameters: &crate::ffi::math_Vector,
+        V1t: &crate::ffi::math_Vector,
+        V2t: &crate::ffi::math_Vector,
+        V1c: &crate::ffi::math_Vector,
+        V2c: &crate::ffi::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector5_real2(
+                self as *mut Self,
+                Parameters,
+                V1t,
+                V2t,
+                V1c,
+                V2c,
+                l1,
+                l2,
+            )
         }
     }
 
@@ -3769,6 +5385,29 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
             &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_derivative_function_matrix(self as *const Self))
+        }
+    }
+
+    /// **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:177 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::ErrorGradient()`
+    /// returns the maximum errors between the MultiLine
+    /// and the approximation curves. F is the sum of the square
+    /// distances. Grad is the derivative vector of the
+    /// function F.
+    pub fn error_gradient(
+        &mut self,
+        Grad: &mut crate::ffi::math_Vector,
+        F: &mut f64,
+        MaxE3d: &mut f64,
+        MaxE2d: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_error_gradient(
+                self as *mut Self,
+                Grad,
+                F,
+                MaxE3d,
+                MaxE2d,
+            )
         }
     }
 
@@ -3839,62 +5478,20 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
             ))
         }
     }
-}
 
-// ── Skipped symbols for ParLeastSquareOfMyGradientbisOfBSplineCompute (8 total) ──
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:66 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute`
-//   constructor: given a MultiLine, this algorithm computes the least
-//   constructor: square resolution using the Householder-QR method.
-//   constructor: If the first and/or the last point is a constraint
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiline_int2_constraint2_vector_int(SSP: &MultiLine, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:99 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute`
-//   constructor: given a MultiLine, this algorithm computes the least
-//   constructor: square resolution using the Householder-QR method.
-//   constructor: If the first and/or the last point is a constraint
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP: &MultiLine, Knots: &Array1OfReal, Mults: &Array1OfInteger, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:123 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Perform`
-//   method: Is used after having initialized the fields.
-//   method: The case "CurvaturePoint" is not treated in this method.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector);
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:126 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Perform`
-//   method: Is used after having initialized the fields.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:133 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Perform`
-//   method: Is used after having initialized the fields.
-//   method: <V1t> is the tangent vector at the first point.
-//   method: <V2t> is the tangent vector at the last point.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:144 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Perform`
-//   method: Is used after having initialized the fields.
-//   method: <V1t> is the tangent vector at the first point.
-//   method: <V2t> is the tangent vector at the last point.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, V1c: &Vector, V2c: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:177 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::ErrorGradient`
-//   method: returns the maximum errors between the MultiLine
-//   method: and the approximation curves. F is the sum of the square
-//   method: distances. Grad is the derivative vector of the
-//   Reason: param 'Grad' uses unknown type 'math_Vector&'
-//   // pub fn error_gradient(&mut self, Grad: &mut Vector, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64);
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:209 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::KIndex`
-//   method: Returns the indexes of the first non null values of
-//   method: A and DA.
-//   method: The values are non null from Index(ieme point) +1
-//   Reason: return type 'const math_IntegerVector&' is unknown
-//   // pub fn k_index(&self) -> &IntegerVector;
-//
+    /// **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:209 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::KIndex()`
+    /// Returns the indexes of the first non null values of
+    /// A and DA.
+    /// The values are non null from Index(ieme point) +1
+    /// to Index(ieme point) + degree +1.
+    pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
+        unsafe {
+            &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_k_index(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From AppDef_ParLeastSquareOfTheGradient.hxx
@@ -3910,6 +5507,37 @@ unsafe impl crate::CppDeletable for ParLeastSquareOfTheGradient {
 }
 
 impl ParLeastSquareOfTheGradient {
+    /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:66 - `AppDef_ParLeastSquareOfTheGradient::AppDef_ParLeastSquareOfTheGradient()`
+    /// given a MultiLine, this algorithm computes the least
+    /// square resolution using the Householder-QR method.
+    /// If the first and/or the last point is a constraint
+    /// point, the value of the tangency or curvature is
+    /// computed in the resolution.
+    /// NbPol is the number of control points wanted
+    /// for the approximating curves.
+    /// The system to solve is the following:
+    /// A X = B.
+    /// Where A is the Bernstein matrix computed with the
+    /// parameters, B the points coordinates and X the poles
+    /// solutions.
+    /// The matrix A is the same for each coordinate x, y and z
+    /// and is also the same for each MultiLine point because
+    /// they are approximated in parallel(so with the same
+    /// parameter, only the vector B changes).
+    pub fn new_multiline_int2_constraint2_vector_int(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        Parameters: &crate::ffi::math_Vector,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfTheGradient_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
+        }
+    }
+
     /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:75 - `AppDef_ParLeastSquareOfTheGradient::AppDef_ParLeastSquareOfTheGradient()`
     /// Initializes the fields of the object.
     pub fn new_multiline_int2_constraint2_int(
@@ -3934,6 +5562,38 @@ impl ParLeastSquareOfTheGradient {
         }
     }
 
+    /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:97 - `AppDef_ParLeastSquareOfTheGradient::AppDef_ParLeastSquareOfTheGradient()`
+    /// given a MultiLine, this algorithm computes the least
+    /// square resolution using the Householder-QR method.
+    /// If the first and/or the last point is a constraint
+    /// point, the value of the tangency or curvature is
+    /// computed in the resolution.
+    /// Deg is the degree wanted for the approximating curves.
+    /// The system to solve is the following:
+    /// A X = B.
+    /// Where A is the BSpline functions matrix computed with
+    /// <parameters>, B the points coordinates and X the poles
+    /// solutions.
+    /// The matrix A is the same for each coordinate x, y and z
+    /// and is also the same for each MultiLine point because
+    /// they are approximated in parallel(so with the same
+    /// parameter, only the vector B changes).
+    pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
+        SSP: &MultiLine,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        Parameters: &crate::ffi::math_Vector,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfTheGradient_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
+        }
+    }
+
     /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:108 - `AppDef_ParLeastSquareOfTheGradient::AppDef_ParLeastSquareOfTheGradient()`
     /// Initializes the fields of the object.
     pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(
@@ -3948,6 +5608,85 @@ impl ParLeastSquareOfTheGradient {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfTheGradient_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:119 - `AppDef_ParLeastSquareOfTheGradient::Perform()`
+    /// Is used after having initialized the fields.
+    /// The case "CurvaturePoint" is not treated in this method.
+    pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
+        unsafe {
+            crate::ffi::AppDef_ParLeastSquareOfTheGradient_perform_vector(
+                self as *mut Self,
+                Parameters,
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:122 - `AppDef_ParLeastSquareOfTheGradient::Perform()`
+    /// Is used after having initialized the fields.
+    pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
+        unsafe {
+            crate::ffi::AppDef_ParLeastSquareOfTheGradient_perform_vector_real2(
+                self as *mut Self,
+                Parameters,
+                l1,
+                l2,
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:129 - `AppDef_ParLeastSquareOfTheGradient::Perform()`
+    /// Is used after having initialized the fields.
+    /// <V1t> is the tangent vector at the first point.
+    /// <V2t> is the tangent vector at the last point.
+    pub fn perform_vector3_real2(
+        &mut self,
+        Parameters: &crate::ffi::math_Vector,
+        V1t: &crate::ffi::math_Vector,
+        V2t: &crate::ffi::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_ParLeastSquareOfTheGradient_perform_vector3_real2(
+                self as *mut Self,
+                Parameters,
+                V1t,
+                V2t,
+                l1,
+                l2,
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:140 - `AppDef_ParLeastSquareOfTheGradient::Perform()`
+    /// Is used after having initialized the fields.
+    /// <V1t> is the tangent vector at the first point.
+    /// <V2t> is the tangent vector at the last point.
+    /// <V1c> is the tangent vector at the first point.
+    /// <V2c> is the tangent vector at the last point.
+    pub fn perform_vector5_real2(
+        &mut self,
+        Parameters: &crate::ffi::math_Vector,
+        V1t: &crate::ffi::math_Vector,
+        V2t: &crate::ffi::math_Vector,
+        V1c: &crate::ffi::math_Vector,
+        V2c: &crate::ffi::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_ParLeastSquareOfTheGradient_perform_vector5_real2(
+                self as *mut Self,
+                Parameters,
+                V1t,
+                V2t,
+                V1c,
+                V2c,
+                l1,
+                l2,
+            )
         }
     }
 
@@ -3999,6 +5738,29 @@ impl ParLeastSquareOfTheGradient {
         }
     }
 
+    /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:173 - `AppDef_ParLeastSquareOfTheGradient::ErrorGradient()`
+    /// returns the maximum errors between the MultiLine
+    /// and the approximation curves. F is the sum of the square
+    /// distances. Grad is the derivative vector of the
+    /// function F.
+    pub fn error_gradient(
+        &mut self,
+        Grad: &mut crate::ffi::math_Vector,
+        F: &mut f64,
+        MaxE3d: &mut f64,
+        MaxE2d: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_ParLeastSquareOfTheGradient_error_gradient(
+                self as *mut Self,
+                Grad,
+                F,
+                MaxE3d,
+                MaxE2d,
+            )
+        }
+    }
+
     /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:180 - `AppDef_ParLeastSquareOfTheGradient::Distance()`
     /// returns the distances between the points of the
     /// multiline and the approximation curves.
@@ -4046,62 +5808,16 @@ impl ParLeastSquareOfTheGradient {
     pub fn poles(&self) -> &crate::math::Matrix {
         unsafe { &*(crate::ffi::AppDef_ParLeastSquareOfTheGradient_poles(self as *const Self)) }
     }
-}
 
-// ── Skipped symbols for ParLeastSquareOfTheGradient (8 total) ──
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:66 - `AppDef_ParLeastSquareOfTheGradient::AppDef_ParLeastSquareOfTheGradient`
-//   constructor: given a MultiLine, this algorithm computes the least
-//   constructor: square resolution using the Householder-QR method.
-//   constructor: If the first and/or the last point is a constraint
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiline_int2_constraint2_vector_int(SSP: &MultiLine, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:97 - `AppDef_ParLeastSquareOfTheGradient::AppDef_ParLeastSquareOfTheGradient`
-//   constructor: given a MultiLine, this algorithm computes the least
-//   constructor: square resolution using the Householder-QR method.
-//   constructor: If the first and/or the last point is a constraint
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP: &MultiLine, Knots: &Array1OfReal, Mults: &Array1OfInteger, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:119 - `AppDef_ParLeastSquareOfTheGradient::Perform`
-//   method: Is used after having initialized the fields.
-//   method: The case "CurvaturePoint" is not treated in this method.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector);
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:122 - `AppDef_ParLeastSquareOfTheGradient::Perform`
-//   method: Is used after having initialized the fields.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:129 - `AppDef_ParLeastSquareOfTheGradient::Perform`
-//   method: Is used after having initialized the fields.
-//   method: <V1t> is the tangent vector at the first point.
-//   method: <V2t> is the tangent vector at the last point.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:140 - `AppDef_ParLeastSquareOfTheGradient::Perform`
-//   method: Is used after having initialized the fields.
-//   method: <V1t> is the tangent vector at the first point.
-//   method: <V2t> is the tangent vector at the last point.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, V1c: &Vector, V2c: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:173 - `AppDef_ParLeastSquareOfTheGradient::ErrorGradient`
-//   method: returns the maximum errors between the MultiLine
-//   method: and the approximation curves. F is the sum of the square
-//   method: distances. Grad is the derivative vector of the
-//   Reason: param 'Grad' uses unknown type 'math_Vector&'
-//   // pub fn error_gradient(&mut self, Grad: &mut Vector, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64);
-//
-// SKIPPED: **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:205 - `AppDef_ParLeastSquareOfTheGradient::KIndex`
-//   method: Returns the indexes of the first non null values of
-//   method: A and DA.
-//   method: The values are non null from Index(ieme point) +1
-//   Reason: return type 'const math_IntegerVector&' is unknown
-//   // pub fn k_index(&self) -> &IntegerVector;
-//
+    /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:205 - `AppDef_ParLeastSquareOfTheGradient::KIndex()`
+    /// Returns the indexes of the first non null values of
+    /// A and DA.
+    /// The values are non null from Index(ieme point) +1
+    /// to Index(ieme point) + degree +1.
+    pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
+        unsafe { &*(crate::ffi::AppDef_ParLeastSquareOfTheGradient_k_index(self as *const Self)) }
+    }
+}
 
 // ========================
 // From AppDef_ResConstraintOfMyGradientOfCompute.hxx
@@ -4199,6 +5915,34 @@ impl ResConstraintOfMyGradientOfCompute {
         }
     }
 
+    /// **Source:** `AppDef_ResConstraintOfMyGradientOfCompute.hxx`:71 - `AppDef_ResConstraintOfMyGradientOfCompute::Duale()`
+    /// returns the duale variables of the system.
+    pub fn duale(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_duale(self as *const Self))
+        }
+    }
+
+    /// **Source:** `AppDef_ResConstraintOfMyGradientOfCompute.hxx`:74 - `AppDef_ResConstraintOfMyGradientOfCompute::ConstraintDerivative()`
+    /// Returns the derivative of the constraint matrix.
+    pub fn constraint_derivative(
+        &mut self,
+        SSP: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+        Deg: i32,
+        DA: &crate::math::Matrix,
+    ) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_constraint_derivative(
+                self as *mut Self,
+                SSP,
+                Parameters,
+                Deg,
+                DA,
+            ))
+        }
+    }
+
     /// **Source:** `AppDef_ResConstraintOfMyGradientOfCompute.hxx`:81 - `AppDef_ResConstraintOfMyGradientOfCompute::InverseMatrix()`
     /// returns the Inverse of Cont*Transposed(Cont), where
     /// Cont is the constraint matrix for the algorithm.
@@ -4210,18 +5954,6 @@ impl ResConstraintOfMyGradientOfCompute {
         }
     }
 }
-
-// ── Skipped symbols for ResConstraintOfMyGradientOfCompute (2 total) ──
-// SKIPPED: **Source:** `AppDef_ResConstraintOfMyGradientOfCompute.hxx`:71 - `AppDef_ResConstraintOfMyGradientOfCompute::Duale`
-//   method: returns the duale variables of the system.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn duale(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `AppDef_ResConstraintOfMyGradientOfCompute.hxx`:74 - `AppDef_ResConstraintOfMyGradientOfCompute::ConstraintDerivative`
-//   method: Returns the derivative of the constraint matrix.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn constraint_derivative(&mut self, SSP: &MultiLine, Parameters: &Vector, Deg: i32, DA: &Matrix) -> &Matrix;
-//
 
 // ========================
 // From AppDef_ResConstraintOfMyGradientbisOfBSplineCompute.hxx
@@ -4325,6 +6057,30 @@ impl ResConstraintOfMyGradientbisOfBSplineCompute {
         }
     }
 
+    /// **Source:** `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute.hxx`:71 - `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::Duale()`
+    /// returns the duale variables of the system.
+    pub fn duale(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_duale(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute.hxx`:74 - `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::ConstraintDerivative()`
+    /// Returns the derivative of the constraint matrix.
+    pub fn constraint_derivative(
+        &mut self,
+        SSP: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+        Deg: i32,
+        DA: &crate::math::Matrix,
+    ) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_constraint_derivative(self as *mut Self, SSP, Parameters, Deg, DA))
+        }
+    }
+
     /// **Source:** `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute.hxx`:81 - `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::InverseMatrix()`
     /// returns the Inverse of Cont*Transposed(Cont), where
     /// Cont is the constraint matrix for the algorithm.
@@ -4336,18 +6092,6 @@ impl ResConstraintOfMyGradientbisOfBSplineCompute {
         }
     }
 }
-
-// ── Skipped symbols for ResConstraintOfMyGradientbisOfBSplineCompute (2 total) ──
-// SKIPPED: **Source:** `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute.hxx`:71 - `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::Duale`
-//   method: returns the duale variables of the system.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn duale(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute.hxx`:74 - `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::ConstraintDerivative`
-//   method: Returns the derivative of the constraint matrix.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn constraint_derivative(&mut self, SSP: &MultiLine, Parameters: &Vector, Deg: i32, DA: &Matrix) -> &Matrix;
-//
 
 // ========================
 // From AppDef_ResConstraintOfTheGradient.hxx
@@ -4441,6 +6185,32 @@ impl ResConstraintOfTheGradient {
         }
     }
 
+    /// **Source:** `AppDef_ResConstraintOfTheGradient.hxx`:71 - `AppDef_ResConstraintOfTheGradient::Duale()`
+    /// returns the duale variables of the system.
+    pub fn duale(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::AppDef_ResConstraintOfTheGradient_duale(self as *const Self)) }
+    }
+
+    /// **Source:** `AppDef_ResConstraintOfTheGradient.hxx`:74 - `AppDef_ResConstraintOfTheGradient::ConstraintDerivative()`
+    /// Returns the derivative of the constraint matrix.
+    pub fn constraint_derivative(
+        &mut self,
+        SSP: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+        Deg: i32,
+        DA: &crate::math::Matrix,
+    ) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::AppDef_ResConstraintOfTheGradient_constraint_derivative(
+                self as *mut Self,
+                SSP,
+                Parameters,
+                Deg,
+                DA,
+            ))
+        }
+    }
+
     /// **Source:** `AppDef_ResConstraintOfTheGradient.hxx`:81 - `AppDef_ResConstraintOfTheGradient::InverseMatrix()`
     /// returns the Inverse of Cont*Transposed(Cont), where
     /// Cont is the constraint matrix for the algorithm.
@@ -4450,18 +6220,6 @@ impl ResConstraintOfTheGradient {
         }
     }
 }
-
-// ── Skipped symbols for ResConstraintOfTheGradient (2 total) ──
-// SKIPPED: **Source:** `AppDef_ResConstraintOfTheGradient.hxx`:71 - `AppDef_ResConstraintOfTheGradient::Duale`
-//   method: returns the duale variables of the system.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn duale(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `AppDef_ResConstraintOfTheGradient.hxx`:74 - `AppDef_ResConstraintOfTheGradient::ConstraintDerivative`
-//   method: Returns the derivative of the constraint matrix.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn constraint_derivative(&mut self, SSP: &MultiLine, Parameters: &Vector, Deg: i32, DA: &Matrix) -> &Matrix;
-//
 
 // ========================
 // From AppDef_SmoothCriterion.hxx
@@ -4585,6 +6343,23 @@ impl SmoothCriterion {
                 H,
             )
         }
+    }
+
+    /// **Source:** `AppDef_SmoothCriterion.hxx`:77 - `AppDef_SmoothCriterion::Gradient()`
+    pub fn gradient(&mut self, Element: i32, Dimension: i32, G: &mut crate::ffi::math_Vector) {
+        unsafe {
+            crate::ffi::AppDef_SmoothCriterion_gradient(self as *mut Self, Element, Dimension, G)
+        }
+    }
+
+    /// **Source:** `AppDef_SmoothCriterion.hxx`:82 - `AppDef_SmoothCriterion::InputVector()`
+    /// Convert the assembly Vector in an Curve;
+    pub fn input_vector(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        AssTable: &crate::ffi::HandleFEmToolHAssemblyTable,
+    ) {
+        unsafe { crate::ffi::AppDef_SmoothCriterion_input_vector(self as *mut Self, X, AssTable) }
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:85 - `AppDef_SmoothCriterion::SetWeight()`
@@ -4756,17 +6531,6 @@ impl HandleAppDefSmoothCriterion {
     }
 }
 
-// ── Skipped symbols for SmoothCriterion (2 total) ──
-// SKIPPED: **Source:** `AppDef_SmoothCriterion.hxx`:77 - `AppDef_SmoothCriterion::Gradient`
-//   Reason: param 'G' uses unknown type 'math_Vector&'
-//   // pub fn gradient(&mut self, Element: i32, Dimension: i32, G: &mut Vector);
-//
-// SKIPPED: **Source:** `AppDef_SmoothCriterion.hxx`:82 - `AppDef_SmoothCriterion::InputVector`
-//   method: Convert the assembly Vector in an Curve;
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn input_vector(&mut self, X: &Vector, AssTable: &HandleHAssemblyTable);
-//
-
 // ========================
 // From AppDef_TheFunction.hxx
 // ========================
@@ -4781,11 +6545,65 @@ unsafe impl crate::CppDeletable for TheFunction {
 }
 
 impl TheFunction {
+    /// **Source:** `AppDef_TheFunction.hxx`:45 - `AppDef_TheFunction::AppDef_TheFunction()`
+    /// initializes the fields of the function. The approximating
+    /// curve has the desired degree Deg.
+    pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &crate::ffi::math_Vector,
+        Deg: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_TheFunction_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg))
+        }
+    }
+
     /// **Source:** `AppDef_TheFunction.hxx`:55 - `AppDef_TheFunction::NbVariables()`
     /// returns the number of variables of the function. It
     /// corresponds to the number of MultiPoints.
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::AppDef_TheFunction_nb_variables(self as *const Self) }
+    }
+
+    /// **Source:** `AppDef_TheFunction.hxx`:61 - `AppDef_TheFunction::Value()`
+    /// this method computes the new approximation of the
+    /// MultiLine
+    /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
+    /// point of the MultiLine.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+        unsafe { crate::ffi::AppDef_TheFunction_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `AppDef_TheFunction.hxx`:65 - `AppDef_TheFunction::Gradient()`
+    /// returns the gradient G of the sum above for the
+    /// parameters Xi.
+    pub fn gradient(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::AppDef_TheFunction_gradient(self as *mut Self, X, G) }
+    }
+
+    /// **Source:** `AppDef_TheFunction.hxx`:69 - `AppDef_TheFunction::Values()`
+    /// returns the value F=sum(||Pui - Bi*Pi||)2.
+    /// returns the value G = grad(F) for the parameters Xi.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::AppDef_TheFunction_values(self as *mut Self, X, F, G) }
+    }
+
+    /// **Source:** `AppDef_TheFunction.hxx`:72 - `AppDef_TheFunction::NewParameters()`
+    /// returns the new parameters of the MultiLine.
+    pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::AppDef_TheFunction_new_parameters(self as *const Self)) }
     }
 
     /// **Source:** `AppDef_TheFunction.hxx`:76 - `AppDef_TheFunction::CurveValue()`
@@ -4896,38 +6714,6 @@ impl TheFunction {
     }
 }
 
-// ── Skipped symbols for TheFunction (5 total) ──
-// SKIPPED: **Source:** `AppDef_TheFunction.hxx`:45 - `AppDef_TheFunction::AppDef_TheFunction`
-//   constructor: initializes the fields of the function. The approximating
-//   constructor: curve has the desired degree Deg.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP: &MultiLine, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &Vector, Deg: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_TheFunction.hxx`:61 - `AppDef_TheFunction::Value`
-//   method: this method computes the new approximation of the
-//   method: MultiLine
-//   method: SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `AppDef_TheFunction.hxx`:65 - `AppDef_TheFunction::Gradient`
-//   method: returns the gradient G of the sum above for the
-//   method: parameters Xi.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `AppDef_TheFunction.hxx`:69 - `AppDef_TheFunction::Values`
-//   method: returns the value F=sum(||Pui - Bi*Pi||)2.
-//   method: returns the value G = grad(F) for the parameters Xi.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `AppDef_TheFunction.hxx`:72 - `AppDef_TheFunction::NewParameters`
-//   method: returns the new parameters of the MultiLine.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn new_parameters(&self) -> &Vector;
-//
-
 // ========================
 // From AppDef_TheGradient.hxx
 // ========================
@@ -4942,6 +6728,59 @@ unsafe impl crate::CppDeletable for TheGradient {
 }
 
 impl TheGradient {
+    /// **Source:** `AppDef_TheGradient.hxx`:50 - `AppDef_TheGradient::AppDef_TheGradient()`
+    /// Tries to minimize the sum (square(||Qui - Bi*Pi||))
+    /// where Pui describe the approximating Bezier curves'Poles
+    /// and Qi the MultiLine points with a parameter ui.
+    /// In this algorithm, the parameters ui are the unknowns.
+    /// The tolerance required on this sum is given by Tol.
+    /// The desired degree of the resulting curve is Deg.
+    pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi::math_Vector,
+        Deg: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_TheGradient_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations))
+        }
+    }
+
+    /// **Source:** `AppDef_TheGradient.hxx`:50 - `AppDef_TheGradient::AppDef_TheGradient()`
+    /// Tries to minimize the sum (square(||Qui - Bi*Pi||))
+    /// where Pui describe the approximating Bezier curves'Poles
+    /// and Qi the MultiLine points with a parameter ui.
+    /// In this algorithm, the parameters ui are the unknowns.
+    /// The tolerance required on this sum is given by Tol.
+    /// The desired degree of the resulting curve is Deg.
+    pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi::math_Vector,
+        Deg: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(
+            SSP,
+            FirstPoint,
+            LastPoint,
+            TheConstraints,
+            Parameters,
+            Deg,
+            Tol3d,
+            Tol2d,
+            200,
+        )
+    }
+
     /// **Source:** `AppDef_TheGradient.hxx`:62 - `AppDef_TheGradient::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
@@ -4988,15 +6827,6 @@ impl TheGradient {
     }
 }
 
-// ── Skipped symbols for TheGradient (1 total) ──
-// SKIPPED: **Source:** `AppDef_TheGradient.hxx`:50 - `AppDef_TheGradient::AppDef_TheGradient`
-//   constructor: Tries to minimize the sum (square(||Qui - Bi*Pi||))
-//   constructor: where Pui describe the approximating Bezier curves'Poles
-//   constructor: and Qi the MultiLine points with a parameter ui.
-//   Reason: param 'Parameters' uses unknown type 'math_Vector&'
-//   // pub fn new_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP: &MultiLine, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &mut Vector, Deg: i32, Tol3d: f64, Tol2d: f64, NbIterations: i32) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From AppDef_TheLeastSquares.hxx
 // ========================
@@ -5011,6 +6841,47 @@ unsafe impl crate::CppDeletable for TheLeastSquares {
 }
 
 impl TheLeastSquares {
+    /// **Source:** `AppDef_TheLeastSquares.hxx`:66 - `AppDef_TheLeastSquares::AppDef_TheLeastSquares()`
+    /// given a MultiLine, this algorithm computes the least
+    /// square resolution using the Householder-QR method.
+    /// If the first and/or the last point is a constraint
+    /// point, the value of the tangency or curvature is
+    /// computed in the resolution.
+    /// NbPol is the number of control points wanted
+    /// for the approximating curves.
+    /// The system to solve is the following:
+    /// A X = B.
+    /// Where A is the Bernstein matrix computed with the
+    /// parameters, B the points coordinates and X the poles
+    /// solutions.
+    /// The matrix A is the same for each coordinate x, y and z
+    /// and is also the same for each MultiLine point because
+    /// they are approximated in parallel(so with the same
+    /// parameter, only the vector B changes).
+    pub fn new_multiline_int2_constraint2_vector_int(
+        SSP: &MultiLine,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        Parameters: &crate::ffi::math_Vector,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::AppDef_TheLeastSquares_ctor_multiline_int2_constraint2_vector_int(
+                    SSP,
+                    FirstPoint,
+                    LastPoint,
+                    FirstCons.into(),
+                    LastCons.into(),
+                    Parameters,
+                    NbPol,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `AppDef_TheLeastSquares.hxx`:75 - `AppDef_TheLeastSquares::AppDef_TheLeastSquares()`
     /// Initializes the fields of the object.
     pub fn new_multiline_int2_constraint2_int(
@@ -5035,6 +6906,38 @@ impl TheLeastSquares {
         }
     }
 
+    /// **Source:** `AppDef_TheLeastSquares.hxx`:97 - `AppDef_TheLeastSquares::AppDef_TheLeastSquares()`
+    /// given a MultiLine, this algorithm computes the least
+    /// square resolution using the Householder-QR method.
+    /// If the first and/or the last point is a constraint
+    /// point, the value of the tangency or curvature is
+    /// computed in the resolution.
+    /// Deg is the degree wanted for the approximating curves.
+    /// The system to solve is the following:
+    /// A X = B.
+    /// Where A is the BSpline functions matrix computed with
+    /// <parameters>, B the points coordinates and X the poles
+    /// solutions.
+    /// The matrix A is the same for each coordinate x, y and z
+    /// and is also the same for each MultiLine point because
+    /// they are approximated in parallel(so with the same
+    /// parameter, only the vector B changes).
+    pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
+        SSP: &MultiLine,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        Parameters: &crate::ffi::math_Vector,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppDef_TheLeastSquares_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
+        }
+    }
+
     /// **Source:** `AppDef_TheLeastSquares.hxx`:108 - `AppDef_TheLeastSquares::AppDef_TheLeastSquares()`
     /// Initializes the fields of the object.
     pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(
@@ -5049,6 +6952,80 @@ impl TheLeastSquares {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::AppDef_TheLeastSquares_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `AppDef_TheLeastSquares.hxx`:119 - `AppDef_TheLeastSquares::Perform()`
+    /// Is used after having initialized the fields.
+    /// The case "CurvaturePoint" is not treated in this method.
+    pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
+        unsafe { crate::ffi::AppDef_TheLeastSquares_perform_vector(self as *mut Self, Parameters) }
+    }
+
+    /// **Source:** `AppDef_TheLeastSquares.hxx`:122 - `AppDef_TheLeastSquares::Perform()`
+    /// Is used after having initialized the fields.
+    pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
+        unsafe {
+            crate::ffi::AppDef_TheLeastSquares_perform_vector_real2(
+                self as *mut Self,
+                Parameters,
+                l1,
+                l2,
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_TheLeastSquares.hxx`:129 - `AppDef_TheLeastSquares::Perform()`
+    /// Is used after having initialized the fields.
+    /// <V1t> is the tangent vector at the first point.
+    /// <V2t> is the tangent vector at the last point.
+    pub fn perform_vector3_real2(
+        &mut self,
+        Parameters: &crate::ffi::math_Vector,
+        V1t: &crate::ffi::math_Vector,
+        V2t: &crate::ffi::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_TheLeastSquares_perform_vector3_real2(
+                self as *mut Self,
+                Parameters,
+                V1t,
+                V2t,
+                l1,
+                l2,
+            )
+        }
+    }
+
+    /// **Source:** `AppDef_TheLeastSquares.hxx`:140 - `AppDef_TheLeastSquares::Perform()`
+    /// Is used after having initialized the fields.
+    /// <V1t> is the tangent vector at the first point.
+    /// <V2t> is the tangent vector at the last point.
+    /// <V1c> is the tangent vector at the first point.
+    /// <V2c> is the tangent vector at the last point.
+    pub fn perform_vector5_real2(
+        &mut self,
+        Parameters: &crate::ffi::math_Vector,
+        V1t: &crate::ffi::math_Vector,
+        V2t: &crate::ffi::math_Vector,
+        V1c: &crate::ffi::math_Vector,
+        V2c: &crate::ffi::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_TheLeastSquares_perform_vector5_real2(
+                self as *mut Self,
+                Parameters,
+                V1t,
+                V2t,
+                V1c,
+                V2c,
+                l1,
+                l2,
+            )
         }
     }
 
@@ -5094,6 +7071,29 @@ impl TheLeastSquares {
         }
     }
 
+    /// **Source:** `AppDef_TheLeastSquares.hxx`:173 - `AppDef_TheLeastSquares::ErrorGradient()`
+    /// returns the maximum errors between the MultiLine
+    /// and the approximation curves. F is the sum of the square
+    /// distances. Grad is the derivative vector of the
+    /// function F.
+    pub fn error_gradient(
+        &mut self,
+        Grad: &mut crate::ffi::math_Vector,
+        F: &mut f64,
+        MaxE3d: &mut f64,
+        MaxE2d: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::AppDef_TheLeastSquares_error_gradient(
+                self as *mut Self,
+                Grad,
+                F,
+                MaxE3d,
+                MaxE2d,
+            )
+        }
+    }
+
     /// **Source:** `AppDef_TheLeastSquares.hxx`:180 - `AppDef_TheLeastSquares::Distance()`
     /// returns the distances between the points of the
     /// multiline and the approximation curves.
@@ -5134,62 +7134,16 @@ impl TheLeastSquares {
     pub fn poles(&self) -> &crate::math::Matrix {
         unsafe { &*(crate::ffi::AppDef_TheLeastSquares_poles(self as *const Self)) }
     }
-}
 
-// ── Skipped symbols for TheLeastSquares (8 total) ──
-// SKIPPED: **Source:** `AppDef_TheLeastSquares.hxx`:66 - `AppDef_TheLeastSquares::AppDef_TheLeastSquares`
-//   constructor: given a MultiLine, this algorithm computes the least
-//   constructor: square resolution using the Householder-QR method.
-//   constructor: If the first and/or the last point is a constraint
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiline_int2_constraint2_vector_int(SSP: &MultiLine, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_TheLeastSquares.hxx`:97 - `AppDef_TheLeastSquares::AppDef_TheLeastSquares`
-//   constructor: given a MultiLine, this algorithm computes the least
-//   constructor: square resolution using the Householder-QR method.
-//   constructor: If the first and/or the last point is a constraint
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP: &MultiLine, Knots: &Array1OfReal, Mults: &Array1OfInteger, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AppDef_TheLeastSquares.hxx`:119 - `AppDef_TheLeastSquares::Perform`
-//   method: Is used after having initialized the fields.
-//   method: The case "CurvaturePoint" is not treated in this method.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector);
-//
-// SKIPPED: **Source:** `AppDef_TheLeastSquares.hxx`:122 - `AppDef_TheLeastSquares::Perform`
-//   method: Is used after having initialized the fields.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `AppDef_TheLeastSquares.hxx`:129 - `AppDef_TheLeastSquares::Perform`
-//   method: Is used after having initialized the fields.
-//   method: <V1t> is the tangent vector at the first point.
-//   method: <V2t> is the tangent vector at the last point.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `AppDef_TheLeastSquares.hxx`:140 - `AppDef_TheLeastSquares::Perform`
-//   method: Is used after having initialized the fields.
-//   method: <V1t> is the tangent vector at the first point.
-//   method: <V2t> is the tangent vector at the last point.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, V1c: &Vector, V2c: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `AppDef_TheLeastSquares.hxx`:173 - `AppDef_TheLeastSquares::ErrorGradient`
-//   method: returns the maximum errors between the MultiLine
-//   method: and the approximation curves. F is the sum of the square
-//   method: distances. Grad is the derivative vector of the
-//   Reason: param 'Grad' uses unknown type 'math_Vector&'
-//   // pub fn error_gradient(&mut self, Grad: &mut Vector, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64);
-//
-// SKIPPED: **Source:** `AppDef_TheLeastSquares.hxx`:205 - `AppDef_TheLeastSquares::KIndex`
-//   method: Returns the indexes of the first non null values of
-//   method: A and DA.
-//   method: The values are non null from Index(ieme point) +1
-//   Reason: return type 'const math_IntegerVector&' is unknown
-//   // pub fn k_index(&self) -> &IntegerVector;
-//
+    /// **Source:** `AppDef_TheLeastSquares.hxx`:205 - `AppDef_TheLeastSquares::KIndex()`
+    /// Returns the indexes of the first non null values of
+    /// A and DA.
+    /// The values are non null from Index(ieme point) +1
+    /// to Index(ieme point) + degree +1.
+    pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
+        unsafe { &*(crate::ffi::AppDef_TheLeastSquares_k_index(self as *const Self)) }
+    }
+}
 
 // ========================
 // From AppDef_TheResol.hxx
@@ -5281,6 +7235,32 @@ impl TheResol {
         unsafe { &*(crate::ffi::AppDef_TheResol_constraint_matrix(self as *const Self)) }
     }
 
+    /// **Source:** `AppDef_TheResol.hxx`:70 - `AppDef_TheResol::Duale()`
+    /// returns the duale variables of the system.
+    pub fn duale(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::AppDef_TheResol_duale(self as *const Self)) }
+    }
+
+    /// **Source:** `AppDef_TheResol.hxx`:73 - `AppDef_TheResol::ConstraintDerivative()`
+    /// Returns the derivative of the constraint matrix.
+    pub fn constraint_derivative(
+        &mut self,
+        SSP: &MultiLine,
+        Parameters: &crate::ffi::math_Vector,
+        Deg: i32,
+        DA: &crate::math::Matrix,
+    ) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::AppDef_TheResol_constraint_derivative(
+                self as *mut Self,
+                SSP,
+                Parameters,
+                Deg,
+                DA,
+            ))
+        }
+    }
+
     /// **Source:** `AppDef_TheResol.hxx`:80 - `AppDef_TheResol::InverseMatrix()`
     /// returns the Inverse of Cont*Transposed(Cont), where
     /// Cont is the constraint matrix for the algorithm.
@@ -5288,18 +7268,6 @@ impl TheResol {
         unsafe { &*(crate::ffi::AppDef_TheResol_inverse_matrix(self as *const Self)) }
     }
 }
-
-// ── Skipped symbols for TheResol (2 total) ──
-// SKIPPED: **Source:** `AppDef_TheResol.hxx`:70 - `AppDef_TheResol::Duale`
-//   method: returns the duale variables of the system.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn duale(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `AppDef_TheResol.hxx`:73 - `AppDef_TheResol::ConstraintDerivative`
-//   method: Returns the derivative of the constraint matrix.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn constraint_derivative(&mut self, SSP: &MultiLine, Parameters: &Vector, Deg: i32, DA: &Matrix) -> &Matrix;
-//
 
 // ========================
 // From AppDef_Variational.hxx

@@ -3419,6 +3419,31 @@ impl FunctionTanCuCu {
         }
     }
 
+    /// **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:45 - `Geom2dGcc_FunctionTanCuCu::InitDerivative()`
+    pub fn init_derivative(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        Point1: &mut crate::gp::Pnt2d,
+        Point2: &mut crate::gp::Pnt2d,
+        Tan1: &mut crate::gp::Vec2d,
+        Tan2: &mut crate::gp::Vec2d,
+        D21: &mut crate::gp::Vec2d,
+        D22: &mut crate::gp::Vec2d,
+    ) {
+        unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCu_init_derivative(
+                self as *mut Self,
+                X,
+                Point1,
+                Point2,
+                Tan1,
+                Tan2,
+                D21,
+                D22,
+            )
+        }
+    }
+
     /// **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:54 - `Geom2dGcc_FunctionTanCuCu::NbVariables()`
     /// returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
@@ -3429,6 +3454,40 @@ impl FunctionTanCuCu {
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCu_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:62 - `Geom2dGcc_FunctionTanCuCu::Value()`
+    /// Computes the value of the function F for the variable X.
+    /// It returns True if the computation is successfully done,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCu_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:67 - `Geom2dGcc_FunctionTanCuCu::Derivatives()`
+    /// Computes the derivative of the function F for the variable X.
+    /// It returns True if the computation is successfully done,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        Deriv: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCu_derivatives(self as *mut Self, X, Deriv) }
+    }
+
+    /// **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:73 - `Geom2dGcc_FunctionTanCuCu::Values()`
+    /// Computes the value and the derivative of the function F
+    /// for the variable X.
+    /// It returns True if the computation is successfully done,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        Deriv: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCu_values(self as *mut Self, X, F, Deriv) }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
@@ -3472,33 +3531,6 @@ impl FunctionTanCuCu {
         unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCu_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for FunctionTanCuCu (4 total) ──
-// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:45 - `Geom2dGcc_FunctionTanCuCu::InitDerivative`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn init_derivative(&mut self, X: &Vector, Point1: &mut Pnt2d, Point2: &mut Pnt2d, Tan1: &mut Vec2d, Tan2: &mut Vec2d, D21: &mut Vec2d, D22: &mut Vec2d);
-//
-// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:62 - `Geom2dGcc_FunctionTanCuCu::Value`
-//   method: Computes the value of the function F for the variable X.
-//   method: It returns True if the computation is successfully done,
-//   method: False otherwise.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:67 - `Geom2dGcc_FunctionTanCuCu::Derivatives`
-//   method: Computes the derivative of the function F for the variable X.
-//   method: It returns True if the computation is successfully done,
-//   method: False otherwise.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, Deriv: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:73 - `Geom2dGcc_FunctionTanCuCu::Values`
-//   method: Computes the value and the derivative of the function F
-//   method: for the variable X.
-//   method: It returns True if the computation is successfully done,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, Deriv: &mut Matrix) -> bool;
-//
 
 // ========================
 // From Geom2dGcc_FunctionTanCuCuCu.hxx
@@ -3633,6 +3665,37 @@ impl FunctionTanCuCuCu {
         }
     }
 
+    /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:76 - `Geom2dGcc_FunctionTanCuCuCu::InitDerivative()`
+    pub fn init_derivative(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        Point1: &mut crate::gp::Pnt2d,
+        Point2: &mut crate::gp::Pnt2d,
+        Point3: &mut crate::gp::Pnt2d,
+        Tan1: &mut crate::gp::Vec2d,
+        Tan2: &mut crate::gp::Vec2d,
+        Tan3: &mut crate::gp::Vec2d,
+        D21: &mut crate::gp::Vec2d,
+        D22: &mut crate::gp::Vec2d,
+        D23: &mut crate::gp::Vec2d,
+    ) {
+        unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_init_derivative(
+                self as *mut Self,
+                X,
+                Point1,
+                Point2,
+                Point3,
+                Tan1,
+                Tan2,
+                Tan3,
+                D21,
+                D22,
+                D23,
+            )
+        }
+    }
+
     /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:88 - `Geom2dGcc_FunctionTanCuCuCu::NbVariables()`
     /// Returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
@@ -3643,6 +3706,34 @@ impl FunctionTanCuCuCu {
     /// Returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCuCu_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:94 - `Geom2dGcc_FunctionTanCuCuCu::Value()`
+    /// Computes the values of the Functions for the variable <X>.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCuCu_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:97 - `Geom2dGcc_FunctionTanCuCuCu::Derivatives()`
+    /// Returns the values of the derivatives for the variable <X>.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCuCu_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:101 - `Geom2dGcc_FunctionTanCuCuCu::Values()`
+    /// Returns the values of the functions and the derivatives
+    /// for the variable <X>.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCuCu_values(self as *mut Self, X, F, D) }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
@@ -3690,28 +3781,6 @@ impl FunctionTanCuCuCu {
         }
     }
 }
-
-// ── Skipped symbols for FunctionTanCuCuCu (4 total) ──
-// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:76 - `Geom2dGcc_FunctionTanCuCuCu::InitDerivative`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn init_derivative(&mut self, X: &Vector, Point1: &mut Pnt2d, Point2: &mut Pnt2d, Point3: &mut Pnt2d, Tan1: &mut Vec2d, Tan2: &mut Vec2d, Tan3: &mut Vec2d, D21: &mut Vec2d, D22: &mut Vec2d, D23: &mut Vec2d);
-//
-// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:94 - `Geom2dGcc_FunctionTanCuCuCu::Value`
-//   method: Computes the values of the Functions for the variable <X>.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:97 - `Geom2dGcc_FunctionTanCuCuCu::Derivatives`
-//   method: Returns the values of the derivatives for the variable <X>.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:101 - `Geom2dGcc_FunctionTanCuCuCu::Values`
-//   method: Returns the values of the functions and the derivatives
-//   method: for the variable <X>.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
 
 // ========================
 // From Geom2dGcc_FunctionTanCuCuOnCu.hxx
@@ -3915,6 +3984,37 @@ impl FunctionTanCuCuOnCu {
         }
     }
 
+    /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:100 - `Geom2dGcc_FunctionTanCuCuOnCu::InitDerivative()`
+    pub fn init_derivative(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        Point1: &mut crate::gp::Pnt2d,
+        Point2: &mut crate::gp::Pnt2d,
+        Point3: &mut crate::gp::Pnt2d,
+        Tan1: &mut crate::gp::Vec2d,
+        Tan2: &mut crate::gp::Vec2d,
+        Tan3: &mut crate::gp::Vec2d,
+        D21: &mut crate::gp::Vec2d,
+        D22: &mut crate::gp::Vec2d,
+        D23: &mut crate::gp::Vec2d,
+    ) {
+        unsafe {
+            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_init_derivative(
+                self as *mut Self,
+                X,
+                Point1,
+                Point2,
+                Point3,
+                Tan1,
+                Tan2,
+                Tan3,
+                D21,
+                D22,
+                D23,
+            )
+        }
+    }
+
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:112 - `Geom2dGcc_FunctionTanCuCuOnCu::NbVariables()`
     /// Returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
@@ -3925,6 +4025,34 @@ impl FunctionTanCuCuOnCu {
     /// Returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:118 - `Geom2dGcc_FunctionTanCuCuOnCu::Value()`
+    /// Computes the values of the Functions for the variable <X>.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:121 - `Geom2dGcc_FunctionTanCuCuOnCu::Derivatives()`
+    /// Returns the values of the derivatives for the variable <X>.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:125 - `Geom2dGcc_FunctionTanCuCuOnCu::Values()`
+    /// Returns the values of the functions and the derivatives
+    /// for the variable <X>.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_values(self as *mut Self, X, F, D) }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
@@ -3972,28 +4100,6 @@ impl FunctionTanCuCuOnCu {
         }
     }
 }
-
-// ── Skipped symbols for FunctionTanCuCuOnCu (4 total) ──
-// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:100 - `Geom2dGcc_FunctionTanCuCuOnCu::InitDerivative`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn init_derivative(&mut self, X: &Vector, Point1: &mut Pnt2d, Point2: &mut Pnt2d, Point3: &mut Pnt2d, Tan1: &mut Vec2d, Tan2: &mut Vec2d, Tan3: &mut Vec2d, D21: &mut Vec2d, D22: &mut Vec2d, D23: &mut Vec2d);
-//
-// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:118 - `Geom2dGcc_FunctionTanCuCuOnCu::Value`
-//   method: Computes the values of the Functions for the variable <X>.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:121 - `Geom2dGcc_FunctionTanCuCuOnCu::Derivatives`
-//   method: Returns the values of the derivatives for the variable <X>.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:125 - `Geom2dGcc_FunctionTanCuCuOnCu::Values`
-//   method: Returns the values of the functions and the derivatives
-//   method: for the variable <X>.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
 
 // ========================
 // From Geom2dGcc_FunctionTanCuPnt.hxx

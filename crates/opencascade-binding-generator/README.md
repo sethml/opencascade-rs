@@ -343,7 +343,7 @@ See `crates/opencascade-sys/manual/` and the comments in `bindings.toml` for the
 
 ## Skipped Symbols
 
-The binding generator skips ~2,232 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
+The binding generator skips ~1,567 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
 
 - **Source location** (header file, line number, C++ symbol name)
 - **Documentation comment** from the C++ header (first 3 lines)
@@ -362,38 +362,38 @@ Example from `gp.rs`:
 
 | Count | % | Category | Description |
 |------:|----:|----------|-------------|
-| 1,116 | 50.0% | **Unknown/unresolved type** | Parameter or return type not in the binding set (`math_Vector`, `Standard_SStream`, etc.) |
-| 546 | 24.5% | **Stream type** | C++ `std::istream`/`std::ostream` (`Standard_IStream`/`Standard_OStream`) — no Rust equivalent |
-| 198 | 8.9% | **Void pointer** | `Standard_Address` (typedef for `void*`) — cannot be safely expressed in Rust FFI |
-| 135 | 6.0% | **Raw pointer** | `T*`/`const T*` returns (static/free fn) or primitive pointer params (`int*`, `double*`) — class pointer returns on instance methods are now bound as `Option<&T>`/`Option<&mut T>` |
-| 78 | 3.5% | **Unresolved template/nested type** | Template instantiations or nested types that can't be resolved (`NCollection_DataMap<...>`, `std::pair<...>`, `math_VectorBase<>`, etc.) |
-| 53 | 2.4% | **Ambiguous lifetimes** | `&mut` return with reference params — Rust lifetime inference is ambiguous |
-| 43 | 1.9% | **Abstract class** | No constructors generated (class has unimplemented pure virtual methods) |
-| 16 | 0.7% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
-| 16 | 0.7% | **String ref param** | `const char*&` or `const char* const&` parameters — needs manual binding |
-| 12 | 0.5% | **Rvalue reference** | C++ move semantics (`T&&`) — no Rust equivalent across FFI |
-| 7 | 0.3% | **Unknown Handle type** | Handle to a class not in the binding set (`Handle(IGESData_IGESModel)`, `Handle(CDM_MetaData)`, etc.) |
-| 5 | 0.2% | **Not CppDeletable** | Return type class has no destructor in the binding set |
-| 4 | 0.2% | **&mut enum return** | Mutable reference to enum (cxx limitation) |
-| 3 | 0.1% | **Excluded by bindings.toml** | Explicitly excluded in config (e.g., ambiguous overload workarounds) |
-| 1 | 0.0% | **Ambiguous overload** | C++ overload that would produce identical wrapper signatures |
-| 1 | 0.0% | **Class pointer to nested type** | `const T*` param where `T` is a nested class type without its own FFI declaration |
+| 546 | 34.8% | **Stream type** | C++ `std::istream`/`std::ostream` (`Standard_IStream`/`Standard_OStream`) — no Rust equivalent |
+| 451 | 28.7% | **Unknown/unresolved type** | Parameter or return type not in the binding set (`Standard_SStream`, `Handle(TDocStd_Document)`, etc.) |
+| 199 | 12.7% | **Void pointer** | `Standard_Address` (typedef for `void*`) — cannot be safely expressed in Rust FFI |
+| 135 | 8.6% | **Raw pointer** | `T*`/`const T*` returns (static/free fn) or primitive pointer params (`int*`, `double*`) — class pointer returns on instance methods are now bound as `Option<&T>`/`Option<&mut T>` |
+| 79 | 5.0% | **Unresolved template/nested type** | Template instantiations or nested types that can't be resolved (`NCollection_DataMap<...>`, `std::pair<...>`, `math_VectorBase<>`, etc.) |
+| 53 | 3.4% | **Ambiguous lifetimes** | `&mut` return with reference params — Rust lifetime inference is ambiguous |
+| 43 | 2.7% | **Abstract class** | No constructors generated (class has unimplemented pure virtual methods) |
+| 18 | 1.1% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
+| 16 | 1.0% | **String ref param** | `const char*&` or `const char* const&` parameters — needs manual binding |
+| 12 | 0.8% | **Rvalue reference** | C++ move semantics (`T&&`) — no Rust equivalent across FFI |
+| 7 | 0.4% | **Unknown Handle type** | Handle to a class not in the binding set (`Handle(IGESData_IGESModel)`, `Handle(CDM_MetaData)`, etc.) |
+| 5 | 0.3% | **Not CppDeletable** | Return type class has no destructor in the binding set |
+| 4 | 0.3% | **&mut enum return** | Mutable reference to enum (cxx limitation) |
+| 2 | 0.1% | **Excluded by bindings.toml** | Explicitly excluded in config (e.g., ambiguous overload workarounds) |
+| 1 | 0.1% | **Ambiguous overload** | C++ overload that would produce identical wrapper signatures |
 
 ### Most Common Unknown Types
 
-The "unknown type" and "unknown Handle type" categories (48% of all skips) are dominated by a few types:
+The "unknown type" and "unknown Handle type" categories (29% of all skips) are dominated by a few types:
 
 | Count | Type | How to Unblock |
 |------:|------|----------------|
-| 175 | `math_Vector` | Add `math_Vector` class — used in numerical solvers (Extrema, Geom evaluators) |
-| 94 | `Standard_SStream` | Map `Standard_SStream` (`std::stringstream`) — mainly used in `Raise()` methods on exception classes |
-| 14 | `Handle(IGESData_IGESModel)` | Add `IGESData_IGESModel` — needed for IGES model access |
+| 97 | `Handle(TDocStd_Document)` | Add `TDocStd_Document` — needed for document framework access |
+| 96 | `Standard_SStream` | Map `Standard_SStream` (`std::stringstream`) — mainly used in `Raise()` methods on exception classes |
+| 19 | `XCAFPrs_Style` | Add `XCAFPrs_Style` — used in XCAF presentation styles |
 | 13 | `TColgp_SequenceOfPnt` | Add `TColgp_SequenceOfPnt` collection — used in shape analysis |
 | 12 | `IMeshData::IEdgeHandle` | Nested handle typedef in meshing internals — low priority |
 | 11 | `ShapeProcess::OperationsFlags` | Nested type in ShapeProcess — used in STEP/IGES processing flags |
-| 10 | `Handle(CDM_MetaData)` | Add `CDM_MetaData` — used in document management internals |
+| 10 | `IMeshData::IFaceHandle` | Nested handle typedef in meshing internals — low priority |
 
 Previously common unknown types that have been resolved:
+- ~~`math_Vector`~~ (was 665 skips) — resolved by fixing typedef collection filter that excluded lowercase-prefix OCCT types (`math_*`)
 - ~~`Standard_Character`~~ (was 33 skips) — now mapped as `c_char` (`i8`)
 - ~~`Standard_ExtString`~~ (was 26 skips) — now mapped as `*const u16`
 - ~~`Standard_ExtCharacter`~~ (was 15 skips) — now mapped as `u16`

@@ -106,6 +106,42 @@ impl AppFunction {
         unsafe { crate::ffi::Blend_AppFunction_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `Blend_AppFunction.hxx`:59 - `Blend_AppFunction::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::Blend_AppFunction_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `Blend_AppFunction.hxx`:65 - `Blend_AppFunction::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_AppFunction_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `Blend_AppFunction.hxx`:71 - `Blend_AppFunction::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_AppFunction_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `Blend_AppFunction.hxx`:78 - `Blend_AppFunction::Set()`
     /// Sets the value of the parameter along the guide line.
     /// This determines the plane in which the solution has
@@ -121,6 +157,42 @@ impl AppFunction {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         unsafe { crate::ffi::Blend_AppFunction_set_real2(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `Blend_AppFunction.hxx`:89 - `Blend_AppFunction::GetTolerance()`
+    /// Returns in the vector Tolerance the parametric tolerance
+    /// for each of the 4 variables;
+    /// Tol is the tolerance used in 3d space.
+    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::Blend_AppFunction_get_tolerance_vector_real(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `Blend_AppFunction.hxx`:96 - `Blend_AppFunction::GetBounds()`
+    /// Returns in the vector InfBound the lowest values allowed
+    /// for each of the 4 variables.
+    /// Returns in the vector SupBound the greatest values allowed
+    /// for each of the 4 variables.
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe { crate::ffi::Blend_AppFunction_get_bounds(self as *const Self, InfBound, SupBound) }
+    }
+
+    /// **Source:** `Blend_AppFunction.hxx`:102 - `Blend_AppFunction::IsSolution()`
+    /// Returns Standard_True if Sol is a zero of the function.
+    /// Tol is the tolerance used in 3d space.
+    /// The computation is made at the current value of
+    /// the parameter on the guide line.
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::Blend_AppFunction_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:107 - `Blend_AppFunction::GetMinimalDistance()`
@@ -195,6 +267,32 @@ impl AppFunction {
                 NbKnots,
                 Degree,
                 NbPoles2d,
+            )
+        }
+    }
+
+    /// **Source:** `Blend_AppFunction.hxx`:148 - `Blend_AppFunction::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to respect
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance_real3_vector2(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::math_Vector,
+        Tol1D: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::Blend_AppFunction_get_tolerance_real3_vector2(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+                Tol1D,
             )
         }
     }
@@ -321,57 +419,6 @@ impl AppFunction {
     }
 }
 
-// ── Skipped symbols for AppFunction (7 total) ──
-// SKIPPED: **Source:** `Blend_AppFunction.hxx`:59 - `Blend_AppFunction::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Blend_AppFunction.hxx`:65 - `Blend_AppFunction::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Blend_AppFunction.hxx`:71 - `Blend_AppFunction::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Blend_AppFunction.hxx`:89 - `Blend_AppFunction::GetTolerance`
-//   method: Returns in the vector Tolerance the parametric tolerance
-//   method: for each of the 4 variables;
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `Blend_AppFunction.hxx`:96 - `Blend_AppFunction::GetBounds`
-//   method: Returns in the vector InfBound the lowest values allowed
-//   method: for each of the 4 variables.
-//   method: Returns in the vector SupBound the greatest values allowed
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `Blend_AppFunction.hxx`:102 - `Blend_AppFunction::IsSolution`
-//   method: Returns Standard_True if Sol is a zero of the function.
-//   method: Tol is the tolerance used in 3d space.
-//   method: The computation is made at the current value of
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `Blend_AppFunction.hxx`:148 - `Blend_AppFunction::GetTolerance`
-//   method: Returns the tolerance to reach in approximation
-//   method: to respect
-//   method: BoundTol error at the Boundary
-//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
-//
-
 // ========================
 // From Blend_CSFunction.hxx
 // ========================
@@ -404,6 +451,42 @@ impl CSFunction {
         unsafe { crate::ffi::Blend_CSFunction_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `Blend_CSFunction.hxx`:61 - `Blend_CSFunction::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::Blend_CSFunction_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `Blend_CSFunction.hxx`:68 - `Blend_CSFunction::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_CSFunction_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `Blend_CSFunction.hxx`:75 - `Blend_CSFunction::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_CSFunction_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `Blend_CSFunction.hxx`:82 - `Blend_CSFunction::Set()`
     /// Sets the value of the parameter along the guide line.
     /// This determines the plane in which the solution has
@@ -419,6 +502,42 @@ impl CSFunction {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         unsafe { crate::ffi::Blend_CSFunction_set_real2(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `Blend_CSFunction.hxx`:94 - `Blend_CSFunction::GetTolerance()`
+    /// Returns in the vector Tolerance the parametric tolerance
+    /// for each of the 3 variables;
+    /// Tol is the tolerance used in 3d space.
+    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::Blend_CSFunction_get_tolerance_vector_real(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `Blend_CSFunction.hxx`:101 - `Blend_CSFunction::GetBounds()`
+    /// Returns in the vector InfBound the lowest values allowed
+    /// for each of the 3 variables.
+    /// Returns in the vector SupBound the greatest values allowed
+    /// for each of the 3 variables.
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe { crate::ffi::Blend_CSFunction_get_bounds(self as *const Self, InfBound, SupBound) }
+    }
+
+    /// **Source:** `Blend_CSFunction.hxx`:108 - `Blend_CSFunction::IsSolution()`
+    /// Returns Standard_True if Sol is a zero of the function.
+    /// Tol is the tolerance used in 3d space.
+    /// The computation is made at the current value of
+    /// the parameter on the guide line.
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::Blend_CSFunction_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:114 - `Blend_CSFunction::GetMinimalDistance()`
@@ -514,6 +633,32 @@ impl CSFunction {
                 NbKnots,
                 Degree,
                 NbPoles2d,
+            )
+        }
+    }
+
+    /// **Source:** `Blend_CSFunction.hxx`:167 - `Blend_CSFunction::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to respect
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance_real3_vector2(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::math_Vector,
+        Tol1D: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::Blend_CSFunction_get_tolerance_real3_vector2(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+                Tol1D,
             )
         }
     }
@@ -681,57 +826,6 @@ impl CSFunction {
     }
 }
 
-// ── Skipped symbols for CSFunction (7 total) ──
-// SKIPPED: **Source:** `Blend_CSFunction.hxx`:61 - `Blend_CSFunction::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Blend_CSFunction.hxx`:68 - `Blend_CSFunction::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Blend_CSFunction.hxx`:75 - `Blend_CSFunction::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Blend_CSFunction.hxx`:94 - `Blend_CSFunction::GetTolerance`
-//   method: Returns in the vector Tolerance the parametric tolerance
-//   method: for each of the 3 variables;
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `Blend_CSFunction.hxx`:101 - `Blend_CSFunction::GetBounds`
-//   method: Returns in the vector InfBound the lowest values allowed
-//   method: for each of the 3 variables.
-//   method: Returns in the vector SupBound the greatest values allowed
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `Blend_CSFunction.hxx`:108 - `Blend_CSFunction::IsSolution`
-//   method: Returns Standard_True if Sol is a zero of the function.
-//   method: Tol is the tolerance used in 3d space.
-//   method: The computation is made at the current value of
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `Blend_CSFunction.hxx`:167 - `Blend_CSFunction::GetTolerance`
-//   method: Returns the tolerance to reach in approximation
-//   method: to respect
-//   method: BoundTol error at the Boundary
-//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
-//
-
 // ========================
 // From Blend_CurvPointFuncInv.hxx
 // ========================
@@ -767,10 +861,78 @@ impl CurvPointFuncInv {
         unsafe { crate::ffi::Blend_CurvPointFuncInv_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `Blend_CurvPointFuncInv.hxx`:54 - `Blend_CurvPointFuncInv::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::Blend_CurvPointFuncInv_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `Blend_CurvPointFuncInv.hxx`:60 - `Blend_CurvPointFuncInv::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_CurvPointFuncInv_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `Blend_CurvPointFuncInv.hxx`:66 - `Blend_CurvPointFuncInv::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_CurvPointFuncInv_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `Blend_CurvPointFuncInv.hxx`:71 - `Blend_CurvPointFuncInv::Set()`
     /// Set the Point on which a solution has to be found.
     pub fn set(&mut self, P: &crate::gp::Pnt) {
         unsafe { crate::ffi::Blend_CurvPointFuncInv_set(self as *mut Self, P) }
+    }
+
+    /// **Source:** `Blend_CurvPointFuncInv.hxx`:76 - `Blend_CurvPointFuncInv::GetTolerance()`
+    /// Returns in the vector Tolerance the parametric tolerance
+    /// for each of the 3 variables;
+    /// Tol is the tolerance used in 3d space.
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::Blend_CurvPointFuncInv_get_tolerance(self as *const Self, Tolerance, Tol)
+        }
+    }
+
+    /// **Source:** `Blend_CurvPointFuncInv.hxx`:83 - `Blend_CurvPointFuncInv::GetBounds()`
+    /// Returns in the vector InfBound the lowest values allowed
+    /// for each of the 3 variables.
+    /// Returns in the vector SupBound the greatest values allowed
+    /// for each of the 3 variables.
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::Blend_CurvPointFuncInv_get_bounds(self as *const Self, InfBound, SupBound)
+        }
+    }
+
+    /// **Source:** `Blend_CurvPointFuncInv.hxx`:87 - `Blend_CurvPointFuncInv::IsSolution()`
+    /// Returns Standard_True if Sol is a zero of the function.
+    /// Tol is the tolerance used in 3d space.
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::Blend_CurvPointFuncInv_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
@@ -813,49 +975,6 @@ impl CurvPointFuncInv {
     }
 }
 
-// ── Skipped symbols for CurvPointFuncInv (6 total) ──
-// SKIPPED: **Source:** `Blend_CurvPointFuncInv.hxx`:54 - `Blend_CurvPointFuncInv::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Blend_CurvPointFuncInv.hxx`:60 - `Blend_CurvPointFuncInv::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Blend_CurvPointFuncInv.hxx`:66 - `Blend_CurvPointFuncInv::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Blend_CurvPointFuncInv.hxx`:76 - `Blend_CurvPointFuncInv::GetTolerance`
-//   method: Returns in the vector Tolerance the parametric tolerance
-//   method: for each of the 3 variables;
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `Blend_CurvPointFuncInv.hxx`:83 - `Blend_CurvPointFuncInv::GetBounds`
-//   method: Returns in the vector InfBound the lowest values allowed
-//   method: for each of the 3 variables.
-//   method: Returns in the vector SupBound the greatest values allowed
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `Blend_CurvPointFuncInv.hxx`:87 - `Blend_CurvPointFuncInv::IsSolution`
-//   method: Returns Standard_True if Sol is a zero of the function.
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-
 // ========================
 // From Blend_FuncInv.hxx
 // ========================
@@ -892,6 +1011,42 @@ impl FuncInv {
         unsafe { crate::ffi::Blend_FuncInv_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `Blend_FuncInv.hxx`:57 - `Blend_FuncInv::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::Blend_FuncInv_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `Blend_FuncInv.hxx`:63 - `Blend_FuncInv::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_FuncInv_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `Blend_FuncInv.hxx`:69 - `Blend_FuncInv::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_FuncInv_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `Blend_FuncInv.hxx`:77 - `Blend_FuncInv::Set()`
     /// Sets the CurveOnSurface on which a solution has
     /// to be found. If <OnFirst> is set to Standard_True,
@@ -899,6 +1054,34 @@ impl FuncInv {
     /// curve is on the second one.
     pub fn set(&mut self, OnFirst: bool, COnSurf: &crate::ffi::HandleAdaptor2dCurve2d) {
         unsafe { crate::ffi::Blend_FuncInv_set(self as *mut Self, OnFirst, COnSurf) }
+    }
+
+    /// **Source:** `Blend_FuncInv.hxx`:83 - `Blend_FuncInv::GetTolerance()`
+    /// Returns in the vector Tolerance the parametric tolerance
+    /// for each of the 4 variables;
+    /// Tol is the tolerance used in 3d space.
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe { crate::ffi::Blend_FuncInv_get_tolerance(self as *const Self, Tolerance, Tol) }
+    }
+
+    /// **Source:** `Blend_FuncInv.hxx`:90 - `Blend_FuncInv::GetBounds()`
+    /// Returns in the vector InfBound the lowest values allowed
+    /// for each of the 4 variables.
+    /// Returns in the vector SupBound the greatest values allowed
+    /// for each of the 4 variables.
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe { crate::ffi::Blend_FuncInv_get_bounds(self as *const Self, InfBound, SupBound) }
+    }
+
+    /// **Source:** `Blend_FuncInv.hxx`:94 - `Blend_FuncInv::IsSolution()`
+    /// Returns Standard_True if Sol is a zero of the function.
+    /// Tol is the tolerance used in 3d space.
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::Blend_FuncInv_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
@@ -936,49 +1119,6 @@ impl FuncInv {
         unsafe { crate::ffi::Blend_FuncInv_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for FuncInv (6 total) ──
-// SKIPPED: **Source:** `Blend_FuncInv.hxx`:57 - `Blend_FuncInv::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Blend_FuncInv.hxx`:63 - `Blend_FuncInv::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Blend_FuncInv.hxx`:69 - `Blend_FuncInv::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Blend_FuncInv.hxx`:83 - `Blend_FuncInv::GetTolerance`
-//   method: Returns in the vector Tolerance the parametric tolerance
-//   method: for each of the 4 variables;
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `Blend_FuncInv.hxx`:90 - `Blend_FuncInv::GetBounds`
-//   method: Returns in the vector InfBound the lowest values allowed
-//   method: for each of the 4 variables.
-//   method: Returns in the vector SupBound the greatest values allowed
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `Blend_FuncInv.hxx`:94 - `Blend_FuncInv::IsSolution`
-//   method: Returns Standard_True if Sol is a zero of the function.
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
 
 // ========================
 // From Blend_Function.hxx
@@ -1194,9 +1334,56 @@ impl Function {
         unsafe { crate::ffi::Blend_Function_inherited_NbEquations(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:59 - `Blend_AppFunction::Value()`
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::Blend_Function_inherited_Value(self as *mut Self, X, F) }
+    }
+
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:65 - `Blend_AppFunction::Derivatives()`
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_Function_inherited_Derivatives(self as *mut Self, X, D) }
+    }
+
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:71 - `Blend_AppFunction::Values()`
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_Function_inherited_Values(self as *mut Self, X, F, D) }
+    }
+
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:78 - `Blend_AppFunction::Set()`
     pub fn set(&mut self, Param: f64) {
         unsafe { crate::ffi::Blend_Function_inherited_Set(self as *mut Self, Param) }
+    }
+
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:89 - `Blend_AppFunction::GetTolerance()`
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::Blend_Function_inherited_GetTolerance(self as *const Self, Tolerance, Tol)
+        }
+    }
+
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:96 - `Blend_AppFunction::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::Blend_Function_inherited_GetBounds(self as *const Self, InfBound, SupBound)
+        }
+    }
+
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:102 - `Blend_AppFunction::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::Blend_Function_inherited_IsSolution(self as *mut Self, Sol, Tol) }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:107 - `Blend_AppFunction::GetMinimalDistance()`
@@ -1901,6 +2088,42 @@ impl RstRstFunction {
         unsafe { crate::ffi::Blend_RstRstFunction_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `Blend_RstRstFunction.hxx`:61 - `Blend_RstRstFunction::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::Blend_RstRstFunction_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `Blend_RstRstFunction.hxx`:67 - `Blend_RstRstFunction::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_RstRstFunction_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `Blend_RstRstFunction.hxx`:73 - `Blend_RstRstFunction::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_RstRstFunction_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `Blend_RstRstFunction.hxx`:80 - `Blend_RstRstFunction::Set()`
     /// Sets the value of the parameter along the guide line.
     /// This determines the plane in which the solution has
@@ -1916,6 +2139,44 @@ impl RstRstFunction {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         unsafe { crate::ffi::Blend_RstRstFunction_set_real2(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `Blend_RstRstFunction.hxx`:91 - `Blend_RstRstFunction::GetTolerance()`
+    /// Returns in the vector Tolerance the parametric tolerance
+    /// for each variable;
+    /// Tol is the tolerance used in 3d space.
+    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::Blend_RstRstFunction_get_tolerance_vector_real(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `Blend_RstRstFunction.hxx`:98 - `Blend_RstRstFunction::GetBounds()`
+    /// Returns in the vector InfBound the lowest values allowed
+    /// for each variables.
+    /// Returns in the vector SupBound the greatest values allowed
+    /// for each of the 3 variables.
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::Blend_RstRstFunction_get_bounds(self as *const Self, InfBound, SupBound)
+        }
+    }
+
+    /// **Source:** `Blend_RstRstFunction.hxx`:104 - `Blend_RstRstFunction::IsSolution()`
+    /// Returns Standard_True if Sol is a zero of the function.
+    /// Tol is the tolerance used in 3d space.
+    /// The computation is made at the current value of
+    /// the parameter on the guide line.
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::Blend_RstRstFunction_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:109 - `Blend_RstRstFunction::GetMinimalDistance()`
@@ -2007,6 +2268,32 @@ impl RstRstFunction {
         unsafe { &*(crate::ffi::Blend_RstRstFunction_tangent2d_on_rst2(self as *const Self)) }
     }
 
+    /// **Source:** `Blend_RstRstFunction.hxx`:158 - `Blend_RstRstFunction::Decroch()`
+    /// Enables to implement a  criterion  of  decrochage
+    /// specific to the function.
+    /// Warning: Can  be  called  without  previous  call  of issolution
+    /// but  the  values  calculated can  be  senseless.
+    pub fn decroch(
+        &self,
+        Sol: &crate::ffi::math_Vector,
+        NRst1: &mut crate::gp::Vec,
+        TgRst1: &mut crate::gp::Vec,
+        NRst2: &mut crate::gp::Vec,
+        TgRst2: &mut crate::gp::Vec,
+    ) -> crate::blend::DecrochStatus {
+        unsafe {
+            crate::blend::DecrochStatus::try_from(crate::ffi::Blend_RstRstFunction_decroch(
+                self as *const Self,
+                Sol,
+                NRst1,
+                TgRst1,
+                NRst2,
+                TgRst2,
+            ))
+            .unwrap()
+        }
+    }
+
     /// **Source:** `Blend_RstRstFunction.hxx`:165 - `Blend_RstRstFunction::IsRational()`
     /// Returns  if the section is rational
     pub fn is_rational(&self) -> bool {
@@ -2058,6 +2345,32 @@ impl RstRstFunction {
                 NbKnots,
                 Degree,
                 NbPoles2d,
+            )
+        }
+    }
+
+    /// **Source:** `Blend_RstRstFunction.hxx`:195 - `Blend_RstRstFunction::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to respect
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance_real3_vector2(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::math_Vector,
+        Tol1D: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::Blend_RstRstFunction_get_tolerance_real3_vector2(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+                Tol1D,
             )
         }
     }
@@ -2202,64 +2515,6 @@ impl RstRstFunction {
     }
 }
 
-// ── Skipped symbols for RstRstFunction (8 total) ──
-// SKIPPED: **Source:** `Blend_RstRstFunction.hxx`:61 - `Blend_RstRstFunction::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Blend_RstRstFunction.hxx`:67 - `Blend_RstRstFunction::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Blend_RstRstFunction.hxx`:73 - `Blend_RstRstFunction::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Blend_RstRstFunction.hxx`:91 - `Blend_RstRstFunction::GetTolerance`
-//   method: Returns in the vector Tolerance the parametric tolerance
-//   method: for each variable;
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `Blend_RstRstFunction.hxx`:98 - `Blend_RstRstFunction::GetBounds`
-//   method: Returns in the vector InfBound the lowest values allowed
-//   method: for each variables.
-//   method: Returns in the vector SupBound the greatest values allowed
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `Blend_RstRstFunction.hxx`:104 - `Blend_RstRstFunction::IsSolution`
-//   method: Returns Standard_True if Sol is a zero of the function.
-//   method: Tol is the tolerance used in 3d space.
-//   method: The computation is made at the current value of
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `Blend_RstRstFunction.hxx`:158 - `Blend_RstRstFunction::Decroch`
-//   method: Enables to implement a  criterion  of  decrochage
-//   method: specific to the function.
-//   method: Warning: Can  be  called  without  previous  call  of issolution
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn decroch(&self, Sol: &Vector, NRst1: &mut Vec, TgRst1: &mut Vec, NRst2: &mut Vec, TgRst2: &mut Vec) -> OwnedPtr<Blend_DecrochStatus>;
-//
-// SKIPPED: **Source:** `Blend_RstRstFunction.hxx`:195 - `Blend_RstRstFunction::GetTolerance`
-//   method: Returns the tolerance to reach in approximation
-//   method: to respect
-//   method: BoundTol error at the Boundary
-//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
-//
-
 // ========================
 // From Blend_SurfCurvFuncInv.hxx
 // ========================
@@ -2297,10 +2552,78 @@ impl SurfCurvFuncInv {
         unsafe { crate::ffi::Blend_SurfCurvFuncInv_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:55 - `Blend_SurfCurvFuncInv::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::Blend_SurfCurvFuncInv_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:61 - `Blend_SurfCurvFuncInv::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_SurfCurvFuncInv_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:67 - `Blend_SurfCurvFuncInv::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_SurfCurvFuncInv_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `Blend_SurfCurvFuncInv.hxx`:72 - `Blend_SurfCurvFuncInv::Set()`
     /// Set the Point on which a solution has to be found.
     pub fn set(&mut self, Rst: &crate::ffi::HandleAdaptor2dCurve2d) {
         unsafe { crate::ffi::Blend_SurfCurvFuncInv_set(self as *mut Self, Rst) }
+    }
+
+    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:77 - `Blend_SurfCurvFuncInv::GetTolerance()`
+    /// Returns in the vector Tolerance the parametric tolerance
+    /// for each of the 3 variables;
+    /// Tol is the tolerance used in 3d space.
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::Blend_SurfCurvFuncInv_get_tolerance(self as *const Self, Tolerance, Tol)
+        }
+    }
+
+    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:84 - `Blend_SurfCurvFuncInv::GetBounds()`
+    /// Returns in the vector InfBound the lowest values allowed
+    /// for each of the 3 variables.
+    /// Returns in the vector SupBound the greatest values allowed
+    /// for each of the 3 variables.
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::Blend_SurfCurvFuncInv_get_bounds(self as *const Self, InfBound, SupBound)
+        }
+    }
+
+    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:88 - `Blend_SurfCurvFuncInv::IsSolution()`
+    /// Returns Standard_True if Sol is a zero of the function.
+    /// Tol is the tolerance used in 3d space.
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::Blend_SurfCurvFuncInv_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
@@ -2343,49 +2666,6 @@ impl SurfCurvFuncInv {
     }
 }
 
-// ── Skipped symbols for SurfCurvFuncInv (6 total) ──
-// SKIPPED: **Source:** `Blend_SurfCurvFuncInv.hxx`:55 - `Blend_SurfCurvFuncInv::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Blend_SurfCurvFuncInv.hxx`:61 - `Blend_SurfCurvFuncInv::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Blend_SurfCurvFuncInv.hxx`:67 - `Blend_SurfCurvFuncInv::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Blend_SurfCurvFuncInv.hxx`:77 - `Blend_SurfCurvFuncInv::GetTolerance`
-//   method: Returns in the vector Tolerance the parametric tolerance
-//   method: for each of the 3 variables;
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `Blend_SurfCurvFuncInv.hxx`:84 - `Blend_SurfCurvFuncInv::GetBounds`
-//   method: Returns in the vector InfBound the lowest values allowed
-//   method: for each of the 3 variables.
-//   method: Returns in the vector SupBound the greatest values allowed
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `Blend_SurfCurvFuncInv.hxx`:88 - `Blend_SurfCurvFuncInv::IsSolution`
-//   method: Returns Standard_True if Sol is a zero of the function.
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-
 // ========================
 // From Blend_SurfPointFuncInv.hxx
 // ========================
@@ -2422,10 +2702,78 @@ impl SurfPointFuncInv {
         unsafe { crate::ffi::Blend_SurfPointFuncInv_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `Blend_SurfPointFuncInv.hxx`:55 - `Blend_SurfPointFuncInv::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::Blend_SurfPointFuncInv_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `Blend_SurfPointFuncInv.hxx`:61 - `Blend_SurfPointFuncInv::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_SurfPointFuncInv_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `Blend_SurfPointFuncInv.hxx`:67 - `Blend_SurfPointFuncInv::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_SurfPointFuncInv_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `Blend_SurfPointFuncInv.hxx`:72 - `Blend_SurfPointFuncInv::Set()`
     /// Set the Point on which a solution has to be found.
     pub fn set(&mut self, P: &crate::gp::Pnt) {
         unsafe { crate::ffi::Blend_SurfPointFuncInv_set(self as *mut Self, P) }
+    }
+
+    /// **Source:** `Blend_SurfPointFuncInv.hxx`:77 - `Blend_SurfPointFuncInv::GetTolerance()`
+    /// Returns in the vector Tolerance the parametric tolerance
+    /// for each of the 3 variables;
+    /// Tol is the tolerance used in 3d space.
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::Blend_SurfPointFuncInv_get_tolerance(self as *const Self, Tolerance, Tol)
+        }
+    }
+
+    /// **Source:** `Blend_SurfPointFuncInv.hxx`:84 - `Blend_SurfPointFuncInv::GetBounds()`
+    /// Returns in the vector InfBound the lowest values allowed
+    /// for each of the 3 variables.
+    /// Returns in the vector SupBound the greatest values allowed
+    /// for each of the 3 variables.
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::Blend_SurfPointFuncInv_get_bounds(self as *const Self, InfBound, SupBound)
+        }
+    }
+
+    /// **Source:** `Blend_SurfPointFuncInv.hxx`:88 - `Blend_SurfPointFuncInv::IsSolution()`
+    /// Returns Standard_True if Sol is a zero of the function.
+    /// Tol is the tolerance used in 3d space.
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::Blend_SurfPointFuncInv_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
@@ -2468,49 +2816,6 @@ impl SurfPointFuncInv {
     }
 }
 
-// ── Skipped symbols for SurfPointFuncInv (6 total) ──
-// SKIPPED: **Source:** `Blend_SurfPointFuncInv.hxx`:55 - `Blend_SurfPointFuncInv::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Blend_SurfPointFuncInv.hxx`:61 - `Blend_SurfPointFuncInv::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Blend_SurfPointFuncInv.hxx`:67 - `Blend_SurfPointFuncInv::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Blend_SurfPointFuncInv.hxx`:77 - `Blend_SurfPointFuncInv::GetTolerance`
-//   method: Returns in the vector Tolerance the parametric tolerance
-//   method: for each of the 3 variables;
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `Blend_SurfPointFuncInv.hxx`:84 - `Blend_SurfPointFuncInv::GetBounds`
-//   method: Returns in the vector InfBound the lowest values allowed
-//   method: for each of the 3 variables.
-//   method: Returns in the vector SupBound the greatest values allowed
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `Blend_SurfPointFuncInv.hxx`:88 - `Blend_SurfPointFuncInv::IsSolution`
-//   method: Returns Standard_True if Sol is a zero of the function.
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-
 // ========================
 // From Blend_SurfRstFunction.hxx
 // ========================
@@ -2544,6 +2849,42 @@ impl SurfRstFunction {
         unsafe { crate::ffi::Blend_SurfRstFunction_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `Blend_SurfRstFunction.hxx`:60 - `Blend_SurfRstFunction::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::Blend_SurfRstFunction_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `Blend_SurfRstFunction.hxx`:66 - `Blend_SurfRstFunction::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_SurfRstFunction_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `Blend_SurfRstFunction.hxx`:72 - `Blend_SurfRstFunction::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_SurfRstFunction_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `Blend_SurfRstFunction.hxx`:79 - `Blend_SurfRstFunction::Set()`
     /// Sets the value of the parameter along the guide line.
     /// This determines the plane in which the solution has
@@ -2559,6 +2900,44 @@ impl SurfRstFunction {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         unsafe { crate::ffi::Blend_SurfRstFunction_set_real2(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `Blend_SurfRstFunction.hxx`:90 - `Blend_SurfRstFunction::GetTolerance()`
+    /// Returns in the vector Tolerance the parametric tolerance
+    /// for each variable;
+    /// Tol is the tolerance used in 3d space.
+    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::Blend_SurfRstFunction_get_tolerance_vector_real(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `Blend_SurfRstFunction.hxx`:97 - `Blend_SurfRstFunction::GetBounds()`
+    /// Returns in the vector InfBound the lowest values allowed
+    /// for each variables.
+    /// Returns in the vector SupBound the greatest values allowed
+    /// for each of the 3 variables.
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::Blend_SurfRstFunction_get_bounds(self as *const Self, InfBound, SupBound)
+        }
+    }
+
+    /// **Source:** `Blend_SurfRstFunction.hxx`:103 - `Blend_SurfRstFunction::IsSolution()`
+    /// Returns Standard_True if Sol is a zero of the function.
+    /// Tol is the tolerance used in 3d space.
+    /// The computation is made at the current value of
+    /// the parameter on the guide line.
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::Blend_SurfRstFunction_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:108 - `Blend_SurfRstFunction::GetMinimalDistance()`
@@ -2644,6 +3023,18 @@ impl SurfRstFunction {
         unsafe { &*(crate::ffi::Blend_SurfRstFunction_tangent2d_on_rst(self as *const Self)) }
     }
 
+    /// **Source:** `Blend_SurfRstFunction.hxx`:152 - `Blend_SurfRstFunction::Decroch()`
+    /// Enables implementation  of a criterion of decrochage
+    /// specific to  the function.
+    pub fn decroch(
+        &self,
+        Sol: &crate::ffi::math_Vector,
+        NS: &mut crate::gp::Vec,
+        TgS: &mut crate::gp::Vec,
+    ) -> bool {
+        unsafe { crate::ffi::Blend_SurfRstFunction_decroch(self as *const Self, Sol, NS, TgS) }
+    }
+
     /// **Source:** `Blend_SurfRstFunction.hxx`:157 - `Blend_SurfRstFunction::IsRational()`
     /// Returns  if the section is rational
     pub fn is_rational(&self) -> bool {
@@ -2697,6 +3088,32 @@ impl SurfRstFunction {
                 NbKnots,
                 Degree,
                 NbPoles2d,
+            )
+        }
+    }
+
+    /// **Source:** `Blend_SurfRstFunction.hxx`:187 - `Blend_SurfRstFunction::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to respect
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance_real3_vector2(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::math_Vector,
+        Tol1D: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::Blend_SurfRstFunction_get_tolerance_real3_vector2(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+                Tol1D,
             )
         }
     }
@@ -2840,60 +3257,3 @@ impl SurfRstFunction {
         unsafe { crate::ffi::Blend_SurfRstFunction_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for SurfRstFunction (8 total) ──
-// SKIPPED: **Source:** `Blend_SurfRstFunction.hxx`:60 - `Blend_SurfRstFunction::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Blend_SurfRstFunction.hxx`:66 - `Blend_SurfRstFunction::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Blend_SurfRstFunction.hxx`:72 - `Blend_SurfRstFunction::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Blend_SurfRstFunction.hxx`:90 - `Blend_SurfRstFunction::GetTolerance`
-//   method: Returns in the vector Tolerance the parametric tolerance
-//   method: for each variable;
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `Blend_SurfRstFunction.hxx`:97 - `Blend_SurfRstFunction::GetBounds`
-//   method: Returns in the vector InfBound the lowest values allowed
-//   method: for each variables.
-//   method: Returns in the vector SupBound the greatest values allowed
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `Blend_SurfRstFunction.hxx`:103 - `Blend_SurfRstFunction::IsSolution`
-//   method: Returns Standard_True if Sol is a zero of the function.
-//   method: Tol is the tolerance used in 3d space.
-//   method: The computation is made at the current value of
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `Blend_SurfRstFunction.hxx`:152 - `Blend_SurfRstFunction::Decroch`
-//   method: Enables implementation  of a criterion of decrochage
-//   method: specific to  the function.
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn decroch(&self, Sol: &Vector, NS: &mut Vec, TgS: &mut Vec) -> bool;
-//
-// SKIPPED: **Source:** `Blend_SurfRstFunction.hxx`:187 - `Blend_SurfRstFunction::GetTolerance`
-//   method: Returns the tolerance to reach in approximation
-//   method: to respect
-//   method: BoundTol error at the Boundary
-//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
-//

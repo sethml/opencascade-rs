@@ -759,6 +759,30 @@ impl CSFunction {
         unsafe { crate::ffi::IntPatch_CSFunction_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `IntPatch_CSFunction.hxx`:44 - `IntPatch_CSFunction::Value()`
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::IntPatch_CSFunction_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `IntPatch_CSFunction.hxx`:46 - `IntPatch_CSFunction::Derivatives()`
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::IntPatch_CSFunction_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `IntPatch_CSFunction.hxx`:48 - `IntPatch_CSFunction::Values()`
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::IntPatch_CSFunction_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `IntPatch_CSFunction.hxx`:50 - `IntPatch_CSFunction::Point()`
     pub fn point(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::IntPatch_CSFunction_point(self as *const Self)) }
@@ -818,20 +842,6 @@ impl CSFunction {
         unsafe { crate::ffi::IntPatch_CSFunction_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for CSFunction (3 total) ──
-// SKIPPED: **Source:** `IntPatch_CSFunction.hxx`:44 - `IntPatch_CSFunction::Value`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `IntPatch_CSFunction.hxx`:46 - `IntPatch_CSFunction::Derivatives`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `IntPatch_CSFunction.hxx`:48 - `IntPatch_CSFunction::Values`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
 
 // ========================
 // From IntPatch_CurvIntSurf.hxx
@@ -5465,6 +5475,48 @@ impl SpecialPoints {
         }
     }
 
+    /// **Source:** `IntPatch_SpecialPoints.hxx`:64 - `IntPatch_SpecialPoints::AddPointOnUorVIso()`
+    /// Adds the point lain strictly in the isoline U = 0 or V = 0 of theQSurf,
+    /// in theLine.
+    /// theRefPt is used to correct adjusting parameters.
+    /// If theIsReversed is TRUE then theQSurf corresponds to the
+    /// second (otherwise, the first) surface while forming
+    /// intersection point IntSurf_PntOn2S.
+    /// All math_Vector-objects must be filled as follows:
+    /// [1] - U-parameter of thePSurf;
+    /// [2] - V-parameter of thePSurf;
+    /// [3] - U- (if V-isoline is considered) or V-parameter
+    /// (if U-isoline is considered) of theQSurf.
+    pub fn add_point_on_uor_v_iso(
+        theQSurf: &crate::ffi::HandleAdaptor3dSurface,
+        thePSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theRefPt: &crate::int_surf::PntOn2S,
+        theIsU: bool,
+        theIsoParameter: f64,
+        theToler: &crate::ffi::math_Vector,
+        theInitPoint: &crate::ffi::math_Vector,
+        theInfBound: &crate::ffi::math_Vector,
+        theSupBound: &crate::ffi::math_Vector,
+        theAddedPoint: &mut crate::int_surf::PntOn2S,
+        theIsReversed: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IntPatch_SpecialPoints_add_point_on_uor_v_iso(
+                theQSurf,
+                thePSurf,
+                theRefPt,
+                theIsU,
+                theIsoParameter,
+                theToler,
+                theInitPoint,
+                theInfBound,
+                theSupBound,
+                theAddedPoint,
+                theIsReversed,
+            )
+        }
+    }
+
     /// **Source:** `IntPatch_SpecialPoints.hxx`:88 - `IntPatch_SpecialPoints::AddSingularPole()`
     /// Computes the pole of sphere to add it in the intersection line.
     /// Stores the result in theAddedPoint variable (does not add in the line).
@@ -5529,14 +5581,7 @@ impl SpecialPoints {
     }
 }
 
-// ── Skipped symbols for SpecialPoints (2 total) ──
-// SKIPPED: **Source:** `IntPatch_SpecialPoints.hxx`:64 - `IntPatch_SpecialPoints::AddPointOnUorVIso`
-//   static_method: Adds the point lain strictly in the isoline U = 0 or V = 0 of theQSurf,
-//   static_method: in theLine.
-//   static_method: theRefPt is used to correct adjusting parameters.
-//   Reason: param 'theToler' uses unknown type 'const math_Vector&'
-//   // pub fn add_point_on_uor_v_iso(theQSurf: &HandleSurface, thePSurf: &HandleSurface, theRefPt: &PntOn2S, theIsU: bool, theIsoParameter: f64, theToler: &Vector, theInitPoint: &Vector, theInfBound: &Vector, theSupBound: &Vector, theAddedPoint: &mut PntOn2S, theIsReversed: bool) -> bool;
-//
+// ── Skipped symbols for SpecialPoints (1 total) ──
 // SKIPPED: **Source:** `IntPatch_SpecialPoints.hxx`:123 - `IntPatch_SpecialPoints::AdjustPointAndVertex`
 //   static_method: Sets theNewPoint parameters in 2D-space the closest to
 //   static_method: theRefPoint with help of adding/subtracting corresponding periods.
@@ -6529,6 +6574,30 @@ impl TheSurfFunction {
         unsafe { crate::ffi::IntPatch_TheSurfFunction_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:54 - `IntPatch_TheSurfFunction::Value()`
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::IntPatch_TheSurfFunction_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:56 - `IntPatch_TheSurfFunction::Derivatives()`
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::IntPatch_TheSurfFunction_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `IntPatch_TheSurfFunction.hxx`:58 - `IntPatch_TheSurfFunction::Values()`
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::IntPatch_TheSurfFunction_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `IntPatch_TheSurfFunction.hxx`:60 - `IntPatch_TheSurfFunction::Root()`
     pub fn root(&self) -> f64 {
         unsafe { crate::ffi::IntPatch_TheSurfFunction_root(self as *const Self) }
@@ -6610,20 +6679,6 @@ impl TheSurfFunction {
         unsafe { crate::ffi::IntPatch_TheSurfFunction_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for TheSurfFunction (3 total) ──
-// SKIPPED: **Source:** `IntPatch_TheSurfFunction.hxx`:54 - `IntPatch_TheSurfFunction::Value`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `IntPatch_TheSurfFunction.hxx`:56 - `IntPatch_TheSurfFunction::Derivatives`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `IntPatch_TheSurfFunction.hxx`:58 - `IntPatch_TheSurfFunction::Values`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
 
 // ========================
 // From IntPatch_WLine.hxx

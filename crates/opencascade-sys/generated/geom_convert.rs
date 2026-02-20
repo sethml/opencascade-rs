@@ -2135,6 +2135,12 @@ impl FuncConeLSDist {
         unsafe { crate::ffi::GeomConvert_FuncConeLSDist_nb_variables(self as *const Self) }
     }
 
+    /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:50 - `GeomConvert_FuncConeLSDist::Value()`
+    /// Value.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+        unsafe { crate::ffi::GeomConvert_FuncConeLSDist_value(self as *mut Self, X, F) }
+    }
+
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
         unsafe {
@@ -2160,13 +2166,6 @@ impl FuncConeLSDist {
         }
     }
 }
-
-// ── Skipped symbols for FuncConeLSDist (1 total) ──
-// SKIPPED: **Source:** `GeomConvert_FuncConeLSDist.hxx`:50 - `GeomConvert_FuncConeLSDist::Value`
-//   method: Value.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
-//
 
 // ========================
 // From GeomConvert_FuncCylinderLSDist.hxx
@@ -2251,6 +2250,33 @@ impl FuncCylinderLSDist {
         unsafe { crate::ffi::GeomConvert_FuncCylinderLSDist_nb_variables(self as *const Self) }
     }
 
+    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:76 - `GeomConvert_FuncCylinderLSDist::Value()`
+    /// Value.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+        unsafe { crate::ffi::GeomConvert_FuncCylinderLSDist_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:79 - `GeomConvert_FuncCylinderLSDist::Gradient()`
+    /// Gradient.
+    pub fn gradient(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::GeomConvert_FuncCylinderLSDist_gradient(self as *mut Self, X, G) }
+    }
+
+    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:82 - `GeomConvert_FuncCylinderLSDist::Values()`
+    /// Value and gradient.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::GeomConvert_FuncCylinderLSDist_values(self as *mut Self, X, F, G) }
+    }
+
     /// Upcast to math_MultipleVarFunctionWithGradient
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
@@ -2296,23 +2322,6 @@ impl FuncCylinderLSDist {
         }
     }
 }
-
-// ── Skipped symbols for FuncCylinderLSDist (3 total) ──
-// SKIPPED: **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:76 - `GeomConvert_FuncCylinderLSDist::Value`
-//   method: Value.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:79 - `GeomConvert_FuncCylinderLSDist::Gradient`
-//   method: Gradient.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:82 - `GeomConvert_FuncCylinderLSDist::Values`
-//   method: Value and gradient.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
-//
 
 // ========================
 // From GeomConvert_FuncSphereLSDist.hxx
@@ -2373,6 +2382,33 @@ impl FuncSphereLSDist {
         unsafe { crate::ffi::GeomConvert_FuncSphereLSDist_nb_variables(self as *const Self) }
     }
 
+    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:60 - `GeomConvert_FuncSphereLSDist::Value()`
+    /// Value.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+        unsafe { crate::ffi::GeomConvert_FuncSphereLSDist_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:63 - `GeomConvert_FuncSphereLSDist::Gradient()`
+    /// Gradient.
+    pub fn gradient(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::GeomConvert_FuncSphereLSDist_gradient(self as *mut Self, X, G) }
+    }
+
+    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:66 - `GeomConvert_FuncSphereLSDist::Values()`
+    /// Value and gradient.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::GeomConvert_FuncSphereLSDist_values(self as *mut Self, X, F, G) }
+    }
+
     /// Upcast to math_MultipleVarFunctionWithGradient
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
@@ -2418,23 +2454,6 @@ impl FuncSphereLSDist {
         }
     }
 }
-
-// ── Skipped symbols for FuncSphereLSDist (3 total) ──
-// SKIPPED: **Source:** `GeomConvert_FuncSphereLSDist.hxx`:60 - `GeomConvert_FuncSphereLSDist::Value`
-//   method: Value.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `GeomConvert_FuncSphereLSDist.hxx`:63 - `GeomConvert_FuncSphereLSDist::Gradient`
-//   method: Gradient.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `GeomConvert_FuncSphereLSDist.hxx`:66 - `GeomConvert_FuncSphereLSDist::Values`
-//   method: Value and gradient.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
-//
 
 // ========================
 // From GeomConvert_SurfToAnaSurf.hxx

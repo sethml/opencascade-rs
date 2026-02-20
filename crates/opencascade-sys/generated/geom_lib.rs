@@ -989,6 +989,11 @@ unsafe impl crate::CppDeletable for PolyFunc {
 }
 
 impl PolyFunc {
+    /// **Source:** `GeomLib_PolyFunc.hxx`:33 - `GeomLib_PolyFunc::GeomLib_PolyFunc()`
+    pub fn new_vector(Coeffs: &crate::ffi::math_Vector) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomLib_PolyFunc_ctor_vector(Coeffs)) }
+    }
+
     /// **Source:** `GeomLib_PolyFunc.hxx`:38 - `GeomLib_PolyFunc::Value()`
     /// computes the value <F>of the function for the variable <X>.
     /// Returns True if the calculation were successfully done,
@@ -1048,12 +1053,6 @@ impl PolyFunc {
         unsafe { crate::ffi::GeomLib_PolyFunc_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for PolyFunc (1 total) ──
-// SKIPPED: **Source:** `GeomLib_PolyFunc.hxx`:33 - `GeomLib_PolyFunc::GeomLib_PolyFunc`
-//   Reason: param 'Coeffs' uses unknown type 'const math_Vector&'
-//   // pub fn new_vector(Coeffs: &Vector) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From GeomLib_Tool.hxx

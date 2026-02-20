@@ -43,8 +43,9 @@ fn normalize_template_spelling(s: &str) -> String {
 }
 
 
-/// Walk the AST to collect all typedef declarations that resolve to NCollection
-/// template specializations. Populates the thread-local TYPEDEF_MAP.
+/// Walk the AST to collect all typedef/using declarations that resolve to
+/// template specializations (NCollection, math_VectorBase, etc.).
+/// Populates the thread-local TYPEDEF_MAP.
 fn collect_ncollection_typedefs(root: &Entity) {
     let mut map = HashMap::new();
 
@@ -54,8 +55,8 @@ fn collect_ncollection_typedefs(root: &Entity) {
         {
             if let Some(name) = entity.get_name() {
                 // Only record if the typedef name looks like an OCCT type
-                // (starts with uppercase, contains underscore)
-                if !name.starts_with(|c: char| c.is_ascii_uppercase()) || !name.contains('_') {
+                // (contains underscore — e.g., math_Vector, TopTools_ListOfShape)
+                if !name.contains('_') {
                     return EntityVisitResult::Recurse;
                 }
 

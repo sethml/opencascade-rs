@@ -142,6 +142,34 @@ impl BFGS {
         Self::new_int_real_int_real(NbVariables, 1.0e-8, 200, 1.0e-12)
     }
 
+    /// **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary()`
+    /// Set boundaries for conditional optimization.
+    /// The expected indices range of vectors is [1, NbVariables].
+    pub fn set_boundary(
+        &mut self,
+        theLeftBorder: &crate::ffi::math_Vector,
+        theRightBorder: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::math_BFGS_set_boundary(self as *mut Self, theLeftBorder, theRightBorder)
+        }
+    }
+
+    /// **Source:** `math_BFGS.hxx`:67 - `math_BFGS::Perform()`
+    /// Given the starting point StartingPoint,
+    /// minimization is done on the function F.
+    /// The solution F = Fi is found when :
+    /// 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS).
+    /// Tolerance, ZEPS and maximum number of iterations are given
+    /// in the constructor.
+    pub fn perform(
+        &mut self,
+        F: &mut MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+    ) {
+        unsafe { crate::ffi::math_BFGS_perform(self as *mut Self, F, StartingPoint) }
+    }
+
     /// **Source:** `math_BFGS.hxx`:74 - `math_BFGS::IsSolutionReached()`
     /// This method is called at the end of each iteration to check if the
     /// solution is found.
@@ -157,11 +185,43 @@ impl BFGS {
         unsafe { crate::ffi::math_BFGS_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
+    /// returns the location vector of the minimum.
+    /// Exception NotDone is raised if the minimum was not found.
+    pub fn location(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::math_BFGS_location(self as *const Self)) }
+    }
+
+    /// **Source:** `math_BFGS.hxx`:88 - `math_BFGS::Location()`
+    /// outputs the location vector of the minimum in Loc.
+    /// Exception NotDone is raised if the minimum was not found.
+    /// Exception DimensionError is raised if the range of Loc is not
+    /// equal to the range of the StartingPoint.
+    pub fn location_vector(&self, Loc: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_BFGS_location_vector(self as *const Self, Loc) }
+    }
+
     /// **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
     /// returns the value of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn minimum(&self) -> f64 {
         unsafe { crate::ffi::math_BFGS_minimum(self as *const Self) }
+    }
+
+    /// **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
+    /// Returns the gradient vector at the minimum.
+    /// Exception NotDone is raised if the minimum was not found.
+    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::math_BFGS_gradient(self as *const Self)) }
+    }
+
+    /// **Source:** `math_BFGS.hxx`:102 - `math_BFGS::Gradient()`
+    /// Returns the value of the gradient vector at the minimum in Grad.
+    /// Exception NotDone is raised if the minimum was not found.
+    /// Exception DimensionError is raised if the range of Grad is not
+    /// equal to the range of the StartingPoint.
+    pub fn gradient_vector(&self, Grad: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_BFGS_gradient_vector(self as *const Self, Grad) }
     }
 
     /// **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
@@ -173,46 +233,7 @@ impl BFGS {
     }
 }
 
-// ── Skipped symbols for BFGS (7 total) ──
-// SKIPPED: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary`
-//   method: Set boundaries for conditional optimization.
-//   method: The expected indices range of vectors is [1, NbVariables].
-//   Reason: param 'theLeftBorder' uses unknown type 'const math_Vector&'
-//   // pub fn set_boundary(&mut self, theLeftBorder: &Vector, theRightBorder: &Vector);
-//
-// SKIPPED: **Source:** `math_BFGS.hxx`:67 - `math_BFGS::Perform`
-//   method: Given the starting point StartingPoint,
-//   method: minimization is done on the function F.
-//   method: The solution F = Fi is found when :
-//   Reason: param 'StartingPoint' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, F: &mut MultipleVarFunctionWithGradient, StartingPoint: &Vector);
-//
-// SKIPPED: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location`
-//   method: returns the location vector of the minimum.
-//   method: Exception NotDone is raised if the minimum was not found.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn location(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `math_BFGS.hxx`:88 - `math_BFGS::Location`
-//   method: outputs the location vector of the minimum in Loc.
-//   method: Exception NotDone is raised if the minimum was not found.
-//   method: Exception DimensionError is raised if the range of Loc is not
-//   Reason: param 'Loc' uses unknown type 'math_Vector&'
-//   // pub fn location(&self, Loc: &mut Vector);
-//
-// SKIPPED: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient`
-//   method: Returns the gradient vector at the minimum.
-//   method: Exception NotDone is raised if the minimum was not found.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn gradient(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `math_BFGS.hxx`:102 - `math_BFGS::Gradient`
-//   method: Returns the value of the gradient vector at the minimum in Grad.
-//   method: Exception NotDone is raised if the minimum was not found.
-//   method: Exception DimensionError is raised if the range of Grad is not
-//   Reason: param 'Grad' uses unknown type 'math_Vector&'
-//   // pub fn gradient(&self, Grad: &mut Vector);
-//
+// ── Skipped symbols for BFGS (1 total) ──
 // SKIPPED: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump`
 //   method: Prints on the stream o information on the current state
 //   method: of the object.
@@ -777,17 +798,25 @@ impl ComputeGaussPointsAndWeights {
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_ComputeGaussPointsAndWeights_is_done(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for ComputeGaussPointsAndWeights (2 total) ──
-// SKIPPED: **Source:** `math_ComputeGaussPointsAndWeights.hxx`:36 - `math_ComputeGaussPointsAndWeights::Points`
-//   Reason: return type 'math_Vector' is unknown
-//   // pub fn points(&self) -> OwnedPtr<math_Vector>;
-//
-// SKIPPED: **Source:** `math_ComputeGaussPointsAndWeights.hxx`:38 - `math_ComputeGaussPointsAndWeights::Weights`
-//   Reason: return type 'math_Vector' is unknown
-//   // pub fn weights(&self) -> OwnedPtr<math_Vector>;
-//
+    /// **Source:** `math_ComputeGaussPointsAndWeights.hxx`:36 - `math_ComputeGaussPointsAndWeights::Points()`
+    pub fn points(&self) -> crate::OwnedPtr<crate::ffi::math_Vector> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::math_ComputeGaussPointsAndWeights_points(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `math_ComputeGaussPointsAndWeights.hxx`:38 - `math_ComputeGaussPointsAndWeights::Weights()`
+    pub fn weights(&self) -> crate::OwnedPtr<crate::ffi::math_Vector> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::math_ComputeGaussPointsAndWeights_weights(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From math_ComputeKronrodPointsAndWeights.hxx
@@ -816,17 +845,25 @@ impl ComputeKronrodPointsAndWeights {
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_ComputeKronrodPointsAndWeights_is_done(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for ComputeKronrodPointsAndWeights (2 total) ──
-// SKIPPED: **Source:** `math_ComputeKronrodPointsAndWeights.hxx`:36 - `math_ComputeKronrodPointsAndWeights::Points`
-//   Reason: return type 'math_Vector' is unknown
-//   // pub fn points(&self) -> OwnedPtr<math_Vector>;
-//
-// SKIPPED: **Source:** `math_ComputeKronrodPointsAndWeights.hxx`:38 - `math_ComputeKronrodPointsAndWeights::Weights`
-//   Reason: return type 'math_Vector' is unknown
-//   // pub fn weights(&self) -> OwnedPtr<math_Vector>;
-//
+    /// **Source:** `math_ComputeKronrodPointsAndWeights.hxx`:36 - `math_ComputeKronrodPointsAndWeights::Points()`
+    pub fn points(&self) -> crate::OwnedPtr<crate::ffi::math_Vector> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::math_ComputeKronrodPointsAndWeights_points(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `math_ComputeKronrodPointsAndWeights.hxx`:38 - `math_ComputeKronrodPointsAndWeights::Weights()`
+    pub fn weights(&self) -> crate::OwnedPtr<crate::ffi::math_Vector> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::math_ComputeKronrodPointsAndWeights_weights(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From math_Crout.hxx
@@ -881,6 +918,17 @@ impl Crout {
         unsafe { crate::ffi::math_Crout_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_Crout.hxx`:58 - `math_Crout::Solve()`
+    /// Given an input vector <B>, this routine returns the
+    /// solution of the set of linear equations A . X = B.
+    /// Exception NotDone is raised if the decomposition was not
+    /// done successfully.
+    /// Exception DimensionError is raised if the range of B is
+    /// not equal to the rowrange of A.
+    pub fn solve(&self, B: &crate::ffi::math_Vector, X: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_Crout_solve(self as *const Self, B, X) }
+    }
+
     /// **Source:** `math_Crout.hxx`:63 - `math_Crout::Inverse()`
     /// returns the inverse matrix of A. Only the inferior
     /// triangle is returned.
@@ -907,14 +955,7 @@ impl Crout {
     }
 }
 
-// ── Skipped symbols for Crout (2 total) ──
-// SKIPPED: **Source:** `math_Crout.hxx`:58 - `math_Crout::Solve`
-//   method: Given an input vector <B>, this routine returns the
-//   method: solution of the set of linear equations A . X = B.
-//   method: Exception NotDone is raised if the decomposition was not
-//   Reason: param 'B' uses unknown type 'const math_Vector&'
-//   // pub fn solve(&self, B: &Vector, X: &mut Vector);
-//
+// ── Skipped symbols for Crout (1 total) ──
 // SKIPPED: **Source:** `math_Crout.hxx`:78 - `math_Crout::Dump`
 //   method: Prints on the stream o information on the current state
 //   method: of the object.
@@ -1134,15 +1175,19 @@ impl EigenValuesSearcher {
     pub fn eigen_value(&self, Index: i32) -> f64 {
         unsafe { crate::ffi::math_EigenValuesSearcher_eigen_value(self as *const Self, Index) }
     }
-}
 
-// ── Skipped symbols for EigenValuesSearcher (1 total) ──
-// SKIPPED: **Source:** `math_EigenValuesSearcher.hxx`:53 - `math_EigenValuesSearcher::EigenVector`
-//   method: Returns the Index_th eigen vector of matrix
-//   method: Index must be in [1, Dimension()]
-//   Reason: return type 'math_Vector' is unknown
-//   // pub fn eigen_vector(&self, Index: i32) -> OwnedPtr<math_Vector>;
-//
+    /// **Source:** `math_EigenValuesSearcher.hxx`:53 - `math_EigenValuesSearcher::EigenVector()`
+    /// Returns the Index_th eigen vector of matrix
+    /// Index must be in [1, Dimension()]
+    pub fn eigen_vector(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::math_Vector> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::math_EigenValuesSearcher_eigen_vector(
+                self as *const Self,
+                Index,
+            ))
+        }
+    }
+}
 
 // ========================
 // From math_FRPR.hxx
@@ -1213,6 +1258,17 @@ impl FRPR {
         )
     }
 
+    /// **Source:** `math_FRPR.hxx`:48 - `math_FRPR::Perform()`
+    /// The solution F = Fi is found when
+    /// 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS).
+    pub fn perform(
+        &mut self,
+        theFunction: &mut MultipleVarFunctionWithGradient,
+        theStartingPoint: &crate::ffi::math_Vector,
+    ) {
+        unsafe { crate::ffi::math_FRPR_perform(self as *mut Self, theFunction, theStartingPoint) }
+    }
+
     /// **Source:** `math_FRPR.hxx`:54 - `math_FRPR::IsSolutionReached()`
     /// The solution F = Fi is found when:
     /// 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1)) + ZEPS.
@@ -1230,11 +1286,43 @@ impl FRPR {
         unsafe { crate::ffi::math_FRPR_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_FRPR.hxx`:61 - `math_FRPR::Location()`
+    /// returns the location vector of the minimum.
+    /// Exception NotDone is raised if the minimum was not found.
+    pub fn location(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::math_FRPR_location(self as *const Self)) }
+    }
+
+    /// **Source:** `math_FRPR.hxx`:67 - `math_FRPR::Location()`
+    /// outputs the location vector of the minimum in Loc.
+    /// Exception NotDone is raised if the minimum was not found.
+    /// Exception DimensionError is raised if the range of Loc is not
+    /// equal to the range of the StartingPoint.
+    pub fn location_vector(&self, Loc: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_FRPR_location_vector(self as *const Self, Loc) }
+    }
+
     /// **Source:** `math_FRPR.hxx`:71 - `math_FRPR::Minimum()`
     /// returns the value of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn minimum(&self) -> f64 {
         unsafe { crate::ffi::math_FRPR_minimum(self as *const Self) }
+    }
+
+    /// **Source:** `math_FRPR.hxx`:75 - `math_FRPR::Gradient()`
+    /// returns the gradient vector at the minimum.
+    /// Exception NotDone is raised if the minimum was not found.
+    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::math_FRPR_gradient(self as *const Self)) }
+    }
+
+    /// **Source:** `math_FRPR.hxx`:81 - `math_FRPR::Gradient()`
+    /// outputs the gradient vector at the minimum in Grad.
+    /// Exception NotDone is raised if the minimum was not found.
+    /// Exception DimensionError is raised if the range of Grad is not
+    /// equal to the range of the StartingPoint.
+    pub fn gradient_vector(&self, Grad: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_FRPR_gradient_vector(self as *const Self, Grad) }
     }
 
     /// **Source:** `math_FRPR.hxx`:86 - `math_FRPR::NbIterations()`
@@ -1246,39 +1334,7 @@ impl FRPR {
     }
 }
 
-// ── Skipped symbols for FRPR (6 total) ──
-// SKIPPED: **Source:** `math_FRPR.hxx`:48 - `math_FRPR::Perform`
-//   method: The solution F = Fi is found when
-//   method: 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS).
-//   Reason: param 'theStartingPoint' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, theFunction: &mut MultipleVarFunctionWithGradient, theStartingPoint: &Vector);
-//
-// SKIPPED: **Source:** `math_FRPR.hxx`:61 - `math_FRPR::Location`
-//   method: returns the location vector of the minimum.
-//   method: Exception NotDone is raised if the minimum was not found.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn location(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `math_FRPR.hxx`:67 - `math_FRPR::Location`
-//   method: outputs the location vector of the minimum in Loc.
-//   method: Exception NotDone is raised if the minimum was not found.
-//   method: Exception DimensionError is raised if the range of Loc is not
-//   Reason: param 'Loc' uses unknown type 'math_Vector&'
-//   // pub fn location(&self, Loc: &mut Vector);
-//
-// SKIPPED: **Source:** `math_FRPR.hxx`:75 - `math_FRPR::Gradient`
-//   method: returns the gradient vector at the minimum.
-//   method: Exception NotDone is raised if the minimum was not found.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn gradient(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `math_FRPR.hxx`:81 - `math_FRPR::Gradient`
-//   method: outputs the gradient vector at the minimum in Grad.
-//   method: Exception NotDone is raised if the minimum was not found.
-//   method: Exception DimensionError is raised if the range of Grad is not
-//   Reason: param 'Grad' uses unknown type 'math_Vector&'
-//   // pub fn gradient(&self, Grad: &mut Vector);
-//
+// ── Skipped symbols for FRPR (1 total) ──
 // SKIPPED: **Source:** `math_FRPR.hxx`:91 - `math_FRPR::Dump`
 //   method: Prints on the stream o information on the current state
 //   method: of the object.
@@ -1831,6 +1887,15 @@ impl FunctionSet {
         unsafe { crate::ffi::math_FunctionSet_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionSet.hxx`:43 - `math_FunctionSet::Value()`
+    /// Computes the values <F> of the functions for the
+    /// variable <X>.
+    /// returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::math_FunctionSet_value(self as *mut Self, X, F) }
+    }
+
     /// **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     /// Returns the state of the function corresponding to the
     /// latestcall of any methods associated with the function.
@@ -1850,15 +1915,6 @@ impl FunctionSet {
         unsafe { crate::ffi::math_FunctionSet_get_state_number(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for FunctionSet (1 total) ──
-// SKIPPED: **Source:** `math_FunctionSet.hxx`:43 - `math_FunctionSet::Value`
-//   method: Computes the values <F> of the functions for the
-//   method: variable <X>.
-//   method: returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
 
 // ========================
 // From math_FunctionSetRoot.hxx
@@ -1881,6 +1937,27 @@ unsafe impl crate::CppDeletable for FunctionSetRoot {
 }
 
 impl FunctionSetRoot {
+    /// **Source:** `math_FunctionSetRoot.hxx`:45 - `math_FunctionSetRoot::math_FunctionSetRoot()`
+    /// is used in a sub-class to initialize correctly all the fields
+    /// of this class.
+    /// The range (1, F.NbVariables()) must be especially
+    /// respected for all vectors and matrix declarations.
+    pub fn new_functionsetwithderivatives_vector_int(
+        F: &mut FunctionSetWithDerivatives,
+        Tolerance: &crate::ffi::math_Vector,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::math_FunctionSetRoot_ctor_functionsetwithderivatives_vector_int(
+                    F,
+                    Tolerance,
+                    NbIterations,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `math_FunctionSetRoot.hxx`:55 - `math_FunctionSetRoot::math_FunctionSetRoot()`
     /// is used in a sub-class to initialize correctly all the fields
     /// of this class.
@@ -1902,6 +1979,18 @@ impl FunctionSetRoot {
         }
     }
 
+    /// **Source:** `math_FunctionSetRoot.hxx`:45 - `math_FunctionSetRoot::math_FunctionSetRoot()`
+    /// is used in a sub-class to initialize correctly all the fields
+    /// of this class.
+    /// The range (1, F.NbVariables()) must be especially
+    /// respected for all vectors and matrix declarations.
+    pub fn new_functionsetwithderivatives_vector(
+        F: &mut FunctionSetWithDerivatives,
+        Tolerance: &crate::ffi::math_Vector,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_functionsetwithderivatives_vector_int(F, Tolerance, 100)
+    }
+
     /// **Source:** `math_FunctionSetRoot.hxx`:55 - `math_FunctionSetRoot::math_FunctionSetRoot()`
     /// is used in a sub-class to initialize correctly all the fields
     /// of this class.
@@ -1915,6 +2004,12 @@ impl FunctionSetRoot {
         Self::new_functionsetwithderivatives_int(F, 100)
     }
 
+    /// **Source:** `math_FunctionSetRoot.hxx`:62 - `math_FunctionSetRoot::SetTolerance()`
+    /// Initializes the tolerance values.
+    pub fn set_tolerance(&mut self, Tolerance: &crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_FunctionSetRoot_set_tolerance(self as *mut Self, Tolerance) }
+    }
+
     /// **Source:** `math_FunctionSetRoot.hxx`:69 - `math_FunctionSetRoot::IsSolutionReached()`
     /// This routine is called at the end of each iteration
     /// to check if the solution was found. It can be redefined
@@ -1923,6 +2018,52 @@ impl FunctionSetRoot {
     /// for all unknowns.
     pub fn is_solution_reached(&mut self, arg0: &mut FunctionSetWithDerivatives) -> bool {
         unsafe { crate::ffi::math_FunctionSetRoot_is_solution_reached(self as *mut Self, arg0) }
+    }
+
+    /// **Source:** `math_FunctionSetRoot.hxx`:85 - `math_FunctionSetRoot::Perform()`
+    /// Improves the root of function from the initial guess point.
+    /// The infinum and supremum may be given to constrain the solution.
+    /// In this case, the solution is found when: abs(Xi - Xi-1)(j) <= Tolerance(j)
+    /// for all unknowns.
+    pub fn perform_functionsetwithderivatives_vector_bool(
+        &mut self,
+        theFunction: &mut FunctionSetWithDerivatives,
+        theStartingPoint: &crate::ffi::math_Vector,
+        theStopOnDivergent: bool,
+    ) {
+        unsafe {
+            crate::ffi::math_FunctionSetRoot_perform_functionsetwithderivatives_vector_bool(
+                self as *mut Self,
+                theFunction,
+                theStartingPoint,
+                theStopOnDivergent,
+            )
+        }
+    }
+
+    /// **Source:** `math_FunctionSetRoot.hxx`:93 - `math_FunctionSetRoot::Perform()`
+    /// Improves the root of function from the initial guess point.
+    /// The infinum and supremum may be given to constrain the solution.
+    /// In this case, the solution is found when: abs(Xi - Xi-1) <= Tolerance
+    /// for all unknowns.
+    pub fn perform_functionsetwithderivatives_vector3_bool(
+        &mut self,
+        theFunction: &mut FunctionSetWithDerivatives,
+        theStartingPoint: &crate::ffi::math_Vector,
+        theInfBound: &crate::ffi::math_Vector,
+        theSupBound: &crate::ffi::math_Vector,
+        theStopOnDivergent: bool,
+    ) {
+        unsafe {
+            crate::ffi::math_FunctionSetRoot_perform_functionsetwithderivatives_vector3_bool(
+                self as *mut Self,
+                theFunction,
+                theStartingPoint,
+                theInfBound,
+                theSupBound,
+                theStopOnDivergent,
+            )
+        }
     }
 
     /// **Source:** `math_FunctionSetRoot.hxx`:100 - `math_FunctionSetRoot::IsDone()`
@@ -1946,6 +2087,22 @@ impl FunctionSetRoot {
         unsafe { crate::ffi::math_FunctionSetRoot_state_number(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionSetRoot.hxx`:121 - `math_FunctionSetRoot::Root()`
+    /// Returns the value of the root of function F.
+    /// Exception NotDone is raised if the root was not found.
+    pub fn root(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::math_FunctionSetRoot_root(self as *const Self)) }
+    }
+
+    /// **Source:** `math_FunctionSetRoot.hxx`:131 - `math_FunctionSetRoot::Root()`
+    /// Outputs the root vector in Root.
+    /// Exception NotDone is raised if the root was not found.
+    /// Exception DimensionError is raised if the range of Root
+    /// is not equal to the range of the StartingPoint.
+    pub fn root_vector(&self, Root: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_FunctionSetRoot_root_vector(self as *const Self, Root) }
+    }
+
     /// **Source:** `math_FunctionSetRoot.hxx`:135 - `math_FunctionSetRoot::Derivative()`
     /// Returns the matrix value of the derivative at the root.
     /// Exception NotDone is raised if the root was not found.
@@ -1963,66 +2120,33 @@ impl FunctionSetRoot {
         unsafe { crate::ffi::math_FunctionSetRoot_derivative_matrix(self as *const Self, Der) }
     }
 
+    /// **Source:** `math_FunctionSetRoot.hxx`:156 - `math_FunctionSetRoot::FunctionSetErrors()`
+    /// returns the vector value of the error done
+    /// on the functions at the root.
+    /// Exception NotDone is raised if the root was not found.
+    pub fn function_set_errors(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::math_FunctionSetRoot_function_set_errors(self as *const Self)) }
+    }
+
+    /// **Source:** `math_FunctionSetRoot.hxx`:167 - `math_FunctionSetRoot::FunctionSetErrors()`
+    /// outputs the vector value of the error done
+    /// on the functions at the root in Err.
+    /// Exception NotDone is raised if the root was not found.
+    /// Exception DimensionError is raised if the range of Err
+    /// is not equal to the range of the StartingPoint.
+    pub fn function_set_errors_vector(&self, Err_: &mut crate::ffi::math_Vector) {
+        unsafe {
+            crate::ffi::math_FunctionSetRoot_function_set_errors_vector(self as *const Self, Err_)
+        }
+    }
+
     /// **Source:** `math_FunctionSetRoot.hxx`:174 - `math_FunctionSetRoot::IsDivergent()`
     pub fn is_divergent(&self) -> bool {
         unsafe { crate::ffi::math_FunctionSetRoot_is_divergent(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for FunctionSetRoot (9 total) ──
-// SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:45 - `math_FunctionSetRoot::math_FunctionSetRoot`
-//   constructor: is used in a sub-class to initialize correctly all the fields
-//   constructor: of this class.
-//   constructor: The range (1, F.NbVariables()) must be especially
-//   Reason: param 'Tolerance' uses unknown type 'const math_Vector&'
-//   // pub fn new_functionsetwithderivatives_vector_int(F: &mut FunctionSetWithDerivatives, Tolerance: &Vector, NbIterations: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:62 - `math_FunctionSetRoot::SetTolerance`
-//   method: Initializes the tolerance values.
-//   Reason: param 'Tolerance' uses unknown type 'const math_Vector&'
-//   // pub fn set_tolerance(&mut self, Tolerance: &Vector);
-//
-// SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:85 - `math_FunctionSetRoot::Perform`
-//   method: Improves the root of function from the initial guess point.
-//   method: The infinum and supremum may be given to constrain the solution.
-//   method: In this case, the solution is found when: abs(Xi - Xi-1)(j) <= Tolerance(j)
-//   Reason: param 'theStartingPoint' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, theFunction: &mut FunctionSetWithDerivatives, theStartingPoint: &Vector, theStopOnDivergent: bool);
-//
-// SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:93 - `math_FunctionSetRoot::Perform`
-//   method: Improves the root of function from the initial guess point.
-//   method: The infinum and supremum may be given to constrain the solution.
-//   method: In this case, the solution is found when: abs(Xi - Xi-1) <= Tolerance
-//   Reason: param 'theStartingPoint' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, theFunction: &mut FunctionSetWithDerivatives, theStartingPoint: &Vector, theInfBound: &Vector, theSupBound: &Vector, theStopOnDivergent: bool);
-//
-// SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:121 - `math_FunctionSetRoot::Root`
-//   method: Returns the value of the root of function F.
-//   method: Exception NotDone is raised if the root was not found.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn root(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:131 - `math_FunctionSetRoot::Root`
-//   method: Outputs the root vector in Root.
-//   method: Exception NotDone is raised if the root was not found.
-//   method: Exception DimensionError is raised if the range of Root
-//   Reason: param 'Root' uses unknown type 'math_Vector&'
-//   // pub fn root(&self, Root: &mut Vector);
-//
-// SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:156 - `math_FunctionSetRoot::FunctionSetErrors`
-//   method: returns the vector value of the error done
-//   method: on the functions at the root.
-//   method: Exception NotDone is raised if the root was not found.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn function_set_errors(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:167 - `math_FunctionSetRoot::FunctionSetErrors`
-//   method: outputs the vector value of the error done
-//   method: on the functions at the root in Err.
-//   method: Exception NotDone is raised if the root was not found.
-//   Reason: param 'Err' uses unknown type 'math_Vector&'
-//   // pub fn function_set_errors(&self, Err_: &mut Vector);
-//
+// ── Skipped symbols for FunctionSetRoot (1 total) ──
 // SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:172 - `math_FunctionSetRoot::Dump`
 //   method: Prints on the stream o information on the current state
 //   method: of the object.
@@ -2059,6 +2183,38 @@ impl FunctionSetWithDerivatives {
         unsafe { crate::ffi::math_FunctionSetWithDerivatives_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionSetWithDerivatives.hxx`:45 - `math_FunctionSetWithDerivatives::Value()`
+    /// Computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::math_FunctionSetWithDerivatives_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `math_FunctionSetWithDerivatives.hxx`:51 - `math_FunctionSetWithDerivatives::Derivatives()`
+    /// Returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(&mut self, X: &crate::ffi::math_Vector, D: &mut Matrix) -> bool {
+        unsafe { crate::ffi::math_FunctionSetWithDerivatives_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `math_FunctionSetWithDerivatives.hxx`:57 - `math_FunctionSetWithDerivatives::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::math_FunctionSetWithDerivatives_values(self as *mut Self, X, F, D) }
+    }
+
     /// Upcast to math_FunctionSet
     pub fn as_function_set(&self) -> &FunctionSet {
         unsafe {
@@ -2082,29 +2238,6 @@ impl FunctionSetWithDerivatives {
         }
     }
 }
-
-// ── Skipped symbols for FunctionSetWithDerivatives (3 total) ──
-// SKIPPED: **Source:** `math_FunctionSetWithDerivatives.hxx`:45 - `math_FunctionSetWithDerivatives::Value`
-//   method: Computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `math_FunctionSetWithDerivatives.hxx`:51 - `math_FunctionSetWithDerivatives::Derivatives`
-//   method: Returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `math_FunctionSetWithDerivatives.hxx`:57 - `math_FunctionSetWithDerivatives::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
 
 // ========================
 // From math_FunctionWithDerivative.hxx
@@ -2217,6 +2350,28 @@ impl Gauss {
         unsafe { crate::ffi::math_Gauss_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_Gauss.hxx`:61 - `math_Gauss::Solve()`
+    /// Given the input Vector B this routine returns the solution X of the set
+    /// of linear equations A . X = B.
+    /// Exception NotDone is raised if the decomposition of A was not done
+    /// successfully.
+    /// Exception DimensionError is raised if the range of B is not
+    /// equal to the number of rows of A.
+    pub fn solve_vector2(&self, B: &crate::ffi::math_Vector, X: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_Gauss_solve_vector2(self as *const Self, B, X) }
+    }
+
+    /// **Source:** `math_Gauss.hxx`:69 - `math_Gauss::Solve()`
+    /// Given the input Vector B this routine solves the set of linear
+    /// equations A . X = B. B is replaced by the vector solution X.
+    /// Exception NotDone is raised if the decomposition of A was not done
+    /// successfully.
+    /// Exception DimensionError is raised if the range of B is not
+    /// equal to the number of rows of A.
+    pub fn solve_vector(&self, B: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_Gauss_solve_vector(self as *const Self, B) }
+    }
+
     /// **Source:** `math_Gauss.hxx`:75 - `math_Gauss::Determinant()`
     /// This routine returns the value of the determinant of the previously LU
     /// decomposed matrix A.
@@ -2236,21 +2391,7 @@ impl Gauss {
     }
 }
 
-// ── Skipped symbols for Gauss (3 total) ──
-// SKIPPED: **Source:** `math_Gauss.hxx`:61 - `math_Gauss::Solve`
-//   method: Given the input Vector B this routine returns the solution X of the set
-//   method: of linear equations A . X = B.
-//   method: Exception NotDone is raised if the decomposition of A was not done
-//   Reason: param 'B' uses unknown type 'const math_Vector&'
-//   // pub fn solve(&self, B: &Vector, X: &mut Vector);
-//
-// SKIPPED: **Source:** `math_Gauss.hxx`:69 - `math_Gauss::Solve`
-//   method: Given the input Vector B this routine solves the set of linear
-//   method: equations A . X = B. B is replaced by the vector solution X.
-//   method: Exception NotDone is raised if the decomposition of A was not done
-//   Reason: param 'B' uses unknown type 'math_Vector&'
-//   // pub fn solve(&self, B: &mut Vector);
-//
+// ── Skipped symbols for Gauss (1 total) ──
 // SKIPPED: **Source:** `math_Gauss.hxx`:86 - `math_Gauss::Dump`
 //   method: Prints on the stream o information on the current state
 //   method: of the object.
@@ -2311,16 +2452,22 @@ impl GaussLeastSquare {
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_GaussLeastSquare_is_done(self as *const Self) }
     }
+
+    /// **Source:** `math_GaussLeastSquare.hxx`:60 - `math_GaussLeastSquare::Solve()`
+    /// Given the input Vector <B> this routine solves the set
+    /// of linear equations A . X = B.
+    /// Exception NotDone is raised if the decomposition of A was
+    /// not done successfully.
+    /// Exception DimensionError is raised if the range of B Inv is
+    /// not equal to the rowrange of A.
+    /// Exception DimensionError is raised if the range of X Inv is
+    /// not equal to the colrange of A.
+    pub fn solve(&self, B: &crate::ffi::math_Vector, X: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_GaussLeastSquare_solve(self as *const Self, B, X) }
+    }
 }
 
-// ── Skipped symbols for GaussLeastSquare (2 total) ──
-// SKIPPED: **Source:** `math_GaussLeastSquare.hxx`:60 - `math_GaussLeastSquare::Solve`
-//   method: Given the input Vector <B> this routine solves the set
-//   method: of linear equations A . X = B.
-//   method: Exception NotDone is raised if the decomposition of A was
-//   Reason: param 'B' uses unknown type 'const math_Vector&'
-//   // pub fn solve(&self, B: &Vector, X: &mut Vector);
-//
+// ── Skipped symbols for GaussLeastSquare (1 total) ──
 // SKIPPED: **Source:** `math_GaussLeastSquare.hxx`:65 - `math_GaussLeastSquare::Dump`
 //   method: Prints on the stream o information on the current state
 //   method: of the object.
@@ -2346,6 +2493,21 @@ unsafe impl crate::CppDeletable for GaussMultipleIntegration {
 }
 
 impl GaussMultipleIntegration {
+    /// **Source:** `math_GaussMultipleIntegration.hxx`:39 - `math_GaussMultipleIntegration::math_GaussMultipleIntegration()`
+    /// The Gauss-Legendre integration with Order = points of
+    /// integration for each unknown, is done on the function F
+    /// between the bounds Lower and Upper.
+    pub fn new_multiplevarfunction_vector2_integervector(
+        F: &mut MultipleVarFunction,
+        Lower: &crate::ffi::math_Vector,
+        Upper: &crate::ffi::math_Vector,
+        Order: &crate::ffi::math_IntegerVector,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::math_GaussMultipleIntegration_ctor_multiplevarfunction_vector2_integervector(F, Lower, Upper, Order))
+        }
+    }
+
     /// **Source:** `math_GaussMultipleIntegration.hxx`:45 - `math_GaussMultipleIntegration::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
@@ -2359,14 +2521,7 @@ impl GaussMultipleIntegration {
     }
 }
 
-// ── Skipped symbols for GaussMultipleIntegration (2 total) ──
-// SKIPPED: **Source:** `math_GaussMultipleIntegration.hxx`:39 - `math_GaussMultipleIntegration::math_GaussMultipleIntegration`
-//   constructor: The Gauss-Legendre integration with Order = points of
-//   constructor: integration for each unknown, is done on the function F
-//   constructor: between the bounds Lower and Upper.
-//   Reason: param 'Lower' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiplevarfunction_vector2_integervector(F: &mut MultipleVarFunction, Lower: &Vector, Upper: &Vector, Order: &IntegerVector) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for GaussMultipleIntegration (1 total) ──
 // SKIPPED: **Source:** `math_GaussMultipleIntegration.hxx`:51 - `math_GaussMultipleIntegration::Dump`
 //   method: Prints information on the current state of the object.
 //   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
@@ -2391,26 +2546,39 @@ unsafe impl crate::CppDeletable for GaussSetIntegration {
 }
 
 impl GaussSetIntegration {
+    /// **Source:** `math_GaussSetIntegration.hxx`:40 - `math_GaussSetIntegration::math_GaussSetIntegration()`
+    /// The Gauss-Legendre integration with Order = points of
+    /// integration for each unknown, is done on the function F
+    /// between the bounds Lower and Upper.
+    pub fn new_functionset_vector2_integervector(
+        F: &mut FunctionSet,
+        Lower: &crate::ffi::math_Vector,
+        Upper: &crate::ffi::math_Vector,
+        Order: &crate::ffi::math_IntegerVector,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::math_GaussSetIntegration_ctor_functionset_vector2_integervector(
+                    F, Lower, Upper, Order,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `math_GaussSetIntegration.hxx`:46 - `math_GaussSetIntegration::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_GaussSetIntegration_is_done(self as *const Self) }
     }
+
+    /// **Source:** `math_GaussSetIntegration.hxx`:49 - `math_GaussSetIntegration::Value()`
+    /// returns the value of the integral.
+    pub fn value(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::math_GaussSetIntegration_value(self as *const Self)) }
+    }
 }
 
-// ── Skipped symbols for GaussSetIntegration (3 total) ──
-// SKIPPED: **Source:** `math_GaussSetIntegration.hxx`:40 - `math_GaussSetIntegration::math_GaussSetIntegration`
-//   constructor: The Gauss-Legendre integration with Order = points of
-//   constructor: integration for each unknown, is done on the function F
-//   constructor: between the bounds Lower and Upper.
-//   Reason: param 'Lower' uses unknown type 'const math_Vector&'
-//   // pub fn new_functionset_vector2_integervector(F: &mut FunctionSet, Lower: &Vector, Upper: &Vector, Order: &IntegerVector) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `math_GaussSetIntegration.hxx`:49 - `math_GaussSetIntegration::Value`
-//   method: returns the value of the integral.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn value(&self) -> &Vector;
-//
+// ── Skipped symbols for GaussSetIntegration (1 total) ──
 // SKIPPED: **Source:** `math_GaussSetIntegration.hxx`:52 - `math_GaussSetIntegration::Dump`
 //   method: Prints information on the current state of the object.
 //   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
@@ -2537,6 +2705,151 @@ unsafe impl crate::CppDeletable for GlobOptMin {
 }
 
 impl GlobOptMin {
+    /// **Source:** `math_GlobOptMin.hxx`:60 - `math_GlobOptMin::math_GlobOptMin()`
+    /// Constructor. Perform method is not called from it.
+    /// @param theFunc - objective functional.
+    /// @param theLowerBorder - lower corner of the search box.
+    /// @param theUpperBorder - upper corner of the search box.
+    /// @param theC - Lipschitz constant.
+    /// @param theDiscretizationTol - parameter space discretization tolerance.
+    /// @param theSameTol - functional value space indifference tolerance.
+    pub fn new_multiplevarfunctionptr_vector2_real3(
+        theFunc: &mut MultipleVarFunction,
+        theLowerBorder: &crate::ffi::math_Vector,
+        theUpperBorder: &crate::ffi::math_Vector,
+        theC: f64,
+        theDiscretizationTol: f64,
+        theSameTol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::math_GlobOptMin_ctor_multiplevarfunctionptr_vector2_real3(
+                    theFunc as *mut _,
+                    theLowerBorder,
+                    theUpperBorder,
+                    theC,
+                    theDiscretizationTol,
+                    theSameTol,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `math_GlobOptMin.hxx`:60 - `math_GlobOptMin::math_GlobOptMin()`
+    /// Constructor. Perform method is not called from it.
+    /// @param theFunc - objective functional.
+    /// @param theLowerBorder - lower corner of the search box.
+    /// @param theUpperBorder - upper corner of the search box.
+    /// @param theC - Lipschitz constant.
+    /// @param theDiscretizationTol - parameter space discretization tolerance.
+    /// @param theSameTol - functional value space indifference tolerance.
+    pub fn new_multiplevarfunctionptr_vector2_real2(
+        theFunc: &mut MultipleVarFunction,
+        theLowerBorder: &crate::ffi::math_Vector,
+        theUpperBorder: &crate::ffi::math_Vector,
+        theC: f64,
+        theDiscretizationTol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiplevarfunctionptr_vector2_real3(
+            theFunc,
+            theLowerBorder,
+            theUpperBorder,
+            theC,
+            theDiscretizationTol,
+            1.0e-7,
+        )
+    }
+
+    /// **Source:** `math_GlobOptMin.hxx`:60 - `math_GlobOptMin::math_GlobOptMin()`
+    /// Constructor. Perform method is not called from it.
+    /// @param theFunc - objective functional.
+    /// @param theLowerBorder - lower corner of the search box.
+    /// @param theUpperBorder - upper corner of the search box.
+    /// @param theC - Lipschitz constant.
+    /// @param theDiscretizationTol - parameter space discretization tolerance.
+    /// @param theSameTol - functional value space indifference tolerance.
+    pub fn new_multiplevarfunctionptr_vector2_real(
+        theFunc: &mut MultipleVarFunction,
+        theLowerBorder: &crate::ffi::math_Vector,
+        theUpperBorder: &crate::ffi::math_Vector,
+        theC: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiplevarfunctionptr_vector2_real3(
+            theFunc,
+            theLowerBorder,
+            theUpperBorder,
+            theC,
+            1.0e-2,
+            1.0e-7,
+        )
+    }
+
+    /// **Source:** `math_GlobOptMin.hxx`:60 - `math_GlobOptMin::math_GlobOptMin()`
+    /// Constructor. Perform method is not called from it.
+    /// @param theFunc - objective functional.
+    /// @param theLowerBorder - lower corner of the search box.
+    /// @param theUpperBorder - upper corner of the search box.
+    /// @param theC - Lipschitz constant.
+    /// @param theDiscretizationTol - parameter space discretization tolerance.
+    /// @param theSameTol - functional value space indifference tolerance.
+    pub fn new_multiplevarfunctionptr_vector2(
+        theFunc: &mut MultipleVarFunction,
+        theLowerBorder: &crate::ffi::math_Vector,
+        theUpperBorder: &crate::ffi::math_Vector,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiplevarfunctionptr_vector2_real3(
+            theFunc,
+            theLowerBorder,
+            theUpperBorder,
+            9.0,
+            1.0e-2,
+            1.0e-7,
+        )
+    }
+
+    /// **Source:** `math_GlobOptMin.hxx`:73 - `math_GlobOptMin::SetGlobalParams()`
+    /// @param theFunc - objective functional.
+    /// @param theLowerBorder - lower corner of the search box.
+    /// @param theUpperBorder - upper corner of the search box.
+    /// @param theC - Lipschitz constant.
+    /// @param theDiscretizationTol - parameter space discretization tolerance.
+    /// @param theSameTol - functional value space indifference tolerance.
+    pub fn set_global_params(
+        &mut self,
+        theFunc: &mut MultipleVarFunction,
+        theLowerBorder: &crate::ffi::math_Vector,
+        theUpperBorder: &crate::ffi::math_Vector,
+        theC: f64,
+        theDiscretizationTol: f64,
+        theSameTol: f64,
+    ) {
+        unsafe {
+            crate::ffi::math_GlobOptMin_set_global_params(
+                self as *mut Self,
+                theFunc as *mut _,
+                theLowerBorder,
+                theUpperBorder,
+                theC,
+                theDiscretizationTol,
+                theSameTol,
+            )
+        }
+    }
+
+    /// **Source:** `math_GlobOptMin.hxx`:83 - `math_GlobOptMin::SetLocalParams()`
+    /// Method to reduce bounding box. Perform will use this box.
+    /// @param theLocalA - lower corner of the local box.
+    /// @param theLocalB - upper corner of the local box.
+    pub fn set_local_params(
+        &mut self,
+        theLocalA: &crate::ffi::math_Vector,
+        theLocalB: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::math_GlobOptMin_set_local_params(self as *mut Self, theLocalA, theLocalB)
+        }
+    }
+
     /// **Source:** `math_GlobOptMin.hxx`:88 - `math_GlobOptMin::SetTol()`
     /// Method to set tolerances.
     /// @param theDiscretizationTol - parameter space discretization tolerance.
@@ -2561,6 +2874,12 @@ impl GlobOptMin {
     /// @param isFindSingleSolution - defines whether to find single solution or all solutions.
     pub fn perform(&mut self, isFindSingleSolution: bool) {
         unsafe { crate::ffi::math_GlobOptMin_perform(self as *mut Self, isFindSingleSolution) }
+    }
+
+    /// **Source:** `math_GlobOptMin.hxx`:100 - `math_GlobOptMin::Points()`
+    /// Return solution theIndex, 1 <= theIndex <= NbExtrema.
+    pub fn points(&mut self, theIndex: i32, theSol: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_GlobOptMin_points(self as *mut Self, theIndex, theSol) }
     }
 
     /// **Source:** `math_GlobOptMin.hxx`:103 - `math_GlobOptMin::SetContinuity()`
@@ -2620,34 +2939,6 @@ impl GlobOptMin {
         unsafe { crate::ffi::math_GlobOptMin_nb_extrema(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for GlobOptMin (4 total) ──
-// SKIPPED: **Source:** `math_GlobOptMin.hxx`:60 - `math_GlobOptMin::math_GlobOptMin`
-//   constructor: Constructor. Perform method is not called from it.
-//   constructor: @param theFunc - objective functional.
-//   constructor: @param theLowerBorder - lower corner of the search box.
-//   Reason: param 'theLowerBorder' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiplevarfunctionptr_vector2_real3(theFunc: /* math_MultipleVarFunction* */, theLowerBorder: &Vector, theUpperBorder: &Vector, theC: f64, theDiscretizationTol: f64, theSameTol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `math_GlobOptMin.hxx`:73 - `math_GlobOptMin::SetGlobalParams`
-//   method: @param theFunc - objective functional.
-//   method: @param theLowerBorder - lower corner of the search box.
-//   method: @param theUpperBorder - upper corner of the search box.
-//   Reason: param 'theLowerBorder' uses unknown type 'const math_Vector&'
-//   // pub fn set_global_params(&mut self, theFunc: /* math_MultipleVarFunction* */, theLowerBorder: &Vector, theUpperBorder: &Vector, theC: f64, theDiscretizationTol: f64, theSameTol: f64);
-//
-// SKIPPED: **Source:** `math_GlobOptMin.hxx`:83 - `math_GlobOptMin::SetLocalParams`
-//   method: Method to reduce bounding box. Perform will use this box.
-//   method: @param theLocalA - lower corner of the local box.
-//   method: @param theLocalB - upper corner of the local box.
-//   Reason: param 'theLocalA' uses unknown type 'const math_Vector&'
-//   // pub fn set_local_params(&mut self, theLocalA: &Vector, theLocalB: &Vector);
-//
-// SKIPPED: **Source:** `math_GlobOptMin.hxx`:100 - `math_GlobOptMin::Points`
-//   method: Return solution theIndex, 1 <= theIndex <= NbExtrema.
-//   Reason: param 'theSol' uses unknown type 'math_Vector&'
-//   // pub fn points(&mut self, theIndex: i32, theSol: &mut Vector);
-//
 
 // ========================
 // From math_Householder.hxx
@@ -2710,6 +3001,26 @@ impl Householder {
         }
     }
 
+    /// **Source:** `math_Householder.hxx`:75 - `math_Householder::math_Householder()`
+    /// Given an input matrix A with n>= m, given an input vector B
+    /// this constructor performs the least square resolution of
+    /// the set of linear equations A.X = B.
+    /// If a column norm is less than EPS, the resolution can't
+    /// be done.
+    /// Exception DimensionError is raised if the length of B
+    /// is different from the A row number.
+    pub fn new_matrix_vector_real(
+        A: &Matrix,
+        B: &crate::ffi::math_Vector,
+        EPS: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::math_Householder_ctor_matrix_vector_real(
+                A, B, EPS,
+            ))
+        }
+    }
+
     /// **Source:** `math_Householder.hxx`:49 - `math_Householder::math_Householder()`
     /// Given an input matrix A with n>= m, given an input matrix B
     /// this constructor performs the least square resolution of
@@ -2741,10 +3052,33 @@ impl Householder {
         Self::new_matrix2_int4_real(A, B, lowerArow, upperArow, lowerAcol, upperAcol, 1.0e-20)
     }
 
+    /// **Source:** `math_Householder.hxx`:75 - `math_Householder::math_Householder()`
+    /// Given an input matrix A with n>= m, given an input vector B
+    /// this constructor performs the least square resolution of
+    /// the set of linear equations A.X = B.
+    /// If a column norm is less than EPS, the resolution can't
+    /// be done.
+    /// Exception DimensionError is raised if the length of B
+    /// is different from the A row number.
+    pub fn new_matrix_vector(A: &Matrix, B: &crate::ffi::math_Vector) -> crate::OwnedPtr<Self> {
+        Self::new_matrix_vector_real(A, B, 1.0e-20)
+    }
+
     /// **Source:** `math_Householder.hxx`:80 - `math_Householder::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_Householder_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `math_Householder.hxx`:88 - `math_Householder::Value()`
+    /// Given the integer Index, this routine returns the
+    /// corresponding least square solution sol.
+    /// Exception NotDone is raised if the resolution has not be
+    /// done.
+    /// Exception OutOfRange is raised if Index <=0 or
+    /// Index is more than the number of columns of B.
+    pub fn value(&self, sol: &mut crate::ffi::math_Vector, Index: i32) {
+        unsafe { crate::ffi::math_Householder_value(self as *const Self, sol, Index) }
     }
 
     /// **Source:** `math_Householder.hxx`:94 - `math_Householder::AllValues()`
@@ -2757,21 +3091,7 @@ impl Householder {
     }
 }
 
-// ── Skipped symbols for Householder (3 total) ──
-// SKIPPED: **Source:** `math_Householder.hxx`:75 - `math_Householder::math_Householder`
-//   constructor: Given an input matrix A with n>= m, given an input vector B
-//   constructor: this constructor performs the least square resolution of
-//   constructor: the set of linear equations A.X = B.
-//   Reason: param 'B' uses unknown type 'const math_Vector&'
-//   // pub fn new_matrix_vector_real(A: &Matrix, B: &Vector, EPS: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `math_Householder.hxx`:88 - `math_Householder::Value`
-//   method: Given the integer Index, this routine returns the
-//   method: corresponding least square solution sol.
-//   method: Exception NotDone is raised if the resolution has not be
-//   Reason: param 'sol' uses unknown type 'math_Vector&'
-//   // pub fn value(&self, sol: &mut Vector, Index: i32);
-//
+// ── Skipped symbols for Householder (1 total) ──
 // SKIPPED: **Source:** `math_Householder.hxx`:97 - `math_Householder::Dump`
 //   method: Prints information on the current state of the object.
 //   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
@@ -2810,6 +3130,13 @@ impl Jacobi {
         unsafe { crate::ffi::math_Jacobi_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_Jacobi.hxx`:47 - `math_Jacobi::Values()`
+    /// Returns the eigenvalues vector.
+    /// Exception NotDone is raised if calculation is not done successfully.
+    pub fn values(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::math_Jacobi_values(self as *const Self)) }
+    }
+
     /// **Source:** `math_Jacobi.hxx`:52 - `math_Jacobi::Value()`
     /// returns the eigenvalue number Num.
     /// Eigenvalues are in the range (1..n).
@@ -2824,22 +3151,17 @@ impl Jacobi {
     pub fn vectors(&self) -> &Matrix {
         unsafe { &*(crate::ffi::math_Jacobi_vectors(self as *const Self)) }
     }
+
+    /// **Source:** `math_Jacobi.hxx`:61 - `math_Jacobi::Vector()`
+    /// Returns the eigenvector V of number Num.
+    /// Eigenvectors are in the range (1..n).
+    /// Exception NotDone is raised if calculation is not done successfully.
+    pub fn vector(&self, Num: i32, V: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_Jacobi_vector(self as *const Self, Num, V) }
+    }
 }
 
-// ── Skipped symbols for Jacobi (3 total) ──
-// SKIPPED: **Source:** `math_Jacobi.hxx`:47 - `math_Jacobi::Values`
-//   method: Returns the eigenvalues vector.
-//   method: Exception NotDone is raised if calculation is not done successfully.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn values(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `math_Jacobi.hxx`:61 - `math_Jacobi::Vector`
-//   method: Returns the eigenvector V of number Num.
-//   method: Eigenvectors are in the range (1..n).
-//   method: Exception NotDone is raised if calculation is not done successfully.
-//   Reason: param 'V' uses unknown type 'math_Vector&'
-//   // pub fn vector(&self, Num: i32, V: &mut Vector);
-//
+// ── Skipped symbols for Jacobi (1 total) ──
 // SKIPPED: **Source:** `math_Jacobi.hxx`:65 - `math_Jacobi::Dump`
 //   method: Prints information on the current state of the object.
 //   method: Is used to redefine the operator <<.
@@ -3011,13 +3333,34 @@ impl KronrodSingleIntegration {
     pub fn nb_iter_reached(&self) -> i32 {
         unsafe { crate::ffi::math_KronrodSingleIntegration_nb_iter_reached(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for KronrodSingleIntegration (1 total) ──
-// SKIPPED: **Source:** `math_KronrodSingleIntegration.hxx`:101 - `math_KronrodSingleIntegration::GKRule`
-//   Reason: param 'theGaussP' uses unknown type 'const math_Vector&'
-//   // pub fn gk_rule(theFunction: &mut Function, theLower: f64, theUpper: f64, theGaussP: &Vector, theGaussW: &Vector, theKronrodP: &Vector, theKronrodW: &Vector, theValue: &mut f64, theError: &mut f64) -> bool;
-//
+    /// **Source:** `math_KronrodSingleIntegration.hxx`:101 - `math_KronrodSingleIntegration::GKRule()`
+    pub fn gk_rule(
+        theFunction: &mut Function,
+        theLower: f64,
+        theUpper: f64,
+        theGaussP: &crate::ffi::math_Vector,
+        theGaussW: &crate::ffi::math_Vector,
+        theKronrodP: &crate::ffi::math_Vector,
+        theKronrodW: &crate::ffi::math_Vector,
+        theValue: &mut f64,
+        theError: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::math_KronrodSingleIntegration_gk_rule(
+                theFunction,
+                theLower,
+                theUpper,
+                theGaussP,
+                theGaussW,
+                theKronrodP,
+                theKronrodW,
+                theValue,
+                theError,
+            )
+        }
+    }
+}
 
 // ========================
 // From math_Matrix.hxx
@@ -3534,6 +3877,15 @@ impl MultipleVarFunction {
         unsafe { crate::ffi::math_MultipleVarFunction_nb_variables(self as *const Self) }
     }
 
+    /// **Source:** `math_MultipleVarFunction.hxx`:39 - `math_MultipleVarFunction::Value()`
+    /// Computes the values of the Functions <F> for the
+    /// variable <X>.
+    /// returns True if the computation was done successfully,
+    /// otherwise false.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+        unsafe { crate::ffi::math_MultipleVarFunction_value(self as *mut Self, X, F) }
+    }
+
     /// **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     /// return the state of the function corresponding to the latestt
     /// call of any methods associated to the function. This
@@ -3553,15 +3905,6 @@ impl MultipleVarFunction {
         unsafe { crate::ffi::math_MultipleVarFunction_get_state_number(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for MultipleVarFunction (1 total) ──
-// SKIPPED: **Source:** `math_MultipleVarFunction.hxx`:39 - `math_MultipleVarFunction::Value`
-//   method: Computes the values of the Functions <F> for the
-//   method: variable <X>.
-//   method: returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
-//
 
 // ========================
 // From math_MultipleVarFunctionWithGradient.hxx
@@ -3584,6 +3927,44 @@ impl MultipleVarFunctionWithGradient {
     pub fn nb_variables(&self) -> i32 {
         unsafe {
             crate::ffi::math_MultipleVarFunctionWithGradient_nb_variables(self as *const Self)
+        }
+    }
+
+    /// **Source:** `math_MultipleVarFunctionWithGradient.hxx`:40 - `math_MultipleVarFunctionWithGradient::Value()`
+    /// Computes the values of the Functions <F> for the   variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+        unsafe { crate::ffi::math_MultipleVarFunctionWithGradient_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `math_MultipleVarFunctionWithGradient.hxx`:45 - `math_MultipleVarFunctionWithGradient::Gradient()`
+    /// Computes the gradient <G> of the functions for the   variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn gradient(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::math_MultipleVarFunctionWithGradient_gradient(self as *mut Self, X, G)
+        }
+    }
+
+    /// **Source:** `math_MultipleVarFunctionWithGradient.hxx`:51 - `math_MultipleVarFunctionWithGradient::Values()`
+    /// computes the value <F> and the gradient <G> of the
+    /// functions for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::math_MultipleVarFunctionWithGradient_values(self as *mut Self, X, F, G)
         }
     }
 
@@ -3615,29 +3996,6 @@ impl MultipleVarFunctionWithGradient {
     }
 }
 
-// ── Skipped symbols for MultipleVarFunctionWithGradient (3 total) ──
-// SKIPPED: **Source:** `math_MultipleVarFunctionWithGradient.hxx`:40 - `math_MultipleVarFunctionWithGradient::Value`
-//   method: Computes the values of the Functions <F> for the   variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   method: False otherwise.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `math_MultipleVarFunctionWithGradient.hxx`:45 - `math_MultipleVarFunctionWithGradient::Gradient`
-//   method: Computes the gradient <G> of the functions for the   variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   method: False otherwise.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `math_MultipleVarFunctionWithGradient.hxx`:51 - `math_MultipleVarFunctionWithGradient::Values`
-//   method: computes the value <F> and the gradient <G> of the
-//   method: functions for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
-//
-
 // ========================
 // From math_MultipleVarFunctionWithHessian.hxx
 // ========================
@@ -3656,6 +4014,72 @@ impl MultipleVarFunctionWithHessian {
     /// returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::math_MultipleVarFunctionWithHessian_nb_variables(self as *const Self) }
+    }
+
+    /// **Source:** `math_MultipleVarFunctionWithHessian.hxx`:40 - `math_MultipleVarFunctionWithHessian::Value()`
+    /// computes the values of the Functions <F> for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+        unsafe { crate::ffi::math_MultipleVarFunctionWithHessian_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `math_MultipleVarFunctionWithHessian.hxx`:46 - `math_MultipleVarFunctionWithHessian::Gradient()`
+    /// computes the gradient <G> of the functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn gradient(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::math_MultipleVarFunctionWithHessian_gradient(self as *mut Self, X, G) }
+    }
+
+    /// **Source:** `math_MultipleVarFunctionWithHessian.hxx`:52 - `math_MultipleVarFunctionWithHessian::Values()`
+    /// computes the value <F> and the gradient <G> of the
+    /// functions for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values_vector_real_vector(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::math_MultipleVarFunctionWithHessian_values_vector_real_vector(
+                self as *mut Self,
+                X,
+                F,
+                G,
+            )
+        }
+    }
+
+    /// **Source:** `math_MultipleVarFunctionWithHessian.hxx`:60 - `math_MultipleVarFunctionWithHessian::Values()`
+    /// computes the value  <F>, the gradient <G> and  the
+    /// hessian   <H> of  the functions  for the  variable <X>.
+    /// Returns  True  if  the computation  was  done
+    /// successfully, False otherwise.
+    pub fn values_vector_real_vector_matrix(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+        H: &mut Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::math_MultipleVarFunctionWithHessian_values_vector_real_vector_matrix(
+                self as *mut Self,
+                X,
+                F,
+                G,
+                H,
+            )
+        }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient
@@ -3701,36 +4125,6 @@ impl MultipleVarFunctionWithHessian {
         }
     }
 }
-
-// ── Skipped symbols for MultipleVarFunctionWithHessian (4 total) ──
-// SKIPPED: **Source:** `math_MultipleVarFunctionWithHessian.hxx`:40 - `math_MultipleVarFunctionWithHessian::Value`
-//   method: computes the values of the Functions <F> for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `math_MultipleVarFunctionWithHessian.hxx`:46 - `math_MultipleVarFunctionWithHessian::Gradient`
-//   method: computes the gradient <G> of the functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `math_MultipleVarFunctionWithHessian.hxx`:52 - `math_MultipleVarFunctionWithHessian::Values`
-//   method: computes the value <F> and the gradient <G> of the
-//   method: functions for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `math_MultipleVarFunctionWithHessian.hxx`:60 - `math_MultipleVarFunctionWithHessian::Values`
-//   method: computes the value  <F>, the gradient <G> and  the
-//   method: hessian   <H> of  the functions  for the  variable <X>.
-//   method: Returns  True  if  the computation  was  done
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector, H: &mut Matrix) -> bool;
-//
 
 // ========================
 // From math_NewtonFunctionRoot.hxx
@@ -3938,6 +4332,21 @@ unsafe impl crate::CppDeletable for NewtonFunctionSetRoot {
 }
 
 impl NewtonFunctionSetRoot {
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:42 - `math_NewtonFunctionSetRoot::math_NewtonFunctionSetRoot()`
+    /// Initialize correctly all the fields of this class.
+    /// The range (1, F.NbVariables()) must be especially respected for
+    /// all vectors and matrix declarations.
+    pub fn new_functionsetwithderivatives_vector_real_int(
+        theFunction: &mut FunctionSetWithDerivatives,
+        theXTolerance: &crate::ffi::math_Vector,
+        theFTolerance: f64,
+        tehNbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::math_NewtonFunctionSetRoot_ctor_functionsetwithderivatives_vector_real_int(theFunction, theXTolerance, theFTolerance, tehNbIterations))
+        }
+    }
+
     /// **Source:** `math_NewtonFunctionSetRoot.hxx`:52 - `math_NewtonFunctionSetRoot::math_NewtonFunctionSetRoot()`
     /// This constructor should be used in a sub-class to initialize
     /// correctly all the fields of this class.
@@ -3960,6 +4369,23 @@ impl NewtonFunctionSetRoot {
         }
     }
 
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:42 - `math_NewtonFunctionSetRoot::math_NewtonFunctionSetRoot()`
+    /// Initialize correctly all the fields of this class.
+    /// The range (1, F.NbVariables()) must be especially respected for
+    /// all vectors and matrix declarations.
+    pub fn new_functionsetwithderivatives_vector_real(
+        theFunction: &mut FunctionSetWithDerivatives,
+        theXTolerance: &crate::ffi::math_Vector,
+        theFTolerance: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_functionsetwithderivatives_vector_real_int(
+            theFunction,
+            theXTolerance,
+            theFTolerance,
+            100,
+        )
+    }
+
     /// **Source:** `math_NewtonFunctionSetRoot.hxx`:52 - `math_NewtonFunctionSetRoot::math_NewtonFunctionSetRoot()`
     /// This constructor should be used in a sub-class to initialize
     /// correctly all the fields of this class.
@@ -3971,6 +4397,53 @@ impl NewtonFunctionSetRoot {
         theFTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_functionsetwithderivatives_real_int(theFunction, theFTolerance, 100)
+    }
+
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:60 - `math_NewtonFunctionSetRoot::SetTolerance()`
+    /// Initializes the tolerance values for the unknowns.
+    pub fn set_tolerance(&mut self, XTol: &crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_NewtonFunctionSetRoot_set_tolerance(self as *mut Self, XTol) }
+    }
+
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:65 - `math_NewtonFunctionSetRoot::Perform()`
+    /// The Newton method is done to improve the root of the function
+    /// from the initial guess point. The solution is found when:
+    /// abs(Xj - Xj-1)(i) <= XTol(i) and abs(Fi) <= FTol for all i;
+    pub fn perform_functionsetwithderivatives_vector(
+        &mut self,
+        theFunction: &mut FunctionSetWithDerivatives,
+        theStartingPoint: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::math_NewtonFunctionSetRoot_perform_functionsetwithderivatives_vector(
+                self as *mut Self,
+                theFunction,
+                theStartingPoint,
+            )
+        }
+    }
+
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:72 - `math_NewtonFunctionSetRoot::Perform()`
+    /// The Newton method is done to improve the root of the function
+    /// from the initial guess point. Bounds may be given, to constrain the solution.
+    /// The solution is found when:
+    /// abs(Xj - Xj-1)(i) <= XTol(i) and abs(Fi) <= FTol for all i;
+    pub fn perform_functionsetwithderivatives_vector3(
+        &mut self,
+        theFunction: &mut FunctionSetWithDerivatives,
+        theStartingPoint: &crate::ffi::math_Vector,
+        theInfBound: &crate::ffi::math_Vector,
+        theSupBound: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::math_NewtonFunctionSetRoot_perform_functionsetwithderivatives_vector3(
+                self as *mut Self,
+                theFunction,
+                theStartingPoint,
+                theInfBound,
+                theSupBound,
+            )
+        }
     }
 
     /// **Source:** `math_NewtonFunctionSetRoot.hxx`:82 - `math_NewtonFunctionSetRoot::IsSolutionReached()`
@@ -3987,6 +4460,23 @@ impl NewtonFunctionSetRoot {
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_NewtonFunctionSetRoot_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:90 - `math_NewtonFunctionSetRoot::Root()`
+    /// Returns the value of the root of function F.
+    /// Exceptions
+    /// StdFail_NotDone if the algorithm fails (and IsDone returns false).
+    pub fn root(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::math_NewtonFunctionSetRoot_root(self as *const Self)) }
+    }
+
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:96 - `math_NewtonFunctionSetRoot::Root()`
+    /// outputs the root vector in Root.
+    /// Exception NotDone is raised if the root was not found.
+    /// Exception DimensionError is raised if the range of Root is
+    /// not equal to the range of the StartingPoint.
+    pub fn root_vector(&self, Root: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_NewtonFunctionSetRoot_root_vector(self as *const Self, Root) }
     }
 
     /// **Source:** `math_NewtonFunctionSetRoot.hxx`:100 - `math_NewtonFunctionSetRoot::StateNumber()`
@@ -4015,6 +4505,31 @@ impl NewtonFunctionSetRoot {
         }
     }
 
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:116 - `math_NewtonFunctionSetRoot::FunctionSetErrors()`
+    /// Returns the vector value of the error done on the
+    /// functions at the root.
+    /// Exception NotDone is raised if the root was not found.
+    pub fn function_set_errors(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::math_NewtonFunctionSetRoot_function_set_errors(self as *const Self))
+        }
+    }
+
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:123 - `math_NewtonFunctionSetRoot::FunctionSetErrors()`
+    /// Outputs the vector value of the error done on the
+    /// functions at the root in Err.
+    /// Exception NotDone is raised if the root was not found.
+    /// Exception DimensionError is raised if the range of Err is
+    /// not equal to the range of the StartingPoint.
+    pub fn function_set_errors_vector(&self, Err_: &mut crate::ffi::math_Vector) {
+        unsafe {
+            crate::ffi::math_NewtonFunctionSetRoot_function_set_errors_vector(
+                self as *const Self,
+                Err_,
+            )
+        }
+    }
+
     /// **Source:** `math_NewtonFunctionSetRoot.hxx`:128 - `math_NewtonFunctionSetRoot::NbIterations()`
     /// Returns the number of iterations really done
     /// during the computation of the Root.
@@ -4024,61 +4539,7 @@ impl NewtonFunctionSetRoot {
     }
 }
 
-// ── Skipped symbols for NewtonFunctionSetRoot (9 total) ──
-// SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:42 - `math_NewtonFunctionSetRoot::math_NewtonFunctionSetRoot`
-//   constructor: Initialize correctly all the fields of this class.
-//   constructor: The range (1, F.NbVariables()) must be especially respected for
-//   constructor: all vectors and matrix declarations.
-//   Reason: param 'theXTolerance' uses unknown type 'const math_Vector&'
-//   // pub fn new_functionsetwithderivatives_vector_real_int(theFunction: &mut FunctionSetWithDerivatives, theXTolerance: &Vector, theFTolerance: f64, tehNbIterations: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:60 - `math_NewtonFunctionSetRoot::SetTolerance`
-//   method: Initializes the tolerance values for the unknowns.
-//   Reason: param 'XTol' uses unknown type 'const math_Vector&'
-//   // pub fn set_tolerance(&mut self, XTol: &Vector);
-//
-// SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:65 - `math_NewtonFunctionSetRoot::Perform`
-//   method: The Newton method is done to improve the root of the function
-//   method: from the initial guess point. The solution is found when:
-//   method: abs(Xj - Xj-1)(i) <= XTol(i) and abs(Fi) <= FTol for all i;
-//   Reason: param 'theStartingPoint' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, theFunction: &mut FunctionSetWithDerivatives, theStartingPoint: &Vector);
-//
-// SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:72 - `math_NewtonFunctionSetRoot::Perform`
-//   method: The Newton method is done to improve the root of the function
-//   method: from the initial guess point. Bounds may be given, to constrain the solution.
-//   method: The solution is found when:
-//   Reason: param 'theStartingPoint' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, theFunction: &mut FunctionSetWithDerivatives, theStartingPoint: &Vector, theInfBound: &Vector, theSupBound: &Vector);
-//
-// SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:90 - `math_NewtonFunctionSetRoot::Root`
-//   method: Returns the value of the root of function F.
-//   method: Exceptions
-//   method: StdFail_NotDone if the algorithm fails (and IsDone returns false).
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn root(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:96 - `math_NewtonFunctionSetRoot::Root`
-//   method: outputs the root vector in Root.
-//   method: Exception NotDone is raised if the root was not found.
-//   method: Exception DimensionError is raised if the range of Root is
-//   Reason: param 'Root' uses unknown type 'math_Vector&'
-//   // pub fn root(&self, Root: &mut Vector);
-//
-// SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:116 - `math_NewtonFunctionSetRoot::FunctionSetErrors`
-//   method: Returns the vector value of the error done on the
-//   method: functions at the root.
-//   method: Exception NotDone is raised if the root was not found.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn function_set_errors(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:123 - `math_NewtonFunctionSetRoot::FunctionSetErrors`
-//   method: Outputs the vector value of the error done on the
-//   method: functions at the root in Err.
-//   method: Exception NotDone is raised if the root was not found.
-//   Reason: param 'Err' uses unknown type 'math_Vector&'
-//   // pub fn function_set_errors(&self, Err_: &mut Vector);
-//
+// ── Skipped symbols for NewtonFunctionSetRoot (1 total) ──
 // SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:132 - `math_NewtonFunctionSetRoot::Dump`
 //   method: Prints information on the current state of the object.
 //   method: Is used to redefine the operator <<.
@@ -4178,6 +4639,18 @@ impl NewtonMinimum {
         )
     }
 
+    /// **Source:** `math_NewtonMinimum.hxx`:48 - `math_NewtonMinimum::Perform()`
+    /// Search the solution.
+    pub fn perform(
+        &mut self,
+        theFunction: &mut MultipleVarFunctionWithHessian,
+        theStartingPoint: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::math_NewtonMinimum_perform(self as *mut Self, theFunction, theStartingPoint)
+        }
+    }
+
     /// **Source:** `math_NewtonMinimum.hxx`:57 - `math_NewtonMinimum::IsConverged()`
     /// This method is called at the end of each iteration to check the convergence:
     /// || Xi+1 - Xi || < Tolerance or || F(Xi+1) - F(Xi)|| < Tolerance * || F(Xi) ||
@@ -4198,11 +4671,60 @@ impl NewtonMinimum {
         unsafe { crate::ffi::math_NewtonMinimum_is_convex(self as *const Self) }
     }
 
+    /// **Source:** `math_NewtonMinimum.hxx`:67 - `math_NewtonMinimum::Location()`
+    /// returns the location vector of the minimum.
+    /// Exception NotDone is raised if an error has occurred.
+    pub fn location(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::math_NewtonMinimum_location(self as *const Self)) }
+    }
+
+    /// **Source:** `math_NewtonMinimum.hxx`:73 - `math_NewtonMinimum::Location()`
+    /// outputs the location vector of the minimum in Loc.
+    /// Exception NotDone is raised if an error has occurred.
+    /// Exception DimensionError is raised if the range of Loc is not
+    /// equal to the range of the StartingPoint.
+    pub fn location_vector(&self, Loc: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_NewtonMinimum_location_vector(self as *const Self, Loc) }
+    }
+
+    /// **Source:** `math_NewtonMinimum.hxx`:76 - `math_NewtonMinimum::SetBoundary()`
+    /// Set boundaries.
+    pub fn set_boundary(
+        &mut self,
+        theLeftBorder: &crate::ffi::math_Vector,
+        theRightBorder: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::math_NewtonMinimum_set_boundary(
+                self as *mut Self,
+                theLeftBorder,
+                theRightBorder,
+            )
+        }
+    }
+
     /// **Source:** `math_NewtonMinimum.hxx`:81 - `math_NewtonMinimum::Minimum()`
     /// returns the value of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn minimum(&self) -> f64 {
         unsafe { crate::ffi::math_NewtonMinimum_minimum(self as *const Self) }
+    }
+
+    /// **Source:** `math_NewtonMinimum.hxx`:86 - `math_NewtonMinimum::Gradient()`
+    /// returns the gradient vector at the minimum.
+    /// Exception NotDone is raised if an error has occurred.
+    /// The minimum was not found.
+    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::math_NewtonMinimum_gradient(self as *const Self)) }
+    }
+
+    /// **Source:** `math_NewtonMinimum.hxx`:92 - `math_NewtonMinimum::Gradient()`
+    /// outputs the gradient vector at the minimum in Grad.
+    /// Exception NotDone is raised if the minimum was not found.
+    /// Exception DimensionError is raised if the range of Grad is not
+    /// equal to the range of the StartingPoint.
+    pub fn gradient_vector(&self, Grad: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_NewtonMinimum_gradient_vector(self as *const Self, Grad) }
     }
 
     /// **Source:** `math_NewtonMinimum.hxx`:97 - `math_NewtonMinimum::NbIterations()`
@@ -4226,44 +4748,7 @@ impl NewtonMinimum {
     }
 }
 
-// ── Skipped symbols for NewtonMinimum (7 total) ──
-// SKIPPED: **Source:** `math_NewtonMinimum.hxx`:48 - `math_NewtonMinimum::Perform`
-//   method: Search the solution.
-//   Reason: param 'theStartingPoint' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, theFunction: &mut MultipleVarFunctionWithHessian, theStartingPoint: &Vector);
-//
-// SKIPPED: **Source:** `math_NewtonMinimum.hxx`:67 - `math_NewtonMinimum::Location`
-//   method: returns the location vector of the minimum.
-//   method: Exception NotDone is raised if an error has occurred.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn location(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `math_NewtonMinimum.hxx`:73 - `math_NewtonMinimum::Location`
-//   method: outputs the location vector of the minimum in Loc.
-//   method: Exception NotDone is raised if an error has occurred.
-//   method: Exception DimensionError is raised if the range of Loc is not
-//   Reason: param 'Loc' uses unknown type 'math_Vector&'
-//   // pub fn location(&self, Loc: &mut Vector);
-//
-// SKIPPED: **Source:** `math_NewtonMinimum.hxx`:76 - `math_NewtonMinimum::SetBoundary`
-//   method: Set boundaries.
-//   Reason: param 'theLeftBorder' uses unknown type 'const math_Vector&'
-//   // pub fn set_boundary(&mut self, theLeftBorder: &Vector, theRightBorder: &Vector);
-//
-// SKIPPED: **Source:** `math_NewtonMinimum.hxx`:86 - `math_NewtonMinimum::Gradient`
-//   method: returns the gradient vector at the minimum.
-//   method: Exception NotDone is raised if an error has occurred.
-//   method: The minimum was not found.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn gradient(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `math_NewtonMinimum.hxx`:92 - `math_NewtonMinimum::Gradient`
-//   method: outputs the gradient vector at the minimum in Grad.
-//   method: Exception NotDone is raised if the minimum was not found.
-//   method: Exception DimensionError is raised if the range of Grad is not
-//   Reason: param 'Grad' uses unknown type 'math_Vector&'
-//   // pub fn gradient(&self, Grad: &mut Vector);
-//
+// ── Skipped symbols for NewtonMinimum (1 total) ──
 // SKIPPED: **Source:** `math_NewtonMinimum.hxx`:106 - `math_NewtonMinimum::Dump`
 //   method: Prints on the stream o information on the current state
 //   method: of the object.
@@ -4576,22 +5061,140 @@ unsafe impl crate::CppDeletable for PSO {
     }
 }
 
-// ── Skipped symbols for PSO (3 total) ──
-// SKIPPED: **Source:** `math_PSO.hxx`:70 - `math_PSO::math_PSO`
-//   constructor: Constructor.
-//   Reason: param 'theLowBorder' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiplevarfunctionptr_vector3_int2(theFunc: /* math_MultipleVarFunction* */, theLowBorder: &Vector, theUppBorder: &Vector, theSteps: &Vector, theNbParticles: i32, theNbIter: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `math_PSO.hxx`:78 - `math_PSO::Perform`
-//   method: Perform computations, particles array is constructed inside of this function.
-//   Reason: param 'theSteps' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, theSteps: &Vector, theValue: &mut f64, theOutPnt: &mut Vector, theNbIter: i32);
-//
-// SKIPPED: **Source:** `math_PSO.hxx`:84 - `math_PSO::Perform`
-//   method: Perform computations with given particles array.
-//   Reason: param 'theOutPnt' uses unknown type 'math_Vector&'
-//   // pub fn perform(&mut self, theParticles: &mut PSOParticlesPool, theNbParticles: i32, theValue: &mut f64, theOutPnt: &mut Vector, theNbIter: i32);
-//
+impl PSO {
+    /// **Source:** `math_PSO.hxx`:70 - `math_PSO::math_PSO()`
+    ///
+    /// Constructor.
+    ///
+    /// @param theFunc defines the objective function. It should exist during all lifetime of class
+    /// instance.
+    /// @param theLowBorder defines lower border of search space.
+    /// @param theUppBorder defines upper border of search space.
+    /// @param theSteps defines steps of regular grid, used for particle generation.
+    /// This parameter used to define stop condition (TerminalVelocity).
+    /// @param theNbParticles defines number of particles.
+    /// @param theNbIter defines maximum number of iterations.
+    pub fn new_multiplevarfunctionptr_vector3_int2(
+        theFunc: &mut MultipleVarFunction,
+        theLowBorder: &crate::ffi::math_Vector,
+        theUppBorder: &crate::ffi::math_Vector,
+        theSteps: &crate::ffi::math_Vector,
+        theNbParticles: i32,
+        theNbIter: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::math_PSO_ctor_multiplevarfunctionptr_vector3_int2(
+                    theFunc as *mut _,
+                    theLowBorder,
+                    theUppBorder,
+                    theSteps,
+                    theNbParticles,
+                    theNbIter,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `math_PSO.hxx`:70 - `math_PSO::math_PSO()`
+    ///
+    /// Constructor.
+    ///
+    /// @param theFunc defines the objective function. It should exist during all lifetime of class
+    /// instance.
+    /// @param theLowBorder defines lower border of search space.
+    /// @param theUppBorder defines upper border of search space.
+    /// @param theSteps defines steps of regular grid, used for particle generation.
+    /// This parameter used to define stop condition (TerminalVelocity).
+    /// @param theNbParticles defines number of particles.
+    /// @param theNbIter defines maximum number of iterations.
+    pub fn new_multiplevarfunctionptr_vector3_int(
+        theFunc: &mut MultipleVarFunction,
+        theLowBorder: &crate::ffi::math_Vector,
+        theUppBorder: &crate::ffi::math_Vector,
+        theSteps: &crate::ffi::math_Vector,
+        theNbParticles: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiplevarfunctionptr_vector3_int2(
+            theFunc,
+            theLowBorder,
+            theUppBorder,
+            theSteps,
+            theNbParticles,
+            100,
+        )
+    }
+
+    /// **Source:** `math_PSO.hxx`:70 - `math_PSO::math_PSO()`
+    ///
+    /// Constructor.
+    ///
+    /// @param theFunc defines the objective function. It should exist during all lifetime of class
+    /// instance.
+    /// @param theLowBorder defines lower border of search space.
+    /// @param theUppBorder defines upper border of search space.
+    /// @param theSteps defines steps of regular grid, used for particle generation.
+    /// This parameter used to define stop condition (TerminalVelocity).
+    /// @param theNbParticles defines number of particles.
+    /// @param theNbIter defines maximum number of iterations.
+    pub fn new_multiplevarfunctionptr_vector3(
+        theFunc: &mut MultipleVarFunction,
+        theLowBorder: &crate::ffi::math_Vector,
+        theUppBorder: &crate::ffi::math_Vector,
+        theSteps: &crate::ffi::math_Vector,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiplevarfunctionptr_vector3_int2(
+            theFunc,
+            theLowBorder,
+            theUppBorder,
+            theSteps,
+            32,
+            100,
+        )
+    }
+
+    /// **Source:** `math_PSO.hxx`:78 - `math_PSO::Perform()`
+    /// Perform computations, particles array is constructed inside of this function.
+    pub fn perform_vector_real_vector_int(
+        &mut self,
+        theSteps: &crate::ffi::math_Vector,
+        theValue: &mut f64,
+        theOutPnt: &mut crate::ffi::math_Vector,
+        theNbIter: i32,
+    ) {
+        unsafe {
+            crate::ffi::math_PSO_perform_vector_real_vector_int(
+                self as *mut Self,
+                theSteps,
+                theValue,
+                theOutPnt,
+                theNbIter,
+            )
+        }
+    }
+
+    /// **Source:** `math_PSO.hxx`:84 - `math_PSO::Perform()`
+    /// Perform computations with given particles array.
+    pub fn perform_psoparticlespool_int_real_vector_int(
+        &mut self,
+        theParticles: &mut PSOParticlesPool,
+        theNbParticles: i32,
+        theValue: &mut f64,
+        theOutPnt: &mut crate::ffi::math_Vector,
+        theNbIter: i32,
+    ) {
+        unsafe {
+            crate::ffi::math_PSO_perform_psoparticlespool_int_real_vector_int(
+                self as *mut Self,
+                theParticles,
+                theNbParticles,
+                theValue,
+                theOutPnt,
+                theNbIter,
+            )
+        }
+    }
+}
 
 // ========================
 // From math_PSOParticlesPool.hxx
@@ -4737,6 +5340,28 @@ impl Powell {
         Self::new_multiplevarfunction_real_int_real(theFunction, theTolerance, 200, 1.0e-12)
     }
 
+    /// **Source:** `math_Powell.hxx`:51 - `math_Powell::Perform()`
+    /// Computes Powell minimization on the function F given
+    /// theStartingPoint, and an initial matrix theStartingDirection
+    /// whose columns contain the initial set of directions.
+    /// The solution F = Fi is found when:
+    /// 2.0 * abs(Fi - Fi-1) =< Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS).
+    pub fn perform(
+        &mut self,
+        theFunction: &mut MultipleVarFunction,
+        theStartingPoint: &crate::ffi::math_Vector,
+        theStartingDirections: &Matrix,
+    ) {
+        unsafe {
+            crate::ffi::math_Powell_perform(
+                self as *mut Self,
+                theFunction,
+                theStartingPoint,
+                theStartingDirections,
+            )
+        }
+    }
+
     /// **Source:** `math_Powell.hxx`:58 - `math_Powell::IsSolutionReached()`
     /// Solution F = Fi is found when:
     /// 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1)) + ZEPS.
@@ -4749,6 +5374,22 @@ impl Powell {
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_Powell_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `math_Powell.hxx`:65 - `math_Powell::Location()`
+    /// returns the location vector of the minimum.
+    /// Exception NotDone is raised if the minimum was not found.
+    pub fn location(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::math_Powell_location(self as *const Self)) }
+    }
+
+    /// **Source:** `math_Powell.hxx`:71 - `math_Powell::Location()`
+    /// outputs the location vector of the minimum in Loc.
+    /// Exception NotDone is raised if the minimum was not found.
+    /// Exception DimensionError is raised if the range of Loc is not
+    /// equal to the range of the StartingPoint.
+    pub fn location_vector(&self, Loc: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_Powell_location_vector(self as *const Self, Loc) }
     }
 
     /// **Source:** `math_Powell.hxx`:75 - `math_Powell::Minimum()`
@@ -4767,27 +5408,7 @@ impl Powell {
     }
 }
 
-// ── Skipped symbols for Powell (4 total) ──
-// SKIPPED: **Source:** `math_Powell.hxx`:51 - `math_Powell::Perform`
-//   method: Computes Powell minimization on the function F given
-//   method: theStartingPoint, and an initial matrix theStartingDirection
-//   method: whose columns contain the initial set of directions.
-//   Reason: param 'theStartingPoint' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, theFunction: &mut MultipleVarFunction, theStartingPoint: &Vector, theStartingDirections: &Matrix);
-//
-// SKIPPED: **Source:** `math_Powell.hxx`:65 - `math_Powell::Location`
-//   method: returns the location vector of the minimum.
-//   method: Exception NotDone is raised if the minimum was not found.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn location(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `math_Powell.hxx`:71 - `math_Powell::Location`
-//   method: outputs the location vector of the minimum in Loc.
-//   method: Exception NotDone is raised if the minimum was not found.
-//   method: Exception DimensionError is raised if the range of Loc is not
-//   Reason: param 'Loc' uses unknown type 'math_Vector&'
-//   // pub fn location(&self, Loc: &mut Vector);
-//
+// ── Skipped symbols for Powell (1 total) ──
 // SKIPPED: **Source:** `math_Powell.hxx`:84 - `math_Powell::Dump`
 //   method: Prints information on the current state of the object.
 //   method: Is used to redefine the operator <<.
@@ -4827,6 +5448,24 @@ impl SVD {
         unsafe { crate::ffi::math_SVD_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_SVD.hxx`:53 - `math_SVD::Solve()`
+    /// Given the input Vector B this routine solves the set of linear
+    /// equations A . X = B.
+    /// Exception NotDone is raised if the decomposition of A was not done
+    /// successfully.
+    /// Exception DimensionError is raised if the range of B is not
+    /// equal to the rowrange of A.
+    /// Exception DimensionError is raised if the range of X is not
+    /// equal to the colrange of A.
+    pub fn solve(
+        &mut self,
+        B: &crate::ffi::math_Vector,
+        X: &mut crate::ffi::math_Vector,
+        Eps: f64,
+    ) {
+        unsafe { crate::ffi::math_SVD_solve(self as *mut Self, B, X, Eps) }
+    }
+
     /// **Source:** `math_SVD.hxx`:62 - `math_SVD::PseudoInverse()`
     /// Computes the inverse Inv of matrix A such as A * Inverse = Identity.
     /// Exceptions
@@ -4838,14 +5477,7 @@ impl SVD {
     }
 }
 
-// ── Skipped symbols for SVD (2 total) ──
-// SKIPPED: **Source:** `math_SVD.hxx`:53 - `math_SVD::Solve`
-//   method: Given the input Vector B this routine solves the set of linear
-//   method: equations A . X = B.
-//   method: Exception NotDone is raised if the decomposition of A was not done
-//   Reason: param 'B' uses unknown type 'const math_Vector&'
-//   // pub fn solve(&mut self, B: &Vector, X: &mut Vector, Eps: f64);
-//
+// ── Skipped symbols for SVD (1 total) ──
 // SKIPPED: **Source:** `math_SVD.hxx`:66 - `math_SVD::Dump`
 //   method: Prints information on the current state of the object.
 //   method: Is used to redefine the operator <<.
@@ -5297,10 +5929,273 @@ unsafe impl crate::CppDeletable for Uzawa {
 }
 
 impl Uzawa {
+    /// **Source:** `math_Uzawa.hxx`:53 - `math_Uzawa::math_Uzawa()`
+    /// Given an input matrix Cont, two input vectors Secont
+    /// and StartingPoint, it solves Cont*X = Secont (only
+    /// = equations) with a minimization of Norme(X-X0).
+    /// The maximum iterations number allowed is fixed to
+    /// NbIterations.
+    /// The tolerance EpsLic is fixed for the dual variable
+    /// convergence. The tolerance EpsLix is used for the
+    /// convergence of X.
+    /// Exception ConstructionError is raised if the line number
+    /// of Cont is different from the length of Secont.
+    pub fn new_matrix_vector2_real2_int(
+        Cont: &Matrix,
+        Secont: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi::math_Vector,
+        EpsLix: f64,
+        EpsLic: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::math_Uzawa_ctor_matrix_vector2_real2_int(
+                Cont,
+                Secont,
+                StartingPoint,
+                EpsLix,
+                EpsLic,
+                NbIterations,
+            ))
+        }
+    }
+
+    /// **Source:** `math_Uzawa.hxx`:74 - `math_Uzawa::math_Uzawa()`
+    /// Given an input matrix Cont, two input vectors Secont
+    /// and StartingPoint, it solves Cont*X = Secont (the Nce
+    /// first equations are equal equations and the Nci last
+    /// equations are inequalities <) with a minimization
+    /// of Norme(X-X0).
+    /// The maximum iterations number allowed is fixed to
+    /// NbIterations.
+    /// The tolerance EpsLic is fixed for the dual variable
+    /// convergence. The tolerance EpsLix is used for the
+    /// convergence of X.
+    /// There are no conditions on Nce and Nci.
+    /// Exception ConstructionError is raised if the line number
+    /// of Cont is different from the length of Secont and from
+    /// Nce + Nci.
+    pub fn new_matrix_vector2_int2_real2_int(
+        Cont: &Matrix,
+        Secont: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi::math_Vector,
+        Nci: i32,
+        Nce: i32,
+        EpsLix: f64,
+        EpsLic: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::math_Uzawa_ctor_matrix_vector2_int2_real2_int(
+                Cont,
+                Secont,
+                StartingPoint,
+                Nci,
+                Nce,
+                EpsLix,
+                EpsLic,
+                NbIterations,
+            ))
+        }
+    }
+
+    /// **Source:** `math_Uzawa.hxx`:53 - `math_Uzawa::math_Uzawa()`
+    /// Given an input matrix Cont, two input vectors Secont
+    /// and StartingPoint, it solves Cont*X = Secont (only
+    /// = equations) with a minimization of Norme(X-X0).
+    /// The maximum iterations number allowed is fixed to
+    /// NbIterations.
+    /// The tolerance EpsLic is fixed for the dual variable
+    /// convergence. The tolerance EpsLix is used for the
+    /// convergence of X.
+    /// Exception ConstructionError is raised if the line number
+    /// of Cont is different from the length of Secont.
+    pub fn new_matrix_vector2_real2(
+        Cont: &Matrix,
+        Secont: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi::math_Vector,
+        EpsLix: f64,
+        EpsLic: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_matrix_vector2_real2_int(Cont, Secont, StartingPoint, EpsLix, EpsLic, 500)
+    }
+
+    /// **Source:** `math_Uzawa.hxx`:53 - `math_Uzawa::math_Uzawa()`
+    /// Given an input matrix Cont, two input vectors Secont
+    /// and StartingPoint, it solves Cont*X = Secont (only
+    /// = equations) with a minimization of Norme(X-X0).
+    /// The maximum iterations number allowed is fixed to
+    /// NbIterations.
+    /// The tolerance EpsLic is fixed for the dual variable
+    /// convergence. The tolerance EpsLix is used for the
+    /// convergence of X.
+    /// Exception ConstructionError is raised if the line number
+    /// of Cont is different from the length of Secont.
+    pub fn new_matrix_vector2_real(
+        Cont: &Matrix,
+        Secont: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi::math_Vector,
+        EpsLix: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_matrix_vector2_real2_int(Cont, Secont, StartingPoint, EpsLix, 1.0e-06, 500)
+    }
+
+    /// **Source:** `math_Uzawa.hxx`:53 - `math_Uzawa::math_Uzawa()`
+    /// Given an input matrix Cont, two input vectors Secont
+    /// and StartingPoint, it solves Cont*X = Secont (only
+    /// = equations) with a minimization of Norme(X-X0).
+    /// The maximum iterations number allowed is fixed to
+    /// NbIterations.
+    /// The tolerance EpsLic is fixed for the dual variable
+    /// convergence. The tolerance EpsLix is used for the
+    /// convergence of X.
+    /// Exception ConstructionError is raised if the line number
+    /// of Cont is different from the length of Secont.
+    pub fn new_matrix_vector2(
+        Cont: &Matrix,
+        Secont: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi::math_Vector,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_matrix_vector2_real2_int(Cont, Secont, StartingPoint, 1.0e-06, 1.0e-06, 500)
+    }
+
+    /// **Source:** `math_Uzawa.hxx`:74 - `math_Uzawa::math_Uzawa()`
+    /// Given an input matrix Cont, two input vectors Secont
+    /// and StartingPoint, it solves Cont*X = Secont (the Nce
+    /// first equations are equal equations and the Nci last
+    /// equations are inequalities <) with a minimization
+    /// of Norme(X-X0).
+    /// The maximum iterations number allowed is fixed to
+    /// NbIterations.
+    /// The tolerance EpsLic is fixed for the dual variable
+    /// convergence. The tolerance EpsLix is used for the
+    /// convergence of X.
+    /// There are no conditions on Nce and Nci.
+    /// Exception ConstructionError is raised if the line number
+    /// of Cont is different from the length of Secont and from
+    /// Nce + Nci.
+    pub fn new_matrix_vector2_int2_real2(
+        Cont: &Matrix,
+        Secont: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi::math_Vector,
+        Nci: i32,
+        Nce: i32,
+        EpsLix: f64,
+        EpsLic: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_matrix_vector2_int2_real2_int(
+            Cont,
+            Secont,
+            StartingPoint,
+            Nci,
+            Nce,
+            EpsLix,
+            EpsLic,
+            500,
+        )
+    }
+
+    /// **Source:** `math_Uzawa.hxx`:74 - `math_Uzawa::math_Uzawa()`
+    /// Given an input matrix Cont, two input vectors Secont
+    /// and StartingPoint, it solves Cont*X = Secont (the Nce
+    /// first equations are equal equations and the Nci last
+    /// equations are inequalities <) with a minimization
+    /// of Norme(X-X0).
+    /// The maximum iterations number allowed is fixed to
+    /// NbIterations.
+    /// The tolerance EpsLic is fixed for the dual variable
+    /// convergence. The tolerance EpsLix is used for the
+    /// convergence of X.
+    /// There are no conditions on Nce and Nci.
+    /// Exception ConstructionError is raised if the line number
+    /// of Cont is different from the length of Secont and from
+    /// Nce + Nci.
+    pub fn new_matrix_vector2_int2_real(
+        Cont: &Matrix,
+        Secont: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi::math_Vector,
+        Nci: i32,
+        Nce: i32,
+        EpsLix: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_matrix_vector2_int2_real2_int(
+            Cont,
+            Secont,
+            StartingPoint,
+            Nci,
+            Nce,
+            EpsLix,
+            1.0e-06,
+            500,
+        )
+    }
+
+    /// **Source:** `math_Uzawa.hxx`:74 - `math_Uzawa::math_Uzawa()`
+    /// Given an input matrix Cont, two input vectors Secont
+    /// and StartingPoint, it solves Cont*X = Secont (the Nce
+    /// first equations are equal equations and the Nci last
+    /// equations are inequalities <) with a minimization
+    /// of Norme(X-X0).
+    /// The maximum iterations number allowed is fixed to
+    /// NbIterations.
+    /// The tolerance EpsLic is fixed for the dual variable
+    /// convergence. The tolerance EpsLix is used for the
+    /// convergence of X.
+    /// There are no conditions on Nce and Nci.
+    /// Exception ConstructionError is raised if the line number
+    /// of Cont is different from the length of Secont and from
+    /// Nce + Nci.
+    pub fn new_matrix_vector2_int2(
+        Cont: &Matrix,
+        Secont: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi::math_Vector,
+        Nci: i32,
+        Nce: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_matrix_vector2_int2_real2_int(
+            Cont,
+            Secont,
+            StartingPoint,
+            Nci,
+            Nce,
+            1.0e-06,
+            1.0e-06,
+            500,
+        )
+    }
+
     /// **Source:** `math_Uzawa.hxx`:84 - `math_Uzawa::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_Uzawa_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `math_Uzawa.hxx`:88 - `math_Uzawa::Value()`
+    /// Returns the vector solution of the system above.
+    /// An exception is raised if NotDone.
+    pub fn value(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::math_Uzawa_value(self as *const Self)) }
+    }
+
+    /// **Source:** `math_Uzawa.hxx`:92 - `math_Uzawa::InitialError()`
+    /// Returns the initial error Cont*StartingPoint-Secont.
+    /// An exception is raised if NotDone.
+    pub fn initial_error(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::math_Uzawa_initial_error(self as *const Self)) }
+    }
+
+    /// **Source:** `math_Uzawa.hxx`:95 - `math_Uzawa::Duale()`
+    /// returns the duale variables V of the systeme.
+    pub fn duale(&self, V: &mut crate::ffi::math_Vector) {
+        unsafe { crate::ffi::math_Uzawa_duale(self as *const Self, V) }
+    }
+
+    /// **Source:** `math_Uzawa.hxx`:100 - `math_Uzawa::Error()`
+    /// Returns the difference between X solution and the
+    /// StartingPoint.
+    /// An exception is raised if NotDone.
+    pub fn error(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::math_Uzawa_error(self as *const Self)) }
     }
 
     /// **Source:** `math_Uzawa.hxx`:104 - `math_Uzawa::NbIterations()`
@@ -5319,45 +6214,7 @@ impl Uzawa {
     }
 }
 
-// ── Skipped symbols for Uzawa (7 total) ──
-// SKIPPED: **Source:** `math_Uzawa.hxx`:53 - `math_Uzawa::math_Uzawa`
-//   constructor: Given an input matrix Cont, two input vectors Secont
-//   constructor: and StartingPoint, it solves Cont*X = Secont (only
-//   constructor: = equations) with a minimization of Norme(X-X0).
-//   Reason: param 'Secont' uses unknown type 'const math_Vector&'
-//   // pub fn new_matrix_vector2_real2_int(Cont: &Matrix, Secont: &Vector, StartingPoint: &Vector, EpsLix: f64, EpsLic: f64, NbIterations: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `math_Uzawa.hxx`:74 - `math_Uzawa::math_Uzawa`
-//   constructor: Given an input matrix Cont, two input vectors Secont
-//   constructor: and StartingPoint, it solves Cont*X = Secont (the Nce
-//   constructor: first equations are equal equations and the Nci last
-//   Reason: param 'Secont' uses unknown type 'const math_Vector&'
-//   // pub fn new_matrix_vector2_int2_real2_int(Cont: &Matrix, Secont: &Vector, StartingPoint: &Vector, Nci: i32, Nce: i32, EpsLix: f64, EpsLic: f64, NbIterations: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `math_Uzawa.hxx`:88 - `math_Uzawa::Value`
-//   method: Returns the vector solution of the system above.
-//   method: An exception is raised if NotDone.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn value(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `math_Uzawa.hxx`:92 - `math_Uzawa::InitialError`
-//   method: Returns the initial error Cont*StartingPoint-Secont.
-//   method: An exception is raised if NotDone.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn initial_error(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `math_Uzawa.hxx`:95 - `math_Uzawa::Duale`
-//   method: returns the duale variables V of the systeme.
-//   Reason: param 'V' uses unknown type 'math_Vector&'
-//   // pub fn duale(&self, V: &mut Vector);
-//
-// SKIPPED: **Source:** `math_Uzawa.hxx`:100 - `math_Uzawa::Error`
-//   method: Returns the difference between X solution and the
-//   method: StartingPoint.
-//   method: An exception is raised if NotDone.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn error(&self) -> &Vector;
-//
+// ── Skipped symbols for Uzawa (1 total) ──
 // SKIPPED: **Source:** `math_Uzawa.hxx`:112 - `math_Uzawa::Dump`
 //   method: Prints information on the current state of the object.
 //   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)

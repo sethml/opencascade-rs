@@ -491,6 +491,13 @@ impl DistributionOfEnergy {
         }
     }
 
+    /// Inherited: **Source:** `math_FunctionSet.hxx`:43 - `math_FunctionSet::Value()`
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe {
+            crate::ffi::FairCurve_DistributionOfEnergy_inherited_Value(self as *mut Self, X, F)
+        }
+    }
+
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe {
@@ -544,6 +551,15 @@ impl DistributionOfJerk {
             Law,
             0,
         )
+    }
+
+    /// **Source:** `FairCurve_DistributionOfJerk.hxx`:48 - `FairCurve_DistributionOfJerk::Value()`
+    /// computes the values <F> of the functions for the
+    /// variable <X>.
+    /// returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::FairCurve_DistributionOfJerk_value(self as *mut Self, X, F) }
     }
 
     /// Upcast to FairCurve_DistributionOfEnergy
@@ -612,15 +628,6 @@ impl DistributionOfJerk {
     }
 }
 
-// ── Skipped symbols for DistributionOfJerk (1 total) ──
-// SKIPPED: **Source:** `FairCurve_DistributionOfJerk.hxx`:48 - `FairCurve_DistributionOfJerk::Value`
-//   method: computes the values <F> of the functions for the
-//   method: variable <X>.
-//   method: returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-
 // ========================
 // From FairCurve_DistributionOfSagging.hxx
 // ========================
@@ -666,6 +673,15 @@ impl DistributionOfSagging {
             Law,
             0,
         )
+    }
+
+    /// **Source:** `FairCurve_DistributionOfSagging.hxx`:48 - `FairCurve_DistributionOfSagging::Value()`
+    /// computes the values <F> of the functions for the
+    /// variable <X>.
+    /// returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::FairCurve_DistributionOfSagging_value(self as *mut Self, X, F) }
     }
 
     /// Upcast to FairCurve_DistributionOfEnergy
@@ -731,15 +747,6 @@ impl DistributionOfSagging {
         }
     }
 }
-
-// ── Skipped symbols for DistributionOfSagging (1 total) ──
-// SKIPPED: **Source:** `FairCurve_DistributionOfSagging.hxx`:48 - `FairCurve_DistributionOfSagging::Value`
-//   method: computes the values <F> of the functions for the
-//   method: variable <X>.
-//   method: returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
 
 // ========================
 // From FairCurve_DistributionOfTension.hxx
@@ -808,6 +815,15 @@ impl DistributionOfTension {
         }
     }
 
+    /// **Source:** `FairCurve_DistributionOfTension.hxx`:53 - `FairCurve_DistributionOfTension::Value()`
+    /// computes the values <F> of the functions for the
+    /// variable <X>.
+    /// returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::FairCurve_DistributionOfTension_value(self as *mut Self, X, F) }
+    }
+
     /// Upcast to FairCurve_DistributionOfEnergy
     pub fn as_distribution_of_energy(&self) -> &DistributionOfEnergy {
         unsafe {
@@ -872,15 +888,6 @@ impl DistributionOfTension {
     }
 }
 
-// ── Skipped symbols for DistributionOfTension (1 total) ──
-// SKIPPED: **Source:** `FairCurve_DistributionOfTension.hxx`:53 - `FairCurve_DistributionOfTension::Value`
-//   method: computes the values <F> of the functions for the
-//   method: variable <X>.
-//   method: returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-
 // ========================
 // From FairCurve_Energy.hxx
 // ========================
@@ -900,6 +907,73 @@ impl Energy {
     /// returns the number of variables of the energy.
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::FairCurve_Energy_nb_variables(self as *const Self) }
+    }
+
+    /// **Source:** `FairCurve_Energy.hxx`:45 - `FairCurve_Energy::Value()`
+    /// computes the values of the Energys E for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, E: &mut f64) -> bool {
+        unsafe { crate::ffi::FairCurve_Energy_value(self as *mut Self, X, E) }
+    }
+
+    /// **Source:** `FairCurve_Energy.hxx`:52 - `FairCurve_Energy::Gradient()`
+    /// computes the gradient <G> of the energys for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn gradient(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::FairCurve_Energy_gradient(self as *mut Self, X, G) }
+    }
+
+    /// **Source:** `FairCurve_Energy.hxx`:59 - `FairCurve_Energy::Values()`
+    /// computes the Energy <E> and the gradient <G> of the
+    /// energy for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values_vector_real_vector(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        E: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::FairCurve_Energy_values_vector_real_vector(self as *mut Self, X, E, G)
+        }
+    }
+
+    /// **Source:** `FairCurve_Energy.hxx`:67 - `FairCurve_Energy::Values()`
+    /// computes the Energy  <E>, the gradient <G> and the
+    /// Hessian   <H> of  the  energy  for  the   variable <X>.
+    /// Returns   True  if    the  computation   was  done
+    /// successfully, False otherwise.
+    pub fn values_vector_real_vector_matrix(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        E: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+        H: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::FairCurve_Energy_values_vector_real_vector_matrix(
+                self as *mut Self,
+                X,
+                E,
+                G,
+                H,
+            )
+        }
+    }
+
+    /// **Source:** `FairCurve_Energy.hxx`:73 - `FairCurve_Energy::Variable()`
+    /// compute the variables <X> which correspond with the field <MyPoles>
+    pub fn variable(&self, X: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::FairCurve_Energy_variable(self as *const Self, X) }
     }
 
     /// **Source:** `FairCurve_Energy.hxx`:76 - `FairCurve_Energy::Poles()`
@@ -969,41 +1043,6 @@ impl Energy {
         unsafe { crate::ffi::FairCurve_Energy_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for Energy (5 total) ──
-// SKIPPED: **Source:** `FairCurve_Energy.hxx`:45 - `FairCurve_Energy::Value`
-//   method: computes the values of the Energys E for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, E: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `FairCurve_Energy.hxx`:52 - `FairCurve_Energy::Gradient`
-//   method: computes the gradient <G> of the energys for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `FairCurve_Energy.hxx`:59 - `FairCurve_Energy::Values`
-//   method: computes the Energy <E> and the gradient <G> of the
-//   method: energy for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, E: &mut f64, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `FairCurve_Energy.hxx`:67 - `FairCurve_Energy::Values`
-//   method: computes the Energy  <E>, the gradient <G> and the
-//   method: Hessian   <H> of  the  energy  for  the   variable <X>.
-//   method: Returns   True  if    the  computation   was  done
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, E: &mut f64, G: &mut Vector, H: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `FairCurve_Energy.hxx`:73 - `FairCurve_Energy::Variable`
-//   method: compute the variables <X> which correspond with the field <MyPoles>
-//   Reason: param 'X' uses unknown type 'math_Vector&'
-//   // pub fn variable(&self, X: &mut Vector) -> bool;
-//
 
 // ========================
 // From FairCurve_EnergyOfBatten.hxx
@@ -1101,6 +1140,12 @@ impl EnergyOfBatten {
         }
     }
 
+    /// **Source:** `FairCurve_EnergyOfBatten.hxx`:65 - `FairCurve_EnergyOfBatten::Variable()`
+    /// compute the variables <X> which correspond with the field <MyPoles>
+    pub fn variable(&self, X: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::FairCurve_EnergyOfBatten_variable(self as *const Self, X) }
+    }
+
     /// Upcast to FairCurve_Energy
     pub fn as_energy(&self) -> &Energy {
         unsafe { &*(crate::ffi::FairCurve_EnergyOfBatten_as_FairCurve_Energy(self as *const Self)) }
@@ -1180,6 +1225,30 @@ impl EnergyOfBatten {
         unsafe { crate::ffi::FairCurve_EnergyOfBatten_inherited_NbVariables(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `FairCurve_Energy.hxx`:45 - `FairCurve_Energy::Value()`
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, E: &mut f64) -> bool {
+        unsafe { crate::ffi::FairCurve_EnergyOfBatten_inherited_Value(self as *mut Self, X, E) }
+    }
+
+    /// Inherited: **Source:** `FairCurve_Energy.hxx`:52 - `FairCurve_Energy::Gradient()`
+    pub fn gradient(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::FairCurve_EnergyOfBatten_inherited_Gradient(self as *mut Self, X, G) }
+    }
+
+    /// Inherited: **Source:** `FairCurve_Energy.hxx`:59 - `FairCurve_Energy::Values()`
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        E: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::FairCurve_EnergyOfBatten_inherited_Values(self as *mut Self, X, E, G) }
+    }
+
     /// Inherited: **Source:** `FairCurve_Energy.hxx`:76 - `FairCurve_Energy::Poles()`
     pub fn poles(&self) -> &crate::ffi::HandleTColgpHArray1OfPnt2d {
         unsafe { &*(crate::ffi::FairCurve_EnergyOfBatten_inherited_Poles(self as *const Self)) }
@@ -1190,13 +1259,6 @@ impl EnergyOfBatten {
         unsafe { crate::ffi::FairCurve_EnergyOfBatten_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for EnergyOfBatten (1 total) ──
-// SKIPPED: **Source:** `FairCurve_EnergyOfBatten.hxx`:65 - `FairCurve_EnergyOfBatten::Variable`
-//   method: compute the variables <X> which correspond with the field <MyPoles>
-//   Reason: param 'X' uses unknown type 'math_Vector&'
-//   // pub fn variable(&self, X: &mut Vector) -> bool;
-//
 
 // ========================
 // From FairCurve_EnergyOfMVC.hxx
@@ -1337,6 +1399,12 @@ impl EnergyOfMVC {
         }
     }
 
+    /// **Source:** `FairCurve_EnergyOfMVC.hxx`:68 - `FairCurve_EnergyOfMVC::Variable()`
+    /// compute the variables <X> which correspond with the field <MyPoles>
+    pub fn variable(&self, X: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::FairCurve_EnergyOfMVC_variable(self as *const Self, X) }
+    }
+
     /// Upcast to FairCurve_Energy
     pub fn as_energy(&self) -> &Energy {
         unsafe { &*(crate::ffi::FairCurve_EnergyOfMVC_as_FairCurve_Energy(self as *const Self)) }
@@ -1414,6 +1482,30 @@ impl EnergyOfMVC {
         unsafe { crate::ffi::FairCurve_EnergyOfMVC_inherited_NbVariables(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `FairCurve_Energy.hxx`:45 - `FairCurve_Energy::Value()`
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, E: &mut f64) -> bool {
+        unsafe { crate::ffi::FairCurve_EnergyOfMVC_inherited_Value(self as *mut Self, X, E) }
+    }
+
+    /// Inherited: **Source:** `FairCurve_Energy.hxx`:52 - `FairCurve_Energy::Gradient()`
+    pub fn gradient(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::FairCurve_EnergyOfMVC_inherited_Gradient(self as *mut Self, X, G) }
+    }
+
+    /// Inherited: **Source:** `FairCurve_Energy.hxx`:59 - `FairCurve_Energy::Values()`
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        E: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe { crate::ffi::FairCurve_EnergyOfMVC_inherited_Values(self as *mut Self, X, E, G) }
+    }
+
     /// Inherited: **Source:** `FairCurve_Energy.hxx`:76 - `FairCurve_Energy::Poles()`
     pub fn poles(&self) -> &crate::ffi::HandleTColgpHArray1OfPnt2d {
         unsafe { &*(crate::ffi::FairCurve_EnergyOfMVC_inherited_Poles(self as *const Self)) }
@@ -1424,13 +1516,6 @@ impl EnergyOfMVC {
         unsafe { crate::ffi::FairCurve_EnergyOfMVC_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for EnergyOfMVC (1 total) ──
-// SKIPPED: **Source:** `FairCurve_EnergyOfMVC.hxx`:68 - `FairCurve_EnergyOfMVC::Variable`
-//   method: compute the variables <X> which correspond with the field <MyPoles>
-//   Reason: param 'X' uses unknown type 'math_Vector&'
-//   // pub fn variable(&self, X: &mut Vector) -> bool;
-//
 
 // ========================
 // From FairCurve_MinimalVariation.hxx
@@ -1985,6 +2070,21 @@ impl Newton {
         unsafe { &mut *(crate::ffi::FairCurve_Newton_as_math_NewtonMinimum_mut(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `math_NewtonMinimum.hxx`:48 - `math_NewtonMinimum::Perform()`
+    pub fn perform(
+        &mut self,
+        theFunction: &mut crate::math::MultipleVarFunctionWithHessian,
+        theStartingPoint: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::FairCurve_Newton_inherited_Perform(
+                self as *mut Self,
+                theFunction,
+                theStartingPoint,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `math_NewtonMinimum.hxx`:60 - `math_NewtonMinimum::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::FairCurve_Newton_inherited_IsDone(self as *const Self) }
@@ -1995,9 +2095,34 @@ impl Newton {
         unsafe { crate::ffi::FairCurve_Newton_inherited_IsConvex(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `math_NewtonMinimum.hxx`:67 - `math_NewtonMinimum::Location()`
+    pub fn location(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::FairCurve_Newton_inherited_Location(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `math_NewtonMinimum.hxx`:76 - `math_NewtonMinimum::SetBoundary()`
+    pub fn set_boundary(
+        &mut self,
+        theLeftBorder: &crate::ffi::math_Vector,
+        theRightBorder: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::FairCurve_Newton_inherited_SetBoundary(
+                self as *mut Self,
+                theLeftBorder,
+                theRightBorder,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `math_NewtonMinimum.hxx`:81 - `math_NewtonMinimum::Minimum()`
     pub fn minimum(&self) -> f64 {
         unsafe { crate::ffi::FairCurve_Newton_inherited_Minimum(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `math_NewtonMinimum.hxx`:86 - `math_NewtonMinimum::Gradient()`
+    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+        unsafe { &*(crate::ffi::FairCurve_Newton_inherited_Gradient(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `math_NewtonMinimum.hxx`:97 - `math_NewtonMinimum::NbIterations()`

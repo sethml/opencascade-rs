@@ -41,6 +41,22 @@ impl AppFunc {
         }
     }
 
+    /// **Source:** `BRepBlend_AppFunc.hxx`:44 - `BRepBlend_AppFunc::Point()`
+    pub fn point(
+        &self,
+        Func: &crate::blend::AppFunction,
+        Param: f64,
+        Sol: &crate::ffi::math_Vector,
+        Pnt: &mut crate::blend::Point,
+    ) {
+        unsafe { crate::ffi::BRepBlend_AppFunc_point(self as *const Self, Func, Param, Sol, Pnt) }
+    }
+
+    /// **Source:** `BRepBlend_AppFunc.hxx`:49 - `BRepBlend_AppFunc::Vec()`
+    pub fn vec(&self, Sol: &mut crate::ffi::math_Vector, Pnt: &crate::blend::Point) {
+        unsafe { crate::ffi::BRepBlend_AppFunc_vec(self as *const Self, Sol, Pnt) }
+    }
+
     /// **Source:** `BRepBlend_AppFunc.hxx`:51 - `BRepBlend_AppFunc::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepBlend_AppFunc_dynamic_type(self as *const Self)) }
@@ -403,16 +419,6 @@ impl HandleBRepBlendAppFunc {
     }
 }
 
-// ── Skipped symbols for AppFunc (2 total) ──
-// SKIPPED: **Source:** `BRepBlend_AppFunc.hxx`:44 - `BRepBlend_AppFunc::Point`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn point(&self, Func: &AppFunction, Param: f64, Sol: &Vector, Pnt: &mut Point);
-//
-// SKIPPED: **Source:** `BRepBlend_AppFunc.hxx`:49 - `BRepBlend_AppFunc::Vec`
-//   Reason: param 'Sol' uses unknown type 'math_Vector&'
-//   // pub fn vec(&self, Sol: &mut Vector, Pnt: &Point);
-//
-
 // ========================
 // From BRepBlend_AppFuncRoot.hxx
 // ========================
@@ -660,6 +666,24 @@ impl AppFuncRoot {
         }
     }
 
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:157 - `BRepBlend_AppFuncRoot::Point()`
+    pub fn point(
+        &self,
+        Func: &crate::blend::AppFunction,
+        Param: f64,
+        Sol: &crate::ffi::math_Vector,
+        Pnt: &mut crate::blend::Point,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRoot_point(self as *const Self, Func, Param, Sol, Pnt)
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:162 - `BRepBlend_AppFuncRoot::Vec()`
+    pub fn vec(&self, Sol: &mut crate::ffi::math_Vector, Pnt: &crate::blend::Point) {
+        unsafe { crate::ffi::BRepBlend_AppFuncRoot_vec(self as *const Self, Sol, Pnt) }
+    }
+
     /// **Source:** `BRepBlend_AppFuncRoot.hxx`:164 - `BRepBlend_AppFuncRoot::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepBlend_AppFuncRoot_dynamic_type(self as *const Self)) }
@@ -853,16 +877,6 @@ impl HandleBRepBlendAppFuncRoot {
     }
 }
 
-// ── Skipped symbols for AppFuncRoot (2 total) ──
-// SKIPPED: **Source:** `BRepBlend_AppFuncRoot.hxx`:157 - `BRepBlend_AppFuncRoot::Point`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn point(&self, Func: &AppFunction, Param: f64, Sol: &Vector, Pnt: &mut Point);
-//
-// SKIPPED: **Source:** `BRepBlend_AppFuncRoot.hxx`:162 - `BRepBlend_AppFuncRoot::Vec`
-//   Reason: param 'Sol' uses unknown type 'math_Vector&'
-//   // pub fn vec(&self, Sol: &mut Vector, Pnt: &Point);
-//
-
 // ========================
 // From BRepBlend_AppFuncRst.hxx
 // ========================
@@ -892,6 +906,24 @@ impl AppFuncRst {
                 ),
             )
         }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRst.hxx`:43 - `BRepBlend_AppFuncRst::Point()`
+    pub fn point(
+        &self,
+        Func: &crate::blend::AppFunction,
+        Param: f64,
+        Sol: &crate::ffi::math_Vector,
+        Pnt: &mut crate::blend::Point,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRst_point(self as *const Self, Func, Param, Sol, Pnt)
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRst.hxx`:48 - `BRepBlend_AppFuncRst::Vec()`
+    pub fn vec(&self, Sol: &mut crate::ffi::math_Vector, Pnt: &crate::blend::Point) {
+        unsafe { crate::ffi::BRepBlend_AppFuncRst_vec(self as *const Self, Sol, Pnt) }
     }
 
     /// **Source:** `BRepBlend_AppFuncRst.hxx`:50 - `BRepBlend_AppFuncRst::DynamicType()`
@@ -1266,16 +1298,6 @@ impl HandleBRepBlendAppFuncRst {
     }
 }
 
-// ── Skipped symbols for AppFuncRst (2 total) ──
-// SKIPPED: **Source:** `BRepBlend_AppFuncRst.hxx`:43 - `BRepBlend_AppFuncRst::Point`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn point(&self, Func: &AppFunction, Param: f64, Sol: &Vector, Pnt: &mut Point);
-//
-// SKIPPED: **Source:** `BRepBlend_AppFuncRst.hxx`:48 - `BRepBlend_AppFuncRst::Vec`
-//   Reason: param 'Sol' uses unknown type 'math_Vector&'
-//   // pub fn vec(&self, Sol: &mut Vector, Pnt: &Point);
-//
-
 // ========================
 // From BRepBlend_AppFuncRstRst.hxx
 // ========================
@@ -1305,6 +1327,24 @@ impl AppFuncRstRst {
                 ),
             )
         }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:43 - `BRepBlend_AppFuncRstRst::Point()`
+    pub fn point(
+        &self,
+        Func: &crate::blend::AppFunction,
+        Param: f64,
+        Sol: &crate::ffi::math_Vector,
+        Pnt: &mut crate::blend::Point,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_point(self as *const Self, Func, Param, Sol, Pnt)
+        }
+    }
+
+    /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:48 - `BRepBlend_AppFuncRstRst::Vec()`
+    pub fn vec(&self, Sol: &mut crate::ffi::math_Vector, Pnt: &crate::blend::Point) {
+        unsafe { crate::ffi::BRepBlend_AppFuncRstRst_vec(self as *const Self, Sol, Pnt) }
     }
 
     /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:50 - `BRepBlend_AppFuncRstRst::DynamicType()`
@@ -1704,16 +1744,6 @@ impl HandleBRepBlendAppFuncRstRst {
         }
     }
 }
-
-// ── Skipped symbols for AppFuncRstRst (2 total) ──
-// SKIPPED: **Source:** `BRepBlend_AppFuncRstRst.hxx`:43 - `BRepBlend_AppFuncRstRst::Point`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn point(&self, Func: &AppFunction, Param: f64, Sol: &Vector, Pnt: &mut Point);
-//
-// SKIPPED: **Source:** `BRepBlend_AppFuncRstRst.hxx`:48 - `BRepBlend_AppFuncRstRst::Vec`
-//   Reason: param 'Sol' uses unknown type 'math_Vector&'
-//   // pub fn vec(&self, Sol: &mut Vector, Pnt: &Point);
-//
 
 // ========================
 // From BRepBlend_AppSurf.hxx
@@ -2479,6 +2509,35 @@ impl CSWalking {
         }
     }
 
+    /// **Source:** `BRepBlend_CSWalking.hxx`:52 - `BRepBlend_CSWalking::Perform()`
+    pub fn perform(
+        &mut self,
+        F: &mut crate::blend::CSFunction,
+        Pdep: f64,
+        Pmax: f64,
+        MaxStep: f64,
+        Tol3d: f64,
+        TolGuide: f64,
+        Soldep: &crate::ffi::math_Vector,
+        Fleche: f64,
+        Appro: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_CSWalking_perform(
+                self as *mut Self,
+                F,
+                Pdep,
+                Pmax,
+                MaxStep,
+                Tol3d,
+                TolGuide,
+                Soldep,
+                Fleche,
+                Appro,
+            )
+        }
+    }
+
     /// **Source:** `BRepBlend_CSWalking.hxx`:62 - `BRepBlend_CSWalking::Complete()`
     pub fn complete(&mut self, F: &mut crate::blend::CSFunction, Pmin: f64) -> bool {
         unsafe { crate::ffi::BRepBlend_CSWalking_complete(self as *mut Self, F, Pmin) }
@@ -2494,12 +2553,6 @@ impl CSWalking {
         unsafe { &*(crate::ffi::BRepBlend_CSWalking_line(self as *const Self)) }
     }
 }
-
-// ── Skipped symbols for CSWalking (1 total) ──
-// SKIPPED: **Source:** `BRepBlend_CSWalking.hxx`:52 - `BRepBlend_CSWalking::Perform`
-//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, F: &mut CSFunction, Pdep: f64, Pmax: f64, MaxStep: f64, Tol3d: f64, TolGuide: f64, Soldep: &Vector, Fleche: f64, Appro: bool);
-//
 
 // ========================
 // From BRepBlend_CurvPointRadInv.hxx
@@ -2548,10 +2601,82 @@ impl CurvPointRadInv {
         unsafe { crate::ffi::BRepBlend_CurvPointRadInv_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `BRepBlend_CurvPointRadInv.hxx`:58 - `BRepBlend_CurvPointRadInv::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BRepBlend_CurvPointRadInv_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BRepBlend_CurvPointRadInv.hxx`:64 - `BRepBlend_CurvPointRadInv::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_CurvPointRadInv_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BRepBlend_CurvPointRadInv.hxx`:70 - `BRepBlend_CurvPointRadInv::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_CurvPointRadInv_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `BRepBlend_CurvPointRadInv.hxx`:73 - `BRepBlend_CurvPointRadInv::Set()`
     /// Set the Point on which a solution has to be found.
     pub fn set_pnt(&mut self, P: &crate::gp::Pnt) {
         unsafe { crate::ffi::BRepBlend_CurvPointRadInv_set_pnt(self as *mut Self, P) }
+    }
+
+    /// **Source:** `BRepBlend_CurvPointRadInv.hxx`:78 - `BRepBlend_CurvPointRadInv::GetTolerance()`
+    /// Returns in the vector Tolerance the parametric tolerance
+    /// for each of the 3 variables;
+    /// Tol is the tolerance used in 3d space.
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BRepBlend_CurvPointRadInv_get_tolerance(self as *const Self, Tolerance, Tol)
+        }
+    }
+
+    /// **Source:** `BRepBlend_CurvPointRadInv.hxx`:84 - `BRepBlend_CurvPointRadInv::GetBounds()`
+    /// Returns in the vector InfBound the lowest values allowed
+    /// for each of the 3 variables.
+    /// Returns in the vector SupBound the greatest values allowed
+    /// for each of the 3 variables.
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_CurvPointRadInv_get_bounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_CurvPointRadInv.hxx`:88 - `BRepBlend_CurvPointRadInv::IsSolution()`
+    /// Returns Standard_True if Sol is a zero of the function.
+    /// Tol is the tolerance used in 3d space.
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BRepBlend_CurvPointRadInv_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// Upcast to Blend_CurvPointFuncInv
@@ -2616,49 +2741,6 @@ impl CurvPointRadInv {
         unsafe { crate::ffi::BRepBlend_CurvPointRadInv_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for CurvPointRadInv (6 total) ──
-// SKIPPED: **Source:** `BRepBlend_CurvPointRadInv.hxx`:58 - `BRepBlend_CurvPointRadInv::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_CurvPointRadInv.hxx`:64 - `BRepBlend_CurvPointRadInv::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_CurvPointRadInv.hxx`:70 - `BRepBlend_CurvPointRadInv::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_CurvPointRadInv.hxx`:78 - `BRepBlend_CurvPointRadInv::GetTolerance`
-//   method: Returns in the vector Tolerance the parametric tolerance
-//   method: for each of the 3 variables;
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BRepBlend_CurvPointRadInv.hxx`:84 - `BRepBlend_CurvPointRadInv::GetBounds`
-//   method: Returns in the vector InfBound the lowest values allowed
-//   method: for each of the 3 variables.
-//   method: Returns in the vector SupBound the greatest values allowed
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BRepBlend_CurvPointRadInv.hxx`:88 - `BRepBlend_CurvPointRadInv::IsSolution`
-//   method: Returns Standard_True if Sol is a zero of the function.
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
 
 // ========================
 // From BRepBlend_Extremity.hxx
@@ -3711,6 +3793,42 @@ impl RstRstConstRad {
         unsafe { crate::ffi::BRepBlend_RstRstConstRad_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:66 - `BRepBlend_RstRstConstRad::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:72 - `BRepBlend_RstRstConstRad::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:79 - `BRepBlend_RstRstConstRad::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:83 - `BRepBlend_RstRstConstRad::Set()`
     pub fn set_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d(
         &mut self,
@@ -3736,6 +3854,33 @@ impl RstRstConstRad {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         unsafe { crate::ffi::BRepBlend_RstRstConstRad_set_real2(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:96 - `BRepBlend_RstRstConstRad::GetTolerance()`
+    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_get_tolerance_vector_real(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:99 - `BRepBlend_RstRstConstRad::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_get_bounds(self as *const Self, InfBound, SupBound)
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:102 - `BRepBlend_RstRstConstRad::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BRepBlend_RstRstConstRad_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:107 - `BRepBlend_RstRstConstRad::GetMinimalDistance()`
@@ -3803,6 +3948,30 @@ impl RstRstConstRad {
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:134 - `BRepBlend_RstRstConstRad::Tangent2dOnRst2()`
     pub fn tangent2d_on_rst2(&self) -> &crate::gp::Vec2d {
         unsafe { &*(crate::ffi::BRepBlend_RstRstConstRad_tangent2d_on_rst2(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:138 - `BRepBlend_RstRstConstRad::Decroch()`
+    /// Permet  d ' implementer   un   critere  de  decrochage
+    /// specifique a la fonction.
+    pub fn decroch(
+        &self,
+        Sol: &crate::ffi::math_Vector,
+        NRst1: &mut crate::gp::Vec,
+        TgRst1: &mut crate::gp::Vec,
+        NRst2: &mut crate::gp::Vec,
+        TgRst2: &mut crate::gp::Vec,
+    ) -> crate::blend::DecrochStatus {
+        unsafe {
+            crate::blend::DecrochStatus::try_from(crate::ffi::BRepBlend_RstRstConstRad_decroch(
+                self as *const Self,
+                Sol,
+                NRst1,
+                TgRst1,
+                NRst2,
+                TgRst2,
+            ))
+            .unwrap()
+        }
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:144 - `BRepBlend_RstRstConstRad::Set()`
@@ -3922,6 +4091,32 @@ impl RstRstConstRad {
                 NbKnots,
                 Degree,
                 NbPoles2d,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:196 - `BRepBlend_RstRstConstRad::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to respect
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance_real3_vector2(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::math_Vector,
+        Tol1D: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_get_tolerance_real3_vector2(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+                Tol1D,
             )
         }
     }
@@ -4086,54 +4281,6 @@ impl RstRstConstRad {
     }
 }
 
-// ── Skipped symbols for RstRstConstRad (8 total) ──
-// SKIPPED: **Source:** `BRepBlend_RstRstConstRad.hxx`:66 - `BRepBlend_RstRstConstRad::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_RstRstConstRad.hxx`:72 - `BRepBlend_RstRstConstRad::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_RstRstConstRad.hxx`:79 - `BRepBlend_RstRstConstRad::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_RstRstConstRad.hxx`:96 - `BRepBlend_RstRstConstRad::GetTolerance`
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BRepBlend_RstRstConstRad.hxx`:99 - `BRepBlend_RstRstConstRad::GetBounds`
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BRepBlend_RstRstConstRad.hxx`:102 - `BRepBlend_RstRstConstRad::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_RstRstConstRad.hxx`:138 - `BRepBlend_RstRstConstRad::Decroch`
-//   method: Permet  d ' implementer   un   critere  de  decrochage
-//   method: specifique a la fonction.
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn decroch(&self, Sol: &Vector, NRst1: &mut Vec, TgRst1: &mut Vec, NRst2: &mut Vec, TgRst2: &mut Vec) -> OwnedPtr<Blend_DecrochStatus>;
-//
-// SKIPPED: **Source:** `BRepBlend_RstRstConstRad.hxx`:196 - `BRepBlend_RstRstConstRad::GetTolerance`
-//   method: Returns the tolerance to reach in approximation
-//   method: to respect
-//   method: BoundTol error at the Boundary
-//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
-//
-
 // ========================
 // From BRepBlend_RstRstEvolRad.hxx
 // ========================
@@ -4176,6 +4323,42 @@ impl RstRstEvolRad {
         unsafe { crate::ffi::BRepBlend_RstRstEvolRad_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:68 - `BRepBlend_RstRstEvolRad::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:74 - `BRepBlend_RstRstEvolRad::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:81 - `BRepBlend_RstRstEvolRad::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:85 - `BRepBlend_RstRstEvolRad::Set()`
     pub fn set_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d(
         &mut self,
@@ -4201,6 +4384,33 @@ impl RstRstEvolRad {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         unsafe { crate::ffi::BRepBlend_RstRstEvolRad_set_real2(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:98 - `BRepBlend_RstRstEvolRad::GetTolerance()`
+    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_get_tolerance_vector_real(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:101 - `BRepBlend_RstRstEvolRad::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_get_bounds(self as *const Self, InfBound, SupBound)
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:104 - `BRepBlend_RstRstEvolRad::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BRepBlend_RstRstEvolRad_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:109 - `BRepBlend_RstRstEvolRad::GetMinimalDistance()`
@@ -4268,6 +4478,30 @@ impl RstRstEvolRad {
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:136 - `BRepBlend_RstRstEvolRad::Tangent2dOnRst2()`
     pub fn tangent2d_on_rst2(&self) -> &crate::gp::Vec2d {
         unsafe { &*(crate::ffi::BRepBlend_RstRstEvolRad_tangent2d_on_rst2(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:140 - `BRepBlend_RstRstEvolRad::Decroch()`
+    /// Enables  implementation of a criterion  of  decrochage
+    /// specific to the function.
+    pub fn decroch(
+        &self,
+        Sol: &crate::ffi::math_Vector,
+        NRst1: &mut crate::gp::Vec,
+        TgRst1: &mut crate::gp::Vec,
+        NRst2: &mut crate::gp::Vec,
+        TgRst2: &mut crate::gp::Vec,
+    ) -> crate::blend::DecrochStatus {
+        unsafe {
+            crate::blend::DecrochStatus::try_from(crate::ffi::BRepBlend_RstRstEvolRad_decroch(
+                self as *const Self,
+                Sol,
+                NRst1,
+                TgRst1,
+                NRst2,
+                TgRst2,
+            ))
+            .unwrap()
+        }
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:146 - `BRepBlend_RstRstEvolRad::Set()`
@@ -4385,6 +4619,32 @@ impl RstRstEvolRad {
                 NbKnots,
                 Degree,
                 NbPoles2d,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:198 - `BRepBlend_RstRstEvolRad::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to respect
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance_real3_vector2(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::math_Vector,
+        Tol1D: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_get_tolerance_real3_vector2(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+                Tol1D,
             )
         }
     }
@@ -4553,54 +4813,6 @@ impl RstRstEvolRad {
     }
 }
 
-// ── Skipped symbols for RstRstEvolRad (8 total) ──
-// SKIPPED: **Source:** `BRepBlend_RstRstEvolRad.hxx`:68 - `BRepBlend_RstRstEvolRad::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_RstRstEvolRad.hxx`:74 - `BRepBlend_RstRstEvolRad::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_RstRstEvolRad.hxx`:81 - `BRepBlend_RstRstEvolRad::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_RstRstEvolRad.hxx`:98 - `BRepBlend_RstRstEvolRad::GetTolerance`
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BRepBlend_RstRstEvolRad.hxx`:101 - `BRepBlend_RstRstEvolRad::GetBounds`
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BRepBlend_RstRstEvolRad.hxx`:104 - `BRepBlend_RstRstEvolRad::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_RstRstEvolRad.hxx`:140 - `BRepBlend_RstRstEvolRad::Decroch`
-//   method: Enables  implementation of a criterion  of  decrochage
-//   method: specific to the function.
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn decroch(&self, Sol: &Vector, NRst1: &mut Vec, TgRst1: &mut Vec, NRst2: &mut Vec, TgRst2: &mut Vec) -> OwnedPtr<Blend_DecrochStatus>;
-//
-// SKIPPED: **Source:** `BRepBlend_RstRstEvolRad.hxx`:198 - `BRepBlend_RstRstEvolRad::GetTolerance`
-//   method: Returns the tolerance to reach in approximation
-//   method: to respect
-//   method: BoundTol error at the Boundary
-//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
-//
-
 // ========================
 // From BRepBlend_RstRstLineBuilder.hxx
 // ========================
@@ -4658,6 +4870,86 @@ impl RstRstLineBuilder {
         }
     }
 
+    /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:77 - `BRepBlend_RstRstLineBuilder::Perform()`
+    pub fn perform(
+        &mut self,
+        Func: &mut crate::blend::RstRstFunction,
+        Finv1: &mut crate::blend::SurfCurvFuncInv,
+        FinvP1: &mut crate::blend::CurvPointFuncInv,
+        Finv2: &mut crate::blend::SurfCurvFuncInv,
+        FinvP2: &mut crate::blend::CurvPointFuncInv,
+        Pdep: f64,
+        Pmax: f64,
+        MaxStep: f64,
+        Tol3d: f64,
+        TolGuide: f64,
+        Soldep: &crate::ffi::math_Vector,
+        Fleche: f64,
+        Appro: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstLineBuilder_perform(
+                self as *mut Self,
+                Func,
+                Finv1,
+                FinvP1,
+                Finv2,
+                FinvP2,
+                Pdep,
+                Pmax,
+                MaxStep,
+                Tol3d,
+                TolGuide,
+                Soldep,
+                Fleche,
+                Appro,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:91 - `BRepBlend_RstRstLineBuilder::PerformFirstSection()`
+    pub fn perform_first_section(
+        &mut self,
+        Func: &mut crate::blend::RstRstFunction,
+        Finv1: &mut crate::blend::SurfCurvFuncInv,
+        FinvP1: &mut crate::blend::CurvPointFuncInv,
+        Finv2: &mut crate::blend::SurfCurvFuncInv,
+        FinvP2: &mut crate::blend::CurvPointFuncInv,
+        Pdep: f64,
+        Pmax: f64,
+        Soldep: &crate::ffi::math_Vector,
+        Tol3d: f64,
+        TolGuide: f64,
+        RecRst1: bool,
+        RecP1: bool,
+        RecRst2: bool,
+        RecP2: bool,
+        Psol: &mut f64,
+        ParSol: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_RstRstLineBuilder_perform_first_section(
+                self as *mut Self,
+                Func,
+                Finv1,
+                FinvP1,
+                Finv2,
+                FinvP2,
+                Pdep,
+                Pmax,
+                Soldep,
+                Tol3d,
+                TolGuide,
+                RecRst1,
+                RecP1,
+                RecRst2,
+                RecP2,
+                Psol,
+                ParSol,
+            )
+        }
+    }
+
     /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:108 - `BRepBlend_RstRstLineBuilder::Complete()`
     pub fn complete(
         &mut self,
@@ -4712,16 +5004,6 @@ impl RstRstLineBuilder {
     }
 }
 
-// ── Skipped symbols for RstRstLineBuilder (2 total) ──
-// SKIPPED: **Source:** `BRepBlend_RstRstLineBuilder.hxx`:77 - `BRepBlend_RstRstLineBuilder::Perform`
-//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Func: &mut RstRstFunction, Finv1: &mut SurfCurvFuncInv, FinvP1: &mut CurvPointFuncInv, Finv2: &mut SurfCurvFuncInv, FinvP2: &mut CurvPointFuncInv, Pdep: f64, Pmax: f64, MaxStep: f64, Tol3d: f64, TolGuide: f64, Soldep: &Vector, Fleche: f64, Appro: bool);
-//
-// SKIPPED: **Source:** `BRepBlend_RstRstLineBuilder.hxx`:91 - `BRepBlend_RstRstLineBuilder::PerformFirstSection`
-//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
-//   // pub fn perform_first_section(&mut self, Func: &mut RstRstFunction, Finv1: &mut SurfCurvFuncInv, FinvP1: &mut CurvPointFuncInv, Finv2: &mut SurfCurvFuncInv, FinvP2: &mut CurvPointFuncInv, Pdep: f64, Pmax: f64, Soldep: &Vector, Tol3d: f64, TolGuide: f64, RecRst1: bool, RecP1: bool, RecRst2: bool, RecP2: bool, Psol: &mut f64, ParSol: &mut Vector) -> bool;
-//
-
 // ========================
 // From BRepBlend_SurfCurvConstRadInv.hxx
 // ========================
@@ -4771,6 +5053,42 @@ impl SurfCurvConstRadInv {
         unsafe { crate::ffi::BRepBlend_SurfCurvConstRadInv_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:55 - `BRepBlend_SurfCurvConstRadInv::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfCurvConstRadInv_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:61 - `BRepBlend_SurfCurvConstRadInv::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfCurvConstRadInv_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:67 - `BRepBlend_SurfCurvConstRadInv::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfCurvConstRadInv_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:70 - `BRepBlend_SurfCurvConstRadInv::Set()`
     /// Set the restriction on which a solution has to be found.
     pub fn set_handleadaptor2dcurve2d(&mut self, Rst: &crate::ffi::HandleAdaptor2dCurve2d) {
@@ -4779,6 +5097,48 @@ impl SurfCurvConstRadInv {
                 self as *mut Self,
                 Rst,
             )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:75 - `BRepBlend_SurfCurvConstRadInv::GetTolerance()`
+    /// Returns in the vector Tolerance the parametric tolerance
+    /// for each of the 3 variables;
+    /// Tol is the tolerance used in 3d space.
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfCurvConstRadInv_get_tolerance(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:81 - `BRepBlend_SurfCurvConstRadInv::GetBounds()`
+    /// Returns in the vector InfBound the lowest values allowed
+    /// for each of the 3 variables.
+    /// Returns in the vector SupBound the greatest values allowed
+    /// for each of the 3 variables.
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfCurvConstRadInv_get_bounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:85 - `BRepBlend_SurfCurvConstRadInv::IsSolution()`
+    /// Returns Standard_True if Sol is a zero of the function.
+    /// Tol is the tolerance used in 3d space.
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_SurfCurvConstRadInv_is_solution(self as *mut Self, Sol, Tol)
         }
     }
 
@@ -4853,49 +5213,6 @@ impl SurfCurvConstRadInv {
     }
 }
 
-// ── Skipped symbols for SurfCurvConstRadInv (6 total) ──
-// SKIPPED: **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:55 - `BRepBlend_SurfCurvConstRadInv::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:61 - `BRepBlend_SurfCurvConstRadInv::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:67 - `BRepBlend_SurfCurvConstRadInv::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:75 - `BRepBlend_SurfCurvConstRadInv::GetTolerance`
-//   method: Returns in the vector Tolerance the parametric tolerance
-//   method: for each of the 3 variables;
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:81 - `BRepBlend_SurfCurvConstRadInv::GetBounds`
-//   method: Returns in the vector InfBound the lowest values allowed
-//   method: for each of the 3 variables.
-//   method: Returns in the vector SupBound the greatest values allowed
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:85 - `BRepBlend_SurfCurvConstRadInv::IsSolution`
-//   method: Returns Standard_True if Sol is a zero of the function.
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-
 // ========================
 // From BRepBlend_SurfCurvEvolRadInv.hxx
 // ========================
@@ -4944,6 +5261,42 @@ impl SurfCurvEvolRadInv {
         unsafe { crate::ffi::BRepBlend_SurfCurvEvolRadInv_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:57 - `BRepBlend_SurfCurvEvolRadInv::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfCurvEvolRadInv_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:63 - `BRepBlend_SurfCurvEvolRadInv::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfCurvEvolRadInv_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:69 - `BRepBlend_SurfCurvEvolRadInv::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfCurvEvolRadInv_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:72 - `BRepBlend_SurfCurvEvolRadInv::Set()`
     /// Set the restriction on which a solution has to be found.
     pub fn set_handleadaptor2dcurve2d(&mut self, Rst: &crate::ffi::HandleAdaptor2dCurve2d) {
@@ -4953,6 +5306,46 @@ impl SurfCurvEvolRadInv {
                 Rst,
             )
         }
+    }
+
+    /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:77 - `BRepBlend_SurfCurvEvolRadInv::GetTolerance()`
+    /// Returns in the vector Tolerance the parametric tolerance
+    /// for each of the 3 variables;
+    /// Tol is the tolerance used in 3d space.
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfCurvEvolRadInv_get_tolerance(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:83 - `BRepBlend_SurfCurvEvolRadInv::GetBounds()`
+    /// Returns in the vector InfBound the lowest values allowed
+    /// for each of the 3 variables.
+    /// Returns in the vector SupBound the greatest values allowed
+    /// for each of the 3 variables.
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfCurvEvolRadInv_get_bounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:87 - `BRepBlend_SurfCurvEvolRadInv::IsSolution()`
+    /// Returns Standard_True if Sol is a zero of the function.
+    /// Tol is the tolerance used in 3d space.
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfCurvEvolRadInv_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// Upcast to Blend_SurfCurvFuncInv
@@ -5026,49 +5419,6 @@ impl SurfCurvEvolRadInv {
     }
 }
 
-// ── Skipped symbols for SurfCurvEvolRadInv (6 total) ──
-// SKIPPED: **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:57 - `BRepBlend_SurfCurvEvolRadInv::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:63 - `BRepBlend_SurfCurvEvolRadInv::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:69 - `BRepBlend_SurfCurvEvolRadInv::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:77 - `BRepBlend_SurfCurvEvolRadInv::GetTolerance`
-//   method: Returns in the vector Tolerance the parametric tolerance
-//   method: for each of the 3 variables;
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:83 - `BRepBlend_SurfCurvEvolRadInv::GetBounds`
-//   method: Returns in the vector InfBound the lowest values allowed
-//   method: for each of the 3 variables.
-//   method: Returns in the vector SupBound the greatest values allowed
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:87 - `BRepBlend_SurfCurvEvolRadInv::IsSolution`
-//   method: Returns Standard_True if Sol is a zero of the function.
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-
 // ========================
 // From BRepBlend_SurfPointConstRadInv.hxx
 // ========================
@@ -5115,10 +5465,88 @@ impl SurfPointConstRadInv {
         unsafe { crate::ffi::BRepBlend_SurfPointConstRadInv_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:53 - `BRepBlend_SurfPointConstRadInv::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfPointConstRadInv_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:59 - `BRepBlend_SurfPointConstRadInv::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfPointConstRadInv_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:65 - `BRepBlend_SurfPointConstRadInv::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfPointConstRadInv_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:68 - `BRepBlend_SurfPointConstRadInv::Set()`
     /// Set the Point on which a solution has to be found.
     pub fn set_pnt(&mut self, P: &crate::gp::Pnt) {
         unsafe { crate::ffi::BRepBlend_SurfPointConstRadInv_set_pnt(self as *mut Self, P) }
+    }
+
+    /// **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:73 - `BRepBlend_SurfPointConstRadInv::GetTolerance()`
+    /// Returns in the vector Tolerance the parametric tolerance
+    /// for each of the 3 variables;
+    /// Tol is the tolerance used in 3d space.
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfPointConstRadInv_get_tolerance(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:79 - `BRepBlend_SurfPointConstRadInv::GetBounds()`
+    /// Returns in the vector InfBound the lowest values allowed
+    /// for each of the 3 variables.
+    /// Returns in the vector SupBound the greatest values allowed
+    /// for each of the 3 variables.
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfPointConstRadInv_get_bounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:83 - `BRepBlend_SurfPointConstRadInv::IsSolution()`
+    /// Returns Standard_True if Sol is a zero of the function.
+    /// Tol is the tolerance used in 3d space.
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_SurfPointConstRadInv_is_solution(self as *mut Self, Sol, Tol)
+        }
     }
 
     /// Upcast to Blend_SurfPointFuncInv
@@ -5190,49 +5618,6 @@ impl SurfPointConstRadInv {
     }
 }
 
-// ── Skipped symbols for SurfPointConstRadInv (6 total) ──
-// SKIPPED: **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:53 - `BRepBlend_SurfPointConstRadInv::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:59 - `BRepBlend_SurfPointConstRadInv::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:65 - `BRepBlend_SurfPointConstRadInv::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:73 - `BRepBlend_SurfPointConstRadInv::GetTolerance`
-//   method: Returns in the vector Tolerance the parametric tolerance
-//   method: for each of the 3 variables;
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:79 - `BRepBlend_SurfPointConstRadInv::GetBounds`
-//   method: Returns in the vector InfBound the lowest values allowed
-//   method: for each of the 3 variables.
-//   method: Returns in the vector SupBound the greatest values allowed
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:83 - `BRepBlend_SurfPointConstRadInv::IsSolution`
-//   method: Returns Standard_True if Sol is a zero of the function.
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-
 // ========================
 // From BRepBlend_SurfPointEvolRadInv.hxx
 // ========================
@@ -5278,10 +5663,88 @@ impl SurfPointEvolRadInv {
         unsafe { crate::ffi::BRepBlend_SurfPointEvolRadInv_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:55 - `BRepBlend_SurfPointEvolRadInv::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfPointEvolRadInv_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:61 - `BRepBlend_SurfPointEvolRadInv::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfPointEvolRadInv_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:67 - `BRepBlend_SurfPointEvolRadInv::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfPointEvolRadInv_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:70 - `BRepBlend_SurfPointEvolRadInv::Set()`
     /// Set the Point on which a solution has to be found.
     pub fn set_pnt(&mut self, P: &crate::gp::Pnt) {
         unsafe { crate::ffi::BRepBlend_SurfPointEvolRadInv_set_pnt(self as *mut Self, P) }
+    }
+
+    /// **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:75 - `BRepBlend_SurfPointEvolRadInv::GetTolerance()`
+    /// Returns in the vector Tolerance the parametric tolerance
+    /// for each of the 3 variables;
+    /// Tol is the tolerance used in 3d space.
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfPointEvolRadInv_get_tolerance(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:81 - `BRepBlend_SurfPointEvolRadInv::GetBounds()`
+    /// Returns in the vector InfBound the lowest values allowed
+    /// for each of the 3 variables.
+    /// Returns in the vector SupBound the greatest values allowed
+    /// for each of the 3 variables.
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfPointEvolRadInv_get_bounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:85 - `BRepBlend_SurfPointEvolRadInv::IsSolution()`
+    /// Returns Standard_True if Sol is a zero of the function.
+    /// Tol is the tolerance used in 3d space.
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_SurfPointEvolRadInv_is_solution(self as *mut Self, Sol, Tol)
+        }
     }
 
     /// Upcast to Blend_SurfPointFuncInv
@@ -5355,49 +5818,6 @@ impl SurfPointEvolRadInv {
     }
 }
 
-// ── Skipped symbols for SurfPointEvolRadInv (6 total) ──
-// SKIPPED: **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:55 - `BRepBlend_SurfPointEvolRadInv::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:61 - `BRepBlend_SurfPointEvolRadInv::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:67 - `BRepBlend_SurfPointEvolRadInv::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:75 - `BRepBlend_SurfPointEvolRadInv::GetTolerance`
-//   method: Returns in the vector Tolerance the parametric tolerance
-//   method: for each of the 3 variables;
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:81 - `BRepBlend_SurfPointEvolRadInv::GetBounds`
-//   method: Returns in the vector InfBound the lowest values allowed
-//   method: for each of the 3 variables.
-//   method: Returns in the vector SupBound the greatest values allowed
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:85 - `BRepBlend_SurfPointEvolRadInv::IsSolution`
-//   method: Returns Standard_True if Sol is a zero of the function.
-//   method: Tol is the tolerance used in 3d space.
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-
 // ========================
 // From BRepBlend_SurfRstConstRad.hxx
 // ========================
@@ -5438,6 +5858,42 @@ impl SurfRstConstRad {
         unsafe { crate::ffi::BRepBlend_SurfRstConstRad_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:64 - `BRepBlend_SurfRstConstRad::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:70 - `BRepBlend_SurfRstConstRad::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:77 - `BRepBlend_SurfRstConstRad::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:81 - `BRepBlend_SurfRstConstRad::Set()`
     pub fn set_handleadaptor3dsurface_handleadaptor2dcurve2d(
         &mut self,
@@ -5465,6 +5921,37 @@ impl SurfRstConstRad {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         unsafe { crate::ffi::BRepBlend_SurfRstConstRad_set_real2(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:92 - `BRepBlend_SurfRstConstRad::GetTolerance()`
+    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_get_tolerance_vector_real(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:95 - `BRepBlend_SurfRstConstRad::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_get_bounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:98 - `BRepBlend_SurfRstConstRad::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:103 - `BRepBlend_SurfRstConstRad::GetMinimalDistance()`
@@ -5526,6 +6013,20 @@ impl SurfRstConstRad {
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:127 - `BRepBlend_SurfRstConstRad::Tangent2dOnRst()`
     pub fn tangent2d_on_rst(&self) -> &crate::gp::Vec2d {
         unsafe { &*(crate::ffi::BRepBlend_SurfRstConstRad_tangent2d_on_rst(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:133 - `BRepBlend_SurfRstConstRad::Decroch()`
+    /// Enables  implementation  of  a criterion of  decrochage
+    /// specific to  the function.
+    /// Warning: Can  be  called  without  previous  call  of  issolution
+    /// but the values  calculated can  be  senseless.
+    pub fn decroch(
+        &self,
+        Sol: &crate::ffi::math_Vector,
+        NS: &mut crate::gp::Vec,
+        TgS: &mut crate::gp::Vec,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfRstConstRad_decroch(self as *const Self, Sol, NS, TgS) }
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:137 - `BRepBlend_SurfRstConstRad::Set()`
@@ -5624,6 +6125,32 @@ impl SurfRstConstRad {
                 NbKnots,
                 Degree,
                 NbPoles2d,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:182 - `BRepBlend_SurfRstConstRad::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to respect
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance_real3_vector2(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::math_Vector,
+        Tol1D: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_get_tolerance_real3_vector2(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+                Tol1D,
             )
         }
     }
@@ -5792,55 +6319,6 @@ impl SurfRstConstRad {
     }
 }
 
-// ── Skipped symbols for SurfRstConstRad (8 total) ──
-// SKIPPED: **Source:** `BRepBlend_SurfRstConstRad.hxx`:64 - `BRepBlend_SurfRstConstRad::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfRstConstRad.hxx`:70 - `BRepBlend_SurfRstConstRad::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfRstConstRad.hxx`:77 - `BRepBlend_SurfRstConstRad::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfRstConstRad.hxx`:92 - `BRepBlend_SurfRstConstRad::GetTolerance`
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BRepBlend_SurfRstConstRad.hxx`:95 - `BRepBlend_SurfRstConstRad::GetBounds`
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BRepBlend_SurfRstConstRad.hxx`:98 - `BRepBlend_SurfRstConstRad::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfRstConstRad.hxx`:133 - `BRepBlend_SurfRstConstRad::Decroch`
-//   method: Enables  implementation  of  a criterion of  decrochage
-//   method: specific to  the function.
-//   method: Warning: Can  be  called  without  previous  call  of  issolution
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn decroch(&self, Sol: &Vector, NS: &mut Vec, TgS: &mut Vec) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfRstConstRad.hxx`:182 - `BRepBlend_SurfRstConstRad::GetTolerance`
-//   method: Returns the tolerance to reach in approximation
-//   method: to respect
-//   method: BoundTol error at the Boundary
-//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
-//
-
 // ========================
 // From BRepBlend_SurfRstEvolRad.hxx
 // ========================
@@ -5882,6 +6360,42 @@ impl SurfRstEvolRad {
         unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:66 - `BRepBlend_SurfRstEvolRad::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:72 - `BRepBlend_SurfRstEvolRad::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:79 - `BRepBlend_SurfRstEvolRad::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:83 - `BRepBlend_SurfRstEvolRad::Set()`
     pub fn set_handleadaptor3dsurface_handleadaptor2dcurve2d(
         &mut self,
@@ -5909,6 +6423,33 @@ impl SurfRstEvolRad {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_set_real2(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:94 - `BRepBlend_SurfRstEvolRad::GetTolerance()`
+    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_get_tolerance_vector_real(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:97 - `BRepBlend_SurfRstEvolRad::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_get_bounds(self as *const Self, InfBound, SupBound)
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:100 - `BRepBlend_SurfRstEvolRad::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:105 - `BRepBlend_SurfRstEvolRad::GetMinimalDistance()`
@@ -5970,6 +6511,18 @@ impl SurfRstEvolRad {
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:129 - `BRepBlend_SurfRstEvolRad::Tangent2dOnRst()`
     pub fn tangent2d_on_rst(&self) -> &crate::gp::Vec2d {
         unsafe { &*(crate::ffi::BRepBlend_SurfRstEvolRad_tangent2d_on_rst(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:133 - `BRepBlend_SurfRstEvolRad::Decroch()`
+    /// Permet  d ' implementer   un   critere  de  decrochage
+    /// specifique a la fonction.
+    pub fn decroch(
+        &self,
+        Sol: &crate::ffi::math_Vector,
+        NS: &mut crate::gp::Vec,
+        TgS: &mut crate::gp::Vec,
+    ) -> bool {
+        unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_decroch(self as *const Self, Sol, NS, TgS) }
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:137 - `BRepBlend_SurfRstEvolRad::Set()`
@@ -6066,6 +6619,32 @@ impl SurfRstEvolRad {
                 NbKnots,
                 Degree,
                 NbPoles2d,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:182 - `BRepBlend_SurfRstEvolRad::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to respect
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance_real3_vector2(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::math_Vector,
+        Tol1D: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_get_tolerance_real3_vector2(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+                Tol1D,
             )
         }
     }
@@ -6230,54 +6809,6 @@ impl SurfRstEvolRad {
     }
 }
 
-// ── Skipped symbols for SurfRstEvolRad (8 total) ──
-// SKIPPED: **Source:** `BRepBlend_SurfRstEvolRad.hxx`:66 - `BRepBlend_SurfRstEvolRad::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfRstEvolRad.hxx`:72 - `BRepBlend_SurfRstEvolRad::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfRstEvolRad.hxx`:79 - `BRepBlend_SurfRstEvolRad::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfRstEvolRad.hxx`:94 - `BRepBlend_SurfRstEvolRad::GetTolerance`
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BRepBlend_SurfRstEvolRad.hxx`:97 - `BRepBlend_SurfRstEvolRad::GetBounds`
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BRepBlend_SurfRstEvolRad.hxx`:100 - `BRepBlend_SurfRstEvolRad::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfRstEvolRad.hxx`:133 - `BRepBlend_SurfRstEvolRad::Decroch`
-//   method: Permet  d ' implementer   un   critere  de  decrochage
-//   method: specifique a la fonction.
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn decroch(&self, Sol: &Vector, NS: &mut Vec, TgS: &mut Vec) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfRstEvolRad.hxx`:182 - `BRepBlend_SurfRstEvolRad::GetTolerance`
-//   method: Returns the tolerance to reach in approximation
-//   method: to respect
-//   method: BoundTol error at the Boundary
-//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
-//
-
 // ========================
 // From BRepBlend_SurfRstLineBuilder.hxx
 // ========================
@@ -6333,6 +6864,84 @@ impl SurfRstLineBuilder {
         }
     }
 
+    /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:76 - `BRepBlend_SurfRstLineBuilder::Perform()`
+    pub fn perform(
+        &mut self,
+        Func: &mut crate::blend::SurfRstFunction,
+        Finv: &mut crate::blend::FuncInv,
+        FinvP: &mut crate::blend::SurfPointFuncInv,
+        FinvC: &mut crate::blend::SurfCurvFuncInv,
+        Pdep: f64,
+        Pmax: f64,
+        MaxStep: f64,
+        Tol3d: f64,
+        Tol2d: f64,
+        TolGuide: f64,
+        Soldep: &crate::ffi::math_Vector,
+        Fleche: f64,
+        Appro: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstLineBuilder_perform(
+                self as *mut Self,
+                Func,
+                Finv,
+                FinvP,
+                FinvC,
+                Pdep,
+                Pmax,
+                MaxStep,
+                Tol3d,
+                Tol2d,
+                TolGuide,
+                Soldep,
+                Fleche,
+                Appro,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:90 - `BRepBlend_SurfRstLineBuilder::PerformFirstSection()`
+    pub fn perform_first_section(
+        &mut self,
+        Func: &mut crate::blend::SurfRstFunction,
+        Finv: &mut crate::blend::FuncInv,
+        FinvP: &mut crate::blend::SurfPointFuncInv,
+        FinvC: &mut crate::blend::SurfCurvFuncInv,
+        Pdep: f64,
+        Pmax: f64,
+        Soldep: &crate::ffi::math_Vector,
+        Tol3d: f64,
+        Tol2d: f64,
+        TolGuide: f64,
+        RecRst: bool,
+        RecP: bool,
+        RecS: bool,
+        Psol: &mut f64,
+        ParSol: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstLineBuilder_perform_first_section(
+                self as *mut Self,
+                Func,
+                Finv,
+                FinvP,
+                FinvC,
+                Pdep,
+                Pmax,
+                Soldep,
+                Tol3d,
+                Tol2d,
+                TolGuide,
+                RecRst,
+                RecP,
+                RecS,
+                Psol,
+                ParSol,
+            )
+        }
+    }
+
     /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:106 - `BRepBlend_SurfRstLineBuilder::Complete()`
     pub fn complete(
         &mut self,
@@ -6350,6 +6959,27 @@ impl SurfRstLineBuilder {
                 FinvP,
                 FinvC,
                 Pmin,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:112 - `BRepBlend_SurfRstLineBuilder::ArcToRecadre()`
+    pub fn arc_to_recadre(
+        &mut self,
+        Sol: &crate::ffi::math_Vector,
+        PrevIndex: i32,
+        pt2d: &mut crate::gp::Pnt2d,
+        lastpt2d: &mut crate::gp::Pnt2d,
+        ponarc: &mut f64,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::BRepBlend_SurfRstLineBuilder_arc_to_recadre(
+                self as *mut Self,
+                Sol,
+                PrevIndex,
+                pt2d,
+                lastpt2d,
+                ponarc,
             )
         }
     }
@@ -6374,20 +7004,6 @@ impl SurfRstLineBuilder {
         unsafe { crate::ffi::BRepBlend_SurfRstLineBuilder_decroch_end(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for SurfRstLineBuilder (3 total) ──
-// SKIPPED: **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:76 - `BRepBlend_SurfRstLineBuilder::Perform`
-//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Func: &mut SurfRstFunction, Finv: &mut FuncInv, FinvP: &mut SurfPointFuncInv, FinvC: &mut SurfCurvFuncInv, Pdep: f64, Pmax: f64, MaxStep: f64, Tol3d: f64, Tol2d: f64, TolGuide: f64, Soldep: &Vector, Fleche: f64, Appro: bool);
-//
-// SKIPPED: **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:90 - `BRepBlend_SurfRstLineBuilder::PerformFirstSection`
-//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
-//   // pub fn perform_first_section(&mut self, Func: &mut SurfRstFunction, Finv: &mut FuncInv, FinvP: &mut SurfPointFuncInv, FinvC: &mut SurfCurvFuncInv, Pdep: f64, Pmax: f64, Soldep: &Vector, Tol3d: f64, Tol2d: f64, TolGuide: f64, RecRst: bool, RecP: bool, RecS: bool, Psol: &mut f64, ParSol: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:112 - `BRepBlend_SurfRstLineBuilder::ArcToRecadre`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn arc_to_recadre(&mut self, Sol: &Vector, PrevIndex: i32, pt2d: &mut Pnt2d, lastpt2d: &mut Pnt2d, ponarc: &mut f64) -> i32;
-//
 
 // ========================
 // From BRepBlend_Walking.hxx
@@ -6436,6 +7052,87 @@ impl Walking {
     /// To define singular points computed before walking.
     pub fn add_singular_point(&mut self, P: &crate::blend::Point) {
         unsafe { crate::ffi::BRepBlend_Walking_add_singular_point(self as *mut Self, P) }
+    }
+
+    /// **Source:** `BRepBlend_Walking.hxx`:63 - `BRepBlend_Walking::Perform()`
+    pub fn perform(
+        &mut self,
+        F: &mut crate::blend::Function,
+        FInv: &mut crate::blend::FuncInv,
+        Pdep: f64,
+        Pmax: f64,
+        MaxStep: f64,
+        Tol3d: f64,
+        TolGuide: f64,
+        Soldep: &crate::ffi::math_Vector,
+        Fleche: f64,
+        Appro: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepBlend_Walking_perform(
+                self as *mut Self,
+                F,
+                FInv,
+                Pdep,
+                Pmax,
+                MaxStep,
+                Tol3d,
+                TolGuide,
+                Soldep,
+                Fleche,
+                Appro,
+            )
+        }
+    }
+
+    /// **Source:** `BRepBlend_Walking.hxx`:74 - `BRepBlend_Walking::PerformFirstSection()`
+    pub fn perform_first_section_function_real_vector_real2_state2(
+        &mut self,
+        F: &mut crate::blend::Function,
+        Pdep: f64,
+        ParDep: &mut crate::ffi::math_Vector,
+        Tol3d: f64,
+        TolGuide: f64,
+        Pos1: &mut crate::top_abs::State,
+        Pos2: &mut crate::top_abs::State,
+    ) -> bool {
+        let mut Pos1_i32_: i32 = (*Pos1).into();
+        let mut Pos2_i32_: i32 = (*Pos2).into();
+        let result_ = unsafe {
+            crate::ffi::BRepBlend_Walking_perform_first_section_function_real_vector_real2_state2(
+                self as *mut Self,
+                F,
+                Pdep,
+                ParDep,
+                Tol3d,
+                TolGuide,
+                &mut Pos1_i32_,
+                &mut Pos2_i32_,
+            )
+        };
+        *Pos1 = crate::top_abs::State::try_from(Pos1_i32_).unwrap();
+        *Pos2 = crate::top_abs::State::try_from(Pos2_i32_).unwrap();
+        result_
+    }
+
+    /// **Source:** `BRepBlend_Walking.hxx`:82 - `BRepBlend_Walking::PerformFirstSection()`
+    pub fn perform_first_section_function_funcinv_real2_vector_real2_bool2_real_vector(
+        &mut self,
+        F: &mut crate::blend::Function,
+        FInv: &mut crate::blend::FuncInv,
+        Pdep: f64,
+        Pmax: f64,
+        ParDep: &crate::ffi::math_Vector,
+        Tol3d: f64,
+        TolGuide: f64,
+        RecOnS1: bool,
+        RecOnS2: bool,
+        Psol: &mut f64,
+        ParSol: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepBlend_Walking_perform_first_section_function_funcinv_real2_vector_real2_bool2_real_vector(self as *mut Self, F, FInv, Pdep, Pmax, ParDep, Tol3d, TolGuide, RecOnS1, RecOnS2, Psol, ParSol)
+        }
     }
 
     /// **Source:** `BRepBlend_Walking.hxx`:94 - `BRepBlend_Walking::Continu()`
@@ -6524,17 +7221,3 @@ impl Walking {
         unsafe { &*(crate::ffi::BRepBlend_Walking_line(self as *const Self)) }
     }
 }
-
-// ── Skipped symbols for Walking (3 total) ──
-// SKIPPED: **Source:** `BRepBlend_Walking.hxx`:63 - `BRepBlend_Walking::Perform`
-//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, F: &mut Function, FInv: &mut FuncInv, Pdep: f64, Pmax: f64, MaxStep: f64, Tol3d: f64, TolGuide: f64, Soldep: &Vector, Fleche: f64, Appro: bool);
-//
-// SKIPPED: **Source:** `BRepBlend_Walking.hxx`:74 - `BRepBlend_Walking::PerformFirstSection`
-//   Reason: param 'ParDep' uses unknown type 'math_Vector&'
-//   // pub fn perform_first_section(&mut self, F: &mut Function, Pdep: f64, ParDep: &mut Vector, Tol3d: f64, TolGuide: f64, Pos1: &mut State, Pos2: &mut State) -> bool;
-//
-// SKIPPED: **Source:** `BRepBlend_Walking.hxx`:82 - `BRepBlend_Walking::PerformFirstSection`
-//   Reason: param 'ParDep' uses unknown type 'const math_Vector&'
-//   // pub fn perform_first_section(&mut self, F: &mut Function, FInv: &mut FuncInv, Pdep: f64, Pmax: f64, ParDep: &Vector, Tol3d: f64, TolGuide: f64, RecOnS1: bool, RecOnS2: bool, Psol: &mut f64, ParSol: &mut Vector) -> bool;
-//

@@ -134,13 +134,20 @@ impl Approx {
     pub fn value(&self, Index: i32) -> &crate::app_par_curves::MultiBSpCurve {
         unsafe { &*(crate::ffi::BRepApprox_Approx_value(self as *const Self, Index)) }
     }
-}
 
-// ── Skipped symbols for Approx (1 total) ──
-// SKIPPED: **Source:** `BRepApprox_Approx.hxx`:125 - `BRepApprox_Approx::Parameters`
-//   Reason: param 'TheParameters' uses unknown type 'math_Vector&'
-//   // pub fn parameters(Line: &TheMultiLineOfApprox, firstP: i32, lastP: i32, Par: ParametrizationType, TheParameters: &mut Vector);
-//
+    /// **Source:** `BRepApprox_Approx.hxx`:125 - `BRepApprox_Approx::Parameters()`
+    pub fn parameters(
+        Line: &TheMultiLineOfApprox,
+        firstP: i32,
+        lastP: i32,
+        Par: crate::approx::ParametrizationType,
+        TheParameters: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepApprox_Approx_parameters(Line, firstP, lastP, Par.into(), TheParameters)
+        }
+    }
+}
 
 // ========================
 // From BRepApprox_ApproxLine.hxx
@@ -342,6 +349,38 @@ unsafe impl crate::CppDeletable for BSpGradient_BFGSOfMyBSplGradientOfTheCompute
 }
 
 impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
+    /// **Source:** `BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:38 - `BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox()`
+    pub fn new_multiplevarfunctionwithgradient_vector_real3_int(
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        Eps: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations))
+        }
+    }
+
+    /// **Source:** `BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:38 - `BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox()`
+    pub fn new_multiplevarfunctionwithgradient_vector_real3(
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        Eps: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiplevarfunctionwithgradient_vector_real3_int(
+            F,
+            StartingPoint,
+            Tolerance3d,
+            Tolerance2d,
+            Eps,
+            200,
+        )
+    }
+
     /// **Source:** `BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:46 - `BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox::IsSolutionReached()`
     pub fn is_solution_reached(
         &self,
@@ -366,10 +405,39 @@ impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
         }
     }
 
+    /// Inherited: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary()`
+    pub fn set_boundary(
+        &mut self,
+        theLeftBorder: &crate::ffi::math_Vector,
+        theRightBorder: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:67 - `math_BFGS::Perform()`
+    pub fn perform(
+        &mut self,
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Perform(self as *mut Self, F, StartingPoint)
+        }
+    }
+
     /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe {
             crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_IsDone(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
+    pub fn location(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Location(self as *const Self))
         }
     }
 
@@ -380,6 +448,13 @@ impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
         }
     }
 
+    /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
+    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Gradient(self as *const Self))
+        }
+    }
+
     /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
     pub fn nb_iterations(&self) -> i32 {
         unsafe {
@@ -387,12 +462,6 @@ impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
         }
     }
 }
-
-// ── Skipped symbols for BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox (1 total) ──
-// SKIPPED: **Source:** `BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:38 - `BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox`
-//   Reason: param 'StartingPoint' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiplevarfunctionwithgradient_vector_real3_int(F: &mut MultipleVarFunctionWithGradient, StartingPoint: &Vector, Tolerance3d: f64, Tolerance2d: f64, Eps: f64, NbIterations: i32) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx
@@ -410,12 +479,89 @@ unsafe impl crate::CppDeletable for BSpParFunctionOfMyBSplGradientOfTheComputeLi
 }
 
 impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:49 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox()`
+    /// initializes the fields of the function. The approximating
+    /// curve has <NbPol> control points.
+    pub fn new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int(
+        SSP: &TheMultiLineOfApprox,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &crate::ffi::math_Vector,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, NbPol))
+        }
+    }
+
     /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:61 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::NbVariables()`
     /// returns the number of variables of the function. It
     /// corresponds to the number of MultiPoints.
     pub fn nb_variables(&self) -> i32 {
         unsafe {
             crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_nb_variables(self as *const Self)
+        }
+    }
+
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:67 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Value()`
+    /// this method computes the new approximation of the
+    /// MultiLine
+    /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
+    /// point of the MultiLine.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+        unsafe {
+            crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_value(
+                self as *mut Self,
+                X,
+                F,
+            )
+        }
+    }
+
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:71 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Gradient()`
+    /// returns the gradient G of the sum above for the
+    /// parameters Xi.
+    pub fn gradient(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_gradient(
+                self as *mut Self,
+                X,
+                G,
+            )
+        }
+    }
+
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:75 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Values()`
+    /// returns the value F=sum(||Pui - Bi*Pi||)2.
+    /// returns the value G = grad(F) for the parameters Xi.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_values(
+                self as *mut Self,
+                X,
+                F,
+                G,
+            )
+        }
+    }
+
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:78 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::NewParameters()`
+    /// returns the new parameters of the MultiLine.
+    pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_new_parameters(self as *const Self))
         }
     }
 
@@ -474,6 +620,19 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
             &*(crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_derivative_function_matrix(self as *const Self))
+        }
+    }
+
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:109 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Index()`
+    /// Returns the indexes of the first non null values of
+    /// A and DA.
+    /// The values are non null from Index(ieme point) +1
+    /// to Index(ieme point) + degree +1.
+    pub fn index(&self) -> &crate::ffi::math_IntegerVector {
+        unsafe {
+            &*(crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_index(
+                self as *const Self,
+            ))
         }
     }
 
@@ -553,45 +712,6 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
     }
 }
 
-// ── Skipped symbols for BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox (6 total) ──
-// SKIPPED: **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:49 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox`
-//   constructor: initializes the fields of the function. The approximating
-//   constructor: curve has <NbPol> control points.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int(SSP: &TheMultiLineOfApprox, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &Vector, Knots: &Array1OfReal, Mults: &Array1OfInteger, NbPol: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:67 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Value`
-//   method: this method computes the new approximation of the
-//   method: MultiLine
-//   method: SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:71 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Gradient`
-//   method: returns the gradient G of the sum above for the
-//   method: parameters Xi.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:75 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Values`
-//   method: returns the value F=sum(||Pui - Bi*Pi||)2.
-//   method: returns the value G = grad(F) for the parameters Xi.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:78 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::NewParameters`
-//   method: returns the new parameters of the MultiLine.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn new_parameters(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:109 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Index`
-//   method: Returns the indexes of the first non null values of
-//   method: A and DA.
-//   method: The values are non null from Index(ieme point) +1
-//   Reason: return type 'const math_IntegerVector&' is unknown
-//   // pub fn index(&self) -> &IntegerVector;
-//
-
 // ========================
 // From BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx
 // ========================
@@ -608,6 +728,37 @@ unsafe impl crate::CppDeletable for BSpParLeastSquareOfMyBSplGradientOfTheComput
 }
 
 impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:66 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox()`
+    /// given a MultiLine, this algorithm computes the least
+    /// square resolution using the Householder-QR method.
+    /// If the first and/or the last point is a constraint
+    /// point, the value of the tangency or curvature is
+    /// computed in the resolution.
+    /// NbPol is the number of control points wanted
+    /// for the approximating curves.
+    /// The system to solve is the following:
+    /// A X = B.
+    /// Where A is the Bernstein matrix computed with the
+    /// parameters, B the points coordinates and X the poles
+    /// solutions.
+    /// The matrix A is the same for each coordinate x, y and z
+    /// and is also the same for each MultiLine point because
+    /// they are approximated in parallel(so with the same
+    /// parameter, only the vector B changes).
+    pub fn new_themultilineofapprox_int2_constraint2_vector_int(
+        SSP: &TheMultiLineOfApprox,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        Parameters: &crate::ffi::math_Vector,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
+        }
+    }
+
     /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:76 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox()`
     /// Initializes the fields of the object.
     pub fn new_themultilineofapprox_int2_constraint2_int(
@@ -620,6 +771,38 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:99 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox()`
+    /// given a MultiLine, this algorithm computes the least
+    /// square resolution using the Householder-QR method.
+    /// If the first and/or the last point is a constraint
+    /// point, the value of the tangency or curvature is
+    /// computed in the resolution.
+    /// Deg is the degree wanted for the approximating curves.
+    /// The system to solve is the following:
+    /// A X = B.
+    /// Where A is the BSpline functions matrix computed with
+    /// <parameters>, B the points coordinates and X the poles
+    /// solutions.
+    /// The matrix A is the same for each coordinate x, y and z
+    /// and is also the same for each MultiLine point because
+    /// they are approximated in parallel(so with the same
+    /// parameter, only the vector B changes).
+    pub fn new_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
+        SSP: &TheMultiLineOfApprox,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        Parameters: &crate::ffi::math_Vector,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
         }
     }
 
@@ -637,6 +820,61 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:123 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform()`
+    /// Is used after having initialized the fields.
+    /// The case "CurvaturePoint" is not treated in this method.
+    pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
+        unsafe {
+            crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector(self as *mut Self, Parameters)
+        }
+    }
+
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:126 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform()`
+    /// Is used after having initialized the fields.
+    pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
+        unsafe {
+            crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
+        }
+    }
+
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:133 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform()`
+    /// Is used after having initialized the fields.
+    /// <V1t> is the tangent vector at the first point.
+    /// <V2t> is the tangent vector at the last point.
+    pub fn perform_vector3_real2(
+        &mut self,
+        Parameters: &crate::ffi::math_Vector,
+        V1t: &crate::ffi::math_Vector,
+        V2t: &crate::ffi::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
+        unsafe {
+            crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
+        }
+    }
+
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:144 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform()`
+    /// Is used after having initialized the fields.
+    /// <V1t> is the tangent vector at the first point.
+    /// <V2t> is the tangent vector at the last point.
+    /// <V1c> is the tangent vector at the first point.
+    /// <V2c> is the tangent vector at the last point.
+    pub fn perform_vector5_real2(
+        &mut self,
+        Parameters: &crate::ffi::math_Vector,
+        V1t: &crate::ffi::math_Vector,
+        V2t: &crate::ffi::math_Vector,
+        V1c: &crate::ffi::math_Vector,
+        V2c: &crate::ffi::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
+        unsafe {
+            crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
         }
     }
 
@@ -685,6 +923,23 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
             &*(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_derivative_function_matrix(self as *const Self))
+        }
+    }
+
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:177 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::ErrorGradient()`
+    /// returns the maximum errors between the MultiLine
+    /// and the approximation curves. F is the sum of the square
+    /// distances. Grad is the derivative vector of the
+    /// function F.
+    pub fn error_gradient(
+        &mut self,
+        Grad: &mut crate::ffi::math_Vector,
+        F: &mut f64,
+        MaxE3d: &mut f64,
+        MaxE2d: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_error_gradient(self as *mut Self, Grad, F, MaxE3d, MaxE2d)
         }
     }
 
@@ -745,62 +1000,18 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
             &*(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_poles(self as *const Self))
         }
     }
-}
 
-// ── Skipped symbols for BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox (8 total) ──
-// SKIPPED: **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:66 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox`
-//   constructor: given a MultiLine, this algorithm computes the least
-//   constructor: square resolution using the Householder-QR method.
-//   constructor: If the first and/or the last point is a constraint
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_themultilineofapprox_int2_constraint2_vector_int(SSP: &TheMultiLineOfApprox, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:99 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox`
-//   constructor: given a MultiLine, this algorithm computes the least
-//   constructor: square resolution using the Householder-QR method.
-//   constructor: If the first and/or the last point is a constraint
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP: &TheMultiLineOfApprox, Knots: &Array1OfReal, Mults: &Array1OfInteger, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:123 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform`
-//   method: Is used after having initialized the fields.
-//   method: The case "CurvaturePoint" is not treated in this method.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector);
-//
-// SKIPPED: **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:126 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform`
-//   method: Is used after having initialized the fields.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:133 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform`
-//   method: Is used after having initialized the fields.
-//   method: <V1t> is the tangent vector at the first point.
-//   method: <V2t> is the tangent vector at the last point.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:144 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform`
-//   method: Is used after having initialized the fields.
-//   method: <V1t> is the tangent vector at the first point.
-//   method: <V2t> is the tangent vector at the last point.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, V1c: &Vector, V2c: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:177 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::ErrorGradient`
-//   method: returns the maximum errors between the MultiLine
-//   method: and the approximation curves. F is the sum of the square
-//   method: distances. Grad is the derivative vector of the
-//   Reason: param 'Grad' uses unknown type 'math_Vector&'
-//   // pub fn error_gradient(&mut self, Grad: &mut Vector, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64);
-//
-// SKIPPED: **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:209 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::KIndex`
-//   method: Returns the indexes of the first non null values of
-//   method: A and DA.
-//   method: The values are non null from Index(ieme point) +1
-//   Reason: return type 'const math_IntegerVector&' is unknown
-//   // pub fn k_index(&self) -> &IntegerVector;
-//
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:209 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::KIndex()`
+    /// Returns the indexes of the first non null values of
+    /// A and DA.
+    /// The values are non null from Index(ieme point) +1
+    /// to Index(ieme point) + degree +1.
+    pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
+        unsafe {
+            &*(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_k_index(self as *const Self))
+        }
+    }
+}
 
 // ========================
 // From BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox.hxx
@@ -818,6 +1029,38 @@ unsafe impl crate::CppDeletable for Gradient_BFGSOfMyGradientOfTheComputeLineBez
 }
 
 impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
+    /// **Source:** `BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:39 - `BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox()`
+    pub fn new_multiplevarfunctionwithgradient_vector_real3_int(
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        Eps: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations))
+        }
+    }
+
+    /// **Source:** `BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:39 - `BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox()`
+    pub fn new_multiplevarfunctionwithgradient_vector_real3(
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        Eps: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiplevarfunctionwithgradient_vector_real3_int(
+            F,
+            StartingPoint,
+            Tolerance3d,
+            Tolerance2d,
+            Eps,
+            200,
+        )
+    }
+
     /// **Source:** `BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:47 - `BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox::IsSolutionReached()`
     pub fn is_solution_reached(
         &self,
@@ -842,10 +1085,39 @@ impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
         }
     }
 
+    /// Inherited: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary()`
+    pub fn set_boundary(
+        &mut self,
+        theLeftBorder: &crate::ffi::math_Vector,
+        theRightBorder: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:67 - `math_BFGS::Perform()`
+    pub fn perform(
+        &mut self,
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Perform(self as *mut Self, F, StartingPoint)
+        }
+    }
+
     /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe {
             crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_IsDone(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
+    pub fn location(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Location(self as *const Self))
         }
     }
 
@@ -856,6 +1128,13 @@ impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
         }
     }
 
+    /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
+    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Gradient(self as *const Self))
+        }
+    }
+
     /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
     pub fn nb_iterations(&self) -> i32 {
         unsafe {
@@ -863,12 +1142,6 @@ impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
         }
     }
 }
-
-// ── Skipped symbols for Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox (1 total) ──
-// SKIPPED: **Source:** `BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:39 - `BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox`
-//   Reason: param 'StartingPoint' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiplevarfunctionwithgradient_vector_real3_int(F: &mut MultipleVarFunctionWithGradient, StartingPoint: &Vector, Tolerance3d: f64, Tolerance2d: f64, Eps: f64, NbIterations: i32) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox.hxx
@@ -884,6 +1157,38 @@ unsafe impl crate::CppDeletable for Gradient_BFGSOfMyGradientbisOfTheComputeLine
 }
 
 impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
+    /// **Source:** `BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox.hxx`:39 - `BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox()`
+    pub fn new_multiplevarfunctionwithgradient_vector_real3_int(
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        Eps: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations))
+        }
+    }
+
+    /// **Source:** `BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox.hxx`:39 - `BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox()`
+    pub fn new_multiplevarfunctionwithgradient_vector_real3(
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        Eps: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_multiplevarfunctionwithgradient_vector_real3_int(
+            F,
+            StartingPoint,
+            Tolerance3d,
+            Tolerance2d,
+            Eps,
+            200,
+        )
+    }
+
     /// **Source:** `BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox.hxx`:47 - `BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox::IsSolutionReached()`
     pub fn is_solution_reached(
         &self,
@@ -908,10 +1213,39 @@ impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
         }
     }
 
+    /// Inherited: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary()`
+    pub fn set_boundary(
+        &mut self,
+        theLeftBorder: &crate::ffi::math_Vector,
+        theRightBorder: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:67 - `math_BFGS::Perform()`
+    pub fn perform(
+        &mut self,
+        F: &mut crate::math::MultipleVarFunctionWithGradient,
+        StartingPoint: &crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Perform(self as *mut Self, F, StartingPoint)
+        }
+    }
+
     /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe {
             crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_IsDone(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
+    pub fn location(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Location(self as *const Self))
         }
     }
 
@@ -922,6 +1256,13 @@ impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
         }
     }
 
+    /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
+    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Gradient(self as *const Self))
+        }
+    }
+
     /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
     pub fn nb_iterations(&self) -> i32 {
         unsafe {
@@ -929,12 +1270,6 @@ impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
         }
     }
 }
-
-// ── Skipped symbols for Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox (1 total) ──
-// SKIPPED: **Source:** `BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox.hxx`:39 - `BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox`
-//   Reason: param 'StartingPoint' uses unknown type 'const math_Vector&'
-//   // pub fn new_multiplevarfunctionwithgradient_vector_real3_int(F: &mut MultipleVarFunctionWithGradient, StartingPoint: &Vector, Tolerance3d: f64, Tolerance2d: f64, Eps: f64, NbIterations: i32) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From BRepApprox_MyBSplGradientOfTheComputeLineOfApprox.hxx
@@ -950,6 +1285,80 @@ unsafe impl crate::CppDeletable for MyBSplGradientOfTheComputeLineOfApprox {
 }
 
 impl MyBSplGradientOfTheComputeLineOfApprox {
+    /// **Source:** `BRepApprox_MyBSplGradientOfTheComputeLineOfApprox.hxx`:51 - `BRepApprox_MyBSplGradientOfTheComputeLineOfApprox::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox()`
+    /// Tries to minimize the sum (square(||Qui - Bi*Pi||))
+    /// where Pui describe the approximating BSpline curves'Poles
+    /// and Qi the MultiLine points with a parameter ui.
+    /// In this algorithm, the parameters ui are the unknowns.
+    /// The tolerance required on this sum is given by Tol.
+    /// The desired degree of the resulting curve is Deg.
+    pub fn new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int(
+        SSP: &TheMultiLineOfApprox,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi::math_Vector,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Deg: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, NbIterations))
+        }
+    }
+
+    /// **Source:** `BRepApprox_MyBSplGradientOfTheComputeLineOfApprox.hxx`:70 - `BRepApprox_MyBSplGradientOfTheComputeLineOfApprox::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox()`
+    /// Tries to minimize the sum (square(||Qui - Bi*Pi||))
+    /// where Pui describe the approximating BSpline curves'Poles
+    /// and Qi the MultiLine points with a parameter ui.
+    /// In this algorithm, the parameters ui are the unknowns.
+    /// The tolerance required on this sum is given by Tol.
+    /// The desired degree of the resulting curve is Deg.
+    pub fn new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int_real2(
+        SSP: &TheMultiLineOfApprox,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi::math_Vector,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Deg: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+        NbIterations: i32,
+        lambda1: f64,
+        lambda2: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int_real2(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, NbIterations, lambda1, lambda2))
+        }
+    }
+
+    /// **Source:** `BRepApprox_MyBSplGradientOfTheComputeLineOfApprox.hxx`:51 - `BRepApprox_MyBSplGradientOfTheComputeLineOfApprox::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox()`
+    /// Tries to minimize the sum (square(||Qui - Bi*Pi||))
+    /// where Pui describe the approximating BSpline curves'Poles
+    /// and Qi the MultiLine points with a parameter ui.
+    /// In this algorithm, the parameters ui are the unknowns.
+    /// The tolerance required on this sum is given by Tol.
+    /// The desired degree of the resulting curve is Deg.
+    pub fn new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2(
+        SSP: &TheMultiLineOfApprox,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi::math_Vector,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Deg: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, 1)
+    }
+
     /// **Source:** `BRepApprox_MyBSplGradientOfTheComputeLineOfApprox.hxx`:86 - `BRepApprox_MyBSplGradientOfTheComputeLineOfApprox::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
@@ -1021,22 +1430,6 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
     }
 }
 
-// ── Skipped symbols for MyBSplGradientOfTheComputeLineOfApprox (2 total) ──
-// SKIPPED: **Source:** `BRepApprox_MyBSplGradientOfTheComputeLineOfApprox.hxx`:51 - `BRepApprox_MyBSplGradientOfTheComputeLineOfApprox::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox`
-//   constructor: Tries to minimize the sum (square(||Qui - Bi*Pi||))
-//   constructor: where Pui describe the approximating BSpline curves'Poles
-//   constructor: and Qi the MultiLine points with a parameter ui.
-//   Reason: param 'Parameters' uses unknown type 'math_Vector&'
-//   // pub fn new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int(SSP: &TheMultiLineOfApprox, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &mut Vector, Knots: &Array1OfReal, Mults: &Array1OfInteger, Deg: i32, Tol3d: f64, Tol2d: f64, NbIterations: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepApprox_MyBSplGradientOfTheComputeLineOfApprox.hxx`:70 - `BRepApprox_MyBSplGradientOfTheComputeLineOfApprox::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox`
-//   constructor: Tries to minimize the sum (square(||Qui - Bi*Pi||))
-//   constructor: where Pui describe the approximating BSpline curves'Poles
-//   constructor: and Qi the MultiLine points with a parameter ui.
-//   Reason: param 'Parameters' uses unknown type 'math_Vector&'
-//   // pub fn new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int_real2(SSP: &TheMultiLineOfApprox, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &mut Vector, Knots: &Array1OfReal, Mults: &Array1OfInteger, Deg: i32, Tol3d: f64, Tol2d: f64, NbIterations: i32, lambda1: f64, lambda2: f64) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx
 // ========================
@@ -1051,6 +1444,49 @@ unsafe impl crate::CppDeletable for MyGradientOfTheComputeLineBezierOfApprox {
 }
 
 impl MyGradientOfTheComputeLineBezierOfApprox {
+    /// **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:50 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox()`
+    /// Tries to minimize the sum (square(||Qui - Bi*Pi||))
+    /// where Pui describe the approximating Bezier curves'Poles
+    /// and Qi the MultiLine points with a parameter ui.
+    /// In this algorithm, the parameters ui are the unknowns.
+    /// The tolerance required on this sum is given by Tol.
+    /// The desired degree of the resulting curve is Deg.
+    pub fn new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(
+        SSP: &TheMultiLineOfApprox,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi::math_Vector,
+        Deg: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations))
+        }
+    }
+
+    /// **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:50 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox()`
+    /// Tries to minimize the sum (square(||Qui - Bi*Pi||))
+    /// where Pui describe the approximating Bezier curves'Poles
+    /// and Qi the MultiLine points with a parameter ui.
+    /// In this algorithm, the parameters ui are the unknowns.
+    /// The tolerance required on this sum is given by Tol.
+    /// The desired degree of the resulting curve is Deg.
+    pub fn new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2(
+        SSP: &TheMultiLineOfApprox,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi::math_Vector,
+        Deg: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, 200)
+    }
+
     /// **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:62 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
@@ -1122,15 +1558,6 @@ impl MyGradientOfTheComputeLineBezierOfApprox {
     }
 }
 
-// ── Skipped symbols for MyGradientOfTheComputeLineBezierOfApprox (1 total) ──
-// SKIPPED: **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:50 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox`
-//   constructor: Tries to minimize the sum (square(||Qui - Bi*Pi||))
-//   constructor: where Pui describe the approximating Bezier curves'Poles
-//   constructor: and Qi the MultiLine points with a parameter ui.
-//   Reason: param 'Parameters' uses unknown type 'math_Vector&'
-//   // pub fn new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP: &TheMultiLineOfApprox, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &mut Vector, Deg: i32, Tol3d: f64, Tol2d: f64, NbIterations: i32) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx
 // ========================
@@ -1145,6 +1572,49 @@ unsafe impl crate::CppDeletable for MyGradientbisOfTheComputeLineOfApprox {
 }
 
 impl MyGradientbisOfTheComputeLineOfApprox {
+    /// **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:50 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox::BRepApprox_MyGradientbisOfTheComputeLineOfApprox()`
+    /// Tries to minimize the sum (square(||Qui - Bi*Pi||))
+    /// where Pui describe the approximating Bezier curves'Poles
+    /// and Qi the MultiLine points with a parameter ui.
+    /// In this algorithm, the parameters ui are the unknowns.
+    /// The tolerance required on this sum is given by Tol.
+    /// The desired degree of the resulting curve is Deg.
+    pub fn new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(
+        SSP: &TheMultiLineOfApprox,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi::math_Vector,
+        Deg: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations))
+        }
+    }
+
+    /// **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:50 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox::BRepApprox_MyGradientbisOfTheComputeLineOfApprox()`
+    /// Tries to minimize the sum (square(||Qui - Bi*Pi||))
+    /// where Pui describe the approximating Bezier curves'Poles
+    /// and Qi the MultiLine points with a parameter ui.
+    /// In this algorithm, the parameters ui are the unknowns.
+    /// The tolerance required on this sum is given by Tol.
+    /// The desired degree of the resulting curve is Deg.
+    pub fn new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2(
+        SSP: &TheMultiLineOfApprox,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi::math_Vector,
+        Deg: i32,
+        Tol3d: f64,
+        Tol2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, 200)
+    }
+
     /// **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:62 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
@@ -1216,15 +1686,6 @@ impl MyGradientbisOfTheComputeLineOfApprox {
     }
 }
 
-// ── Skipped symbols for MyGradientbisOfTheComputeLineOfApprox (1 total) ──
-// SKIPPED: **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:50 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox::BRepApprox_MyGradientbisOfTheComputeLineOfApprox`
-//   constructor: Tries to minimize the sum (square(||Qui - Bi*Pi||))
-//   constructor: where Pui describe the approximating Bezier curves'Poles
-//   constructor: and Qi the MultiLine points with a parameter ui.
-//   Reason: param 'Parameters' uses unknown type 'math_Vector&'
-//   // pub fn new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP: &TheMultiLineOfApprox, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &mut Vector, Deg: i32, Tol3d: f64, Tol2d: f64, NbIterations: i32) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx
 // ========================
@@ -1241,12 +1702,87 @@ unsafe impl crate::CppDeletable for ParFunctionOfMyGradientOfTheComputeLineBezie
 }
 
 impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:46 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox()`
+    /// initializes the fields of the function. The approximating
+    /// curve has the desired degree Deg.
+    pub fn new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(
+        SSP: &TheMultiLineOfApprox,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &crate::ffi::math_Vector,
+        Deg: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg))
+        }
+    }
+
     /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:56 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::NbVariables()`
     /// returns the number of variables of the function. It
     /// corresponds to the number of MultiPoints.
     pub fn nb_variables(&self) -> i32 {
         unsafe {
             crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_nb_variables(self as *const Self)
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:62 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::Value()`
+    /// this method computes the new approximation of the
+    /// MultiLine
+    /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
+    /// point of the MultiLine.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+        unsafe {
+            crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_value(
+                self as *mut Self,
+                X,
+                F,
+            )
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:66 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::Gradient()`
+    /// returns the gradient G of the sum above for the
+    /// parameters Xi.
+    pub fn gradient(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_gradient(
+                self as *mut Self,
+                X,
+                G,
+            )
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:70 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::Values()`
+    /// returns the value F=sum(||Pui - Bi*Pi||)2.
+    /// returns the value G = grad(F) for the parameters Xi.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_values(
+                self as *mut Self,
+                X,
+                F,
+                G,
+            )
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:73 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::NewParameters()`
+    /// returns the new parameters of the MultiLine.
+    pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_new_parameters(self as *const Self))
         }
     }
 
@@ -1356,38 +1892,6 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
     }
 }
 
-// ── Skipped symbols for ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox (5 total) ──
-// SKIPPED: **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:46 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox`
-//   constructor: initializes the fields of the function. The approximating
-//   constructor: curve has the desired degree Deg.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP: &TheMultiLineOfApprox, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &Vector, Deg: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:62 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::Value`
-//   method: this method computes the new approximation of the
-//   method: MultiLine
-//   method: SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:66 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::Gradient`
-//   method: returns the gradient G of the sum above for the
-//   method: parameters Xi.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:70 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::Values`
-//   method: returns the value F=sum(||Pui - Bi*Pi||)2.
-//   method: returns the value G = grad(F) for the parameters Xi.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:73 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::NewParameters`
-//   method: returns the new parameters of the MultiLine.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn new_parameters(&self) -> &Vector;
-//
-
 // ========================
 // From BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx
 // ========================
@@ -1402,6 +1906,22 @@ unsafe impl crate::CppDeletable for ParFunctionOfMyGradientbisOfTheComputeLineOf
 }
 
 impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:46 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox()`
+    /// initializes the fields of the function. The approximating
+    /// curve has the desired degree Deg.
+    pub fn new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(
+        SSP: &TheMultiLineOfApprox,
+        FirstPoint: i32,
+        LastPoint: i32,
+        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &crate::ffi::math_Vector,
+        Deg: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg))
+        }
+    }
+
     /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:56 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::NbVariables()`
     /// returns the number of variables of the function. It
     /// corresponds to the number of MultiPoints.
@@ -1410,6 +1930,65 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
             crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_nb_variables(
                 self as *const Self,
             )
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:62 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::Value()`
+    /// this method computes the new approximation of the
+    /// MultiLine
+    /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
+    /// point of the MultiLine.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+        unsafe {
+            crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_value(
+                self as *mut Self,
+                X,
+                F,
+            )
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:66 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::Gradient()`
+    /// returns the gradient G of the sum above for the
+    /// parameters Xi.
+    pub fn gradient(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_gradient(
+                self as *mut Self,
+                X,
+                G,
+            )
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:70 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::Values()`
+    /// returns the value F=sum(||Pui - Bi*Pi||)2.
+    /// returns the value G = grad(F) for the parameters Xi.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut f64,
+        G: &mut crate::ffi::math_Vector,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_values(
+                self as *mut Self,
+                X,
+                F,
+                G,
+            )
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:73 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::NewParameters()`
+    /// returns the new parameters of the MultiLine.
+    pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_new_parameters(self as *const Self))
         }
     }
 
@@ -1519,38 +2098,6 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
     }
 }
 
-// ── Skipped symbols for ParFunctionOfMyGradientbisOfTheComputeLineOfApprox (5 total) ──
-// SKIPPED: **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:46 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox`
-//   constructor: initializes the fields of the function. The approximating
-//   constructor: curve has the desired degree Deg.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP: &TheMultiLineOfApprox, FirstPoint: i32, LastPoint: i32, TheConstraints: &HandleHArray1OfConstraintCouple, Parameters: &Vector, Deg: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:62 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::Value`
-//   method: this method computes the new approximation of the
-//   method: MultiLine
-//   method: SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:66 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::Gradient`
-//   method: returns the gradient G of the sum above for the
-//   method: parameters Xi.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn gradient(&mut self, X: &Vector, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:70 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::Values`
-//   method: returns the value F=sum(||Pui - Bi*Pi||)2.
-//   method: returns the value G = grad(F) for the parameters Xi.
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut f64, G: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:73 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::NewParameters`
-//   method: returns the new parameters of the MultiLine.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn new_parameters(&self) -> &Vector;
-//
-
 // ========================
 // From BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx
 // ========================
@@ -1567,6 +2114,37 @@ unsafe impl crate::CppDeletable for ParLeastSquareOfMyGradientOfTheComputeLineBe
 }
 
 impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:66 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox()`
+    /// given a MultiLine, this algorithm computes the least
+    /// square resolution using the Householder-QR method.
+    /// If the first and/or the last point is a constraint
+    /// point, the value of the tangency or curvature is
+    /// computed in the resolution.
+    /// NbPol is the number of control points wanted
+    /// for the approximating curves.
+    /// The system to solve is the following:
+    /// A X = B.
+    /// Where A is the Bernstein matrix computed with the
+    /// parameters, B the points coordinates and X the poles
+    /// solutions.
+    /// The matrix A is the same for each coordinate x, y and z
+    /// and is also the same for each MultiLine point because
+    /// they are approximated in parallel(so with the same
+    /// parameter, only the vector B changes).
+    pub fn new_themultilineofapprox_int2_constraint2_vector_int(
+        SSP: &TheMultiLineOfApprox,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        Parameters: &crate::ffi::math_Vector,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
+        }
+    }
+
     /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:76 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox()`
     /// Initializes the fields of the object.
     pub fn new_themultilineofapprox_int2_constraint2_int(
@@ -1579,6 +2157,38 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:99 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox()`
+    /// given a MultiLine, this algorithm computes the least
+    /// square resolution using the Householder-QR method.
+    /// If the first and/or the last point is a constraint
+    /// point, the value of the tangency or curvature is
+    /// computed in the resolution.
+    /// Deg is the degree wanted for the approximating curves.
+    /// The system to solve is the following:
+    /// A X = B.
+    /// Where A is the BSpline functions matrix computed with
+    /// <parameters>, B the points coordinates and X the poles
+    /// solutions.
+    /// The matrix A is the same for each coordinate x, y and z
+    /// and is also the same for each MultiLine point because
+    /// they are approximated in parallel(so with the same
+    /// parameter, only the vector B changes).
+    pub fn new_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
+        SSP: &TheMultiLineOfApprox,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        Parameters: &crate::ffi::math_Vector,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
         }
     }
 
@@ -1596,6 +2206,61 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:123 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform()`
+    /// Is used after having initialized the fields.
+    /// The case "CurvaturePoint" is not treated in this method.
+    pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
+        unsafe {
+            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector(self as *mut Self, Parameters)
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:126 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform()`
+    /// Is used after having initialized the fields.
+    pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
+        unsafe {
+            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:133 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform()`
+    /// Is used after having initialized the fields.
+    /// <V1t> is the tangent vector at the first point.
+    /// <V2t> is the tangent vector at the last point.
+    pub fn perform_vector3_real2(
+        &mut self,
+        Parameters: &crate::ffi::math_Vector,
+        V1t: &crate::ffi::math_Vector,
+        V2t: &crate::ffi::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
+        unsafe {
+            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:144 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform()`
+    /// Is used after having initialized the fields.
+    /// <V1t> is the tangent vector at the first point.
+    /// <V2t> is the tangent vector at the last point.
+    /// <V1c> is the tangent vector at the first point.
+    /// <V2c> is the tangent vector at the last point.
+    pub fn perform_vector5_real2(
+        &mut self,
+        Parameters: &crate::ffi::math_Vector,
+        V1t: &crate::ffi::math_Vector,
+        V2t: &crate::ffi::math_Vector,
+        V1c: &crate::ffi::math_Vector,
+        V2c: &crate::ffi::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
+        unsafe {
+            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
         }
     }
 
@@ -1644,6 +2309,23 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
             &*(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_derivative_function_matrix(self as *const Self))
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:177 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::ErrorGradient()`
+    /// returns the maximum errors between the MultiLine
+    /// and the approximation curves. F is the sum of the square
+    /// distances. Grad is the derivative vector of the
+    /// function F.
+    pub fn error_gradient(
+        &mut self,
+        Grad: &mut crate::ffi::math_Vector,
+        F: &mut f64,
+        MaxE3d: &mut f64,
+        MaxE2d: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_error_gradient(self as *mut Self, Grad, F, MaxE3d, MaxE2d)
         }
     }
 
@@ -1704,62 +2386,18 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
             &*(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_poles(self as *const Self))
         }
     }
-}
 
-// ── Skipped symbols for ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox (8 total) ──
-// SKIPPED: **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:66 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox`
-//   constructor: given a MultiLine, this algorithm computes the least
-//   constructor: square resolution using the Householder-QR method.
-//   constructor: If the first and/or the last point is a constraint
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_themultilineofapprox_int2_constraint2_vector_int(SSP: &TheMultiLineOfApprox, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:99 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox`
-//   constructor: given a MultiLine, this algorithm computes the least
-//   constructor: square resolution using the Householder-QR method.
-//   constructor: If the first and/or the last point is a constraint
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP: &TheMultiLineOfApprox, Knots: &Array1OfReal, Mults: &Array1OfInteger, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:123 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform`
-//   method: Is used after having initialized the fields.
-//   method: The case "CurvaturePoint" is not treated in this method.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector);
-//
-// SKIPPED: **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:126 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform`
-//   method: Is used after having initialized the fields.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:133 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform`
-//   method: Is used after having initialized the fields.
-//   method: <V1t> is the tangent vector at the first point.
-//   method: <V2t> is the tangent vector at the last point.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:144 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform`
-//   method: Is used after having initialized the fields.
-//   method: <V1t> is the tangent vector at the first point.
-//   method: <V2t> is the tangent vector at the last point.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, V1c: &Vector, V2c: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:177 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::ErrorGradient`
-//   method: returns the maximum errors between the MultiLine
-//   method: and the approximation curves. F is the sum of the square
-//   method: distances. Grad is the derivative vector of the
-//   Reason: param 'Grad' uses unknown type 'math_Vector&'
-//   // pub fn error_gradient(&mut self, Grad: &mut Vector, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64);
-//
-// SKIPPED: **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:209 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::KIndex`
-//   method: Returns the indexes of the first non null values of
-//   method: A and DA.
-//   method: The values are non null from Index(ieme point) +1
-//   Reason: return type 'const math_IntegerVector&' is unknown
-//   // pub fn k_index(&self) -> &IntegerVector;
-//
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:209 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::KIndex()`
+    /// Returns the indexes of the first non null values of
+    /// A and DA.
+    /// The values are non null from Index(ieme point) +1
+    /// to Index(ieme point) + degree +1.
+    pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
+        unsafe {
+            &*(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_k_index(self as *const Self))
+        }
+    }
+}
 
 // ========================
 // From BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx
@@ -1777,6 +2415,37 @@ unsafe impl crate::CppDeletable for ParLeastSquareOfMyGradientbisOfTheComputeLin
 }
 
 impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:66 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox()`
+    /// given a MultiLine, this algorithm computes the least
+    /// square resolution using the Householder-QR method.
+    /// If the first and/or the last point is a constraint
+    /// point, the value of the tangency or curvature is
+    /// computed in the resolution.
+    /// NbPol is the number of control points wanted
+    /// for the approximating curves.
+    /// The system to solve is the following:
+    /// A X = B.
+    /// Where A is the Bernstein matrix computed with the
+    /// parameters, B the points coordinates and X the poles
+    /// solutions.
+    /// The matrix A is the same for each coordinate x, y and z
+    /// and is also the same for each MultiLine point because
+    /// they are approximated in parallel(so with the same
+    /// parameter, only the vector B changes).
+    pub fn new_themultilineofapprox_int2_constraint2_vector_int(
+        SSP: &TheMultiLineOfApprox,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        Parameters: &crate::ffi::math_Vector,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
+        }
+    }
+
     /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:76 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox()`
     /// Initializes the fields of the object.
     pub fn new_themultilineofapprox_int2_constraint2_int(
@@ -1789,6 +2458,38 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:99 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox()`
+    /// given a MultiLine, this algorithm computes the least
+    /// square resolution using the Householder-QR method.
+    /// If the first and/or the last point is a constraint
+    /// point, the value of the tangency or curvature is
+    /// computed in the resolution.
+    /// Deg is the degree wanted for the approximating curves.
+    /// The system to solve is the following:
+    /// A X = B.
+    /// Where A is the BSpline functions matrix computed with
+    /// <parameters>, B the points coordinates and X the poles
+    /// solutions.
+    /// The matrix A is the same for each coordinate x, y and z
+    /// and is also the same for each MultiLine point because
+    /// they are approximated in parallel(so with the same
+    /// parameter, only the vector B changes).
+    pub fn new_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
+        SSP: &TheMultiLineOfApprox,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        FirstPoint: i32,
+        LastPoint: i32,
+        FirstCons: crate::app_par_curves::Constraint,
+        LastCons: crate::app_par_curves::Constraint,
+        Parameters: &crate::ffi::math_Vector,
+        NbPol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
         }
     }
 
@@ -1806,6 +2507,61 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:123 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform()`
+    /// Is used after having initialized the fields.
+    /// The case "CurvaturePoint" is not treated in this method.
+    pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
+        unsafe {
+            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector(self as *mut Self, Parameters)
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:126 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform()`
+    /// Is used after having initialized the fields.
+    pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
+        unsafe {
+            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:133 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform()`
+    /// Is used after having initialized the fields.
+    /// <V1t> is the tangent vector at the first point.
+    /// <V2t> is the tangent vector at the last point.
+    pub fn perform_vector3_real2(
+        &mut self,
+        Parameters: &crate::ffi::math_Vector,
+        V1t: &crate::ffi::math_Vector,
+        V2t: &crate::ffi::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
+        unsafe {
+            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:144 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform()`
+    /// Is used after having initialized the fields.
+    /// <V1t> is the tangent vector at the first point.
+    /// <V2t> is the tangent vector at the last point.
+    /// <V1c> is the tangent vector at the first point.
+    /// <V2c> is the tangent vector at the last point.
+    pub fn perform_vector5_real2(
+        &mut self,
+        Parameters: &crate::ffi::math_Vector,
+        V1t: &crate::ffi::math_Vector,
+        V2t: &crate::ffi::math_Vector,
+        V1c: &crate::ffi::math_Vector,
+        V2c: &crate::ffi::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
+        unsafe {
+            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
         }
     }
 
@@ -1854,6 +2610,23 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
             &*(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_derivative_function_matrix(self as *const Self))
+        }
+    }
+
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:177 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::ErrorGradient()`
+    /// returns the maximum errors between the MultiLine
+    /// and the approximation curves. F is the sum of the square
+    /// distances. Grad is the derivative vector of the
+    /// function F.
+    pub fn error_gradient(
+        &mut self,
+        Grad: &mut crate::ffi::math_Vector,
+        F: &mut f64,
+        MaxE3d: &mut f64,
+        MaxE2d: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_error_gradient(self as *mut Self, Grad, F, MaxE3d, MaxE2d)
         }
     }
 
@@ -1920,62 +2693,20 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
             ))
         }
     }
-}
 
-// ── Skipped symbols for ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox (8 total) ──
-// SKIPPED: **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:66 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox`
-//   constructor: given a MultiLine, this algorithm computes the least
-//   constructor: square resolution using the Householder-QR method.
-//   constructor: If the first and/or the last point is a constraint
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_themultilineofapprox_int2_constraint2_vector_int(SSP: &TheMultiLineOfApprox, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:99 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox`
-//   constructor: given a MultiLine, this algorithm computes the least
-//   constructor: square resolution using the Householder-QR method.
-//   constructor: If the first and/or the last point is a constraint
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP: &TheMultiLineOfApprox, Knots: &Array1OfReal, Mults: &Array1OfInteger, FirstPoint: i32, LastPoint: i32, FirstCons: Constraint, LastCons: Constraint, Parameters: &Vector, NbPol: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:123 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform`
-//   method: Is used after having initialized the fields.
-//   method: The case "CurvaturePoint" is not treated in this method.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector);
-//
-// SKIPPED: **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:126 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform`
-//   method: Is used after having initialized the fields.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:133 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform`
-//   method: Is used after having initialized the fields.
-//   method: <V1t> is the tangent vector at the first point.
-//   method: <V2t> is the tangent vector at the last point.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:144 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform`
-//   method: Is used after having initialized the fields.
-//   method: <V1t> is the tangent vector at the first point.
-//   method: <V2t> is the tangent vector at the last point.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn perform(&mut self, Parameters: &Vector, V1t: &Vector, V2t: &Vector, V1c: &Vector, V2c: &Vector, l1: f64, l2: f64);
-//
-// SKIPPED: **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:177 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::ErrorGradient`
-//   method: returns the maximum errors between the MultiLine
-//   method: and the approximation curves. F is the sum of the square
-//   method: distances. Grad is the derivative vector of the
-//   Reason: param 'Grad' uses unknown type 'math_Vector&'
-//   // pub fn error_gradient(&mut self, Grad: &mut Vector, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64);
-//
-// SKIPPED: **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:209 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::KIndex`
-//   method: Returns the indexes of the first non null values of
-//   method: A and DA.
-//   method: The values are non null from Index(ieme point) +1
-//   Reason: return type 'const math_IntegerVector&' is unknown
-//   // pub fn k_index(&self) -> &IntegerVector;
-//
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:209 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::KIndex()`
+    /// Returns the indexes of the first non null values of
+    /// A and DA.
+    /// The values are non null from Index(ieme point) +1
+    /// to Index(ieme point) + degree +1.
+    pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
+        unsafe {
+            &*(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_k_index(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx
@@ -2070,6 +2801,30 @@ impl ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
         }
     }
 
+    /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:71 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::Duale()`
+    /// returns the duale variables of the system.
+    pub fn duale(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_duale(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:74 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::ConstraintDerivative()`
+    /// Returns the derivative of the constraint matrix.
+    pub fn constraint_derivative(
+        &mut self,
+        SSP: &TheMultiLineOfApprox,
+        Parameters: &crate::ffi::math_Vector,
+        Deg: i32,
+        DA: &crate::math::Matrix,
+    ) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_constraint_derivative(self as *mut Self, SSP, Parameters, Deg, DA))
+        }
+    }
+
     /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:82 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::InverseMatrix()`
     /// returns the Inverse of Cont*Transposed(Cont), where
     /// Cont is the constraint matrix for the algorithm.
@@ -2079,18 +2834,6 @@ impl ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
         }
     }
 }
-
-// ── Skipped symbols for ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox (2 total) ──
-// SKIPPED: **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:71 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::Duale`
-//   method: returns the duale variables of the system.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn duale(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:74 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::ConstraintDerivative`
-//   method: Returns the derivative of the constraint matrix.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn constraint_derivative(&mut self, SSP: &TheMultiLineOfApprox, Parameters: &Vector, Deg: i32, DA: &Matrix) -> &Matrix;
-//
 
 // ========================
 // From BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx
@@ -2183,6 +2926,30 @@ impl ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
         }
     }
 
+    /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:71 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::Duale()`
+    /// returns the duale variables of the system.
+    pub fn duale(&self) -> &crate::ffi::math_Vector {
+        unsafe {
+            &*(crate::ffi::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_duale(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:74 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::ConstraintDerivative()`
+    /// Returns the derivative of the constraint matrix.
+    pub fn constraint_derivative(
+        &mut self,
+        SSP: &TheMultiLineOfApprox,
+        Parameters: &crate::ffi::math_Vector,
+        Deg: i32,
+        DA: &crate::math::Matrix,
+    ) -> &crate::math::Matrix {
+        unsafe {
+            &*(crate::ffi::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_constraint_derivative(self as *mut Self, SSP, Parameters, Deg, DA))
+        }
+    }
+
     /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:82 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::InverseMatrix()`
     /// returns the Inverse of Cont*Transposed(Cont), where
     /// Cont is the constraint matrix for the algorithm.
@@ -2192,18 +2959,6 @@ impl ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
         }
     }
 }
-
-// ── Skipped symbols for ResConstraintOfMyGradientbisOfTheComputeLineOfApprox (2 total) ──
-// SKIPPED: **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:71 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::Duale`
-//   method: returns the duale variables of the system.
-//   Reason: return type 'const math_Vector&' is unknown
-//   // pub fn duale(&self) -> &Vector;
-//
-// SKIPPED: **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:74 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::ConstraintDerivative`
-//   method: Returns the derivative of the constraint matrix.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn constraint_derivative(&mut self, SSP: &TheMultiLineOfApprox, Parameters: &Vector, Deg: i32, DA: &Matrix) -> &Matrix;
-//
 
 // ========================
 // From BRepApprox_SurfaceTool.hxx
@@ -2542,6 +3297,46 @@ impl TheComputeLineBezierOfApprox {
         }
     }
 
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:74 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_themultilineofapprox_vector_int2_real2_int_bool2(
+        Line: &TheMultiLineOfApprox,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+        Squares: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_ctor_themultilineofapprox_vector_int2_real2_int_bool2(Line, Parameters, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, Squares))
+        }
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real2_int_bool2(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+        Squares: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_ctor_vector_int2_real2_int_bool2(Parameters, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, Squares))
+        }
+    }
+
     /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:97 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
     /// Initializes the fields of the algorithm.
     pub fn new_int2_real2_int_bool_parametrizationtype_bool(
@@ -2587,6 +3382,286 @@ impl TheComputeLineBezierOfApprox {
             parametrization,
             false,
         )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:74 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_themultilineofapprox_vector_int2_real2_int_bool(
+        Line: &TheMultiLineOfApprox,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofapprox_vector_int2_real2_int_bool2(
+            Line,
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            cutting,
+            false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:74 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_themultilineofapprox_vector_int2_real2_int(
+        Line: &TheMultiLineOfApprox,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofapprox_vector_int2_real2_int_bool2(
+            Line,
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:74 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_themultilineofapprox_vector_int2_real2(
+        Line: &TheMultiLineOfApprox,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofapprox_vector_int2_real2_int_bool2(
+            Line,
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            5,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:74 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_themultilineofapprox_vector_int2_real(
+        Line: &TheMultiLineOfApprox,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofapprox_vector_int2_real2_int_bool2(
+            Line,
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            1.0e-06,
+            5,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:74 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_themultilineofapprox_vector_int2(
+        Line: &TheMultiLineOfApprox,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofapprox_vector_int2_real2_int_bool2(
+            Line, Parameters, degreemin, degreemax, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:74 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_themultilineofapprox_vector_int(
+        Line: &TheMultiLineOfApprox,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofapprox_vector_int2_real2_int_bool2(
+            Line, Parameters, degreemin, 8, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:74 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_themultilineofapprox_vector(
+        Line: &TheMultiLineOfApprox,
+        Parameters: &crate::ffi::math_Vector,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofapprox_vector_int2_real2_int_bool2(
+            Line, Parameters, 4, 8, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real2_int_bool(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            cutting,
+            false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real2_int(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real2(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            5,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            1.0e-06,
+            5,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters, degreemin, degreemax, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters, degreemin, 8, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector(Parameters: &crate::ffi::math_Vector) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(Parameters, 4, 8, 1.0e-03, 1.0e-06, 5, true, false)
     }
 
     /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:97 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
@@ -2788,20 +3863,6 @@ impl TheComputeLineBezierOfApprox {
     }
 }
 
-// ── Skipped symbols for TheComputeLineBezierOfApprox (2 total) ──
-// SKIPPED: **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:74 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox`
-//   constructor: The MultiLine <Line> will be approximated until tolerances
-//   constructor: will be reached.
-//   constructor: The approximation will be done from degreemin to degreemax
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_themultilineofapprox_vector_int2_real2_int_bool2(Line: &TheMultiLineOfApprox, Parameters: &Vector, degreemin: i32, degreemax: i32, Tolerance3d: f64, Tolerance2d: f64, NbIterations: i32, cutting: bool, Squares: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox`
-//   constructor: Initializes the fields of the algorithm.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_vector_int2_real2_int_bool2(Parameters: &Vector, degreemin: i32, degreemax: i32, Tolerance3d: f64, Tolerance2d: f64, NbIterations: i32, cutting: bool, Squares: bool) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From BRepApprox_TheComputeLineOfApprox.hxx
 // ========================
@@ -2839,6 +3900,57 @@ impl TheComputeLineOfApprox {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_TheComputeLineOfApprox_ctor_themultilineofapprox_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares))
+        }
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:79 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_themultilineofapprox_vector_int2_real2_int_bool2(
+        Line: &TheMultiLineOfApprox,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+        Squares: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_TheComputeLineOfApprox_ctor_themultilineofapprox_vector_int2_real2_int_bool2(Line, Parameters, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, Squares))
+        }
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:91 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real2_int_bool2(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+        Squares: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepApprox_TheComputeLineOfApprox_ctor_vector_int2_real2_int_bool2(
+                    Parameters,
+                    degreemin,
+                    degreemax,
+                    Tolerance3d,
+                    Tolerance2d,
+                    NbIterations,
+                    cutting,
+                    Squares,
+                ),
+            )
         }
     }
 
@@ -2890,6 +4002,286 @@ impl TheComputeLineOfApprox {
             parametrization,
             false,
         )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:79 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_themultilineofapprox_vector_int2_real2_int_bool(
+        Line: &TheMultiLineOfApprox,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofapprox_vector_int2_real2_int_bool2(
+            Line,
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            cutting,
+            false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:79 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_themultilineofapprox_vector_int2_real2_int(
+        Line: &TheMultiLineOfApprox,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofapprox_vector_int2_real2_int_bool2(
+            Line,
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:79 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_themultilineofapprox_vector_int2_real2(
+        Line: &TheMultiLineOfApprox,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofapprox_vector_int2_real2_int_bool2(
+            Line,
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            5,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:79 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_themultilineofapprox_vector_int2_real(
+        Line: &TheMultiLineOfApprox,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofapprox_vector_int2_real2_int_bool2(
+            Line,
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            1.0e-06,
+            5,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:79 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_themultilineofapprox_vector_int2(
+        Line: &TheMultiLineOfApprox,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofapprox_vector_int2_real2_int_bool2(
+            Line, Parameters, degreemin, degreemax, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:79 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_themultilineofapprox_vector_int(
+        Line: &TheMultiLineOfApprox,
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofapprox_vector_int2_real2_int_bool2(
+            Line, Parameters, degreemin, 8, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:79 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// The MultiLine <Line> will be approximated until tolerances
+    /// will be reached.
+    /// The approximation will be done from degreemin to degreemax
+    /// with a cutting if the corresponding boolean is True.
+    /// If <Squares> is True, the computation will be done with
+    /// no iteration at all.
+    pub fn new_themultilineofapprox_vector(
+        Line: &TheMultiLineOfApprox,
+        Parameters: &crate::ffi::math_Vector,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_themultilineofapprox_vector_int2_real2_int_bool2(
+            Line, Parameters, 4, 8, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:91 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real2_int_bool(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+        cutting: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            cutting,
+            false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:91 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real2_int(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+        NbIterations: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            NbIterations,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:91 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real2(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+        Tolerance2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            Tolerance2d,
+            5,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:91 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2_real(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+        Tolerance3d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters,
+            degreemin,
+            degreemax,
+            Tolerance3d,
+            1.0e-06,
+            5,
+            true,
+            false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:91 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int2(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+        degreemax: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters, degreemin, degreemax, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:91 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector_int(
+        Parameters: &crate::ffi::math_Vector,
+        degreemin: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(
+            Parameters, degreemin, 8, 1.0e-03, 1.0e-06, 5, true, false,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:91 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// Initializes the fields of the algorithm.
+    pub fn new_vector(Parameters: &crate::ffi::math_Vector) -> crate::OwnedPtr<Self> {
+        Self::new_vector_int2_real2_int_bool2(Parameters, 4, 8, 1.0e-03, 1.0e-06, 5, true, false)
     }
 
     /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:102 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
@@ -2954,6 +4346,15 @@ impl TheComputeLineOfApprox {
     /// runs the algorithm after having initialized the fields.
     pub fn perform(&mut self, Line: &TheMultiLineOfApprox) {
         unsafe { crate::ffi::BRepApprox_TheComputeLineOfApprox_perform(self as *mut Self, Line) }
+    }
+
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:131 - `BRepApprox_TheComputeLineOfApprox::SetParameters()`
+    /// The approximation will begin with the
+    /// set of  parameters <ThePar>.
+    pub fn set_parameters(&mut self, ThePar: &crate::ffi::math_Vector) {
+        unsafe {
+            crate::ffi::BRepApprox_TheComputeLineOfApprox_set_parameters(self as *mut Self, ThePar)
+        }
     }
 
     /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:136 - `BRepApprox_TheComputeLineOfApprox::SetKnots()`
@@ -3092,26 +4493,6 @@ impl TheComputeLineOfApprox {
     }
 }
 
-// ── Skipped symbols for TheComputeLineOfApprox (3 total) ──
-// SKIPPED: **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:79 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox`
-//   constructor: The MultiLine <Line> will be approximated until tolerances
-//   constructor: will be reached.
-//   constructor: The approximation will be done from degreemin to degreemax
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_themultilineofapprox_vector_int2_real2_int_bool2(Line: &TheMultiLineOfApprox, Parameters: &Vector, degreemin: i32, degreemax: i32, Tolerance3d: f64, Tolerance2d: f64, NbIterations: i32, cutting: bool, Squares: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:91 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox`
-//   constructor: Initializes the fields of the algorithm.
-//   Reason: param 'Parameters' uses unknown type 'const math_Vector&'
-//   // pub fn new_vector_int2_real2_int_bool2(Parameters: &Vector, degreemin: i32, degreemax: i32, Tolerance3d: f64, Tolerance2d: f64, NbIterations: i32, cutting: bool, Squares: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:131 - `BRepApprox_TheComputeLineOfApprox::SetParameters`
-//   method: The approximation will begin with the
-//   method: set of  parameters <ThePar>.
-//   Reason: param 'ThePar' uses unknown type 'const math_Vector&'
-//   // pub fn set_parameters(&mut self, ThePar: &Vector);
-//
-
 // ========================
 // From BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx
 // ========================
@@ -3154,6 +4535,64 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
         }
     }
 
+    /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:51 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Value()`
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe {
+            crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_value(
+                self as *mut Self,
+                X,
+                F,
+            )
+        }
+    }
+
+    /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:53 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Derivatives()`
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
+        }
+    }
+
+    /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:55 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Values()`
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_values(
+                self as *mut Self,
+                X,
+                F,
+                D,
+            )
+        }
+    }
+
+    /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:57 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::ComputeParameters()`
+    pub fn compute_parameters(
+        &mut self,
+        ChoixIso: crate::int_imp::ConstIsoparametric,
+        Param: &crate::ffi::TColStd_Array1OfReal,
+        UVap: &mut crate::ffi::math_Vector,
+        BornInf: &mut crate::ffi::math_Vector,
+        BornSup: &mut crate::ffi::math_Vector,
+        Tolerance: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_compute_parameters(self as *mut Self, ChoixIso.into(), Param, UVap, BornInf, BornSup, Tolerance)
+        }
+    }
+
     /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:65 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Root()`
     /// returns somme des fi*fi
     pub fn root(&self) -> f64 {
@@ -3173,6 +4612,26 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
                 ),
             )
         }
+    }
+
+    /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:69 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::IsTangent()`
+    pub fn is_tangent(
+        &mut self,
+        UVap: &crate::ffi::math_Vector,
+        Param: &mut crate::ffi::TColStd_Array1OfReal,
+        BestChoix: &mut crate::int_imp::ConstIsoparametric,
+    ) -> bool {
+        let mut BestChoix_i32_: i32 = (*BestChoix).into();
+        let result_ = unsafe {
+            crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_is_tangent(
+                self as *mut Self,
+                UVap,
+                Param,
+                &mut BestChoix_i32_,
+            )
+        };
+        *BestChoix = crate::int_imp::ConstIsoparametric::try_from(BestChoix_i32_).unwrap();
+        result_
     }
 
     /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:73 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Direction()`
@@ -3253,28 +4712,6 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
         }
     }
 }
-
-// ── Skipped symbols for TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox (5 total) ──
-// SKIPPED: **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:51 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Value`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:53 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Derivatives`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:55 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Values`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:57 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::ComputeParameters`
-//   Reason: param 'UVap' uses unknown type 'math_Vector&'
-//   // pub fn compute_parameters(&mut self, ChoixIso: ConstIsoparametric, Param: &Array1OfReal, UVap: &mut Vector, BornInf: &mut Vector, BornSup: &mut Vector, Tolerance: &mut Vector);
-//
-// SKIPPED: **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:69 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::IsTangent`
-//   Reason: param 'UVap' uses unknown type 'const math_Vector&'
-//   // pub fn is_tangent(&mut self, UVap: &Vector, Param: &mut Array1OfReal, BestChoix: &mut ConstIsoparametric) -> bool;
-//
 
 // ========================
 // From BRepApprox_TheImpPrmSvSurfacesOfApprox.hxx
@@ -3444,6 +4881,39 @@ impl TheImpPrmSvSurfacesOfApprox {
         }
     }
 
+    /// **Source:** `BRepApprox_TheImpPrmSvSurfacesOfApprox.hxx`:92 - `BRepApprox_TheImpPrmSvSurfacesOfApprox::FillInitialVectorOfSolution()`
+    pub fn fill_initial_vector_of_solution(
+        &mut self,
+        u1: f64,
+        v1: f64,
+        u2: f64,
+        v2: f64,
+        binfu: f64,
+        bsupu: f64,
+        binfv: f64,
+        bsupv: f64,
+        X: &mut crate::ffi::math_Vector,
+        TranslationU: &mut f64,
+        TranslationV: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_fill_initial_vector_of_solution(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                binfu,
+                bsupu,
+                binfv,
+                bsupv,
+                X,
+                TranslationU,
+                TranslationV,
+            )
+        }
+    }
+
     /// Upcast to ApproxInt_SvSurfaces
     pub fn as_approx_int_sv_surfaces(&self) -> &crate::approx_int::SvSurfaces {
         unsafe {
@@ -3481,12 +4951,6 @@ impl TheImpPrmSvSurfacesOfApprox {
         }
     }
 }
-
-// ── Skipped symbols for TheImpPrmSvSurfacesOfApprox (1 total) ──
-// SKIPPED: **Source:** `BRepApprox_TheImpPrmSvSurfacesOfApprox.hxx`:92 - `BRepApprox_TheImpPrmSvSurfacesOfApprox::FillInitialVectorOfSolution`
-//   Reason: param 'X' uses unknown type 'math_Vector&'
-//   // pub fn fill_initial_vector_of_solution(&mut self, u1: f64, v1: f64, u2: f64, v2: f64, binfu: f64, bsupu: f64, binfv: f64, bsupv: f64, X: &mut Vector, TranslationU: &mut f64, TranslationV: &mut f64) -> bool;
-//
 
 // ========================
 // From BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx
@@ -4441,6 +5905,49 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
         }
     }
 
+    /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:61 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Value()`
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe {
+            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_value(
+                self as *mut Self,
+                X,
+                F,
+            )
+        }
+    }
+
+    /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:63 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Derivatives()`
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
+        }
+    }
+
+    /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:65 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Values()`
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_values(
+                self as *mut Self,
+                X,
+                F,
+                D,
+            )
+        }
+    }
+
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:67 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Root()`
     pub fn root(&self) -> f64 {
         unsafe {
@@ -4554,17 +6061,3 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
         }
     }
 }
-
-// ── Skipped symbols for TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox (3 total) ──
-// SKIPPED: **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:61 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Value`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:63 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Derivatives`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:65 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Values`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//

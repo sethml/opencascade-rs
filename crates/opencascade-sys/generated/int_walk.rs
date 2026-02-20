@@ -388,6 +388,53 @@ impl TheFunctionOfTheInt2S {
         unsafe { crate::ffi::IntWalk_TheFunctionOfTheInt2S_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:45 - `IntWalk_TheFunctionOfTheInt2S::Value()`
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::IntWalk_TheFunctionOfTheInt2S_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:47 - `IntWalk_TheFunctionOfTheInt2S::Derivatives()`
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::IntWalk_TheFunctionOfTheInt2S_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:49 - `IntWalk_TheFunctionOfTheInt2S::Values()`
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::IntWalk_TheFunctionOfTheInt2S_values(self as *mut Self, X, F, D) }
+    }
+
+    /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:51 - `IntWalk_TheFunctionOfTheInt2S::ComputeParameters()`
+    pub fn compute_parameters(
+        &mut self,
+        ChoixIso: crate::int_imp::ConstIsoparametric,
+        Param: &crate::ffi::TColStd_Array1OfReal,
+        UVap: &mut crate::ffi::math_Vector,
+        BornInf: &mut crate::ffi::math_Vector,
+        BornSup: &mut crate::ffi::math_Vector,
+        Tolerance: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::IntWalk_TheFunctionOfTheInt2S_compute_parameters(
+                self as *mut Self,
+                ChoixIso.into(),
+                Param,
+                UVap,
+                BornInf,
+                BornSup,
+                Tolerance,
+            )
+        }
+    }
+
     /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:59 - `IntWalk_TheFunctionOfTheInt2S::Root()`
     /// returns somme des fi*fi
     pub fn root(&self) -> f64 {
@@ -401,6 +448,26 @@ impl TheFunctionOfTheInt2S {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:63 - `IntWalk_TheFunctionOfTheInt2S::IsTangent()`
+    pub fn is_tangent(
+        &mut self,
+        UVap: &crate::ffi::math_Vector,
+        Param: &mut crate::ffi::TColStd_Array1OfReal,
+        BestChoix: &mut crate::int_imp::ConstIsoparametric,
+    ) -> bool {
+        let mut BestChoix_i32_: i32 = (*BestChoix).into();
+        let result_ = unsafe {
+            crate::ffi::IntWalk_TheFunctionOfTheInt2S_is_tangent(
+                self as *mut Self,
+                UVap,
+                Param,
+                &mut BestChoix_i32_,
+            )
+        };
+        *BestChoix = crate::int_imp::ConstIsoparametric::try_from(BestChoix_i32_).unwrap();
+        result_
     }
 
     /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:67 - `IntWalk_TheFunctionOfTheInt2S::Direction()`
@@ -489,28 +556,6 @@ impl TheFunctionOfTheInt2S {
         }
     }
 }
-
-// ── Skipped symbols for TheFunctionOfTheInt2S (5 total) ──
-// SKIPPED: **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:45 - `IntWalk_TheFunctionOfTheInt2S::Value`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:47 - `IntWalk_TheFunctionOfTheInt2S::Derivatives`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:49 - `IntWalk_TheFunctionOfTheInt2S::Values`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:51 - `IntWalk_TheFunctionOfTheInt2S::ComputeParameters`
-//   Reason: param 'UVap' uses unknown type 'math_Vector&'
-//   // pub fn compute_parameters(&mut self, ChoixIso: ConstIsoparametric, Param: &Array1OfReal, UVap: &mut Vector, BornInf: &mut Vector, BornSup: &mut Vector, Tolerance: &mut Vector);
-//
-// SKIPPED: **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:63 - `IntWalk_TheFunctionOfTheInt2S::IsTangent`
-//   Reason: param 'UVap' uses unknown type 'const math_Vector&'
-//   // pub fn is_tangent(&mut self, UVap: &Vector, Param: &mut Array1OfReal, BestChoix: &mut ConstIsoparametric) -> bool;
-//
 
 // ========================
 // From IntWalk_TheInt2S.hxx

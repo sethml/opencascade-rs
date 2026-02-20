@@ -6981,6 +6981,32 @@ impl TheCSFunctionOfInterCSurf {
         unsafe { crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:46 - `HLRBRep_TheCSFunctionOfInterCSurf::Value()`
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:48 - `HLRBRep_TheCSFunctionOfInterCSurf::Derivatives()`
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_derivatives(self as *mut Self, X, D)
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:50 - `HLRBRep_TheCSFunctionOfInterCSurf::Values()`
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:52 - `HLRBRep_TheCSFunctionOfInterCSurf::Point()`
     pub fn point(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_point(self as *const Self)) }
@@ -7046,22 +7072,10 @@ impl TheCSFunctionOfInterCSurf {
     }
 }
 
-// ── Skipped symbols for TheCSFunctionOfInterCSurf (5 total) ──
+// ── Skipped symbols for TheCSFunctionOfInterCSurf (2 total) ──
 // SKIPPED: **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:40 - `HLRBRep_TheCSFunctionOfInterCSurf::HLRBRep_TheCSFunctionOfInterCSurf`
 //   Reason: has unbindable types: param 'S': void pointer (const Standard_Address&)
 //   // pub fn new_address_lin(S: /* const Standard_Address& */, C: &Lin) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:46 - `HLRBRep_TheCSFunctionOfInterCSurf::Value`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:48 - `HLRBRep_TheCSFunctionOfInterCSurf::Derivatives`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:50 - `HLRBRep_TheCSFunctionOfInterCSurf::Values`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
 //
 // SKIPPED: **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:56 - `HLRBRep_TheCSFunctionOfInterCSurf::AuxillarSurface`
 //   Reason: has unbindable types: return: void pointer (const Standard_Address&)
@@ -7150,6 +7164,61 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
         }
     }
 
+    /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:50 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe {
+            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_value(
+                self as *mut Self,
+                X,
+                F,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:56 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:62 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_values(
+                self as *mut Self,
+                X,
+                F,
+                D,
+            )
+        }
+    }
+
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
@@ -7190,31 +7259,10 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
     }
 }
 
-// ── Skipped symbols for TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter (4 total) ──
+// ── Skipped symbols for TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter (1 total) ──
 // SKIPPED: **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:36 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter`
 //   Reason: has unbindable types: param 'curve1': void pointer (const Standard_Address&); param 'curve2': void pointer (const Standard_Address&)
 //   // pub fn new_address2(curve1: /* const Standard_Address& */, curve2: /* const Standard_Address& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:50 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:56 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:62 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
 //
 
 // ========================

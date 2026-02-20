@@ -106,6 +106,42 @@ impl CSCircular {
         unsafe { crate::ffi::BlendFunc_CSCircular_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `BlendFunc_CSCircular.hxx`:70 - `BlendFunc_CSCircular::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BlendFunc_CSCircular_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BlendFunc_CSCircular.hxx`:76 - `BlendFunc_CSCircular::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_CSCircular_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BlendFunc_CSCircular.hxx`:83 - `BlendFunc_CSCircular::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_CSCircular_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `BlendFunc_CSCircular.hxx`:87 - `BlendFunc_CSCircular::Set()`
     pub fn set_real(&mut self, Param: f64) {
         unsafe { crate::ffi::BlendFunc_CSCircular_set_real(self as *mut Self, Param) }
@@ -114,6 +150,33 @@ impl CSCircular {
     /// **Source:** `BlendFunc_CSCircular.hxx`:89 - `BlendFunc_CSCircular::Set()`
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         unsafe { crate::ffi::BlendFunc_CSCircular_set_real2(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `BlendFunc_CSCircular.hxx`:91 - `BlendFunc_CSCircular::GetTolerance()`
+    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BlendFunc_CSCircular_get_tolerance_vector_real(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `BlendFunc_CSCircular.hxx`:94 - `BlendFunc_CSCircular::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_CSCircular_get_bounds(self as *const Self, InfBound, SupBound)
+        }
+    }
+
+    /// **Source:** `BlendFunc_CSCircular.hxx`:97 - `BlendFunc_CSCircular::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BlendFunc_CSCircular_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// **Source:** `BlendFunc_CSCircular.hxx`:100 - `BlendFunc_CSCircular::PointOnS()`
@@ -308,6 +371,32 @@ impl CSCircular {
         }
     }
 
+    /// **Source:** `BlendFunc_CSCircular.hxx`:197 - `BlendFunc_CSCircular::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to respect
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance_real3_vector2(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::math_Vector,
+        Tol1D: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_CSCircular_get_tolerance_real3_vector2(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+                Tol1D,
+            )
+        }
+    }
+
     /// **Source:** `BlendFunc_CSCircular.hxx`:203 - `BlendFunc_CSCircular::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         unsafe { crate::ffi::BlendFunc_CSCircular_knots(self as *mut Self, TKnots) }
@@ -447,48 +536,6 @@ impl CSCircular {
     }
 }
 
-// ── Skipped symbols for CSCircular (7 total) ──
-// SKIPPED: **Source:** `BlendFunc_CSCircular.hxx`:70 - `BlendFunc_CSCircular::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_CSCircular.hxx`:76 - `BlendFunc_CSCircular::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_CSCircular.hxx`:83 - `BlendFunc_CSCircular::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_CSCircular.hxx`:91 - `BlendFunc_CSCircular::GetTolerance`
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BlendFunc_CSCircular.hxx`:94 - `BlendFunc_CSCircular::GetBounds`
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BlendFunc_CSCircular.hxx`:97 - `BlendFunc_CSCircular::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_CSCircular.hxx`:197 - `BlendFunc_CSCircular::GetTolerance`
-//   method: Returns the tolerance to reach in approximation
-//   method: to respect
-//   method: BoundTol error at the Boundary
-//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
-//
-
 // ========================
 // From BlendFunc_CSConstRad.hxx
 // ========================
@@ -524,6 +571,42 @@ impl CSConstRad {
         unsafe { crate::ffi::BlendFunc_CSConstRad_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:57 - `BlendFunc_CSConstRad::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BlendFunc_CSConstRad_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:63 - `BlendFunc_CSConstRad::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_CSConstRad_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:70 - `BlendFunc_CSConstRad::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_CSConstRad_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `BlendFunc_CSConstRad.hxx`:74 - `BlendFunc_CSConstRad::Set()`
     pub fn set_real(&mut self, Param: f64) {
         unsafe { crate::ffi::BlendFunc_CSConstRad_set_real(self as *mut Self, Param) }
@@ -532,6 +615,33 @@ impl CSConstRad {
     /// **Source:** `BlendFunc_CSConstRad.hxx`:76 - `BlendFunc_CSConstRad::Set()`
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         unsafe { crate::ffi::BlendFunc_CSConstRad_set_real2(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:78 - `BlendFunc_CSConstRad::GetTolerance()`
+    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BlendFunc_CSConstRad_get_tolerance_vector_real(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:81 - `BlendFunc_CSConstRad::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_CSConstRad_get_bounds(self as *const Self, InfBound, SupBound)
+        }
+    }
+
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:84 - `BlendFunc_CSConstRad::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BlendFunc_CSConstRad_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// **Source:** `BlendFunc_CSConstRad.hxx`:87 - `BlendFunc_CSConstRad::PointOnS()`
@@ -725,6 +835,32 @@ impl CSConstRad {
         }
     }
 
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:183 - `BlendFunc_CSConstRad::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to respect
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance_real3_vector2(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::math_Vector,
+        Tol1D: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_CSConstRad_get_tolerance_real3_vector2(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+                Tol1D,
+            )
+        }
+    }
+
     /// **Source:** `BlendFunc_CSConstRad.hxx`:189 - `BlendFunc_CSConstRad::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         unsafe { crate::ffi::BlendFunc_CSConstRad_knots(self as *mut Self, TKnots) }
@@ -869,48 +1005,6 @@ impl CSConstRad {
     }
 }
 
-// ── Skipped symbols for CSConstRad (7 total) ──
-// SKIPPED: **Source:** `BlendFunc_CSConstRad.hxx`:57 - `BlendFunc_CSConstRad::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_CSConstRad.hxx`:63 - `BlendFunc_CSConstRad::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_CSConstRad.hxx`:70 - `BlendFunc_CSConstRad::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_CSConstRad.hxx`:78 - `BlendFunc_CSConstRad::GetTolerance`
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BlendFunc_CSConstRad.hxx`:81 - `BlendFunc_CSConstRad::GetBounds`
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BlendFunc_CSConstRad.hxx`:84 - `BlendFunc_CSConstRad::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_CSConstRad.hxx`:183 - `BlendFunc_CSConstRad::GetTolerance`
-//   method: Returns the tolerance to reach in approximation
-//   method: to respect
-//   method: BoundTol error at the Boundary
-//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
-//
-
 // ========================
 // From BlendFunc_ChAsym.hxx
 // ========================
@@ -956,11 +1050,81 @@ impl ChAsym {
         unsafe { crate::ffi::BlendFunc_ChAsym_set_real2(self as *mut Self, First, Last) }
     }
 
+    /// **Source:** `BlendFunc_ChAsym.hxx`:53 - `BlendFunc_ChAsym::GetTolerance()`
+    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BlendFunc_ChAsym_get_tolerance_vector_real(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `BlendFunc_ChAsym.hxx`:56 - `BlendFunc_ChAsym::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe { crate::ffi::BlendFunc_ChAsym_get_bounds(self as *const Self, InfBound, SupBound) }
+    }
+
+    /// **Source:** `BlendFunc_ChAsym.hxx`:59 - `BlendFunc_ChAsym::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BlendFunc_ChAsym_is_solution(self as *mut Self, Sol, Tol) }
+    }
+
     /// **Source:** `BlendFunc_ChAsym.hxx`:64 - `BlendFunc_ChAsym::GetMinimalDistance()`
     /// Returns   the    minimal  Distance  between   two
     /// extremities of calculated sections.
     pub fn get_minimal_distance(&self) -> f64 {
         unsafe { crate::ffi::BlendFunc_ChAsym_get_minimal_distance(self as *const Self) }
+    }
+
+    /// **Source:** `BlendFunc_ChAsym.hxx`:70 - `BlendFunc_ChAsym::ComputeValues()`
+    /// computes the values <F> of the derivatives for the
+    /// variable <X> between DegF and DegL.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn compute_values(&mut self, X: &crate::ffi::math_Vector, DegF: i32, DegL: i32) -> bool {
+        unsafe { crate::ffi::BlendFunc_ChAsym_compute_values(self as *mut Self, X, DegF, DegL) }
+    }
+
+    /// **Source:** `BlendFunc_ChAsym.hxx`:78 - `BlendFunc_ChAsym::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BlendFunc_ChAsym_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BlendFunc_ChAsym.hxx`:84 - `BlendFunc_ChAsym::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_ChAsym_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BlendFunc_ChAsym.hxx`:91 - `BlendFunc_ChAsym::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_ChAsym_values(self as *mut Self, X, F, D) }
     }
 
     /// **Source:** `BlendFunc_ChAsym.hxx`:95 - `BlendFunc_ChAsym::PointOnS1()`
@@ -1122,6 +1286,32 @@ impl ChAsym {
         }
     }
 
+    /// **Source:** `BlendFunc_ChAsym.hxx`:168 - `BlendFunc_ChAsym::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to respect
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance_real3_vector2(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::math_Vector,
+        Tol1D: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_ChAsym_get_tolerance_real3_vector2(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+                Tol1D,
+            )
+        }
+    }
+
     /// **Source:** `BlendFunc_ChAsym.hxx`:174 - `BlendFunc_ChAsym::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         unsafe { crate::ffi::BlendFunc_ChAsym_knots(self as *mut Self, TKnots) }
@@ -1279,55 +1469,6 @@ impl ChAsym {
     }
 }
 
-// ── Skipped symbols for ChAsym (8 total) ──
-// SKIPPED: **Source:** `BlendFunc_ChAsym.hxx`:53 - `BlendFunc_ChAsym::GetTolerance`
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BlendFunc_ChAsym.hxx`:56 - `BlendFunc_ChAsym::GetBounds`
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BlendFunc_ChAsym.hxx`:59 - `BlendFunc_ChAsym::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ChAsym.hxx`:70 - `BlendFunc_ChAsym::ComputeValues`
-//   method: computes the values <F> of the derivatives for the
-//   method: variable <X> between DegF and DegL.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn compute_values(&mut self, X: &Vector, DegF: i32, DegL: i32) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ChAsym.hxx`:78 - `BlendFunc_ChAsym::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ChAsym.hxx`:84 - `BlendFunc_ChAsym::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ChAsym.hxx`:91 - `BlendFunc_ChAsym::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ChAsym.hxx`:168 - `BlendFunc_ChAsym::GetTolerance`
-//   method: Returns the tolerance to reach in approximation
-//   method: to respect
-//   method: BoundTol error at the Boundary
-//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
-//
-
 // ========================
 // From BlendFunc_ChAsymInv.hxx
 // ========================
@@ -1372,10 +1513,78 @@ impl ChAsymInv {
         }
     }
 
+    /// **Source:** `BlendFunc_ChAsymInv.hxx`:36 - `BlendFunc_ChAsymInv::GetTolerance()`
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BlendFunc_ChAsymInv_get_tolerance(self as *const Self, Tolerance, Tol)
+        }
+    }
+
+    /// **Source:** `BlendFunc_ChAsymInv.hxx`:39 - `BlendFunc_ChAsymInv::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_ChAsymInv_get_bounds(self as *const Self, InfBound, SupBound)
+        }
+    }
+
+    /// **Source:** `BlendFunc_ChAsymInv.hxx`:42 - `BlendFunc_ChAsymInv::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BlendFunc_ChAsymInv_is_solution(self as *mut Self, Sol, Tol) }
+    }
+
     /// **Source:** `BlendFunc_ChAsymInv.hxx`:46 - `BlendFunc_ChAsymInv::NbEquations()`
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         unsafe { crate::ffi::BlendFunc_ChAsymInv_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `BlendFunc_ChAsymInv.hxx`:52 - `BlendFunc_ChAsymInv::ComputeValues()`
+    /// computes the values <F> of the derivatives for the
+    /// variable <X> between DegF and DegL.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn compute_values(&mut self, X: &crate::ffi::math_Vector, DegF: i32, DegL: i32) -> bool {
+        unsafe { crate::ffi::BlendFunc_ChAsymInv_compute_values(self as *mut Self, X, DegF, DegL) }
+    }
+
+    /// **Source:** `BlendFunc_ChAsymInv.hxx`:60 - `BlendFunc_ChAsymInv::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BlendFunc_ChAsymInv_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BlendFunc_ChAsymInv.hxx`:66 - `BlendFunc_ChAsymInv::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_ChAsymInv_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BlendFunc_ChAsymInv.hxx`:73 - `BlendFunc_ChAsymInv::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_ChAsymInv_values(self as *mut Self, X, F, D) }
     }
 
     /// **Source:** `BlendFunc_ChAsymInv.hxx`:77 - `BlendFunc_ChAsymInv::Set()`
@@ -1440,48 +1649,6 @@ impl ChAsymInv {
     }
 }
 
-// ── Skipped symbols for ChAsymInv (7 total) ──
-// SKIPPED: **Source:** `BlendFunc_ChAsymInv.hxx`:36 - `BlendFunc_ChAsymInv::GetTolerance`
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BlendFunc_ChAsymInv.hxx`:39 - `BlendFunc_ChAsymInv::GetBounds`
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BlendFunc_ChAsymInv.hxx`:42 - `BlendFunc_ChAsymInv::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ChAsymInv.hxx`:52 - `BlendFunc_ChAsymInv::ComputeValues`
-//   method: computes the values <F> of the derivatives for the
-//   method: variable <X> between DegF and DegL.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn compute_values(&mut self, X: &Vector, DegF: i32, DegL: i32) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ChAsymInv.hxx`:60 - `BlendFunc_ChAsymInv::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ChAsymInv.hxx`:66 - `BlendFunc_ChAsymInv::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ChAsymInv.hxx`:73 - `BlendFunc_ChAsymInv::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-
 // ========================
 // From BlendFunc_ChamfInv.hxx
 // ========================
@@ -1511,6 +1678,33 @@ impl ChamfInv {
                 ),
             )
         }
+    }
+
+    /// **Source:** `BlendFunc_ChamfInv.hxx`:38 - `BlendFunc_ChamfInv::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BlendFunc_ChamfInv_is_solution(self as *mut Self, Sol, Tol) }
+    }
+
+    /// **Source:** `BlendFunc_ChamfInv.hxx`:45 - `BlendFunc_ChamfInv::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BlendFunc_ChamfInv_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BlendFunc_ChamfInv.hxx`:51 - `BlendFunc_ChamfInv::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_ChamfInv_derivatives(self as *mut Self, X, D) }
     }
 
     /// **Source:** `BlendFunc_ChamfInv.hxx`:56 - `BlendFunc_ChamfInv::Set()`
@@ -1572,9 +1766,45 @@ impl ChamfInv {
         unsafe { &mut *(crate::ffi::BlendFunc_ChamfInv_as_math_FunctionSet_mut(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:37 - `BlendFunc_GenChamfInv::GetTolerance()`
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BlendFunc_ChamfInv_inherited_GetTolerance(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:40 - `BlendFunc_GenChamfInv::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_ChamfInv_inherited_GetBounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:44 - `BlendFunc_GenChamfInv::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
         unsafe { crate::ffi::BlendFunc_ChamfInv_inherited_NbEquations(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:50 - `BlendFunc_GenChamfInv::Values()`
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_ChamfInv_inherited_Values(self as *mut Self, X, F, D) }
     }
 
     /// Inherited: **Source:** `Blend_FuncInv.hxx`:48 - `Blend_FuncInv::NbVariables()`
@@ -1587,26 +1817,6 @@ impl ChamfInv {
         unsafe { crate::ffi::BlendFunc_ChamfInv_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for ChamfInv (3 total) ──
-// SKIPPED: **Source:** `BlendFunc_ChamfInv.hxx`:38 - `BlendFunc_ChamfInv::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ChamfInv.hxx`:45 - `BlendFunc_ChamfInv::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ChamfInv.hxx`:51 - `BlendFunc_ChamfInv::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
 
 // ========================
 // From BlendFunc_Chamfer.hxx
@@ -1639,9 +1849,36 @@ impl Chamfer {
         }
     }
 
+    /// **Source:** `BlendFunc_Chamfer.hxx`:46 - `BlendFunc_Chamfer::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BlendFunc_Chamfer_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BlendFunc_Chamfer.hxx`:52 - `BlendFunc_Chamfer::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_Chamfer_derivatives(self as *mut Self, X, D) }
+    }
+
     /// **Source:** `BlendFunc_Chamfer.hxx`:55 - `BlendFunc_Chamfer::Set()`
     pub fn set_real(&mut self, Param: f64) {
         unsafe { crate::ffi::BlendFunc_Chamfer_set_real(self as *mut Self, Param) }
+    }
+
+    /// **Source:** `BlendFunc_Chamfer.hxx`:57 - `BlendFunc_Chamfer::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BlendFunc_Chamfer_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// **Source:** `BlendFunc_Chamfer.hxx`:60 - `BlendFunc_Chamfer::PointOnS1()`
@@ -1793,6 +2030,42 @@ impl Chamfer {
         unsafe { crate::ffi::BlendFunc_Chamfer_inherited_NbEquations(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:50 - `BlendFunc_GenChamfer::Values()`
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_Chamfer_inherited_Values(self as *mut Self, X, F, D) }
+    }
+
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:65 - `BlendFunc_GenChamfer::GetTolerance()`
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BlendFunc_Chamfer_inherited_GetTolerance(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:68 - `BlendFunc_GenChamfer::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_Chamfer_inherited_GetBounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:73 - `BlendFunc_GenChamfer::GetMinimalDistance()`
     pub fn get_minimal_distance(&self) -> f64 {
         unsafe { crate::ffi::BlendFunc_Chamfer_inherited_GetMinimalDistance(self as *const Self) }
@@ -1929,26 +2202,6 @@ impl Chamfer {
     }
 }
 
-// ── Skipped symbols for Chamfer (3 total) ──
-// SKIPPED: **Source:** `BlendFunc_Chamfer.hxx`:46 - `BlendFunc_Chamfer::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_Chamfer.hxx`:52 - `BlendFunc_Chamfer::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_Chamfer.hxx`:57 - `BlendFunc_Chamfer::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-
 // ========================
 // From BlendFunc_ConstRad.hxx
 // ========================
@@ -1984,6 +2237,42 @@ impl ConstRad {
         unsafe { crate::ffi::BlendFunc_ConstRad_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `BlendFunc_ConstRad.hxx`:57 - `BlendFunc_ConstRad::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BlendFunc_ConstRad_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BlendFunc_ConstRad.hxx`:63 - `BlendFunc_ConstRad::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_ConstRad_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BlendFunc_ConstRad.hxx`:70 - `BlendFunc_ConstRad::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_ConstRad_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `BlendFunc_ConstRad.hxx`:74 - `BlendFunc_ConstRad::Set()`
     pub fn set_real(&mut self, Param: f64) {
         unsafe { crate::ffi::BlendFunc_ConstRad_set_real(self as *mut Self, Param) }
@@ -1992,6 +2281,33 @@ impl ConstRad {
     /// **Source:** `BlendFunc_ConstRad.hxx`:76 - `BlendFunc_ConstRad::Set()`
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         unsafe { crate::ffi::BlendFunc_ConstRad_set_real2(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `BlendFunc_ConstRad.hxx`:78 - `BlendFunc_ConstRad::GetTolerance()`
+    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BlendFunc_ConstRad_get_tolerance_vector_real(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `BlendFunc_ConstRad.hxx`:81 - `BlendFunc_ConstRad::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_ConstRad_get_bounds(self as *const Self, InfBound, SupBound)
+        }
+    }
+
+    /// **Source:** `BlendFunc_ConstRad.hxx`:84 - `BlendFunc_ConstRad::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BlendFunc_ConstRad_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// **Source:** `BlendFunc_ConstRad.hxx`:89 - `BlendFunc_ConstRad::GetMinimalDistance()`
@@ -2175,6 +2491,32 @@ impl ConstRad {
         }
     }
 
+    /// **Source:** `BlendFunc_ConstRad.hxx`:171 - `BlendFunc_ConstRad::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to respect
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance_real3_vector2(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::math_Vector,
+        Tol1D: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_ConstRad_get_tolerance_real3_vector2(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+                Tol1D,
+            )
+        }
+    }
+
     /// **Source:** `BlendFunc_ConstRad.hxx`:177 - `BlendFunc_ConstRad::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         unsafe { crate::ffi::BlendFunc_ConstRad_knots(self as *mut Self, TKnots) }
@@ -2338,48 +2680,6 @@ impl ConstRad {
     }
 }
 
-// ── Skipped symbols for ConstRad (7 total) ──
-// SKIPPED: **Source:** `BlendFunc_ConstRad.hxx`:57 - `BlendFunc_ConstRad::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ConstRad.hxx`:63 - `BlendFunc_ConstRad::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ConstRad.hxx`:70 - `BlendFunc_ConstRad::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ConstRad.hxx`:78 - `BlendFunc_ConstRad::GetTolerance`
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BlendFunc_ConstRad.hxx`:81 - `BlendFunc_ConstRad::GetBounds`
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BlendFunc_ConstRad.hxx`:84 - `BlendFunc_ConstRad::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ConstRad.hxx`:171 - `BlendFunc_ConstRad::GetTolerance`
-//   method: Returns the tolerance to reach in approximation
-//   method: to respect
-//   method: BoundTol error at the Boundary
-//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
-//
-
 // ========================
 // From BlendFunc_ConstRadInv.hxx
 // ========================
@@ -2424,10 +2724,69 @@ impl ConstRadInv {
         }
     }
 
+    /// **Source:** `BlendFunc_ConstRadInv.hxx`:38 - `BlendFunc_ConstRadInv::GetTolerance()`
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BlendFunc_ConstRadInv_get_tolerance(self as *const Self, Tolerance, Tol)
+        }
+    }
+
+    /// **Source:** `BlendFunc_ConstRadInv.hxx`:41 - `BlendFunc_ConstRadInv::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_ConstRadInv_get_bounds(self as *const Self, InfBound, SupBound)
+        }
+    }
+
+    /// **Source:** `BlendFunc_ConstRadInv.hxx`:44 - `BlendFunc_ConstRadInv::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BlendFunc_ConstRadInv_is_solution(self as *mut Self, Sol, Tol) }
+    }
+
     /// **Source:** `BlendFunc_ConstRadInv.hxx`:48 - `BlendFunc_ConstRadInv::NbEquations()`
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         unsafe { crate::ffi::BlendFunc_ConstRadInv_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `BlendFunc_ConstRadInv.hxx`:54 - `BlendFunc_ConstRadInv::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BlendFunc_ConstRadInv_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BlendFunc_ConstRadInv.hxx`:60 - `BlendFunc_ConstRadInv::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_ConstRadInv_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BlendFunc_ConstRadInv.hxx`:67 - `BlendFunc_ConstRadInv::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_ConstRadInv_values(self as *mut Self, X, F, D) }
     }
 
     /// **Source:** `BlendFunc_ConstRadInv.hxx`:71 - `BlendFunc_ConstRadInv::Set()`
@@ -2490,41 +2849,6 @@ impl ConstRadInv {
     }
 }
 
-// ── Skipped symbols for ConstRadInv (6 total) ──
-// SKIPPED: **Source:** `BlendFunc_ConstRadInv.hxx`:38 - `BlendFunc_ConstRadInv::GetTolerance`
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BlendFunc_ConstRadInv.hxx`:41 - `BlendFunc_ConstRadInv::GetBounds`
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BlendFunc_ConstRadInv.hxx`:44 - `BlendFunc_ConstRadInv::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ConstRadInv.hxx`:54 - `BlendFunc_ConstRadInv::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ConstRadInv.hxx`:60 - `BlendFunc_ConstRadInv::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ConstRadInv.hxx`:67 - `BlendFunc_ConstRadInv::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-
 // ========================
 // From BlendFunc_ConstThroat.hxx
 // ========================
@@ -2556,9 +2880,36 @@ impl ConstThroat {
         }
     }
 
+    /// **Source:** `BlendFunc_ConstThroat.hxx`:42 - `BlendFunc_ConstThroat::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BlendFunc_ConstThroat_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BlendFunc_ConstThroat.hxx`:48 - `BlendFunc_ConstThroat::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_ConstThroat_derivatives(self as *mut Self, X, D) }
+    }
+
     /// **Source:** `BlendFunc_ConstThroat.hxx`:51 - `BlendFunc_ConstThroat::Set()`
     pub fn set_real(&mut self, Param: f64) {
         unsafe { crate::ffi::BlendFunc_ConstThroat_set_real(self as *mut Self, Param) }
+    }
+
+    /// **Source:** `BlendFunc_ConstThroat.hxx`:53 - `BlendFunc_ConstThroat::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BlendFunc_ConstThroat_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// **Source:** `BlendFunc_ConstThroat.hxx`:56 - `BlendFunc_ConstThroat::PointOnS1()`
@@ -2718,6 +3069,42 @@ impl ConstThroat {
         unsafe { crate::ffi::BlendFunc_ConstThroat_inherited_NbEquations(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:50 - `BlendFunc_GenChamfer::Values()`
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_ConstThroat_inherited_Values(self as *mut Self, X, F, D) }
+    }
+
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:65 - `BlendFunc_GenChamfer::GetTolerance()`
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BlendFunc_ConstThroat_inherited_GetTolerance(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:68 - `BlendFunc_GenChamfer::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_ConstThroat_inherited_GetBounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:73 - `BlendFunc_GenChamfer::GetMinimalDistance()`
     pub fn get_minimal_distance(&self) -> f64 {
         unsafe {
@@ -2859,26 +3246,6 @@ impl ConstThroat {
     }
 }
 
-// ── Skipped symbols for ConstThroat (3 total) ──
-// SKIPPED: **Source:** `BlendFunc_ConstThroat.hxx`:42 - `BlendFunc_ConstThroat::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ConstThroat.hxx`:48 - `BlendFunc_ConstThroat::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ConstThroat.hxx`:53 - `BlendFunc_ConstThroat::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-
 // ========================
 // From BlendFunc_ConstThroatInv.hxx
 // ========================
@@ -2903,6 +3270,33 @@ impl ConstThroatInv {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BlendFunc_ConstThroatInv_ctor_handleadaptor3dsurface2_handleadaptor3dcurve(S1, S2, C))
         }
+    }
+
+    /// **Source:** `BlendFunc_ConstThroatInv.hxx`:34 - `BlendFunc_ConstThroatInv::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BlendFunc_ConstThroatInv_is_solution(self as *mut Self, Sol, Tol) }
+    }
+
+    /// **Source:** `BlendFunc_ConstThroatInv.hxx`:41 - `BlendFunc_ConstThroatInv::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BlendFunc_ConstThroatInv_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BlendFunc_ConstThroatInv.hxx`:47 - `BlendFunc_ConstThroatInv::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_ConstThroatInv_derivatives(self as *mut Self, X, D) }
     }
 
     /// **Source:** `BlendFunc_ConstThroatInv.hxx`:52 - `BlendFunc_ConstThroatInv::Set()`
@@ -2974,9 +3368,45 @@ impl ConstThroatInv {
         }
     }
 
+    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:37 - `BlendFunc_GenChamfInv::GetTolerance()`
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BlendFunc_ConstThroatInv_inherited_GetTolerance(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:40 - `BlendFunc_GenChamfInv::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_ConstThroatInv_inherited_GetBounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:44 - `BlendFunc_GenChamfInv::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
         unsafe { crate::ffi::BlendFunc_ConstThroatInv_inherited_NbEquations(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:50 - `BlendFunc_GenChamfInv::Values()`
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_ConstThroatInv_inherited_Values(self as *mut Self, X, F, D) }
     }
 
     /// Inherited: **Source:** `Blend_FuncInv.hxx`:48 - `Blend_FuncInv::NbVariables()`
@@ -2989,26 +3419,6 @@ impl ConstThroatInv {
         unsafe { crate::ffi::BlendFunc_ConstThroatInv_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for ConstThroatInv (3 total) ──
-// SKIPPED: **Source:** `BlendFunc_ConstThroatInv.hxx`:34 - `BlendFunc_ConstThroatInv::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ConstThroatInv.hxx`:41 - `BlendFunc_ConstThroatInv::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ConstThroatInv.hxx`:47 - `BlendFunc_ConstThroatInv::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
 
 // ========================
 // From BlendFunc_ConstThroatWithPenetration.hxx
@@ -3039,6 +3449,41 @@ impl ConstThroatWithPenetration {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BlendFunc_ConstThroatWithPenetration_ctor_handleadaptor3dsurface2_handleadaptor3dcurve(S1, S2, C))
+        }
+    }
+
+    /// **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:46 - `BlendFunc_ConstThroatWithPenetration::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BlendFunc_ConstThroatWithPenetration_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:52 - `BlendFunc_ConstThroatWithPenetration::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BlendFunc_ConstThroatWithPenetration_derivatives(self as *mut Self, X, D)
+        }
+    }
+
+    /// **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:57 - `BlendFunc_ConstThroatWithPenetration::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe {
+            crate::ffi::BlendFunc_ConstThroatWithPenetration_is_solution(
+                self as *mut Self,
+                Sol,
+                Tol,
+            )
         }
     }
 
@@ -3262,6 +3707,49 @@ impl ConstThroatWithPenetration {
         }
     }
 
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:50 - `BlendFunc_GenChamfer::Values()`
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BlendFunc_ConstThroatWithPenetration_inherited_Values(
+                self as *mut Self,
+                X,
+                F,
+                D,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:65 - `BlendFunc_GenChamfer::GetTolerance()`
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BlendFunc_ConstThroatWithPenetration_inherited_GetTolerance(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:68 - `BlendFunc_GenChamfer::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_ConstThroatWithPenetration_inherited_GetBounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:73 - `BlendFunc_GenChamfer::GetMinimalDistance()`
     pub fn get_minimal_distance(&self) -> f64 {
         unsafe {
@@ -3451,26 +3939,6 @@ impl ConstThroatWithPenetration {
     }
 }
 
-// ── Skipped symbols for ConstThroatWithPenetration (3 total) ──
-// SKIPPED: **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:46 - `BlendFunc_ConstThroatWithPenetration::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:52 - `BlendFunc_ConstThroatWithPenetration::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:57 - `BlendFunc_ConstThroatWithPenetration::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-
 // ========================
 // From BlendFunc_ConstThroatWithPenetrationInv.hxx
 // ========================
@@ -3495,6 +3963,43 @@ impl ConstThroatWithPenetrationInv {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BlendFunc_ConstThroatWithPenetrationInv_ctor_handleadaptor3dsurface2_handleadaptor3dcurve(S1, S2, C))
+        }
+    }
+
+    /// **Source:** `BlendFunc_ConstThroatWithPenetrationInv.hxx`:35 - `BlendFunc_ConstThroatWithPenetrationInv::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe {
+            crate::ffi::BlendFunc_ConstThroatWithPenetrationInv_is_solution(
+                self as *mut Self,
+                Sol,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `BlendFunc_ConstThroatWithPenetrationInv.hxx`:42 - `BlendFunc_ConstThroatWithPenetrationInv::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe {
+            crate::ffi::BlendFunc_ConstThroatWithPenetrationInv_value(self as *mut Self, X, F)
+        }
+    }
+
+    /// **Source:** `BlendFunc_ConstThroatWithPenetrationInv.hxx`:48 - `BlendFunc_ConstThroatWithPenetrationInv::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BlendFunc_ConstThroatWithPenetrationInv_derivatives(self as *mut Self, X, D)
         }
     }
 
@@ -3598,11 +4103,54 @@ impl ConstThroatWithPenetrationInv {
         }
     }
 
+    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:37 - `BlendFunc_GenChamfInv::GetTolerance()`
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BlendFunc_ConstThroatWithPenetrationInv_inherited_GetTolerance(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:40 - `BlendFunc_GenChamfInv::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_ConstThroatWithPenetrationInv_inherited_GetBounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:44 - `BlendFunc_GenChamfInv::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
         unsafe {
             crate::ffi::BlendFunc_ConstThroatWithPenetrationInv_inherited_NbEquations(
                 self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:50 - `BlendFunc_GenChamfInv::Values()`
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BlendFunc_ConstThroatWithPenetrationInv_inherited_Values(
+                self as *mut Self,
+                X,
+                F,
+                D,
             )
         }
     }
@@ -3625,26 +4173,6 @@ impl ConstThroatWithPenetrationInv {
         }
     }
 }
-
-// ── Skipped symbols for ConstThroatWithPenetrationInv (3 total) ──
-// SKIPPED: **Source:** `BlendFunc_ConstThroatWithPenetrationInv.hxx`:35 - `BlendFunc_ConstThroatWithPenetrationInv::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ConstThroatWithPenetrationInv.hxx`:42 - `BlendFunc_ConstThroatWithPenetrationInv::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_ConstThroatWithPenetrationInv.hxx`:48 - `BlendFunc_ConstThroatWithPenetrationInv::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
 
 // ========================
 // From BlendFunc_Corde.hxx
@@ -3689,6 +4217,28 @@ impl Corde {
         unsafe { crate::ffi::BlendFunc_Corde_set_dist(self as *mut Self, Dist) }
     }
 
+    /// **Source:** `BlendFunc_Corde.hxx`:50 - `BlendFunc_Corde::Value()`
+    /// computes the values <F> of the Function for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BlendFunc_Corde_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BlendFunc_Corde.hxx`:56 - `BlendFunc_Corde::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_Corde_derivatives(self as *mut Self, X, D) }
+    }
+
     /// **Source:** `BlendFunc_Corde.hxx`:58 - `BlendFunc_Corde::PointOnS()`
     pub fn point_on_s(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::BlendFunc_Corde_point_on_s(self as *const Self)) }
@@ -3725,35 +4275,21 @@ impl Corde {
     pub fn tangent2d_on_s(&self) -> &crate::gp::Vec2d {
         unsafe { &*(crate::ffi::BlendFunc_Corde_tangent2d_on_s(self as *const Self)) }
     }
-}
 
-// ── Skipped symbols for Corde (4 total) ──
-// SKIPPED: **Source:** `BlendFunc_Corde.hxx`:50 - `BlendFunc_Corde::Value`
-//   method: computes the values <F> of the Function for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_Corde.hxx`:56 - `BlendFunc_Corde::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_Corde.hxx`:79 - `BlendFunc_Corde::DerFguide`
-//   method: Derived of the function compared to the parameter
-//   method: of the guideline
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn der_fguide(&mut self, Sol: &Vector, DerF: &mut Vec2d);
-//
-// SKIPPED: **Source:** `BlendFunc_Corde.hxx`:83 - `BlendFunc_Corde::IsSolution`
-//   method: Returns False if Sol is not solution else returns
-//   method: True and updates the fields tgs and tg2d
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
+    /// **Source:** `BlendFunc_Corde.hxx`:79 - `BlendFunc_Corde::DerFguide()`
+    /// Derived of the function compared to the parameter
+    /// of the guideline
+    pub fn der_fguide(&mut self, Sol: &crate::ffi::math_Vector, DerF: &mut crate::gp::Vec2d) {
+        unsafe { crate::ffi::BlendFunc_Corde_der_fguide(self as *mut Self, Sol, DerF) }
+    }
+
+    /// **Source:** `BlendFunc_Corde.hxx`:83 - `BlendFunc_Corde::IsSolution()`
+    /// Returns False if Sol is not solution else returns
+    /// True and updates the fields tgs and tg2d
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BlendFunc_Corde_is_solution(self as *mut Self, Sol, Tol) }
+    }
+}
 
 // ========================
 // From BlendFunc_EvolRad.hxx
@@ -3787,6 +4323,42 @@ impl EvolRad {
         unsafe { crate::ffi::BlendFunc_EvolRad_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `BlendFunc_EvolRad.hxx`:58 - `BlendFunc_EvolRad::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BlendFunc_EvolRad_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BlendFunc_EvolRad.hxx`:64 - `BlendFunc_EvolRad::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_EvolRad_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BlendFunc_EvolRad.hxx`:71 - `BlendFunc_EvolRad::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_EvolRad_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `BlendFunc_EvolRad.hxx`:75 - `BlendFunc_EvolRad::Set()`
     pub fn set_real(&mut self, Param: f64) {
         unsafe { crate::ffi::BlendFunc_EvolRad_set_real(self as *mut Self, Param) }
@@ -3795,6 +4367,31 @@ impl EvolRad {
     /// **Source:** `BlendFunc_EvolRad.hxx`:77 - `BlendFunc_EvolRad::Set()`
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         unsafe { crate::ffi::BlendFunc_EvolRad_set_real2(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `BlendFunc_EvolRad.hxx`:79 - `BlendFunc_EvolRad::GetTolerance()`
+    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BlendFunc_EvolRad_get_tolerance_vector_real(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `BlendFunc_EvolRad.hxx`:82 - `BlendFunc_EvolRad::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe { crate::ffi::BlendFunc_EvolRad_get_bounds(self as *const Self, InfBound, SupBound) }
+    }
+
+    /// **Source:** `BlendFunc_EvolRad.hxx`:85 - `BlendFunc_EvolRad::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BlendFunc_EvolRad_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// **Source:** `BlendFunc_EvolRad.hxx`:90 - `BlendFunc_EvolRad::GetMinimalDistance()`
@@ -3977,6 +4574,32 @@ impl EvolRad {
         }
     }
 
+    /// **Source:** `BlendFunc_EvolRad.hxx`:171 - `BlendFunc_EvolRad::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to respect
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance_real3_vector2(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::math_Vector,
+        Tol1D: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_EvolRad_get_tolerance_real3_vector2(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+                Tol1D,
+            )
+        }
+    }
+
     /// **Source:** `BlendFunc_EvolRad.hxx`:177 - `BlendFunc_EvolRad::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         unsafe { crate::ffi::BlendFunc_EvolRad_knots(self as *mut Self, TKnots) }
@@ -4128,48 +4751,6 @@ impl EvolRad {
     }
 }
 
-// ── Skipped symbols for EvolRad (7 total) ──
-// SKIPPED: **Source:** `BlendFunc_EvolRad.hxx`:58 - `BlendFunc_EvolRad::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_EvolRad.hxx`:64 - `BlendFunc_EvolRad::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_EvolRad.hxx`:71 - `BlendFunc_EvolRad::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_EvolRad.hxx`:79 - `BlendFunc_EvolRad::GetTolerance`
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BlendFunc_EvolRad.hxx`:82 - `BlendFunc_EvolRad::GetBounds`
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BlendFunc_EvolRad.hxx`:85 - `BlendFunc_EvolRad::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_EvolRad.hxx`:171 - `BlendFunc_EvolRad::GetTolerance`
-//   method: Returns the tolerance to reach in approximation
-//   method: to respect
-//   method: BoundTol error at the Boundary
-//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
-//
-
 // ========================
 // From BlendFunc_EvolRadInv.hxx
 // ========================
@@ -4211,10 +4792,69 @@ impl EvolRadInv {
         }
     }
 
+    /// **Source:** `BlendFunc_EvolRadInv.hxx`:40 - `BlendFunc_EvolRadInv::GetTolerance()`
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BlendFunc_EvolRadInv_get_tolerance(self as *const Self, Tolerance, Tol)
+        }
+    }
+
+    /// **Source:** `BlendFunc_EvolRadInv.hxx`:42 - `BlendFunc_EvolRadInv::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_EvolRadInv_get_bounds(self as *const Self, InfBound, SupBound)
+        }
+    }
+
+    /// **Source:** `BlendFunc_EvolRadInv.hxx`:44 - `BlendFunc_EvolRadInv::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BlendFunc_EvolRadInv_is_solution(self as *mut Self, Sol, Tol) }
+    }
+
     /// **Source:** `BlendFunc_EvolRadInv.hxx`:47 - `BlendFunc_EvolRadInv::NbEquations()`
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         unsafe { crate::ffi::BlendFunc_EvolRadInv_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `BlendFunc_EvolRadInv.hxx`:53 - `BlendFunc_EvolRadInv::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BlendFunc_EvolRadInv_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BlendFunc_EvolRadInv.hxx`:59 - `BlendFunc_EvolRadInv::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_EvolRadInv_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BlendFunc_EvolRadInv.hxx`:65 - `BlendFunc_EvolRadInv::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_EvolRadInv_values(self as *mut Self, X, F, D) }
     }
 
     /// **Source:** `BlendFunc_EvolRadInv.hxx`:67 - `BlendFunc_EvolRadInv::Set()`
@@ -4277,41 +4917,6 @@ impl EvolRadInv {
     }
 }
 
-// ── Skipped symbols for EvolRadInv (6 total) ──
-// SKIPPED: **Source:** `BlendFunc_EvolRadInv.hxx`:40 - `BlendFunc_EvolRadInv::GetTolerance`
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BlendFunc_EvolRadInv.hxx`:42 - `BlendFunc_EvolRadInv::GetBounds`
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BlendFunc_EvolRadInv.hxx`:44 - `BlendFunc_EvolRadInv::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_EvolRadInv.hxx`:53 - `BlendFunc_EvolRadInv::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_EvolRadInv.hxx`:59 - `BlendFunc_EvolRadInv::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_EvolRadInv.hxx`:65 - `BlendFunc_EvolRadInv::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-
 // ========================
 // From BlendFunc_GenChamfInv.hxx
 // ========================
@@ -4342,10 +4947,42 @@ impl GenChamfInv {
         }
     }
 
+    /// **Source:** `BlendFunc_GenChamfInv.hxx`:37 - `BlendFunc_GenChamfInv::GetTolerance()`
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BlendFunc_GenChamfInv_get_tolerance(self as *const Self, Tolerance, Tol)
+        }
+    }
+
+    /// **Source:** `BlendFunc_GenChamfInv.hxx`:40 - `BlendFunc_GenChamfInv::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_GenChamfInv_get_bounds(self as *const Self, InfBound, SupBound)
+        }
+    }
+
     /// **Source:** `BlendFunc_GenChamfInv.hxx`:44 - `BlendFunc_GenChamfInv::NbEquations()`
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         unsafe { crate::ffi::BlendFunc_GenChamfInv_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `BlendFunc_GenChamfInv.hxx`:50 - `BlendFunc_GenChamfInv::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_GenChamfInv_values(self as *mut Self, X, F, D) }
     }
 
     /// **Source:** `BlendFunc_GenChamfInv.hxx`:54 - `BlendFunc_GenChamfInv::Set()`
@@ -4404,31 +5041,37 @@ impl GenChamfInv {
         unsafe { crate::ffi::BlendFunc_GenChamfInv_inherited_NbVariables(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Blend_FuncInv.hxx`:57 - `Blend_FuncInv::Value()`
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BlendFunc_GenChamfInv_inherited_Value(self as *mut Self, X, F) }
+    }
+
+    /// Inherited: **Source:** `Blend_FuncInv.hxx`:63 - `Blend_FuncInv::Derivatives()`
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_GenChamfInv_inherited_Derivatives(self as *mut Self, X, D) }
+    }
+
+    /// Inherited: **Source:** `Blend_FuncInv.hxx`:94 - `Blend_FuncInv::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe {
+            crate::ffi::BlendFunc_GenChamfInv_inherited_IsSolution(self as *mut Self, Sol, Tol)
+        }
+    }
+
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe { crate::ffi::BlendFunc_GenChamfInv_inherited_GetStateNumber(self as *mut Self) }
     }
 }
 
-// ── Skipped symbols for GenChamfInv (4 total) ──
+// ── Skipped symbols for GenChamfInv (1 total) ──
 // SKIPPED: **Source:** `BlendFunc_GenChamfInv.hxx`:30 - `BlendFunc_GenChamfInv::BlendFunc_GenChamfInv`
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new_handleadaptor3dsurface2_handleadaptor3dcurve(S1: &HandleSurface, S2: &HandleSurface, C: &HandleCurve) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BlendFunc_GenChamfInv.hxx`:37 - `BlendFunc_GenChamfInv::GetTolerance`
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BlendFunc_GenChamfInv.hxx`:40 - `BlendFunc_GenChamfInv::GetBounds`
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BlendFunc_GenChamfInv.hxx`:50 - `BlendFunc_GenChamfInv::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
 //
 
 // ========================
@@ -4452,6 +5095,20 @@ impl GenChamfer {
         unsafe { crate::ffi::BlendFunc_GenChamfer_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:50 - `BlendFunc_GenChamfer::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_GenChamfer_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `BlendFunc_GenChamfer.hxx`:57 - `BlendFunc_GenChamfer::Set()`
     /// Sets the value of the parameter along the guide line.
     /// This determines the plane in which the solution has
@@ -4467,6 +5124,28 @@ impl GenChamfer {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         unsafe { crate::ffi::BlendFunc_GenChamfer_set_real2(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:65 - `BlendFunc_GenChamfer::GetTolerance()`
+    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BlendFunc_GenChamfer_get_tolerance_vector_real(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:68 - `BlendFunc_GenChamfer::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_GenChamfer_get_bounds(self as *const Self, InfBound, SupBound)
+        }
     }
 
     /// **Source:** `BlendFunc_GenChamfer.hxx`:73 - `BlendFunc_GenChamfer::GetMinimalDistance()`
@@ -4531,6 +5210,32 @@ impl GenChamfer {
                 NbKnots,
                 Degree,
                 NbPoles2d,
+            )
+        }
+    }
+
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:111 - `BlendFunc_GenChamfer::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to respect
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance_real3_vector2(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::math_Vector,
+        Tol1D: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_GenChamfer_get_tolerance_real3_vector2(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+                Tol1D,
             )
         }
     }
@@ -4779,6 +5484,27 @@ impl GenChamfer {
         unsafe { crate::ffi::BlendFunc_GenChamfer_inherited_TwistOnS2(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:59 - `Blend_AppFunction::Value()`
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BlendFunc_GenChamfer_inherited_Value(self as *mut Self, X, F) }
+    }
+
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:65 - `Blend_AppFunction::Derivatives()`
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_GenChamfer_inherited_Derivatives(self as *mut Self, X, D) }
+    }
+
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:102 - `Blend_AppFunction::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe {
+            crate::ffi::BlendFunc_GenChamfer_inherited_IsSolution(self as *mut Self, Sol, Tol)
+        }
+    }
+
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetSectionSize()`
     pub fn get_section_size(&self) -> f64 {
         unsafe { crate::ffi::BlendFunc_GenChamfer_inherited_GetSectionSize(self as *const Self) }
@@ -4795,32 +5521,10 @@ impl GenChamfer {
     }
 }
 
-// ── Skipped symbols for GenChamfer (5 total) ──
+// ── Skipped symbols for GenChamfer (1 total) ──
 // SKIPPED: **Source:** `BlendFunc_GenChamfer.hxx`:39 - `BlendFunc_GenChamfer::BlendFunc_GenChamfer`
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new_handleadaptor3dsurface2_handleadaptor3dcurve(S1: &HandleSurface, S2: &HandleSurface, CG: &HandleCurve) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BlendFunc_GenChamfer.hxx`:50 - `BlendFunc_GenChamfer::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_GenChamfer.hxx`:65 - `BlendFunc_GenChamfer::GetTolerance`
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BlendFunc_GenChamfer.hxx`:68 - `BlendFunc_GenChamfer::GetBounds`
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BlendFunc_GenChamfer.hxx`:111 - `BlendFunc_GenChamfer::GetTolerance`
-//   method: Returns the tolerance to reach in approximation
-//   method: to respect
-//   method: BoundTol error at the Boundary
-//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
 //
 
 // ========================
@@ -4858,6 +5562,42 @@ impl Ruled {
         unsafe { crate::ffi::BlendFunc_Ruled_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `BlendFunc_Ruled.hxx`:54 - `BlendFunc_Ruled::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BlendFunc_Ruled_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BlendFunc_Ruled.hxx`:60 - `BlendFunc_Ruled::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_Ruled_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BlendFunc_Ruled.hxx`:67 - `BlendFunc_Ruled::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_Ruled_values(self as *mut Self, X, F, D) }
+    }
+
     /// **Source:** `BlendFunc_Ruled.hxx`:71 - `BlendFunc_Ruled::Set()`
     pub fn set_real(&mut self, Param: f64) {
         unsafe { crate::ffi::BlendFunc_Ruled_set_real(self as *mut Self, Param) }
@@ -4866,6 +5606,31 @@ impl Ruled {
     /// **Source:** `BlendFunc_Ruled.hxx`:73 - `BlendFunc_Ruled::Set()`
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         unsafe { crate::ffi::BlendFunc_Ruled_set_real2(self as *mut Self, First, Last) }
+    }
+
+    /// **Source:** `BlendFunc_Ruled.hxx`:75 - `BlendFunc_Ruled::GetTolerance()`
+    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe {
+            crate::ffi::BlendFunc_Ruled_get_tolerance_vector_real(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `BlendFunc_Ruled.hxx`:78 - `BlendFunc_Ruled::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe { crate::ffi::BlendFunc_Ruled_get_bounds(self as *const Self, InfBound, SupBound) }
+    }
+
+    /// **Source:** `BlendFunc_Ruled.hxx`:81 - `BlendFunc_Ruled::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BlendFunc_Ruled_is_solution(self as *mut Self, Sol, Tol) }
     }
 
     /// **Source:** `BlendFunc_Ruled.hxx`:86 - `BlendFunc_Ruled::GetMinimalDistance()`
@@ -5019,6 +5784,32 @@ impl Ruled {
                 NbKnots,
                 Degree,
                 NbPoles2d,
+            )
+        }
+    }
+
+    /// **Source:** `BlendFunc_Ruled.hxx`:157 - `BlendFunc_Ruled::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to respect
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance_real3_vector2(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::math_Vector,
+        Tol1D: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_Ruled_get_tolerance_real3_vector2(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+                Tol1D,
             )
         }
     }
@@ -5189,48 +5980,6 @@ impl Ruled {
     }
 }
 
-// ── Skipped symbols for Ruled (7 total) ──
-// SKIPPED: **Source:** `BlendFunc_Ruled.hxx`:54 - `BlendFunc_Ruled::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_Ruled.hxx`:60 - `BlendFunc_Ruled::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_Ruled.hxx`:67 - `BlendFunc_Ruled::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_Ruled.hxx`:75 - `BlendFunc_Ruled::GetTolerance`
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BlendFunc_Ruled.hxx`:78 - `BlendFunc_Ruled::GetBounds`
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BlendFunc_Ruled.hxx`:81 - `BlendFunc_Ruled::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_Ruled.hxx`:157 - `BlendFunc_Ruled::GetTolerance`
-//   method: Returns the tolerance to reach in approximation
-//   method: to respect
-//   method: BoundTol error at the Boundary
-//   Reason: param 'Tol3d' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, BoundTol: f64, SurfTol: f64, AngleTol: f64, Tol3d: &mut Vector, Tol1D: &mut Vector);
-//
-
 // ========================
 // From BlendFunc_RuledInv.hxx
 // ========================
@@ -5265,10 +6014,67 @@ impl RuledInv {
         unsafe { crate::ffi::BlendFunc_RuledInv_set(self as *mut Self, OnFirst, COnSurf) }
     }
 
+    /// **Source:** `BlendFunc_RuledInv.hxx`:38 - `BlendFunc_RuledInv::GetTolerance()`
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+        unsafe { crate::ffi::BlendFunc_RuledInv_get_tolerance(self as *const Self, Tolerance, Tol) }
+    }
+
+    /// **Source:** `BlendFunc_RuledInv.hxx`:41 - `BlendFunc_RuledInv::GetBounds()`
+    pub fn get_bounds(
+        &self,
+        InfBound: &mut crate::ffi::math_Vector,
+        SupBound: &mut crate::ffi::math_Vector,
+    ) {
+        unsafe {
+            crate::ffi::BlendFunc_RuledInv_get_bounds(self as *const Self, InfBound, SupBound)
+        }
+    }
+
+    /// **Source:** `BlendFunc_RuledInv.hxx`:44 - `BlendFunc_RuledInv::IsSolution()`
+    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+        unsafe { crate::ffi::BlendFunc_RuledInv_is_solution(self as *mut Self, Sol, Tol) }
+    }
+
     /// **Source:** `BlendFunc_RuledInv.hxx`:48 - `BlendFunc_RuledInv::NbEquations()`
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         unsafe { crate::ffi::BlendFunc_RuledInv_nb_equations(self as *const Self) }
+    }
+
+    /// **Source:** `BlendFunc_RuledInv.hxx`:54 - `BlendFunc_RuledInv::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::BlendFunc_RuledInv_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `BlendFunc_RuledInv.hxx`:60 - `BlendFunc_RuledInv::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_RuledInv_derivatives(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `BlendFunc_RuledInv.hxx`:67 - `BlendFunc_RuledInv::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// Returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::BlendFunc_RuledInv_values(self as *mut Self, X, F, D) }
     }
 
     /// Upcast to Blend_FuncInv
@@ -5324,41 +6130,6 @@ impl RuledInv {
     }
 }
 
-// ── Skipped symbols for RuledInv (6 total) ──
-// SKIPPED: **Source:** `BlendFunc_RuledInv.hxx`:38 - `BlendFunc_RuledInv::GetTolerance`
-//   Reason: param 'Tolerance' uses unknown type 'math_Vector&'
-//   // pub fn get_tolerance(&self, Tolerance: &mut Vector, Tol: f64);
-//
-// SKIPPED: **Source:** `BlendFunc_RuledInv.hxx`:41 - `BlendFunc_RuledInv::GetBounds`
-//   Reason: param 'InfBound' uses unknown type 'math_Vector&'
-//   // pub fn get_bounds(&self, InfBound: &mut Vector, SupBound: &mut Vector);
-//
-// SKIPPED: **Source:** `BlendFunc_RuledInv.hxx`:44 - `BlendFunc_RuledInv::IsSolution`
-//   Reason: param 'Sol' uses unknown type 'const math_Vector&'
-//   // pub fn is_solution(&mut self, Sol: &Vector, Tol: f64) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_RuledInv.hxx`:54 - `BlendFunc_RuledInv::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_RuledInv.hxx`:60 - `BlendFunc_RuledInv::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `BlendFunc_RuledInv.hxx`:67 - `BlendFunc_RuledInv::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: Returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
-
 // ========================
 // From BlendFunc_Tensor.hxx
 // ========================
@@ -5406,10 +6177,9 @@ impl Tensor {
             &mut *(crate::ffi::BlendFunc_Tensor_change_value(self as *mut Self, Row, Col, Mat))
         }
     }
-}
 
-// ── Skipped symbols for Tensor (1 total) ──
-// SKIPPED: **Source:** `BlendFunc_Tensor.hxx`:71 - `BlendFunc_Tensor::Multiply`
-//   Reason: param 'Right' uses unknown type 'const math_Vector&'
-//   // pub fn multiply(&self, Right: &Vector, Product: &mut Matrix);
-//
+    /// **Source:** `BlendFunc_Tensor.hxx`:71 - `BlendFunc_Tensor::Multiply()`
+    pub fn multiply(&self, Right: &crate::ffi::math_Vector, Product: &mut crate::math::Matrix) {
+        unsafe { crate::ffi::BlendFunc_Tensor_multiply(self as *const Self, Right, Product) }
+    }
+}

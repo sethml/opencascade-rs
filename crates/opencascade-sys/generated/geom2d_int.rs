@@ -1317,6 +1317,61 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter {
         }
     }
 
+    /// **Source:** `Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter.hxx`:51 - `Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter::Value()`
+    /// computes the values <F> of the Functions for the
+    /// variable <X>.
+    /// returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe {
+            crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_value(
+                self as *mut Self,
+                X,
+                F,
+            )
+        }
+    }
+
+    /// **Source:** `Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter.hxx`:57 - `Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter::Derivatives()`
+    /// returns the values <D> of the derivatives for the
+    /// variable <X>.
+    /// returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
+        }
+    }
+
+    /// **Source:** `Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter.hxx`:63 - `Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter::Values()`
+    /// returns the values <F> of the functions and the derivatives
+    /// <D> for the variable <X>.
+    /// returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_values(
+                self as *mut Self,
+                X,
+                F,
+                D,
+            )
+        }
+    }
+
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
@@ -1356,29 +1411,6 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter {
         }
     }
 }
-
-// ── Skipped symbols for TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter (3 total) ──
-// SKIPPED: **Source:** `Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter.hxx`:51 - `Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter::Value`
-//   method: computes the values <F> of the Functions for the
-//   method: variable <X>.
-//   method: returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter.hxx`:57 - `Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter::Derivatives`
-//   method: returns the values <D> of the derivatives for the
-//   method: variable <X>.
-//   method: returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter.hxx`:63 - `Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter::Values`
-//   method: returns the values <F> of the functions and the derivatives
-//   method: <D> for the variable <X>.
-//   method: returns True if the computation was done successfully,
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
 
 // ========================
 // From Geom2dInt_TheIntConicCurveOfGInter.hxx

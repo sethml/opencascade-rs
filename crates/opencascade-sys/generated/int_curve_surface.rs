@@ -532,6 +532,34 @@ impl TheCSFunctionOfHInter {
         }
     }
 
+    /// **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:42 - `IntCurveSurface_TheCSFunctionOfHInter::Value()`
+    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+        unsafe { crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:44 - `IntCurveSurface_TheCSFunctionOfHInter::Derivatives()`
+    pub fn derivatives(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_derivatives(self as *mut Self, X, D)
+        }
+    }
+
+    /// **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:46 - `IntCurveSurface_TheCSFunctionOfHInter::Values()`
+    pub fn values(
+        &mut self,
+        X: &crate::ffi::math_Vector,
+        F: &mut crate::ffi::math_Vector,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_values(self as *mut Self, X, F, D)
+        }
+    }
+
     /// **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:48 - `IntCurveSurface_TheCSFunctionOfHInter::Point()`
     pub fn point(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_point(self as *const Self)) }
@@ -607,20 +635,6 @@ impl TheCSFunctionOfHInter {
         }
     }
 }
-
-// ── Skipped symbols for TheCSFunctionOfHInter (3 total) ──
-// SKIPPED: **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:42 - `IntCurveSurface_TheCSFunctionOfHInter::Value`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn value(&mut self, X: &Vector, F: &mut Vector) -> bool;
-//
-// SKIPPED: **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:44 - `IntCurveSurface_TheCSFunctionOfHInter::Derivatives`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn derivatives(&mut self, X: &Vector, D: &mut Matrix) -> bool;
-//
-// SKIPPED: **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:46 - `IntCurveSurface_TheCSFunctionOfHInter::Values`
-//   Reason: param 'X' uses unknown type 'const math_Vector&'
-//   // pub fn values(&mut self, X: &Vector, F: &mut Vector, D: &mut Matrix) -> bool;
-//
 
 // ========================
 // From IntCurveSurface_TheExactHInter.hxx
